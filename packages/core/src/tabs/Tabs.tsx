@@ -1,12 +1,16 @@
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { ComponentProps, forwardRef } from "react";
-import { classNames } from "@rhinobase/lib";
+import { classNames } from "@rhinobase/utils";
 import { TabContext, TabProvider, useTabContext } from "./context";
+import React from "react";
 
 // Tabs Component
-type TabsProps = ComponentProps<typeof TabsPrimitive["Root"]>;
+type TabsProps = ComponentProps<(typeof TabsPrimitive)["Root"]>;
 export const Tabs = forwardRef<HTMLDivElement, TabContext & TabsProps>(
-  ({ children, className, size = "md", variant = "line", ...props }, forwardedRef) => {
+  (
+    { children, className, size = "md", variant = "line", ...props },
+    forwardedRef
+  ) => {
     return (
       <TabProvider value={{ size, variant }}>
         <TabsPrimitive.Root
@@ -15,7 +19,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabContext & TabsProps>(
             className
           )}
           {...props}
-          ref={forwardedRef}>
+          ref={forwardedRef}
+        >
           {children}
         </TabsPrimitive.Root>
       </TabProvider>
@@ -24,7 +29,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabContext & TabsProps>(
 );
 
 // TabsList Component
-type TabsListProps = ComponentProps<typeof TabsPrimitive["List"]>;
+type TabsListProps = ComponentProps<(typeof TabsPrimitive)["List"]>;
 export const TabsList = forwardRef<HTMLDivElement, TabContext & TabsListProps>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -36,7 +41,8 @@ export const TabsList = forwardRef<HTMLDivElement, TabContext & TabsListProps>(
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </TabsPrimitive.List>
     );
@@ -44,7 +50,7 @@ export const TabsList = forwardRef<HTMLDivElement, TabContext & TabsListProps>(
 );
 
 // Tab Component
-type TabProps = ComponentProps<typeof TabsPrimitive["Trigger"]>;
+type TabProps = ComponentProps<(typeof TabsPrimitive)["Trigger"]>;
 export const Tab = forwardRef<HTMLButtonElement, TabContext & TabProps>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useTabContext();
@@ -58,16 +64,20 @@ export const Tab = forwardRef<HTMLButtonElement, TabContext & TabProps>(
           "border-b-[2px] border-b-transparent",
           variant == "enclosed" &&
             "data-[state=active]:border-secondary-200 data-[state=active]:dark:border-secondary-700 data-[state=active]:dark:border-b-secondary-800 mb-[-2px] rounded-t-md border border-transparent data-[state=active]:border-b-white",
-          size == "sm" && "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-base text-sm",
-          size == "md" && "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-md",
-          size == "lg" && "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-lg text-lg",
+          size == "sm" &&
+            "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-base text-sm",
+          size == "md" &&
+            "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-md",
+          size == "lg" &&
+            "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-lg text-lg",
           "text-secondary-500 dark:text-secondary-400 hover:dark:text-secondary-100 data-[orientation=vertical]:px-lg data-[orientation=vertical]:py-md font-medium transition-colors hover:text-black",
           "data-[orientation=vertical]:data-[state=active]:bg-secondary-300/50 data-[orientation=vertical]:text-secondary-800 data-[orientation=vertical]:hover:bg-secondary-200/50 data-[orientation=vertical]:data-[state=active]:hover:bg-secondary-300/50 data-[orientation=vertical]:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:dark:bg-secondary-700/40 data-[orientation=vertical]:rounded-md data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:text-left",
           "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </TabsPrimitive.Trigger>
     );
@@ -75,7 +85,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabContext & TabProps>(
 );
 
 // TabContent Component
-type TabContentProps = ComponentProps<typeof TabsPrimitive["Content"]>;
+type TabContentProps = ComponentProps<(typeof TabsPrimitive)["Content"]>;
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useTabContext();
@@ -88,7 +98,8 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </TabsPrimitive.Content>
     );
