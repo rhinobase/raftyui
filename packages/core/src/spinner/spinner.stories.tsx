@@ -1,4 +1,4 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
 import { ISpinner, Spinner } from "./Spinner";
 
 export default {
