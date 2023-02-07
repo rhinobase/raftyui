@@ -1,15 +1,16 @@
 import { classNames } from "@rhinobase/utils";
+import React from "react";
 import { CSSProperties } from "react";
 
 // Spinner Component
-export type ISpinner = {
+export type Spinner = {
   size?: "sm" | "md" | "lg";
   inheritParent?: boolean;
   className: string;
   style?: CSSProperties;
 };
 
-export function Spinner({ size = "md", ...props }: ISpinner) {
+export function Spinner({ size = "md", ...props }: Spinner) {
   return (
     <svg
       className={classNames(

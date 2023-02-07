@@ -1,23 +1,30 @@
 import * as RadixSelect from "@radix-ui/react-select";
 import { ComponentProps, forwardRef, ReactNode } from "react";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi2";
-import { classNames } from "@rhinobase/lib";
-import { Button, ButtonProps } from "@rhinobase/ui";
+import { classNames } from "@rhinobase/utils";
+import { Button } from "../..";
+import React from "react";
 
 // Select Component
 export const Select = RadixSelect.Root;
 
 // SelectButton Component (SelectValue, SelectIcon Component inside SelectButton Component )
-type SelectButtonProps = ComponentProps<typeof RadixSelect["Trigger"]> & {
-  variant?: ButtonProps["variant"];
-  size?: ButtonProps["size"];
+type SelectButton = ComponentProps<(typeof RadixSelect)["Trigger"]> & {
+  variant?: Button["variant"];
+  size?: Button["size"];
   placeholder?: string;
   icon?: ReactNode;
 };
-export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
-  ({ className, children, variant, size, placeholder, icon, ...props }, forwardedRef) => (
+export const SelectButton = forwardRef<HTMLButtonElement, SelectButton>(
+  (
+    { className, children, variant, size, placeholder, icon, ...props },
+    forwardedRef
+  ) => (
     <RadixSelect.Trigger {...props} ref={forwardedRef} asChild>
-      <Button variant={variant} size={size} className={classNames("justify-between", className)}>
+      <Button
+        variant={variant}
+        size={size}
+        className={classNames("justify-between", className)}
+      >
         <SelectValue placeholder={placeholder} />
         <SelectIcon>{icon}</SelectIcon>
       </Button>
@@ -26,8 +33,8 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButtonProps>(
 );
 
 // SelectContent Component (SelectScrollUpButton, SelectScrollDownButton, SelectViewport Component inside SelectContent Component)
-type SelectContentProps = ComponentProps<typeof RadixSelect["Content"]>;
-export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
+type SelectContent = ComponentProps<(typeof RadixSelect)["Content"]>;
+export const SelectContent = forwardRef<HTMLDivElement, SelectContent>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Content {...props} className={className} ref={forwardedRef}>
       <SelectScrollUpButton />
@@ -38,18 +45,22 @@ export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(
 );
 
 // SelectGroup Component
-type SelectGroupProps = ComponentProps<typeof RadixSelect["Group"]>;
-export const SelectGroup = forwardRef<HTMLDivElement, SelectGroupProps>(
+type SelectGroup = ComponentProps<(typeof RadixSelect)["Group"]>;
+export const SelectGroup = forwardRef<HTMLDivElement, SelectGroup>(
   ({ className, children, ...props }, forwardedRef) => (
-    <RadixSelect.Group {...props} className={classNames("space-y-1", className)} ref={forwardedRef}>
+    <RadixSelect.Group
+      {...props}
+      className={classNames("space-y-1", className)}
+      ref={forwardedRef}
+    >
       {children}
     </RadixSelect.Group>
   )
 );
 
 // SelectItem Component
-type SelectItemProps = ComponentProps<typeof RadixSelect["Item"]>;
-export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
+type SelectItem = ComponentProps<(typeof RadixSelect)["Item"]>;
+export const SelectItem = forwardRef<HTMLDivElement, SelectItem>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Item
       {...props}
@@ -60,19 +71,23 @@ export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
         "select-none focus:outline-none",
         className
       )}
-      ref={forwardedRef}>
+      ref={forwardedRef}
+    >
       <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
     </RadixSelect.Item>
   )
 );
 
 // SelectSeparator Component
-type SelectDividerProps = ComponentProps<typeof RadixSelect["Separator"]>;
-export const SelectDivider = forwardRef<HTMLDivElement, SelectDividerProps>(
+type SelectDivider = ComponentProps<(typeof RadixSelect)["Separator"]>;
+export const SelectDivider = forwardRef<HTMLDivElement, SelectDivider>(
   ({ className, ...props }, forwardedRef) => (
     <RadixSelect.Separator
       {...props}
-      className={classNames("bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]", className)}
+      className={classNames(
+        "bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]",
+        className
+      )}
       ref={forwardedRef}
     />
   )
@@ -82,21 +97,39 @@ export const SelectDivider = forwardRef<HTMLDivElement, SelectDividerProps>(
 const SelectValue = RadixSelect.Value;
 
 // SelectIcon Component
-type SelectIconProps = ComponentProps<typeof RadixSelect["Icon"]>;
-const SelectIcon = forwardRef<HTMLDivElement, SelectIconProps>(
+type SelectIcon = ComponentProps<(typeof RadixSelect)["Icon"]>;
+const SelectIcon = forwardRef<HTMLDivElement, SelectIcon>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Icon
       {...props}
       className={props.asChild ? className : classNames("ml-2", className)}
-      ref={forwardedRef}>
-      {children ?? <HiChevronDown />}
+      ref={forwardedRef}
+    >
+      {children ?? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="h-6 w-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+      )}
     </RadixSelect.Icon>
   )
 );
 
 // SelectScrollUpButton Component
-type SelectScrollUpButtonProps = ComponentProps<typeof RadixSelect["ScrollUpButton"]>;
-const SelectScrollUpButton = forwardRef<HTMLDivElement, SelectScrollUpButtonProps>(
+type SelectScrollUpButton = ComponentProps<
+  (typeof RadixSelect)["ScrollUpButton"]
+>;
+const SelectScrollUpButton = forwardRef<HTMLDivElement, SelectScrollUpButton>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.ScrollUpButton
       {...props}
@@ -108,44 +141,79 @@ const SelectScrollUpButton = forwardRef<HTMLDivElement, SelectScrollUpButtonProp
               className
             )
       }
-      ref={forwardedRef}>
-      <HiChevronUp />
+      ref={forwardedRef}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        className="h-6 w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 15.75l7.5-7.5 7.5 7.5"
+        />
+      </svg>
     </RadixSelect.ScrollUpButton>
   )
 );
 
 //SelectScrollDownButton Component
-type SelectScrollDownButtonProps = ComponentProps<typeof RadixSelect["ScrollDownButton"]>;
-const SelectScrollDownButton = forwardRef<HTMLDivElement, SelectScrollDownButtonProps>(
-  ({ className, children, ...props }, forwardedRef) => (
-    <RadixSelect.ScrollDownButton
-      {...props}
-      className={
-        props.asChild
-          ? className
-          : classNames(
-              "text-secondary-700 dark:text-secondary-300 flex items-center justify-center",
-              className
-            )
-      }
-      ref={forwardedRef}>
-      <HiChevronDown />
-    </RadixSelect.ScrollDownButton>
-  )
-);
+type SelectScrollDownButton = ComponentProps<
+  (typeof RadixSelect)["ScrollDownButton"]
+>;
+const SelectScrollDownButton = forwardRef<
+  HTMLDivElement,
+  SelectScrollDownButton
+>(({ className, children, ...props }, forwardedRef) => (
+  <RadixSelect.ScrollDownButton
+    {...props}
+    className={
+      props.asChild
+        ? className
+        : classNames(
+            "text-secondary-700 dark:text-secondary-300 flex items-center justify-center",
+            className
+          )
+    }
+    ref={forwardedRef}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      className="h-6 w-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  </RadixSelect.ScrollDownButton>
+));
 
 // SelectViewport Component
-type SelectViewportProps = ComponentProps<typeof RadixSelect["Viewport"]>;
-const SelectViewport = forwardRef<HTMLDivElement, SelectViewportProps>(
+type SelectViewport = ComponentProps<(typeof RadixSelect)["Viewport"]>;
+const SelectViewport = forwardRef<HTMLDivElement, SelectViewport>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Viewport
       {...props}
       className={
         props.asChild
           ? className
-          : classNames("dark:bg-secondary-800 p-md rounded-lg bg-white shadow-lg", className)
+          : classNames(
+              "dark:bg-secondary-800 p-md rounded-lg bg-white shadow-lg",
+              className
+            )
       }
-      ref={forwardedRef}>
+      ref={forwardedRef}
+    >
       {children}
     </RadixSelect.Viewport>
   )

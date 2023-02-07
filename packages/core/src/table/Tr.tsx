@@ -1,13 +1,18 @@
 import { forwardRef } from "react";
-import { removeDuplicate } from "@rhinobase/lib";
+import { classNames } from "@rhinobase/utils";
+import React from "react";
 
 // Tr Component (Used in Table Component)
 export const Tr = forwardRef<HTMLTableRowElement, JSX.IntrinsicElements["tr"]>(
   ({ children, ...props }, forwardedRef) => (
     <tr
       {...props}
-      className={removeDuplicate("even:bg-secondary-100 dark:even:bg-secondary-700/50", props.className)}
-      ref={forwardedRef}>
+      className={classNames(
+        "even:bg-secondary-100 dark:even:bg-secondary-700/50",
+        props.className
+      )}
+      ref={forwardedRef}
+    >
       {children}
     </tr>
   )

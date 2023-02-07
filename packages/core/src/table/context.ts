@@ -1,4 +1,4 @@
-import { createContext } from "@rhinobase/lib/hooks/context";
+import { createContext } from "@rhinobase/utils";
 
 export const [TableProvider, useTableContext] = createContext<TableContext>({
   name: "TableContext",

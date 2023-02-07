@@ -5,8 +5,8 @@ import { TabContext, TabProvider, useTabContext } from "./context";
 import React from "react";
 
 // Tabs Component
-type TabsProps = ComponentProps<(typeof TabsPrimitive)["Root"]>;
-export const Tabs = forwardRef<HTMLDivElement, TabContext & TabsProps>(
+type Tabs = ComponentProps<(typeof TabsPrimitive)["Root"]>;
+export const Tabs = forwardRef<HTMLDivElement, TabContext & Tabs>(
   (
     { children, className, size = "md", variant = "line", ...props },
     forwardedRef

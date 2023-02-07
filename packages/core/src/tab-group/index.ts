@@ -1,1 +1,1 @@
-export * from "./TabGroup";
+export { TabGroup, TabGroupItem } from "./TabGroup";
