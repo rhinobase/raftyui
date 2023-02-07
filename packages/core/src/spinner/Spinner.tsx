@@ -6,7 +6,7 @@ export type ISpinner = {
   size?: "sm" | "md" | "lg";
   inheritParent?: boolean;
   className: string;
-  style: CSSProperties;
+  style?: CSSProperties;
 };
 
 export function Spinner({ size = "md", ...props }: ISpinner) {
