@@ -1,6 +1,7 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../button";
 import { Card, CardBody, CardFooter, CardHeader } from "./Card";
+import React from "react";
 
 export default {
   title: "New/Card",

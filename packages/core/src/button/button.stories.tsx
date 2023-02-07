@@ -1,5 +1,6 @@
-import { Example, Examples, Grid } from "@rhinobase/storybook/components";
+import { Example, Examples, Grid } from "@rhinobase/docs/components";
 import { Button } from "./Button";
+import React from "react";
 
 export default {
   title: "New/Button",

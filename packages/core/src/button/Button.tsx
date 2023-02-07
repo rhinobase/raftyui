@@ -2,8 +2,9 @@ import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef, createElement } from "react";
 import { classNames, applyStyleToMultipleVariants } from "@rhinobase/utils";
 import { Spinner, Tooltip } from "../index";
+import React from "react";
 
-export type ButtonBaseProps = {
+export type ButtonBase = {
   /* Left aligned icon*/
   leftIcon?: JSX.Element;
   /* Right aligned icon */
@@ -14,8 +15,7 @@ export type ButtonBaseProps = {
   loadingText?: string;
 } & VariantProps<typeof buttonClasses>;
 
-export type Button = ButtonBaseProps &
-  Omit<JSX.IntrinsicElements["button"], "ref">;
+export type Button = ButtonBase & Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center text-sm font-medium h-max transition-all",

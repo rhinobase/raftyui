@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
+import React from "react";
 
 // Card Component
 export const Card = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(

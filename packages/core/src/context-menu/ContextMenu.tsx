@@ -1,34 +1,34 @@
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
+import React from "react";
 
 export const ContextMenu = ContextMenuPrimitive.Root;
 
-type ContextMenuButtonProps = ComponentProps<
+type ContextMenuButton = ComponentProps<
   (typeof ContextMenuPrimitive)["Trigger"]
 >;
 
-export const ContextMenuButton = forwardRef<
-  HTMLDivElement,
-  ContextMenuButtonProps
->(({ children, className, ...props }, forwardedRef) => {
-  return (
-    <ContextMenuPrimitive.Trigger
-      {...props}
-      ref={forwardedRef}
-      className="cursor-default"
-    >
-      {children}
-    </ContextMenuPrimitive.Trigger>
-  );
-});
+export const ContextMenuButton = forwardRef<HTMLDivElement, ContextMenuButton>(
+  ({ children, className, ...props }, forwardedRef) => {
+    return (
+      <ContextMenuPrimitive.Trigger
+        {...props}
+        ref={forwardedRef}
+        className="cursor-default"
+      >
+        {children}
+      </ContextMenuPrimitive.Trigger>
+    );
+  }
+);
 
-type ContextMenuContentProps = ComponentProps<
+type ContextMenuContent = ComponentProps<
   (typeof ContextMenuPrimitive)["Content"]
 >;
 export const ContextMenuContent = forwardRef<
   HTMLDivElement,
-  ContextMenuContentProps
+  ContextMenuContent
 >(({ children, className, ...props }, forwardedRef) => {
   return (
     <ContextMenuPrimitive.Portal>
@@ -47,32 +47,27 @@ export const ContextMenuContent = forwardRef<
 });
 
 //ContextMenu Label Component
-type ContextMenuLabelProps = ComponentProps<
-  (typeof ContextMenuPrimitive)["Label"]
->;
-export const ContextMenuLabel = forwardRef<
-  HTMLDivElement,
-  ContextMenuLabelProps
->(({ children, className, ...props }, forwardedRef) => {
-  return (
-    <ContextMenuPrimitive.Label
-      className={classNames(
-        "text-secondary-400 dark:text-secondary-400 py-base px-lg select-none text-[11px] font-semibold uppercase tracking-wider",
-        className
-      )}
-      {...props}
-      ref={forwardedRef}
-    >
-      {children}
-    </ContextMenuPrimitive.Label>
-  );
-});
+type ContextMenuLabel = ComponentProps<(typeof ContextMenuPrimitive)["Label"]>;
+export const ContextMenuLabel = forwardRef<HTMLDivElement, ContextMenuLabel>(
+  ({ children, className, ...props }, forwardedRef) => {
+    return (
+      <ContextMenuPrimitive.Label
+        className={classNames(
+          "text-secondary-400 dark:text-secondary-400 py-base px-lg select-none text-[11px] font-semibold uppercase tracking-wider",
+          className
+        )}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </ContextMenuPrimitive.Label>
+    );
+  }
+);
 
 //ContextMenu Item Component
-type ContextMenuItemProps = ComponentProps<
-  (typeof ContextMenuPrimitive)["Item"]
->;
-export const ContextMenuItem = forwardRef<HTMLDivElement, ContextMenuItemProps>(
+type ContextMenuItem = ComponentProps<(typeof ContextMenuPrimitive)["Item"]>;
+export const ContextMenuItem = forwardRef<HTMLDivElement, ContextMenuItem>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <ContextMenuPrimitive.Item
@@ -92,12 +87,12 @@ export const ContextMenuItem = forwardRef<HTMLDivElement, ContextMenuItemProps>(
 //ContextMenu ChechboxGroup Component
 export const ContextMenuCheckboxGroup = ContextMenuPrimitive.Group;
 
-type ContextMenuCheckboxItemProps = ComponentProps<
+type ContextMenuCheckboxItem = ComponentProps<
   (typeof ContextMenuPrimitive)["CheckboxItem"]
 >;
 export const ContextMenuCheckboxItem = forwardRef<
   HTMLDivElement,
-  ContextMenuCheckboxItemProps
+  ContextMenuCheckboxItem
 >(({ children, ...props }, forwardedRef) => {
   return (
     <ContextMenuPrimitive.CheckboxItem
@@ -129,12 +124,12 @@ export const ContextMenuCheckboxItem = forwardRef<
 //ContextMenu RadioGroup Component
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 
-type ContextMenuRadioItemProps = ComponentProps<
+type ContextMenuRadioItem = ComponentProps<
   (typeof ContextMenuPrimitive)["RadioItem"]
 >;
 export const ContextMenuRadioItem = forwardRef<
   HTMLDivElement,
-  ContextMenuRadioItemProps
+  ContextMenuRadioItem
 >(({ children, ...props }, forwardedRef) => {
   return (
     <ContextMenuPrimitive.RadioItem
@@ -160,12 +155,10 @@ export const ContextMenuRadioItem = forwardRef<
 });
 
 //ContextMenu SubMenu Component
-type ContextMenuSubMenuProps = ComponentProps<
-  (typeof ContextMenuPrimitive)["Sub"]
->;
+type ContextMenuSubMenu = ComponentProps<(typeof ContextMenuPrimitive)["Sub"]>;
 export const ContextMenuSubMenu = forwardRef<
   HTMLDivElement,
-  ContextMenuSubMenuProps
+  ContextMenuSubMenu
 >(({ children, ...props }) => {
   return (
     <ContextMenuPrimitive.Sub {...props}>{children}</ContextMenuPrimitive.Sub>
@@ -173,12 +166,12 @@ export const ContextMenuSubMenu = forwardRef<
 });
 
 //ContextMenu SubMenuButton Component
-type ContextMenuSubMenuButtonProps = ComponentProps<
+type ContextMenuSubMenuButton = ComponentProps<
   (typeof ContextMenuPrimitive)["SubTrigger"]
 >;
 export const ContextMenuSubMenuButton = forwardRef<
   HTMLDivElement,
-  ContextMenuSubMenuButtonProps
+  ContextMenuSubMenuButton
 >(({ children, className, ...props }, forwardedRef) => {
   return (
     <ContextMenuPrimitive.SubTrigger
@@ -212,12 +205,12 @@ export const ContextMenuSubMenuButton = forwardRef<
 
 //ContextMenu SubContent Component
 
-type ContextMenuSubContentProps = ComponentProps<
+type ContextMenuSubContent = ComponentProps<
   (typeof ContextMenuPrimitive)["SubContent"]
 >;
 export const ContextMenuSubContent = forwardRef<
   HTMLDivElement,
-  ContextMenuSubContentProps
+  ContextMenuSubContent
 >(({ children, className, ...props }, forwardedRef) => {
   return (
     <ContextMenuPrimitive.Portal>
@@ -238,12 +231,12 @@ export const ContextMenuSubContent = forwardRef<
 });
 
 // ContextMenuDivider Component
-type ContextMenuDividerProps = ComponentProps<
+type ContextMenuDivider = ComponentProps<
   (typeof ContextMenuPrimitive)["Separator"]
 >;
 export const ContextMenuDivider = forwardRef<
   HTMLDivElement,
-  ContextMenuDividerProps
+  ContextMenuDivider
 >(({ className, ...props }, forwardedRef) => {
   return (
     <ContextMenuPrimitive.Separator

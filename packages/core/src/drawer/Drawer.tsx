@@ -1,12 +1,11 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { ComponentProps, forwardRef } from "react";
-import { HiXMark } from "react-icons/hi2";
-import { classNames } from "@rhinobase/lib";
-import { Button, ButtonProps } from "@rhinobase/ui";
+import { classNames } from "@rhinobase/utils";
+import { Button } from "../index";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 
 // Drawer Component
-type DrawerProps = ComponentProps<typeof DialogPrimitive["Dialog"]>;
+type DrawerProps = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
 export const Drawer = forwardRef<HTMLDivElement, DrawerContext & DrawerProps>(
   ({ children, size = "md", side = "right", ...props }, forwardedRef) => (
     <DrawerProvider value={{ size, side }}>
@@ -17,7 +16,9 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerContext & DrawerProps>(
 );
 
 // Drawer Content Component
-type DrawerContentProps = ComponentProps<typeof DialogPrimitive["DialogContent"]>;
+type DrawerContentProps = ComponentProps<
+  (typeof DialogPrimitive)["DialogContent"]
+>;
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   ({ children, title, style, className, ...props }, forwardedRef) => {
     const { size, side } = useDrawerContext();
@@ -39,7 +40,8 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
             "overflow-y-auto overscroll-auto",
             className
           )}
-          ref={forwardedRef}>
+          ref={forwardedRef}
+        >
           {children}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
@@ -48,7 +50,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
 );
 
 // Drawer Title Component
-type DrawerTitleProps = ComponentProps<typeof DialogPrimitive["DialogTitle"]>;
+type DrawerTitleProps = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
 export const DrawerTitle = React.forwardRef<HTMLDivElement, DrawerTitleProps>(
   ({ children, ...props }, forwardedRef) => {
     const { size } = useDrawerContext();
@@ -62,7 +64,8 @@ export const DrawerTitle = React.forwardRef<HTMLDivElement, DrawerTitleProps>(
           size == "sm" && "text-lg",
           "mb-2 font-semibold"
         )}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </DialogPrimitive.Title>
     );
@@ -70,7 +73,9 @@ export const DrawerTitle = React.forwardRef<HTMLDivElement, DrawerTitleProps>(
 );
 
 // Drawer Body Component
-type DrawerBodyProps = ComponentProps<typeof DialogPrimitive["DialogDescription"]>;
+type DrawerBodyProps = ComponentProps<
+  (typeof DialogPrimitive)["DialogDescription"]
+>;
 export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -84,10 +89,10 @@ export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
 // Drawer Cross Button Component
 export function DrawerCloseButton(
   props: {
-    dialogCloseProps?: React.ComponentProps<typeof DialogPrimitive["Close"]>;
+    dialogCloseProps?: React.ComponentProps<(typeof DialogPrimitive)["Close"]>;
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     disabled?: boolean;
-    colorVariant?: ButtonProps["variant"];
+    colorVariant?: Button["variant"];
   } & React.ComponentProps<typeof Button>
 ) {
   return (
@@ -97,8 +102,22 @@ export function DrawerCloseButton(
         variant={props.colorVariant || "ghost"}
         size="icon"
         {...props}
-        className="absolute top-5 right-5 rounded-full">
-        <HiXMark className="stroke-1" />
+        className="absolute top-5 right-5 rounded-full"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="w-6 h-6 Stroke-1"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
       </Button>
     </DialogPrimitive.Close>
   );

@@ -1,1 +1,6 @@
-export * from "./Accordion";
+export {
+  Accordion,
+  AccordionButton,
+  AccordionContent,
+  AccordionItem,
+} from "./Accordion";

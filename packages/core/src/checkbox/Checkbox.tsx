@@ -2,13 +2,13 @@ import * as CheckboxPremitive from "@radix-ui/react-checkbox";
 import React, { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
 
-type CheckboxProps = { children?: React.ReactNode } & ComponentProps<
+type Checkbox = { children?: React.ReactNode } & ComponentProps<
   (typeof CheckboxPremitive)["Root"]
 >;
 // CheckBox Component (Indicator inside the CheckBox Component)
 export const Checkbox = forwardRef<
   HTMLButtonElement,
-  CheckboxProps & { size?: "sm" | "md" | "lg" }
+  Checkbox & { size?: "sm" | "md" | "lg" }
 >(({ children, className, checked, size = "md", ...props }, forwardedRef) => {
   return (
     <div className="flex items-center gap-2">

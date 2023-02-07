@@ -1,1 +1,8 @@
-export * from "./Dialog";
+export {
+  Dialog,
+  DialogButton,
+  DialogContent,
+  DialogBody,
+  DialogTitle,
+  DialogClose,
+} from "./Dialog";

@@ -1,12 +1,12 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
-import { Button } from "@rhinobase/core";
+import { Button } from "../index";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
-type DialogProps = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
-export const Dialog = forwardRef<HTMLDivElement, DialogContext & DialogProps>(
+type Dialog = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
+export const Dialog = forwardRef<HTMLDivElement, DialogContext & Dialog>(
   ({ children, size = "md", ...props }, forwardedRef) => (
     <DialogProvider value={{ size }}>
       {/* TODO: Add reference to the below element */}
@@ -16,14 +16,9 @@ export const Dialog = forwardRef<HTMLDivElement, DialogContext & DialogProps>(
 );
 
 // Dialog Button Component
-type DialogButtonProps = ComponentProps<
-  (typeof DialogPrimitive)["DialogTrigger"]
-> &
+type DialogButton = ComponentProps<(typeof DialogPrimitive)["DialogTrigger"]> &
   Button;
-export const DialogButton = React.forwardRef<
-  HTMLButtonElement,
-  DialogButtonProps
->(
+export const DialogButton = React.forwardRef<HTMLButtonElement, DialogButton>(
   (
     {
       children,
@@ -59,13 +54,13 @@ export const DialogButton = React.forwardRef<
 );
 
 // Dialog Content Component
-type DialogContentProps = ComponentProps<
+type DialogContent = ComponentProps<
   (typeof DialogPrimitive)["DialogContent"]
 > & {
   height?: string;
   width?: string;
 };
-export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
+export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
   ({ children, title, height, width, ...props }, forwardedRef) => {
     const { size } = useDialogContext();
     return (
@@ -94,8 +89,8 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
 );
 
 // Dialog Title Component
-type DialogTitleProps = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
-export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitleProps>(
+type DialogTitle = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
+export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
   ({ children, ...props }, forwardedRef) => {
     const { size } = useDialogContext();
 
@@ -117,10 +112,8 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitleProps>(
 );
 
 // Dialog Body Component
-type DialogBodyProps = ComponentProps<
-  (typeof DialogPrimitive)["DialogDescription"]
->;
-export const DialogBody = React.forwardRef<HTMLDivElement, DialogBodyProps>(
+type DialogBody = ComponentProps<(typeof DialogPrimitive)["DialogDescription"]>;
+export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>

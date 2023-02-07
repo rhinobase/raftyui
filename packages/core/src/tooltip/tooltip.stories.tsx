@@ -1,6 +1,7 @@
-import { Grid } from "@rhinobase/storybook/components";
-import { Button } from "../button";
+import { Grid } from "@rhinobase/docs/components";
+import { Button } from "../index";
 import Tooltip, { ITooltip } from "./Tooltip";
+import React from "react";
 
 export default {
   title: "New/Tooltip",

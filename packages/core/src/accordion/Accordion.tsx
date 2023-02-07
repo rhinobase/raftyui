@@ -10,9 +10,9 @@ import {
 
 //AccordionComponent
 
-type AccordionProps = AccordionContext &
+type Accordion = AccordionContext &
   ComponentProps<(typeof DisclosurePrimitive)["Root"]>;
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
+export const Accordion = forwardRef<HTMLDivElement, Accordion>(
   ({ children, className, size = "md", ...props }, forwardedRef) => (
     <AccordionProvider value={{ size }}>
       <DisclosurePrimitive.Root
@@ -28,8 +28,8 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 
 //AccordionItemComponent
 
-type AccordionItemProps = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
+type AccordionItem = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
+export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <DisclosurePrimitive.Item
@@ -44,14 +44,14 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 );
 
 //AccordionTriggerComponent
-type AccoudionButtonProps = AccordionContext &
+type AccoudionButton = AccordionContext &
   ComponentProps<(typeof DisclosurePrimitive)["Trigger"]> & {
     openIcon?: JSX.Element;
     closeIcon?: JSX.Element;
   };
 export const AccordionButton = React.forwardRef<
   HTMLButtonElement,
-  AccoudionButtonProps
+  AccoudionButton
 >(
   (
     { children, className, openIcon: OpenIcon, closeIcon: CloseIcon, ...props },
@@ -108,28 +108,25 @@ export const AccordionButton = React.forwardRef<
 
 //AccordionContentComponent
 
-type AccordionContentProps = ComponentProps<
-  (typeof DisclosurePrimitive)["Content"]
->;
-export const AccordionContent = forwardRef<
-  HTMLDivElement,
-  AccordionContentProps
->(({ children, className, ...props }, forwardedRef) => {
-  const { size } = useAccordionContext();
-  return (
-    <DisclosurePrimitive.Content
-      className={classNames(
-        size == "sm" && "px-lg pb-lg pt-base text-sm",
-        size == "md" && "px-lg pt-md pb-xl",
-        size == "lg" && "px-lg pt-md pb-xl",
-        "dark:text-secondary-100 w-full",
-        className
-      )}
-      {...props}
-      ref={forwardedRef}
-      {...props}
-    >
-      {children}
-    </DisclosurePrimitive.Content>
-  );
-});
+type AccordionContent = ComponentProps<(typeof DisclosurePrimitive)["Content"]>;
+export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
+  ({ children, className, ...props }, forwardedRef) => {
+    const { size } = useAccordionContext();
+    return (
+      <DisclosurePrimitive.Content
+        className={classNames(
+          size == "sm" && "px-lg pb-lg pt-base text-sm",
+          size == "md" && "px-lg pt-md pb-xl",
+          size == "lg" && "px-lg pt-md pb-xl",
+          "dark:text-secondary-100 w-full",
+          className
+        )}
+        {...props}
+        ref={forwardedRef}
+        {...props}
+      >
+        {children}
+      </DisclosurePrimitive.Content>
+    );
+  }
+);

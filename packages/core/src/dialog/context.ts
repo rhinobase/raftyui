@@ -1,4 +1,4 @@
-import { createContext } from "@rhinobase/lib/hooks/context";
+import { createContext } from "@rhinobase/utils";
 
 export const [DialogProvider, useDialogContext] = createContext<DialogContext>({
   name: "DialogContext",

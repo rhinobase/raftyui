@@ -1,4 +1,5 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
+import React from "react";
 import {
   ContextMenu,
   ContextMenuButton,
@@ -12,7 +13,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubMenu,
   ContextMenuSubMenuButton,
-} from "@rhinobase/ui";
+} from "./ContextMenu";
 
 export default {
   title: "New/ContextMenu",
@@ -44,7 +45,9 @@ export function Default() {
           </ContextMenuSubMenu>
           <ContextMenuDivider />
           <ContextMenuCheckboxItem>Show Bookmarks</ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem checked>Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem checked>
+            Show Full URLs
+          </ContextMenuCheckboxItem>
           <ContextMenuDivider />
           <ContextMenuLabel>People</ContextMenuLabel>
           <ContextMenuRadioGroup value="1">
