@@ -1,12 +1,11 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { ComponentProps, forwardRef } from "react";
-import { HiXMark } from "react-icons/hi2";
-import { classNames } from "@rhinobase/lib";
-import { Button, ButtonProps } from "@rhinobase/ui";
+import { classNames } from "@rhinobase/utils";
+import { Button } from "@rhinobase/core";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
-type DialogProps = ComponentProps<typeof DialogPrimitive["Dialog"]>;
+type DialogProps = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
 export const Dialog = forwardRef<HTMLDivElement, DialogContext & DialogProps>(
   ({ children, size = "md", ...props }, forwardedRef) => (
     <DialogProvider value={{ size }}>
@@ -17,8 +16,14 @@ export const Dialog = forwardRef<HTMLDivElement, DialogContext & DialogProps>(
 );
 
 // Dialog Button Component
-type DialogButtonProps = ComponentProps<typeof DialogPrimitive["DialogTrigger"]> & ButtonProps;
-export const DialogButton = React.forwardRef<HTMLButtonElement, DialogButtonProps>(
+type DialogButtonProps = ComponentProps<
+  (typeof DialogPrimitive)["DialogTrigger"]
+> &
+  Button;
+export const DialogButton = React.forwardRef<
+  HTMLButtonElement,
+  DialogButtonProps
+>(
   (
     {
       children,
@@ -44,7 +49,8 @@ export const DialogButton = React.forwardRef<HTMLButtonElement, DialogButtonProp
           rightIcon={rightIcon}
           loading={loading}
           disabled={disabled}
-          active={active}>
+          active={active}
+        >
           {children}
         </Button>
       </DialogPrimitive.Trigger>
@@ -53,7 +59,9 @@ export const DialogButton = React.forwardRef<HTMLButtonElement, DialogButtonProp
 );
 
 // Dialog Content Component
-type DialogContentProps = ComponentProps<typeof DialogPrimitive["DialogContent"]> & {
+type DialogContentProps = ComponentProps<
+  (typeof DialogPrimitive)["DialogContent"]
+> & {
   height?: string;
   width?: string;
 };
@@ -75,7 +83,8 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
             props.className
           )}
-          ref={forwardedRef}>
+          ref={forwardedRef}
+        >
           {children}
           <DialogCloseButton />
         </DialogPrimitive.Content>
@@ -85,7 +94,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
 );
 
 // Dialog Title Component
-type DialogTitleProps = ComponentProps<typeof DialogPrimitive["DialogTitle"]>;
+type DialogTitleProps = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
 export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitleProps>(
   ({ children, ...props }, forwardedRef) => {
     const { size } = useDialogContext();
@@ -99,7 +108,8 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitleProps>(
           size == "sm" && "text-lg",
           "mb-2 font-semibold"
         )}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </DialogPrimitive.Title>
     );
@@ -107,7 +117,9 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitleProps>(
 );
 
 // Dialog Body Component
-type DialogBodyProps = ComponentProps<typeof DialogPrimitive["DialogDescription"]>;
+type DialogBodyProps = ComponentProps<
+  (typeof DialogPrimitive)["DialogDescription"]
+>;
 export const DialogBody = React.forwardRef<HTMLDivElement, DialogBodyProps>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -121,10 +133,10 @@ export const DialogBody = React.forwardRef<HTMLDivElement, DialogBodyProps>(
 // Dialog Cross Button Component
 function DialogCloseButton(
   props: {
-    dialogCloseProps?: React.ComponentProps<typeof DialogPrimitive["Close"]>;
+    dialogCloseProps?: React.ComponentProps<(typeof DialogPrimitive)["Close"]>;
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     disabled?: boolean;
-    colorVariant?: ButtonProps["variant"];
+    colorVariant?: Button["variant"];
   } & React.ComponentProps<typeof Button>
 ) {
   return (
@@ -134,8 +146,22 @@ function DialogCloseButton(
         variant={props.colorVariant || "ghost"}
         size="icon"
         {...props}
-        className="absolute top-5 right-5 rounded-full">
-        <HiXMark className="stroke-1" />
+        className="absolute top-5 right-5 rounded-full"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="h-6 w-6 stroke-1"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
       </Button>
     </DialogPrimitive.Close>
   );

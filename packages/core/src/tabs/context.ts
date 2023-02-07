@@ -1,4 +1,4 @@
-import { createContext } from "@rhinobase/lib/hooks/context";
+import { createContext } from "@rhinobase/utils";
 
 export const [TabProvider, useTabContext] = createContext<TabContext>({
   name: "TabContext",

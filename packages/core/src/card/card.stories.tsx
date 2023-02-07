@@ -12,10 +12,15 @@ export function Default() {
     <Grid>
       <Card>
         <CardHeader>Customer dashboard</CardHeader>
-        <CardBody>View a summary of all your customers over the last month.</CardBody>
+        <CardBody>
+          View a summary of all your customers over the last month.
+        </CardBody>
         <CardFooter>
           <div className="flex-1" />
-          <Button variant="ghost" className="border border-zinc-300 dark:border-zinc-700">
+          <Button
+            variant="ghost"
+            className="border border-zinc-300 dark:border-zinc-700"
+          >
             View here
           </Button>
         </CardFooter>
