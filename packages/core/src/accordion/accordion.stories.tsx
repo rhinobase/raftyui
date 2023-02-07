@@ -1,6 +1,10 @@
-import { HiMinus, HiPlus } from "react-icons/hi2";
 import { Grid } from "@rhinobase/storybook/components";
-import { Accordion, AccordionItem, AccordionButton, AccordionContent } from "./Accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionContent,
+} from "./Accordion";
 import { AccordionContext } from "./context";
 
 export default {
@@ -18,17 +22,52 @@ export function Default({ size = "md" }: AccordionContext) {
               <span className="flex-1 text-left">Section 1 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="3">
-            <AccordionButton openIcon={HiMinus} closeIcon={HiPlus}>
+            <AccordionButton
+              openIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 12h-15"
+                  />
+                </svg>
+              }
+              closeIcon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+              }
+            >
               <span className="flex-1 text-left">Section 2 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -46,8 +85,9 @@ export function Small({ size = "md" }: AccordionContext) {
               <span className="flex-1 text-left">Section 1 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="2">
@@ -55,8 +95,9 @@ export function Small({ size = "md" }: AccordionContext) {
               <span className="flex-1 text-left">Section 2 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -74,9 +115,10 @@ export function Large({ size = "md" }: AccordionContext) {
               <span className="flex-1 text-left">Section 1 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="2" className="border-b">
@@ -84,9 +126,10 @@ export function Large({ size = "md" }: AccordionContext) {
               <span className="flex-1 text-left">Section 2 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="3" className="border-b">
@@ -94,9 +137,10 @@ export function Large({ size = "md" }: AccordionContext) {
               <span className="flex-1 text-left">Section 2 title</span>
             </AccordionButton>
             <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

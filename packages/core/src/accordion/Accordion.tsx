@@ -74,10 +74,14 @@ export const AccordionButton = React.forwardRef<
           {children}
           <>
             {OpenIcon && typeof OpenIcon == "function" && (
-              <OpenIcon className="hidden stroke-1 group-data-[state=open]:block" />
+              <span className="hidden stroke-1 group-data-[state=open]:block">
+                {OpenIcon}
+              </span>
             )}
             {CloseIcon && typeof CloseIcon == "function" && (
-              <CloseIcon className="stroke-1 group-data-[state=close]:block group-data-[state=open]:hidden" />
+              <span className="stroke-1 group-data-[state=close]:block group-data-[state=open]:hidden">
+                {CloseIcon}
+              </span>
             )}
             {!OpenIcon && !CloseIcon && (
               <svg
