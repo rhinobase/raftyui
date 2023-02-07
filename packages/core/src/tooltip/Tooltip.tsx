@@ -1,6 +1,5 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import React from "react";
-import { classNames } from "@rhinobase/lib";
+import { classNames } from "@rhinobase/utils";
 
 export interface ITooltip {
   children: React.ReactNode;
@@ -26,7 +25,8 @@ export function Tooltip({
         delayDuration={50}
         open={open}
         defaultOpen={defaultOpen}
-        onOpenChange={onOpenChange}>
+        onOpenChange={onOpenChange}
+      >
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
@@ -41,7 +41,8 @@ export function Tooltip({
             )}
             side={side}
             align="center"
-            {...props}>
+            {...props}
+          >
             {content}
             <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
           </TooltipPrimitive.Content>

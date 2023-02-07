@@ -1,11 +1,9 @@
 import { cva, VariantProps } from "class-variance-authority";
-import React, { forwardRef } from "react";
+import { forwardRef, createElement } from "react";
 import { classNames, applyStyleToMultipleVariants } from "@rhinobase/utils";
-import { Spinner, Tooltip } from "@rhinobase/core";
+import { Spinner, Tooltip } from "../index";
 
 export type ButtonBaseProps = {
-  /* Action that happens when the button is clicked */
-  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   /* Left aligned icon*/
   leftIcon?: JSX.Element;
   /* Right aligned icon */
@@ -17,9 +15,7 @@ export type ButtonBaseProps = {
 } & VariantProps<typeof buttonClasses>;
 
 export type Button = ButtonBaseProps &
-  Omit<JSX.IntrinsicElements["button"], "onClick" | "ref"> & {
-    href?: never;
-  };
+  Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center text-sm font-medium h-max transition-all",
@@ -364,15 +360,11 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
     } = props;
     // Buttons are **always** disabled if we're in a `loading` state
     const disabled = props.disabled || loading;
-    // If pass an `href`-attr is passed it's `<Link>`, otherwise it's a `<button />`
-    const isLink = typeof props.href !== "undefined";
-    const elementType = isLink ? "Link" : "button";
-    const element = React.createElement(
-      elementType,
+    const element = createElement(
+      "button",
       {
         ...passThroughProps,
         disabled,
-        type: !isLink ? type : undefined,
         ref: forwardedRef,
         className: classNames(
           buttonClasses({
