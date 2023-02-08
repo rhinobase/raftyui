@@ -14,16 +14,13 @@ export function Spinner({ size = "md", ...props }: Spinner) {
   return (
     <svg
       className={classNames(
-        size == "sm" && "text-base",
-        size == "md" && "text-2xl",
-        size == "lg" && "text-4xl",
         !props.inheritParent && "text-secondary-700 dark:text-secondary-400",
         "animate-spin",
         props.className
       )}
       style={props.style}
-      width="16"
-      height="16"
+      width={size == "lg" ? "36px" : size == "md" ? "24px" : "18px"}
+      height={size == "lg" ? "36px" : size == "md" ? "24px" : "18px"}
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"

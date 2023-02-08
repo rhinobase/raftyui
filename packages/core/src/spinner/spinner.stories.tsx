@@ -13,12 +13,13 @@ export default {
 export function Default(args: Spinner) {
   return (
     <Grid>
-      <Spinner {...args} />
+      <Spinner size="sm" {...args} />
+      <Spinner size="md" {...args} />
+      <Spinner size="lg" {...args} />
     </Grid>
   );
 }
 
 Default.args = {
-  size: "",
   inheritParent: true,
 };
