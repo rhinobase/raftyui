@@ -1,1 +1,9 @@
-export { Root, Trigger, Content, Title, Body, Close } from "./Dialog";
+export {
+  Root,
+  Trigger,
+  Content,
+  Title,
+  Body,
+  CloseButton,
+  Overlay,
+} from "./Dialog";

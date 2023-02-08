@@ -5,7 +5,7 @@ import { Button } from "../index";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
-type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
+export type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
 export const Root = forwardRef<HTMLDivElement, DialogContext & Root>(
   ({ children, size = "md", ...props }, forwardedRef) => (
     <DialogProvider value={{ size }}>
@@ -16,7 +16,9 @@ export const Root = forwardRef<HTMLDivElement, DialogContext & Root>(
 );
 
 // Dialog Button Component
-type Trigger = ComponentProps<(typeof DialogPrimitive)["DialogTrigger"]> &
+export type Trigger = ComponentProps<
+  (typeof DialogPrimitive)["DialogTrigger"]
+> &
   Button;
 export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   (
@@ -53,8 +55,24 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   }
 );
 
+export type Overlay = ComponentProps<(typeof DialogPrimitive)["Overlay"]>;
+export const Overlay = forwardRef<HTMLDivElement, Overlay>(
+  ({ className, ...props }, forwardedRef) => {
+    return (
+      <DialogPrimitive.Overlay
+        {...props}
+        className={classNames(
+          "animate-slide-down-fade fixed inset-0 z-40 h-full w-full cursor-zoom-out bg-black/40 transition-opacity ease-in-out dark:bg-opacity-40",
+          className
+        )}
+        ref={forwardedRef}
+      ></DialogPrimitive.Overlay>
+    );
+  }
+);
+
 // Dialog Content Component
-type Content = ComponentProps<(typeof DialogPrimitive)["DialogContent"]> & {
+export type Content = ComponentProps<(typeof DialogPrimitive)["Content"]> & {
   height?: string;
   width?: string;
 };
@@ -63,14 +81,14 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     const { size } = useDialogContext();
     return (
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="animate-slide-down-fade absolute inset-0 z-40 bg-black bg-opacity-20 transition-opacity ease-in-out dark:bg-opacity-40" />
         {/*zIndex one less than Toast */}
         <DialogPrimitive.Content
           {...props}
           style={{ height: height && height, maxWidth: width && width }}
           className={classNames(
-            "dark:bg-secondary-800 dark:text-secondary-50 rounded-base absolute left-1/2 top-1/2 z-50 min-w-[360px] -translate-x-1/2 -translate-y-1/2 bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle",
-            size == "lg" && "p-5xl max-w-[50rem]",
+            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 shadow-xl transition-all duration-300 focus-visible:outline-none",
+            "dark:bg-secondary-800 dark:text-secondary-50 rounded-base min-w-[360px] bg-white text-left sm:w-full sm:align-middle",
+            size == "lg" && "p-5xl max-w-[80%]",
             size == "md" && "p-4xl max-w-[40rem]",
             size == "sm" && "p-3xl max-w-[30rem]",
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
@@ -79,7 +97,6 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           ref={forwardedRef}
         >
           {children}
-          <CloseButton />
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     );
@@ -87,7 +104,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
 );
 
 // Dialog Title Component
-type Title = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
+export type Title = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
 export const Title = React.forwardRef<HTMLDivElement, Title>(
   ({ children, ...props }, forwardedRef) => {
     const { size } = useDialogContext();
@@ -110,7 +127,9 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
 );
 
 // Dialog Body Component
-type Body = ComponentProps<(typeof DialogPrimitive)["DialogDescription"]>;
+export type Body = ComponentProps<
+  (typeof DialogPrimitive)["DialogDescription"]
+>;
 export const Body = React.forwardRef<HTMLDivElement, Body>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -122,41 +141,35 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
 );
 
 // Dialog Cross Button Component
-function CloseButton(
-  props: {
-    dialogCloseProps?: React.ComponentProps<(typeof DialogPrimitive)["Close"]>;
-    onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-    disabled?: boolean;
-    colorVariant?: Button["variant"];
-  } & React.ComponentProps<typeof Button>
-) {
-  return (
-    <DialogPrimitive.Close asChild {...props.dialogCloseProps}>
-      {/* This will require the i18n string passed in */}
-      <Button
-        variant={props.colorVariant || "ghost"}
-        size="icon"
-        {...props}
-        className="absolute top-5 right-5 rounded-full"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          className="h-6 w-6 stroke-1"
+export type CloseButton = ComponentProps<(typeof DialogPrimitive)["Close"]> &
+  Button;
+export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
+  ({ variant, ...props }, forwardedRef) => {
+    return (
+      <DialogPrimitive.Close ref={forwardedRef} asChild>
+        {/* This will require the i18n string passed in */}
+        <Button
+          variant={variant ?? "ghost"}
+          size="icon"
+          {...props}
+          className="absolute top-5 right-5 rounded-full"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </Button>
-    </DialogPrimitive.Close>
-  );
-}
-
-// Dialog Close for on click close function
-export const Close = DialogPrimitive.DialogClose;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="h-6 w-6 stroke-1"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </Button>
+      </DialogPrimitive.Close>
+    );
+  }
+);
