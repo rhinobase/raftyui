@@ -24,5 +24,15 @@
     "react": "^18.2.0",
     "tsup": "^6.5.0",
     "typescript": "^4.9.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/design-system/issues"
   }
 }
