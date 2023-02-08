@@ -27,7 +27,7 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
 
 // List Component
 export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
-const List = forwardRef<HTMLDivElement, TabContext & List>(
+export const List = forwardRef<HTMLDivElement, TabContext & List>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <TabsPrimitive.List

@@ -84,7 +84,7 @@ export const Box = forwardRef<HTMLButtonElement, Box>(
     return (
       <RadioGroupPrimitives.Item
         className={classNames(
-          "data-[state=checked]:ring-primary-500 hover:bg-secondary-100 data-[disabled]:bg-secondary-100 dark:border-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[disabled]:bg-secondary-800 w-full rounded-md border p-md data-[disabled]:cursor-not-allowed data-[state=checked]:ring-2",
+          "data-[state=checked]:ring-primary-500 hover:bg-secondary-100 data-[disabled]:bg-secondary-100 dark:border-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[disabled]:bg-secondary-800 p-md w-full rounded-md border data-[disabled]:cursor-not-allowed data-[state=checked]:ring-2",
           className
         )}
         {...props}

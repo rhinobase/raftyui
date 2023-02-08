@@ -1,1 +1,16 @@
-export * as Menu from "./Menu";
+export {
+  Root,
+  Trigger,
+  CheckboxItem,
+  Content,
+  Group,
+  Item,
+  Label,
+  MenuGroup,
+  RadioGroup,
+  RadioItem,
+  Separator,
+  Sub,
+  SubContent,
+  SubTrigger,
+} from "./Menu";

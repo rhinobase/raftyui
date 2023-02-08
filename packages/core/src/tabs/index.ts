@@ -1,1 +1,1 @@
-export * as Tab from "./Tab";
+export { Root, Trigger, Content, List } from "./Tab";

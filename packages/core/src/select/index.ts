@@ -1,1 +1,1 @@
-export * as Select from "./Select";
+export { Root, Content, Group, Item, Separator, Trigger } from "./Select";

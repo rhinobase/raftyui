@@ -1,1 +1,1 @@
-export * as Drawer from "./Drawer";
+export { Root, Content, Body, Title, CloseButton } from "./Drawer";

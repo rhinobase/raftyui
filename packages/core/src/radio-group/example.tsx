@@ -1,48 +1,50 @@
 import React from "react";
-import { RadioGroup, Radio, CustomRadioBox } from "./RadioGroup";
+import { RadioGroup } from "..";
+
+// const RadioGroup = BaseRadioGroup;
 
 const data = ["Red", "Green", "Blue"];
 
 export function Example() {
   return (
-    <RadioGroup orientation="horizontal" defaultValue="red">
+    <RadioGroup.Root orientation="horizontal" defaultValue="red">
       {data.map((item, index) => (
-        <Radio value={item.toLowerCase()} id={String(index)}>
+        <RadioGroup.Item value={item.toLowerCase()} id={String(index)}>
           {item}
-        </Radio>
+        </RadioGroup.Item>
       ))}
-    </RadioGroup>
+    </RadioGroup.Root>
   );
 }
 
 export function Box() {
   return (
-    <RadioGroup
+    <RadioGroup.Root
       orientation="horizontal"
       defaultValue="red"
       className="grid grid-cols-3 gap-2"
     >
       {data.map((item, index) => (
-        <CustomRadioBox value={item.toLowerCase()} id={String(index)}>
+        <RadioGroup.Box value={item.toLowerCase()} id={String(index)}>
           <label htmlFor={String(index)}>{item}</label>
-        </CustomRadioBox>
+        </RadioGroup.Box>
       ))}
-    </RadioGroup>
+    </RadioGroup.Root>
   );
 }
 
 export function VerticalBox() {
   return (
-    <RadioGroup
+    <RadioGroup.Root
       orientation="vertical"
       defaultValue="red"
       className="grid grid-cols-1 gap-2"
     >
       {data.map((item, index) => (
-        <CustomRadioBox value={item.toLowerCase()} id={String(index)}>
+        <RadioGroup.Box value={item.toLowerCase()} id={String(index)}>
           <label htmlFor={String(index)}>{item}</label>
-        </CustomRadioBox>
+        </RadioGroup.Box>
       ))}
-    </RadioGroup>
+    </RadioGroup.Root>
   );
 }

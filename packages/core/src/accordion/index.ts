@@ -1,1 +1,1 @@
-export * as Accordion from "./Accordion";
+export { Root, Trigger, Content, Item } from "./Accordion";

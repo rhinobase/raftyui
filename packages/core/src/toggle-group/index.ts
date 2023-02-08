@@ -1,1 +1,1 @@
-export * as ToggleGroup from "./ToggleGroup";
+export { Root, Item } from "./ToggleGroup";

@@ -1,1 +1,1 @@
-export * as RadioGroup from "./RadioGroup";
+export { Root, Item, Box } from "./RadioGroup";

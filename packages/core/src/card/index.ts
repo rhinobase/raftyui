@@ -1,1 +1,1 @@
-export * as Card from "./Card";
+export { Root, Header, Body, Footer } from "./Card";

@@ -1,1 +1,1 @@
-export * as Dialog from "./Dialog";
+export { Root, Trigger, Content, Title, Body, Close } from "./Dialog";

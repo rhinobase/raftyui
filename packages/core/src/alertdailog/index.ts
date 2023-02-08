@@ -1,1 +1,9 @@
-export * as AlertDialog from "./AlertDialog";
+export {
+  Root,
+  Trigger,
+  Content,
+  Title,
+  Body,
+  Cancel,
+  Action,
+} from "./AlertDialog";
