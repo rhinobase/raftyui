@@ -1,13 +1,6 @@
 import { Grid } from "@rhinobase/docs/components";
 import React from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectButton,
-  SelectDivider,
-} from "./Select";
+import * as Select from "./Select";
 
 export default {
   title: "New/Select",
@@ -17,8 +10,8 @@ export default {
 export function Default() {
   return (
     <Grid>
-      <Select>
-        <SelectButton
+      <Select.Root>
+        <Select.Trigger
           aria-label="Food"
           placeholder="Select a fruit"
           icon={
@@ -38,22 +31,22 @@ export function Default() {
             </svg>
           }
         />
-        <SelectContent>
-          <SelectGroup>
+        <Select.Content>
+          <Select.Group>
             {["Apple", "Banana", "Blueberry", "Strawberry", "Grapes"].map(
               (label) => (
-                <SelectItem
+                <Select.Item
                   disabled={label === "Grapes"}
                   key={label}
                   value={label.toLowerCase()}
                 >
                   {label}
-                </SelectItem>
+                </Select.Item>
               )
             )}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
     </Grid>
   );
 }
@@ -61,8 +54,8 @@ export function Default() {
 export function WithDivided() {
   return (
     <Grid>
-      <Select>
-        <SelectButton
+      <Select.Root>
+        <Select.Trigger
           aria-label="Food"
           placeholder="Select a fruit"
           icon={
@@ -82,34 +75,34 @@ export function WithDivided() {
             </svg>
           }
         />
-        <SelectContent>
-          <SelectGroup>
+        <Select.Content>
+          <Select.Group>
             {["Apple", "Banana", "Blueberry", "Strawberry", "Grapes"].map(
               (label) => (
-                <SelectItem
+                <Select.Item
                   disabled={label === "Grapes"}
                   key={label}
                   value={label.toLowerCase()}
                 >
                   {label}
-                </SelectItem>
+                </Select.Item>
               )
             )}
-          </SelectGroup>
-          <SelectDivider />
-          <SelectGroup>
+          </Select.Group>
+          <Select.Separator />
+          <Select.Group>
             {["Red", "Green", "Blue", "Orange", "Brown"].map((label) => (
-              <SelectItem
+              <Select.Item
                 disabled={label === "Blue"}
                 key={label}
                 value={label.toLowerCase()}
               >
                 {label}
-              </SelectItem>
+              </Select.Item>
             ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
     </Grid>
   );
 }

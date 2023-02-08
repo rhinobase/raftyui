@@ -16,14 +16,7 @@ export {
 } from "./table";
 export * as TabGroup from "./tab-group";
 export { Switch } from "./switch";
-export {
-  Select,
-  SelectButton,
-  SelectContent,
-  SelectDivider,
-  SelectGroup,
-  SelectItem,
-} from "./select";
+export * as Select from "./select";
 export { ReactSelect } from "./react-select";
 export { Radio, RadioGroup, CustomRadioBox } from "./radio";
 export { Menubar } from "./menubar";

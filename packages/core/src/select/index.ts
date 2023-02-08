@@ -1,8 +1,1 @@
-export {
-  Select,
-  SelectButton,
-  SelectContent,
-  SelectDivider,
-  SelectGroup,
-  SelectItem,
-} from "./Select";
+export * as Select from "./Select";
