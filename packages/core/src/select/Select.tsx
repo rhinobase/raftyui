@@ -5,10 +5,15 @@ import { Button } from "../button";
 import React from "react";
 
 // Select Component
-export const Select = RadixSelect.Root;
+export type Select = ComponentProps<(typeof RadixSelect)["Root"]>;
+export const Select = forwardRef<HTMLDivElement, Select>(
+  ({ children, ...props }, forwardedRef) => (
+    <RadixSelect.Root {...props}>{children}</RadixSelect.Root>
+  )
+);
 
 // SelectButton Component (SelectValue, SelectIcon Component inside SelectButton Component )
-type SelectButton = ComponentProps<(typeof RadixSelect)["Trigger"]> & {
+export type SelectButton = ComponentProps<(typeof RadixSelect)["Trigger"]> & {
   variant?: Button["variant"];
   size?: Button["size"];
   placeholder?: string;
@@ -33,7 +38,7 @@ export const SelectButton = forwardRef<HTMLButtonElement, SelectButton>(
 );
 
 // SelectContent Component (SelectScrollUpButton, SelectScrollDownButton, SelectViewport Component inside SelectContent Component)
-type SelectContent = ComponentProps<(typeof RadixSelect)["Content"]>;
+export type SelectContent = ComponentProps<(typeof RadixSelect)["Content"]>;
 export const SelectContent = forwardRef<HTMLDivElement, SelectContent>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Content {...props} className={className} ref={forwardedRef}>
@@ -45,7 +50,7 @@ export const SelectContent = forwardRef<HTMLDivElement, SelectContent>(
 );
 
 // SelectGroup Component
-type SelectGroup = ComponentProps<(typeof RadixSelect)["Group"]>;
+export type SelectGroup = ComponentProps<(typeof RadixSelect)["Group"]>;
 export const SelectGroup = forwardRef<HTMLDivElement, SelectGroup>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Group
@@ -59,7 +64,7 @@ export const SelectGroup = forwardRef<HTMLDivElement, SelectGroup>(
 );
 
 // SelectItem Component
-type SelectItem = ComponentProps<(typeof RadixSelect)["Item"]>;
+export type SelectItem = ComponentProps<(typeof RadixSelect)["Item"]>;
 export const SelectItem = forwardRef<HTMLDivElement, SelectItem>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Item
@@ -79,7 +84,7 @@ export const SelectItem = forwardRef<HTMLDivElement, SelectItem>(
 );
 
 // SelectSeparator Component
-type SelectDivider = ComponentProps<(typeof RadixSelect)["Separator"]>;
+export type SelectDivider = ComponentProps<(typeof RadixSelect)["Separator"]>;
 export const SelectDivider = forwardRef<HTMLDivElement, SelectDivider>(
   ({ className, ...props }, forwardedRef) => (
     <RadixSelect.Separator
@@ -97,7 +102,7 @@ export const SelectDivider = forwardRef<HTMLDivElement, SelectDivider>(
 const SelectValue = RadixSelect.Value;
 
 // SelectIcon Component
-type SelectIcon = ComponentProps<(typeof RadixSelect)["Icon"]>;
+export type SelectIcon = ComponentProps<(typeof RadixSelect)["Icon"]>;
 const SelectIcon = forwardRef<HTMLDivElement, SelectIcon>(
   ({ className, children, ...props }, forwardedRef) => (
     <RadixSelect.Icon
@@ -126,7 +131,7 @@ const SelectIcon = forwardRef<HTMLDivElement, SelectIcon>(
 );
 
 // SelectScrollUpButton Component
-type SelectScrollUpButton = ComponentProps<
+export type SelectScrollUpButton = ComponentProps<
   (typeof RadixSelect)["ScrollUpButton"]
 >;
 const SelectScrollUpButton = forwardRef<HTMLDivElement, SelectScrollUpButton>(
@@ -162,7 +167,7 @@ const SelectScrollUpButton = forwardRef<HTMLDivElement, SelectScrollUpButton>(
 );
 
 //SelectScrollDownButton Component
-type SelectScrollDownButton = ComponentProps<
+export type SelectScrollDownButton = ComponentProps<
   (typeof RadixSelect)["ScrollDownButton"]
 >;
 const SelectScrollDownButton = forwardRef<

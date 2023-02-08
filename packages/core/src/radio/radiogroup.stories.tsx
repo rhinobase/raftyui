@@ -1,4 +1,5 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
+import React from "react";
 import { CustomRadioBox, Radio, RadioGroup } from "./Radio";
 
 export default {
@@ -25,7 +26,11 @@ export function Default() {
 export function Box() {
   return (
     <Grid>
-      <RadioGroup orientation="horizontal" defaultValue="red" className="grid grid-cols-3 gap-2">
+      <RadioGroup
+        orientation="horizontal"
+        defaultValue="red"
+        className="grid grid-cols-3 gap-2"
+      >
         {data.map((item, index) => (
           <CustomRadioBox value={item.toLowerCase()} id={String(index)}>
             <label htmlFor={String(index)}>{item}</label>
@@ -39,7 +44,11 @@ export function Box() {
 export function VerticalBox() {
   return (
     <Grid>
-      <RadioGroup orientation="vertical" defaultValue="red" className="grid grid-cols-1 gap-2">
+      <RadioGroup
+        orientation="vertical"
+        defaultValue="red"
+        className="grid grid-cols-1 gap-2"
+      >
         {data.map((item, index) => (
           <CustomRadioBox value={item.toLowerCase()} id={String(index)}>
             <label htmlFor={String(index)}>{item}</label>

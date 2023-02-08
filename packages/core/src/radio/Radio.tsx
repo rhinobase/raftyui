@@ -1,11 +1,15 @@
 import * as RadioGroupPrimitives from "@radix-ui/react-radio-group";
 import { ComponentProps, forwardRef } from "react";
-import { classNames } from "@rhinobase/lib";
+import { classNames } from "@rhinobase/utils";
+import React from "react";
 
 // RadioGroup Component
-type RadioGroupProps = ComponentProps<typeof RadioGroupPrimitives["Root"]>;
-export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
-  ({ className, disabled, children, orientation = "horizontal", ...props }, forwardedRef) => {
+export type RadioGroup = ComponentProps<(typeof RadioGroupPrimitives)["Root"]>;
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroup>(
+  (
+    { className, disabled, children, orientation = "horizontal", ...props },
+    forwardedRef
+  ) => {
     return (
       <RadioGroupPrimitives.Root
         className={classNames(
@@ -16,7 +20,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
         )}
         {...props}
         disabled={disabled}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </RadioGroupPrimitives.Root>
     );
@@ -24,45 +29,59 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
 );
 
 // Radio Component (Indicator inside the Radio Component)
-type RadioProps = ComponentProps<typeof RadioGroupPrimitives["Item"]>;
+export type Radio = ComponentProps<(typeof RadioGroupPrimitives)["Item"]>;
 export const Radio = forwardRef<
   HTMLButtonElement,
-  RadioProps & {
+  Radio & {
     caption?: string;
     hide?: boolean;
     tooltip?: string;
     isDisabled?: boolean;
   }
->(({ children, caption, hide, tooltip, isDisabled, ...props }, forwardedRef) => {
-  return (
-    <div className={classNames(hide && "hidden", "flex gap-1")}>
-      <RadioGroupPrimitives.Item
-        className="border-secondary-300 dark:border-secondary-700 dark:bg-secondary-800 relative inline-flex h-4 w-4 items-center justify-center self-start rounded-full border-2 data-[disabled]:cursor-not-allowed data-[state=checked]:border-0"
-        {...props}
-        id={props.value}
-        disabled={isDisabled}
-        ref={forwardedRef}>
-        <RadioGroupIndicator />
-      </RadioGroupPrimitives.Item>
-      <div className="flex flex-col">
-        <label
-          className={classNames(
-            isDisabled && "text-secondary-400 cursor-not-allowed",
-            tooltip && "border-b-secondary-300 dark:border-secondary-500 border-b border-dashed",
-            "text-sm"
+>(
+  (
+    { children, caption, hide, tooltip, isDisabled, ...props },
+    forwardedRef
+  ) => {
+    return (
+      <div className={classNames(hide && "hidden", "flex gap-1")}>
+        <RadioGroupPrimitives.Item
+          className="border-secondary-300 dark:border-secondary-700 dark:bg-secondary-800 relative inline-flex h-4 w-4 items-center justify-center self-start rounded-full border-2 data-[disabled]:cursor-not-allowed data-[state=checked]:border-0"
+          {...props}
+          id={props.value}
+          disabled={isDisabled}
+          ref={forwardedRef}
+        >
+          <RadioGroupIndicator />
+        </RadioGroupPrimitives.Item>
+        <div className="flex flex-col">
+          <label
+            className={classNames(
+              isDisabled && "text-secondary-400 cursor-not-allowed",
+              tooltip &&
+                "border-b-secondary-300 dark:border-secondary-500 border-b border-dashed",
+              "text-sm"
+            )}
+            htmlFor={props.value}
+          >
+            {children}
+          </label>
+          {caption && (
+            <p className="text-secondary-400 text-sm leading-[16px]">
+              {caption}
+            </p>
           )}
-          htmlFor={props.value}>
-          {children}
-        </label>
-        {caption && <p className="text-secondary-400 text-sm leading-[16px]">{caption}</p>}
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 // CustomRadioBox Component (we made it for major use in pricing page)
-type CustomRadioBoxProps = ComponentProps<typeof RadioGroupPrimitives["Item"]>;
-export const CustomRadioBox = forwardRef<HTMLButtonElement, CustomRadioBoxProps>(
+export type CustomRadioBox = ComponentProps<
+  (typeof RadioGroupPrimitives)["Item"]
+>;
+export const CustomRadioBox = forwardRef<HTMLButtonElement, CustomRadioBox>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <RadioGroupPrimitives.Item
@@ -71,7 +90,8 @@ export const CustomRadioBox = forwardRef<HTMLButtonElement, CustomRadioBoxProps>
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </RadioGroupPrimitives.Item>
     );
@@ -79,8 +99,10 @@ export const CustomRadioBox = forwardRef<HTMLButtonElement, CustomRadioBoxProps>
 );
 
 // RadioIndicator Component (it is already used in Radio component of this file thats why we do not need to exported it)
-type RadioIndicatorProps = ComponentProps<typeof RadioGroupPrimitives["Indicator"]>;
-const RadioGroupIndicator = forwardRef<HTMLButtonElement, RadioIndicatorProps>(
+export type RadioIndicator = ComponentProps<
+  (typeof RadioGroupPrimitives)["Indicator"]
+>;
+const RadioGroupIndicator = forwardRef<HTMLButtonElement, RadioIndicator>(
   ({ ...props }, forwardedRef) => {
     return (
       <RadioGroupPrimitives.Indicator

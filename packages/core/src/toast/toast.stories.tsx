@@ -1,5 +1,6 @@
-import { Grid } from "@rhinobase/storybook/components";
-import { Toast, IToast } from "./Toast";
+import { Grid } from "@rhinobase/docs/components";
+import React from "react";
+import { Toast } from "./Toast";
 
 export default {
   title: "New/Toast",
@@ -12,7 +13,7 @@ export default {
   },
 };
 
-export function Default(args: IToast) {
+export function Default(args: Toast) {
   return (
     <Grid>
       <Toast {...args} severity="error" />

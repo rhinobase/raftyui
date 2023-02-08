@@ -1,4 +1,5 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
+import React from "react";
 import { ReactSelect } from "./ReactSelect";
 
 export default {

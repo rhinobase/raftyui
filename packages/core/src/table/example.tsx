@@ -1,4 +1,14 @@
-import { Table, TableBody, TableContainer, TableFooter, TableHead, Td, Th, Tr } from ".";
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableContainer,
+  TableFooter,
+  TableHead,
+  Td,
+  Th,
+  Tr,
+} from "./Table";
 
 const people = [
   {

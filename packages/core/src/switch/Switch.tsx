@@ -3,7 +3,7 @@ import React, { ComponentProps } from "react";
 import { classNames } from "@rhinobase/utils";
 
 // Switch Component (SwitchThumb inside Switch Component )
-type Switch = ComponentProps<(typeof SwitchPrimitive)["Root"]>;
+export type Switch = ComponentProps<(typeof SwitchPrimitive)["Root"]>;
 export const Switch = React.forwardRef<
   HTMLButtonElement,
   Switch & { size?: "sm" | "md" | "lg" }

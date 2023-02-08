@@ -2,7 +2,7 @@ export { Button } from "./button";
 export { Spinner } from "./spinner";
 export { Tooltip } from "./tooltip";
 export { Toast } from "./toast";
-export { Tab, TabContent, Tabs, TabsList } from "./tabs";
+export * as Tab from "./tabs";
 export { ToggleGroup, ToggleItem } from "./toggle-group";
 export {
   Table,
@@ -14,7 +14,7 @@ export {
   Th,
   Tr,
 } from "./table";
-export { TabGroup, TabGroupItem } from "./tab-group";
+export * as TabGroup from "./tab-group";
 export { Switch } from "./switch";
 export {
   Select,
@@ -24,3 +24,5 @@ export {
   SelectGroup,
   SelectItem,
 } from "./select";
+export { ReactSelect } from "./react-select";
+export { Radio, RadioGroup, CustomRadioBox } from "./radio";

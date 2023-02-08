@@ -17,7 +17,7 @@ export interface FieldGroup {
 export function FieldGroup({ children, ...props }: FieldGroup) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { isDev, disabled, readOnly, loading } = useFieldControl();
+  const { isDev, disabled, readOnly, loading, invalid } = useFieldControl();
 
   useEffect(() => {
     const element = ref.current;
@@ -37,7 +37,7 @@ export function FieldGroup({ children, ...props }: FieldGroup) {
     document.addEventListener("mousedown", handleClick);
 
     return () => document.removeEventListener("mousedown", handleClick);
-  }, [ref, disabled, readOnly, isInvalid, loading]);
+  }, [ref, disabled, readOnly, invalid, loading]);
 
   return (
     <>
@@ -45,7 +45,7 @@ export function FieldGroup({ children, ...props }: FieldGroup) {
         ref={ref}
         role="group"
         className={classNames(
-          isInvalid
+          invalid
             ? "border-error-500 dark:border-error-400"
             : "border-secondary-300 dark:border-secondary-700",
           (disabled || loading) && "bg-secondary-50 dark:bg-secondary-800",

@@ -1,6 +1,6 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { Grid } from "@rhinobase/storybook/components";
-import { PasswordField, FieldControl, IFieldControl } from "@rhinobase/ui";
+import { Grid } from "@rhinobase/docs/components";
+import { PasswordField } from "./PasswordField";
+import React from "react";
 
 export default {
   title: "New/PasswordField",
@@ -8,16 +8,9 @@ export default {
 };
 
 export function Default() {
-  const form = useForm();
-
-  const control: IFieldControl = { name: "name" };
   return (
     <Grid>
-      <FormProvider {...form}>
-        <FieldControl {...control}>
-          <PasswordField name="password" />
-        </FieldControl>
-      </FormProvider>
+      <PasswordField name="password" />
     </Grid>
   );
 }

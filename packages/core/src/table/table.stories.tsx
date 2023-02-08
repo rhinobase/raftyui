@@ -1,7 +1,7 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
+import React from "react";
 import {
   Table,
-  TableProps,
   TableBody,
   TableContainer,
   TableFooter,
@@ -9,7 +9,7 @@ import {
   Td,
   Th,
   Tr,
-} from "@rhinobase/ui";
+} from "./";
 
 export default {
   title: "New/ Table",
@@ -40,7 +40,7 @@ const people = [
   },
 ];
 
-export function Default({ ...args }: TableProps) {
+export function Default({ ...args }: Table) {
   return (
     <Grid>
       <TableContainer className="max-w-2xl">

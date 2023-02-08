@@ -2,7 +2,7 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { classNames } from "@rhinobase/utils";
 import React from "react";
 
-export interface ITooltip {
+export interface Tooltip {
   children: React.ReactNode;
   content: React.ReactNode;
   open?: boolean;
@@ -19,7 +19,7 @@ export function Tooltip({
   onOpenChange,
   side = "top",
   ...props
-}: ITooltip) {
+}: Tooltip) {
   return (
     <TooltipPrimitive.Provider>
       <TooltipPrimitive.Root

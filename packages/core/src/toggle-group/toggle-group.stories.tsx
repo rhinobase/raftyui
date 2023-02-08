@@ -1,5 +1,6 @@
-import { Grid } from "@rhinobase/storybook/components/Grid";
-import { ToggleGroup, ToggleItem } from "@rhinobase/ui";
+import { Grid } from "@rhinobase/docs/components/Grid";
+import React from "react";
+import { ToggleGroup, ToggleItem } from "./ToggleGroup";
 
 export default {
   title: "New/Toggle Group",

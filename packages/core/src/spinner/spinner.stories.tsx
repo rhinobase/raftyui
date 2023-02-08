@@ -1,5 +1,6 @@
 import { Grid } from "@rhinobase/docs/components";
-import { ISpinner, Spinner } from "./Spinner";
+import React from "react";
+import { Spinner } from "./Spinner";
 
 export default {
   title: "New/Spinner",
@@ -9,7 +10,7 @@ export default {
   },
 };
 
-export function Default(args: ISpinner) {
+export function Default(args: Spinner) {
   return (
     <Grid>
       <Spinner {...args} />

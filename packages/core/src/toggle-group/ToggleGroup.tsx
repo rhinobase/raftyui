@@ -9,7 +9,7 @@ import {
 import React from "react";
 
 // ToggleGroup Component
-type ToggleGroup = ComponentProps<(typeof ToggleGroupPrimitive)["Root"]>;
+export type ToggleGroup = ComponentProps<(typeof ToggleGroupPrimitive)["Root"]>;
 export const ToggleGroup = forwardRef<
   HTMLDivElement,
   ToggleGroupContext & ToggleGroup
@@ -31,7 +31,7 @@ export const ToggleGroup = forwardRef<
 });
 
 // ToggleItem Component
-type ToggleItem = ComponentProps<(typeof ToggleGroupPrimitive)["Item"]>;
+export type ToggleItem = ComponentProps<(typeof ToggleGroupPrimitive)["Item"]>;
 export const ToggleItem = forwardRef<
   HTMLButtonElement,
   ToggleGroupContext & ToggleItem

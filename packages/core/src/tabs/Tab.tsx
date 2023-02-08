@@ -4,9 +4,9 @@ import { classNames } from "@rhinobase/utils";
 import { TabContext, TabProvider, useTabContext } from "./context";
 import React from "react";
 
-// Tabs Component
-type Tabs = ComponentProps<(typeof TabsPrimitive)["Root"]>;
-export const Tabs = forwardRef<HTMLDivElement, TabContext & Tabs>(
+// Root Component
+export type Root = ComponentProps<(typeof TabsPrimitive)["Root"]>;
+export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
   (
     { children, className, size = "md", variant = "line", ...props },
     forwardedRef
@@ -28,9 +28,9 @@ export const Tabs = forwardRef<HTMLDivElement, TabContext & Tabs>(
   }
 );
 
-// TabsList Component
-type TabsListProps = ComponentProps<(typeof TabsPrimitive)["List"]>;
-export const TabsList = forwardRef<HTMLDivElement, TabContext & TabsListProps>(
+// List Component
+export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
+export const List = forwardRef<HTMLDivElement, TabContext & List>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <TabsPrimitive.List
@@ -49,9 +49,9 @@ export const TabsList = forwardRef<HTMLDivElement, TabContext & TabsListProps>(
   }
 );
 
-// Tab Component
-type TabProps = ComponentProps<(typeof TabsPrimitive)["Trigger"]>;
-export const Tab = forwardRef<HTMLButtonElement, TabContext & TabProps>(
+// Trigger Component
+export type Trigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]>;
+export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useTabContext();
     const { variant } = useTabContext();
@@ -84,9 +84,9 @@ export const Tab = forwardRef<HTMLButtonElement, TabContext & TabProps>(
   }
 );
 
-// TabContent Component
-type TabContentProps = ComponentProps<(typeof TabsPrimitive)["Content"]>;
-export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
+// Content Component
+export type Content = ComponentProps<(typeof TabsPrimitive)["Content"]>;
+export const Content = forwardRef<HTMLDivElement, Content>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useTabContext();
     return (

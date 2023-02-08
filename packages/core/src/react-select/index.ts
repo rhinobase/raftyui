@@ -1,1 +1,1 @@
-export * from "./ReactSelect";
+export { ReactSelect } from "./ReactSelect";

@@ -1,7 +1,7 @@
 import { classNames } from "@rhinobase/utils";
 import React from "react";
 
-export interface IToast {
+export interface Toast {
   className?: string;
   title: string;
   message?: string;
@@ -9,7 +9,7 @@ export interface IToast {
   visible: boolean;
 }
 // Toast Component
-export function Toast(props: IToast) {
+export function Toast(props: Toast) {
   var ToastIcon: JSX.Element;
 
   switch (props.severity) {
