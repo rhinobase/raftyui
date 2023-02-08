@@ -1,7 +1,1 @@
-export {
-  Drawer,
-  DrawerTitle,
-  DrawerBody,
-  DrawerContent,
-  DrawerCloseButton,
-} from "./Drawer";
+export * as Drawer from "./Drawer";

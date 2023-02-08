@@ -1,21 +1,8 @@
 import { useState } from "react";
-import { HiBars3, HiChevronRight } from "react-icons/hi2";
-import { Grid } from "@rhinobase/storybook/components";
-import { Button } from "@rhinobase/ui";
-import {
-  Menu,
-  MenuButton,
-  MenuCheckboxItem,
-  MenuItem,
-  MenuGroup,
-  MenuContent,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuDivider,
-  SubMenu,
-  SubMenuButton,
-  SubMenuContent,
-} from "./Menu";
+import { Grid } from "@rhinobase/docs/components";
+import { Button } from "../index";
+import React from "react";
+import * as Menu from "./Menu";
 
 export default {
   title: "New/Menu",
@@ -25,18 +12,31 @@ export default {
 export function Default() {
   return (
     <Grid>
-      <Menu>
-        <MenuButton>
-          <HiBars3 />
-        </MenuButton>
-        <MenuContent side="bottom" align="end">
-          <MenuGroup title="Order">
-            <MenuItem>New Tab</MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>New Private Window </MenuItem>
-          </MenuGroup>
-        </MenuContent>
-      </Menu>
+      <Menu.Root>
+        <Menu.Trigger>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </Menu.Trigger>
+        <Menu.Content side="bottom" align="end">
+          <Menu.Group title="Order">
+            <Menu.Item>New Tab</Menu.Item>
+            <Menu.Item>New Window</Menu.Item>
+            <Menu.Item disabled>New Private Window </Menu.Item>
+          </Menu.Group>
+        </Menu.Content>
+      </Menu.Root>
     </Grid>
   );
 }
@@ -46,30 +46,45 @@ export function AllFeatures() {
   const [checked, setChecked] = useState<Map<string, boolean>>(new Map());
   return (
     <Grid>
-      <Menu>
-        <MenuButton>
-          <HiBars3 />
-        </MenuButton>
-        <MenuContent>
-          <MenuGroup title="order">
-            <MenuItem>New Tab</MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>New Private Window </MenuItem>
-          </MenuGroup>
-          <SubMenu>
-            <SubMenuButton style={{ justifyContent: "space-between" }}>More Tools </SubMenuButton>
-            <SubMenuContent>
-              <MenuItem>
+      <Menu.Root>
+        <Menu.Trigger>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </Menu.Trigger>
+        <Menu.Content>
+          <Menu.Group title="order">
+            <Menu.Item>New Tab</Menu.Item>
+            <Menu.Item>New Window</Menu.Item>
+            <Menu.Item disabled>New Private Window </Menu.Item>
+          </Menu.Group>
+          <Menu.Sub>
+            <Menu.SubTrigger style={{ justifyContent: "space-between" }}>
+              More Tools{" "}
+            </Menu.SubTrigger>
+            <Menu.SubContent>
+              <Menu.Item>
                 Save Page As… <div className="RightSlot">⌘+S</div>
-              </MenuItem>
-              <MenuItem>Create Shortcut…</MenuItem>
-              <MenuItem>Name Window…</MenuItem>
-              <MenuDivider />
-              <MenuItem>Developer Tools</MenuItem>
-            </SubMenuContent>
-          </SubMenu>
-          <MenuDivider />
-          <MenuCheckboxItem
+              </Menu.Item>
+              <Menu.Item>Create Shortcut…</Menu.Item>
+              <Menu.Item>Name Window…</Menu.Item>
+              <Menu.Separator />
+              <Menu.Item>Developer Tools</Menu.Item>
+            </Menu.SubContent>
+          </Menu.Sub>
+          <Menu.Separator />
+          <Menu.CheckboxItem
             checked={checked.get("1")}
             onCheckedChange={() =>
               setChecked((prev) => {
@@ -77,10 +92,11 @@ export function AllFeatures() {
                 else prev.set("1", true);
                 return new Map(prev);
               })
-            }>
+            }
+          >
             Show Bookmarks <div className="RightSlot">⌘+B</div>
-          </MenuCheckboxItem>
-          <MenuCheckboxItem
+          </Menu.CheckboxItem>
+          <Menu.CheckboxItem
             checked={checked.get("2")}
             onCheckedChange={() =>
               setChecked((prev) => {
@@ -88,17 +104,18 @@ export function AllFeatures() {
                 else prev.set("2", true);
                 return new Map(prev);
               })
-            }>
+            }
+          >
             Show Full URLs
-          </MenuCheckboxItem>
-          <MenuDivider />
-          <MenuItem>New Tab</MenuItem>
-          <MenuRadioGroup value={order} onValueChange={setOrder}>
-            <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
-            <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
-          </MenuRadioGroup>
-        </MenuContent>
-      </Menu>
+          </Menu.CheckboxItem>
+          <Menu.Separator />
+          <Menu.Item>New Tab</Menu.Item>
+          <Menu.RadioGroup value={order} onValueChange={setOrder}>
+            <Menu.RadioItem value="1">Pedro Duarte</Menu.RadioItem>
+            <Menu.RadioItem value="2">Colm Tuite</Menu.RadioItem>
+          </Menu.RadioGroup>
+        </Menu.Content>
+      </Menu.Root>
     </Grid>
   );
 }
@@ -107,12 +124,25 @@ export function CheckableOptions() {
   const [checked, setChecked] = useState<Map<string, boolean>>(new Map());
   return (
     <Grid>
-      <Menu>
-        <MenuButton>
-          <HiBars3 />
-        </MenuButton>
-        <MenuContent>
-          <MenuCheckboxItem
+      <Menu.Root>
+        <Menu.Trigger>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </Menu.Trigger>
+        <Menu.Content>
+          <Menu.CheckboxItem
             checked={checked.get("1")}
             onCheckedChange={() =>
               setChecked((prev) => {
@@ -120,10 +150,11 @@ export function CheckableOptions() {
                 else prev.set("1", true);
                 return new Map(prev);
               })
-            }>
+            }
+          >
             Show Bookmarks <div className="RightSlot">⌘+B</div>
-          </MenuCheckboxItem>
-          <MenuCheckboxItem
+          </Menu.CheckboxItem>
+          <Menu.CheckboxItem
             checked={checked.get("2")}
             onCheckedChange={() =>
               setChecked((prev) => {
@@ -131,11 +162,12 @@ export function CheckableOptions() {
                 else prev.set("2", true);
                 return new Map(prev);
               })
-            }>
+            }
+          >
             Show Full URLs
-          </MenuCheckboxItem>
-        </MenuContent>
-      </Menu>
+          </Menu.CheckboxItem>
+        </Menu.Content>
+      </Menu.Root>
     </Grid>
   );
 }
@@ -144,19 +176,32 @@ export function RadioOptions() {
   const [order, setOrder] = useState("1");
   return (
     <Grid>
-      <Menu>
-        <MenuButton asChild>
+      <Menu.Root>
+        <Menu.Trigger asChild>
           <Button size="icon">
-            <HiBars3 />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
           </Button>
-        </MenuButton>
-        <MenuContent>
-          <MenuRadioGroup value={order} onValueChange={setOrder}>
-            <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
-            <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
-          </MenuRadioGroup>
-        </MenuContent>
-      </Menu>
+        </Menu.Trigger>
+        <Menu.Content>
+          <Menu.RadioGroup value={order} onValueChange={setOrder}>
+            <Menu.RadioItem value="1">Pedro Duarte</Menu.RadioItem>
+            <Menu.RadioItem value="2">Colm Tuite</Menu.RadioItem>
+          </Menu.RadioGroup>
+        </Menu.Content>
+      </Menu.Root>
     </Grid>
   );
 }
@@ -165,38 +210,64 @@ export function SubMenus() {
   const [order, setOrder] = useState("1");
   return (
     <Grid>
-      <Menu>
-        <MenuButton asChild>
+      <Menu.Root>
+        <Menu.Trigger asChild>
           <Button size="icon">
-            <HiBars3 />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
           </Button>
-        </MenuButton>
-        <MenuContent>
-          <MenuGroup title="order">
-            <MenuItem>New Tab</MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>New Private Window </MenuItem>
-          </MenuGroup>
-          <SubMenu>
-            <SubMenuButton style={{ justifyContent: "space-between" }}>
+        </Menu.Trigger>
+        <Menu.Content>
+          <Menu.Group title="order">
+            <Menu.Item>New Tab</Menu.Item>
+            <Menu.Item>New Window</Menu.Item>
+            <Menu.Item disabled>New Private Window </Menu.Item>
+          </Menu.Group>
+          <Menu.Sub>
+            <Menu.SubTrigger style={{ justifyContent: "space-between" }}>
               More Tools{" "}
               <span>
-                <HiChevronRight />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
               </span>
-            </SubMenuButton>
+            </Menu.SubTrigger>
 
-            <SubMenuContent>
-              <MenuItem>
+            <Menu.SubContent>
+              <Menu.Item>
                 Save Page As… <div className="RightSlot">⌘+S</div>
-              </MenuItem>
-              <MenuItem>Create Shortcut…</MenuItem>
-              <MenuItem>Name Window…</MenuItem>
-              <MenuDivider />
-              <MenuItem>Developer Tools</MenuItem>
-            </SubMenuContent>
-          </SubMenu>
-        </MenuContent>
-      </Menu>
+              </Menu.Item>
+              <Menu.Item>Create Shortcut…</Menu.Item>
+              <Menu.Item>Name Window…</Menu.Item>
+              <Menu.Separator />
+              <Menu.Item>Developer Tools</Menu.Item>
+            </Menu.SubContent>
+          </Menu.Sub>
+        </Menu.Content>
+      </Menu.Root>
     </Grid>
   );
 }

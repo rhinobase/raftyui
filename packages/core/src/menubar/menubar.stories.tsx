@@ -1,19 +1,6 @@
-import { Grid } from "@rhinobase/storybook/components";
-import {
-  MenuBar,
-  MenuBarButton,
-  MenuBarCheckboxItem,
-  MenuBarContent,
-  MenuBarDivider,
-  MenuBarItem,
-  MenuBarMenu,
-  MenuBarRadioGroup,
-  MenuBarRadioItem,
-  MenuBarSubMenuContent,
-  MenuBarSubMenu,
-  MenuBarSubMenuButton,
-} from "@rhinobase/ui";
-
+import { Grid } from "@rhinobase/docs/components";
+import * as MenuBar from "./MenuBar";
+import React from "react";
 export default {
   title: "New/MenuBar",
   component: MenuBar,
@@ -23,79 +10,81 @@ export function Default() {
   return (
     <Grid>
       <div className="w-96">
-        <MenuBar>
-          <MenuBarMenu>
-            <MenuBarButton>File</MenuBarButton>
-            <MenuBarContent>
-              <MenuBarItem>New Tab</MenuBarItem>
-              <MenuBarItem>New Window</MenuBarItem>
-              <MenuBarItem disabled>New Incognito Window</MenuBarItem>
-              <MenuBarDivider />
-              <MenuBarSubMenu>
-                <MenuBarSubMenuButton>Share</MenuBarSubMenuButton>
-                <MenuBarSubMenuContent>
-                  <MenuBarItem>Email Link</MenuBarItem>
-                  <MenuBarItem>Messages</MenuBarItem>
-                  <MenuBarItem>Notes</MenuBarItem>
-                </MenuBarSubMenuContent>
-              </MenuBarSubMenu>
-              <MenuBarItem>Print</MenuBarItem>
-            </MenuBarContent>
-          </MenuBarMenu>
-          <MenuBarMenu>
-            <MenuBarButton>Edit</MenuBarButton>
+        <MenuBar.Root>
+          <MenuBar.Menu>
+            <MenuBar.Trigger>File</MenuBar.Trigger>
+            <MenuBar.Content>
+              <MenuBar.Item>New Tab</MenuBar.Item>
+              <MenuBar.Item>New Window</MenuBar.Item>
+              <MenuBar.Item disabled>New Incognito Window</MenuBar.Item>
+              <MenuBar.Separator />
+              <MenuBar.Sub>
+                <MenuBar.SubTrigger>Share</MenuBar.SubTrigger>
+                <MenuBar.SubContent>
+                  <MenuBar.Item>Email Link</MenuBar.Item>
+                  <MenuBar.Item>Messages</MenuBar.Item>
+                  <MenuBar.Item>Notes</MenuBar.Item>
+                </MenuBar.SubContent>
+              </MenuBar.Sub>
+              <MenuBar.Item>Print</MenuBar.Item>
+            </MenuBar.Content>
+          </MenuBar.Menu>
+          <MenuBar.Menu>
+            <MenuBar.Trigger>Edit</MenuBar.Trigger>
 
-            <MenuBarContent align="start">
-              <MenuBarItem>Undo</MenuBarItem>
-              <MenuBarItem>Redo</MenuBarItem>
-              <MenuBarDivider />
-              <MenuBarSubMenu>
-                <MenuBarSubMenuButton>Find</MenuBarSubMenuButton>
+            <MenuBar.Content align="start">
+              <MenuBar.Item>Undo</MenuBar.Item>
+              <MenuBar.Item>Redo</MenuBar.Item>
+              <MenuBar.Separator />
+              <MenuBar.Sub>
+                <MenuBar.SubTrigger>Find</MenuBar.SubTrigger>
 
-                <MenuBarSubMenuContent alignOffset={-5}>
-                  <MenuBarItem>Search the web…</MenuBarItem>
-                  <MenuBarDivider />
-                  <MenuBarItem>Find…</MenuBarItem>
-                  <MenuBarItem>Find Next</MenuBarItem>
-                  <MenuBarItem>Find Previous</MenuBarItem>
-                </MenuBarSubMenuContent>
-              </MenuBarSubMenu>
-              <MenuBarDivider />
-              <MenuBarItem>Cut</MenuBarItem>
-              <MenuBarItem>Copy</MenuBarItem>
-              <MenuBarItem>Paste</MenuBarItem>
-            </MenuBarContent>
-          </MenuBarMenu>
-          <MenuBarMenu>
-            <MenuBarButton>View</MenuBarButton>
-            <MenuBarContent>
-              <MenuBarCheckboxItem checked={true}>Always Show Bookmarks Bar</MenuBarCheckboxItem>
-              <MenuBarCheckboxItem>Always Show Full URLs</MenuBarCheckboxItem>
-              <MenuBarDivider />
-              <MenuBarItem>Reload</MenuBarItem>
-              <MenuBarItem disabled>Force Reload</MenuBarItem>
-              <MenuBarDivider />
-              <MenuBarItem>Toggle Fullscreen</MenuBarItem>
-              <MenuBarDivider />
-              <MenuBarItem>Hide Sidebar</MenuBarItem>
-            </MenuBarContent>
-          </MenuBarMenu>
-          <MenuBarMenu>
-            <MenuBarButton>Profiles</MenuBarButton>
+                <MenuBar.SubContent alignOffset={-5}>
+                  <MenuBar.Item>Search the web…</MenuBar.Item>
+                  <MenuBar.Separator />
+                  <MenuBar.Item>Find…</MenuBar.Item>
+                  <MenuBar.Item>Find Next</MenuBar.Item>
+                  <MenuBar.Item>Find Previous</MenuBar.Item>
+                </MenuBar.SubContent>
+              </MenuBar.Sub>
+              <MenuBar.Separator />
+              <MenuBar.Item>Cut</MenuBar.Item>
+              <MenuBar.Item>Copy</MenuBar.Item>
+              <MenuBar.Item>Paste</MenuBar.Item>
+            </MenuBar.Content>
+          </MenuBar.Menu>
+          <MenuBar.Menu>
+            <MenuBar.Trigger>View</MenuBar.Trigger>
+            <MenuBar.Content>
+              <MenuBar.CheckboxItem checked={true}>
+                Always Show Bookmarks Bar
+              </MenuBar.CheckboxItem>
+              <MenuBar.CheckboxItem>Always Show Full URLs</MenuBar.CheckboxItem>
+              <MenuBar.Separator />
+              <MenuBar.Item>Reload</MenuBar.Item>
+              <MenuBar.Item disabled>Force Reload</MenuBar.Item>
+              <MenuBar.Separator />
+              <MenuBar.Item>Toggle Fullscreen</MenuBar.Item>
+              <MenuBar.Separator />
+              <MenuBar.Item>Hide Sidebar</MenuBar.Item>
+            </MenuBar.Content>
+          </MenuBar.Menu>
+          <MenuBar.Menu>
+            <MenuBar.Trigger>Profiles</MenuBar.Trigger>
 
-            <MenuBarContent align="start">
-              <MenuBarRadioGroup value="1">
-                <MenuBarRadioItem value="1">Andy</MenuBarRadioItem>
-                <MenuBarRadioItem value="2">Benolt</MenuBarRadioItem>
-                <MenuBarRadioItem value="3">Luis</MenuBarRadioItem>
-                <MenuBarDivider />
-                <MenuBarItem>Edit…</MenuBarItem>
-                <MenuBarDivider />
-                <MenuBarItem>Add Profile…</MenuBarItem>
-              </MenuBarRadioGroup>
-            </MenuBarContent>
-          </MenuBarMenu>
-        </MenuBar>
+            <MenuBar.Content align="start">
+              <MenuBar.RadioGroup value="1">
+                <MenuBar.RadioItem value="1">Andy</MenuBar.RadioItem>
+                <MenuBar.RadioItem value="2">Benolt</MenuBar.RadioItem>
+                <MenuBar.RadioItem value="3">Luis</MenuBar.RadioItem>
+                <MenuBar.Separator />
+                <MenuBar.Item>Edit…</MenuBar.Item>
+                <MenuBar.Separator />
+                <MenuBar.Item>Add Profile…</MenuBar.Item>
+              </MenuBar.RadioGroup>
+            </MenuBar.Content>
+          </MenuBar.Menu>
+        </MenuBar.Root>
       </div>
     </Grid>
   );

@@ -1,1 +1,1 @@
-export * from "./Kbd";
+export { Kbd } from "./Kbd";

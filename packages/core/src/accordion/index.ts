@@ -1,6 +1,1 @@
-export {
-  Accordion,
-  AccordionButton,
-  AccordionContent,
-  AccordionItem,
-} from "./Accordion";
+export * as Accordion from "./Accordion";

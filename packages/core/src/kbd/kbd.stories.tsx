@@ -1,5 +1,6 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
 import { Kbd } from "./Kbd";
+import React from "react";
 
 export default {
   title: "New/Kbd",

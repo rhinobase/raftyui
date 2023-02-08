@@ -10,9 +10,9 @@ import {
 
 //AccordionComponent
 
-type Accordion = AccordionContext &
+type Root = AccordionContext &
   ComponentProps<(typeof DisclosurePrimitive)["Root"]>;
-export const Accordion = forwardRef<HTMLDivElement, Accordion>(
+export const Root = forwardRef<HTMLDivElement, Root>(
   ({ children, className, size = "md", ...props }, forwardedRef) => (
     <AccordionProvider value={{ size }}>
       <DisclosurePrimitive.Root
@@ -28,8 +28,8 @@ export const Accordion = forwardRef<HTMLDivElement, Accordion>(
 
 //AccordionItemComponent
 
-type AccordionItem = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
+type Item = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
+export const Item = forwardRef<HTMLDivElement, Item>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <DisclosurePrimitive.Item
@@ -44,15 +44,12 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
 );
 
 //AccordionTriggerComponent
-type AccoudionButton = AccordionContext &
+type Trigger = AccordionContext &
   ComponentProps<(typeof DisclosurePrimitive)["Trigger"]> & {
     openIcon?: JSX.Element;
     closeIcon?: JSX.Element;
   };
-export const AccordionButton = React.forwardRef<
-  HTMLButtonElement,
-  AccoudionButton
->(
+export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   (
     { children, className, openIcon: OpenIcon, closeIcon: CloseIcon, ...props },
     forwardedRef
@@ -108,8 +105,8 @@ export const AccordionButton = React.forwardRef<
 
 //AccordionContentComponent
 
-type AccordionContent = ComponentProps<(typeof DisclosurePrimitive)["Content"]>;
-export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
+type Content = ComponentProps<(typeof DisclosurePrimitive)["Content"]>;
+export const Content = forwardRef<HTMLDivElement, Content>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useAccordionContext();
     return (

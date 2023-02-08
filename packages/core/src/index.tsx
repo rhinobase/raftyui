@@ -26,3 +26,4 @@ export {
 } from "./select";
 export { ReactSelect } from "./react-select";
 export { Radio, RadioGroup, CustomRadioBox } from "./radio";
+export { Menubar } from "./menubar";

@@ -1,15 +1,1 @@
-export {
-  ContextMenu,
-  ContextMenuButton,
-  ContextMenuCheckboxGroup,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuDivider,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuSubContent,
-  ContextMenuSubMenu,
-  ContextMenuSubMenuButton,
-} from "./ContextMenu";
+export * as ContextMenu from "./ContextMenu";

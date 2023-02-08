@@ -1,6 +1,6 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { Grid } from "@rhinobase/storybook/components";
-import { InputField, FieldControl, IFieldControl } from "@rhinobase/ui";
+import { Grid } from "@rhinobase/docs/components";
+import { InputField } from "./InputField";
+import React from "react";
 
 export default {
   title: "New/InputField",
@@ -8,9 +8,6 @@ export default {
 };
 
 export function Default() {
-  const form = useForm();
-
-  const control: IFieldControl = { name: "name" };
   return (
     <Grid>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">

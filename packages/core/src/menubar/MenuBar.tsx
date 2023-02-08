@@ -1,15 +1,18 @@
+import React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { ComponentProps, forwardRef } from "react";
-import { HiChevronRight, HiOutlineCheck } from "react-icons/hi2";
-import { VscCircleFilled } from "react-icons/vsc";
-import { classNames } from "@rhinobase/lib";
+import { classNames } from "@rhinobase/utils";
 
 //MenuBar Component
-type MenuBarProps = ComponentProps<typeof MenubarPrimitive["Root"]>;
-export const MenuBar = forwardRef<HTMLDivElement, MenuBarProps>(
+type Root = ComponentProps<(typeof MenubarPrimitive)["Root"]>;
+export const Root = forwardRef<HTMLDivElement, Root>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
-      <MenubarPrimitive.Root className={classNames("flex w-full", className)} {...props} ref={forwardedRef}>
+      <MenubarPrimitive.Root
+        className={classNames("flex w-full", className)}
+        {...props}
+        ref={forwardedRef}
+      >
         {children}
       </MenubarPrimitive.Root>
     );
@@ -17,14 +20,16 @@ export const MenuBar = forwardRef<HTMLDivElement, MenuBarProps>(
 );
 
 //MenuBar Menu Component
-type MenuBarMenuProps = ComponentProps<typeof MenubarPrimitive["Menu"]>;
-export const MenuBarMenu = forwardRef<HTMLDivElement, MenuBarMenuProps>(({ children, ...props }) => {
-  return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
-});
+type Menu = ComponentProps<(typeof MenubarPrimitive)["Menu"]>;
+export const Menu = forwardRef<HTMLDivElement, Menu>(
+  ({ children, ...props }) => {
+    return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
+  }
+);
 
 //MenuBar Button Component
-type MenuBarButtonProps = ComponentProps<typeof MenubarPrimitive["MenubarTrigger"]>;
-export const MenuBarButton = forwardRef<HTMLButtonElement, MenuBarButtonProps>(
+type Trigger = ComponentProps<(typeof MenubarPrimitive)["MenubarTrigger"]>;
+export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.Trigger
@@ -33,7 +38,8 @@ export const MenuBarButton = forwardRef<HTMLButtonElement, MenuBarButtonProps>(
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </MenubarPrimitive.Trigger>
     );
@@ -42,8 +48,8 @@ export const MenuBarButton = forwardRef<HTMLButtonElement, MenuBarButtonProps>(
 
 //MenuBarContent Component
 
-type MenuBarContentProps = ComponentProps<typeof MenubarPrimitive["Content"]>;
-export const MenuBarContent = forwardRef<HTMLDivElement, MenuBarContentProps>(
+type Content = ComponentProps<(typeof MenubarPrimitive)["Content"]>;
+export const Content = forwardRef<HTMLDivElement, Content>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.Portal>
@@ -54,7 +60,8 @@ export const MenuBarContent = forwardRef<HTMLDivElement, MenuBarContentProps>(
           )}
           {...props}
           sideOffset={5}
-          ref={forwardedRef}>
+          ref={forwardedRef}
+        >
           {children}
         </MenubarPrimitive.Content>
       </MenubarPrimitive.Portal>
@@ -63,19 +70,19 @@ export const MenuBarContent = forwardRef<HTMLDivElement, MenuBarContentProps>(
 );
 
 // MenuGroup Component
-type MenuBarGroupProps = { children?: React.ReactNode; title: string };
-export const MenuBarGroup = ({ children, title }: MenuBarGroupProps) => {
+type Group = { children?: React.ReactNode; title: string };
+export const Group = ({ children, title }: Group) => {
   return (
     <>
-      <MenuBarLabel>{title}</MenuBarLabel>
+      <Label>{title}</Label>
       {children}
     </>
   );
 };
 
 //MenuBar Label Component
-type MenuBarLabelProps = ComponentProps<typeof MenubarPrimitive["Label"]>;
-export const MenuBarLabel = forwardRef<HTMLDivElement, MenuBarLabelProps>(
+type Label = ComponentProps<(typeof MenubarPrimitive)["Label"]>;
+export const Label = forwardRef<HTMLDivElement, Label>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.Label
@@ -84,7 +91,8 @@ export const MenuBarLabel = forwardRef<HTMLDivElement, MenuBarLabelProps>(
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </MenubarPrimitive.Label>
     );
@@ -92,8 +100,8 @@ export const MenuBarLabel = forwardRef<HTMLDivElement, MenuBarLabelProps>(
 );
 
 //MenuBar Item Component
-type MenuBarItemProps = ComponentProps<typeof MenubarPrimitive["Item"]>;
-export const MenuBarItem = forwardRef<HTMLDivElement, MenuBarItemProps>(
+type Item = ComponentProps<(typeof MenubarPrimitive)["Item"]>;
+export const Item = forwardRef<HTMLDivElement, Item>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.Item
@@ -102,7 +110,8 @@ export const MenuBarItem = forwardRef<HTMLDivElement, MenuBarItemProps>(
           className
         )}
         {...props}
-        ref={forwardedRef}>
+        ref={forwardedRef}
+      >
         {children}
       </MenubarPrimitive.Item>
     );
@@ -110,19 +119,33 @@ export const MenuBarItem = forwardRef<HTMLDivElement, MenuBarItemProps>(
 );
 
 //MenuBar ChechboxGroup Component
-export const MenuBarCheckboxGroup = MenubarPrimitive.Group;
+export const CheckboxGroup = MenubarPrimitive.Group;
 
-type MenuBarCheckboxItemProps = ComponentProps<typeof MenubarPrimitive["CheckboxItem"]>;
-export const MenuBarCheckboxItem = forwardRef<HTMLDivElement, MenuBarCheckboxItemProps>(
+type CheckboxItem = ComponentProps<(typeof MenubarPrimitive)["CheckboxItem"]>;
+export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
   ({ children, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.CheckboxItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent">
+        className="rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
+      >
         {children}
         <MenubarPrimitive.ItemIndicator className="absolute left-1">
-          <HiOutlineCheck className="h-3 w-3 stroke-2" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="h-3 w-3 stroke-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
         </MenubarPrimitive.ItemIndicator>
       </MenubarPrimitive.CheckboxItem>
     );
@@ -130,19 +153,29 @@ export const MenuBarCheckboxItem = forwardRef<HTMLDivElement, MenuBarCheckboxIte
 );
 
 //MenuBar RadioGroup Component
-export const MenuBarRadioGroup = MenubarPrimitive.RadioGroup;
+export const RadioGroup = MenubarPrimitive.RadioGroup;
 
-type MenuBarRadioItemProps = ComponentProps<typeof MenubarPrimitive["RadioItem"]>;
-export const MenuBarRadioItem = forwardRef<HTMLDivElement, MenuBarRadioItemProps>(
+type RadioItem = ComponentProps<(typeof MenubarPrimitive)["RadioItem"]>;
+export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
   ({ children, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.RadioItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent">
+        className="rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
+      >
         {children}
         <MenubarPrimitive.ItemIndicator className="absolute left-1">
-          <VscCircleFilled className="h-3 w-3" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="h-3 w-3"
+          >
+            <path d="M8 4c.367 0 .721.048 1.063.145a3.943 3.943 0 0 1 1.762 1.031 3.944 3.944 0 0 1 1.03 1.762c.097.34.145.695.145 1.062 0 .367-.048.721-.145 1.063a3.94 3.94 0 0 1-1.03 1.765 4.017 4.017 0 0 1-1.762 1.031C8.72 11.953 8.367 12 8 12s-.721-.047-1.063-.14a4.056 4.056 0 0 1-1.765-1.032A4.055 4.055 0 0 1 4.14 9.062 3.992 3.992 0 0 1 4 8c0-.367.047-.721.14-1.063a4.02 4.02 0 0 1 .407-.953A4.089 4.089 0 0 1 5.98 4.546a3.94 3.94 0 0 1 .957-.401A3.89 3.89 0 0 1 8 4z" />
+          </svg>
         </MenubarPrimitive.ItemIndicator>
       </MenubarPrimitive.RadioItem>
     );
@@ -150,14 +183,14 @@ export const MenuBarRadioItem = forwardRef<HTMLDivElement, MenuBarRadioItemProps
 );
 
 //MenuBar SubMenu Component
-type MenuBarSubMenuProps = ComponentProps<typeof MenubarPrimitive["Sub"]>;
-export const MenuBarSubMenu = forwardRef<HTMLDivElement, MenuBarSubMenuProps>(({ children, ...props }) => {
+type Sub = ComponentProps<(typeof MenubarPrimitive)["Sub"]>;
+export const Sub = forwardRef<HTMLDivElement, Sub>(({ children, ...props }) => {
   return <MenubarPrimitive.Sub {...props}>{children}</MenubarPrimitive.Sub>;
 });
 
 //MenuBar SubMenuButton Component
-type MenuBarSubMenuButtonProps = ComponentProps<typeof MenubarPrimitive["SubTrigger"]>;
-export const MenuBarSubMenuButton = forwardRef<HTMLDivElement, MenuBarSubMenuButtonProps>(
+type SubTrigger = ComponentProps<(typeof MenubarPrimitive)["SubTrigger"]>;
+export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.SubTrigger
@@ -166,10 +199,24 @@ export const MenuBarSubMenuButton = forwardRef<HTMLDivElement, MenuBarSubMenuBut
         className={classNames(
           "rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
           className
-        )}>
+        )}
+      >
         {children}
         <span>
-          <HiChevronRight className="stroke-1" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="w-6 h-6 Stroke-1"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </span>
       </MenubarPrimitive.SubTrigger>
     );
@@ -178,8 +225,8 @@ export const MenuBarSubMenuButton = forwardRef<HTMLDivElement, MenuBarSubMenuBut
 
 //MenuBar SubContent Component
 
-type MenuBarSubContentProps = ComponentProps<typeof MenubarPrimitive["SubContent"]>;
-export const MenuBarSubMenuContent = forwardRef<HTMLDivElement, MenuBarSubContentProps>(
+type SubContent = ComponentProps<(typeof MenubarPrimitive)["SubContent"]>;
+export const SubContent = forwardRef<HTMLDivElement, SubContent>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.Portal>
@@ -191,7 +238,8 @@ export const MenuBarSubMenuContent = forwardRef<HTMLDivElement, MenuBarSubConten
           )}
           {...props}
           ref={forwardedRef}
-          sideOffset={10}>
+          sideOffset={10}
+        >
           {children}
         </MenubarPrimitive.SubContent>
       </MenubarPrimitive.Portal>
@@ -200,14 +248,17 @@ export const MenuBarSubMenuContent = forwardRef<HTMLDivElement, MenuBarSubConten
 );
 
 // MenuBarDivider Component
-type MenubarDividerProps = ComponentProps<typeof MenubarPrimitive["Separator"]>;
-export const MenuBarDivider = forwardRef<HTMLDivElement, MenubarDividerProps>(
+type Separator = ComponentProps<(typeof MenubarPrimitive)["Separator"]>;
+export const Separator = forwardRef<HTMLDivElement, Separator>(
   ({ className, ...props }, forwardedRef) => {
     return (
       <MenubarPrimitive.Separator
         {...props}
         ref={forwardedRef}
-        className={classNames("bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]", className)}
+        className={classNames(
+          "bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]",
+          className
+        )}
       />
     );
   }

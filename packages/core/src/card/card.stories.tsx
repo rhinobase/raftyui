@@ -1,6 +1,6 @@
 import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../button";
-import { Card, CardBody, CardFooter, CardHeader } from "./Card";
+import * as Card from "./Card";
 import React from "react";
 
 export default {
@@ -11,12 +11,12 @@ export default {
 export function Default() {
   return (
     <Grid>
-      <Card>
-        <CardHeader>Customer dashboard</CardHeader>
-        <CardBody>
+      <Card.Root>
+        <Card.Header>Customer dashboard</Card.Header>
+        <Card.Body>
           View a summary of all your customers over the last month.
-        </CardBody>
-        <CardFooter>
+        </Card.Body>
+        <Card.Footer>
           <div className="flex-1" />
           <Button
             variant="ghost"
@@ -24,8 +24,8 @@ export function Default() {
           >
             View here
           </Button>
-        </CardFooter>
-      </Card>
+        </Card.Footer>
+      </Card.Root>
     </Grid>
   );
 }

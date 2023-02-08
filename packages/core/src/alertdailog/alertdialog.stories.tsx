@@ -1,15 +1,7 @@
-import { Grid } from "@rhinobase/storybook/components";
+import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogBody,
-  AlertDialogButton,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogTitle,
-} from "./AlertDialog";
-
+import * as AlertDialog from "./AlertDialog";
+import React from "react";
 export default {
   title: "New/Alert Dialog",
   component: AlertDialog,
@@ -18,24 +10,24 @@ export default {
 export function Default() {
   return (
     <Grid>
-      <AlertDialog>
-        <AlertDialogButton>Open</AlertDialogButton>
-        <AlertDialogContent>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogBody>
-            This action cannot be undone. This will permanently delete your account and remove your data from
-            our servers.
-          </AlertDialogBody>
+      <AlertDialog.Root>
+        <AlertDialog.Trigger>Open</AlertDialog.Trigger>
+        <AlertDialog.Content>
+          <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
+          <AlertDialog.Body>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialog.Body>
           <div className="mt-4 flex justify-end gap-6">
-            <AlertDialogCancel asChild>
+            <AlertDialog.Cancel asChild>
               <Button variant="outline">Cancel</Button>
-            </AlertDialogCancel>
-            <AlertDialogAction asChild>
+            </AlertDialog.Cancel>
+            <AlertDialog.Action asChild>
               <Button colorScheme="error">Yes, delete account</Button>
-            </AlertDialogAction>
+            </AlertDialog.Action>
           </div>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </Grid>
   );
 }

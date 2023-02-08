@@ -5,8 +5,8 @@ import { Button } from "../index";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 
 // Drawer Component
-type DrawerProps = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
-export const Drawer = forwardRef<HTMLDivElement, DrawerContext & DrawerProps>(
+type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
+export const Root = forwardRef<HTMLDivElement, DrawerContext & Root>(
   ({ children, size = "md", side = "right", ...props }, forwardedRef) => (
     <DrawerProvider value={{ size, side }}>
       {/* TODO: Add reference to the below element */}
@@ -16,10 +16,8 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerContext & DrawerProps>(
 );
 
 // Drawer Content Component
-type DrawerContentProps = ComponentProps<
-  (typeof DialogPrimitive)["DialogContent"]
->;
-export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
+type Content = ComponentProps<(typeof DialogPrimitive)["DialogContent"]>;
+export const Content = forwardRef<HTMLDivElement, Content>(
   ({ children, title, style, className, ...props }, forwardedRef) => {
     const { size, side } = useDrawerContext();
     return (
@@ -50,8 +48,8 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
 );
 
 // Drawer Title Component
-type DrawerTitleProps = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
-export const DrawerTitle = React.forwardRef<HTMLDivElement, DrawerTitleProps>(
+type Title = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
+export const Title = React.forwardRef<HTMLDivElement, Title>(
   ({ children, ...props }, forwardedRef) => {
     const { size } = useDrawerContext();
 
@@ -73,10 +71,8 @@ export const DrawerTitle = React.forwardRef<HTMLDivElement, DrawerTitleProps>(
 );
 
 // Drawer Body Component
-type DrawerBodyProps = ComponentProps<
-  (typeof DialogPrimitive)["DialogDescription"]
->;
-export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
+type Body = ComponentProps<(typeof DialogPrimitive)["DialogDescription"]>;
+export const Body = React.forwardRef<HTMLDivElement, Body>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>
@@ -87,7 +83,7 @@ export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
 );
 
 // Drawer Cross Button Component
-export function DrawerCloseButton(
+export function CloseButton(
   props: {
     dialogCloseProps?: React.ComponentProps<(typeof DialogPrimitive)["Close"]>;
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;

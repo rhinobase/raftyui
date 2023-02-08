@@ -5,8 +5,8 @@ import { Button } from "../index";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
-type Dialog = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
-export const Dialog = forwardRef<HTMLDivElement, DialogContext & Dialog>(
+type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
+export const Root = forwardRef<HTMLDivElement, DialogContext & Root>(
   ({ children, size = "md", ...props }, forwardedRef) => (
     <DialogProvider value={{ size }}>
       {/* TODO: Add reference to the below element */}
@@ -16,9 +16,9 @@ export const Dialog = forwardRef<HTMLDivElement, DialogContext & Dialog>(
 );
 
 // Dialog Button Component
-type DialogButton = ComponentProps<(typeof DialogPrimitive)["DialogTrigger"]> &
+type Trigger = ComponentProps<(typeof DialogPrimitive)["DialogTrigger"]> &
   Button;
-export const DialogButton = React.forwardRef<HTMLButtonElement, DialogButton>(
+export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   (
     {
       children,
@@ -54,13 +54,11 @@ export const DialogButton = React.forwardRef<HTMLButtonElement, DialogButton>(
 );
 
 // Dialog Content Component
-type DialogContent = ComponentProps<
-  (typeof DialogPrimitive)["DialogContent"]
-> & {
+type Content = ComponentProps<(typeof DialogPrimitive)["DialogContent"]> & {
   height?: string;
   width?: string;
 };
-export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
+export const Content = forwardRef<HTMLDivElement, Content>(
   ({ children, title, height, width, ...props }, forwardedRef) => {
     const { size } = useDialogContext();
     return (
@@ -81,7 +79,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
           ref={forwardedRef}
         >
           {children}
-          <DialogCloseButton />
+          <CloseButton />
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     );
@@ -89,8 +87,8 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
 );
 
 // Dialog Title Component
-type DialogTitle = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
-export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
+type Title = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
+export const Title = React.forwardRef<HTMLDivElement, Title>(
   ({ children, ...props }, forwardedRef) => {
     const { size } = useDialogContext();
 
@@ -112,8 +110,8 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
 );
 
 // Dialog Body Component
-type DialogBody = ComponentProps<(typeof DialogPrimitive)["DialogDescription"]>;
-export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
+type Body = ComponentProps<(typeof DialogPrimitive)["DialogDescription"]>;
+export const Body = React.forwardRef<HTMLDivElement, Body>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>
@@ -124,7 +122,7 @@ export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
 );
 
 // Dialog Cross Button Component
-function DialogCloseButton(
+function CloseButton(
   props: {
     dialogCloseProps?: React.ComponentProps<(typeof DialogPrimitive)["Close"]>;
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -161,4 +159,4 @@ function DialogCloseButton(
 }
 
 // Dialog Close for on click close function
-export const DialogClose = DialogPrimitive.DialogClose;
+export const Close = DialogPrimitive.DialogClose;

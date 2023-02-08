@@ -1,9 +1,1 @@
-export {
-  AlertDialog,
-  AlertDialogButton,
-  AlertDialogContent,
-  AlertDialogBody,
-  AlertDialogTitle,
-  AlertDialogAction,
-  AlertDialogCancel,
-} from "./AlertDialog";
+export * as AlertDialog from "./AlertDialog";
