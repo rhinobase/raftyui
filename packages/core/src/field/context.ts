@@ -1,22 +1,11 @@
-import { createContext } from "@rhinobase/lib/hooks/context";
+import { createContext } from "@rhinobase/utils";
+import { FieldControl } from "./FieldControl";
 
-export const [FieldProvider, useFieldControl] = createContext<IFieldControl>({
+export const [FieldProvider, useFieldControl] = createContext<FieldControl>({
   name: "FieldControl",
   hookName: "useFieldControl",
   providerName: "<FieldControlProvider />",
 });
-
-export interface IFieldControl {
-  name: string;
-  orientation?: "row" | "col" | "row-reverse";
-  required?: boolean;
-  disabled?: boolean;
-  readOnly?: boolean;
-  hidden?: boolean;
-  invalid?: boolean;
-  isDev?: boolean;
-  loading?: boolean;
-}
 
 export function useFieldControlProvider(name: string, type: string) {
   const orientation = "col",

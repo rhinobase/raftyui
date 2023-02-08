@@ -1,7 +1,7 @@
 import * as RadixSelect from "@radix-ui/react-select";
 import { ComponentProps, forwardRef, ReactNode } from "react";
 import { classNames } from "@rhinobase/utils";
-import { Button } from "../..";
+import { Button } from "../button";
 import React from "react";
 
 // Select Component

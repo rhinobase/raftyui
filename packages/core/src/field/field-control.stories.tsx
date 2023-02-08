@@ -1,8 +1,4 @@
-import { DevTool } from "@hookform/devtools";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
 import { HiCurrencyDollar, HiPlusCircle } from "react-icons/hi2";
-import * as z from "zod";
 import { Grid } from "@rhinobase/storybook/components";
 import {
   FieldControl,
@@ -13,7 +9,6 @@ import {
   InputField,
   Checkbox,
 } from "@rhinobase/ui";
-import { IFieldControl } from "./context";
 
 export default {
   title: "Forms/Field Control",
@@ -23,14 +18,19 @@ export default {
   },
 };
 
-export function Default(args: IFieldControl) {
+export function Default(args: FieldControl) {
   const form = useForm();
   return (
     <Grid>
       <FormProvider {...form}>
         <FieldControl {...args}>
           <FieldLabel>String Field</FieldLabel>
-          <FieldGroup prefixIcon={HiCurrencyDollar} prefix="INR" suffix="asd" suffixIcon={HiPlusCircle}>
+          <FieldGroup
+            prefixIcon={HiCurrencyDollar}
+            prefix="INR"
+            suffix="asd"
+            suffixIcon={HiPlusCircle}
+          >
             <InputField />
           </FieldGroup>
         </FieldControl>
@@ -53,7 +53,9 @@ Default.args = {
 };
 
 export function InvaildField(args: IFieldControl) {
-  const form = useForm({ resolver: zodResolver(z.object({ email: z.string().email() })) });
+  const form = useForm({
+    resolver: zodResolver(z.object({ email: z.string().email() })),
+  });
   return (
     <Grid>
       <form onSubmit={form.handleSubmit((values) => console.log(values))}>
