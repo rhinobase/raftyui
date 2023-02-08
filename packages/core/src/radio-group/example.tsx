@@ -1,5 +1,5 @@
 import React from "react";
-import { RadioGroup, Radio, CustomRadioBox } from "./Radio";
+import { RadioGroup, Radio, CustomRadioBox } from "./RadioGroup";
 
 const data = ["Red", "Green", "Blue"];
 

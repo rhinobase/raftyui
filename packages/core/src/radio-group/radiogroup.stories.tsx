@@ -1,9 +1,9 @@
 import { Grid } from "@rhinobase/docs/components";
 import React from "react";
-import { CustomRadioBox, Radio, RadioGroup } from "./Radio";
+import * as RadioGroup from "./RadioGroup";
 
 export default {
-  title: "New/Radio Group",
+  title: "New/RadioGroup",
   component: RadioGroup,
 };
 
@@ -12,13 +12,13 @@ const data = ["Red", "Green", "Blue"];
 export function Default() {
   return (
     <Grid>
-      <RadioGroup orientation="horizontal" defaultValue="red">
+      <RadioGroup.Root orientation="horizontal" defaultValue="red">
         {data.map((item, index) => (
-          <Radio value={item.toLowerCase()} id={String(index)}>
+          <RadioGroup.Item value={item.toLowerCase()} id={String(index)}>
             {item}
-          </Radio>
+          </RadioGroup.Item>
         ))}
-      </RadioGroup>
+      </RadioGroup.Root>
     </Grid>
   );
 }
@@ -26,17 +26,17 @@ export function Default() {
 export function Box() {
   return (
     <Grid>
-      <RadioGroup
+      <RadioGroup.Root
         orientation="horizontal"
         defaultValue="red"
         className="grid grid-cols-3 gap-2"
       >
         {data.map((item, index) => (
-          <CustomRadioBox value={item.toLowerCase()} id={String(index)}>
+          <RadioGroup.Box value={item.toLowerCase()} id={String(index)}>
             <label htmlFor={String(index)}>{item}</label>
-          </CustomRadioBox>
+          </RadioGroup.Box>
         ))}
-      </RadioGroup>
+      </RadioGroup.Root>
     </Grid>
   );
 }
@@ -44,17 +44,17 @@ export function Box() {
 export function VerticalBox() {
   return (
     <Grid>
-      <RadioGroup
+      <RadioGroup.Root
         orientation="vertical"
         defaultValue="red"
         className="grid grid-cols-1 gap-2"
       >
         {data.map((item, index) => (
-          <CustomRadioBox value={item.toLowerCase()} id={String(index)}>
+          <RadioGroup.Box value={item.toLowerCase()} id={String(index)}>
             <label htmlFor={String(index)}>{item}</label>
-          </CustomRadioBox>
+          </RadioGroup.Box>
         ))}
-      </RadioGroup>
+      </RadioGroup.Root>
     </Grid>
   );
 }

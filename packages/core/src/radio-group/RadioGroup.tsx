@@ -4,8 +4,8 @@ import { classNames } from "@rhinobase/utils";
 import React from "react";
 
 // RadioGroup Component
-export type RadioGroup = ComponentProps<(typeof RadioGroupPrimitives)["Root"]>;
-export const RadioGroup = forwardRef<HTMLDivElement, RadioGroup>(
+export type Root = ComponentProps<(typeof RadioGroupPrimitives)["Root"]>;
+export const Root = forwardRef<HTMLDivElement, Root>(
   (
     { className, disabled, children, orientation = "horizontal", ...props },
     forwardedRef
@@ -29,10 +29,10 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroup>(
 );
 
 // Radio Component (Indicator inside the Radio Component)
-export type Radio = ComponentProps<(typeof RadioGroupPrimitives)["Item"]>;
-export const Radio = forwardRef<
+export type Item = ComponentProps<(typeof RadioGroupPrimitives)["Item"]>;
+export const Item = forwardRef<
   HTMLButtonElement,
-  Radio & {
+  Item & {
     caption?: string;
     hide?: boolean;
     tooltip?: string;
@@ -52,7 +52,7 @@ export const Radio = forwardRef<
           disabled={isDisabled}
           ref={forwardedRef}
         >
-          <RadioGroupIndicator />
+          <Indicator />
         </RadioGroupPrimitives.Item>
         <div className="flex flex-col">
           <label
@@ -78,10 +78,8 @@ export const Radio = forwardRef<
 );
 
 // CustomRadioBox Component (we made it for major use in pricing page)
-export type CustomRadioBox = ComponentProps<
-  (typeof RadioGroupPrimitives)["Item"]
->;
-export const CustomRadioBox = forwardRef<HTMLButtonElement, CustomRadioBox>(
+export type Box = ComponentProps<(typeof RadioGroupPrimitives)["Item"]>;
+export const Box = forwardRef<HTMLButtonElement, Box>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <RadioGroupPrimitives.Item
@@ -99,10 +97,10 @@ export const CustomRadioBox = forwardRef<HTMLButtonElement, CustomRadioBox>(
 );
 
 // RadioIndicator Component (it is already used in Radio component of this file thats why we do not need to exported it)
-export type RadioIndicator = ComponentProps<
+export type Indicator = ComponentProps<
   (typeof RadioGroupPrimitives)["Indicator"]
 >;
-const RadioGroupIndicator = forwardRef<HTMLButtonElement, RadioIndicator>(
+const Indicator = forwardRef<HTMLButtonElement, Indicator>(
   ({ ...props }, forwardedRef) => {
     return (
       <RadioGroupPrimitives.Indicator
