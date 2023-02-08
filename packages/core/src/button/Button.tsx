@@ -18,7 +18,7 @@ export type ButtonBase = {
 export type Button = ButtonBase & Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
-  "flex whitespace-nowrap items-center justify-center text-sm font-medium h-max transition-all",
+  "flex whitespace-nowrap items-center justify-center font-medium h-max transition-all",
   {
     variants: {
       colorScheme: {
@@ -32,8 +32,8 @@ const buttonClasses = cva(
         ghost: "",
       },
       size: {
-        sm: "px-md py-xs leading-5 rounded-base" /* For backwards compatibility */,
-        base: "px-lg py-md rounded-md",
+        sm: "px-sm py-xs leading-5 rounded-base text-xs" /* For backwards compatibility */,
+        base: "px-lg py-md rounded-md text-sm",
         lg: "px-xl py-lg text-base leading-5 rounded-md",
         icon: "flex justify-center p-1.5 stroke-2 rounded-md",
         fab: "rounded-full p-1.5 stroke-2",
@@ -392,9 +392,21 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
           </>
         ) : (
           <>
-            {LeftIcon}
-            {props.children}
-            {RightIcon}
+            {LeftIcon && (
+              <div className="flex h-[20px] items-center justify-center">
+                {LeftIcon}
+              </div>
+            )}
+            <div
+              className={classNames(LeftIcon && "ml-1", RightIcon && "mr-1")}
+            >
+              {props.children}
+            </div>
+            {RightIcon && (
+              <div className="flex h-[20px] items-center justify-center">
+                {RightIcon}
+              </div>
+            )}
           </>
         )}
       </>
