@@ -14,7 +14,7 @@ module.exports = {
       resolve: {
         alias: [
           {
-            find: "@acme/core",
+            find: "@rhinobase/core",
             replacement: path.resolve(__dirname, "../../../packages/core/"),
           },
         ],

@@ -3,13 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "start-storybook -p 6011",
+    "dev": "concurrently \"npm run watch:*\"",
+    "watch:css": "npx tailwindcss -i ./styles/globals.css -o ./public/globals.css --watch",
+    "watch:storybook": "start-storybook dev -p 6011",
     "build": "build-storybook --docs",
     "preview-storybook": "serve storybook-static",
     "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
     "@rhinobase/core": "*",
+    "concurrently": "^7.6.0",
+    "postcss": "^8.4.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -23,6 +27,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "eslint-config-acme": "*",
     "serve": "^14.2.0",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.9.5",
     "vite": "^4.1.1"
   }
