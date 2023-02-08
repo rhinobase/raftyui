@@ -70,12 +70,12 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
         >
           {children}
           <>
-            {OpenIcon && typeof OpenIcon == "function" && (
+            {OpenIcon && (
               <span className="hidden stroke-1 group-data-[state=open]:block">
                 {OpenIcon}
               </span>
             )}
-            {CloseIcon && typeof CloseIcon == "function" && (
+            {CloseIcon && (
               <span className="stroke-1 group-data-[state=close]:block group-data-[state=open]:hidden">
                 {CloseIcon}
               </span>
@@ -87,7 +87,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                className="transform stroke-1 duration-200 group-data-[state=open]:rotate-180 group-data-[state=open]:transform"
+                className="h-6 w-6 transform stroke-2 duration-200 group-data-[state=open]:rotate-180 group-data-[state=open]:transform"
               >
                 <path
                   stroke-linecap="round"

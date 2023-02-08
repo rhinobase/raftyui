@@ -25,11 +25,7 @@ export function Default() {
 
         <h4>Input Field isInvalid</h4>
 
-        <InputField placeholder="Enter Text" />
-
-        <h4>Input Field isRequired</h4>
-
-        <InputField placeholder="Enter Text" />
+        <InputField placeholder="Enter Text" invalid />
       </div>
     </Grid>
   );

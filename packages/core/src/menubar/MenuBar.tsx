@@ -197,7 +197,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
+          "rounded-base py-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
           className
         )}
       >
@@ -209,7 +209,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6 Stroke-1"
+            className="Stroke-2 h-3 w-3"
           >
             <path
               stroke-linecap="round"

@@ -13,14 +13,14 @@ export function Default() {
   return (
     <Grid>
       <Menu.Root>
-        <Menu.Trigger>
+        <Menu.Trigger size="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="h-6 w-6"
           >
             <path
               stroke-linecap="round"
@@ -47,14 +47,14 @@ export function AllFeatures() {
   return (
     <Grid>
       <Menu.Root>
-        <Menu.Trigger>
+        <Menu.Trigger size="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="h-6 w-6"
           >
             <path
               stroke-linecap="round"
@@ -74,7 +74,7 @@ export function AllFeatures() {
               More Tools{" "}
             </Menu.SubTrigger>
             <Menu.SubContent>
-              <Menu.Item>
+              <Menu.Item className="justify-between">
                 Save Page As… <div className="RightSlot">⌘+S</div>
               </Menu.Item>
               <Menu.Item>Create Shortcut…</Menu.Item>
@@ -125,14 +125,14 @@ export function CheckableOptions() {
   return (
     <Grid>
       <Menu.Root>
-        <Menu.Trigger>
+        <Menu.Trigger size="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="h-6 w-6"
           >
             <path
               stroke-linecap="round"
@@ -177,23 +177,21 @@ export function RadioOptions() {
   return (
     <Grid>
       <Menu.Root>
-        <Menu.Trigger asChild>
-          <Button size="icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </Button>
+        <Menu.Trigger size="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
         </Menu.Trigger>
         <Menu.Content>
           <Menu.RadioGroup value={order} onValueChange={setOrder}>
@@ -211,23 +209,21 @@ export function SubMenus() {
   return (
     <Grid>
       <Menu.Root>
-        <Menu.Trigger asChild>
-          <Button size="icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </Button>
+        <Menu.Trigger size="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
         </Menu.Trigger>
         <Menu.Content>
           <Menu.Group title="order">
@@ -238,22 +234,6 @@ export function SubMenus() {
           <Menu.Sub>
             <Menu.SubTrigger style={{ justifyContent: "space-between" }}>
               More Tools{" "}
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                  />
-                </svg>
-              </span>
             </Menu.SubTrigger>
 
             <Menu.SubContent>

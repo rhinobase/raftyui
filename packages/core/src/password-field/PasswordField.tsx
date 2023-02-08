@@ -1,7 +1,7 @@
 import React from "react";
 import { forwardRef } from "react";
 import { Button } from "../button";
-import { useBoolean } from "@rhinobase/utils";
+import { classNames, useBoolean } from "@rhinobase/utils";
 
 // PasswordField Component
 export type PasswordField = JSX.IntrinsicElements["input"];
@@ -15,14 +15,20 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
           type={showPassword ? "text" : "password"}
           autoComplete="password"
           {...props}
-          className="focus:border-primary-500 focus:ring-primary-500 block w-full appearance-none rounded-md border border-secondary-300 bg-transparent px-md py-base placeholder-secondary-400 shadow-sm focus:outline-none focus:ring-2 dark:border-secondary-700 dark:text-secondary-200 dark:focus:ring-secondary-300"
+          className={classNames(
+            "px-lg py-base dark:text-secondary-200 block w-full appearance-none rounded-md border bg-transparent shadow-sm autofill:bg-transparent dark:border-zinc-700",
+            "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
+            "read-only:focus:ring-0",
+            "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+            props.className
+          )}
           ref={forwardedRef}
         />
         <Button
           size="sm"
           aria-label="show and hide password"
           variant="ghost"
-          className="absolute right-1 m-1 !px-base"
+          className="!px-base absolute right-1 m-1"
           onClick={toggle}
         >
           {showPassword ? (
@@ -32,7 +38,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="w-6 h-6"
+              className="h-4 w-4 stroke-2"
             >
               <path
                 stroke-linecap="round"
@@ -47,7 +53,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="w-6 h-6"
+              className="h-4 w-4 stroke-2"
             >
               <path
                 stroke-linecap="round"
