@@ -4,7 +4,10 @@
   "commit": false,
   "fixed": [],
   "linked": [],
-  "access": "public",
+  "access": "restricted",
+  "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@acme/docs"]
+  "ignore": [
+    "@rhinobase/docs"
+  ]
 }
