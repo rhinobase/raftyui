@@ -177,3 +177,10 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
     );
   }
 );
+
+export type Close = ComponentProps<(typeof DialogPrimitive)["Close"]>;
+export const Close = forwardRef<HTMLButtonElement, Close>(
+  ({ children, ...props }, forwardedRef) => {
+    return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
+  }
+);
