@@ -8,7 +8,7 @@ export type Root = ComponentProps<(typeof RadioGroupPrimitives)["Root"]>;
 export const Root = forwardRef<HTMLDivElement, Root>(
   (
     { className, disabled, children, orientation = "horizontal", ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <RadioGroupPrimitives.Root
@@ -16,7 +16,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
           orientation == "vertical" ? "flex-col" : "flex-row",
           "dark:text-secondary-100 flex gap-3",
           "data-[disabled]:text-secondary-400",
-          className
+          className,
         )}
         {...props}
         disabled={disabled}
@@ -25,7 +25,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
         {children}
       </RadioGroupPrimitives.Root>
     );
-  }
+  },
 );
 
 // Radio Component (Indicator inside the Radio Component)
@@ -41,7 +41,7 @@ export const Item = forwardRef<
 >(
   (
     { children, caption, hide, tooltip, isDisabled, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <div className={classNames(hide && "hidden", "flex gap-1")}>
@@ -60,7 +60,7 @@ export const Item = forwardRef<
               isDisabled && "text-secondary-400 cursor-not-allowed",
               tooltip &&
                 "border-b-secondary-300 dark:border-secondary-500 border-b border-dashed",
-              "text-sm"
+              "text-sm",
             )}
             htmlFor={props.value}
           >
@@ -74,7 +74,7 @@ export const Item = forwardRef<
         </div>
       </div>
     );
-  }
+  },
 );
 
 // CustomRadioBox Component (we made it for major use in pricing page)
@@ -85,7 +85,7 @@ export const Box = forwardRef<HTMLButtonElement, Box>(
       <RadioGroupPrimitives.Item
         className={classNames(
           "data-[state=checked]:ring-primary-500 hover:bg-secondary-100 data-[disabled]:bg-secondary-100 dark:border-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[disabled]:bg-secondary-800 p-md w-full rounded-md border data-[disabled]:cursor-not-allowed data-[state=checked]:ring-2",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -93,7 +93,7 @@ export const Box = forwardRef<HTMLButtonElement, Box>(
         {children}
       </RadioGroupPrimitives.Item>
     );
-  }
+  },
 );
 
 // RadioIndicator Component (it is already used in Radio component of this file thats why we do not need to exported it)
@@ -109,5 +109,5 @@ const Indicator = forwardRef<HTMLButtonElement, Indicator>(
         ref={forwardedRef}
       />
     );
-  }
+  },
 );

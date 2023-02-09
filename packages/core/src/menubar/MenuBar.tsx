@@ -16,7 +16,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
         {children}
       </MenubarPrimitive.Root>
     );
-  }
+  },
 );
 
 //MenuBar Menu Component
@@ -24,7 +24,7 @@ type Menu = ComponentProps<(typeof MenubarPrimitive)["Menu"]>;
 export const Menu = forwardRef<HTMLDivElement, Menu>(
   ({ children, ...props }) => {
     return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
-  }
+  },
 );
 
 //MenuBar Button Component
@@ -35,7 +35,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
       <MenubarPrimitive.Trigger
         className={classNames(
           "py-base px-lg hover:bg-secondary-200 data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-medium outline-none",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -43,7 +43,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
         {children}
       </MenubarPrimitive.Trigger>
     );
-  }
+  },
 );
 
 //MenuBarContent Component
@@ -56,7 +56,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         <MenubarPrimitive.Content
           className={classNames(
             "p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-            className
+            className,
           )}
           {...props}
           sideOffset={5}
@@ -66,7 +66,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         </MenubarPrimitive.Content>
       </MenubarPrimitive.Portal>
     );
-  }
+  },
 );
 
 // MenuGroup Component
@@ -88,7 +88,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
       <MenubarPrimitive.Label
         className={classNames(
           "px-lg py-base text-secondary-400 dark:text-secondary-400 select-none text-[11px] font-semibold uppercase tracking-wider",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -96,7 +96,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
         {children}
       </MenubarPrimitive.Label>
     );
-  }
+  },
 );
 
 //MenuBar Item Component
@@ -107,7 +107,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
       <MenubarPrimitive.Item
         className={classNames(
           "rounded-base py-base px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -115,7 +115,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
         {children}
       </MenubarPrimitive.Item>
     );
-  }
+  },
 );
 
 //MenuBar ChechboxGroup Component
@@ -149,7 +149,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
         </MenubarPrimitive.ItemIndicator>
       </MenubarPrimitive.CheckboxItem>
     );
-  }
+  },
 );
 
 //MenuBar RadioGroup Component
@@ -179,7 +179,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
         </MenubarPrimitive.ItemIndicator>
       </MenubarPrimitive.RadioItem>
     );
-  }
+  },
 );
 
 //MenuBar SubMenu Component
@@ -198,7 +198,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         ref={forwardedRef}
         className={classNames(
           "rounded-base py-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
-          className
+          className,
         )}
       >
         {children}
@@ -220,7 +220,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         </span>
       </MenubarPrimitive.SubTrigger>
     );
-  }
+  },
 );
 
 //MenuBar SubContent Component
@@ -234,7 +234,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
           className={classNames(
             "data-[side=right]:animate-scale-in origin-top-left",
             "p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-            className
+            className,
           )}
           {...props}
           ref={forwardedRef}
@@ -244,7 +244,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
         </MenubarPrimitive.SubContent>
       </MenubarPrimitive.Portal>
     );
-  }
+  },
 );
 
 // MenuBarDivider Component
@@ -257,9 +257,9 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
         ref={forwardedRef}
         className={classNames(
           "bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]",
-          className
+          className,
         )}
       />
     );
-  }
+  },
 );

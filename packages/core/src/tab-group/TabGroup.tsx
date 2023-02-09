@@ -9,7 +9,7 @@ export type Root = ComponentProps<(typeof TabsPrimitive)["Root"]>;
 export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
   (
     { children, className, size = "md", variant = "line", ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <TabProvider value={{ size, variant }}>
@@ -22,7 +22,7 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
         </TabsPrimitive.Root>
       </TabProvider>
     );
-  }
+  },
 );
 
 // List Component
@@ -33,7 +33,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
       <TabsPrimitive.List
         className={classNames(
           "dark:divide-secondary-700 dark:border-secondary-700 flex w-full items-center divide-x overflow-hidden rounded-md border",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -41,7 +41,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
         {children}
       </TabsPrimitive.List>
     );
-  }
+  },
 );
 
 // Tab Component
@@ -57,7 +57,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
           size == "md" && "px-lg py-base",
           size == "lg" && "px-lg py-md text-lg",
           "data-[state=active]:bg-secondary-200 dark:text-secondary-200 data-[state=active]:dark:bg-secondary-800 flex w-full items-center justify-center font-medium transition-all",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -65,5 +65,5 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
         {children}
       </TabsPrimitive.Trigger>
     );
-  }
+  },
 );

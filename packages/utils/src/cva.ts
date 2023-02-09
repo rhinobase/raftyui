@@ -1,5 +1,7 @@
 type ValidVariantTypes = string | number | null | boolean | undefined;
-type Variants = Record<string, ValidVariantTypes | ValidVariantTypes[]> & { className: string };
+type Variants = Record<string, ValidVariantTypes | ValidVariantTypes[]> & {
+  className: string;
+};
 
 /**
  * Lets you use arrays for variants as well. This util combines all possible
@@ -7,8 +9,12 @@ type Variants = Record<string, ValidVariantTypes | ValidVariantTypes[]> & { clas
  * spread this in the compoundVariants.
  */
 export const applyStyleToMultipleVariants = (variants: Variants) => {
-  const allKeysThatAreArrays = Object.keys(variants).filter((key) => Array.isArray(variants[key]));
-  const allKeysThatAreNotArrays = Object.keys(variants).filter((key) => !Array.isArray(variants[key]));
+  const allKeysThatAreArrays = Object.keys(variants).filter((key) =>
+    Array.isArray(variants[key]),
+  );
+  const allKeysThatAreNotArrays = Object.keys(variants).filter(
+    (key) => !Array.isArray(variants[key]),
+  );
   // Creates an object of all static options, ready to be merged in later with the array values.
   const nonArrayOptions = allKeysThatAreNotArrays.reduce((acc, key) => {
     return { ...acc, [key]: variants[key] };
@@ -24,7 +30,7 @@ export const applyStyleToMultipleVariants = (variants: Variants) => {
   //   { color: "red", size: "medium" },
   // ]
   const cartesianProductOfAllArrays = cartesianProduct(
-    allKeysThatAreArrays.map((key) => variants[key]) as ValidVariantTypes[][]
+    allKeysThatAreArrays.map((key) => variants[key]) as ValidVariantTypes[][],
   );
 
   return cartesianProductOfAllArrays.map((variant) => {
@@ -56,6 +62,7 @@ export const applyStyleToMultipleVariants = (variants: Variants) => {
  */
 export const cartesianProduct = <T extends ValidVariantTypes>(sets: T[][]) =>
   sets.reduce<T[][]>(
-    (accSets, set) => accSets.flatMap((accSet) => set.map((value) => [...accSet, value])),
-    [[]]
+    (accSets, set) =>
+      accSets.flatMap((accSet) => set.map((value) => [...accSet, value])),
+    [[]],
   );

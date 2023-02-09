@@ -21,7 +21,7 @@ export const Table = forwardRef<
           size == "md" && "p-xl",
           size == "lg" && "p-3xl",
           "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
-          props.className
+          props.className,
         )}
         ref={forwardedRef}
       >
@@ -40,14 +40,14 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
         {...props}
         className={classNames(
           "dark:bg-secondary-700/40 bg-white",
-          props.className
+          props.className,
         )}
         ref={forwardedRef}
       >
         {children}
       </tbody>
     );
-  }
+  },
 );
 
 // TableContainer Component
@@ -58,13 +58,13 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
       {...props}
       className={classNames(
         "dark:ring-secondary-700 mx-auto inline-block w-full overflow-hidden rounded-lg align-middle shadow ring-1 ring-black ring-opacity-5",
-        props.className
+        props.className,
       )}
       ref={forwardedRef}
     >
       {children}
     </div>
-  )
+  ),
 );
 
 // TableFooter Component (Used in Table Component)
@@ -80,14 +80,14 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
           size == "md" && "px-xl py-lg",
           size == "lg" && "px-3xl py-2xl",
           "bg-secondary-100 text-secondary-500 dark:bg-secondary-700/80 dark:text-secondary-300 text-sm font-semibold",
-          props.className
+          props.className,
         )}
         ref={forwardedRef}
       >
         {children}
       </tfoot>
     );
-  }
+  },
 );
 
 // TableHead Component (Used in Table Component)
@@ -98,13 +98,13 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
       {...props}
       className={classNames(
         "bg-secondary-100 dark:bg-secondary-700/80",
-        props.className
+        props.className,
       )}
       ref={forwardedRef}
     >
       {children}
     </thead>
-  )
+  ),
 );
 
 // Td Component (Used in Table Component)
@@ -125,14 +125,14 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
           size == "md" && "px-xl py-lg",
           size == "lg" && "px-3xl py-2xl",
           "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
-          props.className
+          props.className,
         )}
         ref={forwardedRef}
       >
         {children}
       </td>
     );
-  }
+  },
 );
 
 // Th Component (Used in Table Component)
@@ -153,14 +153,14 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
           size == "md" && "px-xl py-lg",
           size == "lg" && "px-3xl py-2xl",
           "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
-          props.className
+          props.className,
         )}
         ref={forwardedRef}
       >
         {children}
       </th>
     );
-  }
+  },
 );
 
 // Tr Component (Used in Table Component)
@@ -171,11 +171,11 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
       {...props}
       className={classNames(
         "even:bg-secondary-100 dark:even:bg-secondary-700/50",
-        props.className
+        props.className,
       )}
       ref={forwardedRef}
     >
       {children}
     </tr>
-  )
+  ),
 );

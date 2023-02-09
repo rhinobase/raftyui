@@ -19,11 +19,11 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
               "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:focus:!ring-error-100/20",
             props.required &&
               "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:focus:!ring-error-100/20",
-            className
+            className,
           )}
           ref={forwardedRef}
         />
       </>
     );
-  }
+  },
 );

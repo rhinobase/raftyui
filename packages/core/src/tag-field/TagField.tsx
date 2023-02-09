@@ -22,7 +22,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
                   ...data
                     .split(/[ ,.]+/)
                     .filter(
-                      (word) => word.length != 0 && !"[]()./".includes(word)
+                      (word) => word.length != 0 && !"[]()./".includes(word),
                     )
                     .map((word) => word.toLowerCase()),
                 ]),
@@ -37,7 +37,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
             "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-500/30 dark:focus:border-primary-300 focus:outline-none focus:ring-2",
             "read-only:focus:ring-0",
             "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
-            className
+            className,
           )}
           ref={forwardedRef}
         />
@@ -54,7 +54,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
                   setTag((prev) => {
                     prev.splice(
                       prev.findIndex((item) => item == value),
-                      1
+                      1,
                     );
                     return [...prev];
                   });
@@ -78,5 +78,5 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
         </div>
       </>
     );
-  }
+  },
 );

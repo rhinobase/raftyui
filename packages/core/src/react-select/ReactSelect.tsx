@@ -81,7 +81,7 @@ export function ReactSelect({
             state.isFocused
               ? "ring-2 border-primary-500 ring-primary-100/10"
               : "dark:border-secondary-700",
-            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-md border z-1 !min-h-[30px] md:!min-h-[42px]"
+            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-md border z-1 !min-h-[30px] md:!min-h-[42px]",
           ),
         menu: () =>
           "dark:bg-secondary-800 bg-white rounded-md shadow-xl py-base px-base border-0 w-full absolute mt-1",
@@ -98,7 +98,7 @@ export function ReactSelect({
           classNames(
             state.isFocused && "bg-secondary-200/60 dark:bg-secondary-700/50",
             state.isSelected && "bg-secondary-200/60 dark:bg-secondary-700/50",
-            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-base font-medium"
+            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-base font-medium",
           ),
       }}
     />

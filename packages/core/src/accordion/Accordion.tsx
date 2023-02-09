@@ -23,7 +23,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
         {children}
       </DisclosurePrimitive.Root>
     </AccordionProvider>
-  )
+  ),
 );
 
 //AccordionItemComponent
@@ -40,7 +40,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
         {children}
       </DisclosurePrimitive.Item>
     );
-  }
+  },
 );
 
 //AccordionTriggerComponent
@@ -52,7 +52,7 @@ type Trigger = AccordionContext &
 export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   (
     { children, className, openIcon: OpenIcon, closeIcon: CloseIcon, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { size } = useAccordionContext();
     return (
@@ -63,7 +63,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
             size == "md" && "px-lg py-md",
             size == "lg" && "px-lg py-lg text-lg",
             "text-secondary-700 hover:bg-secondary-50/80 dark:text-secondary-300 dark:hover:bg-secondary-800/20 group flex w-full items-center justify-between font-medium transition-all",
-            className
+            className,
           )}
           {...props}
           ref={forwardedRef}
@@ -100,7 +100,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
         </DisclosurePrimitive.Trigger>
       </DisclosurePrimitive.Header>
     );
-  }
+  },
 );
 
 //AccordionContentComponent
@@ -116,7 +116,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           size == "md" && "px-lg pt-md pb-xl",
           size == "lg" && "px-lg pt-md pb-xl",
           "dark:text-secondary-100 w-full",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -125,5 +125,5 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         {children}
       </DisclosurePrimitive.Content>
     );
-  }
+  },
 );

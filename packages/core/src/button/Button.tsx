@@ -334,7 +334,7 @@ const buttonClasses = cva(
       variant: "solid",
       size: "base",
     },
-  }
+  },
 );
 
 export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
@@ -349,7 +349,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
       loadingText,
       ...props
     }: Button,
-    forwardedRef
+    forwardedRef,
   ) {
     const {
       leftIcon: LeftIcon,
@@ -375,7 +375,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
             disabled: props.disabled,
             active,
           }),
-          props.className
+          props.className,
         ),
         // if we click a disabled button, we prevent going through the click handler
         onClick: disabled
@@ -413,11 +413,11 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
             )}
           </>
         )}
-      </>
+      </>,
     );
 
     return <Wrapper tooltip={props.tooltip}>{element}</Wrapper>;
-  }
+  },
 );
 
 const Wrapper = ({

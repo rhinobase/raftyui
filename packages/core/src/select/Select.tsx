@@ -9,7 +9,7 @@ export type Root = ComponentProps<(typeof RadixSelect)["Root"]>;
 export const Root = forwardRef<HTMLDivElement, Root>(
   ({ children, ...props }, forwardedRef) => (
     <RadixSelect.Root {...props}>{children}</RadixSelect.Root>
-  )
+  ),
 );
 
 // Trigger Component (Value, Icon Component inside SelectButton Component )
@@ -22,7 +22,7 @@ export type Trigger = ComponentProps<(typeof RadixSelect)["Trigger"]> & {
 export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
   (
     { className, children, variant, size, placeholder, icon, ...props },
-    forwardedRef
+    forwardedRef,
   ) => (
     <RadixSelect.Trigger {...props} ref={forwardedRef} asChild>
       <Button
@@ -34,7 +34,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
         <Value placeholder={placeholder} />
       </Button>
     </RadixSelect.Trigger>
-  )
+  ),
 );
 
 // Content Component (ScrollUpButton, ScrollDownButton, Viewport Component inside Content Component)
@@ -46,7 +46,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
       <Viewport>{children}</Viewport>
       <ScrollDownButton />
     </RadixSelect.Content>
-  )
+  ),
 );
 
 // Group Component
@@ -60,7 +60,7 @@ export const Group = forwardRef<HTMLDivElement, Group>(
     >
       {children}
     </RadixSelect.Group>
-  )
+  ),
 );
 
 // Item Component
@@ -74,13 +74,13 @@ export const Item = forwardRef<HTMLDivElement, Item>(
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent dark:data-[disabled]:hover:bg-transparent",
         "data-[state=checked]:bg-secondary-200/60 dark:data-[state=checked]:bg-secondary-700/70",
         "select-none focus:outline-none",
-        className
+        className,
       )}
       ref={forwardedRef}
     >
       <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
     </RadixSelect.Item>
-  )
+  ),
 );
 
 // SelectSeparator Component
@@ -91,11 +91,11 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
       {...props}
       className={classNames(
         "bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]",
-        className
+        className,
       )}
       ref={forwardedRef}
     />
-  )
+  ),
 );
 
 // Value Component
@@ -127,7 +127,7 @@ const Icon = forwardRef<HTMLDivElement, Icon>(
         </svg>
       )}
     </RadixSelect.Icon>
-  )
+  ),
 );
 
 // ScrollUpButton Component
@@ -143,7 +143,7 @@ const ScrollUpButton = forwardRef<HTMLDivElement, ScrollUpButton>(
           ? className
           : classNames(
               "text-secondary-700 dark:text-secondary-300 flex items-center justify-center",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -163,7 +163,7 @@ const ScrollUpButton = forwardRef<HTMLDivElement, ScrollUpButton>(
         />
       </svg>
     </RadixSelect.ScrollUpButton>
-  )
+  ),
 );
 
 //ScrollDownButton Component
@@ -179,7 +179,7 @@ const ScrollDownButton = forwardRef<HTMLDivElement, ScrollDownButton>(
           ? className
           : classNames(
               "text-secondary-700 dark:text-secondary-300 flex items-center justify-center",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -199,7 +199,7 @@ const ScrollDownButton = forwardRef<HTMLDivElement, ScrollDownButton>(
         />
       </svg>
     </RadixSelect.ScrollDownButton>
-  )
+  ),
 );
 
 // Viewport Component
@@ -213,12 +213,12 @@ const Viewport = forwardRef<HTMLDivElement, Viewport>(
           ? className
           : classNames(
               "dark:bg-secondary-800 p-md rounded-lg bg-white shadow-lg",
-              className
+              className,
             )
       }
       ref={forwardedRef}
     >
       {children}
     </RadixSelect.Viewport>
-  )
+  ),
 );

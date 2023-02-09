@@ -22,7 +22,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
       loading = undefined,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => (
     <DropdownMenu.Trigger {...props} ref={forwardedRef} asChild>
       <Button
@@ -38,7 +38,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
         {children}
       </Button>
     </DropdownMenu.Trigger>
-  )
+  ),
 );
 
 //MenuContent Component
@@ -53,7 +53,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
             "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
             "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
             "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col gap-1 rounded-md bg-white text-sm text-gray-900 focus:outline-none",
-            props.className
+            props.className,
           )}
           ref={forwardedRef}
         >
@@ -62,7 +62,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     );
-  }
+  },
 );
 
 // MenuGroup Component
@@ -87,7 +87,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
     >
       {children}
     </DropdownMenu.Label>
-  )
+  ),
 );
 
 // MenuItem Component
@@ -97,14 +97,14 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     <DropdownMenu.Item
       className={classNames(
         "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-base pl-2xl pr-md flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-        className
+        className,
       )}
       {...props}
       ref={forwardedRef}
     >
       {children}
     </DropdownMenu.Item>
-  )
+  ),
 );
 
 // MenuCheckboxGroup Component
@@ -139,7 +139,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
         </DropdownMenu.ItemIndicator>
       </DropdownMenu.CheckboxItem>
     );
-  }
+  },
 );
 
 // MenuRadioGroup Component
@@ -170,7 +170,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
         </DropdownMenu.ItemIndicator>
       </DropdownMenu.RadioItem>
     );
-  }
+  },
 );
 
 // SubMenuComponent
@@ -178,7 +178,7 @@ type Sub = ComponentProps<(typeof DropdownMenu)["Sub"]>;
 export const Sub = forwardRef<HTMLDivElement, Sub>(
   ({ children, ...props }, forwardedRef) => {
     return <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>;
-  }
+  },
 );
 
 // SubMenuButton Component
@@ -191,7 +191,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         ref={forwardedRef}
         className={classNames(
           "rounded-base py-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
-          className
+          className,
         )}
       >
         {children}
@@ -213,7 +213,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         </span>
       </DropdownMenu.SubTrigger>
     );
-  }
+  },
 );
 
 // SubMenuContent Component
@@ -228,7 +228,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
             "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
             "data-[side=right]:animate-scale-in origin-top-left",
             "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col gap-1 rounded-md bg-white text-[13px] text-gray-900 focus:outline-none",
-            props.className
+            props.className,
           )}
           ref={forwardedRef}
           sideOffset={10}
@@ -237,7 +237,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
         </DropdownMenu.SubContent>
       </DropdownMenu.Portal>
     );
-  }
+  },
 );
 
 // MenuDivider Component
@@ -250,11 +250,11 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
         ref={forwardedRef}
         className={classNames(
           "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
-          className
+          className,
         )}
       />
     );
-  }
+  },
 );
 
 // MenuArrow Component
@@ -266,5 +266,5 @@ const Arrow = forwardRef<HTMLDivElement, DropdownMenu.DropdownMenuArrowProps>(
         className="dark:fill-secondary-800 fill-white"
       ></DropdownMenu.Arrow>
     );
-  }
+  },
 );

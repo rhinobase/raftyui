@@ -1,4 +1,7 @@
-import { createContext as createReactContext, useContext as useReactContext } from "react";
+import {
+  createContext as createReactContext,
+  useContext as useReactContext,
+} from "react";
 
 export interface CreateContextOptions<T> {
   strict?: boolean;
@@ -9,14 +12,24 @@ export interface CreateContextOptions<T> {
   defaultValue?: T;
 }
 
-export type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>];
+export type CreateContextReturn<T> = [
+  React.Provider<T>,
+  () => T,
+  React.Context<T>,
+];
 
 function getErrorMessage(hook: string, provider: string) {
   return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
 }
 
 export function createContext<T>(options: CreateContextOptions<T> = {}) {
-  const { name, strict = true, hookName = "useContext", providerName = "Provider", errorMessage } = options;
+  const {
+    name,
+    strict = true,
+    hookName = "useContext",
+    providerName = "Provider",
+    errorMessage,
+  } = options;
 
   const Context = createReactContext<T | undefined>(undefined);
 
@@ -26,7 +39,9 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     const context = useReactContext(Context);
 
     if (!context && strict) {
-      const error = new Error(errorMessage ?? getErrorMessage(hookName, providerName));
+      const error = new Error(
+        errorMessage ?? getErrorMessage(hookName, providerName),
+      );
       error.name = "ContextError";
       Error.captureStackTrace?.(error, useContext);
       throw error;

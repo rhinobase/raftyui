@@ -12,7 +12,7 @@ export const Root = forwardRef<HTMLDivElement, DialogContext & Root>(
       {/* TODO: Add reference to the below element */}
       <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
     </DialogProvider>
-  )
+  ),
 );
 
 // Dialog Button Component
@@ -34,7 +34,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
       active = undefined,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -52,7 +52,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
         </Button>
       </DialogPrimitive.Trigger>
     );
-  }
+  },
 );
 
 export type Overlay = ComponentProps<(typeof DialogPrimitive)["Overlay"]>;
@@ -63,12 +63,12 @@ export const Overlay = forwardRef<HTMLDivElement, Overlay>(
         {...props}
         className={classNames(
           "animate-slide-down-fade fixed inset-0 z-40 h-full w-full cursor-zoom-out bg-black/40 transition-opacity ease-in-out dark:bg-opacity-40",
-          className
+          className,
         )}
         ref={forwardedRef}
       ></DialogPrimitive.Overlay>
     );
-  }
+  },
 );
 
 // Dialog Content Component
@@ -93,7 +93,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
             size == "md" && "p-4xl max-w-[40rem]",
             size == "sm" && "p-3xl max-w-[30rem]",
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
-            props.className
+            props.className,
           )}
           ref={forwardedRef}
         >
@@ -101,7 +101,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     );
-  }
+  },
 );
 
 // Dialog Title Component
@@ -117,14 +117,14 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
           size == "lg" && "text-xl",
           size == "md" && "text-xl",
           size == "sm" && "text-lg",
-          "mb-2 font-semibold"
+          "mb-2 font-semibold",
         )}
         ref={forwardedRef}
       >
         {children}
       </DialogPrimitive.Title>
     );
-  }
+  },
 );
 
 // Dialog Body Component
@@ -138,7 +138,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
         <div className={className}>{children}</div>
       </DialogPrimitive.Description>
     );
-  }
+  },
 );
 
 // Dialog Cross Button Component
@@ -155,7 +155,7 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
           {...props}
           className={classNames(
             "absolute top-5 right-5 rounded-full",
-            className
+            className,
           )}
         >
           <svg
@@ -175,12 +175,12 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
         </Button>
       </DialogPrimitive.Close>
     );
-  }
+  },
 );
 
 export type Close = ComponentProps<(typeof DialogPrimitive)["Close"]>;
 export const Close = forwardRef<HTMLButtonElement, Close>(
   ({ children, ...props }, forwardedRef) => {
     return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
-  }
+  },
 );
