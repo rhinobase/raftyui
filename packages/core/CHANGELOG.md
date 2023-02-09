@@ -4,7 +4,8 @@
 
 ### Patch Changes
 
-- Corrected the tailwindcss problem
+-[x] Improved Dialog, React Select, Input and Password Field.
+-[x] Added Textarea and Tag Field
 
 ## 0.1.1
 
