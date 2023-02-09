@@ -35,3 +35,4 @@ export * as ToggleGroup from "./toggle-group";
 export { Tooltip } from "./tooltip";
 export { TagField } from "./tag-field";
 export { Textarea } from "./textarea";
+export { UploadField } from "./upload-field";
