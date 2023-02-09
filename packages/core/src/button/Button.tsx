@@ -18,16 +18,16 @@ export type ButtonBase = {
 export type Button = ButtonBase & Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
-  "flex whitespace-nowrap items-center justify-center font-medium h-max transition-all border",
+  "flex whitespace-nowrap items-center justify-center font-medium h-max transition-all border data-[hidden=true]:hidden",
   {
     variants: {
       colorScheme: {
         primary: "",
-        secondary: "text-secondary-600 dark:text-secondary-200",
+        secondary: "",
         error: "",
       },
       variant: {
-        solid: "text-white dark:text-black",
+        solid: "",
         outline: "",
         ghost: "",
       },
@@ -49,6 +49,17 @@ const buttonClasses = cva(
       },
     },
     compoundVariants: [
+      //
+      ...applyStyleToMultipleVariants({
+        colorScheme: "secondary",
+        variant: ["solid", "outline", "ghost"],
+        className: "text-secondary-600 dark:text-secondary-200",
+      }),
+      ...applyStyleToMultipleVariants({
+        colorScheme: ["primary", "error"],
+        variant: "solid",
+        className: "text-white dark:text-black",
+      }),
       // Primary Solid
       {
         disabled: true,
@@ -337,36 +348,38 @@ const buttonClasses = cva(
   },
 );
 
-export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
-  function Button(
-    {
-      loading = false,
-      active = false,
-      colorScheme = "secondary",
-      variant = "solid",
-      size = "base",
-      type = "button",
-      loadingText,
-      ...props
-    }: Button,
-    forwardedRef,
-  ) {
-    const {
-      leftIcon: LeftIcon,
-      rightIcon: RightIcon,
-      shallow,
-      // attributes propagated from `HTMLAnchorProps` or `HTMLButtonProps`
-      ...passThroughProps
-    } = props;
-    // Buttons are **always** disabled if we're in a `loading` state
-    const disabled = props.disabled || loading;
-    const element = createElement(
-      "button",
-      {
-        ...passThroughProps,
-        disabled,
-        ref: forwardedRef,
-        className: classNames(
+export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
+  {
+    loading = false,
+    active = false,
+    colorScheme = "secondary",
+    variant = "solid",
+    size = "base",
+    type = "button",
+    loadingText,
+    hidden,
+    ...props
+  }: Button,
+  forwardedRef,
+) {
+  const {
+    leftIcon: LeftIcon,
+    rightIcon: RightIcon,
+    shallow,
+    // attributes propagated from `HTMLAnchorProps` or `HTMLButtonProps`
+    ...passThroughProps
+  } = props;
+  // Buttons are **always** disabled if we're in a `loading` state
+  const disabled = props.disabled || loading;
+
+  return (
+    <Wrapper tooltip={props.tooltip}>
+      <button
+        data-hidden={hidden}
+        {...passThroughProps}
+        disabled={disabled ?? undefined}
+        ref={forwardedRef}
+        className={classNames(
           buttonClasses({
             colorScheme,
             variant,
@@ -376,15 +389,16 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
             active,
           }),
           props.className,
-        ),
+        )}
         // if we click a disabled button, we prevent going through the click handler
-        onClick: disabled
-          ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-              e.preventDefault();
-            }
-          : props.onClick,
-      },
-      <>
+        onClick={
+          disabled
+            ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+                e.preventDefault();
+              }
+            : props.onClick
+        }
+      >
         {loading ? (
           <>
             <Spinner inheritParent className="mr-2" size="sm" />
@@ -401,7 +415,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
               className={classNames(
                 LeftIcon && "ml-1",
                 RightIcon && "mr-1",
-                "w-full"
+                "w-full",
               )}
             >
               {props.children}
@@ -413,12 +427,10 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
             )}
           </>
         )}
-      </>,
-    );
-
-    return <Wrapper tooltip={props.tooltip}>{element}</Wrapper>;
-  },
-);
+      </button>
+    </Wrapper>
+  );
+});
 
 const Wrapper = ({
   children,
