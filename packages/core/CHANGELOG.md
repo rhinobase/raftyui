@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.1.4
+
+### Patch Changes
+
+- Minor improvements in Select and Button. Working on upload field
+
 ## 0.1.3
 
 ### Patch Changes
