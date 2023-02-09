@@ -6,4 +6,5 @@ export {
   Body,
   CloseButton,
   Overlay,
+  Close,
 } from "./Dialog";
