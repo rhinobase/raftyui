@@ -33,3 +33,5 @@ export * as Tab from "./tabs";
 export { Toast } from "./toast";
 export * as ToggleGroup from "./toggle-group";
 export { Tooltip } from "./tooltip";
+export { TagField } from "./tag-field";
+export { Textarea } from "./textarea";
