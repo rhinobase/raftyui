@@ -25,7 +25,8 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
           ref={forwardedRef}
         />
         <Button
-          size="sm"
+          type="button"
+          size="icon"
           aria-label="show and hide password"
           variant="ghost"
           className="!px-base absolute right-1 m-1"
