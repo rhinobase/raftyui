@@ -16,7 +16,7 @@ export const Example = ({
       <span
         className={classNames(
           "examples-item-title",
-          isFullWidth && "mb-0 mt-2"
+          isFullWidth && "mb-0 mt-2",
         )}
       >
         {title}

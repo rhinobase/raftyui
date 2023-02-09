@@ -25,7 +25,7 @@ export function FieldControl({
           orientation == "col" && "flex-col gap-1",
           orientation == "row" && "flex-row items-center gap-2",
           orientation == "row-reverse" && "flex-row-reverse items-center gap-2",
-          "flex w-full"
+          "flex w-full",
         )}
       >
         {children}

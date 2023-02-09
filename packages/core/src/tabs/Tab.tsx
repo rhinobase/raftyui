@@ -9,14 +9,14 @@ export type Root = ComponentProps<(typeof TabsPrimitive)["Root"]>;
 export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
   (
     { children, className, size = "md", variant = "line", ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <TabProvider value={{ size, variant }}>
         <TabsPrimitive.Root
           className={classNames(
             "data-[orientation=vertical]:flex data-[orientation=vertical]:w-full data-[orientation=vertical]:flex-row",
-            className
+            className,
           )}
           {...props}
           ref={forwardedRef}
@@ -25,7 +25,7 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
         </TabsPrimitive.Root>
       </TabProvider>
     );
-  }
+  },
 );
 
 // List Component
@@ -38,7 +38,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
           "flex rounded-t-md",
           "dark:border-secondary-700 border-b",
           "data-[orientation=vertical]:bg-secondary-50 data-[orientation=vertical]:dark:bg-secondary-800 data-[orientation=vertical]:py-md data-[orientation=vertical]:px-base data-[orientation=vertical]:min-h-[600px] data-[orientation=vertical]:min-w-[200px] data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-1 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -46,7 +46,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
         {children}
       </TabsPrimitive.List>
     );
-  }
+  },
 );
 
 // Trigger Component
@@ -73,7 +73,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
           "text-secondary-500 dark:text-secondary-400 hover:dark:text-secondary-100 data-[orientation=vertical]:px-lg data-[orientation=vertical]:py-md font-medium transition-colors hover:text-black",
           "data-[orientation=vertical]:data-[state=active]:bg-secondary-300/50 data-[orientation=vertical]:text-secondary-800 data-[orientation=vertical]:hover:bg-secondary-200/50 data-[orientation=vertical]:data-[state=active]:hover:bg-secondary-300/50 data-[orientation=vertical]:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:dark:bg-secondary-700/40 data-[orientation=vertical]:rounded-md data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:text-left",
           "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -81,7 +81,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
         {children}
       </TabsPrimitive.Trigger>
     );
-  }
+  },
 );
 
 // Content Component
@@ -95,7 +95,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           size == "sm" && "data-[orientation=vertical]:p-lg",
           size == "md" && "data-[orientation=vertical]:p-2xl",
           "w-full dark:text-white",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -103,5 +103,5 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         {children}
       </TabsPrimitive.Content>
     );
-  }
+  },
 );

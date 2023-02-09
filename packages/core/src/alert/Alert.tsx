@@ -26,7 +26,7 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
           status === "info" &&
             "bg-info-200 dark:bg-info-400/40 border-info-500 text-secondary-900 dark:text-secondary-100",
           status === "success" &&
-            "border-success-600 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100"
+            "border-success-600 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
         )}
         ref={forwardedRef}
       >
@@ -41,7 +41,7 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
                 stroke="currentColor"
                 className={classNames(
                   "text-error-500 dark:text-error-200 h-5 w-5",
-                  iconClassName
+                  iconClassName,
                 )}
               >
                 <path
@@ -60,7 +60,7 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
                 stroke="currentColor"
                 className={classNames(
                   "text-warning-600 dark:text-warning-300 h-5 w-5",
-                  iconClassName
+                  iconClassName,
                 )}
               >
                 <path
@@ -79,7 +79,7 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
                 stroke="currentColor"
                 className={classNames(
                   "text-info-500 dark:text-info-200 h-5 w-5",
-                  iconClassName
+                  iconClassName,
                 )}
               >
                 <path
@@ -98,7 +98,7 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
                 stroke="currentColor"
                 className={classNames(
                   "text-success-500 dark:text-success-300 h-5 w-5",
-                  iconClassName
+                  iconClassName,
                 )}
                 aria-hidden="true"
               >
@@ -118,5 +118,5 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
         </div>
       </div>
     );
-  }
+  },
 );

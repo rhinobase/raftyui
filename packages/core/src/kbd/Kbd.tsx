@@ -13,11 +13,11 @@ export const Kbd = forwardRef<HTMLElement, Kbd>(
       {...props}
       className={classNames(
         "px-base text-secondary-500 dark:border-secondary-600 dark:bg-secondary-800 dark:text-secondary-300 rounded-md border border-b-4 text-xs",
-        className
+        className,
       )}
       ref={forwardRef}
     >
       {children}
     </kbd>
-  )
+  ),
 );

@@ -19,7 +19,7 @@ export const Root = React.forwardRef<HTMLDivElement, Root>(
         {children}
       </AlertDialogPrimitive.Root>
     </AlertDialogProvider>
-  )
+  ),
 );
 
 // AlertDialogButton Component
@@ -41,7 +41,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
       loading = undefined,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -59,7 +59,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
         </Button>
       </AlertDialogPrimitive.Trigger>
     );
-  }
+  },
 );
 
 // AlertDialogContent Component
@@ -82,7 +82,7 @@ export const Content = React.forwardRef<HTMLDivElement, Content>(
             size == "md" && "p-4xl max-w-[35rem]",
             size == "sm" && "p-3xl max-w-[30rem]",
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
-            className
+            className,
           )}
           ref={forwardedRef}
         >
@@ -90,7 +90,7 @@ export const Content = React.forwardRef<HTMLDivElement, Content>(
         </AlertDialogPrimitive.Content>
       </AlertDialogPrimitive.Portal>
     );
-  }
+  },
 );
 
 // AlertDialogTitle Component
@@ -107,14 +107,14 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
           size == "md" && "text-xl",
           size == "sm" && "text-lg",
           "mb-2 font-semibold",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </AlertDialogPrimitive.Title>
     );
-  }
+  },
 );
 
 // AlertDialogBody Component
@@ -128,7 +128,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
         <div className={className}>{children}</div>
       </AlertDialogPrimitive.Description>
     );
-  }
+  },
 );
 
 export const Action = AlertDialogPrimitive.Action;

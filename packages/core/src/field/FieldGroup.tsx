@@ -52,7 +52,7 @@ export function FieldGroup({ children, ...props }: FieldGroup) {
           loading && "cursor-progress",
           isDev &&
             "data-[state=off]:hover:border-secondary-400 dark:data-[state=off]:hover:border-secondary-600",
-          "data-[state=on]:ring-primary-200 data-[state=on]:border-primary-300 group flex flex-1 items-stretch divide-secondary-300 overflow-hidden rounded-md border ring-2 ring-transparent transition-all aria-disabled:cursor-not-allowed dark:divide-secondary-700 dark:text-secondary-100"
+          "data-[state=on]:ring-primary-200 data-[state=on]:border-primary-300 group flex flex-1 items-stretch divide-secondary-300 overflow-hidden rounded-md border ring-2 ring-transparent transition-all aria-disabled:cursor-not-allowed dark:divide-secondary-700 dark:text-secondary-100",
         )}
         data-state="off"
         aria-disabled={disabled || readOnly}

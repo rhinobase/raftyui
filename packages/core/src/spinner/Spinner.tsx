@@ -16,7 +16,7 @@ export function Spinner({ size = "md", ...props }: Spinner) {
       className={classNames(
         !props.inheritParent && "text-secondary-700 dark:text-secondary-400",
         "animate-spin",
-        props.className
+        props.className,
       )}
       style={props.style}
       width={size == "lg" ? "36px" : size == "md" ? "24px" : "18px"}

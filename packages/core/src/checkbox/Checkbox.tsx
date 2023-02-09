@@ -21,7 +21,7 @@ export const Checkbox = forwardRef<
           "aria-checked:data-[state=indeterminate]:bg-primary-500 data-[state=indeterminate]:after:bg-secondary-400 aria-checked:data-[state=indeterminate]:after:bg-secondary-100 relative data-[state=indeterminate]:after:absolute data-[state=indeterminate]:after:top-[2] data-[state=indeterminate]:after:left-[5px] data-[state=indeterminate]:after:h-[2px] data-[state=indeterminate]:after:w-[50%] data-[state=indeterminate]:after:content-['']",
           "data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-400",
           "rounded-base border-secondary-300 dark:border-secondary-700 dark:text-secondary-100 group flex items-center justify-center gap-3 border",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -29,7 +29,7 @@ export const Checkbox = forwardRef<
         <CheckboxPremitive.Indicator
           className={classNames(
             "dark:text-secondary-100 flex items-center gap-3",
-            className
+            className,
           )}
         >
           <svg
@@ -42,7 +42,7 @@ export const Checkbox = forwardRef<
               size == "sm" && "h-2.5",
               size == "md" && "h-3",
               size == "lg" && "h-3.5",
-              "stroke-2 text-white group-data-[state=indeterminate]:hidden"
+              "stroke-2 text-white group-data-[state=indeterminate]:hidden",
             )}
           >
             <path
@@ -58,7 +58,7 @@ export const Checkbox = forwardRef<
           className={classNames(
             size == "sm" && "text-sm",
             size == "lg" && "text-lg",
-            "text-secondary-700 select-none font-medium"
+            "text-secondary-700 select-none font-medium",
           )}
         >
           {children}

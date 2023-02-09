@@ -12,7 +12,7 @@ export const Root = forwardRef<HTMLDivElement, DrawerContext & Root>(
       {/* TODO: Add reference to the below element */}
       <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
     </DrawerProvider>
-  )
+  ),
 );
 
 // Drawer Content Component
@@ -36,7 +36,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
             side == "left" && "animate-slide-right left-0",
             side == "right" && "animate-slide-left right-0",
             "overflow-y-auto overscroll-auto",
-            className
+            className,
           )}
           ref={forwardedRef}
         >
@@ -44,7 +44,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     );
-  }
+  },
 );
 
 // Drawer Title Component
@@ -60,14 +60,14 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
           size == "lg" && "text-xl",
           size == "md" && "text-xl",
           size == "sm" && "text-lg",
-          "mb-2 font-semibold"
+          "mb-2 font-semibold",
         )}
         ref={forwardedRef}
       >
         {children}
       </DialogPrimitive.Title>
     );
-  }
+  },
 );
 
 // Drawer Body Component
@@ -79,7 +79,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
         <div className={className}>{children}</div>
       </DialogPrimitive.Description>
     );
-  }
+  },
 );
 
 // Drawer Cross Button Component
@@ -89,7 +89,7 @@ export function CloseButton(
     onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
     disabled?: boolean;
     colorVariant?: Button["variant"];
-  } & React.ComponentProps<typeof Button>
+  } & React.ComponentProps<typeof Button>,
 ) {
   return (
     <DialogPrimitive.Close asChild {...props.dialogCloseProps}>

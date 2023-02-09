@@ -17,7 +17,7 @@ export const Root = forwardRef<HTMLDivElement, ToggleGroupContext & Root>(
         <ToggleGroupPrimitive.Root
           className={classNames(
             "dark:divide-secondary-700 dark:border-secondary-700 flex w-full items-center divide-x overflow-hidden rounded-md border",
-            className
+            className,
           )}
           {...props}
           ref={forwardedRef}
@@ -26,7 +26,7 @@ export const Root = forwardRef<HTMLDivElement, ToggleGroupContext & Root>(
         </ToggleGroupPrimitive.Root>
       </ToggleGroupProvider>
     );
-  }
+  },
 );
 
 // ToggleItem Component
@@ -41,7 +41,7 @@ export const Item = forwardRef<HTMLButtonElement, ToggleGroupContext & Item>(
           size == "md" && "px-lg py-base",
           size == "lg" && "px-lg py-md text-lg",
           "data-[state=on]:bg-secondary-200 dark:text-secondary-200 data-[state=on]:dark:bg-secondary-800 flex w-full items-center justify-center font-medium transition-all",
-          className
+          className,
         )}
         {...props}
         ref={forwardedRef}
@@ -49,5 +49,5 @@ export const Item = forwardRef<HTMLButtonElement, ToggleGroupContext & Item>(
         {children}
       </ToggleGroupPrimitive.Item>
     );
-  }
+  },
 );

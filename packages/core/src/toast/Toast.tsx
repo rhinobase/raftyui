@@ -79,7 +79,7 @@ export function Toast(props: Toast) {
         props.severity == "info" && "bg-primary-500 dark:bg-primary-400/70",
         props.severity == "success" && "bg-success-600 dark:bg-success-400/70",
         "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg shadow-lg",
-        props.className
+        props.className,
       )}
     >
       <div className="p-xl">

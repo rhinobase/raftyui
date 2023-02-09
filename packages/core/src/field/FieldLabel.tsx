@@ -14,7 +14,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
         htmlFor={name}
         className={classNames(
           "select-none text-sm font-medium text-secondary-800 dark:text-secondary-200",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
@@ -24,5 +24,5 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
         )}
       </label>
     );
-  }
+  },
 );

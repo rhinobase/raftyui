@@ -20,7 +20,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
             "read-only:focus:ring-0",
             "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
-            props.className
+            props.className,
           )}
           ref={forwardedRef}
         />
@@ -70,5 +70,5 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
         </Button>
       </div>
     );
-  }
+  },
 );

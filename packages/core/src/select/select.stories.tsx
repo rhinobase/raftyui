@@ -23,7 +23,7 @@ export function Default() {
                 >
                   {label}
                 </Select.Item>
-              )
+              ),
             )}
           </Select.Group>
         </Select.Content>
@@ -67,7 +67,7 @@ export function WithDivided() {
                 >
                   {label}
                 </Select.Item>
-              )
+              ),
             )}
           </Select.Group>
           <Select.Separator />
