@@ -398,7 +398,11 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, Button>(
               </div>
             )}
             <div
-              className={classNames(LeftIcon && "ml-1", RightIcon && "mr-1")}
+              className={classNames(
+                LeftIcon && "ml-1",
+                RightIcon && "mr-1",
+                "w-full"
+              )}
             >
               {props.children}
             </div>
