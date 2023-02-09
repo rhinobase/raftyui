@@ -31,6 +31,7 @@ export function ReactSelect({
       isMulti={type == "multiple" ? true : false}
       defaultValue={defaultValue}
       placeholder={placeholder}
+      unstyled
       components={{
         DropdownIndicator: () => (
           <svg
@@ -65,11 +66,6 @@ export function ReactSelect({
           ...base,
           zIndex: 1,
         }),
-        option: (base, state) => ({
-          ...base,
-          fontSize: "14px",
-          backgroundColor: state.isSelected ? "#FDFDFC" : "",
-        }),
         menuPortal: (base) => ({
           ...base,
           zIndex: 999,
@@ -77,25 +73,32 @@ export function ReactSelect({
         menu: () => ({}),
       }}
       menuPortalTarget={document.body}
-      menuIsOpen
+      // menuIsOpen
       classNames={{
         container: () => "rounded-md",
-        control: () =>
-          "dark:bg-transparent dark:border-secondary-700 dark:text-secondary-100 rounded-md pr-md",
+        control: (state) =>
+          classNames(
+            state.isFocused
+              ? "ring-2 border-primary-500 ring-primary-100/10"
+              : "dark:border-secondary-700",
+            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-md border z-1 !min-h-[30px] md:!min-h-[42px]"
+          ),
         menu: () =>
-          "dark:bg-secondary-800 bg-white rounded-md shadow-lg py-base px-md border-0 w-full absolute mt-1",
+          "dark:bg-secondary-800 bg-white rounded-md shadow-xl py-base px-base border-0 w-full absolute mt-1",
         menuList: () => "focus:dark:bg-secondary-700",
-        multiValue: () => "dark:bg-secondary-800 dark:text-secondary-100",
-        multiValueLabel: () => "dark:text-secondary-100",
-        multiValueRemove: () =>
-          "bg-secondary-300/50 dark:bg-secondary-700/30 dark:hover:bg-secondary-600 hover:dark:text-white",
+        multiValue: () =>
+          "dark:bg-secondary-800 dark:text-secondary-100 bg-secondary-100 ml-1 first:!ml-0",
+        multiValueLabel: () =>
+          "dark:text-secondary-100 px-md font-medium text-sm",
+        multiValueRemove: (state) =>
+          "bg-secondary-300/50 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-200",
         input: () => "dark:text-secondary-100",
         singleValue: () => "dark:text-secondary-100",
         option: (state) =>
           classNames(
-            state.isFocused && "bg-secondary-200/60 dark:bg-secondary-700",
-            state.isSelected && "bg-secondary-200/60 dark:bg-secondary-700",
-            "text-secondary-700 hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-700/40 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-md font-medium"
+            state.isFocused && "bg-secondary-200/60 dark:bg-secondary-700/50",
+            state.isSelected && "bg-secondary-200/60 dark:bg-secondary-700/50",
+            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-base font-medium"
           ),
       }}
     />
