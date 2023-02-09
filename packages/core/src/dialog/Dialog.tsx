@@ -88,7 +88,8 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           className={classNames(
             "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 shadow-xl transition-all duration-300 focus-visible:outline-none",
             "dark:bg-secondary-800 dark:text-secondary-50 rounded-base min-w-[360px] bg-white text-left sm:w-full sm:align-middle",
-            size == "lg" && "p-5xl max-w-[80%]",
+            size == "xl" && "p-5xl max-w-[80%]",
+            size == "lg" && "p-5xl max-w-[60rem]",
             size == "md" && "p-4xl max-w-[40rem]",
             size == "sm" && "p-3xl max-w-[30rem]",
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
@@ -144,7 +145,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
 export type CloseButton = ComponentProps<(typeof DialogPrimitive)["Close"]> &
   Button;
 export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
-  ({ variant, ...props }, forwardedRef) => {
+  ({ variant, className, ...props }, forwardedRef) => {
     return (
       <DialogPrimitive.Close ref={forwardedRef} asChild>
         {/* This will require the i18n string passed in */}
@@ -152,7 +153,10 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
           variant={variant ?? "ghost"}
           size="icon"
           {...props}
-          className="absolute top-5 right-5 rounded-full"
+          className={classNames(
+            "absolute top-5 right-5 rounded-full",
+            className
+          )}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -22,13 +22,13 @@ const buttonClasses = cva(
   {
     variants: {
       colorScheme: {
-        primary: "text-white dark:text-black",
+        primary: "",
         secondary: "text-secondary-600 dark:text-secondary-200",
-        error: "text-white dark:text-black",
+        error: "",
       },
       variant: {
-        solid: "",
-        outline: "",
+        solid: "text-white dark:text-black",
+        outline: "border",
         ghost: "",
       },
       size: {
@@ -162,7 +162,7 @@ const buttonClasses = cva(
         colorScheme: "primary",
         variant: "outline",
         className:
-          "border border-primary-500 dark:border-primary-300 !text-primary-500 dark:!text-primary-300 bg-primary-200/70 dark:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border border-primary-500 dark:border-primary-300 text-primary-500 dark:text-primary-300 bg-primary-200/70 dark:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
@@ -171,7 +171,7 @@ const buttonClasses = cva(
         colorScheme: "primary",
         variant: "outline",
         className:
-          "border border-primary-500/90 dark:border-primary-300 !text-primary-500 dark:!text-primary-300 bg-transparent hover:bg-primary-200/30 dark:hover:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border border-primary-500/90 dark:border-primary-300 text-primary-500 dark:text-primary-300 bg-transparent hover:bg-primary-200/30 dark:hover:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
       // Secondary Outline
       {
@@ -224,7 +224,7 @@ const buttonClasses = cva(
         colorScheme: "error",
         variant: "outline",
         className:
-          "border border-error-500 dark:border-error-300/80 !text-error-500 dark:!text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
@@ -233,7 +233,7 @@ const buttonClasses = cva(
         colorScheme: "error",
         variant: "outline",
         className:
-          "border bg-transparent border-error-500 dark:border-error-300/80 !text-error-500 dark:!text-error-300 hover:bg-error-200/30 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border bg-transparent border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 hover:bg-error-200/30 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
       // Primary Ghost
       {
@@ -255,7 +255,7 @@ const buttonClasses = cva(
         colorScheme: "primary",
         variant: "ghost",
         className:
-          "border border-transparent !text-primary-500 dark:!text-primary-300 bg-primary-200/70 dark:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border border-transparent text-primary-500 dark:text-primary-300 bg-primary-200/70 dark:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
@@ -264,7 +264,7 @@ const buttonClasses = cva(
         colorScheme: "primary",
         variant: "ghost",
         className:
-          "border border-transparent !text-primary-500 dark:!text-primary-300 bg-transparent hover:bg-primary-200/30 dark:hover:bg-primary-400/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border border-transparent text-primary-500 dark:text-primary-300 bg-transparent hover:bg-primary-200/30 dark:hover:bg-primary-400/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
       // Secondary Ghost
       {
@@ -317,7 +317,7 @@ const buttonClasses = cva(
         colorScheme: "error",
         variant: "ghost",
         className:
-          "border border-transparent !text-error-500 dark:!text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border border-transparent text-error-500 dark:text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
@@ -326,7 +326,7 @@ const buttonClasses = cva(
         colorScheme: "error",
         variant: "ghost",
         className:
-          "border bg-transparent border-transparent !text-error-500 dark:!text-error-300 hover:bg-error-200/40 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border bg-transparent border-transparent text-error-500 dark:text-error-300 hover:bg-error-200/40 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
     ],
     defaultVariants: {
