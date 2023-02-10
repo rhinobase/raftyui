@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.1.11
+
+### Patch Changes
+
+- Minor improvements in select
+
 ## 0.1.10
 
 ### Patch Changes
