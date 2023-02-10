@@ -48,7 +48,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
     return (
       <ContextMenuPrimitive.Label
         className={classNames(
-          "text-secondary-400 dark:text-secondary-400 py-base px-lg select-none text-[11px] font-semibold uppercase tracking-wider",
+          "text-secondary-400 dark:text-secondary-400 py-md px-lg select-none text-[11px] font-semibold uppercase tracking-wider",
           className,
         )}
         {...props}
@@ -67,7 +67,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     return (
       <ContextMenuPrimitive.Item
         className={classNames(
-          "text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-base px-2xl rounded-base flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+          "text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-[6px] px-2xl rounded-base flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
           className,
         )}
         {...props}
@@ -91,7 +91,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
       <ContextMenuPrimitive.CheckboxItem
         {...props}
         ref={forwardedRef}
-        className="text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-base px-2xl rounded-base relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
+        className="text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-[6px] px-2xl rounded-base relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
       >
         {children}
         <ContextMenuPrimitive.ItemIndicator className="absolute left-1">
@@ -125,10 +125,10 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
       <ContextMenuPrimitive.RadioItem
         {...props}
         ref={forwardedRef}
-        className="text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-base px-2xl rounded-base relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
+        className="text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-[6px] px-2xl rounded-base relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
       >
         {children}
-        <ContextMenuPrimitive.ItemIndicator className="absolute left-1 top-2">
+        <ContextMenuPrimitive.ItemIndicator className="absolute left-1 top-2.5">
           <svg
             width="16"
             height="16"
@@ -162,7 +162,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 py-base pl-2xl pr-md rounded-base flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
+          "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 py-[6px] pl-2xl pr-md rounded-base flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
           className,
         )}
       >

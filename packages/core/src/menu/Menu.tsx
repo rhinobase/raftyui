@@ -52,7 +52,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           className={classNames(
             "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
             "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
-            "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col gap-1 rounded-md bg-white text-sm text-gray-900 focus:outline-none",
+            "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white text-sm text-gray-900 focus:outline-none",
             props.className,
           )}
           ref={forwardedRef}
@@ -99,7 +99,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
   ({ className, children, ...props }, forwardedRef) => (
     <DropdownMenu.Item
       className={classNames(
-        "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-base pl-2xl pr-md flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+        "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-[6px] pl-2xl pr-md flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
         className,
       )}
       {...props}
@@ -121,7 +121,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
       <DropdownMenu.CheckboxItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base px-2xl py-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 text-[13px] font-medium focus:outline-none"
+        className="rounded-base px-2xl py-[6px] text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 text-[13px] font-medium focus:outline-none"
       >
         {children}
         <DropdownMenu.ItemIndicator className="absolute left-1">
@@ -156,10 +156,10 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
       <DropdownMenu.RadioItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base py-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 text-[13px] font-medium focus:outline-none"
+        className="rounded-base py-[6px] px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 text-[13px] font-medium focus:outline-none"
       >
         {children}
-        <DropdownMenu.ItemIndicator className="absolute left-1 top-2">
+        <DropdownMenu.ItemIndicator className="absolute left-1 top-2.5">
           <svg
             width="16"
             height="16"
@@ -193,7 +193,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "rounded-base py-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
+          "rounded-base py-[6px] pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
           className,
         )}
       >
@@ -230,7 +230,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
           className={classNames(
             "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
             "data-[side=right]:animate-scale-in origin-top-left",
-            "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col gap-1 rounded-md bg-white text-[13px] text-gray-900 focus:outline-none",
+            "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white text-[13px] text-gray-900 focus:outline-none",
             props.className,
           )}
           ref={forwardedRef}
@@ -252,7 +252,7 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
+          "bg-secondary-200 dark:bg-secondary-700 h-[1px] my-1",
           className,
         )}
       />

@@ -30,7 +30,7 @@ export function Default() {
           </svg>
         </Menu.Trigger>
         <Menu.Content side="bottom" align="end">
-          <Menu.Group title="Order">
+          <Menu.Group>
             <Menu.Item>New Tab</Menu.Item>
             <Menu.Item>New Window</Menu.Item>
             <Menu.Item disabled>New Private Window </Menu.Item>
@@ -64,7 +64,7 @@ export function AllFeatures() {
           </svg>
         </Menu.Trigger>
         <Menu.Content>
-          <Menu.Group title="order">
+          <Menu.Group>
             <Menu.Item>New Tab</Menu.Item>
             <Menu.Item>New Window</Menu.Item>
             <Menu.Item disabled>New Private Window </Menu.Item>
