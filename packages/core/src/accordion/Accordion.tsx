@@ -87,7 +87,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="h-6 w-6 transform stroke-2 duration-200 group-data-[state=open]:rotate-180 group-data-[state=open]:transform"
+                className="h-4 w-4 transform stroke-2 duration-200 group-data-[state=open]:rotate-180 group-data-[state=open]:transform"
               >
                 <path
                   strokeLinecap="round"
