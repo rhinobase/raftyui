@@ -5,7 +5,7 @@ import { EDITOR_JS_TOOLS } from "./EditorTool";
 
 export function Editor(props: { configuration?: EditorConfig }) {
   useEffect(() => {
-    if (typeof window == "undefined") return;
+    if (typeof window !== "undefined") return;
     const editor = new EditorJS({
       holder: "editorjs",
       tools: EDITOR_JS_TOOLS,

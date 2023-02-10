@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.1.8
+
+### Patch Changes
+
+- Minor chaneges again in editor js
+
 ## 0.1.7
 
 ### Patch Changes
