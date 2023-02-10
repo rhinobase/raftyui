@@ -11,7 +11,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
         <input
           {...props}
           className={classNames(
-            "px-lg py-base md:py-md dark:text-secondary-200 border-secondary-300 dark:border-secondary-700 block w-full appearance-none rounded-md border bg-transparent text-sm shadow-sm autofill:bg-transparent md:text-base",
+            "px-lg py-md dark:text-secondary-200 border-secondary-300 dark:border-secondary-700 block w-full appearance-none rounded-md border bg-transparent text-base shadow-sm autofill:bg-transparent",
             "focus:ring-primary-200 focus:border-primary-400 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
             "read-only:focus:ring-0",
             "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
