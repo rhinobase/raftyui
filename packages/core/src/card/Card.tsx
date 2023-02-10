@@ -24,7 +24,7 @@ export const Header = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     <div
       {...props}
       className={classNames(
-        "px-3xl py-lg dark:border-secondary-800 border-b text-lg font-semibold",
+        "px-3xl py-lg dark:border-secondary-700 border-b text-lg font-semibold",
         className,
       )}
       ref={forwardedRef}
@@ -53,7 +53,7 @@ export const Footer = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     <div
       {...props}
       className={classNames(
-        "px-3xl py-lg dark:border-secondary-800 flex w-full space-x-2 border-t",
+        "px-3xl py-lg dark:border-secondary-700 flex w-full space-x-2 border-t",
         className,
       )}
       ref={forwardedRef}
