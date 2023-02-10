@@ -11,7 +11,11 @@ export function Default() {
   return (
     <Grid>
       <Select.Root>
-        <Select.Trigger aria-label="Food" placeholder="Select a fruit" />
+        <Select.Trigger
+          aria-label="Food"
+          placeholder="Select a fruit"
+          className="w-full"
+        />
         <Select.Content>
           <Select.Group>
             {["Apple", "Banana", "Blueberry", "Strawberry", "Grapes"].map(
