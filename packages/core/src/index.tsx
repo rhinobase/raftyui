@@ -7,6 +7,7 @@ export { Checkbox } from "./checkbox";
 export * as ContextMenu from "./checkbox";
 export * as Dialog from "./dialog";
 export * as Drawer from "./drawer";
+export { Editor } from "./editor";
 export { FieldControl, FieldGroup, FieldLabel, ErrorMessage } from "./field";
 export { InputField } from "./input-field";
 export { Kbd } from "./kbd";
