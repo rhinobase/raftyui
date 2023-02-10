@@ -407,21 +407,13 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
         ) : (
           <>
             {LeftIcon && (
-              <div className="flex h-[20px] items-center justify-center">
+              <div className="mr-1 flex h-[20px] items-center justify-center">
                 {LeftIcon}
               </div>
             )}
-            <div
-              className={classNames(
-                LeftIcon && "ml-1",
-                RightIcon && "mr-1",
-                "w-full",
-              )}
-            >
-              {props.children}
-            </div>
+            {props.children}
             {RightIcon && (
-              <div className="flex h-[20px] items-center justify-center">
+              <div className="ml-1 flex h-[20px] items-center justify-center">
                 {RightIcon}
               </div>
             )}
