@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.1.9
+
+### Patch Changes
+
+- removed the editor js useEffect
+
 ## 0.1.8
 
 ### Patch Changes
