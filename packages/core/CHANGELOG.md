@@ -1,5 +1,12 @@
 # @rhinobase/ui
 
+## 0.1.6
+
+### Patch Changes
+
+- Added Error Message and Editor Component. Improvements in Button, Password
+  Field, Input Field and Drawer
+
 ## 0.1.5
 
 ### Patch Changes
