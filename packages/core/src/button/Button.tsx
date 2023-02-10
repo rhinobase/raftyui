@@ -375,6 +375,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   return (
     <Wrapper tooltip={props.tooltip}>
       <button
+        type={type}
         data-hidden={hidden}
         {...passThroughProps}
         disabled={disabled ?? undefined}
