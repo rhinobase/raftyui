@@ -79,10 +79,13 @@ export const MenuGroup = ({ children, title }: MenuGroup) => {
 // MenuLabel Component
 type Label = ComponentProps<(typeof DropdownMenu)["Label"]>;
 export const Label = forwardRef<HTMLDivElement, Label>(
-  ({ children, ...props }, forwardedRef) => (
+  ({ children, className, ...props }, forwardedRef) => (
     <DropdownMenu.Label
       {...props}
-      className="px-lg pt-base text-secondary-400 dark:text-secondary-400 select-none text-[11px] font-semibold uppercase tracking-wider"
+      className={classNames(
+        "px-lg pt-base text-secondary-400 dark:text-secondary-400 select-none text-[11px] font-semibold uppercase tracking-wider",
+        className,
+      )}
       ref={forwardedRef}
     >
       {children}
