@@ -14,7 +14,7 @@ export function Default() {
   return (
     <Grid>
       <Button onClick={() => setOpen(true)}>open</Button>
-      <Drawer.Root size="lg" side="left" open={open} onOpenChange={setOpen}>
+      <Drawer.Root size="full" side="left" open={open} onOpenChange={setOpen}>
         <Drawer.Content>
           <Drawer.Title>Drawer Header</Drawer.Title>
           <Drawer.Body>

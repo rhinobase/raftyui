@@ -29,7 +29,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           style={style}
           className={classNames(
             "dark:bg-secondary-800 dark:text-secondary-50 p-3xl fixed top-0 z-50 h-screen min-w-[360px] bg-white text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
-            size == "full" && "min-w-full",
+            size == "full" && "w-full",
             size == "lg" && "max-w-5xl",
             size == "md" && "max-w-3xl",
             size == "sm" && "max-w-2xl",
