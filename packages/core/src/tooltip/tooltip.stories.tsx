@@ -1,6 +1,6 @@
 import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../index";
-import Tooltip, { ITooltip } from "./Tooltip";
+import Tooltip from "./Tooltip";
 import React from "react";
 
 export default {
@@ -11,7 +11,7 @@ export default {
   },
 };
 
-export function Default(args: ITooltip) {
+export function Default(args: Tooltip) {
   return (
     <Grid>
       <Tooltip {...args}>

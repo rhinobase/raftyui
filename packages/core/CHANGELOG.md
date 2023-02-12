@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.1.12
+
+### Patch Changes
+
+- Added new compilation instructions to reduce size of the final build
+
 ## 0.1.11
 
 ### Patch Changes
