@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- Minor changes in Menu
+
 ## 0.2.0
 
 ### Minor Changes
