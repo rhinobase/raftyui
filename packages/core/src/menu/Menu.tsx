@@ -2,9 +2,17 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import React, { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
 import { Button } from "../index";
-
+import { MenuProvider, MenuContext, useMenuContext } from "./context";
 // Menu Component
-export const Root = DropdownMenu.Root;
+
+type Root = ComponentProps<(typeof DropdownMenu)["Root"]> & MenuContext;
+export const Root = forwardRef<HTMLDivElement, Root>(
+  ({ children, menuSize = "base" }) => (
+    <MenuProvider value={{ menuSize }}>
+      <DropdownMenu.Root>{children}</DropdownMenu.Root>
+    </MenuProvider>
+  ),
+);
 
 // MenuButton Component
 type Trigger = ComponentProps<(typeof DropdownMenu)["Trigger"]> & Button;
@@ -23,22 +31,25 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
       ...props
     },
     forwardedRef,
-  ) => (
-    <DropdownMenu.Trigger {...props} ref={forwardedRef} asChild>
-      <Button
-        variant={variant}
-        size={size}
-        className={className}
-        leftIcon={leftIcon}
-        rightIcon={rightIcon}
-        disabled={disabled}
-        active={active}
-        loading={loading}
-      >
-        {children}
-      </Button>
-    </DropdownMenu.Trigger>
-  ),
+  ) => {
+    const { menuSize } = useMenuContext();
+    return (
+      <DropdownMenu.Trigger {...props} ref={forwardedRef} asChild>
+        <Button
+          variant={variant}
+          size={menuSize || size}
+          className={className}
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
+          disabled={disabled}
+          active={active}
+          loading={loading}
+        >
+          {children}
+        </Button>
+      </DropdownMenu.Trigger>
+    );
+  },
 );
 
 //MenuContent Component
@@ -52,7 +63,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           className={classNames(
             "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
             "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
-            "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white text-sm text-gray-900 focus:outline-none",
+            "p-1 dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white text-sm text-gray-900 focus:outline-none",
             props.className,
           )}
           ref={forwardedRef}
@@ -79,35 +90,47 @@ export const MenuGroup = ({ children, title }: MenuGroup) => {
 // MenuLabel Component
 type Label = ComponentProps<(typeof DropdownMenu)["Label"]>;
 export const Label = forwardRef<HTMLDivElement, Label>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <DropdownMenu.Label
-      {...props}
-      className={classNames(
-        "px-lg pt-base text-secondary-400 dark:text-secondary-400 select-none text-[11px] font-semibold uppercase tracking-wider",
-        className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </DropdownMenu.Label>
-  ),
+  ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuContext();
+    return (
+      <DropdownMenu.Label
+        {...props}
+        className={classNames(
+          menuSize == "sm" && "text-[11px]",
+          menuSize == "base" && "text-xs pt-1",
+          menuSize == "lg" && "text-sm pt-2",
+          "px-2xl text-secondary-500 dark:text-secondary-400 select-none font-semibold uppercase tracking-wider",
+          className,
+        )}
+        ref={forwardedRef}
+      >
+        {children}
+      </DropdownMenu.Label>
+    );
+  },
 );
 
 // MenuItem Component
 type Item = ComponentProps<(typeof DropdownMenu)["Item"]>;
 export const Item = forwardRef<HTMLDivElement, Item>(
-  ({ className, children, ...props }, forwardedRef) => (
-    <DropdownMenu.Item
-      className={classNames(
-        "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 py-[6px] pl-2xl pr-md flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-        className,
-      )}
-      {...props}
-      ref={forwardedRef}
-    >
-      {children}
-    </DropdownMenu.Item>
-  ),
+  ({ className, children, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuContext();
+    return (
+      <DropdownMenu.Item
+        className={classNames(
+          menuSize == "sm" && "py-[4px] text-xs",
+          menuSize == "base" && "py-[6px] text-sm",
+          menuSize == "lg" && "py-[8px] text-base",
+          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2  font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+          className,
+        )}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </DropdownMenu.Item>
+    );
+  },
 );
 
 // MenuCheckboxGroup Component
@@ -117,14 +140,27 @@ export const Group = DropdownMenu.Group;
 type CheckboxItem = ComponentProps<(typeof DropdownMenu)["CheckboxItem"]>;
 export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
   ({ children, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuContext();
     return (
       <DropdownMenu.CheckboxItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base px-2xl py-[6px] text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 text-[13px] font-medium focus:outline-none"
+        className={classNames(
+          menuSize == "sm" && "py-[4px] text-xs",
+          menuSize == "base" && "py-[6px] text-sm",
+          menuSize == "lg" && "py-[8px] text-base",
+          "rounded-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+        )}
       >
         {children}
-        <DropdownMenu.ItemIndicator className="absolute left-1">
+        <DropdownMenu.ItemIndicator
+          className={classNames(
+            menuSize == "sm" && "top-1",
+            menuSize == "base" && "top-1.5",
+            menuSize == "lg" && "top-4",
+            "absolute left-1",
+          )}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -152,14 +188,28 @@ export const RadioGroup = DropdownMenu.RadioGroup;
 type RadioItem = ComponentProps<(typeof DropdownMenu)["RadioItem"]>;
 export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
   ({ children, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuContext();
     return (
       <DropdownMenu.RadioItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base py-[6px] px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 text-[13px] font-medium focus:outline-none"
+        className={classNames(
+          menuSize == "sm" && "py-[4px] text-xs",
+          menuSize == "base" && "py-[6px] text-sm",
+          menuSize == "lg" && "py-[8px] text-base",
+          "rounded-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+          props.className,
+        )}
       >
         {children}
-        <DropdownMenu.ItemIndicator className="absolute left-1 top-2.5">
+        <DropdownMenu.ItemIndicator
+          className={classNames(
+            menuSize == "sm" && "top-1",
+            menuSize == "base" && "top-1.5",
+            menuSize == "lg" && "top-4",
+            "absolute left-1",
+          )}
+        >
           <svg
             width="16"
             height="16"
@@ -188,12 +238,16 @@ export const Sub = forwardRef<HTMLDivElement, Sub>(
 type SubTrigger = ComponentProps<(typeof DropdownMenu)["SubTrigger"]>;
 export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
   ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuContext();
     return (
       <DropdownMenu.SubTrigger
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "rounded-base py-[6px] pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
+          menuSize == "sm" && "py-[4px] text-xs",
+          menuSize == "base" && "py-[6px] text-sm",
+          menuSize == "lg" && "py-[8px] text-base",
+          "rounded-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
           className,
         )}
       >

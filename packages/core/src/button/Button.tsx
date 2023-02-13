@@ -32,7 +32,7 @@ const buttonClasses = cva(
         ghost: "",
       },
       size: {
-        sm: "px-sm py-xs leading-5 rounded-base text-xs" /* For backwards compatibility */,
+        sm: "px-md py-base leading-5 rounded-base text-xs" /* For backwards compatibility */,
         base: "px-lg py-md rounded-md text-sm",
         lg: "px-xl py-lg text-base leading-5 rounded-md",
         icon: "flex justify-center p-1.5 stroke-2 rounded-md",
