@@ -28,7 +28,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
       <Button
         variant={variant}
         size={size}
-        className={classNames("text-zinc-700 justify-between", className)}
+        className={classNames("text-zinc-700 !justify-between", className)}
       >
         <Value placeholder={placeholder} />
         <Icon>{icon}</Icon>
