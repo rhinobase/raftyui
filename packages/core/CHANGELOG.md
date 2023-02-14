@@ -1,5 +1,12 @@
 # @rhinobase/ui
 
+## 0.2.2
+
+### Patch Changes
+
+- Added new component Stats and minor improvements in Menu, Password Field,
+  Radio Group, Toast, Checkbox, and Menus
+
 ## 0.2.1
 
 ### Patch Changes
