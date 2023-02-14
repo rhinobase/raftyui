@@ -8,5 +8,5 @@ export const [ContextMenuProvider, useContextMenuContext] =
   });
 
 export interface ContextMenuContext {
-  menuSize?: "sm" | "base" | "lg";
+  size?: "sm" | "base" | "lg";
 }

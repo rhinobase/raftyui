@@ -47,7 +47,7 @@ export function AllFeatures() {
   return (
     <Grid>
       <div className="flex flex-row justify-between w-full">
-        <Menu.Root menuSize="sm">
+        <Menu.Root size="sm">
           <Menu.Trigger size="icon">
             All Feature
             <svg
@@ -191,7 +191,7 @@ export function AllFeatures() {
             </Menu.RadioGroup>
           </Menu.Content>
         </Menu.Root>
-        <Menu.Root menuSize="lg">
+        <Menu.Root size="lg">
           <Menu.Trigger size="icon">
             All Feature
             <svg

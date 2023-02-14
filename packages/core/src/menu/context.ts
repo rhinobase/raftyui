@@ -7,5 +7,5 @@ export const [MenuProvider, useMenuContext] = createContext<MenuContext>({
 });
 
 export interface MenuContext {
-  menuSize?: "sm" | "base" | "lg";
+  size?: "sm" | "base" | "lg";
 }

@@ -11,7 +11,7 @@ export function Default() {
     <Grid>
       <div className="flex flex-row justify-between w-full">
         <div className="w-96">
-          <MenuBar.Root menuSize="sm">
+          <MenuBar.Root size="sm">
             <MenuBar.Menu>
               <MenuBar.Trigger>File</MenuBar.Trigger>
               <MenuBar.Content>
@@ -169,7 +169,7 @@ export function Default() {
           </MenuBar.Root>
         </div>
         <div className="w-96">
-          <MenuBar.Root menuSize="lg">
+          <MenuBar.Root size="lg">
             <MenuBar.Menu>
               <MenuBar.Trigger>File</MenuBar.Trigger>
               <MenuBar.Content>

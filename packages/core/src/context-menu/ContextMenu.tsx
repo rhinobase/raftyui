@@ -11,8 +11,8 @@ import {
 type Root = ComponentProps<(typeof ContextMenuPrimitive)["Root"]> &
   ContextMenuContext;
 export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, menuSize = "base" }) => (
-    <ContextMenuProvider value={{ menuSize }}>
+  ({ children, size = "base" }) => (
+    <ContextMenuProvider value={{ size }}>
       <ContextMenuPrimitive.Root>{children}</ContextMenuPrimitive.Root>
     </ContextMenuProvider>
   ),
@@ -58,13 +58,13 @@ export const Content = forwardRef<HTMLDivElement, Content>(
 type Label = ComponentProps<(typeof ContextMenuPrimitive)["Label"]>;
 export const Label = forwardRef<HTMLDivElement, Label>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { menuSize } = useContextMenuContext();
+    const { size } = useContextMenuContext();
     return (
       <ContextMenuPrimitive.Label
         className={classNames(
-          menuSize == "sm" && "text-[10px] py-1",
-          menuSize == "base" && "text-[11px] py-1",
-          menuSize == "lg" && "text-xs py-1.5",
+          size == "sm" && "text-[10px] py-1",
+          size == "base" && "text-[11px] py-1",
+          size == "lg" && "text-xs py-1.5",
           "px-lg text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
           className,
         )}
@@ -81,13 +81,13 @@ export const Label = forwardRef<HTMLDivElement, Label>(
 type Item = ComponentProps<(typeof ContextMenuPrimitive)["Item"]>;
 export const Item = forwardRef<HTMLDivElement, Item>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { menuSize } = useContextMenuContext();
+    const { size } = useContextMenuContext();
     return (
       <ContextMenuPrimitive.Item
         className={classNames(
-          menuSize == "sm" && "text-xs",
-          menuSize == "base" && "text-sm",
-          menuSize == "lg" && "text-base",
+          size == "sm" && "text-xs",
+          size == "base" && "text-sm",
+          size == "lg" && "text-base",
           "rounded-base py-1.5 text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2  font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
           className,
         )}
@@ -108,15 +108,15 @@ type CheckboxItem = ComponentProps<
 >;
 export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { menuSize } = useContextMenuContext();
+    const { size } = useContextMenuContext();
     return (
       <ContextMenuPrimitive.CheckboxItem
         {...props}
         ref={forwardedRef}
         className={classNames(
-          menuSize == "sm" && "text-xs",
-          menuSize == "base" && "text-sm",
-          menuSize == "lg" && "text-base",
+          size == "sm" && "text-xs",
+          size == "base" && "text-sm",
+          size == "lg" && "text-base",
           "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
           className,
         )}
@@ -124,9 +124,9 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
         {children}
         <ContextMenuPrimitive.ItemIndicator
           className={classNames(
-            menuSize == "sm" && "top-2",
-            menuSize == "base" && "top-2.5",
-            menuSize == "lg" && "top-3",
+            size == "sm" && "top-2",
+            size == "base" && "top-2.5",
+            size == "lg" && "top-3",
             "absolute left-1",
           )}
         >
@@ -156,15 +156,15 @@ export const RadioGroup = ContextMenuPrimitive.RadioGroup;
 type RadioItem = ComponentProps<(typeof ContextMenuPrimitive)["RadioItem"]>;
 export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { menuSize } = useContextMenuContext();
+    const { size } = useContextMenuContext();
     return (
       <ContextMenuPrimitive.RadioItem
         {...props}
         ref={forwardedRef}
         className={classNames(
-          menuSize == "sm" && "text-xs",
-          menuSize == "base" && "text-sm",
-          menuSize == "lg" && "text-base",
+          size == "sm" && "text-xs",
+          size == "base" && "text-sm",
+          size == "lg" && "text-base",
           "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
           className,
         )}
@@ -172,9 +172,9 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
         {children}
         <ContextMenuPrimitive.ItemIndicator
           className={classNames(
-            menuSize == "sm" && "top-2",
-            menuSize == "base" && "top-2.5",
-            menuSize == "lg" && "top-3",
+            size == "sm" && "top-2",
+            size == "base" && "top-2.5",
+            size == "lg" && "top-3",
             "absolute left-1",
           )}
         >
@@ -206,15 +206,15 @@ export const Sub = forwardRef<HTMLDivElement, Sub>(({ children, ...props }) => {
 type SubTrigger = ComponentProps<(typeof ContextMenuPrimitive)["SubTrigger"]>;
 export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { menuSize } = useContextMenuContext();
+    const { size } = useContextMenuContext();
     return (
       <ContextMenuPrimitive.SubTrigger
         {...props}
         ref={forwardedRef}
         className={classNames(
-          menuSize == "sm" && "text-xs",
-          menuSize == "base" && "text-sm",
-          menuSize == "lg" && "text-base",
+          size == "sm" && "text-xs",
+          size == "base" && "text-sm",
+          size == "lg" && "text-base",
           "rounded-base py-1.5 pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
           className,
         )}
@@ -269,15 +269,15 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
 type Separator = ComponentProps<(typeof ContextMenuPrimitive)["Separator"]>;
 export const Separator = forwardRef<HTMLDivElement, Separator>(
   ({ className, ...props }, forwardedRef) => {
-    const { menuSize } = useContextMenuContext();
+    const { size } = useContextMenuContext();
     return (
       <ContextMenuPrimitive.Separator
         {...props}
         ref={forwardedRef}
         className={classNames(
-          menuSize == "sm" && "my-1",
-          menuSize == "base" && "my-[5px]",
-          menuSize == "lg" && "my-1.5",
+          size == "sm" && "my-1",
+          size == "base" && "my-[5px]",
+          size == "lg" && "my-1.5",
           "bg-secondary-200 dark:bg-secondary-700 h-[1px] ",
           className,
         )}
