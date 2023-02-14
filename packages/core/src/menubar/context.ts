@@ -8,5 +8,5 @@ export const [MenuBarProvider, useMenuBarContext] =
   });
 
 export interface MenuBarContext {
-  menuSize?: "sm" | "base" | "lg";
+  size?: "sm" | "base" | "lg";
 }
