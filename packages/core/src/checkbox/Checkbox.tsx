@@ -42,7 +42,7 @@ export const Checkbox = forwardRef<
               size == "sm" && "h-2.5",
               size == "md" && "h-3",
               size == "lg" && "h-3.5",
-              "stroke-2 text-white group-data-[state=indeterminate]:hidden",
+              "stroke-[4px] text-white group-data-[state=indeterminate]:hidden",
             )}
           >
             <path

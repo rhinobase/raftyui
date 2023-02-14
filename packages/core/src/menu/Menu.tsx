@@ -100,10 +100,10 @@ export const Label = forwardRef<HTMLDivElement, Label>(
       <DropdownMenu.Label
         {...props}
         className={classNames(
-          menuSize == "sm" && "text-[11px] py-1",
-          menuSize == "base" && "text-xs py-1.5",
-          menuSize == "lg" && "text-[13px] py-2",
-          "px-2xl text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
+          menuSize == "sm" && "text-[10px] py-1",
+          menuSize == "base" && "text-[11px] py-1",
+          menuSize == "lg" && "text-xs py-1.5",
+          "px-lg text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
           className,
         )}
         ref={forwardedRef}
@@ -143,7 +143,7 @@ export const Group = DropdownMenu.Group;
 // MenuCheckboxItem Component
 type CheckboxItem = ComponentProps<(typeof DropdownMenu)["CheckboxItem"]>;
 export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
-  ({ children, ...props }, forwardedRef) => {
+  ({ children, className, ...props }, forwardedRef) => {
     const { menuSize } = useMenuContext();
     return (
       <DropdownMenu.CheckboxItem
@@ -154,6 +154,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
           menuSize == "base" && "text-sm",
           menuSize == "lg" && "text-base",
           "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+          className,
         )}
       >
         {children}
@@ -191,7 +192,7 @@ export const RadioGroup = DropdownMenu.RadioGroup;
 // MenuRadioItem Component
 type RadioItem = ComponentProps<(typeof DropdownMenu)["RadioItem"]>;
 export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
-  ({ children, ...props }, forwardedRef) => {
+  ({ children, className, ...props }, forwardedRef) => {
     const { menuSize } = useMenuContext();
     return (
       <DropdownMenu.RadioItem
@@ -202,7 +203,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
           menuSize == "base" && "text-sm",
           menuSize == "lg" && "text-base",
           "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
-          props.className,
+          className,
         )}
       >
         {children}

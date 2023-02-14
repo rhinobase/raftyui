@@ -2,19 +2,22 @@ import React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
+import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
 
 //MenuBar Component
-type Root = ComponentProps<(typeof MenubarPrimitive)["Root"]>;
+type Root = ComponentProps<(typeof MenubarPrimitive)["Root"]> & MenuBarContext;
 export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ children, className, menuSize = "base", ...props }, forwardedRef) => {
     return (
-      <MenubarPrimitive.Root
-        className={classNames("flex w-full", className)}
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </MenubarPrimitive.Root>
+      <MenuBarProvider value={{ menuSize }}>
+        <MenubarPrimitive.Root
+          className={classNames("flex w-full", className)}
+          {...props}
+          ref={forwardedRef}
+        >
+          {children}
+        </MenubarPrimitive.Root>
+      </MenuBarProvider>
     );
   },
 );
@@ -31,10 +34,14 @@ export const Menu = forwardRef<HTMLDivElement, Menu>(
 type Trigger = ComponentProps<(typeof MenubarPrimitive)["MenubarTrigger"]>;
 export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
   ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.Trigger
         className={classNames(
-          "py-base px-lg hover:bg-secondary-200 data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-medium outline-none",
+          menuSize == "sm" && "text-xs py-1 px-2",
+          menuSize == "base" && "text-sm py-2 px-3",
+          menuSize == "lg" && "text-base py-3 px-4",
+          "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-medium outline-none",
           className,
         )}
         {...props}
@@ -84,10 +91,14 @@ export const Group = ({ children, title }: Group) => {
 type Label = ComponentProps<(typeof MenubarPrimitive)["Label"]>;
 export const Label = forwardRef<HTMLDivElement, Label>(
   ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.Label
         className={classNames(
-          "px-lg py-base text-secondary-400 dark:text-secondary-400 select-none text-[11px] font-semibold uppercase tracking-wider",
+          menuSize == "sm" && "text-[10px] py-1",
+          menuSize == "base" && "text-[11px] py-1",
+          menuSize == "lg" && "text-xs py-1.5",
+          "px-lg text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
           className,
         )}
         {...props}
@@ -103,10 +114,14 @@ export const Label = forwardRef<HTMLDivElement, Label>(
 type Item = ComponentProps<(typeof MenubarPrimitive)["Item"]>;
 export const Item = forwardRef<HTMLDivElement, Item>(
   ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.Item
         className={classNames(
-          "rounded-base py-[6px] px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+          menuSize == "sm" && "text-xs",
+          menuSize == "base" && "text-sm",
+          menuSize == "lg" && "text-base",
+          "rounded-base py-1.5 text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2  font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
           className,
         )}
         {...props}
@@ -123,15 +138,29 @@ export const CheckboxGroup = MenubarPrimitive.Group;
 
 type CheckboxItem = ComponentProps<(typeof MenubarPrimitive)["CheckboxItem"]>;
 export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
-  ({ children, ...props }, forwardedRef) => {
+  ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.CheckboxItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base py-[6px] px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
+        className={classNames(
+          menuSize == "sm" && "text-xs",
+          menuSize == "base" && "text-sm",
+          menuSize == "lg" && "text-base",
+          "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+          className,
+        )}
       >
         {children}
-        <MenubarPrimitive.ItemIndicator className="absolute left-1">
+        <MenubarPrimitive.ItemIndicator
+          className={classNames(
+            menuSize == "sm" && "top-2",
+            menuSize == "base" && "top-2.5",
+            menuSize == "lg" && "top-3",
+            "absolute left-1",
+          )}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -157,15 +186,29 @@ export const RadioGroup = MenubarPrimitive.RadioGroup;
 
 type RadioItem = ComponentProps<(typeof MenubarPrimitive)["RadioItem"]>;
 export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
-  ({ children, ...props }, forwardedRef) => {
+  ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.RadioItem
         {...props}
         ref={forwardedRef}
-        className="rounded-base py-[6px] px-2xl text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 relative flex w-full cursor-pointer items-center gap-2 text-[13px] font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent"
+        className={classNames(
+          menuSize == "sm" && "text-xs",
+          menuSize == "base" && "text-sm",
+          menuSize == "lg" && "text-base",
+          "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+          className,
+        )}
       >
         {children}
-        <MenubarPrimitive.ItemIndicator className="absolute left-1">
+        <MenubarPrimitive.ItemIndicator
+          className={classNames(
+            menuSize == "sm" && "top-2",
+            menuSize == "base" && "top-2.5",
+            menuSize == "lg" && "top-3",
+            "absolute left-1",
+          )}
+        >
           <svg
             width="16"
             height="16"
@@ -192,12 +235,16 @@ export const Sub = forwardRef<HTMLDivElement, Sub>(({ children, ...props }) => {
 type SubTrigger = ComponentProps<(typeof MenubarPrimitive)["SubTrigger"]>;
 export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
   ({ children, className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.SubTrigger
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "rounded-base py-[6px] pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 text-[13px] font-medium focus:outline-none",
+          menuSize == "sm" && "text-xs",
+          menuSize == "base" && "text-sm",
+          menuSize == "lg" && "text-base",
+          "rounded-base py-1.5 pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
           className,
         )}
       >
@@ -251,12 +298,16 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
 type Separator = ComponentProps<(typeof MenubarPrimitive)["Separator"]>;
 export const Separator = forwardRef<HTMLDivElement, Separator>(
   ({ className, ...props }, forwardedRef) => {
+    const { menuSize } = useMenuBarContext();
     return (
       <MenubarPrimitive.Separator
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "bg-secondary-200 dark:bg-secondary-700 my-1 h-[1px]",
+          menuSize == "sm" && "my-1",
+          menuSize == "base" && "my-[5px]",
+          menuSize == "lg" && "my-1.5",
+          "bg-secondary-200 dark:bg-secondary-700 h-[1px] ",
           className,
         )}
       />

@@ -3,7 +3,7 @@ import React from "react";
 import * as RadioGroup from "./RadioGroup";
 
 export default {
-  title: "New/RadioGroup",
+  title: "New/Radio Group",
   component: RadioGroup,
 };
 

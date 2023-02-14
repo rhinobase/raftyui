@@ -44,9 +44,9 @@ export const Item = forwardRef<
     forwardedRef,
   ) => {
     return (
-      <div className={classNames(hide && "hidden", "flex gap-1")}>
+      <div className={classNames(hide && "hidden", "flex items-center gap-1")}>
         <RadioGroupPrimitives.Item
-          className="border-secondary-300 dark:border-secondary-700 dark:bg-secondary-800 relative inline-flex h-4 w-4 items-center justify-center self-start rounded-full border-2 data-[disabled]:cursor-not-allowed data-[state=checked]:border-0"
+          className="border-secondary-300 dark:border-secondary-700 dark:bg-secondary-800 relative inline-flex h-4 w-4 items-center justify-center rounded-full border-2 data-[disabled]:cursor-not-allowed data-[state=checked]:border-0"
           {...props}
           id={props.value}
           disabled={isDisabled}
@@ -60,7 +60,7 @@ export const Item = forwardRef<
               isDisabled && "text-secondary-400 cursor-not-allowed",
               tooltip &&
                 "border-b-secondary-300 dark:border-secondary-500 border-b border-dashed",
-              "text-sm",
+              "text-sm font-medium",
             )}
             htmlFor={props.value}
           >

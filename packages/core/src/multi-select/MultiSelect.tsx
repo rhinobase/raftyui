@@ -3,10 +3,9 @@ import { classNames } from "@rhinobase/utils";
 import React from "react";
 
 // ReactSelect Component
-export interface ReactSelect {
+export interface MultiSelect {
   name?: string;
   options: object[];
-  type: "single" | "multiple";
   defaultValue?: object;
   placeholder?: string;
   isSearchable?: boolean;
@@ -14,21 +13,19 @@ export interface ReactSelect {
   disabled?: boolean;
 }
 
-export function ReactSelect({
+export function MultiSelect({
   name = "select",
   options,
-  type = "single",
   defaultValue,
   placeholder = "",
-  isSearchable = false,
   isClearable = false,
   disabled = false,
-}: ReactSelect) {
+}: MultiSelect) {
   return (
     <Select
       name={name}
       isDisabled={disabled}
-      isMulti={type == "multiple" ? true : false}
+      isMulti
       defaultValue={defaultValue}
       placeholder={placeholder}
       unstyled
@@ -49,6 +46,22 @@ export function ReactSelect({
             />
           </svg>
         ),
+        // ClearIndicator: () => (
+        //   <svg
+        //     xmlns="http://www.w3.org/2000/svg"
+        //     fill="none"
+        //     viewBox="0 0 24 24"
+        //     strokeWidth="1.5"
+        //     stroke="currentColor"
+        //     className="w-5 h-5 text-zinc-700"
+        //   >
+        //     <path
+        //       strokeLinecap="round"
+        //       strokeLinejoin="round"
+        //       d="M6 18L18 6M6 6l12 12"
+        //     />
+        //   </svg>
+        // ),
         IndicatorSeparator: () => null,
         Input: (props) => (
           <components.Input
@@ -58,8 +71,8 @@ export function ReactSelect({
           />
         ),
       }}
-      isClearable={isClearable}
-      isSearchable={isSearchable}
+      isClearable
+      isSearchable
       options={options}
       styles={{
         control: (base, state) => ({
@@ -81,17 +94,19 @@ export function ReactSelect({
             state.isFocused
               ? "ring-2 border-primary-500 ring-primary-100/10"
               : "dark:border-secondary-700",
-            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-md border z-1 !min-h-[30px] md:!min-h-[42px]",
+            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-md border z-1 !min-h-[30px] md:!min-h-[42px] !py-1",
           ),
+        clearIndicator: () => "text-zinc-400 stroke-1 hover:text-zinc-600",
         menu: () =>
           "dark:bg-secondary-800 bg-white rounded-md shadow-xl py-base px-base border-0 w-full absolute mt-1",
         menuList: () => "focus:dark:bg-secondary-700",
+        valueContainer: () => "gap-1",
         multiValue: () =>
-          "dark:bg-secondary-800 dark:text-secondary-100 bg-secondary-100 ml-1 first:!ml-0",
+          "dark:bg-secondary-800 dark:text-secondary-100 bg-secondary-100",
         multiValueLabel: () =>
           "dark:text-secondary-100 px-md font-medium text-sm",
         multiValueRemove: (state) =>
-          "bg-secondary-300/50 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-200",
+          "bg-secondary-300/50 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-200 px-[3px]",
         input: () => "dark:text-secondary-100",
         singleValue: () => "dark:text-secondary-100",
         option: (state) =>

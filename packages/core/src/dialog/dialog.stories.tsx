@@ -13,6 +13,7 @@ export function Default() {
     <Grid>
       <Dialog.Root>
         <Dialog.Trigger>open</Dialog.Trigger>
+        <Dialog.Overlay />
         <Dialog.Content>
           <Dialog.Title>Dialog Header</Dialog.Title>
           <Dialog.Body>

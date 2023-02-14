@@ -32,7 +32,7 @@ export function Default({ size = "md" }: AccordionContext) {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                 >
                   <path
                     stroke-linecap="round"
@@ -48,7 +48,7 @@ export function Default({ size = "md" }: AccordionContext) {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                 >
                   <path
                     stroke-linecap="round"
@@ -137,7 +137,7 @@ export function Large({ size = "md" }: AccordionContext) {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                 >
                   <path
                     stroke-linecap="round"
@@ -153,7 +153,7 @@ export function Large({ size = "md" }: AccordionContext) {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                 >
                   <path
                     stroke-linecap="round"

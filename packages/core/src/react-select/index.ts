@@ -1,1 +1,0 @@
-export { ReactSelect } from "./ReactSelect";

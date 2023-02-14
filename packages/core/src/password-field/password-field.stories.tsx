@@ -3,7 +3,7 @@ import { PasswordField } from "./PasswordField";
 import React from "react";
 
 export default {
-  title: "New/PasswordField",
+  title: "New/Password Field",
   component: PasswordField,
 };
 

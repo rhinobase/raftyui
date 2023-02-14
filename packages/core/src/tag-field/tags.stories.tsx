@@ -3,7 +3,7 @@ import React from "react";
 import { TagField } from "./TagField";
 
 export default {
-  title: "Forms/TagField",
+  title: "Forms/Tag Field",
   component: TagField,
 };
 

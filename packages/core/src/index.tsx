@@ -15,7 +15,7 @@ export * as Menu from "./menu";
 export * as MenuBar from "./menubar";
 export { PasswordField } from "./password-field";
 export * as RadioGroup from "./radio-group";
-export { ReactSelect } from "./react-select";
+export { MultiSelect } from "./multi-select";
 export * as Select from "./select";
 export { Spinner } from "./spinner";
 export { Switch } from "./switch";

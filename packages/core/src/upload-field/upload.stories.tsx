@@ -3,7 +3,7 @@ import React from "react";
 import { UploadField } from "./UploadField";
 
 export default {
-  title: "Forms/UploadField",
+  title: "Forms/Upload Field",
   component: UploadField,
 };
 
