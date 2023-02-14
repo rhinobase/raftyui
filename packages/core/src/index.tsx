@@ -19,6 +19,14 @@ export { ReactSelect } from "./react-select";
 export * as Select from "./select";
 export { Spinner } from "./spinner";
 export { Switch } from "./switch";
+export {
+  Stat,
+  StatGroup,
+  StatHelpText,
+  StatIcon,
+  StatLabel,
+  StatValue,
+} from "./stat";
 export * as TabGroup from "./tab-group";
 export {
   Table,
