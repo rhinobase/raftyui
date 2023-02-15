@@ -41,7 +41,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
           size == "sm" && "text-xs py-1 px-2",
           size == "base" && "text-sm py-2 px-3",
           size == "lg" && "text-base py-3 px-4",
-          "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-medium outline-none",
+          "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none",
           className,
         )}
         {...props}
@@ -121,7 +121,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base py-1.5 text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2  font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+          "rounded-base py-1.5 text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
           className,
         )}
         {...props}
@@ -148,7 +148,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+          "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -196,7 +196,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
+          "rounded-base py-1.5 px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -244,7 +244,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base py-1.5 pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
+          "rounded-base py-1.5 pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-semibold focus:outline-none",
           className,
         )}
       >

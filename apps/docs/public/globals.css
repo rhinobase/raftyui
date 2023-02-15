@@ -1838,12 +1838,12 @@ video {
   line-height: 2rem;
 }
 
-.font-medium{
-  font-weight: 500;
-}
-
 .font-semibold{
   font-weight: 600;
+}
+
+.font-medium{
+  font-weight: 500;
 }
 
 .font-light{

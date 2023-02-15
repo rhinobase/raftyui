@@ -113,7 +113,7 @@ export function MultiSelect({
           classNames(
             state.isFocused && "bg-secondary-200/60 dark:bg-secondary-700/50",
             state.isSelected && "bg-secondary-200/60 dark:bg-secondary-700/50",
-            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-base font-medium",
+            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-base font-semibold",
           ),
       }}
     />

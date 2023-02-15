@@ -18,7 +18,7 @@ export type ButtonBase = {
 export type Button = ButtonBase & Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
-  "flex whitespace-nowrap items-center justify-center font-medium h-max transition-all border data-[hidden=true]:hidden",
+  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border data-[hidden=true]:hidden",
   {
     variants: {
       colorScheme: {

@@ -70,7 +70,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
             "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-md",
           size == "lg" &&
             "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-lg text-lg",
-          "text-secondary-500 dark:text-secondary-400 hover:dark:text-secondary-100 data-[orientation=vertical]:px-lg data-[orientation=vertical]:py-md font-medium transition-colors hover:text-black",
+          "text-secondary-500 dark:text-secondary-400 hover:dark:text-secondary-100 data-[orientation=vertical]:px-lg data-[orientation=vertical]:py-md font-semibold transition-colors hover:text-black",
           "data-[orientation=vertical]:data-[state=active]:bg-secondary-300/50 data-[orientation=vertical]:text-secondary-800 data-[orientation=vertical]:hover:bg-secondary-200/50 data-[orientation=vertical]:data-[state=active]:hover:bg-secondary-300/50 data-[orientation=vertical]:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:dark:bg-secondary-700/40 data-[orientation=vertical]:rounded-md data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:text-left",
           "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
           className,

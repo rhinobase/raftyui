@@ -62,7 +62,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
             size == "sm" && "px-lg py-base text-sm",
             size == "md" && "px-lg py-md",
             size == "lg" && "px-lg py-lg text-lg",
-            "text-secondary-700 hover:bg-secondary-50/80 dark:text-secondary-300 dark:hover:bg-secondary-800/20 group flex w-full items-center justify-between font-medium transition-all",
+            "text-secondary-700 hover:bg-secondary-50/80 dark:text-secondary-300 dark:hover:bg-secondary-800/20 group flex w-full items-center justify-between font-semibold transition-all",
             className,
           )}
           {...props}
