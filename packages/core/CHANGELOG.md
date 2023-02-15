@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- Minor improvements
+
 ## 0.2.2
 
 ### Patch Changes
