@@ -54,11 +54,15 @@ const buttonClasses = cva(
         colorScheme: "secondary",
         variant: ["solid", "outline", "ghost"],
         className: "text-secondary-600 dark:text-secondary-200",
+        disabled: [false, undefined],
+        loading: [false, undefined],
       }),
       ...applyStyleToMultipleVariants({
         colorScheme: ["primary", "error"],
         variant: "solid",
         className: "text-white dark:text-black",
+        disabled: [false, undefined],
+        loading: [false, undefined],
       }),
       // Primary Solid
       {
