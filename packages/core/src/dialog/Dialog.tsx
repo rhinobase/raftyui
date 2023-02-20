@@ -86,7 +86,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           {...props}
           style={{ height: height && height, maxWidth: width && width }}
           className={classNames(
-            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 shadow-xl transition-all duration-300 focus-visible:outline-none",
+            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 shadow-xl transition-all duration-200 focus-visible:outline-none",
             "dark:bg-secondary-800 dark:text-secondary-50 rounded-base min-w-[360px] bg-white text-left sm:w-full sm:align-middle",
             size == "xl" && "p-5xl max-w-[80%]",
             size == "lg" && "p-5xl max-w-[60rem]",
