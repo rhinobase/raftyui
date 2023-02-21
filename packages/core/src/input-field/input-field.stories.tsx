@@ -3,7 +3,7 @@ import { InputField } from "./InputField";
 import React from "react";
 
 export default {
-  title: "New/InputField",
+  title: "Forms/Input Field",
   component: InputField,
 };
 

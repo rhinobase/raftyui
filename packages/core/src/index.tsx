@@ -45,3 +45,4 @@ export { Tooltip } from "./tooltip";
 export { TagField } from "./tag-field";
 export { Textarea } from "./textarea";
 export { UploadField } from "./upload-field";
+export { Root, Input } from "./reference-field";
