@@ -37,10 +37,9 @@ const people = [
 ];
 
 export function Default() {
-  const [open, setOpen] = useState<boolean>();
   const [value, setValue] = useState("");
 
-  // const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
 
   // const filteredPeople =
   //   query === ""
@@ -52,26 +51,16 @@ export function Default() {
   return (
     <Grid>
       <div className="w-[600px]">
-        <ReferenceField.Root>
+        <ReferenceField.Root value={value} onChange={setValue}>
           <ReferenceField.Input
-            onFocus={() => {
-              setOpen(true);
-            }}
-            value={value}
-            onChange={(va) => {
-              console.log(va);
-            }}
-            // onBlur={() => }
+            onChange={(event) => {}}
+            displayValue={(value) => value}
           />
-          <ReferenceField.Content open={open}>
+          <ReferenceField.Content>
             {people.map((p) => (
               <ReferenceField.Item
-                className={classNames(p.name == value && "bg-zinc-400")}
+                className={classNames(p.name == value && "bg-zinc-100")}
                 value={p.name}
-                onClick={(e) => {
-                  setValue(e.toString());
-                  setOpen(false);
-                }}
                 key={p.id}
               >
                 {p.name}
