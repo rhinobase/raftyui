@@ -8,6 +8,5 @@ export const [ReferenceFieldProvider, useReferenceFieldContext] =
   });
 
 export interface ReferenceFieldContext {
-  open: boolean;
-  // onOpenChange: (state: boolean) => void;
+  selected?: string;
 }
