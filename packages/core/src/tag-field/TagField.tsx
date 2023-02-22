@@ -1,49 +1,51 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { classNames } from "@rhinobase/utils";
 import { Button } from "../button";
 import React from "react";
+import { InputField } from "../input-field";
 
-export type TagField = JSX.IntrinsicElements["input"];
+export type TagField = Omit<JSX.IntrinsicElements["input"], "onChange"> & {
+  initialData?: string[];
+  onChange?: (tags: string[]) => void;
+};
 export const TagField = forwardRef<HTMLInputElement, TagField>(
-  ({ defaultValue, className, ...props }, forwardedRef) => {
-    const [tag, setTag] = useState<string[]>([]);
+  ({ className, initialData, onChange, ...props }, forwardedRef) => {
+    const [tag, setTag] = useState<string[]>(initialData ?? []);
+
+    useEffect(() => {
+      if (onChange) onChange(tag);
+    }, [tag]);
 
     return (
-      <>
-        <input
-          onKeyDown={(event) => {
-            if (event.key == "Enter") {
-              event.preventDefault();
-              const data = event.currentTarget.value;
-              // console.log(typeof(data))
-              const tmp = [
-                ...new Set<string>([
-                  ...tag,
-                  ...data
-                    .split(/[ ,.]+/)
-                    .filter(
-                      (word) => word.length != 0 && !"[]()./".includes(word),
-                    )
-                    .map((word) => word.toLowerCase()),
-                ]),
-              ];
-              setTag(tmp);
-              event.currentTarget.value = "";
-            }
-          }}
-          {...props}
-          className={classNames(
-            "px-lg py-base dark:text-secondary-200 block w-full appearance-none rounded-md border bg-transparent shadow-sm autofill:bg-transparent dark:border-zinc-700",
-            "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-500/30 dark:focus:border-primary-300 focus:outline-none focus:ring-2",
-            "read-only:focus:ring-0",
-            "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
-            className,
-          )}
-          ref={forwardedRef}
-        />
-        <div className="my-7 flex min-h-fit items-center justify-center gap-1">
+      <div className={classNames("w-full", className)}>
+        <div className="w-full flex items-center gap-2">
+          <InputField
+            onKeyDown={(event) => {
+              if (event.key == "Enter") {
+                event.preventDefault();
+                const data = event.currentTarget.value.trim();
+                if (data.length != 0 && data != " ") {
+                  const tmp = [...new Set<string>([...tag, data])];
+                  setTag(tmp);
+                }
+                event.currentTarget.value = "";
+              }
+            }}
+            {...props}
+            ref={forwardedRef}
+          />
+          <Button
+            variant="ghost"
+            onClick={() => setTag([])}
+            hidden={tag.length < 2}
+          >
+            Clear All
+          </Button>
+        </div>
+        <div className="flex min-h-fit items-center justify-center gap-x-2 flex-wrap my-1.5">
           {tag.map((value, idx) => (
             <div
+              key={value}
               className={
                 "py-sm pl-lg pr-sm bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md font-semibold dark:text-zinc-100"
               }
@@ -59,7 +61,6 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
                     return [...prev];
                   });
                 }}
-                key={idx}
                 colorScheme="error"
                 variant="ghost"
                 className="!text-secondary-400 hover:!text-error-500 !p-[1px]"
@@ -76,7 +77,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
             </div>
           ))}
         </div>
-      </>
+      </div>
     );
   },
 );
