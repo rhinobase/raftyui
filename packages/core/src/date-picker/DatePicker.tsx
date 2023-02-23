@@ -1,16 +1,4 @@
-import {
-  endOfMonth,
-  format,
-  getDate,
-  getDay,
-  getMonth,
-  getYear,
-  isToday,
-  isValid,
-  lastDayOfMonth,
-  parse,
-  startOfMonth,
-} from "date-fns";
+import dayjs from "dayjs";
 import * as Popover from "@radix-ui/react-popover";
 import React, { useEffect, useState } from "react";
 
@@ -33,14 +21,21 @@ const months = [
   "November",
   "December",
 ];
-const years = [
-  2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
-];
 
-export const DatePicker = (props: {
+// const years = [
+//   2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
+// ];
+
+export const DatePicker = ({
+  picker = "date",
+  ...props
+}: {
   defaultValues?: Date[];
   onSelect?: (values: Date[]) => void;
+  picker?: "date" | "month" | "year";
+  placeholder?: string;
 }) => {
+  const placeholder = props.placeholder ?? "Select a " + picker;
   const {
     calendar,
     clearSelected,
@@ -61,14 +56,24 @@ export const DatePicker = (props: {
     selected: props.defaultValues,
   });
 
+  const currentYear = new Date().getFullYear();
+  const currentStartYear = Math.floor(currentYear / 10) * 10 - 1;
+
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [showDate, setShowDate] = useState(true);
-  const [showMonth, setShowMonth] = useState(false);
-  const [showYear, setShowYear] = useState(false);
+  const [startyear, setStartYear] = useState(currentStartYear);
+  const [showDate, setShowDate] = useState(picker == "date");
+  const [showMonth, setShowMonth] = useState(picker == "month");
+  const [showYear, setShowYear] = useState(picker == "year");
+
+  let years = [];
+  for (let index = startyear; index <= startyear + 11; index++) {
+    years.push(index);
+  }
 
   // Only accept digits and forward slash as input.
   const onInputChange = (input: string) => {
+    // if (picker == "year") toggle(new Date().setFullYear(2022), true);
     setInputValue(input.trim().replace(/[^\d/]+/g, ""));
   };
 
@@ -89,8 +94,9 @@ export const DatePicker = (props: {
     // Make sure the month is within the valid range
     // of months (1 - 12). If no month is given, default
     // to the one we're looking at.
+
     if (parts.length < 1) {
-      parts[0] = `${getMonth(viewing)}`;
+      parts[0] = `${dayjs(viewing).get("month")}`;
     } else if (partsAsNumber[0] < 1) {
       parts[0] = "1";
     } else if (partsAsNumber[0] > 12) {
@@ -104,8 +110,8 @@ export const DatePicker = (props: {
       parts[1] = "1";
     } else if (partsAsNumber[1] < 1) {
       parts[1] = "1";
-    } else if (partsAsNumber[1] > getDate(lastDayOfMonth(viewing))) {
-      parts[1] = `${getDate(lastDayOfMonth(viewing))}`;
+    } else if (partsAsNumber[1] > dayjs(viewing).endOf("month").date()) {
+      parts[1] = `${dayjs(viewing).endOf("month").date()}`;
     }
 
     // If no year is given, default to the one we're looking at.
@@ -113,19 +119,53 @@ export const DatePicker = (props: {
     // of the year we're looking at. Example: `12` becomes `2012` if we're
     // looking at any year between 2000 and 2999.
     if (parts.length < 3) {
-      parts[2] = `${getYear(viewing)}`;
-    } else if (partsAsNumber[2] > 9 && partsAsNumber[2] < 100) {
+      parts[2] = `${dayjs(viewing).get("year")}`;
+    } else if (partsAsNumber[2] > 9 && partsAsNumber[2] < 999) {
       parts[2] = `${
-        Math.round(getYear(viewing) / 1000) * 1000 + partsAsNumber[2]
+        Math.round(dayjs(viewing).get("year") / 1000) * 1000 + partsAsNumber[2]
       }`;
     }
 
-    const parsed = parse(parts.join("/"), "MM/dd/yyyy", new Date());
+    if (picker == "month") {
+      if (partsAsNumber[1] > 9 && partsAsNumber[1] < 999) {
+        parts[1] = `${
+          Math.round(dayjs(viewing).get("year") / 1000) * 1000 +
+          partsAsNumber[1]
+        }`;
+      }
+    }
 
-    if (isValid(parsed)) {
-      select(parsed, true);
+    console.log(parts[1]);
+
+    const parsed =
+      picker == "date"
+        ? dayjs()
+            .set("month", partsAsNumber[0] - 1)
+            .set("date", partsAsNumber[1])
+            .set("year", parseInt(parts[2]))
+        : dayjs()
+            .set("month", parseInt(parts[0]) - 1)
+            .set("year", parseInt(parts[1]))
+            .set("date", 1);
+    // parse(parts.join("/"), "MM/DD/YYYY", new Date());
+
+    console.log(parsed);
+
+    if (dayjs(parsed).isValid()) {
+      if (picker == "date") {
+        setViewing(parsed.toDate());
+        select(parsed.toDate(), true);
+      }
     } else if (selected.length > 0) {
-      setInputValue(format(selected[0], "MM/dd/yyyy"));
+      setInputValue(
+        dayjs(selected[0]).format(
+          picker == "month"
+            ? "MM/YYYY"
+            : picker == "year"
+            ? "YYYY"
+            : "MM/DD/YYYY",
+        ),
+      );
     } else {
       setInputValue("");
     }
@@ -134,23 +174,38 @@ export const DatePicker = (props: {
   // When the selection is changed, we want to update the input field
   // and the currently viewed month to match.
   useEffect(() => {
-    setInputValue(selected.length > 0 ? format(selected[0], "MM/dd/yyyy") : "");
-    setViewing(selected.length > 0 ? selected[0] : new Date());
+    setInputValue(
+      selected.length > 0
+        ? dayjs(selected[0]).format(
+            picker == "month"
+              ? "MM/YYYY"
+              : picker == "year"
+              ? "YYYY"
+              : "MM/DD/YYYY",
+          )
+        : "",
+    );
+    // setViewing(selected.length > 0 ? selected[0] : new Date());
 
     if (props.onSelect) props.onSelect(selected);
   }, [selected, setViewing]);
 
   return (
     <div className="w-[300px]">
-      <Popover.Root open={true} onOpenChange={() => setIsOpen(false)}>
+      <Popover.Root>
         <Popover.Trigger>
           <div className="relative">
             <InputField
-              onBlur={() => onInputBlur()}
-              onFocus={() => setIsOpen(true)}
+              onBlur={() => {
+                onInputBlur();
+              }}
+              // onFocus={() => setIsOpen(true)}
               onChange={(e) => onInputChange(e.target.value)}
-              placeholder="Select a Date"
-              className="pr-10"
+              placeholder={placeholder}
+              maxLength={
+                picker == "year" ? 4 : picker == "month" ? 7 : undefined
+              }
+              className="pr-10 select-none"
               value={inputValue}
             />
 
@@ -174,111 +229,162 @@ export const DatePicker = (props: {
           </div>
         </Popover.Trigger>
         <Popover.Portal>
-          <Popover.Content className="shadow-[0px_0px_15px_3px_rgba(70,70,70,0.1)] min-w-[360px]">
-            <div className="flex justify-between items-center w-full py-2 px-3 border-b">
-              <div className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 text-black/40 hover:text-black cursor-pointer"
-                  onClick={viewPreviousYear}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
-                  />
-                </svg>
-
-                {showDate && (
+          <Popover.Content
+            // side="left"
+            align="start"
+            className="shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] min-w-[300px] bg-white dark:bg-zinc-800 rounded-md mt-1"
+          >
+            {showDate || showMonth ? (
+              <div className="flex justify-between items-center w-full py-2 px-3 border-b border-zinc-200/50 dark:border-zinc-700">
+                <div className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-5 h-5 text-black/40 hover:text-black cursor-pointer"
-                    onClick={viewPreviousMonth}
+                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    onClick={viewPreviousYear}
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M15.75 19.5L8.25 12l7.5-7.5"
+                      d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
                     />
                   </svg>
-                )}
-              </div>
-              {showDate && (
-                <Button
-                  onClick={() => {
-                    setShowMonth(true);
-                    setShowDate(false);
-                    setShowYear(false);
-                  }}
-                  variant="ghost"
-                >
-                  {format(viewing, "MMMM")}
-                </Button>
-              )}
-              <Button
-                onClick={() => {
-                  setShowDate(false);
-                  setShowMonth(false);
-                  setShowYear(true);
-                }}
-                variant="ghost"
-              >
-                {format(viewing, "yyyy")}
-              </Button>
-              {/* <p>{format(viewing, "MMMM yyyy")}</p> */}
-              <div className="flex items-center gap-2">
-                {showDate && (
+
+                  {picker == "date" && showDate && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                      onClick={viewPreviousMonth}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.75 19.5L8.25 12l7.5-7.5"
+                      />
+                    </svg>
+                  )}
+                </div>
+                <div className="flex gap-2">
+                  {picker == "date" && showDate && (
+                    <Button
+                      onClick={() => {
+                        setShowMonth(true);
+                        setShowDate(false);
+                        setShowYear(false);
+                      }}
+                      variant="ghost"
+                      className="py-1"
+                    >
+                      {dayjs(viewing).format("MMMM")}
+                    </Button>
+                  )}
+                  <Button
+                    onClick={() => {
+                      picker == "date" && setShowDate(false);
+                      setShowMonth(false);
+                      setShowYear(true);
+                    }}
+                    variant="ghost"
+                    className="py-1"
+                  >
+                    {dayjs(viewing).format("YYYY")}
+                  </Button>
+                </div>
+                {/* <p>{format(viewing, "MMMM yyyy")}</p> */}
+                <div className="flex items-center gap-2">
+                  {picker == "date" && showDate && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                      onClick={viewNextMonth}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  )}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-5 h-5 text-black/40 hover:text-black cursor-pointer"
-                    onClick={viewNextMonth}
+                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    onClick={viewNextYear}
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
                     />
                   </svg>
-                )}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 text-black/40 hover:text-black cursor-pointer"
-                  onClick={viewNextYear}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
-                  />
-                </svg>
+                </div>
               </div>
-            </div>
-
-            {showDate && (
-              <div className="px-4 py-6">
+            ) : (
+              <div className="flex justify-between items-center w-full py-2 px-3 border-b border-zinc-200/50 dark:border-zinc-700">
+                <div className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    onClick={() => setStartYear((prev) => prev - 10)}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+                    />
+                  </svg>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="ghost" className="py-1 select-none">
+                    {startyear + 1} - {startyear + 10}
+                  </Button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    onClick={() => setStartYear((prev) => prev + 10)}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+            {picker == "date" && showDate && (
+              <div className="px-6 py-6">
                 <div className="grid grid-cols-7 gap-4 mb-4">
                   {calendar.length > 0 &&
                     calendar[0][0].map((day) => (
-                      <div key={`${day}`} className="text-center text-sm">
+                      <div key={`${day}`} className="text-center text-xs">
                         {
                           ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
-                            getDay(day)
+                            dayjs(day).get("day")
                           ]
                         }
                       </div>
@@ -288,30 +394,36 @@ export const DatePicker = (props: {
                 {calendar[0].map((week) => (
                   <div
                     key={`week-${week[0]}`}
-                    className="grid grid-cols-7 gap-4 mb-2"
+                    className="grid grid-cols-7 gap-2 mb-1"
                   >
                     {week.map((day) => (
                       <button
                         data-in-range={inRange(
                           day,
-                          startOfMonth(viewing),
-                          endOfMonth(viewing),
+                          dayjs(viewing).startOf("month").toDate(),
+                          dayjs(viewing).endOf("month").toDate(),
                         )}
-                        data-selected={isSelected(day)}
-                        data-today={isToday(day)}
                         key={`${day}`}
-                        onClick={() => toggle(day, true)}
+                        onClick={() => {
+                          toggle(day, true);
+                        }}
                         className={classNames(
-                          isSelected(day)
-                            ? "bg-primary-500 text-white"
-                            : "hover:bg-black/10",
-                          startOfMonth(viewing) > day && "text-black/40",
-                          endOfMonth(viewing) < day && "text-black/40",
-                          "text-center cursor-pointer text-sm border border-transparent leading-8 rounded-md transition-all",
+                          dayjs().format("DD/MM/YYYY") ==
+                            dayjs(day).format("DD/MM/YYYY") &&
+                            "!border-primary-500",
+                          dayjs(selected[0]).format("DD/MM/YYYY") ==
+                            dayjs(day).format("DD/MM/YYYY") &&
+                            "bg-primary-500 !text-white",
+                          "hover:bg-black/10",
+                          dayjs(viewing).startOf("month").toDate() > day &&
+                            "text-black/40",
+                          dayjs(viewing).endOf("month").toDate() < day &&
+                            "text-black/40",
+                          "text-center cursor-pointer text-xs border border-transparent leading-7 rounded-md transition-all",
                         )}
                       >
                         <>
-                          <p>{format(day, "dd")}</p>
+                          <p>{dayjs(day).format("DD")}</p>
                         </>
                       </button>
                     ))}
@@ -326,13 +438,25 @@ export const DatePicker = (props: {
                   {months.map((month, index) => (
                     <Button
                       key={index}
-                      className="w-full"
+                      active={dayjs(viewing).get("month") == index}
+                      colorScheme={
+                        dayjs(viewing).get("month") == index
+                          ? "primary"
+                          : "secondary"
+                      }
+                      className={classNames(" w-full")}
                       onClick={() => {
                         viewMonth(index);
-                        setShowMonth(false);
-                        setShowDate(true);
+                        picker == "date" && setShowDate(true);
+                        picker == "date" && setShowMonth(false);
+                        picker == "month" && setIsOpen(false);
+                        picker == "month" &&
+                          toggle(new Date(viewing.setMonth(index)), true);
                       }}
-                      variant="ghost"
+                      variant={
+                        dayjs(viewing).get("month") == index ? "solid" : "ghost"
+                      }
+                      size="sm"
                     >
                       {month}
                     </Button>
@@ -343,17 +467,31 @@ export const DatePicker = (props: {
 
             {showYear && (
               <div className="px-4 py-6">
-                <div className="grid grid-cols-3 gap-3 mb-2">
+                <div className="grid grid-cols-3 gap-3">
                   {years.map((year, index) => (
                     <Button
                       key={index}
-                      className="w-full"
+                      className="w-full select-none"
+                      active={dayjs(viewing).get("year") == year}
+                      variant={
+                        dayjs(viewing).get("year") == year ? "solid" : "ghost"
+                      }
+                      colorScheme={
+                        dayjs(viewing).get("year") == year
+                          ? "primary"
+                          : "secondary"
+                      }
                       onClick={() => {
                         viewYear(year);
-                        setShowMonth(true);
-                        setShowYear(false);
+                        (picker == "date" || picker == "month") &&
+                          setShowMonth(true);
+                        (picker == "date" || picker == "month") &&
+                          setShowYear(false);
+                        picker == "year" && setIsOpen(false);
+                        picker == "year" &&
+                          toggle(new Date(viewing.setFullYear(year)), true);
                       }}
-                      variant="ghost"
+                      size="sm"
                     >
                       {year}
                     </Button>
@@ -361,408 +499,10 @@ export const DatePicker = (props: {
                 </div>
               </div>
             )}
-
-            {/* <Popover.Close /> */}
-            <Popover.Arrow className="fill-white" />
+            {/* <Popover.Arrow className="fill-white" /> */}
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>
     </div>
   );
 };
-// export function DatePicker() {
-//   const months = [
-//     "January",
-//     "February",
-//     "March",
-//     "April",
-//     "May",
-//     "June",
-//     "July",
-//     "August",
-//     "September",
-//     "October",
-//     "November",
-//     "December",
-//   ];
-//   var date = new Date();
-//   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-//   var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-//   var currentMonth = months[date.getMonth()];
-//   var currentYear = date.getFullYear();
-//   console.log(firstDay, lastDay);
-//   return (
-//     <div className="flex items-center justify-center w-full min-h-screen bg-gray-50">
-//       <div className="flex bg-white shadow-lg rounded-xl">
-//         <div className="flex flex-col">
-//           <div className="flex divide-x">
-//             <div className="flex flex-col px-6 pt-5 pb-6 border-b border-gray-100">
-//               <div className="flex items-center justify-between">
-//                 <button className="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
-//                   <svg
-//                     className="w-6 h-6 text-gray-900 stroke-current"
-//                     fill="none"
-//                   >
-//                     <path
-//                       d="M13.25 8.75L9.75 12l3.5 3.25"
-//                       strokeWidth="1.5"
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                     />
-//                   </svg>
-//                 </button>
-//                 <div className="text-sm font-semibold">{currentMonth}</div>
-//                 <div className="text-sm font-semibold">{currentYear}</div>
-//                 <button className="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
-//                   <svg
-//                     className="w-6 h-6 text-gray-900 stroke-current"
-//                     fill="none"
-//                   >
-//                     <path
-//                       d="M10.75 8.75l3.5 3.25-3.5 3.25"
-//                       strokeWidth="1.5"
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                     />
-//                   </svg>
-//                 </button>
-//               </div>
-//               <div className="grid grid-cols-7 text-xs text-center text-gray-900">
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Mo
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Tu
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   We
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Th
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Fri
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Sa
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Su
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   1
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   2
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   3
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   4
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   5
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   6
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   7
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   8
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg bg-gray-50">
-//                   9
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   10
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   11
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   12
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   13
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   14
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   15
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   16
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   17
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-white bg-blue-600 rounded-l-lg">
-//                   18
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   19
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   20
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none rounded-tr-lg bg-gray-50">
-//                   21
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none rounded-l-lg bg-gray-50">
-//                   22
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   23
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   24
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   25
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   26
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none bg-gray-50">
-//                   27
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold text-blue-600 rounded-none rounded-br-lg bg-gray-50">
-//                   28
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   1
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   2
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   3
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   4
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   5
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   6
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   7
-//                 </span>
-//               </div>
-//             </div>
-//             <div className="flex flex-col px-6 pt-5 pb-6 border-b border-gray-100">
-//               <div className="flex items-center justify-between">
-//                 <button className="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
-//                   <svg
-//                     className="w-6 h-6 text-gray-900 stroke-current"
-//                     fill="none"
-//                   >
-//                     <path
-//                       d="M13.25 8.75L9.75 12l3.5 3.25"
-//                       strokeWidth="1.5"
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                     />
-//                   </svg>
-//                 </button>
-//                 <div className="text-sm font-semibold">March</div>
-//                 <button className="flex items-center justify-center p-2 rounded-xl hover:bg-gray-50">
-//                   <svg
-//                     className="w-6 h-6 text-gray-900 stroke-current"
-//                     fill="none"
-//                   >
-//                     <path
-//                       d="M10.75 8.75l3.5 3.25-3.5 3.25"
-//                       strokeWidth="1.5"
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                     />
-//                   </svg>
-//                 </button>
-//               </div>
-//               <div className="grid grid-cols-7 text-xs text-center text-gray-900">
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Mo
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Tu
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   We
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Th
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Fri
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Sa
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 font-semibold rounded-lg">
-//                   Su
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none rounded-tl-lg bg-gray-50">
-//                   1
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   2
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   3
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   4
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   5
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   6
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   7
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none rounded-bl-lg bg-gray-50">
-//                   8
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   9
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-blue-600 rounded-none bg-gray-50">
-//                   10
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-white bg-blue-600 rounded-r-lg">
-//                   11
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   12
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   13
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   14
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   15
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   16
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   17
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   18
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   19
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   20
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   21
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   22
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   23
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   24
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   25
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   26
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   27
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   28
-//                 </span>
-
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   29
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   30
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-//                   31
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   1
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   2
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   3
-//                 </span>
-//                 <span className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg">
-//                   4
-//                 </span>
-//               </div>
-//             </div>
-//           </div>
-//           <div className="flex items-center justify-between px-6 py-4">
-//             <div className="flex items-center">
-//               <input
-//                 type="text"
-//                 className="flex items-center w-32 px-4 py-2 text-sm text-gray-900 rounded-lg bg-gray-50 focus:bg-white focus:ring-1 focus:ring-blue-600 focus:outline-none"
-//                 placeholder="18 / 02 / 2021"
-//               />
-//               <div className="p-1">
-//                 <svg
-//                   className="w-6 h-6 text-gray-900 stroke-current"
-//                   fill="none"
-//                 >
-//                   <path
-//                     d="M6.738 12.012h10.5m-4.476 4.25l4.5-4.25-4.5-4.25"
-//                     strokeWidth="1.5"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                   />
-//                 </svg>
-//               </div>
-//               <input
-//                 type="text"
-//                 className="flex items-center w-32 px-4 py-2 text-sm text-gray-900 rounded-lg bg-gray-50 focus:bg-white focus:ring-1 focus:ring-blue-600 focus:outline-none"
-//                 placeholder="11 / 03 / 2021"
-//               />
-//             </div>
-//             <div className="flex items-center space-x-2">
-//               <button className="px-4 py-2 text-sm rounded-lg bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-600 hover:bg-gray-100">
-//                 Cancel
-//               </button>
-//               <button className="px-4 py-2 text-sm text-white bg-blue-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 hover:bg-blue-700">
-//                 Set Date
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
