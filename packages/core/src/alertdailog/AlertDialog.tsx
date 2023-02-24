@@ -22,6 +22,8 @@ export const Root = React.forwardRef<HTMLDivElement, Root>(
   ),
 );
 
+Root.displayName = "AlertDialog.Root";
+
 // AlertDialogButton Component
 type Trigger = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogTrigger"]
@@ -62,6 +64,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   },
 );
 
+Trigger.displayName = "AlertDialog.Trigger";
 // AlertDialogContent Component
 type Content = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogContent"]
@@ -78,9 +81,9 @@ export const Content = React.forwardRef<HTMLDivElement, Content>(
           {...props}
           className={classNames(
             "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle",
-            size == "lg" && "p-5xl max-w-[40rem]",
-            size == "md" && "p-4xl max-w-[35rem]",
-            size == "sm" && "p-3xl max-w-[30rem]",
+            size == "lg" && "max-w-[40rem] p-8",
+            size == "md" && "max-w-[35rem] p-7",
+            size == "sm" && "max-w-[30rem] p-6",
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
             className,
           )}
@@ -92,6 +95,7 @@ export const Content = React.forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "AlertDialog.Content";
 
 // AlertDialogTitle Component
 type Title = ComponentProps<(typeof AlertDialogPrimitive)["AlertDialogTitle"]>;
@@ -116,6 +120,7 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
     );
   },
 );
+Title.displayName = "AlertDialog.Title";
 
 // AlertDialogBody Component
 type Body = ComponentProps<
@@ -130,6 +135,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
     );
   },
 );
+Body.displayName = "AlertDialog.Body";
 
 export const Action = AlertDialogPrimitive.Action;
 export const Cancel = AlertDialogPrimitive.Cancel;

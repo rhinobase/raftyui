@@ -4,10 +4,11 @@ import { Button } from "../index";
 import React from "react";
 import * as Menu from "./Menu";
 
-export default {
+const config = {
   title: "New/Menu",
   component: Menu,
 };
+export default config;
 
 export function Default() {
   return (

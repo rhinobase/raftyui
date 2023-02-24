@@ -3,10 +3,11 @@ import { Button } from "../button";
 import * as Dialog from "./Dialog";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Dialog",
   component: Dialog,
 };
+export default config;
 
 export function Default() {
   return (
@@ -18,7 +19,8 @@ export function Default() {
           <Dialog.Title>Dialog Header</Dialog.Title>
           <Dialog.Body>
             <p>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&apos;re
+              done.
             </p>
             <div className="flex items-center justify-end pt-5">
               <Button>Save Change</Button>

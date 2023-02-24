@@ -2,7 +2,7 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import { Toast } from "./Toast";
 
-export default {
+const config = {
   title: "New/Toast",
   component: Toast,
   argTypes: {
@@ -12,6 +12,7 @@ export default {
     visible: true,
   },
 };
+export default config;
 
 export function Default(args: Toast) {
   return (

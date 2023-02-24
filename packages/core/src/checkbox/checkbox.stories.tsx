@@ -2,13 +2,14 @@ import { Grid } from "@rhinobase/docs/components";
 import { Checkbox } from "./Checkbox";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Checkbox",
   component: Checkbox,
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
   },
 };
+export default config;
 
 export function Default() {
   return (

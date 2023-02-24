@@ -7,13 +7,15 @@ import { InputField } from "../input-field";
 import { Checkbox } from "../checkbox";
 import React from "react";
 
-export default {
+const config = {
   title: "Forms/Field Control",
   component: FieldControl,
   argTypes: {
     orientation: { control: "select" },
   },
 };
+
+export default config;
 
 export function Default(args: FieldControl) {
   return (

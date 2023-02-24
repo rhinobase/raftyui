@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import { PasswordField } from "./PasswordField";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Password Field",
   component: PasswordField,
 };
+export default config;
 
 export function Default() {
   return (

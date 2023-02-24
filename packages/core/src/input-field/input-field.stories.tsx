@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import { InputField } from "./InputField";
 import React from "react";
 
-export default {
+const config = {
   title: "Forms/Input Field",
   component: InputField,
 };
+export default config;
 
 export function Default() {
   return (

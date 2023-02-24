@@ -2,14 +2,14 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import { MultiSelect } from "./MultiSelect";
 
-export default {
+const config = {
   title: "New/Multi Select",
   component: MultiSelect,
   //   argTypes: {
   //     type: { control: "select" },
   //   },
 };
-
+export default config;
 const options = [
   { value: "chocolate", label: "Chocolate" },
   { value: "strawberry", label: "Strawberry" },

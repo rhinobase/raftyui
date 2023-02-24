@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import { Switch } from "./Switch";
 
-export default {
+const config = {
   title: "New/Switch",
   component: Switch,
 };
+export default config;
 
 export function Default() {
   return (

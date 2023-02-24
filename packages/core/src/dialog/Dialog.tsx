@@ -14,7 +14,7 @@ export const Root = forwardRef<HTMLDivElement, DialogContext & Root>(
     </DialogProvider>
   ),
 );
-
+Root.displayName = "Dialog.Root";
 // Dialog Button Component
 export type Trigger = ComponentProps<
   (typeof DialogPrimitive)["DialogTrigger"]
@@ -54,6 +54,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
     );
   },
 );
+Trigger.displayName = "Dialog.Trigger";
 
 export type Overlay = ComponentProps<(typeof DialogPrimitive)["Overlay"]>;
 export const Overlay = forwardRef<HTMLDivElement, Overlay>(
@@ -70,6 +71,7 @@ export const Overlay = forwardRef<HTMLDivElement, Overlay>(
     );
   },
 );
+Overlay.displayName = "Dialog.Overlay";
 
 // Dialog Content Component
 export type Content = ComponentProps<(typeof DialogPrimitive)["Content"]> & {
@@ -88,10 +90,10 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           className={classNames(
             "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 shadow-xl transition-all duration-200 focus-visible:outline-none",
             "dark:bg-secondary-800 dark:text-secondary-50 rounded-base min-w-[360px] bg-white text-left sm:w-full sm:align-middle",
-            size == "xl" && "p-5xl max-w-[80%]",
-            size == "lg" && "p-5xl max-w-[60rem]",
-            size == "md" && "p-4xl max-w-[40rem]",
-            size == "sm" && "p-3xl max-w-[30rem]",
+            size == "xl" && "max-w-[80%] p-8",
+            size == "lg" && "max-w-[60rem] p-8",
+            size == "md" && "max-w-[40rem] p-7",
+            size == "sm" && "max-w-[30rem] p-6",
             "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
             props.className,
           )}
@@ -103,6 +105,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "Dialog.Content";
 
 // Dialog Title Component
 export type Title = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
@@ -126,6 +129,7 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
     );
   },
 );
+Title.displayName = "Dialog.Title";
 
 // Dialog Body Component
 export type Body = ComponentProps<
@@ -140,6 +144,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
     );
   },
 );
+Body.displayName = "Dialog.Body";
 
 // Dialog Cross Button Component
 export type CloseButton = ComponentProps<(typeof DialogPrimitive)["Close"]> &
@@ -177,6 +182,7 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
     );
   },
 );
+CloseButton.displayName = "Dialog.CloseButton";
 
 export type Close = ComponentProps<(typeof DialogPrimitive)["Close"]>;
 export const Close = forwardRef<HTMLButtonElement, Close>(
@@ -184,3 +190,4 @@ export const Close = forwardRef<HTMLButtonElement, Close>(
     return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
   },
 );
+Close.displayName = "Dialog.Close";

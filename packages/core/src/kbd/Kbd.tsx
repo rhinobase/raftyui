@@ -12,7 +12,7 @@ export const Kbd = forwardRef<HTMLElement, Kbd>(
     <kbd
       {...props}
       className={classNames(
-        "px-base text-secondary-500 dark:border-secondary-600 dark:bg-secondary-800 dark:text-secondary-300 rounded-md border border-b-4 text-xs",
+        "text-secondary-500 dark:border-secondary-600 dark:bg-secondary-800 dark:text-secondary-300 rounded-md border border-b-4 px-1 text-xs",
         className,
       )}
       ref={forwardRef}
@@ -21,3 +21,4 @@ export const Kbd = forwardRef<HTMLElement, Kbd>(
     </kbd>
   ),
 );
+Kbd.displayName = "Kbd";

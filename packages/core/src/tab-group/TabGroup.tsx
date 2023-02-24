@@ -24,6 +24,7 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
     );
   },
 );
+Root.displayName = "TabGroup.Root";
 
 // List Component
 export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
@@ -43,6 +44,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
     );
   },
 );
+List.displayName = "TabGroup.List";
 
 // Tab Component
 export type Trigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]>;
@@ -53,10 +55,10 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
     return (
       <TabsPrimitive.Trigger
         className={classNames(
-          size == "sm" && "px-lg py-sm text-sm",
-          size == "md" && "px-lg py-base",
-          size == "lg" && "px-lg py-md text-lg",
-          "data-[state=active]:bg-secondary-200 dark:text-secondary-200 data-[state=active]:dark:bg-secondary-800 flex w-full items-center justify-center font-semibold transition-all",
+          size == "sm" && "px-3 py-1 text-sm",
+          size == "md" && "px-3 py-2",
+          size == "lg" && "px-3 py-3 text-lg",
+          "data-[state=active]:bg-primary-500 dark:text-secondary-200 data-[state=active]:dark:bg-primary-300/90 flex w-full items-center justify-center font-semibold text-black/60 transition-all data-[state=active]:text-white data-[state=active]:dark:text-black",
           className,
         )}
         {...props}
@@ -67,3 +69,4 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
     );
   },
 );
+Trigger.displayName = "TabGroup.Trigger";

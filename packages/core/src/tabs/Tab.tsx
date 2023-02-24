@@ -27,7 +27,7 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
     );
   },
 );
-
+Root.displayName = "Tab.Root";
 // List Component
 export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
 export const List = forwardRef<HTMLDivElement, TabContext & List>(
@@ -37,7 +37,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
         className={classNames(
           "flex rounded-t-md",
           "dark:border-secondary-700 border-b",
-          "data-[orientation=vertical]:bg-secondary-50 data-[orientation=vertical]:dark:bg-secondary-800 data-[orientation=vertical]:py-md data-[orientation=vertical]:px-base data-[orientation=vertical]:min-h-[600px] data-[orientation=vertical]:min-w-[200px] data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-1 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
+          "data-[orientation=vertical]:bg-secondary-50 data-[orientation=vertical]:dark:bg-secondary-800 data-[orientation=vertical]:min-h-[600px] data-[orientation=vertical]:min-w-[200px] data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-1 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r data-[orientation=vertical]:py-2 data-[orientation=vertical]:px-1",
           className,
         )}
         {...props}
@@ -48,6 +48,7 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
     );
   },
 );
+List.displayName = "Tab.List";
 
 // Trigger Component
 export type Trigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]>;
@@ -65,12 +66,12 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
           variant == "enclosed" &&
             "data-[state=active]:border-secondary-200 data-[state=active]:dark:border-secondary-700 data-[state=active]:dark:border-b-secondary-800 mb-[-2px] rounded-t-md border border-transparent data-[state=active]:border-b-white",
           size == "sm" &&
-            "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-base text-sm",
+            "text-sm data-[orientation=horizontal]:px-4 data-[orientation=horizontal]:py-1",
           size == "md" &&
-            "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-md",
+            "data-[orientation=horizontal]:px-4 data-[orientation=horizontal]:py-2",
           size == "lg" &&
-            "data-[orientation=horizontal]:px-xl data-[orientation=horizontal]:py-lg text-lg",
-          "text-secondary-500 dark:text-secondary-400 hover:dark:text-secondary-100 data-[orientation=vertical]:px-lg data-[orientation=vertical]:py-md font-semibold transition-colors hover:text-black",
+            "text-lg data-[orientation=horizontal]:px-4 data-[orientation=horizontal]:py-3",
+          "text-secondary-500 dark:text-secondary-400 hover:dark:text-secondary-100 font-semibold transition-colors hover:text-black data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-2",
           "data-[orientation=vertical]:data-[state=active]:bg-secondary-300/50 data-[orientation=vertical]:text-secondary-800 data-[orientation=vertical]:hover:bg-secondary-200/50 data-[orientation=vertical]:data-[state=active]:hover:bg-secondary-300/50 data-[orientation=vertical]:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:data-[state=active]:dark:bg-secondary-700/80 data-[orientation=vertical]:hover:dark:bg-secondary-700/40 data-[orientation=vertical]:rounded-md data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:text-left",
           "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
           className,
@@ -83,6 +84,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
     );
   },
 );
+Trigger.displayName = "Tab.Trigger";
 
 // Content Component
 export type Content = ComponentProps<(typeof TabsPrimitive)["Content"]>;
@@ -92,8 +94,8 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     return (
       <TabsPrimitive.Content
         className={classNames(
-          size == "sm" && "data-[orientation=vertical]:p-lg",
-          size == "md" && "data-[orientation=vertical]:p-2xl",
+          size == "sm" && "data-[orientation=vertical]:p-3",
+          size == "md" && "data-[orientation=vertical]:p-5",
           "w-full dark:text-white",
           className,
         )}
@@ -105,3 +107,4 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "Tab.Content";

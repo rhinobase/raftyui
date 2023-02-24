@@ -17,6 +17,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
     </ContextMenuProvider>
   ),
 );
+Root.displayName = "ContextMenu.Root";
 
 type Trigger = ComponentProps<(typeof ContextMenuPrimitive)["Trigger"]>;
 
@@ -33,6 +34,7 @@ export const Trigger = forwardRef<HTMLDivElement, Trigger>(
     );
   },
 );
+Trigger.displayName = "ContextMenu.Trigger";
 
 type Content = ComponentProps<(typeof ContextMenuPrimitive)["Content"]>;
 export const Content = forwardRef<HTMLDivElement, Content>(
@@ -41,7 +43,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
       <ContextMenuPrimitive.Portal>
         <ContextMenuPrimitive.Content
           className={classNames(
-            "p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+            "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
             className,
           )}
           {...props}
@@ -53,6 +55,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "ContextMenu.Content";
 
 //ContextMenu Label Component
 type Label = ComponentProps<(typeof ContextMenuPrimitive)["Label"]>;
@@ -65,7 +68,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
           size == "sm" && "py-1 text-[10px]",
           size == "base" && "py-1 text-[11px]",
           size == "lg" && "py-1.5 text-xs",
-          "px-lg text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
+          "text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide",
           className,
         )}
         {...props}
@@ -76,6 +79,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
     );
   },
 );
+Label.displayName = "ContextMenu.Label";
 
 //ContextMenu Item Component
 type Item = ComponentProps<(typeof ContextMenuPrimitive)["Item"]>;
@@ -88,7 +92,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2 py-1.5 font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2 font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
           className,
         )}
         {...props}
@@ -99,6 +103,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     );
   },
 );
+Item.displayName = "ContextMenu.Item";
 
 //ContextMenu ChechboxGroup Component
 export const Group = ContextMenuPrimitive.Group;
@@ -117,7 +122,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 py-1.5 font-semibold focus:outline-none",
+          "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -149,6 +154,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
     );
   },
 );
+CheckboxItem.displayName = "ContextMenu.CheckboxItem";
 
 //ContextMenu RadioGroup Component
 export const RadioGroup = ContextMenuPrimitive.RadioGroup;
@@ -165,7 +171,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 py-1.5 font-semibold focus:outline-none",
+          "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -193,6 +199,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
     );
   },
 );
+RadioItem.displayName = "ContextMenu.RadioItem";
 
 //ContextMenu SubMenu Component
 type Sub = ComponentProps<(typeof ContextMenuPrimitive)["Sub"]>;
@@ -201,6 +208,7 @@ export const Sub = forwardRef<HTMLDivElement, Sub>(({ children, ...props }) => {
     <ContextMenuPrimitive.Sub {...props}>{children}</ContextMenuPrimitive.Sub>
   );
 });
+Sub.displayName = "ContextMenu.Sub";
 
 //ContextMenu SubMenuButton Component
 type SubTrigger = ComponentProps<(typeof ContextMenuPrimitive)["SubTrigger"]>;
@@ -215,7 +223,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 font-semibold focus:outline-none",
+          "rounded-base pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pl-5 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -240,6 +248,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
     );
   },
 );
+SubTrigger.displayName = "ContextMenu.SubTrigger";
 
 //ContextMenu SubContent Component
 
@@ -251,7 +260,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
         <ContextMenuPrimitive.SubContent
           className={classNames(
             "data-[side=right]:animate-scale-in origin-top-left",
-            "dark:bg-secondary-800 p-base min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+            "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
             className,
           )}
           {...props}
@@ -264,6 +273,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
     );
   },
 );
+SubContent.displayName = "ContextMenu.SubContent";
 
 // ContextMenuDivider Component
 type Separator = ComponentProps<(typeof ContextMenuPrimitive)["Separator"]>;
@@ -285,3 +295,4 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
     );
   },
 );
+Separator.displayName = "ContextMenu.Separator";

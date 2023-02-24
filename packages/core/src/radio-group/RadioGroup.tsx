@@ -27,6 +27,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
     );
   },
 );
+Root.displayName = "RadioGroup.Root";
 
 // Radio Component (Indicator inside the Radio Component)
 export type Item = ComponentProps<(typeof RadioGroupPrimitives)["Item"]>;
@@ -76,6 +77,7 @@ export const Item = forwardRef<
     );
   },
 );
+Item.displayName = "RadioGroup.Item";
 
 // CustomRadioBox Component (we made it for major use in pricing page)
 export type Box = ComponentProps<(typeof RadioGroupPrimitives)["Item"]>;
@@ -84,7 +86,7 @@ export const Box = forwardRef<HTMLButtonElement, Box>(
     return (
       <RadioGroupPrimitives.Item
         className={classNames(
-          "data-[state=checked]:ring-primary-500 hover:bg-secondary-100 data-[disabled]:bg-secondary-100 dark:border-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[disabled]:bg-secondary-800 p-md w-full rounded-md border data-[disabled]:cursor-not-allowed data-[state=checked]:ring-2",
+          "data-[state=checked]:ring-primary-500 hover:bg-secondary-100 data-[disabled]:bg-secondary-100 dark:border-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[disabled]:bg-secondary-800 w-full rounded-md border p-2 data-[disabled]:cursor-not-allowed data-[state=checked]:ring-2",
           className,
         )}
         {...props}
@@ -95,6 +97,7 @@ export const Box = forwardRef<HTMLButtonElement, Box>(
     );
   },
 );
+Box.displayName = "RadioGroup.Box";
 
 // RadioIndicator Component (it is already used in Radio component of this file thats why we do not need to exported it)
 export type Indicator = ComponentProps<
@@ -111,3 +114,4 @@ const Indicator = forwardRef<HTMLButtonElement, Indicator>(
     );
   },
 );
+Indicator.displayName = "RadioGroup.Indicator";

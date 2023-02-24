@@ -2,10 +2,12 @@ import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../button";
 import * as AlertDialog from "./AlertDialog";
 import React from "react";
-export default {
+const config = {
   title: "New/Alert Dialog",
   component: AlertDialog,
 };
+
+export default config;
 
 export function Default() {
   return (

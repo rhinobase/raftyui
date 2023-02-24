@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import * as RadioGroup from "./RadioGroup";
 
-export default {
+const config = {
   title: "New/Radio Group",
   component: RadioGroup,
 };
+export default config;
 
 const data = ["Red", "Green", "Blue"];
 

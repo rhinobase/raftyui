@@ -2,13 +2,14 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import { Spinner } from "./Spinner";
 
-export default {
+const config = {
   title: "New/Spinner",
   component: Spinner,
   argTypes: {
     size: { control: "select" },
   },
 };
+export default config;
 
 export function Default(args: Spinner) {
   return (

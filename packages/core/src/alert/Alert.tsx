@@ -17,7 +17,7 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
     return (
       <div
         className={classNames(
-          "p-lg rounded-base border border-opacity-20",
+          "rounded-base border border-opacity-20 p-3",
           props.className,
           status === "error" &&
             "border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
@@ -120,3 +120,5 @@ export const Alert = forwardRef<HTMLDivElement, IAlert>(
     );
   },
 );
+
+Alert.displayName = "Alert";

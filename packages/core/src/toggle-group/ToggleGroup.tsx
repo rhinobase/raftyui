@@ -28,6 +28,7 @@ export const Root = forwardRef<HTMLDivElement, ToggleGroupContext & Root>(
     );
   },
 );
+Root.displayName = "ToggleGroup.Root";
 
 // ToggleItem Component
 export type Item = ComponentProps<(typeof ToggleGroupPrimitive)["Item"]>;
@@ -37,9 +38,9 @@ export const Item = forwardRef<HTMLButtonElement, ToggleGroupContext & Item>(
     return (
       <ToggleGroupPrimitive.Item
         className={classNames(
-          size == "sm" && "px-lg py-sm text-sm",
-          size == "md" && "px-lg py-base",
-          size == "lg" && "px-lg py-md text-lg",
+          size == "sm" && "px-3 py-[2px] text-sm",
+          size == "md" && "px-3 py-1",
+          size == "lg" && "px-3 py-2 text-lg",
           "data-[state=on]:bg-secondary-200 dark:text-secondary-200 data-[state=on]:dark:bg-secondary-800 flex w-full items-center justify-center font-semibold transition-all",
           className,
         )}
@@ -51,3 +52,4 @@ export const Item = forwardRef<HTMLButtonElement, ToggleGroupContext & Item>(
     );
   },
 );
+Item.displayName = "ToggleGroup.Item";

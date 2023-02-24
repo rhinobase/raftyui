@@ -17,6 +17,7 @@ export const Root = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     </div>
   ),
 );
+Root.displayName = "Card.Root";
 
 // CardHeader Component
 export const Header = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
@@ -24,7 +25,7 @@ export const Header = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     <div
       {...props}
       className={classNames(
-        "px-3xl py-lg dark:border-secondary-700 border-b text-lg font-semibold",
+        "dark:border-secondary-700 border-b px-6 py-3 text-lg font-semibold",
         className,
       )}
       ref={forwardedRef}
@@ -34,18 +35,21 @@ export const Header = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
   ),
 );
 
+Header.displayName = "Card.Header";
+
 // CardBody Component
 export const Body = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
   ({ children, className, ...props }, forwardedRef) => (
     <div
       {...props}
-      className={classNames("px-3xl py-xl", className)}
+      className={classNames("px-6 py-4", className)}
       ref={forwardedRef}
     >
       {children}
     </div>
   ),
 );
+Body.displayName = "Card.Body";
 
 // CardFooter Component
 export const Footer = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
@@ -53,7 +57,7 @@ export const Footer = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     <div
       {...props}
       className={classNames(
-        "px-3xl py-lg dark:border-secondary-700 flex w-full space-x-2 border-t",
+        "dark:border-secondary-700 flex w-full space-x-2 border-t px-6 py-3",
         className,
       )}
       ref={forwardedRef}
@@ -62,3 +66,4 @@ export const Footer = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     </div>
   ),
 );
+Footer.displayName = "Card.Footer";

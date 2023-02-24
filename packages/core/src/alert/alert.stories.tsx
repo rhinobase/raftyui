@@ -3,7 +3,7 @@ import { Button } from "../button";
 import { Alert, IAlert } from "./Alert";
 import React from "react";
 
-export default {
+const config = {
   title: "New/ Alert",
   component: Alert,
   argTypes: {
@@ -15,7 +15,7 @@ export default {
     },
   },
 };
-
+export default config;
 export function Default(args: IAlert) {
   return (
     <Grid>

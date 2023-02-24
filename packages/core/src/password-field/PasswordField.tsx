@@ -16,7 +16,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
           autoComplete="password"
           {...props}
           className={classNames(
-            "pl-lg py-md dark:text-secondary-200 border-secondary-300 block w-full appearance-none rounded-md border bg-transparent pr-10 shadow-sm autofill:bg-transparent dark:border-zinc-700",
+            "dark:text-secondary-200 border-secondary-300 block w-full appearance-none rounded-md border bg-transparent py-2 pl-3 pr-10 shadow-sm autofill:bg-transparent dark:border-zinc-700",
             "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
             "read-only:focus:ring-0",
             "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
@@ -72,3 +72,4 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
     );
   },
 );
+PasswordField.displayName = "PasswordField";

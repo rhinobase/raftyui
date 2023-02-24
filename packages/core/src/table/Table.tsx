@@ -17,9 +17,9 @@ export const Table = forwardRef<
       <table
         {...props}
         className={classNames(
-          size == "sm" && "p-md",
-          size == "md" && "p-xl",
-          size == "lg" && "p-3xl",
+          size == "sm" && "p-2",
+          size == "md" && "p-4",
+          size == "lg" && "p-6",
           "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
           props.className,
         )}
@@ -30,6 +30,7 @@ export const Table = forwardRef<
     </TableProvider>
   );
 });
+Table.displayName = "Table";
 
 // TableBody Component (Used in Table Component)
 export type TableBody = JSX.IntrinsicElements["tbody"];
@@ -49,6 +50,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
     );
   },
 );
+TableBody.displayName = "TableBody";
 
 // TableContainer Component
 export type TableContainer = JSX.IntrinsicElements["div"];
@@ -66,6 +68,7 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
     </div>
   ),
 );
+TableContainer.displayName = "TableContainer";
 
 // TableFooter Component (Used in Table Component)
 export type TableFooter = JSX.IntrinsicElements["tfoot"];
@@ -76,9 +79,9 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
       <tfoot
         {...props}
         className={classNames(
-          size == "sm" && "p-md",
-          size == "md" && "px-xl py-lg",
-          size == "lg" && "px-3xl py-2xl",
+          size == "sm" && "p-2",
+          size == "md" && "py-3 px-4",
+          size == "lg" && "py-5 px-6",
           "bg-secondary-100 text-secondary-500 dark:bg-secondary-700/80 dark:text-secondary-300 text-sm font-semibold",
           props.className,
         )}
@@ -89,6 +92,7 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
     );
   },
 );
+TableFooter.displayName = "TableFooter";
 
 // TableHead Component (Used in Table Component)
 export type TableHead = JSX.IntrinsicElements["thead"];
@@ -106,6 +110,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
     </thead>
   ),
 );
+TableHead.displayName = "TableHead";
 
 // Td Component (Used in Table Component)
 export type Td = {
@@ -121,9 +126,9 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
         colSpan={props.colSpan}
         rowSpan={props.rowSpan}
         className={classNames(
-          size == "sm" && "p-md",
-          size == "md" && "px-xl py-lg",
-          size == "lg" && "px-3xl py-2xl",
+          size == "sm" && "p-2",
+          size == "md" && "px-4 py-3",
+          size == "lg" && "px-6 py-5",
           "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
           props.className,
         )}
@@ -134,6 +139,7 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
     );
   },
 );
+Td.displayName = "Td";
 
 // Th Component (Used in Table Component)
 export type Th = {
@@ -149,9 +155,9 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
         colSpan={props.colSpan}
         rowSpan={props.rowSpan}
         className={classNames(
-          size == "sm" && "p-md",
-          size == "md" && "px-xl py-lg",
-          size == "lg" && "px-3xl py-2xl",
+          size == "sm" && "p-2",
+          size == "md" && "px-4 py-3",
+          size == "lg" && "px-6 py-5",
           "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
           props.className,
         )}
@@ -162,6 +168,7 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
     );
   },
 );
+Th.displayName = "Th";
 
 // Tr Component (Used in Table Component)
 export type Tr = JSX.IntrinsicElements["tr"];
@@ -179,3 +186,4 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
     </tr>
   ),
 );
+Tr.displayName = "Tr";

@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import { Kbd } from "./Kbd";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Kbd",
   component: Kbd,
 };
+export default config;
 
 export function Default() {
   return (

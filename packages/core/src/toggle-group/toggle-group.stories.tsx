@@ -2,13 +2,14 @@ import { Grid } from "@rhinobase/docs/components/Grid";
 import React from "react";
 import * as ToggleGroup from "./ToggleGroup";
 
-export default {
+const config = {
   title: "New/Toggle Group",
   components: ToggleGroup,
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
   },
 };
+export default config;
 
 export function Default() {
   return (

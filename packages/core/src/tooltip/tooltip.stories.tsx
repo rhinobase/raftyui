@@ -3,13 +3,14 @@ import { Button } from "../index";
 import Tooltip from "./Tooltip";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Tooltip",
   component: Tooltip,
   argTypes: {
     side: { control: "select" },
   },
 };
+export default config;
 
 export function Default(args: Tooltip) {
   return (

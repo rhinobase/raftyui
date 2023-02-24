@@ -2,13 +2,14 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "./Stat";
 
-export default {
+const config = {
   title: "New/Stat",
   component: Stat,
   argTypes: {
     size: { control: "select" },
   },
 };
+export default config;
 
 export function Default() {
   return (

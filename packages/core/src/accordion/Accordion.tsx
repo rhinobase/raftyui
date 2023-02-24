@@ -26,6 +26,8 @@ export const Root = forwardRef<HTMLDivElement, Root>(
   ),
 );
 
+Root.displayName = "Accordian.Root";
+
 //AccordionItemComponent
 
 type Item = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
@@ -43,6 +45,8 @@ export const Item = forwardRef<HTMLDivElement, Item>(
   },
 );
 
+Item.displayName = "Accordian.Item";
+
 //AccordionTriggerComponent
 type Trigger = AccordionContext &
   ComponentProps<(typeof DisclosurePrimitive)["Trigger"]> & {
@@ -59,9 +63,9 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
       <DisclosurePrimitive.Header>
         <DisclosurePrimitive.Trigger
           className={classNames(
-            size == "sm" && "px-lg py-base text-sm",
-            size == "md" && "px-lg py-md",
-            size == "lg" && "px-lg py-lg text-lg",
+            size == "sm" && "px-3 py-1 text-sm",
+            size == "md" && "px-3 py-2",
+            size == "lg" && "px-3 py-3 text-lg",
             "text-secondary-700 hover:bg-secondary-50/80 dark:text-secondary-300 dark:hover:bg-secondary-800/20 group flex w-full items-center justify-between font-semibold transition-all",
             className,
           )}
@@ -103,6 +107,8 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   },
 );
 
+Trigger.displayName = "Accordian.Trigger";
+
 //AccordionContentComponent
 
 type Content = ComponentProps<(typeof DisclosurePrimitive)["Content"]>;
@@ -112,9 +118,9 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     return (
       <DisclosurePrimitive.Content
         className={classNames(
-          size == "sm" && "px-lg pb-lg pt-base text-sm",
-          size == "md" && "px-lg pt-md pb-xl",
-          size == "lg" && "px-lg pt-md pb-xl",
+          size == "sm" && "px-3 pb-3 pt-1 text-sm",
+          size == "md" && "px-3 pt-2 pb-4",
+          size == "lg" && "px-3 pt-2 pb-4",
           "dark:text-secondary-100 w-full",
           className,
         )}
@@ -127,3 +133,5 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+
+Content.displayName = "Accordian.Content";

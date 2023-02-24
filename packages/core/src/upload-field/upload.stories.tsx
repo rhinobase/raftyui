@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import { UploadField } from "./UploadField";
 
-export default {
+const config = {
   title: "Forms/Upload Field",
   component: UploadField,
 };
+export default config;
 
 export function Default() {
   return (

@@ -4,7 +4,7 @@ import * as Tab from "./Tab";
 import { TabContext } from "./context";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Tabs",
   component: Tab,
   argTypes: {
@@ -12,6 +12,7 @@ export default {
     orientation: { control: "select" },
   },
 };
+export default config;
 
 export function Default({
   size = "sm",
@@ -38,7 +39,7 @@ export function Default({
           </Tab.Content>
         </Tab.Root>
       </div>
-      <div className="font-medium">variant="enclosed"</div>
+      <div className="font-medium">variant=enclosed</div>
       <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
         <Tab.Root
           defaultValue="tab1"

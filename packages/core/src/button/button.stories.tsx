@@ -2,10 +2,11 @@ import { Example, Examples, Grid } from "@rhinobase/docs/components";
 import { Button } from "./Button";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Button",
   component: Button,
 };
+export default config;
 
 export function Default() {
   return (

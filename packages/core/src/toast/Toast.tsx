@@ -99,10 +99,10 @@ export function Toast(props: Toast) {
         props.className,
       )}
     >
-      <div className="p-xl">
+      <div className="p-4">
         <div className="flex items-start">
           <div className="flex-shrink-0">{ToastIcon}</div>
-          <div className="pt-sm ml-3 w-0 flex-1">
+          <div className="ml-3 w-0 flex-1 pt-[2px]">
             <p className="text-sm font-medium text-white dark:text-black">
               {props.title}
             </p>

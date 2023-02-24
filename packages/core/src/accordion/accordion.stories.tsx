@@ -3,10 +3,11 @@ import React from "react";
 import * as Accordion from "./Accordion";
 import { AccordionContext } from "./context";
 
-export default {
+const config = {
   title: "New/Accordion",
   component: Accordion,
 };
+export default config;
 
 export function Default({ size = "md" }: AccordionContext) {
   return (
@@ -106,7 +107,7 @@ export function Large({ size = "md" }: AccordionContext) {
     <Grid>
       <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
         <Accordion.Root type="single" defaultValue="1" collapsible size="lg">
-          <Accordion.Item value="1" className="border-b">
+          <Accordion.Item value="1" className="border-b dark:border-white/10">
             <Accordion.Trigger>
               <span className="flex-1 text-left">Section 1 title</span>
             </Accordion.Trigger>
@@ -117,7 +118,7 @@ export function Large({ size = "md" }: AccordionContext) {
               nisi ut aliquip ex ea commodo consequat.
             </Accordion.Content>
           </Accordion.Item>
-          <Accordion.Item value="2" className="border-b">
+          <Accordion.Item value="2" className="border-b dark:border-white/10">
             <Accordion.Trigger>
               <span className="flex-1 text-left">Section 2 title</span>
             </Accordion.Trigger>
@@ -128,7 +129,7 @@ export function Large({ size = "md" }: AccordionContext) {
               nisi ut aliquip ex ea commodo consequat.
             </Accordion.Content>
           </Accordion.Item>
-          <Accordion.Item value="3" className="border-b">
+          <Accordion.Item value="3" className="border-b dark:border-white/10">
             <Accordion.Trigger
               openIcon={
                 <svg

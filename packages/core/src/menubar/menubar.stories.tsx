@@ -1,10 +1,11 @@
 import { Grid } from "@rhinobase/docs/components";
 import * as MenuBar from "./MenuBar";
 import React from "react";
-export default {
+const config = {
   title: "New/MenuBar",
   component: MenuBar,
 };
+export default config;
 
 export function Default() {
   return (

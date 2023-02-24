@@ -3,10 +3,11 @@ import { Button } from "../button";
 import * as Card from "./Card";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Card",
   component: Card,
 };
+export default config;
 
 export function Default() {
   return (

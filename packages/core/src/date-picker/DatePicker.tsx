@@ -30,7 +30,6 @@ enum Show {
 
 export const DatePicker = ({
   picker = "date",
-  format = "MM-DD-YYYY",
   ...props
 }: {
   defaultValues?: Date[] | Date;
@@ -68,6 +67,22 @@ export const DatePicker = ({
   const [show, setShow] = useState<Show>(
     picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR,
   );
+
+  var format = props.format;
+  if (!format)
+    switch (picker) {
+      case "date":
+        format = "MM/DD/YYYY";
+        break;
+      case "month":
+        format = "MM/YYYY";
+        break;
+      case "year":
+        format = "YYYY";
+        break;
+      default:
+        break;
+    }
 
   // let years = [];
   // for (let index = startyear; index <= startyear + 11; index++) {

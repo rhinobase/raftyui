@@ -18,7 +18,7 @@ export type ButtonBase = {
 export type Button = ButtonBase & Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
-  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border data-[hidden=true]:hidden",
+  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none data-[hidden=true]:hidden",
   {
     variants: {
       colorScheme: {
@@ -32,9 +32,9 @@ const buttonClasses = cva(
         ghost: "",
       },
       size: {
-        sm: "px-md py-base leading-5 rounded-base text-xs" /* For backwards compatibility */,
-        base: "px-lg py-md rounded-md text-sm",
-        lg: "px-xl py-lg text-base leading-5 rounded-md",
+        sm: "px-2 py-1 leading-5 rounded-base text-xs" /* For backwards compatibility */,
+        base: "px-3 py-2 rounded-md text-sm",
+        lg: "px-4 py-3 text-base leading-5 rounded-md",
         icon: "flex justify-center p-1.5 stroke-2 rounded-md",
         fab: "rounded-full p-1.5 stroke-2",
       },

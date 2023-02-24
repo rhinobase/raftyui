@@ -18,6 +18,7 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
     );
   },
 );
+StatGroup.displayName = "StatGroup";
 
 export type Stat = JSX.IntrinsicElements["div"];
 export const Stat = forwardRef<HTMLDivElement, Stat>(
@@ -33,6 +34,7 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
     );
   },
 );
+Stat.displayName = "Stat";
 
 export type StatLabel = JSX.IntrinsicElements["div"];
 export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
@@ -51,6 +53,7 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
     );
   },
 );
+StatLabel.displayName = "StatLabel";
 
 export type StatValue = JSX.IntrinsicElements["div"];
 export const StatValue = forwardRef<HTMLDivElement, StatValue>(
@@ -69,6 +72,7 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
     );
   },
 );
+StatValue.displayName = "StatValue";
 
 export type StatHelpText = JSX.IntrinsicElements["div"];
 export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
@@ -87,6 +91,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
     );
   },
 );
+StatHelpText.displayName = "StatHelpText";
 
 export type StatIcon = {
   type: "increase" | "decrease";
@@ -124,3 +129,5 @@ export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
     );
   },
 );
+
+StatIcon.displayName = "StatIcon";

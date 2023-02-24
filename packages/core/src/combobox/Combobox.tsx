@@ -24,6 +24,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
     );
   },
 );
+Root.displayName = "Combobox.Root";
 
 export type Input = ComponentProps<typeof ComboboxInput>;
 export const Input = forwardRef<HTMLInputElement, Input>(
@@ -45,6 +46,7 @@ export const Input = forwardRef<HTMLInputElement, Input>(
     );
   },
 );
+Input.displayName = "Combobox.Input";
 
 export type Content = ComponentProps<typeof ComboboxPopover>;
 export const Content = forwardRef<HTMLDivElement, Content>(
@@ -63,6 +65,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "Combobox.Content";
 
 export type List = ComponentProps<typeof ComboboxList>;
 export const List = forwardRef<HTMLUListElement, List>(
@@ -78,6 +81,7 @@ export const List = forwardRef<HTMLUListElement, List>(
     );
   },
 );
+List.displayName = "Combobox.List";
 
 export type Item = ComponentProps<typeof ComboboxOption>;
 export const Item = forwardRef<HTMLLIElement, Item>(
@@ -86,7 +90,7 @@ export const Item = forwardRef<HTMLLIElement, Item>(
       <ComboboxOption
         {...props}
         className={classNames(
-          "py-md px-md hover:bg-secondary-100 data-[state=selected]:bg-secondary-200 cursor-pointer rounded-lg leading-3",
+          "hover:bg-secondary-100 data-[state=selected]:bg-secondary-200 cursor-pointer rounded-lg py-2 px-2 leading-3",
           className,
         )}
         ref={forwardedRef}
@@ -96,8 +100,10 @@ export const Item = forwardRef<HTMLLIElement, Item>(
     );
   },
 );
+Item.displayName = "Combobox.Item";
 
 export type ItemText = ComponentProps<typeof ComboboxOptionText>;
 export const ItemText = forwardRef<HTMLDivElement, ItemText>(() => {
   return <ComboboxOptionText />;
 });
+ItemText.displayName = "Combobox.ItemText";

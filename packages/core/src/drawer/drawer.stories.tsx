@@ -4,10 +4,11 @@ import { Button } from "../button";
 import * as Drawer from "./Drawer";
 import React from "react";
 
-export default {
+const config = {
   title: "New/Drawer",
   component: Drawer,
 };
+export default config;
 
 export function Default() {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,8 @@ export function Default() {
           <Drawer.Title>Drawer Header</Drawer.Title>
           <Drawer.Body>
             <p>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&apos;re
+              done.
             </p>
           </Drawer.Body>
           <Drawer.CloseButton />

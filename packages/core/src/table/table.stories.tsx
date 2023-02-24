@@ -11,13 +11,14 @@ import {
   Tr,
 } from "./";
 
-export default {
+const config = {
   title: "New/ Table",
   component: Table,
   argTypes: {
     size: { control: "select" },
   },
 };
+export default config;
 
 const people = [
   {

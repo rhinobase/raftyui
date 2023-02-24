@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import * as Select from "./Select";
 
-export default {
+const config = {
   title: "New/Select",
   component: Select,
 };
+export default config;
 
 export function Default() {
   return (

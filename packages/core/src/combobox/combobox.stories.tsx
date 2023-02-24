@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import * as Combobox from "./Combobox";
 // import "@reach/combobox/styles.css";
 
-export default {
+const config = {
   title: "Forms/Combobox",
   component: Combobox,
 };
-
+export default config;
 const people = [
   {
     id: "1",

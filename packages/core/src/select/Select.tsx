@@ -11,6 +11,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
     <RadixSelect.Root {...props}>{children}</RadixSelect.Root>
   ),
 );
+Root.displayName = "Select.Root";
 
 // Trigger Component (Value, Icon Component inside SelectButton Component )
 export type Trigger = ComponentProps<(typeof RadixSelect)["Trigger"]> & {
@@ -36,6 +37,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
     </RadixSelect.Trigger>
   ),
 );
+Trigger.displayName = "Select.Trigger";
 
 // Content Component (ScrollUpButton, ScrollDownButton, Viewport Component inside Content Component)
 export type Content = ComponentProps<(typeof RadixSelect)["Content"]>;
@@ -48,7 +50,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     </RadixSelect.Content>
   ),
 );
-
+Content.displayName = "Select.Content";
 // Group Component
 export type Group = ComponentProps<(typeof RadixSelect)["Group"]>;
 export const Group = forwardRef<HTMLDivElement, Group>(
@@ -62,6 +64,7 @@ export const Group = forwardRef<HTMLDivElement, Group>(
     </RadixSelect.Group>
   ),
 );
+Group.displayName = "Select.Group";
 
 // Item Component
 export type Item = ComponentProps<(typeof RadixSelect)["Item"]>;
@@ -70,7 +73,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     <RadixSelect.Item
       {...props}
       className={classNames(
-        "text-secondary-700 hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-700/40 px-2xl py-md relative flex items-center rounded-md text-sm font-semibold",
+        "text-secondary-700 hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-700/40  relative flex items-center rounded-md px-5 py-2 text-sm font-semibold",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent dark:data-[disabled]:hover:bg-transparent",
         "data-[state=checked]:bg-secondary-200/60 dark:data-[state=checked]:bg-secondary-700/70",
         "select-none focus:outline-none",
@@ -82,6 +85,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     </RadixSelect.Item>
   ),
 );
+Item.displayName = "Select.Item";
 
 // SelectSeparator Component
 export type Separator = ComponentProps<(typeof RadixSelect)["Separator"]>;
@@ -97,6 +101,7 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
     />
   ),
 );
+Separator.displayName = "Select.Separator";
 
 // Value Component
 const Value = RadixSelect.Value;
@@ -129,6 +134,7 @@ const Icon = forwardRef<HTMLDivElement, Icon>(
     </RadixSelect.Icon>
   ),
 );
+Icon.displayName = "Select.Icon";
 
 // ScrollUpButton Component
 export type ScrollUpButton = ComponentProps<
@@ -165,6 +171,7 @@ const ScrollUpButton = forwardRef<HTMLDivElement, ScrollUpButton>(
     </RadixSelect.ScrollUpButton>
   ),
 );
+ScrollUpButton.displayName = "Select.ScrollUpButton";
 
 //ScrollDownButton Component
 export type ScrollDownButton = ComponentProps<
@@ -201,6 +208,7 @@ const ScrollDownButton = forwardRef<HTMLDivElement, ScrollDownButton>(
     </RadixSelect.ScrollDownButton>
   ),
 );
+ScrollDownButton.displayName = "Select.ScrollDownButton";
 
 // Viewport Component
 type Viewport = ComponentProps<(typeof RadixSelect)["Viewport"]>;
@@ -212,7 +220,7 @@ const Viewport = forwardRef<HTMLDivElement, Viewport>(
         props.asChild
           ? className
           : classNames(
-              "dark:bg-secondary-800 p-md rounded-lg bg-white shadow-lg",
+              "dark:bg-secondary-800 rounded-lg bg-white p-2 shadow-lg",
               className,
             )
       }
@@ -222,3 +230,4 @@ const Viewport = forwardRef<HTMLDivElement, Viewport>(
     </RadixSelect.Viewport>
   ),
 );
+Viewport.displayName = "Select.Viewport";

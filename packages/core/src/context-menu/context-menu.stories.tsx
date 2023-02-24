@@ -2,10 +2,11 @@ import { Grid } from "@rhinobase/docs/components";
 import React from "react";
 import * as ContextMenu from "./ContextMenu";
 
-export default {
+const config = {
   title: "New/Context Menu",
   component: ContextMenu,
 };
+export default config;
 
 export function Default() {
   return (

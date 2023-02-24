@@ -13,7 +13,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
     </MenuProvider>
   ),
 );
-
+Root.displayName = "Menu.Root";
 // MenuButton Component
 type Trigger = ComponentProps<(typeof DropdownMenu)["Trigger"]> & Button;
 export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
@@ -51,6 +51,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
     );
   },
 );
+Trigger.displayName = "Menu.Trigger";
 
 //MenuContent Component
 type Content = ComponentProps<(typeof DropdownMenu)["Content"]>;
@@ -75,6 +76,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "Menu.Content";
 
 // MenuGroup Component
 type MenuGroup = {
@@ -113,6 +115,7 @@ export const Label = forwardRef<HTMLDivElement, Label>(
     );
   },
 );
+Label.displayName = "Menu.Label";
 
 // MenuItem Component
 type Item = ComponentProps<(typeof DropdownMenu)["Item"]>;
@@ -125,7 +128,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 pl-2xl pr-md flex w-full cursor-pointer items-center gap-2 py-1.5  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
           className,
         )}
         {...props}
@@ -136,6 +139,7 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     );
   },
 );
+Item.displayName = "Menu.Item";
 
 // MenuCheckboxGroup Component
 export const Group = DropdownMenu.Group;
@@ -153,7 +157,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 py-1.5 font-semibold focus:outline-none",
+          "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -185,6 +189,7 @@ export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
     );
   },
 );
+CheckboxItem.displayName = "Menu.CheckboxItem";
 
 // MenuRadioGroup Component
 export const RadioGroup = DropdownMenu.RadioGroup;
@@ -202,7 +207,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base px-2xl text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 py-1.5 font-semibold focus:outline-none",
+          "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -230,6 +235,7 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
     );
   },
 );
+RadioItem.displayName = "Menu.RadioItem";
 
 // SubMenuComponent
 type Sub = ComponentProps<(typeof DropdownMenu)["Sub"]>;
@@ -238,6 +244,7 @@ export const Sub = forwardRef<HTMLDivElement, Sub>(
     return <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>;
   },
 );
+Sub.displayName = "Menu.Sub";
 
 // SubMenuButton Component
 type SubTrigger = ComponentProps<(typeof DropdownMenu)["SubTrigger"]>;
@@ -252,7 +259,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
           size == "sm" && "text-xs",
           size == "base" && "text-sm",
           size == "lg" && "text-base",
-          "rounded-base pl-2xl pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 font-semibold focus:outline-none",
+          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pl-5 pr-2 font-semibold focus:outline-none",
           className,
         )}
       >
@@ -277,6 +284,7 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
     );
   },
 );
+SubTrigger.displayName = "Menu.SubTrigger";
 
 // SubMenuContent Component
 type SubContent = ComponentProps<(typeof DropdownMenu)["SubContent"]>;
@@ -289,7 +297,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
           className={classNames(
             "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
             "data-[side=right]:animate-scale-in origin-top-left",
-            "p-base dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white text-[13px] text-gray-900 focus:outline-none",
+            "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white p-1 text-[13px] text-gray-900 focus:outline-none",
             props.className,
           )}
           ref={forwardedRef}
@@ -301,6 +309,7 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
     );
   },
 );
+SubContent.displayName = "Menu.SubContent";
 
 // MenuDivider Component
 type Separator = ComponentProps<(typeof DropdownMenu)["Separator"]>;
@@ -322,6 +331,7 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
     );
   },
 );
+Separator.displayName = "Menu.Separator";
 
 // MenuArrow Component
 const Arrow = forwardRef<HTMLDivElement, DropdownMenu.DropdownMenuArrowProps>(
@@ -334,3 +344,4 @@ const Arrow = forwardRef<HTMLDivElement, DropdownMenu.DropdownMenuArrowProps>(
     );
   },
 );
+Arrow.displayName = "Menu.Arrow";

@@ -2,10 +2,11 @@ import React from "react";
 import { Grid } from "@rhinobase/docs/components";
 import { Editor } from "./Editor";
 
-export default {
+const config = {
   title: "Forms/Editor",
   component: Editor,
 };
+export default config;
 
 export function Default() {
   return (

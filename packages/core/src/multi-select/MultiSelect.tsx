@@ -94,17 +94,17 @@ export function MultiSelect({
             state.isFocused
               ? "ring-2 border-primary-500 ring-primary-100/10"
               : "dark:border-secondary-700",
-            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-md border z-1 !min-h-[30px] md:!min-h-[42px] !py-1",
+            "dark:bg-transparent  dark:text-secondary-100 rounded-md px-2 border z-1 !min-h-[30px] md:!min-h-[42px] !py-1",
           ),
         clearIndicator: () => "text-zinc-400 stroke-1 hover:text-zinc-600",
         menu: () =>
-          "dark:bg-secondary-800 bg-white rounded-md shadow-xl py-base px-base border-0 w-full absolute mt-1",
+          "dark:bg-secondary-800 bg-white rounded-md shadow-xl p-1 border-0 w-full absolute mt-1",
         menuList: () => "focus:dark:bg-secondary-700",
         valueContainer: () => "gap-1",
         multiValue: () =>
           "dark:bg-secondary-800 dark:text-secondary-100 bg-secondary-100",
         multiValueLabel: () =>
-          "dark:text-secondary-100 px-md font-medium text-sm",
+          "dark:text-secondary-100 px-2 font-medium text-sm",
         multiValueRemove: (state) =>
           "bg-secondary-300/50 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-200 px-[3px]",
         input: () => "dark:text-secondary-100",
@@ -113,7 +113,7 @@ export function MultiSelect({
           classNames(
             state.isFocused && "bg-secondary-200/60 dark:bg-secondary-700/50",
             state.isSelected && "bg-secondary-200/60 dark:bg-secondary-700/50",
-            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-2xl py-base font-semibold",
+            "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/50 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-5 py-1 font-semibold",
           ),
       }}
     />

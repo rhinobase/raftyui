@@ -47,7 +47,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
             <div
               key={value}
               className={
-                "py-sm pl-lg pr-sm bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md font-semibold dark:text-zinc-100"
+                "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-[2px] pl-3 pr-[2px] font-semibold dark:text-zinc-100"
               }
             >
               <span className="leading-[0px]">{value}</span>
@@ -81,3 +81,5 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
     );
   },
 );
+
+TagField.displayName = "TagField";

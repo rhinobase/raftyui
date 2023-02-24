@@ -26,3 +26,4 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
     );
   },
 );
+FieldLabel.displayName = "FieldLabel";

@@ -14,6 +14,7 @@ export const Root = forwardRef<HTMLDivElement, DrawerContext & Root>(
     </DrawerProvider>
   ),
 );
+Root.displayName = "Drawer.Root";
 
 // Drawer Content Component
 type Content = ComponentProps<(typeof DialogPrimitive)["DialogContent"]>;
@@ -28,7 +29,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           {...props}
           style={style}
           className={classNames(
-            "dark:bg-secondary-800 dark:text-secondary-50 p-3xl fixed top-0 z-50 h-screen min-w-[360px] bg-white text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
+            "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen min-w-[360px] bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
             size == "full" && "w-full",
             size == "lg" && "max-w-5xl",
             size == "md" && "max-w-3xl",
@@ -46,6 +47,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   },
 );
+Content.displayName = "Drawer.Content";
 
 // Drawer Title Component
 type Title = ComponentProps<(typeof DialogPrimitive)["DialogTitle"]>;
@@ -69,6 +71,7 @@ export const Title = React.forwardRef<HTMLDivElement, Title>(
     );
   },
 );
+Title.displayName = "Drawer.Title";
 
 // Drawer Body Component
 type Body = ComponentProps<(typeof DialogPrimitive)["DialogDescription"]>;
@@ -81,6 +84,7 @@ export const Body = React.forwardRef<HTMLDivElement, Body>(
     );
   },
 );
+Body.displayName = "Drawer.Body";
 
 // Drawer Cross Button Component
 export function CloseButton(
