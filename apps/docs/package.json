@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run watch:*\"",
+    "lint": "eslint",
     "watch:css": "npx tailwindcss -i ./styles/globals.css -o ./public/globals.css --watch",
     "watch:storybook": "start-storybook dev -p 6011",
     "build": "build-storybook --docs",

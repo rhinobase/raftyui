@@ -17,7 +17,8 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
     "eslint": "^8.29.0",
-    "eslint-config": "*",
+    "eslint-config-rhinobase": "*",
+    "next": "^13.2.1",
     "prettier": "^2.8.3",
     "prettier-plugin-tailwindcss": "^0.2.3",
     "turbo": "latest"
