@@ -9,7 +9,7 @@ export default {
 export function Default() {
   return (
     <Grid>
-      <div className="flex flex-row justify-between w-full">
+      <div className="flex w-full flex-row justify-between">
         <div className="w-96">
           <MenuBar.Root size="sm">
             <MenuBar.Menu>

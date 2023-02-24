@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@rhinobase/tsconfig": "*",
+    "eslint-config-rhinobase": "*",
     "@types/react": "^18.0.27",
     "@types/react-datepicker": "^4.8.0",
     "@types/react-dom": "^18.0.10",

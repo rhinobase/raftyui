@@ -205,18 +205,18 @@ export const DatePicker = ({
               maxLength={
                 picker == "year" ? 4 : picker == "month" ? 7 : undefined
               }
-              className="pr-10 select-none"
+              className="select-none pr-10"
               value={inputValue}
             />
 
-            <div className="absolute right-0 h-full w-10 top-0 flex items-center justify-center">
+            <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <path
@@ -232,10 +232,10 @@ export const DatePicker = ({
           <Popover.Content
             // side="left"
             align="start"
-            className="shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] min-w-[300px] bg-white dark:bg-zinc-800 rounded-md mt-1"
+            className="mt-1 min-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
           >
             {showDate || showMonth ? (
-              <div className="flex justify-between items-center w-full py-2 px-3 border-b border-zinc-200/50 dark:border-zinc-700">
+              <div className="flex w-full items-center justify-between border-b border-zinc-200/50 py-2 px-3 dark:border-zinc-700">
                 <div className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ export const DatePicker = ({
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    className="h-4 w-4 cursor-pointer text-black/40 hover:text-black"
                     onClick={viewPreviousYear}
                   >
                     <path
@@ -260,7 +260,7 @@ export const DatePicker = ({
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                      className="h-4 w-4 cursor-pointer text-black/40 hover:text-black"
                       onClick={viewPreviousMonth}
                     >
                       <path
@@ -306,7 +306,7 @@ export const DatePicker = ({
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                      className="h-4 w-4 cursor-pointer text-black/40 hover:text-black"
                       onClick={viewNextMonth}
                     >
                       <path
@@ -322,7 +322,7 @@ export const DatePicker = ({
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    className="h-4 w-4 cursor-pointer text-black/40 hover:text-black"
                     onClick={viewNextYear}
                   >
                     <path
@@ -334,7 +334,7 @@ export const DatePicker = ({
                 </div>
               </div>
             ) : (
-              <div className="flex justify-between items-center w-full py-2 px-3 border-b border-zinc-200/50 dark:border-zinc-700">
+              <div className="flex w-full items-center justify-between border-b border-zinc-200/50 py-2 px-3 dark:border-zinc-700">
                 <div className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +342,7 @@ export const DatePicker = ({
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    className="h-4 w-4 cursor-pointer text-black/40 hover:text-black"
                     onClick={() => setStartYear((prev) => prev - 10)}
                   >
                     <path
@@ -353,7 +353,7 @@ export const DatePicker = ({
                   </svg>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="ghost" className="py-1 select-none">
+                  <Button variant="ghost" className="select-none py-1">
                     {startyear + 1} - {startyear + 10}
                   </Button>
                 </div>
@@ -364,7 +364,7 @@ export const DatePicker = ({
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+                    className="h-4 w-4 cursor-pointer text-black/40 hover:text-black"
                     onClick={() => setStartYear((prev) => prev + 10)}
                   >
                     <path
@@ -378,7 +378,7 @@ export const DatePicker = ({
             )}
             {picker == "date" && showDate && (
               <div className="px-6 py-6">
-                <div className="grid grid-cols-7 gap-4 mb-4">
+                <div className="mb-4 grid grid-cols-7 gap-4">
                   {calendar.length > 0 &&
                     calendar[0][0].map((day) => (
                       <div key={`${day}`} className="text-center text-xs">
@@ -394,7 +394,7 @@ export const DatePicker = ({
                 {calendar[0].map((week) => (
                   <div
                     key={`week-${week[0]}`}
-                    className="grid grid-cols-7 gap-2 mb-1"
+                    className="mb-1 grid grid-cols-7 gap-2"
                   >
                     {week.map((day) => (
                       <button
@@ -419,7 +419,7 @@ export const DatePicker = ({
                             "text-black/40",
                           dayjs(viewing).endOf("month").toDate() < day &&
                             "text-black/40",
-                          "text-center cursor-pointer text-xs border border-transparent leading-7 rounded-md transition-all",
+                          "cursor-pointer rounded-md border border-transparent text-center text-xs leading-7 transition-all",
                         )}
                       >
                         <>
@@ -434,7 +434,7 @@ export const DatePicker = ({
 
             {showMonth && (
               <div className="px-4 py-6">
-                <div className="grid grid-cols-3 gap-3 mb-2">
+                <div className="mb-2 grid grid-cols-3 gap-3">
                   {months.map((month, index) => (
                     <Button
                       key={index}

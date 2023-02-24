@@ -8,7 +8,7 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
       <div
         {...props}
         className={classNames(
-          "w-full group flex flex-wrap justify-around items-start",
+          "group flex w-full flex-wrap items-start justify-around",
           className,
         )}
         ref={forwardedRef}
@@ -77,7 +77,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
       <div
         {...props}
         className={classNames(
-          "text-sm font-light flex items-center gap-1.5 dark:text-secondary-300",
+          "dark:text-secondary-300 flex items-center gap-1.5 text-sm font-light",
           className,
         )}
         ref={forwardedRef}

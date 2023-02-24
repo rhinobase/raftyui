@@ -21,7 +21,7 @@ export function Toast(props: Toast) {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className="w-6 h-6 text-white dark:text-black"
+          className="h-6 w-6 text-white dark:text-black"
         >
           <path
             stroke-linecap="round"

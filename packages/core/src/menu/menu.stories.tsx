@@ -46,7 +46,7 @@ export function AllFeatures() {
   const [checked, setChecked] = useState<Map<string, boolean>>(new Map());
   return (
     <Grid>
-      <div className="flex flex-row justify-between w-full">
+      <div className="flex w-full flex-row justify-between">
         <Menu.Root size="sm">
           <Menu.Trigger size="icon">
             All Feature
@@ -56,7 +56,7 @@ export function AllFeatures() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="h-3 w-3 ml-1"
+              className="ml-1 h-3 w-3"
             >
               <path
                 stroke-linecap="round"
@@ -200,7 +200,7 @@ export function AllFeatures() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="h-5 w-5 ml-2"
+              className="ml-2 h-5 w-5"
             >
               <path
                 stroke-linecap="round"

@@ -18,7 +18,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
 
     return (
       <div className={classNames("w-full", className)}>
-        <div className="w-full flex items-center gap-2">
+        <div className="flex w-full items-center gap-2">
           <InputField
             onKeyDown={(event) => {
               if (event.key == "Enter") {
@@ -42,7 +42,7 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
             Clear All
           </Button>
         </div>
-        <div className="flex min-h-fit items-center justify-center gap-x-2 flex-wrap my-1.5">
+        <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
           {tag.map((value, idx) => (
             <div
               key={value}
