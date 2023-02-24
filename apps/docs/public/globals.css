@@ -847,6 +847,10 @@ video {
   height: 100vh;
 }
 
+.h-\[40px\]{
+  height: 40px;
+}
+
 .\!min-h-\[30px\]{
   min-height: 30px !important;
 }
@@ -942,6 +946,14 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-\[100px\]{
+  width: 100px;
+}
+
+.w-\[150px\]{
+  width: 150px;
 }
 
 .min-w-\[220px\]{
@@ -1585,6 +1597,10 @@ video {
   stroke-width: 4px;
 }
 
+.stroke-\[3px\]{
+  stroke-width: 3px;
+}
+
 .\!p-0{
   padding: 0px !important;
 }
@@ -1902,6 +1918,14 @@ video {
   line-height: 16px;
 }
 
+.leading-4{
+  line-height: 1rem;
+}
+
+.leading-10{
+  line-height: 2.5rem;
+}
+
 .tracking-wide{
   letter-spacing: 0.025em;
 }
@@ -2082,6 +2106,10 @@ video {
   color: rgb(63 63 70 / var(--tw-text-opacity));
 }
 
+.text-black\/80{
+  color: rgb(0 0 0 / 0.8);
+}
+
 .underline{
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2175,6 +2203,11 @@ video {
 
 .ring-transparent{
   --tw-ring-color: transparent;
+}
+
+.ring-primary-100{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(185 218 255 / var(--tw-ring-opacity));
 }
 
 .ring-opacity-5{
@@ -2424,6 +2457,11 @@ video {
 
 .autofill\:bg-transparent:autofill{
   background-color: transparent;
+}
+
+.hover\:border-primary-500:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 120 255 / var(--tw-border-opacity));
 }
 
 .hover\:bg-error-200\/30:hover{
@@ -3029,6 +3067,10 @@ video {
   border-color: rgb(39 39 42 / var(--tw-border-opacity));
 }
 
+[data-mode="dark"] .dark\:border-white\/20{
+  border-color: rgb(255 255 255 / 0.2);
+}
+
 [data-mode="dark"] .dark\:bg-amber-400\/40{
   background-color: rgb(251 191 36 / 0.4);
 }
@@ -3288,6 +3330,18 @@ video {
   color: rgb(82 82 91 / var(--tw-text-opacity));
 }
 
+[data-mode="dark"] .dark\:text-white\/70{
+  color: rgb(255 255 255 / 0.7);
+}
+
+[data-mode="dark"] .dark\:text-white\/60{
+  color: rgb(255 255 255 / 0.6);
+}
+
+[data-mode="dark"] .dark\:text-white\/80{
+  color: rgb(255 255 255 / 0.8);
+}
+
 [data-mode="dark"] .dark\:shadow-md{
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -3302,6 +3356,19 @@ video {
 [data-mode="dark"] .dark\:ring-secondary-700{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(63 63 70 / var(--tw-ring-opacity));
+}
+
+[data-mode="dark"] .dark\:ring-primary-700{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(0 82 172 / var(--tw-ring-opacity));
+}
+
+[data-mode="dark"] .dark\:ring-primary-100\/20{
+  --tw-ring-color: rgb(185 218 255 / 0.2);
+}
+
+[data-mode="dark"] .dark\:ring-primary-100\/30{
+  --tw-ring-color: rgb(185 218 255 / 0.3);
 }
 
 [data-mode="dark"] .dark\:even\:bg-secondary-700\/50:nth-child(even){
@@ -3358,6 +3425,11 @@ video {
 [data-mode="dark"] .hover\:dark\:text-secondary-100:hover{
   --tw-text-opacity: 1;
   color: rgb(244 244 245 / var(--tw-text-opacity));
+}
+
+[data-mode="dark"] .dark\:hover\:text-white:hover{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 [data-mode="dark"] .dark\:focus\:border-primary-400:focus{
@@ -3511,6 +3583,18 @@ video {
   color: rgb(244 244 245 / var(--tw-text-opacity));
 }
 
+[data-mode="dark"] .dark\:data-\[in-range\=false\]\:text-white\/40[data-in-range=false]{
+  color: rgb(255 255 255 / 0.4);
+}
+
+[data-mode="dark"] .dark\:data-\[in-range\=false\]\:text-white\/60[data-in-range=false]{
+  color: rgb(255 255 255 / 0.6);
+}
+
+[data-mode="dark"] .dark\:data-\[in-range\=false\]\:text-white\/30[data-in-range=false]{
+  color: rgb(255 255 255 / 0.3);
+}
+
 [data-mode="dark"] .dark\:data-\[state\=off\]\:hover\:border-secondary-600:hover[data-state=off]{
   --tw-border-opacity: 1;
   border-color: rgb(82 82 91 / var(--tw-border-opacity));
@@ -3530,6 +3614,16 @@ video {
 
 [data-mode="dark"] .data-\[orientation\=vertical\]\:hover\:data-\[state\=active\]\:dark\:bg-secondary-700\/80[data-state=active]:hover[data-orientation=vertical]{
   background-color: rgb(63 63 70 / 0.8);
+}
+
+.group[data-state=open] [data-mode="dark"] .group-data-\[state\=open\]\:dark\:text-primary-300{
+  --tw-text-opacity: 1;
+  color: rgb(122 184 255 / var(--tw-text-opacity));
+}
+
+[data-mode="dark"] .group[data-state=open] .dark\:group-data-\[state\=open\]\:text-primary-300{
+  --tw-text-opacity: 1;
+  color: rgb(122 184 255 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px){

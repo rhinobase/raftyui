@@ -143,17 +143,17 @@ export const DatePicker = ({
             <InputField
               onBlur={(e) => onInputBlur(e.target.value)}
               placeholder={placeholder}
-              className="pr-10 select-none"
+              className="select-none pr-10"
               value={dayjs(selected[0]).format(format)}
             />
-            <div className="absolute right-0 h-full w-10 top-0 flex items-center justify-center">
+            <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-5 h-5 text-black/50 group-data-[state=open]:text-primary-500"
+                className="group-data-[state=open]:text-primary-500 dark:group-data-[state=open]:text-primary-300 h-5 w-5 stroke-2 text-black/50 dark:text-white/70"
               >
                 <path
                   strokeLinecap="round"
@@ -169,7 +169,7 @@ export const DatePicker = ({
             // side="left"
             sideOffset={5}
             align="start"
-            className="shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] min-w-[300px] max-w-[300px] bg-white dark:bg-zinc-800 rounded-md"
+            className="min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
           >
             <PickerHeader
               onFirstPage={() => {
@@ -313,7 +313,7 @@ type MonthPanel = {
 function MonthPanel({ viewing, onSelect }: MonthPanel) {
   return (
     <div className="px-4 py-6">
-      <div className="grid grid-cols-3 gap-8 mb-2">
+      <div className="mb-2 grid grid-cols-3 gap-8">
         {months.map((month, index) => (
           <Button
             key={index}
@@ -387,10 +387,13 @@ export function DayPanel({
 }: DayPanel) {
   return (
     <div className="px-6 pt-6 pb-2">
-      <div className="grid grid-cols-7 gap-4 mb-4">
+      <div className="mb-4 grid grid-cols-7 gap-4">
         {calendar.length > 0 &&
           calendar[0][0].map((day) => (
-            <div key={`${day}`} className="text-center text-sm">
+            <div
+              key={`${day}`}
+              className="text-center text-sm dark:text-white/80"
+            >
               {
                 ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
                   dayjs(day).get("day")
@@ -401,7 +404,7 @@ export function DayPanel({
       </div>
 
       {calendar[0].map((week) => (
-        <div key={`week-${week[0]}`} className="grid grid-cols-7 gap-2 mb-3">
+        <div key={`week-${week[0]}`} className="mb-3 grid grid-cols-7 gap-2">
           {week.map((day) => (
             <Button
               size="sm"
@@ -432,8 +435,8 @@ export function DayPanel({
                 setViewing(day);
               }}
               className={classNames(
-                "data-[in-range=false]:text-black/40",
-                "text-center cursor-pointer !text-sm font-normal border border-transparent rounded-md transition-all",
+                "data-[in-range=false]:text-black/40 dark:data-[in-range=false]:text-white/30",
+                "cursor-pointer rounded-md border border-transparent text-center !text-sm transition-all",
               )}
             >
               <>
@@ -456,7 +459,7 @@ type PickerHeader = {
 };
 export function PickerHeader(props: PickerHeader) {
   return (
-    <div className="flex justify-between items-center w-full py-2 px-3 border-b border-zinc-200/50 dark:border-zinc-700">
+    <div className="flex w-full items-center justify-between border-b border-zinc-200/50 py-2 px-3 dark:border-zinc-700">
       <div className="flex items-center gap-2">
         {props.onFirstPage && (
           <svg
@@ -465,7 +468,7 @@ export function PickerHeader(props: PickerHeader) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+            className="h-4 w-4 cursor-pointer stroke-2 text-black/40 hover:text-black dark:text-white/60 dark:hover:text-white"
             onClick={props.onFirstPage}
           >
             <path
@@ -482,7 +485,7 @@ export function PickerHeader(props: PickerHeader) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+            className="h-4 w-4 cursor-pointer stroke-2 text-black/40 hover:text-black dark:text-white/60 dark:hover:text-white"
             onClick={props.onPreviousPage}
           >
             <path
@@ -502,7 +505,7 @@ export function PickerHeader(props: PickerHeader) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+            className="h-4 w-4 cursor-pointer stroke-2 text-black/40 hover:text-black dark:text-white/60 dark:hover:text-white"
             onClick={props.onNextPage}
           >
             <path
@@ -519,7 +522,7 @@ export function PickerHeader(props: PickerHeader) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-4 h-4 text-black/40 hover:text-black cursor-pointer"
+            className="h-4 w-4 cursor-pointer stroke-2 text-black/40 hover:text-black dark:text-white/60 dark:hover:text-white"
             onClick={props.onLastPage}
           >
             <path
