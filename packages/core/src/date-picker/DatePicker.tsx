@@ -123,7 +123,7 @@ export const DatePicker = ({
   return (
     <div className="w-[300px]">
       <Popover.Root>
-        <Popover.Trigger>
+        <Popover.Trigger className="group">
           <div className="relative">
             <InputField
               onBlur={(e) => onInputBlur(e.target.value)}
@@ -138,8 +138,7 @@ export const DatePicker = ({
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
-                onClick={() => setIsOpen(!isOpen)}
+                className="w-5 h-5 text-black/50 group-data-[state=open]:text-primary-500"
               >
                 <path
                   strokeLinecap="round"
@@ -153,8 +152,9 @@ export const DatePicker = ({
         <Popover.Portal>
           <Popover.Content
             // side="left"
+            sideOffset={5}
             align="start"
-            className="shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] min-w-[300px] bg-white dark:bg-zinc-800 rounded-md mt-1"
+            className="shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] min-w-[300px] max-w-[300px] bg-white dark:bg-zinc-800 rounded-md"
           >
             <PickerHeader
               onFirstPage={() => {
@@ -217,45 +217,72 @@ export const DatePicker = ({
             </PickerHeader>
 
             {show == Show.DATE && (
-              <DayPanel
-                calendar={calendar}
-                viewing={viewing}
-                toggle={toggle}
-                selected={selected}
-                inRange={inRange}
-              />
+              <Popover.Close className="w-full">
+                <DayPanel
+                  calendar={calendar}
+                  viewing={viewing}
+                  toggle={toggle}
+                  selected={selected}
+                  inRange={inRange}
+                  setViewing={setViewing}
+                />
+              </Popover.Close>
             )}
 
-            {show == Show.MONTH && (
-              <MonthPanel
-                viewing={viewing}
-                onSelect={(month) => {
-                  viewMonth(month);
+            {show == Show.MONTH &&
+              (picker == "month" ? (
+                <Popover.Close className="w-full">
+                  <MonthPanel
+                    viewing={viewing}
+                    onSelect={(month) => {
+                      viewMonth(month);
+                      toggle(new Date(viewing.setMonth(month)), true);
+                    }}
+                  />
+                </Popover.Close>
+              ) : (
+                <MonthPanel
+                  viewing={viewing}
+                  onSelect={(month) => {
+                    viewMonth(month);
+                    if (picker == "date") setShow(Show.DATE);
+                    else {
+                      setIsOpen(false);
+                      toggle(new Date(viewing.setMonth(month)), true);
+                    }
+                  }}
+                />
+              ))}
 
-                  if (picker == "date") setShow(Show.DATE);
-                  else {
-                    setIsOpen(false);
-                    toggle(new Date(viewing.setMonth(month)), true);
-                  }
-                }}
-              />
-            )}
+            {show == Show.YEAR &&
+              (picker == "year" ? (
+                <Popover.Close className="w-full">
+                  <YearPanel
+                    selected={selected}
+                    viewing={viewing}
+                    onSelect={(year) => {
+                      viewYear(year);
+                      setIsOpen(false);
+                      toggle(new Date(viewing.setFullYear(year)), true);
+                    }}
+                  />
+                </Popover.Close>
+              ) : (
+                <YearPanel
+                  selected={selected}
+                  viewing={viewing}
+                  onSelect={(year) => {
+                    viewYear(year);
 
-            {show == Show.YEAR && (
-              <YearPanel
-                viewing={viewing}
-                onSelect={(year) => {
-                  viewYear(year);
-
-                  if (picker == "date" || picker == "month")
-                    setShow(Show.MONTH);
-                  else {
-                    setIsOpen(false);
-                    toggle(new Date(viewing.setFullYear(year)), true);
-                  }
-                }}
-              />
-            )}
+                    if (picker == "date" || picker == "month")
+                      setShow(Show.MONTH);
+                    else {
+                      setIsOpen(false);
+                      toggle(new Date(viewing.setFullYear(year)), true);
+                    }
+                  }}
+                />
+              ))}
             {/* <Popover.Arrow className="fill-white" /> */}
           </Popover.Content>
         </Popover.Portal>
@@ -271,19 +298,19 @@ type MonthPanel = {
 function MonthPanel({ viewing, onSelect }: MonthPanel) {
   return (
     <div className="px-4 py-6">
-      <div className="grid grid-cols-3 gap-3 mb-2">
+      <div className="grid grid-cols-3 gap-8 mb-2">
         {months.map((month, index) => (
           <Button
             key={index}
             colorScheme={
               dayjs(viewing).get("month") == index ? "primary" : "secondary"
             }
-            className={classNames("w-full")}
+            className={classNames("w-full !text-sm font-normal")}
             onClick={() => onSelect(index)}
             variant={dayjs(viewing).get("month") == index ? "solid" : "ghost"}
             size="sm"
           >
-            {month}
+            {month.substring(0, 3)}
           </Button>
         ))}
       </div>
@@ -293,9 +320,10 @@ function MonthPanel({ viewing, onSelect }: MonthPanel) {
 
 type YearPanel = {
   viewing: Date;
+  selected: Date[];
   onSelect: (year: number) => void;
 };
-export function YearPanel({ viewing, onSelect }: YearPanel) {
+export function YearPanel({ viewing, onSelect, selected }: YearPanel) {
   const current_year = dayjs(viewing).year();
   const start_year = Math.floor(current_year / 10) * 10 - 1;
   const years = Array(12)
@@ -306,14 +334,14 @@ export function YearPanel({ viewing, onSelect }: YearPanel) {
 
   return (
     <div className="px-4 py-6">
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-8">
         {years.map((year) => (
           <Button
             key={year}
-            className="w-full select-none"
-            variant={dayjs(viewing).get("year") == year ? "solid" : "ghost"}
+            className="w-full select-none !text-sm font-normal"
+            variant={dayjs(selected[0]).get("year") == year ? "solid" : "ghost"}
             colorScheme={
-              dayjs(viewing).get("year") == year ? "primary" : "secondary"
+              dayjs(selected[0]).get("year") == year ? "primary" : "secondary"
             }
             onClick={() => onSelect(year)}
             size="sm"
@@ -332,6 +360,7 @@ type DayPanel = {
   viewing: Date;
   toggle: (date: Date, replaceExisting?: boolean | undefined) => void;
   selected: Date[];
+  setViewing: any;
 };
 export function DayPanel({
   calendar,
@@ -339,13 +368,14 @@ export function DayPanel({
   viewing,
   toggle,
   selected,
+  setViewing,
 }: DayPanel) {
   return (
-    <div className="px-6 py-6">
+    <div className="px-6 pt-6 pb-2">
       <div className="grid grid-cols-7 gap-4 mb-4">
         {calendar.length > 0 &&
           calendar[0][0].map((day) => (
-            <div key={`${day}`} className="text-center text-xs">
+            <div key={`${day}`} className="text-center text-sm">
               {
                 ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
                   dayjs(day).get("day")
@@ -356,9 +386,26 @@ export function DayPanel({
       </div>
 
       {calendar[0].map((week) => (
-        <div key={`week-${week[0]}`} className="grid grid-cols-7 gap-2 mb-1">
+        <div key={`week-${week[0]}`} className="grid grid-cols-7 gap-2 mb-3">
           {week.map((day) => (
-            <button
+            <Button
+              size="sm"
+              variant={
+                dayjs(selected[0]).format("MM/DD/YYYY") ==
+                dayjs(day).format("MM/DD/YYYY")
+                  ? "solid"
+                  : dayjs(day).format("MM/DD/YYYY") ==
+                    dayjs().format("MM/DD/YYYY")
+                  ? "outline"
+                  : "ghost"
+              }
+              colorScheme={
+                dayjs(selected[0]).format("MM/DD/YYYY") ==
+                  dayjs(day).format("MM/DD/YYYY") ||
+                dayjs(day).format("MM/DD/YYYY") == dayjs().format("MM/DD/YYYY")
+                  ? "primary"
+                  : "secondary"
+              }
               data-in-range={inRange(
                 day,
                 dayjs(viewing).startOf("month").toDate(),
@@ -367,24 +414,17 @@ export function DayPanel({
               key={`${day}`}
               onClick={() => {
                 toggle(day, true);
+                setViewing(day);
               }}
               className={classNames(
-                dayjs().format("DD/MM/YYYY") ==
-                  dayjs(day).format("DD/MM/YYYY") && "!border-primary-500",
-                dayjs(selected[0]).format("DD/MM/YYYY") ==
-                  dayjs(day).format("DD/MM/YYYY") &&
-                  "bg-primary-500 !text-white",
-                "hover:bg-black/10",
-                dayjs(viewing).startOf("month").toDate() > day &&
-                  "text-black/40",
-                dayjs(viewing).endOf("month").toDate() < day && "text-black/40",
-                "text-center cursor-pointer text-xs border border-transparent leading-7 rounded-md transition-all",
+                "data-[in-range=false]:text-black/40",
+                "text-center cursor-pointer !text-sm font-normal border border-transparent rounded-md transition-all",
               )}
             >
               <>
                 <p>{dayjs(day).format("DD")}</p>
               </>
-            </button>
+            </Button>
           ))}
         </div>
       ))}
