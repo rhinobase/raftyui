@@ -1,21 +1,17 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { forwardRef, createElement } from "react";
 import { classNames, applyStyleToMultipleVariants } from "@rhinobase/utils";
-import { Spinner, Tooltip } from "../index";
-import React from "react";
+import { Spinner } from "../spinner";
+import React, { forwardRef } from "react";
 
-export type ButtonBase = {
+export type Button = {
   /* Left aligned icon*/
   leftIcon?: JSX.Element;
   /* Right aligned icon */
   rightIcon?: JSX.Element;
   shallow?: boolean;
-  /* Tool tip used when icon size is set to small */
-  tooltip?: string;
   loadingText?: string;
-} & VariantProps<typeof buttonClasses>;
-
-export type Button = ButtonBase & Omit<JSX.IntrinsicElements["button"], "ref">;
+} & VariantProps<typeof buttonClasses> &
+  Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none data-[hidden=true]:hidden",
@@ -377,68 +373,52 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   const disabled = props.disabled || loading;
 
   return (
-    <Wrapper tooltip={props.tooltip}>
-      <button
-        type={type}
-        data-hidden={hidden}
-        {...passThroughProps}
-        disabled={disabled ?? undefined}
-        ref={forwardedRef}
-        className={classNames(
-          buttonClasses({
-            colorScheme,
-            variant,
-            size,
-            loading,
-            disabled: props.disabled,
-            active,
-          }),
-          props.className,
-        )}
-        // if we click a disabled button, we prevent going through the click handler
-        onClick={
-          disabled
-            ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-                e.preventDefault();
-              }
-            : props.onClick
-        }
-      >
-        {loading ? (
-          <>
-            <Spinner inheritParent className="mr-2" size="sm" />
-            {loadingText ?? props.children}
-          </>
-        ) : (
-          <>
-            {LeftIcon && (
-              <div className="mr-1 flex h-[20px] items-center justify-center">
-                {LeftIcon}
-              </div>
-            )}
-            {props.children}
-            {RightIcon && (
-              <div className="ml-1 flex h-[20px] items-center justify-center">
-                {RightIcon}
-              </div>
-            )}
-          </>
-        )}
-      </button>
-    </Wrapper>
+    <button
+      type={type}
+      data-hidden={hidden}
+      {...passThroughProps}
+      disabled={disabled ?? undefined}
+      ref={forwardedRef}
+      className={classNames(
+        buttonClasses({
+          colorScheme,
+          variant,
+          size,
+          loading,
+          disabled: props.disabled,
+          active,
+        }),
+        props.className,
+      )}
+      // if we click a disabled button, we prevent going through the click handler
+      onClick={
+        disabled
+          ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+              e.preventDefault();
+            }
+          : props.onClick
+      }
+    >
+      {loading ? (
+        <>
+          <Spinner inheritParent className="mr-2" size="sm" />
+          {loadingText ?? props.children}
+        </>
+      ) : (
+        <>
+          {LeftIcon && (
+            <div className="mr-1 flex h-[20px] items-center justify-center">
+              {LeftIcon}
+            </div>
+          )}
+          {props.children}
+          {RightIcon && (
+            <div className="ml-1 flex h-[20px] items-center justify-center">
+              {RightIcon}
+            </div>
+          )}
+        </>
+      )}
+    </button>
   );
 });
-
-const Wrapper = ({
-  children,
-  tooltip,
-}: {
-  tooltip?: string;
-  children: React.ReactNode;
-}) => {
-  if (!tooltip) {
-    return <>{children}</>;
-  }
-
-  return <Tooltip content={tooltip}>{children}</Tooltip>;
-};

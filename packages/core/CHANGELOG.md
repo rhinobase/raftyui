@@ -1,5 +1,17 @@
 # @rhinobase/ui
 
+## 0.2.5
+
+### Patch Changes
+
+- Removed tooltip from button
+
+## 0.2.4
+
+### Patch Changes
+
+- Added new components and minor improvements for package size
+
 ## 0.2.3
 
 ### Patch Changes
