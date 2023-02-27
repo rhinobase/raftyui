@@ -6,7 +6,7 @@ import { CSSProperties } from "react";
 export type Spinner = {
   size?: "sm" | "md" | "lg";
   inheritParent?: boolean;
-  className: string;
+  className?: string;
   style?: CSSProperties;
 };
 
