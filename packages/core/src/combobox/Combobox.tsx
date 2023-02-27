@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef, useState } from "react";
+import React, { ComponentProps, forwardRef } from "react";
 import {
   Combobox,
   ComboboxInput,
@@ -8,6 +8,7 @@ import {
   ComboboxOptionText,
 } from "@reach/combobox";
 import { classNames } from "@rhinobase/utils";
+import { Button } from "../button";
 
 export type Root = ComponentProps<typeof Combobox>;
 export const Root = forwardRef<HTMLDivElement, Root>(
@@ -26,23 +27,51 @@ export const Root = forwardRef<HTMLDivElement, Root>(
 );
 Root.displayName = "Combobox.Root";
 
-export type Input = ComponentProps<typeof ComboboxInput>;
+export type Input = ComponentProps<typeof ComboboxInput> & {
+  onClick?: () => void;
+};
 export const Input = forwardRef<HTMLInputElement, Input>(
-  ({ className, ...props }, forwardedRef) => {
+  ({ className, onClick, ...props }, forwardedRef) => {
     return (
-      <ComboboxInput
-        {...props}
-        className={classNames(
-          "px-lg py-md dark:text-secondary-200 border-secondary-300 block w-full appearance-none rounded-md border bg-transparent shadow-sm autofill:bg-transparent dark:border-zinc-700",
-          "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
-          "read-only:focus:ring-0",
-          "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
-          props.required &&
-            "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:focus:!ring-error-100/20",
-          className,
-        )}
-        ref={forwardedRef}
-      />
+      <div className="relative flex w-full items-center">
+        <ComboboxInput
+          {...props}
+          className={classNames(
+            onClick != undefined && "pr-10",
+            "px-lg py-md dark:text-secondary-200 border-secondary-300 block w-full appearance-none rounded-md border bg-transparent shadow-sm autofill:bg-transparent dark:border-zinc-700",
+            "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
+            "read-only:focus:ring-0",
+            "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+            props.required &&
+              "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:focus:!ring-error-100/20",
+            className,
+          )}
+          ref={forwardedRef}
+          readOnly
+        />
+        <Button
+          variant="ghost"
+          size="icon"
+          className={classNames(
+            onClick != undefined ? "absolute right-1.5" : "hidden",
+          )}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+            className="h-4 w-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </Button>
+      </div>
     );
   },
 );
@@ -69,10 +98,11 @@ Content.displayName = "Combobox.Content";
 
 export type List = ComponentProps<typeof ComboboxList>;
 export const List = forwardRef<HTMLUListElement, List>(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ children, className, persistSelection, ...props }, forwardedRef) => {
     return (
       <ComboboxList
         {...props}
+        persistSelection
         className={classNames("space-y-1", className)}
         ref={forwardedRef}
       >
@@ -90,7 +120,7 @@ export const Item = forwardRef<HTMLLIElement, Item>(
       <ComboboxOption
         {...props}
         className={classNames(
-          "hover:bg-secondary-100 data-[state=selected]:bg-secondary-200 cursor-pointer rounded-lg py-2 px-2 leading-3",
+          "hover:bg-secondary-100 data-[highlighted]:bg-secondary-200/70 cursor-pointer rounded-md py-1.5 px-2.5",
           className,
         )}
         ref={forwardedRef}
