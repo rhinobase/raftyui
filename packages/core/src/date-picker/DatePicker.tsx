@@ -1,10 +1,13 @@
 import dayjs from "dayjs";
+import isTodayPlugin from "dayjs/plugin/isToday";
 import * as Popover from "@radix-ui/react-popover";
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import { Month, useLilius } from "use-lilius";
 import { InputField } from "../input-field";
 import { Button } from "../button";
 import { classNames } from "@rhinobase/utils";
+
+dayjs.extend(isTodayPlugin);
 
 const months = [
   "January",
@@ -47,6 +50,7 @@ export const DatePicker = ({
     select,
     selected,
     setViewing,
+    setSelected,
     toggle,
     viewing,
     viewNextMonth,
@@ -63,7 +67,6 @@ export const DatePicker = ({
       : undefined,
   });
 
-  const [isOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState<Show>(
     picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR,
   );
@@ -110,7 +113,6 @@ export const DatePicker = ({
 
     if (parsed.isValid()) {
       setViewing(parsed.toDate());
-      select(parsed.toDate(), true);
     } else {
       clearSelected();
     }
@@ -136,79 +138,67 @@ export const DatePicker = ({
   // }, [selected, setViewing]);
 
   return (
-    <div className="w-[300px]">
-      <Popover.Root>
-        <Popover.Trigger className="group">
-          <div className="relative">
-            <InputField
-              onBlur={(e) => onInputBlur(e.target.value)}
-              placeholder={placeholder}
-              className="select-none pr-10"
-              value={dayjs(selected[0]).format(format)}
-            />
-            <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="group-data-[state=open]:text-primary-500 dark:group-data-[state=open]:text-primary-300 h-5 w-5 stroke-2 text-black/50 dark:text-white/70"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-                />
-              </svg>
-            </div>
-          </div>
-        </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content
-            // side="left"
-            sideOffset={5}
-            align="start"
-            className="min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
-          >
-            <PickerHeader
-              onFirstPage={() => {
-                if (show == Show.YEAR) {
-                  const tmp = dayjs(viewing);
-                  setViewing(tmp.year(tmp.year() - 10).toDate());
-                } else viewPreviousYear();
-              }}
-              onPreviousPage={show == Show.DATE ? viewPreviousMonth : undefined}
-              onNextPage={show == Show.DATE ? viewNextMonth : undefined}
-              onLastPage={() => {
-                if (show == Show.YEAR) {
-                  const tmp = dayjs(viewing);
-                  setViewing(tmp.year(tmp.year() + 10).toDate());
-                } else viewNextYear();
-              }}
+    <Popover.Root>
+      <Popover.Trigger className="group">
+        <div className="relative">
+          <InputField
+            onBlur={(e) => onInputBlur(e.target.value)}
+            placeholder={placeholder}
+            className="select-none pr-10"
+            value={dayjs(selected[0]).format(format)}
+          />
+          <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="group-data-[state=open]:text-primary-500 dark:group-data-[state=open]:text-primary-300 h-5 w-5 stroke-2 text-black/50 dark:text-white/70"
             >
-              {show == Show.DATE ? (
-                <>
-                  <Button
-                    onClick={() => {
-                      setShow(1);
-                    }}
-                    variant="ghost"
-                    className="py-1"
-                  >
-                    {dayjs(viewing).format("MMMM")}
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setShow(2);
-                    }}
-                    variant="ghost"
-                    className="py-1"
-                  >
-                    {dayjs(viewing).format("YYYY")}
-                  </Button>
-                </>
-              ) : show == Show.MONTH ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+              />
+            </svg>
+          </div>
+        </div>
+      </Popover.Trigger>
+      <Popover.Portal>
+        <Popover.Content
+          // side="left"
+          sideOffset={5}
+          align="start"
+          className="min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
+        >
+          <PickerHeader
+            onFirstPage={() => {
+              if (show == Show.YEAR) {
+                const tmp = dayjs(viewing);
+                setViewing(tmp.year(tmp.year() - 10).toDate());
+              } else viewPreviousYear();
+            }}
+            onPreviousPage={show == Show.DATE ? viewPreviousMonth : undefined}
+            onNextPage={show == Show.DATE ? viewNextMonth : undefined}
+            onLastPage={() => {
+              if (show == Show.YEAR) {
+                const tmp = dayjs(viewing);
+                setViewing(tmp.year(tmp.year() + 10).toDate());
+              } else viewNextYear();
+            }}
+          >
+            {show == Show.DATE ? (
+              <div className="flex items-center">
+                <Button
+                  onClick={() => {
+                    setShow(1);
+                  }}
+                  variant="ghost"
+                  className="py-1"
+                >
+                  {dayjs(viewing).format("MMMM")}
+                </Button>
                 <Button
                   onClick={() => {
                     setShow(2);
@@ -218,91 +208,106 @@ export const DatePicker = ({
                 >
                   {dayjs(viewing).format("YYYY")}
                 </Button>
-              ) : (
-                <Button variant="ghost" className="py-1">
-                  {dayjs(viewing)
-                    .year(Math.floor(dayjs(viewing).year() / 10) * 10)
-                    .format("YYYY")}{" "}
-                  -{" "}
-                  {dayjs(viewing)
-                    .year(Math.ceil(dayjs(viewing).year() / 10) * 10)
-                    .format("YYYY")}
-                </Button>
-              )}
-            </PickerHeader>
-
-            {show == Show.DATE && (
-              <Popover.Close className="w-full">
-                <DayPanel
-                  calendar={calendar}
-                  viewing={viewing}
-                  toggle={toggle}
-                  selected={selected}
-                  inRange={inRange}
-                  setViewing={setViewing}
-                />
-              </Popover.Close>
+              </div>
+            ) : show == Show.MONTH ? (
+              <Button
+                onClick={() => {
+                  setShow(2);
+                }}
+                variant="ghost"
+                className="py-1"
+              >
+                {dayjs(viewing).format("YYYY")}
+              </Button>
+            ) : (
+              <Button variant="ghost" className="py-1">
+                {dayjs(viewing)
+                  .year(Math.floor(dayjs(viewing).year() / 10) * 10)
+                  .format("YYYY")}{" "}
+                -{" "}
+                {dayjs(viewing)
+                  .year(Math.ceil(dayjs(viewing).year() / 10) * 10)
+                  .format("YYYY")}
+              </Button>
             )}
+          </PickerHeader>
 
-            {show == Show.MONTH &&
-              (picker == "month" ? (
-                <Popover.Close className="w-full">
-                  <MonthPanel
-                    viewing={viewing}
-                    onSelect={(month) => {
-                      viewMonth(month);
-                      toggle(new Date(viewing.setMonth(month)), true);
-                    }}
-                  />
-                </Popover.Close>
-              ) : (
+          {show == Show.DATE && (
+            <Popover.Close className="w-full">
+              <DayPanel
+                calendar={calendar}
+                viewing={viewing}
+                toggle={toggle}
+                selected={selected}
+                inRange={inRange}
+                setViewing={setViewing}
+                isSelected={isSelected}
+                setSelected={setSelected}
+                onSelect={(date) => {
+                  setSelected((prev) => {
+                    if (!prev[0]) return [date];
+                    else return [prev[0], date];
+                  });
+                }}
+              />
+            </Popover.Close>
+          )}
+
+          {show == Show.MONTH &&
+            (picker == "month" ? (
+              <Popover.Close className="w-full">
                 <MonthPanel
                   viewing={viewing}
                   onSelect={(month) => {
                     viewMonth(month);
-                    if (picker == "date") setShow(Show.DATE);
-                    else {
-                      setIsOpen(false);
-                      toggle(new Date(viewing.setMonth(month)), true);
-                    }
+                    toggle(new Date(viewing.setMonth(month)), true);
                   }}
                 />
-              ))}
+              </Popover.Close>
+            ) : (
+              <MonthPanel
+                viewing={viewing}
+                onSelect={(month) => {
+                  viewMonth(month);
+                  if (picker == "date") setShow(Show.DATE);
+                  else {
+                    toggle(new Date(viewing.setMonth(month)), true);
+                  }
+                }}
+              />
+            ))}
 
-            {show == Show.YEAR &&
-              (picker == "year" ? (
-                <Popover.Close className="w-full">
-                  <YearPanel
-                    selected={selected}
-                    viewing={viewing}
-                    onSelect={(year) => {
-                      viewYear(year);
-                      setIsOpen(false);
-                      toggle(new Date(viewing.setFullYear(year)), true);
-                    }}
-                  />
-                </Popover.Close>
-              ) : (
+          {show == Show.YEAR &&
+            (picker == "year" ? (
+              <Popover.Close className="w-full">
                 <YearPanel
                   selected={selected}
                   viewing={viewing}
                   onSelect={(year) => {
                     viewYear(year);
-
-                    if (picker == "date" || picker == "month")
-                      setShow(Show.MONTH);
-                    else {
-                      setIsOpen(false);
-                      toggle(new Date(viewing.setFullYear(year)), true);
-                    }
+                    toggle(new Date(viewing.setFullYear(year)), true);
                   }}
                 />
-              ))}
-            {/* <Popover.Arrow className="fill-white" /> */}
-          </Popover.Content>
-        </Popover.Portal>
-      </Popover.Root>
-    </div>
+              </Popover.Close>
+            ) : (
+              <YearPanel
+                selected={selected}
+                viewing={viewing}
+                onSelect={(year) => {
+                  viewYear(year);
+
+                  if (picker == "date" || picker == "month")
+                    setShow(Show.MONTH);
+                  else {
+                    toggle(new Date(viewing.setFullYear(year)), true);
+                  }
+                }}
+              />
+            ))}
+          {/* <Popover.Arrow className="fill-white" /> */}
+        </Popover.Content>
+      </Popover.Portal>
+    </Popover.Root>
   );
 };
 
@@ -310,7 +315,7 @@ type MonthPanel = {
   viewing: Date;
   onSelect: (month: number) => void;
 };
-function MonthPanel({ viewing, onSelect }: MonthPanel) {
+export function MonthPanel({ viewing, onSelect }: MonthPanel) {
   return (
     <div className="px-4 py-6">
       <div className="mb-2 grid grid-cols-3 gap-8">
@@ -345,8 +350,6 @@ export function YearPanel({ viewing, onSelect, selected }: YearPanel) {
     .fill(undefined)
     .map((_, index) => start_year + index);
 
-  console.log(years);
-
   return (
     <div className="px-4 py-6">
       <div className="grid grid-cols-3 gap-8">
@@ -370,82 +373,99 @@ export function YearPanel({ viewing, onSelect, selected }: YearPanel) {
 }
 
 type DayPanel = {
+  showMonths?: number;
   calendar: Date[][][];
   inRange: (date: Date, min: Date, max: Date) => boolean;
   viewing: Date;
   toggle: (date: Date, replaceExisting?: boolean | undefined) => void;
   selected: Date[];
-  setViewing: any;
+  setViewing: (value: React.SetStateAction<Date>) => void;
+  isSelected: (date: Date) => boolean;
+  setSelected: React.Dispatch<React.SetStateAction<Date[]>>;
+  onSelect: (date: Date) => void;
 };
 export function DayPanel({
   calendar,
   inRange,
   viewing,
   toggle,
+  onSelect,
   selected,
-  setViewing,
+  isSelected,
+  setSelected,
+  showMonths = 1,
 }: DayPanel) {
   return (
-    <div className="px-6 pt-6 pb-2">
-      <div className="mb-4 grid grid-cols-7 gap-4">
-        {calendar.length > 0 &&
-          calendar[0][0].map((day) => (
-            <div
-              key={`${day}`}
-              className="text-center text-sm dark:text-white/80"
-            >
-              {
-                ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
-                  dayjs(day).get("day")
-                ]
-              }
-            </div>
-          ))}
-      </div>
+    <div className="w-full px-6 pt-6 pb-2">
+      <div className="flex w-full justify-between">
+        {Array(showMonths)
+          .fill(undefined)
+          .map((_, index) => {
+            const cal = calendar[index];
 
-      {calendar[0].map((week) => (
-        <div key={`week-${week[0]}`} className="mb-3 grid grid-cols-7 gap-2">
-          {week.map((day) => (
-            <Button
-              size="sm"
-              variant={
-                dayjs(selected[0]).format("MM/DD/YYYY") ==
-                dayjs(day).format("MM/DD/YYYY")
-                  ? "solid"
-                  : dayjs(day).format("MM/DD/YYYY") ==
-                    dayjs().format("MM/DD/YYYY")
-                  ? "outline"
-                  : "ghost"
-              }
-              colorScheme={
-                dayjs(selected[0]).format("MM/DD/YYYY") ==
-                  dayjs(day).format("MM/DD/YYYY") ||
-                dayjs(day).format("MM/DD/YYYY") == dayjs().format("MM/DD/YYYY")
-                  ? "primary"
-                  : "secondary"
-              }
-              data-in-range={inRange(
-                day,
-                dayjs(viewing).startOf("month").toDate(),
-                dayjs(viewing).endOf("month").toDate(),
-              )}
-              key={`${day}`}
-              onClick={() => {
-                toggle(day, true);
-                setViewing(day);
-              }}
-              className={classNames(
-                "data-[in-range=false]:text-black/40 dark:data-[in-range=false]:text-white/30",
-                "cursor-pointer rounded-md border border-transparent text-center !text-sm transition-all",
-              )}
-            >
-              <>
-                <p>{dayjs(day).format("DD")}</p>
-              </>
-            </Button>
-          ))}
-        </div>
-      ))}
+            return (
+              <div className="">
+                <div className="mb-4 grid grid-cols-7 gap-4">
+                  {calendar.length > 0 &&
+                    cal[0].map((day) => (
+                      <div
+                        key={`${day}`}
+                        className="text-center text-sm dark:text-white/80"
+                      >
+                        {
+                          ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
+                            dayjs(day).get("day")
+                          ]
+                        }
+                      </div>
+                    ))}
+                </div>
+                {cal.map((week) => (
+                  <div
+                    key={`week-${week[0]}`}
+                    className="mb-3 grid grid-cols-7"
+                  >
+                    {week.map((tmp) => {
+                      const day = dayjs(tmp);
+                      const isDaySelected = isSelected(tmp);
+                      const isToday = dayjs(day).isToday();
+                      const isInRange = dayjs(day).isSame(cal[1][0], "month");
+                      const isSingle = selected.length == 1;
+                      return (
+                        <button
+                          data-in-range={isInRange}
+                          data-selected-range={
+                            inRange(tmp, selected[0], selected[1]) && isInRange
+                          }
+                          key={day.toString()}
+                          onClick={() => {
+                            onSelect(tmp);
+                          }}
+                          className={classNames(
+                            isSingle && day.isSame(selected[0]) && "rounded-md",
+                            day.isSame(selected[0]) && "rounded-l-md",
+                            day.isSame(selected[1]) && "rounded-r-md",
+                            "data-[in-range=false]:text-black/40 dark:data-[in-range=false]:text-white/30",
+                            isDaySelected && isInRange
+                              ? "!bg-primary-500 text-white"
+                              : isToday && isInRange
+                              ? "ring-primary-500 rounded-md ring-2"
+                              : "",
+                            "data-[selected-range=true]:bg-black/5",
+                            "cursor-pointer py-2 text-center !text-sm transition-all",
+                          )}
+                          title={dayjs(day).format("DD/MM/YYYY")}
+                        >
+                          {dayjs(day).format("DD")}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }
@@ -496,7 +516,7 @@ export function PickerHeader(props: PickerHeader) {
           </svg>
         )}
       </div>
-      <div className="flex gap-2">{props.children}</div>
+      {props.children}
       <div className="flex items-center gap-2">
         {props.onNextPage && (
           <svg

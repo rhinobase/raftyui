@@ -11,9 +11,11 @@ export default config;
 export function Default() {
   return (
     <Grid>
-      <DatePicker />
-      <DatePicker picker="month" />
-      <DatePicker picker="year" />
+      <div className="w-[300px]">
+        <DatePicker />
+        <DatePicker picker="month" />
+        <DatePicker picker="year" />
+      </div>
     </Grid>
   );
 }
