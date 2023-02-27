@@ -1,7 +1,7 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import React, { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
-import { Button } from "../index";
+import { Button } from "../button";
 import { MenuProvider, MenuContext, useMenuContext } from "./context";
 // Menu Component
 

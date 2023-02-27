@@ -1,7 +1,7 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
-import { Button } from "../index";
+import { Button } from "../button";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component

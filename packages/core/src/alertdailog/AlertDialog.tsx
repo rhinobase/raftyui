@@ -1,7 +1,7 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import React, { ComponentProps } from "react";
 import { classNames } from "@rhinobase/utils";
-import { Button } from "../index";
+import { Button } from "../button";
 import {
   AlertDialogProvider,
   AlertDialogContext,
