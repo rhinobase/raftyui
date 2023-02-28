@@ -2035,6 +2035,11 @@ video {
   color: rgb(162 205 255 / 0.7);
 }
 
+.text-primary-300{
+  --tw-text-opacity: 1;
+  color: rgb(122 184 255 / var(--tw-text-opacity));
+}
+
 .text-primary-300\/60{
   color: rgb(122 184 255 / 0.6);
 }
@@ -2124,6 +2129,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-white\/70{
+  color: rgb(255 255 255 / 0.7);
+}
+
 .text-zinc-100{
   --tw-text-opacity: 1;
   color: rgb(244 244 245 / var(--tw-text-opacity));
@@ -2147,15 +2156,6 @@ video {
 .text-zinc-700{
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
-}
-
-.text-primary-300{
-  --tw-text-opacity: 1;
-  color: rgb(122 184 255 / var(--tw-text-opacity));
-}
-
-.text-white\/70{
-  color: rgb(255 255 255 / 0.7);
 }
 
 .underline{

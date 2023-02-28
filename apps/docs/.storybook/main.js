@@ -11,9 +11,6 @@ module.exports = {
   core: {
     builder: "@storybook/builder-vite",
   },
-  features: {
-    interactionsDebugger: true,
-  },
   async viteFinal(config, { configType }) {
     // customize the Vite config here
     return {
