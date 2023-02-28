@@ -24,11 +24,9 @@ export const Root = forwardRef<HTMLDivElement, Root>(
 Root.displayName = "MenuBar.Root";
 //MenuBar Menu Component
 type Menu = ComponentProps<(typeof MenubarPrimitive)["Menu"]>;
-export const Menu = forwardRef<HTMLDivElement, Menu>(
-  ({ children, ...props }) => {
-    return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
-  },
-);
+export const Menu = ({ children, ...props }: Menu) => {
+  return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
+};
 Menu.displayName = "MenuBar.Menu";
 
 //MenuBar Button Component
@@ -235,9 +233,9 @@ RadioItem.displayName = "MenuBar.RadioItem";
 
 //MenuBar SubMenu Component
 type Sub = ComponentProps<(typeof MenubarPrimitive)["Sub"]>;
-export const Sub = forwardRef<HTMLDivElement, Sub>(({ children, ...props }) => {
+export const Sub = ({ children, ...props }: Sub) => {
   return <MenubarPrimitive.Sub {...props}>{children}</MenubarPrimitive.Sub>;
-});
+};
 Sub.displayName = "MenuBar.Sub";
 
 //MenuBar SubMenuButton Component

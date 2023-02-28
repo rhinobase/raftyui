@@ -3,17 +3,16 @@ import React, { ComponentProps, forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
 import { Button } from "../button";
 import { MenuProvider, MenuContext, useMenuContext } from "./context";
-// Menu Component
 
+// Menu Component
 type Root = ComponentProps<(typeof DropdownMenu)["Root"]> & MenuContext;
-export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, size = "base" }) => (
-    <MenuProvider value={{ size }}>
-      <DropdownMenu.Root>{children}</DropdownMenu.Root>
-    </MenuProvider>
-  ),
+export const Root = ({ children, size = "base", ...props }: Root) => (
+  <MenuProvider value={{ size }}>
+    <DropdownMenu.Root {...props}>{children}</DropdownMenu.Root>
+  </MenuProvider>
 );
 Root.displayName = "Menu.Root";
+
 // MenuButton Component
 type Trigger = ComponentProps<(typeof DropdownMenu)["Trigger"]> & Button;
 export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
@@ -239,11 +238,9 @@ RadioItem.displayName = "Menu.RadioItem";
 
 // SubMenuComponent
 type Sub = ComponentProps<(typeof DropdownMenu)["Sub"]>;
-export const Sub = forwardRef<HTMLDivElement, Sub>(
-  ({ children, ...props }, forwardedRef) => {
-    return <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>;
-  },
-);
+export const Sub = ({ children, ...props }: Sub) => {
+  return <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>;
+};
 Sub.displayName = "Menu.Sub";
 
 // SubMenuButton Component
@@ -334,14 +331,13 @@ export const Separator = forwardRef<HTMLDivElement, Separator>(
 Separator.displayName = "Menu.Separator";
 
 // MenuArrow Component
-const Arrow = forwardRef<HTMLDivElement, DropdownMenu.DropdownMenuArrowProps>(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <DropdownMenu.Arrow
-        {...props}
-        className="dark:fill-secondary-800 fill-white"
-      ></DropdownMenu.Arrow>
-    );
-  },
-);
+type Arrow = ComponentProps<(typeof DropdownMenu)["Arrow"]>;
+const Arrow = ({ children, ...props }: Arrow) => {
+  return (
+    <DropdownMenu.Arrow
+      {...props}
+      className="dark:fill-secondary-800 fill-white"
+    ></DropdownMenu.Arrow>
+  );
+};
 Arrow.displayName = "Menu.Arrow";

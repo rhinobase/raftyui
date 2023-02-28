@@ -10,12 +10,10 @@ import {
 
 type Root = ComponentProps<(typeof ContextMenuPrimitive)["Root"]> &
   ContextMenuContext;
-export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, size = "base" }) => (
-    <ContextMenuProvider value={{ size }}>
-      <ContextMenuPrimitive.Root>{children}</ContextMenuPrimitive.Root>
-    </ContextMenuProvider>
-  ),
+export const Root = ({ children, size = "base", ...props }: Root) => (
+  <ContextMenuProvider value={{ size }}>
+    <ContextMenuPrimitive.Root {...props}>{children}</ContextMenuPrimitive.Root>
+  </ContextMenuProvider>
 );
 Root.displayName = "ContextMenu.Root";
 
@@ -203,11 +201,11 @@ RadioItem.displayName = "ContextMenu.RadioItem";
 
 //ContextMenu SubMenu Component
 type Sub = ComponentProps<(typeof ContextMenuPrimitive)["Sub"]>;
-export const Sub = forwardRef<HTMLDivElement, Sub>(({ children, ...props }) => {
+export const Sub = ({ children, ...props }: Sub) => {
   return (
     <ContextMenuPrimitive.Sub {...props}>{children}</ContextMenuPrimitive.Sub>
   );
-});
+};
 Sub.displayName = "ContextMenu.Sub";
 
 //ContextMenu SubMenuButton Component

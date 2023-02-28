@@ -1,15 +1,13 @@
 import * as Popover from "@radix-ui/react-popover";
 import dayjs from "dayjs";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { classNames } from "@rhinobase/utils";
-import { Month, useLilius } from "use-lilius";
-import {
-  DayPanel,
-  MonthPanel,
-  PickerHeader,
-  YearPanel,
-} from "../date-picker/DatePicker";
+import { useLilius } from "use-lilius";
 import { Button } from "../button";
+import { MonthPanel } from "./MonthPanel";
+import { YearPanel } from "./YearPanel";
+import { DayPanel } from "./DayPanel";
+import { PickerHeader } from "./PickerHeader";
 
 enum Show {
   DATE,
@@ -56,11 +54,6 @@ export const RangePicker = ({
     numberOfMonths: 2,
   });
 
-  // setSelected((prev) => {
-  //   const start = prev[0];
-  //   return [start, new Date()];
-  // });
-  console.log(selected, viewing, dayjs(viewing).add(1, "month").toDate());
   return (
     <Popover.Root open={state != "0" && true}>
       <Popover.Trigger>
@@ -77,11 +70,9 @@ export const RangePicker = ({
             onFocus={(e) => {
               if (dayjs(e.target.value).isValid()) {
                 setViewing(dayjs(e.target.value).toDate());
-                // select(dayjs(e.target.value).toDate(), true);
               }
               setState("1");
             }}
-            // onBlur={() => setState("0")}
             value={selected[0] && dayjs(selected[0]).format("MM/DD/YYYY")}
           />
 
@@ -107,16 +98,8 @@ export const RangePicker = ({
           <input
             className="w-[150px] bg-transparent outline-none"
             onFocus={(e) => {
-              // if (dayjs(e.target.value).isValid()) {
-              //   setViewing(
-              //     dayjs(e.target.value)
-              //       .set("month", dayjs(e.target.value).get("month") - 1)
-              //       .toDate(),
-              //   );
-              // }
               setState("2");
             }}
-            // onBlur={() => setState("0")}
             value={selected[1] && dayjs(selected[1]).format("MM/DD/YYYY")}
           />
           <svg
@@ -150,7 +133,6 @@ export const RangePicker = ({
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          // side="left"
           sideOffset={5}
           align="start"
           className="min-w-[700px] max-w-[700px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
@@ -252,8 +234,6 @@ export const RangePicker = ({
                 setSelected={setSelected}
                 onSelect={(date) => {
                   setSelected((prev) => {
-                    // setState("2");
-                    // return [date];
                     if (!prev[0]) {
                       setState("2");
                       return [date];
@@ -326,52 +306,3 @@ export const RangePicker = ({
     </Popover.Root>
   );
 };
-
-type CalendarProps = {
-  defaultViewing: Date;
-  onSelect: (newDate: Date) => void;
-  picker?: "date" | "month" | "year";
-  selectDate: Date;
-};
-
-// function Calendar({
-//   defaultViewing,
-//   onSelect,
-//   selectDate,
-//   picker = "date",
-// }: CalendarProps) {
-//   const {
-//     calendar,
-//     viewing,
-//     setViewing,
-//     inRange,
-//     select,
-//     isSelected,
-//     toggle,
-//     selected,
-//   } = useLilius();
-
-//   useEffect(() => {
-//     setViewing(defaultViewing);
-//     select(selectDate, true);
-//   }, [defaultViewing]);
-//   const [show, setShow] = useState<Show>(
-//     picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR,
-//   );
-//   return (
-//     <>
-//       <DayPanel
-//         calendar={calendar}
-//         viewing={viewing}
-//         toggle={toggle}
-//         selected={selected}
-//         inRange={inRange}
-//         onSelect={(date) => {
-//           onSelect(date);
-//         }}
-//         setViewing={setViewing}
-//         isSelected={isSelected}
-//       />
-//     </>
-//   );
-// }

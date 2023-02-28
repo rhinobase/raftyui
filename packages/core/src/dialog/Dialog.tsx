@@ -5,16 +5,16 @@ import { Button } from "../button";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
-export type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
-export const Root = forwardRef<HTMLDivElement, DialogContext & Root>(
-  ({ children, size = "md", ...props }, forwardedRef) => (
-    <DialogProvider value={{ size }}>
-      {/* TODO: Add reference to the below element */}
-      <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
-    </DialogProvider>
-  ),
+export type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]> &
+  DialogContext;
+export const Root = ({ children, size = "md", ...props }: Root) => (
+  <DialogProvider value={{ size }}>
+    {/* TODO: Add reference to the below element */}
+    <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
+  </DialogProvider>
 );
 Root.displayName = "Dialog.Root";
+
 // Dialog Button Component
 export type Trigger = ComponentProps<
   (typeof DialogPrimitive)["DialogTrigger"]
@@ -185,9 +185,7 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButton>(
 CloseButton.displayName = "Dialog.CloseButton";
 
 export type Close = ComponentProps<(typeof DialogPrimitive)["Close"]>;
-export const Close = forwardRef<HTMLButtonElement, Close>(
-  ({ children, ...props }, forwardedRef) => {
-    return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
-  },
-);
+export const Close = ({ children, ...props }: Close) => {
+  return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
+};
 Close.displayName = "Dialog.Close";

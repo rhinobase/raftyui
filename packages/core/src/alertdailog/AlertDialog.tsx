@@ -11,15 +11,10 @@ import {
 // AlertDialog Component
 type Root = ComponentProps<(typeof AlertDialogPrimitive)["AlertDialog"]> &
   AlertDialogContext;
-export const Root = React.forwardRef<HTMLDivElement, Root>(
-  ({ children, size = "md", ...props }, forwardedRef) => (
-    <AlertDialogProvider value={{ size }}>
-      {/* TODO: Add reference to the below element */}
-      <AlertDialogPrimitive.Root {...props}>
-        {children}
-      </AlertDialogPrimitive.Root>
-    </AlertDialogProvider>
-  ),
+export const Root = ({ children, size = "md", ...props }: Root) => (
+  <AlertDialogProvider value={{ size }}>
+    <AlertDialogPrimitive.Root {...props}>{children}</AlertDialogPrimitive.Root>
+  </AlertDialogProvider>
 );
 
 Root.displayName = "AlertDialog.Root";

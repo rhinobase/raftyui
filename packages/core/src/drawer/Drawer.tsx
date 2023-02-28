@@ -5,14 +5,17 @@ import { Button } from "../button";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 
 // Drawer Component
-type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]>;
-export const Root = forwardRef<HTMLDivElement, DrawerContext & Root>(
-  ({ children, size = "md", side = "right", ...props }, forwardedRef) => (
-    <DrawerProvider value={{ size, side }}>
-      {/* TODO: Add reference to the below element */}
-      <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
-    </DrawerProvider>
-  ),
+type Root = ComponentProps<(typeof DialogPrimitive)["Dialog"]> & DrawerContext;
+export const Root = ({
+  children,
+  size = "md",
+  side = "right",
+  ...props
+}: Root) => (
+  <DrawerProvider value={{ size, side }}>
+    {/* TODO: Add reference to the below element */}
+    <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
+  </DrawerProvider>
 );
 Root.displayName = "Drawer.Root";
 
