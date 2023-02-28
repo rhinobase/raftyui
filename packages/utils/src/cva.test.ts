@@ -1,7 +1,7 @@
 import { describe, expect, test } from "@jest/globals";
 import { cartesianProduct, applyStyleToMultipleVariants } from "./cva";
 
-const className="className"
+const className = "className";
 
 //Tests for applyStleTOMultipleVarients()
 describe("Test for Single object", () => {

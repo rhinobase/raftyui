@@ -1,5 +1,12 @@
 # @rhinobase/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- Added new components - Combobox, DatePicker and RangePicker, with size and
+  performance improvements
+
 ## 0.2.5
 
 ### Patch Changes

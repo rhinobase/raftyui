@@ -9,7 +9,9 @@ describe("String Test", () => {
     expect(classNames("str1", "str2")).toBe("str1 str2");
   });
   test("passing multiple Strings", () => {
-    expect(classNames("str1", "str2", "str3", "str4")).toBe("str1 str2 str3 str4");
+    expect(classNames("str1", "str2", "str3", "str4")).toBe(
+      "str1 str2 str3 str4",
+    );
   });
 });
 
