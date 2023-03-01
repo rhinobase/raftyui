@@ -30,9 +30,6 @@ export const RangePicker = ({
   const [show, setShow] = useState<Show>(
     picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR,
   );
-  // const [start, setStart] = useState<Date | undefined>(undefined);
-  // const [end, setEnd] = useState<Date | undefined>(undefined);
-
   const {
     calendar,
     selectRange,
@@ -224,14 +221,10 @@ export const RangePicker = ({
             {show == Show.DATE && (
               <DayPanel
                 calendar={calendar}
-                viewing={viewing}
-                toggle={toggle}
                 selected={selected}
                 inRange={inRange}
-                setViewing={setViewing}
                 isSelected={isSelected}
                 showMonths={2}
-                setSelected={setSelected}
                 onSelect={(date) => {
                   setSelected((prev) => {
                     if (!prev[0]) {

@@ -1,3 +1,5 @@
+import { within, userEvent } from "@storybook/testing-library";
+import { ComponentStory } from "@storybook/react";
 import { Example, Examples, Grid } from "@rhinobase/docs/components";
 import { Button } from "./Button";
 import React from "react";
@@ -7,6 +9,24 @@ const config = {
   component: Button,
 };
 export default config;
+
+const Template: ComponentStory<typeof Button> = (args: Button) => (
+  <Grid>
+    <Button {...args}>button</Button>
+  </Grid>
+);
+
+export const SimpleButton = Template.bind({});
+
+SimpleButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = canvas.getByText("button", {
+    selector: "button",
+  });
+
+  await userEvent.click(button);
+};
 
 export function Default() {
   return (

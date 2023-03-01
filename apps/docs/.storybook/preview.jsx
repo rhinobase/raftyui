@@ -1,5 +1,7 @@
-import "../public/globals.css";
+import "../styles/compile.css";
 import { withTailwindTheme } from "./withTailwindTheme.decorator";
+import * as jest from "jest-mock";
+window.jest = jest;
 
 export const globalTypes = {
   theme: {

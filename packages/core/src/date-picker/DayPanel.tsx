@@ -6,23 +6,16 @@ type DayPanel = {
   showMonths?: number;
   calendar: Date[][][];
   inRange: (date: Date, min: Date, max: Date) => boolean;
-  viewing: Date;
-  toggle: (date: Date, replaceExisting?: boolean | undefined) => void;
   selected: Date[];
-  setViewing: (value: React.SetStateAction<Date>) => void;
   isSelected: (date: Date) => boolean;
-  setSelected: React.Dispatch<React.SetStateAction<Date[]>>;
   onSelect: (date: Date) => void;
 };
 export function DayPanel({
   calendar,
   inRange,
-  viewing,
-  toggle,
   onSelect,
   selected,
   isSelected,
-  setSelected,
   showMonths = 1,
 }: DayPanel) {
   return (

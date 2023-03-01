@@ -126,7 +126,6 @@ export const DatePicker = ({
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          // side="left"
           sideOffset={5}
           align="start"
           className="min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
@@ -195,13 +194,9 @@ export const DatePicker = ({
             <Popover.Close className="w-full">
               <DayPanel
                 calendar={calendar}
-                viewing={viewing}
-                toggle={toggle}
                 selected={selected}
                 inRange={inRange}
-                setViewing={setViewing}
                 isSelected={isSelected}
-                setSelected={setSelected}
                 onSelect={(date) => {
                   setSelected((prev) => {
                     if (!prev[0]) return [date];
@@ -263,7 +258,6 @@ export const DatePicker = ({
                 }}
               />
             ))}
-          {/* <Popover.Arrow className="fill-white" /> */}
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

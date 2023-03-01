@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently \"npm run watch:*\"",
     "lint": "eslint",
-    "watch:css": "npx tailwindcss -i ./styles/globals.css -o ./public/globals.css --watch",
+    "watch:css": "npx tailwindcss -i ./styles/globals.css -o ./styles/compile.css --watch",
     "watch:storybook": "start-storybook dev -p 6011",
     "build": "build-storybook --docs",
     "preview-storybook": "serve storybook-static",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@rhinobase/ui": "*",
+    "@storybook/addon-interactions": "^6.5.16",
     "concurrently": "^7.6.0",
     "postcss": "^8.4.21",
     "react": "^18.2.0",
@@ -21,9 +22,9 @@
   },
   "devDependencies": {
     "@rhinobase/tsconfig": "*",
+    "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
     "@storybook/builder-vite": "^0.4.0",
     "@storybook/jest": "^0.0.10",
