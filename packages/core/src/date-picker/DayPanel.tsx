@@ -70,12 +70,12 @@ export function DayPanel({
                             day.isSame(selected[1]) && "rounded-r-md",
                             "data-[in-range=false]:text-black/40 dark:data-[in-range=false]:text-white/30",
                             isDaySelected && isInRange
-                              ? "!bg-primary-500 text-white"
+                              ? "!bg-primary-500 dark:!bg-primary-300 text-white dark:!text-black"
                               : isToday && isInRange
-                              ? "ring-primary-500 rounded-md ring-2"
+                              ? "ring-primary-500 dark:ring-primary-300 rounded-md ring-2"
                               : "",
-                            "data-[selected-range=true]:bg-black/5",
-                            "cursor-pointer py-2 text-center !text-sm transition-all",
+                            "data-[selected-range=true]:bg-zinc-200 dark:data-[selected-range=true]:bg-zinc-700",
+                            "cursor-pointer py-2 text-center !text-sm transition-all dark:text-white",
                           )}
                           title={dayjs(day).format("DD/MM/YYYY")}
                         >

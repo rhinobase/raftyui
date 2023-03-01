@@ -63,7 +63,7 @@ export const RangePicker = ({
           )}
         >
           <input
-            className="w-[150px] bg-transparent outline-none"
+            className="w-[150px] bg-transparent outline-none dark:text-white/80"
             onFocus={(e) => {
               if (dayjs(e.target.value).isValid()) {
                 setViewing(dayjs(e.target.value).toDate());
@@ -93,7 +93,7 @@ export const RangePicker = ({
             />
           </svg>
           <input
-            className="w-[150px] bg-transparent outline-none"
+            className="w-[150px] bg-transparent outline-none dark:text-white/80"
             onFocus={(e) => {
               setState("2");
             }}

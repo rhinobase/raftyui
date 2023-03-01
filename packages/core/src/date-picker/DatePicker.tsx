@@ -198,10 +198,7 @@ export const DatePicker = ({
                 inRange={inRange}
                 isSelected={isSelected}
                 onSelect={(date) => {
-                  setSelected((prev) => {
-                    if (!prev[0]) return [date];
-                    else return [prev[0], date];
-                  });
+                  setSelected([date]);
                 }}
               />
             </Popover.Close>
