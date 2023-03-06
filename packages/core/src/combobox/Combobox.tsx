@@ -84,7 +84,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
       <ComboboxPopover
         {...props}
         className={classNames(
-          "p-md rounded-md shadow-lg ring-1 ring-black/5",
+          "p-md dark:bg-secondary-800 rounded-md shadow-lg ring-1 ring-black/5 ",
           className,
         )}
         ref={forwardedRef}
@@ -120,7 +120,7 @@ export const Item = forwardRef<HTMLLIElement, Item>(
       <ComboboxOption
         {...props}
         className={classNames(
-          "hover:bg-secondary-100 data-[highlighted]:bg-secondary-200/70 cursor-pointer rounded-md py-1.5 px-2.5",
+          "hover:bg-secondary-100 dark:hover:bg-secondary-700 dark:data-[highlighted]:bg-secondary-700 data-[highlighted]:bg-secondary-200/70 cursor-pointer rounded-md py-1.5 px-2.5 dark:text-white",
           className,
         )}
         ref={forwardedRef}
