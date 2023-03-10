@@ -56,10 +56,11 @@
     "@radix-ui/react-tabs": "^1.0.2",
     "@radix-ui/react-toggle-group": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.3",
-    "@reach/combobox": "^0.18.0",
     "class-variance-authority": "^0.4.0",
     "dayjs": "^1.11.7",
+    "react-aria": "^3.23.1",
     "react-select": "^5.7.0",
+    "react-stately": "^3.21.0",
     "use-lilius": "^2.0.3"
   },
   "publishConfig": {

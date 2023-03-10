@@ -39,33 +39,19 @@ const people = [
 export function Default() {
   return (
     <Grid>
-      <Combobox.Root aria-label="custom option demo">
-        <Combobox.Input placeholder="Custom Option Rendering" />
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Item value="Apple">
-              🍎
-              <Combobox.ItemText />
-            </Combobox.Item>
-            <Combobox.Item value="Banana">
-              🍌
-              <Combobox.ItemText />
-            </Combobox.Item>
-            <Combobox.Item value="Orange">
-              🍊
-              <Combobox.ItemText />
-            </Combobox.Item>
-            <Combobox.Item value="Pineapple">
-              🍍
-              <Combobox.ItemText />
-            </Combobox.Item>
-            <Combobox.Item value="Kiwi">
-              🥝
-              <Combobox.ItemText />
-            </Combobox.Item>
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
+      <Combobox.SearchAutocomplete label="Search" allowsCustomValue>
+        <Combobox.Item>Chatterbridge</Combobox.Item>
+        <Combobox.Item>Tagchat</Combobox.Item>
+        <Combobox.Item>Yambee</Combobox.Item>
+        <Combobox.Item>Photobug</Combobox.Item>
+        <Combobox.Item>Livepath</Combobox.Item>
+
+        <Combobox.Item>Theodor Dawber</Combobox.Item>
+        <Combobox.Item>Dwight Stollenberg</Combobox.Item>
+        <Combobox.Item>Maddalena Prettjohn</Combobox.Item>
+        <Combobox.Item>Maureen Fassan</Combobox.Item>
+        <Combobox.Item>Abbie Binyon</Combobox.Item>
+      </Combobox.SearchAutocomplete>
     </Grid>
   );
 }

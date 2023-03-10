@@ -1,1 +1,1 @@
-export { Root, Content, Input, Item, List } from "./Combobox";
+export { SearchAutocomplete, Popover, ListBox, Item } from "./Combobox";
