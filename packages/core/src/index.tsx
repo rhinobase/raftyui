@@ -1,3 +1,5 @@
+import { NavigationMenu } from "@radix-ui/react-navigation-menu";
+
 export * as Accordion from "./accordion";
 export { Alert } from "./alert";
 export * as AlertDialog from "./alertdailog";
@@ -23,6 +25,7 @@ export { Kbd } from "./kbd";
 export * as Menu from "./menu";
 export * as MenuBar from "./menubar";
 export { MultiSelect } from "./multi-select";
+export * as NavigationMenu from "./navigation-menu";
 export { PasswordField } from "./password-field";
 export * as RadioGroup from "./radio-group";
 export * as Select from "./select";
