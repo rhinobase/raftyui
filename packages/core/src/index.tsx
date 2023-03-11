@@ -24,7 +24,7 @@ export { InputField } from "./input-field";
 export { Kbd } from "./kbd";
 export * as Menu from "./menu";
 export * as MenuBar from "./menubar";
-export { MultiSelect } from "./multi-select";
+export * from "./combobox";
 export * as NavigationMenu from "./navigation-menu";
 export { PasswordField } from "./password-field";
 export * as RadioGroup from "./radio-group";
