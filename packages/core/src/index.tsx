@@ -1,5 +1,3 @@
-import { NavigationMenu } from "@radix-ui/react-navigation-menu";
-
 export * as Accordion from "./accordion";
 export { Alert } from "./alert";
 export * as AlertDialog from "./alertdailog";

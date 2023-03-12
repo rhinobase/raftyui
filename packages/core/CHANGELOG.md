@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.2
+
+### Patch Changes
+
+- Added NavigationMenu and List Component, and minor improvements
+
 ## 0.3.1
 
 ### Patch Changes
