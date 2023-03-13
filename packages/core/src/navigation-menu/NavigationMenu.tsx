@@ -14,10 +14,7 @@ export const Root = forwardRef<HTMLDivElement, Root>(
     return (
       <NavigationMenuProvider value={{ size }}>
         <NavigationMenuPrimitive.Root
-          className={classNames(
-            "relative flex w-full justify-center",
-            className,
-          )}
+          className={classNames("relative", className)}
           {...props}
           ref={forwardedRef}
         >
@@ -68,7 +65,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
           size == "sm" && "py-2 px-3 text-xs",
           size == "base" && "py-2 px-3 text-base",
           size == "lg" && "py-3 px-4 text-lg",
-          "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none ",
+          "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none ",
           className,
         )}
         {...props}
@@ -106,7 +103,7 @@ export const Content = forwardRef<
         size == "sm" && "max-w-lg",
         size == "md" && "max-w-2xl",
         size == "lg" && "max-w-6xl",
-        size == "full" ? "top-0 w-[100vw]" : "top-2.5 rounded-md",
+        size == "full" ? "-top-1 w-[100vw]" : "top-2.5 rounded-md",
         "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
         className,
       )}
