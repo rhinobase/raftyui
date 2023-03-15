@@ -29,14 +29,7 @@ export { PasswordField } from "./password-field";
 export * as RadioGroup from "./radio-group";
 export * as Select from "./select";
 export { Spinner } from "./spinner";
-export {
-  Stat,
-  StatGroup,
-  StatHelpText,
-  StatIcon,
-  StatLabel,
-  StatValue,
-} from "./stat";
+export * as Stat from "./stat";
 export { Switch } from "./switch";
 export * as TabGroup from "./tab-group";
 export {

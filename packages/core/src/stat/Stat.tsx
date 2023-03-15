@@ -1,8 +1,8 @@
 import { classNames } from "@rhinobase/utils";
 import React, { forwardRef } from "react";
 
-export type StatGroup = JSX.IntrinsicElements["div"];
-export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
+export type Group = JSX.IntrinsicElements["div"];
+export const Group = forwardRef<HTMLDivElement, Group>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -18,10 +18,10 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
     );
   },
 );
-StatGroup.displayName = "StatGroup";
+Group.displayName = "Group";
 
-export type Stat = JSX.IntrinsicElements["div"];
-export const Stat = forwardRef<HTMLDivElement, Stat>(
+export type Root = JSX.IntrinsicElements["div"];
+export const Root = forwardRef<HTMLDivElement, Root>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -34,10 +34,10 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
     );
   },
 );
-Stat.displayName = "Stat";
+Root.displayName = "Root";
 
-export type StatLabel = JSX.IntrinsicElements["div"];
-export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
+export type Label = JSX.IntrinsicElements["div"];
+export const Label = forwardRef<HTMLDivElement, Label>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -53,10 +53,10 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
     );
   },
 );
-StatLabel.displayName = "StatLabel";
+Label.displayName = "Label";
 
-export type StatValue = JSX.IntrinsicElements["div"];
-export const StatValue = forwardRef<HTMLDivElement, StatValue>(
+export type Value = JSX.IntrinsicElements["div"];
+export const Value = forwardRef<HTMLDivElement, Value>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <div
@@ -72,10 +72,10 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
     );
   },
 );
-StatValue.displayName = "StatValue";
+Value.displayName = "Value";
 
-export type StatHelpText = JSX.IntrinsicElements["div"];
-export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
+export type HelpText = JSX.IntrinsicElements["div"];
+export const HelpText = forwardRef<HTMLDivElement, HelpText>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <div
@@ -91,12 +91,12 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
     );
   },
 );
-StatHelpText.displayName = "StatHelpText";
+HelpText.displayName = "HelpText";
 
-export type StatIcon = {
+export type Icon = {
   type: "increase" | "decrease";
 } & JSX.IntrinsicElements["svg"];
-export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
+export const Icon = forwardRef<SVGSVGElement, Icon>(
   ({ type, className, height, width, ...props }, forwardedRef) => {
     if (type == "increase")
       return (
@@ -130,4 +130,4 @@ export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
   },
 );
 
-StatIcon.displayName = "StatIcon";
+Icon.displayName = "Icon";
