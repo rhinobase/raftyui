@@ -1,6 +1,6 @@
 import { Grid } from "@rhinobase/docs/components";
 import React from "react";
-import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "./Stat";
+import * as Stat from "./Stat";
 
 const config = {
   title: "New/Stat",
@@ -14,20 +14,20 @@ export default config;
 export function Default() {
   return (
     <Grid>
-      <Stat>
-        <StatLabel>Daily Return</StatLabel>
-        <StatValue>17,770.90</StatValue>
-        <StatHelpText>
-          <StatIcon type="decrease" /> 0.47%
-        </StatHelpText>
-      </Stat>
-      <Stat>
-        <StatLabel>Daily Return</StatLabel>
-        <StatValue>17,770.90</StatValue>
-        <StatHelpText>
-          <StatIcon type="increase" /> 0.47%
-        </StatHelpText>
-      </Stat>
+      <Stat.Root type="decrease">
+        <Stat.Label>Daily Return</Stat.Label>
+        <Stat.Value>17,770.90</Stat.Value>
+        <Stat.HelpText>
+          <Stat.Icon /> 0.47%
+        </Stat.HelpText>
+      </Stat.Root>
+      <Stat.Root type="increase">
+        <Stat.Label>Daily Return</Stat.Label>
+        <Stat.Value>17,770.90</Stat.Value>
+        <Stat.HelpText>
+          <Stat.Icon /> 0.47%
+        </Stat.HelpText>
+      </Stat.Root>
     </Grid>
   );
 }

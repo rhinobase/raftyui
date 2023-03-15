@@ -1,5 +1,6 @@
 import { classNames } from "@rhinobase/utils";
 import React, { forwardRef } from "react";
+import { StatContext, StatProvider, useStatContext } from "./context";
 
 export type Group = JSX.IntrinsicElements["div"];
 export const Group = forwardRef<HTMLDivElement, Group>(
@@ -20,17 +21,19 @@ export const Group = forwardRef<HTMLDivElement, Group>(
 );
 Group.displayName = "Group";
 
-export type Root = JSX.IntrinsicElements["div"];
+export type Root = JSX.IntrinsicElements["div"] & StatContext;
 export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ children, className, type, ...props }, forwardedRef) => {
     return (
-      <div
-        {...props}
-        className={classNames("flex flex-col gap-1", className)}
-        ref={forwardedRef}
-      >
-        {children}
-      </div>
+      <StatProvider value={{ type }}>
+        <div
+          {...props}
+          className={classNames("flex flex-col gap-1", className)}
+          ref={forwardedRef}
+        >
+          {children}
+        </div>
+      </StatProvider>
     );
   },
 );
@@ -77,11 +80,18 @@ Value.displayName = "Value";
 export type HelpText = JSX.IntrinsicElements["div"];
 export const HelpText = forwardRef<HTMLDivElement, HelpText>(
   ({ className, children, ...props }, forwardedRef) => {
+    const { type } = useStatContext();
     return (
       <div
         {...props}
         className={classNames(
-          "dark:text-secondary-300 flex items-center gap-1.5 text-sm font-light",
+          type == "increase"
+            ? "text-success-600 dark:text-success-400"
+            : "dark:text-secondary-300",
+          type == "decrease"
+            ? "text-error-600 dark:text-error-400"
+            : "dark:text-secondary-300",
+          "flex items-center gap-1.5 text-sm font-light",
           className,
         )}
         ref={forwardedRef}
@@ -93,11 +103,10 @@ export const HelpText = forwardRef<HTMLDivElement, HelpText>(
 );
 HelpText.displayName = "HelpText";
 
-export type Icon = {
-  type: "increase" | "decrease";
-} & JSX.IntrinsicElements["svg"];
+export type Icon = JSX.IntrinsicElements["svg"];
 export const Icon = forwardRef<SVGSVGElement, Icon>(
-  ({ type, className, height, width, ...props }, forwardedRef) => {
+  ({ className, height, width, ...props }, forwardedRef) => {
+    const { type } = useStatContext();
     if (type == "increase")
       return (
         <svg

@@ -1,8 +1,1 @@
-export {
-  Stat,
-  StatGroup,
-  StatHelpText,
-  StatIcon,
-  StatLabel,
-  StatValue,
-} from "./Stat";
+export { Root, Group, HelpText, Icon, Label, Value } from "./Stat";
