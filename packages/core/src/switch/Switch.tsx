@@ -28,7 +28,7 @@ export const Switch = React.forwardRef<
             "h-[16px] w-[16px] data-[state=checked]:translate-x-[16px]",
           size == "lg" &&
             "h-[24px] w-[24px] data-[state=checked]:translate-x-[24px]",
-          "block translate-x-[2px] rounded-full bg-white transition-all duration-200 ease-in-out data-[state=checked]:dark:bg-black/90",
+          "dark:data-[state=checked]:bg-secondary-800 block translate-x-[2px] rounded-full bg-white transition-all duration-200 ease-in-out",
         )}
         {...props}
       />

@@ -65,7 +65,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
           size == "sm" && "py-2 px-3 text-xs",
           size == "base" && "py-2 px-3 text-base",
           size == "lg" && "py-3 px-4 text-lg",
-          "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none ",
+          "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none ",
           className,
         )}
         {...props}

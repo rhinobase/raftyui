@@ -41,7 +41,7 @@ export const Item = forwardRef<HTMLButtonElement, ToggleGroupContext & Item>(
           size == "sm" && "px-3 py-[2px] text-sm",
           size == "md" && "px-3 py-1",
           size == "lg" && "px-3 py-2 text-lg",
-          "data-[state=on]:bg-secondary-200 dark:text-secondary-200 data-[state=on]:dark:bg-secondary-800 flex w-full items-center justify-center font-semibold transition-all",
+          "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
           className,
         )}
         {...props}

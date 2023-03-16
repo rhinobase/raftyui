@@ -43,19 +43,13 @@ export function Default() {
                     </NavigationMenu.Link>
                   </div>
                   <div>
-                    <NavigationMenu.ListItem
-                      href="https://stitches.dev/"
-                      title="Stitches"
-                    >
+                    <NavigationMenu.ListItem href="#" title="Stitches">
                       CSS-in-JS with best-in-class developer experience.
                     </NavigationMenu.ListItem>
-                    <NavigationMenu.ListItem href="/colors" title="Colors">
+                    <NavigationMenu.ListItem href="#" title="Colors">
                       Beautiful, thought-out palettes with auto dark mode.
                     </NavigationMenu.ListItem>
-                    <NavigationMenu.ListItem
-                      href="https://icons.radix-ui.com/"
-                      title="Icons"
-                    >
+                    <NavigationMenu.ListItem href="#" title="Icons">
                       A crisp set of 15x15 icons, balanced and consistent.
                     </NavigationMenu.ListItem>
                   </div>

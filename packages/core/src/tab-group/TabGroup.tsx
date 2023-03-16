@@ -54,7 +54,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
           size == "sm" && "px-3 py-1 text-sm",
           size == "md" && "px-3 py-2",
           size == "lg" && "px-3 py-3 text-lg",
-          "data-[state=active]:bg-primary-500 dark:text-secondary-200 data-[state=active]:dark:bg-primary-300/90 flex w-full items-center justify-center font-semibold text-black/60 transition-all data-[state=active]:text-white data-[state=active]:dark:text-black",
+          "data-[state=active]:bg-primary-50 dark:text-secondary-200 data-[state=active]:dark:bg-primary-300/10 data-[state=active]:text-primary-500 data-[state=active]:dark:text-primary-300 flex w-full items-center justify-center font-semibold text-black/60 transition-all",
           className,
         )}
         {...props}
