@@ -72,7 +72,7 @@ export function DayPanel({
                             isDaySelected && isInRange
                               ? "!bg-primary-500 dark:!bg-primary-300 text-white dark:!text-black"
                               : isToday && isInRange
-                              ? "ring-primary-500 dark:ring-primary-300 rounded-md ring-2"
+                              ? "ring-primary-500 dark:ring-primary-300 relative rounded-md ring-2"
                               : "",
                             "data-[selected-range=true]:bg-zinc-200 dark:data-[selected-range=true]:bg-zinc-700",
                             "cursor-pointer py-2 text-center !text-sm transition-all dark:text-white",
