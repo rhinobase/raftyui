@@ -21,6 +21,7 @@ const buttonClasses = cva(
         primary: "",
         secondary: "",
         error: "",
+        success: "",
       },
       variant: {
         solid: "",
@@ -54,7 +55,7 @@ const buttonClasses = cva(
         loading: [false, undefined],
       }),
       ...applyStyleToMultipleVariants({
-        colorScheme: ["primary", "error"],
+        colorScheme: ["primary", "error", "success"],
         variant: "solid",
         className: "text-white dark:text-black",
         disabled: [false, undefined],
@@ -153,6 +154,37 @@ const buttonClasses = cva(
         className:
           "border-transparent bg-error-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-500 hover:bg-error-600/90 dark:bg-error-300 dark:hover:bg-error-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
+      // Success Solid
+      {
+        disabled: true,
+        colorScheme: "success",
+        variant: "solid",
+        className:
+          "border-transparent bg-success-500/75 text-secondary-200 dark:bg-success-300/80 dark:text-secondary-600",
+      },
+      {
+        loading: true,
+        colorScheme: "success",
+        variant: "solid",
+        className:
+          "border-transparent bg-success-500/75 text-secondary-200 dark:bg-success-300/80 dark:text-secondary-600",
+      },
+      {
+        active: true,
+        colorScheme: "success",
+        variant: "solid",
+        className:
+          "border-transparent bg-success-600/90 dark:bg-success-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+      },
+      ...applyStyleToMultipleVariants({
+        disabled: [undefined, false],
+        loading: false,
+        active: false,
+        colorScheme: "success",
+        variant: "solid",
+        className:
+          "border-transparent bg-success-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-500 hover:bg-success-600/90 dark:bg-success-300 dark:hover:bg-success-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+      }),
       // Primary Outline
       {
         disabled: true,
@@ -246,6 +278,37 @@ const buttonClasses = cva(
         className:
           "bg-transparent border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 hover:bg-error-200/30 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
+      // Success Outline
+      {
+        disabled: true,
+        colorScheme: "success",
+        variant: "outline",
+        className:
+          "bg-transparent border-success-300/75 text-success-400/70 dark:border-success-200/50 dark:text-success-200/60",
+      },
+      {
+        loading: true,
+        colorScheme: "success",
+        variant: "outline",
+        className:
+          "bg-transparent border-success-300/75 text-success-400/70 dark:border-success-200/50 dark:text-success-200/60",
+      },
+      {
+        active: true,
+        colorScheme: "success",
+        variant: "outline",
+        className:
+          "border-success-500 dark:border-success-300/80 text-success-500 dark:text-success-300 bg-success-200/60 dark:bg-success-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+      },
+      ...applyStyleToMultipleVariants({
+        disabled: [undefined, false],
+        loading: false,
+        active: false,
+        colorScheme: "success",
+        variant: "outline",
+        className:
+          "bg-transparent border-success-500 dark:border-success-300/80 text-success-500 dark:text-success-300 hover:bg-success-200/30 dark:hover:bg-success-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+      }),
       // Primary Ghost
       {
         disabled: true,
@@ -338,6 +401,37 @@ const buttonClasses = cva(
         variant: "ghost",
         className:
           "bg-transparent border-transparent text-error-500 dark:text-error-300 hover:bg-error-200/40 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+      }),
+      // Success Ghost
+      {
+        disabled: true,
+        colorScheme: "success",
+        variant: "ghost",
+        className:
+          "bg-transparent border-transparent text-success-400/80 dark:text-success-300/60",
+      },
+      {
+        loading: true,
+        colorScheme: "success",
+        variant: "ghost",
+        className:
+          "bg-transparent border-transparent text-success-400/80 dark:text-success-300/60",
+      },
+      {
+        active: true,
+        colorScheme: "success",
+        variant: "ghost",
+        className:
+          "border-transparent text-success-500 dark:text-success-300 bg-success-200/60 dark:bg-success-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+      },
+      ...applyStyleToMultipleVariants({
+        disabled: [undefined, false],
+        loading: false,
+        active: false,
+        colorScheme: "success",
+        variant: "ghost",
+        className:
+          "bg-transparent border-transparent text-success-500 dark:text-success-300 hover:bg-success-200/40 dark:hover:bg-success-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       }),
     ],
     defaultVariants: {

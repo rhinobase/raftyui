@@ -37,6 +37,7 @@ export function Default() {
             <Button colorScheme="primary">Button text</Button>
             <Button colorScheme="secondary">Button text</Button>
             <Button colorScheme="error">Button text</Button>
+            <Button colorScheme="success">Button text</Button>
           </div>
         </Example>
         <Example title="Outline">
@@ -48,6 +49,9 @@ export function Default() {
               Button text
             </Button>
             <Button variant="outline" colorScheme="error">
+              Button text
+            </Button>
+            <Button variant="outline" colorScheme="success">
               Button text
             </Button>
           </div>
@@ -63,6 +67,9 @@ export function Default() {
             <Button variant="ghost" colorScheme="error">
               Button text
             </Button>
+            <Button variant="ghost" colorScheme="success">
+              Button text
+            </Button>
           </div>
         </Example>
       </Examples>
@@ -73,6 +80,7 @@ export function Default() {
             <Button colorScheme="primary">Button text</Button>
             <Button colorScheme="secondary">Button text</Button>
             <Button colorScheme="error">Button text</Button>
+            <Button colorScheme="success">Button text</Button>
             <Button colorScheme="primary" variant="outline">
               Button text
             </Button>
@@ -82,6 +90,9 @@ export function Default() {
             <Button colorScheme="error" variant="outline">
               Button text
             </Button>
+            <Button colorScheme="success" variant="outline">
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="ghost">
               Button text
             </Button>
@@ -89,6 +100,9 @@ export function Default() {
               Button text
             </Button>
             <Button colorScheme="error" variant="ghost">
+              Button text
+            </Button>
+            <Button colorScheme="success" variant="ghost">
               Button text
             </Button>
           </div>
@@ -104,6 +118,9 @@ export function Default() {
             <Button colorScheme="error" active>
               Button text
             </Button>
+            <Button colorScheme="success" active>
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="outline" active>
               Button text
             </Button>
@@ -113,6 +130,9 @@ export function Default() {
             <Button colorScheme="error" variant="outline" active>
               Button text
             </Button>
+            <Button colorScheme="success" variant="outline" active>
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="ghost" active>
               Button text
             </Button>
@@ -120,6 +140,9 @@ export function Default() {
               Button text
             </Button>
             <Button colorScheme="error" variant="ghost" active>
+              Button text
+            </Button>
+            <Button colorScheme="success" variant="ghost" active>
               Button text
             </Button>
           </div>
@@ -135,6 +158,9 @@ export function Default() {
             <Button colorScheme="error" disabled>
               Button text
             </Button>
+            <Button colorScheme="success" disabled>
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="outline" disabled>
               Button text
             </Button>
@@ -144,6 +170,9 @@ export function Default() {
             <Button colorScheme="error" variant="outline" disabled>
               Button text
             </Button>
+            <Button colorScheme="success" variant="outline" disabled>
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="ghost" disabled>
               Button text
             </Button>
@@ -151,6 +180,9 @@ export function Default() {
               Button text
             </Button>
             <Button colorScheme="error" variant="ghost" disabled>
+              Button text
+            </Button>
+            <Button colorScheme="success" variant="ghost" disabled>
               Button text
             </Button>
           </div>
@@ -166,6 +198,9 @@ export function Default() {
             <Button colorScheme="error" loading>
               Button text
             </Button>
+            <Button colorScheme="success" loading>
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="outline" loading>
               Button text
             </Button>
@@ -175,6 +210,9 @@ export function Default() {
             <Button colorScheme="error" variant="outline" loading>
               Button text
             </Button>
+            <Button colorScheme="success" variant="outline" loading>
+              Button text
+            </Button>
             <Button colorScheme="primary" variant="ghost" loading>
               Button text
             </Button>
@@ -182,6 +220,9 @@ export function Default() {
               Button text
             </Button>
             <Button colorScheme="error" variant="ghost" loading>
+              Button text
+            </Button>
+            <Button colorScheme="success" variant="ghost" loading>
               Button text
             </Button>
           </div>
