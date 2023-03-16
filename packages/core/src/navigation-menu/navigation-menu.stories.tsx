@@ -211,11 +211,11 @@ export function FullScreen() {
           <NavigationMenu.List>
             <NavigationMenu.Item>
               <NavigationMenu.Trigger>Full Width</NavigationMenu.Trigger>
-              <NavigationMenu.Content size="full">
+              <NavigationMenu.Content size="full" className=" dark:text-white">
                 <div className="mx-auto grid max-w-7xl grid-cols-1 gap-y-10 gap-x-8 py-10 px-6 lg:grid-cols-2 lg:px-8">
                   <div className="grid grid-cols-2 gap-x-6 sm:gap-x-8">
                     <div>
-                      <h3 className="text-sm font-medium leading-6 text-gray-500">
+                      <h3 className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-100">
                         Engagement
                       </h3>
                       <div className="mt-6 flow-root">
@@ -224,7 +224,7 @@ export function FullScreen() {
                             <a
                               key={item.name}
                               href={item.href}
-                              className="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900"
+                              className="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
                             >
                               {/* <item.icon
                               className="h-6 w-6 flex-none text-gray-400"
@@ -237,7 +237,7 @@ export function FullScreen() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium leading-6 text-gray-500">
+                      <h3 className="text-sm font-medium leading-6 text-gray-500 dark:text-gray-100">
                         Resources
                       </h3>
                       <div className="mt-6 flow-root">
@@ -246,7 +246,7 @@ export function FullScreen() {
                             <a
                               key={item.name}
                               href={item.href}
-                              className="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900"
+                              className="flex gap-x-4 py-2 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
                             >
                               {/* <item.icon
                               className="h-6 w-6 flex-none text-gray-400"
@@ -289,13 +289,13 @@ export function FullScreen() {
                               {post.category.title}
                             </a>
                           </div>
-                          <h4 className="mt-2 text-sm font-semibold leading-6 text-gray-900">
+                          <h4 className="mt-2 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300">
                             <a href={post.href}>
                               <span className="absolute inset-0" />
                               {post.title}
                             </a>
                           </h4>
-                          <p className="mt-2 text-sm leading-6 text-gray-600">
+                          <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-100">
                             {post.description}
                           </p>
                         </div>

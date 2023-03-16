@@ -27,7 +27,7 @@ export function DayPanel({
             const cal = calendar[index];
 
             return (
-              <div className="">
+              <div className="" key={index}>
                 <div className="mb-4 grid grid-cols-7 gap-4">
                   {calendar.length > 0 &&
                     cal[0].map((day) => (
@@ -55,7 +55,7 @@ export function DayPanel({
                       const isInRange = dayjs(day).isSame(cal[1][0], "month");
                       const isSingle = selected.length == 1;
                       return (
-                        <button
+                        <div
                           data-in-range={isInRange}
                           data-selected-range={
                             inRange(tmp, selected[0], selected[1]) && isInRange
@@ -80,7 +80,7 @@ export function DayPanel({
                           title={dayjs(day).format("DD/MM/YYYY")}
                         >
                           {dayjs(day).format("DD")}
-                        </button>
+                        </div>
                       );
                     })}
                   </div>

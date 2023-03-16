@@ -12,9 +12,9 @@ export function Default() {
   return (
     <Grid>
       <div className="w-[300px]">
-        <DatePicker />
-        <DatePicker picker="month" />
-        <DatePicker picker="year" />
+        <DatePicker onSelect={(value) => console.log(value)} />
+        <DatePicker picker="month" onSelect={(value) => console.log(value)} />
+        <DatePicker picker="year" onSelect={(value) => console.log(value)} />
       </div>
     </Grid>
   );

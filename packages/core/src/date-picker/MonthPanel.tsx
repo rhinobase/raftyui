@@ -20,6 +20,7 @@ const months = [
 
 type MonthPanel = {
   viewing: Date;
+  selected: Date[];
   onSelect: (month: number) => void;
 };
 export function MonthPanel({ viewing, onSelect }: MonthPanel) {
@@ -27,18 +28,30 @@ export function MonthPanel({ viewing, onSelect }: MonthPanel) {
     <div className="px-4 py-6">
       <div className="mb-2 grid grid-cols-3 gap-8">
         {months.map((month, index) => (
-          <Button
+          <div
             key={index}
-            colorScheme={
-              dayjs(viewing).get("month") == index ? "primary" : "secondary"
-            }
-            className={classNames("w-full !text-sm font-normal")}
+            className={classNames(
+              dayjs(viewing).get("month") == index
+                ? "bg-primary-500 dark:bg-primary-300 text-white"
+                : "hover:bg-secondary-100 dark:hover:bg-secondary-700",
+              " dark:text-secondary-100  w-full cursor-pointer select-none rounded-md py-1 px-2 text-center text-sm font-normal",
+            )}
             onClick={() => onSelect(index)}
-            variant={dayjs(viewing).get("month") == index ? "solid" : "ghost"}
-            size="sm"
           >
             {month.substring(0, 3)}
-          </Button>
+          </div>
+          // <Button
+          //   key={index}
+          //   colorScheme={
+          //     dayjs(viewing).get("month") == index ? "primary" : "secondary"
+          //   }
+          //   className={classNames("w-full !text-sm font-normal")}
+          //   onClick={() => onSelect(index)}
+          //   variant={dayjs(viewing).get("month") == index ? "solid" : "ghost"}
+          //   size="sm"
+          // >
+          //   {month.substring(0, 3)}
+          // </Button>
         ))}
       </div>
     </div>

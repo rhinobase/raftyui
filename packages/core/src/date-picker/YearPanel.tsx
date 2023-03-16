@@ -1,3 +1,4 @@
+import { classNames } from "@rhinobase/utils";
 import dayjs from "dayjs";
 import React from "react";
 import { Button } from "../button";
@@ -18,18 +19,30 @@ export function YearPanel({ viewing, onSelect, selected }: YearPanel) {
     <div className="px-4 py-6">
       <div className="grid grid-cols-3 gap-8">
         {years.map((year) => (
-          <Button
+          <div
             key={year}
-            className="w-full select-none !text-sm font-normal"
-            variant={dayjs(selected[0]).get("year") == year ? "solid" : "ghost"}
-            colorScheme={
-              dayjs(selected[0]).get("year") == year ? "primary" : "secondary"
-            }
+            className={classNames(
+              dayjs(selected[0]).get("year") == year
+                ? "bg-primary-500 dark:bg-primary-300 text-white"
+                : "hover:bg-secondary-100 dark:hover:bg-secondary-700",
+              " dark:text-secondary-100  w-full cursor-pointer select-none rounded-md py-1 px-2 text-center text-sm font-normal",
+            )}
             onClick={() => onSelect(year)}
-            size="sm"
           >
             {year}
-          </Button>
+          </div>
+          // <Button
+          //   key={year}
+          //   className="w-full select-none !text-sm font-normal"
+          //   variant={dayjs(selected[0]).get("year") == year ? "solid" : "ghost"}
+          //   colorScheme={
+          //     dayjs(selected[0]).get("year") == year ? "primary" : "secondary"
+          //   }
+          //   onClick={() => onSelect(year)}
+          //   size="sm"
+          // >
+          //   {year}
+          // </Button>
         ))}
       </div>
     </div>

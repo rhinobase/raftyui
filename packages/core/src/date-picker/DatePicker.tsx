@@ -25,7 +25,7 @@ export const DatePicker = ({
   ...props
 }: {
   defaultValues?: Date[] | Date;
-  onSelect?: (values: Date[]) => void;
+  onSelect?: (values: Date) => void;
   picker?: "date" | "month" | "year";
   format?: string;
   placeholder?: string;
@@ -104,7 +104,10 @@ export const DatePicker = ({
             onBlur={(e) => onInputBlur(e.target.value)}
             placeholder={placeholder}
             className="select-none pr-10"
-            value={dayjs(selected[0]).format(format)}
+            value={selected[0] && dayjs(selected[0]).format(format)}
+            onChange={() => {
+              if (props.onSelect) props.onSelect(dayjs(selected[0]).toDate());
+            }}
           />
           <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
             <svg
@@ -209,6 +212,7 @@ export const DatePicker = ({
               <Popover.Close className="w-full">
                 <MonthPanel
                   viewing={viewing}
+                  selected={selected}
                   onSelect={(month) => {
                     viewMonth(month);
                     toggle(new Date(viewing.setMonth(month)), true);
@@ -218,6 +222,7 @@ export const DatePicker = ({
             ) : (
               <MonthPanel
                 viewing={viewing}
+                selected={selected}
                 onSelect={(month) => {
                   viewMonth(month);
                   if (picker == "date") setShow(Show.DATE);

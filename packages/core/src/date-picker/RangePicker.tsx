@@ -24,7 +24,7 @@ export const RangePicker = ({
   onSelect?: (values: Date[]) => void;
   picker?: "date" | "month" | "year";
   format?: string;
-  placeholder?: string;
+  placeholder?: [string, string];
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   centerIcon?: JSX.Element;
@@ -33,12 +33,11 @@ export const RangePicker = ({
   const [show, setShow] = useState<Show>(
     picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR,
   );
+
   const {
     calendar,
-    selectRange,
     setSelected,
     inRange,
-    select,
     viewing,
     viewMonth,
     viewYear,
@@ -87,6 +86,10 @@ export const RangePicker = ({
                 setState(1);
               }}
               value={selected[0] && dayjs(selected[0]).format("MM/DD/YYYY")}
+              onChange={() => ""}
+              placeholder={
+                props.placeholder ? props.placeholder[0] : "Start date"
+              }
             />
             <div
               className={classNames(
@@ -117,10 +120,14 @@ export const RangePicker = ({
             </div>
             <input
               className="w-[40%] bg-transparent !pl-2 outline-none dark:text-white/80"
-              onFocus={(e) => {
+              onFocus={() => {
                 setState(2);
               }}
+              onChange={() => ""}
               value={selected[1] && dayjs(selected[1]).format("MM/DD/YYYY")}
+              placeholder={
+                props.placeholder ? props.placeholder[1] : "End date"
+              }
             />
             <div
               className={classNames(
@@ -282,6 +289,7 @@ export const RangePicker = ({
               <Popover.Close className="w-full">
                 <MonthPanel
                   viewing={viewing}
+                  selected={selected}
                   onSelect={(month) => {
                     viewMonth(month);
                     toggle(new Date(viewing.setMonth(month)), true);
@@ -291,6 +299,7 @@ export const RangePicker = ({
             ) : (
               <MonthPanel
                 viewing={viewing}
+                selected={selected}
                 onSelect={(month) => {
                   viewMonth(month);
                   if (picker == "date") setShow(Show.DATE);

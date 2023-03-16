@@ -37,7 +37,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
     return (
       <MenubarPrimitive.Trigger
         className={classNames(
-          size == "sm" && "py-1 px-2 text-xs",
+          size == "sm" && "py-2 px-2 text-xs",
           size == "base" && "py-2 px-3 text-sm",
           size == "lg" && "py-3 px-4 text-base",
           "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none",
