@@ -43,6 +43,7 @@ export {
   Tr,
 } from "./table";
 export * as Tab from "./tabs";
+export { Tag } from "./tag";
 export { TagField } from "./tag-field";
 export { Textarea } from "./textarea";
 export { Toast } from "./toast";
