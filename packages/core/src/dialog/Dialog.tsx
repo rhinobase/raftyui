@@ -63,7 +63,7 @@ export const Overlay = forwardRef<HTMLDivElement, Overlay>(
       <DialogPrimitive.Overlay
         {...props}
         className={classNames(
-          "animate-slide-down-fade fixed inset-0 z-40 h-full w-full cursor-zoom-out bg-black/40 transition-opacity ease-in-out",
+          "animate-slide-down-fade fixed inset-0 z-40 h-full w-full bg-black/40 transition-opacity ease-in-out",
           className,
         )}
         ref={forwardedRef}
