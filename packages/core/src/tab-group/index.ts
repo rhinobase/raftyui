@@ -1,1 +1,1 @@
-export { Root, Trigger, List } from "./TabGroup";
+export { Root, Trigger } from "./TabGroup";

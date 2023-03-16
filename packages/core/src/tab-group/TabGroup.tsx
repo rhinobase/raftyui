@@ -7,12 +7,9 @@ import React from "react";
 // Root Component
 export type Root = ComponentProps<(typeof TabsPrimitive)["Root"]>;
 export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
-  (
-    { children, className, size = "md", variant = "line", ...props },
-    forwardedRef,
-  ) => {
+  ({ children, className, size = "md", ...props }, forwardedRef) => {
     return (
-      <TabProvider value={{ size, variant }}>
+      <TabProvider value={{ size }}>
         <TabsPrimitive.Root
           className={classNames("flex w-full", className)}
           {...props}
@@ -27,8 +24,8 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
 Root.displayName = "TabGroup.Root";
 
 // List Component
-export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
-export const List = forwardRef<HTMLDivElement, TabContext & List>(
+type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
+const List = forwardRef<HTMLDivElement, TabContext & List>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <TabsPrimitive.List
@@ -51,7 +48,6 @@ export type Trigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]>;
 export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useTabContext();
-    const { variant } = useTabContext();
     return (
       <TabsPrimitive.Trigger
         className={classNames(

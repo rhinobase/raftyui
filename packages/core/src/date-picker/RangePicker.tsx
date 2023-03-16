@@ -26,7 +26,7 @@ export const RangePicker = ({
   format?: string;
   placeholder?: string;
 }) => {
-  const [state, setState] = useState<"0" | "1" | "2">("0");
+  const [state, setState] = useState<1 | 2>();
   const [show, setShow] = useState<Show>(
     picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR,
   );
@@ -52,14 +52,14 @@ export const RangePicker = ({
   });
 
   return (
-    <Popover.Root open={state != "0" && true}>
+    <Popover.Root open={state != undefined && true}>
       <Popover.Trigger>
         <div
           className={classNames(
-            state != "0"
+            state != undefined
               ? "border-primary-500 ring-primary-100 dark:border-primary-300 dark:ring-primary-100/30 ring-2"
               : "dark:border-white/20",
-            "hover:border-primary-500 group relative flex h-[40px] items-center gap-2 rounded-md border px-2 transition-all",
+            "hover:border-primary-500 group relative flex h-[40px] items-center rounded-md border px-2 transition-all",
           )}
         >
           <input
@@ -68,7 +68,7 @@ export const RangePicker = ({
               if (dayjs(e.target.value).isValid()) {
                 setViewing(dayjs(e.target.value).toDate());
               }
-              setState("1");
+              setState(1);
             }}
             value={selected[0] && dayjs(selected[0]).format("MM/DD/YYYY")}
           />
@@ -80,7 +80,7 @@ export const RangePicker = ({
             strokeWidth="1.5"
             stroke="currentColor"
             className={classNames(
-              state != "0"
+              state != undefined
                 ? "text-primary-500 dark:text-primary-300"
                 : " text-black/60 dark:text-white/80",
               "h-6 w-6 leading-10",
@@ -95,7 +95,7 @@ export const RangePicker = ({
           <input
             className="w-[150px] bg-transparent outline-none dark:text-white/80"
             onFocus={(e) => {
-              setState("2");
+              setState(2);
             }}
             value={selected[1] && dayjs(selected[1]).format("MM/DD/YYYY")}
           />
@@ -106,12 +106,14 @@ export const RangePicker = ({
             strokeWidth="1.5"
             stroke="currentColor"
             className={classNames(
-              state != "0"
+              state != undefined
                 ? "text-primary-500 dark:text-primary-300"
                 : " text-black/60 dark:text-white/80",
               "h-6 w-6 leading-10",
             )}
-            onClick={() => (state == "0" ? setState("1") : setState("0"))}
+            onClick={() =>
+              state == undefined ? setState(1) : setState(undefined)
+            }
           >
             <path
               strokeLinecap="round"
@@ -121,8 +123,8 @@ export const RangePicker = ({
           </svg>
           <div
             className={classNames(
-              state == "2" && "translate-x-[130%]",
-              state != "0" &&
+              state == 2 && "translate-x-[130%]",
+              state != undefined &&
                 "bg-primary-500 absolute bottom-0 left-0 h-[2px] w-[150px] duration-200",
             )}
           ></div>
@@ -228,14 +230,14 @@ export const RangePicker = ({
                 onSelect={(date) => {
                   setSelected((prev) => {
                     if (!prev[0]) {
-                      setState("2");
+                      setState(2);
                       return [date];
                     } else {
-                      if (state == "1") {
-                        setState("2");
+                      if (state == 1) {
+                        setState(2);
                         return [date, selected[1]];
                       }
-                      setState("0");
+                      setState(undefined);
                       return [prev[0], date];
                     }
                   });

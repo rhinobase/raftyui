@@ -8,5 +8,4 @@ export const [TabProvider, useTabContext] = createContext<TabContext>({
 
 export interface TabContext {
   size?: "sm" | "md" | "lg";
-  variant?: "line" | "enclosed";
 }
