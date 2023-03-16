@@ -18,7 +18,7 @@ export const Checkbox = forwardRef<
           size == "md" && "h-[20px] w-[20px]",
           size == "lg" && "h-[24px] w-[24px]",
           "data-[disabled]:cursor-not-allowed",
-          "aria-checked:data-[state=indeterminate]:bg-primary-500 data-[state=indeterminate]:after:bg-secondary-400 aria-checked:data-[state=indeterminate]:after:bg-secondary-100 relative data-[state=indeterminate]:after:absolute data-[state=indeterminate]:after:top-[2] data-[state=indeterminate]:after:left-[5px] data-[state=indeterminate]:after:h-[2px] data-[state=indeterminate]:after:w-[50%] data-[state=indeterminate]:after:content-['']",
+          "data-[state=indeterminate]:aria-checked:bg-primary-500 data-[state=indeterminate]:after:bg-secondary-400 data-[state=indeterminate]:aria-checked:after:bg-secondary-100 relative data-[state=indeterminate]:after:absolute data-[state=indeterminate]:after:top-[2] data-[state=indeterminate]:after:left-[5px] data-[state=indeterminate]:after:h-[2px] data-[state=indeterminate]:after:w-[50%] data-[state=indeterminate]:after:content-['']",
           "data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300/90",
           "rounded-base border-secondary-300 dark:border-secondary-700 dark:text-secondary-100 group flex items-center justify-center gap-3 border",
           className,
