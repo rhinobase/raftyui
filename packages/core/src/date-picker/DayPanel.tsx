@@ -28,7 +28,7 @@ export function DayPanel({
 
             return (
               <div className="" key={index}>
-                <div className="mb-4 grid grid-cols-7 gap-4">
+                <div className="mb-3 grid grid-cols-7 gap-2.5">
                   {calendar.length > 0 &&
                     cal[0].map((day) => (
                       <div
@@ -46,7 +46,7 @@ export function DayPanel({
                 {cal.map((week) => (
                   <div
                     key={`week-${week[0]}`}
-                    className="mb-3 grid grid-cols-7"
+                    className="mb-2 grid grid-cols-7"
                   >
                     {week.map((tmp) => {
                       const day = dayjs(tmp);
@@ -65,6 +65,9 @@ export function DayPanel({
                             onSelect(tmp);
                           }}
                           className={classNames(
+                            (dayjs(day).get("day") == 0 ||
+                              dayjs(day).get("day") == 6) &&
+                              "!text-secondary-400",
                             isSingle && day.isSame(selected[0]) && "rounded-md",
                             day.isSame(selected[0]) && "rounded-l-md",
                             day.isSame(selected[1]) && "rounded-r-md",
@@ -75,7 +78,7 @@ export function DayPanel({
                               ? "ring-primary-500 dark:ring-primary-300 relative rounded-md ring-2"
                               : "",
                             "data-[selected-range=true]:bg-zinc-200 dark:data-[selected-range=true]:bg-zinc-700",
-                            "cursor-pointer py-2 text-center !text-sm transition-all dark:text-white",
+                            "cursor-pointer p-1.5 text-center !text-sm transition-all dark:text-white",
                           )}
                           title={dayjs(day).format("DD/MM/YYYY")}
                         >

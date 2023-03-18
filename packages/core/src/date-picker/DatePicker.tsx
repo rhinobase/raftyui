@@ -101,13 +101,10 @@ export const DatePicker = ({
       <Popover.Trigger className="group">
         <div className="relative">
           <InputField
-            onBlur={(e) => onInputBlur(e.target.value)}
             placeholder={placeholder}
             className="select-none pr-10"
-            value={selected[0] && dayjs(selected[0]).format(format)}
-            onChange={() => {
-              if (props.onSelect) props.onSelect(dayjs(selected[0]).toDate());
-            }}
+            value={selected[0] ? dayjs(selected[0]).format(format) : ""}
+            onChange={(e) => onInputBlur(e.target.value)}
           />
           <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
             <svg
@@ -202,6 +199,7 @@ export const DatePicker = ({
                 isSelected={isSelected}
                 onSelect={(date) => {
                   setSelected([date]);
+                  if (props.onSelect) props.onSelect(date);
                 }}
               />
             </Popover.Close>

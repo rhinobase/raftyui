@@ -40,18 +40,6 @@ export function MonthPanel({ viewing, onSelect }: MonthPanel) {
           >
             {month.substring(0, 3)}
           </div>
-          // <Button
-          //   key={index}
-          //   colorScheme={
-          //     dayjs(viewing).get("month") == index ? "primary" : "secondary"
-          //   }
-          //   className={classNames("w-full !text-sm font-normal")}
-          //   onClick={() => onSelect(index)}
-          //   variant={dayjs(viewing).get("month") == index ? "solid" : "ghost"}
-          //   size="sm"
-          // >
-          //   {month.substring(0, 3)}
-          // </Button>
         ))}
       </div>
     </div>

@@ -11,7 +11,7 @@ export default config;
 export function Default() {
   return (
     <Grid>
-      <RangePicker />
+      <RangePicker onSelect={(date) => console.log(date)} />
     </Grid>
   );
 }
@@ -19,6 +19,7 @@ export function CustomIcon() {
   return (
     <Grid>
       <RangePicker
+        onSelect={(date) => console.log(date)}
         leftIcon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +44,7 @@ export function WithPlaceholder() {
   return (
     <Grid>
       <RangePicker
+        onSelect={(date) => console.log(date)}
         placeholder={["Select date", "End date"]}
         leftIcon={
           <svg

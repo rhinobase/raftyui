@@ -1,6 +1,6 @@
 import * as Popover from "@radix-ui/react-popover";
 import dayjs from "dayjs";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { classNames } from "@rhinobase/utils";
 import { useLilius } from "use-lilius";
 import { Button } from "../button";
@@ -85,7 +85,7 @@ export const RangePicker = ({
                 }
                 setState(1);
               }}
-              value={selected[0] && dayjs(selected[0]).format("MM/DD/YYYY")}
+              value={selected[0] ? dayjs(selected[0]).format("MM/DD/YYYY") : ""}
               onChange={() => ""}
               placeholder={
                 props.placeholder ? props.placeholder[0] : "Start date"
@@ -124,7 +124,7 @@ export const RangePicker = ({
                 setState(2);
               }}
               onChange={() => ""}
-              value={selected[1] && dayjs(selected[1]).format("MM/DD/YYYY")}
+              value={selected[1] ? dayjs(selected[1]).format("MM/DD/YYYY") : ""}
               placeholder={
                 props.placeholder ? props.placeholder[1] : "End date"
               }
@@ -173,7 +173,7 @@ export const RangePicker = ({
         <Popover.Content
           sideOffset={5}
           align="start"
-          className="min-w-[700px] max-w-[700px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
+          className="w-[600px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
         >
           <PickerHeader
             onFirstPage={() => {
@@ -273,11 +273,23 @@ export const RangePicker = ({
                       return [date];
                     } else {
                       if (state == 1) {
+                        if (selected[1] > date) {
+                          setState(2);
+                          return [date, selected[1]];
+                        }
                         setState(2);
-                        return [date, selected[1]];
+                        return [date, dayjs(date).add(1, "day").toDate()];
+                      } else {
+                        if (prev[0] < date) {
+                          if (props.onSelect) {
+                            props.onSelect([prev[0], date]);
+                          }
+                          setState(undefined);
+
+                          return [prev[0], date];
+                        }
+                        return [prev[0]];
                       }
-                      setState(undefined);
-                      return [prev[0], date];
                     }
                   });
                 }}

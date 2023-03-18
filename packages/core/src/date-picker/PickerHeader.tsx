@@ -9,7 +9,7 @@ type PickerHeader = {
 };
 export function PickerHeader(props: PickerHeader) {
   return (
-    <div className="flex w-full items-center justify-between border-b border-zinc-200/50 py-2 px-3 dark:border-zinc-700">
+    <div className="flex w-full items-center justify-between border-b border-zinc-200/50 py-1 px-3 dark:border-zinc-700">
       <div className="flex items-center gap-2">
         {props.onFirstPage && (
           <svg
