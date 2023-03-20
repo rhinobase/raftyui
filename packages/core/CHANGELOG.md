@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.4
+
+### Patch Changes
+
+- minor improvements in Range Picker
+
 ## 0.3.3
 
 ### Patch Changes
