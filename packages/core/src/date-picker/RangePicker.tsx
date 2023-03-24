@@ -20,7 +20,7 @@ export const RangePicker = ({
   picker = "date",
   ...props
 }: {
-  value?: [Date, Date];
+  value?: Date[];
   onSelect?: (values: Date[]) => void;
   picker?: "date" | "month" | "year";
   format?: string;
