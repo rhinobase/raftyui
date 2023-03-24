@@ -11,7 +11,13 @@ export default config;
 export function Default() {
   return (
     <Grid>
-      <RangePicker onSelect={(date) => console.log(date)} />
+      <RangePicker
+        value={[
+          new Date("2023-03-01T00:00:00.000Z"),
+          new Date("2023-03-05T00:00:00.000Z"),
+        ]}
+        onSelect={(date) => console.log(date)}
+      />
     </Grid>
   );
 }

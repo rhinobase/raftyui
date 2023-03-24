@@ -20,7 +20,6 @@ export const RangePicker = ({
   picker = "date",
   ...props
 }: {
-  defaultValue?: [Date, Date];
   value?: [Date, Date];
   onSelect?: (values: Date[]) => void;
   picker?: "date" | "month" | "year";
@@ -86,12 +85,9 @@ export const RangePicker = ({
                 }
                 setState(1);
               }}
-              defaultValue={
-                props.defaultValue ? String(props.defaultValue[0]) : undefined
-              }
               value={
                 props.value
-                  ? String(props.value[0])
+                  ? dayjs(props.value[0]).format("MM/DD/YYYY")
                   : selected[0]
                   ? dayjs(selected[0]).format("MM/DD/YYYY")
                   : ""
@@ -133,13 +129,10 @@ export const RangePicker = ({
               onFocus={() => {
                 setState(2);
               }}
-              defaultValue={
-                props.defaultValue ? String(props.defaultValue[1]) : undefined
-              }
               onChange={() => ""}
               value={
                 props.value
-                  ? String(props.value[1])
+                  ? dayjs(props.value[1]).format("MM/DD/YYYY")
                   : selected[1]
                   ? dayjs(selected[1]).format("MM/DD/YYYY")
                   : ""
