@@ -185,182 +185,184 @@ export const RangePicker = ({
         <Popover.Content
           sideOffset={5}
           align="start"
-          className="w-[600px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
+          className="w-[320px] overflow-x-auto rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800 md:w-[600px]"
         >
-          <PickerHeader
-            onFirstPage={() => {
-              if (show == Show.YEAR) {
-                const tmp = dayjs(viewing);
-                setViewing(tmp.year(tmp.year() - 10).toDate());
-              } else viewPreviousYear();
-            }}
-            onPreviousPage={show == Show.DATE ? viewPreviousMonth : undefined}
-            onNextPage={show == Show.DATE ? viewNextMonth : undefined}
-            onLastPage={() => {
-              if (show == Show.YEAR) {
-                const tmp = dayjs(viewing);
-                setViewing(tmp.year(tmp.year() + 10).toDate());
-              } else viewNextYear();
-            }}
-          >
-            {show == Show.DATE ? (
-              <div className="flex w-3/4 justify-between">
-                <div className="flex items-center">
-                  <Button
-                    onClick={() => {
-                      setShow(1);
-                    }}
-                    variant="ghost"
-                    className="py-1"
-                  >
-                    {dayjs(viewing).format("MMMM")}
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setShow(2);
-                    }}
-                    variant="ghost"
-                    className="py-1"
-                  >
-                    {dayjs(viewing).format("YYYY")}
-                  </Button>
+          <div className="w-[600px]">
+            <PickerHeader
+              onFirstPage={() => {
+                if (show == Show.YEAR) {
+                  const tmp = dayjs(viewing);
+                  setViewing(tmp.year(tmp.year() - 10).toDate());
+                } else viewPreviousYear();
+              }}
+              onPreviousPage={show == Show.DATE ? viewPreviousMonth : undefined}
+              onNextPage={show == Show.DATE ? viewNextMonth : undefined}
+              onLastPage={() => {
+                if (show == Show.YEAR) {
+                  const tmp = dayjs(viewing);
+                  setViewing(tmp.year(tmp.year() + 10).toDate());
+                } else viewNextYear();
+              }}
+            >
+              {show == Show.DATE ? (
+                <div className="flex w-3/4 justify-between">
+                  <div className="flex items-center">
+                    <Button
+                      onClick={() => {
+                        setShow(1);
+                      }}
+                      variant="ghost"
+                      className="py-1"
+                    >
+                      {dayjs(viewing).format("MMMM")}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setShow(2);
+                      }}
+                      variant="ghost"
+                      className="py-1"
+                    >
+                      {dayjs(viewing).format("YYYY")}
+                    </Button>
+                  </div>
+                  <div className="flex items-center">
+                    <Button
+                      onClick={() => {
+                        setShow(1);
+                      }}
+                      variant="ghost"
+                      className="py-1"
+                    >
+                      {dayjs(dayjs(viewing).add(1, "month").toDate()).format(
+                        "MMMM",
+                      )}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setShow(2);
+                      }}
+                      variant="ghost"
+                      className="py-1"
+                    >
+                      {dayjs(viewing).format("YYYY")}
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <Button
-                    onClick={() => {
-                      setShow(1);
-                    }}
-                    variant="ghost"
-                    className="py-1"
-                  >
-                    {dayjs(dayjs(viewing).add(1, "month").toDate()).format(
-                      "MMMM",
-                    )}
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setShow(2);
-                    }}
-                    variant="ghost"
-                    className="py-1"
-                  >
-                    {dayjs(viewing).format("YYYY")}
-                  </Button>
-                </div>
-              </div>
-            ) : show == Show.MONTH ? (
-              <Button
-                onClick={() => {
-                  setShow(2);
-                }}
-                variant="ghost"
-                className="py-1"
-              >
-                {dayjs(viewing).format("YYYY")}
-              </Button>
-            ) : (
-              <Button variant="ghost" className="py-1">
-                {dayjs(viewing)
-                  .year(Math.floor(dayjs(viewing).year() / 10) * 10)
-                  .format("YYYY")}{" "}
-                -{" "}
-                {dayjs(viewing)
-                  .year(Math.ceil(dayjs(viewing).year() / 10) * 10)
-                  .format("YYYY")}
-              </Button>
-            )}
-          </PickerHeader>
-          <div className="flex w-full">
-            {show == Show.DATE && (
-              <DayPanel
-                calendar={calendar}
-                selected={selected}
-                inRange={inRange}
-                isSelected={isSelected}
-                showMonths={2}
-                onSelect={(date) => {
-                  setSelected((prev) => {
-                    if (!prev[0]) {
-                      setState(2);
-                      return [date];
-                    } else {
-                      if (state == 1) {
-                        if (selected[1] > date) {
-                          setState(2);
-                          return [date, selected[1]];
-                        }
+              ) : show == Show.MONTH ? (
+                <Button
+                  onClick={() => {
+                    setShow(2);
+                  }}
+                  variant="ghost"
+                  className="py-1"
+                >
+                  {dayjs(viewing).format("YYYY")}
+                </Button>
+              ) : (
+                <Button variant="ghost" className="py-1">
+                  {dayjs(viewing)
+                    .year(Math.floor(dayjs(viewing).year() / 10) * 10)
+                    .format("YYYY")}{" "}
+                  -{" "}
+                  {dayjs(viewing)
+                    .year(Math.ceil(dayjs(viewing).year() / 10) * 10)
+                    .format("YYYY")}
+                </Button>
+              )}
+            </PickerHeader>
+            <div className="flex w-full">
+              {show == Show.DATE && (
+                <DayPanel
+                  calendar={calendar}
+                  selected={selected}
+                  inRange={inRange}
+                  isSelected={isSelected}
+                  showMonths={2}
+                  onSelect={(date) => {
+                    setSelected((prev) => {
+                      if (!prev[0]) {
                         setState(2);
-                        return [date, dayjs(date).add(1, "day").toDate()];
+                        return [date];
                       } else {
-                        if (prev[0] < date) {
-                          if (props.onSelect) {
-                            props.onSelect([prev[0], date]);
+                        if (state == 1) {
+                          if (selected[1] > date) {
+                            setState(2);
+                            return [date, selected[1]];
                           }
-                          setState(undefined);
+                          setState(2);
+                          return [date, dayjs(date).add(1, "day").toDate()];
+                        } else {
+                          if (prev[0] < date) {
+                            if (props.onSelect) {
+                              props.onSelect([prev[0], date]);
+                            }
+                            setState(undefined);
 
-                          return [prev[0], date];
+                            return [prev[0], date];
+                          }
+                          return [prev[0]];
                         }
-                        return [prev[0]];
                       }
-                    }
-                  });
-                }}
-              />
-            )}
-          </div>
-          {show == Show.MONTH &&
-            (picker == "month" ? (
-              <Popover.Close className="w-full">
+                    });
+                  }}
+                />
+              )}
+            </div>
+            {show == Show.MONTH &&
+              (picker == "month" ? (
+                <Popover.Close className="w-full">
+                  <MonthPanel
+                    viewing={viewing}
+                    selected={selected}
+                    onSelect={(month) => {
+                      viewMonth(month);
+                      toggle(new Date(viewing.setMonth(month)), true);
+                    }}
+                  />
+                </Popover.Close>
+              ) : (
                 <MonthPanel
                   viewing={viewing}
                   selected={selected}
                   onSelect={(month) => {
                     viewMonth(month);
-                    toggle(new Date(viewing.setMonth(month)), true);
+                    if (picker == "date") setShow(Show.DATE);
+                    else {
+                      toggle(new Date(viewing.setMonth(month)), true);
+                    }
                   }}
                 />
-              </Popover.Close>
-            ) : (
-              <MonthPanel
-                viewing={viewing}
-                selected={selected}
-                onSelect={(month) => {
-                  viewMonth(month);
-                  if (picker == "date") setShow(Show.DATE);
-                  else {
-                    toggle(new Date(viewing.setMonth(month)), true);
-                  }
-                }}
-              />
-            ))}
+              ))}
 
-          {show == Show.YEAR &&
-            (picker == "year" ? (
-              <Popover.Close className="w-full">
+            {show == Show.YEAR &&
+              (picker == "year" ? (
+                <Popover.Close className="w-full">
+                  <YearPanel
+                    selected={selected}
+                    viewing={viewing}
+                    onSelect={(year) => {
+                      viewYear(year);
+                      toggle(new Date(viewing.setFullYear(year)), true);
+                    }}
+                  />
+                </Popover.Close>
+              ) : (
                 <YearPanel
                   selected={selected}
                   viewing={viewing}
                   onSelect={(year) => {
                     viewYear(year);
-                    toggle(new Date(viewing.setFullYear(year)), true);
+
+                    if (picker == "date" || picker == "month")
+                      setShow(Show.MONTH);
+                    else {
+                      toggle(new Date(viewing.setFullYear(year)), true);
+                    }
                   }}
                 />
-              </Popover.Close>
-            ) : (
-              <YearPanel
-                selected={selected}
-                viewing={viewing}
-                onSelect={(year) => {
-                  viewYear(year);
-
-                  if (picker == "date" || picker == "month")
-                    setShow(Show.MONTH);
-                  else {
-                    toggle(new Date(viewing.setFullYear(year)), true);
-                  }
-                }}
-              />
-            ))}
+              ))}
+          </div>
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
