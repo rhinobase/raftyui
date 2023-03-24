@@ -9,6 +9,7 @@ type DayPanel = {
   selected: Date[];
   isSelected: (date: Date) => boolean;
   onSelect: (date: Date) => void;
+  weekendOff?: boolean;
 };
 export function DayPanel({
   calendar,
@@ -17,6 +18,7 @@ export function DayPanel({
   selected,
   isSelected,
   showMonths = 1,
+  weekendOff = false,
 }: DayPanel) {
   return (
     <div className="w-full px-6 pt-6 pb-2">
@@ -65,8 +67,9 @@ export function DayPanel({
                             onSelect(tmp);
                           }}
                           className={classNames(
-                            (dayjs(day).get("day") == 0 ||
-                              dayjs(day).get("day") == 6) &&
+                            weekendOff &&
+                              (dayjs(day).get("day") == 0 ||
+                                dayjs(day).get("day") == 6) &&
                               "!text-secondary-400",
                             isSingle && day.isSame(selected[0]) && "rounded-md",
                             day.isSame(selected[0]) && "rounded-l-md",

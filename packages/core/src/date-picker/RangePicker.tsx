@@ -1,6 +1,6 @@
 import * as Popover from "@radix-ui/react-popover";
 import dayjs from "dayjs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { classNames } from "@rhinobase/utils";
 import { useLilius } from "use-lilius";
 import { Button } from "../button";
@@ -28,6 +28,7 @@ export const RangePicker = ({
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   centerIcon?: JSX.Element;
+  weekendOff?: boolean;
 }) => {
   const [state, setState] = useState<1 | 2>();
   const [show, setShow] = useState<Show>(
@@ -52,6 +53,12 @@ export const RangePicker = ({
   } = useLilius({
     numberOfMonths: 2,
   });
+
+  useEffect(() => {
+    if (props.value) setSelected([props.value[0], props.value[1]]);
+  }, [props.value]);
+
+  console.log(selected);
 
   return (
     <Popover.Root open={state != undefined && true}>
@@ -85,13 +92,7 @@ export const RangePicker = ({
                 }
                 setState(1);
               }}
-              value={
-                props.value
-                  ? dayjs(props.value[0]).format("MM/DD/YYYY")
-                  : selected[0]
-                  ? dayjs(selected[0]).format("MM/DD/YYYY")
-                  : ""
-              }
+              value={selected[0] ? dayjs(selected[0]).format("MM/DD/YYYY") : ""}
               onChange={() => ""}
               placeholder={
                 props.placeholder ? props.placeholder[0] : "Start date"
@@ -130,13 +131,7 @@ export const RangePicker = ({
                 setState(2);
               }}
               onChange={() => ""}
-              value={
-                props.value
-                  ? dayjs(props.value[1]).format("MM/DD/YYYY")
-                  : selected[1]
-                  ? dayjs(selected[1]).format("MM/DD/YYYY")
-                  : ""
-              }
+              value={selected[1] ? dayjs(selected[1]).format("MM/DD/YYYY") : ""}
               placeholder={
                 props.placeholder ? props.placeholder[1] : "End date"
               }
@@ -279,6 +274,7 @@ export const RangePicker = ({
                   inRange={inRange}
                   isSelected={isSelected}
                   showMonths={2}
+                  weekendOff={props.weekendOff}
                   onSelect={(date) => {
                     setSelected((prev) => {
                       if (!prev[0]) {

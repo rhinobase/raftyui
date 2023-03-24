@@ -16,6 +16,7 @@ export function Default() {
           new Date("2023-03-01T00:00:00.000Z"),
           new Date("2023-03-05T00:00:00.000Z"),
         ]}
+        weekendOff
         onSelect={(date) => console.log(date)}
       />
     </Grid>
