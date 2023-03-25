@@ -172,17 +172,17 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           <div className="flex items-stretch" style={{ height: "100%" }}>
             <div
               className={classNames(
-                size == "sm" && "w-2",
-                size == "md" && "w-3",
-                size == "lg" && "w-4",
+                size == "sm" && "w-1 min-w-[4px]",
+                size == "md" && "w-1.5 min-w-[6px]",
+                size == "lg" && "w-2 min-w-[8px]",
                 "bg-secondary-100 dark:bg-secondary-800 border-r border-t border-b dark:border-black",
               )}
             />
             <div
               className={classNames(
-                size == "sm" && "p-3",
-                size == "md" && "p-4",
-                size == "lg" && "p-5",
+                size == "sm" && "w-full p-3",
+                size == "md" && "w-full p-4",
+                size == "lg" && "w-full p-5",
               )}
             >
               {children}
