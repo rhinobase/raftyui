@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.5
+
+### Patch Changes
+
+- added varients in tabs and minor improvements
+
 ## 0.3.4
 
 ### Patch Changes
