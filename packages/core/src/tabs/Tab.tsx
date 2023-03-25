@@ -180,9 +180,9 @@ export const Content = forwardRef<HTMLDivElement, Content>(
             />
             <div
               className={classNames(
-                size == "sm" && "w-full p-3",
-                size == "md" && "w-full p-4",
-                size == "lg" && "w-full p-5",
+                size == "sm" && "w-full",
+                size == "md" && "w-full",
+                size == "lg" && "w-full",
               )}
             >
               {children}
