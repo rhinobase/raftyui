@@ -58,8 +58,6 @@ export const RangePicker = ({
     if (props.value) setSelected([props.value[0], props.value[1]]);
   }, [props.value]);
 
-  console.log(selected);
-
   return (
     <Popover.Root open={state != undefined && true}>
       <Popover.Trigger>
