@@ -23,5 +23,8 @@
     "prettier": "^2.8.3",
     "prettier-plugin-tailwindcss": "^0.2.3",
     "turbo": "latest"
+  },
+  "dependencies": {
+    "@radix-ui/react-popover": "^1.0.5"
   }
 }

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Grid } from "@rhinobase/docs/components";
-import { Button } from "../index";
 import React from "react";
 import * as Menu from "./Menu";
 

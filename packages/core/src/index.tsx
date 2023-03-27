@@ -26,6 +26,7 @@ export * as MenuBar from "./menubar";
 export * from "./combobox";
 export * as NavigationMenu from "./navigation-menu";
 export { PasswordField } from "./password-field";
+export * as Popover from "./popover";
 export * as RadioGroup from "./radio-group";
 export * as Select from "./select";
 export { Spinner } from "./spinner";
