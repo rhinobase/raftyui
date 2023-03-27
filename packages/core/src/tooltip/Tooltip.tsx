@@ -44,7 +44,8 @@ export function Tooltip({
               side === "right" && "ml-2",
               hasAnimation == true &&
                 "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
-              "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md py-1 px-2 text-xs font-medium shadow-md",
+              typeof content == "string" &&
+                "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md py-1 px-2 text-xs font-medium shadow-md",
             )}
             side={side}
             align={align}
