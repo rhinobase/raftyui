@@ -4,6 +4,7 @@ import React from "react";
 
 export interface Tooltip {
   children: React.ReactNode;
+  content: React.ReactNode;
   hasArrow?: boolean;
   delayDuration?: number;
   hasAnimation?: boolean;
@@ -16,6 +17,7 @@ export interface Tooltip {
 // Tooltip Component
 export function Tooltip({
   children,
+  content,
   hasArrow = true,
   delayDuration = 50,
   hasAnimation = true,
@@ -48,7 +50,7 @@ export function Tooltip({
             align={align}
             {...props}
           >
-            {children}
+            {content}
             {hasArrow && (
               <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
             )}
