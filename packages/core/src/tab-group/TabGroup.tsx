@@ -15,7 +15,7 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
           {...props}
           ref={forwardedRef}
         >
-          <List>{children}</List>
+          {children}
         </TabsPrimitive.Root>
       </TabProvider>
     );
@@ -24,8 +24,8 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
 Root.displayName = "TabGroup.Root";
 
 // List Component
-type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
-const List = forwardRef<HTMLDivElement, TabContext & List>(
+export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
+export const List = forwardRef<HTMLDivElement, TabContext & List>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <TabsPrimitive.List
