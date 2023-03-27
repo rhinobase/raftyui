@@ -1,5 +1,23 @@
 # @rhinobase/ui
 
+## 0.3.12
+
+### Patch Changes
+
+- Added new component Popover
+
+## 0.3.11
+
+### Patch Changes
+
+- minor change
+
+## 0.3.10
+
+### Patch Changes
+
+- minor changes
+
 ## 0.3.9
 
 ### Patch Changes
