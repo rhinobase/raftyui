@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.13
+
+### Patch Changes
+
+- Minor improvements in the tooltip
+
 ## 0.3.12
 
 ### Patch Changes
