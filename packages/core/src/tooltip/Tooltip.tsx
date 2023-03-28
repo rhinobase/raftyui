@@ -13,10 +13,12 @@ export interface Tooltip {
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
   onOpenChange?: (open: boolean) => void;
+  className?: string;
 }
 // Tooltip Component
 export function Tooltip({
   children,
+  className,
   content,
   hasArrow = true,
   delayDuration = 50,
@@ -46,6 +48,7 @@ export function Tooltip({
                 "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
               typeof content == "string" &&
                 "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md py-1 px-2 text-xs font-medium shadow-md",
+              className,
             )}
             side={side}
             align={align}
