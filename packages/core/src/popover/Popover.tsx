@@ -4,11 +4,9 @@ import { classNames } from "@rhinobase/utils";
 import { Button } from "../button";
 
 export type Root = ComponentProps<(typeof Popover)["Root"]>;
-export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, ...props }) => {
-    return <Popover.Root {...props}>{children}</Popover.Root>;
-  },
-);
+export const Root = ({ children, ...props }: Root) => {
+  return <Popover.Root {...props}>{children}</Popover.Root>;
+};
 Root.displayName = "Popover.Root";
 
 export type Trigger = ComponentProps<(typeof Popover)["Trigger"]> & Button;

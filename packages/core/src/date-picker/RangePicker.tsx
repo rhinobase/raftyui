@@ -1,5 +1,5 @@
 import * as Popover from "@radix-ui/react-popover";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useState } from "react";
 import { classNames } from "@rhinobase/utils";
 import { useLilius } from "use-lilius";
@@ -21,7 +21,7 @@ export const RangePicker = ({
   ...props
 }: {
   value?: Date[];
-  onSelect?: (values: Date[]) => void;
+  onSelect?: (values: Dayjs[]) => void;
   picker?: "date" | "month" | "year";
   format?: string;
   placeholder?: [string, string];
@@ -59,7 +59,12 @@ export const RangePicker = ({
   }, [props.value]);
 
   return (
-    <Popover.Root open={state != undefined && true}>
+    <Popover.Root
+      open={state != undefined && true}
+      onOpenChange={() =>
+        selected[1] && props.onSelect!([dayjs(selected[0]), dayjs(selected[1])])
+      }
+    >
       <Popover.Trigger>
         <div
           className={classNames(
@@ -289,7 +294,7 @@ export const RangePicker = ({
                         } else {
                           if (prev[0] < date) {
                             if (props.onSelect) {
-                              props.onSelect([prev[0], date]);
+                              props.onSelect([dayjs(prev[0]), dayjs(date)]);
                             }
                             setState(undefined);
 
