@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.14
+
+### Patch Changes
+
+- Added Skeleton Component
+
 ## 0.3.13
 
 ### Patch Changes
