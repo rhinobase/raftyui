@@ -51,3 +51,4 @@ export { Toast } from "./toast";
 export * as ToggleGroup from "./toggle-group";
 export { Tooltip } from "./tooltip";
 export { UploadField } from "./upload-field";
+export { Skeleton } from "./skeleton";
