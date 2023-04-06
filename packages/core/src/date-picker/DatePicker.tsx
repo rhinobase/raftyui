@@ -1,11 +1,10 @@
 import dayjs from "dayjs";
 import isTodayPlugin from "dayjs/plugin/isToday";
 import * as Popover from "@radix-ui/react-popover";
-import React, { Children, useEffect, useState } from "react";
-import { Month, useLilius } from "use-lilius";
+import React, { useState } from "react";
+import { useLilius } from "use-lilius";
 import { InputField } from "../input-field";
 import { Button } from "../button";
-import { classNames } from "@rhinobase/utils";
 import { MonthPanel } from "./MonthPanel";
 import { YearPanel } from "./YearPanel";
 import { DayPanel } from "./DayPanel";

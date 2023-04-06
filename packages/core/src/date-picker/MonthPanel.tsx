@@ -1,7 +1,6 @@
 import { classNames } from "@rhinobase/utils";
 import dayjs from "dayjs";
 import React from "react";
-import { Button } from "../button";
 
 const months = [
   "January",

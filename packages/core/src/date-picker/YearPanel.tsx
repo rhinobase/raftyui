@@ -1,7 +1,6 @@
 import { classNames } from "@rhinobase/utils";
 import dayjs from "dayjs";
 import React from "react";
-import { Button } from "../button";
 
 type YearPanel = {
   viewing: Date;
@@ -31,18 +30,6 @@ export function YearPanel({ viewing, onSelect, selected }: YearPanel) {
           >
             {year}
           </div>
-          // <Button
-          //   key={year}
-          //   className="w-full select-none !text-sm font-normal"
-          //   variant={dayjs(selected[0]).get("year") == year ? "solid" : "ghost"}
-          //   colorScheme={
-          //     dayjs(selected[0]).get("year") == year ? "primary" : "secondary"
-          //   }
-          //   onClick={() => onSelect(year)}
-          //   size="sm"
-          // >
-          //   {year}
-          // </Button>
         ))}
       </div>
     </div>
