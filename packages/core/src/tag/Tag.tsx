@@ -28,7 +28,7 @@ export const Tag = forwardRef<HTMLDivElement, Tag>(
         {...props}
         className={classNames(
           size == "sm" && "rounded-sm px-2 text-sm",
-          size == "md" && "rounded-[4px] px-2.5",
+          size == "md" && "rounded px-2.5",
           size == "lg" && "rounded-md px-3 py-0.5 text-lg",
           colorScheme == "primary" &&
             "text-primary-500 dark:text-primary-300 bg-primary-200/30 dark:bg-primary-400/10",
