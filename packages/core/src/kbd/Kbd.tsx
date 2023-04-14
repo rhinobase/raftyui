@@ -2,13 +2,11 @@ import { forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
 import React from "react";
 
-export type Kbd = {
-  size?: "sm" | "md" | "lg";
-} & JSX.IntrinsicElements["kbd"];
+export type Kbd = JSX.IntrinsicElements["kbd"];
 
 // Kdb Component
 export const Kbd = forwardRef<HTMLElement, Kbd>(
-  ({ children, className = "", ...props }, forwardRef) => (
+  ({ children, className, ...props }, forwardRef) => (
     <kbd
       {...props}
       className={classNames(

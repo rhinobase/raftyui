@@ -48,11 +48,10 @@ export const Item = forwardRef<HTMLDivElement, Item>(
 Item.displayName = "Accordian.Item";
 
 //AccordionTriggerComponent
-type Trigger = AccordionContext &
-  ComponentProps<(typeof DisclosurePrimitive)["Trigger"]> & {
-    openIcon?: JSX.Element;
-    closeIcon?: JSX.Element;
-  };
+type Trigger = ComponentProps<(typeof DisclosurePrimitive)["Trigger"]> & {
+  openIcon?: JSX.Element;
+  closeIcon?: JSX.Element;
+};
 export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
   (
     { children, className, openIcon: OpenIcon, closeIcon: CloseIcon, ...props },

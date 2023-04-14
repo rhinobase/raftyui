@@ -8,7 +8,6 @@ export type Button = {
   leftIcon?: JSX.Element;
   /* Right aligned icon */
   rightIcon?: JSX.Element;
-  shallow?: boolean;
   loadingText?: string;
 } & VariantProps<typeof buttonClasses> &
   Omit<JSX.IntrinsicElements["button"], "ref">;
@@ -459,7 +458,6 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   const {
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
-    shallow,
     // attributes propagated from `HTMLAnchorProps` or `HTMLButtonProps`
     ...passThroughProps
   } = props;

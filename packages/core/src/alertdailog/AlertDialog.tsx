@@ -60,6 +60,7 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
 );
 
 Trigger.displayName = "AlertDialog.Trigger";
+
 // AlertDialogContent Component
 type Content = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogContent"]

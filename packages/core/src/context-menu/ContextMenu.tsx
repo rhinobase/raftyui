@@ -18,7 +18,6 @@ export const Root = ({ children, size = "base", ...props }: Root) => (
 Root.displayName = "ContextMenu.Root";
 
 type Trigger = ComponentProps<(typeof ContextMenuPrimitive)["Trigger"]>;
-
 export const Trigger = forwardRef<HTMLDivElement, Trigger>(
   ({ children, className, ...props }, forwardedRef) => {
     return (

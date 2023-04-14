@@ -18,16 +18,17 @@ export interface Combobox {
   isClearable?: boolean;
   disabled?: boolean;
   isMulti?: boolean;
-  onChange: (value: MultiValue<object> | SingleValue<object>) => void;
+  onChange?: (value: MultiValue<object> | SingleValue<object>) => void;
 }
 
 export function Combobox({
-  name = "select",
+  name,
   options,
   defaultValue,
-  placeholder = "",
+  placeholder,
   disabled = false,
   isMulti = false,
+  onChange,
   ...props
 }: Combobox) {
   return (
@@ -35,7 +36,7 @@ export function Combobox({
       name={name}
       isMulti={isMulti}
       isDisabled={disabled}
-      onChange={(e) => props.onChange(e)}
+      onChange={onChange}
       defaultValue={defaultValue}
       placeholder={placeholder}
       unstyled
