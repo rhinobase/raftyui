@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import isTodayPlugin from "dayjs/plugin/isToday";
 import * as Popover from "@radix-ui/react-popover";
 import React, { useState } from "react";
@@ -24,7 +24,7 @@ export const DatePicker = ({
   ...props
 }: {
   defaultValues?: Date[] | Date;
-  onSelect?: (values: Date) => void;
+  onSelect?: (values: Dayjs) => void;
   picker?: "date" | "month" | "year";
   format?: string;
   placeholder?: string;
@@ -198,7 +198,7 @@ export const DatePicker = ({
                 isSelected={isSelected}
                 onSelect={(date) => {
                   setSelected([date]);
-                  if (props.onSelect) props.onSelect(date);
+                  if (props.onSelect) props.onSelect(dayjs(date));
                 }}
               />
             </Popover.Close>
