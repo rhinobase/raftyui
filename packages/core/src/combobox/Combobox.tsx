@@ -29,7 +29,8 @@ export function Combobox({
   disabled = false,
   isMulti = false,
   onChange,
-  ...props
+  isSearchable = true,
+  isClearable = true,
 }: Combobox) {
   return (
     <Select
@@ -46,7 +47,7 @@ export function Combobox({
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
+            strokeWidth="2"
             stroke="currentColor"
             className="h-4 w-4"
           >
@@ -57,7 +58,6 @@ export function Combobox({
             />
           </svg>
         ),
-        IndicatorSeparator: () => null,
         Input: (props) => (
           <components.Input
             {...props}
@@ -66,8 +66,8 @@ export function Combobox({
           />
         ),
       }}
-      isClearable
-      isSearchable
+      isSearchable={isSearchable}
+      isClearable={isClearable}
       options={options}
       styles={{
         control: (base, state) => ({
