@@ -1,12 +1,12 @@
 import React, { forwardRef } from "react";
 import { classNames } from "@rhinobase/utils";
-import { useFieldControl } from "./context";
+import { useFieldControlContext } from "./context";
 
 // Field Label Component
 export type FieldLabel = JSX.IntrinsicElements["label"];
 export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { name, required } = useFieldControl();
+    const { name, required } = useFieldControlContext();
 
     return (
       <label

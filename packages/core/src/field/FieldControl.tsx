@@ -1,6 +1,6 @@
 import React from "react";
 import { classNames } from "@rhinobase/utils";
-import { FieldProvider } from "./context";
+import { FieldControlProvider } from "./context";
 export interface FieldControl {
   name: string;
   orientation?: "row" | "col" | "row-reverse";
@@ -19,7 +19,7 @@ export function FieldControl({
   ...props
 }: FieldControl & { children: React.ReactNode }) {
   return (
-    <FieldProvider value={{ ...props, orientation }}>
+    <FieldControlProvider value={{ ...props, orientation }}>
       <div
         className={classNames(
           orientation == "col" && "flex-col gap-1",
@@ -30,6 +30,6 @@ export function FieldControl({
       >
         {children}
       </div>
-    </FieldProvider>
+    </FieldControlProvider>
   );
 }

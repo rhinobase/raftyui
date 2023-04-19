@@ -11,7 +11,7 @@ export default config;
 export function Default() {
   return (
     <Grid>
-      <Select.Root>
+      <Select.Root open>
         <Select.Trigger
           aria-label="Food"
           placeholder="Select a fruit"

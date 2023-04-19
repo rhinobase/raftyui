@@ -9,6 +9,7 @@ import { MonthPanel } from "./MonthPanel";
 import { YearPanel } from "./YearPanel";
 import { DayPanel } from "./DayPanel";
 import { PickerHeader } from "./PickerHeader";
+import { classNames } from "@rhinobase/utils";
 
 dayjs.extend(isTodayPlugin);
 
@@ -28,6 +29,7 @@ export const DatePicker = ({
   picker?: "date" | "month" | "year";
   format?: string;
   placeholder?: string;
+  className?: string;
 }) => {
   const placeholder = props.placeholder ?? "Select a " + picker;
   const {
@@ -127,7 +129,10 @@ export const DatePicker = ({
         <Popover.Content
           sideOffset={5}
           align="start"
-          className="min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800"
+          className={classNames(
+            "min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800",
+            props.className,
+          )}
         >
           <PickerHeader
             onFirstPage={() => {

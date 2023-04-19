@@ -73,10 +73,11 @@ export const Item = forwardRef<HTMLDivElement, Item>(
     <RadixSelect.Item
       {...props}
       className={classNames(
-        "text-secondary-700 hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-700/40  relative flex items-center rounded-md px-5 py-2 text-sm font-semibold",
+        "text-secondary-700 hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-700/40 relative flex items-center rounded-md px-5 py-2 text-sm font-semibold",
         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:hover:bg-transparent dark:data-[disabled]:hover:bg-transparent",
         "data-[state=checked]:bg-secondary-200/60 dark:data-[state=checked]:bg-secondary-700/70",
         "select-none focus:outline-none",
+        "data-[highlighted]:bg-secondary-100 dark:data-[highlighted]:bg-secondary-700/40",
         className,
       )}
       ref={forwardedRef}

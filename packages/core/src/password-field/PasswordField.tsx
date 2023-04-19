@@ -2,12 +2,14 @@ import React from "react";
 import { forwardRef } from "react";
 import { Button } from "../button";
 import { classNames, useBoolean } from "@rhinobase/utils";
+import { useFieldControlContext } from "../field";
 
 // PasswordField Component
 export type PasswordField = JSX.IntrinsicElements["input"];
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
   ({ ...props }, forwardedRef) => {
     const [showPassword, { toggle }] = useBoolean();
+    const controls = useFieldControlContext();
 
     return (
       <div className="relative flex w-full items-center">
@@ -16,13 +18,16 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
           autoComplete="password"
           {...props}
           className={classNames(
-            "dark:text-secondary-200 border-secondary-300 block w-full appearance-none rounded-md border bg-transparent py-2 pl-3 pr-10 shadow-sm autofill:bg-transparent dark:border-zinc-700",
+            "dark:text-secondary-200 border-secondary-300 block w-full appearance-none rounded-md border bg-transparent py-2 pl-3 pr-10  autofill:bg-transparent dark:border-zinc-700",
             "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2",
-            "read-only:focus:ring-0",
+            "read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
             "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+            (controls.invalid || controls.required) &&
+              "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:focus:!ring-error-100/20",
             props.className,
           )}
           ref={forwardedRef}
+          {...controls}
         />
         <Button
           size="icon"

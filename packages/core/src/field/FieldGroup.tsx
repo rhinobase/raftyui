@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import { classNames } from "@rhinobase/utils";
 import { Spinner } from "../spinner";
-import { useFieldControl } from "./context";
+import { useFieldControlContext } from "./context";
 
 export interface FieldGroup {
   children: JSX.Element;
@@ -17,7 +17,8 @@ export interface FieldGroup {
 export function FieldGroup({ children, ...props }: FieldGroup) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { isDev, disabled, readOnly, loading, invalid } = useFieldControl();
+  const { isDev, disabled, readOnly, loading, invalid } =
+    useFieldControlContext();
 
   useEffect(() => {
     const element = ref.current;

@@ -29,6 +29,7 @@ export const RangePicker = ({
   rightIcon?: JSX.Element;
   centerIcon?: JSX.Element;
   weekendOff?: boolean;
+  className?: string;
 }) => {
   const [state, setState] = useState<1 | 2>();
   const [show, setShow] = useState<Show>(
@@ -183,7 +184,10 @@ export const RangePicker = ({
         <Popover.Content
           sideOffset={5}
           align="start"
-          className="w-[320px] overflow-x-auto rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800 md:w-[600px]"
+          className={classNames(
+            "w-[320px] overflow-x-auto rounded-md bg-white shadow-[0px_5px_20px_1px_rgba(0,0,0,0.1)] dark:bg-zinc-800 md:w-[600px]",
+            props.className,
+          )}
         >
           <div className="w-[600px]">
             <PickerHeader
