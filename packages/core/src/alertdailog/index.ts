@@ -1,6 +1,7 @@
 export {
   Root,
   Trigger,
+  Overlay,
   Content,
   Title,
   Body,

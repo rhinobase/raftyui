@@ -14,6 +14,7 @@ export function Default() {
     <Grid>
       <AlertDialog.Root>
         <AlertDialog.Trigger>Open</AlertDialog.Trigger>
+        <AlertDialog.Overlay />
         <AlertDialog.Content>
           <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
           <AlertDialog.Body>

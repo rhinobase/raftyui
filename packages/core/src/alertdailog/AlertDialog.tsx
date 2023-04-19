@@ -61,6 +61,28 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
 
 Trigger.displayName = "AlertDialog.Trigger";
 
+// AlertDialogOverlayComponent
+type Overlay = ComponentProps<
+  (typeof AlertDialogPrimitive)["AlertDialogOverlay"]
+>;
+export const Overlay = React.forwardRef<HTMLDivElement, Overlay>(
+  ({ className, ...props }, forwardedRef) => {
+    /*zIndex one less than Toast */
+
+    return (
+      <AlertDialogPrimitive.Overlay
+        className={classNames(
+          "animate-slide-down-fade fixed inset-0 z-40 bg-black bg-opacity-30 transition-opacity",
+          className,
+        )}
+        ref={forwardedRef}
+        {...props}
+      />
+    );
+  },
+);
+Overlay.displayName = "AlertDialog.Overlay";
+
 // AlertDialogContent Component
 type Content = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogContent"]
@@ -71,8 +93,6 @@ export const Content = React.forwardRef<HTMLDivElement, Content>(
 
     return (
       <AlertDialogPrimitive.Portal>
-        <AlertDialogPrimitive.Overlay className="animate-slide-down-fade fixed inset-0 z-40 bg-black bg-opacity-30 transition-opacity" />
-        {/*zIndex one less than Toast */}
         <AlertDialogPrimitive.Content
           {...props}
           className={classNames(
