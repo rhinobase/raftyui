@@ -25,6 +25,7 @@
     "turbo": "latest"
   },
   "dependencies": {
-    "@radix-ui/react-popover": "^1.0.5"
+    "@radix-ui/react-popover": "^1.0.5",
+    "@rhinobase/ui": "^0.3.16"
   }
 }

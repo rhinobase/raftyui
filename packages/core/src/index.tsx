@@ -23,7 +23,6 @@ export { Kbd } from "./kbd";
 export { List, ListItem, OrderedList, UnorderedList } from "./list";
 export * as Menu from "./menu";
 export * as MenuBar from "./menubar";
-export * from "./combobox";
 export * as NavigationMenu from "./navigation-menu";
 export { PasswordField } from "./password-field";
 export * as Popover from "./popover";
