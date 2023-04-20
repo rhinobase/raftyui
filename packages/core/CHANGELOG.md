@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.16
+
+### Patch Changes
+
+- minor corrections in the component
+
 ## 0.3.15
 
 ### Patch Changes

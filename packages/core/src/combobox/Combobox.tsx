@@ -9,7 +9,7 @@ import { classNames } from "@rhinobase/utils";
 import React from "react";
 
 // ReactSelect Component
-export interface Combobox {
+export type Combobox = {
   name?: string;
   options?: OptionsOrGroups<object, GroupBase<object>> | undefined;
   defaultValue?: object;
@@ -19,7 +19,7 @@ export interface Combobox {
   disabled?: boolean;
   isMulti?: boolean;
   onChange?: (value: MultiValue<object> | SingleValue<object>) => void;
-}
+};
 
 export function Combobox({
   name,
