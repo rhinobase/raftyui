@@ -80,7 +80,6 @@ export type Content = ComponentProps<(typeof DialogPrimitive)["Content"]> & {
 };
 export const Content = forwardRef<HTMLDivElement, Content>(
   ({ children, title, height, width, ...props }, forwardedRef) => {
-    const { size } = useDialogContext();
     return (
       <DialogPrimitive.Portal>
         {/*zIndex one less than Toast */}
@@ -88,13 +87,7 @@ export const Content = forwardRef<HTMLDivElement, Content>(
           {...props}
           style={{ height: height && height, maxWidth: width && width }}
           className={classNames(
-            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 shadow-xl transition-all duration-200 focus-visible:outline-none",
-            "dark:bg-secondary-800 dark:text-secondary-50 rounded-base min-w-[360px] bg-white text-left sm:w-full sm:align-middle",
-            size == "xl" && "max-w-[80%] p-8",
-            size == "lg" && "max-w-[60rem] p-8",
-            size == "md" && "max-w-[40rem] p-7",
-            size == "sm" && "max-w-[30rem] p-6",
-            "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
+            "transition-all duration-200 focus-visible:outline-none",
             props.className,
           )}
           ref={forwardedRef}
@@ -137,9 +130,21 @@ export type Body = ComponentProps<
 >;
 export const Body = React.forwardRef<HTMLDivElement, Body>(
   ({ className, children, ...props }, forwardedRef) => {
+    const { size } = useDialogContext();
     return (
       <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>
-        <div className={className}>{children}</div>
+        <div
+          className={classNames(
+            "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-50 min-w-[360px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-auto bg-white text-left shadow-xl sm:w-full sm:align-middle md:h-auto md:max-h-[inherit]",
+            size == "xl" && "max-w-[80%] p-8",
+            size == "lg" && "max-w-[60rem] p-8",
+            size == "md" && "max-w-[40rem] p-7",
+            size == "sm" && "max-w-[30rem] p-6",
+            className,
+          )}
+        >
+          {children}
+        </div>
       </DialogPrimitive.Description>
     );
   },
