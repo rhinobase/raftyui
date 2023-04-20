@@ -37,7 +37,10 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
         <Button
           variant={variant}
           size={menuSize || size}
-          className={className}
+          className={classNames(
+            "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-500/60",
+            className,
+          )}
           leftIcon={leftIcon}
           rightIcon={rightIcon}
           disabled={disabled}

@@ -145,7 +145,7 @@ type Body = ComponentProps<
 export const Body = React.forwardRef<HTMLDivElement, Body>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
-      <AlertDialogPrimitive.Description {...props} ref={forwardedRef}>
+      <AlertDialogPrimitive.Description {...props} ref={forwardedRef} asChild>
         <div className={className}>{children}</div>
       </AlertDialogPrimitive.Description>
     );

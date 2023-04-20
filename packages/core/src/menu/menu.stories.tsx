@@ -357,7 +357,7 @@ export function SubMenus() {
   return (
     <Grid>
       <Menu.Root>
-        <Menu.Trigger size="icon">
+        <Menu.Trigger size="icon" variant="ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
