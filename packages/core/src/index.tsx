@@ -4,7 +4,7 @@ export * as AlertDialog from "./alertdailog";
 export { Button } from "./button";
 export * as Card from "./card";
 export { Checkbox } from "./checkbox";
-export * as Combobox from "./combobox";
+export { Combobox } from "./combobox";
 export * as ContextMenu from "./context-menu";
 export {
   DatePicker,
