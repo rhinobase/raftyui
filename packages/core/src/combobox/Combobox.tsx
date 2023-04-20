@@ -1,45 +1,17 @@
-import Select, {
-  components,
-  GroupBase,
-  MultiValue,
-  OptionsOrGroups,
-  SingleValue,
-} from "react-select";
+import Select, { components, Props } from "react-select";
 import { classNames } from "@rhinobase/utils";
 import React from "react";
 
 // ReactSelect Component
-export type Combobox = {
-  name?: string;
-  options?: OptionsOrGroups<object, GroupBase<object>> | undefined;
-  defaultValue?: object;
-  placeholder?: string;
-  isSearchable?: boolean;
-  isClearable?: boolean;
-  disabled?: boolean;
-  isMulti?: boolean;
-  onChange?: (value: MultiValue<object> | SingleValue<object>) => void;
-};
-
+export type Combobox = Props;
 export function Combobox({
-  name,
-  options,
-  defaultValue,
-  placeholder,
-  disabled = false,
-  isMulti = false,
-  onChange,
   isSearchable = true,
   isClearable = true,
+  ...props
 }: Combobox) {
   return (
     <Select
-      name={name}
-      isMulti={isMulti}
-      isDisabled={disabled}
-      onChange={onChange}
-      defaultValue={defaultValue}
-      placeholder={placeholder}
+      {...props}
       unstyled
       components={{
         DropdownIndicator: () => (
@@ -68,7 +40,6 @@ export function Combobox({
       }}
       isSearchable={isSearchable}
       isClearable={isClearable}
-      options={options}
       styles={{
         control: (base, state) => ({
           ...base,

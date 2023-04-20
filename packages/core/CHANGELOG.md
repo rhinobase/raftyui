@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.19
+
+### Patch Changes
+
+- Corrected the props of Combobox
+
 ## 0.3.18
 
 - minor corrections in the component
