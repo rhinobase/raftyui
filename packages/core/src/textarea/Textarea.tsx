@@ -15,7 +15,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
           "border-secondary-300 min-h-40 focus:ring-primary-200 focus:border-primary-400 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 dark:text-secondary-200 h-auto w-full rounded-md border bg-transparent px-2 py-2 outline-none focus:ring-2 dark:border-zinc-700",
           "read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
           "disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
-          (controls.invalid || controls.required) &&
+          controls.invalid &&
             "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:focus:!ring-error-100/20",
           className,
         )}
