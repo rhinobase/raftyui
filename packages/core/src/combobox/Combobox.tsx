@@ -49,8 +49,6 @@ export function Combobox({
         }),
         menu: () => ({}),
       }}
-      blurInputOnSelect={false}
-      openMenuOnFocus={true}
       menuPortalTarget={document.body}
       classNames={{
         container: () => "rounded-md",
