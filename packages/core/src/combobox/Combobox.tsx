@@ -1,6 +1,10 @@
-import Select, { components, Props } from "react-select";
+import Select, { components, GroupBase, InputProps, Props } from "react-select";
 import { classNames } from "@rhinobase/utils";
 import React from "react";
+
+function InputField(props: InputProps<unknown, boolean, GroupBase<unknown>>) {
+  return <components.Input {...props} className="dark:text-secondary-100" />;
+}
 
 // ReactSelect Component
 export type Combobox = Props;
@@ -30,13 +34,7 @@ export function Combobox({
             />
           </svg>
         ),
-        Input: (props) => (
-          <components.Input
-            {...props}
-            type={undefined}
-            className="dark:text-secondary-100"
-          />
-        ),
+        Input: InputField,
       }}
       isSearchable={isSearchable}
       isClearable={isClearable}
@@ -51,8 +49,9 @@ export function Combobox({
         }),
         menu: () => ({}),
       }}
+      blurInputOnSelect={false}
+      openMenuOnFocus={true}
       menuPortalTarget={document.body}
-      // menuIsOpen
       classNames={{
         container: () => "rounded-md",
         control: (state) =>

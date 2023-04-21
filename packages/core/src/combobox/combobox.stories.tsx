@@ -8,35 +8,10 @@ const config = {
   component: Combobox,
 };
 export default config;
-const people = [
-  {
-    id: "1",
-    icon: "D",
-    name: "Durward Reynolds",
-  },
-  {
-    id: "2",
-    icon: "T",
-    name: "Therese Wunsch",
-  },
-  {
-    id: "3",
-    icon: "K",
-    name: "Kenton Towne",
-  },
-  {
-    id: "4",
-    icon: "B",
-    name: "Benedict Kessler",
-  },
-  {
-    id: "5",
-    icon: "K",
-    name: "Katelyn Rohan",
-  },
-];
 
 export function Default() {
+  const [search, setSearch] = useState<string>();
+
   const options = [
     { value: "none", label: "Empty" },
     {
@@ -83,7 +58,15 @@ export function Default() {
   return (
     <Grid>
       <div className="w-full">
-        <Combobox options={options} onChange={(value) => console.log(value)} />
+        <Combobox
+          options={options}
+          inputValue={search}
+          onInputChange={(value) => {
+            console.log("input value", value);
+            setSearch(value);
+          }}
+          // onChange={(value) => console.log("on change value", value)}
+        />
       </div>
     </Grid>
   );
