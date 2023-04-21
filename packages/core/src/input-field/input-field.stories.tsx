@@ -1,7 +1,7 @@
 import { Grid } from "@rhinobase/docs/components";
 import { InputField } from "./InputField";
 import React from "react";
-import { FieldControl } from "../field";
+import { FieldControl, FieldLabel } from "../field";
 
 const config = {
   title: "Forms/Input Field",
@@ -21,6 +21,13 @@ export function Default() {
         <h4>Input Field isDisabled</h4>
 
         <FieldControl name="ss" disabled>
+          <InputField placeholder="Enter Text" />
+        </FieldControl>
+
+        <h4>Input Field required</h4>
+
+        <FieldControl name="ss" required>
+          <FieldLabel>Name</FieldLabel>
           <InputField placeholder="Enter Text" />
         </FieldControl>
 
