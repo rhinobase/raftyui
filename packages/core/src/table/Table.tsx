@@ -5,15 +5,16 @@ import React from "react";
 
 export type Table = {
   size?: "sm" | "md" | "lg";
+  variant?: "simple" | "striped";
 };
 
 // Table Component (Used in Table Component)
 export const Table = forwardRef<
   HTMLTableElement,
   Table & JSX.IntrinsicElements["table"]
->(({ children, size = "md", ...props }, forwardedRef) => {
+>(({ children, size = "md", variant = "striped", ...props }, forwardedRef) => {
   return (
-    <TableProvider value={{ size: size }}>
+    <TableProvider value={{ size: size, variant: variant }}>
       <table
         {...props}
         className={classNames(
@@ -173,17 +174,22 @@ Th.displayName = "Th";
 // Tr Component (Used in Table Component)
 export type Tr = JSX.IntrinsicElements["tr"];
 export const Tr = forwardRef<HTMLTableRowElement, Tr>(
-  ({ children, ...props }, forwardedRef) => (
-    <tr
-      {...props}
-      className={classNames(
-        "even:bg-secondary-100 dark:even:bg-secondary-700/50",
-        props.className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </tr>
-  ),
+  ({ children, ...props }, forwardedRef) => {
+    const { variant } = useTableContext();
+    return (
+      <tr
+        {...props}
+        className={classNames(
+          variant == "striped"
+            ? "even:bg-secondary-100 dark:even:bg-secondary-700/50"
+            : "bg-transparent",
+          props.className,
+        )}
+        ref={forwardedRef}
+      >
+        {children}
+      </tr>
+    );
+  },
 );
 Tr.displayName = "Tr";
