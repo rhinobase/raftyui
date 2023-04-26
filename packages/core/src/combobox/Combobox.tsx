@@ -78,6 +78,7 @@ export function Combobox({
             state.isSelected && "bg-secondary-200/60 dark:bg-secondary-700/70",
             "text-secondary-700 hover:bg-secondary-200/60 dark:text-secondary-300 dark:hover:bg-secondary-700/70 active:bg-secondary-200 dark:active:bg-secondary-700 rounded-md px-5 py-1 font-semibold duration-200",
           ),
+        placeholder: () => "text-secondary-400 dark:text-secondary-600",
       }}
     />
   );

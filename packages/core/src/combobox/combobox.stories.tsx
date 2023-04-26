@@ -59,6 +59,7 @@ export function Default() {
     <Grid>
       <div className="w-full">
         <Combobox
+          placeholder="placeholder"
           options={options}
           inputValue={search}
           onInputChange={(value) => {
