@@ -98,18 +98,21 @@ TableFooter.displayName = "TableFooter";
 // TableHead Component (Used in Table Component)
 export type TableHead = JSX.IntrinsicElements["thead"];
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
-  ({ children, ...props }, forwardedRef) => (
-    <thead
-      {...props}
-      className={classNames(
-        "bg-secondary-100 dark:bg-secondary-700/80",
-        props.className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </thead>
-  ),
+  ({ children, ...props }, forwardedRef) => {
+    const { variant } = useTableContext();
+    return (
+      <thead
+        {...props}
+        className={classNames(
+          variant == "striped" && "bg-secondary-100 dark:bg-secondary-700/80",
+          props.className,
+        )}
+        ref={forwardedRef}
+      >
+        {children}
+      </thead>
+    );
+  },
 );
 TableHead.displayName = "TableHead";
 
