@@ -32,24 +32,29 @@ export const Trigger = React.forwardRef<HTMLButtonElement, Trigger>(
       disabled = undefined,
       loading = undefined,
       active = undefined,
+      asChild = false,
       ...props
     },
     forwardedRef,
   ) => {
     return (
-      <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
-        <Button
-          variant={variant || "ghost"}
-          colorScheme={colorScheme}
-          className={className}
-          leftIcon={leftIcon}
-          rightIcon={rightIcon}
-          loading={loading}
-          disabled={disabled}
-          active={active}
-        >
-          {children}
-        </Button>
+      <DialogPrimitive.Trigger {...props} asChild ref={forwardedRef}>
+        {asChild ? (
+          <>{children}</>
+        ) : (
+          <Button
+            variant={variant || "ghost"}
+            colorScheme={colorScheme}
+            className={className}
+            leftIcon={leftIcon}
+            rightIcon={rightIcon}
+            loading={loading}
+            disabled={disabled}
+            active={active}
+          >
+            {children}
+          </Button>
+        )}
       </DialogPrimitive.Trigger>
     );
   },
