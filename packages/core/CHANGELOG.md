@@ -1,5 +1,11 @@
 # @rhinobase/ui
 
+## 0.3.22
+
+### Patch Changes
+
+- Added new variants in table and minor improvements
+
 ## 0.3.21
 
 ### Patch Changes
