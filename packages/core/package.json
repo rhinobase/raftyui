@@ -58,6 +58,7 @@
     "@radix-ui/react-tooltip": "^1.0.3",
     "class-variance-authority": "^0.4.0",
     "dayjs": "^1.11.7",
+    "react-aria": "^3.24.0",
     "react-select": "^5.7.0",
     "use-lilius": "^2.0.3"
   },
