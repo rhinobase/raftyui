@@ -1,0 +1,33 @@
+{
+  "name": "@rafty/design",
+  "description": "React + Accessiable + Tailwind CSS Dynamic Component Library",
+  "main": "index.js",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/design-system.git"
+  },
+  "keywords": [
+    "react",
+    "tailwind",
+    "css",
+    "accessiable",
+    "radix",
+    "ui",
+    "spectrum"
+  ],
+  "author": "MathurAditya724",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhinobase/design-system/issues"
+  },
+  "homepage": "https://github.com/rhinobase/design-system#readme"
+}
