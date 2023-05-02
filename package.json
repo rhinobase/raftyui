@@ -1,33 +1,17 @@
 {
-  "name": "@rafty/design",
-  "description": "React + Accessiable + Tailwind CSS Dynamic Component Library",
-  "main": "index.js",
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "apps/*"
-    ]
-  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rhinobase/design-system.git"
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "prettier": "^2.5.1",
+    "turbo": "latest"
   },
-  "keywords": [
-    "react",
-    "tailwind",
-    "css",
-    "accessiable",
-    "radix",
-    "ui",
-    "spectrum"
-  ],
-  "author": "MathurAditya724",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rhinobase/design-system/issues"
-  },
-  "homepage": "https://github.com/rhinobase/design-system#readme"
+  "packageManager": "pnpm@7.15.0",
+  "name": "ui"
 }
