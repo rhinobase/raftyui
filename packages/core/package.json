@@ -11,7 +11,8 @@
     "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
     "watch:css": "npx tailwindcss -i ./styles/globals.css -o ./styles/compile.css --watch",
     "watch:storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "test-storybook"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
@@ -27,6 +28,7 @@
     "@storybook/jest": "^0.1.0",
     "@storybook/react": "^7.0.7",
     "@storybook/react-vite": "^7.0.7",
+    "@storybook/test-runner": "^0.10.0",
     "@storybook/testing-library": "^0.0.14-next.2",
     "@types/node": "^18.16.3",
     "@types/react": "^18.0.28",
