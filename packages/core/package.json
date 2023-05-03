@@ -49,20 +49,19 @@
     "vite-plugin-dts": "^2.3.0"
   },
   "peerDependencies": {
-        "react": "18.x",
-        "react-dom": "18.x",
-        "styled-components": "^5.0.0"
-    },
-    "files": [
-        "dist"
-    ],
-    "main": "./dist/lib.umd.js",
-    "module": "./dist/lib.es.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-        ".": {
-            "import": "./dist/lib.es.js",
-            "require": "./dist/lib.umd.js"
-        }
+    "react": "18.x",
+    "react-dom": "18.x"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lib.umd.js",
+  "module": "./dist/lib.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/lib.es.js",
+      "require": "./dist/lib.umd.js"
     }
+  }
 }

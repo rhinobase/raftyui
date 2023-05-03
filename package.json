@@ -9,9 +9,15 @@
     ]
   },
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "turbo lint"
+    "build": "turbo run build --filter=@rafty/ui",
+    "build:docs": "turbo run build --filter=web",
+    "dev": "turbo run dev --no-cache --continue --filter=@rafty/ui",
+    "dev:docs": "npm run build && turbo run dev --no-cache --continue --filter=web",
+    "lint": "turbo lint",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=docs^... && changeset publish",
+    "test": "turbo run test"
   },
   "repository": {
     "type": "git",
