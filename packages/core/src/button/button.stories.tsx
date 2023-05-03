@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { within } from "@storybook/testing-library";
+import { userEvent, within } from "@storybook/testing-library";
 import { Button } from "./Button";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
@@ -19,6 +20,45 @@ type Story = StoryObj<typeof Button>;
 export const ColorScheme: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+
+    // Button colors
+    const colors = ["primary", "secondary", "error", "success"];
+    const variants = {
+      primary: {
+        bg: "primary-600",
+        focus: "primary-500",
+        dark: "primary-400/80",
+      },
+      secondary: {
+        bg: "secondary-300",
+        focus: "secondary-200",
+        dark: "secondary-400/80",
+      },
+      error: {
+        bg: "error-600/90",
+        focus: "error-500",
+        dark: "error-400",
+      },
+      success: {
+        bg: "success-600/90",
+        focus: "success-500",
+        dark: "success-400",
+      },
+    };
+
+    // Buttons
+    const buttons = canvas.getAllByText("Button text");
+
+    for (let i = 0; i < colors.length; i++) {
+      // Elements
+      const variant = variants[colors[i] as keyof typeof variants];
+      const button = buttons[i];
+
+      await userEvent.click(button);
+      await expect(button).toHaveClass(
+        `hover:bg-${variant.bg} focus:ring-offset-1 focus:ring-${variant.focus} focus:outline-none focus:ring-2 transition-all dark:hover:bg-${variant.dark} dark:ring-secondary-100 dark:focus:ring-offset-secondary-900`
+      );
+    }
   },
   render: () => (
     <>
@@ -30,45 +70,47 @@ export const ColorScheme: Story = {
   ),
 };
 
-export const Sizes = () => (
-  <>
-    <Button size="sm">Button text</Button>
-    <Button>Button text</Button>
-    <Button size="lg">Button text</Button>
-    <Button size="icon">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="h-6 w-6"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 4.5v15m7.5-7.5h-15"
-        />
-      </svg>
-    </Button>
-    <Button size="fab">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="h-6 w-6"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 4.5v15m7.5-7.5h-15"
-        />
-      </svg>
-    </Button>
-  </>
-);
+export const Sizes: Story = {
+  render: () => (
+    <>
+      <Button size="sm">Button text</Button>
+      <Button>Button text</Button>
+      <Button size="lg">Button text</Button>
+      <Button size="icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="h-6 w-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </Button>
+      <Button size="fab">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="h-6 w-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </Button>
+    </>
+  ),
+};
 
 export const Variants = () => (
   <>
