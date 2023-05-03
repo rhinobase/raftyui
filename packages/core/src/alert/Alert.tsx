@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames } from "../utils";
+import { applyStyleToMultipleVariants, classNames } from "../utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {
   CheckCircleIcon,
@@ -7,12 +7,10 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
 // Alert Component
-export type Alert = AlertContext &
-  JSX.IntrinsicElements["div"] &
-  VariantProps<typeof alertClasses>;
+export type Alert = AlertContext & JSX.IntrinsicElements["div"];
 
 const alertClasses = cva("", {
   variants: {
@@ -36,6 +34,30 @@ const alertClasses = cva("", {
     },
   },
   compoundVariants: [
+    ...applyStyleToMultipleVariants({
+      size: ["sm", "md", "lg"],
+      status: ["success", "warning", "error", "info"],
+      variant: ["simple", "solid", "left-accent", "top-accent"],
+      className: "rounded-base flex w-full items-center",
+    }),
+    ...applyStyleToMultipleVariants({
+      size: "sm",
+      status: ["success", "warning", "error", "info"],
+      variant: ["simple", "solid", "left-accent", "top-accent"],
+      className: "p-2 gap-1.5",
+    }),
+    ...applyStyleToMultipleVariants({
+      size: "md",
+      status: ["success", "warning", "error", "info"],
+      variant: ["simple", "solid", "left-accent", "top-accent"],
+      className: "p-3 gap-3",
+    }),
+    ...applyStyleToMultipleVariants({
+      size: "lg",
+      status: ["success", "warning", "error", "info"],
+      variant: ["simple", "solid", "left-accent", "top-accent"],
+      className: "p-4 gap-4",
+    }),
     {
       variant: "simple",
       status: "success",
@@ -46,7 +68,7 @@ const alertClasses = cva("", {
       variant: "simple",
       status: "warning",
       className:
-        "border-warning-600 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
+        "border-warning-600 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
     },
     {
       variant: "simple",
@@ -59,6 +81,30 @@ const alertClasses = cva("", {
       status: "info",
       className:
         "bg-info-200 dark:bg-info-400/40 border-info-500 text-secondary-900 dark:text-secondary-100",
+    },
+    {
+      variant: "solid",
+      status: "success",
+      className:
+        "border-success-500 bg-success-500 text-white dark:bg-success-400 dark:text-secondary-100",
+    },
+    {
+      variant: "solid",
+      status: "warning",
+      className:
+        "border-warning-500 bg-warning-500 text-white dark:text-secondary-100 dark:bg-warning-400",
+    },
+    {
+      variant: "solid",
+      status: "error",
+      className:
+        "border-error-500 bg-error-500 text-white dark:bg-error-400 dark:text-secondary-100",
+    },
+    {
+      variant: "solid",
+      status: "info",
+      className:
+        "bg-info-500 dark:bg-info-400 border-info-500 text-white dark:text-secondary-100",
     },
   ],
 });
@@ -73,16 +119,8 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
         <div
           {...props}
           className={classNames(
-            "rounded-base flex w-full items-center gap-3 border border-opacity-20 p-3",
-            className,
-            status === "error" &&
-              "border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
-            status === "warning" &&
-              "border-warning-600 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
-            status === "info" &&
-              "bg-info-200 dark:bg-info-400/40 border-info-500 text-secondary-900 dark:text-secondary-100",
-            status === "success" &&
-              "border-success-600 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100"
+            alertClasses({ size, status, variant }),
+            className
           )}
           ref={forwardedRef}
         >
@@ -96,7 +134,7 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
 Alert.displayName = "Alert";
 
 export function AlertIcon(props: { className?: string }) {
-  const { status } = useAlertContext();
+  const { status, variant } = useAlertContext();
   const className = props;
 
   let Icon: JSX.Element;
@@ -106,7 +144,8 @@ export function AlertIcon(props: { className?: string }) {
       Icon = (
         <ExclamationCircleIcon
           className={classNames(
-            "text-error-500 dark:text-error-200 h-5 w-5",
+            variant != "solid" && "text-error-500 dark:text-error-200",
+            "h-5 w-5 stroke-2",
             className
           )}
         />
@@ -116,7 +155,8 @@ export function AlertIcon(props: { className?: string }) {
       Icon = (
         <InformationCircleIcon
           className={classNames(
-            "text-info-500 dark:text-info-200 h-5 w-5",
+            variant != "solid" && "text-info-500 dark:text-info-200",
+            "h-5 w-5 stroke-2",
             className
           )}
         />
@@ -127,7 +167,8 @@ export function AlertIcon(props: { className?: string }) {
       Icon = (
         <CheckCircleIcon
           className={classNames(
-            "text-success-500 dark:text-success-300 h-5 w-5",
+            variant != "solid" && "text-success-500 dark:text-success-300",
+            "h-5 w-5 stroke-2",
             className
           )}
         />
@@ -138,7 +179,8 @@ export function AlertIcon(props: { className?: string }) {
       Icon = (
         <ExclamationTriangleIcon
           className={classNames(
-            "text-warning-600 dark:text-warning-300 h-5 w-5",
+            variant != "solid" && "text-warning-600 dark:text-warning-300",
+            "h-5 w-5 stroke-2",
             className
           )}
         />
