@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { within } from "@storybook/testing-library";
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
@@ -13,15 +14,21 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
+type Story = StoryObj<typeof Button>;
 
-export const ColorScheme = () => (
-  <>
-    <Button colorScheme="primary">Button text</Button>
-    <Button colorScheme="secondary">Button text</Button>
-    <Button colorScheme="error">Button text</Button>
-    <Button colorScheme="success">Button text</Button>
-  </>
-);
+export const ColorScheme: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+  },
+  render: () => (
+    <>
+      <Button colorScheme="primary">Button text</Button>
+      <Button colorScheme="secondary">Button text</Button>
+      <Button colorScheme="error">Button text</Button>
+      <Button colorScheme="success">Button text</Button>
+    </>
+  ),
+};
 
 export const Sizes = () => (
   <>
