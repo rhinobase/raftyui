@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { Spinner } from "../spinner";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
 
 export type Button = {
@@ -457,7 +457,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   const {
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
-    // attributes propagated from `HTMLAnchorProps` or `HTMLButtonProps`
+    // attributes propagated from `HTMLButtonProps`
     ...passThroughProps
   } = props;
   // Buttons are **always** disabled if we're in a `loading` state
