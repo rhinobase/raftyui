@@ -71,6 +71,66 @@ export const ColorScheme: Story = {
 };
 
 export const Sizes: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const sizes = ["sm", "base", "lg", "icon", "fab"];
+    const paddings = {
+      sm: {
+        px: "2",
+        py: "1",
+        p: "",
+        rounded: "base",
+        text_size: "xs",
+      },
+      base: {
+        px: "3",
+        py: "2",
+        p: "",
+        rounded: "md",
+        text_size: "sm",
+      },
+      lg: {
+        px: "4",
+        py: "3",
+        p: "",
+        rounded: "md",
+        text_size: "base",
+      },
+      icon: {
+        px: "",
+        py: "",
+        p: "1.5",
+        rounded: "md",
+        text_size: "base",
+      },
+      fab: {
+        px: "",
+        py: "",
+        p: "1.5",
+        rounded: "full",
+        text_size: "base",
+      },
+    };
+    // Buttons
+    const buttons = canvas.getAllByRole("button");
+
+    for (let i = 0; i < sizes.length; i++) {
+      const padding = paddings[sizes[i] as keyof typeof paddings];
+      const button = buttons[i];
+
+      await userEvent.click(buttons[i]);
+
+      if (sizes[i] == "icon" || sizes[i] == "fab")
+        await expect(button).toHaveClass(
+          `p-${padding.p} rounded-${padding.rounded}`
+        );
+      else {
+        await expect(button).toHaveClass(
+          `px-${padding.px} py-${padding.py} rounded-${padding.rounded} text-${padding.text_size}`
+        );
+      }
+    }
+  },
   render: () => (
     <>
       <Button size="sm">Button text</Button>
