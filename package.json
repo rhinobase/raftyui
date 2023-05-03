@@ -1,17 +1,28 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  "name": "@rafty/design",
+  "version": "0.5.0",
+  "description": "React + Acessiable + Tailwind CSS Dynamic Component Library",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ]
   },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
-    "turbo": "latest"
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/design-system.git"
   },
-  "packageManager": "pnpm@7.15.0",
-  "name": "ui"
+  "keywords": [
+    "react",
+    "tailwind",
+    "radix",
+    "react-aria"
+  ],
+  "author": "Aditya Mathur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhinobase/design-system/issues"
+  },
+  "homepage": "https://github.com/rhinobase/design-system#readme"
 }
