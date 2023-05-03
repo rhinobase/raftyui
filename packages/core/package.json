@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run watch:*\"",
-    "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "vite build",
+    "lint": "tsc && eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
     "watch:css": "npx tailwindcss -i ./styles/globals.css -o ./styles/compile.css --watch",
     "watch:storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -46,5 +47,22 @@
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0"
-  }
+  },
+  "peerDependencies": {
+        "react": "18.x",
+        "react-dom": "18.x",
+        "styled-components": "^5.0.0"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "./dist/lib.umd.js",
+    "module": "./dist/lib.es.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/lib.es.js",
+            "require": "./dist/lib.umd.js"
+        }
+    }
 }

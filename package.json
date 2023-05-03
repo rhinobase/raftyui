@@ -8,7 +8,11 @@
       "apps/*"
     ]
   },
-  "scripts": {},
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhinobase/design-system.git"
@@ -24,5 +28,11 @@
   "bugs": {
     "url": "https://github.com/rhinobase/design-system/issues"
   },
-  "homepage": "https://github.com/rhinobase/design-system#readme"
+  "homepage": "https://github.com/rhinobase/design-system#readme",
+  "dependencies": {
+    "turbo": "^1.9.3"
+  },
+  "devDependencies": {
+    "json": "^11.0.0"
+  }
 }
