@@ -1,9 +1,8 @@
-import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../src/button";
 import * as AlertDialog from "../src/alertdailog/AlertDialog";
-import React from "react";
+
 const config = {
-  title: "New/Alert Dialog",
+  title: "Components / Alert Dialog",
   component: AlertDialog,
 };
 

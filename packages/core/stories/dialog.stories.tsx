@@ -1,17 +1,15 @@
-import { Grid } from "@rhinobase/docs/components";
 import { Button } from "../src/button";
 import * as Dialog from "../src/dialog/Dialog";
-import React from "react";
 
 const config = {
-  title: "New/Dialog",
+  title: "Components / Dialog",
   component: Dialog,
 };
 export default config;
 
 export function Default() {
   return (
-    <Grid>
+    <>
       <Dialog.Root>
         <Dialog.Trigger>open</Dialog.Trigger>
         <Dialog.Overlay />
@@ -28,6 +26,6 @@ export function Default() {
           </Dialog.Body>
         </Dialog.Content>
       </Dialog.Root>
-    </Grid>
+    </>
   );
 }

@@ -1,10 +1,8 @@
-import { Grid } from "@rhinobase/docs/components";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Combobox } from "../src/combobox/Combobox";
-// import "@reach/combobox/styles.css";
 
 const config = {
-  title: "New/Combobox",
+  title: "Components / Combobox",
   component: Combobox,
 };
 export default config;
