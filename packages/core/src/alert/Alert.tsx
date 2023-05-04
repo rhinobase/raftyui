@@ -130,6 +130,21 @@ const alertClasses = cva("flex w-full items-center", {
       className:
         "bg-info-200 dark:bg-info-400/40 border-t-4 border-info-500 text-secondary-900 dark:text-secondary-100",
     },
+    {
+      variant: "top-accent",
+      size: "sm",
+      className: "pt-1",
+    },
+    {
+      variant: "top-accent",
+      size: "md",
+      className: "pt-2",
+    },
+    {
+      variant: "top-accent",
+      size: "lg",
+      className: "pt-3",
+    },
   ],
 });
 

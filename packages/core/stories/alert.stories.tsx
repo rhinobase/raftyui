@@ -10,32 +10,31 @@ const meta: Meta<typeof Alert> = {
       </div>
     ),
   ],
+  args: {
+    status: "info",
+    size: "md",
+  },
+  argTypes: {
+    status: {
+      control: "select",
+      options: ["error", "warning", "info", "success"],
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
 export const Variants: Story = {
-  render: () => (
+  render: ({ status, size }) => (
     <div className="grid grid-cols-2 gap-10 max-w-6xl w-full">
       <div className="flex flex-col gap-4">
         <p>Simple Variant</p>
-        <Alert size="md" status="error">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert size="md" status="info">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert size="md" status="success">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert size="md" status="warning">
+        <Alert size={size} status={status}>
           <AlertIcon />
           <AlertTitle>Title</AlertTitle>
           <AlertDescription>Description</AlertDescription>
@@ -43,22 +42,7 @@ export const Variants: Story = {
       </div>
       <div className="flex flex-col gap-4">
         <p>Solid Variant</p>
-        <Alert variant="solid" size="md" status="error">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="solid" size="md" status="info">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="solid" size="md" status="success">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="solid" size="md" status="warning">
+        <Alert variant="solid" size={size} status={status}>
           <AlertIcon />
           <AlertTitle>Title</AlertTitle>
           <AlertDescription>Description</AlertDescription>
@@ -66,22 +50,7 @@ export const Variants: Story = {
       </div>
       <div className="flex flex-col gap-4">
         <p>left-accent Variant</p>
-        <Alert variant="left-accent" size="md" status="error">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="left-accent" size="md" status="info">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="left-accent" size="md" status="success">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="left-accent" size="md" status="warning">
+        <Alert variant="left-accent" size={size} status={status}>
           <AlertIcon />
           <AlertTitle>Title</AlertTitle>
           <AlertDescription>Description</AlertDescription>
@@ -89,22 +58,7 @@ export const Variants: Story = {
       </div>
       <div className="flex flex-col gap-4">
         <p>top-accent Variant</p>
-        <Alert variant="top-accent" size="md" status="error">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="top-accent" size="md" status="info">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="top-accent" size="md" status="success">
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-        <Alert variant="top-accent" size="md" status="warning">
+        <Alert variant="top-accent" size={size} status={status}>
           <AlertIcon />
           <AlertTitle>Title</AlertTitle>
           <AlertDescription>Description</AlertDescription>
@@ -114,23 +68,21 @@ export const Variants: Story = {
   ),
 };
 export const AlertWithAction: Story = {
-  render: () => (
+  args: { variant: "simple" },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["simple", "solid", "left-accent", "top-accent"],
+    },
+  },
+  render: ({ status, size, variant }) => (
     <div className="flex flex-col gap-4 max-w-3xl w-full">
-      <Alert variant="solid" size="sm" status="error">
+      <Alert variant={variant} size={size} status={status}>
         <AlertIcon />
         <AlertTitle>Title</AlertTitle>
         <AlertDescription>Description</AlertDescription>
         <div className="flex-1" />
-        <Button colorScheme="error">Action</Button>
-      </Alert>
-      <Alert variant="simple" size="md" status="error">
-        <AlertIcon />
-        <AlertTitle>Title</AlertTitle>
-        <AlertDescription>Description</AlertDescription>
-        <div className="flex-1" />
-        <Button colorScheme="error" variant="outline">
-          Action
-        </Button>
+        <Button>Action</Button>
       </Alert>
     </div>
   ),
