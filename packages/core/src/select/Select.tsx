@@ -7,7 +7,7 @@ const selectClasses = cva(
   "w-full appearance-none outline-none dark:text-secondary-200 transition-all",
   {
     variants: {
-      size: {
+      sizes: {
         sm: "px-2 py-1 text-sm rounded",
         md: "px-3 py-1.5 rounded-md",
         lg: "px-4 py-2 text-lg rounded-md",
@@ -21,13 +21,13 @@ const selectClasses = cva(
     compoundVariants: [
       ...applyStyleToMultipleVariants({
         variant: ["solid", "outline"],
-        size: ["sm", "md", "lg"],
+        sizes: ["sm", "md", "lg"],
         className:
           "border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
       }),
       ...applyStyleToMultipleVariants({
         variant: ["outline", "ghost"],
-        size: ["sm", "md", "lg"],
+        sizes: ["sm", "md", "lg"],
         className: "bg-transparent dark:bg-secondary-900",
       }),
     ],
@@ -44,7 +44,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
     {
       children,
       className,
-      size,
+      sizes,
       variant = "outline",
       unstyled = false,
       ...props
@@ -59,7 +59,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
             unstyled
               ? className
               : classNames(
-                  selectClasses({ size: size ?? "md", variant }),
+                  selectClasses({ sizes: sizes ?? "md", variant }),
                   className
                 )
           }

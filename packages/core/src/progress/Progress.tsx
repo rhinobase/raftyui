@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { AriaProgressBarProps, useProgressBar } from "react-aria";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
@@ -30,25 +30,25 @@ const progressClasses = cva("", {
     {
       isIndeterminate: true,
       colorScheme: "error",
-      className: "bg-gradient-to-r from-error-200 via-error-500 to-error-200",
+      className: "bg-gradient-to-r from-error-300 via-error-500 to-error-300",
     },
     {
       isIndeterminate: true,
       colorScheme: "primary",
       className:
-        "bg-gradient-to-r from-primary-200 via-primary-500 to-primary-200",
+        "bg-gradient-to-r from-primary-300 via-primary-500 to-primary-300",
     },
     {
       isIndeterminate: true,
       colorScheme: "success",
       className:
-        "bg-gradient-to-r from-success-200 via-success-500 to-success-200",
+        "bg-gradient-to-r from-success-300 via-success-500 to-success-300",
     },
     {
       isIndeterminate: true,
       colorScheme: "warning",
       className:
-        "bg-gradient-to-r from-warning-200 via-warning-500 to-warning-200",
+        "bg-gradient-to-r from-warning-300 via-warning-500 to-warning-300",
     },
   ],
 });

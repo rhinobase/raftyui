@@ -45,7 +45,7 @@ export const Variants: Story = {
         <Option value="option3">Option 3</Option>
       </Select>
       <h4 className="font-bold">unStyled</h4>
-      <Select className="" variant="unstyled" sizes={sizes}>
+      <Select className="" unstyled sizes={sizes}>
         <Option value="option1">Option 1</Option>
         <Option value="option2">Option 2</Option>
         <Option value="option3">Option 3</Option>
