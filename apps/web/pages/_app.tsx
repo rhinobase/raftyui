@@ -4,6 +4,7 @@ import { slugifyWithCounter } from "@sindresorhus/slugify";
 
 import { Layout } from "@/components/Layout";
 import Head from "next/head";
+import { MarkdocNextJsPageProps } from "@markdoc/next.js";
 
 function getNodeText(node: any) {
   let text = "";
@@ -16,7 +17,7 @@ function getNodeText(node: any) {
   return text;
 }
 
-function collectHeadings(nodes: any[], slugify = slugifyWithCounter()): any[] {
+function collectHeadings(nodes: any, slugify = slugifyWithCounter()): any {
   let sections = [];
 
   for (let node of nodes) {
@@ -47,7 +48,10 @@ function collectHeadings(nodes: any[], slugify = slugifyWithCounter()): any[] {
   return sections;
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<MarkdocNextJsPageProps>) {
   let title = pageProps.markdoc?.frontmatter.title;
 
   let pageTitle =
@@ -57,7 +61,7 @@ export default function App({ Component, pageProps }: AppProps) {
   let description = pageProps.markdoc?.frontmatter.description;
 
   let tableOfContents = pageProps.markdoc?.content
-    ? collectHeadings(pageProps.markdoc.content)
+    ? [] // collectHeadings(pageProps.markdoc.content)
     : [];
 
   return (

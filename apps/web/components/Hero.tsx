@@ -1,12 +1,11 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import Highlight, { defaultProps } from "prism-react-renderer";
-
+import { Highlight } from "prism-react-renderer";
 import { Button } from "@rafty/ui";
 import { HeroBackground } from "@/components/HeroBackground";
-import blurCyanImage from "@/images/blur-cyan.png";
-import blurIndigoImage from "@/images/blur-indigo.png";
+import blurCyanImage from "@/public/blur-cyan.png";
+import blurIndigoImage from "@/public/blur-indigo.png";
 
 const codeLanguage = "javascript";
 const code = `export default {
@@ -22,7 +21,7 @@ const tabs = [
   { name: "package.json", isActive: false },
 ];
 
-function TrafficLightsIcon(props) {
+function TrafficLightsIcon(props: { className: string }) {
   return (
     <svg aria-hidden="true" viewBox="0 0 42 10" fill="none" {...props}>
       <circle cx="5" cy="5" r="4.5" />
@@ -48,7 +47,7 @@ export function Hero() {
               priority
             />
             <div className="relative">
-              <p className="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
+              <p className="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-medium font-display text-5xl tracking-tight text-transparent">
                 Never miss the cache again.
               </p>
               <p className="mt-3 text-2xl tracking-tight text-slate-400">
@@ -56,8 +55,14 @@ export function Hero() {
                 so your code never even has to run at all.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
-                <Button href="/">Get started</Button>
-                <Button href="/" variant="secondary">
+                <Button href="/" className="px-4" colorScheme="primary">
+                  Get started
+                </Button>
+                <Button
+                  href="/"
+                  variant="ghost"
+                  className="px-4 !text-secondary-200"
+                >
                   View on GitHub
                 </Button>
               </div>
@@ -130,10 +135,9 @@ export function Hero() {
                       ))}
                     </div>
                     <Highlight
-                      {...defaultProps}
                       code={code}
                       language={codeLanguage}
-                      theme={undefined}
+                      // theme={undefined}
                     >
                       {({
                         className,
@@ -141,7 +145,7 @@ export function Hero() {
                         tokens,
                         getLineProps,
                         getTokenProps,
-                      }) => (
+                      }: any) => (
                         <pre
                           className={clsx(
                             className,
@@ -150,9 +154,9 @@ export function Hero() {
                           style={style}
                         >
                           <code className="px-4">
-                            {tokens.map((line, lineIndex) => (
+                            {tokens.map((line: any, lineIndex: number) => (
                               <div key={lineIndex} {...getLineProps({ line })}>
-                                {line.map((token, tokenIndex) => (
+                                {line.map((token: any, tokenIndex: number) => (
                                   <span
                                     key={tokenIndex}
                                     {...getTokenProps({ token })}
