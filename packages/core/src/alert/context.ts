@@ -10,5 +10,5 @@ export interface AlertContext {
   size?: "sm" | "md" | "lg";
   status: "success" | "warning" | "error" | "info";
   variant?: "simple" | "solid" | "left-accent" | "top-accent";
-  unstyled?: boolean;
+  barebone?: boolean;
 }
