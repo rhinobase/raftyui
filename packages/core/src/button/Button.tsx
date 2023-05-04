@@ -451,7 +451,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     type = "button",
     loadingText,
     hidden,
-    unstyled,
+    unstyled = false,
     className,
     children,
     ...props

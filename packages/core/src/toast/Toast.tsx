@@ -1,4 +1,4 @@
-import React from "react";
+import { cva } from "class-variance-authority";
 import { classNames } from "../utils";
 import {
   CheckCircleIcon,
@@ -7,59 +7,61 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 
-export interface Toast {
+const toastClasses = cva(
+  "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg drop-shadow-lg",
+  {
+    variants: {
+      severity: {
+        error: "bg-error-600 dark:bg-error-300",
+        warning: "bg-warning-500 dark:bg-warning-300",
+        info: "bg-info-500 dark:bg-info-200",
+        success: "bg-success-600 dark:bg-success-200",
+      },
+      visible: {
+        true: "animate-enter",
+        false: "animate-leave",
+      },
+    },
+  }
+);
+
+export type Toast = {
   className?: string;
   title: string;
   message?: string;
   severity: "error" | "warning" | "info" | "success";
   visible?: boolean;
-}
-// Toast Component
-export function Toast(props: Toast) {
-  let ToastIcon: JSX.Element;
+};
 
-  switch (props.severity) {
+export function Toast({ className, severity, visible, ...props }: Toast) {
+  let ToastIcon: typeof ExclamationTriangleIcon;
+
+  switch (severity) {
     case "error":
-      ToastIcon = (
-        <ExclamationTriangleIcon className="h-6 w-6 text-white dark:text-black" />
-      );
+      ToastIcon = ExclamationTriangleIcon;
       break;
     case "warning":
-      ToastIcon = (
-        <ExclamationCircleIcon className="h-6 w-6 text-white dark:text-black" />
-      );
+      ToastIcon = ExclamationCircleIcon;
       break;
     case "info":
-      ToastIcon = (
-        <InformationCircleIcon className="h-6 w-6 text-white dark:text-black" />
-      );
+      ToastIcon = InformationCircleIcon;
       break;
     case "success":
-      ToastIcon = (
-        <CheckCircleIcon className="h-6 w-6 text-white dark:text-black" />
-      );
+      ToastIcon = CheckCircleIcon;
       break;
   }
 
   return (
-    <div
-      className={classNames(
-        props.visible ? "animate-enter" : "animateLeave",
-        props.severity == "error" && "bg-error-600 dark:bg-error-300 ",
-        props.severity == "warning" && "bg-warning-500 dark:bg-warning-300",
-        props.severity == "info" && "bg-info-500 dark:bg-info-200",
-        props.severity == "success" && "bg-success-600 dark:bg-success-200",
-        "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg shadow-lg",
-        props.className
-      )}
-    >
+    <div className={classNames(toastClasses({ severity, visible }), className)}>
       <div className="p-4">
-        <div className="flex items-start">
-          <div className="flex-shrink-0">{ToastIcon}</div>
-          <div className="ml-3 w-0 flex-1 pt-[2px]">
-            <p className="text-sm font-medium text-white dark:text-black">
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0">
+            <ToastIcon className="h-6 w-6 text-white dark:text-black" />
+          </div>
+          <div>
+            <h6 className="font-medium leading-4 text-white dark:text-black">
               {props.title}
-            </p>
+            </h6>
             <p className="mt-1 text-sm text-white dark:text-black">
               {props.message}
             </p>

@@ -3,24 +3,18 @@ import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 export type Kbd = JSX.IntrinsicElements["kbd"] & {
-  variant?: "styled" | "unstyled";
+  unstyled?: boolean;
 };
 
-const kbdClasses = cva("", {
-  variants: {
-    variant: {
-      styled:
-        "text-secondary-500 border-secondary-300 dark:border-secondary-600 dark:text-secondary-300 rounded-md border border-b-4 px-1 text-xs font-medium",
-      unstyled: "",
-    },
-  },
-});
+const kbdClasses = cva(
+  "text-secondary-500 border-secondary-300 dark:border-secondary-600 dark:text-secondary-300 rounded-md border border-b-4 px-1 text-xs font-medium"
+);
 
 export const Kbd = forwardRef<HTMLElement, Kbd>(
-  ({ children, className, variant = "styled", ...props }, forwardRef) => (
+  ({ children, className, unstyled = false, ...props }, forwardRef) => (
     <kbd
       {...props}
-      className={classNames(kbdClasses({ variant }), className)}
+      className={unstyled ? className : classNames(kbdClasses(), className)}
       ref={forwardRef}
     >
       {children}

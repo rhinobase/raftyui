@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { classNames } from "../utils";
 
 export type Skeleton = JSX.IntrinsicElements["div"];
@@ -10,11 +10,11 @@ export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
         {...props}
         className={classNames(
           "bg-secondary-200 dark:bg-secondary-700 animate-pulse",
-          className,
+          className
         )}
         ref={forwardedRef}
       />
     );
-  },
+  }
 );
 Skeleton.displayName = "Skeleton";
