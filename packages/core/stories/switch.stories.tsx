@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Switch } from "../src/switch";
+import { option } from "yargs";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const meta: Meta<typeof Switch> = {
   title: "Components / Switch",
@@ -10,34 +12,33 @@ const meta: Meta<typeof Switch> = {
       </div>
     ),
   ],
+  args: {
+    size: "md",
+    isDisabled: false,
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    isDisabled: {
+      control: "boolean",
+      options: [true, false],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Switch>;
 
 export const Variants: Story = {
-  render: () => (
+  render: ({ size, isDisabled }) => (
     <>
-      <div className="flex items-center gap-6 rounded-md border p-4 dark:border-zinc-700 dark:text-white">
-        <Switch size="sm" />
-      </div>
-      <div className="flex items-center gap-6 rounded-md border p-4 dark:border-zinc-700 dark:text-white">
-        <Switch />
-      </div>
-      <div className="flex items-center gap-6 rounded-md border p-4 dark:border-zinc-700 dark:text-white">
-        <Switch size="lg" />
-      </div>
-      <div className="flex items-center gap-6 rounded-md border p-4 dark:border-zinc-700 dark:text-white">
-        defaultSelected | isDisabled
-        <Switch defaultSelected isDisabled />
-      </div>
-      <div className="grid w-[640px] grid-cols-2 items-center gap-6 rounded-md border p-4 dark:border-zinc-700 dark:text-white">
-        <div className="flex items-center justify-between">
-          defaultSelected <Switch defaultSelected />
-        </div>
-        <div className="flex items-center justify-between">
-          isDisabled <Switch isDisabled />
-        </div>
+      <div className="max-w-2xl w-full flex flex-col gap-4">
+        <h4 className="font-bold">Switch</h4>
+        <Switch size={size} isDisabled={isDisabled} />
+        <h4 className="font-bold">Switch defaultSelected</h4>
+        <Switch size={size} defaultSelected isDisabled={isDisabled} />
       </div>
     </>
   ),
