@@ -1,0 +1,105 @@
+import React, { forwardRef } from "react";
+import { AriaProgressBarProps, useProgressBar } from "react-aria";
+import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
+
+type Progress = AriaProgressBarProps &
+  JSX.IntrinsicElements["div"] & {
+    colorScheme?: "error" | "primary" | "warning" | "success";
+    size?: "sm" | "md" | "lg";
+  };
+
+const progressClasses = cva("", {
+  variants: {
+    size: {
+      sm: "h-2",
+      md: "h-3",
+      lg: "h-4",
+    },
+    isIndeterminate: {
+      true: "",
+    },
+    colorScheme: {
+      error: "bg-error-500 dark:bg-error-300",
+      warning: "bg-warning-500 dark:bg-warning-300",
+      primary: "bg-primary-500 dark:bg-primary-300",
+      success: "bg-success-500 dark:bg-success-300",
+    },
+  },
+  compoundVariants: [
+    {
+      isIndeterminate: true,
+      colorScheme: "error",
+      className: "bg-gradient-to-r from-error-200 via-error-500 to-error-200",
+    },
+    {
+      isIndeterminate: true,
+      colorScheme: "primary",
+      className:
+        "bg-gradient-to-r from-primary-200 via-primary-500 to-primary-200",
+    },
+    {
+      isIndeterminate: true,
+      colorScheme: "success",
+      className:
+        "bg-gradient-to-r from-success-200 via-success-500 to-success-200",
+    },
+    {
+      isIndeterminate: true,
+      colorScheme: "warning",
+      className:
+        "bg-gradient-to-r from-warning-200 via-warning-500 to-warning-200",
+    },
+  ],
+});
+
+export const Progress = forwardRef<HTMLDivElement, Progress>(
+  ({ ...props }, forwardedref) => {
+    const {
+      label,
+      value = 0,
+      minValue = 0,
+      maxValue = 100,
+      size = "md",
+      className,
+      colorScheme = "primary",
+      isIndeterminate,
+    } = props;
+    const { progressBarProps, labelProps } = useProgressBar(props);
+    // Calculate the width of the progress bar as a percentage
+    const percentage = (value - minValue) / (maxValue - minValue);
+    const barWidth = `${Math.round(percentage * 100)}%`;
+    return (
+      <div
+        {...progressBarProps}
+        {...props}
+        className={classNames(
+          "bg-secondary-200 dark:bg-secondary-700 w-full overflow-hidden",
+          isIndeterminate && "relative",
+          progressClasses({ size }),
+          className
+        )}
+        ref={forwardedref}
+      >
+        {isIndeterminate ? (
+          <div
+            className={classNames(
+              progressClasses({ size, colorScheme, isIndeterminate }),
+              "w-1/3 absolute top-0 animate-progress-loading"
+            )}
+          />
+        ) : (
+          <div
+            style={{ width: barWidth }}
+            className={classNames(
+              progressClasses({ size, colorScheme }),
+              "transition-all duration-200"
+            )}
+          />
+        )}
+      </div>
+    );
+  }
+);
+
+Progress.displayName = "Progress";

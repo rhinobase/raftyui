@@ -61,11 +61,16 @@ module.exports = {
           "0%": { opacity: 0, transform: "translateY(-2px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        "progress-loading": {
+          "0%": { left: "-50%" },
+          "100%": { left: "100%" },
+        },
       },
       animation: {
         "slide-right": "slide-right 0.4s",
         "slide-left": "slide-left 0.4s",
         "slide-down-fade": "slide-down-fade 1s cubic-bezier(0.16, 1, 0.3, 1)",
+        "progress-loading": "progress-loading 1s infinite",
       },
     },
   },
