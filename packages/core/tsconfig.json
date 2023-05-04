@@ -19,6 +19,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "stories/alert.stories.tsx",
+    "stories/button.stories.tsx",
+    "stories/card.stories.tsx",
+    "stories/spinner.stories.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

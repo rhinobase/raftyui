@@ -1,10 +1,7 @@
-import { Grid } from "@rhinobase/docs/components";
-import { Button } from "../button";
-import * as Card from "./Card";
-import React from "react";
+import { Button, Card } from "../src";
 
 const config = {
-  title: "New/Card",
+  title: "Components / Card",
   component: Card,
 };
 export default config;

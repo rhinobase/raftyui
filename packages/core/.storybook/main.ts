@@ -4,7 +4,7 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
-  stories: ["../src/**/*.stories.tsx"],
+  stories: ["../stories/**/*.stories.tsx"],
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-essentials",

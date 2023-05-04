@@ -1,4 +1,4 @@
-import { Spinner } from "./Spinner";
+import { Spinner } from "../src";
 
 const config = {
   title: "Components / Spinner",
