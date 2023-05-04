@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Alert, AlertDescription, AlertIcon, AlertTitle, Button } from "../src";
+import React from "react";
 
 const meta: Meta<typeof Alert> = {
   title: "Components / Alert",
@@ -36,7 +37,7 @@ export const Variants: Story = {
         <p>Simple Variant</p>
         <Alert size={size} status={status}>
           <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
+          <AlertTitle id="title">Title</AlertTitle>
           <AlertDescription>Description</AlertDescription>
         </Alert>
       </div>
@@ -75,6 +76,7 @@ export const AlertWithAction: Story = {
       options: ["simple", "solid", "left-accent", "top-accent"],
     },
   },
+
   render: ({ status, size, variant }) => (
     <div className="flex flex-col gap-4 max-w-3xl w-full">
       <Alert variant={variant} size={size} status={status}>
