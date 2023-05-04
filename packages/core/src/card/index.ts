@@ -1,1 +1,1 @@
-export { Root, Header, Body, Footer } from "./Card";
+export { Card, CardBody, CardFooter, CardHeader } from "./Card";

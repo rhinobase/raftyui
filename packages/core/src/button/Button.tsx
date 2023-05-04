@@ -9,6 +9,7 @@ export type Button = {
   /* Right aligned icon */
   rightIcon?: JSX.Element;
   loadingText?: string;
+  unstyled?: boolean;
 } & VariantProps<typeof buttonClasses> &
   Omit<JSX.IntrinsicElements["button"], "ref">;
 
@@ -450,6 +451,9 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     type = "button",
     loadingText,
     hidden,
+    unstyled,
+    className,
+    children,
     ...props
   }: Button,
   forwardedRef
@@ -470,17 +474,21 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
       {...passThroughProps}
       disabled={disabled ?? undefined}
       ref={forwardedRef}
-      className={classNames(
-        buttonClasses({
-          colorScheme,
-          variant,
-          size,
-          loading,
-          disabled: props.disabled,
-          active,
-        }),
-        props.className
-      )}
+      className={
+        unstyled
+          ? className
+          : classNames(
+              buttonClasses({
+                colorScheme,
+                variant,
+                size,
+                loading,
+                disabled: props.disabled,
+                active,
+              }),
+              className
+            )
+      }
       // if we click a disabled button, we prevent going through the click handler
       onClick={
         disabled
@@ -493,7 +501,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
       {loading ? (
         <>
           <Spinner inheritParent className="mr-2" size="sm" />
-          {loadingText ?? props.children}
+          {loadingText ?? children}
         </>
       ) : (
         <>
@@ -502,7 +510,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
               {LeftIcon}
             </div>
           )}
-          {props.children}
+          {children}
           {RightIcon && (
             <div className="ml-1 flex h-[20px] items-center justify-center">
               {RightIcon}

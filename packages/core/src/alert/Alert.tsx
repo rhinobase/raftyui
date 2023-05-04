@@ -12,12 +12,12 @@ import { cva } from "class-variance-authority";
 // Alert Component
 export type Alert = AlertContext & JSX.IntrinsicElements["div"];
 
-const alertClasses = cva("", {
+const alertClasses = cva("rounded-base flex w-full items-center", {
   variants: {
     size: {
-      sm: "",
-      md: "",
-      lg: "",
+      sm: "p-2 gap-1.5",
+      md: "p-3 gap-3",
+      lg: "p-4 gap-4",
     },
     status: {
       success: "",
@@ -30,34 +30,9 @@ const alertClasses = cva("", {
       solid: "",
       "left-accent": "",
       "top-accent": "",
-      unstyled: "",
     },
   },
   compoundVariants: [
-    ...applyStyleToMultipleVariants({
-      size: ["sm", "md", "lg"],
-      status: ["success", "warning", "error", "info"],
-      variant: ["simple", "solid", "left-accent", "top-accent"],
-      className: "rounded-base flex w-full items-center",
-    }),
-    ...applyStyleToMultipleVariants({
-      size: "sm",
-      status: ["success", "warning", "error", "info"],
-      variant: ["simple", "solid", "left-accent", "top-accent"],
-      className: "p-2 gap-1.5",
-    }),
-    ...applyStyleToMultipleVariants({
-      size: "md",
-      status: ["success", "warning", "error", "info"],
-      variant: ["simple", "solid", "left-accent", "top-accent"],
-      className: "p-3 gap-3",
-    }),
-    ...applyStyleToMultipleVariants({
-      size: "lg",
-      status: ["success", "warning", "error", "info"],
-      variant: ["simple", "solid", "left-accent", "top-accent"],
-      className: "p-4 gap-4",
-    }),
     {
       variant: "simple",
       status: "success",
@@ -111,17 +86,26 @@ const alertClasses = cva("", {
 
 export const Alert = forwardRef<HTMLDivElement, Alert>(
   (
-    { className, status, size = "md", variant = "simple", children, ...props },
+    {
+      className,
+      status,
+      size = "md",
+      variant = "simple",
+      unstyled = false,
+      children,
+      ...props
+    },
     forwardedRef
   ) => {
     return (
-      <AlertProvider value={{ status, size, variant }}>
+      <AlertProvider value={{ status, size, variant, unstyled }}>
         <div
           {...props}
-          className={classNames(
-            alertClasses({ size, status, variant }),
-            className
-          )}
+          className={
+            unstyled
+              ? className
+              : classNames(alertClasses({ size, status, variant }), className)
+          }
           ref={forwardedRef}
         >
           {children}
@@ -130,96 +114,149 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
     );
   }
 );
-
 Alert.displayName = "Alert";
 
-export function AlertIcon(props: { className?: string }) {
-  const { status, variant } = useAlertContext();
-  const className = props;
+const alertIconClasses = cva("stroke-2", {
+  variants: {
+    size: {
+      sm: "h-3 w-3",
+      md: "h-5 w-5",
+      lg: "h-7 w-7",
+    },
+    status: {
+      success: "",
+      warning: "",
+      error: "",
+      info: "",
+    },
+    variant: {
+      simple: "",
+      solid: "",
+      "left-accent": "",
+      "top-accent": "",
+    },
+  },
+  compoundVariants: [
+    ...applyStyleToMultipleVariants({
+      size: ["sm", "md", "lg"],
+      status: "error",
+      variant: ["simple", "left-accent", "right-accent"],
+      className: "text-error-500 dark:text-error-200",
+    }),
+    ...applyStyleToMultipleVariants({
+      size: ["sm", "md", "lg"],
+      status: "warning",
+      variant: ["simple", "left-accent", "right-accent"],
+      className: "text-warning-600 dark:text-warning-300",
+    }),
+    ...applyStyleToMultipleVariants({
+      size: ["sm", "md", "lg"],
+      status: "info",
+      variant: ["simple", "left-accent", "right-accent"],
+      className: "text-info-500 dark:text-info-200",
+    }),
+    ...applyStyleToMultipleVariants({
+      size: ["sm", "md", "lg"],
+      status: "success",
+      variant: ["simple", "left-accent", "right-accent"],
+      className: "text-success-500 dark:text-success-300",
+    }),
+  ],
+});
 
-  let Icon: JSX.Element;
+export function AlertIcon({ className }: { className?: string }) {
+  const { size, status, variant, unstyled } = useAlertContext();
 
+  let Icon: typeof ExclamationCircleIcon;
   switch (status) {
     case "error":
-      Icon = (
-        <ExclamationCircleIcon
-          className={classNames(
-            variant != "solid" && "text-error-500 dark:text-error-200",
-            "h-5 w-5 stroke-2",
-            className
-          )}
-        />
-      );
+      Icon = ExclamationCircleIcon;
+      break;
+    case "warning":
+      Icon = ExclamationTriangleIcon;
       break;
     case "info":
-      Icon = (
-        <InformationCircleIcon
-          className={classNames(
-            variant != "solid" && "text-info-500 dark:text-info-200",
-            "h-5 w-5 stroke-2",
-            className
-          )}
-        />
-      );
+      Icon = InformationCircleIcon;
       break;
-
     case "success":
-      Icon = (
-        <CheckCircleIcon
-          className={classNames(
-            variant != "solid" && "text-success-500 dark:text-success-300",
-            "h-5 w-5 stroke-2",
-            className
-          )}
-        />
-      );
-      break;
-
-    case "warning":
-      Icon = (
-        <ExclamationTriangleIcon
-          className={classNames(
-            variant != "solid" && "text-warning-600 dark:text-warning-300",
-            "h-5 w-5 stroke-2",
-            className
-          )}
-        />
-      );
+      Icon = CheckCircleIcon;
       break;
   }
-  return Icon;
+
+  return (
+    <Icon
+      className={
+        unstyled
+          ? className
+          : classNames(alertIconClasses({ size, status, variant }), className)
+      }
+    />
+  );
 }
 
-export type AlertTitle = JSX.IntrinsicElements["p"];
+export type AlertTitle = JSX.IntrinsicElements["h6"];
+
+const alertTitleClasses = cva("", {
+  variants: {
+    size: {
+      sm: "font-medium",
+      md: "text-lg font-medium",
+      lg: "text-xl font-semibold",
+    },
+  },
+});
+
 export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
   ({ children, className, ...props }, forwardedRef) => {
+    const { size, unstyled } = useAlertContext();
+
     return (
-      <p
+      <h6
         {...props}
-        className={classNames("font-medium", className)}
+        className={
+          unstyled
+            ? className
+            : classNames(alertTitleClasses({ size }), className)
+        }
         ref={forwardedRef}
       >
         {children}
-      </p>
+      </h6>
     );
   }
 );
 AlertTitle.displayName = "AlertTitle";
 
 export type AlertDescription = JSX.IntrinsicElements["p"];
+
+const alertDescriptionClasses = cva("", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+    },
+  },
+});
+
 export const AlertDescription = forwardRef<
   HTMLParagraphElement,
   AlertDescription
 >(({ children, className, ...props }, forwardedRef) => {
+  const { size, unstyled } = useAlertContext();
+
   return (
     <p
       {...props}
-      className={classNames("text-sm", className)}
+      className={
+        unstyled
+          ? className
+          : classNames(alertDescriptionClasses({ size }), className)
+      }
       ref={forwardedRef}
     >
       {children}
     </p>
   );
 });
-
 AlertDescription.displayName = "AlertDescription";

@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Card Component
-export const Root = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
+export const Card = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
   ({ children, className, ...props }, forwardedRef) => (
     <div
       {...props}
@@ -16,46 +16,49 @@ export const Root = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
     </div>
   )
 );
-Root.displayName = "Card.Root";
+Card.displayName = "Card";
 
 // CardHeader Component
-export const Header = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      className={classNames(
-        "dark:border-secondary-700 p-5 text-xl font-semibold",
-        className
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </div>
-  )
-);
+export const CardHeader = forwardRef<
+  HTMLDivElement,
+  JSX.IntrinsicElements["div"]
+>(({ children, className, ...props }, forwardedRef) => (
+  <div
+    {...props}
+    className={classNames(
+      "dark:border-secondary-700 p-5 text-xl font-semibold",
+      className
+    )}
+    ref={forwardedRef}
+  >
+    {children}
+  </div>
+));
 
-Header.displayName = "Card.Header";
+CardHeader.displayName = "CardHeader";
 
 // CardBody Component
-export const Body = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <div {...props} className={classNames("p-5", className)} ref={forwardedRef}>
-      {children}
-    </div>
-  )
-);
-Body.displayName = "Card.Body";
+export const CardBody = forwardRef<
+  HTMLDivElement,
+  JSX.IntrinsicElements["div"]
+>(({ children, className, ...props }, forwardedRef) => (
+  <div {...props} className={classNames("p-5", className)} ref={forwardedRef}>
+    {children}
+  </div>
+));
+CardBody.displayName = "CardBody";
 
 // CardFooter Component
-export const Footer = forwardRef<HTMLDivElement, JSX.IntrinsicElements["div"]>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      className={classNames("dark:border-secondary-700 p-5", className)}
-      ref={forwardedRef}
-    >
-      {children}
-    </div>
-  )
-);
-Footer.displayName = "Card.Footer";
+export const CardFooter = forwardRef<
+  HTMLDivElement,
+  JSX.IntrinsicElements["div"]
+>(({ children, className, ...props }, forwardedRef) => (
+  <div
+    {...props}
+    className={classNames("dark:border-secondary-700 p-5", className)}
+    ref={forwardedRef}
+  >
+    {children}
+  </div>
+));
+CardFooter.displayName = "CardFooter";

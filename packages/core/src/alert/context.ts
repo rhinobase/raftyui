@@ -9,5 +9,6 @@ export const [AlertProvider, useAlertContext] = createContext<AlertContext>({
 export interface AlertContext {
   size?: "sm" | "md" | "lg";
   status: "success" | "warning" | "error" | "info";
-  variant?: "simple" | "solid" | "left-accent" | "top-accent" | "unstyled";
+  variant?: "simple" | "solid" | "left-accent" | "top-accent";
+  unstyled?: boolean;
 }

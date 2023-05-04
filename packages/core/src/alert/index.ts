@@ -1,1 +1,1 @@
-export { Alert, AlertDescription, AlertIcon, AlertTitle } from "./Alert";
+export { Alert, AlertTitle, AlertIcon, AlertDescription } from "./Alert";
