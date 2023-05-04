@@ -16,10 +16,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
+    "@radix-ui/react-tooltip": "^1.0.5",
     "class-variance-authority": "^0.6.0",
     "react": "18.x",
     "react-aria": "^3.24.0",
-    "react-dom": "18.x"
+    "react-dom": "18.x",
+    "react-stately": "^3.22.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.7",
