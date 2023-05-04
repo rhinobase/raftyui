@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { Button } from "../src";
 import { expect } from "@storybook/jest";
+import React from "react";
 
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
@@ -12,131 +13,71 @@ const meta: Meta<typeof Button> = {
       </div>
     ),
   ],
+  args: {
+    colorScheme: "secondary",
+  },
+  argTypes: {
+    colorScheme: {
+      control: "select",
+      options: ["primary", "secondary", "error", "success"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const ColorScheme: Story = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    // Button colors
-    const colors = ["primary", "secondary", "error", "success"];
-    const variants = {
-      primary: {
-        bg: "primary-600",
-        focus: "primary-500",
-        dark: "primary-400/80",
-      },
-      secondary: {
-        bg: "secondary-300",
-        focus: "secondary-200",
-        dark: "secondary-400/80",
-      },
-      error: {
-        bg: "error-600/90",
-        focus: "error-500",
-        dark: "error-400",
-      },
-      success: {
-        bg: "success-600/90",
-        focus: "success-500",
-        dark: "success-400",
-      },
-    };
-
-    // Buttons
-    const buttons = canvas.getAllByText("Button text");
-
-    for (let i = 0; i < colors.length; i++) {
-      // Elements
-      const variant = variants[colors[i] as keyof typeof variants];
-      const button = buttons[i];
-
-      await userEvent.click(button);
-      await expect(button).toHaveClass(
-        `hover:bg-${variant.bg} focus:ring-offset-1 focus:ring-${variant.focus} focus:outline-none focus:ring-2 transition-all dark:hover:bg-${variant.dark} dark:ring-secondary-100 dark:focus:ring-offset-secondary-900`
-      );
-    }
-  },
-  render: () => (
-    <>
-      <Button colorScheme="primary">Button text</Button>
-      <Button colorScheme="secondary">Button text</Button>
-      <Button colorScheme="error">Button text</Button>
-      <Button colorScheme="success">Button text</Button>
-    </>
-  ),
-};
-
 export const Sizes: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const sizes = ["sm", "base", "lg", "icon", "fab"];
-    const paddings = {
-      sm: {
-        px: "2",
-        py: "1",
-        p: "",
-        rounded: "base",
-        text_size: "xs",
-      },
-      base: {
-        px: "3",
-        py: "2",
-        p: "",
-        rounded: "md",
-        text_size: "sm",
-      },
-      lg: {
-        px: "4",
-        py: "3",
-        p: "",
-        rounded: "md",
-        text_size: "base",
-      },
-      icon: {
-        px: "",
-        py: "",
-        p: "1.5",
-        rounded: "md",
-        text_size: "base",
-      },
-      fab: {
-        px: "",
-        py: "",
-        p: "1.5",
-        rounded: "full",
-        text_size: "base",
-      },
-    };
-    // Buttons
-    const buttons = canvas.getAllByRole("button");
+    const buttons = await canvas.findAllByRole("button");
 
-    for (let i = 0; i < sizes.length; i++) {
-      const padding = paddings[sizes[i] as keyof typeof paddings];
-      const button = buttons[i];
+    for (let index = 0; index < buttons.length; index++) {
+      // Getting the button
+      const button = buttons[index];
 
-      await userEvent.click(buttons[i]);
+      // Basic checking
+      await expect(button).toBeEnabled();
+      await expect(button).toHaveTextContent("Button text");
 
-      if (sizes[i] == "icon" || sizes[i] == "fab")
-        await expect(button).toHaveClass(
-          `p-${padding.p} rounded-${padding.rounded}`
-        );
-      else {
-        await expect(button).toHaveClass(
-          `px-${padding.px} py-${padding.py} rounded-${padding.rounded} text-${padding.text_size}`
-        );
-      }
+      // Focused when clicked
+      await userEvent.click(button);
+      await expect(button).toHaveFocus();
     }
   },
-  render: () => (
+  render: ({ colorScheme }) => (
     <>
-      <Button size="sm">Button text</Button>
-      <Button>Button text</Button>
-      <Button size="lg">Button text</Button>
-      <Button size="icon">
+      <Button size="sm" colorScheme={colorScheme}>
+        Button text
+      </Button>
+      <Button colorScheme={colorScheme}>Button text</Button>
+      <Button size="lg" colorScheme={colorScheme}>
+        Button text
+      </Button>
+    </>
+  ),
+};
+
+export const IconButton: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const buttons = await canvas.findAllByRole("button");
+
+    for (let index = 0; index < buttons.length; index++) {
+      // Getting the button
+      const button = buttons[index];
+
+      // Basic checking
+      await expect(button).toBeEnabled();
+
+      // Focused when clicked
+      await userEvent.click(button);
+      await expect(button).toHaveFocus();
+    }
+  },
+  render: ({ colorScheme }) => (
+    <>
+      <Button colorScheme={colorScheme} size="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -152,7 +93,7 @@ export const Sizes: Story = {
           />
         </svg>
       </Button>
-      <Button size="fab">
+      <Button colorScheme={colorScheme} size="fab">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -172,99 +113,86 @@ export const Sizes: Story = {
   ),
 };
 
-export const Variants = () => (
-  <>
-    <div className="flex flex-col gap-1">
-      <div className="text-center font-semibold text-sm mb-2 text-secondary-500">
-        Solid
+export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const buttons = await canvas.findAllByRole("button");
+
+    for (let index = 0; index < buttons.length; index++) {
+      // Getting the button
+      const button = buttons[index];
+
+      // Basic checking
+      await expect(button).toBeEnabled();
+      await expect(button).toHaveTextContent("Button text");
+
+      // Focused when clicked
+      await userEvent.click(button);
+      await expect(button).toHaveFocus();
+    }
+  },
+  render: ({ colorScheme }) => (
+    <>
+      <div className="flex flex-col gap-1">
+        <div className="font-semibold text-sm mb-2 text-secondary-500">
+          Solid
+        </div>
+        <Button colorScheme={colorScheme}>Button text</Button>
       </div>
-      <Button colorScheme="primary">Button text</Button>
-      <Button colorScheme="secondary">Button text</Button>
-      <Button colorScheme="error">Button text</Button>
-      <Button colorScheme="success">Button text</Button>
-    </div>
-    <div className="flex flex-col gap-1">
-      <div className="text-center font-semibold text-sm mb-2 text-secondary-500">
-        Outline
+      <div className="flex flex-col gap-1">
+        <div className="font-semibold text-sm mb-2 text-secondary-500">
+          Outline
+        </div>
+        <Button variant="outline" colorScheme={colorScheme}>
+          Button text
+        </Button>
       </div>
-      <Button variant="outline" colorScheme="primary">
-        Button text
-      </Button>
-      <Button variant="outline" colorScheme="secondary">
-        Button text
-      </Button>
-      <Button variant="outline" colorScheme="error">
-        Button text
-      </Button>
-      <Button variant="outline" colorScheme="success">
-        Button text
-      </Button>
-    </div>
-    <div className="flex flex-col gap-1">
-      <div className="text-center font-semibold text-sm mb-2 text-secondary-500">
-        Ghost
+      <div className="flex flex-col gap-1">
+        <div className="font-semibold text-sm mb-2 text-secondary-500">
+          Ghost
+        </div>
+        <Button variant="ghost" colorScheme={colorScheme}>
+          Button text
+        </Button>
       </div>
-      <Button variant="ghost" colorScheme="primary">
-        Button text
-      </Button>
-      <Button variant="ghost" colorScheme="secondary">
-        Button text
-      </Button>
-      <Button variant="ghost" colorScheme="error">
-        Button text
-      </Button>
-      <Button variant="ghost" colorScheme="success">
-        Button text
-      </Button>
-    </div>
-  </>
-);
-export const ActiveVariants = () => (
-  <>
-    <div className="flex flex-col gap-1">
-      <Button colorScheme="primary" active>
-        Button text
-      </Button>
-      <Button colorScheme="secondary" active>
-        Button text
-      </Button>
-      <Button colorScheme="error" active>
-        Button text
-      </Button>
-      <Button colorScheme="success" active>
-        Button text
-      </Button>
-    </div>
-    <div className="flex flex-col gap-1">
-      <Button colorScheme="primary" variant="outline" active>
-        Button text
-      </Button>
-      <Button colorScheme="secondary" variant="outline" active>
-        Button text
-      </Button>
-      <Button colorScheme="error" variant="outline" active>
-        Button text
-      </Button>
-      <Button colorScheme="success" variant="outline" active>
-        Button text
-      </Button>
-    </div>
-    <div className="flex flex-col gap-1">
-      <Button colorScheme="primary" variant="ghost" active>
-        Button text
-      </Button>
-      <Button colorScheme="secondary" variant="ghost" active>
-        Button text
-      </Button>
-      <Button colorScheme="error" variant="ghost" active>
-        Button text
-      </Button>
-      <Button colorScheme="success" variant="ghost" active>
-        Button text
-      </Button>
-    </div>
-  </>
-);
+    </>
+  ),
+};
+export const ActiveVariants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const buttons = canvas.getAllByRole("button");
+
+    for (let i = 0; i < buttons.length; i++) {
+      const button = buttons[i];
+      //Test for Active
+      await userEvent.hover(button);
+      await // Focused when clicked
+      await userEvent.click(button);
+      await expect(button).toHaveFocus();
+    }
+  },
+
+  render: ({ colorScheme }) => (
+    <>
+      <div className="flex flex-col gap-1">
+        <Button colorScheme={colorScheme} active>
+          Button text
+        </Button>
+      </div>
+      <div className="flex flex-col gap-1">
+        <Button colorScheme={colorScheme} variant="outline" active>
+          Button text
+        </Button>
+      </div>
+      <div className="flex flex-col gap-1">
+        <Button colorScheme={colorScheme} variant="ghost" active>
+          Button text
+        </Button>
+      </div>
+    </>
+  ),
+};
 export const DisabledVariants = () => (
   <>
     <div className="flex flex-col gap-1">

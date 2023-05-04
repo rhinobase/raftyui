@@ -1,3 +1,4 @@
+import React from "react";
 import { Button, Card } from "../src";
 
 const config = {
