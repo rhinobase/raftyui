@@ -1,5 +1,14 @@
 import { Button } from "../src/button";
-import * as AlertDialog from "../src/alertdailog/AlertDialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogBody,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "../src/alertdailog/AlertDialog";
 
 const config = {
   title: "Components / Alert Dialog",
@@ -10,26 +19,26 @@ export default config;
 
 export function Default() {
   return (
-    <Grid>
-      <AlertDialog.Root>
-        <AlertDialog.Trigger>Open</AlertDialog.Trigger>
-        <AlertDialog.Overlay />
-        <AlertDialog.Content>
-          <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
-          <AlertDialog.Body>
+    <>
+      <AlertDialog>
+        <AlertDialogTrigger>Open</AlertDialogTrigger>
+        <AlertDialogOverlay />
+        <AlertDialogContent>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogBody>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
-          </AlertDialog.Body>
+          </AlertDialogBody>
           <div className="mt-4 flex justify-end gap-6">
-            <AlertDialog.Cancel asChild>
+            <AlertDialogCancel asChild>
               <Button variant="outline">Cancel</Button>
-            </AlertDialog.Cancel>
-            <AlertDialog.Action asChild>
+            </AlertDialogCancel>
+            <AlertDialogAction asChild>
               <Button colorScheme="error">Yes, delete account</Button>
-            </AlertDialog.Action>
+            </AlertDialogAction>
           </div>
-        </AlertDialog.Content>
-      </AlertDialog.Root>
-    </Grid>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }
