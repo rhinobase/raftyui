@@ -23,6 +23,7 @@
     "react": "18.x",
     "react-aria": "^3.24.0",
     "react-dom": "18.x",
+    "react-select": "^5.7.3",
     "react-stately": "^3.22.0"
   },
   "devDependencies": {
