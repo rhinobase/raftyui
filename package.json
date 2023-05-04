@@ -9,9 +9,10 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build --filter=@rafty/ui",
+    "build": "turbo run build --filter=@rafty/plugin --filter=@rafty/ui",
     "build:web": "turbo run build --filter=web",
-    "dev": "turbo run dev --no-cache --continue --filter=@rafty/ui",
+    "build:plugin": "turbo run build --filter=@rafty/plugin",
+    "dev": "npm run build:plugin && turbo run dev --no-cache --continue --filter=@rafty/ui",
     "dev:web": "npm run build && turbo run dev --no-cache --continue --filter=web",
     "lint": "turbo lint",
     "changeset": "changeset",

@@ -1,17 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Switch } from "../src/switch";
-import { option } from "yargs";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const meta: Meta<typeof Switch> = {
   title: "Components / Switch",
-  decorators: [
-    (Story) => (
-      <div className="w-full flex flex-col items-center justify-center gap-2 mx-auto max-w-3xl h-[calc(100vh-40px)]">
-        <Story />
-      </div>
-    ),
-  ],
   args: {
     size: "md",
     isDisabled: false,

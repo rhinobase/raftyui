@@ -6,13 +6,6 @@ import React from "react";
 
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
-  decorators: [
-    (Story) => (
-      <div className="w-full flex items-center justify-center gap-2 mx-auto max-w-3xl h-[calc(100vh-40px)]">
-        <Story />
-      </div>
-    ),
-  ],
   args: {
     colorScheme: "secondary",
   },

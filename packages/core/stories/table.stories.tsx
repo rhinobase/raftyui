@@ -10,7 +10,7 @@ import {
 } from "../src/table";
 
 const config = {
-  title: "New/ Table",
+  title: "Components / Table",
   component: Table,
   argTypes: {
     size: { control: "select" },

@@ -1,16 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Alert, AlertDescription, AlertIcon, AlertTitle, Button } from "../src";
-import React from "react";
 
 const meta: Meta<typeof Alert> = {
   title: "Components / Alert",
-  decorators: [
-    (Story) => (
-      <div className="w-full flex flex-col items-center justify-center gap-2 mx-auto max-w-3xl h-[calc(100vh-40px)]">
-        <Story />
-      </div>
-    ),
-  ],
   args: {
     status: "info",
     size: "md",
