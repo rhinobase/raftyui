@@ -1,13 +1,11 @@
 import { forwardRef } from "react";
 import { AriaProgressBarProps, useProgressBar } from "react-aria";
 import { classNames } from "../utils";
-import { cva } from "class-variance-authority";
+import { VariantProps, cva } from "class-variance-authority";
 
 type Progress = AriaProgressBarProps &
-  JSX.IntrinsicElements["div"] & {
-    colorScheme?: "error" | "primary" | "warning" | "success";
-    size?: "sm" | "md" | "lg";
-  };
+  JSX.IntrinsicElements["div"] &
+  VariantProps<typeof progressClasses>;
 
 const progressClasses = cva("", {
   variants: {
@@ -16,14 +14,14 @@ const progressClasses = cva("", {
       md: "h-3",
       lg: "h-4",
     },
-    isIndeterminate: {
-      true: "",
-    },
     colorScheme: {
       error: "bg-error-500 dark:bg-error-300",
       warning: "bg-warning-500 dark:bg-warning-300",
       primary: "bg-primary-500 dark:bg-primary-300",
       success: "bg-success-500 dark:bg-success-300",
+    },
+    isIndeterminate: {
+      true: "",
     },
   },
   compoundVariants: [
@@ -56,7 +54,6 @@ const progressClasses = cva("", {
 export const Progress = forwardRef<HTMLDivElement, Progress>(
   ({ ...props }, forwardedref) => {
     const {
-      label,
       value = 0,
       minValue = 0,
       maxValue = 100,
@@ -65,7 +62,7 @@ export const Progress = forwardRef<HTMLDivElement, Progress>(
       colorScheme = "primary",
       isIndeterminate,
     } = props;
-    const { progressBarProps, labelProps } = useProgressBar(props);
+    const { progressBarProps } = useProgressBar(props);
     // Calculate the width of the progress bar as a percentage
     const percentage = (value - minValue) / (maxValue - minValue);
     const barWidth = `${Math.round(percentage * 100)}%`;
@@ -74,8 +71,8 @@ export const Progress = forwardRef<HTMLDivElement, Progress>(
         {...progressBarProps}
         {...props}
         className={classNames(
-          "bg-secondary-200 dark:bg-secondary-700 w-full overflow-hidden",
           isIndeterminate && "relative",
+          "bg-secondary-200 dark:bg-secondary-700 w-full overflow-hidden",
           progressClasses({ size }),
           className
         )}
