@@ -48,7 +48,7 @@ export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTrigger>(
     const unstyle = barebone || unstyled;
 
     return (
-      <DialogPrimitive.Trigger {...props} asChild={asChild} ref={forwardedRef}>
+      <DialogPrimitive.Trigger {...props} asChild ref={forwardedRef}>
         {asChild ? (
           children
         ) : (

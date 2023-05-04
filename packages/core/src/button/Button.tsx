@@ -30,7 +30,7 @@ const buttonClasses = cva(
       },
       size: {
         sm: "px-2 py-1 leading-5 rounded-base text-xs" /* For backwards compatibility */,
-        base: "px-3 py-2 rounded-md text-sm",
+        md: "px-3 py-2 rounded-md text-sm",
         lg: "px-4 py-3 text-base leading-5 rounded-md",
         icon: "flex justify-center p-1.5 stroke-2 rounded-md",
         fab: "rounded-full p-1.5 stroke-2",
@@ -436,7 +436,7 @@ const buttonClasses = cva(
     defaultVariants: {
       colorScheme: "secondary",
       variant: "solid",
-      size: "base",
+      size: "md",
     },
   }
 );
@@ -447,7 +447,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     active = false,
     colorScheme = "secondary",
     variant = "solid",
-    size = "base",
+    size = "md",
     type = "button",
     loadingText,
     hidden,

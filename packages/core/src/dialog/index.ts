@@ -1,10 +1,10 @@
 export {
-  Root,
-  Trigger,
-  Content,
-  Title,
-  Body,
-  CloseButton,
-  Overlay,
-  Close,
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogCloseButton,
+  DialogContent,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
 } from "./Dialog";
