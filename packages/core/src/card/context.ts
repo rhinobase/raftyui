@@ -8,5 +8,6 @@ export const [CardProvider, useCardContext] = createContext<CardContext>({
 
 export interface CardContext {
   size?: "sm" | "md" | "lg";
-  unstyled?: boolean;
+  variant?: "solid" | "outline" | "elevated";
+  barebone?: boolean;
 }
