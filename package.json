@@ -10,13 +10,13 @@
   },
   "scripts": {
     "build": "turbo run build --filter=@rafty/ui",
-    "build:docs": "turbo run build --filter=web",
+    "build:web": "turbo run build --filter=web",
     "dev": "turbo run dev --no-cache --continue --filter=@rafty/ui",
-    "dev:docs": "npm run build && turbo run dev --no-cache --continue --filter=web",
+    "dev:web": "npm run build && turbo run dev --no-cache --continue --filter=web",
     "lint": "turbo lint",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish",
+    "release": "turbo run build --filter=...^web && changeset publish",
     "test": "turbo run test"
   },
   "repository": {
