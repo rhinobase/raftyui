@@ -22,12 +22,12 @@ export function useBoolean(initialState: InitialState = false) {
 }
 
 // PasswordField Component
-export type PasswordField = JSX.IntrinsicElements["input"] & {
-  sizes?: "sm" | "md" | "lg";
-  variant?: "outline" | "solid" | "ghost" | "unstyled";
+export type PasswordField = Omit<JSX.IntrinsicElements["input"], "size"> & {
+  size?: "sm" | "md" | "lg";
+  variant?: "outline" | "solid" | "ghost";
 };
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
-  ({ sizes = "md", variant = "outline", ...props }, forwardedRef) => {
+  ({ size = "md", variant = "outline", ...props }, forwardedRef) => {
     const [showPassword, { toggle }] = useBoolean();
     const controls = useFieldControlContext();
 
@@ -35,7 +35,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
       <div className="relative flex w-full items-center">
         <InputField
           {...props}
-          sizes={sizes}
+          size={size}
           variant={variant}
           type={showPassword ? "text" : "password"}
           ref={forwardedRef}

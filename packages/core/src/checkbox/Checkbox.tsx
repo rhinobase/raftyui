@@ -50,9 +50,9 @@ export function CheckboxGroup(
 
 type Checkbox = {
   children?: React.ReactNode;
-  sizes?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg";
   indeterminate?: boolean;
-} & JSX.IntrinsicElements["input"] &
+} & Omit<JSX.IntrinsicElements["input"], "size"> &
   AriaCheckboxProps;
 
 const icons = [CheckIcon, MinusIcon];
@@ -60,7 +60,7 @@ const icons = [CheckIcon, MinusIcon];
 export function Checkbox({
   children,
   className,
-  sizes = "md",
+  size = "md",
   checked = false,
   indeterminate = false,
   ...props
