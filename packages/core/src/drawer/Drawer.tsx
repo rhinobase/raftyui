@@ -4,6 +4,7 @@ import { Button } from "../button";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 import { classNames } from "../utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 
 // Drawer Component
 export type Drawer = ComponentProps<(typeof DialogPrimitive)["Dialog"]> &
@@ -42,6 +43,23 @@ export const DrawerOverlay = forwardRef<HTMLDivElement, DrawerOverlay>(
 DrawerOverlay.displayName = "DrawerOverlay";
 
 // Drawer Content Component
+const contentClasses = cva(
+  "dark:bg-secondary-800 dark:text-secondary-50 overflow-y-auto overscroll-auto fixed top-0 z-50 h-screen min-w-[360px] bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
+  {
+    variants: {
+      size: {
+        sm: "max-w-2xl",
+        md: "max-w-3xl",
+        lg: "max-w-5xl",
+        full: "w-full",
+      },
+      side: {
+        left: "animate-slide-right left-0",
+        right: "animate-slide-left right-0",
+      },
+    },
+  }
+);
 export type DrawerContent = ComponentProps<
   (typeof DialogPrimitive)["DialogContent"]
 >;
@@ -53,17 +71,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContent>(
         {/*zIndex one less than Toast */}
         <DialogPrimitive.Content
           {...props}
-          className={classNames(
-            "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen min-w-[360px] bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
-            size == "full" && "w-full",
-            size == "lg" && "max-w-5xl",
-            size == "md" && "max-w-3xl",
-            size == "sm" && "max-w-2xl",
-            side == "left" && "animate-slide-right left-0",
-            side == "right" && "animate-slide-left right-0",
-            "overflow-y-auto overscroll-auto",
-            className
-          )}
+          className={classNames(contentClasses({ size, side }), className)}
           ref={forwardedRef}
         >
           {children}
@@ -75,22 +83,27 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContent>(
 DrawerContent.displayName = "DrawerContent";
 
 // Drawer Title Component
+const titleClasses = cva("mb-2 font-semibold", {
+  variants: {
+    size: {
+      sm: "text-lg",
+      md: "text-xl",
+      lg: "text-xl",
+      full: "text-xl",
+    },
+  },
+});
 export type DrawerTitle = ComponentProps<
   (typeof DialogPrimitive)["DialogTitle"]
 >;
 export const DrawerTitle = React.forwardRef<HTMLDivElement, DrawerTitle>(
-  ({ children, ...props }, forwardedRef) => {
+  ({ children, className, ...props }, forwardedRef) => {
     const { size } = useDrawerContext();
 
     return (
       <DialogPrimitive.Title
         {...props}
-        className={classNames(
-          size == "lg" && "text-xl",
-          size == "md" && "text-xl",
-          size == "sm" && "text-lg",
-          "mb-2 font-semibold"
-        )}
+        className={classNames(titleClasses({ size }), className)}
         ref={forwardedRef}
       >
         {children}
@@ -126,7 +139,6 @@ export const DrawerCloseButton = forwardRef<
 >(({ variant = "ghost", size = "icon", className, ...props }, forwardedRef) => {
   return (
     <DialogPrimitive.Close ref={forwardedRef} asChild>
-      : classNames("absolute top-5 right-5 rounded-full", className)
       <Button
         {...props}
         variant={variant}

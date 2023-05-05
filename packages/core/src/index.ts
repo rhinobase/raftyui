@@ -52,6 +52,14 @@ export {
   DialogTitle,
   DialogTrigger,
 } from "./dialog";
+export {
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerTitle,
+} from "./drawer";
 export { ErrorMessage, FieldControl, FieldGroup, FieldLabel } from "./field";
 export { InputField, InputGroup } from "./input-field";
 export { Kbd } from "./kbd";
