@@ -8,6 +8,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../src";
+import {
+  within,
+  userEvent,
+  screen,
+  fireEvent,
+} from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",
@@ -27,6 +34,18 @@ export default meta;
 type Story = StoryObj<typeof Dialog>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.getByRole("button");
+
+    // Test open Dialog
+    await userEvent.click(button);
+    const dialog = await screen.getByRole("dialog");
+    await expect(dialog).toBeInTheDocument();
+
+    // TODO Dialog close
+  },
+
   render: ({ size }) => (
     <>
       <Dialog size={size}>

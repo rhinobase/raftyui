@@ -13,6 +13,8 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "../src";
+import { within, fireEvent, screen } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof ContextMenu> = {
   title: "Components / ContextMenu",
@@ -32,6 +34,17 @@ export default meta;
 type Story = StoryObj<typeof ContextMenu>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test for open contextmenu
+    const menuarea = await canvas.getByText("Context");
+    await fireEvent.contextMenu(menuarea);
+
+    // Checking for contextmenu appear
+    await expect(screen.findByRole("menu"));
+  },
+
   render: ({ size }) => (
     <>
       <ContextMenu size={size}>

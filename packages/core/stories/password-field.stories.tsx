@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldControl } from "../src/field";
 import { PasswordField } from "../src/password-field";
+import { within } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Components / PasswordField",
@@ -12,13 +14,13 @@ const meta: Meta<typeof PasswordField> = {
     readOnly: false,
   },
   argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
     variant: {
       control: "select",
       options: ["solid", "outline", "ghost", "unstyled"],
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
   },
 };
@@ -27,6 +29,13 @@ export default meta;
 type Story = StoryObj<typeof PasswordField>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const PasswordField = await canvas.findByLabelText("password");
+
+    // Test for passwordfield
+    await expect(PasswordField).toBeInTheDocument();
+  },
   render: ({ size, variant, disabled, readOnly, required }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
@@ -37,7 +46,12 @@ export const Variants: Story = {
           disabled={disabled}
           required={required}
         >
-          <PasswordField variant={variant} size={size} name="password" />
+          <PasswordField
+            aria-label="password"
+            variant={variant}
+            size={size}
+            name="password"
+          />
         </FieldControl>
       </div>
     </>
