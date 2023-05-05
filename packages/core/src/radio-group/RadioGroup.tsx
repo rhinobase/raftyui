@@ -13,7 +13,7 @@ import {
   mergeProps,
 } from "react-aria";
 import { classNames } from "../utils";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { ErrorMessage } from "../field";
 import { Text } from "../text";
 
@@ -34,7 +34,7 @@ export function RadioGroup(props: RadioGroup) {
     description,
     errorMessage,
     validationState,
-    size = "md",
+    // size = "md",
   } = props;
   const state = useRadioGroupState(props);
   const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } =
@@ -54,7 +54,7 @@ export function RadioGroup(props: RadioGroup) {
   );
 }
 
-export type Radio = AriaRadioProps & VariantProps<typeof radioClasses>;
+export type Radio = AriaRadioProps & { size?: "sm" | "md" | "lg" };
 
 const radioClasses = cva("", {
   variants: {

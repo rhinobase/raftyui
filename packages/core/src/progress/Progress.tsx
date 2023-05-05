@@ -1,11 +1,14 @@
 import { forwardRef } from "react";
 import { AriaProgressBarProps, useProgressBar } from "react-aria";
 import { classNames } from "../utils";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
 type Progress = AriaProgressBarProps &
-  JSX.IntrinsicElements["div"] &
-  VariantProps<typeof progressClasses>;
+  JSX.IntrinsicElements["div"] & {
+    size?: "sm" | "md" | "lg";
+    colorScheme?: "error" | "warning" | "primary" | "success";
+    isInterminate?: boolean;
+  };
 
 const progressClasses = cva("", {
   variants: {

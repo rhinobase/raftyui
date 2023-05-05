@@ -1,4 +1,4 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { Spinner } from "../spinner";
 import { forwardRef } from "react";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
@@ -10,8 +10,14 @@ export type Button = {
   rightIcon?: JSX.Element;
   loadingText?: string;
   unstyled?: boolean;
-} & VariantProps<typeof buttonClasses> &
-  Omit<JSX.IntrinsicElements["button"], "ref">;
+} & {
+  colorScheme?: "primary" | "secondary" | "error" | "success";
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg" | "icon" | "fab";
+  loading?: boolean;
+  disabled?: boolean;
+  active?: boolean;
+} & Omit<JSX.IntrinsicElements["button"], "ref">;
 
 const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none data-[hidden=true]:hidden",

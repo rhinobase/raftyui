@@ -7,9 +7,12 @@ import {
   VisuallyHidden,
 } from "react-aria";
 import { classNames } from "../utils";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
-export type Switch = AriaCheckboxProps & VariantProps<typeof switchClasses>;
+export type Switch = AriaCheckboxProps & {
+  size?: "sm" | "md" | "lg";
+  isSelected?: boolean;
+};
 
 const switchClasses = cva("relative rounded-full", {
   variants: {

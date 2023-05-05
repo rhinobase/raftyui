@@ -1,4 +1,4 @@
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
@@ -34,10 +34,11 @@ const selectClasses = cva(
   }
 );
 
-export type Select = Omit<JSX.IntrinsicElements["select"], "size"> &
-  VariantProps<typeof selectClasses> & {
-    unstyled?: boolean;
-  };
+export type Select = Omit<JSX.IntrinsicElements["select"], "size"> & {
+  size?: "sm" | "md" | "lg";
+  variant?: "solid" | "outline" | "ghost";
+  unstyled?: boolean;
+};
 
 export const Select = forwardRef<HTMLSelectElement, Select>(
   (
