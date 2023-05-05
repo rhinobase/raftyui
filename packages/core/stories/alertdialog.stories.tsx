@@ -9,18 +9,64 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../src/alertdailog/AlertDialog";
+import {
+  within,
+  userEvent,
+  screen,
+  fireEvent,
+} from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
+import { Meta, StoryObj } from "@storybook/react";
+import { DialogOverlay } from "../src/dialog";
 
-const config = {
+const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",
-  component: AlertDialog,
+  args: {
+    size: "md",
+    barebone: false,
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    barebone: {},
+  },
 };
+export default meta;
+type Story = StoryObj<typeof AlertDialog>;
 
-export default config;
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
 
-export function Default() {
-  return (
+    const button = await canvas.getByRole("button");
+
+    //Test For Dialog Open
+    await userEvent.click(button);
+    await expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+    await expect(screen.getByRole("alertdialog")).toBeVisible();
+
+    //Test for Close Button Working
+    const closebtn = await screen.getByText("Cancel").closest("button");
+    await fireEvent.click(closebtn as HTMLButtonElement);
+
+    //Test For Dialog Open
+    await userEvent.click(button);
+    await expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+    await expect(screen.getByRole("alertdialog")).toBeVisible();
+
+    //Test for Close Button Working
+    const confirmbtn = await screen
+      .getByText("Yes, delete account")
+      .closest("button");
+    await fireEvent.click(confirmbtn as HTMLButtonElement);
+    
+  },
+
+  render: ({ size, barebone }) => (
     <>
-      <AlertDialog>
+      <AlertDialog size={size} barebone={barebone}>
         <AlertDialogTrigger>Open</AlertDialogTrigger>
         <AlertDialogOverlay />
         <AlertDialogContent>
@@ -40,5 +86,5 @@ export function Default() {
         </AlertDialogContent>
       </AlertDialog>
     </>
-  );
-}
+  ),
+};
