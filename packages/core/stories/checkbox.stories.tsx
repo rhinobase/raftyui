@@ -1,7 +1,7 @@
 import { Checkbox } from "../src";
 
 const config = {
-  title: "New/Checkbox",
+  title: "Components / Checkbox",
   // component: Checkbox,
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },

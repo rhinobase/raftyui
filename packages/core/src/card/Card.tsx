@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { classNames } from "../utils";
-import { CardContext, useCardContext } from "./context";
+import { CardContext, CardProvider, useCardContext } from "./context";
 import { cva } from "class-variance-authority";
 
 // Card Component
@@ -22,7 +22,8 @@ export const Card = forwardRef<HTMLDivElement, Card>(
     {
       children,
       className,
-      variant,
+      variant = "outline",
+      size = "md",
       unstyled = false,
       barebone = false,
       ...props
@@ -32,15 +33,19 @@ export const Card = forwardRef<HTMLDivElement, Card>(
     const unstyle = unstyled || barebone;
 
     return (
-      <div
-        {...props}
-        className={
-          unstyle ? className : classNames(cardClasses({ variant }), className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </div>
+      <CardProvider value={{ size, barebone, variant }}>
+        <div
+          {...props}
+          className={
+            unstyle
+              ? className
+              : classNames(cardClasses({ variant }), className)
+          }
+          ref={forwardedRef}
+        >
+          {children}
+        </div>
+      </CardProvider>
     );
   }
 );

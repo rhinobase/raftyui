@@ -1,21 +1,40 @@
-import { Button } from "../src/button";
-import * as Dialog from "../src/dialog/Dialog";
+import { Meta, StoryObj } from "@storybook/react";
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+} from "../src";
 
-const config = {
+const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",
-  component: Dialog,
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+
+type Story = StoryObj<typeof Dialog>;
+
+export const Variants: Story = {
+  render: ({ size }) => (
     <>
-      <Dialog.Root>
-        <Dialog.Trigger>open</Dialog.Trigger>
-        <Dialog.Overlay />
-        <Dialog.Content>
-          <Dialog.Title>Dialog Header</Dialog.Title>
-          <Dialog.Body>
+      <Dialog size={size}>
+        <DialogTrigger>open</DialogTrigger>
+        <DialogOverlay />
+        <DialogContent>
+          <DialogTitle>Dialog Header</DialogTitle>
+          <DialogBody>
             <p>
               Make changes to your profile here. Click save when you&apos;re
               done.
@@ -23,9 +42,9 @@ export function Default() {
             <div className="flex items-center justify-end pt-5">
               <Button>Save Change</Button>
             </div>
-          </Dialog.Body>
-        </Dialog.Content>
-      </Dialog.Root>
+          </DialogBody>
+        </DialogContent>
+      </Dialog>
     </>
-  );
-}
+  ),
+};

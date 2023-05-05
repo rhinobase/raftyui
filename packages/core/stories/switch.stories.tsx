@@ -41,7 +41,7 @@ export const Variants: Story = {
 
   render: ({ size, isDisabled }) => (
     <>
-      <div className="max-w-2xl w-full flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <h4 className="font-bold">Switch</h4>
         <Switch size={size} isDisabled={isDisabled} />
         <h4 className="font-bold">Switch defaultSelected</h4>

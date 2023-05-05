@@ -19,8 +19,8 @@ const switchClasses = cva("relative rounded-full", {
       lg: "h-7 w-12",
     },
     isSelected: {
-      true: "bg-primary-500 dark:bg-primary-300",
-      false: "bg-secondary-400 dark:bg-secondary-700",
+      true: "bg-primary-500 hover:bg-primary-400 dark:bg-primary-300",
+      false: "bg-secondary-400 hover:bg-secondary-500 dark:bg-secondary-700",
     },
   },
 });
