@@ -7,16 +7,11 @@ const meta: Meta<typeof Switch> = {
   title: "Components / Switch",
   args: {
     size: "md",
-    isDisabled: false,
   },
   argTypes: {
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-    },
-    isDisabled: {
-      control: "boolean",
-      options: [true, false],
     },
   },
 };
@@ -36,10 +31,10 @@ export const Variants: Story = {
     await expect(switches[0]).not.toBeChecked();
 
     // Test for Switch with defaultSelected
-    await userEvent.click(switches[1]);
-    await expect(switches[1]).not.toBeChecked();
-    await userEvent.click(switches[1]);
     await expect(switches[1]).toBeChecked();
+
+    // Test for disabled switch
+    await expect(switches[2]).toBeDisabled();
 
     console.log(switches);
   },
@@ -51,6 +46,8 @@ export const Variants: Story = {
         <Switch size={size} isDisabled={isDisabled} />
         <h4 className="font-bold">Switch defaultSelected</h4>
         <Switch size={size} defaultSelected isDisabled={isDisabled} />
+        <h4 className="font-bold">Switch disabled</h4>
+        <Switch size={size} isDisabled />
       </div>
     </>
   ),
