@@ -18,19 +18,11 @@ export const icons = {
   warning: ExclamationCircleIcon,
 };
 
-const iconStyles = {
-  blue: "[--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]",
-  amber:
-    "[--icon-foreground:theme(colors.amber.900)] [--icon-background:theme(colors.amber.100)]",
-};
-
 export function Icon({
-  color = "blue",
   icon,
   className,
   ...props
 }: {
-  color?: keyof typeof iconStyles;
   icon: keyof typeof icons;
   className?: string;
 }) {
@@ -38,15 +30,10 @@ export function Icon({
   let IconComponent = icons[icon];
 
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 32 32"
-      fill="none"
-      className={clsx(className, iconStyles[color])}
-      {...props}
-    >
-      <IconComponent id={id} color={color} />
-    </svg>
+    <IconComponent
+      className="w-8 h-8 text-primary-500 dark:text-primary-300"
+      id={id}
+    />
   );
 }
 
