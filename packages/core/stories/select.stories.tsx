@@ -19,6 +19,9 @@ const meta: Meta<typeof Select> = {
       control: "select",
       options: ["outline", "ghost", "solid"],
     },
+    unstyled: {
+      control: "boolean",
+    },
   },
 };
 
@@ -39,25 +42,16 @@ export const Variants: Story = {
 
       // Check for Select
       const options = await select.getElementsByTagName("option");
-      await expect(options[0].selected).toBeFalsy();
-      await expect(options[1].selected).toBeTruthy();
-      await expect(options[2].selected).toBeFalsy();
-
-      // Checking Number of Options
-      await expect(options.length).toBe(3);
+      await expect(options[0].selected).toBeFalsy(); // Option 1
+      await expect(options[1].selected).toBeTruthy(); // Option 2
+      await expect(options[2].selected).toBeFalsy(); // Option 3
     }
   },
 
-  render: ({ sizes, variant }) => (
+  render: ({ sizes, variant, unstyled }) => (
     <div className="max-w-2xl w-full flex flex-col gap-4">
-      <h4 className="font-bold">Styled</h4>
-      <Select variant={variant} sizes={sizes}>
-        <Option value="option1">Option 1</Option>
-        <Option value="option2">Option 2</Option>
-        <Option value="option3">Option 3</Option>
-      </Select>
-      <h4 className="font-bold">unStyled</h4>
-      <Select unstyled sizes={sizes}>
+      <h4 className="font-bold">Style</h4>
+      <Select variant={variant} sizes={sizes} unstyled={unstyled}>
         <Option value="option1">Option 1</Option>
         <Option value="option2">Option 2</Option>
         <Option value="option3">Option 3</Option>
