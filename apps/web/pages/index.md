@@ -36,7 +36,7 @@ npm install @tailwindlabs/cache-advance
 
 Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
 
-{% callout type="warning" title="Oh no! Something bad happened!" %}
+{% callout status="warning" title="Oh no! Something bad happened!" %}
 This is what a disclaimer message looks like. You might want to include inline `code` in it. Or maybe you’ll want to include a [link](/) in it. I don’t think we should get too carried away with other scenarios like lists or tables — that would be silly.
 {% /callout %}
 

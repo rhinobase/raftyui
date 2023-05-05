@@ -5,20 +5,20 @@ import {
   LightBulbIcon,
   PuzzlePieceIcon,
   RocketLaunchIcon,
-  SparklesIcon,
   Square3Stack3DIcon,
+  SwatchIcon,
 } from "@heroicons/react/24/outline";
 
-const icons: any = {
+export const icons = {
   installation: RocketLaunchIcon,
   presets: Square3Stack3DIcon,
   plugins: PuzzlePieceIcon,
-  theming: SparklesIcon,
+  theming: SwatchIcon,
   lightbulb: LightBulbIcon,
   warning: ExclamationCircleIcon,
 };
 
-const iconStyles: any = {
+const iconStyles = {
   blue: "[--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]",
   amber:
     "[--icon-foreground:theme(colors.amber.900)] [--icon-background:theme(colors.amber.100)]",
@@ -30,9 +30,9 @@ export function Icon({
   className,
   ...props
 }: {
-  color: string;
-  icon: string;
-  className: string;
+  color?: keyof typeof iconStyles;
+  icon: keyof typeof icons;
+  className?: string;
 }) {
   let id = useId();
   let IconComponent = icons[icon];

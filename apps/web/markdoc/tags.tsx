@@ -5,10 +5,10 @@ const tags = {
   callout: {
     attributes: {
       title: { type: String },
-      type: {
+      status: {
         type: String,
-        default: "note",
-        matches: ["note", "warning"],
+        default: "info",
+        matches: ["info", "warning"],
         errorLevel: "critical",
       },
     },

@@ -8,7 +8,11 @@ import { MobileNavigation } from "@/components/MobileNavigation";
 import { Navigation } from "@/components/Navigation";
 import { Prose } from "@/components/Prose";
 import { Search } from "@/components/Search";
-import { SunIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowSmallLeftIcon,
+  ArrowSmallRightIcon,
+  SunIcon,
+} from "@heroicons/react/24/outline";
 import { Hero } from "./Hero";
 
 const navigation = [
@@ -111,12 +115,14 @@ function Header({ navigation }: { navigation: Navigation }) {
       <div className="-my-5 mr-6 sm:mr-8 md:mr-0">
         <Search />
       </div>
-      <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow items-center">
-        <Button variant="ghost" size="icon">
+      <div className="relative flex basis-0 justify-end gap-4 sm:gap-8 md:flex-grow items-center">
+        <Button variant="ghost" size="icon" colorScheme="primary">
           <SunIcon className="h-5 w-5" />
         </Button>
         <Link href="https://github.com" className="group" aria-label="GitHub">
-          <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
+          <Button variant="ghost" size="icon">
+            <GitHubIcon className="h-5 w-5 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
+          </Button>
         </Link>
       </div>
     </header>
@@ -247,9 +253,10 @@ export function Layout({
                 <dd className="mt-1">
                   <Link
                     href={previousPage.href}
-                    className="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+                    className="text-base font-semibold flex items-center gap-1 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                   >
-                    <span aria-hidden="true">&larr;</span> {previousPage.title}
+                    <ArrowSmallLeftIcon className="h-4 w-4 stroke-2" />
+                    {previousPage.title}
                   </Link>
                 </dd>
               </div>
@@ -262,9 +269,10 @@ export function Layout({
                 <dd className="mt-1">
                   <Link
                     href={nextPage.href}
-                    className="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+                    className="text-base flex items-center gap-1 font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                   >
-                    {nextPage.title} <span aria-hidden="true">&rarr;</span>
+                    {nextPage.title}{" "}
+                    <ArrowSmallRightIcon className="h-4 w-4 stroke-2" />
                   </Link>
                 </dd>
               </div>
