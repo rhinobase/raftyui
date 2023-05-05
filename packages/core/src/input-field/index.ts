@@ -1,2 +1,2 @@
 export { InputField } from "./InputField";
-export { InputGroup } from "./InputGroup";
+export { InputGroup, Prefix, Suffix } from "./InputGroup";

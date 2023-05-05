@@ -1,38 +1,45 @@
-import { PasswordField } from "../src/password-field/PasswordField";
-import { FieldControl, FieldLabel } from "../src/field";
+import { Meta, StoryObj } from "@storybook/react";
+import { FieldControl } from "../src/field";
+import { PasswordField } from "../src/password-field";
 
-const config = {
-  title: "New/Password Field",
-  component: PasswordField,
+const meta: Meta<typeof PasswordField> = {
+  title: "Components / PasswordField",
+  args: {
+    sizes: "md",
+    variant: "outline",
+    disabled: false,
+    required: false,
+    readOnly: false,
+  },
+  argTypes: {
+    sizes: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    variant: {
+      control: "select",
+      options: ["solid", "outline", "ghost", "unstyled"],
+    },
+  },
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+type Story = StoryObj<typeof PasswordField>;
+
+export const Variants: Story = {
+  render: ({ sizes, variant, disabled, readOnly, required }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
         <h4>Password Field</h4>
-        <FieldControl name="password">
-          <PasswordField name="password" />
-        </FieldControl>
-        <h4>Password Field invalid</h4>
-        <FieldControl name="password" invalid>
-          <PasswordField name="password" />
-        </FieldControl>
-        <h4>Password Field disabled</h4>
-        <FieldControl name="password" disabled>
-          <PasswordField name="password" />
-        </FieldControl>
-        <h4>Password Field readOnly</h4>
-        <FieldControl name="password" readOnly>
-          <PasswordField name="password" />
-        </FieldControl>
-        <h4>Password Field required</h4>
-        <FieldControl name="password" required>
-          <FieldLabel>Enter Password</FieldLabel>
-          <PasswordField name="password" />
+        <FieldControl
+          name="password"
+          readOnly={readOnly}
+          disabled={disabled}
+          required={required}
+        >
+          <PasswordField variant={variant} sizes={sizes} name="password" />
         </FieldControl>
       </div>
     </>
-  );
-}
+  ),
+};

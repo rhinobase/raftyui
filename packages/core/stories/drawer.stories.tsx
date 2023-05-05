@@ -1,65 +1,51 @@
-import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerTitle,
+} from "../src/drawer/Drawer";
 import { Button } from "../src";
-import * as Drawer from "../src/drawer/Drawer";
+import { useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
-const config = {
-  title: "New/Drawer",
-  component: Drawer,
+const meta: Meta<typeof Drawer> = {
+  title: "Components / Drawer",
+  args: {
+    size: "md",
+    open: false,
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg", "full"],
+    },
+  },
 };
-export default config;
 
-export function Default() {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
+export default meta;
+type Story = StoryObj<typeof Drawer>;
+
+export const Variants: Story = {
+  render: ({ size, open }) => {
+    return (
       <div className="flex flex-col gap-4">
-        <Button onClick={() => setOpen(true)}>open</Button>
-        <Drawer.Root size="full" side="left" open={open} onOpenChange={setOpen}>
-          <Drawer.Content>
-            <Drawer.Title>Drawer Header</Drawer.Title>
-            <Drawer.Body>
+        <Drawer size={size} side="left" open={open}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerTitle>Drawer Header</DrawerTitle>
+            <DrawerBody>
               <p>
                 Make changes to your profile here. Click save when you&apos;re
                 done.
               </p>
-            </Drawer.Body>
-            <Drawer.CloseButton />
-          </Drawer.Content>
-        </Drawer.Root>
+            </DrawerBody>
+            <DrawerCloseButton />
+          </DrawerContent>
+        </Drawer>
       </div>
-    </>
-  );
-}
-
-export function Size() {
-  const [open, setOpen] = useState<"sm" | "lg" | "md" | "full" | undefined>(
-    undefined
-  );
-  return (
-    <>
-      <div className="flex flex-col gap-4">
-        <Button onClick={() => setOpen("sm")}>open sm</Button>
-        <Button onClick={() => setOpen("md")}>open md</Button>
-        <Button onClick={() => setOpen("lg")}>open lg</Button>
-        <Button onClick={() => setOpen("full")}>open full</Button>
-        <Drawer.Root
-          size={open}
-          side="left"
-          open={open == "sm" || open == "md" || open == "lg" || open == "full"}
-          onOpenChange={() => setOpen(undefined)}
-        >
-          <Drawer.Content>
-            <Drawer.Title>Drawer Header</Drawer.Title>
-            <Drawer.Body>
-              <p>
-                Make changes to your profile here. Click save when you&apos;re
-                done.
-              </p>
-            </Drawer.Body>
-            <Drawer.CloseButton />
-          </Drawer.Content>
-        </Drawer.Root>
-      </div>
-    </>
-  );
-}
+    );
+  },
+};

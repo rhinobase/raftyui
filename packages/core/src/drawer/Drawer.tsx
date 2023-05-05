@@ -145,7 +145,7 @@ export const DrawerCloseButton = forwardRef<
         size={size}
         className={classNames("absolute top-5 right-5 rounded-full", className)}
       >
-        <XMarkIcon />
+        <XMarkIcon className="h-5 w-5 stroke-2" />
       </Button>
     </DialogPrimitive.Close>
   );

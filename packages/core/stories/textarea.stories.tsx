@@ -1,14 +1,16 @@
-import { Textarea } from "../src/textarea/Textarea";
-import { FieldControl } from "../src/field";
+import { Meta, StoryObj } from "@storybook/react";
+import { FieldControl } from "../src";
+import { Textarea } from "../src/textarea";
 
-const config = {
-  title: "Forms/Textarea",
-  component: Textarea,
+const meta: Meta<typeof Textarea> = {
+  title: "Components / Textarea",
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+type Story = StoryObj<typeof Textarea>;
+
+export const Variants: Story = {
+  render: () => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
         <h4>Textarea</h4>
@@ -22,5 +24,5 @@ export function Default() {
         </FieldControl>
       </div>
     </>
-  );
-}
+  ),
+};

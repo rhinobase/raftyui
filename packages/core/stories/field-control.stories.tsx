@@ -1,78 +1,41 @@
+import { Meta, StoryObj } from "@storybook/react";
 import {
+  Checkbox,
   FieldControl,
   FieldGroup,
   FieldLabel,
-  Switch,
   InputField,
-  Checkbox,
+  Switch,
 } from "../src";
 
-const config = {
-  title: "Forms/Field Control",
-  component: FieldControl,
+const meta: Meta<typeof FieldControl> = {
+  title: "Components / FieldControl",
+  args: {
+    name: "field-control",
+    orientation: "col",
+  },
   argTypes: {
-    orientation: { control: "select" },
+    orientation: {
+      control: "select",
+      options: ["col", "row", "row-reverse"],
+    },
   },
 };
 
-export default config;
+export default meta;
+type Story = StoryObj<typeof FieldControl>;
 
-export function Default(args: FieldControl) {
-  return (
+export const Variants: Story = {
+  render: ({ orientation }) => (
     <>
-      <FieldControl {...args}>
+      <FieldControl name="field-control" orientation={orientation}>
         <FieldLabel>String Field</FieldLabel>
-        <FieldGroup
-          prefixIcon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          }
-          prefix="INR"
-          suffix="asd"
-          suffixIcon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          }
-        >
-          <InputField />
-        </FieldGroup>
+        <InputField />
       </FieldControl>
-      <FieldControl {...args}>
+      <FieldControl name="field-control" orientation={orientation}>
         <FieldLabel>Switch field</FieldLabel>
         <Switch />
       </FieldControl>
-      <FieldControl {...args}>
-        <FieldLabel>Checkbox Field</FieldLabel>
-        <Checkbox name="checkbox" />
-      </FieldControl>
     </>
-  );
-}
-
-Default.args = {
-  name: "label",
+  ),
 };
