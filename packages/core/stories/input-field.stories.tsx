@@ -4,14 +4,14 @@ import { InputField, FieldControl, FieldLabel } from "../src";
 const meta: Meta<typeof InputField> = {
   title: "Components / InputField",
   args: {
-    sizes: "md",
+    size: "md",
     variant: "outline",
     disabled: false,
     required: false,
     readOnly: false,
   },
   argTypes: {
-    sizes: {
+    size: {
       control: "select",
       options: ["sm", "md", "lg"],
     },
