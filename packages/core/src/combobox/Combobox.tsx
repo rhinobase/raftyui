@@ -58,7 +58,7 @@ export function Combobox({
               : "dark:border-secondary-700",
             "dark:bg-transparent  dark:text-secondary-100 rounded-md px-2 border z-1 !min-h-[30px] md:!min-h-[42px] !py-1"
           ),
-        clearIndicator: () => "text-zinc-400 stroke-1 hover:text-zinc-600",
+        clearIndicator: () => "text-zinc-400 stroke-1 hover:text-zinc-600 ",
         menu: () =>
           "dark:bg-secondary-800 bg-white rounded-md shadow-xl p-1 border-0 w-full absolute mt-1",
         menuList: () => "focus:dark:bg-secondary-700",

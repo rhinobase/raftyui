@@ -35,6 +35,14 @@ export {
   ContextMenuTrigger,
 } from "./context-menu";
 export {
+  DatePicker,
+  DayPanel,
+  MonthPanel,
+  PickerHeader,
+  RangePicker,
+  YearPanel,
+} from "./date-picker";
+export {
   Dialog,
   DialogBody,
   DialogClose,
@@ -44,6 +52,8 @@ export {
   DialogTitle,
   DialogTrigger,
 } from "./dialog";
+export { ErrorMessage, FieldControl, FieldGroup, FieldLabel } from "./field";
+export { InputField, InputGroup } from "./input-field";
 export { Kbd } from "./kbd";
 export { List, ListItem, OrderedList, UnorderedList } from "./list";
 export {

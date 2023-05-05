@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/rhinobase/design-system#readme",
   "dependencies": {
+    "@radix-ui/react-popover": "^1.0.5",
     "turbo": "^1.9.3"
   },
   "devDependencies": {
