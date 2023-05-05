@@ -1,13 +1,14 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
-export const Text = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
-  ({ children, ...props }, forwardedRef) => {
+export type Text = JSX.IntrinsicElements["p"];
+export const Text = forwardRef<HTMLParagraphElement, Text>(
+  ({ children, className, ...props }, forwardedRef) => {
     return (
-      <div {...props} ref={forwardedRef}>
+      <p {...props} className={className} ref={forwardedRef}>
         {children}
-      </div>
+      </p>
     );
-  },
+  }
 );
 
 Text.displayName = "Text";
