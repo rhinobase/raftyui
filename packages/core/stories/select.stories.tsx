@@ -6,12 +6,12 @@ import { expect } from "@storybook/jest";
 const meta: Meta<typeof Select> = {
   title: "Components / Select",
   args: {
-    sizes: "md",
+    size: "md",
     variant: "outline",
     unstyled: false,
   },
   argTypes: {
-    sizes: {
+    size: {
       control: "select",
       options: ["sm", "md", "lg"],
     },
@@ -48,10 +48,10 @@ export const Variants: Story = {
     }
   },
 
-  render: ({ sizes, variant, unstyled }) => (
+  render: ({ size, variant, unstyled }) => (
     <div className="max-w-2xl w-full flex flex-col gap-4">
       <h4 className="font-bold">Style</h4>
-      <Select variant={variant} sizes={sizes} unstyled={unstyled}>
+      <Select variant={variant} size={size} unstyled={unstyled}>
         <Option value="option1">Option 1</Option>
         <Option value="option2">Option 2</Option>
         <Option value="option3">Option 3</Option>

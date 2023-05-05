@@ -17,7 +17,7 @@ const meta: Meta<typeof InputField> = {
     },
     variant: {
       control: "select",
-      options: ["solid", "outline", "ghost", "unstyled"],
+      options: ["solid", "outline", "ghost"],
     },
   },
 };

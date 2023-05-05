@@ -59,25 +59,11 @@ export type Radio = AriaRadioProps & VariantProps<typeof radioClasses>;
 const radioClasses = cva("", {
   variants: {
     size: {
-      sm: "",
-      md: "",
-      lg: "",
+      sm: "h-3.5 w-3.5 group-data-[selected=true]:!border-4",
+      md: "h-[18px] w-[18px] group-data-[selected=true]:!border-[5px]",
+      lg: "h-6 w-6 group-data-[selected=true]:!border-[8px]",
     },
   },
-  compoundVariants: [
-    {
-      size: "sm",
-      className: "h-3.5 w-3.5 group-data-[selected=true]:!border-4",
-    },
-    {
-      size: "md",
-      className: "h-[18px] w-[18px] group-data-[selected=true]:!border-[5px]",
-    },
-    {
-      size: "lg",
-      className: "h-6 w-6 group-data-[selected=true]:!border-[8px]",
-    },
-  ],
 });
 
 export function Radio(props: Radio) {
@@ -93,9 +79,7 @@ export function Radio(props: Radio) {
       <div
         className={classNames(
           radioClasses({ size }),
-          "border-secondary-400 hover:opacity-70",
-          "dark:border-secondary-600 inline-block rounded-full border-2",
-          "group-data-[selected=true]:!border-primary-500 dark:group-data-[selected=true]:!border-primary-300 "
+          "border-secondary-400 hover:opacity-70 dark:border-secondary-600 inline-block rounded-full border-2 group-data-[selected=true]:!border-primary-500 dark:group-data-[selected=true]:!border-primary-300 "
         )}
       />
       {children}

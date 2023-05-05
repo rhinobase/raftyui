@@ -1,16 +1,29 @@
 import { ComponentProps, forwardRef } from "react";
-import * as Popover from "@radix-ui/react-popover";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Button } from "../button";
 import { classNames } from "../utils";
+import { PopoverContext, PopoverProvider, usePopoverContext } from "./context";
 
-export type Root = ComponentProps<(typeof Popover)["Root"]>;
-export const Root = ({ children, ...props }: Root) => {
-  return <Popover.Root {...props}>{children}</Popover.Root>;
+export type Popover = ComponentProps<(typeof PopoverPrimitive)["Root"]> &
+  Partial<PopoverContext>;
+export const Popover = ({ children, barebone = false, ...props }: Popover) => {
+  return (
+    <PopoverProvider
+      value={{
+        barebone,
+      }}
+    >
+      <PopoverPrimitive.Root {...props}>{children}</PopoverPrimitive.Root>
+    </PopoverProvider>
+  );
 };
-Root.displayName = "Popover.Root";
+Popover.displayName = "Popover";
 
-export type Trigger = ComponentProps<(typeof Popover)["Trigger"]> & Button;
-export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
+export type PopoverTrigger = ComponentProps<
+  (typeof PopoverPrimitive)["Trigger"]
+> &
+  Button;
+export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
   (
     {
       children,
@@ -19,16 +32,19 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
       size,
       leftIcon = undefined,
       rightIcon = undefined,
-      disabled = undefined,
-      active = undefined,
-      loading = undefined,
+      disabled = false,
+      active = false,
+      loading = false,
       asChild = true,
+      unstyled = false,
       ...props
     },
     forwardedRef
   ) => {
+    const { barebone } = usePopoverContext();
+    const unstyle = barebone || unstyled;
     return (
-      <Popover.Trigger
+      <PopoverPrimitive.Trigger
         {...props}
         className={className}
         ref={forwardedRef}
@@ -38,6 +54,7 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
           <Button
             variant={variant}
             size={size}
+            unstyled={unstyle}
             className={className}
             leftIcon={leftIcon}
             rightIcon={rightIcon}
@@ -50,67 +67,95 @@ export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
         ) : (
           children
         )}
-      </Popover.Trigger>
+      </PopoverPrimitive.Trigger>
     );
   }
 );
-Trigger.displayName = "Popover.Trigger";
+PopoverTrigger.displayName = "PopoverTrigger";
 
-export type Anchor = ComponentProps<(typeof Popover)["Anchor"]>;
-export const Anchor = forwardRef<HTMLDivElement, Anchor>(
+export type PopoverAnchor = ComponentProps<(typeof PopoverPrimitive)["Anchor"]>;
+export const PopoverAnchor = forwardRef<HTMLDivElement, PopoverAnchor>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
-      <Popover.Anchor {...props} className={className} ref={forwardedRef}>
-        {children}
-      </Popover.Anchor>
-    );
-  }
-);
-Anchor.displayName = "Popover.Anchor";
-
-export type Content = ComponentProps<(typeof Popover)["Content"]>;
-export const Content = forwardRef<HTMLDivElement, Content>(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <Popover.Content
+      <PopoverPrimitive.Anchor
         {...props}
-        className={classNames(
-          "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
-          className
-        )}
+        className={className}
         ref={forwardedRef}
       >
         {children}
-      </Popover.Content>
+      </PopoverPrimitive.Anchor>
     );
   }
 );
-Content.displayName = "Popover.Content";
+PopoverAnchor.displayName = "PopoverAnchor";
 
-export type Arrow = ComponentProps<(typeof Popover)["Arrow"]>;
-export const Arrow = forwardRef<SVGSVGElement, Arrow>(
-  ({ children, className, ...props }, forwardedRef) => {
+export type PopoverContent = ComponentProps<
+  (typeof PopoverPrimitive)["Content"]
+> & {
+  unstyled?: boolean;
+};
+export const PopoverContent = forwardRef<HTMLDivElement, PopoverContent>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { barebone } = usePopoverContext();
+    const unstyle = barebone || unstyled;
     return (
-      <Popover.Arrow
+      <PopoverPrimitive.Content
         {...props}
-        className={classNames("dark:fill-secondary-800 fill-white", className)}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
+                className
+              )
+        }
         ref={forwardedRef}
       >
         {children}
-      </Popover.Arrow>
+      </PopoverPrimitive.Content>
     );
   }
 );
-Arrow.displayName = "Popover.Arrow";
+PopoverContent.displayName = "PopoverContent";
 
-export type Close = ComponentProps<(typeof Popover)["Close"]>;
-export const Close = forwardRef<HTMLButtonElement, Close>(
+export type PopoverArrow = ComponentProps<
+  (typeof PopoverPrimitive)["Arrow"]
+> & {
+  unstyled?: boolean;
+};
+export const PopoverArrow = forwardRef<SVGSVGElement, PopoverArrow>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { barebone } = usePopoverContext();
+    const unstyle = barebone || unstyled;
+    return (
+      <PopoverPrimitive.Arrow
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames("dark:fill-secondary-800 fill-white", className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </PopoverPrimitive.Arrow>
+    );
+  }
+);
+PopoverArrow.displayName = "PopoverArrow";
+
+export type PopoverClose = ComponentProps<(typeof PopoverPrimitive)["Close"]>;
+export const PopoverClose = forwardRef<HTMLButtonElement, PopoverClose>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
-      <Popover.Close {...props} className={className} ref={forwardedRef}>
+      <PopoverPrimitive.Close
+        {...props}
+        className={className}
+        ref={forwardedRef}
+      >
         {children}
-      </Popover.Close>
+      </PopoverPrimitive.Close>
     );
   }
 );
-Close.displayName = "Popover.Close";
+PopoverClose.displayName = "PopoverClose";

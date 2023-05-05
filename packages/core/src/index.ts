@@ -79,6 +79,15 @@ export {
   MenuSubTrigger,
   MenuTrigger,
 } from "./menu";
+export { PasswordField } from "./password-field";
+export {
+  Popover,
+  PopoverAnchor,
+  PopoverArrow,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+} from "./popover";
 export {
   Menubar,
   MenubarCheckboxGroup,
@@ -107,6 +116,7 @@ export {
   NavigationMenuTrigger,
 } from "./navigation-menu";
 export { Progress } from "./progress";
+export { RadioGroup, RadioCard, Radio } from "./radio-group";
 export { Select, Option } from "./select";
 export { Skeleton } from "./skeleton";
 export { Spinner } from "./spinner";
@@ -131,6 +141,7 @@ export {
 } from "./table";
 export { Tab, TabContent, TabList, TabTrigger } from "./tabs";
 export { Tag } from "./tag";
+export { Textarea } from "./textarea";
 export { Toast } from "./toast";
 export { ToogleGroup, ToogleGroupItem } from "./toggle-group";
 export { Tooltip } from "./tooltip";

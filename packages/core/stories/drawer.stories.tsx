@@ -9,13 +9,11 @@ import {
 } from "../src/drawer/Drawer";
 import { Button } from "../src";
 import { useState } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Drawer> = {
   title: "Components / Drawer",
   args: {
     size: "md",
-    open: false,
   },
   argTypes: {
     size: {
@@ -29,10 +27,12 @@ export default meta;
 type Story = StoryObj<typeof Drawer>;
 
 export const Variants: Story = {
-  render: ({ size, open }) => {
+  render: function Render({ size }) {
+    const [isOpen, setOpen] = useState(false);
     return (
       <div className="flex flex-col gap-4">
-        <Drawer size={size} side="left" open={open}>
+        <Button onClick={() => setOpen(true)}>Open</Button>
+        <Drawer size={size} side="left" open={isOpen} onOpenChange={setOpen}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerTitle>Drawer Header</DrawerTitle>

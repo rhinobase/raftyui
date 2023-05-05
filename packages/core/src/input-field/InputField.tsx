@@ -17,7 +17,7 @@ const inputFieldClasses = cva(
         solid: "bg-secondary-50 dark:bg-secondary-800/20",
         outline:
           "read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
-        ghost: "",
+        ghost: "border border-transparent",
       },
       invalid: {
         true: "border-error-500 focus:ring-error-200 dark:border-error-400 dark:focus:ring-error-100/20",
