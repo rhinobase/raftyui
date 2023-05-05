@@ -39,7 +39,7 @@ const inputFieldClasses = cva(
   }
 );
 
-export type InputField = JSX.IntrinsicElements["input"] & {
+export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
 };

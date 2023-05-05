@@ -3,7 +3,10 @@ import { Button } from "../button";
 import { InputField } from "../input-field";
 import { classNames } from "../utils";
 
-export type TagField = Omit<JSX.IntrinsicElements["input"], "onChange"> & {
+export type TagField = Omit<
+  JSX.IntrinsicElements["input"],
+  "onChange" | "size"
+> & {
   initialData?: string[];
   onChange?: (tags: string[]) => void;
 };
