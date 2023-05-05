@@ -1,10 +1,24 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
-
+import { Inter, Lexend } from "next/font/google";
 import { Layout } from "@/components/Layout";
 import Head from "next/head";
 import { MarkdocNextJsPageProps } from "@markdoc/next.js";
+
+const sans = Inter({
+  variable: "--font-sans",
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+const display = Lexend({
+  variable: "--font-display",
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
 
 function getNodeText(node: any) {
   let text = "";
@@ -65,7 +79,7 @@ export default function App({
     : [];
 
   return (
-    <>
+    <span className={`${display.variable} ${sans.variable} font-sans`}>
       <Head>
         <title>{pageTitle}</title>
         {description && <meta name="description" content={description} />}
@@ -73,6 +87,6 @@ export default function App({
       <Layout title={title} tableOfContents={tableOfContents}>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </span>
   );
 }

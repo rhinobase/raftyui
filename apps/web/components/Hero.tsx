@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Highlight } from "prism-react-renderer";
+import { Highlight, themes } from "prism-react-renderer";
 import { Button } from "@rafty/ui";
 import { HeroBackground } from "@/components/HeroBackground";
 import blurCyanImage from "@/public/blur-cyan.png";

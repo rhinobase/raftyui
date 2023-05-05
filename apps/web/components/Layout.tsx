@@ -80,6 +80,11 @@ function GitHubIcon(props: { className: string }) {
   );
 }
 
+enum ColorMode {
+  DARK = "dark",
+  LIGHT = "light",
+}
+
 function Header({ navigation }: { navigation: Navigation }) {
   let [isScrolled, setIsScrolled] = useState(false);
 
@@ -93,6 +98,12 @@ function Header({ navigation }: { navigation: Navigation }) {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  function toggle() {
+    const dark = document.documentElement.classList.contains(ColorMode.DARK);
+    if (dark) document.documentElement.classList.remove(ColorMode.DARK);
+    else document.documentElement.classList.add(ColorMode.DARK);
+  }
 
   return (
     <header
@@ -116,7 +127,12 @@ function Header({ navigation }: { navigation: Navigation }) {
         <Search />
       </div>
       <div className="relative flex basis-0 justify-end gap-4 sm:gap-8 md:flex-grow items-center">
-        <Button variant="ghost" size="icon" colorScheme="primary">
+        <Button
+          variant="ghost"
+          size="icon"
+          colorScheme="primary"
+          onClick={toggle}
+        >
           <SunIcon className="h-5 w-5" />
         </Button>
         <Link href="https://github.com" className="group" aria-label="GitHub">
