@@ -7,7 +7,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // Dialog Component
 export type Dialog = ComponentProps<(typeof DialogPrimitive)["Dialog"]> &
-  DialogContext;
+  Partial<DialogContext>;
 export const Dialog = ({
   children,
   size = "md",
@@ -25,7 +25,7 @@ Dialog.displayName = "Dialog";
 export type DialogTrigger = ComponentProps<
   (typeof DialogPrimitive)["DialogTrigger"]
 > &
-  Button & { unstyled?: boolean };
+  Button;
 export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTrigger>(
   (
     {
@@ -203,32 +203,37 @@ DialogBody.displayName = "DialogBody";
 export type DialogCloseButton = ComponentProps<
   (typeof DialogPrimitive)["Close"]
 > &
-  Button & { unstyled?: boolean };
+  Button;
 export const DialogCloseButton = forwardRef<
   HTMLButtonElement,
   DialogCloseButton
->(({ variant, className, unstyled = false, ...props }, forwardedRef) => {
-  const { barebone } = useDialogContext();
-  const unstyle = barebone || unstyled;
+>(
+  (
+    { variant = "ghost", size = "icon", className, unstyled = false, ...props },
+    forwardedRef
+  ) => {
+    const { barebone } = useDialogContext();
+    const unstyle = barebone || unstyled;
 
-  return (
-    <DialogPrimitive.Close ref={forwardedRef} asChild>
-      {/* This will require the i18n string passed in */}
-      <Button
-        variant={variant ?? "ghost"}
-        size="icon"
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames("absolute top-5 right-5 rounded-full", className)
-        }
-      >
-        <XMarkIcon />
-      </Button>
-    </DialogPrimitive.Close>
-  );
-});
+    return (
+      <DialogPrimitive.Close ref={forwardedRef} asChild>
+        {/* This will require the i18n string passed in */}
+        <Button
+          variant={variant}
+          size={size}
+          {...props}
+          className={
+            unstyle
+              ? className
+              : classNames("absolute top-5 right-5 rounded-full", className)
+          }
+        >
+          <XMarkIcon />
+        </Button>
+      </DialogPrimitive.Close>
+    );
+  }
+);
 DialogCloseButton.displayName = "DialogCloseButton";
 
 export type DialogClose = ComponentProps<(typeof DialogPrimitive)["Close"]>;

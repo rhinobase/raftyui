@@ -10,7 +10,7 @@ import {
 import { cva } from "class-variance-authority";
 
 // Alert Component
-export type Alert = { unstyled?: boolean } & AlertContext &
+export type Alert = { unstyled?: boolean } & Partial<AlertContext> &
   JSX.IntrinsicElements["div"];
 
 const alertClasses = cva("flex w-full items-center", {
@@ -152,7 +152,7 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
   (
     {
       className,
-      status,
+      status = "info",
       size = "md",
       variant = "simple",
       unstyled = false,
@@ -281,7 +281,7 @@ const alertTitleClasses = cva("", {
 });
 
 export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
-  ({ children, className, unstyled, ...props }, forwardedRef) => {
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
     const { size, barebone } = useAlertContext();
     const unstyle = unstyled || barebone;
 
@@ -319,7 +319,7 @@ const alertDescriptionClasses = cva("", {
 export const AlertDescription = forwardRef<
   HTMLParagraphElement,
   AlertDescription
->(({ children, className, unstyled, ...props }, forwardedRef) => {
+>(({ children, className, unstyled = false, ...props }, forwardedRef) => {
   const { size, barebone } = useAlertContext();
   const unstyle = unstyled || barebone;
 

@@ -7,12 +7,13 @@ import {
   useAlertDialogContext,
 } from "./context";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // AlertDialog Component
 export type AlertDialog = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialog"]
 > &
-  AlertDialogContext;
+  Partial<AlertDialogContext>;
 export const AlertDialog = ({
   children,
   size = "md",
@@ -51,6 +52,9 @@ export const AlertDialogTrigger = React.forwardRef<
     },
     forwardedRef
   ) => {
+    const { barebone } = useAlertDialogContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
         <Button
@@ -62,7 +66,7 @@ export const AlertDialogTrigger = React.forwardRef<
           disabled={disabled}
           active={active}
           loading={loading}
-          unstyled={unstyled}
+          unstyled={unstyle}
         >
           {children}
         </Button>
@@ -103,6 +107,18 @@ export const AlertDialogOverlay = React.forwardRef<
 AlertDialogOverlay.displayName = "AlertDialogOverlay";
 
 // AlertDialogContent Component
+const alertDialogContentClasses = cva(
+  "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
+  {
+    variants: {
+      size: {
+        sm: "max-w-[30rem] p-6",
+        md: "max-w-[35rem] p-7",
+        lg: "max-w-[40rem] p-8",
+      },
+    },
+  }
+);
 export type AlertDialogContent = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogContent"]
 > & { unstyled?: boolean };
@@ -120,14 +136,7 @@ export const AlertDialogContent = React.forwardRef<
         className={
           unstyle
             ? className
-            : classNames(
-                size == "lg" && "max-w-[40rem] p-8",
-                size == "md" && "max-w-[35rem] p-7",
-                size == "sm" && "max-w-[30rem] p-6",
-                "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle",
-                "overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
-                className
-              )
+            : classNames(alertDialogContentClasses({ size }), className)
         }
         ref={forwardedRef}
       >
@@ -139,6 +148,15 @@ export const AlertDialogContent = React.forwardRef<
 AlertDialogContent.displayName = "AlertDialogContent";
 
 // AlertDialogTitle Component
+const alertDialogTitleClasses = cva("mb-2 font-semibold", {
+  variants: {
+    size: {
+      sm: "text-lg",
+      md: "text-xl",
+      lg: "text-xl",
+    },
+  },
+});
 export type AlertDialogTitle = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogTitle"]
 > & { unstyled?: boolean };
@@ -155,13 +173,7 @@ export const AlertDialogTitle = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              size == "lg" && "text-xl",
-              size == "md" && "text-xl",
-              size == "sm" && "text-lg",
-              "mb-2 font-semibold",
-              className
-            )
+          : classNames(alertDialogTitleClasses({ size }), className)
       }
       ref={forwardedRef}
     >

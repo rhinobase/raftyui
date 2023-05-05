@@ -4,7 +4,7 @@ import { classNames } from "../utils";
 export type Skeleton = JSX.IntrinsicElements["div"];
 
 export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     return (
       <div
         {...props}

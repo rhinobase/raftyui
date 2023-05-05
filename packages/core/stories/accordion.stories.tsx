@@ -1,7 +1,7 @@
-import * as Accordion from "../src/accordion/Accordion";
+import { Accordion } from "../src";
 
 const config = {
-  title: "New/Accordion",
+  title: "Components / Accordion",
   component: Accordion,
 };
 export default config;

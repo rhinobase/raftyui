@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 
 // Card Component
 export type Card = JSX.IntrinsicElements["div"] &
-  CardContext & { unstyled?: boolean };
+  Partial<CardContext> & { unstyled?: boolean };
 
 const cardClasses = cva("flex flex-col dark:text-white", {
   variants: {

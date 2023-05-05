@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "../utils";
 
@@ -10,14 +10,14 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
         {...props}
         className={classNames(
           "group flex w-full flex-wrap items-start justify-around",
-          className,
+          className
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 StatGroup.displayName = "StatGroup";
 
@@ -35,7 +35,7 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
         </div>
       </StatProvider>
     );
-  },
+  }
 );
 Stat.displayName = "Stat";
 
@@ -47,14 +47,14 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
         {...props}
         className={classNames(
           "text-secondary-600 dark:text-secondary-400 text-sm font-semibold",
-          className,
+          className
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 StatLabel.displayName = "StatLabel";
 
@@ -66,14 +66,14 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
         {...props}
         className={classNames(
           "text-2xl font-semibold dark:text-white",
-          className,
+          className
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 StatValue.displayName = "StatValue";
 
@@ -92,14 +92,14 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
             ? "text-error-600 dark:text-error-400"
             : "dark:text-secondary-300",
           "flex items-center gap-1.5 text-sm font-medium",
-          className,
+          className
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 StatHelpText.displayName = "StatHelpText";
 
@@ -136,7 +136,7 @@ export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
         <path d="M2 5.56L2.413 5h11.194l.393.54L8.373 11h-.827L2 5.56z" />
       </svg>
     );
-  },
+  }
 );
 
 StatIcon.displayName = "StatIcon";

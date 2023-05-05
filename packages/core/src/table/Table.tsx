@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { TableContext, TableProvider, useTableContext } from "./context";
-import { applyStyleToMultipleVariants, classNames } from "../utils";
+import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 // TableContainer Component
@@ -22,7 +22,7 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
 TableContainer.displayName = "TableContainer";
 
 // Table Component
-export type Table = TableContext &
+export type Table = Partial<TableContext> &
   JSX.IntrinsicElements["table"] & {
     unstyled?: boolean;
   };
@@ -35,10 +35,6 @@ const tableClasses = cva(
         sm: "p-2",
         md: "p-4",
         lg: "p-6",
-      },
-      variant: {
-        simple: "",
-        striped: "",
       },
     },
   }
@@ -64,9 +60,7 @@ export const Table = forwardRef<HTMLTableElement, Table>(
         <table
           {...props}
           className={
-            unstyle
-              ? className
-              : classNames(tableClasses({ size, variant }), className)
+            unstyle ? className : classNames(tableClasses({ size }), className)
           }
           ref={forwardedRef}
         >
@@ -80,9 +74,6 @@ Table.displayName = "Table";
 
 // TableBody Component
 export type TableBody = JSX.IntrinsicElements["tbody"] & { unstyled?: boolean };
-
-const tableBodyClasses = cva("dark:bg-secondary-700/40 bg-white");
-
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
   ({ children, className, unstyled = false, ...props }, forwardedRef) => {
     const { barebone } = useTableContext();
@@ -92,7 +83,9 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
       <tbody
         {...props}
         className={
-          unstyle ? className : classNames(tableBodyClasses(), className)
+          unstyle
+            ? className
+            : classNames("dark:bg-secondary-700/40 bg-white", className)
         }
         ref={forwardedRef}
       >

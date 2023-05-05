@@ -34,9 +34,10 @@ const selectClasses = cva(
   }
 );
 
-type Select = JSX.IntrinsicElements["select"] &
+export type Select = JSX.IntrinsicElements["select"] &
   VariantProps<typeof selectClasses> & {
     unstyled?: boolean;
+    showIcon?: boolean;
   };
 
 export const Select = forwardRef<HTMLSelectElement, Select>(
@@ -47,6 +48,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       sizes,
       variant = "outline",
       unstyled = false,
+      showIcon = true,
       ...props
     },
     forwardedRef
@@ -67,7 +69,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
         >
           {children}
         </select>
-        {!unstyled && (
+        {showIcon && (
           <div className="pointer-events-none absolute top-0 right-0 flex h-full w-10 items-center justify-center">
             <ChevronDownIcon className="dark:text-secondary-200 h-3 w-3" />
           </div>
@@ -79,7 +81,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-type Option = JSX.IntrinsicElements["option"];
+export type Option = JSX.IntrinsicElements["option"];
 
 export const Option = forwardRef<HTMLOptionElement, Option>(
   ({ ...props }, forwardedRef) => {

@@ -10,7 +10,7 @@ import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 //AccordionComponent
-export type Accordion = AccordionContext &
+export type Accordion = Partial<AccordionContext> &
   ComponentProps<(typeof DisclosurePrimitive)["Root"]> & { unstyled?: boolean };
 export const Accordion = forwardRef<HTMLDivElement, Accordion>(
   (
@@ -40,7 +40,6 @@ export const Accordion = forwardRef<HTMLDivElement, Accordion>(
     );
   }
 );
-
 Accordion.displayName = "Accordian";
 
 //AccordionItemComponent
@@ -65,7 +64,6 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
     );
   }
 );
-
 AccordionItem.displayName = "AccordionItem";
 
 //AccordionTriggerComponent
@@ -161,7 +159,6 @@ export const AccordionTrigger = React.forwardRef<
     );
   }
 );
-
 AccordionTrigger.displayName = "AccordionAccordianTrigger";
 
 //AccordionContentComponent
