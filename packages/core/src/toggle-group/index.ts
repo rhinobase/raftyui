@@ -1,1 +1,1 @@
-export { ToogleGroup, ToogleGroupItem } from "./ToggleGroup";
+export { ToggleGroup, ToggleGroupItem } from "./ToggleGroup";

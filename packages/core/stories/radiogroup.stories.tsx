@@ -1,14 +1,15 @@
-import { Radio, RadioCard, RadioGroup } from "../src/radio-group/RadioGroup";
+import { Radio, RadioCard, RadioGroup } from "../src";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
-
-const config = {
-  title: "New/Radio Group",
-  component: RadioGroup,
+import { Meta, StoryObj } from "@storybook/react";
+const meta: Meta<typeof RadioGroup> = {
+  title: "Components / RadioGroup",
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+type Story = StoryObj<typeof RadioGroup>;
+
+export const Variants: Story = {
+  render: () => (
     <>
       <div className="flex flex-col gap-4">
         <RadioGroup defaultValue="ABC">
@@ -31,11 +32,11 @@ export function Default() {
         </RadioGroup>
       </div>
     </>
-  );
-}
+  ),
+};
 
-export function Card() {
-  return (
+export const Card: Story = {
+  render: () => (
     <>
       <RadioGroup defaultValue="ABC">
         <div className="flex gap-4">
@@ -72,11 +73,11 @@ export function Card() {
         </div>
       </RadioGroup>
     </>
-  );
-}
+  ),
+};
 
-export function RadioCards() {
-  return (
+export const Custom: Story = {
+  render: () => (
     <>
       <div className="flex gap-4">
         <RadioGroup defaultValue="ABC">
@@ -107,11 +108,11 @@ export function RadioCards() {
         </RadioGroup>
       </div>
     </>
-  );
-}
+  ),
+};
 
-export function RadioTabsGroups() {
-  return (
+export const RadioTabGroup: Story = {
+  render: () => (
     <>
       <div className="flex ">
         <RadioGroup label="Tab Group" defaultValue="ABC">
@@ -148,5 +149,5 @@ export function RadioTabsGroups() {
         </RadioGroup>
       </div>
     </>
-  );
-}
+  ),
+};

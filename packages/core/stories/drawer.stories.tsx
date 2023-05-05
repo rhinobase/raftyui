@@ -6,7 +6,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,
-} from "../src/drawer/Drawer";
+} from "../src";
 import { Button } from "../src";
 import { useState } from "react";
 

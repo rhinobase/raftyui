@@ -1,4 +1,4 @@
-import { Button } from "../src/button";
+import { Button } from "../src";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -53,6 +53,17 @@ export const Default: Story = {
     const closebtn = await screen.getByText("Cancel").closest("button");
     await fireEvent.click(closebtn as HTMLButtonElement);
     await expect(alertdailog).not.toBeInTheDocument();
+
+    //Test For Dialog Open
+    await userEvent.click(button);
+    await expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+    await expect(screen.getByRole("alertdialog")).toBeVisible();
+
+    //Test for Close Button Working
+    const confirmbtn = await screen
+      .getByText("Yes, delete account")
+      .closest("button");
+    await fireEvent.click(confirmbtn as HTMLButtonElement);
   },
 
   render: ({ size, barebone }) => (

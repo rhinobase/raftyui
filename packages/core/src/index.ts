@@ -141,7 +141,8 @@ export {
 } from "./table";
 export { Tab, TabContent, TabList, TabTrigger } from "./tabs";
 export { Tag } from "./tag";
+export { TagField } from "./tag-field";
 export { Textarea } from "./textarea";
 export { Toast } from "./toast";
-export { ToogleGroup, ToogleGroupItem } from "./toggle-group";
+export { ToggleGroup, ToggleGroupItem } from "./toggle-group";
 export { Tooltip } from "./tooltip";

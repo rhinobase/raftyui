@@ -5,7 +5,7 @@ import { within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Textarea> = {
-  title: "Components / Textarea",
+  title: "Form / Textarea",
   args: {
     variant: "outline",
     disabled: false,

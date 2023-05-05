@@ -1,20 +1,29 @@
-import { Option, Select } from "../src";
-import { Button } from "../src/button";
-import { FieldControl, FieldLabel } from "../src/field";
-import { InputField } from "../src/input-field";
-import * as Popover from "../src/popover/Popover";
+import { Meta, StoryObj } from "@storybook/react";
+import {
+  FieldControl,
+  FieldLabel,
+  InputField,
+  Popover,
+  PopoverArrow,
+  PopoverContent,
+  PopoverTrigger,
+  Select,
+  Option,
+} from "../src";
+import { Button } from "../src";
 
-const config = {
-  title: "New/Popover",
-  component: Popover,
+const meta: Meta<typeof Popover> = {
+  title: "Components / Popover",
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+type Story = StoryObj<typeof Popover>;
+
+export const Variants: Story = {
+  render: () => (
     <>
-      <Popover.Root>
-        <Popover.Trigger variant="ghost" size="icon">
+      <Popover>
+        <PopoverTrigger variant="ghost" size="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,8 +38,8 @@ export function Default() {
               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
             />
           </svg>
-        </Popover.Trigger>
-        <Popover.Content
+        </PopoverTrigger>
+        <PopoverContent
           side="bottom"
           align="center"
           className="flex !max-w-xs flex-col divide-y rounded-md"
@@ -75,9 +84,9 @@ export function Default() {
               </div>
             </FieldControl>
           </div>
-          <Popover.Arrow />
-        </Popover.Content>
-      </Popover.Root>
+          <PopoverArrow />
+        </PopoverContent>
+      </Popover>
     </>
-  );
-}
+  ),
+};

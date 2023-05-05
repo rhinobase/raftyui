@@ -9,7 +9,7 @@ import { LeftAddon } from "../src/input-field/LeftAddon";
 import { RightAddon } from "../src/input-field/RightAddon";
 
 const meta: Meta<typeof InputField> = {
-  title: "Components / InputGroup",
+  title: "Form / InputGroup",
   args: {
     size: "md",
   },

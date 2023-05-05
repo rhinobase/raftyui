@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { InputField, FieldControl, FieldLabel } from "../src";
 
 const meta: Meta<typeof InputField> = {
-  title: "Components / InputField",
+  title: "Form / InputField",
   args: {
     size: "md",
     variant: "outline",

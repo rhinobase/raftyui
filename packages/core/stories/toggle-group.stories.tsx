@@ -1,40 +1,32 @@
-import * as ToggleGroup from "../src/toggle-group/ToggleGroup";
+import { Meta, StoryObj } from "@storybook/react";
+import { ToggleGroup, ToggleGroupItem } from "../src";
 
-const config = {
-  title: "New/Toggle Group",
-  components: ToggleGroup,
+const meta: Meta<typeof ToggleGroup> = {
+  title: "Components / ToggleGroup",
+  args: {
+    size: "md",
+  },
   argTypes: {
-    size: { control: "select", options: ["sm", "md", "lg"] },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg", "full"],
+    },
   },
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+type Story = StoryObj<typeof ToggleGroup>;
+
+export const Variants: Story = {
+  render: () => (
     <>
       <div className="flex w-80 flex-col gap-6">
-        <ToggleGroup.Root type="single" defaultValue="1">
-          <ToggleGroup.Item value="1">1</ToggleGroup.Item>
-          <ToggleGroup.Item value="2">2</ToggleGroup.Item>
-          <ToggleGroup.Item value="3">3</ToggleGroup.Item>
-        </ToggleGroup.Root>
-        <div className="text-center font-medium">size: sm, md, lg</div>
-        <ToggleGroup.Root type="single" defaultValue="1" size="sm">
-          <ToggleGroup.Item value="1">1</ToggleGroup.Item>
-          <ToggleGroup.Item value="2">2</ToggleGroup.Item>
-          <ToggleGroup.Item value="3">3</ToggleGroup.Item>
-        </ToggleGroup.Root>
-        <ToggleGroup.Root type="single" defaultValue="1">
-          <ToggleGroup.Item value="1">1</ToggleGroup.Item>
-          <ToggleGroup.Item value="2">2</ToggleGroup.Item>
-          <ToggleGroup.Item value="3">3</ToggleGroup.Item>
-        </ToggleGroup.Root>
-        <ToggleGroup.Root type="single" defaultValue="1" size="lg">
-          <ToggleGroup.Item value="1">1</ToggleGroup.Item>
-          <ToggleGroup.Item value="2">2</ToggleGroup.Item>
-          <ToggleGroup.Item value="3">3</ToggleGroup.Item>
-        </ToggleGroup.Root>
+        <ToggleGroup type="single" defaultValue="1">
+          <ToggleGroupItem value="1">1</ToggleGroupItem>
+          <ToggleGroupItem value="2">2</ToggleGroupItem>
+          <ToggleGroupItem value="3">3</ToggleGroupItem>
+        </ToggleGroup>
       </div>
     </>
-  );
-}
+  ),
+};

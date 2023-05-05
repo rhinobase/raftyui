@@ -9,11 +9,11 @@ import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 // ToggleGroup Component
-export type ToogleGroup = ComponentProps<
+export type ToggleGroup = ComponentProps<
   (typeof ToggleGroupPrimitive)["Root"]
 > &
   Partial<ToggleGroupContext> & { unstyled?: boolean };
-export const ToogleGroup = forwardRef<HTMLDivElement, ToogleGroup>(
+export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
   (
     {
       children,
@@ -47,7 +47,7 @@ export const ToogleGroup = forwardRef<HTMLDivElement, ToogleGroup>(
     );
   }
 );
-ToogleGroup.displayName = "ToggleGroup";
+ToggleGroup.displayName = "ToggleGroup";
 
 // ToggleItem Component
 const itemClasses = cva(
@@ -62,12 +62,12 @@ const itemClasses = cva(
     },
   }
 );
-export type ToogleGroupItem = ComponentProps<
+export type ToggleGroupItem = ComponentProps<
   (typeof ToggleGroupPrimitive)["Item"]
 > & { unstyled?: boolean };
-export const ToogleGroupItem = forwardRef<
+export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,
-  ToggleGroupContext & ToogleGroupItem
+  ToggleGroupContext & ToggleGroupItem
 >(({ children, className, unstyled = false, ...props }, forwardedRef) => {
   const { size, barebone } = useToggleGroupContext();
   const unstyle = barebone || unstyled;
@@ -84,4 +84,4 @@ export const ToogleGroupItem = forwardRef<
     </ToggleGroupPrimitive.Item>
   );
 });
-ToogleGroupItem.displayName = "ToggleGroupItem";
+ToggleGroupItem.displayName = "ToggleGroupItem";

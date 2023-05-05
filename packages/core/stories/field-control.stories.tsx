@@ -1,15 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import {
-  Checkbox,
-  FieldControl,
-  FieldGroup,
-  FieldLabel,
-  InputField,
-  Switch,
-} from "../src";
+import { FieldControl, FieldLabel, InputField, Switch } from "../src";
 
 const meta: Meta<typeof FieldControl> = {
-  title: "Components / FieldControl",
+  title: "Form / FieldControl",
   args: {
     name: "field-control",
     orientation: "col",

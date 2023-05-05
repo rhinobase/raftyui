@@ -4,7 +4,7 @@ import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Select> = {
-  title: "Components / Select",
+  title: "Form / Select",
   args: {
     size: "md",
     variant: "outline",

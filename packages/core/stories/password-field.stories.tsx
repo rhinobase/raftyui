@@ -5,7 +5,7 @@ import { within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof PasswordField> = {
-  title: "Components / PasswordField",
+  title: "Form / PasswordField",
   args: {
     size: "md",
     variant: "outline",
