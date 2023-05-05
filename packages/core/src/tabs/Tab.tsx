@@ -1,8 +1,8 @@
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { ComponentProps, forwardRef } from "react";
 import { TabContext, TabProvider, useTabContext } from "./context";
-import { cva, VariantProps } from "class-variance-authority";
-import { applyStyleToMultipleVariants, classNames } from "../utils";
+import { cva } from "class-variance-authority";
+import { classNames } from "../utils";
 
 // Root Component
 export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &

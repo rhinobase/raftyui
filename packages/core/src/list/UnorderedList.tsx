@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { classNames } from "../utils";
 
 export type UnorderedList = JSX.IntrinsicElements["ul"] & {
