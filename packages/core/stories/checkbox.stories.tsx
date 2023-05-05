@@ -1,16 +1,15 @@
 import { Checkbox } from "../src";
+import { Meta, StoryObj } from "@storybook/react";
 
-const config = {
+const meta: Meta<typeof Checkbox> = {
   title: "Components / Checkbox",
-  // component: Checkbox,
-  argTypes: {
-    size: { control: "select", options: ["sm", "md", "lg"] },
-  },
 };
-export default config;
 
-export function Default() {
-  return (
+export default meta;
+type Story = StoryObj<typeof Checkbox>;
+
+export const Default: Story = {
+  render: () => (
     <>
       <div className="flex w-80 flex-col gap-3">
         <h2 className="font-bold">CheckBox</h2>
@@ -49,5 +48,5 @@ export function Default() {
         </Checkbox>
       </div>
     </>
-  );
-}
+  ),
+};

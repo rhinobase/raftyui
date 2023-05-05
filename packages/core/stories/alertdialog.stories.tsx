@@ -17,7 +17,6 @@ import {
 } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 import { Meta, StoryObj } from "@storybook/react";
-import { DialogOverlay } from "../src/dialog";
 
 const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",
@@ -44,24 +43,16 @@ export const Default: Story = {
 
     //Test For Dialog Open
     await userEvent.click(button);
-    await expect(screen.getByRole("alertdialog")).toBeInTheDocument();
-    await expect(screen.getByRole("alertdialog")).toBeVisible();
+    const alertdailog = await screen.getByRole("alertdialog");
+    await expect(alertdailog).toBeInTheDocument();
+    await expect(alertdailog).toBeVisible();
+    await expect(alertdailog).toBeTruthy();
+    await expect(screen.getByText("Cancel").closest("button")).toHaveFocus();
 
     //Test for Close Button Working
     const closebtn = await screen.getByText("Cancel").closest("button");
     await fireEvent.click(closebtn as HTMLButtonElement);
-
-    //Test For Dialog Open
-    await userEvent.click(button);
-    await expect(screen.getByRole("alertdialog")).toBeInTheDocument();
-    await expect(screen.getByRole("alertdialog")).toBeVisible();
-
-    //Test for Close Button Working
-    const confirmbtn = await screen
-      .getByText("Yes, delete account")
-      .closest("button");
-    await fireEvent.click(confirmbtn as HTMLButtonElement);
-    
+    await expect(alertdailog).not.toBeInTheDocument();
   },
 
   render: ({ size, barebone }) => (

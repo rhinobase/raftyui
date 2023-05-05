@@ -14,6 +14,9 @@ import {
   MenuSubTrigger,
   MenuTrigger,
 } from "../src";
+import { within, userEvent, screen } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
+import { fireEvent } from "@testing-library/dom";
 
 const meta: Meta<typeof Menu> = {
   title: "Components / Menu",
@@ -33,6 +36,18 @@ export default meta;
 type Story = StoryObj<typeof Menu>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test for menu open
+    const button = canvas.getByRole("button");
+    await userEvent.click(button);
+    const menu = await screen.findByRole("menu");
+    await expect(menu).toBeInTheDocument();
+
+    // TODO : Test for close menu
+  },
+
   render: ({ size }) => (
     <>
       <Menu size={size}>
