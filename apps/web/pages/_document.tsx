@@ -8,7 +8,6 @@ const themeScript = `
 
     if (theme === 'dark' || (theme === 'system' && isDarkMode.matches)) {
       document.documentElement.classList.add('dark');
-      console.log(document.documentElement.classList)
     } else if (theme === 'light' || (theme === 'system' && !isDarkMode.matches)) {
       document.documentElement.classList.remove('dark');
     }

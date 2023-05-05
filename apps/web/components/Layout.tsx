@@ -81,6 +81,11 @@ function GitHubIcon(props: { className: string }) {
   );
 }
 
+enum ColorMode {
+  DARK = "dark",
+  LIGHT = "light",
+}
+
 function Header({ navigation }: { navigation: Navigation }) {
   let [isScrolled, setIsScrolled] = useState(false);
 
@@ -96,9 +101,14 @@ function Header({ navigation }: { navigation: Navigation }) {
   }, []);
 
   function toggle() {
-    const dark = document.documentElement.classList.contains("dark");
-    if (dark) document.documentElement.classList.remove("dark");
-    else document.documentElement.classList.add("dark");
+    const dark = document.documentElement.classList.contains(ColorMode.DARK);
+    if (dark) {
+      localStorage.setItem("theme", ColorMode.LIGHT);
+      document.documentElement.classList.remove(ColorMode.DARK);
+    } else {
+      localStorage.setItem("theme", ColorMode.DARK);
+      document.documentElement.classList.add(ColorMode.DARK);
+    }
   }
 
   return (
