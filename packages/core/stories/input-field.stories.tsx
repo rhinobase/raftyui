@@ -26,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof InputField>;
 
 export const Variants: Story = {
-  render: ({ sizes, variant, readOnly, disabled, required }) => (
+  render: ({ size, variant, readOnly, disabled, required }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
         <h4 className="font-bold">Input Field</h4>
@@ -37,11 +37,7 @@ export const Variants: Story = {
           required={required}
         >
           <FieldLabel>Enter Name</FieldLabel>
-          <InputField
-            variant={variant}
-            sizes={sizes}
-            placeholder="Enter Text"
-          />
+          <InputField variant={variant} size={size} placeholder="Enter Text" />
         </FieldControl>
       </div>
     </>

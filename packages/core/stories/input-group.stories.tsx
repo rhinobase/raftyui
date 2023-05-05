@@ -11,10 +11,10 @@ import { RightAddon } from "../src/input-field/RightAddon";
 const meta: Meta<typeof InputField> = {
   title: "Components / InputGroup",
   args: {
-    sizes: "md",
+    size: "md",
   },
   argTypes: {
-    sizes: {
+    size: {
       control: "select",
       options: ["sm", "md", "lg"],
     },
@@ -25,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof InputField>;
 
 export const Variants: Story = {
-  render: ({ sizes }) => (
+  render: ({ size }) => (
     <>
       <div className="flex w-full max-w-2xl flex-col gap-4">
         <h4 className="text-center font-bold dark:text-white">
@@ -36,7 +36,7 @@ export const Variants: Story = {
             <Prefix>
               <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Prefix>
-            <InputField className="!px-10" sizes={sizes} />
+            <InputField className="!px-10" size={size} />
             <Suffix>
               <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Suffix>
@@ -49,7 +49,7 @@ export const Variants: Story = {
         <FieldControl name="input_group">
           <InputGroup>
             <LeftAddon>+234</LeftAddon>
-            <InputField className="relative z-[1] rounded-none" sizes={sizes} />
+            <InputField className="relative z-[1] rounded-none" size={size} />
             <RightAddon>
               <MagnifyingGlassIcon className="dark:text-secondary-200 h-5 w-5 text-black" />
             </RightAddon>
