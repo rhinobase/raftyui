@@ -8,5 +8,6 @@ export const [NavigationMenuProvider, useNavigationMenuContext] =
   });
 
 export interface NavigationMenuContext {
-  size?: "sm" | "base" | "lg";
+  size: "sm" | "md" | "lg";
+  barebone: boolean;
 }

@@ -3,215 +3,317 @@ import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { ComponentProps, forwardRef } from "react";
 import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 //MenuBar Component
-type Root = ComponentProps<(typeof MenubarPrimitive)["Root"]> & MenuBarContext;
-export const Root = forwardRef<HTMLDivElement, Root>(
-  ({ children, className, size = "base", ...props }, forwardedRef) => {
+export type Menubar = ComponentProps<(typeof MenubarPrimitive)["Root"]> &
+  Partial<MenuBarContext> & { unstyled?: boolean };
+export const Menubar = forwardRef<HTMLDivElement, Menubar>(
+  (
+    {
+      children,
+      className,
+      size = "md",
+      barebone = false,
+      unstyled = false,
+      ...props
+    },
+    forwardedRef
+  ) => {
+    const unstyle = barebone || unstyled;
+
     return (
-      <MenuBarProvider value={{ size }}>
+      <MenuBarProvider value={{ size, barebone }}>
         <MenubarPrimitive.Root
-          className={classNames("flex w-full", className)}
           {...props}
+          className={unstyle ? className : classNames("flex w-full", className)}
           ref={forwardedRef}
         >
           {children}
         </MenubarPrimitive.Root>
       </MenuBarProvider>
     );
-  },
+  }
 );
-Root.displayName = "MenuBar.Root";
+Menubar.displayName = "Menubar";
+
 //MenuBar Menu Component
-type Menu = ComponentProps<(typeof MenubarPrimitive)["Menu"]>;
-export const Menu = ({ children, ...props }: Menu) => {
+export type MenubarMenu = ComponentProps<(typeof MenubarPrimitive)["Menu"]>;
+export const MenubarMenu = ({ children, ...props }: MenubarMenu) => {
   return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
 };
-Menu.displayName = "MenuBar.Menu";
+MenubarMenu.displayName = "MenubarMenu";
 
 //MenuBar Button Component
-type Trigger = ComponentProps<(typeof MenubarPrimitive)["MenubarTrigger"]>;
-export const Trigger = forwardRef<HTMLButtonElement, Trigger>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
+const triggerClasses = cva(
+  "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none",
+  {
+    variants: {
+      size: {
+        sm: "py-2 px-2 text-xs",
+        md: "py-2 px-3 text-sm",
+        lg: "py-3 px-4 text-base",
+      },
+    },
+  }
+);
+export type MenubarTrigger = ComponentProps<
+  (typeof MenubarPrimitive)["MenubarTrigger"]
+> & { unstyled?: boolean };
+export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.Trigger
-        className={classNames(
-          size == "sm" && "py-2 px-2 text-xs",
-          size == "base" && "py-2 px-3 text-sm",
-          size == "lg" && "py-3 px-4 text-base",
-          "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none",
-          className,
-        )}
+        className={
+          unstyle ? className : classNames(triggerClasses({ size }), className)
+        }
         {...props}
         ref={forwardedRef}
       >
         {children}
       </MenubarPrimitive.Trigger>
     );
-  },
+  }
 );
-Trigger.displayName = "MenuBar.Trigger";
+MenubarTrigger.displayName = "MenubarTrigger";
 
 //MenuBarContent Component
 
-type Content = ComponentProps<(typeof MenubarPrimitive)["Content"]>;
-export const Content = forwardRef<HTMLDivElement, Content>(
-  ({ children, className, ...props }, forwardedRef) => {
+export type MenubarContent = ComponentProps<
+  (typeof MenubarPrimitive)["Content"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarContent = forwardRef<HTMLDivElement, MenubarContent>(
+  (
+    { children, className, sideOffset, unstyled = false, ...props },
+    forwardedRef
+  ) => {
+    const { barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.Portal>
         <MenubarPrimitive.Content
-          className={classNames(
-            "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-            className,
-          )}
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+                  className
+                )
+          }
           {...props}
-          sideOffset={5}
+          sideOffset={sideOffset ?? 5}
           ref={forwardedRef}
         >
           {children}
         </MenubarPrimitive.Content>
       </MenubarPrimitive.Portal>
     );
-  },
+  }
 );
-Content.displayName = "MenuBar.Content";
+MenubarContent.displayName = "MenubarContent";
 
 // MenuGroup Component
-type Group = { children?: React.ReactNode; title: string };
-export const Group = ({ children, title }: Group) => {
+export type MenubarGroup = { children?: React.ReactNode; title: string };
+export const MenubarGroup = ({ children, title }: MenubarGroup) => {
   return (
     <>
-      <Label>{title}</Label>
+      <MenubarLabel>{title}</MenubarLabel>
       {children}
     </>
   );
 };
-Group.displayName = "MenuBar.Group";
+MenubarGroup.displayName = "MenubarGroup";
 
 //MenuBar Label Component
-type Label = ComponentProps<(typeof MenubarPrimitive)["Label"]>;
-export const Label = forwardRef<HTMLDivElement, Label>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
+const labelClasses = cva(
+  "text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide",
+  {
+    variants: {
+      size: {
+        sm: "py-1 text-[10px]",
+        md: "py-1 text-[11px]",
+        lg: "py-1.5 text-xs",
+      },
+    },
+  }
+);
+export type MenubarLabel = ComponentProps<
+  (typeof MenubarPrimitive)["Label"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarLabel = forwardRef<HTMLDivElement, MenubarLabel>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.Label
-        className={classNames(
-          size == "sm" && "py-1 text-[10px]",
-          size == "base" && "py-1 text-[11px]",
-          size == "lg" && "py-1.5 text-xs",
-          "text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide",
-          className,
-        )}
+        className={
+          unstyle ? className : classNames(labelClasses({ size }), className)
+        }
         {...props}
         ref={forwardedRef}
       >
         {children}
       </MenubarPrimitive.Label>
     );
-  },
+  }
 );
-Label.displayName = "MenuBar.Label";
+MenubarLabel.displayName = "MenubarLabel";
 
 //MenuBar Item Component
-type Item = ComponentProps<(typeof MenubarPrimitive)["Item"]>;
-export const Item = forwardRef<HTMLDivElement, Item>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
+const itemClasses = cva(
+  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+  }
+);
+export type MenubarItem = ComponentProps<(typeof MenubarPrimitive)["Item"]> & {
+  unstyled?: boolean;
+};
+export const MenubarItem = forwardRef<HTMLDivElement, MenubarItem>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.Item
-        className={classNames(
-          size == "sm" && "text-xs",
-          size == "base" && "text-sm",
-          size == "lg" && "text-base",
-          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-          className,
-        )}
+        className={
+          unstyle ? className : classNames(itemClasses({ size }), className)
+        }
         {...props}
         ref={forwardedRef}
       >
         {children}
       </MenubarPrimitive.Item>
     );
-  },
+  }
 );
-Item.displayName = "MenuBar.Item";
+MenubarItem.displayName = "MenubarItem";
 
 //MenuBar ChechboxGroup Component
-export const CheckboxGroup = MenubarPrimitive.Group;
+export const MenubarCheckboxGroup = MenubarPrimitive.Group;
 
-type CheckboxItem = ComponentProps<(typeof MenubarPrimitive)["CheckboxItem"]>;
-export const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItem>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
-    return (
-      <MenubarPrimitive.CheckboxItem
-        {...props}
-        ref={forwardedRef}
+//Menubar CheckboxItem Component
+const checkboxItemClasses = cva(
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+  }
+);
+export type MenubarCheckboxItem = ComponentProps<
+  (typeof MenubarPrimitive)["CheckboxItem"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarCheckboxItem = forwardRef<
+  HTMLDivElement,
+  MenubarCheckboxItem
+>(({ children, className, unstyled = false, ...props }, forwardedRef) => {
+  const { size, barebone } = useMenuBarContext();
+  const unstyle = barebone || unstyled;
+
+  return (
+    <MenubarPrimitive.CheckboxItem
+      {...props}
+      ref={forwardedRef}
+      className={
+        unstyle
+          ? className
+          : classNames(checkboxItemClasses({ size }), className)
+      }
+    >
+      {children}
+      <MenubarPrimitive.ItemIndicator
         className={classNames(
-          size == "sm" && "text-xs",
-          size == "base" && "text-sm",
-          size == "lg" && "text-base",
-          "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
-          className,
+          size == "sm" && "top-2",
+          size == "md" && "top-2.5",
+          size == "lg" && "top-3",
+          "absolute left-1"
         )}
       >
-        {children}
-        <MenubarPrimitive.ItemIndicator
-          className={classNames(
-            size == "sm" && "top-2",
-            size == "base" && "top-2.5",
-            size == "lg" && "top-3",
-            "absolute left-1",
-          )}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="h-3 w-3 stroke-2"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="h-3 w-3 stroke-2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4.5 12.75l6 6 9-13.5"
-            />
-          </svg>
-        </MenubarPrimitive.ItemIndicator>
-      </MenubarPrimitive.CheckboxItem>
-    );
-  },
-);
-CheckboxItem.displayName = "MenuBar.CheckboxItem";
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.5 12.75l6 6 9-13.5"
+          />
+        </svg>
+      </MenubarPrimitive.ItemIndicator>
+    </MenubarPrimitive.CheckboxItem>
+  );
+});
+MenubarCheckboxItem.displayName = "MenubarCheckboxItem";
 
 //MenuBar RadioGroup Component
-export const RadioGroup = MenubarPrimitive.RadioGroup;
+export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
 
-type RadioItem = ComponentProps<(typeof MenubarPrimitive)["RadioItem"]>;
-export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
+//Menubar RadioItem component
+const radioItemClasses = cva(
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+  }
+);
+export type MenubarRadioItem = ComponentProps<
+  (typeof MenubarPrimitive)["RadioItem"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarRadioItem = forwardRef<HTMLDivElement, MenubarRadioItem>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.RadioItem
         {...props}
         ref={forwardedRef}
-        className={classNames(
-          size == "sm" && "text-xs",
-          size == "base" && "text-sm",
-          size == "lg" && "text-base",
-          "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
-          className,
-        )}
+        className={
+          unstyle
+            ? className
+            : classNames(radioItemClasses({ size }), className)
+        }
       >
         {children}
         <MenubarPrimitive.ItemIndicator
           className={classNames(
             size == "sm" && "top-2",
-            size == "base" && "top-2.5",
+            size == "md" && "top-2.5",
             size == "lg" && "top-3",
-            "absolute left-1",
+            "absolute left-1"
           )}
         >
           <svg
@@ -227,33 +329,49 @@ export const RadioItem = forwardRef<HTMLDivElement, RadioItem>(
         </MenubarPrimitive.ItemIndicator>
       </MenubarPrimitive.RadioItem>
     );
-  },
+  }
 );
-RadioItem.displayName = "MenuBar.RadioItem";
+MenubarRadioItem.displayName = "MenuBar.RadioItem";
 
 //MenuBar SubMenu Component
-type Sub = ComponentProps<(typeof MenubarPrimitive)["Sub"]>;
-export const Sub = ({ children, ...props }: Sub) => {
+export type MenubarSub = ComponentProps<(typeof MenubarPrimitive)["Sub"]>;
+export const MenubarSub = ({ children, ...props }: MenubarSub) => {
   return <MenubarPrimitive.Sub {...props}>{children}</MenubarPrimitive.Sub>;
 };
-Sub.displayName = "MenuBar.Sub";
+MenubarSub.displayName = "MenubarSub";
 
 //MenuBar SubMenuButton Component
-type SubTrigger = ComponentProps<(typeof MenubarPrimitive)["SubTrigger"]>;
-export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
+const subTriggerClasses = cva(
+  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pr-2 pl-5 font-semibold focus:outline-none",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+  }
+);
+export type MenubarSubTrigger = ComponentProps<
+  (typeof MenubarPrimitive)["SubTrigger"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarSubTrigger = forwardRef<HTMLDivElement, MenubarSubTrigger>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.SubTrigger
         {...props}
         ref={forwardedRef}
-        className={classNames(
-          size == "sm" && "text-xs",
-          size == "base" && "text-sm",
-          size == "lg" && "text-base",
-          "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pr-2 pl-5 font-semibold focus:outline-none",
-          className,
-        )}
+        className={
+          unstyle
+            ? className
+            : classNames(subTriggerClasses({ size }), className)
+        }
       >
         {children}
         <span>
@@ -274,23 +392,34 @@ export const SubTrigger = forwardRef<HTMLDivElement, SubTrigger>(
         </span>
       </MenubarPrimitive.SubTrigger>
     );
-  },
+  }
 );
-SubTrigger.displayName = "MenuBar.SubTrigger";
+MenubarSubTrigger.displayName = "MenubarSubTrigger";
 
 //MenuBar SubContent Component
 
-type SubContent = ComponentProps<(typeof MenubarPrimitive)["SubContent"]>;
-export const SubContent = forwardRef<HTMLDivElement, SubContent>(
-  ({ children, className, ...props }, forwardedRef) => {
+export type MenubarSubContent = ComponentProps<
+  (typeof MenubarPrimitive)["SubContent"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarSubContent = forwardRef<HTMLDivElement, MenubarSubContent>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.Portal>
         <MenubarPrimitive.SubContent
-          className={classNames(
-            "data-[side=right]:animate-scale-in origin-top-left",
-            "p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-            className,
-          )}
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  "data-[side=right]:animate-scale-in origin-top-left",
+                  "p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+                  className
+                )
+          }
           {...props}
           ref={forwardedRef}
           sideOffset={10}
@@ -299,28 +428,41 @@ export const SubContent = forwardRef<HTMLDivElement, SubContent>(
         </MenubarPrimitive.SubContent>
       </MenubarPrimitive.Portal>
     );
-  },
+  }
 );
-SubContent.displayName = "MenuBar.SubContent";
+MenubarSubContent.displayName = "MenubarSubContent";
 
 // MenuBarDivider Component
-type Separator = ComponentProps<(typeof MenubarPrimitive)["Separator"]>;
-export const Separator = forwardRef<HTMLDivElement, Separator>(
-  ({ className, ...props }, forwardedRef) => {
-    const { size } = useMenuBarContext();
+const seperatorClasses = cva("bg-secondary-200 dark:bg-secondary-700 h-[1px]", {
+  variants: {
+    size: {
+      sm: "my-1",
+      md: "my-[5px]",
+      lg: "my-1.5",
+    },
+  },
+});
+export type MenubarSeparator = ComponentProps<
+  (typeof MenubarPrimitive)["Separator"]
+> & {
+  unstyled?: boolean;
+};
+export const MenubarSeparator = forwardRef<HTMLDivElement, MenubarSeparator>(
+  ({ className, unstyled = true, ...props }, forwardedRef) => {
+    const { size, barebone } = useMenuBarContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <MenubarPrimitive.Separator
         {...props}
         ref={forwardedRef}
-        className={classNames(
-          size == "sm" && "my-1",
-          size == "base" && "my-[5px]",
-          size == "lg" && "my-1.5",
-          "bg-secondary-200 dark:bg-secondary-700 h-[1px] ",
-          className,
-        )}
+        className={
+          unstyle
+            ? className
+            : classNames(seperatorClasses({ size }), className)
+        }
       />
     );
-  },
+  }
 );
-Separator.displayName = "MenuBar.Separator";
+MenubarSeparator.displayName = "MenubarSeparator";

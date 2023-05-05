@@ -1,10 +1,10 @@
 export {
-  Root,
-  List,
-  Item,
-  Trigger,
-  Content,
-  Link,
-  ListItem,
-  Indicator,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuListItem,
+  NavigationMenuTrigger,
 } from "./NavigationMenu";

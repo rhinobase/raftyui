@@ -1,4 +1,4 @@
-import * as MenuBar from "../src/menubar/MenuBar";
+import * as MenuBar from "../src/menubar/Menubar";
 const config = {
   title: "New/MenuBar",
   component: MenuBar,

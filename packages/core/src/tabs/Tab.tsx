@@ -5,8 +5,9 @@ import { cva, VariantProps } from "class-variance-authority";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
 
 // Root Component
-export type Root = ComponentProps<(typeof TabsPrimitive)["Root"]>;
-export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
+export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &
+  Partial<TabContext> & { unstyled?: boolean };
+export const Tab = forwardRef<HTMLDivElement, Tab>(
   (
     {
       children,
@@ -14,17 +15,25 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
       size = "md",
       variant = "line",
       orientation = "horizontal",
+      barebone = false,
+      unstyled = false,
       ...props
     },
     forwardedRef
   ) => {
+    const unstyle = barebone || unstyled;
+
     return (
-      <TabProvider value={{ size, variant, orientation }}>
+      <TabProvider value={{ size, variant, orientation, barebone }}>
         <TabsPrimitive.Root
-          className={classNames(
-            "w-full items-stretch data-[orientation=vertical]:flex",
-            className
-          )}
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  "w-full items-stretch data-[orientation=vertical]:flex",
+                  className
+                )
+          }
           {...props}
           orientation={orientation}
           ref={forwardedRef}
@@ -35,22 +44,31 @@ export const Root = forwardRef<HTMLDivElement, TabContext & Root>(
     );
   }
 );
-Root.displayName = "Tab.Root";
+Tab.displayName = "Tab";
+
 // List Component
-export type List = ComponentProps<(typeof TabsPrimitive)["List"]>;
-export const List = forwardRef<HTMLDivElement, TabContext & List>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { orientation, variant } = useTabContext();
+export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> & {
+  unstyled?: boolean;
+};
+export const TabList = forwardRef<HTMLDivElement, TabContext & TabList>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { orientation, variant, barebone } = useTabContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <TabsPrimitive.List
-        className={classNames(
-          orientation == "vertical" && variant == "enclosed"
-            ? "dark:border-black"
-            : "dark:border-secondary-700",
-          "flex rounded-t-md border-b",
-          "data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-0.5 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
-          className
-        )}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                orientation == "vertical" && variant == "enclosed"
+                  ? "dark:border-black"
+                  : "dark:border-secondary-700",
+                "flex rounded-t-md border-b",
+                "data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-0.5 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
+                className
+              )
+        }
         {...props}
         ref={forwardedRef}
       >
@@ -59,11 +77,9 @@ export const List = forwardRef<HTMLDivElement, TabContext & List>(
     );
   }
 );
-List.displayName = "Tab.List";
+TabList.displayName = "TabList";
 
 // Trigger Component
-export type Trigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]> &
-  VariantProps<typeof triggerClasses>;
 const triggerClasses = cva(
   "text-secondary-500 dark:text-secondary-400 transition-colors data-[state=active]:text-black data-[state=active]:dark:text-secondary-100 data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
   {
@@ -76,7 +92,8 @@ const triggerClasses = cva(
       orientation: {
         horizontal:
           "font-semibold hover:text-black hover:dark:text-secondary-100",
-        vertical: "font-medium",
+        vertical:
+          "font-medium text-left data-[state=active]:bg-secondary-100 data-[state=active]:dark:bg-secondary-800 data-[state=active]:hover:bg-secondary-100 data-[state=active]:dark:hover:bg-secondary-800",
       },
       variant: {
         line: "",
@@ -84,12 +101,6 @@ const triggerClasses = cva(
       },
     },
     compoundVariants: [
-      ...applyStyleToMultipleVariants({
-        orientation: "vertical",
-        variant: ["line", "enclosed"],
-        className:
-          "text-left data-[state=active]:bg-secondary-100 data-[state=active]:dark:bg-secondary-800 data-[state=active]:hover:bg-secondary-100 data-[state=active]:dark:hover:bg-secondary-800",
-      }),
       // horizontal line
       {
         orientation: "horizontal",
@@ -121,53 +132,71 @@ const triggerClasses = cva(
     ],
   }
 );
-export const Trigger = forwardRef<HTMLButtonElement, TabContext & Trigger>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size, variant, orientation } = useTabContext();
-    return (
-      <TabsPrimitive.Trigger
-        className={classNames(
-          triggerClasses({
-            variant,
-            orientation,
-            size,
-          }),
-          className
-        )}
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </TabsPrimitive.Trigger>
-    );
-  }
-);
-Trigger.displayName = "Tab.Trigger";
+export type TabTrigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]> & {
+  unstyled?: boolean;
+};
+export const TabTrigger = forwardRef<
+  HTMLButtonElement,
+  TabContext & TabTrigger
+>(({ children, className, unstyled = false, ...props }, forwardedRef) => {
+  const { size, variant, orientation, barebone } = useTabContext();
+  const unstyle = barebone || unstyled;
+
+  return (
+    <TabsPrimitive.Trigger
+      className={
+        unstyle
+          ? className
+          : classNames(
+              triggerClasses({
+                variant,
+                orientation,
+                size,
+              }),
+              className
+            )
+      }
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </TabsPrimitive.Trigger>
+  );
+});
+TabTrigger.displayName = "TabTrigger";
 
 // Content Component
-export type Content = ComponentProps<(typeof TabsPrimitive)["Content"]>;
-export const Content = forwardRef<HTMLDivElement, Content>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size, variant, orientation } = useTabContext();
+export type TabContent = ComponentProps<(typeof TabsPrimitive)["Content"]> & {
+  unstyled?: boolean;
+};
+export const TabContent = forwardRef<HTMLDivElement, TabContent>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, variant, orientation, barebone } = useTabContext();
+    const unstyle = barebone || unstyled;
+
     return (
       <TabsPrimitive.Content
-        className={classNames(
-          size == "sm" &&
-            variant == "line" &&
-            "data-[orientation=vertical]:p-3",
-          size == "md" &&
-            variant == "line" &&
-            "data-[orientation=vertical]:p-4",
-          size == "lg" &&
-            variant == "line" &&
-            "data-[orientation=vertical]:p-5",
-          "w-full dark:text-white",
-          className
-        )}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                size == "sm" &&
+                  variant == "line" &&
+                  "data-[orientation=vertical]:p-3",
+                size == "md" &&
+                  variant == "line" &&
+                  "data-[orientation=vertical]:p-4",
+                size == "lg" &&
+                  variant == "line" &&
+                  "data-[orientation=vertical]:p-5",
+                "w-full dark:text-white",
+                className
+              )
+        }
         {...props}
         ref={forwardedRef}
       >
-        {orientation == "vertical" && variant == "enclosed" ? (
+        {orientation == "vertical" && variant == "enclosed" && !unstyle ? (
           <div className="flex items-stretch" style={{ height: "100%" }}>
             <div
               className={classNames(
@@ -194,4 +223,4 @@ export const Content = forwardRef<HTMLDivElement, Content>(
     );
   }
 );
-Content.displayName = "Tab.Content";
+TabContent.displayName = "TabContent";

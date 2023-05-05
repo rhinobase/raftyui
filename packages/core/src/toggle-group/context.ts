@@ -8,5 +8,6 @@ export const [ToggleGroupProvider, useToggleGroupContext] =
   });
 
 export interface ToggleGroupContext {
-  size?: "sm" | "md" | "lg";
+  size: "sm" | "md" | "lg";
+  barebone: boolean;
 }
