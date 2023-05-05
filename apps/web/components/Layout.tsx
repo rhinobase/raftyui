@@ -11,6 +11,7 @@ import { Search } from "@/components/Search";
 import {
   ArrowSmallLeftIcon,
   ArrowSmallRightIcon,
+  MoonIcon,
   SunIcon,
 } from "@heroicons/react/24/outline";
 import { Hero } from "./Hero";
@@ -80,11 +81,6 @@ function GitHubIcon(props: { className: string }) {
   );
 }
 
-enum ColorMode {
-  DARK = "dark",
-  LIGHT = "light",
-}
-
 function Header({ navigation }: { navigation: Navigation }) {
   let [isScrolled, setIsScrolled] = useState(false);
 
@@ -100,9 +96,9 @@ function Header({ navigation }: { navigation: Navigation }) {
   }, []);
 
   function toggle() {
-    const dark = document.documentElement.classList.contains(ColorMode.DARK);
-    if (dark) document.documentElement.classList.remove(ColorMode.DARK);
-    else document.documentElement.classList.add(ColorMode.DARK);
+    const dark = document.documentElement.classList.contains("dark");
+    if (dark) document.documentElement.classList.remove("dark");
+    else document.documentElement.classList.add("dark");
   }
 
   return (
@@ -133,7 +129,8 @@ function Header({ navigation }: { navigation: Navigation }) {
           colorScheme="primary"
           onClick={toggle}
         >
-          <SunIcon className="h-5 w-5" />
+          <SunIcon className="h-5 w-5 dark:hidden" />
+          <MoonIcon className="h-5 w-5 hidden dark:block" />
         </Button>
         <Link href="https://github.com" className="group" aria-label="GitHub">
           <Button variant="ghost" size="icon">

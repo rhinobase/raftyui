@@ -7,9 +7,10 @@ const themeScript = `
     theme = theme ?? window.localStorage.theme ?? 'system'
 
     if (theme === 'dark' || (theme === 'system' && isDarkMode.matches)) {
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add('dark');
+      console.log(document.documentElement.classList)
     } else if (theme === 'light' || (theme === 'system' && !isDarkMode.matches)) {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove('dark');
     }
 
     return theme
@@ -44,7 +45,7 @@ export default function Document() {
       <Head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </Head>
-      <body>
+      <body className="bg-white dark:bg-slate-900">
         <Main />
         <NextScript />
       </body>
