@@ -61,7 +61,16 @@ export {
   DrawerTitle,
 } from "./drawer";
 export { ErrorMessage, FieldControl, FieldGroup, FieldLabel } from "./field";
-export { InputField, InputGroup, Prefix, Suffix } from "./input-field";
+export {
+  InputField,
+  InputGroup,
+  Prefix,
+  Suffix,
+  NumberField,
+  SearchField,
+  LeftAddon,
+  RightAddon,
+} from "./input-field";
 export { Kbd } from "./kbd";
 export { List, ListItem, OrderedList, UnorderedList } from "./list";
 export {

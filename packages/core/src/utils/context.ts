@@ -15,7 +15,7 @@ export interface CreateContextOptions<T> {
 export type CreateContextReturn<T> = [
   React.Provider<T>,
   () => T,
-  React.Context<T>,
+  React.Context<T>
 ];
 
 function getErrorMessage(hook: string, provider: string) {
@@ -38,14 +38,14 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
   function useContext() {
     const context = useReactContext(Context);
 
-    if (!context && strict) {
-      const error = new Error(
-        errorMessage ?? getErrorMessage(hookName, providerName),
-      );
-      error.name = "ContextError";
-      Error.captureStackTrace?.(error, useContext);
-      throw error;
-    }
+    // if (!context && strict) {
+    //   const error = new Error(
+    //     errorMessage ?? getErrorMessage(hookName, providerName),
+    //   );
+    //   error.name = "ContextError";
+    //   Error.captureStackTrace?.(error, useContext);
+    //   throw error;
+    // }
 
     return context;
   }

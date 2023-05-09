@@ -3,7 +3,6 @@ import { userEvent, within } from "@storybook/testing-library";
 import { Button } from "../src";
 import { expect } from "@storybook/jest";
 
-
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
   args: {
@@ -210,7 +209,7 @@ export const ActiveVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Solid Active
         </div>
-        <Button colorScheme={colorScheme} active>
+        <Button colorScheme={colorScheme} isActive>
           Button text
         </Button>
       </div>
@@ -218,7 +217,7 @@ export const ActiveVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Outline Active
         </div>
-        <Button colorScheme={colorScheme} variant="outline" active>
+        <Button colorScheme={colorScheme} variant="outline" isActive>
           Button text
         </Button>
       </div>
@@ -226,7 +225,7 @@ export const ActiveVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Ghost Active
         </div>
-        <Button colorScheme={colorScheme} variant="ghost" active>
+        <Button colorScheme={colorScheme} variant="ghost" isActive>
           Button text
         </Button>
       </div>
@@ -257,7 +256,7 @@ export const DisabledVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Solid Disabled
         </div>
-        <Button colorScheme={colorScheme} disabled>
+        <Button colorScheme={colorScheme} isDisabled>
           Button text
         </Button>
       </div>
@@ -265,7 +264,7 @@ export const DisabledVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Outline Disabled
         </div>
-        <Button colorScheme={colorScheme} variant="outline" disabled>
+        <Button colorScheme={colorScheme} variant="outline" isDisabled>
           Button text
         </Button>
       </div>
@@ -273,7 +272,7 @@ export const DisabledVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Ghsot Disabled
         </div>
-        <Button colorScheme={colorScheme} variant="ghost" disabled>
+        <Button colorScheme={colorScheme} variant="ghost" isDisabled>
           Button text
         </Button>
       </div>
@@ -313,7 +312,7 @@ export const LoadingVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Solid Loading
         </div>
-        <Button colorScheme={colorScheme} loading>
+        <Button colorScheme={colorScheme} isLoading>
           Button text
         </Button>
       </div>
@@ -321,7 +320,7 @@ export const LoadingVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Outline Loading
         </div>
-        <Button colorScheme={colorScheme} variant="outline" loading>
+        <Button colorScheme={colorScheme} variant="outline" isLoading>
           Button text
         </Button>
       </div>
@@ -329,7 +328,7 @@ export const LoadingVariants: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           Ghost Loading
         </div>
-        <Button colorScheme={colorScheme} variant="ghost" loading>
+        <Button colorScheme={colorScheme} variant="ghost" isLoading>
           Button text
         </Button>
       </div>

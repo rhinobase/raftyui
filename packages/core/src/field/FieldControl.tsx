@@ -11,12 +11,11 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
     {
       name,
       orientation = "col",
-      required = false,
-      disabled = false,
-      readOnly = false,
-      hidden = false,
-      invalid = false,
-      loading = false,
+      isRequired = false,
+      isDisabled = false,
+      isReadOnly = false,
+      isInvalid = false,
+      isLoading = false,
       children,
       className,
       ...props
@@ -28,12 +27,11 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
         value={{
           name,
           orientation,
-          required,
-          disabled,
-          readOnly,
-          hidden,
-          invalid,
-          loading,
+          isRequired,
+          isDisabled,
+          isReadOnly,
+          isInvalid,
+          isLoading,
         }}
       >
         <div

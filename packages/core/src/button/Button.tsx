@@ -1,26 +1,12 @@
 import { cva } from "class-variance-authority";
 import { Spinner } from "../spinner";
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
-
-export type Button = {
-  /* Left aligned icon*/
-  leftIcon?: JSX.Element;
-  /* Right aligned icon */
-  rightIcon?: JSX.Element;
-  loadingText?: string;
-  unstyled?: boolean;
-} & {
-  colorScheme?: "primary" | "secondary" | "error" | "success";
-  variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg" | "icon" | "fab";
-  loading?: boolean;
-  disabled?: boolean;
-  active?: boolean;
-} & Omit<JSX.IntrinsicElements["button"], "ref">;
+import { AriaButtonProps, useButton } from "react-aria";
+import { mergeRefs } from "../utils/mergeRefs";
 
 const buttonClasses = cva(
-  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none data-[hidden=true]:hidden",
+  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none",
   {
     variants: {
       colorScheme: {
@@ -447,39 +433,48 @@ const buttonClasses = cva(
   }
 );
 
+export type Button = {
+  className?: string;
+  /* Left aligned icon*/
+  leftIcon?: JSX.Element;
+  /* Right aligned icon */
+  rightIcon?: JSX.Element;
+  loadingText?: string;
+  unstyled?: boolean;
+  colorScheme?: "primary" | "secondary" | "error" | "success";
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg" | "icon" | "fab";
+  isLoading?: boolean;
+  isActive?: boolean;
+} & Omit<AriaButtonProps, "ref">;
+
 export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   {
-    loading = false,
-    active = false,
+    isLoading = false,
+    isActive = false,
     colorScheme = "secondary",
     variant = "solid",
     size = "md",
-    type = "button",
     loadingText,
-    hidden,
     unstyled = false,
     className,
     children,
+    leftIcon: LeftIcon,
+    rightIcon: RightIcon,
     ...props
   }: Button,
   forwardedRef
 ) {
-  const {
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
-    // attributes propagated from `HTMLButtonProps`
-    ...passThroughProps
-  } = props;
   // Buttons are **always** disabled if we're in a `loading` state
-  const disabled = props.disabled || loading;
+  const disabled = props.isDisabled || isLoading;
+  const ref = useRef(null);
+  const { buttonProps } = useButton(props, ref);
 
   return (
     <button
-      type={type}
-      data-hidden={hidden}
-      {...passThroughProps}
-      disabled={disabled ?? undefined}
-      ref={forwardedRef}
+      {...buttonProps}
+      disabled={disabled}
+      ref={mergeRefs(forwardedRef, ref)}
       className={
         unstyled
           ? className
@@ -488,23 +483,15 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
                 colorScheme,
                 variant,
                 size,
-                loading,
-                disabled: props.disabled,
-                active,
+                loading: isLoading,
+                disabled: props.isDisabled,
+                active: isActive,
               }),
               className
             )
       }
-      // if we click a disabled button, we prevent going through the click handler
-      onClick={
-        disabled
-          ? (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-              e.preventDefault();
-            }
-          : props.onClick
-      }
     >
-      {loading ? (
+      {isLoading ? (
         <>
           <Spinner inheritParent className="mr-2" size="sm" />
           {loadingText ?? children}

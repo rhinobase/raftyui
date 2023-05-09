@@ -1,12 +1,18 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, InputGroup, Prefix, Suffix, InputField } from "../src";
+import {
+  FieldControl,
+  InputGroup,
+  Prefix,
+  Suffix,
+  InputField,
+  LeftAddon,
+  RightAddon,
+} from "../src";
 import {
   CheckIcon,
   MagnifyingGlassIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
-import { LeftAddon } from "../src/input-field/LeftAddon";
-import { RightAddon } from "../src/input-field/RightAddon";
 
 const meta: Meta<typeof InputField> = {
   title: "Form / InputGroup",
@@ -36,7 +42,7 @@ export const Variants: Story = {
             <Prefix>
               <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Prefix>
-            <InputField className="!px-10" size={size} />
+            <InputField size={size} />
             <Suffix>
               <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Suffix>
@@ -49,7 +55,7 @@ export const Variants: Story = {
         <FieldControl name="input_group">
           <InputGroup>
             <LeftAddon>+234</LeftAddon>
-            <InputField className="relative z-[1] rounded-none" size={size} />
+            <InputField size={size} />
             <RightAddon>
               <MagnifyingGlassIcon className="dark:text-secondary-200 h-5 w-5 text-black" />
             </RightAddon>

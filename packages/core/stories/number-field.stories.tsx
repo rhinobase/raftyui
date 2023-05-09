@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { InputField } from "../src";
+import { InputField, NumberField } from "../src";
 
-const meta: Meta<typeof InputField> = {
-  title: "Form / InputField",
+const meta: Meta<typeof NumberField> = {
+  title: "Form / NumberField",
   args: {
     size: "md",
     variant: "outline",
@@ -29,14 +29,13 @@ export const Variants: Story = {
   render: ({ size, variant, isReadOnly, isDisabled, isRequired }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
-        <h4 className="font-bold">Input Field</h4>
-        <InputField
+        <h4 className="font-bold">Number Field</h4>
+        <NumberField
           variant={variant}
           isReadOnly={isReadOnly}
           isDisabled={isDisabled}
           isRequired={isRequired}
           size={size}
-          placeholder="Enter Text"
         />
       </div>
     </>
