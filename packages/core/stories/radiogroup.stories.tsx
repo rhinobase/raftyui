@@ -1,14 +1,32 @@
 import { Radio, RadioCard, RadioGroup } from "../src";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within } from "@storybook/testing-library";
 const meta: Meta<typeof RadioGroup> = {
   title: "Components / RadioGroup",
 };
+import { expect } from "@storybook/jest";
 
 export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const radios = await canvas.getAllByRole("radiogroup");
+
+    // Test for RadioGroup
+    const options = radios[0].getElementsByTagName("label");
+    await userEvent.click(options[1]);
+    await expect(options[0]).toHaveAttribute("data-selected", "false");
+    await expect(options[1]).toHaveAttribute("data-selected", "true");
+    await expect(options[2]).toHaveAttribute("data-selected", "false");
+
+    // Test for RadioGroup disabled
+    await expect(radios[1]).toHaveAttribute("aria-disabled", "true");
+  },
+
   render: () => (
     <>
       <div className="flex flex-col gap-4">
@@ -36,6 +54,20 @@ export const Variants: Story = {
 };
 
 export const Card: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const radios = await canvas.getAllByRole("radiogroup");
+
+    // Test for RadioGroup
+    const options = radios[0].getElementsByTagName("label");
+    await userEvent.click(options[1]);
+    await expect(options[0]).toHaveAttribute("data-selected", "false");
+    await expect(options[1]).toHaveAttribute("data-selected", "true");
+    await expect(options[2]).toHaveAttribute("data-selected", "false");
+    await expect(options[3]).toHaveAttribute("data-selected", "false");
+  },
+
   render: () => (
     <>
       <RadioGroup defaultValue="ABC">
@@ -77,6 +109,18 @@ export const Card: Story = {
 };
 
 export const Custom: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const radios = await canvas.getAllByRole("radiogroup");
+
+    // Test for RadioGroup
+    const options = radios[0].getElementsByTagName("label");
+    await userEvent.click(options[1]);
+    await expect(options[0]).toHaveAttribute("data-selected", "false");
+    await expect(options[1]).toHaveAttribute("data-selected", "true");
+  },
+
   render: () => (
     <>
       <div className="flex gap-4">
@@ -112,6 +156,19 @@ export const Custom: Story = {
 };
 
 export const RadioTabGroup: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const radios = await canvas.getAllByRole("radiogroup");
+
+    // Test for RadioGroup
+    const options = radios[0].getElementsByTagName("label");
+    await userEvent.click(options[1]);
+    await expect(options[0]).toHaveAttribute("data-selected", "false");
+    await expect(options[1]).toHaveAttribute("data-selected", "true");
+    await expect(options[2]).toHaveAttribute("data-selected", "false");
+    await expect(options[3]).toHaveAttribute("data-selected", "false");
+  },
   render: () => (
     <>
       <div className="flex ">

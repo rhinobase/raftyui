@@ -9,6 +9,13 @@ import {
   NavigationMenuTrigger,
 } from "../src";
 import { Meta, StoryObj } from "@storybook/react";
+import {
+  within,
+  userEvent,
+  fireEvent,
+  screen,
+} from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof NavigationMenu> = {
   title: "Components / NavigationMenu",
@@ -18,7 +25,7 @@ const meta: Meta<typeof NavigationMenu> = {
   argTypes: {
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "full"],
+      options: ["sm", "md", "lg"],
     },
   },
 };
@@ -27,6 +34,23 @@ export default meta;
 type Story = StoryObj<typeof NavigationMenu>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    //Test for hover on menubar
+    const menuitem = await canvas.findAllByRole("button");
+
+    // Test for Open and Close navigation-menu
+    await userEvent.click(menuitem[0]);
+
+    await userEvent.click(menuitem[0]);
+
+    // for (let i = 0; i < menuitem.length; i++) {
+    //   await userEvent.hover(menuitem[i]);
+    //   await expect(menuitem[i]).toBeInTheDocument();
+    // }
+  },
+
   render: ({ size }) => (
     <>
       <div className="h-screen w-screen">
