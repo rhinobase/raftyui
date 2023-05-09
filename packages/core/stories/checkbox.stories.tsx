@@ -1,4 +1,4 @@
-import { Checkbox } from "../src";
+import { Checkbox, CheckboxGroup } from "../src";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Checkbox> = {
@@ -26,26 +26,26 @@ export const Default: Story = {
           Red
         </Checkbox>
         <h2 className="font-bold">CheckBox Checked Disabled</h2>
-        <Checkbox name="red1" disabled checked>
+        <Checkbox name="red1" isDisabled defaultSelected>
           Red
         </Checkbox>
         <h2 className="font-bold">CheckBox DefaultValue</h2>
-        <Checkbox name="green1" value="green1" defaultValue="green1">
+        <Checkbox name="green1" value="green1">
           Green
         </Checkbox>
 
-        <h2 className="font-bold">CheckBox checked</h2>
-        <Checkbox name="blue1" checked>
-          Blue
-        </Checkbox>
-        <h2 className="font-bold">CheckBox defaultChecked</h2>
-        <Checkbox name="pink" defaultChecked>
-          Pink
-        </Checkbox>
         <h2 className="font-bold">CheckBox validationState</h2>
-        <Checkbox name="pink" defaultChecked validationState="invalid">
+        <Checkbox name="pink" defaultSelected validationState="invalid">
           I accept the terms and conditions
         </Checkbox>
+
+        <CheckboxGroup label="Favorite sports">
+          <Checkbox value="soccer" isDisabled>
+            Soccer
+          </Checkbox>
+          <Checkbox value="baseball">Baseball</Checkbox>
+          <Checkbox value="basketball">Basketball</Checkbox>
+        </CheckboxGroup>
       </div>
     </>
   ),

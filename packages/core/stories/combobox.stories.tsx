@@ -1,29 +1,33 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Combobox } from "../src";
+import { ComboBox, FieldControl } from "../src";
 import { expect } from "@storybook/jest";
 import { within } from "@storybook/testing-library";
+import { Item } from "../src/combobox/Combobox";
+import { SunIcon } from "@heroicons/react/24/outline";
+import { ReactNode } from "react";
 
-const meta: Meta<typeof Combobox> = {
-  title: "Components / Combobox",
+const meta: Meta<typeof ComboBox> = {
+  title: "Form / ComboBox",
 
-  // args: {
-
-  // },
-  // argTypes: {
-  //   variant: {
-  //     control: "select",
-  //     options: ["ghost", "solid"],
-  //   },
-  //   size: {
-  //     control: "select",
-  //     options: ["sm", "md", "lg"],
-  //   },
-  // },
+  args: {
+    size: "md",
+    variant: "outline",
+  },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["ghost", "solid", "outline"],
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Combobox>;
+type Story = StoryObj<typeof ComboBox>;
 
 export const Variants: Story = {
   play: async ({ canvasElement }) => {
@@ -35,62 +39,31 @@ export const Variants: Story = {
     // TODO Test for comobobox
   },
 
-  render: () => {
+  render: ({ size, variant }) => {
     // const [search, setSearch] = useState<string>();
-    const options = [
-      { value: "none", label: "Empty" },
-      {
-        value: "left",
-        label: (
-          <div className="flex flex-col gap-1 py-3">
-            Open Left
-            <p className="text-sm text-zinc-400">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Deserunt, voluptatum.
-            </p>
-          </div>
-        ),
-      },
-      { value: "right", label: "Open Right" },
-      {
-        value: "tilt left",
-        label: (
-          <div className="flex items-center gap-3 py-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"
-              />
-            </svg>
-            Tilt and Open Left
-          </div>
-        ),
-      },
-      {
-        value: "tilt right",
-        label: "Tilf and Open Right",
-      },
-    ];
+
     return (
       <div className="max-w-4xl w-full">
-        <Combobox
-          placeholder="placeholder"
-          options={options}
-          // inputValue={search}
-          onInputChange={(value) => {
-            console.log("input value", value);
-            // setSearch(value);
-          }}
-          // onChange={(value) => console.log("on change value", value)}
-        />
+        <FieldControl name="combo">
+          <ComboBox
+            size={size}
+            variant={variant}
+            label="Favorite Animal"
+            onInputChange={(value) => console.log(value)}
+          >
+            <Item key="red panda" textValue="red panda">
+              <div className="flex gap-2 items-center">
+                <div className="rounded-full w-5 h-5 bg-red-200">RP</div>Red
+                Panda
+              </div>
+            </Item>
+            <Item key="cat">Cat</Item>
+            <Item key="dog">Dog</Item>
+            <Item key="aardvark">Aardvark</Item>
+            <Item key="kangaroo">Kangaroo</Item>
+            <Item key="snake">Snake</Item>
+          </ComboBox>
+        </FieldControl>
       </div>
     );
   },

@@ -65,23 +65,22 @@ const itemClasses = cva(
 export type ToggleGroupItem = ComponentProps<
   (typeof ToggleGroupPrimitive)["Item"]
 > & { unstyled?: boolean };
-export const ToggleGroupItem = forwardRef<
-  HTMLButtonElement,
-  ToggleGroupContext & ToggleGroupItem
->(({ children, className, unstyled = false, ...props }, forwardedRef) => {
-  const { size, barebone } = useToggleGroupContext();
-  const unstyle = barebone || unstyled;
+export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
+  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
+    const { size, barebone } = useToggleGroupContext();
+    const unstyle = barebone || unstyled;
 
-  return (
-    <ToggleGroupPrimitive.Item
-      className={
-        unstyle ? className : classNames(itemClasses({ size }), className)
-      }
-      {...props}
-      ref={forwardedRef}
-    >
-      {children}
-    </ToggleGroupPrimitive.Item>
-  );
-});
+    return (
+      <ToggleGroupPrimitive.Item
+        className={
+          unstyle ? className : classNames(itemClasses({ size }), className)
+        }
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </ToggleGroupPrimitive.Item>
+    );
+  }
+);
 ToggleGroupItem.displayName = "ToggleGroupItem";

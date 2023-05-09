@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select, Option } from "../src/select";
+import { Select } from "../src";
 import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
+import { Item } from "react-stately";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
@@ -52,9 +53,9 @@ export const Variants: Story = {
     <div className="max-w-2xl w-full flex flex-col gap-4">
       <h4 className="font-bold">Style</h4>
       <Select variant={variant} size={size} unstyled={unstyled}>
-        <Option value="option1">Option 1</Option>
-        <Option value="option2">Option 2</Option>
-        <Option value="option3">Option 3</Option>
+        <Item key="option1">Option 1</Item>
+        <Item key="option2">Option 2</Item>
+        <Item key="option3">Option 3</Item>
       </Select>
     </div>
   ),

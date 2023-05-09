@@ -18,7 +18,7 @@ export {
 export { Button } from "./button";
 export { Card, CardBody, CardFooter, CardHeader } from "./card";
 export { Checkbox, CheckboxGroup } from "./checkbox";
-export { Combobox } from "./combobox";
+export { ComboBox } from "./combobox";
 export {
   ContextMenu,
   ContextMenuCheckBoxGroup,
@@ -42,6 +42,7 @@ export {
   RangePicker,
   YearPanel,
 } from "./date-picker";
+export { DatePickers, RangePickers } from "./date-pickers";
 export {
   Dialog,
   DialogBody,
@@ -126,7 +127,7 @@ export {
 } from "./navigation-menu";
 export { Progress } from "./progress";
 export { RadioGroup, RadioCard, Radio } from "./radio-group";
-export { Select, Option } from "./select";
+export { Select } from "./select";
 export { Skeleton } from "./skeleton";
 export { Spinner } from "./spinner";
 export {
