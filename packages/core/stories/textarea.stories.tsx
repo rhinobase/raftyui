@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldControl, FieldLabel } from "../src";
 import { Textarea } from "../src/textarea";
-import { within } from "@storybook/testing-library";
+import { within, fireEvent, userEvent } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Textarea> = {
@@ -26,13 +26,16 @@ type Story = StoryObj<typeof Textarea>;
 export const Variants: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const textareas = await canvas.findAllByPlaceholderText("abc");
-    for (let i = 0; i < textareas.length; i++) {
-      const textarea = textareas[i];
-      // Test for find textarea
-      await expect(textarea).toBeInTheDocument();
-      await expect(textarea).toHaveValue("");
-    }
+    const textarea = await canvas.getByPlaceholderText("abc");
+
+    // Test for find textarea
+    await expect(textarea).toBeInTheDocument();
+    await expect(textarea).toHaveValue("");
+    await expect(textarea);
+
+    // Test for text input
+    await fireEvent.change(textarea, { target: { value: "Bird" } });
+    await expect(textarea).toHaveValue("Bird");
   },
   render: ({ variant, disabled, required, readOnly }) => (
     <>

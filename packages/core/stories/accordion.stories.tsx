@@ -5,6 +5,8 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "../src";
+import { userEvent, within } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components / Accordion",
@@ -29,6 +31,25 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Accordion Button
+    const accordion = await canvas
+      .getByText("Section 1 title")
+      .closest("button");
+    await expect(accordion).toHaveAttribute("data-state", "open");
+
+    // Test for Accordion Open and close
+    await userEvent.click(accordion as HTMLButtonElement);
+    await expect(accordion).toHaveAttribute("data-state", "closed");
+    await userEvent.click(accordion as HTMLButtonElement);
+    await expect(accordion).toHaveAttribute("data-state", "open");
+    await expect(
+      (await canvas.findByText(/Lorem/)).closest("div")
+    ).toBeVisible();
+  },
+
   render: ({ variant, size }) => (
     <>
       <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">

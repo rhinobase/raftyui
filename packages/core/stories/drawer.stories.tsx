@@ -9,6 +9,13 @@ import {
 } from "../src";
 import { Button } from "../src";
 import { useState } from "react";
+import {
+  userEvent,
+  within,
+  screen,
+  fireEvent,
+} from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Drawer> = {
   title: "Components / Drawer",
@@ -27,6 +34,19 @@ export default meta;
 type Story = StoryObj<typeof Drawer>;
 
 export const Variants: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test for open Drawer
+    const button = await canvas.getByRole("button");
+    await userEvent.click(button);
+    await expect(screen.getByRole("dialog")).toBeVisible();
+    await expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    // Test for close Drawer
+    const close_button = await screen.getByRole("button");
+    await fireEvent.click(close_button);
+  },
   render: function Render({ size }) {
     const [isOpen, setOpen] = useState(false);
     return (

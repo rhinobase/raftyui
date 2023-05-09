@@ -8,12 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../src";
-import {
-  within,
-  userEvent,
-  screen,
-  fireEvent,
-} from "@storybook/testing-library";
+import { within, userEvent, screen } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Dialog> = {

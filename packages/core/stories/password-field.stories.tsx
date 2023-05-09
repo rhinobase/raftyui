@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldControl } from "../src/field";
 import { PasswordField } from "../src/password-field";
-import { within } from "@storybook/testing-library";
+import { within, fireEvent, userEvent } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
+import { Button } from "../src";
+import { type } from "os";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Form / PasswordField",
@@ -35,6 +37,18 @@ export const Variants: Story = {
 
     // Test for passwordfield
     await expect(PasswordField).toBeInTheDocument();
+    await expect(PasswordField).toHaveAttribute("type", "password");
+
+    // Test for Password input
+    await fireEvent.change(PasswordField, { target: { value: "Password" } });
+    await expect(PasswordField).toHaveValue("Password");
+
+    // Test for Show and Hide Password
+    const show_button = await canvas.getByRole("button");
+    await userEvent.click(show_button);
+    await expect(PasswordField).toHaveAttribute("type", "text");
+    await userEvent.click(show_button);
+    await expect(PasswordField).toHaveAttribute("type", "password");
   },
   render: ({ size, variant, disabled, readOnly, required }) => (
     <>
