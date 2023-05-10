@@ -167,8 +167,6 @@ const Subbox = forwardRef<HTMLInputElement, Subbox>(
 
     const { inputProps } = useCheckboxGroupItem(props, state, ref);
 
-    return <></>;
-
     const isDisabled = state?.isDisabled || props.isDisabled;
     let isSelected = false;
     if (props.value) isSelected = state?.isSelected(props.value) ?? false;
