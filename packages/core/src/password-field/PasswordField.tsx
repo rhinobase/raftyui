@@ -8,6 +8,7 @@ import { AriaTextFieldProps, useTextField } from "react-aria";
 import { mergeRefs } from "../utils/mergeRefs";
 import { classNames } from "../utils";
 import { inputFieldClasses } from "../input-field/InputField";
+import { useInputGroupContext } from "../input-field/context";
 
 type InitialState = boolean | (() => boolean);
 
@@ -35,6 +36,12 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
     const [showPassword, { toggle }] = useBoolean();
     const ref = useRef(null);
     const { inputProps } = useTextField(props, ref);
+    const inputGroupProps = useInputGroupContext() ?? {
+      isLeftAddon: false,
+      isRightAddon: false,
+      isPrefix: false,
+      isSuffix: false,
+    };
     const controls = useFieldControlContext() ?? {};
 
     return (
@@ -48,6 +55,10 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
               size: size,
               variant,
               invalid: controls.isInvalid,
+              isLeftAddon: inputGroupProps.isLeftAddon,
+              isRightAddon: inputGroupProps.isRightAddon,
+              isPrefix: inputGroupProps.isPrefix,
+              isSuffix: inputGroupProps.isSuffix,
             }),
             className
           )}
@@ -59,6 +70,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             aria-label="show and hide password"
             variant="ghost"
             onPress={toggle}
+            className="!z-[2]"
           >
             {showPassword ? (
               <EyeSlashIcon className="h-4 w-4 stroke-2" />

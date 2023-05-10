@@ -1,6 +1,6 @@
 import React, { forwardRef, useRef } from "react";
 import { useFieldControlContext } from "../field";
-import { applyStyleToMultipleVariants, classNames } from "../utils";
+import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 import {
   AriaNumberFieldProps,
@@ -24,13 +24,13 @@ import { useInputGroupContext } from "./context";
 
 // InputField Component
 export const inputFieldClasses = cva(
-  "w-full appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+  "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
       size: {
-        sm: "px-2 py-1 text-sm rounded",
-        md: "px-3 py-1.5 rounded-md",
-        lg: "px-4 py-2 text-lg rounded-md",
+        sm: "px-2 py-1 text-sm",
+        md: "px-3 py-1.5",
+        lg: "px-4 py-2 text-lg",
       },
       variant: {
         solid: "bg-secondary-50 dark:bg-secondary-800/20",
@@ -55,17 +55,85 @@ export const inputFieldClasses = cva(
       },
     },
     compoundVariants: [
-      ...applyStyleToMultipleVariants({
+      {
         variant: ["solid", "outline"],
         size: ["sm", "md", "lg"],
         className:
           "border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
-      }),
-      ...applyStyleToMultipleVariants({
+      },
+      {
         variant: ["outline", "ghost"],
         size: ["sm", "md", "lg"],
         className: "bg-transparent",
-      }),
+      },
+      {
+        size: "sm",
+        isLeftAddon: false,
+        className: "rounded-l",
+      },
+      {
+        size: "sm",
+        isRightAddon: false,
+        className: "rounded-r",
+      },
+      {
+        size: "sm",
+        isPrefix: true,
+        className: "pl-8 pr-2",
+      },
+      {
+        size: "sm",
+        isSuffix: true,
+        className: "pl-2 pr-8",
+      },
+      {
+        size: "sm",
+        isPrefix: true,
+        isSuffix: true,
+        className: "px-8",
+      },
+      {
+        size: ["md", "lg"],
+        isLeftAddon: false,
+        className: "rounded-l-md",
+      },
+      {
+        size: ["md", "lg"],
+        isRightAddon: false,
+        className: "rounded-r-md",
+      },
+      {
+        size: "md",
+        isPrefix: true,
+        className: "pl-9 pr-3",
+      },
+      {
+        size: "md",
+        isSuffix: true,
+        className: "pl-3 pr-9",
+      },
+      {
+        size: "md",
+        isPrefix: true,
+        isSuffix: true,
+        className: "px-9",
+      },
+      {
+        size: "lg",
+        isPrefix: true,
+        className: "pl-10 pr-4",
+      },
+      {
+        size: "lg",
+        isSuffix: true,
+        className: "pl-4 pr-10",
+      },
+      {
+        size: "lg",
+        isPrefix: true,
+        isSuffix: true,
+        className: "px-10",
+      },
     ],
   }
 );
@@ -77,8 +145,12 @@ export type InputField = Omit<AriaTextFieldProps, "size"> & {
 };
 export const InputField = forwardRef<HTMLInputElement, InputField>(
   ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
-    const { isLeftAddon, isPrefix, isRightAddon, isSuffix } =
-      useInputGroupContext();
+    const inputGroupProps = useInputGroupContext() ?? {
+      isLeftAddon: false,
+      isRightAddon: false,
+      isPrefix: false,
+      isSuffix: false,
+    };
     const ref = useRef(null);
     const { inputProps } = useTextField(props, ref);
     const controls = useFieldControlContext() ?? {};
@@ -92,11 +164,11 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
             size: size,
             variant,
             invalid: controls.isInvalid,
+            isLeftAddon: inputGroupProps.isLeftAddon,
+            isRightAddon: inputGroupProps.isRightAddon,
+            isPrefix: inputGroupProps.isPrefix,
+            isSuffix: inputGroupProps.isSuffix,
           }),
-          isLeftAddon && "!rounded-l-none",
-          isRightAddon && "!rounded-r-none",
-          isPrefix && "!pl-10",
-          isSuffix && "!pr-10",
           className
         )}
         ref={mergeRefs(forwardedRef, ref)}
@@ -113,6 +185,12 @@ export type NumberField = Omit<AriaNumberFieldProps, "size"> & {
 };
 export const NumberField = forwardRef<HTMLInputElement, NumberField>(
   ({ variant = "outline", size = "md", className, ...props }, forwardedRef) => {
+    const inputGroupProps = useInputGroupContext() ?? {
+      isLeftAddon: false,
+      isRightAddon: true,
+      isPrefix: false,
+      isSuffix: false,
+    };
     const { locale } = useLocale();
     const state = useNumberFieldState({ ...props, locale });
     const ref = React.useRef(null);
@@ -130,8 +208,11 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
               size: size,
               variant,
               invalid: controls.isInvalid,
+              isLeftAddon: inputGroupProps.isLeftAddon,
+              isRightAddon: inputGroupProps.isRightAddon,
+              isPrefix: inputGroupProps.isPrefix,
+              isSuffix: inputGroupProps.isSuffix,
             }),
-            "!rounded-r-none",
             className
           )}
           ref={mergeRefs(forwardedRef, ref)}
@@ -191,6 +272,12 @@ export type SearchField = Omit<AriaSearchFieldProps, "size"> & {
 };
 export const SearchField = forwardRef<HTMLInputElement, SearchField>(
   ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
+    const inputGroupProps = useInputGroupContext() ?? {
+      isLeftAddon: false,
+      isRightAddon: false,
+      isPrefix: false,
+      isSuffix: false,
+    };
     const state = useSearchFieldState(props);
     const ref = useRef(null);
     const { inputProps, clearButtonProps } = useSearchField(props, state, ref);
@@ -206,13 +293,22 @@ export const SearchField = forwardRef<HTMLInputElement, SearchField>(
               size: size,
               variant,
               invalid: controls.isInvalid,
+              isLeftAddon: inputGroupProps.isLeftAddon,
+              isRightAddon: inputGroupProps.isRightAddon,
+              isPrefix: inputGroupProps.isPrefix,
+              isSuffix: inputGroupProps.isSuffix,
             }),
             className
           )}
           ref={mergeRefs(forwardedRef, ref)}
         />
         <Suffix>
-          <Button variant="ghost" size="icon" {...clearButtonProps}>
+          <Button
+            variant="ghost"
+            size="icon"
+            {...clearButtonProps}
+            className="!z-[2]"
+          >
             <XMarkIcon className="w-3 h-3 stroke-[3]" />
           </Button>
         </Suffix>
