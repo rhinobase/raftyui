@@ -2,27 +2,32 @@ import { Meta, StoryObj } from "@storybook/react";
 import { DatePickers, FieldControl } from "../src";
 
 const meta: Meta<typeof DatePickers> = {
-  title: "Components / DatePickers",
-  // args: {
-  //   picker: "date",
-  // },
-  // argTypes: {
-  //   picker: {
-  //     control: "select",
-  //     options: ["date", "month", "year"],
-  //   },
-  // },
+  title: "Form / DatePickers",
+  args: {
+    size: "md",
+    variant: "outline",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    variant: {
+      control: "select",
+      options: ["solid", "outline", "ghost"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof DatePickers>;
 
 export const Variants: Story = {
-  render: () => (
+  render: ({ size, variant }) => (
     <>
-      <div className="w-[300px]">
+      <div className="w-[500px]">
         <FieldControl name="date">
-          <DatePickers />
+          <DatePickers size={size} variant={variant} />
         </FieldControl>
       </div>
     </>

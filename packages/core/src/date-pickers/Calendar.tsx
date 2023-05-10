@@ -41,15 +41,15 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     <div
       {...calendarProps}
       ref={ref}
-      className="inline-block p-5 text-gray-800"
+      className="inline-block p-5 text-zinc-800"
     >
-      <div className="flex items-center pb-4">
-        <h2 className="flex-1 font-bold text-xl ml-2">{title}</h2>
+      <div className="flex items-center justify-between pb-4">
         <CalendarButton {...prevButtonProps}>
-          <ChevronLeftIcon className="h-6 w-6" />
+          <ChevronLeftIcon className="h-5 w-5" />
         </CalendarButton>
+        <h2 className="font-semibold text-lg">{title}</h2>
         <CalendarButton {...nextButtonProps}>
-          <ChevronRightIcon className="h-6 w-6" />
+          <ChevronRightIcon className="h-5 w-5" />
         </CalendarButton>
       </div>
       <CalendarGrid state={state} />
@@ -71,12 +71,12 @@ export function CalendarGrid({
 
   return (
     <table {...gridProps} cellPadding="0" className="flex-1">
-      <thead {...headerProps} className="text-gray-600">
+      <thead {...headerProps} className="text-zinc-600 mb-2">
         <tr>
           {weekDays.map((day, index) => (
-            <th className="text-center" key={index}>
+            <td className="text-center font-semibold" key={index}>
               {day}
-            </th>
+            </td>
           ))}
         </tr>
       </thead>
@@ -154,19 +154,14 @@ function CalendarCell({
         className={classNames(
           isRoundedLeft && "rounded-l-md",
           isRoundedRight && "rounded-r-md",
-          isSelected && (isInvalid ? "bg-red-300" : "bg-primary-200"),
+          isSelected && (isInvalid ? "bg-red-300" : "bg-primary-100"),
           isDisabled && "disabled",
           "w-9 h-9 outline-none group"
         )}
-        //   ${
-        //   isRoundedLeft ? "rounded-l-full" : ""
-        // } ${isRoundedRight ? "rounded-r-full" : ""} ${
-        //   isSelected ? (isInvalid ? "bg-red-300" : "bg-primary-300") : ""
-        // } ${isDisabled ? "disabled" : ""}`}
       >
         <div
           className={classNames(
-            isDisabled && !isInvalid && "text-gray-400",
+            isDisabled && !isInvalid && "text-zinc-400",
             // Focus ring, visible while the cell has keyboard focus
             isFocusVisible
               ? "ring-2 group-focus:z-2 ring-primary-600 ring-offset-2"
@@ -181,11 +176,11 @@ function CalendarCell({
             isSelected && !isDisabled && !(isSelectionStart || isSelectionEnd)
               ? isInvalid
                 ? "hover:bg-red-400"
-                : "hover:bg-primary-400"
+                : "hover:bg-primary-300"
               : "",
             // Hover state for non-selected cells.
             !isSelected && !isDisabled ? "hover:bg-primary-100" : "",
-            "w-full h-full rounded-md flex items-center justify-center cursor-default"
+            "w-full h-full rounded-md flex items-center justify-center cursor-default text-sm transition-all"
           )}
         >
           {formattedDate}

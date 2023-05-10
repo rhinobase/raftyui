@@ -45,12 +45,8 @@ function DateSegments({
       ref={ref}
       style={{
         ...segmentProps.style,
-        minWidth:
-          segment.maxValue != null
-            ? String(segment.maxValue).length + "ch"
-            : undefined,
       }}
-      className={`px-0.5 box-content tabular-nums text-right outline-none rounded-sm focus:bg-primary-500 focus:text-white group ${
+      className={`px-1 box-content tabular-nums text-right outline-none rounded-sm focus:bg-primary-500 focus:text-white group ${
         !segment.isEditable ? "text-gray-500" : "text-gray-800"
       }`}
     >
@@ -59,7 +55,7 @@ function DateSegments({
         aria-hidden="true"
         className="block w-full text-center italic text-gray-500 group-focus:text-white"
         style={{
-          visibility: segment.isPlaceholder ? "visible" : "hidden",
+          display: segment.isPlaceholder ? "block" : "none",
           height: segment.isPlaceholder ? "" : 0,
           pointerEvents: "none",
         }}
