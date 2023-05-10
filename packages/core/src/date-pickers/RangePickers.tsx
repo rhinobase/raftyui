@@ -13,10 +13,42 @@ import {
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 import { Popover } from "../combobox/PopOver";
+import { cva } from "class-variance-authority";
+import { classNames } from "../utils";
+
+const RangePickerClasses = cva(
+  "flex transition-colors rounded-l-md pr-10 flex-1 relative",
+  {
+    variants: {
+      size: {
+        sm: "px-2 py-1 text-sm",
+        md: "px-3 py-1.5",
+        lg: "px-4 py-2 text-lg",
+      },
+      variant: {
+        solid: "bg-secondary-50 dark:bg-secondary-800/20",
+        outline:
+          "bg-transparent read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
+        ghost: "border border-transparent",
+      },
+    },
+    compoundVariants: [
+      {
+        variant: ["outline", "solid"],
+        className:
+          "border border-gray-300 group-focus-within:ring-2 group-focus-within:ring-primary-100 group-hover:border-primary-400 group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500",
+      },
+    ],
+  }
+);
 
 export function RangePickers<T extends DateValue>(
-  props: DateRangePickerStateOptions<T>
+  props: DateRangePickerStateOptions<T> & {
+    variant?: "solid" | "outline" | "ghost";
+    size?: "sm" | "md" | "lg";
+  }
 ) {
+  const { size = "md", variant = "outline" } = props;
   const state = useDateRangePickerState(props);
   const ref = useRef(null);
   const {
@@ -30,12 +62,12 @@ export function RangePickers<T extends DateValue>(
   } = useDateRangePicker(props, state, ref);
 
   return (
-    <div className="relative inline-flex flex-col text-left">
-      <span {...labelProps} className="text-sm text-gray-800">
+    <div className="relative inline-flex flex-col text-left w-full">
+      {/* <span {...labelProps} className="text-sm text-gray-800">
         {props.label}
-      </span>
-      <div {...groupProps} ref={ref} className="flex group">
-        <div className="flex bg-white border border-gray-300 group-hover:border-gray-400 transition-colors rounded-l-md pr-10 group-focus-within:border-primary-600 group-focus-within:group-hover:border-primary-600 p-1 relative">
+      </span> */}
+      <div {...groupProps} ref={ref} className="flex group w-full">
+        <div className={classNames(RangePickerClasses({ size, variant }))}>
           <DateField {...startFieldProps} />
           <span aria-hidden="true" className="px-2">
             –
@@ -45,8 +77,12 @@ export function RangePickers<T extends DateValue>(
             <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
           )}
         </div>
-        <FieldButton {...buttonProps} isPressed={state.isOpen}>
-          <CalendarIcon className="w-5 h-5 text-gray-700 group-focus-within:text-primary-700" />
+        <FieldButton
+          {...buttonProps}
+          isPressed={state.isOpen}
+          variant={variant}
+        >
+          <CalendarIcon className="w-5 h-5 text-gray-700 group-focus-within:text-primary-500" />
         </FieldButton>
       </div>
       {state.isOpen && (

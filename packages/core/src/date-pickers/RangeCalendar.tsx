@@ -27,13 +27,13 @@ export function RangeCalendar<T extends DateValue>(
 
   return (
     <div {...calendarProps} ref={ref} className="inline-block p-5">
-      <div className="flex items-center pb-4">
-        <h2 className="flex-1 font-bold text-xl ml-2">{title}</h2>
+      <div className="flex items-center justify-between pb-4">
         <CalendarButton {...prevButtonProps}>
-          <ChevronLeftIcon className="h-6 w-6" />
+          <ChevronLeftIcon className="h-5 w-5 text-zinc-600" />
         </CalendarButton>
+        <h2 className="font-semibold text-xl ml-2">{title}</h2>
         <CalendarButton {...nextButtonProps}>
-          <ChevronRightIcon className="h-6 w-6" />
+          <ChevronRightIcon className="h-5 w-5 text-zinc-600" />
         </CalendarButton>
       </div>
       <CalendarGrid state={state} />
