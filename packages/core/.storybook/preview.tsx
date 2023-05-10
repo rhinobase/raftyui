@@ -37,8 +37,8 @@ const preview: Preview = {
         <Story />
       </div>
     ),
+    withTailwindTheme,
   ],
 };
-export const decorators = [withTailwindTheme];
 
 export default preview;
