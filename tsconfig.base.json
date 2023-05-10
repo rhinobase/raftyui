@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@rhino/accordion": ["libs/components/accordion/src/index.ts"],
+      "@rhino/button": ["libs/components/button/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
