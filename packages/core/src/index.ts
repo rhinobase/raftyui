@@ -61,7 +61,7 @@ export {
   DrawerOverlay,
   DrawerTitle,
 } from "./drawer";
-export { ErrorMessage, FieldControl, FieldGroup, FieldLabel } from "./field";
+export { ErrorMessage, FieldControl, FieldLabel } from "./field";
 export {
   InputField,
   InputGroup,
@@ -69,9 +69,10 @@ export {
   Suffix,
   NumberField,
   SearchField,
+  PasswordField,
   LeftAddon,
   RightAddon,
-} from "./input-field";
+} from "./input";
 export { Kbd } from "./kbd";
 export { List, ListItem, OrderedList, UnorderedList } from "./list";
 export {
@@ -89,7 +90,6 @@ export {
   MenuSubTrigger,
   MenuTrigger,
 } from "./menu";
-export { PasswordField } from "./password-field";
 export {
   Popover,
   PopoverAnchor,

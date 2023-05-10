@@ -6,7 +6,7 @@ import { classNames } from "../utils";
 export type FieldLabel = JSX.IntrinsicElements["label"];
 export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { name, required } = useFieldControlContext();
+    const { name, isRequired } = useFieldControlContext();
 
     return (
       <label
@@ -19,7 +19,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
         ref={forwardedRef}
       >
         {children}
-        {required && (
+        {isRequired && (
           <span className="text-error-500 dark:error-red-400">*</span>
         )}
       </label>

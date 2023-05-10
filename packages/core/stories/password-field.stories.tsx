@@ -1,19 +1,16 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl } from "../src/field";
-import { PasswordField } from "../src/password-field";
+import { FieldControl, FieldLabel, PasswordField } from "../src";
 import { within, fireEvent, userEvent } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
-import { Button } from "../src";
-import { type } from "os";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Form / PasswordField",
   args: {
     size: "md",
     variant: "outline",
-    disabled: false,
-    required: false,
-    readOnly: false,
+    isDisabled: false,
+    isRequired: false,
+    isReadOnly: false,
   },
   argTypes: {
     variant: {
@@ -50,16 +47,17 @@ export const Variants: Story = {
     await userEvent.click(show_button);
     await expect(PasswordField).toHaveAttribute("type", "password");
   },
-  render: ({ size, variant, disabled, readOnly, required }) => (
+  render: ({ size, variant, isDisabled, isReadOnly, isRequired }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
         <h4>Password Field</h4>
         <FieldControl
           name="password"
-          readOnly={readOnly}
-          disabled={disabled}
-          required={required}
+          isReadOnly={isReadOnly}
+          isDisabled={isDisabled}
+          isRequired={isRequired}
         >
+          <FieldLabel>Enter Password</FieldLabel>
           <PasswordField
             aria-label="password"
             variant={variant}

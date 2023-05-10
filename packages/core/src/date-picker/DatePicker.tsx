@@ -3,7 +3,7 @@ import isTodayPlugin from "dayjs/plugin/isToday";
 import * as Popover from "@radix-ui/react-popover";
 import { useState } from "react";
 import { useLilius } from "use-lilius";
-import { InputField } from "../input-field";
+import { InputField } from "../input";
 import { Button } from "../button";
 import { MonthPanel } from "./MonthPanel";
 import { YearPanel } from "./YearPanel";

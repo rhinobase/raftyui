@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useState } from "react";
 import { Button } from "../button";
-import { InputField } from "../input-field";
+import { InputField } from "../input";
 import { classNames } from "../utils";
 
 export type TagField = Omit<

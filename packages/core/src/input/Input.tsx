@@ -1,5 +1,12 @@
-import React, { forwardRef, useRef } from "react";
-import { useFieldControlContext } from "../field";
+import React, {
+  InputHTMLAttributes,
+  RefObject,
+  forwardRef,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { useFieldControlContext } from "../field/context";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 import {
@@ -16,21 +23,37 @@ import {
   ChevronUpIcon,
   ChevronDownIcon,
   XMarkIcon,
+  EyeSlashIcon,
+  EyeIcon,
 } from "@heroicons/react/24/outline";
 import { Button, InputGroup, Suffix } from "..";
 import { mergeRefs } from "../utils/mergeRefs";
 import { RightAddon } from "./InputGroup";
 import { useInputGroupContext } from "./context";
 
-// InputField Component
+type InitialState = boolean | (() => boolean);
+
+function useBoolean(initialState: InitialState = false) {
+  const [value, setValue] = useState(initialState);
+  const callbacks = useMemo(
+    () => ({
+      on: () => setValue(true),
+      off: () => setValue(false),
+      toggle: () => setValue((prev) => !prev),
+    }),
+    []
+  );
+  return [value, callbacks] as const;
+}
+
 export const inputFieldClasses = cva(
   "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
       size: {
-        sm: "px-2 py-1 text-sm",
-        md: "px-3 py-1.5",
-        lg: "px-4 py-2 text-lg",
+        sm: "py-1 text-sm",
+        md: "py-1.5",
+        lg: "py-2 text-lg",
       },
       variant: {
         solid: "bg-secondary-50 dark:bg-secondary-800/20",
@@ -79,10 +102,12 @@ export const inputFieldClasses = cva(
       {
         size: "sm",
         isPrefix: true,
+        isSuffix: false,
         className: "pl-8 pr-2",
       },
       {
         size: "sm",
+        isPrefix: false,
         isSuffix: true,
         className: "pl-2 pr-8",
       },
@@ -91,6 +116,12 @@ export const inputFieldClasses = cva(
         isPrefix: true,
         isSuffix: true,
         className: "px-8",
+      },
+      {
+        size: "sm",
+        isPrefix: false,
+        isSuffix: false,
+        className: "px-2",
       },
       {
         size: ["md", "lg"],
@@ -105,10 +136,12 @@ export const inputFieldClasses = cva(
       {
         size: "md",
         isPrefix: true,
+        isSuffix: false,
         className: "pl-9 pr-3",
       },
       {
         size: "md",
+        isPrefix: false,
         isSuffix: true,
         className: "pl-3 pr-9",
       },
@@ -119,12 +152,20 @@ export const inputFieldClasses = cva(
         className: "px-9",
       },
       {
+        size: "md",
+        isPrefix: false,
+        isSuffix: false,
+        className: "px-3",
+      },
+      {
         size: "lg",
         isPrefix: true,
+        isSuffix: false,
         className: "pl-10 pr-4",
       },
       {
         size: "lg",
+        isPrefix: false,
         isSuffix: true,
         className: "pl-4 pr-10",
       },
@@ -134,31 +175,42 @@ export const inputFieldClasses = cva(
         isSuffix: true,
         className: "px-10",
       },
+      {
+        size: "lg",
+        isPrefix: false,
+        isSuffix: false,
+        className: "px-4",
+      },
     ],
   }
 );
 
-export type InputField = Omit<AriaTextFieldProps, "size"> & {
+type Input = {
   className?: string;
-  variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  type?: string;
+  variant: "solid" | "outline" | "ghost";
+  size: "sm" | "md" | "lg";
+  inputProps: InputHTMLAttributes<HTMLInputElement>;
+  ref: RefObject<HTMLInputElement>;
 };
-export const InputField = forwardRef<HTMLInputElement, InputField>(
-  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
+
+const Input = forwardRef<HTMLInputElement, Input>(
+  (
+    { inputProps, type = "text", className, variant, size, ref },
+    forwardedRef
+  ) => {
+    const controls = useFieldControlContext() ?? {};
     const inputGroupProps = useInputGroupContext() ?? {
       isLeftAddon: false,
       isRightAddon: false,
       isPrefix: false,
       isSuffix: false,
     };
-    const ref = useRef(null);
-    const { inputProps } = useTextField(props, ref);
-    const controls = useFieldControlContext() ?? {};
-
     return (
       <input
         {...controls}
         {...inputProps}
+        type={type}
         className={classNames(
           inputFieldClasses({
             size: size,
@@ -171,6 +223,28 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
           }),
           className
         )}
+        ref={mergeRefs(ref, forwardedRef)}
+      />
+    );
+  }
+);
+
+// Input Field
+export type InputField = Omit<AriaTextFieldProps, "size"> & {
+  className?: string;
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+};
+export const InputField = forwardRef<HTMLInputElement, InputField>(
+  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
+    const ref = useRef(null);
+    const { inputProps } = useTextField(props, ref);
+    return (
+      <Input
+        inputProps={inputProps}
+        variant={variant}
+        size={size}
+        className={className}
         ref={mergeRefs(forwardedRef, ref)}
       />
     );
@@ -178,6 +252,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
 );
 InputField.displayName = "InputField";
 
+// Number Input Field
 export type NumberField = Omit<AriaNumberFieldProps, "size"> & {
   className?: string;
   variant?: "solid" | "outline" | "ghost";
@@ -185,36 +260,19 @@ export type NumberField = Omit<AriaNumberFieldProps, "size"> & {
 };
 export const NumberField = forwardRef<HTMLInputElement, NumberField>(
   ({ variant = "outline", size = "md", className, ...props }, forwardedRef) => {
-    const inputGroupProps = useInputGroupContext() ?? {
-      isLeftAddon: false,
-      isRightAddon: true,
-      isPrefix: false,
-      isSuffix: false,
-    };
     const { locale } = useLocale();
     const state = useNumberFieldState({ ...props, locale });
     const ref = React.useRef(null);
     const { inputProps, incrementButtonProps, decrementButtonProps } =
       useNumberField(props, state, ref);
-    const controls = useFieldControlContext() ?? {};
 
     return (
       <InputGroup>
-        <input
-          {...controls}
-          {...inputProps}
-          className={classNames(
-            inputFieldClasses({
-              size: size,
-              variant,
-              invalid: controls.isInvalid,
-              isLeftAddon: inputGroupProps.isLeftAddon,
-              isRightAddon: inputGroupProps.isRightAddon,
-              isPrefix: inputGroupProps.isPrefix,
-              isSuffix: inputGroupProps.isSuffix,
-            }),
-            className
-          )}
+        <Input
+          inputProps={inputProps}
+          variant={variant}
+          size={size}
+          className={className}
           ref={mergeRefs(forwardedRef, ref)}
         />
         <RightAddon
@@ -265,6 +323,7 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
 );
 NumberField.displayName = "NumberField";
 
+// Search Field
 export type SearchField = Omit<AriaSearchFieldProps, "size"> & {
   className?: string;
   variant?: "solid" | "outline" | "ghost";
@@ -272,34 +331,17 @@ export type SearchField = Omit<AriaSearchFieldProps, "size"> & {
 };
 export const SearchField = forwardRef<HTMLInputElement, SearchField>(
   ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
-    const inputGroupProps = useInputGroupContext() ?? {
-      isLeftAddon: false,
-      isRightAddon: false,
-      isPrefix: false,
-      isSuffix: false,
-    };
     const state = useSearchFieldState(props);
     const ref = useRef(null);
     const { inputProps, clearButtonProps } = useSearchField(props, state, ref);
-    const controls = useFieldControlContext() ?? {};
 
     return (
       <InputGroup>
-        <input
-          {...controls}
-          {...inputProps}
-          className={classNames(
-            inputFieldClasses({
-              size: size,
-              variant,
-              invalid: controls.isInvalid,
-              isLeftAddon: inputGroupProps.isLeftAddon,
-              isRightAddon: inputGroupProps.isRightAddon,
-              isPrefix: inputGroupProps.isPrefix,
-              isSuffix: inputGroupProps.isSuffix,
-            }),
-            className
-          )}
+        <Input
+          inputProps={inputProps}
+          variant={variant}
+          size={size}
+          className={className}
           ref={mergeRefs(forwardedRef, ref)}
         />
         <Suffix>
@@ -317,3 +359,46 @@ export const SearchField = forwardRef<HTMLInputElement, SearchField>(
   }
 );
 SearchField.displayName = "SearchField";
+
+// Password Field
+export type PasswordField = Omit<AriaTextFieldProps, "size"> & {
+  className?: string;
+  size?: "sm" | "md" | "lg";
+  variant?: "outline" | "solid" | "ghost";
+};
+export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
+  ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
+    const [showPassword, { toggle }] = useBoolean();
+    const ref = useRef(null);
+    const { inputProps } = useTextField(props, ref);
+
+    return (
+      <InputGroup>
+        <Input
+          inputProps={inputProps}
+          type={showPassword ? "text" : "password"}
+          variant={variant}
+          size={size}
+          className={className}
+          ref={mergeRefs(forwardedRef, ref)}
+        />
+        <Suffix>
+          <Button
+            size="icon"
+            aria-label="show and hide password"
+            variant="ghost"
+            onPress={toggle}
+            className="!z-[2]"
+          >
+            {showPassword ? (
+              <EyeSlashIcon className="h-4 w-4 stroke-2" />
+            ) : (
+              <EyeIcon className="h-4 w-4 stroke-2" />
+            )}
+          </Button>
+        </Suffix>
+      </InputGroup>
+    );
+  }
+);
+PasswordField.displayName = "PasswordField";
