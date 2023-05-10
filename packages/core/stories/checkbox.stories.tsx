@@ -13,10 +13,15 @@ export const Default: Story = {
     <>
       <div className="flex w-80 flex-col gap-3">
         <h2 className="font-bold">CheckBox</h2>
-        <Checkbox name="red" id="sample">
+        {/* <Checkbox
+          name="red"
+          id="sample"
+          onChange={(value) => console.log(value)}
+          value="red"
+        >
           Red
-        </Checkbox>
-        <Checkbox name="green">Green</Checkbox>
+        </Checkbox> */}
+        {/* <Checkbox name="green">Green</Checkbox>
         <h2 className="font-bold">CheckBox indeterminate</h2>
         <Checkbox name="blue" isIndeterminate>
           Blue
@@ -37,9 +42,13 @@ export const Default: Story = {
         <h2 className="font-bold">CheckBox validationState</h2>
         <Checkbox name="pink" defaultSelected validationState="invalid">
           I accept the terms and conditions
-        </Checkbox>
+        </Checkbox> */}
 
-        <CheckboxGroup label="Favorite sports">
+        <CheckboxGroup
+          label="Favorite sports"
+          onChange={(value) => console.log(value)}
+          // value={["baseball"]}
+        >
           <Checkbox value="soccer" isDisabled>
             Soccer
           </Checkbox>

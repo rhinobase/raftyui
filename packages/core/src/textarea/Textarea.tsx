@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { useFieldControlContext } from "../field";
+import { useFieldControlContext } from "../field/context";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
@@ -44,7 +44,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
         className={classNames(
           textareaClasses({
             variant,
-            invalid: controls.invalid,
+            invalid: controls.isInvalid,
           }),
           className
         )}
