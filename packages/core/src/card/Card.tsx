@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 
 // Card Component
 export type Card = JSX.IntrinsicElements["div"] &
-  Partial<CardContext> & { unstyled?: boolean };
+  Partial<CardContext> & { isUnstyled?: boolean };
 
 const cardClasses = cva("flex flex-col dark:text-white", {
   variants: {
@@ -24,16 +24,16 @@ export const Card = forwardRef<HTMLDivElement, Card>(
       className,
       variant = "outline",
       size = "md",
-      unstyled = false,
-      barebone = false,
+      isUnstyled = false,
+      isBarebone = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = unstyled || barebone;
+    const unstyle = isUnstyled || isBarebone;
 
     return (
-      <CardProvider value={{ size, barebone, variant }}>
+      <CardProvider value={{ size, isBarebone, variant }}>
         <div
           {...props}
           className={
@@ -61,11 +61,13 @@ const cardHeaderClasses = cva("", {
     },
   },
 });
-export type CardHeader = JSX.IntrinsicElements["div"] & { unstyled?: boolean };
+export type CardHeader = JSX.IntrinsicElements["div"] & {
+  isUnstyled?: boolean;
+};
 export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { barebone, size } = useCardContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone, size } = useCardContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <div
@@ -86,7 +88,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
 CardHeader.displayName = "CardHeader";
 
 // CardBody Component
-export type CardBody = JSX.IntrinsicElements["div"] & { unstyled?: boolean };
+export type CardBody = JSX.IntrinsicElements["div"] & { isUnstyled?: boolean };
 const cardBodyClasses = cva("", {
   variants: {
     size: {
@@ -97,9 +99,9 @@ const cardBodyClasses = cva("", {
   },
 });
 export const CardBody = forwardRef<HTMLDivElement, CardBody>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { barebone, size } = useCardContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone, size } = useCardContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <div
@@ -117,7 +119,9 @@ export const CardBody = forwardRef<HTMLDivElement, CardBody>(
 CardBody.displayName = "CardBody";
 
 // CardFooter Component
-export type CardFooter = JSX.IntrinsicElements["div"] & { unstyled?: boolean };
+export type CardFooter = JSX.IntrinsicElements["div"] & {
+  isUnstyled?: boolean;
+};
 
 const cardFooterClasses = cva("", {
   variants: {
@@ -130,9 +134,9 @@ const cardFooterClasses = cva("", {
 });
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { barebone, size } = useCardContext();
-    const unstyle = unstyled || barebone;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone, size } = useCardContext();
+    const unstyle = isUnstyled || isBarebone;
 
     return (
       <div

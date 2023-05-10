@@ -11,7 +11,9 @@ import { cva } from "class-variance-authority";
 
 //AccordionComponent
 export type Accordion = Partial<AccordionContext> &
-  ComponentProps<(typeof DisclosurePrimitive)["Root"]> & { unstyled?: boolean };
+  ComponentProps<(typeof DisclosurePrimitive)["Root"]> & {
+    isUnstyled?: boolean;
+  };
 export const Accordion = forwardRef<HTMLDivElement, Accordion>(
   (
     {
@@ -19,16 +21,16 @@ export const Accordion = forwardRef<HTMLDivElement, Accordion>(
       className,
       size = "md",
       variant = "solid",
-      barebone = false,
-      unstyled = false,
+      isBarebone = false,
+      isUnstyled = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = barebone || unstyled;
+    const unstyle = isBarebone || isUnstyled;
 
     return (
-      <AccordionProvider value={{ size, variant, barebone }}>
+      <AccordionProvider value={{ size, variant, isBarebone }}>
         <DisclosurePrimitive.Root
           {...props}
           ref={forwardedRef}
@@ -46,12 +48,12 @@ Accordion.displayName = "Accordian";
 export type AccordionItem = ComponentProps<
   (typeof DisclosurePrimitive)["Item"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
-  ({ className, children, unstyled = false, ...props }, forwardedRef) => {
-    const { barebone } = useAccordionContext();
-    const unstyle = barebone || unstyled;
+  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone } = useAccordionContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <DisclosurePrimitive.Item
@@ -89,7 +91,7 @@ export type AccordionTrigger = ComponentProps<
 > & {
   openIcon?: JSX.Element;
   closeIcon?: JSX.Element;
-  unstyled?: boolean;
+  isUnstyled?: boolean;
   showIcon?: boolean;
 };
 export const AccordionTrigger = React.forwardRef<
@@ -102,14 +104,14 @@ export const AccordionTrigger = React.forwardRef<
       className,
       openIcon,
       closeIcon,
-      unstyled = false,
+      isUnstyled = false,
       showIcon = true,
       ...props
     },
     forwardedRef
   ) => {
-    const { size, variant, barebone } = useAccordionContext();
-    const unstyle = barebone || unstyled;
+    const { size, variant, isBarebone } = useAccordionContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <DisclosurePrimitive.Header>
@@ -173,11 +175,11 @@ const accordionContentClasses = cva("dark:text-secondary-100 w-full", {
 });
 export type AccordionContent = ComponentProps<
   (typeof DisclosurePrimitive)["Content"]
-> & { unstyled?: boolean };
+> & { isUnstyled?: boolean };
 export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useAccordionContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useAccordionContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <DisclosurePrimitive.Content

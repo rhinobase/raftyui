@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import { Spinner } from "../spinner";
+import { Spinner } from "../index";
 import { forwardRef, useRef } from "react";
 import { applyStyleToMultipleVariants, classNames } from "../utils";
 import { AriaButtonProps, useButton } from "react-aria";
@@ -440,7 +440,7 @@ export type Button = {
   /* Right aligned icon */
   rightIcon?: JSX.Element;
   loadingText?: string;
-  unstyled?: boolean;
+  isUnstyled?: boolean;
   colorScheme?: "primary" | "secondary" | "error" | "success";
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg" | "icon" | "fab";
@@ -456,7 +456,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     variant = "solid",
     size = "md",
     loadingText,
-    unstyled = false,
+    isUnstyled = false,
     className,
     children,
     leftIcon: LeftIcon,
@@ -476,7 +476,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
       disabled={disabled}
       ref={mergeRefs(forwardedRef, ref)}
       className={
-        unstyled
+        isUnstyled
           ? className
           : classNames(
               buttonClasses({

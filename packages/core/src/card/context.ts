@@ -9,5 +9,5 @@ export const [CardProvider, useCardContext] = createContext<CardContext>({
 export interface CardContext {
   size: "sm" | "md" | "lg";
   variant: "solid" | "outline" | "elevated";
-  barebone: boolean;
+  isBarebone: boolean;
 }

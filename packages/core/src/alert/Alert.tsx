@@ -10,7 +10,7 @@ import {
 import { cva } from "class-variance-authority";
 
 // Alert Component
-export type Alert = { unstyled?: boolean } & Partial<AlertContext> &
+export type Alert = { isUnstyled?: boolean } & Partial<AlertContext> &
   JSX.IntrinsicElements["div"];
 
 const alertClasses = cva("flex w-full items-center", {
@@ -155,16 +155,16 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
       status = "info",
       size = "md",
       variant = "simple",
-      unstyled = false,
-      barebone = false,
+      isUnstyled = false,
+      isBarebone = false,
       children,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = barebone || unstyled;
+    const unstyle = isBarebone || isUnstyled;
     return (
-      <AlertProvider value={{ status, size, variant, barebone }}>
+      <AlertProvider value={{ status, size, variant, isBarebone }}>
         <div
           {...props}
           className={
@@ -232,14 +232,14 @@ const alertIconClasses = cva("stroke-2", {
 
 export function AlertIcon({
   className,
-  unstyled = false,
+  isUnstyled = false,
 }: {
   className?: string;
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 }) {
-  const { size, status, variant, barebone } = useAlertContext();
+  const { size, status, variant, isBarebone } = useAlertContext();
 
-  const unstyle = barebone || unstyled;
+  const unstyle = isBarebone || isUnstyled;
 
   let Icon: typeof ExclamationCircleIcon;
   switch (status) {
@@ -268,7 +268,7 @@ export function AlertIcon({
   );
 }
 
-export type AlertTitle = JSX.IntrinsicElements["h6"] & { unstyled?: boolean };
+export type AlertTitle = JSX.IntrinsicElements["h6"] & { isUnstyled?: boolean };
 
 const alertTitleClasses = cva("", {
   variants: {
@@ -281,9 +281,9 @@ const alertTitleClasses = cva("", {
 });
 
 export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useAlertContext();
-    const unstyle = unstyled || barebone;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useAlertContext();
+    const unstyle = isUnstyled || isBarebone;
 
     return (
       <h6
@@ -303,7 +303,7 @@ export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
 AlertTitle.displayName = "AlertTitle";
 
 export type AlertDescription = JSX.IntrinsicElements["p"] & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 
 const alertDescriptionClasses = cva("", {
@@ -319,9 +319,9 @@ const alertDescriptionClasses = cva("", {
 export const AlertDescription = forwardRef<
   HTMLParagraphElement,
   AlertDescription
->(({ children, className, unstyled = false, ...props }, forwardedRef) => {
-  const { size, barebone } = useAlertContext();
-  const unstyle = unstyled || barebone;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useAlertContext();
+  const unstyle = isUnstyled || isBarebone;
 
   return (
     <p

@@ -9,5 +9,5 @@ export const [AlertDialogProvider, useAlertDialogContext] =
 
 export interface AlertDialogContext {
   size: "sm" | "md" | "lg";
-  barebone: boolean;
+  isBarebone: boolean;
 }

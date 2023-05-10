@@ -1,4 +1,10 @@
-export { InputField, NumberField, SearchField, PasswordField } from "./Input";
+export {
+  Input,
+  InputField,
+  NumberField,
+  SearchField,
+  PasswordField,
+} from "./Input";
 export {
   InputGroup,
   Prefix,

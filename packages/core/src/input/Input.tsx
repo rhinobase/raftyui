@@ -185,7 +185,7 @@ export const inputFieldClasses = cva(
   }
 );
 
-type Input = {
+export type Input = {
   className?: string;
   type?: string;
   variant: "solid" | "outline" | "ghost";
@@ -194,7 +194,7 @@ type Input = {
   ref: RefObject<HTMLInputElement>;
 };
 
-const Input = forwardRef<HTMLInputElement, Input>(
+export const Input = forwardRef<HTMLInputElement, Input>(
   (
     { inputProps, type = "text", className, variant, size, ref },
     forwardedRef
