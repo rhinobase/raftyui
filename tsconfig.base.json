@@ -25,6 +25,7 @@
       "@rhino/context-menu": ["libs/components/context-menu/src/index.ts"],
       "@rhino/date-picker": ["libs/components/date-picker/src/index.ts"],
       "@rhino/dialog": ["libs/components/dialog/src/index.ts"],
+      "@rhino/drawer": ["libs/components/drawer/src/index.ts"],
       "@rhino/field": ["libs/components/field/src/index.ts"],
       "@rhino/input": ["libs/components/input/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],
