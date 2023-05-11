@@ -22,6 +22,7 @@
       "@rhino/card": ["libs/components/card/src/index.ts"],
       "@rhino/checkbox": ["libs/components/checkbox/src/index.ts"],
       "@rhino/combobox": ["libs/components/combobox/src/index.ts"],
+      "@rhino/context-menu": ["libs/components/context-menu/src/index.ts"],
       "@rhino/field": ["libs/components/field/src/index.ts"],
       "@rhino/input": ["libs/components/input/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],

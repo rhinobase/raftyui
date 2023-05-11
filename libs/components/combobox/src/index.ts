@@ -1,1 +1,1 @@
-export * from './lib/components-combobox';
+export * from './lib/combobox';
