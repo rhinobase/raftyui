@@ -1,14 +1,5 @@
-import { ComponentsAccordion } from '@rhino/accordion';
-import { ComponentsButton } from '@rhino/button';
-
 export function Home() {
-  return (
-    <div>
-      Aditya Mathur
-      <ComponentsButton />
-      <ComponentsAccordion />
-    </div>
-  );
+  return <div>Aditya Mathur</div>;
 }
 
 export default Home;
