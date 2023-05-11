@@ -1,1 +1,1 @@
-export * from './lib/components-drawer';
+export * from './lib/drawer';
