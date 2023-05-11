@@ -41,6 +41,8 @@
       "@rhino/skeleton": ["libs/components/skeleton/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],
       "@rhino/stat": ["libs/components/stat/src/index.ts"],
+      "@rhino/switch": ["libs/components/switch/src/index.ts"],
+      "@rhino/table": ["libs/components/table/src/index.ts"],
       "@rhino/text": ["libs/components/text/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
