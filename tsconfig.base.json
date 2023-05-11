@@ -31,6 +31,7 @@
       "@rhino/kbd": ["libs/components/kbd/src/index.ts"],
       "@rhino/list": ["libs/components/list/src/index.ts"],
       "@rhino/menu": ["libs/components/menu/src/index.ts"],
+      "@rhino/menubar": ["libs/components/menubar/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
