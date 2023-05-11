@@ -1,5 +1,5 @@
 {
-  "name": "components-button",
+  "name": "button",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/components/button/src",
   "projectType": "library",

@@ -1,5 +1,5 @@
 {
-  "name": "components-accordion",
+  "name": "accordion",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/components/accordion/src",
   "projectType": "library",
