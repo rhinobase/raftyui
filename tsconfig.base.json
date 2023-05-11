@@ -28,6 +28,7 @@
       "@rhino/drawer": ["libs/components/drawer/src/index.ts"],
       "@rhino/field": ["libs/components/field/src/index.ts"],
       "@rhino/input": ["libs/components/input/src/index.ts"],
+      "@rhino/kbd": ["libs/components/kbd/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
