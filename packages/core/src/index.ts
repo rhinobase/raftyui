@@ -34,15 +34,7 @@ export {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "./context-menu";
-export {
-  DatePicker,
-  DayPanel,
-  MonthPanel,
-  PickerHeader,
-  RangePicker,
-  YearPanel,
-} from "./date-picker";
-export { DatePickers, RangePickers } from "./date-pickers";
+export { DatePicker, RangePicker } from "./date-picker";
 export {
   Dialog,
   DialogBody,

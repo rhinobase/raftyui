@@ -46,14 +46,16 @@ function DateSegments({
       style={{
         ...segmentProps.style,
       }}
-      className={`px-1 box-content tabular-nums text-right outline-none rounded-sm focus:bg-primary-500 focus:text-white group ${
-        !segment.isEditable ? "text-gray-500" : "text-gray-800"
+      className={`px-1 box-content tabular-nums text-right outline-none rounded-sm focus:bg-primary-500 dark:focus:bg-primary-300 focus:text-white dark:focus:text-black group ${
+        !segment.isEditable
+          ? "text-secondary-500"
+          : "text-secondary-800 dark:text-secondary-200"
       }`}
     >
       {/* Always reserve space for the placeholder, to prevent layout shift when editing. */}
       <span
         aria-hidden="true"
-        className="block w-full text-center italic text-gray-500 group-focus:text-white"
+        className="block w-full text-center italic text-secondary-500 group-focus:text-white"
         style={{
           display: segment.isPlaceholder ? "block" : "none",
           height: segment.isPlaceholder ? "" : 0,

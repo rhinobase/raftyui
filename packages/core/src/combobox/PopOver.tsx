@@ -30,7 +30,7 @@ export function Popover(props: PopoverProps) {
         {...popoverProps}
         ref={popoverRef}
         className={classNames(
-          "z-10 shadow-lg border border-gray-300 bg-white rounded-md mt-2 !left-0",
+          "z-10 shadow-lg border border-secondary-300 dark:border-secondary-700 bg-white dark:bg-secondary-800 dark:text-secondary-100 rounded-md mt-2 !left-0",
           className
         )}
       >

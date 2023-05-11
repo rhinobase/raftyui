@@ -1,268 +1,89 @@
-import dayjs, { Dayjs } from "dayjs";
-import isTodayPlugin from "dayjs/plugin/isToday";
-import * as Popover from "@radix-ui/react-popover";
-import { useState } from "react";
-import { useLilius } from "use-lilius";
-import { InputField } from "../input";
-import { Button } from "../button";
-import { MonthPanel } from "./MonthPanel";
-import { YearPanel } from "./YearPanel";
-import { DayPanel } from "./DayPanel";
-import { PickerHeader } from "./PickerHeader";
+import { useRef } from "react";
+import { useDatePickerState } from "react-stately";
+import { AriaDatePickerProps, DateValue, useDatePicker } from "react-aria";
+import { FieldButton } from "./FieldButton";
+import { Calendar } from "./Calendar";
+import { DateField } from "./DateField";
+import { Dialog } from "./Dialog";
+import {
+  CalendarIcon,
+  ExclamationTriangleIcon,
+} from "@heroicons/react/24/outline";
+import { Popover } from "../combobox/PopOver";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
-dayjs.extend(isTodayPlugin);
+const DatePickerClasses = cva(
+  "transition-colors rounded-l-md pr-10 relative flex items-center flex-1",
+  {
+    variants: {
+      size: {
+        sm: "px-2 py-1 text-sm",
+        md: "px-3 py-1.5",
+        lg: "px-4 py-2 text-lg",
+      },
+      variant: {
+        solid: "bg-secondary-50 dark:bg-secondary-800/20",
+        outline:
+          "bg-transparent read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
+        ghost: "border border-transparent",
+      },
+    },
+    compoundVariants: [
+      {
+        variant: ["outline", "solid"],
+        className:
+          "border border-secondary-300 dark:border-secondary-700 group-focus-within:ring-2 dark:group-focus-within:ring-primary-900 group-focus-within:ring-primary-100 group-hover:border-primary-400 group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500",
+      },
+    ],
+  }
+);
 
-enum Show {
-  DATE,
-  MONTH,
-  YEAR,
-  YEARS,
-}
-
-export const DatePicker = ({
-  picker = "date",
-  ...props
-}: {
-  defaultValues?: Date[] | Date;
-  onSelect?: (values: Dayjs) => void;
-  picker?: "date" | "month" | "year";
-  format?: string;
-  placeholder?: string;
-  className?: string;
-}) => {
-  const placeholder = props.placeholder ?? "Select a " + picker;
+export function DatePicker<T extends DateValue>(
+  props: AriaDatePickerProps<T> & {
+    variant?: "solid" | "outline" | "ghost";
+    size?: "sm" | "md" | "lg";
+  }
+) {
+  const { size = "md", variant = "outline" } = props;
+  const state = useDatePickerState(props);
+  const ref = useRef(null);
   const {
-    calendar,
-    clearSelected,
-    inRange,
-    isSelected,
-    selected,
-    setViewing,
-    setSelected,
-    toggle,
-    viewing,
-    viewNextMonth,
-    viewPreviousMonth,
-    viewNextYear,
-    viewPreviousYear,
-    viewMonth,
-    viewYear,
-  } = useLilius({
-    selected: props.defaultValues
-      ? Array.isArray(props.defaultValues)
-        ? props.defaultValues
-        : [props.defaultValues]
-      : undefined,
-  });
-
-  const [show, setShow] = useState<Show>(
-    picker == "date" ? Show.DATE : picker == "month" ? Show.MONTH : Show.YEAR
-  );
-
-  let format = props.format;
-  if (!format)
-    switch (picker) {
-      case "date":
-        format = "MM/DD/YYYY";
-        break;
-      case "month":
-        format = "MM/YYYY";
-        break;
-      case "year":
-        format = "YYYY";
-        break;
-      default:
-        break;
-    }
-
-  // When the input field loses focus, we need to parse
-  // the input to set the date. While doing this, we also do some
-  // assumptions for the user and fix mistakes.
-  const onInputBlur = (value: string) => {
-    // If the input is empty, we should just go ahead and
-    // clear the current selection.
-    if (value === "") {
-      clearSelected();
-      return;
-    }
-
-    const parsed = dayjs(value, format, true);
-
-    if (parsed.isValid()) {
-      setViewing(parsed.toDate());
-    } else {
-      clearSelected();
-    }
-  };
+    groupProps,
+    labelProps,
+    fieldProps,
+    buttonProps,
+    dialogProps,
+    calendarProps,
+  } = useDatePicker(props, state, ref);
 
   return (
-    <Popover.Root>
-      <Popover.Trigger className="group">
-        <div className="relative">
-          <InputField
-            placeholder={placeholder}
-            className="select-none pr-10"
-            value={selected[0] ? dayjs(selected[0]).format(format) : ""}
-            onChange={(e) => onInputBlur(e.target.value)}
-          />
-          <div className="absolute right-0 top-0 flex h-full w-10 items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="group-data-[state=open]:text-primary-500 dark:group-data-[state=open]:text-primary-300 h-5 w-5 stroke-2 text-black/50 dark:text-white/70"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-              />
-            </svg>
-          </div>
+    <div className="relative inline-flex flex-col text-left">
+      <span {...labelProps} className="text-sm text-gray-800">
+        {props.label}
+      </span>
+      <div {...groupProps} ref={ref} className="flex group">
+        <div className={classNames(DatePickerClasses({ size, variant }))}>
+          <DateField {...fieldProps} />
+          {state.validationState === "invalid" && (
+            <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
+          )}
         </div>
-      </Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content
-          sideOffset={5}
-          align="start"
-          className={classNames(
-            "min-w-[300px] max-w-[300px] rounded-md bg-white shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)] dark:bg-zinc-800",
-            props.className
-          )}
+        <FieldButton
+          {...buttonProps}
+          isPressed={state.isOpen}
+          variant={variant}
         >
-          <PickerHeader
-            onFirstPage={() => {
-              if (show == Show.YEAR) {
-                const tmp = dayjs(viewing);
-                setViewing(tmp.year(tmp.year() - 10).toDate());
-              } else viewPreviousYear();
-            }}
-            onPreviousPage={show == Show.DATE ? viewPreviousMonth : undefined}
-            onNextPage={show == Show.DATE ? viewNextMonth : undefined}
-            onLastPage={() => {
-              if (show == Show.YEAR) {
-                const tmp = dayjs(viewing);
-                setViewing(tmp.year(tmp.year() + 10).toDate());
-              } else viewNextYear();
-            }}
-          >
-            {show == Show.DATE ? (
-              <div className="flex items-center">
-                <Button
-                  onClick={() => {
-                    setShow(1);
-                  }}
-                  variant="ghost"
-                  className="py-1"
-                >
-                  {dayjs(viewing).format("MMMM")}
-                </Button>
-                <Button
-                  onClick={() => {
-                    setShow(2);
-                  }}
-                  variant="ghost"
-                  className="py-1"
-                >
-                  {dayjs(viewing).format("YYYY")}
-                </Button>
-              </div>
-            ) : show == Show.MONTH ? (
-              <Button
-                onClick={() => {
-                  setShow(2);
-                }}
-                variant="ghost"
-                className="py-1"
-              >
-                {dayjs(viewing).format("YYYY")}
-              </Button>
-            ) : (
-              <Button variant="ghost" className="py-1">
-                {dayjs(viewing)
-                  .year(Math.floor(dayjs(viewing).year() / 10) * 10)
-                  .format("YYYY")}{" "}
-                -{" "}
-                {dayjs(viewing)
-                  .year(Math.ceil(dayjs(viewing).year() / 10) * 10)
-                  .format("YYYY")}
-              </Button>
-            )}
-          </PickerHeader>
-
-          {show == Show.DATE && (
-            <Popover.Close className="w-full">
-              <DayPanel
-                calendar={calendar}
-                selected={selected}
-                inRange={inRange}
-                isSelected={isSelected}
-                onSelect={(date) => {
-                  setSelected([date]);
-                  if (props.onSelect) props.onSelect(dayjs(date));
-                }}
-              />
-            </Popover.Close>
-          )}
-
-          {show == Show.MONTH &&
-            (picker == "month" ? (
-              <Popover.Close className="w-full">
-                <MonthPanel
-                  viewing={viewing}
-                  selected={selected}
-                  onSelect={(month) => {
-                    viewMonth(month);
-                    toggle(new Date(viewing.setMonth(month)), true);
-                  }}
-                />
-              </Popover.Close>
-            ) : (
-              <MonthPanel
-                viewing={viewing}
-                selected={selected}
-                onSelect={(month) => {
-                  viewMonth(month);
-                  if (picker == "date") setShow(Show.DATE);
-                  else {
-                    toggle(new Date(viewing.setMonth(month)), true);
-                  }
-                }}
-              />
-            ))}
-
-          {show == Show.YEAR &&
-            (picker == "year" ? (
-              <Popover.Close className="w-full">
-                <YearPanel
-                  selected={selected}
-                  viewing={viewing}
-                  onSelect={(year) => {
-                    viewYear(year);
-                    toggle(new Date(viewing.setFullYear(year)), true);
-                  }}
-                />
-              </Popover.Close>
-            ) : (
-              <YearPanel
-                selected={selected}
-                viewing={viewing}
-                onSelect={(year) => {
-                  viewYear(year);
-
-                  if (picker == "date" || picker == "month")
-                    setShow(Show.MONTH);
-                  else {
-                    toggle(new Date(viewing.setFullYear(year)), true);
-                  }
-                }}
-              />
-            ))}
-        </Popover.Content>
-      </Popover.Portal>
-    </Popover.Root>
+          <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500" />
+        </FieldButton>
+      </div>
+      {state.isOpen && (
+        <Popover triggerRef={ref} state={state} placement="bottom start">
+          <Dialog {...dialogProps}>
+            <Calendar {...calendarProps} />
+          </Dialog>
+        </Popover>
+      )}
+    </div>
   );
-};
+}

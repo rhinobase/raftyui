@@ -41,7 +41,7 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     <div
       {...calendarProps}
       ref={ref}
-      className="inline-block p-5 text-zinc-800"
+      className="inline-block p-5 text-zinc-800 dark:text-secondary-200"
     >
       <div className="flex items-center justify-between pb-4">
         <CalendarButton {...prevButtonProps}>
@@ -70,8 +70,12 @@ export function CalendarGrid({
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
 
   return (
-    <table {...gridProps} cellPadding="0" className="flex-1">
-      <thead {...headerProps} className="text-zinc-600 mb-2">
+    <table
+      {...gridProps}
+      cellPadding="0"
+      className="flex-1 text-zinc-600 dark:text-secondary-200"
+    >
+      <thead {...headerProps} className="mb-2">
         <tr>
           {weekDays.map((day, index) => (
             <td className="text-center font-semibold" key={index}>
@@ -154,7 +158,10 @@ function CalendarCell({
         className={classNames(
           isRoundedLeft && "rounded-l-md",
           isRoundedRight && "rounded-r-md",
-          isSelected && (isInvalid ? "bg-red-300" : "bg-primary-100"),
+          isSelected &&
+            (isInvalid
+              ? "bg-red-300"
+              : "bg-secondary-100 dark:bg-secondary-700/50"),
           isDisabled && "disabled",
           "w-9 h-9 outline-none group"
         )}
@@ -170,16 +177,18 @@ function CalendarCell({
             isSelectionStart || isSelectionEnd
               ? isInvalid
                 ? "bg-red-600 text-white hover:bg-red-700"
-                : "bg-primary-500 text-white hover:bg-primary-500"
+                : "bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300"
               : "",
             // Hover state for cells in the middle of the range.
             isSelected && !isDisabled && !(isSelectionStart || isSelectionEnd)
               ? isInvalid
                 ? "hover:bg-red-400"
-                : "hover:bg-primary-300"
+                : "hover:bg-secondary-200 dark:hover:bg-secondary-700"
               : "",
             // Hover state for non-selected cells.
-            !isSelected && !isDisabled ? "hover:bg-primary-100" : "",
+            !isSelected && !isDisabled
+              ? "hover:bg-secondary-200 dark:hover:bg-secondary-700"
+              : "",
             "w-full h-full rounded-md flex items-center justify-center cursor-default text-sm transition-all"
           )}
         >

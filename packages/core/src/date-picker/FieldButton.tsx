@@ -16,8 +16,9 @@ export function CalendarButton(props: AriaButtonProps) {
       {...mergeProps(buttonProps, focusProps)}
       ref={ref}
       className={classNames(
-        !props.isDisabled && "hover:bg-primary-100 active:bg-primary-200",
-        props.isDisabled && "text-gray-400",
+        props.isDisabled
+          ? "text-gray-400"
+          : "hover:bg-secondary-200/60 active:bg-secondary-300",
         isFocusVisible && "ring-2 ring-offset-2 ring-primary-600",
         "p-2 rounded-md outline-none"
       )}
@@ -41,8 +42,8 @@ export function FieldButton(
       ref={ref}
       className={classNames(
         isPressed || props.isPressed
-          ? "bg-gray-200 border-gray-400"
-          : "bg-gray-100 border-gray-300 group-hover:border-primary-400",
+          ? "bg-secondary-300 border-secondary-300 dark:bg-secondary-600 dark:border-secondary-600"
+          : "bg-gray-100 dark:bg-secondary-700 border-secondary-300 dark:border-secondary-700 group-hover:border-primary-400",
         (props.variant == "solid" || props.variant == "outline") &&
           "group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500 border",
         "px-2 -ml-px transition-colors rounded-r-md  outline-none"
