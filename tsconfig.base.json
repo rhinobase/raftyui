@@ -49,6 +49,7 @@
       "@rhino/text": ["libs/components/text/src/index.ts"],
       "@rhino/textarea": ["libs/components/textarea/src/index.ts"],
       "@rhino/toast": ["libs/components/toast/src/index.ts"],
+      "@rhino/toggle-group": ["libs/components/toggle-group/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
   },
