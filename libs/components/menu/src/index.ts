@@ -1,1 +1,1 @@
-export * from './lib/components-menu';
+export * from './lib/menu';
