@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { RangePickers } from "../src";
+import { RangePicker } from "../src";
 
-const meta: Meta<typeof RangePickers> = {
-  title: "Form / RangePickers",
+const meta: Meta<typeof RangePicker> = {
+  title: "Form / RangePicker",
   args: {
     size: "md",
     variant: "outline",
@@ -20,12 +20,12 @@ const meta: Meta<typeof RangePickers> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof RangePickers>;
+type Story = StoryObj<typeof RangePicker>;
 
 export const Variants: Story = {
   render: ({ size, variant }) => (
     <div className="max-w-sm w-full">
-      <RangePickers size={size} variant={variant} />
+      <RangePicker size={size} variant={variant} />
     </div>
   ),
 };

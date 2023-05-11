@@ -45,7 +45,7 @@ export function FieldButton(
           ? "bg-secondary-300 border-secondary-300 dark:bg-secondary-600 dark:border-secondary-600"
           : "bg-gray-100 dark:bg-secondary-700 border-secondary-300 dark:border-secondary-700 group-hover:border-primary-400",
         (props.variant == "solid" || props.variant == "outline") &&
-          "group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500 border",
+          "group-focus-within:border-primary-500 dark:group-focus-within:border-primary-300 group-focus-within:group-hover:border-primary-500 border",
         "px-2 -ml-px transition-colors rounded-r-md  outline-none"
       )}
     >

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { DatePicker, FieldControl } from "../src";
 
 const meta: Meta<typeof DatePicker> = {
-  title: "Form / DatePickers",
+  title: "Form / DatePicker",
   args: {
     size: "md",
     variant: "outline",

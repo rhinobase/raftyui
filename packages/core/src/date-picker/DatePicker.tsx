@@ -4,14 +4,13 @@ import { AriaDatePickerProps, DateValue, useDatePicker } from "react-aria";
 import { FieldButton } from "./FieldButton";
 import { Calendar } from "./Calendar";
 import { DateField } from "./DateField";
-import { Dialog } from "./Dialog";
 import {
   CalendarIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
-import { Popover } from "../combobox/PopOver";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
+import { Popover } from "..";
 
 const DatePickerClasses = cva(
   "transition-colors rounded-l-md pr-10 relative flex items-center flex-1",
@@ -33,7 +32,7 @@ const DatePickerClasses = cva(
       {
         variant: ["outline", "solid"],
         className:
-          "border border-secondary-300 dark:border-secondary-700 group-focus-within:ring-2 dark:group-focus-within:ring-primary-900 group-focus-within:ring-primary-100 group-hover:border-primary-400 group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500",
+          "border border-secondary-300 dark:border-secondary-700 group-focus-within:ring-2 dark:group-focus-within:ring-primary-100/20 group-focus-within:ring-primary-100 group-hover:border-primary-400 group-focus-within:border-primary-500 dark:group-focus-within:border-primary-300 ",
       },
     ],
   }
@@ -74,14 +73,12 @@ export function DatePicker<T extends DateValue>(
           isPressed={state.isOpen}
           variant={variant}
         >
-          <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500" />
+          <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
         </FieldButton>
       </div>
       {state.isOpen && (
         <Popover triggerRef={ref} state={state} placement="bottom start">
-          <Dialog {...dialogProps}>
-            <Calendar {...calendarProps} />
-          </Dialog>
+          <Calendar {...calendarProps} />
         </Popover>
       )}
     </div>

@@ -7,14 +7,13 @@ import { DateValue, useDateRangePicker } from "react-aria";
 import { FieldButton } from "./FieldButton";
 import { RangeCalendar } from "./RangeCalendar";
 import { DateField } from "./DateField";
-import { Dialog } from "./Dialog";
 import {
   CalendarIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
-import { Popover } from "../combobox/PopOver";
 import { cva } from "class-variance-authority";
 import { classNames } from "../utils";
+import { Popover } from "..";
 
 const RangePickerClasses = cva(
   "flex transition-colors rounded-l-md pr-10 flex-1 relative",
@@ -36,7 +35,7 @@ const RangePickerClasses = cva(
       {
         variant: ["outline", "solid"],
         className:
-          "border border-secondary-300 dark:border-secondary-700 group-focus-within:ring-2 dark:group-focus-within:ring-primary-900 group-focus-within:ring-primary-100 group-hover:border-primary-400 group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500",
+          "border border-secondary-300 dark:border-secondary-700 group-focus-within:ring-2 dark:group-focus-within:ring-primary-100/20 group-focus-within:ring-primary-100 group-hover:border-primary-400 group-focus-within:border-primary-500 group-focus-within:group-hover:border-primary-500",
       },
     ],
   }
@@ -87,9 +86,7 @@ export function RangePicker<T extends DateValue>(
       </div>
       {state.isOpen && (
         <Popover triggerRef={ref} state={state} placement="bottom start">
-          <Dialog {...dialogProps}>
-            <RangeCalendar {...calendarProps} />
-          </Dialog>
+          <RangeCalendar {...calendarProps} />
         </Popover>
       )}
     </div>
