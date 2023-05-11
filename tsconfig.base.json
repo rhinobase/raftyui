@@ -35,6 +35,7 @@
       "@rhino/navigation-menu": [
         "libs/components/navigation-menu/src/index.ts"
       ],
+      "@rhino/progress": ["libs/components/progress/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
