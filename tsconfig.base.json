@@ -20,6 +20,7 @@
       "@rhino/alertdialog": ["libs/components/alertdialog/src/index.ts"],
       "@rhino/button": ["libs/components/button/src/index.ts"],
       "@rhino/card": ["libs/components/card/src/index.ts"],
+      "@rhino/checkbox": ["libs/components/checkbox/src/index.ts"],
       "@rhino/spinner": ["libs/components/spinner/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
