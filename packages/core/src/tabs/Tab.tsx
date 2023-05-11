@@ -6,7 +6,7 @@ import { classNames } from "../utils";
 
 // Root Component
 export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &
-  Partial<TabContext> & { unstyled?: boolean };
+  Partial<TabContext> & { isUnstyled?: boolean };
 export const Tab = forwardRef<HTMLDivElement, Tab>(
   (
     {
@@ -15,16 +15,16 @@ export const Tab = forwardRef<HTMLDivElement, Tab>(
       size = "md",
       variant = "line",
       orientation = "horizontal",
-      barebone = false,
-      unstyled = false,
+      isBarebone = false,
+      isUnstyled = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = barebone || unstyled;
+    const unstyle = isBarebone || isUnstyled;
 
     return (
-      <TabProvider value={{ size, variant, orientation, barebone }}>
+      <TabProvider value={{ size, variant, orientation, isBarebone }}>
         <TabsPrimitive.Root
           className={
             unstyle
@@ -48,12 +48,12 @@ Tab.displayName = "Tab";
 
 // List Component
 export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const TabList = forwardRef<HTMLDivElement, TabContext & TabList>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { orientation, variant, barebone } = useTabContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { orientation, variant, isBarebone } = useTabContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <TabsPrimitive.List
@@ -133,14 +133,14 @@ const triggerClasses = cva(
   }
 );
 export type TabTrigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]> & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const TabTrigger = forwardRef<
   HTMLButtonElement,
   TabContext & TabTrigger
->(({ children, className, unstyled = false, ...props }, forwardedRef) => {
-  const { size, variant, orientation, barebone } = useTabContext();
-  const unstyle = barebone || unstyled;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, variant, orientation, isBarebone } = useTabContext();
+  const unstyle = isBarebone || isUnstyled;
 
   return (
     <TabsPrimitive.Trigger
@@ -167,12 +167,12 @@ TabTrigger.displayName = "TabTrigger";
 
 // Content Component
 export type TabContent = ComponentProps<(typeof TabsPrimitive)["Content"]> & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const TabContent = forwardRef<HTMLDivElement, TabContent>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, variant, orientation, barebone } = useTabContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, variant, orientation, isBarebone } = useTabContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <TabsPrimitive.Content

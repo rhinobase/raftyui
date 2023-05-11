@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { Spinner } from "../index";
 import { forwardRef, useRef } from "react";
-import { applyStyleToMultipleVariants, classNames } from "../utils";
+import { classNames } from "../utils";
 import { AriaButtonProps, useButton } from "react-aria";
 import { mergeRefs } from "../utils/mergeRefs";
 
@@ -38,20 +38,20 @@ const buttonClasses = cva(
       },
     },
     compoundVariants: [
-      ...applyStyleToMultipleVariants({
+      {
         colorScheme: "secondary",
         variant: ["solid", "outline", "ghost"],
         className: "text-secondary-600 dark:text-secondary-200",
-        disabled: [false, undefined],
-        loading: [false, undefined],
-      }),
-      ...applyStyleToMultipleVariants({
+        disabled: false,
+        loading: false,
+      },
+      {
         colorScheme: ["primary", "error", "success"],
         variant: "solid",
         className: "text-white dark:text-black",
-        disabled: [false, undefined],
-        loading: [false, undefined],
-      }),
+        disabled: false,
+        loading: false,
+      },
       // Primary Solid
       {
         disabled: true,
@@ -74,15 +74,15 @@ const buttonClasses = cva(
         className:
           "border-transparent bg-primary-600 dark:bg-primary-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "primary",
         variant: "solid",
         className:
           "bg-primary-500 border-transparent hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-500 dark:bg-primary-300/90 dark:hover:bg-primary-400/80 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Secondary Solid
       {
         disabled: true,
@@ -105,15 +105,15 @@ const buttonClasses = cva(
         className:
           "border-transparent bg-secondary-300 dark:bg-secondary-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-secondary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "secondary",
         variant: "solid",
         className:
           "border-transparent bg-secondary-200/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-secondary-200 hover:bg-secondary-300 dark:bg-secondary-500/60 dark:hover:bg-secondary-400/80 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Error Solid
       {
         disabled: true,
@@ -136,15 +136,15 @@ const buttonClasses = cva(
         className:
           "border-transparent bg-error-600/90 dark:bg-error-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "error",
         variant: "solid",
         className:
           "border-transparent bg-error-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-500 hover:bg-error-600/90 dark:bg-error-300 dark:hover:bg-error-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Success Solid
       {
         disabled: true,
@@ -167,15 +167,15 @@ const buttonClasses = cva(
         className:
           "border-transparent bg-success-600/90 dark:bg-success-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "success",
         variant: "solid",
         className:
           "border-transparent bg-success-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-500 hover:bg-success-600/90 dark:bg-success-300 dark:hover:bg-success-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Primary Outline
       {
         disabled: true,
@@ -198,15 +198,15 @@ const buttonClasses = cva(
         className:
           "border-primary-500 dark:border-primary-300 text-primary-500 dark:text-primary-300 bg-primary-200/70 dark:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "primary",
         variant: "outline",
         className:
           "border-primary-500/90 dark:border-primary-300 text-primary-500 dark:text-primary-300 bg-transparent hover:bg-primary-200/30 dark:hover:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Secondary Outline
       {
         disabled: true,
@@ -229,15 +229,15 @@ const buttonClasses = cva(
         className:
           "border-secondary-300 dark:border-secondary-700 bg-secondary-200/80 dark:bg-secondary-700/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-secondary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "secondary",
         variant: "outline",
         className:
           "border-secondary-300 dark:border-secondary-700 bg-transparent hover:bg-secondary-200/40 dark:hover:bg-secondary-700/50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-secondary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Error Outline
       {
         disabled: true,
@@ -260,15 +260,15 @@ const buttonClasses = cva(
         className:
           "border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "error",
         variant: "outline",
         className:
           "bg-transparent border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 hover:bg-error-200/30 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Success Outline
       {
         disabled: true,
@@ -291,15 +291,15 @@ const buttonClasses = cva(
         className:
           "border-success-500 dark:border-success-300/80 text-success-500 dark:text-success-300 bg-success-200/60 dark:bg-success-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "success",
         variant: "outline",
         className:
           "bg-transparent border-success-500 dark:border-success-300/80 text-success-500 dark:text-success-300 hover:bg-success-200/30 dark:hover:bg-success-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Primary Ghost
       {
         disabled: true,
@@ -322,15 +322,15 @@ const buttonClasses = cva(
         className:
           "border-transparent text-primary-500 dark:text-primary-300 bg-primary-200/70 dark:bg-primary-400/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "primary",
         variant: "ghost",
         className:
           "border-transparent text-primary-500 dark:text-primary-300 bg-transparent hover:bg-primary-200/30 dark:hover:bg-primary-400/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Secondary Ghost
       {
         disabled: true,
@@ -353,15 +353,15 @@ const buttonClasses = cva(
         className:
           "border-transparent bg-secondary-200/80 dark:bg-secondary-700/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-secondary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "secondary",
         variant: "ghost",
         className:
           "border-transparent bg-transparent hover:bg-secondary-200/60 dark:hover:bg-secondary-700/50 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-secondary-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Error Ghost
       {
         disabled: true,
@@ -384,15 +384,15 @@ const buttonClasses = cva(
         className:
           "border-transparent text-error-500 dark:text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "error",
         variant: "ghost",
         className:
           "bg-transparent border-transparent text-error-500 dark:text-error-300 hover:bg-error-200/40 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
       // Success Ghost
       {
         disabled: true,
@@ -415,15 +415,15 @@ const buttonClasses = cva(
         className:
           "border-transparent text-success-500 dark:text-success-300 bg-success-200/60 dark:bg-success-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
-      ...applyStyleToMultipleVariants({
-        disabled: [undefined, false],
+      {
+        disabled: false,
         loading: false,
         active: false,
         colorScheme: "success",
         variant: "ghost",
         className:
           "bg-transparent border-transparent text-success-500 dark:text-success-300 hover:bg-success-200/40 dark:hover:bg-success-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
-      }),
+      },
     ],
     defaultVariants: {
       colorScheme: "secondary",
@@ -483,8 +483,8 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
                 colorScheme,
                 variant,
                 size,
+                disabled,
                 loading: isLoading,
-                disabled: props.isDisabled,
                 active: isActive,
               }),
               className

@@ -2,9 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { ComboBox, FieldControl } from "../src";
 import { expect } from "@storybook/jest";
 import { within } from "@storybook/testing-library";
-import { Item } from "../src/combobox/Combobox";
-import { SunIcon } from "@heroicons/react/24/outline";
-import { ReactNode } from "react";
+import { ComboboxItem } from "../src";
 
 const meta: Meta<typeof ComboBox> = {
   title: "Form / ComboBox",
@@ -51,17 +49,17 @@ export const Variants: Story = {
             label="Favorite Animal"
             onInputChange={(value) => console.log(value)}
           >
-            <Item key="red panda" textValue="red panda">
+            <ComboboxItem key="red panda" textValue="red panda">
               <div className="flex gap-2 items-center">
                 <div className="rounded-full w-5 h-5 bg-red-200">RP</div>Red
                 Panda
               </div>
-            </Item>
-            <Item key="cat">Cat</Item>
-            <Item key="dog">Dog</Item>
-            <Item key="aardvark">Aardvark</Item>
-            <Item key="kangaroo">Kangaroo</Item>
-            <Item key="snake">Snake</Item>
+            </ComboboxItem>
+            <ComboboxItem key="cat">Cat</ComboboxItem>
+            <ComboboxItem key="dog">Dog</ComboboxItem>
+            <ComboboxItem key="aardvark">Aardvark</ComboboxItem>
+            <ComboboxItem key="kangaroo">Kangaroo</ComboboxItem>
+            <ComboboxItem key="snake">Snake</ComboboxItem>
           </ComboBox>
         </FieldControl>
       </div>

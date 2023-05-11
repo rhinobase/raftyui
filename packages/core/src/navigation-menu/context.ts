@@ -9,5 +9,5 @@ export const [NavigationMenuProvider, useNavigationMenuContext] =
 
 export interface NavigationMenuContext {
   size: "sm" | "md" | "lg";
-  barebone: boolean;
+  isBarebone: boolean;
 }

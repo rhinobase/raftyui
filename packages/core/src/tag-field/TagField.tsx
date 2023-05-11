@@ -2,13 +2,12 @@ import { forwardRef, useEffect, useState } from "react";
 import { Button } from "../button";
 import { InputField } from "../input";
 import { classNames } from "../utils";
+import { AriaTextFieldProps } from "react-aria";
 
-export type TagField = Omit<
-  JSX.IntrinsicElements["input"],
-  "onChange" | "size"
-> & {
+export type TagField = Omit<AriaTextFieldProps, "onChange" | "size"> & {
   initialData?: string[];
   onChange?: (tags: string[]) => void;
+  className?: string;
 };
 export const TagField = forwardRef<HTMLInputElement, TagField>(
   ({ className, initialData, onChange, ...props }, forwardedRef) => {
@@ -39,8 +38,8 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
           />
           <Button
             variant="ghost"
-            onClick={() => setTag([])}
-            hidden={tag.length < 2}
+            onPress={() => setTag([])}
+            className={tag.length < 2 ? "!hidden" : ""}
           >
             Clear All
           </Button>
@@ -48,14 +47,14 @@ export const TagField = forwardRef<HTMLInputElement, TagField>(
         <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
           {tag.map((value, idx) => (
             <div
-              key={value}
+              key={idx}
               className={
                 "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-[2px] pl-3 pr-[2px] font-semibold dark:text-zinc-100"
               }
             >
               <span className="leading-[0px]">{value}</span>
               <Button
-                onClick={() => {
+                onPress={() => {
                   setTag((prev) => {
                     prev.splice(
                       prev.findIndex((item) => item == value),

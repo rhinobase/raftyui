@@ -2,13 +2,6 @@ import { forwardRef, ReactNode } from "react";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
-export type Tag = {
-  children: ReactNode;
-  className?: string;
-  size?: "sm" | "md" | "lg";
-  colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
-};
-
 const tagClasses = cva("h-max w-max font-medium", {
   variants: {
     size: {
@@ -30,6 +23,13 @@ const tagClasses = cva("h-max w-max font-medium", {
     },
   },
 });
+
+export type Tag = {
+  children: ReactNode;
+  className?: string;
+  size?: "sm" | "md" | "lg";
+  colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
+};
 
 export const Tag = forwardRef<HTMLDivElement, Tag>(
   (

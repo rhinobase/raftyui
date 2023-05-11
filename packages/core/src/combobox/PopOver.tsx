@@ -1,17 +1,17 @@
 import type { OverlayTriggerState } from "react-stately";
 import type { AriaPopoverProps } from "@react-aria/overlays";
-import * as React from "react";
-import { usePopover, DismissButton, Overlay } from "@react-aria/overlays";
+import React from "react";
+import { usePopover, DismissButton } from "@react-aria/overlays";
 import { classNames } from "../utils";
 
-interface PopoverProps extends Omit<AriaPopoverProps, "popoverRef"> {
+export type Popover = {
   children: React.ReactNode;
   state: OverlayTriggerState;
   className?: string;
   popoverRef?: React.RefObject<HTMLDivElement>;
-}
+} & Omit<AriaPopoverProps, "popoverRef">;
 
-export function Popover(props: PopoverProps) {
+export function Popover(props: Popover) {
   const ref = React.useRef<HTMLDivElement>(null);
   const { popoverRef = ref, state, children, className, isNonModal } = props;
 

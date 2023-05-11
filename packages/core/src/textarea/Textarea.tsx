@@ -34,22 +34,30 @@ const textareaClasses = cva(
 // InputField Component (With ErrorMessage)
 export type Textarea = JSX.IntrinsicElements["textarea"] & {
   variant?: "solid" | "outline" | "ghost";
+  isUnStyled?: boolean;
 };
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
-  ({ className, variant = "outline", ...props }, forwardedRef) => {
+  (
+    { className, variant = "outline", isUnStyled = false, ...props },
+    forwardedRef
+  ) => {
     const controls = useFieldControlContext();
     return (
       <textarea
-        {...props}
-        className={classNames(
-          textareaClasses({
-            variant,
-            invalid: controls.isInvalid,
-          }),
-          className
-        )}
-        ref={forwardedRef}
         {...controls}
+        {...props}
+        className={
+          isUnStyled
+            ? className
+            : classNames(
+                textareaClasses({
+                  variant,
+                  invalid: controls.isInvalid,
+                }),
+                className
+              )
+        }
+        ref={forwardedRef}
       />
     );
   }

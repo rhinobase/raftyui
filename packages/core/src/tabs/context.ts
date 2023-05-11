@@ -10,5 +10,5 @@ export interface TabContext {
   size: "sm" | "md" | "lg";
   variant: "line" | "enclosed";
   orientation: "horizontal" | "vertical";
-  barebone: boolean;
+  isBarebone: boolean;
 }

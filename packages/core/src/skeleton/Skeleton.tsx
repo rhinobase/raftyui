@@ -1,7 +1,7 @@
-import { forwardRef } from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
-export type Skeleton = JSX.IntrinsicElements["div"];
+export type Skeleton = HTMLAttributes<HTMLDivElement>;
 
 export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
   ({ className, ...props }, forwardedRef) => {

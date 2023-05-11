@@ -2,17 +2,19 @@ import { forwardRef } from "react";
 import { classNames } from "../utils";
 
 export type UnorderedList = JSX.IntrinsicElements["ul"] & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 
 export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
-  ({ className, children, unstyled = false, ...props }, forwardedRef) => {
+  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <ul
         ref={forwardedRef}
         {...props}
         className={
-          unstyled ? className : classNames("list-inside list-disc", className)
+          isUnstyled
+            ? className
+            : classNames("list-inside list-disc", className)
         }
       >
         {children}

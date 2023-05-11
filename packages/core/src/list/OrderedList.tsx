@@ -1,16 +1,18 @@
 import { forwardRef } from "react";
 import { classNames } from "../utils";
 
-export type OrderedList = JSX.IntrinsicElements["ol"] & { unstyled?: boolean };
+export type OrderedList = JSX.IntrinsicElements["ol"] & {
+  isUnstyled?: boolean;
+};
 
 export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
-  ({ className, children, unstyled = false, ...props }, forwardedRef) => {
+  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <ol
         ref={forwardedRef}
         {...props}
         className={
-          unstyled
+          isUnstyled
             ? className
             : classNames("list-inside list-decimal", className)
         }

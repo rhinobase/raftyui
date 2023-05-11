@@ -7,25 +7,13 @@ import { useListBox, useListBoxSection, useOption } from "react-aria";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 
-interface ListBoxProps extends AriaListBoxOptions<unknown> {
+export type ListBox = {
   listBoxRef?: React.RefObject<HTMLUListElement>;
   state: ListState<unknown>;
   size?: "sm" | "md" | "lg";
-}
+} & AriaListBoxOptions<unknown>;
 
-interface SectionProps {
-  section: Node<unknown>;
-  state: ListState<unknown>;
-  size?: "sm" | "md" | "lg";
-}
-
-interface OptionProps {
-  item: Node<unknown>;
-  state: ListState<unknown>;
-  size?: "sm" | "md" | "lg";
-}
-
-export function ListBox(props: ListBoxProps) {
+export function ListBox(props: ListBox) {
   const ref = React.useRef<HTMLUListElement>(null);
   const { listBoxRef = ref, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
@@ -47,7 +35,13 @@ export function ListBox(props: ListBoxProps) {
   );
 }
 
-function ListBoxSection({ section, state, size }: SectionProps) {
+type ListBoxSection = {
+  section: Node<unknown>;
+  state: ListState<unknown>;
+  size?: "sm" | "md" | "lg";
+};
+
+function ListBoxSection({ section, state, size }: ListBoxSection) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
     "aria-label": section["aria-label"],
@@ -74,7 +68,13 @@ function ListBoxSection({ section, state, size }: SectionProps) {
   );
 }
 
-function Option({ item, state, size }: OptionProps) {
+type Option = {
+  item: Node<unknown>;
+  state: ListState<unknown>;
+  size?: "sm" | "md" | "lg";
+};
+
+function Option({ item, state, size }: Option) {
   const ref = React.useRef<HTMLLIElement>(null);
   const { optionProps, isDisabled, isSelected, isFocused } = useOption(
     {
@@ -99,7 +99,7 @@ function Option({ item, state, size }: OptionProps) {
           : "text-gray-700",
         isFocused && "bg-primary-50",
         isSelected && "font-bold",
-        "m-1 outline-none cursor-default flex items-center justify-between"
+        "m-1 outline-none cursor-pointer flex items-center justify-between"
       )}
     >
       {item.rendered}

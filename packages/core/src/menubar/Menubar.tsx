@@ -7,23 +7,23 @@ import { cva } from "class-variance-authority";
 
 //MenuBar Component
 export type Menubar = ComponentProps<(typeof MenubarPrimitive)["Root"]> &
-  Partial<MenuBarContext> & { unstyled?: boolean };
+  Partial<MenuBarContext> & { isUnstyled?: boolean };
 export const Menubar = forwardRef<HTMLDivElement, Menubar>(
   (
     {
       children,
       className,
       size = "md",
-      barebone = false,
-      unstyled = false,
+      isBarebone = false,
+      isUnstyled = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = barebone || unstyled;
+    const unstyle = isBarebone || isUnstyled;
 
     return (
-      <MenuBarProvider value={{ size, barebone }}>
+      <MenuBarProvider value={{ size, isBarebone }}>
         <MenubarPrimitive.Root
           {...props}
           className={unstyle ? className : classNames("flex w-full", className)}
@@ -59,11 +59,11 @@ const triggerClasses = cva(
 );
 export type MenubarTrigger = ComponentProps<
   (typeof MenubarPrimitive)["MenubarTrigger"]
-> & { unstyled?: boolean };
+> & { isUnstyled?: boolean };
 export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.Trigger
@@ -85,15 +85,15 @@ MenubarTrigger.displayName = "MenubarTrigger";
 export type MenubarContent = ComponentProps<
   (typeof MenubarPrimitive)["Content"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarContent = forwardRef<HTMLDivElement, MenubarContent>(
   (
-    { children, className, sideOffset, unstyled = false, ...props },
+    { children, className, sideOffset, isUnstyled = false, ...props },
     forwardedRef
   ) => {
-    const { barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+    const { isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.Portal>
@@ -146,12 +146,12 @@ const labelClasses = cva(
 export type MenubarLabel = ComponentProps<
   (typeof MenubarPrimitive)["Label"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarLabel = forwardRef<HTMLDivElement, MenubarLabel>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.Label
@@ -182,12 +182,12 @@ const itemClasses = cva(
   }
 );
 export type MenubarItem = ComponentProps<(typeof MenubarPrimitive)["Item"]> & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarItem = forwardRef<HTMLDivElement, MenubarItem>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.Item
@@ -223,14 +223,14 @@ const checkboxItemClasses = cva(
 export type MenubarCheckboxItem = ComponentProps<
   (typeof MenubarPrimitive)["CheckboxItem"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarCheckboxItem = forwardRef<
   HTMLDivElement,
   MenubarCheckboxItem
->(({ children, className, unstyled = false, ...props }, forwardedRef) => {
-  const { size, barebone } = useMenuBarContext();
-  const unstyle = barebone || unstyled;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useMenuBarContext();
+  const unstyle = isBarebone || isUnstyled;
 
   return (
     <MenubarPrimitive.CheckboxItem
@@ -290,12 +290,12 @@ const radioItemClasses = cva(
 export type MenubarRadioItem = ComponentProps<
   (typeof MenubarPrimitive)["RadioItem"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarRadioItem = forwardRef<HTMLDivElement, MenubarRadioItem>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.RadioItem
@@ -356,12 +356,12 @@ const subTriggerClasses = cva(
 export type MenubarSubTrigger = ComponentProps<
   (typeof MenubarPrimitive)["SubTrigger"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarSubTrigger = forwardRef<HTMLDivElement, MenubarSubTrigger>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.SubTrigger
@@ -401,12 +401,12 @@ MenubarSubTrigger.displayName = "MenubarSubTrigger";
 export type MenubarSubContent = ComponentProps<
   (typeof MenubarPrimitive)["SubContent"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarSubContent = forwardRef<HTMLDivElement, MenubarSubContent>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.Portal>
@@ -445,12 +445,12 @@ const seperatorClasses = cva("bg-secondary-200 dark:bg-secondary-700 h-[1px]", {
 export type MenubarSeparator = ComponentProps<
   (typeof MenubarPrimitive)["Separator"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const MenubarSeparator = forwardRef<HTMLDivElement, MenubarSeparator>(
-  ({ className, unstyled = true, ...props }, forwardedRef) => {
-    const { size, barebone } = useMenuBarContext();
-    const unstyle = barebone || unstyled;
+  ({ className, isUnstyled = true, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <MenubarPrimitive.Separator

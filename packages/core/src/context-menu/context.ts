@@ -9,5 +9,5 @@ export const [ContextMenuProvider, useContextMenuContext] =
 
 export interface ContextMenuContext {
   size: "sm" | "md" | "lg";
-  barebone: boolean;
+  isBarebone: boolean;
 }

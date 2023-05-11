@@ -1,10 +1,10 @@
-import { forwardRef } from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { TableContext, TableProvider, useTableContext } from "./context";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 // TableContainer Component
-export type TableContainer = JSX.IntrinsicElements["div"];
+export type TableContainer = HTMLAttributes<HTMLDivElement>;
 export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
   ({ children, className, ...props }, forwardedRef) => (
     <div
@@ -22,11 +22,6 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
 TableContainer.displayName = "TableContainer";
 
 // Table Component
-export type Table = Partial<TableContext> &
-  JSX.IntrinsicElements["table"] & {
-    unstyled?: boolean;
-  };
-
 const tableClasses = cva(
   "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
   {
@@ -40,6 +35,11 @@ const tableClasses = cva(
   }
 );
 
+export type Table = Partial<TableContext> &
+  JSX.IntrinsicElements["table"] & {
+    isUnstyled?: boolean;
+  };
+
 export const Table = forwardRef<HTMLTableElement, Table>(
   (
     {
@@ -47,16 +47,16 @@ export const Table = forwardRef<HTMLTableElement, Table>(
       children,
       size = "md",
       variant = "simple",
-      unstyled = false,
-      barebone = false,
+      isUnstyled = false,
+      isBarebone = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = barebone || unstyled;
+    const unstyle = isBarebone || isUnstyled;
 
     return (
-      <TableProvider value={{ size, variant, barebone }}>
+      <TableProvider value={{ size, variant, isBarebone }}>
         <table
           {...props}
           className={
@@ -73,11 +73,13 @@ export const Table = forwardRef<HTMLTableElement, Table>(
 Table.displayName = "Table";
 
 // TableBody Component
-export type TableBody = JSX.IntrinsicElements["tbody"] & { unstyled?: boolean };
+export type TableBody = JSX.IntrinsicElements["tbody"] & {
+  isUnstyled?: boolean;
+};
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { barebone } = useTableContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <tbody
@@ -97,10 +99,6 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
 TableBody.displayName = "TableBody";
 
 // TableFooter Component
-export type TableFooter = JSX.IntrinsicElements["tfoot"] & {
-  unstyled?: boolean;
-};
-
 const tableFooterClasses = cva(
   "bg-secondary-100 text-secondary-500 dark:bg-secondary-700/80 dark:text-secondary-300 text-sm font-semibold",
   {
@@ -114,10 +112,14 @@ const tableFooterClasses = cva(
   }
 );
 
+export type TableFooter = JSX.IntrinsicElements["tfoot"] & {
+  isUnstyled?: boolean;
+};
+
 export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useTableContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <tfoot
@@ -137,8 +139,6 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
 TableFooter.displayName = "TableFooter";
 
 // TableHead Component
-export type TableHead = JSX.IntrinsicElements["thead"] & { unstyled?: boolean };
-
 const tableHeadClasses = cva("", {
   variants: {
     variant: {
@@ -148,10 +148,14 @@ const tableHeadClasses = cva("", {
   },
 });
 
+export type TableHead = JSX.IntrinsicElements["thead"] & {
+  isUnstyled?: boolean;
+};
+
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { variant, barebone } = useTableContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { variant, isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <thead
@@ -171,8 +175,6 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
 TableHead.displayName = "TableHead";
 
 // Td Component
-export type Td = JSX.IntrinsicElements["td"] & { unstyled?: boolean };
-
 const tdClasses = cva(
   "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
   {
@@ -186,10 +188,12 @@ const tdClasses = cva(
   }
 );
 
+export type Td = JSX.IntrinsicElements["td"] & { isUnstyled?: boolean };
+
 export const Td = forwardRef<HTMLTableCellElement, Td>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useTableContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <td
@@ -207,8 +211,6 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
 Td.displayName = "Td";
 
 // Th Component
-export type Th = JSX.IntrinsicElements["th"] & { unstyled?: boolean };
-
 const thClasses = cva(
   "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
   {
@@ -222,10 +224,12 @@ const thClasses = cva(
   }
 );
 
+export type Th = JSX.IntrinsicElements["th"] & { isUnstyled?: boolean };
+
 export const Th = forwardRef<HTMLTableCellElement, Th>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { size, barebone } = useTableContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <th
@@ -243,7 +247,6 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
 Th.displayName = "Th";
 
 // Tr Component
-export type Tr = JSX.IntrinsicElements["tr"] & { unstyled?: boolean };
 
 const trClasses = cva("", {
   variants: {
@@ -254,10 +257,12 @@ const trClasses = cva("", {
   },
 });
 
+export type Tr = JSX.IntrinsicElements["tr"] & { isUnstyled?: boolean };
+
 export const Tr = forwardRef<HTMLTableRowElement, Tr>(
-  ({ children, className, unstyled = false, ...props }, forwardedRef) => {
-    const { variant, barebone } = useTableContext();
-    const unstyle = barebone || unstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { variant, isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <tr

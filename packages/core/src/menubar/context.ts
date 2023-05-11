@@ -9,5 +9,5 @@ export const [MenuBarProvider, useMenuBarContext] =
 
 export interface MenuBarContext {
   size: "sm" | "md" | "lg";
-  barebone: boolean;
+  isBarebone: boolean;
 }

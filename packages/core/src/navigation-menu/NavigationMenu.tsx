@@ -11,23 +11,23 @@ import { cva } from "class-variance-authority";
 export type NavigationMenu = ComponentProps<
   (typeof NavigationMenuPrimitive)["Root"]
 > &
-  Partial<NavigationMenuContext> & { unstyled?: boolean };
+  Partial<NavigationMenuContext> & { isUnstyled?: boolean };
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   (
     {
       children,
       className,
       size = "md",
-      barebone = false,
-      unstyled = false,
+      isBarebone = false,
+      isUnstyled = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = barebone || unstyled;
+    const unstyle = isBarebone || isUnstyled;
 
     return (
-      <NavigationMenuProvider value={{ size, barebone }}>
+      <NavigationMenuProvider value={{ size, isBarebone }}>
         <NavigationMenuPrimitive.Root
           className={unstyle ? className : classNames("relative", className)}
           {...props}
@@ -44,15 +44,15 @@ NavigationMenu.displayName = "NavigationMenu";
 
 export type NavigationMenuList = ComponentProps<
   (typeof NavigationMenuPrimitive)["List"]
-> & { unstyled?: boolean };
+> & { isUnstyled?: boolean };
 export const NavigationMenuList = ({
   children,
   className,
-  unstyled = false,
+  isUnstyled = false,
   ...props
 }: NavigationMenuList) => {
-  const { barebone } = useNavigationMenuContext();
-  const unstyle = barebone || unstyled;
+  const { isBarebone } = useNavigationMenuContext();
+  const unstyle = isBarebone || isUnstyled;
 
   return (
     <NavigationMenuPrimitive.List
@@ -104,14 +104,14 @@ const triggerClasses = cva(
 export type NavigationMenuTrigger = ComponentProps<
   (typeof NavigationMenuPrimitive)["Trigger"]
 > & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 export const NavigationMenuTrigger = forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
->(({ children, className, unstyled = false, ...props }, forwardedRef) => {
-  const { size, barebone } = useNavigationMenuContext();
-  const unstyle = barebone || unstyled;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useNavigationMenuContext();
+  const unstyle = isBarebone || isUnstyled;
 
   return (
     <NavigationMenuPrimitive.Trigger
@@ -156,17 +156,17 @@ const contentClasses = cva(
 );
 export type NavigationMenuContent = ComponentProps<
   (typeof NavigationMenuPrimitive)["Content"]
-> & { size?: "sm" | "md" | "lg" | "full" } & { unstyled?: boolean };
+> & { size?: "sm" | "md" | "lg" | "full" } & { isUnstyled?: boolean };
 export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
   NavigationMenuContent
 >(
   (
-    { children, className, size = "md", unstyled = false, ...props },
+    { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef
   ) => {
-    const { barebone } = useNavigationMenuContext();
-    const unstyle = barebone || unstyled;
+    const { isBarebone } = useNavigationMenuContext();
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <NavigationMenuPrimitive.Content
@@ -197,15 +197,15 @@ const linkClasses = cva(
 );
 export type NavigationMenuLink = ComponentProps<
   (typeof NavigationMenuPrimitive)["Link"]
-> & { unstyled?: boolean };
+> & { isUnstyled?: boolean };
 export const NavigationMenuLink = ({
   children,
   className,
-  unstyled = false,
+  isUnstyled = false,
   ...props
 }: NavigationMenuLink) => {
-  const { size, barebone } = useNavigationMenuContext();
-  const unstyle = barebone || unstyled;
+  const { size, isBarebone } = useNavigationMenuContext();
+  const unstyle = isBarebone || isUnstyled;
 
   return (
     <NavigationMenuPrimitive.Link
@@ -262,14 +262,14 @@ NavigationMenuViewport.displayName = "NavigationMenuViewport";
 
 export type NavigationMenuIndicator = ComponentProps<
   (typeof NavigationMenuPrimitive)["Indicator"]
-> & { unstyled?: boolean };
+> & { isUnstyled?: boolean };
 export const NavigationMenuIndicator = ({
   className,
-  unstyled = false,
+  isUnstyled = false,
   ...props
 }: NavigationMenuIndicator) => {
-  const { barebone } = useNavigationMenuContext();
-  const unstyle = barebone || unstyled;
+  const { isBarebone } = useNavigationMenuContext();
+  const unstyle = isBarebone || isUnstyled;
   return (
     <NavigationMenuPrimitive.Indicator
       className={

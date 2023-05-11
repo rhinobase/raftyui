@@ -9,11 +9,6 @@ import {
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
-export type Switch = AriaCheckboxProps & {
-  size?: "sm" | "md" | "lg";
-  isSelected?: boolean;
-};
-
 const switchClasses = cva("relative rounded-full", {
   variants: {
     size: {
@@ -58,7 +53,12 @@ const switchThumbClasses = cva(
   }
 );
 
-export function Switch({ size = "md", ...props }: Switch) {
+export type Switch = AriaCheckboxProps & {
+  size?: "sm" | "md" | "lg";
+  isSelected?: boolean;
+};
+
+export function Switch({ size = "md", children, ...props }: Switch) {
   const state = useToggleState(props);
   const ref = React.useRef(null);
   const { inputProps } = useSwitch(props, state, ref);
@@ -86,7 +86,7 @@ export function Switch({ size = "md", ...props }: Switch) {
           )}
         />
       </div>
-      {props.children}
+      {children}
     </label>
   );
 }

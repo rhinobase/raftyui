@@ -1,16 +1,16 @@
 import { forwardRef } from "react";
 import { classNames } from "../utils";
 
-export type ListItem = JSX.IntrinsicElements["li"] & { unstyled?: boolean };
+export type ListItem = JSX.IntrinsicElements["li"] & { isUnstyled?: boolean };
 
 export const ListItem = forwardRef<HTMLLIElement, ListItem>(
-  ({ className, children, unstyled = false, ...props }, forwardedRef) => {
+  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <li
         ref={forwardedRef}
         {...props}
         className={
-          unstyled
+          isUnstyled
             ? className
             : classNames(className, "dark:text-secondary-100")
         }

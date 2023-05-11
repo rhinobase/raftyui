@@ -3,7 +3,7 @@ import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 export type Kbd = JSX.IntrinsicElements["kbd"] & {
-  unstyled?: boolean;
+  isUnstyled?: boolean;
 };
 
 const kbdClasses = cva(
@@ -11,10 +11,10 @@ const kbdClasses = cva(
 );
 
 export const Kbd = forwardRef<HTMLElement, Kbd>(
-  ({ children, className, unstyled = false, ...props }, forwardRef) => (
+  ({ children, className, isUnstyled = false, ...props }, forwardRef) => (
     <kbd
       {...props}
-      className={unstyled ? className : classNames(kbdClasses(), className)}
+      className={isUnstyled ? className : classNames(kbdClasses(), className)}
       ref={forwardRef}
     >
       {children}

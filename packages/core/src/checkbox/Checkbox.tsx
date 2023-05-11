@@ -24,7 +24,9 @@ const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
   null
 );
 
-type CheckboxGroup = AriaCheckboxGroupProps & { children: React.ReactNode };
+export type CheckboxGroup = AriaCheckboxGroupProps & {
+  children: React.ReactNode;
+};
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroup>(
   (
@@ -135,11 +137,8 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
                 : isSelected
                 ? "text-white"
                 : "text-transparent",
-              "w-4 h-4"
+              "w-4 h-4 transition-all duration-300"
             )}
-            style={{
-              transition: "all 400ms",
-            }}
           />
         </div>
         <span className="select-none text-gray-700 dark:text-secondary-200 font-medium">

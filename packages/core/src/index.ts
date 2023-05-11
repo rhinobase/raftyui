@@ -18,7 +18,7 @@ export {
 export { Button } from "./button";
 export { Card, CardBody, CardFooter, CardHeader } from "./card";
 export { Checkbox, CheckboxGroup } from "./checkbox";
-export { ComboBox } from "./combobox";
+export { ComboBox, ComboboxItem, ComboboxSection } from "./combobox";
 export {
   ContextMenu,
   ContextMenuCheckBoxGroup,
