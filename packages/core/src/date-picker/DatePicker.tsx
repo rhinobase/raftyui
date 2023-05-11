@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
-import { Popover } from "..";
+import { PopoverContent } from "../popover";
 
 const DatePickerClasses = cva(
   "transition-colors rounded-l-md pr-10 relative flex items-center flex-1",
@@ -47,20 +47,14 @@ export function DatePicker<T extends DateValue>(
   const { size = "md", variant = "outline" } = props;
   const state = useDatePickerState(props);
   const ref = useRef(null);
-  const {
-    groupProps,
-    labelProps,
-    fieldProps,
-    buttonProps,
-    dialogProps,
-    calendarProps,
-  } = useDatePicker(props, state, ref);
+  const { groupProps, fieldProps, buttonProps, calendarProps } = useDatePicker(
+    props,
+    state,
+    ref
+  );
 
   return (
-    <div className="relative inline-flex flex-col text-left">
-      <span {...labelProps} className="text-sm text-gray-800">
-        {props.label}
-      </span>
+    <div className="inline-flex flex-col text-left">
       <div {...groupProps} ref={ref} className="flex group">
         <div className={classNames(DatePickerClasses({ size, variant }))}>
           <DateField {...fieldProps} />
@@ -77,9 +71,9 @@ export function DatePicker<T extends DateValue>(
         </FieldButton>
       </div>
       {state.isOpen && (
-        <Popover triggerRef={ref} state={state} placement="bottom start">
+        <PopoverContent triggerRef={ref} state={state} placement="bottom start">
           <Calendar {...calendarProps} />
-        </Popover>
+        </PopoverContent>
       )}
     </div>
   );

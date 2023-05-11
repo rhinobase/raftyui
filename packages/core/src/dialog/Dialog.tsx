@@ -1,249 +1,161 @@
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import React, { ComponentProps, forwardRef } from "react";
-import { Button } from "../button";
-import { DialogContext, DialogProvider, useDialogContext } from "./context";
-import { classNames } from "../utils";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { AriaButtonProps, AriaDialogProps, useDialog } from "react-aria";
+import { useButton, useFocusRing, mergeProps } from "react-aria";
+import React, { useState } from "react";
+import type { AriaModalOverlayProps } from "@react-aria/overlays";
+import { Overlay, useModalOverlay } from "@react-aria/overlays";
+import { CSSTransition } from "react-transition-group";
+import { OverlayTriggerState, useOverlayTriggerState } from "react-stately";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+interface ModalProps extends AriaModalOverlayProps {
+  children: React.ReactNode;
+  state: OverlayTriggerState;
+}
 
-// Dialog Component
-export type Dialog = ComponentProps<(typeof DialogPrimitive)["Dialog"]> &
-  Partial<DialogContext>;
-export const Dialog = ({
-  children,
-  size = "md",
-  isBarebone = false,
-  ...props
-}: Dialog) => (
-  <DialogProvider value={{ size, isBarebone }}>
-    {/* TODO: Add reference to the below element */}
-    <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
-  </DialogProvider>
-);
-Dialog.displayName = "Dialog";
+export function Modal(props: ModalProps) {
+  const { children, state } = props;
 
-// Dialog Button Component
-export type DialogTrigger = ComponentProps<
-  (typeof DialogPrimitive)["DialogTrigger"]
-> &
-  Button;
-export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTrigger>(
-  (
-    {
-      children,
-      className,
-      variant,
-      colorScheme,
-      leftIcon = undefined,
-      rightIcon = undefined,
-      isDisabled = false,
-      isLoading = false,
-      isActive = false,
-      asChild = false,
-      isUnstyled = false,
-      ...props
-    },
-    forwardedRef
-  ) => {
-    const { isBarebone } = useDialogContext();
-    const unstyle = isBarebone || isUnstyled;
+  const ref = React.useRef(null);
+  const { modalProps, underlayProps } = useModalOverlay(props, state, ref);
+  const [exited, setExited] = useState(!state.isOpen);
 
-    return (
-      <DialogPrimitive.Trigger {...props} asChild ref={forwardedRef}>
-        {asChild ? (
-          children
-        ) : (
-          <Button
-            variant={variant || "ghost"}
-            colorScheme={colorScheme}
-            className={className}
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isLoading={isLoading}
-            isDisabled={isDisabled}
-            isActive={isActive}
-            isUnstyled={unstyle}
-          >
-            {children}
-          </Button>
-        )}
-      </DialogPrimitive.Trigger>
-    );
+  // Don't render anything if the modal is not open and we're not animating out.
+  if (!(state.isOpen || !exited)) {
+    return null;
   }
-);
-DialogTrigger.displayName = "DialogTrigger";
 
-export type DialogOverlay = ComponentProps<
-  (typeof DialogPrimitive)["Overlay"]
-> & {
-  isUnstyled?: boolean;
-};
-export const DialogOverlay = forwardRef<HTMLDivElement, DialogOverlay>(
-  ({ className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone } = useDialogContext();
-    const unstyle = isBarebone || isUnstyled;
-
-    return (
-      <DialogPrimitive.Overlay
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                "animate-slide-down-fade fixed inset-0 z-40 h-full w-full bg-black/40 transition-opacity ease-in-out",
-                className
-              )
-        }
-        ref={forwardedRef}
-      />
-    );
-  }
-);
-DialogOverlay.displayName = "DialogOverlay";
-
-// Dialog Content Component
-export type DialogContent = ComponentProps<
-  (typeof DialogPrimitive)["Content"]
-> & {
-  isUnstyled?: boolean;
-};
-export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone } = useDialogContext();
-    const unstyle = isBarebone || isUnstyled;
-
-    return (
-      <DialogPrimitive.Portal>
-        <DialogPrimitive.Content
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "transition-all duration-200 focus-visible:outline-none",
-                  className
-                )
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </DialogPrimitive.Content>
-      </DialogPrimitive.Portal>
-    );
-  }
-);
-DialogContent.displayName = "DialogContent";
-
-// Dialog Title Component
-export type DialogTitle = ComponentProps<
-  (typeof DialogPrimitive)["DialogTitle"]
-> & {
-  isUnstyled?: boolean;
-};
-export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useDialogContext();
-    const unstyle = isBarebone || isUnstyled;
-
-    return (
-      <DialogPrimitive.Title
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                size == "lg" && "text-xl",
-                size == "md" && "text-xl",
-                size == "sm" && "text-lg",
-                "mb-2 font-semibold",
-                className
-              )
-        }
-        ref={forwardedRef}
+  return (
+    // Animate opacity and backdrop blur of underlay
+    <Overlay>
+      <CSSTransition
+        in={state.isOpen}
+        appear
+        onEntered={() => setExited(false)}
+        onExited={() => setExited(true)}
+        timeout={{ enter: 0, exit: 250 }}
+        classNames={{
+          enter: "opacity-0",
+          enterDone: "opacity-1 backdrop-blur-md transition ease-in",
+          exit: "opacity-0 backdrop-blur-none transition ease-out",
+        }}
       >
-        {children}
-      </DialogPrimitive.Title>
-    );
-  }
-);
-DialogTitle.displayName = "DialogTitle";
-
-// Dialog Body Component
-export type DialogBody = ComponentProps<
-  (typeof DialogPrimitive)["DialogDescription"]
-> & { isUnstyled?: boolean };
-export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
-  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useDialogContext();
-    const unstyle = isBarebone || isUnstyled;
-
-    return (
-      <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>
         <div
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-50 min-w-[360px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-auto bg-white text-left shadow-xl sm:w-full sm:align-middle md:h-auto md:max-h-[inherit]",
-                  size == "lg" && "max-w-[60rem] p-8",
-                  size == "md" && "max-w-[40rem] p-7",
-                  size == "sm" && "max-w-[30rem] p-6",
-                  className
-                )
-          }
+          className="fixed inset-0 flex justify-center z-100 bg-slate-400/20"
+          {...underlayProps}
         >
-          {children}
+          {/* Animate modal slightly upward when entering, and downward when exiting. */}
+          <CSSTransition
+            in={state.isOpen}
+            appear
+            nodeRef={ref}
+            timeout={{ enter: 0, exit: 250 }}
+            classNames={{
+              appear: "translate-y-2",
+              appearDone: "translate-y-0 transition ease-in",
+              exit: "translate-y-2 transition ease-out",
+            }}
+          >
+            <div
+              {...modalProps}
+              ref={ref}
+              className="p-8 max-w-sm bg-white/90 border border-gray-300 shadow-2xl rounded-lg z-1 top-[10%] h-fit max-h-[80vh] relative focus:outline-none"
+            >
+              {children}
+            </div>
+          </CSSTransition>
         </div>
-      </DialogPrimitive.Description>
-    );
-  }
-);
-DialogBody.displayName = "DialogBody";
+      </CSSTransition>
+    </Overlay>
+  );
+}
 
-// Dialog Cross Button Component
-export type DialogCloseButton = ComponentProps<
-  (typeof DialogPrimitive)["Close"]
-> &
-  Button;
-export const DialogCloseButton = forwardRef<
-  HTMLButtonElement,
-  DialogCloseButton
->(
-  (
+interface AlertDialogProps extends AriaDialogProps {
+  children: React.ReactNode;
+  title: string;
+  variant?: "default" | "destructive";
+  confirmLabel: string;
+  onClose: () => void;
+}
+
+export function AlertDialog(props: AlertDialogProps) {
+  const { children, onClose, confirmLabel } = props;
+
+  const ref = React.useRef(null);
+  const { dialogProps, titleProps } = useDialog(
     {
-      variant = "ghost",
-      size = "icon",
-      className,
-      isUnstyled = false,
-      ...props
+      ...props,
+      role: "alertdialog",
     },
-    forwardedRef
-  ) => {
-    const { isBarebone } = useDialogContext();
-    const unstyle = isBarebone || isUnstyled;
+    ref
+  );
 
-    return (
-      <DialogPrimitive.Close ref={forwardedRef} asChild>
-        {/* This will require the i18n string passed in */}
-        <Button
-          variant={variant}
-          size={size}
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames("absolute top-5 right-5 rounded-full", className)
-          }
-        >
-          <XMarkIcon />
+  return (
+    <div {...dialogProps} ref={ref} className="outline-none">
+      {props.variant === "destructive" && (
+        <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-8 top-8" />
+      )}
+      <h3 {...titleProps} className="text-lg font-medium pb-2">
+        {props.title}
+      </h3>
+      <p className="text-sm text-gray-600">{children}</p>
+      <div className="pt-8 flex space-x-3 justify-end">
+        <Button onPress={onClose}>Cancel</Button>
+        <Button variant={props.variant || "cta"} onPress={onClose}>
+          {confirmLabel}
         </Button>
-      </DialogPrimitive.Close>
-    );
-  }
-);
-DialogCloseButton.displayName = "DialogCloseButton";
+      </div>
+    </div>
+  );
+}
 
-export type DialogClose = ComponentProps<(typeof DialogPrimitive)["Close"]>;
-export const DialogClose = ({ children, ...props }: DialogClose) => {
-  return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
-};
-DialogClose.displayName = "DialogClose";
+interface ButtonProps extends AriaButtonProps {
+  variant?: "default" | "cta" | "destructive";
+}
+
+function Button(props: ButtonProps) {
+  const ref = React.useRef(null);
+  const { buttonProps, isPressed } = useButton(props, ref);
+  const { focusProps, isFocusVisible } = useFocusRing();
+
+  let bg = "";
+  if (props.variant === "destructive") {
+    bg = isPressed ? "bg-red-600 text-white" : "bg-red-500 text-white";
+  } else if (props.variant === "cta") {
+    bg = isPressed ? "bg-blue-600 text-white" : "bg-blue-500 text-white";
+  } else {
+    bg = isPressed ? "bg-gray-300 text-gray-800" : "bg-gray-200 text-gray-800";
+  }
+
+  const focus = isFocusVisible ? "ring ring-offset-2 ring-blue-400" : "";
+
+  return (
+    <button
+      {...mergeProps(buttonProps, focusProps)}
+      ref={ref}
+      className={`${focus} text-sm font-semibold py-2 px-4 rounded cursor-default focus:outline-none transition ${bg}`}
+    >
+      {props.children}
+    </button>
+  );
+}
+
+export default function Dialog() {
+  const state = useOverlayTriggerState({});
+  return (
+    <div>
+      <Button variant="cta" onPress={state.open}>
+        Delete…
+      </Button>
+      <Modal state={state}>
+        <AlertDialog
+          title="Delete folder"
+          confirmLabel="Delete"
+          variant="destructive"
+          onClose={state.close}
+        >
+          Are you sure you want to delete "Documents"? All contents will be
+          perminately destroyed.
+        </AlertDialog>
+      </Modal>
+    </div>
+  );
+}

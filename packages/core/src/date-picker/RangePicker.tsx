@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { classNames } from "../utils";
-import { Popover } from "..";
+import { PopoverContent } from "../popover";
 
 const RangePickerClasses = cva(
   "flex transition-colors rounded-l-md pr-10 flex-1 relative",
@@ -52,19 +52,14 @@ export function RangePicker<T extends DateValue>(
   const ref = useRef(null);
   const {
     groupProps,
-    labelProps,
     startFieldProps,
     endFieldProps,
     buttonProps,
-    dialogProps,
     calendarProps,
   } = useDateRangePicker(props, state, ref);
 
   return (
-    <div className="relative inline-flex flex-col text-left w-full">
-      {/* <span {...labelProps} className="text-sm text-secondary-800">
-        {props.label}
-      </span> */}
+    <div className="inline-flex flex-col text-left w-full">
       <div {...groupProps} ref={ref} className="flex group w-full">
         <div className={classNames(RangePickerClasses({ size, variant }))}>
           <DateField {...startFieldProps} />
@@ -85,9 +80,9 @@ export function RangePicker<T extends DateValue>(
         </FieldButton>
       </div>
       {state.isOpen && (
-        <Popover triggerRef={ref} state={state} placement="bottom start">
+        <PopoverContent triggerRef={ref} state={state} placement="bottom start">
           <RangeCalendar {...calendarProps} />
-        </Popover>
+        </PopoverContent>
       )}
     </div>
   );

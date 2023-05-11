@@ -82,7 +82,7 @@ export {
   MenuSubTrigger,
   MenuTrigger,
 } from "./menu";
-export { Popover, PopoverTrigger } from "./popover";
+export { PopoverTrigger, PopoverContent } from "./popover";
 export {
   Menubar,
   MenubarCheckboxGroup,
