@@ -1,8 +1,6 @@
 import { useRef } from "react";
 import {
   CalendarState,
-  CellProps,
-  DatePickerState,
   RangeCalendarState,
   useCalendarState,
 } from "react-stately";

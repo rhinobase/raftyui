@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Tooltip } from "../src/tooltip";
-import { Button } from "../src";
+import { Tooltip, Button } from "../src";
 import { expect } from "@storybook/jest";
 import { within, userEvent, screen } from "@storybook/testing-library";
 import { PlusIcon } from "@heroicons/react/24/outline";

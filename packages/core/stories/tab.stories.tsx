@@ -1,5 +1,4 @@
-import * as TabsPrimitive from "@radix-ui/react-tabs";
-import * as Tab from "../src/tabs/Tab";
+import { Tab } from "../src";
 import { TabContext } from "../src/tabs/context";
 
 const config = {
@@ -19,7 +18,7 @@ export function Default({
   return (
     <>
       <div className="w-[640px] rounded-md border py-2 dark:border-zinc-700">
-        <Tab.Root defaultValue="tab1" size={size} orientation={orientation}>
+        <Tab defaultValue="tab1" size={size} orientation={orientation}>
           <Tab.List>
             <Tab.Trigger value="tab1">Tab1</Tab.Trigger>
             <Tab.Trigger value="tab2" disabled>
@@ -35,11 +34,11 @@ export function Default({
             2 large-scale networks, high-radix switches reduce hop and switch
             count, which decreases latency and power
           </Tab.Content>
-        </Tab.Root>
+        </Tab>
       </div>
       <div className="font-medium">variant=enclosed</div>
       <div className="w-[640px] rounded-md">
-        <Tab.Root
+        <Tab
           defaultValue="tab1"
           size={size}
           orientation={orientation}
@@ -57,7 +56,7 @@ export function Default({
             2 large-scale networks, high-radix switches reduce hop and switch
             count, which decreases latency and power
           </Tab.Content>
-        </Tab.Root>
+        </Tab>
       </div>
     </>
   );
@@ -70,7 +69,7 @@ export function VerticalTabs({
   return (
     <>
       <div className="flex h-full min-h-[400px] w-full max-w-4xl rounded-md border dark:border-zinc-800">
-        <Tab.Root size={size} defaultValue="tab1" orientation={orientation}>
+        <Tab size={size} defaultValue="tab1" orientation={orientation}>
           <Tab.List>
             <Tab.Trigger value="tab1">Tab1</Tab.Trigger>
             <Tab.Trigger value="tab2">Tabsecondary2</Tab.Trigger>
@@ -83,11 +82,11 @@ export function VerticalTabs({
             2 large-scale networks, high-radix switches reduce hop and switch
             count, which decreases latency and power
           </Tab.Content>
-        </Tab.Root>
+        </Tab>
       </div>
       <div className="font-medium">variant=enclosed</div>
       <div className="mx-auto flex min-h-[400px] w-full max-w-4xl">
-        <Tab.Root
+        <Tab
           size={size}
           defaultValue="tab1"
           orientation={orientation}
@@ -105,7 +104,7 @@ export function VerticalTabs({
             2 large-scale networks, high-radix switches reduce hop and switch
             count, which decreases latency and power
           </Tab.Content>
-        </Tab.Root>
+        </Tab>
       </div>
     </>
   );

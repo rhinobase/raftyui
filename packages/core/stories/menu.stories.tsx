@@ -16,7 +16,6 @@ import {
 } from "../src";
 import { within, userEvent, screen } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
-import { fireEvent } from "@testing-library/dom";
 
 const meta: Meta<typeof Menu> = {
   title: "Components / Menu",
@@ -51,22 +50,26 @@ export const Variants: Story = {
   render: ({ size }) => (
     <>
       <Menu size={size}>
-        <MenuTrigger size="icon">
+        <MenuTrigger
+          size="icon"
+          rightIcon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="ml-1 h-3 w-3"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          }
+        >
           All Feature
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="ml-1 h-3 w-3"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
         </MenuTrigger>
         <MenuContent>
           <MenuGroup>
