@@ -47,6 +47,7 @@
       "@rhino/tag": ["libs/components/tag/src/index.ts"],
       "@rhino/tag-field": ["libs/components/tag-field/src/index.ts"],
       "@rhino/text": ["libs/components/text/src/index.ts"],
+      "@rhino/textarea": ["libs/components/textarea/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
   },
