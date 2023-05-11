@@ -11,17 +11,17 @@ type Story = StoryObj<typeof Checkbox>;
 export const Default: Story = {
   render: () => (
     <>
-      <div className="flex w-80 flex-col gap-3">
+      <div className="flex w-80 flex-col gap-3 dark:text-white">
         <h2 className="font-bold">CheckBox</h2>
-        {/* <Checkbox
+        <Checkbox
           name="red"
           id="sample"
           onChange={(value) => console.log(value)}
           value="red"
         >
           Red
-        </Checkbox> */}
-        {/* <Checkbox name="green">Green</Checkbox>
+        </Checkbox>
+        <Checkbox name="green">Green</Checkbox>
         <h2 className="font-bold">CheckBox indeterminate</h2>
         <Checkbox name="blue" isIndeterminate>
           Blue
@@ -35,25 +35,37 @@ export const Default: Story = {
           Red
         </Checkbox>
         <h2 className="font-bold">CheckBox DefaultValue</h2>
-        <Checkbox name="green1" value="green1">
+        <Checkbox name="green1" value="green1" defaultSelected>
           Green
         </Checkbox>
 
         <h2 className="font-bold">CheckBox validationState</h2>
         <Checkbox name="pink" defaultSelected validationState="invalid">
           I accept the terms and conditions
-        </Checkbox> */}
+        </Checkbox>
+      </div>
+    </>
+  ),
+};
+
+export const CheckBoxGroup: Story = {
+  render: () => (
+    <>
+      <div className="flex w-80 flex-col gap-3">
+        <h2 className="font-bold">CheckBox</h2>
 
         <CheckboxGroup
           label="Favorite sports"
           onChange={(value) => console.log(value)}
           // value={["baseball"]}
         >
-          <Checkbox value="soccer" isDisabled>
-            Soccer
-          </Checkbox>
-          <Checkbox value="baseball">Baseball</Checkbox>
-          <Checkbox value="basketball">Basketball</Checkbox>
+          <div className="flex flex-col gap-4">
+            <Checkbox value="soccer" isDisabled>
+              Soccer
+            </Checkbox>
+            <Checkbox value="baseball">Baseball</Checkbox>
+            <Checkbox value="basketball">Basketball</Checkbox>
+          </div>
         </CheckboxGroup>
       </div>
     </>

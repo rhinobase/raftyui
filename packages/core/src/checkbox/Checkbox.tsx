@@ -8,38 +8,35 @@ import React, {
 import { classNames } from "../utils";
 import {
   AriaCheckboxGroupItemProps,
+  AriaCheckboxGroupProps,
   AriaCheckboxProps,
   VisuallyHidden,
   useCheckbox,
 } from "react-aria";
-import {
-  CheckboxGroupProps,
-  CheckboxGroupState,
-  useToggleState,
-} from "react-stately";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import { CheckboxGroupState, useToggleState } from "react-stately";
+import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { useCheckboxGroupState } from "react-stately";
 import { useCheckboxGroup, useCheckboxGroupItem } from "react-aria";
 import { mergeRefs } from "../utils/mergeRefs";
+import { cva } from "class-variance-authority";
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
   null
 );
 
-type CheckboxGroup = CheckboxGroupProps & { children: React.ReactNode };
+type CheckboxGroup = AriaCheckboxGroupProps & { children: React.ReactNode };
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroup>(
   (
-    { children, label, description, errorMessage, validationState, ...props },
+    { children, description, errorMessage, validationState, ...props },
     forwardedRef
   ) => {
     const state = useCheckboxGroupState(props);
-    const { groupProps, labelProps, descriptionProps, errorMessageProps } =
+    const { groupProps, descriptionProps, errorMessageProps } =
       useCheckboxGroup(props, state);
 
     return (
       <div {...groupProps} ref={forwardedRef}>
-        <span {...labelProps}>{label}</span>
         <CheckboxGroupContext.Provider value={state}>
           {children}
         </CheckboxGroupContext.Provider>
@@ -58,72 +55,94 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroup>(
   }
 );
 
+const labelClasses = cva("flex items-center group", {
+  variants: {
+    isDisabled: {
+      true: "opacity-60 dark:opacity-50 cursor-not-allowed",
+      false: "hover:opacity-80",
+    },
+    isSelected: {
+      true: "text-primary-500 dark:text-primary-300",
+      false: "",
+    },
+  },
+});
+const checkboxClasses = cva(
+  "text-white border-2 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 transition ease-in-out duration-150",
+  {
+    variants: {
+      isIndeterminate: {
+        true: "border-secondary-500",
+        false: "",
+      },
+      isSelected: {
+        true: "",
+        false: "border-secondary-500",
+      },
+    },
+    compoundVariants: [
+      {
+        isIndeterminate: false,
+        isSelected: true,
+        className:
+          "bg-primary-500 group-active:border-primary-600 border-primary-500 dark:border-primary-300 dark:bg-primary-300 group-active:bg-primary-600",
+      },
+    ],
+  }
+);
+
 type CheckboxComponent = {
   isDisabled?: boolean;
   isSelected?: boolean;
   inputProps: InputHTMLAttributes<HTMLInputElement>;
   children: ReactNode;
   ref: RefObject<HTMLInputElement>;
+  isIndeterminate?: boolean;
 };
 
 const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
-  ({ isDisabled, isSelected, inputProps, children, ref }, forwardedRef) => {
+  (
+    {
+      isDisabled = false,
+      isSelected,
+      inputProps,
+      children,
+      ref,
+      isIndeterminate = false,
+    },
+    forwardedRef
+  ) => {
+    const Icon = isIndeterminate ? MinusIcon : CheckIcon;
     return (
-      <label
-        className={classNames(
-          isDisabled && "text-zinc-400 dark:text-zinc-600",
-          isSelected && "text-primary-500 dark:text-primary-300",
-          "flex items-center group"
-        )}
-      >
+      <label className={classNames(labelClasses({ isDisabled, isSelected }))}>
         <VisuallyHidden>
           <input {...inputProps} ref={mergeRefs(forwardedRef, ref)} />
         </VisuallyHidden>
 
         <div
           className={classNames(
-            isSelected
-              ? "bg-primary-500 group-active:bg-primary-600"
-              : "bg-white",
-            "text-white",
-            "border-2",
-            "rounded",
-            isDisabled
-              ? "border-gray-300"
-              : isSelected
-              ? "border-primary-500 group-active:border-primary-600"
-              : "border-gray-500 group-active:border-gray-600",
-            "w-5",
-            "h-5",
-            "flex",
-            "flex-shrink-0",
-            "justify-center",
-            "items-center",
-            "mr-2",
-            "transition",
-            "ease-in-out",
-            "duration-150"
+            checkboxClasses({ isIndeterminate, isSelected })
           )}
           aria-hidden="true"
         >
-          <CheckIcon
+          <Icon
             strokeWidth={3}
             strokeDasharray={22}
-            strokeDashoffset={isSelected ? 44 : 66}
-            className="w-4 h-4 text-white"
+            strokeDashoffset={isIndeterminate ? 44 : isSelected ? 44 : 66}
+            className={classNames(
+              isIndeterminate
+                ? "text-secondary-600 dark:text-secondary-400"
+                : isSelected
+                ? "text-white"
+                : "text-transparent",
+              "w-4 h-4"
+            )}
             style={{
               transition: "all 400ms",
             }}
           />
         </div>
-        <span
-          className={classNames(
-            isDisabled
-              ? "text-gray-400"
-              : "text-gray-700 group-active:text-gray-800",
-            "select-none"
-          )}
-        >
+        <span className="select-none text-gray-700 dark:text-secondary-200 font-medium">
           {children}
         </span>
       </label>
@@ -132,7 +151,7 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
 );
 
 const SingletonCheckbox = forwardRef<HTMLInputElement, AriaCheckboxProps>(
-  ({ children, ...props }, forwardedRef) => {
+  ({ children, isIndeterminate, ...props }, forwardedRef) => {
     const ref = useRef<HTMLInputElement>(null);
 
     const state = useToggleState(props);
@@ -147,6 +166,7 @@ const SingletonCheckbox = forwardRef<HTMLInputElement, AriaCheckboxProps>(
         isSelected={isSelected}
         inputProps={inputProps}
         ref={mergeRefs(forwardedRef, ref)}
+        isIndeterminate={isIndeterminate}
       >
         {children}
       </CheckboxComponent>
@@ -157,14 +177,12 @@ const SingletonCheckbox = forwardRef<HTMLInputElement, AriaCheckboxProps>(
 type Subbox = {
   props: AriaCheckboxGroupItemProps;
   state: CheckboxGroupState;
-  ref: React.RefObject<HTMLInputElement>;
   children: ReactNode;
 };
 
 const Subbox = forwardRef<HTMLInputElement, Subbox>(
-  ({ props, state, ref, children }, forwardedRef) => {
-    console.log(props, state);
-
+  ({ props, state, children }, forwardedRef) => {
+    const ref = React.useRef(null);
     const { inputProps } = useCheckboxGroupItem(props, state, ref);
 
     const isDisabled = state?.isDisabled || props.isDisabled;
@@ -187,8 +205,6 @@ const Subbox = forwardRef<HTMLInputElement, Subbox>(
 export type CheckBox = AriaCheckboxGroupItemProps | AriaCheckboxProps;
 export const Checkbox = forwardRef<HTMLInputElement, CheckBox>(
   ({ children, ...props }, forwardedRef) => {
-    const ref = useRef<HTMLInputElement>(null);
-
     const state = React.useContext(CheckboxGroupContext);
     if (!state)
       return <SingletonCheckbox {...props}>{children}</SingletonCheckbox>;
@@ -197,7 +213,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBox>(
       <Subbox
         props={props as AriaCheckboxGroupItemProps}
         state={state}
-        ref={mergeRefs(ref, forwardedRef)}
+        ref={forwardedRef}
       >
         {children}
       </Subbox>
