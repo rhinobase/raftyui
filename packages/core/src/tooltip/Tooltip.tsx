@@ -2,25 +2,26 @@ import React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { classNames } from "../utils";
 
-export interface Tooltip {
+export type Tooltip = {
   children: React.ReactNode;
   content: React.ReactNode;
-  hasArrow?: boolean;
+  isArrow?: boolean;
   delayDuration?: number;
   hasAnimation?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
+  sideOffset?: number;
+  alignOffset?: number;
   onOpenChange?: (open: boolean) => void;
   className?: string;
-}
-// Tooltip Component
+};
 export function Tooltip({
   children,
   className,
   content,
-  hasArrow = true,
+  isArrow = true,
   delayDuration = 50,
   hasAnimation = true,
   open,
@@ -28,7 +29,8 @@ export function Tooltip({
   onOpenChange,
   side = "top",
   align = "center",
-  ...props
+  sideOffset = 10,
+  alignOffset,
 }: Tooltip) {
   return (
     <TooltipPrimitive.Provider>
@@ -41,21 +43,20 @@ export function Tooltip({
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
+            side={side}
+            align={align}
+            sideOffset={sideOffset}
+            alignOffset={alignOffset}
             className={classNames(
-              side === "top" && "-mt-7",
-              side === "right" && "ml-2",
               hasAnimation == true &&
                 "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
               typeof content == "string" &&
                 "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md py-1 px-2 text-xs font-medium shadow-md",
-              className,
+              className
             )}
-            side={side}
-            align={align}
-            {...props}
           >
             {content}
-            {hasArrow && (
+            {isArrow && (
               <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
             )}
           </TooltipPrimitive.Content>

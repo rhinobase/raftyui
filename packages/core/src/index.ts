@@ -141,3 +141,4 @@ export { Textarea } from "./textarea";
 export { Toast } from "./toast";
 export { ToggleGroup, ToggleGroupItem } from "./toggle-group";
 export { Tooltip } from "./tooltip";
+export { UploadField } from "./upload-field";
