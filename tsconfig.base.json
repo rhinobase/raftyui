@@ -44,6 +44,7 @@
       "@rhino/switch": ["libs/components/switch/src/index.ts"],
       "@rhino/tab": ["libs/components/tab/src/index.ts"],
       "@rhino/table": ["libs/components/table/src/index.ts"],
+      "@rhino/tag": ["libs/components/tag/src/index.ts"],
       "@rhino/text": ["libs/components/text/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
