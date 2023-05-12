@@ -1,4 +1,4 @@
-import "../styles/global.css";
+import "../styles/globals.css";
 import type { Preview } from "@storybook/react";
 import { useEffect } from "react";
 

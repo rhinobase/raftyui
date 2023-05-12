@@ -2,6 +2,7 @@ const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 const { join } = require("path");
 
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 
@@ -17,6 +18,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+        display: ["var(--font-display)", ...defaultTheme.fontFamily.sans],
+      },
+      maxWidth: {
+        "8xl": "88rem",
+      },
       colors: {
         primary: {
           50: "#D0E6FF",
@@ -79,5 +87,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
