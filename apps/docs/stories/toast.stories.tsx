@@ -1,0 +1,36 @@
+import { Meta, StoryObj } from "@storybook/react";
+import { Toast } from "@rhino/toast";
+
+const meta: Meta<typeof Toast> = {
+  title: "Components / Toast",
+};
+
+export default meta;
+type Story = StoryObj<typeof Toast>;
+
+export const Variants: Story = {
+  render: () => (
+    <>
+      <Toast
+        title="Success Banner"
+        message="Data uploaded to the server. Fire on!"
+        severity="error"
+      />
+      <Toast
+        title="Success Banner"
+        message="Data uploaded to the server. Fire on!"
+        severity="info"
+      />
+      <Toast
+        title="Success Banner"
+        message="Data uploaded to the server. Fire on!"
+        severity="success"
+      />
+      <Toast
+        title="Success Banner"
+        message="Data uploaded to the server. Fire on!"
+        severity="warning"
+      />
+    </>
+  ),
+};
