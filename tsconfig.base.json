@@ -36,6 +36,7 @@
         "libs/components/navigation-menu/src/index.ts"
       ],
       "@rhino/plugin": ["libs/plugin/src/index.ts"],
+      "@rhino/popover": ["libs/components/popover/src/index.ts"],
       "@rhino/progress": ["libs/components/progress/src/index.ts"],
       "@rhino/radio": ["libs/components/radio/src/index.ts"],
       "@rhino/select": ["libs/components/select/src/index.ts"],
