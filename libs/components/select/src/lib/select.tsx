@@ -5,8 +5,7 @@ import { useSelect, HiddenSelect, useButton } from "react-aria";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { PopoverContent } from "@rhino/popover";
 import { classNames } from "@rhino/utils";
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { ListBox } from "@rhino/combobox";
+import { ListBox } from "./listbox";
 import { Button } from "@rhino/button";
 export { Item as SelectItem } from "react-stately";
 

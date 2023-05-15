@@ -2,7 +2,6 @@ import * as React from "react";
 import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
 import { useComboBox, useFilter, useButton } from "react-aria";
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { ListBox } from "@rhino/select";
 import { PopoverContent } from "@rhino/popover";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";

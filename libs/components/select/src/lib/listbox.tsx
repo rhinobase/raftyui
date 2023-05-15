@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-import * as React from 'react';
-import type { AriaListBoxOptions } from '@react-aria/listbox';
-import type { ListState } from 'react-stately';
-import type { Node } from '@react-types/shared';
-import { useListBox, useListBoxSection, useOption } from 'react-aria';
-import { CheckIcon } from '@heroicons/react/24/outline';
-import { classNames } from '@rhino/utils';
+import * as React from "react";
+import type { AriaListBoxOptions } from "@react-aria/listbox";
+import type { ListState } from "react-stately";
+import type { Node } from "@react-types/shared";
+import { useListBox, useListBoxSection, useOption } from "react-aria";
+import { CheckIcon } from "@heroicons/react/24/outline";
+import { classNames } from "@rhino/utils";
 
 export type ListBox = {
   listBoxRef?: React.RefObject<HTMLUListElement>;
   state: ListState<unknown>;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 } & AriaListBoxOptions<unknown>;
 
 export function ListBox(props: ListBox) {
@@ -25,7 +24,7 @@ export function ListBox(props: ListBox) {
       className="w-full max-h-72 overflow-auto outline-none"
     >
       {[...state.collection].map((item) =>
-        item.type === 'section' ? (
+        item.type === "section" ? (
           <ListBoxSection key={item.key} section={item} state={state} />
         ) : (
           <Option key={item.key} item={item} state={state} size={props.size} />
@@ -38,13 +37,13 @@ export function ListBox(props: ListBox) {
 type ListBoxSection = {
   section: Node<unknown>;
   state: ListState<unknown>;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 };
 
 function ListBoxSection({ section, state, size }: ListBoxSection) {
   const { itemProps, headingProps, groupProps } = useListBoxSection({
     heading: section.rendered,
-    'aria-label': section['aria-label'],
+    "aria-label": section["aria-label"],
   });
 
   return (
@@ -69,7 +68,7 @@ function ListBoxSection({ section, state, size }: ListBoxSection) {
 type Option = {
   item: Node<unknown>;
   state: ListState<unknown>;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 };
 
 function Option({ item, state, size }: Option) {
@@ -87,17 +86,17 @@ function Option({ item, state, size }: Option) {
       {...optionProps}
       ref={ref}
       className={classNames(
-        size === 'sm' && 'px-2 py-1 text-sm rounded',
-        size === 'md' && 'px-3 py-1.5 rounded-md',
-        size === 'lg' && 'px-4 py-2 text-lg rounded-md',
+        size === "sm" && "px-2 py-1 text-sm rounded",
+        size === "md" && "px-3 py-1.5 rounded-md",
+        size === "lg" && "px-4 py-2 text-lg rounded-md",
         isFocused || isSelected
-          ? 'text-primary-600'
+          ? "text-primary-600"
           : isDisabled
-          ? 'text-gray-200'
-          : 'text-gray-700',
-        isFocused && 'bg-primary-50',
-        isSelected && 'font-bold',
-        'm-1 outline-none cursor-pointer flex items-center justify-between'
+          ? "text-gray-200"
+          : "text-gray-700",
+        isFocused && "bg-primary-50",
+        isSelected && "font-bold",
+        "m-1 outline-none cursor-pointer flex items-center justify-between"
       )}
     >
       {item.rendered}
