@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import {
   PopoverContentProvider,
   PopoverProvider,
@@ -15,23 +15,25 @@ import {
   DismissButton,
   useButton,
 } from "react-aria";
-import { classNames, mergeRefs } from "@rhino/utils";
+import { classNames } from "@rhino/utils";
 
 export type Popover = {
   children: React.ReactNode;
   isBarebone?: boolean;
 } & OverlayTriggerProps;
 
-export const Popover = forwardRef<HTMLDivElement, Popover>(
-  ({ children, isBarebone = false, ...props }, forwardedRef) => {
-    const ref = React.useRef<HTMLDivElement>(null);
-    return (
-      <PopoverProvider isBarebone={isBarebone} ref={ref} triggerProps={props}>
-        <div ref={mergeRefs(ref, forwardedRef)}>{children}</div>
-      </PopoverProvider>
-    );
-  }
-);
+export function Popover(props: Popover) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  return (
+    <PopoverProvider
+      isBarebone={Boolean(props.isBarebone)}
+      ref={ref}
+      triggerProps={props}
+    >
+      <div ref={ref}>{props.children}</div>
+    </PopoverProvider>
+  );
+}
 
 export type PopoverTrigger = {
   children?: React.ReactNode;
@@ -69,7 +71,8 @@ export type PopoverContent = {
   triggerState?: OverlayTriggerState;
   className?: string;
   isUnstyled?: boolean;
-} & AriaPopoverProps;
+  popoverRef?: React.RefObject<Element>;
+} & Omit<AriaPopoverProps, "popoverRef">;
 
 export function PopoverContent({
   children,
@@ -86,7 +89,7 @@ export function PopoverContent({
     {
       ...props,
       offset,
-      popoverRef,
+      popoverRef: props.popoverRef ?? popoverRef,
     },
     state ?? triggerState
   );
