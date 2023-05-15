@@ -1,2 +1,2 @@
 export * from "./lib/combobox";
-export * from "./lib/listbox";
+export * from "../../select/src/lib/listbox";

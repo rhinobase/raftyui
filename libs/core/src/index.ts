@@ -18,12 +18,7 @@ export {
 export { Button } from "@rhino/button";
 export { Card, CardHeader, CardBody, CardFooter } from "@rhino/card";
 export { Checkbox, CheckboxGroup } from "@rhino/checkbox";
-export {
-  ComboBox,
-  ListBox,
-  ComboboxItem,
-  ComboboxSection,
-} from "@rhino/combobox";
+export { ComboBox, ComboboxItem, ComboboxSection } from "@rhino/combobox";
 export {
   ContextMenu,
   ContextMenuTrigger,
@@ -118,7 +113,7 @@ export {
 export * from "@rhino/plugin";
 export { Progress } from "@rhino/progress";
 export { RadioGroup, Radio, RadioCard } from "@rhino/radio";
-export { Select, SelectItem } from "@rhino/select";
+export { Select, SelectItem, ListBox } from "@rhino/select";
 export { Skeleton } from "@rhino/skeleton";
 export { Spinner } from "@rhino/spinner";
 export {
@@ -148,4 +143,5 @@ export { Textarea } from "@rhino/textarea";
 export { Toast } from "@rhino/toast";
 export { ToggleGroup, ToggleGroupItem } from "@rhino/toggle-group";
 export { Tooltip } from "@rhino/tooltip";
+export { Upload } from "@rhino/upload";
 export { classNames, mergeRefs } from "@rhino/utils";

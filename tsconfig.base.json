@@ -54,6 +54,7 @@
       "@rhino/toggle-group": ["libs/components/toggle-group/src/index.ts"],
       "@rhino/tooltip": ["libs/components/tooltip/src/index.ts"],
       "@rhino/ui": ["libs/core/src/index.ts"],
+      "@rhino/upload": ["libs/components/upload/src/index.ts"],
       "@rhino/utils": ["libs/utils/src/index.ts"]
     }
   },

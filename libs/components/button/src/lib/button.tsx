@@ -1,7 +1,6 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef } from "react";
 import { cva } from "class-variance-authority";
-import { AriaButtonProps, useButton } from "react-aria";
-import { classNames, mergeRefs } from "@rhino/utils";
+import { classNames } from "@rhino/utils";
 import { Spinner } from "@rhino/spinner";
 
 const buttonClasses = cva(
@@ -445,7 +444,8 @@ export type Button = {
   size?: "sm" | "md" | "lg" | "icon" | "fab";
   isLoading?: boolean;
   isActive?: boolean;
-} & Omit<AriaButtonProps, "ref">;
+  isDisabled?: boolean;
+} & JSX.IntrinsicElements["button"];
 
 export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   {
@@ -465,13 +465,11 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   forwardedRef
 ) {
   // Buttons are **always** disabled if we're in a `loading` state
-  const disabled = props.isDisabled || isLoading;
-  const ref = useRef(null);
-  const { buttonProps } = useButton(props, ref);
+  const disabled = props.disabled || props.isDisabled || isLoading;
 
   return (
     <button
-      {...buttonProps}
+      {...props}
       disabled={disabled}
       className={
         isUnstyled
@@ -488,7 +486,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
               className
             )
       }
-      ref={mergeRefs(forwardedRef, ref)}
+      ref={forwardedRef}
     >
       {isLoading ? (
         <>
