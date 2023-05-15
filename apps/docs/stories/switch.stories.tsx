@@ -2,9 +2,10 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Switch } from "@rhino/switch";
 
 const meta: Meta<typeof Switch> = {
-  title: "Components / Switch",
+  title: "Form / Switch",
   args: {
     size: "md",
+    isDisabled: false,
   },
   argTypes: {
     size: {

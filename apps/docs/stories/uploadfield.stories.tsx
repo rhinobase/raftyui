@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { UploadField } from "../src";
+import { UploadField } from "@rhino/UploadField";
 
 const meta: Meta<typeof UploadField> = {
   title: "Form / UploadField",

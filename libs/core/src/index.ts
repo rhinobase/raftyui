@@ -18,7 +18,12 @@ export {
 export { Button } from "@rhino/button";
 export { Card, CardHeader, CardBody, CardFooter } from "@rhino/card";
 export { Checkbox, CheckboxGroup } from "@rhino/checkbox";
-export { ComboBox, ComboboxItem, ComboboxSection } from "@rhino/combobox";
+export {
+  ComboBox,
+  ListBox,
+  ComboboxItem,
+  ComboboxSection,
+} from "@rhino/combobox";
 export {
   ContextMenu,
   ContextMenuTrigger,
@@ -143,5 +148,4 @@ export { Textarea } from "@rhino/textarea";
 export { Toast } from "@rhino/toast";
 export { ToggleGroup, ToggleGroupItem } from "@rhino/toggle-group";
 export { Tooltip } from "@rhino/tooltip";
-export * from "@rhino/ui";
-export { classNames } from "@rhino/utils";
+export { classNames, mergeRefs } from "@rhino/utils";

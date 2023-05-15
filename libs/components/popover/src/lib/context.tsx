@@ -1,11 +1,11 @@
-import { useContext, createContext, ReactNode } from "react";
+import { useContext, createContext, ReactNode, useRef } from "react";
 import { OverlayTriggerProps, useOverlayTriggerState } from "react-stately";
 import { createContext as createCustomContext } from "@rhino/utils";
 import { PopoverAria } from "react-aria";
 
 const PopoverContext = createContext<ReturnType<typeof useProvidePopover>>({
   isBarebone: false,
-  ref: undefined,
+  triggerRef: { current: null },
   state: {
     isOpen: false,
     setOpen: () => undefined,
@@ -28,15 +28,15 @@ export function PopoverProvider({ children, ...values }: Props) {
 
 type useProvidePopover = {
   isBarebone: boolean;
-  ref?: React.RefObject<any>;
   triggerProps: OverlayTriggerProps;
 };
 function useProvidePopover(props: useProvidePopover) {
   const state = useOverlayTriggerState(props.triggerProps);
+  const triggerRef = useRef<Element>(null);
 
   return {
     isBarebone: props.isBarebone,
-    ref: props.ref,
+    triggerRef,
     state,
   };
 }

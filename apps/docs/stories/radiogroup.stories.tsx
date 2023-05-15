@@ -3,7 +3,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof RadioGroup> = {
-  title: "Components / RadioGroup",
+  title: "Form / RadioGroup",
 };
 
 export default meta;
@@ -23,10 +23,7 @@ export const Variants: Story = {
 
         <RadioGroup isDisabled>
           <div className="flex flex-col gap-4">
-            <Radio value="ABC" isDisabled>
-              {" "}
-              ABC
-            </Radio>
+            <Radio value="ABC">ABC</Radio>
             <Radio value="BCD"> BCD</Radio>
             <Radio value="CDE"> CDE</Radio>
           </div>

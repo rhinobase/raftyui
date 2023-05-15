@@ -50,7 +50,7 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
 
   return (
     <div className="relative" ref={ref}>
-      <InputGroup>
+      <InputGroup ref={ref}>
         <Input
           inputProps={inputProps}
           size={size}
@@ -75,9 +75,8 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
       <PopoverContent
         triggerState={state}
         triggerRef={ref}
-        popoverRef={ref}
         placement="bottom start"
-        className="w-full"
+        // className="w-full"
       >
         <ListBox
           {...listBoxProps}

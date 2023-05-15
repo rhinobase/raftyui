@@ -52,7 +52,6 @@ export function DatePicker<T extends DateValue>(
     state,
     ref
   );
-
   return (
     <div className="inline-flex flex-col text-left">
       <div {...groupProps} ref={ref} className="flex group">

@@ -27,9 +27,7 @@ export const Variants: Story = {
   render: ({ size, variant }) => (
     <>
       <div className="w-[500px]">
-        <FieldControl name="date">
-          <DatePicker size={size} variant={variant} />
-        </FieldControl>
+        <DatePicker size={size} variant={variant} />
       </div>
     </>
   ),

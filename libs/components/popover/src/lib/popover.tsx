@@ -1,4 +1,4 @@
-import React from "react";
+import React, { RefObject, forwardRef } from "react";
 import {
   PopoverContentProvider,
   PopoverProvider,
@@ -14,6 +14,7 @@ import {
   AriaPopoverProps,
   DismissButton,
   useButton,
+  DismissButtonProps,
 } from "react-aria";
 import { classNames } from "@rhino/utils";
 
@@ -22,18 +23,18 @@ export type Popover = {
   isBarebone?: boolean;
 } & OverlayTriggerProps;
 
-export function Popover(props: Popover) {
-  const ref = React.useRef<HTMLDivElement>(null);
-  return (
-    <PopoverProvider
-      isBarebone={Boolean(props.isBarebone)}
-      ref={ref}
-      triggerProps={props}
-    >
-      <div ref={ref}>{props.children}</div>
-    </PopoverProvider>
-  );
-}
+export const Popover = forwardRef<HTMLDivElement, Popover>(
+  ({ ...props }, forwardedRef) => {
+    return (
+      <PopoverProvider
+        isBarebone={Boolean(props.isBarebone)}
+        triggerProps={props}
+      >
+        <div ref={forwardedRef}>{props.children}</div>
+      </PopoverProvider>
+    );
+  }
+);
 
 export type PopoverTrigger = {
   children?: React.ReactNode;
@@ -46,17 +47,22 @@ export function PopoverTrigger({
   className,
   isUnstyled = false,
 }: PopoverTrigger) {
-  const { ref, state, isBarebone } = usePopover();
+  const { triggerRef, state, isBarebone } = usePopover();
 
   const unstyle = isBarebone || isUnstyled;
 
   if (!state) throw new Error("Popover Context is not Defined");
 
-  const { triggerProps } = useOverlayTrigger({ type: "dialog" }, state, ref);
+  const { triggerProps } = useOverlayTrigger(
+    { type: "dialog" },
+    state,
+    triggerRef
+  );
 
   return (
     <AriaButton
       {...triggerProps}
+      ref={triggerRef as RefObject<HTMLButtonElement>}
       className={
         unstyle ? className : classNames("border rounded px-3 py-1", className)
       }
@@ -83,45 +89,47 @@ export function PopoverContent({
   isUnstyled = false,
   ...props
 }: PopoverContent) {
-  const { state, isBarebone } = usePopover();
+  const { state, isBarebone, triggerRef } = usePopover();
   const popoverRef = React.useRef(null);
+
   const values = useAriaPopover(
     {
       ...props,
       offset,
       popoverRef: props.popoverRef ?? popoverRef,
+      triggerRef: props.triggerRef ?? triggerRef,
     },
-    state ?? triggerState
+    triggerState ?? state
   );
 
   const unstyle = isBarebone || isUnstyled;
 
+  // console.log(state.isOpen);
+
   // eslint-disable-next-line react/jsx-no-useless-fragment
-  if (!state.isOpen) return <></>;
+  if (!triggerState?.isOpen && !state.isOpen) return <></>;
 
   const { popoverProps, underlayProps } = values;
 
   return (
     <PopoverContentProvider value={values}>
-      <Overlay>
-        {!isNonModal && (
-          <div {...underlayProps} className="fixed top-0 left-0" />
-        )}
-        <div
-          {...popoverProps}
-          ref={popoverRef}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "z-10 shadow-lg border border-secondary-300 dark:border-secondary-700 bg-white dark:bg-secondary-800 dark:text-secondary-100 rounded-md",
-                  className
-                )
-          }
-        >
-          {children}
-        </div>
-      </Overlay>
+      {/* <Overlay> */}
+      {!isNonModal && <div {...underlayProps} className="fixed top-0 left-0" />}
+      <div
+        {...popoverProps}
+        ref={popoverRef}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                "z-10 shadow-lg border border-secondary-300 dark:border-secondary-700 bg-white dark:bg-secondary-800 dark:text-secondary-100 rounded-md",
+                className
+              )
+        }
+      >
+        {children}
+      </div>
+      {/* </Overlay> */}
     </PopoverContentProvider>
   );
 }
@@ -158,24 +166,33 @@ export function PopoverArrow({ className, isUnstyled = false }: PopoverArrow) {
   );
 }
 
-export function PopoverClose() {
+export function PopoverClose(props: DismissButtonProps) {
   const { state } = usePopover();
 
-  return <DismissButton onDismiss={state.close} />;
-}
-
-function AriaButton({
-  className,
-  ...props
-}: Omit<AriaButtonProps, "ref"> & {
-  ref?: React.RefObject<HTMLButtonElement>;
-  className?: string;
-}) {
-  const ref = React.useRef(null);
-  const { buttonProps } = useButton(props, ref);
   return (
-    <button {...buttonProps} ref={ref} className={className}>
-      {props.children}
-    </button>
+    <DismissButton
+      {...props}
+      onDismiss={() => {
+        state.close();
+        if (props.onDismiss) props.onDismiss();
+      }}
+    />
   );
 }
+
+type AriaButton = AriaButtonProps & {
+  className?: string;
+};
+const AriaButton = forwardRef<HTMLButtonElement, AriaButton>(
+  ({ className, ...props }, forwardedRef) => {
+    const { buttonProps } = useButton(
+      props,
+      forwardedRef as RefObject<Element>
+    );
+    return (
+      <button {...buttonProps} ref={forwardedRef} className={className}>
+        {props.children}
+      </button>
+    );
+  }
+);

@@ -29,7 +29,7 @@ type Story = StoryObj<typeof Select>;
 
 export const Variants: Story = {
   render: ({ size, variant, unstyled }) => (
-    <div className="max-w-2xl w-full flex flex-col gap-4">
+    <div className="w-[500px]">
       <h4 className="font-bold">Style</h4>
       <Select variant={variant} size={size} unstyled={unstyled}>
         <Item key="option1">Option 1</Item>
