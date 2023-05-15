@@ -96,6 +96,7 @@ export function PopoverContent({
 
   const unstyle = isBarebone || isUnstyled;
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   if (!state.isOpen) return <></>;
 
   const { popoverProps, underlayProps } = values;
@@ -164,15 +165,16 @@ export function PopoverClose() {
 }
 
 function AriaButton({
+  className,
   ...props
-}: AriaButtonProps<"button"> & {
+}: Omit<AriaButtonProps, "ref"> & {
   ref?: React.RefObject<HTMLButtonElement>;
   className?: string;
 }) {
   const ref = React.useRef(null);
   const { buttonProps } = useButton(props, ref);
   return (
-    <button {...buttonProps} ref={ref} className={props.className}>
+    <button {...buttonProps} ref={ref} className={className}>
       {props.children}
     </button>
   );
