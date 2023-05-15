@@ -1,4 +1,4 @@
-import React, { RefObject, forwardRef } from "react";
+import { RefObject, forwardRef, useRef } from "react";
 import {
   PopoverContentProvider,
   PopoverProvider,
@@ -7,16 +7,15 @@ import {
 } from "./context";
 import { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import {
-  AriaButtonProps,
   useOverlayTrigger,
   usePopover as useAriaPopover,
-  Overlay,
   AriaPopoverProps,
   DismissButton,
   useButton,
   DismissButtonProps,
 } from "react-aria";
 import { classNames } from "@rhino/utils";
+import { Button } from "@rhino/button";
 
 export type Popover = {
   children: React.ReactNode;
@@ -59,16 +58,18 @@ export function PopoverTrigger({
     triggerRef
   );
 
+  const { buttonProps } = useButton(triggerProps, triggerRef);
+
   return (
-    <AriaButton
-      {...triggerProps}
+    <Button
+      {...buttonProps}
       ref={triggerRef as RefObject<HTMLButtonElement>}
       className={
         unstyle ? className : classNames("border rounded px-3 py-1", className)
       }
     >
       {children}
-    </AriaButton>
+    </Button>
   );
 }
 
@@ -90,7 +91,7 @@ export function PopoverContent({
   ...props
 }: PopoverContent) {
   const { state, isBarebone, triggerRef } = usePopover();
-  const popoverRef = React.useRef(null);
+  const popoverRef = useRef(null);
 
   const values = useAriaPopover(
     {
@@ -113,7 +114,6 @@ export function PopoverContent({
 
   return (
     <PopoverContentProvider value={values}>
-      {/* <Overlay> */}
       {!isNonModal && <div {...underlayProps} className="fixed top-0 left-0" />}
       <div
         {...popoverProps}
@@ -129,7 +129,6 @@ export function PopoverContent({
       >
         {children}
       </div>
-      {/* </Overlay> */}
     </PopoverContentProvider>
   );
 }
@@ -179,20 +178,3 @@ export function PopoverClose(props: DismissButtonProps) {
     />
   );
 }
-
-type AriaButton = AriaButtonProps & {
-  className?: string;
-};
-const AriaButton = forwardRef<HTMLButtonElement, AriaButton>(
-  ({ className, ...props }, forwardedRef) => {
-    const { buttonProps } = useButton(
-      props,
-      forwardedRef as RefObject<Element>
-    );
-    return (
-      <button {...buttonProps} ref={forwardedRef} className={className}>
-        {props.children}
-      </button>
-    );
-  }
-);

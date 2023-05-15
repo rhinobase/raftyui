@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { DatePicker } from "@rhino/date-picker";
-import { FieldControl } from "@rhino/field";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Form / DatePicker",

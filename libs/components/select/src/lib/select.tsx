@@ -121,7 +121,7 @@ export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
         triggerState={state}
         triggerRef={ref}
         placement="bottom start"
-        className="w-full"
+        className="w-full -ml-3"
       >
         <ListBox {...menuProps} state={state} size={size} />
       </PopoverContent>

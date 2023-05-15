@@ -76,7 +76,7 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
         triggerState={state}
         triggerRef={ref}
         placement="bottom start"
-        // className="w-full"
+        className="w-full -ml-3"
       >
         <ListBox
           {...listBoxProps}

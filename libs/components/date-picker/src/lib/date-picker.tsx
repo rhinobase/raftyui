@@ -53,7 +53,7 @@ export function DatePicker<T extends DateValue>(
     ref
   );
   return (
-    <div className="inline-flex flex-col text-left">
+    <div className="inline-flex flex-col text-left w-full">
       <div {...groupProps} ref={ref} className="flex group">
         <div className={classNames(DatePickerClasses({ size, variant }))}>
           <DateField {...fieldProps} />
