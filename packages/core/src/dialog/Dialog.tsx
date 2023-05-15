@@ -3,9 +3,9 @@ import { useButton, useFocusRing, mergeProps } from "react-aria";
 import React, { useState } from "react";
 import type { AriaModalOverlayProps } from "@react-aria/overlays";
 import { Overlay, useModalOverlay } from "@react-aria/overlays";
-import { CSSTransition } from "react-transition-group";
 import { OverlayTriggerState, useOverlayTriggerState } from "react-stately";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { classNames } from "../utils";
 interface ModalProps extends AriaModalOverlayProps {
   children: React.ReactNode;
   state: OverlayTriggerState;
@@ -26,33 +26,24 @@ export function Modal(props: ModalProps) {
   return (
     // Animate opacity and backdrop blur of underlay
     <Overlay>
-      <CSSTransition
-        in={state.isOpen}
-        appear
-        onEntered={() => setExited(false)}
-        onExited={() => setExited(true)}
-        timeout={{ enter: 0, exit: 250 }}
-        classNames={{
-          enter: "opacity-0",
-          enterDone: "opacity-1 backdrop-blur-md transition ease-in",
-          exit: "opacity-0 backdrop-blur-none transition ease-out",
-        }}
+      <div
+        className={classNames(
+          state.isOpen
+            ? "opacity-1 backdrop-blur-md transition ease-in"
+            : "opacity-0 backdrop-blur-none transition ease-out"
+        )}
       >
         <div
           className="fixed inset-0 flex justify-center z-100 bg-slate-400/20"
           {...underlayProps}
         >
           {/* Animate modal slightly upward when entering, and downward when exiting. */}
-          <CSSTransition
-            in={state.isOpen}
-            appear
-            nodeRef={ref}
-            timeout={{ enter: 0, exit: 250 }}
-            classNames={{
-              appear: "translate-y-2",
-              appearDone: "translate-y-0 transition ease-in",
-              exit: "translate-y-2 transition ease-out",
-            }}
+          <div
+            className={classNames(
+              state.isOpen
+                ? "translate-y-0 transition ease-in"
+                : "translate-y-2 transition ease-out"
+            )}
           >
             <div
               {...modalProps}
@@ -61,9 +52,9 @@ export function Modal(props: ModalProps) {
             >
               {children}
             </div>
-          </CSSTransition>
+          </div>
         </div>
-      </CSSTransition>
+      </div>
     </Overlay>
   );
 }
