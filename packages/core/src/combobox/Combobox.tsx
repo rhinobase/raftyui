@@ -3,10 +3,11 @@ import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
 import { useComboBox, useFilter, useButton } from "react-aria";
 import { ListBox } from "./ListBox";
-import { Popover } from "./PopOver";
+import { PopoverContent } from "../popover";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 import { Input, InputGroup, Suffix } from "../input";
+import { useRef } from "react";
 export {
   Item as ComboboxItem,
   Section as ComboboxSection,
@@ -19,6 +20,8 @@ export type ComboBox = {
 
 export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
   const { size = "md", variant = "outline" } = props;
+
+  const ref = useRef(null);
 
   const { contains } = useFilter({ sensitivity: "base" });
   const state = useComboBoxState({ ...props, defaultFilter: contains });
@@ -46,7 +49,7 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
   const { buttonProps } = useButton(triggerProps, buttonRef);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <InputGroup>
         <Input
           inputProps={inputProps}
@@ -69,23 +72,20 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
           </button>
         </Suffix>
       </InputGroup>
-      {state.isOpen && (
-        <Popover
-          popoverRef={popoverRef}
-          triggerRef={inputRef}
+      <PopoverContent
+        triggerState={state}
+        triggerRef={ref}
+        popoverRef={ref}
+        placement="bottom start"
+        className="w-full"
+      >
+        <ListBox
+          {...listBoxProps}
+          listBoxRef={listBoxRef}
           state={state}
-          isNonModal
-          placement="bottom start"
-          className="w-full"
-        >
-          <ListBox
-            {...listBoxProps}
-            listBoxRef={listBoxRef}
-            state={state}
-            size={size}
-          />
-        </Popover>
-      )}
+          size={size}
+        />
+      </PopoverContent>
     </div>
   );
 }

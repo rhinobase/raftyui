@@ -71,7 +71,8 @@ export type PopoverContent = {
   triggerState?: OverlayTriggerState;
   className?: string;
   isUnstyled?: boolean;
-} & AriaPopoverProps;
+  popoverRef?: React.RefObject<Element>;
+} & Omit<AriaPopoverProps, "popoverRef">;
 
 export function PopoverContent({
   children,
@@ -88,7 +89,7 @@ export function PopoverContent({
     {
       ...props,
       offset,
-      popoverRef,
+      popoverRef: props.popoverRef ?? popoverRef,
     },
     state ?? triggerState
   );

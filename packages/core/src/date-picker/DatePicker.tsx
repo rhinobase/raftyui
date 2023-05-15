@@ -70,11 +70,13 @@ export function DatePicker<T extends DateValue>(
           <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
         </FieldButton>
       </div>
-      {state.isOpen && (
-        <PopoverContent triggerRef={ref} state={state} placement="bottom start">
-          <Calendar {...calendarProps} />
-        </PopoverContent>
-      )}
+      <PopoverContent
+        triggerRef={ref}
+        triggerState={state}
+        placement="bottom start"
+      >
+        <Calendar {...calendarProps} />
+      </PopoverContent>
     </div>
   );
 }
