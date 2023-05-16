@@ -43,7 +43,7 @@ export const Variants: Story = {
             <AccordionTrigger>
               <span className="flex-1 text-left">Section 1 title</span>
             </AccordionTrigger>
-            <AccordionContent>
+            <AccordionContent data-cy="content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam.

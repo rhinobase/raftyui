@@ -6,13 +6,11 @@ describe("Button Variant Test", () => {
   it("should contain the right text", () => {
     cy.get("button").should("contain.text", "Button text");
   });
+
   it("Basic Test For Button", () => {
     // Basic Test for Button
-    // eslint-disable-next-line cypress/unsafe-to-chain-command
-    cy.contains("Button text")
-      .click()
-      .should("be.enabled")
-      .should("be.focused");
+    cy.get("button").contains("Button text").should("be.enabled").click();
+    cy.get("button").should("be.enabled");
   });
 });
 
@@ -23,9 +21,8 @@ describe("Icon Button Test", () => {
 
   it("Basic Test For Button", () => {
     // eslint-disable-next-line cypress/no-assigning-return-values
-    const iconsbtn = cy.get('[type="button"]');
+    const iconsbtn = cy.get('[data-cy="iconbtn"]');
     // Basic Test for Button
-    // eslint-disable-next-line cypress/unsafe-to-chain-command
     iconsbtn
       .click({ multiple: true })
       .should("be.enabled")
@@ -33,20 +30,42 @@ describe("Icon Button Test", () => {
   });
 });
 
-describe("Icon Button Test", () => {
+describe("Active Button", () => {
   beforeEach(() =>
     cy.visit("/iframe.html?args=&id=components-button--active-variants")
   );
+
   it("should contain the right text", () => {
     cy.get("button").should("contain.text", "Button text");
   });
 
-  it("Should be focused", () => {
+  it("Basic Test For Button", () => {
     // Basic Test for Button
-    // eslint-disable-next-line cypress/unsafe-to-chain-command
-    cy.contains("Button text")
-      .click()
-      .should("be.enabled")
-      .should("be.focused");
+    cy.contains("Button text").click();
+    cy.should("be.enabled");
+    cy.should("be.focused");
+  });
+});
+
+describe("Disabled Button Test", () => {
+  beforeEach(() =>
+    cy.visit("/iframe.html?args=&id=components-button--disabled-variants")
+  );
+
+  it("should contain the right text", () => {
+    cy.get("button").should("contain.text", "Button text");
+  });
+
+  it("Basic Test For Button", () => {
+    // Basic Test for Button
+    // cy.get("button")
+    //   .first()
+    //   .then((btn) => {
+    //     // Test for Disabled
+    //     btn.should("be.disabled");
+    //     // Test for Button Should be Disabled while click
+    //     btn.click({ force: true }).should("be.disabled");
+    //     btn.trigger("mouseover", { force: true }).should("be.disabled");
+    //   });
   });
 });

@@ -47,7 +47,7 @@ export const IconButton: Story = {
         <div className="font-semibold text-sm mb-2 text-secondary-500">
           icon
         </div>
-        <Button colorScheme={colorScheme} size="icon">
+        <Button data-cy="iconbtn" colorScheme={colorScheme} size="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -66,7 +66,7 @@ export const IconButton: Story = {
       </div>
       <div className="flex flex-col gap-1">
         <div className="font-semibold text-sm mb-2 text-secondary-500">fab</div>
-        <Button colorScheme={colorScheme} size="fab">
+        <Button data-cy="iconbtn" colorScheme={colorScheme} size="fab">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -31,10 +31,10 @@ export const Variants: Story = {
     <>
       <Dialog size={size}>
         <DialogTrigger>open</DialogTrigger>
-        <DialogOverlay />
+        <DialogOverlay data-cy="overlay" />
         <DialogContent>
-          <DialogTitle>Dialog Header</DialogTitle>
           <DialogBody>
+            <DialogTitle>Dialog Header</DialogTitle>
             <p>
               Make changes to your profile here. Click save when you&apos;re
               done.

@@ -14,6 +14,7 @@ import {
   MenuSubTrigger,
   MenuTrigger,
 } from "@rhino/menu";
+import { useState } from "react";
 
 const meta: Meta<typeof Menu> = {
   title: "Components / Menu",
@@ -33,8 +34,11 @@ export default meta;
 type Story = StoryObj<typeof Menu>;
 
 export const Variants: Story = {
-  render: ({ size }) => (
-    <>
+  render: function Render({ size }: typeof Menu) {
+    const [bookmarksChecked, setBookmarksChecked] = useState(true);
+    const [urlsChecked, setUrlsChecked] = useState(false);
+    const [person, setPerson] = useState("1");
+    return (
       <Menu size={size}>
         <MenuTrigger
           size="icon"
@@ -78,18 +82,26 @@ export const Variants: Story = {
             </MenuSubContent>
           </MenuSub>
           <MenuSeparator />
-          <MenuCheckboxItem defaultChecked={true} checked={true}>
+          <MenuCheckboxItem
+            checked={bookmarksChecked}
+            onCheckedChange={setBookmarksChecked}
+          >
             Show Bookmarks <div className="RightSlot">⌘+B</div>
           </MenuCheckboxItem>
-          <MenuCheckboxItem>Show Full URLs</MenuCheckboxItem>
+          <MenuCheckboxItem
+            checked={urlsChecked}
+            onCheckedChange={setUrlsChecked}
+          >
+            Show Full URLs
+          </MenuCheckboxItem>
           <MenuSeparator />
           <MenuLabel>People</MenuLabel>
-          <MenuRadioGroup value={"1"}>
+          <MenuRadioGroup value={person} onValueChange={setPerson}>
             <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
             <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
           </MenuRadioGroup>
         </MenuContent>
       </Menu>
-    </>
-  ),
+    );
+  },
 };

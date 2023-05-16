@@ -34,7 +34,7 @@ export const Default: Story = {
       <AlertDialog size={size} barebone={barebone}>
         <AlertDialogTrigger>Open</AlertDialogTrigger>
         <AlertDialogOverlay />
-        <AlertDialogContent>
+        <AlertDialogContent data-cy="dialogcontent">
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogBody>
             This action cannot be undone. This will permanently delete your
