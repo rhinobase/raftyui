@@ -12,6 +12,13 @@ export function Upload({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
           name="file-upload"
           type="file"
           className="sr-only"
+          onChange={(e) => {
+            var output;
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+              URL.revokeObjectURL(output.src); // free memory
+            };
+          }}
         />
         <label
           htmlFor="file-upload"
