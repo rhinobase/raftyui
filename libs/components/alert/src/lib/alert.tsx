@@ -1,160 +1,160 @@
-import { forwardRef } from 'react';
-import { applyStyleToMultipleVariants, classNames } from '@rhino/utils';
-import { AlertContext, AlertProvider, useAlertContext } from './context';
+import { forwardRef } from "react";
+import { classNames } from "@rhino/utils";
+import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
   InformationCircleIcon,
-} from '@heroicons/react/24/outline';
-import { cva } from 'class-variance-authority';
+} from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 
 // Alert Component
-export type Alert = { isUnstyled?: boolean } & Partial<AlertContext> &
-  JSX.IntrinsicElements['div'];
-
-const alertClasses = cva('flex w-full items-center', {
+const alertClasses = cva("flex w-full items-center", {
   variants: {
     size: {
-      sm: 'py-2 px-2.5 gap-1.5',
-      md: 'p-3 gap-3',
-      lg: 'p-4 gap-4',
+      sm: "py-2 px-2.5 gap-1.5",
+      md: "p-3 gap-3",
+      lg: "p-4 gap-4",
     },
     status: {
-      success: '',
-      warning: '',
-      error: '',
-      info: '',
+      success: "",
+      warning: "",
+      error: "",
+      info: "",
     },
     variant: {
-      simple: '',
-      solid: '',
-      'left-accent': '',
-      'top-accent': '',
+      simple: "",
+      solid: "",
+      "left-accent": "",
+      "top-accent": "",
     },
   },
   compoundVariants: [
     {
-      variant: 'simple',
-      status: 'success',
+      variant: "simple",
+      status: "success",
       className:
-        'border-success-600 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100',
+        "border-success-600 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
     },
     {
-      variant: 'simple',
-      status: 'warning',
+      variant: "simple",
+      status: "warning",
       className:
-        'border-warning-600 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40',
+        "border-warning-600 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
     },
     {
-      variant: 'simple',
-      status: 'error',
+      variant: "simple",
+      status: "error",
       className:
-        'border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100',
+        "border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
     },
     {
-      variant: 'simple',
-      status: 'info',
+      variant: "simple",
+      status: "info",
       className:
-        'bg-info-200 dark:bg-info-400/40 border-info-500 text-secondary-900 dark:text-secondary-100',
+        "bg-info-200 dark:bg-info-400/40 border-info-500 text-secondary-900 dark:text-secondary-100",
     },
     {
-      variant: 'solid',
-      status: 'success',
+      variant: "solid",
+      status: "success",
       className:
-        'border-success-500 bg-success-500 text-white dark:bg-success-400 dark:text-secondary-100',
+        "border-success-500 bg-success-500 text-white dark:bg-success-400 dark:text-secondary-100",
     },
     {
-      variant: 'solid',
-      status: 'warning',
+      variant: "solid",
+      status: "warning",
       className:
-        'border-warning-500 bg-warning-500 text-white dark:text-secondary-100 dark:bg-warning-400',
+        "border-warning-500 bg-warning-500 text-white dark:text-secondary-100 dark:bg-warning-400",
     },
     {
-      variant: 'solid',
-      status: 'error',
+      variant: "solid",
+      status: "error",
       className:
-        'border-error-500 bg-error-500 text-white dark:bg-error-400 dark:text-secondary-100',
+        "border-error-500 bg-error-500 text-white dark:bg-error-400 dark:text-secondary-100",
     },
     {
-      variant: 'solid',
-      status: 'info',
+      variant: "solid",
+      status: "info",
       className:
-        'bg-info-500 dark:bg-info-400 border-info-500 text-white dark:text-secondary-100',
+        "bg-info-500 dark:bg-info-400 border-info-500 text-white dark:text-secondary-100",
     },
     {
-      variant: 'left-accent',
-      status: 'success',
+      variant: "left-accent",
+      status: "success",
       className:
-        'border-l-4 border-success-500 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100',
+        "border-l-4 border-success-500 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
     },
     {
-      variant: 'left-accent',
-      status: 'warning',
+      variant: "left-accent",
+      status: "warning",
       className:
-        'border-l-4 border-warning-500 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40',
+        "border-l-4 border-warning-500 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
     },
     {
-      variant: 'left-accent',
-      status: 'error',
+      variant: "left-accent",
+      status: "error",
       className:
-        'border-l-4 border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100',
+        "border-l-4 border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
     },
     {
-      variant: 'left-accent',
-      status: 'info',
+      variant: "left-accent",
+      status: "info",
       className:
-        'bg-info-200 dark:bg-info-400/40 border-l-4 border-info-500 text-secondary-900 dark:text-secondary-100',
+        "bg-info-200 dark:bg-info-400/40 border-l-4 border-info-500 text-secondary-900 dark:text-secondary-100",
     },
     {
-      variant: 'top-accent',
-      status: 'success',
+      variant: "top-accent",
+      status: "success",
       className:
-        'border-t-4 border-success-500 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100',
+        "border-t-4 border-success-500 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
     },
     {
-      variant: 'top-accent',
-      status: 'warning',
+      variant: "top-accent",
+      status: "warning",
       className:
-        'border-t-4 border-warning-500 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40',
+        "border-t-4 border-warning-500 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
     },
     {
-      variant: 'top-accent',
-      status: 'error',
+      variant: "top-accent",
+      status: "error",
       className:
-        'border-t-4 border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100',
+        "border-t-4 border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
     },
     {
-      variant: 'top-accent',
-      status: 'info',
+      variant: "top-accent",
+      status: "info",
       className:
-        'bg-info-200 dark:bg-info-400/40 border-t-4 border-info-500 text-secondary-900 dark:text-secondary-100',
+        "bg-info-200 dark:bg-info-400/40 border-t-4 border-info-500 text-secondary-900 dark:text-secondary-100",
     },
     {
-      variant: 'top-accent',
-      size: 'sm',
-      className: 'pt-1',
+      variant: "top-accent",
+      size: "sm",
+      className: "pt-1",
     },
     {
-      variant: 'top-accent',
-      size: 'md',
-      className: 'pt-2',
+      variant: "top-accent",
+      size: "md",
+      className: "pt-2",
     },
     {
-      variant: 'top-accent',
-      size: 'lg',
-      className: 'pt-3',
+      variant: "top-accent",
+      size: "lg",
+      className: "pt-3",
     },
   ],
 });
+
+export type Alert = { isUnstyled?: boolean } & Partial<AlertContext> &
+  JSX.IntrinsicElements["div"];
 
 export const Alert = forwardRef<HTMLDivElement, Alert>(
   (
     {
       className,
-      status = 'info',
-      size = 'md',
-      variant = 'simple',
+      status = "info",
+      size = "md",
+      variant = "simple",
       isUnstyled = false,
       isBarebone = false,
       children,
@@ -180,56 +180,62 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
     );
   }
 );
-Alert.displayName = 'Alert';
+Alert.displayName = "Alert";
 
-const alertIconClasses = cva('stroke-2', {
+const alertIconClasses = cva("stroke-2", {
   variants: {
     size: {
-      sm: 'h-4 w-4',
-      md: 'h-5 w-5',
-      lg: 'h-7 w-7',
+      sm: "h-4 w-4",
+      md: "h-5 w-5",
+      lg: "h-7 w-7",
     },
     status: {
-      success: '',
-      warning: '',
-      error: '',
-      info: '',
+      success: "",
+      warning: "",
+      error: "",
+      info: "",
     },
     variant: {
-      simple: '',
-      solid: '',
-      'left-accent': '',
-      'top-accent': '',
+      simple: "",
+      solid: "",
+      "left-accent": "",
+      "top-accent": "",
     },
   },
   compoundVariants: [
-    ...applyStyleToMultipleVariants({
-      size: ['sm', 'md', 'lg'],
-      status: 'error',
-      variant: ['simple', 'left-accent', 'top-accent'],
-      className: 'text-error-500 dark:text-error-200',
-    }),
-    ...applyStyleToMultipleVariants({
-      size: ['sm', 'md', 'lg'],
-      status: 'warning',
-      variant: ['simple', 'left-accent', 'top-accent'],
-      className: 'text-warning-600 dark:text-warning-300',
-    }),
-    ...applyStyleToMultipleVariants({
-      size: ['sm', 'md', 'lg'],
-      status: 'info',
-      variant: ['simple', 'left-accent', 'top-accent'],
-      className: 'text-info-500 dark:text-info-200',
-    }),
-    ...applyStyleToMultipleVariants({
-      size: ['sm', 'md', 'lg'],
-      status: 'success',
-      variant: ['simple', 'left-accent', 'top-accent'],
-      className: 'text-success-500 dark:text-success-300',
-    }),
+    {
+      size: ["sm", "md", "lg"],
+      status: "error",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-error-500 dark:text-error-200",
+    },
+    {
+      size: ["sm", "md", "lg"],
+      status: "warning",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-warning-600 dark:text-warning-300",
+    },
+    {
+      size: ["sm", "md", "lg"],
+      status: "info",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-info-500 dark:text-info-200",
+    },
+    {
+      size: ["sm", "md", "lg"],
+      status: "success",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-success-500 dark:text-success-300",
+    },
   ],
 });
 
+const icons = {
+  error: ExclamationCircleIcon,
+  warning: ExclamationTriangleIcon,
+  info: InformationCircleIcon,
+  success: CheckCircleIcon,
+};
 export function AlertIcon({
   className,
   isUnstyled = false,
@@ -238,25 +244,9 @@ export function AlertIcon({
   isUnstyled?: boolean;
 }) {
   const { size, status, variant, isBarebone } = useAlertContext();
-
   const unstyle = isBarebone || isUnstyled;
 
-  let Icon: typeof ExclamationCircleIcon;
-  switch (status) {
-    case 'error':
-      Icon = ExclamationCircleIcon;
-      break;
-    case 'warning':
-      Icon = ExclamationTriangleIcon;
-      break;
-    case 'info':
-      Icon = InformationCircleIcon;
-      break;
-    case 'success':
-      Icon = CheckCircleIcon;
-      break;
-  }
-
+  const Icon = icons[status];
   return (
     <Icon
       className={
@@ -268,14 +258,14 @@ export function AlertIcon({
   );
 }
 
-export type AlertTitle = JSX.IntrinsicElements['h6'] & { isUnstyled?: boolean };
+export type AlertTitle = JSX.IntrinsicElements["h6"] & { isUnstyled?: boolean };
 
-const alertTitleClasses = cva('', {
+const alertTitleClasses = cva("", {
   variants: {
     size: {
-      sm: 'font-medium',
-      md: 'text-lg font-medium',
-      lg: 'text-xl font-semibold',
+      sm: "font-medium",
+      md: "text-lg font-medium",
+      lg: "text-xl font-semibold",
     },
   },
 });
@@ -300,18 +290,18 @@ export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
     );
   }
 );
-AlertTitle.displayName = 'AlertTitle';
+AlertTitle.displayName = "AlertTitle";
 
-export type AlertDescription = JSX.IntrinsicElements['p'] & {
+export type AlertDescription = JSX.IntrinsicElements["p"] & {
   isUnstyled?: boolean;
 };
 
-const alertDescriptionClasses = cva('', {
+const alertDescriptionClasses = cva("", {
   variants: {
     size: {
-      sm: 'text-xs',
-      md: 'text-sm',
-      lg: 'text-base',
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
     },
   },
 });
@@ -337,4 +327,4 @@ export const AlertDescription = forwardRef<
     </p>
   );
 });
-AlertDescription.displayName = 'AlertDescription';
+AlertDescription.displayName = "AlertDescription";
