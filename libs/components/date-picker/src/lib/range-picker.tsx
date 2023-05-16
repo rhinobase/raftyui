@@ -14,9 +14,10 @@ import {
 import { cva } from "class-variance-authority";
 import { classNames } from "@rhino/utils";
 import { PopoverContent } from "@rhino/popover";
+import { InputGroup, Suffix } from "@rhino/input";
 
 const RangePickerClasses = cva(
-  "flex transition-colors rounded-l-md pr-10 flex-1 relative",
+  "flex transition-colors rounded-md pr-10 flex-1 relative",
   {
     variants: {
       size: {
@@ -60,7 +61,7 @@ export function RangePicker<T extends DateValue>(
 
   return (
     <div className="inline-flex flex-col text-left w-full">
-      <div {...groupProps} ref={ref} className="flex group w-full">
+      <InputGroup {...groupProps} ref={ref}>
         <div className={classNames(RangePickerClasses({ size, variant }))}>
           <DateField {...startFieldProps} />
           <span aria-hidden="true" className="px-2 dark:text-secondary-500">
@@ -71,14 +72,16 @@ export function RangePicker<T extends DateValue>(
             <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
           )}
         </div>
-        <CalendarButton
-          {...buttonProps}
-          isActive={state.isOpen}
-          variant={variant}
-        >
-          <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
-        </CalendarButton>
-      </div>
+        <Suffix>
+          <CalendarButton
+            {...buttonProps}
+            isActive={state.isOpen}
+            variant="ghost"
+          >
+            <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
+          </CalendarButton>
+        </Suffix>
+      </InputGroup>
       <PopoverContent
         triggerRef={ref}
         triggerState={state}

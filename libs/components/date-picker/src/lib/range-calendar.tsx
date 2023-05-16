@@ -26,7 +26,11 @@ export function RangeCalendar<T extends DateValue>(
     useRangeCalendar(props, state, ref);
 
   return (
-    <div {...calendarProps} ref={ref} className="inline-block p-5">
+    <div
+      {...calendarProps}
+      ref={ref}
+      className="p-5 text-zinc-800 dark:text-secondary-200"
+    >
       <div className="flex items-center justify-between pb-4">
         <CalendarButton {...prevButtonProps} variant="ghost">
           <ChevronLeftIcon className="h-4 w-4 stroke-2" />

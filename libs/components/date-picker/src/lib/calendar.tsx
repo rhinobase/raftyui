@@ -26,6 +26,7 @@ import {
 import { CalendarButton } from "./calendar-button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rhino/utils";
+import { Table, TableBody, TableHead, Td, Tr } from "@rhino/table";
 
 export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
   const { locale } = useLocale();
@@ -43,7 +44,7 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     <div
       {...calendarProps}
       ref={ref}
-      className="inline-block p-5 text-zinc-800 dark:text-secondary-200"
+      className="p-5 text-zinc-800 dark:text-secondary-200"
     >
       <div className="flex items-center justify-between mb-4">
         <CalendarButton {...prevButtonProps} variant="ghost">
@@ -72,36 +73,37 @@ export function CalendarGrid({
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
 
   return (
-    <table
+    <Table
+      isBarebone
       {...gridProps}
       cellPadding="0"
       className="flex-1 text-zinc-600 dark:text-secondary-200"
     >
-      <thead {...headerProps} className="mb-2">
-        <tr>
+      <TableHead {...headerProps} className="mb-2">
+        <Tr>
           {weekDays.map((day, index) => (
-            <td className="text-center font-semibold" key={index}>
+            <Td className="text-center font-medium" key={index}>
               {day}
-            </td>
+            </Td>
           ))}
-        </tr>
-      </thead>
-      <tbody>
+        </Tr>
+      </TableHead>
+      <TableBody>
         {[...new Array(weeksInMonth).keys()].map((weekIndex) => (
-          <tr key={weekIndex}>
+          <Tr key={weekIndex}>
             {state
               .getDatesInWeek(weekIndex)
               .map((date, i) =>
                 date ? (
                   <CalendarCell key={i} state={state} date={date} />
                 ) : (
-                  <td key={i} />
+                  <Td key={i} />
                 )
               )}
-          </tr>
+          </Tr>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 }
 
@@ -146,9 +148,9 @@ function CalendarCell({
   const { focusProps, isFocusVisible } = useFocusRing();
 
   return (
-    <td
+    <Td
       {...cellProps}
-      className={classNames(isFocusVisible ? "z-10" : "z-0", "py-0.5 relative")}
+      className={classNames(isFocusVisible ? "z-10" : "z-0", "p-0.5 relative")}
     >
       <div
         {...mergeProps(buttonProps, focusProps)}
@@ -188,13 +190,13 @@ function CalendarCell({
               !isDisabled &&
               "hover:bg-secondary-200 dark:hover:bg-secondary-700",
             isToday(date, Intl.DateTimeFormat().resolvedOptions().timeZone) &&
-              "border border-primary-500",
+              "border border-secondary-400",
             "w-full h-full rounded flex items-center justify-center cursor-default text-sm transition-all"
           )}
         >
           {formattedDate}
         </div>
       </div>
-    </td>
+    </Td>
   );
 }
