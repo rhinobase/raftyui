@@ -1,19 +1,20 @@
-import React from 'react';
-import * as MenubarPrimitive from '@radix-ui/react-menubar';
-import { ComponentProps, forwardRef } from 'react';
-import { MenuBarProvider, MenuBarContext, useMenuBarContext } from './context';
-import { classNames } from '@rhino/utils';
-import { cva } from 'class-variance-authority';
+import React from "react";
+import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import { ComponentProps, forwardRef } from "react";
+import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
+import { classNames } from "@rhino/utils";
+import { cva } from "class-variance-authority";
+import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 //MenuBar Component
-export type Menubar = ComponentProps<(typeof MenubarPrimitive)['Root']> &
+export type Menubar = ComponentProps<(typeof MenubarPrimitive)["Root"]> &
   Partial<MenuBarContext> & { isUnstyled?: boolean };
 export const Menubar = forwardRef<HTMLDivElement, Menubar>(
   (
     {
       children,
       className,
-      size = 'md',
+      size = "md",
       isBarebone = false,
       isUnstyled = false,
       ...props
@@ -26,7 +27,7 @@ export const Menubar = forwardRef<HTMLDivElement, Menubar>(
       <MenuBarProvider value={{ size, isBarebone }}>
         <MenubarPrimitive.Root
           {...props}
-          className={unstyle ? className : classNames('flex w-full', className)}
+          className={unstyle ? className : classNames("flex w-full", className)}
           ref={forwardedRef}
         >
           {children}
@@ -35,30 +36,30 @@ export const Menubar = forwardRef<HTMLDivElement, Menubar>(
     );
   }
 );
-Menubar.displayName = 'Menubar';
+Menubar.displayName = "Menubar";
 
 //MenuBar Menu Component
-export type MenubarMenu = ComponentProps<(typeof MenubarPrimitive)['Menu']>;
+export type MenubarMenu = ComponentProps<(typeof MenubarPrimitive)["Menu"]>;
 export const MenubarMenu = ({ children, ...props }: MenubarMenu) => {
   return <MenubarPrimitive.Menu {...props}>{children}</MenubarPrimitive.Menu>;
 };
-MenubarMenu.displayName = 'MenubarMenu';
+MenubarMenu.displayName = "MenubarMenu";
 
 //MenuBar Button Component
 const triggerClasses = cva(
-  'data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none',
+  "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none",
   {
     variants: {
       size: {
-        sm: 'py-2 px-2 text-xs',
-        md: 'py-2 px-3 text-sm',
-        lg: 'py-3 px-4 text-base',
+        sm: "py-2 px-2 text-xs",
+        md: "py-2 px-3 text-sm",
+        lg: "py-3 px-4 text-base",
       },
     },
   }
 );
 export type MenubarTrigger = ComponentProps<
-  (typeof MenubarPrimitive)['MenubarTrigger']
+  (typeof MenubarPrimitive)["MenubarTrigger"]
 > & { isUnstyled?: boolean };
 export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -78,12 +79,12 @@ export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
     );
   }
 );
-MenubarTrigger.displayName = 'MenubarTrigger';
+MenubarTrigger.displayName = "MenubarTrigger";
 
 //MenuBarContent Component
 
 export type MenubarContent = ComponentProps<
-  (typeof MenubarPrimitive)['Content']
+  (typeof MenubarPrimitive)["Content"]
 > & {
   isUnstyled?: boolean;
 };
@@ -102,7 +103,7 @@ export const MenubarContent = forwardRef<HTMLDivElement, MenubarContent>(
             unstyle
               ? className
               : classNames(
-                  'dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]',
+                  "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
                   className
                 )
           }
@@ -116,7 +117,7 @@ export const MenubarContent = forwardRef<HTMLDivElement, MenubarContent>(
     );
   }
 );
-MenubarContent.displayName = 'MenubarContent';
+MenubarContent.displayName = "MenubarContent";
 
 // MenuGroup Component
 export type MenubarGroup = { children?: React.ReactNode; title: string };
@@ -128,23 +129,23 @@ export const MenubarGroup = ({ children, title }: MenubarGroup) => {
     </>
   );
 };
-MenubarGroup.displayName = 'MenubarGroup';
+MenubarGroup.displayName = "MenubarGroup";
 
 //MenuBar Label Component
 const labelClasses = cva(
-  'text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide',
+  "text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide",
   {
     variants: {
       size: {
-        sm: 'py-1 text-[10px]',
-        md: 'py-1 text-[11px]',
-        lg: 'py-1.5 text-xs',
+        sm: "py-1 text-[10px]",
+        md: "py-1 text-[11px]",
+        lg: "py-1.5 text-xs",
       },
     },
   }
 );
 export type MenubarLabel = ComponentProps<
-  (typeof MenubarPrimitive)['Label']
+  (typeof MenubarPrimitive)["Label"]
 > & {
   isUnstyled?: boolean;
 };
@@ -166,22 +167,22 @@ export const MenubarLabel = forwardRef<HTMLDivElement, MenubarLabel>(
     );
   }
 );
-MenubarLabel.displayName = 'MenubarLabel';
+MenubarLabel.displayName = "MenubarLabel";
 
 //MenuBar Item Component
 const itemClasses = cva(
-  'rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent',
+  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2  font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
-export type MenubarItem = ComponentProps<(typeof MenubarPrimitive)['Item']> & {
+export type MenubarItem = ComponentProps<(typeof MenubarPrimitive)["Item"]> & {
   isUnstyled?: boolean;
 };
 export const MenubarItem = forwardRef<HTMLDivElement, MenubarItem>(
@@ -202,26 +203,26 @@ export const MenubarItem = forwardRef<HTMLDivElement, MenubarItem>(
     );
   }
 );
-MenubarItem.displayName = 'MenubarItem';
+MenubarItem.displayName = "MenubarItem";
 
 //MenuBar ChechboxGroup Component
 export const MenubarCheckboxGroup = MenubarPrimitive.Group;
 
 //Menubar CheckboxItem Component
 const checkboxItemClasses = cva(
-  'rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none',
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type MenubarCheckboxItem = ComponentProps<
-  (typeof MenubarPrimitive)['CheckboxItem']
+  (typeof MenubarPrimitive)["CheckboxItem"]
 > & {
   isUnstyled?: boolean;
 };
@@ -245,50 +246,37 @@ export const MenubarCheckboxItem = forwardRef<
       {children}
       <MenubarPrimitive.ItemIndicator
         className={classNames(
-          size === 'sm' && 'top-2',
-          size === 'md' && 'top-2.5',
-          size === 'lg' && 'top-3',
-          'absolute left-1'
+          size === "sm" && "top-2",
+          size === "md" && "top-2.5",
+          size === "lg" && "top-3",
+          "absolute left-1"
         )}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="h-3 w-3 stroke-2"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4.5 12.75l6 6 9-13.5"
-          />
-        </svg>
+        <CheckIcon className="h-3 w-3 stroke-[3]" />
       </MenubarPrimitive.ItemIndicator>
     </MenubarPrimitive.CheckboxItem>
   );
 });
-MenubarCheckboxItem.displayName = 'MenubarCheckboxItem';
+MenubarCheckboxItem.displayName = "MenubarCheckboxItem";
 
 //MenuBar RadioGroup Component
 export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
 
 //Menubar RadioItem component
 const radioItemClasses = cva(
-  'rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none',
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type MenubarRadioItem = ComponentProps<
-  (typeof MenubarPrimitive)['RadioItem']
+  (typeof MenubarPrimitive)["RadioItem"]
 > & {
   isUnstyled?: boolean;
 };
@@ -310,10 +298,10 @@ export const MenubarRadioItem = forwardRef<HTMLDivElement, MenubarRadioItem>(
         {children}
         <MenubarPrimitive.ItemIndicator
           className={classNames(
-            size === 'sm' && 'top-2',
-            size === 'md' && 'top-2.5',
-            size === 'lg' && 'top-3',
-            'absolute left-1'
+            size === "sm" && "top-2",
+            size === "md" && "top-2.5",
+            size === "lg" && "top-3",
+            "absolute left-1"
           )}
         >
           <svg
@@ -331,30 +319,30 @@ export const MenubarRadioItem = forwardRef<HTMLDivElement, MenubarRadioItem>(
     );
   }
 );
-MenubarRadioItem.displayName = 'MenuBar.RadioItem';
+MenubarRadioItem.displayName = "MenuBar.RadioItem";
 
 //MenuBar SubMenu Component
-export type MenubarSub = ComponentProps<(typeof MenubarPrimitive)['Sub']>;
+export type MenubarSub = ComponentProps<(typeof MenubarPrimitive)["Sub"]>;
 export const MenubarSub = ({ children, ...props }: MenubarSub) => {
   return <MenubarPrimitive.Sub {...props}>{children}</MenubarPrimitive.Sub>;
 };
-MenubarSub.displayName = 'MenubarSub';
+MenubarSub.displayName = "MenubarSub";
 
 //MenuBar SubMenuButton Component
 const subTriggerClasses = cva(
-  'rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pr-2 pl-5 font-semibold focus:outline-none',
+  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pr-2 pl-5 font-semibold focus:outline-none",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type MenubarSubTrigger = ComponentProps<
-  (typeof MenubarPrimitive)['SubTrigger']
+  (typeof MenubarPrimitive)["SubTrigger"]
 > & {
   isUnstyled?: boolean;
 };
@@ -374,32 +362,17 @@ export const MenubarSubTrigger = forwardRef<HTMLDivElement, MenubarSubTrigger>(
         }
       >
         {children}
-        <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="Stroke-2 h-3 w-3"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </span>
+        <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
       </MenubarPrimitive.SubTrigger>
     );
   }
 );
-MenubarSubTrigger.displayName = 'MenubarSubTrigger';
+MenubarSubTrigger.displayName = "MenubarSubTrigger";
 
 //MenuBar SubContent Component
 
 export type MenubarSubContent = ComponentProps<
-  (typeof MenubarPrimitive)['SubContent']
+  (typeof MenubarPrimitive)["SubContent"]
 > & {
   isUnstyled?: boolean;
 };
@@ -415,8 +388,8 @@ export const MenubarSubContent = forwardRef<HTMLDivElement, MenubarSubContent>(
             unstyle
               ? className
               : classNames(
-                  'data-[side=right]:animate-scale-in origin-top-left',
-                  'p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]',
+                  "data-[side=right]:animate-scale-in origin-top-left",
+                  "p-base dark:bg-secondary-800 min-w-[220px] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
                   className
                 )
           }
@@ -430,20 +403,20 @@ export const MenubarSubContent = forwardRef<HTMLDivElement, MenubarSubContent>(
     );
   }
 );
-MenubarSubContent.displayName = 'MenubarSubContent';
+MenubarSubContent.displayName = "MenubarSubContent";
 
 // MenuBarDivider Component
-const seperatorClasses = cva('bg-secondary-200 dark:bg-secondary-700 h-[1px]', {
+const seperatorClasses = cva("bg-secondary-200 dark:bg-secondary-700 h-[1px]", {
   variants: {
     size: {
-      sm: 'my-1',
-      md: 'my-[5px]',
-      lg: 'my-1.5',
+      sm: "my-1",
+      md: "my-[5px]",
+      lg: "my-1.5",
     },
   },
 });
 export type MenubarSeparator = ComponentProps<
-  (typeof MenubarPrimitive)['Separator']
+  (typeof MenubarPrimitive)["Separator"]
 > & {
   isUnstyled?: boolean;
 };
@@ -465,4 +438,4 @@ export const MenubarSeparator = forwardRef<HTMLDivElement, MenubarSeparator>(
     );
   }
 );
-MenubarSeparator.displayName = 'MenubarSeparator';
+MenubarSeparator.displayName = "MenubarSeparator";

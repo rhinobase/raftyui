@@ -31,7 +31,7 @@ export const Variants: Story = {
     const [isOpen, setOpen] = useState(false);
     return (
       <div className="flex flex-col gap-4">
-        <Button onPress={() => setOpen(true)}>Open</Button>
+        <Button onClick={() => setOpen(true)}>Open</Button>
         <Drawer size={size} side="left" open={isOpen} onOpenChange={setOpen}>
           <DrawerOverlay />
           <DrawerContent>

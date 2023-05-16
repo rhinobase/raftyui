@@ -110,7 +110,6 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
 } from "@rhino/navigation-menu";
-export * from "@rhino/plugin";
 export { Progress } from "@rhino/progress";
 export { RadioGroup, Radio, RadioCard } from "@rhino/radio";
 export { Select, SelectItem, ListBox } from "@rhino/select";
@@ -145,3 +144,4 @@ export { ToggleGroup, ToggleGroupItem } from "@rhino/toggle-group";
 export { Tooltip } from "@rhino/tooltip";
 export { Upload } from "@rhino/upload";
 export { classNames, mergeRefs } from "@rhino/utils";
+// export * from "@rhino/plugin";

@@ -1,4 +1,4 @@
-import plugin = require("./index");
+// import plugin = require("./index");
 
 // describe("plugin", () => {
 //   it("should work", () => {

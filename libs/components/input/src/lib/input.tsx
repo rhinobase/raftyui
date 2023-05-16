@@ -5,10 +5,10 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from 'react';
-import { useFieldControlContext } from '@rhino/field';
-import { classNames, mergeRefs } from '@rhino/utils';
-import { cva } from 'class-variance-authority';
+} from "react";
+import { useFieldControlContext } from "@rhino/field";
+import { classNames, mergeRefs } from "@rhino/utils";
+import { cva } from "class-variance-authority";
 import {
   AriaNumberFieldProps,
   AriaSearchFieldProps,
@@ -17,18 +17,18 @@ import {
   useNumberField,
   useSearchField,
   useTextField,
-} from 'react-aria';
-import { useNumberFieldState, useSearchFieldState } from 'react-stately';
+} from "react-aria";
+import { useNumberFieldState, useSearchFieldState } from "react-stately";
 import {
   ChevronUpIcon,
   ChevronDownIcon,
   XMarkIcon,
   EyeSlashIcon,
   EyeIcon,
-} from '@heroicons/react/24/outline';
-import { Button } from '@rhino/button';
-import { InputGroup, Suffix, RightAddon } from './input-group';
-import { useInputGroupContext } from './context';
+} from "@heroicons/react/24/outline";
+import { Button } from "@rhino/button";
+import { InputGroup, Suffix, RightAddon } from "./input-group";
+import { useInputGroupContext } from "./context";
 
 type InitialState = boolean | (() => boolean);
 
@@ -46,139 +46,139 @@ function useBoolean(initialState: InitialState = false) {
 }
 
 export const inputFieldClasses = cva(
-  'w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed',
+  "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
       size: {
-        sm: 'py-1 text-sm',
-        md: 'py-1.5',
-        lg: 'py-2 text-lg',
+        sm: "py-1 text-sm",
+        md: "py-1.5",
+        lg: "py-2 text-lg",
       },
       variant: {
-        solid: 'bg-secondary-50 dark:bg-secondary-800/20',
+        solid: "bg-secondary-50 dark:bg-secondary-800/20",
         outline:
-          'read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0',
-        ghost: 'border border-transparent',
+          "read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
+        ghost: "border border-transparent",
       },
       invalid: {
-        true: 'border-error-500 focus:ring-error-200 dark:border-error-400 dark:focus:ring-error-100/20',
+        true: "border-error-500 focus:ring-error-200 dark:border-error-400 dark:focus:ring-error-100/20",
       },
       isLeftAddon: {
-        true: '',
+        true: "",
       },
       isRightAddon: {
-        true: '',
+        true: "",
       },
       isPrefix: {
-        true: '',
+        true: "",
       },
       isSuffix: {
-        true: '',
+        true: "",
       },
     },
     compoundVariants: [
       {
-        variant: ['solid', 'outline'],
-        size: ['sm', 'md', 'lg'],
+        variant: ["solid", "outline"],
+        size: ["sm", "md", "lg"],
         className:
-          'border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ',
+          "border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
       },
       {
-        variant: ['outline', 'ghost'],
-        size: ['sm', 'md', 'lg'],
-        className: 'bg-transparent',
+        variant: ["outline", "ghost"],
+        size: ["sm", "md", "lg"],
+        className: "bg-transparent",
       },
       {
-        size: 'sm',
+        size: "sm",
         isLeftAddon: false,
-        className: 'rounded-l',
+        className: "rounded-l",
       },
       {
-        size: 'sm',
+        size: "sm",
         isRightAddon: false,
-        className: 'rounded-r',
+        className: "rounded-r",
       },
       {
-        size: 'sm',
+        size: "sm",
         isPrefix: true,
         isSuffix: false,
-        className: 'pl-8 pr-2',
+        className: "pl-8 pr-2",
       },
       {
-        size: 'sm',
+        size: "sm",
         isPrefix: false,
         isSuffix: true,
-        className: 'pl-2 pr-8',
+        className: "pl-2 pr-8",
       },
       {
-        size: 'sm',
+        size: "sm",
         isPrefix: true,
         isSuffix: true,
-        className: 'px-8',
+        className: "px-8",
       },
       {
-        size: 'sm',
+        size: "sm",
         isPrefix: false,
         isSuffix: false,
-        className: 'px-2',
+        className: "px-2",
       },
       {
-        size: ['md', 'lg'],
+        size: ["md", "lg"],
         isLeftAddon: false,
-        className: 'rounded-l-md',
+        className: "rounded-l-md",
       },
       {
-        size: ['md', 'lg'],
+        size: ["md", "lg"],
         isRightAddon: false,
-        className: 'rounded-r-md',
+        className: "rounded-r-md",
       },
       {
-        size: 'md',
+        size: "md",
         isPrefix: true,
         isSuffix: false,
-        className: 'pl-9 pr-3',
+        className: "pl-9 pr-3",
       },
       {
-        size: 'md',
+        size: "md",
         isPrefix: false,
         isSuffix: true,
-        className: 'pl-3 pr-9',
+        className: "pl-3 pr-9",
       },
       {
-        size: 'md',
+        size: "md",
         isPrefix: true,
         isSuffix: true,
-        className: 'px-9',
+        className: "px-9",
       },
       {
-        size: 'md',
+        size: "md",
         isPrefix: false,
         isSuffix: false,
-        className: 'px-3',
+        className: "px-3",
       },
       {
-        size: 'lg',
+        size: "lg",
         isPrefix: true,
         isSuffix: false,
-        className: 'pl-10 pr-4',
+        className: "pl-10 pr-4",
       },
       {
-        size: 'lg',
+        size: "lg",
         isPrefix: false,
         isSuffix: true,
-        className: 'pl-4 pr-10',
+        className: "pl-4 pr-10",
       },
       {
-        size: 'lg',
+        size: "lg",
         isPrefix: true,
         isSuffix: true,
-        className: 'px-10',
+        className: "px-10",
       },
       {
-        size: 'lg',
+        size: "lg",
         isPrefix: false,
         isSuffix: false,
-        className: 'px-4',
+        className: "px-4",
       },
     ],
   }
@@ -187,15 +187,15 @@ export const inputFieldClasses = cva(
 export type Input = {
   className?: string;
   type?: string;
-  variant: 'solid' | 'outline' | 'ghost';
-  size: 'sm' | 'md' | 'lg';
+  variant: "solid" | "outline" | "ghost";
+  size: "sm" | "md" | "lg";
   inputProps: InputHTMLAttributes<HTMLInputElement>;
   ref: RefObject<HTMLInputElement>;
 };
 
 export const Input = forwardRef<HTMLInputElement, Input>(
   (
-    { inputProps, type = 'text', className, variant, size, ref },
+    { inputProps, type = "text", className, variant, size, ref },
     forwardedRef
   ) => {
     const controls = useFieldControlContext() ?? {};
@@ -229,13 +229,13 @@ export const Input = forwardRef<HTMLInputElement, Input>(
 );
 
 // Input Field
-export type InputField = Omit<AriaTextFieldProps, 'size'> & {
+export type InputField = Omit<AriaTextFieldProps, "size"> & {
   className?: string;
-  variant?: 'solid' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
 };
 export const InputField = forwardRef<HTMLInputElement, InputField>(
-  ({ className, variant = 'outline', size = 'md', ...props }, forwardedRef) => {
+  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
     const ref = useRef(null);
     const { inputProps } = useTextField(props, ref);
     return (
@@ -249,16 +249,16 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
     );
   }
 );
-InputField.displayName = 'InputField';
+InputField.displayName = "InputField";
 
 // Number Input Field
-export type NumberField = Omit<AriaNumberFieldProps, 'size'> & {
+export type NumberField = Omit<AriaNumberFieldProps, "size"> & {
   className?: string;
-  variant?: 'solid' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
 };
 export const NumberField = forwardRef<HTMLInputElement, NumberField>(
-  ({ variant = 'outline', size = 'md', className, ...props }, forwardedRef) => {
+  ({ variant = "outline", size = "md", className, ...props }, forwardedRef) => {
     const { locale } = useLocale();
     const state = useNumberFieldState({ ...props, locale });
     const ref = React.useRef(null);
@@ -276,8 +276,8 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
         />
         <RightAddon
           className={classNames(
-            variant !== 'ghost' && '!border !border-l-0 !border-secondary-300',
-            'flex-col !px-0 !bg-transparent'
+            variant !== "ghost" && "!border !border-l-0 !border-secondary-300",
+            "flex-col !px-0 !bg-transparent"
           )}
         >
           <Button
@@ -288,16 +288,16 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
           >
             <ChevronUpIcon
               className={classNames(
-                size === 'sm' && 'h-[15px]',
-                size === 'md' && 'h-[18px]',
-                size === 'lg' && 'h-[22px]',
-                'w-3 stroke-[3]'
+                size === "sm" && "h-[15px]",
+                size === "md" && "h-[18px]",
+                size === "lg" && "h-[22px]",
+                "w-3 stroke-[3]"
               )}
             />
           </Button>
           <div
             className={classNames(
-              variant !== 'ghost' && 'h-[1px] w-full bg-secondary-300'
+              variant !== "ghost" && "h-[1px] w-full bg-secondary-300"
             )}
           />
           <Button
@@ -308,10 +308,10 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
           >
             <ChevronDownIcon
               className={classNames(
-                size === 'sm' && 'h-[14px]',
-                size === 'md' && 'h-[17px]',
-                size === 'lg' && 'h-[21px]',
-                'w-3 stroke-[3]'
+                size === "sm" && "h-[14px]",
+                size === "md" && "h-[17px]",
+                size === "lg" && "h-[21px]",
+                "w-3 stroke-[3]"
               )}
             />
           </Button>
@@ -320,16 +320,16 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
     );
   }
 );
-NumberField.displayName = 'NumberField';
+NumberField.displayName = "NumberField";
 
 // Search Field
-export type SearchField = Omit<AriaSearchFieldProps, 'size'> & {
+export type SearchField = Omit<AriaSearchFieldProps, "size"> & {
   className?: string;
-  variant?: 'solid' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
 };
 export const SearchField = forwardRef<HTMLInputElement, SearchField>(
-  ({ className, variant = 'outline', size = 'md', ...props }, forwardedRef) => {
+  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
     const state = useSearchFieldState(props);
     const ref = useRef(null);
     const { inputProps, clearButtonProps } = useSearchField(props, state, ref);
@@ -357,16 +357,16 @@ export const SearchField = forwardRef<HTMLInputElement, SearchField>(
     );
   }
 );
-SearchField.displayName = 'SearchField';
+SearchField.displayName = "SearchField";
 
 // Password Field
-export type PasswordField = Omit<AriaTextFieldProps, 'size'> & {
+export type PasswordField = Omit<AriaTextFieldProps, "size"> & {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
-  variant?: 'outline' | 'solid' | 'ghost';
+  size?: "sm" | "md" | "lg";
+  variant?: "outline" | "solid" | "ghost";
 };
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
-  ({ className, size = 'md', variant = 'outline', ...props }, forwardedRef) => {
+  ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
     const [showPassword, { toggle }] = useBoolean();
     const ref = useRef(null);
     const { inputProps } = useTextField(props, ref);
@@ -375,7 +375,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
       <InputGroup>
         <Input
           inputProps={inputProps}
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           variant={variant}
           size={size}
           className={className}
@@ -386,7 +386,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             size="icon"
             aria-label="show and hide password"
             variant="ghost"
-            onPress={toggle}
+            onClick={toggle}
             className="!z-[2]"
           >
             {showPassword ? (
@@ -400,4 +400,4 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
     );
   }
 );
-PasswordField.displayName = 'PasswordField';
+PasswordField.displayName = "PasswordField";

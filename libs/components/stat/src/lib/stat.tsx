@@ -1,6 +1,7 @@
-import { HTMLAttributes, SVGProps, forwardRef } from 'react';
-import { StatContext, StatProvider, useStatContext } from './context';
-import { classNames } from '@rhino/utils';
+import { HTMLAttributes, SVGProps, forwardRef } from "react";
+import { StatContext, StatProvider, useStatContext } from "./context";
+import { classNames } from "@rhino/utils";
+import { PlayIcon } from "@heroicons/react/24/solid";
 
 export type StatGroup = HTMLAttributes<HTMLDivElement>;
 export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
@@ -9,7 +10,7 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
       <div
         {...props}
         className={classNames(
-          'group flex w-full flex-wrap items-start justify-around',
+          "group flex w-full flex-wrap items-start justify-around",
           className
         )}
         ref={forwardedRef}
@@ -19,7 +20,7 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
     );
   }
 );
-StatGroup.displayName = 'StatGroup';
+StatGroup.displayName = "StatGroup";
 
 export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 export const Stat = forwardRef<HTMLDivElement, Stat>(
@@ -28,7 +29,7 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
       <StatProvider value={{ type }}>
         <div
           {...props}
-          className={classNames('flex flex-col gap-0.5', className)}
+          className={classNames("flex flex-col gap-0.5", className)}
           ref={forwardedRef}
         >
           {children}
@@ -37,7 +38,7 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
     );
   }
 );
-Stat.displayName = 'Stat';
+Stat.displayName = "Stat";
 
 export type StatLabel = HTMLAttributes<HTMLDivElement>;
 export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
@@ -46,7 +47,7 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
       <div
         {...props}
         className={classNames(
-          'text-secondary-600 dark:text-secondary-400 text-sm font-semibold',
+          "text-secondary-600 dark:text-secondary-400 text-sm font-semibold",
           className
         )}
         ref={forwardedRef}
@@ -56,7 +57,7 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
     );
   }
 );
-StatLabel.displayName = 'StatLabel';
+StatLabel.displayName = "StatLabel";
 
 export type StatValue = HTMLAttributes<HTMLDivElement>;
 export const StatValue = forwardRef<HTMLDivElement, StatValue>(
@@ -65,7 +66,7 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
       <div
         {...props}
         className={classNames(
-          'text-2xl font-semibold dark:text-white',
+          "text-2xl font-semibold dark:text-white",
           className
         )}
         ref={forwardedRef}
@@ -75,7 +76,7 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
     );
   }
 );
-StatValue.displayName = 'StatValue';
+StatValue.displayName = "StatValue";
 
 export type StatHelpText = HTMLAttributes<HTMLDivElement>;
 export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
@@ -85,13 +86,13 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
       <div
         {...props}
         className={classNames(
-          type === 'increase'
-            ? 'text-success-600 dark:text-success-400'
-            : 'dark:text-secondary-300',
-          type === 'decrease'
-            ? 'text-error-600 dark:text-error-400'
-            : 'dark:text-secondary-300',
-          'flex items-center gap-1.5 text-sm font-medium',
+          type === "increase"
+            ? "text-success-600 dark:text-success-400"
+            : "dark:text-secondary-300",
+          type === "decrease"
+            ? "text-error-600 dark:text-error-400"
+            : "dark:text-secondary-300",
+          "flex items-center gap-1.5 text-sm font-medium",
           className
         )}
         ref={forwardedRef}
@@ -101,13 +102,13 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
     );
   }
 );
-StatHelpText.displayName = 'StatHelpText';
+StatHelpText.displayName = "StatHelpText";
 
 export type StatIcon = SVGProps<SVGSVGElement>;
 export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
-  ({ className, height = '14', width = '14', ...props }, forwardedRef) => {
+  ({ className, height = "14", width = "14", ...props }, forwardedRef) => {
     const { type } = useStatContext();
-    if (type === 'increase')
+    if (type === "increase")
       return (
         <svg
           {...props}
@@ -115,7 +116,7 @@ export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
           height={height}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
-          className={classNames('text-success-500', className)}
+          className={classNames("text-success-500", className)}
           fill="currentColor"
           ref={forwardedRef}
         >
@@ -129,7 +130,7 @@ export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
         height={height}
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
-        className={classNames('text-error-500', className)}
+        className={classNames("text-error-500", className)}
         fill="currentColor"
         ref={forwardedRef}
       >
@@ -139,4 +140,4 @@ export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
   }
 );
 
-StatIcon.displayName = 'StatIcon';
+StatIcon.displayName = "StatIcon";

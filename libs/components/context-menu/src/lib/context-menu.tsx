@@ -1,20 +1,21 @@
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-import { ComponentProps, forwardRef } from 'react';
+import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
+import { ComponentProps, forwardRef } from "react";
 import {
   ContextMenuProvider,
   ContextMenuContext,
   useContextMenuContext,
-} from './context';
-import { classNames } from '@rhino/utils';
-import { cva } from 'class-variance-authority';
+} from "./context";
+import { classNames } from "@rhino/utils";
+import { cva } from "class-variance-authority";
+import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export type ContextMenu = ComponentProps<
-  (typeof ContextMenuPrimitive)['Root']
+  (typeof ContextMenuPrimitive)["Root"]
 > &
   Partial<ContextMenuContext>;
 export const ContextMenu = ({
   children,
-  size = 'md',
+  size = "md",
   isBarebone = false,
   ...props
 }: ContextMenu) => (
@@ -22,10 +23,10 @@ export const ContextMenu = ({
     <ContextMenuPrimitive.Root {...props}>{children}</ContextMenuPrimitive.Root>
   </ContextMenuProvider>
 );
-ContextMenu.displayName = 'ContextMenu';
+ContextMenu.displayName = "ContextMenu";
 
 export type ContextMenuTrigger = ComponentProps<
-  (typeof ContextMenuPrimitive)['Trigger']
+  (typeof ContextMenuPrimitive)["Trigger"]
 > & { isUnstyled?: boolean };
 export const ContextMenuTrigger = forwardRef<
   HTMLDivElement,
@@ -38,16 +39,16 @@ export const ContextMenuTrigger = forwardRef<
     <ContextMenuPrimitive.Trigger
       {...props}
       ref={forwardedRef}
-      className={unstyle ? className : classNames('cursor-default', className)}
+      className={unstyle ? className : classNames("cursor-default", className)}
     >
       {children}
     </ContextMenuPrimitive.Trigger>
   );
 });
-ContextMenuTrigger.displayName = 'ContextMenuTrigger';
+ContextMenuTrigger.displayName = "ContextMenuTrigger";
 
 export type ContextMenuContent = ComponentProps<
-  (typeof ContextMenuPrimitive)['Content']
+  (typeof ContextMenuPrimitive)["Content"]
 > & { isUnstyled?: boolean };
 export const ContextMenuContent = forwardRef<
   HTMLDivElement,
@@ -63,7 +64,7 @@ export const ContextMenuContent = forwardRef<
           unstyle
             ? className
             : classNames(
-                'dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]',
+                "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                 className
               )
         }
@@ -75,23 +76,23 @@ export const ContextMenuContent = forwardRef<
     </ContextMenuPrimitive.Portal>
   );
 });
-ContextMenuContent.displayName = 'ContextMenuContent';
+ContextMenuContent.displayName = "ContextMenuContent";
 
 //ContextMenu Label Component
 const contextMenuLabelClasses = cva(
-  'text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide',
+  "text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide",
   {
     variants: {
       size: {
-        sm: 'py-1 text-[10px]',
-        md: 'py-1 text-[11px]',
-        lg: 'py-1.5 text-xs',
+        sm: "py-1 text-[10px]",
+        md: "py-1 text-[11px]",
+        lg: "py-1.5 text-xs",
       },
     },
   }
 );
 export type ContextMenuLabel = ComponentProps<
-  (typeof ContextMenuPrimitive)['Label']
+  (typeof ContextMenuPrimitive)["Label"]
 > & { isUnstyled?: boolean };
 export const ContextMenuLabel = forwardRef<HTMLDivElement, ContextMenuLabel>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -113,23 +114,23 @@ export const ContextMenuLabel = forwardRef<HTMLDivElement, ContextMenuLabel>(
     );
   }
 );
-ContextMenuLabel.displayName = 'ContextMenuLabel';
+ContextMenuLabel.displayName = "ContextMenuLabel";
 
 //ContextMenu Item Component
 const contextMenuItemClasses = cva(
-  'rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2 font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent',
+  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2 font-semibold focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type ContextMenuItem = ComponentProps<
-  (typeof ContextMenuPrimitive)['Item']
+  (typeof ContextMenuPrimitive)["Item"]
 > & {
   isUnstyled?: boolean;
 };
@@ -153,26 +154,26 @@ export const ContextMenuItem = forwardRef<HTMLDivElement, ContextMenuItem>(
     );
   }
 );
-ContextMenuItem.displayName = 'ContextMenuItem';
+ContextMenuItem.displayName = "ContextMenuItem";
 
 //ContextMenu ChechboxGroup Component
 export const ContextMenuCheckBoxGroup = ContextMenuPrimitive.Group;
 
 //ContextMenu CheckboxItem Component
 const checkboxItemClasses = cva(
-  'rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none',
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type ContextMenuCheckboxItem = ComponentProps<
-  (typeof ContextMenuPrimitive)['CheckboxItem']
+  (typeof ContextMenuPrimitive)["CheckboxItem"]
 > & { isUnstyled?: boolean };
 export const ContextMenuCheckboxItem = forwardRef<
   HTMLDivElement,
@@ -194,50 +195,37 @@ export const ContextMenuCheckboxItem = forwardRef<
       {children}
       <ContextMenuPrimitive.ItemIndicator
         className={classNames(
-          size === 'sm' && 'top-2',
-          size === 'md' && 'top-2.5',
-          size === 'lg' && 'top-3',
-          'absolute left-1'
+          size === "sm" && "top-2",
+          size === "md" && "top-2.5",
+          size === "lg" && "top-3",
+          "absolute left-1"
         )}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="h-3 w-3 stroke-2"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4.5 12.75l6 6 9-13.5"
-          />
-        </svg>
+        <CheckIcon className="h-3 w-3 stroke-[3]" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.CheckboxItem>
   );
 });
-ContextMenuCheckboxItem.displayName = 'ContextMenuCheckboxItem';
+ContextMenuCheckboxItem.displayName = "ContextMenuCheckboxItem";
 
 //ContextMenu RadioGroup Component
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 
 //ContextMenu RadioItem Component
 const radioItemClasses = cva(
-  'rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none',
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold focus:outline-none",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type ContextMenuRadioItem = ComponentProps<
-  (typeof ContextMenuPrimitive)['RadioItem']
+  (typeof ContextMenuPrimitive)["RadioItem"]
 > & { isUnstyled?: boolean };
 export const ContextMenuRadioItem = forwardRef<
   HTMLDivElement,
@@ -256,10 +244,10 @@ export const ContextMenuRadioItem = forwardRef<
       {children}
       <ContextMenuPrimitive.ItemIndicator
         className={classNames(
-          size === 'sm' && 'top-2',
-          size === 'md' && 'top-2.5',
-          size === 'lg' && 'top-3',
-          'absolute left-1'
+          size === "sm" && "top-2",
+          size === "md" && "top-2.5",
+          size === "lg" && "top-3",
+          "absolute left-1"
         )}
       >
         <svg
@@ -276,34 +264,34 @@ export const ContextMenuRadioItem = forwardRef<
     </ContextMenuPrimitive.RadioItem>
   );
 });
-ContextMenuRadioItem.displayName = 'ContextMenuRadioItem';
+ContextMenuRadioItem.displayName = "ContextMenuRadioItem";
 
 //ContextMenu SubMenu Component
 export type ContextMenuSub = ComponentProps<
-  (typeof ContextMenuPrimitive)['Sub']
+  (typeof ContextMenuPrimitive)["Sub"]
 >;
 export const ContextMenuSub = ({ children, ...props }: ContextMenuSub) => {
   return (
     <ContextMenuPrimitive.Sub {...props}>{children}</ContextMenuPrimitive.Sub>
   );
 };
-ContextMenuSub.displayName = 'ContextMenuSub';
+ContextMenuSub.displayName = "ContextMenuSub";
 
 //ContextMenu SubMenuButton Component
 const subTriggerClasses = cva(
-  'rounded-base pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pl-5 font-semibold focus:outline-none',
+  "rounded-base pr-md text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pl-5 font-semibold focus:outline-none",
   {
     variants: {
       size: {
-        sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
       },
     },
   }
 );
 export type ContextMenuSubTrigger = ComponentProps<
-  (typeof ContextMenuPrimitive)['SubTrigger']
+  (typeof ContextMenuPrimitive)["SubTrigger"]
 > & { isUnstyled?: boolean };
 export const ContextMenuSubTrigger = forwardRef<
   HTMLDivElement,
@@ -320,31 +308,16 @@ export const ContextMenuSubTrigger = forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="h-3 w-3 stroke-2"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.25 4.5l7.5 7.5-7.5 7.5"
-          />
-        </svg>
-      </span>
+      <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
     </ContextMenuPrimitive.SubTrigger>
   );
 });
-ContextMenuSubTrigger.displayName = 'ContextMenuSubTrigger';
+ContextMenuSubTrigger.displayName = "ContextMenuSubTrigger";
 
 //ContextMenu SubContent Component
 
 export type ContextMenuSubContent = ComponentProps<
-  (typeof ContextMenuPrimitive)['SubContent']
+  (typeof ContextMenuPrimitive)["SubContent"]
 > & { isUnstyled?: boolean };
 export const ContextMenuSubContent = forwardRef<
   HTMLDivElement,
@@ -360,8 +333,8 @@ export const ContextMenuSubContent = forwardRef<
           unstyle
             ? className
             : classNames(
-                'data-[side=right]:animate-scale-in origin-top-left',
-                'dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]',
+                "data-[side=right]:animate-scale-in origin-top-left",
+                "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
                 className
               )
         }
@@ -374,20 +347,20 @@ export const ContextMenuSubContent = forwardRef<
     </ContextMenuPrimitive.Portal>
   );
 });
-ContextMenuSubContent.displayName = 'ContextMenuSubContent';
+ContextMenuSubContent.displayName = "ContextMenuSubContent";
 
 // ContextMenuDivider Component
-const seperatorClasses = cva('bg-secondary-200 dark:bg-secondary-700 h-[1px]', {
+const seperatorClasses = cva("bg-secondary-200 dark:bg-secondary-700 h-[1px]", {
   variants: {
     size: {
-      sm: 'my-1',
-      md: 'my-[5px]',
-      lg: 'my-1.5',
+      sm: "my-1",
+      md: "my-[5px]",
+      lg: "my-1.5",
     },
   },
 });
 export type ContextMenuSeparator = ComponentProps<
-  (typeof ContextMenuPrimitive)['Separator']
+  (typeof ContextMenuPrimitive)["Separator"]
 > & { isUnstyled?: boolean };
 export const ContextMenuSeparator = forwardRef<
   HTMLDivElement,
@@ -406,4 +379,4 @@ export const ContextMenuSeparator = forwardRef<
     />
   );
 });
-ContextMenuSeparator.displayName = 'ContextMenuSeparator';
+ContextMenuSeparator.displayName = "ContextMenuSeparator";
