@@ -431,7 +431,7 @@ const buttonClasses = cva(
   }
 );
 
-export type Button = {
+export type Button = JSX.IntrinsicElements["button"] & {
   className?: string;
   /* Left aligned icon*/
   leftIcon?: JSX.Element;
@@ -445,7 +445,7 @@ export type Button = {
   isLoading?: boolean;
   isActive?: boolean;
   isDisabled?: boolean;
-} & JSX.IntrinsicElements["button"];
+};
 
 export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   {

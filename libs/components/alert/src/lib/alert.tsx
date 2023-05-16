@@ -145,8 +145,8 @@ const alertClasses = cva("flex w-full items-center", {
   ],
 });
 
-export type Alert = { isUnstyled?: boolean } & Partial<AlertContext> &
-  JSX.IntrinsicElements["div"];
+export type Alert = JSX.IntrinsicElements["div"] &
+  Partial<AlertContext> & { isUnstyled?: boolean };
 
 export const Alert = forwardRef<HTMLDivElement, Alert>(
   (

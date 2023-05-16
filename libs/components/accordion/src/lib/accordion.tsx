@@ -7,12 +7,11 @@ import {
 } from "./context";
 import { classNames } from "@rhino/utils";
 import { cva } from "class-variance-authority";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Accordion Component
-export type Accordion = Partial<AccordionContext> &
-  ComponentProps<(typeof DisclosurePrimitive)["Root"]> & {
-    isUnstyled?: boolean;
-  };
+export type Accordion = ComponentProps<(typeof DisclosurePrimitive)["Root"]> &
+  Partial<AccordionContext> & { isUnstyled?: boolean };
 
 export const Accordion = forwardRef<HTMLDivElement, Accordion>(
   (
@@ -47,9 +46,7 @@ Accordion.displayName = "Accordian";
 // Accordion Item Component
 export type AccordionItem = ComponentProps<
   (typeof DisclosurePrimitive)["Item"]
-> & {
-  isUnstyled?: boolean;
-};
+> & { isUnstyled?: boolean };
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
@@ -127,7 +124,6 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
           ref={forwardedRef}
         >
           {children}
-
           {openIcon && (
             <span className="hidden stroke-1 group-data-[state=open]:block">
               {openIcon}
@@ -139,20 +135,7 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
             </span>
           )}
           {!openIcon && !closeIcon && showIcon && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-4 w-4 transform stroke-2 duration-200 group-data-[state=open]:rotate-180 group-data-[state=open]:transform"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-              />
-            </svg>
+            <ChevronDownIcon className="h-4 w-4 transform stroke-2 duration-200 group-data-[state=open]:rotate-180" />
           )}
         </DisclosurePrimitive.Trigger>
       </DisclosurePrimitive.Header>
