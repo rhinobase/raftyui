@@ -1,1 +1,1 @@
-export * from './lib/alert';
+export { Alert, AlertDescription, AlertIcon, AlertTitle } from "./lib/alert";

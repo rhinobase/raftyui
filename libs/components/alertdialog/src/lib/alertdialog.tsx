@@ -14,6 +14,7 @@ export type AlertDialog = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialog"]
 > &
   Partial<AlertDialogContext>;
+
 export const AlertDialog = ({
   children,
   size = "md",
@@ -24,7 +25,6 @@ export const AlertDialog = ({
     <AlertDialogPrimitive.Root {...props}>{children}</AlertDialogPrimitive.Root>
   </AlertDialogProvider>
 );
-
 AlertDialog.displayName = "AlertDialog";
 
 // AlertDialog Trigger Component
@@ -32,6 +32,7 @@ export type AlertDialogTrigger = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogTrigger"]
 > &
   Button;
+
 export const AlertDialogTrigger = forwardRef<
   HTMLButtonElement,
   AlertDialogTrigger
@@ -40,7 +41,7 @@ export const AlertDialogTrigger = forwardRef<
     {
       children,
       className,
-      variant,
+      variant = "ghost",
       colorScheme,
       leftIcon,
       rightIcon,
@@ -58,7 +59,7 @@ export const AlertDialogTrigger = forwardRef<
     return (
       <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
         <Button
-          variant={variant ?? "ghost"}
+          variant={variant}
           colorScheme={colorScheme}
           className={className}
           leftIcon={leftIcon}
@@ -74,13 +75,13 @@ export const AlertDialogTrigger = forwardRef<
     );
   }
 );
-
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
 // AlertDialogOverlayComponent
 export type AlertDialogOverlay = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogOverlay"]
 > & { isUnstyled?: boolean };
+
 export const AlertDialogOverlay = forwardRef<
   HTMLDivElement,
   AlertDialogOverlay
@@ -91,6 +92,7 @@ export const AlertDialogOverlay = forwardRef<
   return (
     /*zIndex one less than Toast */
     <AlertDialogPrimitive.Overlay
+      {...props}
       className={
         unstyle
           ? className
@@ -100,7 +102,6 @@ export const AlertDialogOverlay = forwardRef<
             )
       }
       ref={forwardedRef}
-      {...props}
     />
   );
 });
@@ -194,8 +195,13 @@ export type AlertDialogBody = ComponentProps<
 export const AlertDialogBody = forwardRef<HTMLDivElement, AlertDialogBody>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
-      <AlertDialogPrimitive.Description {...props} ref={forwardedRef} asChild>
-        <div className={className}>{children}</div>
+      <AlertDialogPrimitive.Description
+        {...props}
+        className={className}
+        ref={forwardedRef}
+        asChild
+      >
+        {children}
       </AlertDialogPrimitive.Description>
     );
   }

@@ -4,7 +4,7 @@ import {
   useDateRangePickerState,
 } from "react-stately";
 import { DateValue, useDateRangePicker } from "react-aria";
-import { FieldButton } from "./field-button";
+import { CalendarButton } from "./calendar-button";
 import { RangeCalendar } from "./range-calendar";
 import { DateField } from "./date-field";
 import {
@@ -71,13 +71,13 @@ export function RangePicker<T extends DateValue>(
             <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
           )}
         </div>
-        <FieldButton
+        <CalendarButton
           {...buttonProps}
-          isPressed={state.isOpen}
+          isActive={state.isOpen}
           variant={variant}
         >
           <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
-        </FieldButton>
+        </CalendarButton>
       </div>
       <PopoverContent
         triggerRef={ref}

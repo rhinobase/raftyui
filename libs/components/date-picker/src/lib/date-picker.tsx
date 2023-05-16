@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useDatePickerState } from "react-stately";
 import { AriaDatePickerProps, DateValue, useDatePicker } from "react-aria";
-import { FieldButton } from "./field-button";
+import { CalendarButton } from "./calendar-button";
 import { Calendar } from "./calendar";
 import { DateField } from "./date-field";
 import {
@@ -11,9 +11,10 @@ import {
 import { classNames } from "@rhino/utils";
 import { cva } from "class-variance-authority";
 import { PopoverContent } from "@rhino/popover";
+import { InputGroup, Suffix } from "@rhino/input";
 
 const DatePickerClasses = cva(
-  "transition-colors rounded-l-md pr-10 relative flex items-center flex-1",
+  "transition-colors rounded-md pr-10 relative flex items-center flex-1",
   {
     variants: {
       size: {
@@ -52,23 +53,26 @@ export function DatePicker<T extends DateValue>(
     state,
     ref
   );
+
   return (
-    <div className="inline-flex flex-col text-left w-full">
-      <div {...groupProps} ref={ref} className="flex group">
+    <div className="flex flex-col w-full">
+      <InputGroup {...groupProps} ref={ref}>
         <div className={classNames(DatePickerClasses({ size, variant }))}>
           <DateField {...fieldProps} />
           {state.validationState === "invalid" && (
             <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
           )}
         </div>
-        <FieldButton
-          {...buttonProps}
-          isPressed={state.isOpen}
-          variant={variant}
-        >
-          <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
-        </FieldButton>
-      </div>
+        <Suffix>
+          <CalendarButton
+            {...buttonProps}
+            isActive={state.isOpen}
+            variant="ghost"
+          >
+            <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
+          </CalendarButton>
+        </Suffix>
+      </InputGroup>
       <PopoverContent
         triggerRef={ref}
         triggerState={state}

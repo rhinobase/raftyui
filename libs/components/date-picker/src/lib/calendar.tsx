@@ -1,9 +1,9 @@
-import { useRef } from 'react';
+import { useRef } from "react";
 import {
   CalendarState,
   RangeCalendarState,
   useCalendarState,
-} from 'react-stately';
+} from "react-stately";
 import {
   AriaCalendarCellProps,
   AriaCalendarGridProps,
@@ -15,13 +15,17 @@ import {
   useCalendarGrid,
   useFocusRing,
   useLocale,
-} from 'react-aria';
-import { createCalendar } from '@internationalized/date';
-import { CalendarButton } from './field-button';
-import { getWeeksInMonth } from '@internationalized/date';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { isSameDay, getDayOfWeek } from '@internationalized/date';
-import { classNames } from '@rhino/utils';
+} from "react-aria";
+import {
+  createCalendar,
+  getWeeksInMonth,
+  isSameDay,
+  getDayOfWeek,
+  isToday,
+} from "@internationalized/date";
+import { CalendarButton } from "./calendar-button";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { classNames } from "@rhino/utils";
 
 export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
   const { locale } = useLocale();
@@ -41,13 +45,13 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
       ref={ref}
       className="inline-block p-5 text-zinc-800 dark:text-secondary-200"
     >
-      <div className="flex items-center justify-between pb-4">
-        <CalendarButton {...prevButtonProps}>
-          <ChevronLeftIcon className="h-5 w-5" />
+      <div className="flex items-center justify-between mb-4">
+        <CalendarButton {...prevButtonProps} variant="ghost">
+          <ChevronLeftIcon className="h-4 w-4 stroke-2" />
         </CalendarButton>
         <h2 className="font-semibold text-lg">{title}</h2>
-        <CalendarButton {...nextButtonProps}>
-          <ChevronRightIcon className="h-5 w-5" />
+        <CalendarButton {...nextButtonProps} variant="ghost">
+          <ChevronRightIcon className="h-4 w-4 stroke-2" />
         </CalendarButton>
       </div>
       <CalendarGrid state={state} />
@@ -144,50 +148,48 @@ function CalendarCell({
   return (
     <td
       {...cellProps}
-      className={classNames(
-        isFocusVisible ? 'z-10' : 'z-0',
-        'py-0.5 relative '
-      )}
+      className={classNames(isFocusVisible ? "z-10" : "z-0", "py-0.5 relative")}
     >
       <div
         {...mergeProps(buttonProps, focusProps)}
         ref={ref}
         hidden={isOutsideVisibleRange}
         className={classNames(
-          isRoundedLeft && 'rounded-l-md',
-          isRoundedRight && 'rounded-r-md',
+          isRoundedLeft && "rounded-l-md",
+          isRoundedRight && "rounded-r-md",
           isSelected &&
             (isInvalid
-              ? 'bg-red-300'
-              : 'bg-secondary-100 dark:bg-secondary-700/50'),
-          isDisabled && 'disabled',
-          'w-9 h-9 outline-none group'
+              ? "bg-red-300"
+              : "bg-secondary-100 dark:bg-secondary-700/50"),
+          "w-8 h-8 outline-none group"
         )}
       >
         <div
           className={classNames(
-            isDisabled && !isInvalid && 'text-zinc-400',
+            isDisabled && !isInvalid && "text-zinc-400",
             // Focus ring, visible while the cell has keyboard focus
-            isFocusVisible
-              ? 'ring-2 group-focus:z-2 ring-primary-600 ring-offset-2'
-              : '',
+            isFocusVisible &&
+              "ring-2 group-focus:z-2 ring-primary-600 ring-offset-2",
             // Darker selection background for the start and end.
-            isSelectionStart || isSelectionEnd
-              ? isInvalid
-                ? 'bg-red-600 text-white hover:bg-red-700'
-                : 'bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300'
-              : '',
+            isSelectionStart ||
+              (isSelectionEnd &&
+                (isInvalid
+                  ? "bg-red-600 text-white hover:bg-red-700"
+                  : "bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300")),
             // Hover state for cells in the middle of the range.
-            isSelected && !isDisabled && !(isSelectionStart || isSelectionEnd)
-              ? isInvalid
-                ? 'hover:bg-red-400'
-                : 'hover:bg-secondary-200 dark:hover:bg-secondary-700'
-              : '',
+            isSelected &&
+              !isDisabled &&
+              !(isSelectionStart || isSelectionEnd) &&
+              (isInvalid
+                ? "hover:bg-red-400"
+                : "hover:bg-secondary-200 dark:hover:bg-secondary-700"),
             // Hover state for non-selected cells.
-            !isSelected && !isDisabled
-              ? 'hover:bg-secondary-200 dark:hover:bg-secondary-700'
-              : '',
-            'w-full h-full rounded-md flex items-center justify-center cursor-default text-sm transition-all'
+            !isSelected &&
+              !isDisabled &&
+              "hover:bg-secondary-200 dark:hover:bg-secondary-700",
+            isToday(date, Intl.DateTimeFormat().resolvedOptions().timeZone) &&
+              "border border-primary-500",
+            "w-full h-full rounded flex items-center justify-center cursor-default text-sm transition-all"
           )}
         >
           {formattedDate}

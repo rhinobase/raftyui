@@ -19,7 +19,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+        sans: [...defaultTheme.fontFamily.sans],
         display: ["var(--font-display)", ...defaultTheme.fontFamily.sans],
       },
       maxWidth: {

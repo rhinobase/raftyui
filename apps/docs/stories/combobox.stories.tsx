@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ComboBox, ComboboxItem } from "@rhino/combobox";
+import { Combobox, ComboboxItem } from "@rhino/combobox";
 
-const meta: Meta<typeof ComboBox> = {
-  title: "Form / ComboBox",
+const meta: Meta<typeof Combobox> = {
+  title: "Form / Combobox",
 
   args: {
     size: "md",
@@ -22,13 +22,13 @@ const meta: Meta<typeof ComboBox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ComboBox>;
+type Story = StoryObj<typeof Combobox>;
 
 export const Variants: Story = {
   render: ({ size, variant }) => {
     return (
       <div className="w-[500px]">
-        <ComboBox
+        <Combobox
           size={size}
           variant={variant}
           label="Favorite Animal"
@@ -44,7 +44,7 @@ export const Variants: Story = {
           <ComboboxItem key="aardvark">Aardvark</ComboboxItem>
           <ComboboxItem key="kangaroo">Kangaroo</ComboboxItem>
           <ComboboxItem key="snake">Snake</ComboboxItem>
-        </ComboBox>
+        </Combobox>
       </div>
     );
   },

@@ -13,12 +13,12 @@ export {
   Section as ComboboxSection,
 } from "react-stately";
 
-export type ComboBox = {
+export type Combobox = {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
 };
 
-export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
+export function Combobox<T extends object>(props: ComboBoxProps<T> & Combobox) {
   const { size = "md", variant = "outline" } = props;
 
   const ref = useRef(null);
@@ -50,7 +50,7 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
 
   return (
     <div className="relative" ref={ref}>
-      <InputGroup ref={ref}>
+      <InputGroup>
         <Input
           inputProps={inputProps}
           size={size}
@@ -61,11 +61,12 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T> & ComboBox) {
           <Button
             {...buttonProps}
             ref={buttonRef}
-            isActive={state.isFocused}
-            size="icon"
+            isActive={state.isOpen}
+            size="sm"
             variant="ghost"
+            className="!z-[1] !p-1"
           >
-            <ChevronUpDownIcon className="w-6 h-6" aria-hidden="true" />
+            <ChevronUpDownIcon className="w-5 h-5" aria-hidden="true" />
           </Button>
         </Suffix>
       </InputGroup>

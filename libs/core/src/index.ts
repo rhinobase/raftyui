@@ -18,7 +18,7 @@ export {
 export { Button } from "@rhino/button";
 export { Card, CardHeader, CardBody, CardFooter } from "@rhino/card";
 export { Checkbox, CheckboxGroup } from "@rhino/checkbox";
-export { ComboBox, ComboboxItem, ComboboxSection } from "@rhino/combobox";
+export { Combobox, ComboboxItem, ComboboxSection } from "@rhino/combobox";
 export {
   ContextMenu,
   ContextMenuTrigger,

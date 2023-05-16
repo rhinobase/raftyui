@@ -9,11 +9,15 @@ import {
 } from "react-aria";
 import { createCalendar } from "@internationalized/date";
 
-export function DateField<T extends DateValue>(props: AriaDateFieldProps<T>) {
-  const { locale } = useLocale();
+export function DateField<T extends DateValue>({
+  locale,
+  ...props
+}: AriaDateFieldProps<T> & { locale?: string }) {
+  const { locale: defaultLocale } = useLocale();
+
   const state = useDateFieldState({
     ...props,
-    locale,
+    locale: locale ?? defaultLocale,
     createCalendar,
   });
 

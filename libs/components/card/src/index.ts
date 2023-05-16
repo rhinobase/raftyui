@@ -1,1 +1,1 @@
-export * from './lib/card';
+export { Card, CardBody, CardFooter, CardHeader } from "./lib/card";

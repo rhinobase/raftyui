@@ -32,8 +32,8 @@ export const Accordion = forwardRef<HTMLDivElement, Accordion>(
       <AccordionProvider value={{ size, variant, isBarebone }}>
         <DisclosurePrimitive.Root
           {...props}
-          ref={forwardedRef}
           className={unstyle ? className : classNames("w-full", className)}
+          ref={forwardedRef}
         >
           {children}
         </DisclosurePrimitive.Root>
@@ -179,5 +179,4 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
     );
   }
 );
-
 AccordionContent.displayName = "AccordianContent";

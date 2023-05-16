@@ -1,1 +1,6 @@
-export * from './lib/accordion';
+export {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./lib/accordion";

@@ -236,13 +236,13 @@ const icons = {
   info: InformationCircleIcon,
   success: CheckCircleIcon,
 };
-export function AlertIcon({
-  className,
-  isUnstyled = false,
-}: {
+
+export type AlertIcon = {
   className?: string;
   isUnstyled?: boolean;
-}) {
+};
+
+export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
   const { size, status, variant, isBarebone } = useAlertContext();
   const unstyle = isBarebone || isUnstyled;
 
@@ -258,8 +258,6 @@ export function AlertIcon({
   );
 }
 
-export type AlertTitle = JSX.IntrinsicElements["h6"] & { isUnstyled?: boolean };
-
 const alertTitleClasses = cva("", {
   variants: {
     size: {
@@ -269,6 +267,8 @@ const alertTitleClasses = cva("", {
     },
   },
 });
+
+export type AlertTitle = JSX.IntrinsicElements["h6"] & { isUnstyled?: boolean };
 
 export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -292,10 +292,6 @@ export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
 );
 AlertTitle.displayName = "AlertTitle";
 
-export type AlertDescription = JSX.IntrinsicElements["p"] & {
-  isUnstyled?: boolean;
-};
-
 const alertDescriptionClasses = cva("", {
   variants: {
     size: {
@@ -305,6 +301,10 @@ const alertDescriptionClasses = cva("", {
     },
   },
 });
+
+export type AlertDescription = JSX.IntrinsicElements["p"] & {
+  isUnstyled?: boolean;
+};
 
 export const AlertDescription = forwardRef<
   HTMLParagraphElement,

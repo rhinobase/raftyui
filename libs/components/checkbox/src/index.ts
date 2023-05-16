@@ -1,1 +1,1 @@
-export * from './lib/checkbox';
+export { Checkbox, CheckboxGroup } from "./lib/checkbox";
