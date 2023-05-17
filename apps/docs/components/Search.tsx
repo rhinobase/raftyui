@@ -41,10 +41,10 @@ export function Search() {
       <Button
         onClick={onOpen}
         isUnstyled
-        className="group flex h-6 w-6 items-center justify-center sm:justify-start md:h-auto md:w-80 md:flex-none md:rounded-lg md:py-2.5 md:pl-4 md:pr-3.5 md:text-sm md:ring-1 md:ring-slate-200 dark:md:bg-slate-800/75 dark:md:ring-white/5 hover:bg-secondary-100 dark:hover:bg-secondary-800 lg:w-96"
+        className="group flex h-6 w-6 items-center justify-center sm:justify-start md:h-auto md:w-80 md:flex-none md:rounded-lg md:py-2.5 md:pl-4 md:pr-3.5 md:text-sm md:ring-1 md:ring-secondary-200 dark:md:bg-secondary-800/75 dark:md:ring-white/5 hover:bg-secondary-100 dark:hover:bg-secondary-800 lg:w-96"
       >
-        <MagnifyingGlassIcon className="h-5 w-5 flex-none text-slate-400 group-hover:text-slate-500 dark:text-slate-500 md:group-hover:text-slate-400" />
-        <span className="sr-only md:not-sr-only md:ml-2 md:text-slate-500 md:dark:text-slate-400">
+        <MagnifyingGlassIcon className="h-5 w-5 flex-none text-secondary-400 group-hover:text-secondary-500 dark:text-secondary-500 md:group-hover:text-secondary-400" />
+        <span className="sr-only md:not-sr-only md:ml-2 md:text-secondary-500 md:dark:text-secondary-400">
           Search docs
         </span>
         {modifierKey && (

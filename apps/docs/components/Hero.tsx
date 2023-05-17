@@ -34,7 +34,7 @@ function TrafficLightsIcon(props: { className: string }) {
 
 export function Hero() {
   return (
-    <div className="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]">
+    <div className="overflow-hidden bg-secondary-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]">
       <div className="py-16 sm:px-2 lg:relative lg:px-0 lg:py-20">
         <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 lg:max-w-8xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
           <div className="relative z-10 md:text-center lg:text-left">
@@ -51,7 +51,7 @@ export function Hero() {
               <p className="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-medium font-display text-5xl tracking-tight text-transparent">
                 Never miss the cache again.
               </p>
-              <p className="mt-3 text-2xl tracking-tight text-slate-400">
+              <p className="mt-3 text-2xl tracking-tight text-secondary-400">
                 Cache every single thing your app could ever do ahead of time,
                 so your code never even has to run at all.
               </p>
@@ -74,7 +74,7 @@ export function Hero() {
           </div>
           <div className="relative lg:static xl:pl-10">
             <div className="absolute inset-x-[-50vw] -bottom-48 -top-32 [mask-image:linear-gradient(transparent,white,white)] dark:[mask-image:linear-gradient(transparent,white,transparent)] lg:-bottom-32 lg:-top-32 lg:left-[calc(50%+14rem)] lg:right-0 lg:[mask-image:none] lg:dark:[mask-image:linear-gradient(white,white,transparent)]">
-              <HeroBackground className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-0 lg:translate-x-0 lg:translate-y-[-60%]" />
+              <HeroBackground className="absolute left-1/2 top-1/2 -transecondary-x-1/2 -transecondary-y-1/2 lg:left-0 lg:transecondary-x-0 lg:transecondary-y-[-60%]" />
             </div>
             <div className="relative">
               <Image
@@ -101,7 +101,7 @@ export function Hero() {
                 <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-sky-300/0 via-sky-300/70 to-sky-300/0" />
                 <div className="absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-400 to-blue-400/0" />
                 <div className="pl-4 pt-4">
-                  <TrafficLightsIcon className="h-2.5 w-auto stroke-slate-500/30" />
+                  <TrafficLightsIcon className="h-2.5 w-auto stroke-secondary-500/30" />
                   <div className="mt-4 flex space-x-2 text-xs">
                     {tabs.map((tab) => (
                       <div
@@ -110,13 +110,13 @@ export function Hero() {
                           "flex h-6 rounded-full",
                           tab.isActive
                             ? "bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-primary-300"
-                            : "text-slate-500"
+                            : "text-secondary-500"
                         )}
                       >
                         <div
                           className={clsx(
                             "flex items-center rounded-full px-2.5",
-                            tab.isActive && "bg-slate-800"
+                            tab.isActive && "bg-secondary-800"
                           )}
                         >
                           {tab.name}
@@ -127,7 +127,7 @@ export function Hero() {
                   <div className="mt-6 flex items-start px-1 text-sm">
                     <div
                       aria-hidden="true"
-                      className="select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600"
+                      className="select-none border-r border-secondary-300/5 pr-4 font-mono text-secondary-600"
                     >
                       {Array.from({
                         length: code.split("\n").length,

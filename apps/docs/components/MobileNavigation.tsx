@@ -27,7 +27,7 @@ export function MobileNavigation({ navigation }: { navigation: Navigation }) {
     <>
       {/* <Dialog.Root>
         <Dialog.Trigger>
-          <Bars3Icon className="h-6 w-6 stroke-slate-500" />
+          <Bars3Icon className="h-6 w-6 stroke-secondary-500" />
         </Dialog.Trigger>
         <Dialog.Content>
           <Dialog.Body>
@@ -37,7 +37,7 @@ export function MobileNavigation({ navigation }: { navigation: Navigation }) {
                 onClick={() => setIsOpen(false)}
                 aria-label="Close navigation"
               >
-                <XMarkIcon className="h-6 w-6 stroke-slate-500" />
+                <XMarkIcon className="h-6 w-6 stroke-secondary-500" />
               </button>
               <Link href="/" className="ml-6" aria-label="Home page">
                 <Logomark className="h-9 w-9" />
