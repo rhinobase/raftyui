@@ -144,4 +144,3 @@ export { ToggleGroup, ToggleGroupItem } from "@rhino/toggle-group";
 export { Tooltip } from "@rhino/tooltip";
 export { Upload } from "@rhino/upload";
 export { classNames, mergeRefs } from "@rhino/utils";
-// export * from "@rhino/plugin";

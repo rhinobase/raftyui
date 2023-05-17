@@ -12,11 +12,12 @@ import {
   AriaCheckboxProps,
   VisuallyHidden,
   useCheckbox,
+  useCheckboxGroup,
+  useCheckboxGroupItem,
 } from "react-aria";
 import { CheckboxGroupState, useToggleState } from "react-stately";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { useCheckboxGroupState } from "react-stately";
-import { useCheckboxGroup, useCheckboxGroupItem } from "react-aria";
 import { cva } from "class-variance-authority";
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
@@ -117,15 +118,13 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
     const Icon = isIndeterminate ? MinusIcon : CheckIcon;
 
     return (
-      <label className={classNames(labelClasses({ isDisabled, isSelected }))}>
+      <label className={labelClasses({ isDisabled, isSelected })}>
         <VisuallyHidden>
           <input {...inputProps} ref={mergeRefs(forwardedRef, ref)} />
         </VisuallyHidden>
 
         <div
-          className={classNames(
-            checkboxClasses({ isIndeterminate, isSelected })
-          )}
+          className={checkboxClasses({ isIndeterminate, isSelected })}
           aria-hidden="true"
         >
           <Icon
