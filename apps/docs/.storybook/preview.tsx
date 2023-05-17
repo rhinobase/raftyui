@@ -44,8 +44,9 @@ const preview: Preview = {
       useEffect(() => {
         const htmlTag = document.documentElement;
 
-        // Set the "data-mode" attribute on the iFrame html tag
-        htmlTag.setAttribute("data-mode", theme || DEFAULT_THEME);
+        const tmp = theme || DEFAULT_THEME;
+        if (tmp == "dark") htmlTag.classList.add("dark");
+        else htmlTag.classList.remove("dark");
       }, [theme]);
 
       return (

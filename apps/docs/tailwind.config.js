@@ -7,7 +7,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: "class",
   content: [
     join(
       __dirname,
@@ -38,7 +38,7 @@ module.exports = {
           800: "#003C7E",
           900: "#002C5C",
         },
-        secondary: colors.zinc,
+        secondary: colors.slate,
         error: colors.red,
         warning: colors.amber,
         info: colors.blue,

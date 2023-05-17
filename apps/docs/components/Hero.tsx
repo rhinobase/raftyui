@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { Highlight } from "prism-react-renderer";
 import { Button } from "@rhino/ui";
 import { HeroBackground } from "./HeroBackground";
-import blurCyanImage from "@/public/blur-cyan.png";
-import blurIndigoImage from "@/public/blur-indigo.png";
+import blurCyanImage from "../public/blur-cyan.png";
+import blurIndigoImage from "../public/blur-indigo.png";
 import Link from "next/link";
 
 const codeLanguage = "javascript";
