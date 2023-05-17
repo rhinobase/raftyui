@@ -40,7 +40,7 @@ export {
   DialogTrigger,
   DialogOverlay,
   DialogContent,
-  DialogTitle,
+  DialogHeading,
   DialogBody,
   DialogClose,
   DialogCloseButton,

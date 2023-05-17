@@ -1,9 +1,10 @@
-import { forwardRef } from 'react';
-import { classNames, getValidChildren } from '@rhino/utils';
-import { InputGroupContext, InputGroupProvider } from './context';
+import { forwardRef } from "react";
+import { classNames, getValidChildren } from "@rhino/utils";
+import { InputGroupContext, InputGroupProvider } from "./context";
 
-export type InputGroup = JSX.IntrinsicElements['div'] &
+export type InputGroup = JSX.IntrinsicElements["div"] &
   Partial<InputGroupContext>;
+
 export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
   (
     {
@@ -46,7 +47,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
         <div
           {...props}
           ref={forwardedRef}
-          className={classNames('relative flex', className)}
+          className={classNames("relative flex", className)}
         >
           {children}
         </div>
@@ -54,9 +55,10 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
     );
   }
 );
-InputGroup.displayName = 'InputGroup';
+InputGroup.displayName = "InputGroup";
 
-export type Prefix = JSX.IntrinsicElements['div'];
+export type Prefix = JSX.IntrinsicElements["div"];
+
 export const Prefix = forwardRef<HTMLDivElement, Prefix>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -65,7 +67,7 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          'absolute left-0 top-0 flex h-full w-10 items-center justify-center',
+          "absolute left-0 top-0 flex h-full w-10 items-center justify-center",
           className
         )}
       >
@@ -74,9 +76,10 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(
     );
   }
 );
-Prefix.displayName = 'Prefix';
+Prefix.displayName = "Prefix";
 
-export type Suffix = JSX.IntrinsicElements['div'];
+export type Suffix = JSX.IntrinsicElements["div"];
+
 export const Suffix = forwardRef<HTMLDivElement, Suffix>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -85,7 +88,7 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          'absolute right-0 top-0 flex h-full w-10 items-center justify-center',
+          "absolute right-0 top-0 flex h-full w-10 items-center justify-center",
           className
         )}
       >
@@ -94,9 +97,10 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
     );
   }
 );
-Suffix.displayName = 'Suffix';
+Suffix.displayName = "Suffix";
 
-export type LeftAddon = JSX.IntrinsicElements['div'];
+export type LeftAddon = JSX.IntrinsicElements["div"];
+
 export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -105,7 +109,7 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          'bg-secondary-200 dark:bg-secondary-700 dark:text-secondary-200 flex items-center rounded-l-md px-3',
+          "bg-secondary-200 dark:bg-secondary-700 dark:text-secondary-200 flex items-center rounded-l-md px-3",
           className
         )}
       >
@@ -114,9 +118,10 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
     );
   }
 );
-LeftAddon.displayName = 'LeftAddon';
+LeftAddon.displayName = "LeftAddon";
 
-export type RightAddon = JSX.IntrinsicElements['div'];
+export type RightAddon = JSX.IntrinsicElements["div"];
+
 export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -124,7 +129,7 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          'bg-secondary-200 dark:bg-secondary-700 dark:text-secondary-200 flex items-center rounded-r-md px-3',
+          "bg-secondary-200 dark:bg-secondary-700 dark:text-secondary-200 flex items-center rounded-r-md px-3",
           className
         )}
       >
@@ -133,4 +138,4 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
     );
   }
 );
-RightAddon.displayName = 'RightAddon';
+RightAddon.displayName = "RightAddon";

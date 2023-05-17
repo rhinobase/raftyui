@@ -1,21 +1,22 @@
-import { ReactNode, forwardRef } from 'react';
-import { classNames } from '@rhino/utils';
+import { ReactNode, forwardRef } from "react";
+import { classNames } from "@rhino/utils";
 import {
   FieldControlContext,
   FieldControlProvider,
   useFieldControlContext,
-} from './context';
+} from "./context";
 
 // Field Control Component
-export type FieldControl = Partial<FieldControlContext> & {
-  name: FieldControlContext['name'];
-} & JSX.IntrinsicElements['div'];
+export type FieldControl = JSX.IntrinsicElements["div"] &
+  Partial<FieldControlContext> & {
+    name: FieldControlContext["name"];
+  };
 
 export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
   (
     {
       name,
-      orientation = 'col',
+      orientation = "col",
       isRequired = false,
       isDisabled = false,
       isReadOnly = false,
@@ -26,42 +27,41 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
       ...props
     },
     forwardedRef
-  ) => {
-    return (
-      <FieldControlProvider
-        value={{
-          name,
-          orientation,
-          isRequired,
-          isDisabled,
-          isReadOnly,
-          isInvalid,
-          isLoading,
-        }}
+  ) => (
+    <FieldControlProvider
+      value={{
+        name,
+        orientation,
+        isRequired,
+        isDisabled,
+        isReadOnly,
+        isInvalid,
+        isLoading,
+      }}
+    >
+      <div
+        {...props}
+        className={classNames(
+          orientation === "col" && "flex-col gap-1",
+          orientation === "row" && "flex-row items-center gap-2",
+          orientation === "row-reverse" &&
+            "flex-row-reverse items-center gap-2",
+          "flex w-full",
+          className
+        )}
+        ref={forwardedRef}
       >
-        <div
-          {...props}
-          className={classNames(
-            orientation === 'col' && 'flex-col gap-1',
-            orientation === 'row' && 'flex-row items-center gap-2',
-            orientation === 'row-reverse' &&
-              'flex-row-reverse items-center gap-2',
-            'flex w-full',
-            className
-          )}
-          ref={forwardedRef}
-        >
-          {children}
-        </div>
-      </FieldControlProvider>
-    );
-  }
+        {children}
+      </div>
+    </FieldControlProvider>
+  )
 );
 
-FieldControl.displayName = 'FieldControl';
+FieldControl.displayName = "FieldControl";
 
 // Field Label Component
-export type FieldLabel = JSX.IntrinsicElements['label'];
+export type FieldLabel = JSX.IntrinsicElements["label"];
+
 export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
   ({ children, className, ...props }, forwardedRef) => {
     const { name, isRequired } = useFieldControlContext();
@@ -71,7 +71,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
         {...props}
         htmlFor={name}
         className={classNames(
-          'text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium',
+          "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
           className
         )}
         ref={forwardedRef}
@@ -84,7 +84,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabel>(
     );
   }
 );
-FieldLabel.displayName = 'FieldLabel';
+FieldLabel.displayName = "FieldLabel";
 
 // Error Message Component
 export function ErrorMessage({ children }: { children: ReactNode }) {

@@ -1,5 +1,5 @@
 import { nodes as defaultNodes } from "@markdoc/markdoc";
-import { Fence } from "@/components/Fence";
+import { Fence } from "../components/Fence";
 
 const nodes = {
   document: {

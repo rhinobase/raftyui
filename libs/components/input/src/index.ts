@@ -1,2 +1,14 @@
-export * from './lib/input';
-export * from './lib/input-group';
+export {
+  Input,
+  InputField,
+  NumberField,
+  PasswordField,
+  SearchField,
+} from "./lib/input";
+export {
+  InputGroup,
+  LeftAddon,
+  Prefix,
+  RightAddon,
+  Suffix,
+} from "./lib/input-group";
