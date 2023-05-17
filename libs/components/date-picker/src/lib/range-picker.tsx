@@ -42,11 +42,13 @@ const RangePickerClasses = cva(
   }
 );
 
+type RangePicker = {
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+};
+
 export function RangePicker<T extends DateValue>(
-  props: DateRangePickerStateOptions<T> & {
-    variant?: "solid" | "outline" | "ghost";
-    size?: "sm" | "md" | "lg";
-  }
+  props: DateRangePickerStateOptions<T> & RangePicker
 ) {
   const { size = "md", variant = "outline" } = props;
   const state = useDateRangePickerState(props);

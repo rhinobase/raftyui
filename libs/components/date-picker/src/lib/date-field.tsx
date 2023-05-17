@@ -8,6 +8,7 @@ import {
   useLocale,
 } from "react-aria";
 import { createCalendar } from "@internationalized/date";
+import { classNames } from "@rhino/utils";
 
 export function DateField<T extends DateValue>({
   locale,
@@ -50,11 +51,12 @@ function DateSegments({
       style={{
         ...segmentProps.style,
       }}
-      className={`px-1 box-content tabular-nums text-right outline-none rounded-sm focus:bg-primary-500 dark:focus:bg-primary-300 focus:text-white dark:focus:text-black group ${
+      className={classNames(
+        "px-1 box-content tabular-nums text-right outline-none rounded-sm focus:bg-primary-500 dark:focus:bg-primary-300 focus:text-white dark:focus:text-black group",
         !segment.isEditable
           ? "text-secondary-500"
           : "text-secondary-800 dark:text-secondary-200"
-      }`}
+      )}
     >
       {/* Always reserve space for the placeholder, to prevent layout shift when editing. */}
       <span

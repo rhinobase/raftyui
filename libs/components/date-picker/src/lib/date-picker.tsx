@@ -39,11 +39,13 @@ const DatePickerClasses = cva(
   }
 );
 
+type DatePicker = {
+  variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+};
+
 export function DatePicker<T extends DateValue>(
-  props: AriaDatePickerProps<T> & {
-    variant?: "solid" | "outline" | "ghost";
-    size?: "sm" | "md" | "lg";
-  }
+  props: AriaDatePickerProps<T> & DatePicker
 ) {
   const { size = "md", variant = "outline" } = props;
   const state = useDatePickerState(props);
