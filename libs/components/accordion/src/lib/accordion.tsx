@@ -6,7 +6,6 @@ import {
   useAccordionContext,
 } from "./context";
 import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Accordion Component
@@ -67,22 +66,17 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
 AccordionItem.displayName = "AccordionItem";
 
 // Accordion Trigger Component
-const accordionTriggerClasses = cva(
-  "group flex w-full items-center justify-between text-secondary-700 dark:text-secondary-300",
-  {
-    variants: {
-      size: {
-        sm: "px-2.5 py-1 text-sm",
-        md: "px-3 py-2",
-        lg: "px-4 py-2.5 text-lg",
-      },
-      variant: {
-        solid: "bg-secondary-50/80 dark:bg-secondary-800/20",
-        ghost: "hover:bg-secondary-50/80 dark:hover:bg-secondary-800/20",
-      },
-    },
-  }
-);
+const accordionTriggerClasses = {
+  size: {
+    sm: "px-2.5 py-1 text-sm",
+    md: "px-3 py-2",
+    lg: "px-4 py-2.5 text-lg",
+  },
+  variant: {
+    solid: "bg-secondary-50/80 dark:bg-secondary-800/20",
+    ghost: "hover:bg-secondary-50/80 dark:hover:bg-secondary-800/20",
+  },
+};
 
 export type AccordionTrigger = ComponentProps<
   (typeof DisclosurePrimitive)["Trigger"]
@@ -116,7 +110,9 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
             unstyle
               ? className
               : classNames(
-                  accordionTriggerClasses({ size, variant }),
+                  "group flex w-full items-center justify-between text-secondary-700 dark:text-secondary-300",
+                  accordionTriggerClasses.size[size],
+                  accordionTriggerClasses.variant[variant],
                   className
                 )
           }
@@ -145,15 +141,13 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
 AccordionTrigger.displayName = "AccordionAccordianTrigger";
 
 // Accordion Content Component
-const accordionContentClasses = cva("dark:text-secondary-100 w-full", {
-  variants: {
-    size: {
-      sm: "px-3 pt-1 pb-3 text-sm",
-      md: "px-4 pt-2 pb-4",
-      lg: "px-5 pt-3 pb-5",
-    },
+const accordionContentClasses = {
+  size: {
+    sm: "px-3 pt-1 pb-3 text-sm",
+    md: "px-4 pt-2 pb-4",
+    lg: "px-5 pt-3 pb-5",
   },
-});
+};
 
 export type AccordionContent = ComponentProps<
   (typeof DisclosurePrimitive)["Content"]
@@ -169,7 +163,11 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
         className={
           unstyle
             ? className
-            : classNames(accordionContentClasses({ size }), className)
+            : classNames(
+                "dark:text-secondary-100 w-full",
+                accordionContentClasses.size[size],
+                className
+              )
         }
         {...props}
         ref={forwardedRef}
