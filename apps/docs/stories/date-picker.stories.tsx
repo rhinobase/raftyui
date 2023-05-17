@@ -26,7 +26,11 @@ export const Default: Story = {
   render: ({ size, variant }) => (
     <>
       <div className="w-[500px]">
-        <DatePicker size={size} variant={variant} />
+        <DatePicker
+          size={size}
+          variant={variant}
+          onChange={(date) => console.log(typeof date, date)}
+        />
       </div>
     </>
   ),

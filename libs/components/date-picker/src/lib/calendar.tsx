@@ -173,11 +173,11 @@ function CalendarCell({
             isFocusVisible &&
               "ring-2 group-focus:z-2 ring-primary-600 ring-offset-2",
             // Darker selection background for the start and end.
-            isSelectionStart ||
-              (isSelectionEnd &&
-                (isInvalid
-                  ? "bg-red-600 text-white hover:bg-red-700"
-                  : "bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300")),
+            isSelectionStart || isSelectionEnd
+              ? isInvalid
+                ? "bg-red-600 text-white hover:bg-red-700"
+                : "bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300"
+              : "",
             // Hover state for cells in the middle of the range.
             isSelected &&
               !isDisabled &&
@@ -190,7 +190,7 @@ function CalendarCell({
               !isDisabled &&
               "hover:bg-secondary-200 dark:hover:bg-secondary-700",
             isToday(date, Intl.DateTimeFormat().resolvedOptions().timeZone) &&
-              "border border-secondary-400",
+              "ring-2 ring-primary-400 relative z-10",
             "w-full h-full rounded flex items-center justify-center cursor-default text-sm transition-all"
           )}
         >
