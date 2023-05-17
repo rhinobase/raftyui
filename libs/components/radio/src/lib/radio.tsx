@@ -13,7 +13,6 @@ import {
   mergeProps,
 } from "react-aria";
 import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
 import { ErrorMessage } from "@rhino/field";
 import { Text } from "@rhino/text";
 import {
@@ -28,7 +27,7 @@ const RadioContext = React.createContext<RadioGroupState | null>(null);
 
 export type RadioGroup = Omit<RadioGroupProps, "isDisabled"> & {
   children: React.ReactNode;
-} & RadioGroupContext;
+} & Partial<RadioGroupContext>;
 
 // The Parent Component
 export function RadioGroup(props: RadioGroup) {
@@ -61,18 +60,13 @@ export function RadioGroup(props: RadioGroup) {
   );
 }
 
-const radioClasses = cva(
-  "inline-block rounded-full border-2 border-secondary-400 hover:opacity-70 dark:border-secondary-600 group-data-[selected=true]:border-primary-500 dark:group-data-[selected=true]:border-primary-300",
-  {
-    variants: {
-      size: {
-        sm: "h-3.5 w-3.5 group-data-[selected=true]:border-4",
-        md: "h-[18px] w-[18px] group-data-[selected=true]:border-[5px]",
-        lg: "h-6 w-6 group-data-[selected=true]:border-[8px]",
-      },
-    },
-  }
-);
+const radioClasses = {
+  size: {
+    sm: "h-3.5 w-3.5 group-data-[selected=true]:border-4",
+    md: "h-[18px] w-[18px] group-data-[selected=true]:border-[5px]",
+    lg: "h-6 w-6 group-data-[selected=true]:border-[8px]",
+  },
+};
 
 export type Radio = AriaRadioProps;
 
@@ -88,7 +82,12 @@ export function Radio({ children, ...props }: Radio) {
         "dark:text-secondary-200 flex items-center gap-2"
       )}
     >
-      <div className={classNames(radioClasses({ size }))} />
+      <div
+        className={classNames(
+          "inline-block rounded-full border-2 border-secondary-400 hover:opacity-70 dark:border-secondary-600 group-data-[selected=true]:border-primary-500 dark:group-data-[selected=true]:border-primary-300",
+          radioClasses.size[size]
+        )}
+      />
       {children}
     </RadioCard>
   );

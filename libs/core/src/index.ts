@@ -110,6 +110,13 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
 } from "@rhino/navigation-menu";
+export {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverClose,
+} from "@rhino/popover";
 export { Progress } from "@rhino/progress";
 export { RadioGroup, Radio, RadioCard } from "@rhino/radio";
 export { Select, SelectItem, ListBox } from "@rhino/select";

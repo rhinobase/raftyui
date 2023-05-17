@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Highlight, themes } from "prism-react-renderer";
-import { Button } from "@rafty/ui";
-import { HeroBackground } from "@/components/HeroBackground";
+import { Highlight } from "prism-react-renderer";
+import { Button } from "@rhino/ui";
+import { HeroBackground } from "./HeroBackground";
 import blurCyanImage from "@/public/blur-cyan.png";
 import blurIndigoImage from "@/public/blur-indigo.png";
+import Link from "next/link";
 
 const codeLanguage = "javascript";
 const code = `export default {
@@ -55,16 +56,19 @@ export function Hero() {
                 so your code never even has to run at all.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
-                <Button href="/" className="px-4" colorScheme="primary">
-                  Get started
-                </Button>
-                <Button
-                  href="/"
-                  variant="ghost"
-                  className="px-4 !text-secondary-200 hover:!bg-white/10"
-                >
-                  View on GitHub
-                </Button>
+                <Link href="/">
+                  <Button className="px-4" colorScheme="primary">
+                    Get started
+                  </Button>
+                </Link>
+                <Link href="/">
+                  <Button
+                    variant="ghost"
+                    className="px-4 !text-secondary-200 hover:!bg-white/10"
+                  >
+                    View on GitHub
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

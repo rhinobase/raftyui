@@ -79,7 +79,8 @@ export type PopoverContent = {
   className?: string;
   isUnstyled?: boolean;
   popoverRef?: React.RefObject<Element>;
-} & Omit<AriaPopoverProps, "popoverRef">;
+  triggerRef?: React.RefObject<Element>;
+} & Omit<AriaPopoverProps, "popoverRef" | "triggerRef">;
 
 export function PopoverContent({
   children,

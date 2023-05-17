@@ -2,12 +2,12 @@ import { ReactNode, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import clsx from "clsx";
-import { Button } from "@rafty/ui";
-import { Logo, Logomark } from "@/components/Logo";
-import { MobileNavigation } from "@/components/MobileNavigation";
-import { Navigation } from "@/components/Navigation";
-import { Prose } from "@/components/Prose";
-import { Search } from "@/components/Search";
+import { Button } from "@rhino/button";
+import { Logo, Logomark } from "./Logo";
+import { MobileNavigation } from "./MobileNavigation";
+import { Navigation } from "./Navigation";
+import { Prose } from "./Prose";
+import { Search } from "./Search";
 import {
   ArrowSmallLeftIcon,
   ArrowSmallRightIcon,
@@ -87,7 +87,7 @@ enum ColorMode {
 }
 
 function Header({ navigation }: { navigation: Navigation }) {
-  let [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     function onScroll() {
@@ -159,19 +159,19 @@ type TableOfContents = {
 }[];
 
 function useTableOfContents(tableOfContents: TableOfContents) {
-  let [currentSection, setCurrentSection] = useState(tableOfContents[0]?.id);
+  const [currentSection, setCurrentSection] = useState(tableOfContents[0]?.id);
 
-  let getHeadings = useCallback((tableOfContents: TableOfContents) => {
+  const getHeadings = useCallback((tableOfContents: TableOfContents) => {
     return tableOfContents
       .flatMap((node) => [node.id, ...node.children.map((child) => child.id)])
       .map((id) => {
-        let el = document.getElementById(id);
+        const el = document.getElementById(id);
         if (!el) return;
 
-        let style = window.getComputedStyle(el);
-        let scrollMt = parseFloat(style.scrollMarginTop);
+        const style = window.getComputedStyle(el);
+        const scrollMt = parseFloat(style.scrollMarginTop);
 
-        let top = window.scrollY + el.getBoundingClientRect().top - scrollMt;
+        const top = window.scrollY + el.getBoundingClientRect().top - scrollMt;
         return { id, top };
       });
   }, []);
@@ -180,7 +180,7 @@ function useTableOfContents(tableOfContents: TableOfContents) {
     if (tableOfContents.length === 0) return;
     const headings = getHeadings(tableOfContents);
     function onScroll() {
-      let top = window.scrollY;
+      const top = window.scrollY;
       let current = headings[0]!.id;
       for (const heading of headings) {
         if (top >= heading!.top) {
@@ -210,16 +210,16 @@ export function Layout({
   title: string;
   tableOfContents: TableOfContents;
 }) {
-  let router = useRouter();
-  let isHomePage = router.pathname === "/";
-  let allLinks = navigation.flatMap((section) => section.links);
-  let linkIndex = allLinks.findIndex((link) => link.href === router.pathname);
-  let previousPage = allLinks[linkIndex - 1];
-  let nextPage = allLinks[linkIndex + 1];
-  let section = navigation.find((section) =>
+  const router = useRouter();
+  const isHomePage = router.pathname === "/";
+  const allLinks = navigation.flatMap((section) => section.links);
+  const linkIndex = allLinks.findIndex((link) => link.href === router.pathname);
+  const previousPage = allLinks[linkIndex - 1];
+  const nextPage = allLinks[linkIndex + 1];
+  const section = navigation.find((section) =>
     section.links.find((link) => link.href === router.pathname)
   );
-  let currentSection = useTableOfContents(tableOfContents);
+  const currentSection = useTableOfContents(tableOfContents);
 
   function isActive(section: any) {
     if (section.id === currentSection) {

@@ -14,7 +14,7 @@ export function Navigation({
   navigation: Navigation;
   className: string;
 }) {
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <nav className={clsx("text-base lg:text-sm", className)}>

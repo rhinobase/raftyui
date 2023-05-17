@@ -1,28 +1,28 @@
-import { classNames } from '@rhino/utils';
-import { SVGProps, forwardRef } from 'react';
+import { classNames } from "@rhino/utils";
+import { forwardRef } from "react";
 
 const dimensions = {
-  sm: '18px',
-  md: '24px',
-  lg: '36px',
+  sm: "18px",
+  md: "24px",
+  lg: "36px",
 };
 
-export type Spinner = {
+export type Spinner = JSX.IntrinsicElements["svg"] & {
   size?: keyof typeof dimensions;
   inheritParent?: boolean;
-} & SVGProps<SVGSVGElement>;
+};
 
 export const Spinner = forwardRef<SVGSVGElement, Spinner>(
   (
-    { inheritParent = false, size = 'md', className, ...props },
+    { inheritParent = false, size = "md", className, ...props },
     forwardedRef
   ) => {
     return (
       <svg
         {...props}
         className={classNames(
-          !inheritParent && 'text-secondary-700 dark:text-secondary-400',
-          'animate-spin',
+          !inheritParent && "text-secondary-700 dark:text-secondary-400",
+          "animate-spin",
           className
         )}
         width={dimensions[size]}

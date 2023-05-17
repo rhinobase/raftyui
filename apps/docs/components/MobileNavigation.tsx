@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-// import { Dialog } from "@rafty/ui";
 
-import { Logomark } from "@/components/Logo";
-import { Navigation } from "@/components/Navigation";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Navigation } from "./Navigation";
 
 export function MobileNavigation({ navigation }: { navigation: Navigation }) {
-  let router = useRouter();
-  let [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;

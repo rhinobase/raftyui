@@ -4,7 +4,6 @@ import Link from "next/link";
 import Router from "next/router";
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import {} from "@rafty/ui";
 const docSearchConfig = {
   appId: process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID ?? "",
   apiKey: process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY ?? "",
@@ -16,8 +15,8 @@ function Hit({ hit, children }: { hit: { url: string }; children: ReactNode }) {
 }
 
 export function Search() {
-  let [isOpen, setIsOpen] = useState(false);
-  let [modifierKey, setModifierKey] = useState<"⌘" | "Ctrl">();
+  const [isOpen, setIsOpen] = useState(false);
+  const [modifierKey, setModifierKey] = useState<"⌘" | "Ctrl">();
 
   const onOpen = useCallback(() => {
     setIsOpen(true);

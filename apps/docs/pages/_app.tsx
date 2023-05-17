@@ -1,10 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import { Inter, Lexend } from "next/font/google";
-import { Layout } from "@/components/Layout";
+import { Layout } from "../components/Layout";
 import Head from "next/head";
 import { MarkdocNextJsPageProps } from "@markdoc/next.js";
 import { RenderableTreeNodes } from "@markdoc/markdoc";
