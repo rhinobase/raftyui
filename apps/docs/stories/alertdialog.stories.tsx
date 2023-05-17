@@ -8,30 +8,30 @@ import {
   AlertDialogOverlay,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@rhino/alertdialog";
+} from "@rhino/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",
   args: {
     size: "md",
-    barebone: false,
+    isBarebone: false,
   },
   argTypes: {
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
     },
-    barebone: {},
+    isBarebone: {},
   },
 };
 export default meta;
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  render: ({ size, barebone }) => (
+  render: ({ size, isBarebone }) => (
     <>
-      <AlertDialog size={size} barebone={barebone}>
+      <AlertDialog size={size} isBarebone={isBarebone}>
         <AlertDialogTrigger>Open</AlertDialogTrigger>
         <AlertDialogOverlay />
         <AlertDialogContent data-cy="dialogcontent">

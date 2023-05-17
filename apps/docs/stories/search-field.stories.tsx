@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { SearchField } from "@rhino/input";
+import { SearchField } from "@rhino/ui";
 
 const meta: Meta<typeof SearchField> = {
   title: "Form / SearchField",
@@ -25,7 +25,7 @@ const meta: Meta<typeof SearchField> = {
 export default meta;
 type Story = StoryObj<typeof SearchField>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, variant, isReadOnly, isDisabled, isRequired }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">

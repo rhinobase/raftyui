@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Progress } from "@rhino/progress";
+import { Progress } from "@rhino/ui";
 
 const meta: Meta<typeof Progress> = {
   title: "Components / Progress",
@@ -26,7 +26,7 @@ const meta: Meta<typeof Progress> = {
 export default meta;
 type Story = StoryObj<typeof Progress>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, colorScheme, isIndeterminate }) => (
     <div className="flex w-full max-w-4xl flex-col gap-4 dark:text-white">
       <Progress

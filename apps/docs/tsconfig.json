@@ -16,11 +16,7 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "types": ["jest", "node"]
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
   "exclude": [

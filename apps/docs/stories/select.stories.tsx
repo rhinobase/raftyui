@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select } from "@rhino/select";
+import { Select } from "@rhino/ui";
 import { Item } from "react-stately";
 
 const meta: Meta<typeof Select> = {
@@ -7,7 +7,6 @@ const meta: Meta<typeof Select> = {
   args: {
     size: "md",
     variant: "outline",
-    unstyled: false,
   },
   argTypes: {
     size: {
@@ -18,20 +17,17 @@ const meta: Meta<typeof Select> = {
       control: "select",
       options: ["outline", "ghost", "solid"],
     },
-    unstyled: {
-      control: "boolean",
-    },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Select>;
 
-export const Variants: Story = {
-  render: ({ size, variant, unstyled }) => (
+export const Default: Story = {
+  render: ({ size, variant }) => (
     <div className="w-[500px]">
       <h4 className="font-bold">Style</h4>
-      <Select variant={variant} size={size} unstyled={unstyled}>
+      <Select variant={variant} size={size}>
         <Item key="option1">Option 1</Item>
         <Item key="option2">Option 2</Item>
         <Item key="option3">Option 3</Item>

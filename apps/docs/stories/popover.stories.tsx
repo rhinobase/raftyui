@@ -4,7 +4,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverClose,
-} from "@rhino/popover";
+} from "@rhino/ui";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Popover> = {
@@ -14,7 +14,7 @@ const meta: Meta<typeof Popover> = {
 export default meta;
 type Story = StoryObj<typeof Popover>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <div className="flex w-full max-w-4xl flex-col gap-4 dark:text-white items-center">
       <Popover>

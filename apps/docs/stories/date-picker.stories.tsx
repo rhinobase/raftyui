@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { DatePicker } from "@rhino/date-picker";
+import { DatePicker } from "@rhino/ui";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Form / DatePicker",
@@ -22,7 +22,7 @@ const meta: Meta<typeof DatePicker> = {
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, variant }) => (
     <>
       <div className="w-[500px]">

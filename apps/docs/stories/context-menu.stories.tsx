@@ -12,7 +12,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@rhino/context-menu";
+} from "@rhino/ui";
 import { useState } from "react";
 
 const meta: Meta<typeof ContextMenu> = {
@@ -32,8 +32,8 @@ export default meta;
 
 type Story = StoryObj<typeof ContextMenu>;
 
-export const Variants: Story = {
-  render: function Render({ size }: typeof ContextMenu) {
+export const Default: Story = {
+  render: function Render({ size }) {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
     const [urlsChecked, setUrlsChecked] = useState(false);
     const [person, setPerson] = useState("1");

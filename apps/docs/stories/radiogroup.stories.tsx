@@ -1,4 +1,4 @@
-import { Radio, RadioCard, RadioGroup } from "@rhino/radio";
+import { Radio, RadioCard, RadioGroup } from "@rhino/ui";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 
@@ -9,7 +9,7 @@ const meta: Meta<typeof RadioGroup> = {
 export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <div className="flex flex-col gap-4">

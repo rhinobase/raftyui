@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ListItem, OrderedList } from "@rhino/list";
+import { ListItem, OrderedList } from "@rhino/ui";
 
 const meta: Meta<typeof OrderedList> = {
   title: "Components / OrderedList",
@@ -8,7 +8,7 @@ const meta: Meta<typeof OrderedList> = {
 export default meta;
 type Story = StoryObj<typeof OrderedList>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <OrderedList>

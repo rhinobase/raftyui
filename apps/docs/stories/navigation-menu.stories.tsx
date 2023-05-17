@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuListItem,
   NavigationMenuTrigger,
-} from "@rhino/navigation-menu";
+} from "@rhino/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof NavigationMenu> = {
@@ -26,7 +26,7 @@ const meta: Meta<typeof NavigationMenu> = {
 export default meta;
 type Story = StoryObj<typeof NavigationMenu>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size }) => (
     <>
       <div className="h-screen w-screen">

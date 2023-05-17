@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { InputField, NumberField } from "@rhino/input";
+import { InputField, NumberField } from "@rhino/ui";
 
 const meta: Meta<typeof NumberField> = {
   title: "Form / NumberField",
@@ -25,7 +25,7 @@ const meta: Meta<typeof NumberField> = {
 export default meta;
 type Story = StoryObj<typeof InputField>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, variant, isReadOnly, isDisabled, isRequired }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">

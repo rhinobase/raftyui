@@ -6,8 +6,8 @@ import {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
-} from "@rhino/dialog";
-import { Button } from "@rhino/button";
+  Button,
+} from "@rhino/ui";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",
@@ -26,7 +26,7 @@ export default meta;
 
 type Story = StoryObj<typeof Dialog>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size }) => (
     <>
       <Dialog size={size}>

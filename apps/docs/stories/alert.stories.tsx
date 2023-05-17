@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rhino/alert";
-import { Button } from "@rhino/button";
+import { Button } from "@rhino/ui";
 
 const meta: Meta<typeof Alert> = {
   title: "Components / Alert",

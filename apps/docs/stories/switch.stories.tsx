@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Switch } from "@rhino/switch";
+import { Switch } from "@rhino/ui";
 
 const meta: Meta<typeof Switch> = {
   title: "Form / Switch",
@@ -18,7 +18,7 @@ const meta: Meta<typeof Switch> = {
 export default meta;
 type Story = StoryObj<typeof Switch>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, isDisabled }) => (
     <>
       <div className="flex flex-col gap-4">

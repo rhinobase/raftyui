@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Kbd } from "@rhino/kbd";
+import { Kbd } from "@rhino/ui";
 
 const meta: Meta<typeof Kbd> = {
   title: "Components / Kbd",
@@ -8,7 +8,7 @@ const meta: Meta<typeof Kbd> = {
 export default meta;
 type Story = StoryObj<typeof Kbd>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <Kbd>shift + K</Kbd>

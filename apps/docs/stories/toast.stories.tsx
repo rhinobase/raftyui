@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Toast } from "@rhino/toast";
+import { Toast } from "@rhino/ui";
 
 const meta: Meta<typeof Toast> = {
   title: "Components / Toast",
@@ -8,7 +8,7 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <Toast

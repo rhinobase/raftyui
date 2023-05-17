@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Tag } from "@rhino/tag";
+import { Tag } from "@rhino/ui";
 
 const meta: Meta<typeof Tag> = {
   title: "Components / Tag",

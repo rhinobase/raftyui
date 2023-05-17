@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Combobox, ComboboxItem } from "@rhino/combobox";
+import { Combobox, ComboboxItem } from "@rhino/ui";
 
 const meta: Meta<typeof Combobox> = {
   title: "Form / Combobox",
@@ -24,7 +24,7 @@ export default meta;
 
 type Story = StoryObj<typeof Combobox>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, variant }) => {
     return (
       <div className="w-[500px]">

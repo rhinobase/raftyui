@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Card, CardBody, CardFooter, CardHeader } from "@rhino/card";
-import { Button } from "@rhino/button";
+import { Button } from "@rhino/ui";
 
 const meta: Meta<typeof Card> = {
   title: "Components / Card",
@@ -24,7 +24,7 @@ export default meta;
 
 type Story = StoryObj<typeof Card>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ variant, size }) => (
     <Card
       className="dark:border-secondary-700 rounded-md border"

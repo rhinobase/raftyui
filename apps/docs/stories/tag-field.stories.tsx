@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { TagField } from "@rhino/tag-field";
-import { FieldControl } from "@rhino/field";
+import { TagField, FieldControl } from "@rhino/ui";
 
 const meta: Meta<typeof TagField> = {
   title: "Components / TagField",
@@ -9,7 +8,7 @@ const meta: Meta<typeof TagField> = {
 export default meta;
 type Story = StoryObj<typeof TagField>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <FieldControl name="tag">

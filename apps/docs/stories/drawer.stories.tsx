@@ -6,8 +6,8 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,
-} from "@rhino/drawer";
-import { Button } from "@rhino/button";
+  Button,
+} from "@rhino/ui";
 import { useState } from "react";
 
 const meta: Meta<typeof Drawer> = {
@@ -26,7 +26,7 @@ const meta: Meta<typeof Drawer> = {
 export default meta;
 type Story = StoryObj<typeof Drawer>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: function Render({ size }) {
     const [isOpen, setOpen] = useState(false);
     return (

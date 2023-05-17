@@ -1,30 +1,31 @@
-import { Spinner } from "@rhino/spinner";
+import { Meta, StoryObj } from "@storybook/react";
+import { Spinner } from "@rhino/ui";
 
-const config = {
+const meta: Meta<typeof Spinner> = {
   title: "Components / Spinner",
-  component: Spinner,
+  args: {
+    size: "md",
+    inheritParent: false,
+  },
   argTypes: {
-    size: { control: "select" },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
   },
 };
-export default config;
 
-export function Sizes(args: Spinner) {
-  return (
-    <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-40px)]">
-      <div className="flex items-center gap-3">
-        sm: <Spinner size="sm" {...args} />
-      </div>
-      <div className="flex items-center gap-3">
-        md: <Spinner size="md" {...args} />
-      </div>
-      <div className="flex items-center gap-3">
-        lg: <Spinner size="lg" {...args} />
-      </div>
-    </div>
-  );
-}
+export default meta;
+type Story = StoryObj<typeof Spinner>;
 
-Sizes.args = {
-  inheritParent: true,
+export const Default: Story = {
+  render: ({ size, inheritParent }) => (
+    <>
+      <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-40px)]">
+        <div className="flex items-center gap-3">
+          {size}: <Spinner size={size} inheritParent={inheritParent} />
+        </div>
+      </div>
+    </>
+  ),
 };

@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel } from "@rhino/field";
-import { InputField } from "@rhino/input";
-import { Switch } from "@rhino/switch";
+import { FieldControl, FieldLabel, InputField, Switch } from "@rhino/ui";
 
 const meta: Meta<typeof FieldControl> = {
   title: "Form / FieldControl",
@@ -20,7 +18,7 @@ const meta: Meta<typeof FieldControl> = {
 export default meta;
 type Story = StoryObj<typeof FieldControl>;
 
-export const Variants: Story = {
+export const Deafult: Story = {
   render: ({ orientation }) => (
     <>
       <FieldControl name="field-control" orientation={orientation}>

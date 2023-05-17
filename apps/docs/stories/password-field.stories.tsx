@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { PasswordField } from "@rhino/input";
-import { FieldControl, FieldLabel } from "@rhino/field";
+import { PasswordField, FieldControl, FieldLabel } from "@rhino/ui";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Form / PasswordField",
@@ -26,7 +25,7 @@ const meta: Meta<typeof PasswordField> = {
 export default meta;
 type Story = StoryObj<typeof PasswordField>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, variant, isDisabled, isReadOnly, isRequired }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">

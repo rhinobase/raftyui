@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Skeleton } from "@rhino/skeleton";
+import { Skeleton } from "@rhino/ui";
 
 const meta: Meta<typeof Skeleton> = {
   title: "Components / Skeleton",
@@ -8,7 +8,7 @@ const meta: Meta<typeof Skeleton> = {
 export default meta;
 type Story = StoryObj<typeof Skeleton>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <Skeleton className="h-20 w-80" />

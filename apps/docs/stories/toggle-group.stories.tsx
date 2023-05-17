@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ToggleGroup, ToggleGroupItem } from "@rhino/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@rhino/ui";
 
 const meta: Meta<typeof ToggleGroup> = {
   title: "Components / ToggleGroup",
@@ -17,7 +17,7 @@ const meta: Meta<typeof ToggleGroup> = {
 export default meta;
 type Story = StoryObj<typeof ToggleGroup>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <div className="flex w-80 flex-col gap-6">

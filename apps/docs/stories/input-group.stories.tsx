@@ -6,7 +6,7 @@ import {
   InputField,
   LeftAddon,
   RightAddon,
-} from "@rhino/input";
+} from "@rhino/ui";
 import {
   CheckIcon,
   MagnifyingGlassIcon,
@@ -29,7 +29,7 @@ const meta: Meta<typeof InputField> = {
 export default meta;
 type Story = StoryObj<typeof InputField>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size }) => (
     <>
       <div className="flex w-full max-w-2xl flex-col gap-4">

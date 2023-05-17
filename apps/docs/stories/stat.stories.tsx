@@ -1,11 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import {
-  Stat,
-  StatHelpText,
-  StatIcon,
-  StatLabel,
-  StatValue,
-} from "@rhino/stat";
+import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rhino/ui";
 
 const meta: Meta<typeof Stat> = {
   title: "Components / Stat",
@@ -14,7 +8,7 @@ const meta: Meta<typeof Stat> = {
 export default meta;
 type Story = StoryObj<typeof Stat>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: () => (
     <>
       <Stat type="decrease">

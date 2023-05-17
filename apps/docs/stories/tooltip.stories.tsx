@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Tooltip } from "@rhino/tooltip";
-import { Button } from "@rhino/button";
+import { Tooltip, Button } from "@rhino/ui";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Tooltip> = {
@@ -16,7 +15,7 @@ const meta: Meta<typeof Tooltip> = {
 export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ content }) => (
     <Tooltip side="top" content={content}>
       <Button size="fab">

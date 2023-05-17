@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@rhino/accordion";
+} from "@rhino/ui";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components / Accordion",
@@ -28,7 +28,7 @@ export default meta;
 
 type Story = StoryObj<typeof Accordion>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ variant, size }) => (
     <>
       <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">

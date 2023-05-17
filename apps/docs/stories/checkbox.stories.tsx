@@ -1,5 +1,5 @@
-import { Checkbox, CheckboxGroup } from "@rhino/checkbox";
 import { Meta, StoryObj } from "@storybook/react";
+import { Checkbox, CheckboxGroup } from "@rhino/ui";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Form / Checkbox",

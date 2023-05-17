@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { RangePicker } from "@rhino/date-picker";
+import { RangePicker } from "@rhino/ui";
 
 const meta: Meta<typeof RangePicker> = {
   title: "Form / RangePicker",
@@ -22,7 +22,7 @@ const meta: Meta<typeof RangePicker> = {
 export default meta;
 type Story = StoryObj<typeof RangePicker>;
 
-export const Variants: Story = {
+export const Default: Story = {
   render: ({ size, variant }) => (
     <div className="max-w-sm w-full">
       <RangePicker size={size} variant={variant} />
