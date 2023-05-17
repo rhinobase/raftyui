@@ -37,7 +37,7 @@ export const Default: Story = {
                 Learn
                 {/* <CaretDownIcon className="CaretDown" aria-hidden /> */}
               </NavigationMenuTrigger>
-              <NavigationMenuContent size="sm">
+              <NavigationMenuContent data-cy="content" size="sm">
                 <div className="grid grid-cols-1">
                   <div>
                     <NavigationMenuLink href="/">

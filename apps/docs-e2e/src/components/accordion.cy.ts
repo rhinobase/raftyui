@@ -1,6 +1,6 @@
 describe("Accordion Test", () => {
   beforeEach(() =>
-    cy.visit("iframe.html?args=&id=components-accordion--variants")
+    cy.visit("iframe.html?args=&id=components-accordion--default")
   );
 
   it("Basic test for Accordion", () => {

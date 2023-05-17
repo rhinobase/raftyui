@@ -1,10 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverClose,
-} from "@rhino/ui";
+import { Popover, PopoverTrigger, PopoverContent } from "@rhino/ui";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Popover> = {
@@ -20,7 +15,7 @@ export const Default: Story = {
       <Popover>
         <PopoverTrigger>Open</PopoverTrigger>
         <PopoverContent>
-          <div className="p-6">
+          <div data-cy="content" className="p-6">
             <div>
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <CheckIcon

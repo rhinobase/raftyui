@@ -21,7 +21,10 @@ type Story = StoryObj<typeof Tab>;
 export const Variants: Story = {
   render: ({ size, orientation }) => (
     <>
-      <div className="w-[640px] rounded-md border py-2 dark:border-zinc-700">
+      <div
+        data-cy="tab-1"
+        className="w-[640px] rounded-md border py-2 dark:border-zinc-700"
+      >
         <Tab defaultValue="tab1" size={size} orientation={orientation}>
           <TabList>
             <TabTrigger value="tab1">Tab1</TabTrigger>

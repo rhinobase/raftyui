@@ -1,7 +1,5 @@
 describe("Dialog Test", () => {
-  beforeEach(() =>
-    cy.visit("iframe.html?args=&id=components-dialog--variants&viewMode=story")
-  );
+  beforeEach(() => cy.visit("iframe.html?args=&id=components-dialog--default"));
 
   it("Should be visible", () => {
     // Test for dialog open
