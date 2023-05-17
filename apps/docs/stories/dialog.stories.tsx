@@ -4,7 +4,7 @@ import {
   DialogBody,
   DialogContent,
   DialogOverlay,
-  DialogTitle,
+  DialogHeading,
   DialogTrigger,
   Button,
 } from "@rhino/ui";
@@ -34,7 +34,7 @@ export const Default: Story = {
         <DialogOverlay data-cy="overlay" />
         <DialogContent>
           <DialogBody>
-            <DialogTitle>Dialog Header</DialogTitle>
+            <DialogHeading>Dialog Header</DialogHeading>
             <p>
               Make changes to your profile here. Click save when you&apos;re
               done.
