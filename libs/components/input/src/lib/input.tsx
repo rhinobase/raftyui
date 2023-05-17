@@ -45,7 +45,7 @@ function useBoolean(initialState: InitialState = false) {
   return [value, callbacks] as const;
 }
 
-export const inputFieldClasses = cva(
+const inputFieldClasses = cva(
   "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
@@ -234,6 +234,7 @@ export type InputField = Omit<AriaTextFieldProps, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
 };
+
 export const InputField = forwardRef<HTMLInputElement, InputField>(
   ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
     const ref = useRef(null);
@@ -257,6 +258,7 @@ export type NumberField = Omit<AriaNumberFieldProps, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
 };
+
 export const NumberField = forwardRef<HTMLInputElement, NumberField>(
   ({ variant = "outline", size = "md", className, ...props }, forwardedRef) => {
     const { locale } = useLocale();
@@ -328,6 +330,7 @@ export type SearchField = Omit<AriaSearchFieldProps, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
 };
+
 export const SearchField = forwardRef<HTMLInputElement, SearchField>(
   ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
     const state = useSearchFieldState(props);
@@ -365,6 +368,7 @@ export type PasswordField = Omit<AriaTextFieldProps, "size"> & {
   size?: "sm" | "md" | "lg";
   variant?: "outline" | "solid" | "ghost";
 };
+
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
   ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
     const [showPassword, { toggle }] = useBoolean();

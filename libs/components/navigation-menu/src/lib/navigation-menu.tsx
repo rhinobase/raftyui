@@ -6,13 +6,13 @@ import {
   useNavigationMenuContext,
 } from "./context";
 import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export type NavigationMenu = ComponentProps<
   (typeof NavigationMenuPrimitive)["Root"]
 > &
   Partial<NavigationMenuContext> & { isUnstyled?: boolean };
+
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   (
     {
@@ -30,8 +30,8 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
     return (
       <NavigationMenuProvider value={{ size, isBarebone }}>
         <NavigationMenuPrimitive.Root
-          className={unstyle ? className : classNames("relative", className)}
           {...props}
+          className={unstyle ? className : classNames("relative", className)}
           ref={forwardedRef}
         >
           {children}
@@ -46,6 +46,7 @@ NavigationMenu.displayName = "NavigationMenu";
 export type NavigationMenuList = ComponentProps<
   (typeof NavigationMenuPrimitive)["List"]
 > & { isUnstyled?: boolean };
+
 export const NavigationMenuList = ({
   children,
   className,
@@ -74,39 +75,35 @@ export const NavigationMenuList = ({
 NavigationMenuList.displayName = "NavigationMenuList";
 
 //MenuBar Button Component
-type NavigationMenuItem = ComponentProps<
+export type NavigationMenuItem = ComponentProps<
   (typeof NavigationMenuPrimitive)["Item"]
 >;
+
 export const NavigationMenuItem = ({
   children,
   className,
   ...props
-}: NavigationMenuItem) => {
-  return (
-    <NavigationMenuPrimitive.Item className={classNames(className)} {...props}>
-      {children}
-    </NavigationMenuPrimitive.Item>
-  );
-};
+}: NavigationMenuItem) => (
+  <NavigationMenuPrimitive.Item {...props} className={className}>
+    {children}
+  </NavigationMenuPrimitive.Item>
+);
 NavigationMenuItem.displayName = "NavigationMenuItem";
 
-const triggerClasses = cva(
-  "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none",
-  {
-    variants: {
-      size: {
-        sm: "py-2 px-3 text-xs",
-        md: "py-2 px-3 text-base",
-        lg: "py-3 px-4 text-lg",
-      },
-    },
-  }
-);
+const triggerClasses = {
+  size: {
+    sm: "py-2 px-3 text-xs",
+    md: "py-2 px-3 text-base",
+    lg: "py-3 px-4 text-lg",
+  },
+};
+
 export type NavigationMenuTrigger = ComponentProps<
   (typeof NavigationMenuPrimitive)["Trigger"]
 > & {
   isUnstyled?: boolean;
 };
+
 export const NavigationMenuTrigger = forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
@@ -116,10 +113,16 @@ export const NavigationMenuTrigger = forwardRef<
 
   return (
     <NavigationMenuPrimitive.Trigger
-      className={
-        unstyle ? className : classNames(triggerClasses({ size }), className)
-      }
       {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20",
+              triggerClasses.size[size],
+              className
+            )
+      }
       ref={forwardedRef}
     >
       {children}
@@ -129,22 +132,18 @@ export const NavigationMenuTrigger = forwardRef<
 });
 NavigationMenuTrigger.displayName = "NavigationMenuTrigger";
 
-const contentClasses = cva(
-  "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
-  {
-    variants: {
-      size: {
-        sm: "max-w-lg top-2.5 rounded-md",
-        md: "max-w-2xl top-2.5 rounded-md",
-        lg: "max-w-6xl top-2.5 rounded-md",
-        full: "-top-1 w-screen",
-      },
-    },
-  }
-);
+const contentClasses = {
+  size: {
+    sm: "max-w-lg top-2.5 rounded-md",
+    md: "max-w-2xl top-2.5 rounded-md",
+    lg: "max-w-6xl top-2.5 rounded-md",
+    full: "-top-1 w-screen",
+  },
+};
+
 export type NavigationMenuContent = ComponentProps<
   (typeof NavigationMenuPrimitive)["Content"]
-> & { size?: "sm" | "md" | "lg" | "full" } & { isUnstyled?: boolean };
+> & { size?: "sm" | "md" | "lg" | "full"; isUnstyled?: boolean };
 export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
   NavigationMenuContent
@@ -158,10 +157,16 @@ export const NavigationMenuContent = forwardRef<
 
     return (
       <NavigationMenuPrimitive.Content
-        className={
-          unstyle ? className : classNames(contentClasses({ size }), className)
-        }
         {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                "absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200 animate-slide-down-fade dark:bg-secondary-800",
+                contentClasses.size[size],
+                className
+              )
+        }
         ref={forwardedRef}
       >
         {children}
@@ -171,21 +176,18 @@ export const NavigationMenuContent = forwardRef<
 );
 NavigationMenuContent.displayName = "NavigationMenu.Content";
 
-const linkClasses = cva(
-  "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md font-semibold outline-none",
-  {
-    variants: {
-      size: {
-        sm: "py-1 px-2 text-xs",
-        md: "py-2 px-3 text-base",
-        lg: "py-3 px-4 text-lg",
-      },
-    },
-  }
-);
+const linkClasses = {
+  size: {
+    sm: "py-1 px-2 text-xs",
+    md: "py-2 px-3 text-base",
+    lg: "py-3 px-4 text-lg",
+  },
+};
+
 export type NavigationMenuLink = ComponentProps<
   (typeof NavigationMenuPrimitive)["Link"]
 > & { isUnstyled?: boolean };
+
 export const NavigationMenuLink = ({
   children,
   className,
@@ -197,10 +199,16 @@ export const NavigationMenuLink = ({
 
   return (
     <NavigationMenuPrimitive.Link
-      className={
-        unstyle ? className : classNames(linkClasses({ size }), className)
-      }
       {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "flex select-none rounded-md font-semibold outline-none hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20",
+              linkClasses.size[size],
+              className
+            )
+      }
     >
       {children}
     </NavigationMenuPrimitive.Link>
@@ -213,44 +221,44 @@ export type NavigationMenuListItem = {
   href: string;
   children: React.ReactNode;
 };
+
 export const NavigationMenuListItem = ({
   title,
   href,
   children,
-}: NavigationMenuListItem) => {
-  return (
-    <NavigationMenuLink href={href}>
-      <div className="p-2">
-        <h5 className="text-base font-semibold text-black dark:text-white">
-          {title}
-        </h5>
-        <p className="text-base font-normal text-black/50 dark:text-white/50">
-          {children}
-        </p>
-      </div>
-    </NavigationMenuLink>
-  );
-};
+}: NavigationMenuListItem) => (
+  <NavigationMenuLink href={href}>
+    <div className="p-2">
+      <h5 className="text-base font-semibold text-black dark:text-white">
+        {title}
+      </h5>
+      <p className="text-base font-normal text-black/50 dark:text-white/50">
+        {children}
+      </p>
+    </div>
+  </NavigationMenuLink>
+);
 
 type NavigationMenuViewport = ComponentProps<
   (typeof NavigationMenuPrimitive)["Viewport"]
 >;
+
 const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
   return (
     <NavigationMenuPrimitive.Viewport
+      {...props}
       className={classNames(
         "absolute top-full left-0 flex w-full justify-center"
       )}
-      {...props}
     />
   );
 };
-
 NavigationMenuViewport.displayName = "NavigationMenuViewport";
 
 export type NavigationMenuIndicator = ComponentProps<
   (typeof NavigationMenuPrimitive)["Indicator"]
 > & { isUnstyled?: boolean };
+
 export const NavigationMenuIndicator = ({
   className,
   isUnstyled = false,
@@ -258,8 +266,10 @@ export const NavigationMenuIndicator = ({
 }: NavigationMenuIndicator) => {
   const { isBarebone } = useNavigationMenuContext();
   const unstyle = isBarebone || isUnstyled;
+
   return (
     <NavigationMenuPrimitive.Indicator
+      {...props}
       className={
         unstyle
           ? className
@@ -268,7 +278,6 @@ export const NavigationMenuIndicator = ({
               className
             )
       }
-      {...props}
     >
       <div className="dark:bg-secondary-800 relative top-[70%] h-[12px] w-[12px] rotate-45 transform bg-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]" />
     </NavigationMenuPrimitive.Indicator>

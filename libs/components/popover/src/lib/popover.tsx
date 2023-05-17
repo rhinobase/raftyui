@@ -17,19 +17,16 @@ import {
 import { classNames } from "@rhino/utils";
 import { Button } from "@rhino/button";
 
-export type Popover = {
+export type Popover = OverlayTriggerProps & {
   children: React.ReactNode;
   isBarebone?: boolean;
-} & OverlayTriggerProps;
+};
 
 export const Popover = forwardRef<HTMLDivElement, Popover>(
-  ({ ...props }, forwardedRef) => {
+  ({ isBarebone = false, children, ...props }, forwardedRef) => {
     return (
-      <PopoverProvider
-        isBarebone={Boolean(props.isBarebone)}
-        triggerProps={props}
-      >
-        <div ref={forwardedRef}>{props.children}</div>
+      <PopoverProvider isBarebone={isBarebone} triggerProps={props}>
+        <div ref={forwardedRef}>{children}</div>
       </PopoverProvider>
     );
   }
@@ -47,7 +44,6 @@ export function PopoverTrigger({
   isUnstyled = false,
 }: PopoverTrigger) {
   const { triggerRef, state, isBarebone } = usePopover();
-
   const unstyle = isBarebone || isUnstyled;
 
   if (!state) throw new Error("Popover Context is not Defined");
@@ -73,14 +69,17 @@ export function PopoverTrigger({
   );
 }
 
-export type PopoverContent = {
+export type PopoverContent = Omit<
+  AriaPopoverProps,
+  "popoverRef" | "triggerRef"
+> & {
   children: React.ReactNode;
   triggerState?: OverlayTriggerState;
   className?: string;
   isUnstyled?: boolean;
   popoverRef?: React.RefObject<Element>;
   triggerRef?: React.RefObject<Element>;
-} & Omit<AriaPopoverProps, "popoverRef" | "triggerRef">;
+};
 
 export function PopoverContent({
   children,
@@ -93,7 +92,6 @@ export function PopoverContent({
 }: PopoverContent) {
   const { state, isBarebone, triggerRef } = usePopover();
   const popoverRef = useRef(null);
-
   const values = useAriaPopover(
     {
       ...props,
@@ -103,10 +101,7 @@ export function PopoverContent({
     },
     triggerState ?? state
   );
-
   const unstyle = isBarebone || isUnstyled;
-
-  // console.log(state.isOpen);
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
   if (!triggerState?.isOpen && !state.isOpen) return <></>;
@@ -118,7 +113,6 @@ export function PopoverContent({
       {!isNonModal && <div {...underlayProps} className="fixed top-0 left-0" />}
       <div
         {...popoverProps}
-        ref={popoverRef}
         className={
           unstyle
             ? className
@@ -127,6 +121,7 @@ export function PopoverContent({
                 className
               )
         }
+        ref={popoverRef}
       >
         {children}
       </div>
@@ -166,7 +161,7 @@ export function PopoverArrow({ className, isUnstyled = false }: PopoverArrow) {
   );
 }
 
-export function PopoverClose(props: DismissButtonProps) {
+export function PopoverClose({ onDismiss, ...props }: DismissButtonProps) {
   const { state } = usePopover();
 
   return (
@@ -174,7 +169,7 @@ export function PopoverClose(props: DismissButtonProps) {
       {...props}
       onDismiss={() => {
         state.close();
-        if (props.onDismiss) props.onDismiss();
+        if (onDismiss) onDismiss();
       }}
     />
   );

@@ -1,16 +1,17 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
-import React, { ComponentProps, forwardRef } from 'react';
-import { Button } from '@rhino/button';
-import { DialogContext, DialogProvider, useDialogContext } from './context';
-import { classNames } from '@rhino/utils';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import React, { ComponentProps, forwardRef } from "react";
+import { Button } from "@rhino/button";
+import { DialogContext, DialogProvider, useDialogContext } from "./context";
+import { classNames } from "@rhino/utils";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // Dialog Component
-export type Dialog = ComponentProps<(typeof DialogPrimitive)['Dialog']> &
+export type Dialog = ComponentProps<(typeof DialogPrimitive)["Dialog"]> &
   Partial<DialogContext>;
+
 export const Dialog = ({
   children,
-  size = 'md',
+  size = "md",
   isBarebone = false,
   ...props
 }: Dialog) => (
@@ -19,13 +20,14 @@ export const Dialog = ({
     <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
   </DialogProvider>
 );
-Dialog.displayName = 'Dialog';
+Dialog.displayName = "Dialog";
 
 // Dialog Button Component
 export type DialogTrigger = ComponentProps<
-  (typeof DialogPrimitive)['DialogTrigger']
+  (typeof DialogPrimitive)["DialogTrigger"]
 > &
   Button;
+
 export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTrigger>(
   (
     {
@@ -53,7 +55,7 @@ export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTrigger>(
           children
         ) : (
           <Button
-            variant={variant || 'ghost'}
+            variant={variant || "ghost"}
             colorScheme={colorScheme}
             className={className}
             leftIcon={leftIcon}
@@ -70,13 +72,14 @@ export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTrigger>(
     );
   }
 );
-DialogTrigger.displayName = 'DialogTrigger';
+DialogTrigger.displayName = "DialogTrigger";
 
 export type DialogOverlay = ComponentProps<
-  (typeof DialogPrimitive)['Overlay']
+  (typeof DialogPrimitive)["Overlay"]
 > & {
   isUnstyled?: boolean;
 };
+
 export const DialogOverlay = forwardRef<HTMLDivElement, DialogOverlay>(
   ({ className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone } = useDialogContext();
@@ -89,7 +92,7 @@ export const DialogOverlay = forwardRef<HTMLDivElement, DialogOverlay>(
           unstyle
             ? className
             : classNames(
-                'animate-slide-down-fade fixed inset-0 z-40 h-full w-full bg-black/40 transition-opacity ease-in-out',
+                "animate-slide-down-fade fixed inset-0 z-40 h-full w-full bg-black/40 transition-opacity ease-in-out",
                 className
               )
         }
@@ -98,14 +101,15 @@ export const DialogOverlay = forwardRef<HTMLDivElement, DialogOverlay>(
     );
   }
 );
-DialogOverlay.displayName = 'DialogOverlay';
+DialogOverlay.displayName = "DialogOverlay";
 
 // Dialog Content Component
 export type DialogContent = ComponentProps<
-  (typeof DialogPrimitive)['Content']
+  (typeof DialogPrimitive)["Content"]
 > & {
   isUnstyled?: boolean;
 };
+
 export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone } = useDialogContext();
@@ -119,7 +123,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
             unstyle
               ? className
               : classNames(
-                  'transition-all duration-200 focus-visible:outline-none',
+                  "transition-all duration-200 focus-visible:outline-none",
                   className
                 )
           }
@@ -131,15 +135,16 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContent>(
     );
   }
 );
-DialogContent.displayName = 'DialogContent';
+DialogContent.displayName = "DialogContent";
 
 // Dialog Title Component
-export type DialogTitle = ComponentProps<
-  (typeof DialogPrimitive)['DialogTitle']
+export type DialogHeading = ComponentProps<
+  (typeof DialogPrimitive)["DialogTitle"]
 > & {
   isUnstyled?: boolean;
 };
-export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
+
+export const DialogHeading = React.forwardRef<HTMLDivElement, DialogHeading>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { size, isBarebone } = useDialogContext();
     const unstyle = isBarebone || isUnstyled;
@@ -151,10 +156,10 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
           unstyle
             ? className
             : classNames(
-                size === 'lg' && 'text-xl',
-                size === 'md' && 'text-xl',
-                size === 'sm' && 'text-lg',
-                'mb-2 font-semibold',
+                size === "lg" && "text-xl",
+                size === "md" && "text-xl",
+                size === "sm" && "text-lg",
+                "mb-2 font-semibold",
                 className
               )
         }
@@ -165,11 +170,11 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitle>(
     );
   }
 );
-DialogTitle.displayName = 'DialogTitle';
+DialogHeading.displayName = "DialogHeading";
 
 // Dialog Body Component
 export type DialogBody = ComponentProps<
-  (typeof DialogPrimitive)['DialogDescription']
+  (typeof DialogPrimitive)["DialogDescription"]
 > & { isUnstyled?: boolean };
 export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
@@ -183,10 +188,10 @@ export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
             unstyle
               ? className
               : classNames(
-                  'dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-50 min-w-[360px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-auto bg-white text-left shadow-xl sm:w-full sm:align-middle md:h-auto md:max-h-[inherit]',
-                  size === 'lg' && 'max-w-[60rem] p-8',
-                  size === 'md' && 'max-w-[40rem] p-7',
-                  size === 'sm' && 'max-w-[30rem] p-6',
+                  size === "lg" && "max-w-[60rem] p-8",
+                  size === "md" && "max-w-[40rem] p-7",
+                  size === "sm" && "max-w-[30rem] p-6",
+                  "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-50 min-w-[360px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-auto bg-white text-left shadow-xl sm:w-full sm:align-middle md:h-auto md:max-h-[inherit]",
                   className
                 )
           }
@@ -197,11 +202,11 @@ export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
     );
   }
 );
-DialogBody.displayName = 'DialogBody';
+DialogBody.displayName = "DialogBody";
 
 // Dialog Cross Button Component
 export type DialogCloseButton = ComponentProps<
-  (typeof DialogPrimitive)['Close']
+  (typeof DialogPrimitive)["Close"]
 > &
   Button;
 export const DialogCloseButton = forwardRef<
@@ -210,8 +215,8 @@ export const DialogCloseButton = forwardRef<
 >(
   (
     {
-      variant = 'ghost',
-      size = 'icon',
+      variant = "ghost",
+      size = "icon",
       className,
       isUnstyled = false,
       ...props
@@ -231,7 +236,7 @@ export const DialogCloseButton = forwardRef<
           className={
             unstyle
               ? className
-              : classNames('absolute top-5 right-5 rounded-full', className)
+              : classNames("absolute top-5 right-5 rounded-full", className)
           }
         >
           <XMarkIcon />
@@ -240,10 +245,11 @@ export const DialogCloseButton = forwardRef<
     );
   }
 );
-DialogCloseButton.displayName = 'DialogCloseButton';
+DialogCloseButton.displayName = "DialogCloseButton";
 
-export type DialogClose = ComponentProps<(typeof DialogPrimitive)['Close']>;
-export const DialogClose = ({ children, ...props }: DialogClose) => {
-  return <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>;
-};
-DialogClose.displayName = 'DialogClose';
+export type DialogClose = ComponentProps<(typeof DialogPrimitive)["Close"]>;
+
+export const DialogClose = ({ children, ...props }: DialogClose) => (
+  <DialogPrimitive.Close {...props}>{children}</DialogPrimitive.Close>
+);
+DialogClose.displayName = "DialogClose";

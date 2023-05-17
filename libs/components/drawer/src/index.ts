@@ -1,1 +1,8 @@
-export * from './lib/drawer';
+export {
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerTitle,
+} from "./lib/drawer";
