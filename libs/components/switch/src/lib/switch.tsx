@@ -76,15 +76,9 @@ export function Switch({ size = "md", children, ...props }: Switch) {
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={ref} />
       </VisuallyHidden>
-      <div
-        className={classNames(
-          switchClasses({ size, isSelected: state.isSelected })
-        )}
-      >
+      <div className={switchClasses({ size, isSelected: state.isSelected })}>
         <div
-          className={classNames(
-            switchThumbClasses({ size, isSelected: state.isSelected })
-          )}
+          className={switchThumbClasses({ size, isSelected: state.isSelected })}
         />
       </div>
       {children}

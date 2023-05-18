@@ -1,1 +1,1 @@
-export * from './lib/tab';
+export { Tab, TabContent, TabList, TabTrigger } from "./lib/tab";

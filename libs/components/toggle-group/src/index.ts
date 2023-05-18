@@ -1,1 +1,1 @@
-export * from './lib/toggle-group';
+export { ToggleGroup, ToggleGroupItem } from "./lib/toggle-group";
