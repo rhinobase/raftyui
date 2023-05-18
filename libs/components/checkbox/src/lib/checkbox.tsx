@@ -57,42 +57,12 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroup>(
   }
 );
 
-const labelClasses = cva("flex items-center group", {
-  variants: {
-    isDisabled: {
-      true: "opacity-60 dark:opacity-50 cursor-not-allowed",
-      false: "hover:opacity-80",
-    },
-    isSelected: {
-      true: "text-primary-500 dark:text-primary-300",
-      false: "",
-    },
-  },
-});
-
-const checkboxClasses = cva(
-  "text-white border-2 rounded w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 transition ease-in-out duration-150",
-  {
-    variants: {
-      isIndeterminate: {
-        true: "border-secondary-500",
-        false: "",
-      },
-      isSelected: {
-        true: "",
-        false: "border-secondary-500",
-      },
-    },
-    compoundVariants: [
-      {
-        isIndeterminate: false,
-        isSelected: true,
-        className:
-          "bg-primary-500 group-active:border-primary-600 border-primary-500 dark:border-primary-300 dark:bg-primary-300 group-active:bg-primary-600",
-      },
-    ],
-  }
-);
+const checkboxClasses = {
+  isIndeterminate: [
+    "group-aria-selected:bg-primary-500 group-active:group-aria-selected:border-primary-600 group-aria-selected:border-primary-500 group-aria-selected:dark:border-primary-300 group-aria-selected:dark:bg-primary-300 group-active:group-aria-selected:bg-primary-600",
+    "border-secondary-500",
+  ],
+};
 
 type CheckboxComponent = {
   isDisabled?: boolean;
@@ -118,13 +88,24 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
     const Icon = isIndeterminate ? MinusIcon : CheckIcon;
 
     return (
-      <label className={labelClasses({ isDisabled, isSelected })}>
+      <label
+        className={classNames(
+          "group flex items-center",
+          "aria-selected:text-primary-500 aria-selected:dark:text-primary-300",
+          "aria-disabled:opacity-60 aria-disabled:dark:opacity-50 aria-disabled:cursor-not-allowed"
+        )}
+        aria-selected={isSelected}
+        aria-disabled={isDisabled}
+      >
         <VisuallyHidden>
           <input {...inputProps} ref={mergeRefs(forwardedRef, ref)} />
         </VisuallyHidden>
 
         <div
-          className={checkboxClasses({ isIndeterminate, isSelected })}
+          className={classNames(
+            checkboxClasses.isIndeterminate[Number(isIndeterminate)],
+            "w-5 h-5 flex flex-shrink-0 justify-center items-center rounded text-white mr-2 border-2 border-secondary-500 transition ease-in-out duration-150"
+          )}
           aria-hidden="true"
         >
           <Icon
