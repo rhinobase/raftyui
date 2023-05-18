@@ -17,6 +17,7 @@ import {
   useNumberField,
   useSearchField,
   useTextField,
+  useButton,
 } from "react-aria";
 import { useNumberFieldState, useSearchFieldState } from "react-stately";
 import {
@@ -235,21 +236,24 @@ export type InputField = Omit<AriaTextFieldProps, "size"> & {
   size?: "sm" | "md" | "lg";
 };
 
-export const InputField = forwardRef<HTMLInputElement, InputField>(
-  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
-    const ref = useRef(null);
-    const { inputProps } = useTextField(props, ref);
-    return (
-      <Input
-        inputProps={inputProps}
-        variant={variant}
-        size={size}
-        className={className}
-        inputRef={ref}
-      />
-    );
-  }
-);
+export const InputField = ({
+  className,
+  variant = "outline",
+  size = "md",
+  ...props
+}: InputField) => {
+  const ref = useRef(null);
+  const { inputProps } = useTextField(props, ref);
+  return (
+    <Input
+      inputProps={inputProps}
+      variant={variant}
+      size={size}
+      className={className}
+      inputRef={ref}
+    />
+  );
+};
 InputField.displayName = "InputField";
 
 // Number Input Field
@@ -259,69 +263,77 @@ export type NumberField = Omit<AriaNumberFieldProps, "size"> & {
   size?: "sm" | "md" | "lg";
 };
 
-export const NumberField = forwardRef<HTMLInputElement, NumberField>(
-  ({ variant = "outline", size = "md", className, ...props }, forwardedRef) => {
-    const { locale } = useLocale();
-    const state = useNumberFieldState({ ...props, locale });
-    const ref = React.useRef(null);
-    const { inputProps, incrementButtonProps, decrementButtonProps } =
-      useNumberField(props, state, ref);
+export const NumberField = ({
+  variant = "outline",
+  size = "md",
+  className,
+  ...props
+}: NumberField) => {
+  const { locale } = useLocale();
+  const state = useNumberFieldState({ ...props, locale });
+  const ref = React.useRef(null);
+  const { inputProps, incrementButtonProps, decrementButtonProps } =
+    useNumberField(props, state, ref);
 
-    return (
-      <InputGroup>
-        <Input
-          inputProps={inputProps}
-          variant={variant}
-          size={size}
-          className={className}
-          inputRef={ref}
-        />
-        <RightAddon
-          className={classNames(
-            variant !== "ghost" && "!border !border-l-0 !border-secondary-300",
-            "flex-col !px-0 !bg-transparent"
-          )}
+  const IncrementButton = useButton(incrementButtonProps, ref);
+  const DecrementButton = useButton(decrementButtonProps, ref);
+
+  return (
+    <InputGroup>
+      <Input
+        inputProps={inputProps}
+        variant={variant}
+        size={size}
+        className={className}
+        inputRef={ref}
+      />
+      <RightAddon
+        className={classNames(
+          variant !== "ghost" &&
+            "!border !border-l-0 !border-secondary-300 dark:!border-secondary-700",
+          "flex-col !px-0 !bg-transparent"
+        )}
+      >
+        <Button
+          {...IncrementButton.buttonProps}
+          variant="ghost"
+          size="sm"
+          className="!py-0 !rounded-none !rounded-tr-md"
         >
-          <Button
-            {...incrementButtonProps}
-            variant="ghost"
-            size="sm"
-            className="!py-0 !rounded-none !rounded-tr-md"
-          >
-            <ChevronUpIcon
-              className={classNames(
-                size === "sm" && "h-[15px]",
-                size === "md" && "h-[18px]",
-                size === "lg" && "h-[22px]",
-                "w-3 stroke-[3]"
-              )}
-            />
-          </Button>
-          <div
+          <ChevronUpIcon
             className={classNames(
-              variant !== "ghost" && "h-[1px] w-full bg-secondary-300"
+              size === "sm" && "h-[15px]",
+              size === "md" && "h-[18px]",
+              size === "lg" && "h-[22px]",
+              "w-3 stroke-[3]"
             )}
           />
-          <Button
-            {...decrementButtonProps}
-            variant="ghost"
-            size="sm"
-            className="!py-0 !rounded-none !rounded-br-md"
-          >
-            <ChevronDownIcon
-              className={classNames(
-                size === "sm" && "h-[14px]",
-                size === "md" && "h-[17px]",
-                size === "lg" && "h-[21px]",
-                "w-3 stroke-[3]"
-              )}
-            />
-          </Button>
-        </RightAddon>
-      </InputGroup>
-    );
-  }
-);
+        </Button>
+        <div
+          className={classNames(
+            variant !== "ghost" &&
+              "h-[1px] w-full bg-secondary-300 dark:bg-secondary-700"
+          )}
+        />
+        <Button
+          {...DecrementButton.buttonProps}
+          variant="ghost"
+          size="sm"
+          className="!py-0 !rounded-none !rounded-br-md"
+        >
+          <ChevronDownIcon
+            className={classNames(
+              size === "sm" && "h-[14px]",
+              size === "md" && "h-[17px]",
+              size === "lg" && "h-[21px]",
+              "w-3 stroke-[3]"
+            )}
+          />
+        </Button>
+      </RightAddon>
+    </InputGroup>
+  );
+};
 NumberField.displayName = "NumberField";
 
 // Search Field
@@ -331,35 +343,35 @@ export type SearchField = Omit<AriaSearchFieldProps, "size"> & {
   size?: "sm" | "md" | "lg";
 };
 
-export const SearchField = forwardRef<HTMLInputElement, SearchField>(
-  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
-    const state = useSearchFieldState(props);
-    const ref = useRef(null);
-    const { inputProps, clearButtonProps } = useSearchField(props, state, ref);
+export const SearchField = ({
+  className,
+  variant = "outline",
+  size = "md",
+  ...props
+}: SearchField) => {
+  const state = useSearchFieldState(props);
+  const ref = useRef(null);
+  const { inputProps, clearButtonProps } = useSearchField(props, state, ref);
 
-    return (
-      <InputGroup>
-        <Input
-          inputProps={inputProps}
-          variant={variant}
-          size={size}
-          className={className}
-          inputRef={ref}
-        />
-        <Suffix>
-          <Button
-            variant="ghost"
-            size="icon"
-            {...clearButtonProps}
-            className="!z-[2]"
-          >
-            <XMarkIcon className="w-3 h-3 stroke-[3]" />
-          </Button>
-        </Suffix>
-      </InputGroup>
-    );
-  }
-);
+  const { buttonProps } = useButton(clearButtonProps, ref);
+
+  return (
+    <InputGroup>
+      <Input
+        inputProps={inputProps}
+        variant={variant}
+        size={size}
+        className={className}
+        inputRef={ref}
+      />
+      <Suffix>
+        <Button {...buttonProps} variant="ghost" size="icon" className="!z-[2]">
+          <XMarkIcon className="w-3 h-3 stroke-[3]" />
+        </Button>
+      </Suffix>
+    </InputGroup>
+  );
+};
 SearchField.displayName = "SearchField";
 
 // Password Field
@@ -369,39 +381,43 @@ export type PasswordField = Omit<AriaTextFieldProps, "size"> & {
   variant?: "outline" | "solid" | "ghost";
 };
 
-export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
-  ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
-    const [showPassword, { toggle }] = useBoolean();
-    const ref = useRef(null);
-    const { inputProps } = useTextField(props, ref);
+export const PasswordField = ({
+  className,
+  size = "md",
+  variant = "outline",
+  ...props
+}: PasswordField) => {
+  const [showPassword, { toggle }] = useBoolean();
+  const ref = useRef(null);
+  const { inputProps } = useTextField(props, ref);
 
-    return (
-      <InputGroup>
-        <Input
-          inputProps={inputProps}
-          type={showPassword ? "text" : "password"}
-          variant={variant}
-          size={size}
-          className={className}
-          inputRef={ref}
-        />
-        <Suffix>
-          <Button
-            size="icon"
-            aria-label="show and hide password"
-            variant="ghost"
-            onClick={toggle}
-            className="!z-[2]"
-          >
-            {showPassword ? (
-              <EyeSlashIcon className="h-4 w-4 stroke-2" />
-            ) : (
-              <EyeIcon className="h-4 w-4 stroke-2" />
-            )}
-          </Button>
-        </Suffix>
-      </InputGroup>
-    );
-  }
-);
+  return (
+    <InputGroup>
+      <Input
+        inputProps={inputProps}
+        type={showPassword ? "text" : "password"}
+        variant={variant}
+        size={size}
+        className={className}
+        inputRef={ref}
+      />
+      <Suffix>
+        <Button
+          type="button"
+          size="icon"
+          aria-label="show and hide password"
+          variant="ghost"
+          onClick={toggle}
+          className="!z-[2]"
+        >
+          {showPassword ? (
+            <EyeSlashIcon className="h-4 w-4 stroke-2" />
+          ) : (
+            <EyeIcon className="h-4 w-4 stroke-2" />
+          )}
+        </Button>
+      </Suffix>
+    </InputGroup>
+  );
+};
 PasswordField.displayName = "PasswordField";
