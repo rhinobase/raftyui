@@ -4,9 +4,14 @@ import { classNames } from "@rhino/utils";
 import { cva } from "class-variance-authority";
 
 const textareaClasses = cva(
-  "w-full appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed p-3 rounded-md",
+  "w-full appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
+      size: {
+        sm: "rounded px-2 py-1 text-sm",
+        md: "rounded-md px-3 py-1.5",
+        lg: "rounded-md px-4 py-2 text-lg",
+      },
       variant: {
         solid: "bg-secondary-50 dark:bg-secondary-800/20",
         outline:
@@ -34,11 +39,18 @@ const textareaClasses = cva(
 // InputField Component (With ErrorMessage)
 export type Textarea = JSX.IntrinsicElements["textarea"] & {
   variant?: "solid" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
   isUnStyled?: boolean;
 };
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   (
-    { className, variant = "outline", isUnStyled = false, ...props },
+    {
+      className,
+      variant = "outline",
+      isUnStyled = false,
+      size = "md",
+      ...props
+    },
     forwardedRef
   ) => {
     const controls = useFieldControlContext();
@@ -51,6 +63,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
             ? className
             : classNames(
                 textareaClasses({
+                  size,
                   variant,
                   invalid: controls.isInvalid,
                 }),

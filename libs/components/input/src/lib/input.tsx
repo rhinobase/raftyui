@@ -213,7 +213,7 @@ export const Input = forwardRef<HTMLInputElement, Input>(
         type={type}
         className={classNames(
           inputFieldClasses({
-            size: size,
+            size,
             variant,
             invalid: controls.isInvalid,
             isLeftAddon: inputGroupProps.isLeftAddon,
