@@ -43,6 +43,7 @@ export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
       />
       <Button
         {...buttonProps}
+        {...valueProps}
         size={size}
         variant={variant}
         className={classNames("!justify-between !w-full", className)}
@@ -57,7 +58,6 @@ export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
         ref={ref}
       >
         <span
-          {...valueProps}
           className={classNames(
             state.selectedItem
               ? "text-gray-800 dark:text-secondary-200"
