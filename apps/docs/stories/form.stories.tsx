@@ -60,10 +60,7 @@ export const Default: Story = {
       <form className="w-[500px]">
         <FieldControl name="input">
           <FieldLabel>Input</FieldLabel>
-          <InputField
-            {...register("text_input")}
-            onChange={(value) => setValue("text_input", value)}
-          />
+          <InputField {...register("text_input")} />
         </FieldControl>
         <FieldControl name="inputgroup">
           <FieldLabel>Input Group</FieldLabel>
@@ -71,10 +68,7 @@ export const Default: Story = {
             <Prefix>
               <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Prefix>
-            <InputField
-              {...register("inputgroup")}
-              onChange={(value) => setValue("inputgroup", value)}
-            />
+            <InputField {...register("inputgroup")} />
             <Suffix>
               <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Suffix>

@@ -230,30 +230,42 @@ export const Input = forwardRef<HTMLInputElement, Input>(
 );
 
 // Input Field
-export type InputField = Omit<AriaTextFieldProps, "size"> & {
-  className?: string;
+export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
 };
 
-export const InputField = ({
-  className,
-  variant = "outline",
-  size = "md",
-  ...props
-}: InputField) => {
-  const ref = useRef(null);
-  const { inputProps } = useTextField(props, ref);
-  return (
-    <Input
-      inputProps={inputProps}
-      variant={variant}
-      size={size}
-      className={className}
-      inputRef={ref}
-    />
-  );
-};
+export const InputField = forwardRef<HTMLInputElement, InputField>(
+  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
+    const controls = useFieldControlContext() ?? {};
+    const inputGroupProps = useInputGroupContext() ?? {
+      isLeftAddon: false,
+      isRightAddon: false,
+      isPrefix: false,
+      isSuffix: false,
+    };
+
+    return (
+      <input
+        {...controls}
+        {...props}
+        className={classNames(
+          inputFieldClasses({
+            size: size,
+            variant,
+            invalid: controls.isInvalid,
+            isLeftAddon: inputGroupProps.isLeftAddon,
+            isRightAddon: inputGroupProps.isRightAddon,
+            isPrefix: inputGroupProps.isPrefix,
+            isSuffix: inputGroupProps.isSuffix,
+          }),
+          className
+        )}
+        ref={forwardedRef}
+      />
+    );
+  }
+);
 InputField.displayName = "InputField";
 
 // Number Input Field
