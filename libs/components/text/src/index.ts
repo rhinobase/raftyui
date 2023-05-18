@@ -1,1 +1,1 @@
-export * from './lib/text';
+export { Text } from "./lib/text";

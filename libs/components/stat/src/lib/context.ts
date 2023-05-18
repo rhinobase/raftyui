@@ -1,11 +1,11 @@
-import { createContext } from '@rhino/utils';
+import { createContext } from "@rhino/utils";
 
 export const [StatProvider, useStatContext] = createContext<StatContext>({
-  name: 'StatContext',
-  hookName: 'useStatContext',
-  providerName: '<Stat />',
+  name: "StatContext",
+  hookName: "useStatContext",
+  providerName: "<Stat />",
 });
 
 export interface StatContext {
-  type: 'increase' | 'decrease';
+  type: "increase" | "decrease" | "normal";
 }

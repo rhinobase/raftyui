@@ -7,6 +7,7 @@ import { classNames } from "@rhino/utils";
 // Root Component
 export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &
   Partial<TabContext> & { isUnstyled?: boolean };
+
 export const Tab = forwardRef<HTMLDivElement, Tab>(
   (
     {
@@ -26,6 +27,7 @@ export const Tab = forwardRef<HTMLDivElement, Tab>(
     return (
       <TabProvider value={{ size, variant, orientation, isBarebone }}>
         <TabsPrimitive.Root
+          {...props}
           className={
             unstyle
               ? className
@@ -34,7 +36,6 @@ export const Tab = forwardRef<HTMLDivElement, Tab>(
                   className
                 )
           }
-          {...props}
           orientation={orientation}
           ref={forwardedRef}
         >
@@ -47,9 +48,11 @@ export const Tab = forwardRef<HTMLDivElement, Tab>(
 Tab.displayName = "Tab";
 
 // List Component
-export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> & {
-  isUnstyled?: boolean;
-} & Partial<TabContext>;
+export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> &
+  Partial<TabContext> & {
+    isUnstyled?: boolean;
+  };
+
 export const TabList = forwardRef<HTMLDivElement, TabList>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { orientation, variant, isBarebone } = useTabContext();
@@ -134,7 +137,8 @@ const triggerClasses = cva(
 );
 export type TabTrigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]> & {
   isUnstyled?: boolean;
-} & Partial<TabContext>;
+};
+
 export const TabTrigger = forwardRef<HTMLButtonElement, TabTrigger>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { size, variant, orientation, isBarebone } = useTabContext();
@@ -142,6 +146,7 @@ export const TabTrigger = forwardRef<HTMLButtonElement, TabTrigger>(
 
     return (
       <TabsPrimitive.Trigger
+        {...props}
         className={
           unstyle
             ? className
@@ -154,7 +159,6 @@ export const TabTrigger = forwardRef<HTMLButtonElement, TabTrigger>(
                 className
               )
         }
-        {...props}
         ref={forwardedRef}
       >
         {children}
@@ -168,6 +172,7 @@ TabTrigger.displayName = "TabTrigger";
 export type TabContent = ComponentProps<(typeof TabsPrimitive)["Content"]> & {
   isUnstyled?: boolean;
 };
+
 export const TabContent = forwardRef<HTMLDivElement, TabContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { size, variant, orientation, isBarebone } = useTabContext();

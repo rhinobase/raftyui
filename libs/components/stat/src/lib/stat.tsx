@@ -1,9 +1,8 @@
-import { HTMLAttributes, SVGProps, forwardRef } from "react";
+import { forwardRef } from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "@rhino/utils";
-import { PlayIcon } from "@heroicons/react/24/solid";
 
-export type StatGroup = HTMLAttributes<HTMLDivElement>;
+export type StatGroup = JSX.IntrinsicElements["div"];
 export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -22,9 +21,9 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
 );
 StatGroup.displayName = "StatGroup";
 
-export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
+export type Stat = JSX.IntrinsicElements["div"] & StatContext;
 export const Stat = forwardRef<HTMLDivElement, Stat>(
-  ({ children, className, type, ...props }, forwardedRef) => {
+  ({ children, className, type = "normal", ...props }, forwardedRef) => {
     return (
       <StatProvider value={{ type }}>
         <div
@@ -40,7 +39,7 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
 );
 Stat.displayName = "Stat";
 
-export type StatLabel = HTMLAttributes<HTMLDivElement>;
+export type StatLabel = JSX.IntrinsicElements["div"];
 export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -59,7 +58,7 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
 );
 StatLabel.displayName = "StatLabel";
 
-export type StatValue = HTMLAttributes<HTMLDivElement>;
+export type StatValue = JSX.IntrinsicElements["div"];
 export const StatValue = forwardRef<HTMLDivElement, StatValue>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -78,7 +77,15 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
 );
 StatValue.displayName = "StatValue";
 
-export type StatHelpText = HTMLAttributes<HTMLDivElement>;
+const statHelpTextClasses = {
+  type: {
+    increase: "text-success-600 dark:text-success-400",
+    decrease: "text-error-600 dark:text-error-400",
+    normal: "dark:text-secondary-300",
+  },
+};
+
+export type StatHelpText = JSX.IntrinsicElements["div"];
 export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {
     const { type } = useStatContext();
@@ -86,12 +93,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
       <div
         {...props}
         className={classNames(
-          type === "increase"
-            ? "text-success-600 dark:text-success-400"
-            : "dark:text-secondary-300",
-          type === "decrease"
-            ? "text-error-600 dark:text-error-400"
-            : "dark:text-secondary-300",
+          statHelpTextClasses.type[type],
           "flex items-center gap-1.5 text-sm font-medium",
           className
         )}
@@ -104,7 +106,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
 );
 StatHelpText.displayName = "StatHelpText";
 
-export type StatIcon = SVGProps<SVGSVGElement>;
+export type StatIcon = JSX.IntrinsicElements["svg"];
 export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
   ({ className, height = "14", width = "14", ...props }, forwardedRef) => {
     const { type } = useStatContext();

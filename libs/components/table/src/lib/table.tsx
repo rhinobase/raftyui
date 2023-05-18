@@ -1,7 +1,6 @@
-import { HTMLAttributes, forwardRef } from 'react';
-import { TableContext, TableProvider, useTableContext } from './context';
-import { classNames } from '@rhino/utils';
-import { cva } from 'class-variance-authority';
+import { HTMLAttributes, forwardRef } from "react";
+import { TableContext, TableProvider, useTableContext } from "./context";
+import { classNames } from "@rhino/utils";
 
 // TableContainer Component
 export type TableContainer = HTMLAttributes<HTMLDivElement>;
@@ -10,7 +9,7 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
     <div
       {...props}
       className={classNames(
-        'dark:ring-secondary-700 mx-auto inline-block w-full overflow-hidden rounded-lg align-middle shadow ring-1 ring-black ring-opacity-5',
+        "dark:ring-secondary-700 mx-auto inline-block w-full overflow-hidden rounded-lg align-middle shadow ring-1 ring-black ring-opacity-5",
         className
       )}
       ref={forwardedRef}
@@ -19,24 +18,19 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
     </div>
   )
 );
-TableContainer.displayName = 'TableContainer';
+TableContainer.displayName = "TableContainer";
 
 // Table Component
-const tableClasses = cva(
-  'divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y',
-  {
-    variants: {
-      size: {
-        sm: 'p-2',
-        md: 'p-4',
-        lg: 'p-6',
-      },
-    },
-  }
-);
+const tableClasses = {
+  size: {
+    sm: "p-2",
+    md: "p-4",
+    lg: "p-6",
+  },
+};
 
-export type Table = Partial<TableContext> &
-  JSX.IntrinsicElements['table'] & {
+export type Table = JSX.IntrinsicElements["table"] &
+  Partial<TableContext> & {
     isUnstyled?: boolean;
   };
 
@@ -45,8 +39,8 @@ export const Table = forwardRef<HTMLTableElement, Table>(
     {
       className,
       children,
-      size = 'md',
-      variant = 'simple',
+      size = "md",
+      variant = "simple",
       isUnstyled = false,
       isBarebone = false,
       ...props
@@ -60,7 +54,13 @@ export const Table = forwardRef<HTMLTableElement, Table>(
         <table
           {...props}
           className={
-            unstyle ? className : classNames(tableClasses({ size }), className)
+            unstyle
+              ? className
+              : classNames(
+                  tableClasses.size[size],
+                  "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
+                  className
+                )
           }
           ref={forwardedRef}
         >
@@ -70,12 +70,13 @@ export const Table = forwardRef<HTMLTableElement, Table>(
     );
   }
 );
-Table.displayName = 'Table';
+Table.displayName = "Table";
 
 // TableBody Component
-export type TableBody = JSX.IntrinsicElements['tbody'] & {
+export type TableBody = JSX.IntrinsicElements["tbody"] & {
   isUnstyled?: boolean;
 };
+
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone } = useTableContext();
@@ -87,7 +88,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
         className={
           unstyle
             ? className
-            : classNames('dark:bg-secondary-700/40 bg-white', className)
+            : classNames("dark:bg-secondary-700/40 bg-white", className)
         }
         ref={forwardedRef}
       >
@@ -96,23 +97,18 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
     );
   }
 );
-TableBody.displayName = 'TableBody';
+TableBody.displayName = "TableBody";
 
 // TableFooter Component
-const tableFooterClasses = cva(
-  'bg-secondary-100 text-secondary-500 dark:bg-secondary-700/80 dark:text-secondary-300 text-sm font-semibold',
-  {
-    variants: {
-      size: {
-        sm: 'p-2',
-        md: 'px-4 py-3',
-        lg: 'px-6 py-5',
-      },
-    },
-  }
-);
+const tableFooterClasses = {
+  size: {
+    sm: "p-2",
+    md: "px-4 py-3",
+    lg: "px-6 py-5",
+  },
+};
 
-export type TableFooter = JSX.IntrinsicElements['tfoot'] & {
+export type TableFooter = JSX.IntrinsicElements["tfoot"] & {
   isUnstyled?: boolean;
 };
 
@@ -127,7 +123,11 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
         className={
           unstyle
             ? className
-            : classNames(tableFooterClasses({ size }), className)
+            : classNames(
+                tableFooterClasses.size[size],
+                "bg-secondary-100 text-secondary-500 dark:bg-secondary-700/80 dark:text-secondary-300 text-sm font-semibold",
+                className
+              )
         }
         ref={forwardedRef}
       >
@@ -136,19 +136,17 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
     );
   }
 );
-TableFooter.displayName = 'TableFooter';
+TableFooter.displayName = "TableFooter";
 
 // TableHead Component
-const tableHeadClasses = cva('', {
-  variants: {
-    variant: {
-      simple: 'bg-transparent',
-      striped: 'bg-secondary-100 dark:bg-secondary-700/80',
-    },
+const tableHeadClasses = {
+  variant: {
+    simple: "bg-transparent",
+    striped: "bg-secondary-100 dark:bg-secondary-700/80",
   },
-});
+};
 
-export type TableHead = JSX.IntrinsicElements['thead'] & {
+export type TableHead = JSX.IntrinsicElements["thead"] & {
   isUnstyled?: boolean;
 };
 
@@ -163,7 +161,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
         className={
           unstyle
             ? className
-            : classNames(tableHeadClasses({ variant }), className)
+            : classNames(tableHeadClasses.variant[variant], className)
         }
         ref={forwardedRef}
       >
@@ -172,23 +170,18 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
     );
   }
 );
-TableHead.displayName = 'TableHead';
+TableHead.displayName = "TableHead";
 
 // Td Component
-const tdClasses = cva(
-  'text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm',
-  {
-    variants: {
-      size: {
-        sm: 'p-2',
-        md: 'px-4 py-3',
-        lg: 'px-6 py-5',
-      },
-    },
-  }
-);
+const tdClasses = {
+  size: {
+    sm: "p-2",
+    md: "px-4 py-3",
+    lg: "px-6 py-5",
+  },
+};
 
-export type Td = JSX.IntrinsicElements['td'] & { isUnstyled?: boolean };
+export type Td = JSX.IntrinsicElements["td"] & { isUnstyled?: boolean };
 
 export const Td = forwardRef<HTMLTableCellElement, Td>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -199,7 +192,13 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
       <td
         {...props}
         className={
-          unstyle ? className : classNames(tdClasses({ size }), className)
+          unstyle
+            ? className
+            : classNames(
+                tdClasses.size[size],
+                "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
+                className
+              )
         }
         ref={forwardedRef}
       >
@@ -208,23 +207,18 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
     );
   }
 );
-Td.displayName = 'Td';
+Td.displayName = "Td";
 
 // Th Component
-const thClasses = cva(
-  'text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold',
-  {
-    variants: {
-      size: {
-        sm: 'p-2',
-        md: 'px-4 py-3',
-        lg: 'px-6 py-5',
-      },
-    },
-  }
-);
+const thClasses = {
+  size: {
+    sm: "p-2",
+    md: "px-4 py-3",
+    lg: "px-6 py-5",
+  },
+};
 
-export type Th = JSX.IntrinsicElements['th'] & { isUnstyled?: boolean };
+export type Th = JSX.IntrinsicElements["th"] & { isUnstyled?: boolean };
 
 export const Th = forwardRef<HTMLTableCellElement, Th>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -235,7 +229,13 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
       <th
         {...props}
         className={
-          unstyle ? className : classNames(thClasses({ size }), className)
+          unstyle
+            ? className
+            : classNames(
+                thClasses.size[size],
+                "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
+                className
+              )
         }
         ref={forwardedRef}
       >
@@ -244,20 +244,18 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
     );
   }
 );
-Th.displayName = 'Th';
+Th.displayName = "Th";
 
 // Tr Component
 
-const trClasses = cva('', {
-  variants: {
-    variant: {
-      simple: 'bg-transparent',
-      striped: 'even:bg-secondary-100 dark:even:bg-secondary-700/50',
-    },
+const trClasses = {
+  variant: {
+    simple: "bg-transparent",
+    striped: "even:bg-secondary-100 dark:even:bg-secondary-700/50",
   },
-});
+};
 
-export type Tr = JSX.IntrinsicElements['tr'] & { isUnstyled?: boolean };
+export type Tr = JSX.IntrinsicElements["tr"] & { isUnstyled?: boolean };
 
 export const Tr = forwardRef<HTMLTableRowElement, Tr>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -268,7 +266,9 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
       <tr
         {...props}
         className={
-          unstyle ? className : classNames(trClasses({ variant }), className)
+          unstyle
+            ? className
+            : classNames(trClasses.variant[variant], className)
         }
         ref={forwardedRef}
       >
@@ -277,4 +277,4 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
     );
   }
 );
-Tr.displayName = 'Tr';
+Tr.displayName = "Tr";

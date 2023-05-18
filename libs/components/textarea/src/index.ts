@@ -1,1 +1,1 @@
-export * from './lib/textarea';
+export { Textarea } from "./lib/textarea";

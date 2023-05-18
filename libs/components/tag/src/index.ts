@@ -1,1 +1,1 @@
-export * from './lib/tag';
+export { Tag } from "./lib/tag";

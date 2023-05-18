@@ -1,1 +1,1 @@
-export * from './lib/toast';
+export { Toast } from "./lib/toast";

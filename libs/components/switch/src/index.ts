@@ -1,1 +1,1 @@
-export * from './lib/switch';
+export { Switch } from "./lib/switch";

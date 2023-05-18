@@ -1,35 +1,29 @@
-import { cva } from 'class-variance-authority';
-import { classNames } from '@rhino/utils';
+import { classNames } from "@rhino/utils";
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   ExclamationTriangleIcon,
   InformationCircleIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
 
-const toastClasses = cva(
-  'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg drop-shadow-lg',
-  {
-    variants: {
-      severity: {
-        error: 'bg-error-600 dark:bg-error-300',
-        warning: 'bg-warning-500 dark:bg-warning-300',
-        info: 'bg-info-500 dark:bg-info-200',
-        success: 'bg-success-600 dark:bg-success-200',
-      },
-      visible: {
-        true: 'animate-enter',
-        false: 'animate-leave',
-      },
-    },
-  }
-);
+const toastClasses = {
+  severity: {
+    error: "bg-error-600 dark:bg-error-300",
+    warning: "bg-warning-500 dark:bg-warning-300",
+    info: "bg-info-500 dark:bg-info-200",
+    success: "bg-success-600 dark:bg-success-200",
+  },
+  visible: [
+    "animate-leave", // false
+    "animate-enter", // true
+  ],
+};
 
 export type Toast = {
   className?: string;
   title: string;
   message?: string;
-  severity: 'error' | 'warning' | 'info' | 'success';
+  severity: "error" | "warning" | "info" | "success";
   visible?: boolean;
 };
 
@@ -37,22 +31,29 @@ export function Toast({ className, severity, visible, ...props }: Toast) {
   let ToastIcon: typeof ExclamationTriangleIcon;
 
   switch (severity) {
-    case 'error':
+    case "error":
       ToastIcon = ExclamationTriangleIcon;
       break;
-    case 'warning':
+    case "warning":
       ToastIcon = ExclamationCircleIcon;
       break;
-    case 'info':
+    case "info":
       ToastIcon = InformationCircleIcon;
       break;
-    case 'success':
+    case "success":
       ToastIcon = CheckCircleIcon;
       break;
   }
 
   return (
-    <div className={classNames(toastClasses({ severity, visible }), className)}>
+    <div
+      className={classNames(
+        toastClasses.severity[severity],
+        toastClasses.visible[Number(visible)],
+        "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg drop-shadow-lg",
+        className
+      )}
+    >
       <div className="p-4">
         <div className="flex items-start gap-3">
           <div className="flex-shrink-0">

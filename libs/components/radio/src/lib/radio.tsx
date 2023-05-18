@@ -25,9 +25,10 @@ import {
 
 const RadioContext = React.createContext<RadioGroupState | null>(null);
 
-export type RadioGroup = Omit<RadioGroupProps, "isDisabled"> & {
-  children: React.ReactNode;
-} & Partial<RadioGroupContext>;
+export type RadioGroup = Omit<RadioGroupProps, "isDisabled"> &
+  Partial<RadioGroupContext> & {
+    children: React.ReactNode;
+  };
 
 // The Parent Component
 export function RadioGroup(props: RadioGroup) {
@@ -40,6 +41,7 @@ export function RadioGroup(props: RadioGroup) {
     size = "md",
     isDisabled = false,
   } = props;
+
   const state = useRadioGroupState(props);
   const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } =
     useRadioGroup(props, state);
