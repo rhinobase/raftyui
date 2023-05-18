@@ -90,18 +90,22 @@ function Option({ item, state, size }: Option) {
         size === "md" && "px-3 py-1.5 rounded-md",
         size === "lg" && "px-4 py-2 text-lg rounded-md",
         isFocused || isSelected
-          ? "text-primary-600"
+          ? "text-secondary-600 dark:text-secondary-100"
           : isDisabled
-          ? "text-gray-200"
-          : "text-gray-700",
-        isFocused && "bg-primary-50",
-        isSelected && "font-bold",
+          ? "text-secondary-200"
+          : "text-secondary-700 dark:text-secondary-200",
+        isFocused && "bg-secondary-200/70 dark:bg-secondary-700/60",
+        isSelected &&
+          "font-semibold bg-secondary-200/70 dark:bg-secondary-700/60",
         "m-1 outline-none cursor-pointer flex items-center justify-between"
       )}
     >
       {item.rendered}
       {isSelected && (
-        <CheckIcon aria-hidden="true" className="w-5 h-5 text-primary-600" />
+        <CheckIcon
+          aria-hidden="true"
+          className="w-5 h-5 text-secondary-600 dark:text-secondary-100"
+        />
       )}
     </li>
   );

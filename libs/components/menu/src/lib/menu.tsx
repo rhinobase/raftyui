@@ -94,7 +94,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContent>(
               : classNames(
                   "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                   "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
-                  "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white p-1 text-sm text-gray-900 focus:outline-none",
+                  "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[220px] flex-col rounded-md bg-white p-1 text-sm text-secondary-900 focus:outline-none",
                   className
                 )
           }

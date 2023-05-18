@@ -26,7 +26,7 @@ type Story = StoryObj<typeof Select>;
 export const Default: Story = {
   render: ({ size, variant }) => (
     <div className="w-[500px]">
-      <h4 className="font-bold">Style</h4>
+      <h4 className="font-bold dark:text-secondary-200 mb-4">Select</h4>
       <Select variant={variant} size={size}>
         <Item key="option1">Option 1</Item>
         <Item key="option2">Option 2</Item>
