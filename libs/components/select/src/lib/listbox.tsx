@@ -94,9 +94,8 @@ function Option({ item, state, size }: Option) {
           : isDisabled
           ? "text-secondary-200"
           : "text-secondary-700 dark:text-secondary-200",
-        isFocused && "bg-secondary-200/70 dark:bg-secondary-700/60",
-        isSelected &&
-          "font-semibold bg-secondary-200/70 dark:bg-secondary-700/60",
+        isFocused && "bg-secondary-100 dark:bg-secondary-700/50",
+        isSelected && "font-semibold bg-secondary-200/70 dark:bg-secondary-700",
         "m-1 outline-none cursor-pointer flex items-center justify-between"
       )}
     >

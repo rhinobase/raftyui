@@ -52,7 +52,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
       <>
         <div
           {...getRootProps()}
-          className="flex w-full justify-center cursor-pointer rounded-lg border border-dashed hover:border-primary-500 border-gray-900/25 transition-all duration-500"
+          className="flex w-full justify-center cursor-pointer rounded-lg border border-dashed hover:border-primary-500 border-secondary-300 transition-all duration-500 dark:border-secondary-600 dark:hover:border-primary-300"
         >
           <input
             {...props}
@@ -68,7 +68,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
               size === "sm" && "py-8",
               size === "md" && "py-14",
               size === "lg" && "py-14",
-              "relative rounded-md w-full text-center cursor-pointer bg-white font-semibold focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+              "relative rounded-md w-full text-center cursor-pointer bg-white dark:bg-secondary-800 font-semibold focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
             )}
           >
             <PhotoIcon
@@ -132,7 +132,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
               {files &&
                 files.map((file, index) => (
                   <div
-                    className="relative h-28 w-28 group overflow-hidden border rounded-md p-2"
+                    className="relative h-28 w-28 group overflow-hidden border dark:border-secondary-700 rounded-md p-2"
                     key={index + file.name}
                   >
                     <img
