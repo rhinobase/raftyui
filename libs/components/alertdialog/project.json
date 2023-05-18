@@ -7,20 +7,14 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/components/alertdialog/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/components/alertdialog/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/libs/components/alertdialog"
@@ -32,6 +26,12 @@
         "production": {
           "mode": "production"
         }
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
       }
     }
   }

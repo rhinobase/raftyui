@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/docs",
@@ -47,13 +45,9 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/docs/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["apps/docs/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "storybook": {
@@ -70,9 +64,7 @@
     },
     "build-storybook": {
       "executor": "@nx/storybook:build",
-      "outputs": [
-        "{options.outputDir}"
-      ],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/docs",
         "configDir": "apps/docs/.storybook"
@@ -81,6 +73,12 @@
         "ci": {
           "quiet": true
         }
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
       }
     }
   },

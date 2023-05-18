@@ -23,6 +23,12 @@
       "options": {
         "lintFilePatterns": ["apps/docs-e2e/**/*.{js,ts}"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
     }
   },
   "tags": [],
