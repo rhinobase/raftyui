@@ -3,7 +3,7 @@ import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
 import { useComboBox, useFilter, useButton } from "react-aria";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { Input, InputGroup, Suffix } from "@rhino/input";
+import { InputField, InputGroup, Suffix } from "@rhino/input";
 import { Button } from "@rhino/button";
 import { PopoverContent } from "@rhino/popover";
 import { ListBox } from "@rhino/select";
@@ -49,11 +49,11 @@ export function Combobox<T extends object>(props: Combobox<T>) {
   return (
     <div className="relative" ref={popoverRef}>
       <InputGroup>
-        <Input
-          inputProps={inputProps}
+        <InputField
+          {...inputProps}
           size={size}
           variant={variant}
-          inputRef={inputRef}
+          ref={inputRef}
         />
         <Suffix>
           <Button

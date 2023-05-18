@@ -1,5 +1,4 @@
 export {
-  Input,
   InputField,
   NumberField,
   PasswordField,

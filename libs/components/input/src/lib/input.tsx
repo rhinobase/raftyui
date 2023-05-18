@@ -1,22 +1,13 @@
-import React, {
-  InputHTMLAttributes,
-  RefObject,
-  forwardRef,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { forwardRef, useMemo, useRef, useState } from "react";
 import { useFieldControlContext } from "@rhino/field";
-import { classNames, mergeRefs } from "@rhino/utils";
+import { classNames } from "@rhino/utils";
 import { cva } from "class-variance-authority";
 import {
   AriaNumberFieldProps,
   AriaSearchFieldProps,
-  AriaTextFieldProps,
   useLocale,
   useNumberField,
   useSearchField,
-  useTextField,
   useButton,
 } from "react-aria";
 import { useNumberFieldState, useSearchFieldState } from "react-stately";
@@ -185,50 +176,6 @@ const inputFieldClasses = cva(
   }
 );
 
-export type Input = {
-  className?: string;
-  type?: string;
-  variant: "solid" | "outline" | "ghost";
-  size: "sm" | "md" | "lg";
-  inputProps: InputHTMLAttributes<HTMLInputElement>;
-  inputRef: RefObject<HTMLInputElement>;
-};
-
-export const Input = forwardRef<HTMLInputElement, Input>(
-  (
-    { inputProps, type = "text", className, variant, size, inputRef },
-    forwardedRef
-  ) => {
-    const controls = useFieldControlContext() ?? {};
-    const inputGroupProps = useInputGroupContext() ?? {
-      isLeftAddon: false,
-      isRightAddon: false,
-      isPrefix: false,
-      isSuffix: false,
-    };
-    return (
-      <input
-        {...controls}
-        {...inputProps}
-        type={type}
-        className={classNames(
-          inputFieldClasses({
-            size,
-            variant,
-            invalid: controls.isInvalid,
-            isLeftAddon: inputGroupProps.isLeftAddon,
-            isRightAddon: inputGroupProps.isRightAddon,
-            isPrefix: inputGroupProps.isPrefix,
-            isSuffix: inputGroupProps.isSuffix,
-          }),
-          className
-        )}
-        ref={mergeRefs(inputRef, forwardedRef)}
-      />
-    );
-  }
-);
-
 // Input Field
 export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
@@ -292,12 +239,12 @@ export const NumberField = ({
 
   return (
     <InputGroup>
-      <Input
-        inputProps={inputProps}
+      <InputField
+        {...inputProps}
         variant={variant}
         size={size}
         className={className}
-        inputRef={ref}
+        ref={ref}
       />
       <RightAddon
         data-cy="button"
@@ -370,12 +317,12 @@ export const SearchField = ({
 
   return (
     <InputGroup>
-      <Input
-        inputProps={inputProps}
+      <InputField
+        {...inputProps}
         variant={variant}
         size={size}
         className={className}
-        inputRef={ref}
+        ref={ref}
       />
       <Suffix>
         <Button {...buttonProps} variant="ghost" size="icon" className="!z-[2]">
@@ -388,49 +335,38 @@ export const SearchField = ({
 SearchField.displayName = "SearchField";
 
 // Password Field
-export type PasswordField = Omit<AriaTextFieldProps, "size"> & {
-  className?: string;
-  size?: "sm" | "md" | "lg";
-  variant?: "outline" | "solid" | "ghost";
-};
+export const PasswordField = forwardRef<HTMLInputElement, InputField>(
+  ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
+    const [showPassword, { toggle }] = useBoolean();
 
-export const PasswordField = ({
-  className,
-  size = "md",
-  variant = "outline",
-  ...props
-}: PasswordField) => {
-  const [showPassword, { toggle }] = useBoolean();
-  const ref = useRef(null);
-  const { inputProps } = useTextField(props, ref);
-
-  return (
-    <InputGroup>
-      <Input
-        inputProps={inputProps}
-        type={showPassword ? "text" : "password"}
-        variant={variant}
-        size={size}
-        className={className}
-        inputRef={ref}
-      />
-      <Suffix>
-        <Button
-          type="button"
-          size="icon"
-          aria-label="show and hide password"
-          variant="ghost"
-          onClick={toggle}
-          className="!z-[2]"
-        >
-          {showPassword ? (
-            <EyeSlashIcon className="h-4 w-4 stroke-2" />
-          ) : (
-            <EyeIcon className="h-4 w-4 stroke-2" />
-          )}
-        </Button>
-      </Suffix>
-    </InputGroup>
-  );
-};
+    return (
+      <InputGroup>
+        <InputField
+          {...props}
+          type={showPassword ? "text" : "password"}
+          variant={variant}
+          size={size}
+          className={className}
+          ref={forwardedRef}
+        />
+        <Suffix>
+          <Button
+            type="button"
+            size="icon"
+            aria-label="show and hide password"
+            variant="ghost"
+            onClick={toggle}
+            className="!z-[2]"
+          >
+            {showPassword ? (
+              <EyeSlashIcon className="h-4 w-4 stroke-2" />
+            ) : (
+              <EyeIcon className="h-4 w-4 stroke-2" />
+            )}
+          </Button>
+        </Suffix>
+      </InputGroup>
+    );
+  }
+);
 PasswordField.displayName = "PasswordField";

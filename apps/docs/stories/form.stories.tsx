@@ -77,10 +77,7 @@ export const Default: Story = {
         </FieldControl>
         <FieldControl name="password">
           <FieldLabel>Password</FieldLabel>
-          <PasswordField
-            {...register("password")}
-            onChange={(value) => setValue("password", value)}
-          />
+          <PasswordField {...register("password")} />
         </FieldControl>
         <FieldControl name="select">
           <FieldLabel>Select</FieldLabel>

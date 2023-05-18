@@ -7,52 +7,22 @@ import {
   VisuallyHidden,
 } from "react-aria";
 import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
 
-const switchClasses = cva("relative rounded-full transition-all", {
-  variants: {
-    size: {
-      sm: "h-4 w-8",
-      md: "h-6 w-10",
-      lg: "h-7 w-12",
-    },
-    isSelected: {
-      true: "bg-primary-500 hover:bg-primary-400 dark:bg-primary-300 hover:dark:bg-primary-400",
-      false:
-        "bg-secondary-400 hover:bg-secondary-500 dark:bg-secondary-700 hover:dark:bg-secondary-600",
-    },
+const switchClasses = {
+  size: {
+    sm: "h-4 w-8",
+    md: "h-6 w-10",
+    lg: "h-7 w-12",
   },
-});
+};
 
-const switchThumbClasses = cva(
-  "absolute top-0.5 rounded-full transition-all duration-200",
-  {
-    variants: {
-      size: {
-        sm: "h-3 w-3",
-        md: "h-5 w-5",
-        lg: "h-6 w-6",
-      },
-      isSelected: {
-        true: "",
-        false: "bg-secondary-100 dark:bg-secondary-300 left-0.5",
-      },
-    },
-    compoundVariants: [
-      {
-        size: ["sm", "md"],
-        isSelected: true,
-        className: "dark:bg-secondary-900 left-[18px] bg-white",
-      },
-
-      {
-        size: "lg",
-        isSelected: true,
-        className: "dark:bg-secondary-900 left-[22px] bg-white",
-      },
-    ],
-  }
-);
+const switchThumbClasses = {
+  size: {
+    sm: "h-3 w-3 group-aria-selected:left-[18px]",
+    md: "h-5 w-5 group-aria-selected:left-[18px]",
+    lg: "h-6 w-6 group-aria-selected:left-[22px]",
+  },
+};
 
 export type Switch = AriaCheckboxProps & {
   size?: "sm" | "md" | "lg";
@@ -76,9 +46,19 @@ export function Switch({ size = "md", children, ...props }: Switch) {
       <VisuallyHidden>
         <input {...inputProps} {...focusProps} ref={ref} />
       </VisuallyHidden>
-      <div className={switchClasses({ size, isSelected: state.isSelected })}>
+      <div
+        className={classNames(
+          switchClasses.size[size],
+          "group relative rounded-full transition-all bg-secondary-400 hover:bg-secondary-500 aria-disabled:hover:bg-secondary-400 dark:bg-secondary-700 hover:dark:bg-secondary-600 aria-selected:bg-primary-500 aria-selected:hover:bg-primary-400 aria-selected:dark:bg-primary-300 aria-selected:dark:hover:bg-primary-400"
+        )}
+        aria-selected={state.isSelected}
+        aria-disabled={props.isDisabled}
+      >
         <div
-          className={switchThumbClasses({ size, isSelected: state.isSelected })}
+          className={classNames(
+            switchThumbClasses.size[size],
+            "absolute top-0.5 rounded-full transition-all duration-200 bg-secondary-100 dark:bg-secondary-300 left-0.5 group-aria-selected:bg-white group-aria-selected:dark:bg-secondary-900"
+          )}
         />
       </div>
       {children}

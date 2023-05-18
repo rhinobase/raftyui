@@ -55,7 +55,6 @@ export {
 } from "@rhino/drawer";
 export { FieldControl, FieldLabel, ErrorMessage } from "@rhino/field";
 export {
-  Input,
   InputField,
   NumberField,
   PasswordField,
