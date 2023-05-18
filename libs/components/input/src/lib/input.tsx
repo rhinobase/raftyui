@@ -300,6 +300,7 @@ export const NumberField = ({
         inputRef={ref}
       />
       <RightAddon
+        data-cy="button"
         className={classNames(
           variant !== "ghost" &&
             "!border !border-l-0 !border-secondary-300 dark:!border-secondary-700",

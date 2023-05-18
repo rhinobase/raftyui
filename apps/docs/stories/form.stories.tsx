@@ -17,6 +17,7 @@ import {
   RangePicker,
   Select,
   Suffix,
+  Switch,
   Textarea,
 } from "@rhino/ui";
 import { DevTool } from "@hookform/devtools";
@@ -194,6 +195,10 @@ export const Default: Story = {
           </RadioGroup>
         </FieldControl>
         <DevTool control={control} />
+        <FieldControl name="switch">
+          <FieldLabel>Switch</FieldLabel>
+          <Switch {...register("switch")} />
+        </FieldControl>
       </form>
     );
   },

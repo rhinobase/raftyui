@@ -27,6 +27,7 @@ export const Default: Story = {
     <>
       <div className="w-[500px]">
         <DatePicker
+          data-cy="datepicker"
           size={size}
           variant={variant}
           onChange={(date) => console.log(typeof date, date)}

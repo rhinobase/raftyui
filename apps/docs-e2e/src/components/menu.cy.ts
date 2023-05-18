@@ -1,5 +1,7 @@
 describe("Menu Test", () => {
-  beforeEach(() => cy.visit("/iframe.html?args=&id=components-menu"));
+  beforeEach(() =>
+    cy.visit("/iframe.html?args=&id=components-menu--default&viewMode=story")
+  );
   it("menu basic test", () => {
     // Test for open menu
     cy.get("button").contains("All Feature").click();

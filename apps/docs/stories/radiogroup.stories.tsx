@@ -14,7 +14,7 @@ export const Default: Story = {
     <>
       <div className="flex flex-col gap-4">
         <RadioGroup defaultValue="ABC">
-          <div className="flex flex-col gap-4">
+          <div data-cy="radiogroup" className="flex flex-col gap-4">
             <Radio value="ABC"> ABC</Radio>
             <Radio value="BCD"> BCD</Radio>
             <Radio value="CDE"> CDE</Radio>
