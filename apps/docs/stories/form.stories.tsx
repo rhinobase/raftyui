@@ -1,6 +1,7 @@
 import { StoryObj } from "@storybook/react";
 import {
   Checkbox,
+  CheckboxGroup,
   Combobox,
   ComboboxItem,
   DatePicker,
@@ -25,9 +26,9 @@ import { z } from "zod";
 import { PhoneIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Item } from "react-stately";
 
-export const schema = z.object({
+const schema = z.object({
   text_input: z.string().max(255),
-  date: z.date(),
+  date: z.string(),
   combobox: z.string(),
   password: z.string(),
   switch: z.boolean(),
@@ -35,7 +36,8 @@ export const schema = z.object({
   numberfield: z.number(),
   radio: z.string(),
   checkbox: z.string(),
-  range: z.any(),
+  checkboxgroup: z.string().array(),
+  range: z.string(),
   select: z.string(),
   textarea: z.string(),
 });
@@ -49,7 +51,7 @@ type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
   render: function Render() {
-    const { register, control } = useForm<z.infer<typeof schema>>({
+    const { register, setValue, control } = useForm<z.infer<typeof schema>>({
       mode: "onChange",
       resolver: zodResolver(schema),
     });
@@ -58,7 +60,10 @@ export const Default: Story = {
       <form className="w-[500px]">
         <FieldControl name="input">
           <FieldLabel>Input</FieldLabel>
-          <InputField {...register("text_input")} />
+          <InputField
+            {...register("text_input")}
+            onChange={(value) => setValue("text_input", value)}
+          />
         </FieldControl>
         <FieldControl name="inputgroup">
           <FieldLabel>Input Group</FieldLabel>
@@ -66,7 +71,10 @@ export const Default: Story = {
             <Prefix>
               <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Prefix>
-            <InputField {...register("inputgroup")} />
+            <InputField
+              {...register("inputgroup")}
+              onChange={(value) => setValue("inputgroup", value)}
+            />
             <Suffix>
               <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
             </Suffix>
@@ -74,11 +82,17 @@ export const Default: Story = {
         </FieldControl>
         <FieldControl name="password">
           <FieldLabel>Password</FieldLabel>
-          <PasswordField {...register("password")} />
+          <PasswordField
+            {...register("password")}
+            onChange={(value) => setValue("password", value)}
+          />
         </FieldControl>
         <FieldControl name="select">
           <FieldLabel>Select</FieldLabel>
-          <Select {...register("select")}>
+          <Select
+            {...register("select")}
+            onSelectionChange={(value) => setValue("select", value as string)}
+          >
             <Item key="option1">Option 1</Item>
             <Item key="option2">Option 2</Item>
             <Item key="option3">Option 3</Item>
@@ -89,7 +103,7 @@ export const Default: Story = {
           <Combobox
             {...register("combobox")}
             label="Favorite Animal"
-            onInputChange={(value) => console.log(value)}
+            onInputChange={(value) => setValue("combobox", value)}
           >
             <ComboboxItem key="red panda" textValue="red panda">
               <div className="flex gap-2 items-center">
@@ -106,15 +120,31 @@ export const Default: Story = {
         </FieldControl>
         <FieldControl name="numberfield">
           <FieldLabel>Number Field</FieldLabel>
-          <NumberField {...register("numberfield")} />
+          <NumberField
+            {...register("numberfield")}
+            onChange={(value) => setValue("numberfield", value)}
+          />
         </FieldControl>
         <FieldControl name="date">
           <FieldLabel>Date</FieldLabel>
-          <DatePicker {...register("date")} />
+          <DatePicker
+            {...register("date")}
+            onChange={(value) => {
+              setValue("date", `${value.year}-${value.month}-${value.day}`);
+            }}
+          />
         </FieldControl>
         <FieldControl name="range">
           <FieldLabel>Range Picker</FieldLabel>
-          <RangePicker {...register("range")} />
+          <RangePicker
+            {...register("range")}
+            onChange={(value) => {
+              setValue(
+                "range",
+                `[${value.start.year}-${value.start.month}-${value.start.day}, ${value.end.year}-${value.end.month}-${value.end.day}]`
+              );
+            }}
+          />
         </FieldControl>
         <FieldControl name="textarea">
           <FieldLabel>Textarea</FieldLabel>
@@ -122,20 +152,46 @@ export const Default: Story = {
         </FieldControl>
         <FieldControl name="checkbox">
           <FieldLabel>Checkbox</FieldLabel>
-          <Checkbox id="sample" value="red" {...register("checkbox")}>
+          <Checkbox
+            value="red"
+            {...register("checkbox")}
+            onChange={(isSeleted) => isSeleted && setValue("checkbox", "red")}
+          >
             Red
           </Checkbox>
-          <Checkbox value="green" {...register("checkbox")}>
+          <Checkbox
+            value="green"
+            {...register("checkbox")}
+            onChange={(isSeleted) => isSeleted && setValue("checkbox", "green")}
+          >
             Green
           </Checkbox>
 
-          <Checkbox value="blue" {...register("checkbox")}>
+          <Checkbox
+            value="blue"
+            {...register("checkbox")}
+            onChange={(isSeleted) => isSeleted && setValue("checkbox", "blue")}
+          >
             Blue
           </Checkbox>
         </FieldControl>
+        <FieldControl name="checkboxgroup">
+          <FieldLabel>CheckboxGroup</FieldLabel>
+          <CheckboxGroup
+            {...register("checkboxgroup")}
+            onChange={(value) => setValue("checkboxgroup", value)}
+          >
+            <Checkbox value="red">Red</Checkbox>
+            <Checkbox value="green">Green</Checkbox>
+            <Checkbox value="blue">Blue</Checkbox>
+          </CheckboxGroup>
+        </FieldControl>
         <FieldControl name="radio">
           <FieldLabel>radio</FieldLabel>
-          <RadioGroup {...register("radio")}>
+          <RadioGroup
+            {...register("radio")}
+            onChange={(value) => setValue("radio", value)}
+          >
             <div className="flex flex-col gap-4">
               <Radio value="ABC"> ABC</Radio>
               <Radio value="BCD"> BCD</Radio>
