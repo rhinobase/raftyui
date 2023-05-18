@@ -71,7 +71,7 @@ export function RangePicker<T extends DateValue>(
           </span>
           <DateField {...endFieldProps} />
           {state.validationState === "invalid" && (
-            <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
+            <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-10" />
           )}
         </div>
         <Suffix>
