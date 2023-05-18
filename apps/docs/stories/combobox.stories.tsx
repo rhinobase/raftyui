@@ -34,16 +34,16 @@ export const Default: Story = {
           label="Favorite Animal"
           onInputChange={(value) => console.log(value)}
         >
-          <ComboboxItem key="red panda" textValue="red panda">
+          <ComboboxItem textValue="red panda">
             <div className="flex gap-2 items-center">
               <div className="rounded-full w-5 h-5 bg-red-200">RP</div>Red Panda
             </div>
           </ComboboxItem>
-          <ComboboxItem key="cat">Cat</ComboboxItem>
-          <ComboboxItem key="dog">Dog</ComboboxItem>
-          <ComboboxItem key="aardvark">Aardvark</ComboboxItem>
-          <ComboboxItem key="kangaroo">Kangaroo</ComboboxItem>
-          <ComboboxItem key="snake">Snake</ComboboxItem>
+          <ComboboxItem>Cat</ComboboxItem>
+          <ComboboxItem>Dog</ComboboxItem>
+          <ComboboxItem>Aardvark</ComboboxItem>
+          <ComboboxItem>Kangaroo</ComboboxItem>
+          <ComboboxItem>Snake</ComboboxItem>
         </Combobox>
       </div>
     );

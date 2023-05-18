@@ -1,35 +1,33 @@
-import * as React from "react";
+import { useRef } from "react";
 import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
 import { useComboBox, useFilter, useButton } from "react-aria";
-import { ListBox } from "@rhino/select";
-import { PopoverContent } from "@rhino/popover";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Input, InputGroup, Suffix } from "@rhino/input";
-import { useRef } from "react";
 import { Button } from "@rhino/button";
+import { PopoverContent } from "@rhino/popover";
+import { ListBox } from "@rhino/select";
 export {
   Item as ComboboxItem,
   Section as ComboboxSection,
 } from "react-stately";
 
-export type Combobox = {
+export type Combobox<T> = ComboBoxProps<T> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
 };
 
-export function Combobox<T extends object>(props: ComboBoxProps<T> & Combobox) {
+export function Combobox<T extends object>(props: Combobox<T>) {
   const { size = "md", variant = "outline" } = props;
-
-  const ref = useRef(null);
 
   const { contains } = useFilter({ sensitivity: "base" });
   const state = useComboBoxState({ ...props, defaultFilter: contains });
 
-  const buttonRef = React.useRef(null);
-  const inputRef = React.useRef(null);
-  const listBoxRef = React.useRef(null);
-  const popoverRef = React.useRef(null);
+  // Used by combobox
+  const buttonRef = useRef(null);
+  const inputRef = useRef(null);
+  const listBoxRef = useRef(null);
+  const popoverRef = useRef(null);
 
   const {
     buttonProps: triggerProps,
@@ -49,13 +47,13 @@ export function Combobox<T extends object>(props: ComboBoxProps<T> & Combobox) {
   const { buttonProps } = useButton(triggerProps, buttonRef);
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative" ref={popoverRef}>
       <InputGroup>
         <Input
           inputProps={inputProps}
           size={size}
           variant={variant}
-          ref={inputRef}
+          inputRef={inputRef}
         />
         <Suffix>
           <Button
@@ -72,7 +70,7 @@ export function Combobox<T extends object>(props: ComboBoxProps<T> & Combobox) {
       </InputGroup>
       <PopoverContent
         triggerState={state}
-        triggerRef={ref}
+        triggerRef={popoverRef}
         placement="bottom start"
         className="w-full -ml-3"
       >

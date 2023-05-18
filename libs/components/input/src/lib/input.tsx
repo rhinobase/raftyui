@@ -190,12 +190,12 @@ export type Input = {
   variant: "solid" | "outline" | "ghost";
   size: "sm" | "md" | "lg";
   inputProps: InputHTMLAttributes<HTMLInputElement>;
-  ref: RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement>;
 };
 
 export const Input = forwardRef<HTMLInputElement, Input>(
   (
-    { inputProps, type = "text", className, variant, size, ref },
+    { inputProps, type = "text", className, variant, size, inputRef },
     forwardedRef
   ) => {
     const controls = useFieldControlContext() ?? {};
@@ -222,7 +222,7 @@ export const Input = forwardRef<HTMLInputElement, Input>(
           }),
           className
         )}
-        ref={mergeRefs(ref, forwardedRef)}
+        ref={mergeRefs(inputRef, forwardedRef)}
       />
     );
   }
@@ -245,7 +245,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
         variant={variant}
         size={size}
         className={className}
-        ref={mergeRefs(forwardedRef, ref)}
+        inputRef={ref}
       />
     );
   }
@@ -274,7 +274,7 @@ export const NumberField = forwardRef<HTMLInputElement, NumberField>(
           variant={variant}
           size={size}
           className={className}
-          ref={mergeRefs(forwardedRef, ref)}
+          inputRef={ref}
         />
         <RightAddon
           className={classNames(
@@ -344,7 +344,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchField>(
           variant={variant}
           size={size}
           className={className}
-          ref={mergeRefs(forwardedRef, ref)}
+          inputRef={ref}
         />
         <Suffix>
           <Button
@@ -383,7 +383,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
           variant={variant}
           size={size}
           className={className}
-          ref={mergeRefs(forwardedRef, ref)}
+          inputRef={ref}
         />
         <Suffix>
           <Button
