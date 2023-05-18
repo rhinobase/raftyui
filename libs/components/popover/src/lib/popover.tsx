@@ -117,7 +117,7 @@ export function PopoverContent({
           unstyle
             ? className
             : classNames(
-                "z-10 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)] text-secondary-900 bg-white dark:bg-secondary-800 dark:text-secondary-200 rounded-md p-1 text-sm",
+                "z-10 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)] text-secondary-900 bg-white dark:bg-secondary-800 dark:text-secondary-200 rounded-md p-1 text-sm overflow-y-auto",
                 className
               )
         }
