@@ -54,10 +54,10 @@ export const TagField = ({
           <div
             key={idx}
             className={
-              "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-[2px] pl-3 pr-[2px] font-semibold dark:text-zinc-100"
+              "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
             }
           >
-            <span className="leading-[0px]">{value}</span>
+            <span className="leading-[0px] text-sm">{value}</span>
             <Button
               onClick={() => {
                 setTag((prev) => {

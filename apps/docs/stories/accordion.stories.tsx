@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@rhino/ui";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components / Accordion",
@@ -51,38 +52,8 @@ export const Default: Story = {
           </AccordionItem>
           <AccordionItem value="3">
             <AccordionTrigger
-              openIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="h-4 w-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 12h-15"
-                  />
-                </svg>
-              }
-              closeIcon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="h-4 w-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 4.5v15m7.5-7.5h-15"
-                  />
-                </svg>
-              }
+              openIcon={<MinusIcon className="h-4 w-4" />}
+              closeIcon={<PlusIcon className="h-4 w-4" />}
             >
               <span className="flex-1 text-left">Section 2 title</span>
             </AccordionTrigger>
