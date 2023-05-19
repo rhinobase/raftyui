@@ -8,7 +8,6 @@ import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 //MenuBar Component
 export type Menubar = ComponentProps<(typeof MenubarPrimitive)["Root"]> &
   Partial<MenuBarContext> & { isUnstyled?: boolean };
-
 export const Menubar = forwardRef<HTMLDivElement, Menubar>(
   (
     {
@@ -58,7 +57,6 @@ const triggerClasses = {
 export type MenubarTrigger = ComponentProps<
   (typeof MenubarPrimitive)["MenubarTrigger"]
 > & { isUnstyled?: boolean };
-
 export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { size, isBarebone } = useMenuBarContext();

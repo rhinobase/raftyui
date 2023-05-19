@@ -196,13 +196,27 @@ export const DialogBody = React.forwardRef<HTMLDivElement, DialogBody>(
                 )
           }
         >
-          {children}
+          {/* Animate modal slightly upward when entering, and downward when exiting. */}
+          <div
+            className={classNames(
+              state.isOpen
+                ? "translate-y-0 transition ease-in"
+                : "translate-y-2 transition ease-out"
+            )}
+          >
+            <div
+              {...modalProps}
+              ref={ref}
+              className="p-8 max-w-sm bg-white/90 border border-gray-300 shadow-2xl rounded-lg z-1 top-[10%] h-fit max-h-[80vh] relative focus:outline-none"
+            >
+              {children}
+            </div>
+          </div>
         </div>
-      </DialogPrimitive.Description>
-    );
-  }
-);
-DialogBody.displayName = "DialogBody";
+      </div>
+    </Overlay>
+  );
+}
 
 // Dialog Cross Button Component
 export type DialogCloseButton = ComponentProps<
@@ -241,11 +255,10 @@ export const DialogCloseButton = forwardRef<
         >
           <XMarkIcon />
         </Button>
-      </DialogPrimitive.Close>
-    );
-  }
-);
-DialogCloseButton.displayName = "DialogCloseButton";
+      </div>
+    </div>
+  );
+}
 
 export type DialogClose = ComponentProps<(typeof DialogPrimitive)["Close"]>;
 

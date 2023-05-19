@@ -1,8 +1,8 @@
-import { forwardRef } from "react";
+import { HTMLAttributes, SVGProps, forwardRef } from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "@rafty/utils";
 
-export type StatGroup = JSX.IntrinsicElements["div"];
+export type StatGroup = HTMLAttributes<HTMLDivElement>;
 export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -21,7 +21,7 @@ export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
 );
 StatGroup.displayName = "StatGroup";
 
-export type Stat = JSX.IntrinsicElements["div"] & StatContext;
+export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 export const Stat = forwardRef<HTMLDivElement, Stat>(
   ({ children, className, type = "normal", ...props }, forwardedRef) => {
     return (
@@ -39,7 +39,7 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
 );
 Stat.displayName = "Stat";
 
-export type StatLabel = JSX.IntrinsicElements["div"];
+export type StatLabel = HTMLAttributes<HTMLDivElement>;
 export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -58,7 +58,7 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
 );
 StatLabel.displayName = "StatLabel";
 
-export type StatValue = JSX.IntrinsicElements["div"];
+export type StatValue = HTMLAttributes<HTMLDivElement>;
 export const StatValue = forwardRef<HTMLDivElement, StatValue>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -106,7 +106,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
 );
 StatHelpText.displayName = "StatHelpText";
 
-export type StatIcon = JSX.IntrinsicElements["svg"];
+export type StatIcon = SVGProps<SVGSVGElement>;
 export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
   ({ className, height = "14", width = "14", ...props }, forwardedRef) => {
     const { type } = useStatContext();

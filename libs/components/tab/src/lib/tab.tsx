@@ -7,7 +7,6 @@ import { classNames } from "@rafty/utils";
 // Root Component
 export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &
   Partial<TabContext> & { isUnstyled?: boolean };
-
 export const Tab = forwardRef<HTMLDivElement, Tab>(
   (
     {

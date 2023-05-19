@@ -12,7 +12,6 @@ export type NavigationMenu = ComponentProps<
   (typeof NavigationMenuPrimitive)["Root"]
 > &
   Partial<NavigationMenuContext> & { isUnstyled?: boolean };
-
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   (
     {
@@ -46,7 +45,6 @@ NavigationMenu.displayName = "NavigationMenu";
 export type NavigationMenuList = ComponentProps<
   (typeof NavigationMenuPrimitive)["List"]
 > & { isUnstyled?: boolean };
-
 export const NavigationMenuList = ({
   children,
   className,
@@ -187,7 +185,6 @@ const linkClasses = {
 export type NavigationMenuLink = ComponentProps<
   (typeof NavigationMenuPrimitive)["Link"]
 > & { isUnstyled?: boolean };
-
 export const NavigationMenuLink = ({
   children,
   className,
@@ -258,7 +255,6 @@ NavigationMenuViewport.displayName = "NavigationMenuViewport";
 export type NavigationMenuIndicator = ComponentProps<
   (typeof NavigationMenuPrimitive)["Indicator"]
 > & { isUnstyled?: boolean };
-
 export const NavigationMenuIndicator = ({
   className,
   isUnstyled = false,
@@ -266,7 +262,6 @@ export const NavigationMenuIndicator = ({
 }: NavigationMenuIndicator) => {
   const { isBarebone } = useNavigationMenuContext();
   const unstyle = isBarebone || isUnstyled;
-
   return (
     <NavigationMenuPrimitive.Indicator
       {...props}

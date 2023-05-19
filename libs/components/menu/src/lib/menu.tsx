@@ -201,7 +201,6 @@ const menuCheckboxItemClasses = {
 export type MenuCheckboxItem = ComponentProps<
   (typeof DropdownMenu)["CheckboxItem"]
 > & { isUnstyled?: boolean };
-
 export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItem>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { size, isBarebone } = useMenuContext();
