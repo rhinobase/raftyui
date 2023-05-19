@@ -4,6 +4,10 @@ describe("RangePicker Test", () => {
   );
 
   it("Basic Test for RangePicker", () => {
+    // Type test for rangepicker
+    // const input = ["12", "02", "2023"]; // DD MM YYYY
+    // cy.get('[data-cy="range-picker"]').type(input.join(""));
+
     // Range pick from picker
     cy.get('[aria-label="Calendar"]').click();
     cy.get('[role="group"]').should("exist");
