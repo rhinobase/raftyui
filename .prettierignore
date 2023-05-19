@@ -1,15 +1,3 @@
-<<<<<<< HEAD
 # Add files here to ignore them from prettier formatting
 /dist
 /coverage
-=======
-.next
-.cache
-package-lock.json
-public
-node_modules
-next-env.d.ts
-next.config.ts
-yarn.lock
-storybook-static
->>>>>>> main

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 const { join } = require("path");
 
@@ -26,20 +25,6 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
-=======
-/** @type {import('tailwindcss').Config} */
-
-const colors = require("tailwindcss/colors");
-
-module.exports = {
-  darkMode: ["class", '[data-mode="dark"]'],
-  content: [
-    "../../packages/core/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
->>>>>>> main
       colors: {
         primary: {
           50: "#D0E6FF",
@@ -53,11 +38,7 @@ module.exports = {
           800: "#003C7E",
           900: "#002C5C",
         },
-<<<<<<< HEAD
         secondary: colors.slate,
-=======
-        secondary: colors.zinc,
->>>>>>> main
         error: colors.red,
         warning: colors.amber,
         info: colors.blue,
@@ -106,8 +87,5 @@ module.exports = {
       },
     },
   },
-<<<<<<< HEAD
   plugins: [require("@tailwindcss/typography")],
-=======
->>>>>>> main
 };

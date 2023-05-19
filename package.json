@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "author": "Rhinobase Team",
   "license": "MIT",
   "private": true,
@@ -100,35 +99,3 @@
     "prepare": "husky install"
   }
 }
-=======
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --continue",
-    "lint": "turbo run lint",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish",
-    "test": "turbo run test"
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "eslint": "^8.29.0",
-    "eslint-config-rhinobase": "*",
-    "next": "^13.2.1",
-    "prettier": "^2.8.3",
-    "prettier-plugin-tailwindcss": "^0.2.3",
-    "turbo": "latest"
-  },
-  "dependencies": {
-    "@radix-ui/react-popover": "^1.0.5",
-    "@rhinobase/ui": "^0.3.16"
-  }
-}
->>>>>>> main
