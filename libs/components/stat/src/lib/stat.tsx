@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 export type StatGroup = JSX.IntrinsicElements["div"];
 export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(

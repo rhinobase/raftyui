@@ -3,8 +3,8 @@ export {
   AccordionItem,
   AccordionContent,
   AccordionTrigger,
-} from "@rhino/accordion";
-export { Alert, AlertIcon, AlertTitle, AlertDescription } from "@rhino/alert";
+} from "@rafty/accordion";
+export { Alert, AlertIcon, AlertTitle, AlertDescription } from "@rafty/alert";
 export {
   AlertDialog,
   AlertDialogTrigger,
@@ -14,11 +14,11 @@ export {
   AlertDialogBody,
   AlertDialogAction,
   AlertDialogCancel,
-} from "@rhino/alertdialog";
-export { Button } from "@rhino/button";
-export { Card, CardHeader, CardBody, CardFooter } from "@rhino/card";
-export { Checkbox, CheckboxGroup } from "@rhino/checkbox";
-export { Combobox, ComboboxItem, ComboboxSection } from "@rhino/combobox";
+} from "@rafty/alertdialog";
+export { Button } from "@rafty/button";
+export { Card, CardHeader, CardBody, CardFooter } from "@rafty/card";
+export { Checkbox, CheckboxGroup } from "@rafty/checkbox";
+export { Combobox, ComboboxItem, ComboboxSection } from "@rafty/combobox";
 export {
   ContextMenu,
   ContextMenuTrigger,
@@ -33,8 +33,8 @@ export {
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
   ContextMenuSeparator,
-} from "@rhino/context-menu";
-export { DatePicker, RangePicker } from "@rhino/date-picker";
+} from "@rafty/context-menu";
+export { DatePicker, RangePicker } from "@rafty/date-picker";
 export {
   Dialog,
   DialogTrigger,
@@ -44,7 +44,7 @@ export {
   DialogBody,
   DialogClose,
   DialogCloseButton,
-} from "@rhino/dialog";
+} from "@rafty/dialog";
 export {
   Drawer,
   DrawerOverlay,
@@ -52,8 +52,8 @@ export {
   DrawerTitle,
   DrawerBody,
   DrawerCloseButton,
-} from "@rhino/drawer";
-export { FieldControl, FieldLabel, ErrorMessage } from "@rhino/field";
+} from "@rafty/drawer";
+export { FieldControl, FieldLabel, ErrorMessage } from "@rafty/field";
 export {
   InputField,
   NumberField,
@@ -64,9 +64,9 @@ export {
   RightAddon,
   Prefix,
   Suffix,
-} from "@rhino/input";
-export { Kbd } from "@rhino/kbd";
-export { List, OrderedList, UnorderedList, ListItem } from "@rhino/list";
+} from "@rafty/input";
+export { Kbd } from "@rafty/kbd";
+export { List, OrderedList, UnorderedList, ListItem } from "@rafty/list";
 export {
   Menu,
   MenuTrigger,
@@ -81,7 +81,7 @@ export {
   MenuSub,
   MenuSubTrigger,
   MenuSubContent,
-} from "@rhino/menu";
+} from "@rafty/menu";
 export {
   Menubar,
   MenubarMenu,
@@ -98,7 +98,7 @@ export {
   MenubarSub,
   MenubarSubTrigger,
   MenubarSubContent,
-} from "@rhino/menubar";
+} from "@rafty/menubar";
 export {
   NavigationMenu,
   NavigationMenuTrigger,
@@ -108,19 +108,19 @@ export {
   NavigationMenuListItem,
   NavigationMenuLink,
   NavigationMenuIndicator,
-} from "@rhino/navigation-menu";
+} from "@rafty/navigation-menu";
 export {
   Popover,
   PopoverTrigger,
   PopoverContent,
   PopoverArrow,
   PopoverClose,
-} from "@rhino/popover";
-export { Progress } from "@rhino/progress";
-export { RadioGroup, Radio, RadioCard } from "@rhino/radio";
-export { Select, SelectItem, ListBox } from "@rhino/select";
-export { Skeleton } from "@rhino/skeleton";
-export { Spinner } from "@rhino/spinner";
+} from "@rafty/popover";
+export { Progress } from "@rafty/progress";
+export { RadioGroup, Radio, RadioCard } from "@rafty/radio";
+export { Select, SelectItem, ListBox } from "@rafty/select";
+export { Skeleton } from "@rafty/skeleton";
+export { Spinner } from "@rafty/spinner";
 export {
   Stat,
   StatGroup,
@@ -128,9 +128,9 @@ export {
   StatLabel,
   StatValue,
   StatHelpText,
-} from "@rhino/stat";
-export { Switch } from "@rhino/switch";
-export { Tab, TabList, TabTrigger, TabContent } from "@rhino/tab";
+} from "@rafty/stat";
+export { Switch } from "@rafty/switch";
+export { Tab, TabList, TabTrigger, TabContent } from "@rafty/tab";
 export {
   TableContainer,
   Table,
@@ -140,13 +140,13 @@ export {
   Tr,
   Th,
   Td,
-} from "@rhino/table";
-export { Tag } from "@rhino/tag";
-export { TagField } from "@rhino/tag-field";
-export { Text } from "@rhino/text";
-export { Textarea } from "@rhino/textarea";
-export { Toast } from "@rhino/toast";
-export { ToggleGroup, ToggleGroupItem } from "@rhino/toggle-group";
-export { Tooltip } from "@rhino/tooltip";
-export { Upload } from "@rhino/upload";
-export { classNames, mergeRefs } from "@rhino/utils";
+} from "@rafty/table";
+export { Tag } from "@rafty/tag";
+export { TagField } from "@rafty/tag-field";
+export { Text } from "@rafty/text";
+export { Textarea } from "@rafty/textarea";
+export { Toast } from "@rafty/toast";
+export { ToggleGroup, ToggleGroupItem } from "@rafty/toggle-group";
+export { Tooltip } from "@rafty/tooltip";
+export { Upload } from "@rafty/upload";
+export { classNames, mergeRefs } from "@rafty/utils";

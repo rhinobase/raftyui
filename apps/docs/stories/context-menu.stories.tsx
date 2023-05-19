@@ -12,7 +12,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@rhino/ui";
+} from "@rafty/context-menu";
 import { useState } from "react";
 
 const meta: Meta<typeof ContextMenu> = {

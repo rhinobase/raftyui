@@ -7,7 +7,7 @@ import {
   Td,
   Th,
   Tr,
-} from "@rhino/ui";
+} from "@rafty/table";
 
 import { Meta, StoryObj } from "@storybook/react";
 

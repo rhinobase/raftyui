@@ -1,10 +1,10 @@
-import { createContext } from '@rhino/utils';
+import { createContext } from "@rafty/utils";
 
 export const [InputGroupProvider, useInputGroupContext] =
   createContext<InputGroupContext>({
-    name: 'InputGroupContext',
-    hookName: 'useInputGroupContext',
-    providerName: '<InputGroup />',
+    name: "InputGroupContext",
+    hookName: "useInputGroupContext",
+    providerName: "<InputGroup />",
   });
 
 export interface InputGroupContext {

@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 export type Kbd = JSX.IntrinsicElements["kbd"] & {
   isUnstyled?: boolean;

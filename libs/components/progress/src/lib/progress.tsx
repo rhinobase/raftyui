@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { AriaProgressBarProps, useProgressBar } from "react-aria";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
 
 const progressClasses = cva("", {

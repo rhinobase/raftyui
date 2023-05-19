@@ -1,5 +1,5 @@
-import { HTMLAttributes, forwardRef } from 'react';
-import { classNames } from '@rhino/utils';
+import { HTMLAttributes, forwardRef } from "react";
+import { classNames } from "@rafty/utils";
 
 export type Skeleton = HTMLAttributes<HTMLDivElement>;
 
@@ -9,7 +9,7 @@ export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
       <div
         {...props}
         className={classNames(
-          'bg-secondary-200 dark:bg-secondary-700 animate-pulse',
+          "bg-secondary-200 dark:bg-secondary-700 animate-pulse",
           className
         )}
         ref={forwardedRef}
@@ -17,4 +17,4 @@ export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
     );
   }
 );
-Skeleton.displayName = 'Skeleton';
+Skeleton.displayName = "Skeleton";

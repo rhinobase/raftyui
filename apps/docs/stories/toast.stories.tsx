@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Toast } from "@rhino/ui";
+import { Toast } from "@rafty/toast";
 
 const meta: Meta<typeof Toast> = {
   title: "Components / Toast",

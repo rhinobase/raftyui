@@ -5,7 +5,7 @@ import React, {
   forwardRef,
   useRef,
 } from "react";
-import { classNames, mergeRefs } from "@rhino/utils";
+import { classNames, mergeRefs } from "@rafty/utils";
 import {
   AriaCheckboxGroupItemProps,
   AriaCheckboxGroupProps,

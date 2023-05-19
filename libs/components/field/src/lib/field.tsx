@@ -1,5 +1,5 @@
 import { ReactNode, forwardRef } from "react";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import {
   FieldControlContext,
   FieldControlProvider,

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select } from "@rhino/ui";
+import { Select } from "@rafty/select";
 import { Item } from "react-stately";
 
 const meta: Meta<typeof Select> = {

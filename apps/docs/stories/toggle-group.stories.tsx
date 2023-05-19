@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ToggleGroup, ToggleGroupItem } from "@rhino/ui";
+import { ToggleGroup, ToggleGroupItem } from "@rafty/toggle-group";
 
 const meta: Meta<typeof ToggleGroup> = {
   title: "Components / ToggleGroup",

@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { useFieldControlContext } from "@rhino/field";
-import { classNames } from "@rhino/utils";
+import { useFieldControlContext } from "@rafty/field";
+import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
 
 const textareaClasses = cva(

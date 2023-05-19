@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {
   CheckCircleIcon,

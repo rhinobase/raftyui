@@ -6,7 +6,7 @@ import {
   useSwitch,
   VisuallyHidden,
 } from "react-aria";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 const switchClasses = {
   size: {

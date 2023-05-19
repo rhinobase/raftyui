@@ -6,8 +6,6 @@ import clsx from "clsx";
 import {
   ArrowSmallLeftIcon,
   ArrowSmallRightIcon,
-  MoonIcon,
-  SunIcon,
 } from "@heroicons/react/24/outline";
 import { Hero } from "./Hero";
 import { Header } from "./Header";

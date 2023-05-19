@@ -2,7 +2,7 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { ComponentProps, forwardRef } from "react";
 import { TabContext, TabProvider, useTabContext } from "./context";
 import { cva } from "class-variance-authority";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 // Root Component
 export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &

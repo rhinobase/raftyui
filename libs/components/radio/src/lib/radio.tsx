@@ -12,9 +12,9 @@ import {
   useRadioGroup,
   mergeProps,
 } from "react-aria";
-import { classNames } from "@rhino/utils";
-import { ErrorMessage } from "@rhino/field";
-import { Text } from "@rhino/text";
+import { classNames } from "@rafty/utils";
+import { ErrorMessage } from "@rafty/field";
+import { Text } from "@rafty/text";
 import {
   RadioGroupContext,
   RadioGroupProvider,

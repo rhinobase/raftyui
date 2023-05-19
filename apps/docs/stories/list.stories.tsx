@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ListItem, OrderedList } from "@rhino/ui";
+import { ListItem, OrderedList } from "@rafty/list";
 
 const meta: Meta<typeof OrderedList> = {
   title: "Components / OrderedList",

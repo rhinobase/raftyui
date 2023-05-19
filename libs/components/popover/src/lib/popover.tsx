@@ -14,8 +14,8 @@ import {
   useButton,
   DismissButtonProps,
 } from "react-aria";
-import { classNames } from "@rhino/utils";
-import { Button } from "@rhino/button";
+import { classNames } from "@rafty/utils";
+import { Button } from "@rafty/button";
 
 export type Popover = OverlayTriggerProps & {
   children: React.ReactNode;

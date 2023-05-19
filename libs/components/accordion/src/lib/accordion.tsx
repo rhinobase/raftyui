@@ -5,7 +5,7 @@ import {
   AccordionProvider,
   useAccordionContext,
 } from "./context";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Accordion Component

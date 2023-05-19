@@ -1,14 +1,14 @@
-import { createContext } from '@rhino/utils';
+import { createContext } from "@rafty/utils";
 
 export const [AlertProvider, useAlertContext] = createContext<AlertContext>({
-  name: 'AlertContext',
-  hookName: 'useAlertContext',
-  providerName: '<Alert />',
+  name: "AlertContext",
+  hookName: "useAlertContext",
+  providerName: "<Alert />",
 });
 
 export interface AlertContext {
-  size: 'sm' | 'md' | 'lg';
-  status: 'success' | 'warning' | 'error' | 'info';
-  variant: 'simple' | 'solid' | 'left-accent' | 'top-accent';
+  size: "sm" | "md" | "lg";
+  status: "success" | "warning" | "error" | "info";
+  variant: "simple" | "solid" | "left-accent" | "top-accent";
   isBarebone: boolean;
 }

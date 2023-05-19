@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { cva } from "class-variance-authority";
-import { classNames } from "@rhino/utils";
-import { Spinner } from "@rhino/spinner";
+import { classNames } from "@rafty/utils";
+import { Spinner } from "@rafty/spinner";
 
 const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none",

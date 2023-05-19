@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Alert, AlertIcon, AlertTitle } from "@rhino/ui";
+import { Alert, AlertIcon, AlertTitle } from "@rafty/ui";
 export function Callout({
   status = "info",
   title,

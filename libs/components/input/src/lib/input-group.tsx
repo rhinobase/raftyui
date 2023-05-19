@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames, getValidChildren } from "@rhino/utils";
+import { classNames, getValidChildren } from "@rafty/utils";
 import { InputGroupContext, InputGroupProvider } from "./context";
 
 export type InputGroup = JSX.IntrinsicElements["div"] &

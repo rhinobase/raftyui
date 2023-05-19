@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { RangePicker } from "@rhino/ui";
+import { RangePicker } from "@rafty/date-picker";
 
 const meta: Meta<typeof RangePicker> = {
   title: "Form / RangePicker",

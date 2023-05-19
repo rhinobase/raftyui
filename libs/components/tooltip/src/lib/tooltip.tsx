@@ -1,6 +1,6 @@
 import React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 export type Tooltip = {
   children: React.ReactNode;

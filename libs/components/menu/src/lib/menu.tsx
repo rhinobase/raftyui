@@ -1,9 +1,8 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ComponentProps, forwardRef } from "react";
-import { Button } from "@rhino/button";
+import { Button } from "@rafty/button";
 import { MenuProvider, MenuContext, useMenuContext } from "./context";
-import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
+import { classNames } from "@rafty/utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 // Menu Component

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button } from "@rhino/button";
-import { InputField } from "@rhino/input";
-import { classNames } from "@rhino/utils";
+import { Button } from "@rafty/button";
+import { InputField } from "@rafty/input";
+import { classNames } from "@rafty/utils";
 import { AriaTextFieldProps } from "react-aria";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 

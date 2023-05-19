@@ -25,8 +25,8 @@ import {
 } from "@internationalized/date";
 import { CalendarButton } from "./calendar-button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { classNames } from "@rhino/utils";
-import { Table, TableBody, TableHead, Td, Tr } from "@rhino/table";
+import { classNames } from "@rafty/utils";
+import { Table, TableBody, TableHead, Td, Tr } from "@rafty/table";
 
 export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
   const { locale } = useLocale();

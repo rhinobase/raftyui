@@ -3,10 +3,10 @@ import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
 import { useComboBox, useFilter, useButton } from "react-aria";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { InputField, InputGroup, Suffix } from "@rhino/input";
-import { Button } from "@rhino/button";
-import { PopoverContent } from "@rhino/popover";
-import { ListBox } from "@rhino/select";
+import { InputField, InputGroup, Suffix } from "@rafty/input";
+import { Button } from "@rafty/button";
+import { PopoverContent } from "@rafty/popover";
+import { ListBox } from "@rafty/select";
 export {
   Item as ComboboxItem,
   Section as ComboboxSection,

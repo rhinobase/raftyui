@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Upload } from "@rhino/ui";
+import { Upload } from "@rafty/ui";
 
 const meta: Meta<typeof Upload> = {
   title: "Form / Upload",

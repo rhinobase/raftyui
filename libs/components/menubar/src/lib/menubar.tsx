@@ -2,7 +2,7 @@ import React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { ComponentProps, forwardRef } from "react";
 import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 //MenuBar Component

@@ -1,13 +1,13 @@
-import { createContext } from '@rhino/utils';
+import { createContext } from "@rafty/utils";
 
 export const [AlertDialogProvider, useAlertDialogContext] =
   createContext<AlertDialogContext>({
-    name: 'AlertDialogContext',
-    hookName: 'useAlertDialogContext',
-    providerName: '<AlertDialog />',
+    name: "AlertDialogContext",
+    hookName: "useAlertDialogContext",
+    providerName: "<AlertDialog />",
   });
 
 export interface AlertDialogContext {
-  size: 'sm' | 'md' | 'lg';
+  size: "sm" | "md" | "lg";
   isBarebone: boolean;
 }

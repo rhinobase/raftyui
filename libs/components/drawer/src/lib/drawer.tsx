@@ -1,8 +1,8 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { ComponentProps, forwardRef } from "react";
-import { Button } from "@rhino/button";
+import { Button } from "@rafty/button";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // Drawer Component

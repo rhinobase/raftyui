@@ -1,7 +1,7 @@
-import { Button } from "@rhino/button";
-import { Progress } from "@rhino/progress";
+import { Button } from "@rafty/button";
+import { Progress } from "@rafty/progress";
 import { PhotoIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { useDropzone } from "react-dropzone";
 import { forwardRef, useEffect, useState } from "react";
 

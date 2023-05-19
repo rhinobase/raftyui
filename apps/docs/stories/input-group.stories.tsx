@@ -6,7 +6,7 @@ import {
   InputField,
   LeftAddon,
   RightAddon,
-} from "@rhino/ui";
+} from "@rafty/input";
 import {
   CheckIcon,
   MagnifyingGlassIcon,

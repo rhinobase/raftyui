@@ -3,10 +3,10 @@ import type { AriaSelectProps } from "@react-types/select";
 import { useSelectState } from "react-stately";
 import { useSelect, HiddenSelect, useButton } from "react-aria";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { PopoverContent } from "@rhino/popover";
-import { classNames } from "@rhino/utils";
+import { PopoverContent } from "@rafty/popover";
+import { classNames } from "@rafty/utils";
 import { ListBox } from "./listbox";
-import { Button } from "@rhino/button";
+import { Button } from "@rafty/button";
 export { Item as SelectItem } from "react-stately";
 
 export type Select = {

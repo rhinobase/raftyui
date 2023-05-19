@@ -1,5 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rhino/ui";
+import {
+  Stat,
+  StatHelpText,
+  StatIcon,
+  StatLabel,
+  StatValue,
+} from "@rafty/stat";
 
 const meta: Meta<typeof Stat> = {
   title: "Components / Stat",

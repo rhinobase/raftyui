@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuListItem,
   NavigationMenuTrigger,
-} from "@rhino/ui";
+} from "@rafty/navigation-menu";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof NavigationMenu> = {

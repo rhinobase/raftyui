@@ -1,7 +1,7 @@
-import { forwardRef } from 'react';
-import { classNames } from '@rhino/utils';
+import { forwardRef } from "react";
+import { classNames } from "@rafty/utils";
 
-export type OrderedList = JSX.IntrinsicElements['ol'] & {
+export type OrderedList = JSX.IntrinsicElements["ol"] & {
   isUnstyled?: boolean;
 };
 
@@ -14,7 +14,7 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
         className={
           isUnstyled
             ? className
-            : classNames('list-inside list-decimal', className)
+            : classNames("list-inside list-decimal", className)
         }
       >
         {children}
@@ -23,4 +23,4 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
   }
 );
 
-OrderedList.displayName = 'OrderedList';
+OrderedList.displayName = "OrderedList";

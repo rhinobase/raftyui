@@ -4,8 +4,7 @@ import Link from "next/link";
 import Router from "next/router";
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Kbd } from "@rhino/kbd";
-import { Button } from "@rhino/button";
+import { Kbd, Button } from "@rafty/ui";
 const docSearchConfig = {
   appId: process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID ?? "",
   apiKey: process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY ?? "",

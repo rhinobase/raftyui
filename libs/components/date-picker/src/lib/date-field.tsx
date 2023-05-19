@@ -8,7 +8,7 @@ import {
   useLocale,
 } from "react-aria";
 import { createCalendar } from "@internationalized/date";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 export function DateField<T extends DateValue>({
   locale,

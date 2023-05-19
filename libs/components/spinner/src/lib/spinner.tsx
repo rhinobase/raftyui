@@ -1,4 +1,4 @@
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { forwardRef } from "react";
 
 const dimensions = {

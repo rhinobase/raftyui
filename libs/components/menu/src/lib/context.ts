@@ -1,12 +1,12 @@
-import { createContext } from '@rhino/utils';
+import { createContext } from "@rafty/utils";
 
 export const [MenuProvider, useMenuContext] = createContext<MenuContext>({
-  name: 'MenuContext',
-  hookName: 'useMenuContext',
-  providerName: '<Menu />',
+  name: "MenuContext",
+  hookName: "useMenuContext",
+  providerName: "<Menu />",
 });
 
 export interface MenuContext {
-  size: 'sm' | 'md' | 'lg';
+  size: "sm" | "md" | "lg";
   isBarebone: boolean;
 }

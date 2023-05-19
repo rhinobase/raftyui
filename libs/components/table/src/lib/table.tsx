@@ -1,6 +1,6 @@
 import { HTMLAttributes, forwardRef } from "react";
 import { TableContext, TableProvider, useTableContext } from "./context";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 // TableContainer Component
 export type TableContainer = HTMLAttributes<HTMLDivElement>;

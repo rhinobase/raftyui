@@ -1,31 +1,27 @@
 import { StoryObj } from "@storybook/react";
-import {
-  Checkbox,
-  CheckboxGroup,
-  Combobox,
-  ComboboxItem,
-  DatePicker,
-  FieldControl,
-  FieldLabel,
-  InputField,
-  InputGroup,
-  NumberField,
-  PasswordField,
-  Prefix,
-  Radio,
-  RadioGroup,
-  RangePicker,
-  Select,
-  Suffix,
-  Switch,
-  Textarea,
-} from "@rhino/ui";
+
 import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { PhoneIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Item } from "react-stately";
+import {
+  InputField,
+  InputGroup,
+  NumberField,
+  PasswordField,
+  Prefix,
+  Suffix,
+} from "@rafty/input";
+import { FieldControl, FieldLabel } from "@rafty/field";
+import { Select } from "@rafty/select";
+import { Combobox, ComboboxItem } from "@rafty/combobox";
+import { DatePicker, RangePicker } from "@rafty/date-picker";
+import { Textarea } from "@rafty/textarea";
+import { Checkbox, CheckboxGroup } from "@rafty/checkbox";
+import { Radio, RadioGroup } from "@rafty/radio";
+import { Switch } from "@rafty/switch";
 
 const schema = z.object({
   text_input: z.string().max(255),
@@ -194,7 +190,10 @@ export const Default: Story = {
         <DevTool control={control} />
         <FieldControl name="switch">
           <FieldLabel>Switch</FieldLabel>
-          <Switch {...register("switch")} />
+          <Switch
+            {...register("switch")}
+            onChange={(isSelected) => setValue("switch", isSelected)}
+          />
         </FieldControl>
       </form>
     );

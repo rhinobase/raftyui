@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Skeleton } from "@rhino/ui";
+import { Skeleton } from "@rafty/skeleton";
 
 const meta: Meta<typeof Skeleton> = {
   title: "Components / Skeleton",

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Combobox, ComboboxItem } from "@rhino/ui";
+import { Combobox, ComboboxItem } from "@rafty/combobox";
 
 const meta: Meta<typeof Combobox> = {
   title: "Form / Combobox",

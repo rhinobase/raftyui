@@ -1,6 +1,5 @@
 import { forwardRef, ReactNode } from "react";
-import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
+import { classNames } from "@rafty/utils";
 
 const tagClasses = {
   size: {

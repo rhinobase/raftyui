@@ -6,9 +6,9 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,
-  Button,
-} from "@rhino/ui";
+} from "@rafty/drawer";
 import { useState } from "react";
+import { Button } from "@rafty/button";
 
 const meta: Meta<typeof Drawer> = {
   title: "Components / Drawer",

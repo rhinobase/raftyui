@@ -12,7 +12,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@rhino/ui";
+} from "@rafty/menubar";
 import { useState } from "react";
 
 const meta: Meta<typeof Menubar> = {

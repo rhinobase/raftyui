@@ -1,7 +1,7 @@
-import { forwardRef } from 'react';
-import { classNames } from '@rhino/utils';
+import { forwardRef } from "react";
+import { classNames } from "@rafty/utils";
 
-export type UnorderedList = JSX.IntrinsicElements['ul'] & {
+export type UnorderedList = JSX.IntrinsicElements["ul"] & {
   isUnstyled?: boolean;
 };
 
@@ -14,7 +14,7 @@ export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
         className={
           isUnstyled
             ? className
-            : classNames('list-inside list-disc', className)
+            : classNames("list-inside list-disc", className)
         }
       >
         {children}
@@ -23,4 +23,4 @@ export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
   }
 );
 
-UnorderedList.displayName = 'UnorderedList';
+UnorderedList.displayName = "UnorderedList";

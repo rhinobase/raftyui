@@ -5,8 +5,7 @@ import {
   ToggleGroupProvider,
   useToggleGroupContext,
 } from "./context";
-import { classNames } from "@rhino/utils";
-import { cva } from "class-variance-authority";
+import { classNames } from "@rafty/utils";
 
 // ToggleGroup Component
 export type ToggleGroup = ComponentProps<

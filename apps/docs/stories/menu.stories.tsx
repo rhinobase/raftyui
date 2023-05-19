@@ -13,9 +13,8 @@ import {
   MenuSubContent,
   MenuSubTrigger,
   MenuTrigger,
-} from "@rhino/ui";
+} from "@rafty/menu";
 import { useState } from "react";
-import { Bars2Icon } from "@heroicons/react/24/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Menu> = {

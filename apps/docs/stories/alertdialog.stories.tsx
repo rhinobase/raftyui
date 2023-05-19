@@ -1,4 +1,4 @@
-import { Button } from "@rhino/button";
+import { Button } from "@rafty/button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -8,7 +8,7 @@ import {
   AlertDialogOverlay,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@rhino/ui";
+} from "@rafty/alertdialog";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof AlertDialog> = {

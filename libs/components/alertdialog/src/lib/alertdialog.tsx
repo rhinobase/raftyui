@@ -1,12 +1,12 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import { ComponentProps, forwardRef } from "react";
-import { Button } from "@rhino/button";
+import { Button } from "@rafty/button";
 import {
   AlertDialogProvider,
   AlertDialogContext,
   useAlertDialogContext,
 } from "./context";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
 
 // AlertDialog Component

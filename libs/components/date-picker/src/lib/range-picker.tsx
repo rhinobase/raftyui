@@ -12,9 +12,9 @@ import {
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { classNames } from "@rhino/utils";
-import { PopoverContent } from "@rhino/popover";
-import { InputGroup, Suffix } from "@rhino/input";
+import { classNames } from "@rafty/utils";
+import { PopoverContent } from "@rafty/popover";
+import { InputGroup, Suffix } from "@rafty/input";
 
 const RangePickerClasses = cva(
   "flex transition-colors rounded-md pr-10 flex-1 relative",

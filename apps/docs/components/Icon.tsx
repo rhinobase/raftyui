@@ -1,5 +1,4 @@
 import { useId } from "react";
-import clsx from "clsx";
 import {
   ExclamationCircleIcon,
   LightBulbIcon,
@@ -26,8 +25,8 @@ export function Icon({
   icon: keyof typeof icons;
   className?: string;
 }) {
-  let id = useId();
-  let IconComponent = icons[icon];
+  const id = useId();
+  const IconComponent = icons[icon];
 
   return (
     <IconComponent
@@ -58,7 +57,7 @@ export function Gradient({ color = "blue", ...props }) {
       gradientUnits="userSpaceOnUse"
       {...props}
     >
-      {gradients[color].map((stop: any, stopIndex: number) => (
+      {gradients[color].map((stop: object, stopIndex: number) => (
         <stop key={stopIndex} {...stop} />
       ))}
     </radialGradient>

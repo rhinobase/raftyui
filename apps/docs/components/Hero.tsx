@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { Highlight } from "prism-react-renderer";
-import { Button } from "@rhino/ui";
+import { Button } from "@rafty/ui";
 import { HeroBackground } from "./HeroBackground";
 import blurCyanImage from "../public/blur-cyan.png";
 import blurIndigoImage from "../public/blur-indigo.png";

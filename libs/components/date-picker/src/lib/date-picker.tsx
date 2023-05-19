@@ -8,10 +8,10 @@ import {
   CalendarIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
-import { PopoverContent } from "@rhino/popover";
-import { InputGroup, Suffix } from "@rhino/input";
+import { PopoverContent } from "@rafty/popover";
+import { InputGroup, Suffix } from "@rafty/input";
 
 const DatePickerClasses = cva(
   "transition-colors rounded-md pr-10 relative flex items-center flex-1",

@@ -4,7 +4,7 @@ import type { ListState } from "react-stately";
 import type { Node } from "@react-types/shared";
 import { useListBox, useListBoxSection, useOption } from "react-aria";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { classNames } from "@rhino/utils";
+import { classNames } from "@rafty/utils";
 
 export type ListBox = {
   listBoxRef?: React.RefObject<HTMLUListElement>;

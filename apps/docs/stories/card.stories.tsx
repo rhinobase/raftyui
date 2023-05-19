@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Card, CardBody, CardFooter, CardHeader } from "@rhino/card";
-import { Button } from "@rhino/ui";
+import { Card, CardBody, CardFooter, CardHeader } from "@rafty/card";
+import { Button } from "@rafty/button";
 
 const meta: Meta<typeof Card> = {
   title: "Components / Card",

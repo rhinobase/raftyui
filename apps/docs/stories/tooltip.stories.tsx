@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Tooltip, Button } from "@rhino/ui";
+import { Tooltip } from "@rafty/tooltip";
+import { Button } from "@rafty/button";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Tooltip> = {

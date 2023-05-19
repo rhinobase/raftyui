@@ -6,8 +6,8 @@ import {
   DialogOverlay,
   DialogHeading,
   DialogTrigger,
-  Button,
-} from "@rhino/ui";
+} from "@rafty/dialog";
+import { Button } from "@rafty/button";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",

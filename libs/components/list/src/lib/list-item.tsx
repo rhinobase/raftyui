@@ -1,7 +1,7 @@
-import { forwardRef } from 'react';
-import { classNames } from '@rhino/utils';
+import { forwardRef } from "react";
+import { classNames } from "@rafty/utils";
 
-export type ListItem = JSX.IntrinsicElements['li'] & { isUnstyled?: boolean };
+export type ListItem = JSX.IntrinsicElements["li"] & { isUnstyled?: boolean };
 
 export const ListItem = forwardRef<HTMLLIElement, ListItem>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
@@ -12,7 +12,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItem>(
         className={
           isUnstyled
             ? className
-            : classNames(className, 'dark:text-secondary-100')
+            : classNames(className, "dark:text-secondary-100")
         }
       >
         {children}
@@ -21,4 +21,4 @@ export const ListItem = forwardRef<HTMLLIElement, ListItem>(
   }
 );
 
-ListItem.displayName = 'ListItem';
+ListItem.displayName = "ListItem";

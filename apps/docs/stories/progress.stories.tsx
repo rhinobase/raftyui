@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Progress } from "@rhino/ui";
+import { Progress } from "@rafty/progress";
 
 const meta: Meta<typeof Progress> = {
   title: "Components / Progress",

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Popover, PopoverTrigger, PopoverContent } from "@rhino/ui";
+import { Popover, PopoverTrigger, PopoverContent } from "@rafty/popover";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Popover> = {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Switch } from "@rhino/ui";
+import { Switch } from "@rafty/switch";
 
 const meta: Meta<typeof Switch> = {
   title: "Form / Switch",

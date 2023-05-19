@@ -1,4 +1,4 @@
-import { Tab, TabTrigger, TabList, TabContent } from "@rhino/ui";
+import { Tab, TabTrigger, TabList, TabContent } from "@rafty/tab";
 
 import { Meta, StoryObj } from "@storybook/react";
 

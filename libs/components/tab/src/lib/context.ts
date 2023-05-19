@@ -1,4 +1,4 @@
-import { createContext } from "@rhino/utils";
+import { createContext } from "@rafty/utils";
 
 export const [TabProvider, useTabContext] = createContext<TabContext>({
   name: "TabContext",
