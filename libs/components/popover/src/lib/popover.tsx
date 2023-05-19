@@ -61,7 +61,7 @@ export function PopoverTrigger({
       {...buttonProps}
       ref={triggerRef as RefObject<HTMLButtonElement>}
       className={
-        unstyle ? className : classNames("border rounded px-3 py-1", className)
+        unstyle ? className : classNames("rounded border px-3 py-1", className)
       }
     >
       {children}
@@ -110,14 +110,14 @@ export function PopoverContent({
 
   return (
     <PopoverContentProvider value={values}>
-      {!isNonModal && <div {...underlayProps} className="fixed top-0 left-0" />}
+      {!isNonModal && <div {...underlayProps} className="fixed left-0 top-0" />}
       <div
         {...popoverProps}
         className={
           unstyle
             ? className
             : classNames(
-                "z-10 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)] text-secondary-900 bg-white dark:bg-secondary-800 dark:text-secondary-200 rounded-md p-1 text-sm overflow-y-auto",
+                "text-secondary-900 dark:bg-secondary-800 dark:text-secondary-200 z-10 overflow-y-auto rounded-md bg-white p-1 text-sm shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                 className
               )
         }
@@ -146,7 +146,7 @@ export function PopoverArrow({ className, isUnstyled = false }: PopoverArrow) {
         unstyle
           ? className
           : classNames(
-              "absolute fill-white dark:fill-secondary-700 w-3 h-3 stroke-secondary-300",
+              "dark:fill-secondary-700 stroke-secondary-300 absolute h-3 w-3 fill-white",
               "data-[placement=top]:top-full data-[placement=top]:-translate-x-1/2",
               "data-[placement=bottom]:bottom-full data-[placement=bottom]:-translate-x-1/2 data-[placement=bottom]:rotate-180",
               "data-[placement=left]:left-full data-[placement=left]:-translate-y-1/2 data-[placement=left]:-rotate-90",

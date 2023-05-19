@@ -69,7 +69,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContent>(
         <DialogPrimitive.Content
           {...props}
           className={classNames(
-            "fixed top-0 z-50 h-screen min-w-[360px] bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle dark:bg-secondary-800 dark:text-secondary-50 overflow-y-auto overscroll-auto",
+            "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen min-w-[360px] overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
             contentClasses.size[size],
             contentClasses.side[side],
             className
@@ -149,7 +149,7 @@ export const DrawerCloseButton = forwardRef<
         {...props}
         variant={variant}
         size={size}
-        className={classNames("absolute top-5 right-5 rounded-full", className)}
+        className={classNames("absolute right-5 top-5 rounded-full", className)}
       >
         <XMarkIcon className="h-5 w-5 stroke-2" />
       </Button>

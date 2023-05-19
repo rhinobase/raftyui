@@ -64,7 +64,7 @@ export function Combobox<T extends object>(props: Combobox<T>) {
             variant="ghost"
             className="!z-[1] !p-1"
           >
-            <ChevronUpDownIcon className="w-5 h-5" aria-hidden="true" />
+            <ChevronUpDownIcon className="h-5 w-5" aria-hidden="true" />
           </Button>
         </Suffix>
       </InputGroup>
@@ -72,7 +72,7 @@ export function Combobox<T extends object>(props: Combobox<T>) {
         triggerState={state}
         triggerRef={popoverRef}
         placement="bottom start"
-        className="w-full -ml-3"
+        className="-ml-3 w-full"
       >
         <ListBox
           {...listBoxProps}

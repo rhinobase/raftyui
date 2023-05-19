@@ -98,7 +98,7 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
         className={classNames(
           "group flex items-center",
           "aria-checked:text-primary-500 aria-checked:dark:text-primary-300",
-          "aria-disabled:opacity-60 aria-disabled:dark:opacity-50 aria-disabled:cursor-not-allowed"
+          "aria-disabled:cursor-not-allowed aria-disabled:opacity-60 aria-disabled:dark:opacity-50"
         )}
         {...internalProps}
       >
@@ -109,7 +109,7 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
         <div
           className={classNames(
             checkboxClasses.isIndeterminate[Number(isIndeterminate)],
-            "w-5 h-5 flex flex-shrink-0 justify-center items-center rounded text-white mr-2 border-2 border-secondary-500 transition ease-in-out duration-150"
+            "border-secondary-500 mr-2 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 text-white transition duration-150 ease-in-out"
           )}
           aria-hidden="true"
         >
@@ -123,11 +123,11 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
                 : isSelected
                 ? "text-white"
                 : "text-transparent",
-              "w-4 h-4 transition-all duration-300"
+              "h-4 w-4 transition-all duration-300"
             )}
           />
         </div>
-        <span className="select-none text-gray-700 dark:text-secondary-200 font-medium">
+        <span className="dark:text-secondary-200 select-none font-medium text-gray-700">
           {children}
         </span>
       </label>

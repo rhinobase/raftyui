@@ -25,7 +25,7 @@ type Story = StoryObj<typeof Alert>;
 
 export const Variants: Story = {
   render: ({ status, size }) => (
-    <div className="grid grid-cols-2 gap-10 max-w-6xl w-full">
+    <div className="grid w-full max-w-6xl grid-cols-2 gap-10">
       <div className="flex flex-col gap-4">
         <p>Simple Variant</p>
         <Alert size={size} status={status}>
@@ -71,7 +71,7 @@ export const AlertWithAction: Story = {
   },
 
   render: ({ status, size, variant }) => (
-    <div className="flex flex-col gap-4 max-w-3xl w-full">
+    <div className="flex w-full max-w-3xl flex-col gap-4">
       <Alert variant={variant} size={size} status={status}>
         <AlertIcon />
         <AlertTitle>Title</AlertTitle>

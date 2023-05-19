@@ -110,7 +110,7 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
             unstyle
               ? className
               : classNames(
-                  "group flex w-full items-center justify-between text-secondary-700 dark:text-secondary-300",
+                  "text-secondary-700 dark:text-secondary-300 group flex w-full items-center justify-between",
                   accordionTriggerClasses.size[size],
                   accordionTriggerClasses.variant[variant],
                   className

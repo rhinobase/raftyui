@@ -118,7 +118,7 @@ export const NavigationMenuTrigger = forwardRef<
         unstyle
           ? className
           : classNames(
-              "group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20",
+              "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none",
               triggerClasses.size[size],
               className
             )
@@ -162,7 +162,7 @@ export const NavigationMenuContent = forwardRef<
           unstyle
             ? className
             : classNames(
-                "absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200 animate-slide-down-fade dark:bg-secondary-800",
+                "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
                 contentClasses.size[size],
                 className
               )
@@ -204,7 +204,7 @@ export const NavigationMenuLink = ({
         unstyle
           ? className
           : classNames(
-              "flex select-none rounded-md font-semibold outline-none hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20",
+              "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md font-semibold outline-none",
               linkClasses.size[size],
               className
             )
@@ -248,7 +248,7 @@ const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
     <NavigationMenuPrimitive.Viewport
       {...props}
       className={classNames(
-        "absolute top-full left-0 flex w-full justify-center"
+        "absolute left-0 top-full flex w-full justify-center"
       )}
     />
   );

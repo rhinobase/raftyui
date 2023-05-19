@@ -21,7 +21,7 @@ export function ListBox(props: ListBox) {
     <ul
       {...listBoxProps}
       ref={listBoxRef}
-      className="w-full max-h-72 overflow-auto outline-none"
+      className="max-h-72 w-full overflow-auto outline-none"
     >
       {[...state.collection].map((item) =>
         item.type === "section" ? (
@@ -51,7 +51,7 @@ function ListBoxSection({ section, state, size }: ListBoxSection) {
       {section.rendered && (
         <span
           {...headingProps}
-          className="text-xs font-bold uppercase text-gray-500 mx-3"
+          className="mx-3 text-xs font-bold uppercase text-gray-500"
         >
           {section.rendered}
         </span>
@@ -86,24 +86,24 @@ function Option({ item, state, size }: Option) {
       {...optionProps}
       ref={ref}
       className={classNames(
-        size === "sm" && "px-2 py-1 text-sm rounded",
-        size === "md" && "px-3 py-1.5 rounded-md",
-        size === "lg" && "px-4 py-2 text-lg rounded-md",
+        size === "sm" && "rounded px-2 py-1 text-sm",
+        size === "md" && "rounded-md px-3 py-1.5",
+        size === "lg" && "rounded-md px-4 py-2 text-lg",
         isFocused || isSelected
           ? "text-secondary-600 dark:text-secondary-100"
           : isDisabled
           ? "text-secondary-200"
           : "text-secondary-700 dark:text-secondary-200",
         isFocused && "bg-secondary-100 dark:bg-secondary-700/50",
-        isSelected && "font-semibold bg-secondary-200/70 dark:bg-secondary-700",
-        "m-1 outline-none cursor-pointer flex items-center justify-between"
+        isSelected && "bg-secondary-200/70 dark:bg-secondary-700 font-semibold",
+        "m-1 flex cursor-pointer items-center justify-between outline-none"
       )}
     >
       {item.rendered}
       {isSelected && (
         <CheckIcon
           aria-hidden="true"
-          className="w-5 h-5 text-secondary-600 dark:text-secondary-100"
+          className="text-secondary-600 dark:text-secondary-100 h-5 w-5"
         />
       )}
     </li>

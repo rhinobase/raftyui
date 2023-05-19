@@ -12,7 +12,7 @@ export function Callout({
   return (
     <Alert size="lg" status={status} className="!items-start rounded-lg">
       <AlertIcon />
-      <div className="flex-1 flex flex-col">
+      <div className="flex flex-1 flex-col">
         <AlertTitle>{title}</AlertTitle>
         {children}
       </div>

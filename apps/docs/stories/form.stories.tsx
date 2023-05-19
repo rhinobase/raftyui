@@ -94,8 +94,8 @@ export const Default: Story = {
             onInputChange={(value) => setValue("combobox", value)}
           >
             <ComboboxItem key="red panda" textValue="red panda">
-              <div className="flex gap-2 items-center">
-                <div className="rounded-full w-5 h-5 bg-red-200">RP</div>Red
+              <div className="flex items-center gap-2">
+                <div className="h-5 w-5 rounded-full bg-red-200">RP</div>Red
                 Panda
               </div>
             </ComboboxItem>

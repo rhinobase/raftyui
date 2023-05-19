@@ -57,7 +57,7 @@ export const TagField = ({
               "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
             }
           >
-            <span className="leading-[0px] text-sm">{value}</span>
+            <span className="text-sm leading-[0px]">{value}</span>
             <Button
               onClick={() => {
                 setTag((prev) => {

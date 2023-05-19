@@ -52,7 +52,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
       <>
         <div
           {...getRootProps()}
-          className="flex w-full justify-center cursor-pointer rounded-lg border border-dashed hover:border-primary-500 border-secondary-300 transition-all duration-500 dark:border-secondary-600 dark:hover:border-primary-300"
+          className="hover:border-primary-500 border-secondary-300 dark:border-secondary-600 dark:hover:border-primary-300 flex w-full cursor-pointer justify-center rounded-lg border border-dashed transition-all duration-500"
         >
           <input
             {...props}
@@ -68,7 +68,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
               size === "sm" && "py-8",
               size === "md" && "py-14",
               size === "lg" && "py-14",
-              "relative rounded-md w-full text-center cursor-pointer bg-white dark:bg-secondary-800 font-semibold focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+              "dark:bg-secondary-800 relative w-full cursor-pointer rounded-md bg-white text-center font-semibold focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
             )}
           >
             <PhotoIcon
@@ -76,7 +76,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
                 size === "sm" && "h-6 w-6",
                 size === "md" && "h-8 w-8",
                 size === "lg" && "h-12 w-12",
-                "mx-auto text-gray-400 h-12 w-12"
+                "mx-auto h-12 w-12 text-gray-400"
               )}
             />
             <div
@@ -103,7 +103,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
         <div
           className={classNames(
             size === "sm" && "px-1",
-            "flex w-full mt-1 gap-1 items-center justify-between"
+            "mt-1 flex w-full items-center justify-between gap-1"
           )}
         >
           {progress && (
@@ -128,11 +128,11 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
         </div>
         {previewFile && (
           <div className="w-full overflow-x-auto">
-            <div className="flex gap-2 items-center w-max">
+            <div className="flex w-max items-center gap-2">
               {files &&
                 files.map((file, index) => (
                   <div
-                    className="relative h-28 w-28 group overflow-hidden border dark:border-secondary-700 rounded-md p-2"
+                    className="dark:border-secondary-700 group relative h-28 w-28 overflow-hidden rounded-md border p-2"
                     key={index + file.name}
                   >
                     <img
@@ -140,7 +140,7 @@ export const Upload = forwardRef<HTMLInputElement, Upload>(
                       alt={file.name}
                       className="h-28 w-28 object-cover"
                     />
-                    <div className="absolute top-0 left-0 w-full h-full gap-2 items-center justify-center hidden group-hover:flex bg-black/60 transition-all">
+                    <div className="absolute left-0 top-0 hidden h-full w-full items-center justify-center gap-2 bg-black/60 transition-all group-hover:flex">
                       <Button
                         size="icon"
                         variant="solid"

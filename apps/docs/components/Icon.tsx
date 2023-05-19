@@ -30,7 +30,7 @@ export function Icon({
 
   return (
     <IconComponent
-      className="w-8 h-8 text-primary-500 dark:text-primary-300"
+      className="text-primary-500 dark:text-primary-300 h-8 w-8"
       id={id}
     />
   );

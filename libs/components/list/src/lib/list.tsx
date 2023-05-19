@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef } from "react";
 
-export type List = JSX.IntrinsicElements['ul'];
+export type List = JSX.IntrinsicElements["ul"];
 
 export const List = forwardRef<HTMLUListElement, List>(
   ({ className, ...props }, forwardedRef) => {
@@ -12,4 +12,4 @@ export const List = forwardRef<HTMLUListElement, List>(
   }
 );
 
-List.displayName = 'List';
+List.displayName = "List";

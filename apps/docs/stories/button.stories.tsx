@@ -21,17 +21,17 @@ export const Sizes: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">sm</div>
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">sm</div>
         <Button size="sm" colorScheme={colorScheme}>
           Button text
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">sm</div>
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">sm</div>
         <Button colorScheme={colorScheme}>Button text</Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">lg</div>
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">lg</div>
         <Button size="lg" colorScheme={colorScheme}>
           Button text
         </Button>
@@ -44,7 +44,7 @@ export const IconButton: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           icon
         </div>
         <Button data-cy="iconbtn" colorScheme={colorScheme} size="icon">
@@ -65,7 +65,7 @@ export const IconButton: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">fab</div>
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">fab</div>
         <Button data-cy="iconbtn" colorScheme={colorScheme} size="fab">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -91,13 +91,13 @@ export const Variants: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Solid
         </div>
         <Button colorScheme={colorScheme}>Button text</Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Outline
         </div>
         <Button variant="outline" colorScheme={colorScheme}>
@@ -105,7 +105,7 @@ export const Variants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Ghost
         </div>
         <Button variant="ghost" colorScheme={colorScheme}>
@@ -119,7 +119,7 @@ export const ActiveVariants: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Solid Active
         </div>
         <Button colorScheme={colorScheme} isActive>
@@ -127,7 +127,7 @@ export const ActiveVariants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Outline Active
         </div>
         <Button colorScheme={colorScheme} variant="outline" isActive>
@@ -135,7 +135,7 @@ export const ActiveVariants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Ghost Active
         </div>
         <Button colorScheme={colorScheme} variant="ghost" isActive>
@@ -149,7 +149,7 @@ export const DisabledVariants: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Solid Disabled
         </div>
         <Button colorScheme={colorScheme} isDisabled>
@@ -157,7 +157,7 @@ export const DisabledVariants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Outline Disabled
         </div>
         <Button colorScheme={colorScheme} variant="outline" isDisabled>
@@ -165,7 +165,7 @@ export const DisabledVariants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Ghsot Disabled
         </div>
         <Button colorScheme={colorScheme} variant="ghost" isDisabled>
@@ -180,7 +180,7 @@ export const LoadingVariants: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Solid Loading
         </div>
         <Button colorScheme={colorScheme} isLoading>
@@ -188,7 +188,7 @@ export const LoadingVariants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Outline Loading
         </div>
         <Button colorScheme={colorScheme} variant="outline" isLoading>
@@ -196,7 +196,7 @@ export const LoadingVariants: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           Ghost Loading
         </div>
         <Button colorScheme={colorScheme} variant="ghost" isLoading>
@@ -210,7 +210,7 @@ export const ButtonWithIcons: Story = {
   render: ({ colorScheme }) => (
     <>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           left icon
         </div>
         <Button
@@ -236,7 +236,7 @@ export const ButtonWithIcons: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           icon right
         </div>
         <Button
@@ -262,7 +262,7 @@ export const ButtonWithIcons: Story = {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-sm mb-2 text-secondary-500">
+        <div className="text-secondary-500 mb-2 text-sm font-semibold">
           icon left & right
         </div>
         <Button

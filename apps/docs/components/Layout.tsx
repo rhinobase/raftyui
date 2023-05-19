@@ -154,11 +154,11 @@ export function Layout({
 
       {isHomePage && <Hero />}
 
-      <div className="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
+      <div className="max-w-8xl relative mx-auto flex justify-center sm:px-2 lg:px-8 xl:px-12">
         <div className="hidden lg:relative lg:block lg:flex-none">
-          <div className="absolute inset-y-0 right-0 w-[50vw] bg-secondary-50 dark:hidden" />
-          <div className="absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-secondary-800 dark:block" />
-          <div className="absolute bottom-0 right-0 top-28 hidden w-px bg-secondary-800 dark:block" />
+          <div className="bg-secondary-50 absolute inset-y-0 right-0 w-[50vw] dark:hidden" />
+          <div className="from-secondary-800 absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t dark:block" />
+          <div className="bg-secondary-800 absolute bottom-0 right-0 top-28 hidden w-px dark:block" />
           <div className="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5">
             <Navigation
               navigation={navigation}
@@ -171,12 +171,12 @@ export function Layout({
             {(title || section) && (
               <header className="mb-9 space-y-1">
                 {section && (
-                  <p className="font-display text-sm font-medium text-primary-500 dark:text-primary-300">
+                  <p className="font-display text-primary-500 dark:text-primary-300 text-sm font-medium">
                     {section.title}
                   </p>
                 )}
                 {title && (
-                  <h1 className="font-display text-3xl tracking-tight text-secondary-900 dark:text-white">
+                  <h1 className="font-display text-secondary-900 text-3xl tracking-tight dark:text-white">
                     {title}
                   </h1>
                 )}
@@ -184,16 +184,16 @@ export function Layout({
             )}
             <Prose>{children}</Prose>
           </article>
-          <dl className="mt-12 flex border-t border-secondary-200 pt-6 dark:border-secondary-800">
+          <dl className="border-secondary-200 dark:border-secondary-800 mt-12 flex border-t pt-6">
             {previousPage && (
               <div>
-                <dt className="font-display text-sm font-medium text-secondary-900 dark:text-white">
+                <dt className="font-display text-secondary-900 text-sm font-medium dark:text-white">
                   Previous
                 </dt>
                 <dd className="mt-1">
                   <Link
                     href={previousPage.href}
-                    className="text-base font-semibold flex items-center gap-1 text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300"
+                    className="text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300 flex items-center gap-1 text-base font-semibold"
                   >
                     <ArrowSmallLeftIcon className="h-4 w-4 stroke-2" />
                     {previousPage.title}
@@ -203,13 +203,13 @@ export function Layout({
             )}
             {nextPage && (
               <div className="ml-auto text-right">
-                <dt className="font-display text-sm font-medium text-secondary-900 dark:text-white">
+                <dt className="font-display text-secondary-900 text-sm font-medium dark:text-white">
                   Next
                 </dt>
                 <dd className="mt-1">
                   <Link
                     href={nextPage.href}
-                    className="text-base flex items-center gap-1 font-semibold text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300"
+                    className="text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300 flex items-center gap-1 text-base font-semibold"
                   >
                     {nextPage.title}{" "}
                     <ArrowSmallRightIcon className="h-4 w-4 stroke-2" />
@@ -225,7 +225,7 @@ export function Layout({
               <>
                 <h2
                   id="on-this-page-title"
-                  className="font-display text-sm font-medium text-secondary-900 dark:text-white"
+                  className="font-display text-secondary-900 text-sm font-medium dark:text-white"
                 >
                   On this page
                 </h2>
@@ -238,7 +238,7 @@ export function Layout({
                           className={clsx(
                             isActive(section)
                               ? "text-primary-500 dark:text-primary-300"
-                              : "font-normal text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300"
+                              : "text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300 font-normal"
                           )}
                         >
                           {section.title}
@@ -247,7 +247,7 @@ export function Layout({
                       {section.children.length > 0 && (
                         <ol
                           role="list"
-                          className="mt-2 space-y-3 pl-5 text-secondary-500 dark:text-secondary-400"
+                          className="text-secondary-500 dark:text-secondary-400 mt-2 space-y-3 pl-5"
                         >
                           {section.children.map((subSection) => (
                             <li key={subSection.id}>

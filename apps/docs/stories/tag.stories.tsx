@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Tag>;
 
 export const Variants: Story = {
   render: () => (
-    <div className="grid grid-cols-2 gap-10 max-w-3xl w-full">
+    <div className="grid w-full max-w-3xl grid-cols-2 gap-10">
       <div className="space-y-2">
         <Tag colorScheme="primary">Tag text</Tag>
         <Tag colorScheme="secondary">Tag text</Tag>

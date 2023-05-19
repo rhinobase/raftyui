@@ -44,13 +44,13 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     <div
       {...calendarProps}
       ref={ref}
-      className="p-5 text-zinc-800 dark:text-secondary-200"
+      className="dark:text-secondary-200 p-5 text-zinc-800"
     >
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <CalendarButton {...prevButtonProps} variant="ghost">
           <ChevronLeftIcon className="h-4 w-4 stroke-2" />
         </CalendarButton>
-        <h2 className="font-semibold text-lg">{title}</h2>
+        <h2 className="text-lg font-semibold">{title}</h2>
         <CalendarButton {...nextButtonProps} variant="ghost">
           <ChevronRightIcon className="h-4 w-4 stroke-2" />
         </CalendarButton>
@@ -77,7 +77,7 @@ export function CalendarGrid({
       isBarebone
       {...gridProps}
       cellPadding="0"
-      className="flex-1 text-zinc-600 dark:text-secondary-200"
+      className="dark:text-secondary-200 flex-1 text-zinc-600"
     >
       <TableHead {...headerProps} className="mb-2">
         <Tr>
@@ -150,7 +150,7 @@ function CalendarCell({
   return (
     <Td
       {...cellProps}
-      className={classNames(isFocusVisible ? "z-10" : "z-0", "p-0.5 relative")}
+      className={classNames(isFocusVisible ? "z-10" : "z-0", "relative p-0.5")}
     >
       <div
         {...mergeProps(buttonProps, focusProps)}
@@ -163,7 +163,7 @@ function CalendarCell({
             (isInvalid
               ? "bg-red-300"
               : "bg-secondary-100 dark:bg-secondary-700/50"),
-          "w-8 h-8 outline-none group"
+          "group h-8 w-8 outline-none"
         )}
       >
         <div
@@ -171,12 +171,12 @@ function CalendarCell({
             isDisabled && !isInvalid && "text-zinc-400",
             // Focus ring, visible while the cell has keyboard focus
             isFocusVisible &&
-              "ring-2 group-focus:z-2 ring-primary-600 ring-offset-2",
+              "group-focus:z-2 ring-primary-600 ring-2 ring-offset-2",
             // Darker selection background for the start and end.
             isSelectionStart || isSelectionEnd
               ? isInvalid
                 ? "bg-red-600 text-white hover:bg-red-700"
-                : "bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300"
+                : "bg-primary-500 dark:bg-primary-300 hover:bg-primary-500 dark:hover:bg-primary-300 text-white dark:text-black"
               : "",
             // Hover state for cells in the middle of the range.
             isSelected &&
@@ -190,8 +190,8 @@ function CalendarCell({
               !isDisabled &&
               "hover:bg-secondary-200 dark:hover:bg-secondary-700",
             isToday(date, Intl.DateTimeFormat().resolvedOptions().timeZone) &&
-              "ring-2 ring-primary-400 relative z-10",
-            "w-full h-full rounded flex items-center justify-center cursor-default text-sm transition-all"
+              "ring-primary-400 relative z-10 ring-2",
+            "flex h-full w-full cursor-default items-center justify-center rounded text-sm transition-all"
           )}
         >
           {formattedDate}

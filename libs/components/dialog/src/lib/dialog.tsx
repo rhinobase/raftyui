@@ -236,7 +236,7 @@ export const DialogCloseButton = forwardRef<
           className={
             unstyle
               ? className
-              : classNames("absolute top-5 right-5 rounded-full", className)
+              : classNames("absolute right-5 top-5 rounded-full", className)
           }
         >
           <XMarkIcon />

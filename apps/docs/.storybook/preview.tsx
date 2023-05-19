@@ -34,7 +34,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <div className="w-full flex flex-col items-center justify-center gap-2 mx-auto max-w-3xl h-screen">
+      <div className="mx-auto flex h-screen w-full max-w-3xl flex-col items-center justify-center gap-2">
         <Story />
       </div>
     ),

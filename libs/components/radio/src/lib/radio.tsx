@@ -64,9 +64,9 @@ export function RadioGroup(props: RadioGroup) {
 
 const radioClasses = {
   size: {
-    sm: "h-3.5 w-3.5 group-data-[selected=true]:border-4",
-    md: "h-[18px] w-[18px] group-data-[selected=true]:border-[5px]",
-    lg: "h-6 w-6 group-data-[selected=true]:border-[8px]",
+    sm: "h-3.5 w-3.5 group-aria-checked:border-4",
+    md: "h-[18px] w-[18px] group-aria-checked:border-[5px]",
+    lg: "h-6 w-6 group-aria-checked:border-[8px]",
   },
 };
 
@@ -79,14 +79,11 @@ export function Radio({ children, ...props }: Radio) {
     <RadioCard
       {...props}
       isDisabled={isDisabled}
-      className={classNames(
-        !isDisabled && "hover:opacity-80",
-        "dark:text-secondary-200 flex items-center gap-2"
-      )}
+      className="dark:text-secondary-200 flex items-center gap-2 hover:opacity-80"
     >
       <div
         className={classNames(
-          "inline-block rounded-full border-2 border-secondary-400 hover:opacity-70 dark:border-secondary-600 group-data-[selected=true]:border-primary-500 dark:group-data-[selected=true]:border-primary-300",
+          "border-secondary-400 dark:border-secondary-600 group-aria-checked:border-primary-500 dark:group-aria-checked:border-primary-300 inline-block rounded-full border-2 hover:opacity-70",
           radioClasses.size[size]
         )}
       />
@@ -106,16 +103,18 @@ export function RadioCard(props: RadioCard) {
   const isSelected = state!.selectedValue === props.value;
   const { isDisabled: isGroupDisabled } = useRadioGroupContext();
 
+  const disabled = isDisabled || isGroupDisabled;
+
   return (
     <label
       {...props}
       className={classNames(
         isFocusVisible && "ring-2 ring-black ring-offset-2",
-        (isDisabled ?? isGroupDisabled) && "cursor-not-allowed opacity-50",
-        "group",
+        "group aria-disabled:cursor-not-allowed aria-disabled:opacity-60 dark:aria-disabled:opacity-50",
         className
       )}
-      data-selected={isSelected}
+      aria-checked={isSelected}
+      aria-disabled={disabled}
     >
       <VisuallyHidden>
         <input {...mergeProps(inputProps, focusProps)} ref={ref} />

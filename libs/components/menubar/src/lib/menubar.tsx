@@ -70,7 +70,7 @@ export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
           unstyle
             ? className
             : classNames(
-                "flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800",
+                "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:hover:bg-secondary-800 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center justify-between gap-2 rounded-md text-sm font-semibold outline-none",
                 triggerClasses.size[size],
                 className
               )
@@ -110,7 +110,7 @@ export const MenubarContent = forwardRef<HTMLDivElement, MenubarContent>(
             unstyle
               ? className
               : classNames(
-                  "min-w-[220px] rounded-md bg-white dark:bg-secondary-800 p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+                  "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
                   className
                 )
           }
@@ -163,7 +163,7 @@ export const MenubarLabel = forwardRef<HTMLDivElement, MenubarLabel>(
           unstyle
             ? className
             : classNames(
-                "select-none px-3 font-semibold uppercase tracking-wide text-secondary-400 dark:text-secondary-400",
+                "text-secondary-400 dark:text-secondary-400 select-none px-3 font-semibold uppercase tracking-wide",
                 labelClasses.size[size],
                 className
               )
@@ -202,7 +202,7 @@ export const MenubarItem = forwardRef<HTMLDivElement, MenubarItem>(
           unstyle
             ? className
             : classNames(
-                "flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500",
+                "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-5 pr-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
                 itemClasses.size[size],
                 className
               )
@@ -249,7 +249,7 @@ export const MenubarCheckboxItem = forwardRef<
         unstyle
           ? className
           : classNames(
-              "relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold outline-none rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold outline-none",
               checkboxItemClasses.size[size],
               className
             )
@@ -295,7 +295,7 @@ export const MenubarRadioItem = forwardRef<HTMLDivElement, MenubarRadioItem>(
           unstyle
             ? className
             : classNames(
-                "relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold outline-none rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50",
+                "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 px-5 py-1.5 font-semibold outline-none",
                 radioItemClasses.size[size],
                 className
               )
@@ -355,7 +355,7 @@ export const MenubarSubTrigger = forwardRef<HTMLDivElement, MenubarSubTrigger>(
           unstyle
             ? className
             : classNames(
-                "flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pr-2 pl-5 font-semibold outline-none rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60",
+                "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pl-5 pr-2 font-semibold outline-none",
                 subTriggerClasses.size[size],
                 className
               )

@@ -24,7 +24,7 @@ type Story = StoryObj<typeof RangePicker>;
 
 export const Default: Story = {
   render: ({ size, variant }) => (
-    <div className="max-w-sm w-full">
+    <div className="w-full max-w-sm">
       <RangePicker size={size} variant={variant} />
     </div>
   ),

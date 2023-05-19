@@ -11,7 +11,7 @@ type Story = StoryObj<typeof Popover>;
 
 export const Default: Story = {
   render: () => (
-    <div className="flex w-full max-w-4xl flex-col gap-4 dark:text-white items-center">
+    <div className="flex w-full max-w-4xl flex-col items-center gap-4 dark:text-white">
       <Popover>
         <PopoverTrigger>Open</PopoverTrigger>
         <PopoverContent>

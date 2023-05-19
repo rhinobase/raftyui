@@ -46,12 +46,12 @@ export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
         {...valueProps}
         size={size}
         variant={variant}
-        className={classNames("!justify-between !w-full", className)}
+        className={classNames("!w-full !justify-between", className)}
         rightIcon={
           <ChevronUpDownIcon
             className={classNames(
               state.isOpen ? "text-primary-500" : "text-gray-500",
-              "w-5 h-5"
+              "h-5 w-5"
             )}
           />
         }
@@ -60,7 +60,7 @@ export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
         <span
           className={classNames(
             state.selectedItem
-              ? "text-gray-800 dark:text-secondary-200"
+              ? "dark:text-secondary-200 text-gray-800"
               : "text-gray-500",
             "text-md"
           )}
@@ -72,7 +72,7 @@ export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
         triggerState={state}
         triggerRef={ref}
         placement="bottom start"
-        className="w-full -ml-3"
+        className="-ml-3 w-full"
       >
         <ListBox {...menuProps} state={state} size={size} />
       </PopoverContent>

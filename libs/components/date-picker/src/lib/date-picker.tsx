@@ -57,12 +57,12 @@ export function DatePicker<T extends DateValue>(
   );
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex w-full flex-col">
       <InputGroup {...groupProps} ref={ref}>
         <div className={classNames(DatePickerClasses({ size, variant }))}>
           <DateField {...fieldProps} />
           {state.validationState === "invalid" && (
-            <ExclamationTriangleIcon className="w-6 h-6 text-red-500 absolute right-1" />
+            <ExclamationTriangleIcon className="absolute right-1 h-6 w-6 text-red-500" />
           )}
         </div>
         <Suffix>
@@ -71,7 +71,7 @@ export function DatePicker<T extends DateValue>(
             isActive={state.isOpen}
             variant="ghost"
           >
-            <CalendarIcon className="w-5 h-5 text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300" />
+            <CalendarIcon className="text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300 h-5 w-5" />
           </CalendarButton>
         </Suffix>
       </InputGroup>

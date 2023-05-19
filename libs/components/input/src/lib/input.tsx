@@ -250,15 +250,15 @@ export const NumberField = ({
         data-cy="button"
         className={classNames(
           variant !== "ghost" &&
-            "!border !border-l-0 !border-secondary-300 dark:!border-secondary-700",
-          "flex-col !px-0 !bg-transparent"
+            "!border-secondary-300 dark:!border-secondary-700 !border !border-l-0",
+          "flex-col !bg-transparent !px-0"
         )}
       >
         <Button
           {...IncrementButton.buttonProps}
           variant="ghost"
           size="sm"
-          className="!py-0 !rounded-none !rounded-tr-md"
+          className="!rounded-none !rounded-tr-md !py-0"
         >
           <ChevronUpIcon
             className={classNames(
@@ -272,14 +272,14 @@ export const NumberField = ({
         <div
           className={classNames(
             variant !== "ghost" &&
-              "h-[1px] w-full bg-secondary-300 dark:bg-secondary-700"
+              "bg-secondary-300 dark:bg-secondary-700 h-[1px] w-full"
           )}
         />
         <Button
           {...DecrementButton.buttonProps}
           variant="ghost"
           size="sm"
-          className="!py-0 !rounded-none !rounded-br-md"
+          className="!rounded-none !rounded-br-md !py-0"
         >
           <ChevronDownIcon
             className={classNames(
@@ -326,7 +326,7 @@ export const SearchField = ({
       />
       <Suffix>
         <Button {...buttonProps} variant="ghost" size="icon" className="!z-[2]">
-          <XMarkIcon className="w-3 h-3 stroke-[3]" />
+          <XMarkIcon className="h-3 w-3 stroke-[3]" />
         </Button>
       </Suffix>
     </InputGroup>

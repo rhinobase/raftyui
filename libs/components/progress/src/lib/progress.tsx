@@ -88,7 +88,7 @@ export const Progress = forwardRef<HTMLDivElement, Progress>(
           <div
             className={classNames(
               progressClasses({ size, colorScheme, isIndeterminate }),
-              "w-1/3 absolute top-0 animate-progress-loading"
+              "animate-progress-loading absolute top-0 w-1/3"
             )}
           />
         ) : (
