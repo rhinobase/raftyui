@@ -33,6 +33,9 @@
       "options": {
         "preset": "conventional"
       }
+    },
+    "release": {
+      "executor": "ngx-deploy-npm:deploy"
     }
   }
 }

@@ -1,7 +1,20 @@
-# components-tooltip
+# @rafty/tooltip
 
-This library was generated with [Nx](https://nx.dev).
+Use this component to display extra information about an element by displaying a
+floating description.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-tooltip` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/tooltip
+
+# or
+
+npm i @rafty/tooltip
+```
+
+## Import components
+
+```jsx
+import { Tooltip } from "@rafty/tooltip";
+```

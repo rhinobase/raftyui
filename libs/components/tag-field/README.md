@@ -1,7 +1,19 @@
-# components-tag-field
+# @rafty/tag-field
 
-This library was generated with [Nx](https://nx.dev).
+lightweight component for tag(s) input
 
-## Running unit tests
+## Installation
 
-Run `nx test components-tag-field` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/tag-field
+
+# or
+
+npm i @rafty/tag-field
+```
+
+## Import components
+
+```jsx
+import { TagField } from "@rafty/alertdialog";
+```

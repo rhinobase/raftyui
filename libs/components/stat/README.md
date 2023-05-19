@@ -1,7 +1,19 @@
-# components-stat
+# @rafty/stat
 
-This library was generated with [Nx](https://nx.dev).
+As the name implies, the Stat component is used to display some statistics.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-stat` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/stat
+
+# or
+
+npm i @rafty/stat
+```
+
+## Import components
+
+```jsx
+import { Stat, StatGroup, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/stat";
+```

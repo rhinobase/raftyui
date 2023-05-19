@@ -1,7 +1,19 @@
-# components-textarea
+# @rafty/textarea
 
-This library was generated with [Nx](https://nx.dev).
+The Textarea component allows you to easily create multi-line text inputs.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-textarea` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/textarea
+
+# or
+
+npm i @rafty/textarea
+```
+
+## Import components
+
+```jsx
+import { Textarea } from "@rafty/textarea";
+```
