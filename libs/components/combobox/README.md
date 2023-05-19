@@ -1,7 +1,19 @@
-# components-combobox
+# @rafty/combobox
 
-This library was generated with [Nx](https://nx.dev).
+combo box (also known as a drop-down list) to present a list of items that a user can select from.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-combobox` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/combobox
+
+# or
+
+npm i @rafty/combobox
+```
+
+## Import Components
+
+```jsx
+import { Combobox, ComboboxItem } from "@rafty/combobox";
+```

@@ -1,7 +1,19 @@
-# components-checkbox
+# @rafty/checkbox
 
-This library was generated with [Nx](https://nx.dev).
+Checkbox component is used in forms when a user needs to select multiple values from several options.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-checkbox` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/checkbox
+
+# or
+
+npm i @rafty/checkbox
+```
+
+## Import component
+
+```jsx
+import { Checkbox, CheckboxGroup } from "@rafty/checkbox";
+```

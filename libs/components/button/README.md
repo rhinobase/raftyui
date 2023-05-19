@@ -1,7 +1,20 @@
-# components-button
+# @rafty/button
 
-This library was generated with [Nx](https://nx.dev).
+Buttons are used as triggers for actions. They are used in forms, toolbars,
+dialog footers and as stand-alone action triggers.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-button` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/button
+
+# or
+
+npm i @rafty/button
+```
+
+## Import Components
+
+```jsx
+import { Button } from "@rafty/button";
+```

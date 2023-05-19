@@ -1,7 +1,17 @@
-# components-card
+# @rafty/card
 
-This library was generated with [Nx](https://nx.dev).
+A Quick description of the component
 
-## Running unit tests
+## Installation
 
-Run `nx test components-card` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/card
+# or
+npm i @rafty/card
+```
+
+## Import Components
+
+```jsx
+import { Card, CardBody, CardFooter, CardHeader } from "@rafty/card";
+```

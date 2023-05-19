@@ -1,6 +1,27 @@
 {
   "name": "@rafty/card",
+  "description": "React component used to group related content",
   "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "card",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/card"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

@@ -1,6 +1,30 @@
 {
   "name": "@rafty/alertdialog",
-  "version": "1.0.0",
+  "description": "An accessible alertdialog component for React",
+  "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "alertdialog",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component",
+    "alertdialog component",
+    "react alertdialog component",
+    "react alertdialog"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/alertdialog"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
