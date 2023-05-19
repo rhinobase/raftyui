@@ -48,6 +48,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "jsdom": "~20.0.3",
     "nx": "16.1.1",
+    "nx-cloud": "^16.0.5",
     "postcss": "8.4.21",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
