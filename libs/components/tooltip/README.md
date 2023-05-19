@@ -1,7 +1,6 @@
 # @rafty/tooltip
 
-Use this component to display extra information about an element by displaying a
-floating description.
+Use this component to display extra information about an element by displaying a floating description.
 
 ## Installation
 

@@ -1,8 +1,6 @@
 # @rafty/dailog
 
-A dailog is a window overlaid on either the primary window or another dialog
-window. Contents behind a dailog are **inert** meaning that users cannot
-interact with content behind the dialog.
+A dailog is a window overlaid on either the primary window or another dialog window. Contents behind a dailog are **inert** meaning that users cannot interact with content behind the dialog.
 
 ## Installation
 

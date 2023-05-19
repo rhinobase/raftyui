@@ -1,8 +1,6 @@
 # @rafty/alertdialog
 
-A alertdialog is a window overlaid on either the primary window or another dialog
-window. Contents behind a alertdialog are **inert** meaning that users cannot
-interact with content behind the dialog.
+A alertdialog is a window overlaid on either the primary window or another dialog window. Contents behind a alertdialog are **inert** meaning that users cannot interact with content behind the dialog.
 
 ## Installation
 

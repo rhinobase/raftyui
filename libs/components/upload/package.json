@@ -1,6 +1,29 @@
 {
   "name": "@rafty/upload",
+  "description": "Drag and drop files to upload files on the server",
   "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "upload",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "drag",
+    "drop",
+    "component"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/upload"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

@@ -1,7 +1,20 @@
-# components-upload
+# @rafty/upload
 
-This library was generated with [Nx](https://nx.dev).
+Use this component to display extra information about an element by displaying a
+floating description.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-upload` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/upload
+
+# or
+
+npm i @rafty/upload
+```
+
+## Import components
+
+```jsx
+import { Upload } from "@rafty/upload";
+```
