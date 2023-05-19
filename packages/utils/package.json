@@ -1,0 +1,43 @@
+{
+  "name": "@rhinobase/utils",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@rhinobase/tsconfig": "*",
+    "@types/jest": "^29.4.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "eslint": "^8.33.0",
+    "eslint-config": "*",
+    "eslint-config-rhinobase": "*",
+    "jest": "^29.4.3",
+    "react": "^18.2.0",
+    "ts-jest": "^29.0.5",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/design-system/issues"
+  }
+}
