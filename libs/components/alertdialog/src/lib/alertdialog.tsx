@@ -108,18 +108,13 @@ export const AlertDialogOverlay = forwardRef<
 AlertDialogOverlay.displayName = "AlertDialogOverlay";
 
 // AlertDialogContent Component
-const alertDialogContentClasses = cva(
-  "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle overflow-y-auto overscroll-auto md:h-auto md:max-h-[inherit]",
-  {
-    variants: {
-      size: {
-        sm: "max-w-[30rem] p-6",
-        md: "max-w-[35rem] p-7",
-        lg: "max-w-[40rem] p-8",
-      },
-    },
-  }
-);
+const alertDialogContentClasses = {
+  size: {
+    sm: "max-w-[30rem] p-6",
+    md: "max-w-[35rem] p-7",
+    lg: "max-w-[40rem] p-8",
+  },
+};
 
 export type AlertDialogContent = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogContent"]
@@ -139,7 +134,11 @@ export const AlertDialogContent = forwardRef<
         className={
           unstyle
             ? className
-            : classNames(alertDialogContentClasses({ size }), className)
+            : classNames(
+                alertDialogContentClasses.size[size],
+                "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-auto bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle md:h-auto md:max-h-[inherit]",
+                className
+              )
         }
         ref={forwardedRef}
       >
@@ -151,15 +150,13 @@ export const AlertDialogContent = forwardRef<
 AlertDialogContent.displayName = "AlertDialogContent";
 
 // AlertDialogTitle Component
-const alertDialogTitleClasses = cva("mb-2 font-semibold", {
-  variants: {
-    size: {
-      sm: "text-lg",
-      md: "text-xl",
-      lg: "text-xl",
-    },
+const alertDialogTitleClasses = {
+  size: {
+    sm: "text-lg",
+    md: "text-xl",
+    lg: "text-xl",
   },
-});
+};
 
 export type AlertDialogTitle = ComponentProps<
   (typeof AlertDialogPrimitive)["AlertDialogTitle"]
@@ -176,7 +173,11 @@ export const AlertDialogTitle = forwardRef<HTMLDivElement, AlertDialogTitle>(
         className={
           unstyle
             ? className
-            : classNames(alertDialogTitleClasses({ size }), className)
+            : classNames(
+                alertDialogTitleClasses.size[size],
+                "mb-2 font-semibold",
+                className
+              )
         }
         ref={forwardedRef}
       >

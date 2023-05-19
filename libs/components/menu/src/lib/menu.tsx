@@ -221,14 +221,7 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItem>(
         ref={forwardedRef}
       >
         {children}
-        <DropdownMenu.ItemIndicator
-          className={classNames(
-            size === "sm" && "top-2",
-            size === "md" && "top-2.5",
-            size === "lg" && "top-3",
-            "absolute left-1"
-          )}
-        >
+        <DropdownMenu.ItemIndicator className="absolute left-1">
           <CheckIcon className="h-3 w-3 stroke-[3]" />
         </DropdownMenu.ItemIndicator>
       </DropdownMenu.CheckboxItem>
@@ -275,14 +268,7 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItem>(
         ref={forwardedRef}
       >
         {children}
-        <DropdownMenu.ItemIndicator
-          className={classNames(
-            size === "sm" && "top-2",
-            size === "md" && "top-2.5",
-            size === "lg" && "top-3",
-            "absolute left-1"
-          )}
-        >
+        <DropdownMenu.ItemIndicator className="absolute left-1">
           <svg
             width="16"
             height="16"
@@ -358,7 +344,10 @@ export type MenuSubContent = ComponentProps<
 };
 
 export const MenuSubContent = forwardRef<HTMLDivElement, MenuSubContent>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  (
+    { children, className, isUnstyled = false, sideOffset = 10, ...props },
+    forwardedRef
+  ) => {
     const { isBarebone } = useMenuContext();
     const unstyle = isBarebone || isUnstyled;
 
@@ -376,8 +365,8 @@ export const MenuSubContent = forwardRef<HTMLDivElement, MenuSubContent>(
                   className
                 )
           }
+          sideOffset={sideOffset}
           ref={forwardedRef}
-          sideOffset={10}
         >
           {children}
         </DropdownMenu.SubContent>
@@ -410,7 +399,6 @@ export const MenuSeparator = forwardRef<HTMLDivElement, MenuSeparator>(
     return (
       <DropdownMenu.Separator
         {...props}
-        ref={forwardedRef}
         className={
           unstyle
             ? className
@@ -420,6 +408,7 @@ export const MenuSeparator = forwardRef<HTMLDivElement, MenuSeparator>(
                 className
               )
         }
+        ref={forwardedRef}
       />
     );
   }

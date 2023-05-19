@@ -4,6 +4,7 @@ import { classNames } from "@rafty/utils";
 
 // TableContainer Component
 export type TableContainer = HTMLAttributes<HTMLDivElement>;
+
 export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
   ({ children, className, ...props }, forwardedRef) => (
     <div

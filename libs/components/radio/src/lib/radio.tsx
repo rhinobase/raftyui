@@ -98,9 +98,10 @@ export function RadioCard(props: RadioCard) {
   const { children, className, isDisabled } = props;
   const state = React.useContext(RadioContext);
   const ref = React.useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { inputProps } = useRadio(props, state!, ref);
   const { focusProps, isFocusVisible } = useFocusRing();
-  const isSelected = state!.selectedValue === props.value;
+  const isSelected = state?.selectedValue === props.value;
   const { isDisabled: isGroupDisabled } = useRadioGroupContext();
 
   const disabled = isDisabled || isGroupDisabled;

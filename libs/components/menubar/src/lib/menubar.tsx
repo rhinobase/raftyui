@@ -1,6 +1,5 @@
-import React from "react";
+import React, { ComponentProps, forwardRef } from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
-import { ComponentProps, forwardRef } from "react";
 import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
 import { classNames } from "@rafty/utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
@@ -64,6 +63,7 @@ export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
 
     return (
       <MenubarPrimitive.Trigger
+        {...props}
         className={
           unstyle
             ? className
@@ -73,7 +73,6 @@ export const MenubarTrigger = forwardRef<HTMLButtonElement, MenubarTrigger>(
                 className
               )
         }
-        {...props}
         ref={forwardedRef}
       >
         {children}

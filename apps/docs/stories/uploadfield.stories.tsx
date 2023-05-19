@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { UploadField } from "../src";
+import { Upload } from "@rafty/ui";
 
-const meta: Meta<typeof UploadField> = {
-  title: "Form / UploadField",
+const meta: Meta<typeof Upload> = {
+  title: "Form / Upload",
 };
 
 export default meta;
-type Story = StoryObj<typeof UploadField>;
+type Story = StoryObj<typeof Upload>;
 
 export const Variants: Story = {
-  render: () => <UploadField />,
+  render: () => <Upload />,
 };

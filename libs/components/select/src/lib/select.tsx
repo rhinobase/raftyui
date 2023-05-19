@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import type { AriaSelectProps } from "@react-types/select";
 import { useSelectState } from "react-stately";
 import { useSelect, HiddenSelect, useButton } from "react-aria";
@@ -9,13 +9,13 @@ import { ListBox } from "./listbox";
 import { Button } from "@rafty/button";
 export { Item as SelectItem } from "react-stately";
 
-export type Select = {
+export type Select<T> = AriaSelectProps<T> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
   className?: string;
 };
 
-export function Select<T extends object>(props: AriaSelectProps<T> & Select) {
+export function Select<T extends object>(props: Select<T>) {
   // Create state based on the incoming props
   const state = useSelectState(props);
 

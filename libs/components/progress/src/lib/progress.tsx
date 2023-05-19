@@ -1,51 +1,24 @@
 import { forwardRef } from "react";
 import { AriaProgressBarProps, useProgressBar } from "react-aria";
 import { classNames } from "@rafty/utils";
-import { cva } from "class-variance-authority";
 
-const progressClasses = cva("", {
-  variants: {
-    size: {
-      sm: "h-2",
-      md: "h-3",
-      lg: "h-4",
-    },
-    colorScheme: {
-      error: "bg-error-500 dark:bg-error-300",
-      warning: "bg-warning-500 dark:bg-warning-300",
-      primary: "bg-primary-500 dark:bg-primary-300",
-      success: "bg-success-500 dark:bg-success-300",
-    },
-    isIndeterminate: {
-      true: "",
-    },
+const progressClasses = {
+  size: {
+    sm: "h-2",
+    md: "h-3",
+    lg: "h-4",
   },
-  compoundVariants: [
-    {
-      isIndeterminate: true,
-      colorScheme: "error",
-      className: "bg-gradient-to-r from-error-300 via-error-500 to-error-300",
-    },
-    {
-      isIndeterminate: true,
-      colorScheme: "primary",
-      className:
-        "bg-gradient-to-r from-primary-300 via-primary-500 to-primary-300",
-    },
-    {
-      isIndeterminate: true,
-      colorScheme: "success",
-      className:
-        "bg-gradient-to-r from-success-300 via-success-500 to-success-300",
-    },
-    {
-      isIndeterminate: true,
-      colorScheme: "warning",
-      className:
-        "bg-gradient-to-r from-warning-300 via-warning-500 to-warning-300",
-    },
-  ],
-});
+  colorScheme: {
+    error:
+      "bg-error-500 dark:bg-error-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-error-300 group-data-[indeterminate=true]:via-error-500 group-data-[indeterminate=true]:to-error-300",
+    warning:
+      "bg-warning-500 dark:bg-warning-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-warning-300 group-data-[indeterminate=true]:via-warning-500 group-data-[indeterminate=true]:to-warning-300",
+    primary:
+      "bg-primary-500 dark:bg-primary-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-primary-300 group-data-[indeterminate=true]:via-primary-500 group-data-[indeterminate=true]:to-primary-300",
+    success:
+      "bg-success-500 dark:bg-success-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-success-300 group-data-[indeterminate=true]:via-success-500 group-data-[indeterminate=true]:to-success-300",
+  },
+};
 
 export type Progress = AriaProgressBarProps &
   JSX.IntrinsicElements["div"] & {
@@ -78,16 +51,18 @@ export const Progress = forwardRef<HTMLDivElement, Progress>(
         {...props}
         className={classNames(
           isIndeterminate && "relative",
-          "bg-secondary-200 dark:bg-secondary-700 w-full overflow-hidden",
-          progressClasses({ size }),
+          "bg-secondary-200 dark:bg-secondary-700 group w-full overflow-hidden",
+          progressClasses.size[size],
           className
         )}
         ref={forwardedref}
+        data-indeterminate={isIndeterminate}
       >
         {isIndeterminate ? (
           <div
             className={classNames(
-              progressClasses({ size, colorScheme, isIndeterminate }),
+              progressClasses.size[size],
+              progressClasses.colorScheme[colorScheme],
               "animate-progress-loading absolute top-0 w-1/3"
             )}
           />
@@ -95,7 +70,8 @@ export const Progress = forwardRef<HTMLDivElement, Progress>(
           <div
             style={{ width: barWidth }}
             className={classNames(
-              progressClasses({ size, colorScheme }),
+              progressClasses.size[size],
+              progressClasses.colorScheme[colorScheme],
               "transition-all duration-200"
             )}
           />

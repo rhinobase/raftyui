@@ -258,15 +258,13 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
   );
 }
 
-const alertTitleClasses = cva("", {
-  variants: {
-    size: {
-      sm: "font-medium",
-      md: "text-lg font-medium",
-      lg: "text-xl font-semibold",
-    },
+const alertTitleClasses = {
+  size: {
+    sm: "font-medium",
+    md: "text-lg font-medium",
+    lg: "text-xl font-semibold",
   },
-});
+};
 
 export type AlertTitle = JSX.IntrinsicElements["h6"] & { isUnstyled?: boolean };
 
@@ -281,7 +279,7 @@ export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
         className={
           unstyle
             ? className
-            : classNames(alertTitleClasses({ size }), className)
+            : classNames(alertTitleClasses.size[size], className)
         }
         ref={forwardedRef}
       >
@@ -292,15 +290,13 @@ export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
 );
 AlertTitle.displayName = "AlertTitle";
 
-const alertDescriptionClasses = cva("", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
-    },
+const alertDescriptionClasses = {
+  size: {
+    sm: "text-xs",
+    md: "text-sm",
+    lg: "text-base",
   },
-});
+};
 
 export type AlertDescription = JSX.IntrinsicElements["p"] & {
   isUnstyled?: boolean;
@@ -319,7 +315,7 @@ export const AlertDescription = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(alertDescriptionClasses({ size }), className)
+          : classNames(alertDescriptionClasses.size[size], className)
       }
       ref={forwardedRef}
     >

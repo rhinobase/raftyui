@@ -1,4 +1,4 @@
-import { classNames } from "@rhinobase/utils";
+import { classNames } from "@rafty/utils";
 import React from "react";
 
 interface ExampleProps {
@@ -16,7 +16,7 @@ export const Example = ({
       <span
         className={classNames(
           "examples-item-title",
-          isFullWidth && "mb-0 mt-2",
+          isFullWidth && "mb-0 mt-2"
         )}
       >
         {title}

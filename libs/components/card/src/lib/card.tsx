@@ -4,15 +4,13 @@ import { CardContext, CardProvider, useCardContext } from "./context";
 import { cva } from "class-variance-authority";
 
 // Card Component
-const cardClasses = cva("flex flex-col dark:text-white", {
-  variants: {
-    variant: {
-      solid: "bg-secondary-50 dark:bg-secondary-800",
-      outline: "bg-transparent border dark:border-secondary-700",
-      elevated: "bg-white dark:bg-secondary-800 drop-shadow-md",
-    },
+const cardClasses = {
+  variant: {
+    solid: "bg-secondary-50 dark:bg-secondary-800",
+    outline: "bg-transparent border dark:border-secondary-700",
+    elevated: "bg-white dark:bg-secondary-800 drop-shadow-md",
   },
-});
+};
 
 export type Card = JSX.IntrinsicElements["div"] &
   Partial<CardContext> & { isUnstyled?: boolean };
@@ -39,7 +37,11 @@ export const Card = forwardRef<HTMLDivElement, Card>(
           className={
             unstyle
               ? className
-              : classNames(cardClasses({ variant }), className)
+              : classNames(
+                  cardClasses.variant[variant],
+                  "flex flex-col dark:text-white",
+                  className
+                )
           }
           ref={forwardedRef}
         >
@@ -52,15 +54,13 @@ export const Card = forwardRef<HTMLDivElement, Card>(
 Card.displayName = "Card";
 
 // CardHeader Component
-const cardHeaderClasses = cva("", {
-  variants: {
-    size: {
-      sm: "p-3 font-medium",
-      md: "p-4 text-xl font-semibold",
-      lg: "p-5 text-2xl font-semibold",
-    },
+const cardHeaderClasses = {
+  size: {
+    sm: "p-3 font-medium",
+    md: "p-4 text-xl font-semibold",
+    lg: "p-5 text-2xl font-semibold",
   },
-});
+};
 
 export type CardHeader = JSX.IntrinsicElements["div"] & {
   isUnstyled?: boolean;
@@ -77,7 +77,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
         className={
           unstyle
             ? className
-            : classNames(cardHeaderClasses({ size }), className)
+            : classNames(cardHeaderClasses.size[size], className)
         }
         ref={forwardedRef}
       >
@@ -89,15 +89,13 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
 CardHeader.displayName = "CardHeader";
 
 // CardBody Component
-const cardBodyClasses = cva("", {
-  variants: {
-    size: {
-      sm: "p-3",
-      md: "p-4",
-      lg: "p-5",
-    },
+const cardBodyClasses = {
+  size: {
+    sm: "p-3",
+    md: "p-4",
+    lg: "p-5",
   },
-});
+};
 
 export type CardBody = JSX.IntrinsicElements["div"] & { isUnstyled?: boolean };
 
@@ -110,7 +108,9 @@ export const CardBody = forwardRef<HTMLDivElement, CardBody>(
       <div
         {...props}
         className={
-          unstyle ? className : classNames(cardBodyClasses({ size }), className)
+          unstyle
+            ? className
+            : classNames(cardBodyClasses.size[size], className)
         }
         ref={forwardedRef}
       >
@@ -122,15 +122,13 @@ export const CardBody = forwardRef<HTMLDivElement, CardBody>(
 CardBody.displayName = "CardBody";
 
 // CardFooter Component
-const cardFooterClasses = cva("", {
-  variants: {
-    size: {
-      sm: "p-3",
-      md: "p-4",
-      lg: "p-5",
-    },
+const cardFooterClasses = {
+  size: {
+    sm: "p-3",
+    md: "p-4",
+    lg: "p-5",
   },
-});
+};
 
 export type CardFooter = JSX.IntrinsicElements["div"] & {
   isUnstyled?: boolean;
@@ -147,7 +145,7 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
         className={
           unstyle
             ? className
-            : classNames(cardFooterClasses({ size }), className)
+            : classNames(cardFooterClasses.size[size], className)
         }
         ref={forwardedRef}
       >

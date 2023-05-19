@@ -38,8 +38,7 @@ export function Switch({ size = "md", children, ...props }: Switch) {
   return (
     <label
       className={classNames(
-        props.isDisabled && "cursor-not-allowed opacity-50",
-        "flex items-center",
+        "flex items-center aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
         isFocusVisible && "ring-1 ring-black ring-offset-2 dark:ring-white"
       )}
     >

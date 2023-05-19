@@ -44,7 +44,6 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     <div
       {...calendarProps}
       ref={ref}
-<<<<<<<< HEAD:libs/components/date-picker/src/lib/calendar.tsx
       className="dark:text-secondary-200 p-5 text-zinc-800"
     >
       <div className="mb-4 flex items-center justify-between">
@@ -54,17 +53,6 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
         <h2 className="text-lg font-semibold">{title}</h2>
         <CalendarButton {...nextButtonProps} variant="ghost">
           <ChevronRightIcon className="h-4 w-4 stroke-2" />
-========
-      className="inline-block p-5 text-zinc-800 dark:text-secondary-200"
-    >
-      <div className="flex items-center justify-between pb-4">
-        <CalendarButton {...prevButtonProps}>
-          <ChevronLeftIcon className="h-5 w-5" />
-        </CalendarButton>
-        <h2 className="font-semibold text-lg">{title}</h2>
-        <CalendarButton {...nextButtonProps}>
-          <ChevronRightIcon className="h-5 w-5" />
->>>>>>>> migration:packages/core/src/date-picker/Calendar.tsx
         </CalendarButton>
       </div>
       <CalendarGrid state={state} />
@@ -85,7 +73,6 @@ export function CalendarGrid({
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
 
   return (
-<<<<<<<< HEAD:libs/components/date-picker/src/lib/calendar.tsx
     <Table
       isBarebone
       {...gridProps}
@@ -98,19 +85,6 @@ export function CalendarGrid({
             <Td className="text-center font-medium" key={index}>
               {day}
             </Td>
-========
-    <table
-      {...gridProps}
-      cellPadding="0"
-      className="flex-1 text-zinc-600 dark:text-secondary-200"
-    >
-      <thead {...headerProps} className="mb-2">
-        <tr>
-          {weekDays.map((day, index) => (
-            <td className="text-center font-semibold" key={index}>
-              {day}
-            </td>
->>>>>>>> migration:packages/core/src/date-picker/Calendar.tsx
           ))}
         </Tr>
       </TableHead>
@@ -189,12 +163,7 @@ function CalendarCell({
             (isInvalid
               ? "bg-red-300"
               : "bg-secondary-100 dark:bg-secondary-700/50"),
-<<<<<<<< HEAD:libs/components/date-picker/src/lib/calendar.tsx
           "group h-8 w-8 outline-none"
-========
-          isDisabled && "disabled",
-          "w-9 h-9 outline-none group"
->>>>>>>> migration:packages/core/src/date-picker/Calendar.tsx
         )}
       >
         <div
@@ -207,11 +176,7 @@ function CalendarCell({
             isSelectionStart || isSelectionEnd
               ? isInvalid
                 ? "bg-red-600 text-white hover:bg-red-700"
-<<<<<<<< HEAD:libs/components/date-picker/src/lib/calendar.tsx
                 : "bg-primary-500 dark:bg-primary-300 hover:bg-primary-500 dark:hover:bg-primary-300 text-white dark:text-black"
-========
-                : "bg-primary-500 dark:bg-primary-300 dark:text-black text-white hover:bg-primary-500 dark:hover:bg-primary-300"
->>>>>>>> migration:packages/core/src/date-picker/Calendar.tsx
               : "",
             // Hover state for cells in the middle of the range.
             isSelected &&
@@ -219,7 +184,6 @@ function CalendarCell({
               !(isSelectionStart || isSelectionEnd) &&
               (isInvalid
                 ? "hover:bg-red-400"
-<<<<<<<< HEAD:libs/components/date-picker/src/lib/calendar.tsx
                 : "hover:bg-secondary-200 dark:hover:bg-secondary-700"),
             // Hover state for non-selected cells.
             !isSelected &&
@@ -228,15 +192,6 @@ function CalendarCell({
             isToday(date, Intl.DateTimeFormat().resolvedOptions().timeZone) &&
               "ring-primary-400 relative z-10 ring-2",
             "flex h-full w-full cursor-default items-center justify-center rounded text-sm transition-all"
-========
-                : "hover:bg-secondary-200 dark:hover:bg-secondary-700"
-              : "",
-            // Hover state for non-selected cells.
-            !isSelected && !isDisabled
-              ? "hover:bg-secondary-200 dark:hover:bg-secondary-700"
-              : "",
-            "w-full h-full rounded-md flex items-center justify-center cursor-default text-sm transition-all"
->>>>>>>> migration:packages/core/src/date-picker/Calendar.tsx
           )}
         >
           {formattedDate}

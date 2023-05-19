@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import type { AriaListBoxOptions } from "@react-aria/listbox";
 import type { ListState } from "react-stately";
 import type { Node } from "@react-types/shared";
@@ -6,11 +6,11 @@ import { useListBox, useListBoxSection, useOption } from "react-aria";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/utils";
 
-export type ListBox = {
+export type ListBox = AriaListBoxOptions<unknown> & {
   listBoxRef?: React.RefObject<HTMLUListElement>;
   state: ListState<unknown>;
   size?: "sm" | "md" | "lg";
-} & AriaListBoxOptions<unknown>;
+};
 
 export function ListBox(props: ListBox) {
   const ref = React.useRef<HTMLUListElement>(null);
@@ -20,8 +20,8 @@ export function ListBox(props: ListBox) {
   return (
     <ul
       {...listBoxProps}
-      ref={listBoxRef}
       className="max-h-72 w-full overflow-auto outline-none"
+      ref={listBoxRef}
     >
       {[...state.collection].map((item) =>
         item.type === "section" ? (
@@ -65,13 +65,21 @@ function ListBoxSection({ section, state, size }: ListBoxSection) {
   );
 }
 
+const optionClasses = {
+  size: {
+    sm: "rounded px-2 py-1 text-sm",
+    md: "rounded-md px-3 py-1.5",
+    lg: "rounded-md px-4 py-2 text-lg",
+  },
+};
+
 type Option = {
   item: Node<unknown>;
   state: ListState<unknown>;
   size?: "sm" | "md" | "lg";
 };
 
-function Option({ item, state, size }: Option) {
+function Option({ item, state, size = "md" }: Option) {
   const ref = React.useRef<HTMLLIElement>(null);
   const { optionProps, isDisabled, isSelected, isFocused } = useOption(
     {
@@ -86,18 +94,17 @@ function Option({ item, state, size }: Option) {
       {...optionProps}
       ref={ref}
       className={classNames(
-        size === "sm" && "rounded px-2 py-1 text-sm",
-        size === "md" && "rounded-md px-3 py-1.5",
-        size === "lg" && "rounded-md px-4 py-2 text-lg",
+        optionClasses.size[size],
         isFocused || isSelected
           ? "text-secondary-600 dark:text-secondary-100"
-          : isDisabled
-          ? "text-secondary-200"
-          : "text-secondary-700 dark:text-secondary-200",
-        isFocused && "bg-secondary-100 dark:bg-secondary-700/50",
-        isSelected && "bg-secondary-200/70 dark:bg-secondary-700 font-semibold",
+          : "text-secondary-700 dark:text-secondary-200 data-[disabled=true]:text-secondary-200",
+        "data-[focused=true]:bg-secondary-100 dark:data-[focused=true]:bg-secondary-700/50",
+        "data-[selected=true]:bg-secondary-200/70 dark:data-[selected=true]:bg-secondary-700 font-semibold",
         "m-1 flex cursor-pointer items-center justify-between outline-none"
       )}
+      data-selected={isSelected}
+      data-focused={isFocused}
+      data-disabled={isDisabled}
     >
       {item.rendered}
       {isSelected && (
