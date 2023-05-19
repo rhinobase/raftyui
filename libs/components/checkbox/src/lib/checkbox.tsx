@@ -18,7 +18,6 @@ import {
 import { CheckboxGroupState, useToggleState } from "react-stately";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { useCheckboxGroupState } from "react-stately";
-import { cva } from "class-variance-authority";
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
   null
@@ -59,7 +58,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroup>(
 
 const checkboxClasses = {
   isIndeterminate: [
-    "group-aria-selected:bg-primary-500 group-active:group-aria-selected:border-primary-600 group-aria-selected:border-primary-500 group-aria-selected:dark:border-primary-300 group-aria-selected:dark:bg-primary-300 group-active:group-aria-selected:bg-primary-600",
+    "group-aria-checked:bg-primary-500 group-active:group-aria-checked:border-primary-600 group-aria-checked:border-primary-500 group-aria-checked:dark:border-primary-300 group-aria-checked:dark:bg-primary-300 group-active:group-aria-checked:bg-primary-600",
     "border-secondary-500",
   ],
 };
@@ -87,15 +86,21 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxComponent>(
   ) => {
     const Icon = isIndeterminate ? MinusIcon : CheckIcon;
 
+    const internalProps: { [key: string]: boolean | undefined } = {
+      "aria-disabled": isDisabled,
+      "aria-checked": undefined,
+    };
+
+    if (!isIndeterminate) internalProps["aria-checked"] = isSelected;
+
     return (
       <label
         className={classNames(
           "group flex items-center",
-          "aria-selected:text-primary-500 aria-selected:dark:text-primary-300",
+          "aria-checked:text-primary-500 aria-checked:dark:text-primary-300",
           "aria-disabled:opacity-60 aria-disabled:dark:opacity-50 aria-disabled:cursor-not-allowed"
         )}
-        aria-selected={isSelected}
-        aria-disabled={isDisabled}
+        {...internalProps}
       >
         <VisuallyHidden>
           <input {...inputProps} ref={mergeRefs(forwardedRef, ref)} />
