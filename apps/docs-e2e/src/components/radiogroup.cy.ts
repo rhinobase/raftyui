@@ -8,19 +8,19 @@ describe("RadioGroup Test", () => {
     cy.get('[data-cy="radiogroup"]')
       .children()
       .first()
-      .should("have.attr", "aria-checked", "true");
+      .should("have.attr", "data-selected", "true");
 
     cy.get('[data-cy="radiogroup"]')
       .children()
       .each((radio, index) => {
         if (index == 1) {
           cy.wrap(radio).click();
-          cy.should("have.attr", "aria-checked", "true");
+          cy.should("have.attr", "data-selected", "true");
         }
       });
     cy.get('[data-cy="radiogroup"]')
       .children()
       .first()
-      .should("have.attr", "aria-checked", "false");
+      .should("have.attr", "data-selected", "false");
   });
 });
