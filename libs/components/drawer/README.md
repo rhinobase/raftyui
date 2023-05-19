@@ -1,7 +1,21 @@
-# components-drawer
+# @rafty/drawer
 
-This library was generated with [Nx](https://nx.dev).
+A Drawer is a window overlaid on either the primary window or another dialog
+window. Contents behind a Drawer are **inert** meaning that users cannot
+interact with content behind the Drawer.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-drawer` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/drawer
+
+# or
+
+npm i @rafty/drawer
+```
+
+## Import Components
+
+```jsx
+import { Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, DrawerTitle } from "@rafty/drawer";
+```

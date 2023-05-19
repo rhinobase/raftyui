@@ -1,6 +1,30 @@
 {
   "name": "@rafty/menubar",
+  "description": "A React component to render accessible menubar",
   "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "menubar",
+    "menu",
+    "dropdown",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component",
+    "clickable"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/menubar"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

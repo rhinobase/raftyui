@@ -1,6 +1,29 @@
 {
   "name": "@rafty/list",
+  "description": "A List React component is used to display list items.",
   "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "list",
+    "ordered-list",
+    "unordered-list",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/list"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

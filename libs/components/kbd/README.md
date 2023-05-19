@@ -1,7 +1,19 @@
-# components-kbd
+# @rafty/kbd
 
-This library was generated with [Nx](https://nx.dev).
+The Kbd Component is used to define keyboard input.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-kbd` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/kbd
+
+# or
+
+npm i @rafty/kbd
+```
+
+## Import Components
+
+```jsx
+import { Kbd } from "@rafty/kbd";
+```

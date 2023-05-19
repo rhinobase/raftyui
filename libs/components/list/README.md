@@ -1,7 +1,19 @@
-# components-list
+# @rafty/list
 
-This library was generated with [Nx](https://nx.dev).
+List is used to display list items.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-list` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/list
+
+# or
+
+npm i @rafty/list
+```
+
+## Import Components
+
+```jsx
+import { List, ListItem, OrderedList, UnorderedList } from "@rafty/list";
+```

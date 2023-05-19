@@ -1,7 +1,19 @@
-# components-radio
+# @rafty/radio
 
-This library was generated with [Nx](https://nx.dev).
+A React component to render custom Radio input types
 
-## Running unit tests
+## Installation
 
-Run `nx test components-radio` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/radio
+
+# or
+
+npm i @rafty/radio
+```
+
+## Import Components
+
+```jsx
+import { Radio, RadioCard, RadioGroup } from "@rafty/radio";
+```

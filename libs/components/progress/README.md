@@ -1,7 +1,19 @@
-# components-progress
+# @rafty/progress
 
-This library was generated with [Nx](https://nx.dev).
+A React component for Progress Bar
 
-## Running unit tests
+## Installation
 
-Run `nx test components-progress` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/progress
+
+# or
+
+npm i @rafty/progress
+```
+
+## Import Components
+
+```jsx
+import { Progress } from "@rafty/progress";
+```

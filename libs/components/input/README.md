@@ -1,7 +1,23 @@
-# components-input
+# Input
 
-This library was generated with [Nx](https://nx.dev).
+Input component is a component that is used to get user input in a text field.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-input` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/input
+
+# or
+
+npm i @rafty/input
+```
+
+## Import components
+
+```jsx
+import { InputField, NumberField, PasswordField, SearchField } from "@rafty/input";
+```
+
+```jsx
+import { InputGroup, LeftAddon, Prefix, RightAddon, Suffix } from "@rafty/input-group";
+```

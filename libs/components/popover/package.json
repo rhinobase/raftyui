@@ -1,6 +1,30 @@
 {
   "name": "@rafty/popover",
+  "description": "A React component to render that renders its content in a popover",
   "version": "1.0.0-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "popover",
+    "popper",
+    "dialog",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component",
+    "clickable"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/popover"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

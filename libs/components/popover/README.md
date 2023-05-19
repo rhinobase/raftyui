@@ -1,7 +1,19 @@
-# components-popover
+# @rafty/popover
 
-This library was generated with [Nx](https://nx.dev).
+Displays rich content in a portal, triggered by a button.
 
-## Running unit tests
+## Installation
 
-Run `nx test components-popover` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/popover
+
+# or
+
+npm i @rafty/popover
+```
+
+## Import Components
+
+```jsx
+import { Popover, PopoverArrow, PopoverClose, PopoverContent, PopoverTrigger } from "@rafty/popover";
+```

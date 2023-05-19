@@ -1,7 +1,19 @@
-# components-field
+# @rafty/field
 
-This library was generated with [Nx](https://nx.dev).
+React component to provide validation states to form fields
 
-## Running unit tests
+## Installation
 
-Run `nx test components-field` to execute the unit tests via [Vitest](https://vitest.dev/).
+```sh
+yarn add @rafty/field
+
+# or
+
+npm i @rafty/field
+```
+
+## Import Components
+
+```jsx
+import { FieldLabel, ErrorMessage, FieldControl } from "@rafty/field";
+```

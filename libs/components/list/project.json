@@ -7,14 +7,20 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/components/list/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "libs/components/list/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/libs/components/list"
@@ -33,6 +39,9 @@
       "options": {
         "preset": "conventional"
       }
+    },
+    "release": {
+      "executor": "ngx-deploy-npm:deploy"
     }
   }
 }
