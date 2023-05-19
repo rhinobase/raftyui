@@ -1,6 +1,6 @@
 {
-  "name": "@rhino/input",
-  "version": "0.0.1",
+  "name": "@rafty/input",
+  "version": "1.0.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

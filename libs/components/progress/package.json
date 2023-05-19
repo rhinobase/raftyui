@@ -1,6 +1,6 @@
 {
-  "name": "@rhino/progress",
-  "version": "0.0.1",
+  "name": "@rafty/progress",
+  "version": "1.0.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

@@ -1,6 +1,6 @@
 {
-  "name": "@rhino/ui",
-  "version": "0.0.1",
+  "name": "@rafty/ui",
+  "version": "1.0.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

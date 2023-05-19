@@ -1,6 +1,6 @@
 {
-  "name": "@rhino/select",
-  "version": "0.0.1",
+  "name": "@rafty/select",
+  "version": "1.0.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

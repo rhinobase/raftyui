@@ -1,6 +1,6 @@
 {
-  "name": "@rhino/kbd",
-  "version": "0.0.1",
+  "name": "@rafty/kbd",
+  "version": "1.0.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

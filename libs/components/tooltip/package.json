@@ -1,6 +1,6 @@
 {
-  "name": "@rhino/tooltip",
-  "version": "0.0.1",
+  "name": "@rafty/tooltip",
+  "version": "1.0.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
