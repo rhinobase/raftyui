@@ -1,0 +1,12 @@
+{
+  "name": "@rafty/radio",
+  "version": "1.0.0-beta.0",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  }
+}

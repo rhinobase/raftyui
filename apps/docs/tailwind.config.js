@@ -1,15 +1,30 @@
-/** @type {import('tailwindcss').Config} */
+const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
+const { join } = require("path");
 
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+/** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: "class",
   content: [
-    "../../packages/core/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    join(
+      __dirname,
+      "{src,pages,.storybook,stories,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}"
+    ),
+    "../../libs/components/**/src/lib/*!(*.stories|*.spec).{ts,tsx,html}",
+    ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [...defaultTheme.fontFamily.sans],
+        display: ["var(--font-display)", ...defaultTheme.fontFamily.sans],
+      },
+      maxWidth: {
+        "8xl": "88rem",
+      },
       colors: {
         primary: {
           50: "#D0E6FF",
@@ -23,7 +38,7 @@ module.exports = {
           800: "#003C7E",
           900: "#002C5C",
         },
-        secondary: colors.zinc,
+        secondary: colors.slate,
         error: colors.red,
         warning: colors.amber,
         info: colors.blue,
@@ -72,4 +87,5 @@ module.exports = {
       },
     },
   },
+  plugins: [require("@tailwindcss/typography")],
 };
