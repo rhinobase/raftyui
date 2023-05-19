@@ -42,6 +42,7 @@ export const TagField = ({
           }}
         />
         <Button
+          data-cy="clearall"
           variant="ghost"
           onClick={() => setTag([])}
           className={tag.length < 2 ? "!hidden" : ""}
@@ -49,7 +50,10 @@ export const TagField = ({
           Clear All
         </Button>
       </div>
-      <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
+      <div
+        data-cy="tag-div"
+        className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2"
+      >
         {tag.map((value, idx) => (
           <div
             key={idx}
