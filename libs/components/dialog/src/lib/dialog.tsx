@@ -208,7 +208,7 @@ DialogBody.displayName = "DialogBody";
 export type DialogCloseButton = ComponentProps<
   (typeof DialogPrimitive)["Close"]
 > &
-  Button;
+  Button & { iconClassName?: string };
 export const DialogCloseButton = forwardRef<
   HTMLButtonElement,
   DialogCloseButton
@@ -219,6 +219,7 @@ export const DialogCloseButton = forwardRef<
       size = "icon",
       className,
       isUnstyled = false,
+      iconClassName,
       ...props
     },
     forwardedRef
@@ -239,7 +240,7 @@ export const DialogCloseButton = forwardRef<
               : classNames("absolute right-5 top-5 rounded-full", className)
           }
         >
-          <XMarkIcon />
+          <XMarkIcon className={classNames("h-5 w-5", iconClassName)} />
         </Button>
       </DialogPrimitive.Close>
     );

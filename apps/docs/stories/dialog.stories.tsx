@@ -6,6 +6,7 @@ import {
   DialogOverlay,
   DialogHeading,
   DialogTrigger,
+  DialogCloseButton,
 } from "@rafty/dialog";
 import { Button } from "@rafty/button";
 
@@ -42,6 +43,7 @@ export const Default: Story = {
             <div className="flex items-center justify-end pt-5">
               <Button>Save Change</Button>
             </div>
+            <DialogCloseButton />
           </DialogBody>
         </DialogContent>
       </Dialog>
