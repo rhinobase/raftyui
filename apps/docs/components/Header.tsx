@@ -72,7 +72,7 @@ export function Header({ navigation }: { navigation: Navigation }) {
             <SunIcon className="h-5 w-5 dark:hidden" />
             <MoonIcon className="hidden h-5 w-5 dark:block" />
           </Button>
-          <Link href="https://github.com" className="group" aria-label="GitHub">
+          <Link href="https://github.com" aria-label="GitHub">
             <Button variant="ghost" size="icon">
               <svg
                 aria-hidden="true"
@@ -83,11 +83,7 @@ export function Header({ navigation }: { navigation: Navigation }) {
               </svg>
             </Button>
           </Link>
-          <Link
-            href="https://discord.com"
-            className="group"
-            aria-label="GitHub"
-          >
+          <Link href="https://discord.com" aria-label="Discord">
             <Button variant="ghost" size="icon">
               <Image
                 src={Discord}
@@ -98,11 +94,7 @@ export function Header({ navigation }: { navigation: Navigation }) {
               />
             </Button>
           </Link>
-          <Link
-            href="https://twitter.com"
-            className="group"
-            aria-label="GitHub"
-          >
+          <Link href="https://twitter.com" aria-label="Twitter">
             <Button variant="ghost" size="icon">
               <Image
                 src={Twitter}
