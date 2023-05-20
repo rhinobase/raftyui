@@ -1,15 +1,15 @@
 {
   "name": "@rafty/plugin",
-  "description": "A React Component for rendering dynamically positioned Tooltips",
+  "description": "Tailwind plugin for @rafty/ui and components",
   "version": "1.0.0-beta.0",
   "license": "MIT",
   "keywords": [
-    "tooltip",
+    "plugin",
     "react",
     "rafty-ui",
     "rafty",
-    "popper",
-    "toggletip",
+    "tailwind",
+    "dynamic",
     "component"
   ],
   "homepage": "https://github.com/rhinobase/raftyui#readme",
