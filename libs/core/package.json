@@ -1,7 +1,7 @@
 {
   "name": "@rafty/ui",
   "description": "The main package with all the components",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "keywords": [
     "react",
@@ -21,6 +21,7 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
+  "sideEffects": false,
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
