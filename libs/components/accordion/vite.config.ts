@@ -41,7 +41,12 @@ export default defineConfig({
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: ["react", "@radix-ui/react-accordion", "@rafty/utils"],
+      external: [
+        "react",
+        "@radix-ui/react-accordion",
+        "@rafty/button",
+        "@rafty/utils",
+      ],
     },
   },
 });

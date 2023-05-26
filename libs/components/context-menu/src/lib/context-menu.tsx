@@ -6,7 +6,6 @@ import {
   useContextMenuContext,
 } from "./context";
 import { classNames } from "@rafty/utils";
-import { cva } from "class-variance-authority";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export type ContextMenu = ComponentProps<

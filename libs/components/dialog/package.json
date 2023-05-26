@@ -29,15 +29,14 @@
   "exports": {
     ".": {
       "import": "./index.js",
-      "require": "./index.umd.cjs"
+      "require": "./index.cjs"
     }
   },
-  "main": "./index.umd.cjs",
+  "main": "./index.cjs",
   "module": "./index.js",
   "types": "./index.d.ts",
   "peerDependencies": {
     "react": "^18.2.0",
-    "class-variance-authority": "^0.6.0",
     "@radix-ui/react-dialog": "^1.0.3",
     "@rafty/button": "*",
     "@rafty/utils": "*"

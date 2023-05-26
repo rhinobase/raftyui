@@ -37,14 +37,12 @@ export default defineConfig({
       entry: "src/index.ts",
       name: "components-alertdialog",
       fileName: "index",
-      formats: ["es", "umd"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
       external: [
         "react",
-        "react-dom",
-        "react/jsx-runtime",
         "@radix-ui/react-alert-dialog",
         "@rafty/button",
         "@rafty/utils",

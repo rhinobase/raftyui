@@ -38,7 +38,7 @@ export default defineConfig({
       entry: "src/index.ts",
       name: "button",
       fileName: "index",
-      formats: ["es", "umd"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.

@@ -451,6 +451,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   {
     isLoading = false,
     isActive = false,
+    isDisabled = false,
     colorScheme = "secondary",
     variant = "solid",
     size = "md",
@@ -465,7 +466,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   forwardedRef
 ) {
   // Buttons are **always** disabled if we're in a `loading` state
-  const disabled = props.disabled || props.isDisabled || isLoading;
+  const disabled = props.disabled || isDisabled || isLoading;
 
   return (
     <button

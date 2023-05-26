@@ -45,7 +45,6 @@ export default defineConfig({
       // External packages that should not be bundled into your library.
       external: [
         "react",
-        "class-variance-authority",
         "@radix-ui/react-dialog",
         "@rafty/button",
         "@rafty/utils",

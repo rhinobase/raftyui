@@ -34,15 +34,19 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./index.js",
+      "require": "./index.umd.cjs"
     }
   },
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.umd.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "peerDependencies": {
-    "class-variance-authority": "^0.6.0",
-    "@rafty/utils": "*"
+    "react-stately": "^3.23.0",
+    "react-aria": "^3.25.0",
+    "@rafty/input": "*",
+    "@rafty/button": "*",
+    "@rafty/popover": "*",
+    "@rafty/select": "*"
   }
 }

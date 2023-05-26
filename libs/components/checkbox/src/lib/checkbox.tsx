@@ -15,9 +15,12 @@ import {
   useCheckboxGroup,
   useCheckboxGroupItem,
 } from "react-aria";
-import { CheckboxGroupState, useToggleState } from "react-stately";
+import {
+  CheckboxGroupState,
+  useToggleState,
+  useCheckboxGroupState,
+} from "react-stately";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
-import { useCheckboxGroupState } from "react-stately";
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupState | null>(
   null
