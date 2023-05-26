@@ -53,7 +53,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
     },
     forwardedRef
   ) => {
-    const controls = useFieldControlContext();
+    const controls = useFieldControlContext() ?? {};
     return (
       <textarea
         {...controls}
