@@ -14,20 +14,13 @@ export type NavigationMenu = ComponentProps<
   Partial<NavigationMenuContext> & { isUnstyled?: boolean };
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   (
-    {
-      children,
-      className,
-      size = "md",
-      isBarebone = false,
-      isUnstyled = false,
-      ...props
-    },
+    { children, className, isBarebone = false, isUnstyled = false, ...props },
     forwardedRef
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
     return (
-      <NavigationMenuProvider value={{ size, isBarebone }}>
+      <NavigationMenuProvider value={{ isBarebone }}>
         <NavigationMenuPrimitive.Root
           {...props}
           className={unstyle ? className : classNames("relative", className)}
@@ -88,14 +81,6 @@ export const NavigationMenuItem = ({
 );
 NavigationMenuItem.displayName = "NavigationMenuItem";
 
-const triggerClasses = {
-  size: {
-    sm: "py-2 px-3 text-xs",
-    md: "py-2 px-3 text-base",
-    lg: "py-3 px-4 text-lg",
-  },
-};
-
 export type NavigationMenuTrigger = ComponentProps<
   (typeof NavigationMenuPrimitive)["Trigger"]
 > & {
@@ -106,7 +91,7 @@ export const NavigationMenuTrigger = forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useNavigationMenuContext();
+  const { isBarebone } = useNavigationMenuContext();
   const unstyle = isBarebone || isUnstyled;
 
   return (
@@ -116,8 +101,7 @@ export const NavigationMenuTrigger = forwardRef<
         unstyle
           ? className
           : classNames(
-              "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md font-semibold outline-none",
-              triggerClasses.size[size],
+              "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none",
               className
             )
       }
@@ -174,14 +158,6 @@ export const NavigationMenuContent = forwardRef<
 );
 NavigationMenuContent.displayName = "NavigationMenu.Content";
 
-const linkClasses = {
-  size: {
-    sm: "py-1 px-2 text-xs",
-    md: "py-2 px-3 text-base",
-    lg: "py-3 px-4 text-lg",
-  },
-};
-
 export type NavigationMenuLink = ComponentProps<
   (typeof NavigationMenuPrimitive)["Link"]
 > & { isUnstyled?: boolean };
@@ -191,7 +167,7 @@ export const NavigationMenuLink = ({
   isUnstyled = false,
   ...props
 }: NavigationMenuLink) => {
-  const { size, isBarebone } = useNavigationMenuContext();
+  const { isBarebone } = useNavigationMenuContext();
   const unstyle = isBarebone || isUnstyled;
 
   return (
@@ -201,8 +177,7 @@ export const NavigationMenuLink = ({
         unstyle
           ? className
           : classNames(
-              "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md font-semibold outline-none",
-              linkClasses.size[size],
+              "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none",
               className
             )
       }
