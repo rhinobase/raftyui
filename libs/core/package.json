@@ -23,19 +23,52 @@
   },
   "sideEffects": false,
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./index.js",
+      "require": "./index.umd.cjs"
     }
   },
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.umd.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "peerDependencies": {
+    "@rafty/accordion": "*",
+    "@rafty/alert": "*",
+    "@rafty/alertdialog": "*",
+    "@rafty/button": "*",
+    "@rafty/card": "*",
+    "@rafty/checkbox": "*",
+    "@rafty/combobox": "*",
+    "@rafty/context-menu": "*",
+    "@rafty/date-picker": "*",
+    "@rafty/dialog": "*",
+    "@rafty/drawer": "*",
+    "@rafty/field": "*",
+    "@rafty/input": "*",
+    "@rafty/kbd": "*",
+    "@rafty/list": "*",
+    "@rafty/menu": "*",
+    "@rafty/menubar": "*",
+    "@rafty/navigation-menu": "*",
+    "@rafty/popover": "*",
+    "@rafty/progress": "*",
+    "@rafty/radio": "*",
+    "@rafty/select": "*",
+    "@rafty/skeleton": "*",
+    "@rafty/spinner": "*",
+    "@rafty/stat": "*",
+    "@rafty/switch": "*",
+    "@rafty/tab": "*",
+    "@rafty/table": "*",
+    "@rafty/tag": "*",
+    "@rafty/tag-field": "*",
+    "@rafty/text": "*",
+    "@rafty/textarea": "*",
+    "@rafty/toast": "*",
+    "@rafty/toggle-group": "*",
+    "@rafty/tooltip": "*",
+    "@rafty/upload": "*",
     "@rafty/utils": "*"
   }
 }

@@ -37,7 +37,7 @@ export default defineConfig({
       entry: "src/index.ts",
       name: "core",
       fileName: "index",
-      formats: ["es", "umd"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       external: ["react", "react-dom", "react/jsx-runtime"],
