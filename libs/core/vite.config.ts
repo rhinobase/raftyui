@@ -37,10 +37,9 @@ export default defineConfig({
       entry: "src/index.ts",
       name: "core",
       fileName: "index",
-      formats: ["es", "umd", "iife"],
+      formats: ["es", "umd"],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
       external: ["react", "react-dom", "react/jsx-runtime"],
     },
   },

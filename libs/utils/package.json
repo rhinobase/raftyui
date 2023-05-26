@@ -22,12 +22,17 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
     }
-  }
+  },
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts"
 }

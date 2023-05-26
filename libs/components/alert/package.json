@@ -3,6 +3,7 @@
   "description": "A React component used to alert users of a particular screen area that needs user action",
   "version": "1.0.0-beta.0",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "alert",
     "notice",
@@ -24,12 +25,17 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
+  },
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "peerDependencies": {
+    "class-variance-authority": "^0.6.0",
+    "@rafty/utils": "*"
   }
 }

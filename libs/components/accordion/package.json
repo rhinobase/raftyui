@@ -1,7 +1,7 @@
 {
   "name": "@rafty/accordion",
   "description": "A simple and accessible accordion component for React",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.5",
   "type": "module",
   "license": "MIT",
   "keywords": [
@@ -29,15 +29,17 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   },
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "peerDependencies": {
+    "react": "^18.2.0",
     "@radix-ui/react-accordion": "^1.1.1",
     "@rafty/utils": "*"
   }

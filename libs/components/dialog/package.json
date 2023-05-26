@@ -1,7 +1,7 @@
 {
   "name": "@rafty/dialog",
   "description": "A React component that is a base button.",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "keywords": [
     "dialog",
@@ -25,12 +25,21 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./index.js",
+      "require": "./index.umd.cjs"
     }
+  },
+  "main": "./index.umd.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "class-variance-authority": "^0.6.0",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@rafty/button": "*",
+    "@rafty/utils": "*"
   }
 }

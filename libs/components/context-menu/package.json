@@ -3,6 +3,7 @@
   "description": "Supports submenus with configurable reading direction.",
   "version": "1.0.0-beta.0",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "context-menu",
     "react",
@@ -24,12 +25,20 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
     }
+  },
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "class-variance-authority": "^0.6.0",
+    "@rafty/utils": "*"
   }
 }

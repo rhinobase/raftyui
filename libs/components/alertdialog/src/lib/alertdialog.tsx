@@ -7,7 +7,6 @@ import {
   useAlertDialogContext,
 } from "./context";
 import { classNames } from "@rafty/utils";
-import { cva } from "class-variance-authority";
 
 // AlertDialog Component
 export type AlertDialog = ComponentProps<

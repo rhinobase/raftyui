@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { classNames } from "@rafty/utils";
 import { CardContext, CardProvider, useCardContext } from "./context";
-import { cva } from "class-variance-authority";
 
 // Card Component
 const cardClasses = {
