@@ -39,11 +39,16 @@ export default defineConfig({
       fileName: "index",
       // Change this to the formats you want to support.
       // Don't forgot to update your package.json as well.
-      formats: ["es", "umd"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: [
+        "react",
+        "@radix-ui/react-dropdown-menu",
+        "@rafty/button",
+        "@rafty/utils",
+      ],
     },
   },
 });

@@ -1,5 +1,5 @@
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import React, { ComponentProps, forwardRef } from "react";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import {
   NavigationMenuContext,
   NavigationMenuProvider,

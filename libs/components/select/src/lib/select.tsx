@@ -1,12 +1,13 @@
 import React from "react";
 import type { AriaSelectProps } from "@react-types/select";
-import { useSelectState } from "react-stately";
 import { useSelect, HiddenSelect, useButton } from "react-aria";
+import { useSelectState } from "react-stately";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { PopoverContent } from "@rafty/popover";
-import { classNames } from "@rafty/utils";
 import { ListBox } from "./listbox";
 import { Button } from "@rafty/button";
+import { classNames } from "@rafty/utils";
+
 export { Item as SelectItem } from "react-stately";
 
 export type Select<T> = AriaSelectProps<T> & {

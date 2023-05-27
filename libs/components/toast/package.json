@@ -23,20 +23,16 @@
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   },
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "peerDependencies": {
-    "class-variance-authority": "^0.6.0",
     "@rafty/utils": "*"
   }
 }
