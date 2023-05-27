@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.9](https://github.com/rhinobase/design-system/compare/accordion-1.0.0-beta.8...accordion-1.0.0-beta.9) (2023-05-27)
+
+## [1.0.0-beta.8](https://github.com/rhinobase/design-system/compare/accordion-1.0.0-beta.7...accordion-1.0.0-beta.8) (2023-05-27)
+
+## [1.0.0-beta.7](https://github.com/rhinobase/design-system/compare/accordion-1.0.0-beta.6...accordion-1.0.0-beta.7) (2023-05-27)
+
+## [1.0.0-beta.6](https://github.com/rhinobase/design-system/compare/accordion-1.0.0-beta.5...accordion-1.0.0-beta.6) (2023-05-27)
+
 ## [1.0.0-beta.1](https://github.com/rhinobase/design-system/compare/accordion-1.0.0-beta.0...accordion-1.0.0-beta.1) (2023-05-22)
 
 ### Bug Fixes

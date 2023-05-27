@@ -512,3 +512,5 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     </button>
   );
 });
+
+Button.displayName = "Button";

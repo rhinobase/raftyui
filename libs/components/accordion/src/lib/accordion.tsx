@@ -9,10 +9,10 @@ import { classNames } from "@rafty/utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Accordion Component
-export type Accordion = ComponentProps<(typeof DisclosurePrimitive)["Root"]> &
+type Accordion = ComponentProps<(typeof DisclosurePrimitive)["Root"]> &
   Partial<AccordionContext> & { isUnstyled?: boolean };
 
-export const Accordion = forwardRef<HTMLDivElement, Accordion>(
+const Accordion = forwardRef<HTMLDivElement, Accordion>(
   (
     {
       children,
@@ -43,11 +43,11 @@ export const Accordion = forwardRef<HTMLDivElement, Accordion>(
 Accordion.displayName = "Accordian";
 
 // Accordion Item Component
-export type AccordionItem = ComponentProps<
-  (typeof DisclosurePrimitive)["Item"]
-> & { isUnstyled?: boolean };
+type AccordionItem = ComponentProps<(typeof DisclosurePrimitive)["Item"]> & {
+  isUnstyled?: boolean;
+};
 
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
+const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone } = useAccordionContext();
     const unstyle = isBarebone || isUnstyled;
@@ -78,7 +78,7 @@ const accordionTriggerClasses = {
   },
 };
 
-export type AccordionTrigger = ComponentProps<
+type AccordionTrigger = ComponentProps<
   (typeof DisclosurePrimitive)["Trigger"]
 > & {
   openIcon?: JSX.Element;
@@ -87,7 +87,7 @@ export type AccordionTrigger = ComponentProps<
   showIcon?: boolean;
 };
 
-export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
+const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
   (
     {
       children,
@@ -149,11 +149,11 @@ const accordionContentClasses = {
   },
 };
 
-export type AccordionContent = ComponentProps<
+type AccordionContent = ComponentProps<
   (typeof DisclosurePrimitive)["Content"]
 > & { isUnstyled?: boolean };
 
-export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
+const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { size, isBarebone } = useAccordionContext();
     const unstyle = isBarebone || isUnstyled;
@@ -178,3 +178,5 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
   }
 );
 AccordionContent.displayName = "AccordianContent";
+
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

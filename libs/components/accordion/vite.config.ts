@@ -37,12 +37,13 @@ export default defineConfig({
       entry: "src/index.ts",
       name: "components-accordion",
       fileName: "index",
-      formats: ["es", "cjs"],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
       external: [
         "react",
+        "react-dom",
+        "react/jsx-runtime",
         "@radix-ui/react-accordion",
         "@rafty/button",
         "@rafty/utils",
