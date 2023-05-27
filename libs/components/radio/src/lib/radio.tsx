@@ -83,7 +83,7 @@ export function Radio({ children, ...props }: Radio) {
     >
       <div
         className={classNames(
-          "border-secondary-400 dark:border-secondary-600 group-aria-checked:border-primary-500 dark:group-aria-checked:border-primary-300 inline-block rounded-full border-2 hover:opacity-70",
+          "border-secondary-400 dark:border-secondary-600 group-data-[selected=true]:border-primary-500 dark:group-data-[selected=true]:border-primary-300 inline-block rounded-full border-2 hover:opacity-70 group-data-[selected=true]:border-4",
           radioClasses.size[size]
         )}
       />
@@ -114,7 +114,7 @@ export function RadioCard(props: RadioCard) {
         "group aria-disabled:cursor-not-allowed aria-disabled:opacity-60 dark:aria-disabled:opacity-50",
         className
       )}
-      aria-checked={isSelected}
+      data-selected={isSelected}
       aria-disabled={disabled}
     >
       <VisuallyHidden>
