@@ -32,10 +32,10 @@
   "exports": {
     ".": {
       "import": "./index.js",
-      "require": "./index.umd.cjs"
+      "require": "./index.mjs"
     }
   },
-  "main": "./index.umd.cjs",
+  "main": "./index.mjs",
   "module": "./index.js",
   "types": "./index.d.ts",
   "peerDependencies": {

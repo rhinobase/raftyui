@@ -23,16 +23,13 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "import": "./index.js",
-      "require": "./index.cjs"
+      "require": "./index.mjs"
     }
   },
-  "main": "./index.cjs",
+  "main": "./index.mjs",
   "module": "./index.js",
   "types": "./index.d.ts",
   "peerDependencies": {
