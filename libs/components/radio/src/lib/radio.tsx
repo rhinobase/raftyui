@@ -100,7 +100,7 @@ export function RadioCard(props: RadioCard) {
   const ref = React.useRef(null);
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { inputProps } = useRadio(props, state!, ref);
-  const { focusProps, isFocusVisible } = useFocusRing();
+  const { focusProps } = useFocusRing();
   const isSelected = state?.selectedValue === props.value;
   const { isDisabled: isGroupDisabled } = useRadioGroupContext();
 
@@ -110,7 +110,6 @@ export function RadioCard(props: RadioCard) {
     <label
       {...props}
       className={classNames(
-        isFocusVisible && "ring-2 ring-black ring-offset-2",
         "group aria-disabled:cursor-not-allowed aria-disabled:opacity-60 dark:aria-disabled:opacity-50",
         className
       )}

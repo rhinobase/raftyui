@@ -118,28 +118,28 @@ export const RadioTabGroup: Story = {
             <RadioCard
               aria-label="red"
               value="ABC"
-              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 data-[selected=true]:text-white"
+              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 outline-none data-[selected=true]:text-white"
             >
               ABC
             </RadioCard>
             <RadioCard
               aria-label="red"
               value="BCD"
-              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 data-[selected=true]:text-white"
+              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 outline-none data-[selected=true]:text-white"
             >
               BCD
             </RadioCard>
             <RadioCard
               aria-label="orange"
               value="CDE"
-              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 data-[selected=true]:text-white"
+              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 outline-none data-[selected=true]:text-white"
             >
               CDE
             </RadioCard>
             <RadioCard
               aria-label="red"
               value="DEF"
-              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 data-[selected=true]:text-white"
+              className="bg-secondary-200 data-[selected=true]:bg-primary-500 flex w-full items-center justify-center py-2 outline-none data-[selected=true]:text-white"
             >
               EFG
             </RadioCard>
