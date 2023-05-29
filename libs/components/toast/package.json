@@ -1,7 +1,7 @@
 {
   "name": "@rafty/toast",
   "description": "The toast component is used to give feedback to users after an action has taken place.",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.4",
   "license": "MIT",
   "keywords": [
     "toast",

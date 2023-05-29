@@ -1,7 +1,7 @@
 {
   "name": "@rafty/input",
   "description": "A React component for input text field.",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.4",
   "license": "MIT",
   "keywords": [
     "input",

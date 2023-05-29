@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.6](https://github.com/rhinobase/raftyui/compare/dialog-1.0.0-beta.5...dialog-1.0.0-beta.6) (2023-05-29)
+
 ## [1.0.0-beta.3](https://github.com/rhinobase/raftyui/compare/dialog-1.0.0-beta.2...dialog-1.0.0-beta.3) (2023-05-29)
 
 ## [1.0.0-beta.2](https://github.com/rhinobase/design-system/compare/dialog-1.0.0-beta.1...dialog-1.0.0-beta.2) (2023-05-27)

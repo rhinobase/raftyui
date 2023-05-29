@@ -1,7 +1,7 @@
 {
   "name": "@rafty/tag-field",
   "description": "Component to input multiple items / tags",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.3",
   "license": "MIT",
   "keywords": [
     "tag",

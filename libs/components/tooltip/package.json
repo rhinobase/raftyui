@@ -1,7 +1,7 @@
 {
   "name": "@rafty/tooltip",
   "description": "A React Component for rendering dynamically positioned Tooltips",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.4",
   "license": "MIT",
   "keywords": [
     "tooltip",

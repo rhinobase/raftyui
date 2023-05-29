@@ -1,7 +1,7 @@
 {
   "name": "@rafty/combobox",
   "description": "A simple and accessible combobox component for React",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.4",
   "license": "MIT",
   "type": "module",
   "keywords": [

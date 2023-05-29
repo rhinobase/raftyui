@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.3](https://github.com/rhinobase/raftyui/compare/tab-1.0.0-beta.2...tab-1.0.0-beta.3) (2023-05-29)
+
 ## [1.0.0-beta.1](https://github.com/rhinobase/raftyui/compare/tab-1.0.0-beta.0...tab-1.0.0-beta.1) (2023-05-29)
 
 ## 1.0.0-beta.0 (2023-05-19)

@@ -1,7 +1,7 @@
 {
   "name": "@rafty/spinner",
   "description": "A React component for displaying spinners and loaders",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "license": "MIT",
   "keywords": [
     "spinner",

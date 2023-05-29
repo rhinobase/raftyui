@@ -1,7 +1,7 @@
 {
   "name": "@rafty/card",
   "description": "React component used to group related content",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.4",
   "license": "MIT",
   "type": "module",
   "keywords": [
