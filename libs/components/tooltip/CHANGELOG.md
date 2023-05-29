@@ -1,5 +1,9 @@
 # Changelog
 
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [1.0.0-beta.1](https://github.com/rhinobase/raftyui/compare/tooltip-1.0.0-beta.0...tooltip-1.0.0-beta.1) (2023-05-29)
+
 ## 1.0.0-beta.0 (2023-05-19)
 
 ### Bug Fixes

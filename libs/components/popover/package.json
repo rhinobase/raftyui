@@ -1,7 +1,7 @@
 {
   "name": "@rafty/popover",
   "description": "A React component to render that renders its content in a popover",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "keywords": [
     "popover",

@@ -1,7 +1,7 @@
 {
   "name": "@rafty/table",
   "description": "Table component for React and Rafty UI",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "keywords": [
     "table",
