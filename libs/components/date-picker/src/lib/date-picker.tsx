@@ -75,13 +75,15 @@ export function DatePicker<T extends DateValue>(
           </CalendarButton>
         </Suffix>
       </InputGroup>
-      <PopoverContent
-        triggerRef={ref}
-        triggerState={state}
-        placement="bottom start"
-      >
-        <Calendar {...calendarProps} />
-      </PopoverContent>
+      {state.isOpen && (
+        <PopoverContent
+          triggerRef={ref}
+          triggerState={state}
+          placement="bottom start"
+        >
+          <Calendar {...calendarProps} />
+        </PopoverContent>
+      )}
     </div>
   );
 }

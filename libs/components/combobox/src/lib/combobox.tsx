@@ -69,19 +69,21 @@ export function Combobox<T extends object>(props: Combobox<T>) {
           </Button>
         </Suffix>
       </InputGroup>
-      <PopoverContent
-        triggerState={state}
-        triggerRef={popoverRef}
-        placement="bottom start"
-        className="-ml-3 w-full"
-      >
-        <ListBox
-          {...listBoxProps}
-          listBoxRef={listBoxRef}
-          state={state}
-          size={size}
-        />
-      </PopoverContent>
+      {state.isOpen && (
+        <PopoverContent
+          triggerState={state}
+          triggerRef={popoverRef}
+          placement="bottom start"
+          className="-ml-3 w-full"
+        >
+          <ListBox
+            {...listBoxProps}
+            listBoxRef={listBoxRef}
+            state={state}
+            size={size}
+          />
+        </PopoverContent>
+      )}
     </div>
   );
 }
