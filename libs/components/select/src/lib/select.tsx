@@ -69,14 +69,16 @@ export function Select<T extends object>(props: Select<T>) {
           {state.selectedItem ? state.selectedItem.rendered : placeholder}
         </span>
       </Button>
-      <PopoverContent
-        triggerState={state}
-        triggerRef={ref}
-        placement="bottom start"
-        className="-ml-3 w-full"
-      >
-        <ListBox {...menuProps} state={state} size={size} />
-      </PopoverContent>
+      {state.isOpen && (
+        <PopoverContent
+          triggerState={state}
+          triggerRef={ref}
+          placement="bottom start"
+          className="-ml-3 w-full"
+        >
+          <ListBox {...menuProps} state={state} size={size} />
+        </PopoverContent>
+      )}
     </div>
   );
 }

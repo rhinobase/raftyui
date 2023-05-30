@@ -84,13 +84,15 @@ export function RangePicker<T extends DateValue>(
           </CalendarButton>
         </Suffix>
       </InputGroup>
-      <PopoverContent
-        triggerRef={ref}
-        triggerState={state}
-        placement="bottom start"
-      >
-        <RangeCalendar {...calendarProps} />
-      </PopoverContent>
+      {state.isOpen && (
+        <PopoverContent
+          triggerRef={ref}
+          triggerState={state}
+          placement="bottom start"
+        >
+          <RangeCalendar {...calendarProps} />
+        </PopoverContent>
+      )}
     </div>
   );
 }
