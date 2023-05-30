@@ -148,5 +148,4 @@ export { Textarea } from "@rafty/textarea";
 export { Toast } from "@rafty/toast";
 export { ToggleGroup, ToggleGroupItem } from "@rafty/toggle-group";
 export { Tooltip } from "@rafty/tooltip";
-export { Upload } from "@rafty/upload";
 export { classNames, mergeRefs } from "@rafty/utils";
