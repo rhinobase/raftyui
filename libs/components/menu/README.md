@@ -1,19 +1,7 @@
-# @rafty/menu
+# components-menu
 
-Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/menu
-
-# or
-
-npm i @rafty/menu
-```
-
-## Import Components
-
-```jsx
-import { Menu, MenuCheckboxItem, MenuContent, MenuGroup, MenuItem, MenuLabel, MenuRadioGroup, MenuRadioItem, MenuSeparator, MenuSub, MenuSubContent, MenuSubTrigger, MenuTrigger } from "@rafty/menu";
-```
+Run `nx test components-menu` to execute the unit tests via [Jest](https://jestjs.io).

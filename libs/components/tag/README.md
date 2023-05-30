@@ -1,19 +1,7 @@
-# @rafty/tag
+# components-tag
 
-This component is displayed as an accessible tag.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/tag
-
-# or
-
-npm i @rafty/tag
-```
-
-## Import components
-
-```jsx
-import { Tag } from "@rafty/tag";
-```
+Run `nx test components-tag` to execute the unit tests via [Jest](https://jestjs.io).

@@ -13,19 +13,23 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/components/tag"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/libs/components/tag",
+        "tsConfig": "libs/components/tag/tsconfig.lib.json",
+        "project": "libs/components/tag/package.json",
+        "entryFile": "libs/components/tag/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/components/tag/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {

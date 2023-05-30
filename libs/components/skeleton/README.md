@@ -1,21 +1,7 @@
-# @rafty/skeleton
+# components-skeleton
 
-Skeleton page is used to provide a low fidelity representation of the user interface (UI) before content appears on the page
+This library was generated with [Nx](https://nx.dev).
 
-A skeleton screen is a user experience pattern that’s shown to reduce load time frustration. They create better “perceived performance”.
+## Running unit tests
 
-## Installation
-
-```sh
-yarn add @rafty/skeleton
-
-# or
-
-npm i @rafty/skeleton
-```
-
-## Import Components
-
-```jsx
-import { Skeleton } from "@rafty/skeleton";
-```
+Run `nx test components-skeleton` to execute the unit tests via [Jest](https://jestjs.io).

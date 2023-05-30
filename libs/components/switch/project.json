@@ -13,19 +13,23 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/components/switch"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/libs/components/switch",
+        "tsConfig": "libs/components/switch/tsconfig.lib.json",
+        "project": "libs/components/switch/package.json",
+        "entryFile": "libs/components/switch/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/components/switch/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {

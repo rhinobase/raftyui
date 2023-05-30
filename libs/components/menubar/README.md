@@ -1,19 +1,7 @@
-# @rafty/menubar
+# components-menubar
 
-A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/menubar
-
-# or
-
-npm i @rafty/menubar
-```
-
-## Import Components
-
-```jsx
-import { Menubar, MenubarCheckboxGroup, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from "@rafty/menubar";
-```
+Run `nx test components-menubar` to execute the unit tests via [Jest](https://jestjs.io).

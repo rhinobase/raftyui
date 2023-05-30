@@ -1,19 +1,7 @@
-# @rafty/switch
+# components-switch
 
-The Switch component is used as an alternative for the checkbox component, switch between enabled or disabled states.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/switch
-
-# or
-
-npm i @rafty/switch
-```
-
-## Import components
-
-```jsx
-import { Switch } from "@rafty/switch";
-```
+Run `nx test components-switch` to execute the unit tests via [Jest](https://jestjs.io).

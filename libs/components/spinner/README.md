@@ -1,19 +1,7 @@
-# @rafty/spinner
+# components-spinner
 
-Spinners provide a visual cue that an action is processing, awaiting a course of change or a result.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/spinner
-
-# or
-
-npm i @rafty/spinner
-```
-
-## Import component
-
-```jsx
-import { Spinner } from "@rafty/spinner";
-```
+Run `nx test components-spinner` to execute the unit tests via [Jest](https://jestjs.io).

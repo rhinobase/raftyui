@@ -1,23 +1,7 @@
-# @rafty/toast
+# components-toast
 
-The toast is used to show alerts on top of an overlay.
+This library was generated with [Nx](https://nx.dev).
 
-The toast will close itself when the close button is clicked, or after a timeout — the default is 5 seconds.
+## Running unit tests
 
-Toasts can be configured to appear at either the top or the bottom of an application window, and it is possible to have more than one toast onscreen at a time.
-
-## Installation
-
-```sh
-yarn add @rafty/toast
-
-# or
-
-npm i @rafty/toast
-```
-
-## Import components
-
-```jsx
-import { Toast } from "@rafty/toast";
-```
+Run `nx test components-toast` to execute the unit tests via [Jest](https://jestjs.io).

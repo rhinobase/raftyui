@@ -1,19 +1,7 @@
-# @rafty/toggle-group
+# components-toggle-group
 
-The toggle group is a visual variant of the radio group pattern.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/toggle-group
-
-# or
-
-npm i @rafty/toggle-group
-```
-
-## Import components
-
-```jsx
-import { ToggleGroup, ToggleGroupItem } from "@rafty/togglr-group";
-```
+Run `nx test components-toggle-group` to execute the unit tests via [Jest](https://jestjs.io).

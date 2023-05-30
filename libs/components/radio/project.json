@@ -7,31 +7,29 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/components/radio/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/components/radio/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "defaultConfiguration": "production",
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/components/radio"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/libs/components/radio",
+        "tsConfig": "libs/components/radio/tsconfig.lib.json",
+        "project": "libs/components/radio/package.json",
+        "entryFile": "libs/components/radio/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/components/radio/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {

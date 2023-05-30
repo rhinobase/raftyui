@@ -1,21 +1,7 @@
-# @rafty/select
+# components-select
 
-The Select component is a component that allows users pick a value from predefined options.
+This library was generated with [Nx](https://nx.dev).
 
-Ideally, it should be used when there are more than 5 options, otherwise you might consider using a radio group instead.
+## Running unit tests
 
-## Installation
-
-```sh
-yarn add @rafty/select
-
-# or
-
-npm i @rafty/select
-```
-
-## Import Components
-
-```jsx
-import { Select, SelectItem, ListBox } from "@rafty/select";
-```
+Run `nx test components-select` to execute the unit tests via [Jest](https://jestjs.io).

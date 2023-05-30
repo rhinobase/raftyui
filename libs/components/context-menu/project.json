@@ -7,9 +7,7 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/components/context-menu/**/*.{ts,tsx,js,jsx}"
@@ -17,21 +15,23 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "defaultConfiguration": "production",
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/components/context-menu"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/libs/components/context-menu",
+        "tsConfig": "libs/components/context-menu/tsconfig.lib.json",
+        "project": "libs/components/context-menu/package.json",
+        "entryFile": "libs/components/context-menu/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/components/context-menu/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {

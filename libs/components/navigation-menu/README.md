@@ -1,19 +1,7 @@
-# @rafty/navigation-menu
+# components-navigation-menu
 
-A collection of links for navigating websites.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/navigation-menu
-
-# or
-
-npm i @rafty/navigation-menu
-```
-
-## Import Components
-
-```jsx
-export { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuListItem, NavigationMenuTrigger } from "@rafty/navigation-menu";
-```
+Run `nx test components-navigation-menu` to execute the unit tests via [Jest](https://jestjs.io).

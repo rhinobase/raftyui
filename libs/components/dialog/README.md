@@ -1,19 +1,7 @@
-# @rafty/dailog
+# components-dialog
 
-A dailog is a window overlaid on either the primary window or another dialog window. Contents behind a dailog are **inert** meaning that users cannot interact with content behind the dialog.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/dailog
-
-# or
-
-npm i @rafty/dailog
-```
-
-## Import Components
-
-```jsx
-import { Dialog, DialogBody, DialogClose, DialogCloseButton, DialogContent, DialogOverlay, DialogHeading, DialogTrigger } from "@rafty/dailog";
-```
+Run `nx test components-dialog` to execute the unit tests via [Jest](https://jestjs.io).

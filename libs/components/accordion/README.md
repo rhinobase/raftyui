@@ -1,21 +1,7 @@
-# @rafty/accordion
+# components-accordion
 
-An accordion is a vertically stacked set of interactive headings that each contain a title or content snippet representing a section of content.
+This library was generated with [Nx](https://nx.dev).
 
-The headings function as controls that enable users to reveal or hide their associated sections of content.
+## Running unit tests
 
-## Installation
-
-```sh
-yarn add @rafty/accordion
-
-# or
-
-npm i @rafty/accordion
-```
-
-## Import components
-
-```jsx
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@rafty/accordion";
-```
+Run `nx test components-accordion` to execute the unit tests via [Jest](https://jestjs.io).

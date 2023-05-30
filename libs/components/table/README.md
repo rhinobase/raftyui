@@ -1,19 +1,7 @@
-# @rafty/table
+# components-table
 
-An accessible table component.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/table
-
-# or
-
-npm i @rafty/table
-```
-
-## Import components
-
-```jsx
-import { Table, TableBody, TableContainer, TableFooter, TableHead, Td, Th, Tr } from "@rafty/table";
-```
+Run `nx test components-table` to execute the unit tests via [Jest](https://jestjs.io).

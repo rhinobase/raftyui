@@ -15,19 +15,23 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/components/toggle-group"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/libs/components/toggle-group",
+        "tsConfig": "libs/components/toggle-group/tsconfig.lib.json",
+        "project": "libs/components/toggle-group/package.json",
+        "entryFile": "libs/components/toggle-group/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/components/toggle-group/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {

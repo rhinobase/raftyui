@@ -1,19 +1,7 @@
-# @rafty/alert
+# components-alert
 
-Alerts visually highlight important content for the user. They can contain a title, an icon and content. Each intent has a default icon associated with it.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/alert
-
-# or
-
-npm i @rafty/alert
-```
-
-## Import components
-
-```jsx
-import { Alert, AlertTitle, AlertIcon, AlertDescription } from "@rafty/alert";
-```
+Run `nx test components-alert` to execute the unit tests via [Jest](https://jestjs.io).

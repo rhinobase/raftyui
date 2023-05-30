@@ -3,47 +3,33 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/plugin/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "options": {
-        "outputPath": "dist/libs/plugin"
-      }
-    },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs plugin {args.ver} {args.tag}",
-      "dependsOn": [
-        "build"
-      ]
-    },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/plugin/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/plugin/**/*.{ts,tsx,js,jsx}"]
       }
     },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "jestConfig": "libs/plugin/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "outputPath": "dist/libs/plugin",
+        "tsConfig": "libs/plugin/tsconfig.lib.json",
+        "project": "libs/plugin/package.json",
+        "entryFile": "libs/plugin/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/plugin/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {
@@ -55,6 +41,5 @@
     "release": {
       "executor": "ngx-deploy-npm:deploy"
     }
-  },
-  "tags": []
+  }
 }

@@ -7,31 +7,29 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/components/combobox/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/components/combobox/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "defaultConfiguration": "production",
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/components/combobox"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
+        "outputPath": "dist/libs/components/combobox",
+        "tsConfig": "libs/components/combobox/tsconfig.lib.json",
+        "project": "libs/components/combobox/package.json",
+        "entryFile": "libs/components/combobox/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/components/combobox/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {

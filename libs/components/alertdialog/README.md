@@ -1,19 +1,7 @@
-# @rafty/alertdialog
+# components-alertdialog
 
-A alertdialog is a window overlaid on either the primary window or another dialog window. Contents behind a alertdialog are **inert** meaning that users cannot interact with content behind the dialog.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/alertdialog
-
-# or
-
-npm i @rafty/alertdialog
-```
-
-## Import components
-
-```jsx
-import { AlertDialog, AlertDialogAction, AlertDialogBody, AlertDialogCancel, AlertDialogContent, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger } from "@rafty/alertdialog";
-```
+Run `nx test components-alertdialog` to execute the unit tests via [Jest](https://jestjs.io).

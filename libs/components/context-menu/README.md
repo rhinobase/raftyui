@@ -1,19 +1,7 @@
-# @rafty/context-menu
+# components-context-menu
 
-Displays a menu located at the pointer, triggered by a right-click or a long-press.
+This library was generated with [Nx](https://nx.dev).
 
-## Installation
+## Running unit tests
 
-```sh
-yarn add @rafty/context-menu
-
-# or
-
-npm i @rafty/context-menu
-```
-
-## Import Components
-
-```jsx
-import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSeparator, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from "@rafty/context-menu";
-```
+Run `nx test components-context-menu` to execute the unit tests via [Jest](https://jestjs.io).
