@@ -1,5 +1,5 @@
-import { Button } from "@rafty/button";
 import {
+  Button,
   AlertDialog,
   AlertDialogAction,
   AlertDialogBody,
@@ -8,7 +8,7 @@ import {
   AlertDialogOverlay,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@rafty/alertdialog";
+} from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof AlertDialog> = {

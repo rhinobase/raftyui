@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { SearchField } from "@rafty/input";
+import { SearchField } from "@rafty/ui";
 
 const meta: Meta<typeof SearchField> = {
   title: "Form / SearchField",

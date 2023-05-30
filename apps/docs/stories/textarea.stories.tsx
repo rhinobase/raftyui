@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel } from "@rafty/field";
-import { Textarea } from "@rafty/textarea";
+import { FieldControl, FieldLabel, Textarea } from "@rafty/ui";
 
 const meta: Meta<typeof Textarea> = {
   title: "Form / Textarea",

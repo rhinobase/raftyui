@@ -6,7 +6,7 @@ import {
   InputField,
   LeftAddon,
   RightAddon,
-} from "@rafty/input";
+} from "@rafty/ui";
 import {
   CheckIcon,
   MagnifyingGlassIcon,

@@ -7,8 +7,8 @@ import {
   DialogHeading,
   DialogTrigger,
   DialogCloseButton,
-} from "@rafty/dialog";
-import { Button } from "@rafty/button";
+  Button,
+} from "@rafty/ui";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",

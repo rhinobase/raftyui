@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { DatePicker } from "@rafty/date-picker";
+import { DatePicker } from "@rafty/ui";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Form / DatePicker",

@@ -7,8 +7,7 @@ import {
   Td,
   Th,
   Tr,
-} from "@rafty/table";
-
+} from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Table> = {

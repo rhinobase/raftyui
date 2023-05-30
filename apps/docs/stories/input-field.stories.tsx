@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { InputField } from "@rafty/input";
+import { InputField } from "@rafty/ui";
 
 const meta: Meta<typeof InputField> = {
   title: "Form / InputField",

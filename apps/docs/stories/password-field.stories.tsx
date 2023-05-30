@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel } from "@rafty/field";
-import { PasswordField } from "@rafty/input";
+import { FieldControl, FieldLabel, PasswordField } from "@rafty/ui";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Form / PasswordField",

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Kbd } from "@rafty/kbd";
+import { Kbd } from "@rafty/ui";
 
 const meta: Meta<typeof Kbd> = {
   title: "Components / Kbd",

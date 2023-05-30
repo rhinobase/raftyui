@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@rafty/accordion";
+} from "@rafty/ui";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Accordion> = {

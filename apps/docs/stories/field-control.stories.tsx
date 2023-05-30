@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel } from "@rafty/field";
-import { InputField } from "@rafty/input";
-import { Switch } from "@rafty/switch";
+import { FieldControl, FieldLabel, InputField, Switch } from "@rafty/ui";
 
 const meta: Meta<typeof FieldControl> = {
   title: "Form / FieldControl",

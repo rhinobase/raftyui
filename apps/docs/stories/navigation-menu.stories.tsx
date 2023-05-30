@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuListItem,
   NavigationMenuTrigger,
-} from "@rafty/navigation-menu";
+} from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof NavigationMenu> = {

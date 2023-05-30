@@ -1,5 +1,4 @@
 import { StoryObj } from "@storybook/react";
-
 import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,15 +12,20 @@ import {
   PasswordField,
   Prefix,
   Suffix,
-} from "@rafty/input";
-import { FieldControl, FieldLabel } from "@rafty/field";
-import { Select } from "@rafty/select";
-import { Combobox, ComboboxItem } from "@rafty/combobox";
-import { DatePicker, RangePicker } from "@rafty/date-picker";
-import { Textarea } from "@rafty/textarea";
-import { Checkbox, CheckboxGroup } from "@rafty/checkbox";
-import { Radio, RadioGroup } from "@rafty/radio";
-import { Switch } from "@rafty/switch";
+  FieldControl,
+  FieldLabel,
+  Select,
+  Combobox,
+  ComboboxItem,
+  DatePicker,
+  RangePicker,
+  Textarea,
+  Checkbox,
+  CheckboxGroup,
+  Radio,
+  RadioGroup,
+  Switch,
+} from "@rafty/ui";
 
 const schema = z.object({
   text_input: z.string().max(255),

@@ -6,9 +6,9 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,
-} from "@rafty/drawer";
+  Button,
+} from "@rafty/ui";
 import { useState } from "react";
-import { Button } from "@rafty/button";
 
 const meta: Meta<typeof Drawer> = {
   title: "Components / Drawer",

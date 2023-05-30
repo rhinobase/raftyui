@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Checkbox, CheckboxGroup } from "@rafty/checkbox";
+import { Checkbox, CheckboxGroup } from "@rafty/ui";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Form / Checkbox",

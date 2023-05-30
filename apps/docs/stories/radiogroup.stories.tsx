@@ -1,4 +1,4 @@
-import { Radio, RadioCard, RadioGroup } from "@rafty/radio";
+import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 

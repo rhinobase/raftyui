@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Toast } from "@rafty/toast";
+import { Toast } from "@rafty/ui";
 
 const meta: Meta<typeof Toast> = {
   title: "Components / Toast",

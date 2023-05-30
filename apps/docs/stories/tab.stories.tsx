@@ -1,5 +1,4 @@
-import { Tab, TabTrigger, TabList, TabContent } from "@rafty/tab";
-
+import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Tab> = {

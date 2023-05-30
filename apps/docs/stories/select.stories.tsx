@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select } from "@rafty/select";
-import { Item } from "react-stately";
+import { Select, SelectItem } from "@rafty/ui";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
@@ -32,9 +31,9 @@ export const Default: Story = {
         size={size}
         onSelectionChange={(key) => console.log(key)}
       >
-        <Item key="option1">Option 1</Item>
-        <Item key="option2">Option 2</Item>
-        <Item key="option3">Option 3</Item>
+        <SelectItem key="option1">Option 1</SelectItem>
+        <SelectItem key="option2">Option 2</SelectItem>
+        <SelectItem key="option3">Option 3</SelectItem>
       </Select>
     </div>
   ),

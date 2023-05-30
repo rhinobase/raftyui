@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Tag } from "@rafty/tag";
+import { Tag } from "@rafty/ui";
 
 const meta: Meta<typeof Tag> = {
   title: "Components / Tag",

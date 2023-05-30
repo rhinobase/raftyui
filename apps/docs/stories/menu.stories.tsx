@@ -13,9 +13,8 @@ import {
   MenuSubContent,
   MenuSubTrigger,
   MenuTrigger,
-} from "@rafty/menu";
+} from "@rafty/ui";
 import { useState } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Menu> = {
   title: "Components / Menu",
