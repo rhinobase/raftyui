@@ -17,37 +17,29 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/rollup:rollup",
       "outputs": [
         "{options.outputPath}"
       ],
-      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/utils"
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
-      "options": {
-        "jestConfig": "libs/utils/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "outputPath": "dist/libs/utils",
+        "tsConfig": "libs/utils/tsconfig.lib.json",
+        "project": "libs/utils/package.json",
+        "entryFile": "libs/utils/src/index.ts",
+        "external": [
+          "react",
+          "react-dom",
+          "react/jsx-runtime"
+        ],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/utils/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "version": {
