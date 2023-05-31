@@ -1,5 +1,5 @@
-import plugin = require("tailwindcss/plugin");
-import colors = require("tailwindcss/colors");
+import plugin from "tailwindcss/plugin";
+import colors from "tailwindcss/colors";
 
 module.exports = plugin(
   function () {

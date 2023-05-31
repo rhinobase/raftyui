@@ -68,7 +68,6 @@
     "@rafty/toast": "*",
     "@rafty/toggle-group": "*",
     "@rafty/tooltip": "*",
-    "@rafty/upload": "*",
     "@rafty/utils": "*"
   }
 }
