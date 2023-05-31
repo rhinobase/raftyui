@@ -12,25 +12,16 @@ import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof NavigationMenu> = {
   title: "Components / NavigationMenu",
-  args: {
-    size: "md",
-  },
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof NavigationMenu>;
 
 export const Default: Story = {
-  render: ({ size }) => (
+  render: () => (
     <>
       <div className="h-screen w-screen">
-        <NavigationMenu size={size}>
+        <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>
