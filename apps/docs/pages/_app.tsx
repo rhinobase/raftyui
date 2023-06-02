@@ -8,6 +8,7 @@ import { Layout } from "../components/Layout";
 import Head from "next/head";
 import { MarkdocNextJsPageProps } from "@markdoc/next.js";
 import { RenderableTreeNodes } from "@markdoc/markdoc";
+import { useRouter } from "next/router";
 
 const sans = Inter({
   variable: "--font-sans",
@@ -74,11 +75,13 @@ export default function App({
   Component,
   pageProps,
 }: AppProps<MarkdocNextJsPageProps>) {
+  const router = useRouter();
+  const isHomePage = router.pathname === "/";
   const title = pageProps.markdoc?.frontmatter.title;
 
   const pageTitle =
     pageProps.markdoc?.frontmatter.pageTitle ||
-    `${pageProps.markdoc?.frontmatter.title} - Docs`;
+    `${pageProps.markdoc?.frontmatter.title ?? "Rafty UI"} | Docs`;
 
   const description = pageProps.markdoc?.frontmatter.description;
 
@@ -86,15 +89,23 @@ export default function App({
     ? collectHeadings(pageProps.markdoc.content)
     : [];
 
+  const page = <Component {...pageProps} />;
+
   return (
-    <span className={`${display.variable} ${sans.variable} font-sans`}>
+    <span
+      className={`${display.variable} ${sans.variable} text-secondary-900 dark:text-white`}
+    >
       <Head>
         <title>{pageTitle}</title>
         {description && <meta name="description" content={description} />}
       </Head>
-      <Layout title={title} tableOfContents={tableOfContents}>
-        <Component {...pageProps} />
-      </Layout>
+      {isHomePage ? (
+        page
+      ) : (
+        <Layout title={title} tableOfContents={tableOfContents}>
+          {page}
+        </Layout>
+      )}
     </span>
   );
 }

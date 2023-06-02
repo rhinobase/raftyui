@@ -10,6 +10,7 @@ import Link from "next/link";
 import Discord from "../public/discord.svg";
 import Twitter from "../public/twitter.svg";
 import Image from "next/image";
+
 enum ColorMode {
   DARK = "dark",
   LIGHT = "light",
@@ -72,7 +73,7 @@ export function Header({ navigation }: { navigation: Navigation }) {
             <SunIcon className="h-5 w-5 dark:hidden" />
             <MoonIcon className="hidden h-5 w-5 dark:block" />
           </Button>
-          <Link href="https://github.com" aria-label="GitHub">
+          <Link href="https://github.com/rhinobase/raftyui" aria-label="GitHub">
             <Button variant="ghost" size="icon">
               <svg
                 aria-hidden="true"
@@ -94,7 +95,7 @@ export function Header({ navigation }: { navigation: Navigation }) {
               />
             </Button>
           </Link>
-          <Link href="https://twitter.com" aria-label="Twitter">
+          <Link href="https://twitter.com/rhinobaseio" aria-label="Twitter">
             <Button variant="ghost" size="icon">
               <Image
                 src={Twitter}

@@ -7,7 +7,6 @@ import {
   ArrowSmallLeftIcon,
   ArrowSmallRightIcon,
 } from "@heroicons/react/24/outline";
-import { Hero } from "./Hero";
 import { Header } from "./Header";
 import { Navigation } from "./Navigation";
 import { Prose } from "./Prose";
@@ -128,7 +127,6 @@ export function Layout({
   tableOfContents: TableOfContents;
 }) {
   const router = useRouter();
-  const isHomePage = router.pathname === "/";
   const allLinks = navigation.flatMap((section) => section.links);
   const linkIndex = allLinks.findIndex((link) => link.href === router.pathname);
   const previousPage = allLinks[linkIndex - 1];
@@ -151,9 +149,6 @@ export function Layout({
   return (
     <>
       <Header navigation={navigation} />
-
-      {isHomePage && <Hero />}
-
       <div className="max-w-8xl relative mx-auto flex justify-center sm:px-2 lg:px-8 xl:px-12">
         <div className="hidden lg:relative lg:block lg:flex-none">
           <div className="bg-secondary-50 absolute inset-y-0 right-0 w-[50vw] dark:hidden" />
@@ -176,7 +171,7 @@ export function Layout({
                   </p>
                 )}
                 {title && (
-                  <h1 className="font-display text-secondary-900 text-3xl tracking-tight dark:text-white">
+                  <h1 className="font-display text-3xl tracking-tight">
                     {title}
                   </h1>
                 )}
@@ -187,9 +182,7 @@ export function Layout({
           <dl className="border-secondary-200 dark:border-secondary-800 mt-12 flex border-t pt-6">
             {previousPage && (
               <div>
-                <dt className="font-display text-secondary-900 text-sm font-medium dark:text-white">
-                  Previous
-                </dt>
+                <dt className="font-display text-sm font-medium">Previous</dt>
                 <dd className="mt-1">
                   <Link
                     href={previousPage.href}
@@ -203,9 +196,7 @@ export function Layout({
             )}
             {nextPage && (
               <div className="ml-auto text-right">
-                <dt className="font-display text-secondary-900 text-sm font-medium dark:text-white">
-                  Next
-                </dt>
+                <dt className="font-display text-sm font-medium">Next</dt>
                 <dd className="mt-1">
                   <Link
                     href={nextPage.href}
@@ -225,7 +216,7 @@ export function Layout({
               <>
                 <h2
                   id="on-this-page-title"
-                  className="font-display text-secondary-900 text-sm font-medium dark:text-white"
+                  className="font-display text-sm font-medium"
                 >
                   On this page
                 </h2>
