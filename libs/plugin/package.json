@@ -34,6 +34,6 @@
   "main": "./index.mjs",
   "module": "./index.js",
   "peerDependencies": {
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": ">=3"
   }
 }

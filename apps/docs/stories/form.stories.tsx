@@ -17,8 +17,6 @@ import {
   Select,
   Combobox,
   ComboboxItem,
-  DatePicker,
-  RangePicker,
   Textarea,
   Checkbox,
   CheckboxGroup,
@@ -26,6 +24,7 @@ import {
   RadioGroup,
   Switch,
 } from "@rafty/ui";
+import { DatePicker, RangePicker } from "@rafty/date-picker";
 
 const schema = z.object({
   text_input: z.string().max(255),

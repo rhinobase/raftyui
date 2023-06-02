@@ -26,7 +26,7 @@ import {
 import { CalendarButton } from "./calendar-button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/utils";
-import { Table, TableBody, TableHead, Td, Tr } from "@rafty/table";
+import { Table, TableBody, TableHead, Td, Tr } from "@rafty/ui";
 
 export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
   const { locale } = useLocale();

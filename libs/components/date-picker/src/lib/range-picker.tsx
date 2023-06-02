@@ -13,8 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { classNames } from "@rafty/utils";
-import { PopoverContent } from "@rafty/popover";
-import { InputGroup, Suffix } from "@rafty/input";
+import { PopoverContent, InputGroup, Suffix } from "@rafty/ui";
 
 const RangePickerClasses = cva(
   "flex transition-colors rounded-md pr-10 flex-1 relative",

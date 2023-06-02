@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useButton, AriaButtonProps } from "react-aria";
-import { Button } from "@rafty/button";
+import { Button } from "@rafty/ui";
 
 export type CalendarButton = AriaButtonProps & Button;
 

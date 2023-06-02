@@ -10,8 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
-import { PopoverContent } from "@rafty/popover";
-import { InputGroup, Suffix } from "@rafty/input";
+import { PopoverContent, InputGroup, Suffix } from "@rafty/ui";
 
 const DatePickerClasses = cva(
   "transition-colors rounded-md pr-10 relative flex items-center flex-1",
