@@ -34,6 +34,7 @@
   "types": "./index.d.ts",
   "peerDependencies": {
     "react": ">=18",
+    "@heroicons/react": ">=2",
     "react-aria": ">=3.25.0",
     "react-stately": ">=3.23.0",
     "class-variance-authority": ">=0.6.0",
