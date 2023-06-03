@@ -1,11 +1,16 @@
 {
-  "name": "@rafty/source",
+  "name": "rafty",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
   "private": true,
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@jscutlery/semver": "^3.0.0",
     "@nx/cypress": "16.3.2",
     "@nx/eslint-plugin": "16.3.2",
     "@nx/js": "^16.3.2",
@@ -37,6 +42,8 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "husky": "^8.0.0",
+    "ngx-deploy-npm": "^6.0.0",
     "nx": "16.3.1",
     "postcss": "8.4.21",
     "prettier": "^2.6.2",

@@ -21,7 +21,7 @@
         "project": "libs/ui/package.json",
         "entryFile": "libs/ui/src/index.ts",
         "external": ["react", "react-dom", "react/jsx-runtime"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "rollupConfig": "libs/ui/rollup.config.js",
         "compiler": "babel",
         "assets": [
           {
@@ -30,6 +30,18 @@
             "output": "."
           }
         ]
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   }
