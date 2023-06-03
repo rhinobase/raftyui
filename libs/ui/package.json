@@ -1,7 +1,7 @@
 {
   "name": "@rafty/ui",
   "description": "React + A11y + Tailwind CSS Dynamic Component Library ",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "license": "MIT",
   "keywords": [
     "react",
@@ -22,16 +22,9 @@
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "sideEffects": false,
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.mjs"
-    }
-  },
-  "main": "./index.mjs",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "src/index.d.ts",
   "peerDependencies": {
     "react": ">=18",
     "@heroicons/react": ">=2",
