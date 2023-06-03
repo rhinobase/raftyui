@@ -1,6 +1,6 @@
-import { defineConfig } from "cypress";
-import { nxE2EStorybookPreset } from "@nx/storybook/presets/cypress";
+import { defineConfig } from 'cypress';
+import { nxE2EPreset } from '@nx/cypress/plugins/cypress-preset';
 
 export default defineConfig({
-  e2e: nxE2EStorybookPreset(__dirname),
+  e2e: nxE2EPreset(__dirname),
 });

@@ -1,7 +1,7 @@
 {
-  "name": "utils",
+  "name": "ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/utils/src",
+  "sourceRoot": "libs/ui/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,23 +9,23 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/utils/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/utils",
-        "tsConfig": "libs/utils/tsconfig.lib.json",
-        "project": "libs/utils/package.json",
-        "entryFile": "libs/utils/src/index.ts",
+        "outputPath": "dist/libs/ui",
+        "tsConfig": "libs/ui/tsconfig.lib.json",
+        "project": "libs/ui/package.json",
+        "entryFile": "libs/ui/src/index.ts",
         "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/utils/README.md",
+            "glob": "libs/ui/README.md",
             "input": ".",
             "output": "."
           }

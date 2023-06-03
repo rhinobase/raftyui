@@ -19,7 +19,7 @@
       "@rafty/date-picker": ["libs/components/date-picker/src/index.ts"],
       "@rafty/menubar": ["libs/components/menubar/src/index.ts"],
       "@rafty/plugin": ["libs/plugin/src/index.ts"],
-      "@rafty/ui": ["libs/core/src/index.ts"],
+      "@rafty/ui": ["libs/ui/src/index.ts"],
       "@rafty/utils": ["libs/utils/src/index.ts"]
     }
   },

@@ -3,43 +3,28 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/plugin/src",
   "projectType": "library",
-  "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/plugin",
+        "main": "libs/plugin/src/index.ts",
+        "tsConfig": "libs/plugin/tsconfig.lib.json",
+        "assets": ["libs/plugin/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs plugin {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/plugin/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/plugin/**/*.ts"]
       }
-    },
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/plugin",
-        "tsConfig": "libs/plugin/tsconfig.lib.json",
-        "project": "libs/plugin/package.json",
-        "entryFile": "libs/plugin/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "assets": [
-          {
-            "glob": "libs/plugin/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
-      }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "preset": "conventional"
-      }
-    },
-    "release": {
-      "executor": "ngx-deploy-npm:deploy"
     }
-  }
+  },
+  "tags": []
 }

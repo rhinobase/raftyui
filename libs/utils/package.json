@@ -1,38 +1,4 @@
 {
   "name": "@rafty/utils",
-  "description": "Utility functions for the @rafty/ui and component libs",
-  "version": "1.0.0-beta.2",
-  "license": "MIT",
-  "keywords": [
-    "react",
-    "rafty-ui",
-    "rafty",
-    "utility",
-    "component"
-  ],
-  "homepage": "https://github.com/rhinobase/raftyui#readme",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rhinobase/raftyui.git",
-    "directory": "libs/components/tooltip"
-  },
-  "bugs": {
-    "url": "https://github.com/rhinobase/raftyui/issues"
-  },
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.mjs"
-    }
-  },
-  "main": "./index.mjs",
-  "module": "./index.js",
-  "types": "./index.d.ts",
-  "peerDependencies": {
-    "react": "^18.2.0"
-  }
+  "version": "0.0.1"
 }
