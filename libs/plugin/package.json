@@ -1,5 +1,39 @@
 {
   "name": "@rafty/plugin",
-  "version": "0.0.1",
-  "type": "commonjs"
+  "description": "Tailwind plugin for @rafty/ui and components",
+  "version": "0.0.1-beta.0",
+  "license": "MIT",
+  "keywords": [
+    "plugin",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "tailwind",
+    "dynamic",
+    "component"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/tooltip"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.mjs"
+    }
+  },
+  "main": "./index.mjs",
+  "module": "./index.js",
+  "peerDependencies": {
+    "tailwindcss": ">=3"
+  }
 }

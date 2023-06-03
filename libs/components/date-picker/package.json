@@ -1,4 +1,46 @@
 {
   "name": "@rafty/date-picker",
-  "version": "0.0.1"
+  "description": "A React component that is a base button.",
+  "version": "1.0.0-beta.4",
+  "license": "MIT",
+  "keywords": [
+    "date",
+    "date-picker",
+    "range-picker",
+    "calendar",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/date-picker"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.mjs"
+    }
+  },
+  "main": "./index.mjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "peerDependencies": {
+    "class-variance-authority": ">=0.6.0",
+    "react-aria": ">=3.25.0",
+    "react-stately": ">=3.23.0",
+    "@internationalized/date": ">=3.2.0",
+    "@rafty/ui": "*",
+    "@rafty/utils": "*"
+  }
 }

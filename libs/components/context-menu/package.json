@@ -1,4 +1,44 @@
 {
   "name": "@rafty/context-menu",
-  "version": "0.0.1"
+  "description": "Supports submenus with configurable reading direction.",
+  "version": "1.0.0-beta.4",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "context-menu",
+    "react",
+    "rafty-ui",
+    "rafty",
+    "component",
+    "clickable",
+    "tabbable"
+  ],
+  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/components/context-menu"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.mjs"
+    }
+  },
+  "main": "./index.mjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "peerDependencies": {
+    "@radix-ui/react-context-menu": ">=2.1.4",
+    "@rafty/utils": "*"
+  }
 }
