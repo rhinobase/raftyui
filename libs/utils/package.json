@@ -23,15 +23,9 @@
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.mjs"
-    }
-  },
-  "main": "./index.mjs",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "main": "index.cjs",
+  "module": "index.js",
+  "types": "src/index.d.ts",
   "peerDependencies": {
     "react": ">=18"
   }

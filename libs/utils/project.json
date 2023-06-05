@@ -23,6 +23,7 @@
         "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
+        "format": ["cjs", "esm"],
         "assets": [
           {
             "glob": "libs/utils/README.md",

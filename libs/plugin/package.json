@@ -24,9 +24,8 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "type": "module",
+  "type": "commonjs",
   "main": "src/index.js",
-  "module": "src/index.js",
   "types": "src/index.d.ts",
   "peerDependencies": {
     "tailwindcss": ">=3"
