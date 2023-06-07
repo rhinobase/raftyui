@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "type": "module",
   "main": "index.cjs",
   "module": "index.js",
   "types": "src/index.d.ts",

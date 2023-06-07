@@ -29,9 +29,24 @@
         "external": [
           "react",
           "react-dom",
-          "react/jsx-runtime"
+          "react/jsx-runtime",
+          "@heroicons/react",
+          "react-aria",
+          "react-stately",
+          "class-variance-authority",
+          "@internationalized/date",
+          "@radix-ui/react-accordion",
+          "@radix-ui/react-alert-dialog",
+          "@radix-ui/react-dialog",
+          "@radix-ui/react-dropdown-menu",
+          "@radix-ui/react-navigation-menu",
+          "@radix-ui/react-tabs",
+          "@radix-ui/react-toggle-group",
+          "@radix-ui/react-tooltip",
+          "@rafty/utils"
         ],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "rollupConfig": "libs/ui/rollup.config.js",
+        "generateExportsField": true,
         "format": [
           "cjs",
           "esm"
