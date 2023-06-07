@@ -1,4 +1,4 @@
-export { InputField, NumberField, PasswordField, SearchField } from "./input";
+export { InputField } from "./input-field";
 export {
   InputGroup,
   LeftAddon,
@@ -6,3 +6,6 @@ export {
   RightAddon,
   Suffix,
 } from "./input-group";
+export { NumberField } from "./number-field";
+export { PasswordField } from "./password-field";
+export { SearchField } from "./search-field";
