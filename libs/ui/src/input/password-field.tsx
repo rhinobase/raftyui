@@ -1,30 +1,15 @@
-import { forwardRef, useMemo, useState } from "react";
+import { forwardRef, useState } from "react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/outline";
 import { Button } from "../button";
 import { InputGroup, Suffix } from "./input-group";
 import { InputField } from "./input-field";
-
-type InitialState = boolean | (() => boolean);
-
-function useBoolean(initialState: InitialState = false) {
-  const [value, setValue] = useState(initialState);
-  const callbacks = useMemo(
-    () => ({
-      on: () => setValue(true),
-      off: () => setValue(false),
-      toggle: () => setValue((prev) => !prev),
-    }),
-    []
-  );
-  return [value, callbacks] as const;
-}
 
 // Password Field
 export type PasswordField = InputField;
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
   ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
-    const [showPassword, { toggle }] = useBoolean();
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
       <InputGroup>
@@ -42,7 +27,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             size="icon"
             aria-label="show and hide password"
             variant="ghost"
-            onClick={toggle}
+            onClick={() => setShowPassword((prev) => !prev)}
             className="!z-[2]"
           >
             {showPassword ? (
