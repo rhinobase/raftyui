@@ -23,7 +23,6 @@ export const SearchField = ({
   const state = useSearchFieldState(props);
   const ref = useRef(null);
   const { inputProps, clearButtonProps } = useSearchField(props, state, ref);
-
   const { buttonProps } = useButton(clearButtonProps, ref);
 
   return (
@@ -35,11 +34,18 @@ export const SearchField = ({
         className={className}
         ref={ref}
       />
-      <Suffix>
-        <Button {...buttonProps} variant="ghost" size="icon" className="!z-[2]">
-          <XMarkIcon className="h-3 w-3 stroke-[3]" />
-        </Button>
-      </Suffix>
+      {state.value !== "" && (
+        <Suffix>
+          <Button
+            {...buttonProps}
+            variant="ghost"
+            size="icon"
+            className="!z-[2]"
+          >
+            <XMarkIcon className="h-3 w-3 stroke-[3]" />
+          </Button>
+        </Suffix>
+      )}
     </InputGroup>
   );
 };
