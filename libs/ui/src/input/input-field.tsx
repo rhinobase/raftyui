@@ -151,7 +151,8 @@ export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(
   ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
-    const controls = useFieldControlContext() ?? {};
+    const { name, isDisabled, isInvalid, isLoading, isReadOnly, isRequired } =
+      useFieldControlContext() ?? {};
     const inputGroupProps = useInputGroupContext() ?? {
       isLeftAddon: false,
       isRightAddon: false,
@@ -161,13 +162,16 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
 
     return (
       <input
-        {...controls}
         {...props}
+        name={name ?? props.name}
+        disabled={isDisabled ?? isLoading ?? props.disabled}
+        readOnly={isReadOnly ?? props.readOnly}
+        required={isRequired ?? props.required}
         className={classNames(
           inputFieldClasses({
             size: size,
             variant,
-            invalid: controls.isInvalid,
+            invalid: isInvalid,
             isLeftAddon: inputGroupProps.isLeftAddon,
             isRightAddon: inputGroupProps.isRightAddon,
             isPrefix: inputGroupProps.isPrefix,
