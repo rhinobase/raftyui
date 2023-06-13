@@ -147,10 +147,20 @@ const inputFieldClasses = cva(
 export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
+  isUnstyled?: boolean;
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(
-  ({ className, variant = "outline", size = "md", ...props }, forwardedRef) => {
+  (
+    {
+      className,
+      variant = "outline",
+      size = "md",
+      isUnstyled = false,
+      ...props
+    },
+    forwardedRef
+  ) => {
     const { name, isDisabled, isInvalid, isLoading, isReadOnly, isRequired } =
       useFieldControlContext() ?? {};
     const inputGroupProps = useInputGroupContext() ?? {
@@ -167,18 +177,22 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
         disabled={isDisabled ?? isLoading ?? props.disabled}
         readOnly={isReadOnly ?? props.readOnly}
         required={isRequired ?? props.required}
-        className={classNames(
-          inputFieldClasses({
-            size: size,
-            variant,
-            invalid: isInvalid,
-            isLeftAddon: inputGroupProps.isLeftAddon,
-            isRightAddon: inputGroupProps.isRightAddon,
-            isPrefix: inputGroupProps.isPrefix,
-            isSuffix: inputGroupProps.isSuffix,
-          }),
-          className
-        )}
+        className={
+          isUnstyled
+            ? className
+            : classNames(
+                inputFieldClasses({
+                  size: size,
+                  variant,
+                  invalid: isInvalid,
+                  isLeftAddon: inputGroupProps.isLeftAddon,
+                  isRightAddon: inputGroupProps.isRightAddon,
+                  isPrefix: inputGroupProps.isPrefix,
+                  isSuffix: inputGroupProps.isSuffix,
+                }),
+                className
+              )
+        }
         ref={forwardedRef}
       />
     );

@@ -53,11 +53,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
     },
     forwardedRef
   ) => {
-    const controls = useFieldControlContext() ?? {};
+    const { isDisabled, isInvalid, isLoading, isReadOnly, isRequired, name } =
+      useFieldControlContext() ?? {};
     return (
       <textarea
-        {...controls}
         {...props}
+        name={name ?? props.name}
+        disabled={isDisabled ?? isLoading ?? props.disabled}
+        readOnly={isReadOnly ?? props.readOnly}
+        required={isRequired ?? props.required}
         className={
           isUnStyled
             ? className
@@ -65,7 +69,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
                 textareaClasses({
                   size,
                   variant,
-                  invalid: controls.isInvalid,
+                  invalid: isInvalid,
                 }),
                 className
               )
