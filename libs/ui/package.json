@@ -1,7 +1,7 @@
 {
   "name": "@rafty/ui",
   "description": "React + A11y + Tailwind CSS Dynamic Component Library ",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.12",
   "license": "MIT",
   "keywords": [
     "react",
@@ -24,11 +24,8 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "default": "./index.js"
-    },
-    "./accordion": {
-      "types": "./accordion/index.d.ts",
-      "default": "./accordion/index.js"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   },
   "sideEffects": false,
