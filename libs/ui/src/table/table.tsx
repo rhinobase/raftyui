@@ -73,72 +73,6 @@ export const Table = forwardRef<HTMLTableElement, Table>(
 );
 Table.displayName = "Table";
 
-// TableBody Component
-export type TableBody = JSX.IntrinsicElements["tbody"] & {
-  isUnstyled?: boolean;
-};
-
-export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
-
-    return (
-      <tbody
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames("dark:bg-secondary-700/40 bg-white", className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </tbody>
-    );
-  }
-);
-TableBody.displayName = "TableBody";
-
-// TableFooter Component
-const tableFooterClasses = {
-  size: {
-    sm: "p-2",
-    md: "px-4 py-3",
-    lg: "px-6 py-5",
-  },
-};
-
-export type TableFooter = JSX.IntrinsicElements["tfoot"] & {
-  isUnstyled?: boolean;
-};
-
-export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
-
-    return (
-      <tfoot
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                tableFooterClasses.size[size],
-                "bg-secondary-100 text-secondary-500 dark:bg-secondary-700/80 dark:text-secondary-300 text-sm font-semibold",
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </tfoot>
-    );
-  }
-);
-TableFooter.displayName = "TableFooter";
-
 // TableHead Component
 const tableHeadClasses = {
   variant: {
@@ -172,6 +106,67 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
   }
 );
 TableHead.displayName = "TableHead";
+
+// TableBody Component
+export type TableBody = JSX.IntrinsicElements["tbody"] & {
+  isUnstyled?: boolean;
+};
+
+export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
+
+    return (
+      <tbody
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames("dark:bg-secondary-700/40 bg-white", className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </tbody>
+    );
+  }
+);
+TableBody.displayName = "TableBody";
+
+// TableFooter Component
+const tableFooterClasses = {
+  variant: {
+    simple: "bg-transparent",
+    striped: "bg-secondary-100 dark:bg-secondary-700/80",
+  },
+};
+
+export type TableFooter = JSX.IntrinsicElements["tfoot"] & {
+  isUnstyled?: boolean;
+};
+
+export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { variant, isBarebone } = useTableContext();
+    const unstyle = isBarebone || isUnstyled;
+
+    return (
+      <tfoot
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(tableFooterClasses.variant[variant], className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </tfoot>
+    );
+  }
+);
+TableFooter.displayName = "TableFooter";
 
 // Td Component
 const tdClasses = {
