@@ -6,7 +6,7 @@ description: Accordion
 
 # Import
 
-Chakra UI exports 5 accordion-related components.
+Rafty UI exports 5 accordion-related components.
 
 - Accordion: The wrapper that uses cloneElement to pass props to AccordionItem children.
 - AccordionItem: A single accordion item.
@@ -15,5 +15,5 @@ Chakra UI exports 5 accordion-related components.
 - AccordionIcon: A chevron-down icon that rotates based on the expanded/collapsed state
 
 ```jsx
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@chakra-ui/react";
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@rafty/ui";
 ```
