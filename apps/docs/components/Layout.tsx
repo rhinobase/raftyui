@@ -42,6 +42,7 @@ const navigation = [
       { title: "Popover", href: "/components/popover" },
       { title: "Progress", href: "/components/progress" },
       { title: "Radio", href: "/components/radio" },
+      { title: "Search Field", href: "/components/search-field" },
       { title: "Select", href: "/components/select" },
       { title: "Skeleton", href: "/components/skeleton" },
       { title: "Spinner", href: "/components/spinner" },
