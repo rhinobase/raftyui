@@ -4,7 +4,7 @@ pageTitle: Accordion - Rafty UI
 description: Accordion
 ---
 
-# Import
+## Import
 
 Rafty UI exports 5 accordion-related components.
 
@@ -17,3 +17,46 @@ Rafty UI exports 5 accordion-related components.
 ```jsx
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@rafty/ui";
 ```
+
+## Usage
+
+```jsx
+<Accordion>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+        <span className="flex-1 text-left">Section 1 title</span>
+    </AccordionTrigger>
+    <AccordionContent data-cy="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger
+        <span className="flex-1 text-left">Section 2 title</span>
+    </AccordionTrigger>
+    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Expand and Collapse
+
+To make each accordion toggle (expand/collapse) on click, pass the `collapse`
+prop.
+
+```jsx
+<Accordion collapse>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+        <span className="flex-1 text-left">Section 1 title</span>
+    </AccordionTrigger>
+    <AccordionContent data-cy="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger
+        <span className="flex-1 text-left">Section 2 title</span>
+    </AccordionTrigger>
+    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## 
