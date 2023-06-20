@@ -4,7 +4,7 @@ pageTitle: Spinner - Rafty UI
 description: Spinner
 ---
 
-# Import
+## Import
 
 Spinners provide a visual cue that an action is processing awaiting a course of change or a result.
 
@@ -12,4 +12,18 @@ Spinners provide a visual cue that an action is processing awaiting a course of 
 
 ```jsx
 import { Spinner } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<Spinner />
+```
+
+## Size
+
+Pass the `size` prop if you need to adjust the size of the spinner. Values can be `sm, md, lg`.
+
+```jsx
+<Spinner />
 ```
