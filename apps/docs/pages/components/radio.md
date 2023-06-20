@@ -4,7 +4,7 @@ pageTitle: Radio - Rafty UI
 description: Radio
 ---
 
-# Import
+## Import
 
 Radios are used when only one choice may be selected in a series of options.
 
@@ -15,3 +15,5 @@ Radios are used when only one choice may be selected in a series of options.
 ```jsx
 import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
 ```
+
+## Usage

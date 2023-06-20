@@ -43,6 +43,7 @@ const navigation = [
       { title: "Popover", href: "/components/popover" },
       { title: "Progress", href: "/components/progress" },
       { title: "Radio", href: "/components/radio" },
+      { title: "Range Picker", href: "/components/range-picker" },
       { title: "Search Field", href: "/components/search-field" },
       { title: "Select", href: "/components/select" },
       { title: "Skeleton", href: "/components/skeleton" },
