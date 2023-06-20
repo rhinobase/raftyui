@@ -4,7 +4,7 @@ pageTitle: Keyboard Key - Rafty UI
 description: Keyboard Key
 ---
 
-# Import
+## Import
 
 The keyboard key component exists to show which key or combination of keys performs a given action.
 
@@ -12,4 +12,10 @@ The keyboard key component exists to show which key or combination of keys perfo
 
 ```jsx
 import { Kbd } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<Kbd>shift + K</Kbd>
 ```

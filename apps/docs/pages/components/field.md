@@ -4,7 +4,7 @@ pageTitle: Field - Rafty UI
 description: Field
 ---
 
-# Import
+## Import
 
 Collect information from your users using validation rules.
 
@@ -14,4 +14,13 @@ Collect information from your users using validation rules.
 
 ```jsx
 import { FieldControl, FieldLabel, InputField } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<FieldControl name="email">
+  <FieldLabel>Email Address</FieldLabel>
+  <InputField />
+</FieldControl>
 ```
