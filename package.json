@@ -74,6 +74,7 @@
     "@storybook/addon-interactions": "^7.0.18",
     "@storybook/builder-vite": "^7.0.18",
     "@storybook/react-vite": "^7.0.18",
+    "@tanstack/react-query": "^4.29.14",
     "class-variance-authority": "^0.6.0",
     "next": "13.4.1",
     "prism-react-renderer": "^2.0.4",

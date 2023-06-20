@@ -46,6 +46,8 @@ export function Combobox<T extends object>(props: Combobox<T>) {
 
   const { buttonProps } = useButton(triggerProps, buttonRef);
 
+  const onCapture = () => state.open();
+
   return (
     <div className="relative" ref={popoverRef}>
       <InputGroup>
@@ -53,9 +55,10 @@ export function Combobox<T extends object>(props: Combobox<T>) {
           {...inputProps}
           size={size}
           variant={variant}
-          onClickCapture={() => state.open()}
-          onChangeCapture={() => state.open()}
-          onInputCapture={() => state.open()}
+          onClickCapture={onCapture}
+          onChangeCapture={onCapture}
+          onInputCapture={onCapture}
+          onFocusCapture={onCapture}
           ref={inputRef}
         />
         <Suffix>

@@ -1,8 +1,14 @@
 import "../styles/globals.css";
 import type { Preview } from "@storybook/react";
 import { useEffect } from "react";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const DEFAULT_THEME = "light";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { staleTime: Infinity },
+  },
+});
 
 export const globalTypes = {
   theme: {
@@ -33,11 +39,6 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <div className="mx-auto flex h-screen w-full max-w-3xl flex-col items-center justify-center gap-2">
-        <Story />
-      </div>
-    ),
     (Story, context) => {
       const { theme } = context.globals;
 
@@ -50,9 +51,13 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <div className="dark:bg-secondary-900">
-          <Story />
-        </div>
+        <QueryClientProvider client={queryClient}>
+          <div className="dark:bg-secondary-900">
+            <div className="mx-auto flex h-screen w-full max-w-3xl flex-col items-center justify-center gap-2">
+              <Story />
+            </div>
+          </div>
+        </QueryClientProvider>
       );
     },
   ],
