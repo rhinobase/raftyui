@@ -6,8 +6,14 @@ description: Tag Field
 
 # Import
 
-- TagField
+- TagField: TagField is used to create tag on the basis of inputs
 
 ```jsx
 import { TagField } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<TagField />
 ```

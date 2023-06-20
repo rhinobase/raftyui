@@ -8,8 +8,30 @@ description: Tag
 
 Tag component is used for items that need to be labeled, categorized, or organized using keywords that describe them.
 
-- Tag
+- Tag: The wrapper for all the tag elements.
 
 ```jsx
 import { Tag } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<Tag>Tag text</Tag>
+```
+
+## Sizes
+
+Pass the `size` prop if you need to adjust the size of the tag. Values can be `sm, md, lg`.
+
+```jsx
+<Tag size="sm">Tag text</Tag>
+```
+
+## ColorScheme
+
+Pass the `colorScheme` prop if you need to adjust the color of the tag. Values can be `primary,success,warning,error`.
+
+```jsx
+<Tag colorScheme="primary">Tag text</Tag>
 ```
