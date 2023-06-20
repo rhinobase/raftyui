@@ -25,5 +25,7 @@ import { Spinner } from "@rafty/ui";
 Pass the `size` prop if you need to adjust the size of the spinner. Values can be `sm, md, lg`.
 
 ```jsx
-<Spinner />
+<Spinner size="sm" />
+<Spinner size="md" />
+<Spinner size="lg" />
 ```

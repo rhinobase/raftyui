@@ -30,4 +30,11 @@ Pass the `type` prop if you need to increase and decrease the stat type. Values 
     <StatIcon /> 0.47%
   </StatHelpText>
 </Stat>
+<Stat type="increase">
+  <StatLabel>Daily Return</StatLabel>
+  <StatValue>17,770.90</StatValue>
+  <StatHelpText>
+    <StatIcon /> 0.47%
+  </StatHelpText>
+</Stat>
 ```
