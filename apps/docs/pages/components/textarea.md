@@ -4,7 +4,7 @@ pageTitle: Text Area - Rafty UI
 description: Text Area
 ---
 
-# Import
+## Import
 
 The Textarea component allows you to easily create multi-line text inputs.
 
@@ -12,4 +12,18 @@ The Textarea component allows you to easily create multi-line text inputs.
 
 ```jsx
 import { Textarea } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<Textarea placeholder="abc" />
+```
+
+## Variants
+
+Pass the `variant` prop if you need to adjust visual style of the textarea. Values can be `solid, outline, ghost`.
+
+```jsx
+<Textarea placeholder="abc" variant={variant} />
 ```
