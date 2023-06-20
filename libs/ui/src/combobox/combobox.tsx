@@ -53,7 +53,9 @@ export function Combobox<T extends object>(props: Combobox<T>) {
           {...inputProps}
           size={size}
           variant={variant}
-          onFocus={() => state.open()}
+          onClickCapture={() => state.open()}
+          onChangeCapture={() => state.open()}
+          onInputCapture={() => state.open()}
           ref={inputRef}
         />
         <Suffix>
