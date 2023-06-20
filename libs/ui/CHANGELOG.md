@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.13](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.12...ui-1.0.0-beta.13) (2023-06-20)
+
+
+### Bug Fixes
+
+* fixed combobox content box open states ([ed80738](https://github.com/rhinobase/design-system/commit/ed80738a503a81b52303d31a4196fec5184c235b))
+
 ## [1.0.0-beta.12](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.11...ui-1.0.0-beta.12) (2023-06-15)
 
 

@@ -161,8 +161,14 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
     },
     forwardedRef
   ) => {
-    const { name, isDisabled, isInvalid, isLoading, isReadOnly, isRequired } =
-      useFieldControlContext() ?? {};
+    const {
+      name = props.name,
+      isDisabled = props.disabled,
+      isInvalid,
+      isLoading,
+      isReadOnly = props.readOnly,
+      isRequired = props.required,
+    } = useFieldControlContext() ?? {};
     const inputGroupProps = useInputGroupContext() ?? {
       isLeftAddon: false,
       isRightAddon: false,
@@ -173,10 +179,10 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
     return (
       <input
         {...props}
-        name={name ?? props.name}
-        disabled={isDisabled ?? isLoading ?? props.disabled}
-        readOnly={isReadOnly ?? props.readOnly}
-        required={isRequired ?? props.required}
+        name={name}
+        disabled={isDisabled ?? isLoading}
+        readOnly={isReadOnly}
+        required={isRequired}
         className={
           isUnstyled
             ? className
