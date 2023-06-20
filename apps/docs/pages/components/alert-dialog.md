@@ -4,7 +4,7 @@ pageTitle: Alert Dialog - Rafty UI
 description: Alert Dialog
 ---
 
-# Import
+## Import
 
 Rafty UI exports 7 alert dialog related components.
 
@@ -18,4 +18,48 @@ Rafty UI exports 7 alert dialog related components.
 
 ```jsx
 import { AlertDialog, AlertDialogAction, AlertDialogBody, AlertDialogCancel, AlertDialogContent, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger } from "@rafty/ui";
+```
+
+## Usage
+
+```jsx
+<AlertDialog>
+  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogOverlay />
+  <AlertDialogContent data-cy="dialogcontent">
+    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+    <AlertDialogBody>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</AlertDialogBody>
+    <div className="mt-4 flex justify-end gap-6">
+      <AlertDialogCancel asChild>
+        <Button variant="outline">Cancel</Button>
+      </AlertDialogCancel>
+      <AlertDialogAction asChild>
+        <Button colorScheme="error">Yes, delete account</Button>
+      </AlertDialogAction>
+    </div>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Widths
+
+Pass the `size` prop if you need to adjust the size of the AlertDialog. Values can be `sm, md, lg`.
+
+```jsx
+<AlertDialog size="sm">
+  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogOverlay />
+  <AlertDialogContent data-cy="dialogcontent">
+    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+    <AlertDialogBody>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</AlertDialogBody>
+    <div className="mt-4 flex justify-end gap-6">
+      <AlertDialogCancel asChild>
+        <Button variant="outline">Cancel</Button>
+      </AlertDialogCancel>
+      <AlertDialogAction asChild>
+        <Button colorScheme="error">Yes, delete account</Button>
+      </AlertDialogAction>
+    </div>
+  </AlertDialogContent>
+</AlertDialog>
 ```
