@@ -37,13 +37,13 @@ import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIco
 </Accordion>
 ```
 
-## Expand Items
+## Collapsible
 
-To make each accordion toggle (expand/collapse) on click, pass the `collapse`
+To make each accordion toggle (expand/collapse) on click, pass the `collapsible`
 prop.
 
 ```jsx
-<Accordion collapse>
+<Accordion collapsible>
   <AccordionItem value="1">
     <AccordionTrigger>
         <span className="flex-1 text-left">Section 1 title</span>
@@ -141,3 +141,72 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   </AccordionItem>
 </Accordion>
 ```
+
+## API
+
+---
+
+### Root
+
+| Property      | Description                        | Type                 | Default          |
+| ------------- | ---------------------------------- | -------------------- | ---------------- |
+| collapsible   | To Cloase all the Accordion Items  | `boolean`            | false            |
+| type          | To Open Multiple Accordion Items   | `single`/ `multiple` | single           |
+| isBarebone    | Removes style from whole component | `boolean`            | true             |
+| UnStyled      | Removes Style from component       | `boolean`            | true             |
+| value         |                                    | `string`             | No default value |
+| defaultValue  |                                    | `string`             | No default value |
+| onValueChange |                                    | `function`           | No default value |
+| value         |                                    | `string[]`           | []               |
+| defaultValue  |                                    | `string[]`           | []               |
+| onValueChange |                                    | `function`           | No default value |
+| collapsible   |                                    | `boolean`            | false            |
+| disabled      |                                    | `boolean`            | false            |
+| dir           |                                    | `enum`               | "ltr"            |
+| orientation   |                                    | `enum`               | "vertical"       |
+
+### Item
+
+| Property           | Description | Type                      | Default |
+| ------------------ | ----------- | ------------------------- | ------- |
+| asChild            |             | `boolean`                 | false   |
+| disabled           |             | `boolean`                 | false   |
+| value              |             | `string`                  |         |
+| Data Attribute     |             | Values                    |         |
+| [data-state]       |             | `open` / `closed`         |         |
+| [data-disabled]    |             | Present when disabled     |         |
+| [data-orientation] |             | `vertical` / `horizontal` |         |
+
+### Header
+
+| Property           | Description | Type                      | Default |
+| ------------------ | ----------- | ------------------------- | ------- |
+| asChild            |             | boolean                   | false   |
+| Data               |             | Attribute                 | Values  |
+| [data-state]       |             | `open` / `closed`         |         |
+| [data-disabled]    |             | Present when disabled     |         |
+| [data-orientation] |             | `vertical` \ `horizontal` |         |
+
+### Trigger
+
+| Property           | Description | Type                      | Default |
+| ------------------ | ----------- | ------------------------- | ------- |
+| asChild            |             | boolean                   | false   |
+| Data Attribute     |             | Values                    |         |
+| [data-state]       |             | `open` / `closed`         |         |
+| [data-disabled]    |             | Present when disabled     |         |
+| [data-orientation] |             | `vertical` / `horizontal` |         |
+
+### Content
+
+| Property                         | Description | Type                                           | Default          |
+| -------------------------------- | ----------- | ---------------------------------------------- | ---------------- |
+| asChild                          |             | boolean                                        | false            |
+| forceMount                       |             | boolean                                        | No default value |
+| Data Attribute                   |             | Values                                         |                  |
+| [data-state]                     |             | `open` / `closed`                              |                  |
+| [data-disabled]                  |             | Present when disabled                          |                  |
+| [data-orientation]               |             | `vertical` / `horizontal`                      |                  |
+| CSS Variable                     |             | Description                                    |                  |
+| --radix-accordion-content-width  |             | The width of the content when it opens/closes  |                  |
+| --radix-accordion-content-height |             | The height of the content when it opens/closes |                  |

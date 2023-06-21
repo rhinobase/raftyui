@@ -112,7 +112,7 @@ Pass the `variant` prop if you need to adjust visual style of the alert. Values 
 ### stuble
 
 ```jsx
-<Alert status="success" variant="subtle">
+<Alert variant="subtle">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
@@ -122,7 +122,7 @@ Pass the `variant` prop if you need to adjust visual style of the alert. Values 
 ### solid
 
 ```jsx
-<Alert status="success" variant="solid">
+<Alert variant="solid">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
@@ -132,7 +132,7 @@ Pass the `variant` prop if you need to adjust visual style of the alert. Values 
 ### left-accent
 
 ```jsx
-<Alert status="success" variant="left-accent">
+<Alert variant="left-accent">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
@@ -142,7 +142,7 @@ Pass the `variant` prop if you need to adjust visual style of the alert. Values 
 ### top-accent
 
 ```jsx
-<Alert status="success" variant="top-accent">
+<Alert variant="top-accent">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
@@ -172,3 +172,15 @@ Pass `isUnstyled` prop to remove all style from a particalr sub component.
   <AlertDescription>Description</AlertDescription>
 </Alert>
 ```
+
+## API
+
+---
+
+| Property   | Description                         | Type                                       | Default |
+| ---------- | ----------------------------------- | ------------------------------------------ | ------- |
+| status     | Show color of alert based on status | `error, success, warning, info`            | info    |
+| variant    | change visual style of alert        | `subtle, solid, left-accent or top-accent` | solid   |
+| size       | Change size of alert                | `sm, md, lg`                               | md      |
+| isBarebone | Removes style from whole component  | `boolean`                                  | true    |
+| UnStyled   | Removes Style from component        | `boolean`                                  | true    |
