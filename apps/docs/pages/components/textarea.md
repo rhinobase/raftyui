@@ -29,3 +29,11 @@ Pass the `variant` prop if you need to adjust visual style of the textarea. Valu
 <Textarea placeholder="abc" variant="outline" />
 <Textarea placeholder="abc" variant="ghost" />
 ```
+
+## UnStyled
+
+Pass `isUnstyled` prop to remove style from textarea.
+
+```jsx
+<Textarea placeholder="abc" isUnstyled />
+```

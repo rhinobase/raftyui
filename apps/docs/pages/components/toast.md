@@ -40,3 +40,11 @@ Pass the `severity` prop if you need to adjust the color of the toast. Values ca
 <Toast title="Success Banner" severity="info" />
 <Toast title="Success Banner" severity="error" />
 ```
+
+## Visible
+
+Pass `visible` prop to set visibility of toast
+
+```jsx
+<Toast title="Success Banner" severity="success" visible />
+```
