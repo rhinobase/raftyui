@@ -106,6 +106,8 @@ export function RadioCard(props: RadioCard) {
 
   const disabled = isDisabled || isGroupDisabled;
 
+  console.log(isSelected);
+
   return (
     <label
       {...props}

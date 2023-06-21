@@ -27,22 +27,34 @@ import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 </Alert>
 ```
 
-## Sizes
+## Size
 
-Pass the `size` prop if you need to adjust the size of the dialog. Values can be `sm, md, lg`.
+Pass the `size` prop if you need to adjust the size of the Alert. Values can be `sm, md, lg`.
+
+### sm
 
 ```jsx
-<Alert size="sm" variant="left-accent" status="error">
+<Alert size="sm" status="error">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
-<Alert size="md" variant="left-accent" status="error">
+```
+
+### md
+
+```jsx
+<Alert size="md" status="error">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
-<Alert size="lg" variant="left-accent" status="error">
+```
+
+### lg
+
+```jsx
+<Alert size="lg" status="error">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
@@ -51,7 +63,9 @@ Pass the `size` prop if you need to adjust the size of the dialog. Values can be
 
 ## Status
 
-Change the status of the alerts by passing the `status` prop. This affects the color scheme and icon used. Alert supports `error, success, warning, and info` statuses.
+Change the status of the alerts by passing the `status` prop. This affects the color scheme and icon used. Alert supports `error, success, warning, info` statuses.
+
+### error
 
 ```jsx
 <Alert status="error">
@@ -59,16 +73,31 @@ Change the status of the alerts by passing the `status` prop. This affects the c
   <AlertTitle id="title">Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+```
+
+### success
+
+```jsx
 <Alert status="success">
   <AlertIcon />
   <AlertTitle id="title">Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+```
+
+### warning
+
+```jsx
 <Alert status="warning">
   <AlertIcon />
   <AlertTitle id="title">Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+```
+
+### info
+
+```jsx
 <Alert status="info">
   <AlertIcon />
   <AlertTitle id="title">Title</AlertTitle>
@@ -78,7 +107,9 @@ Change the status of the alerts by passing the `status` prop. This affects the c
 
 ## Variant
 
-Alert has 4 variant styles you can use. Pass the `variant` prop and use either `subtle, solid, left-accent or top-accent`.
+Pass the `variant` prop if you need to adjust visual style of the alert. Values can be `subtle, solid, left-accent or top-accent`.
+
+### stuble
 
 ```jsx
 <Alert status="success" variant="subtle">
@@ -86,17 +117,56 @@ Alert has 4 variant styles you can use. Pass the `variant` prop and use either `
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+```
+
+### solid
+
+```jsx
 <Alert status="success" variant="solid">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+```
+
+### left-accent
+
+```jsx
 <Alert status="success" variant="left-accent">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+```
+
+### top-accent
+
+```jsx
 <Alert status="success" variant="top-accent">
+  <AlertIcon />
+  <AlertTitle>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+## Barebone
+
+Pass `isBarebone` prop to remove all style in alert.
+
+```jsx
+<Alert isbarebone status="info">
+  <AlertIcon />
+  <AlertTitle>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+## UnStyled
+
+Pass `isUnstyled` prop to remove all style from a particalr sub component.
+
+```jsx
+<Alert isUnstyled status="info">
   <AlertIcon />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>

@@ -38,7 +38,7 @@ const navigation = [
       { title: "Keyboard Key", href: "/components/kbd" },
       { title: "List", href: "/components/list" },
       { title: "Menu", href: "/components/menu" },
-      { title: "Menu Bar", href: "/components/menu-bar" },
+      { title: "Menu Bar", href: "/components/menubar" },
       { title: "Navigation Menu", href: "/components/navigation-menu" },
       { title: "Popover", href: "/components/popover" },
       { title: "Progress", href: "/components/progress" },

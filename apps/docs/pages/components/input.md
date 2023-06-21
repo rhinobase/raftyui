@@ -26,6 +26,8 @@ Use the `size` prop to change the size of the `InputField`. You can set the valu
 
 ```jsx
 <InputField size="sm" />
+<InputField size="md" />
+<InputField size="lg" />
 ```
 
 ## Variants
@@ -34,6 +36,8 @@ Use the `variant` prop to change the visual style of the `InputField`. You can s
 
 ```jsx
 <InputField variant="solid" />
+<InputField variant="ghost" />
+<InputField variant="outline" />
 ```
 
 ## Left and Right Addons

@@ -34,6 +34,7 @@ type Story = StoryObj<typeof Menubar>;
 export const Default: Story = {
   render: function Render({ size }) {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
+    const [fullUrlChecked, setFullUrlChecked] = useState(true);
     const [person, setPerson] = useState("1");
     return (
       <div className="w-96">
@@ -65,8 +66,7 @@ export const Default: Story = {
               <MenubarSeparator />
               <MenubarSub>
                 <MenubarSubTrigger>Find</MenubarSubTrigger>
-
-                <MenubarSubContent alignOffset={-5}>
+                <MenubarSubContent>
                   <MenubarItem>Search the web…</MenubarItem>
                   <MenubarSeparator />
                   <MenubarItem>Find…</MenubarItem>
@@ -90,8 +90,8 @@ export const Default: Story = {
                 Always Show Bookmarks Bar
               </MenubarCheckboxItem>
               <MenubarCheckboxItem
-                checked={bookmarksChecked}
-                onCheckedChange={setBookmarksChecked}
+                checked={fullUrlChecked}
+                onCheckedChange={setFullUrlChecked}
               >
                 Always Show Full URLs
               </MenubarCheckboxItem>

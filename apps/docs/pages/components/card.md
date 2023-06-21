@@ -33,12 +33,14 @@ import { Card, CardBody, CardFooter, CardHeader } from "@rafty/ui";
 </Card>
 ```
 
-## Sizes
+## Size
 
 Use the `size` prop to change the size of the Card. You can set the value to `sm, md, or lg`.
 
+### sm
+
 ```jsx
-<Card variant="outline" size="sm">
+<Card size="sm">
   <CardHeader>Customer dashboard</CardHeader>
   <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
   <CardFooter className="flex">
@@ -51,12 +53,96 @@ Use the `size` prop to change the size of the Card. You can set the value to `sm
 </Card>
 ```
 
-## Variants
+### md
+
+```jsx
+<Card size="md">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
+  <CardFooter className="flex">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <div className="flex-1" />
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+### lg
+
+```jsx
+<Card size="lg">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
+  <CardFooter className="flex">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <div className="flex-1" />
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+## Variant
 
 Use the `variant` prop to change the style of your card. You can set the value to `elevated, outline, and solid` If the variant prop is not passed, the default variant, outline is used.
 
+### outline
+
 ```jsx
 <Card variant="outline">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
+  <CardFooter className="flex">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <div className="flex-1" />
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+### solid
+
+```jsx
+<Card variant="solid">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
+  <CardFooter className="flex">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <div className="flex-1" />
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+### elevated
+
+```jsx
+<Card variant="elevated">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
+  <CardFooter className="flex">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <div className="flex-1" />
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+## Barebone
+
+Pass `isBarebone` prop to remove all style in card
+
+```jsx
+<Card is>
   <CardHeader>Customer dashboard</CardHeader>
   <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
   <CardFooter className="flex">

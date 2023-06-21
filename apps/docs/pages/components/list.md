@@ -8,9 +8,6 @@ description: List
 
 List is used to display list items. It renders a <ul> element by default.
 
-- ListItem
-- OrderedList
-
 ```jsx
 import { ListItem, OrderedList, UnorderedList, List } from "@rafty/ui";
 ```
@@ -37,10 +34,12 @@ import { ListItem, OrderedList, UnorderedList, List } from "@rafty/ui";
 </OrderedList>
 ```
 
-## Unstyled List
+## Unstyled
+
+Pass `isUnstyled` to remove style in list.
 
 ```jsx
-<List>
+<List isUnstyled>
   <ListItem>Lorem ipsum dolor sit amet</ListItem>
   <ListItem>Consectetur adipiscing elit</ListItem>
   <ListItem>Integer molestie lorem at massa</ListItem>

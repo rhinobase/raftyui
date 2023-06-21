@@ -35,3 +35,16 @@ To Open Popover By Default pass `defaultOpen` prop.
   </PopoverContent>
 </Popover>
 ```
+
+## Barebone
+
+Pass `isBarebone` prop to remove all style in popover.
+
+```jsx
+<Popover isBarebone>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent>
+    <div>Popover Content</div>
+  </PopoverContent>
+</Popover>
+```

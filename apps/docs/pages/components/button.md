@@ -20,7 +20,7 @@ import { button } from "@rafty/ui";
 <Button>Button</Button>
 ```
 
-## Button Sizes
+## Size
 
 Use the `size` prop to change the size of the button. You can set the value to `sm, md, or lg`.
 
@@ -30,7 +30,7 @@ Use the `size` prop to change the size of the button. You can set the value to `
 <Button size="lg">Button</Button>
 ```
 
-## Button ColorScheme
+## ColorScheme
 
 Use the `colorScheme` prop to change the color of the button. You can set the value to `primary, secondary, error and success`.
 
@@ -41,23 +41,23 @@ Use the `colorScheme` prop to change the color of the button. You can set the va
 <Button colorScheme="success">Button text</Button>
 ```
 
-## Button variants
+## Variant
 
 Use the `variant` prop to change the visual style of the Button. You can set the value to `solid, ghost, outline`.
 
 ```jsx
-<Button colorScheme="primary" variant="solid">
+<Button variant="solid">
   Button text
 </Button>
-<Button colorScheme="primary" variant="outline">
+<Button variant="outline">
   Button text
 </Button>
-<Button colorScheme="primary" variant="ghost">
+<Button variant="ghost">
   Button text
 </Button>
 ```
 
-## Button With Icon
+## LeftIcon & RightIcon
 
 Use the `LeftIcon` and `rightIcon` prop to set Icon in Button.
 
@@ -69,4 +69,12 @@ Use the `LeftIcon` and `rightIcon` prop to set Icon in Button.
   Button text
 </Button>
 
+```
+
+## UnStyled
+
+Pass ` isUnstyled` prop to remove style component.
+
+```jsx
+<Button isUnstyled>Button text</Button>
 ```

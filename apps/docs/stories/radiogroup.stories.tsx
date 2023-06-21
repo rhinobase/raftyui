@@ -52,21 +52,27 @@ export const Card: Story = {
             value="BCD"
             className="data-[selected=true]:ring-2 data-[selected=true]:ring-orange-500 data-[selected=true]:ring-offset-1"
           >
-            <div className="flex h-10 w-10 items-center justify-center bg-orange-500 text-white" />
+            <div className="flex h-10 w-10 items-center justify-center bg-orange-500 text-white">
+              BCD
+            </div>
           </RadioCard>
           <RadioCard
             aria-label="orange"
             value="CDE"
             className="data-[selected=true]:ring-2 data-[selected=true]:ring-yellow-500 data-[selected=true]:ring-offset-1"
           >
-            <div className="flex h-10 w-10 items-center justify-center bg-yellow-500 text-white" />
+            <div className="flex h-10 w-10 items-center justify-center bg-yellow-500 text-white">
+              CDE
+            </div>
           </RadioCard>
           <RadioCard
             aria-label="red"
             value="DEF"
             className="data-[selected=true]:ring-2 data-[selected=true]:ring-green-500 data-[selected=true]:ring-offset-1"
           >
-            <div className="flex h-10 w-10 items-center justify-center bg-green-500" />
+            <div className="flex h-10 w-10 items-center justify-center bg-green-500">
+              DEF
+            </div>
           </RadioCard>
         </div>
       </RadioGroup>

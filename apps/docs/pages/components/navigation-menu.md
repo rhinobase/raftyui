@@ -31,9 +31,11 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 </NavigationMenu>
 ```
 
-## Size
+## Content Size
 
 Pass the `size` prop if you need to adjust the size of the navigation-menu content. Values can be `sm, md, lg`.
+
+### sm
 
 ```jsx
 <NavigationMenu>
@@ -52,6 +54,8 @@ Pass the `size` prop if you need to adjust the size of the navigation-menu conte
 </NavigationMenu>
 ```
 
+### md
+
 ```jsx
 <NavigationMenu>
   <NavigationMenuList>
@@ -69,12 +73,54 @@ Pass the `size` prop if you need to adjust the size of the navigation-menu conte
 </NavigationMenu>
 ```
 
+### lg
+
 ```jsx
 <NavigationMenu>
   <NavigationMenuList>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
       <NavigationMenuContent size="lg">
+        <NavigationMenuLink href="/">Link</NavigationMenuLink>
+        <NavigationMenuListItem href="#" title="Stitches">
+          CSS-in-JS with best-in-class developer experience.
+        </NavigationMenuListItem>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuIndicator />
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+## Barebone
+
+Pass `isBarebone` prop to remove all style in Navigation Menu.
+
+```jsx
+<NavigationMenu isBarebone>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+      <NavigationMenuContent size="lg">
+        <NavigationMenuLink href="/">Link</NavigationMenuLink>
+        <NavigationMenuListItem href="#" title="Stitches">
+          CSS-in-JS with best-in-class developer experience.
+        </NavigationMenuListItem>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuIndicator />
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+## UnStlyed
+
+```jsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+      <NavigationMenuContent isUnstyled>
         <NavigationMenuLink href="/">Link</NavigationMenuLink>
         <NavigationMenuListItem href="#" title="Stitches">
           CSS-in-JS with best-in-class developer experience.
