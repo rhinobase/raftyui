@@ -10,7 +10,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Accordion Component
 type Accordion = ComponentProps<(typeof DisclosurePrimitive)["Root"]> &
-  Partial<AccordionContext> & { isUnstyled?: boolean };
+  Partial<AccordionContext>;
 
 const Accordion = forwardRef<HTMLDivElement, Accordion>(
   (
@@ -20,12 +20,11 @@ const Accordion = forwardRef<HTMLDivElement, Accordion>(
       size = "md",
       variant = "solid",
       isBarebone = false,
-      isUnstyled = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isBarebone;
 
     return (
       <AccordionProvider value={{ size, variant, isBarebone }}>
@@ -43,14 +42,12 @@ const Accordion = forwardRef<HTMLDivElement, Accordion>(
 Accordion.displayName = "Accordian";
 
 // Accordion Item Component
-type AccordionItem = ComponentProps<(typeof DisclosurePrimitive)["Item"]> & {
-  isUnstyled?: boolean;
-};
+type AccordionItem = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
 
 const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
-  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
+  ({ className, children, ...props }, forwardedRef) => {
     const { isBarebone } = useAccordionContext();
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isBarebone;
 
     return (
       <DisclosurePrimitive.Item
