@@ -8,15 +8,6 @@ description: Table
 
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default
 
-- Table
-- TableBody
-- TableContainer
-- TableFooter
-- TableHead
-- Td
-- Th
-- Tr
-
 ```jsx
 import { Table, TableBody, TableContainer, TableFooter, TableHead, Td, Th, Tr } from "@rafty/ui";
 ```
@@ -51,6 +42,8 @@ import { Table, TableBody, TableContainer, TableFooter, TableHead, Td, Th, Tr } 
 
 Pass the `size` prop if you need to adjust the size of the table. Values can be `sm, md, lg`.
 
+### sm
+
 ```jsx
 <TableContainer>
   <Table size="sm">
@@ -74,6 +67,11 @@ Pass the `size` prop if you need to adjust the size of the table. Values can be 
   </Table>
 </TableContainer>
 <TableContainer>
+```
+
+### md
+
+```jsx
   <Table size="md">
     <TableHead>
       <Tr>
@@ -94,6 +92,11 @@ Pass the `size` prop if you need to adjust the size of the table. Values can be 
     <TableFooter></TableFooter>
   </Table>
 </TableContainer>
+```
+
+### lg
+
+```jsx
 <TableContainer>
   <Table size="lg">
     <TableHead>
@@ -121,6 +124,8 @@ Pass the `size` prop if you need to adjust the size of the table. Values can be 
 
 Pass the `variant` prop if you need to adjust the visual style of the table. Values can be `simple,striped`.
 
+### simple
+
 ```jsx
 <TableContainer>
   <Table variant="simple">
@@ -143,9 +148,70 @@ Pass the `variant` prop if you need to adjust the visual style of the table. Val
     <TableFooter></TableFooter>
   </Table>
 </TableContainer>
+```
+
+### striped
+
+```jsx
 <TableContainer>
   <Table variant="striped">
     <TableHead>
+      <Tr>
+        <Th>Name</Th>
+        <Th>Title</Th>
+        <Th>Email</Th>
+        <Th>Role</Th>
+      </Tr>
+    </TableHead>
+    <TableBody>
+      <Tr>
+        <Td>name</Td>
+        <Td>title</Td>
+        <Td>email</Td>
+        <Td>role</Td>
+      </Tr>
+    </TableBody>
+    <TableFooter></TableFooter>
+  </Table>
+</TableContainer>
+```
+
+## Barebone
+
+Pass `isBarebone` prop to remove all style in table.
+
+```jsx
+<TableContainer>
+  <Table isBarebone>
+    <TableHead>
+      <Tr>
+        <Th>Name</Th>
+        <Th>Title</Th>
+        <Th>Email</Th>
+        <Th>Role</Th>
+      </Tr>
+    </TableHead>
+    <TableBody>
+      <Tr>
+        <Td>name</Td>
+        <Td>title</Td>
+        <Td>email</Td>
+        <Td>role</Td>
+      </Tr>
+    </TableBody>
+    <TableFooter></TableFooter>
+  </Table>
+</TableContainer>
+```
+
+## UnStyled
+
+Pass ` isUnstyled` prop to remove style from a particulart sub component.
+
+```jsx
+<TableContainer>
+  <Table>
+    <TableHead isUnstyled>
       <Tr>
         <Th>Name</Th>
         <Th>Title</Th>

@@ -30,12 +30,12 @@ Pass the `size` prop if you need to adjust the size of the switch. Values can be
 <Switch size="lg" />
 ```
 
-## Disabled Switch
+## Disabled
 
 Pass the `isDisabled` prop if you need to disable the switch.
 
 ```jsx
-<Switch size="lg" isDisabled={true} />
+<Switch isDisabled />
 ```
 
 ## Default Selected
@@ -43,5 +43,23 @@ Pass the `isDisabled` prop if you need to disable the switch.
 Pass the `defaultSelected` prop if you need to set default selected the switch.
 
 ```jsx
-<Switch size="lg" defaultSelected={true} />
+<Switch defaultSelected />
+```
+
+## Read Only
+
+```jsx
+<Switch isReadOnly />
+```
+
+## Required
+
+```jsx
+<Switch size="lg" isRequired />
+```
+
+## Indeterminate
+
+```jsx
+<Switch size="lg" isIndeterminate />
 ```

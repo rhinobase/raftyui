@@ -17,5 +17,5 @@ import { Skeleton } from "@rafty/ui";
 You can set height and width of a skeleton by passing values in calssName
 
 ```jsx
-<Skeleton className="h-24 w-full" />
+<Skeleton className="h-8 w-full" />
 ```

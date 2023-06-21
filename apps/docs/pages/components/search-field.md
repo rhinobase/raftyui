@@ -42,7 +42,7 @@ Pass the `variant` prop if you need to adjust the visual style of the searxh-fie
 
 ## Read Only
 
-Pass the `isReadOnly` prop to make search-field Read Only
+Pass the `isReadOnly` prop to make search-field Read Only.
 
 ```jsx
 <SearchField isReadOnly />
@@ -50,8 +50,16 @@ Pass the `isReadOnly` prop to make search-field Read Only
 
 ## Required
 
-Pass the `isRequired` prop to make search-field Read Only
+Pass the `isRequired` prop to make search-field Required.
 
 ```jsx
 <SearchField isRequired />
+```
+
+## Disabled
+
+Pass the `isDisabled` prop to make search-field Disabled.
+
+```jsx
+<SearchField isDisabled />
 ```
