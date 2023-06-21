@@ -7,6 +7,8 @@ import { InputField, InputGroup, Suffix } from "../input";
 import { Button } from "../button";
 import { PopoverContent } from "../popover";
 import { ListBox } from "../select";
+import { Spinner } from "../spinner";
+
 export {
   Item as ComboboxItem,
   Section as ComboboxSection,
@@ -15,13 +17,19 @@ export {
 export type Combobox<T> = ComboBoxProps<T> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
+  isLoading?: boolean;
 };
 
-export function Combobox<T extends object>(props: Combobox<T>) {
-  const { size = "md", variant = "outline" } = props;
-
-  const { contains } = useFilter({ sensitivity: "base" });
-  const state = useComboBoxState({ ...props, defaultFilter: contains });
+export function Combobox<T extends object>({
+  size = "md",
+  variant = "outline",
+  isLoading = false,
+  ...props
+}: Combobox<T>) {
+  const state = useComboBoxState({
+    ...props,
+    allowsEmptyCollection: true,
+  });
 
   // Used by combobox
   const buttonRef = useRef(null);
@@ -38,15 +46,14 @@ export function Combobox<T extends object>(props: Combobox<T>) {
       ...props,
       inputRef,
       buttonRef,
-      listBoxRef,
       popoverRef,
+      listBoxRef,
+      menuTrigger: "focus",
     },
     state
   );
 
   const { buttonProps } = useButton(triggerProps, buttonRef);
-
-  const onCapture = () => state.open();
 
   return (
     <div className="relative" ref={popoverRef}>
@@ -55,13 +62,13 @@ export function Combobox<T extends object>(props: Combobox<T>) {
           {...inputProps}
           size={size}
           variant={variant}
-          onClickCapture={onCapture}
-          onChangeCapture={onCapture}
-          onInputCapture={onCapture}
-          onFocusCapture={onCapture}
           ref={inputRef}
+          onClickCapture={() => state.open()}
         />
         <Suffix>
+          {isLoading && (
+            <Spinner size="sm" className="absolute right-10 top-2.5" />
+          )}
           <Button
             {...buttonProps}
             ref={buttonRef}
@@ -74,21 +81,24 @@ export function Combobox<T extends object>(props: Combobox<T>) {
           </Button>
         </Suffix>
       </InputGroup>
-      {state.isOpen && (
-        <PopoverContent
-          triggerState={state}
-          triggerRef={popoverRef}
-          placement="bottom start"
-          className="-ml-3 w-full"
-        >
-          <ListBox
-            {...listBoxProps}
-            listBoxRef={listBoxRef}
-            state={state}
-            size={size}
-          />
-        </PopoverContent>
-      )}
+      <PopoverContent
+        triggerState={state}
+        triggerRef={popoverRef}
+        scrollRef={listBoxRef}
+        isNonModal
+        placement="bottom start"
+        className="-ml-3 w-full"
+      >
+        <ListBox
+          {...listBoxProps}
+          listBoxRef={listBoxRef}
+          autoFocus={state.focusStrategy}
+          shouldSelectOnPressUp
+          state={state}
+          shouldUseVirtualFocus
+          size={size}
+        />
+      </PopoverContent>
     </div>
   );
 }
