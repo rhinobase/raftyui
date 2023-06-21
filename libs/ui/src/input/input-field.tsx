@@ -148,6 +148,11 @@ export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  isLoading?: boolean;
+  isReadOnly?: boolean;
+  isRequired?: boolean;
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(
@@ -157,18 +162,28 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       variant = "outline",
       size = "md",
       isUnstyled = false,
+      isDisabled = false,
+      isInvalid = false,
+      isLoading = false,
+      isReadOnly = false,
+      isRequired = false,
       ...props
     },
     forwardedRef
   ) => {
-    const {
-      name = props.name,
-      isDisabled = props.disabled,
-      isInvalid,
-      isLoading,
-      isReadOnly = props.readOnly,
-      isRequired = props.required,
-    } = useFieldControlContext() ?? {};
+    const context = useFieldControlContext() ?? {};
+
+    const name = props.name || context.name,
+      disabled =
+        isDisabled ||
+        props.disabled ||
+        context.isDisabled ||
+        isLoading ||
+        context.isLoading,
+      invalid = isInvalid || context.isInvalid,
+      readonly = isReadOnly || props.readOnly || context.isReadOnly,
+      required = isRequired || props.required || context.isRequired;
+
     const inputGroupProps = useInputGroupContext() ?? {
       isLeftAddon: false,
       isRightAddon: false,
@@ -180,17 +195,17 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       <input
         {...props}
         name={name}
-        disabled={isDisabled ?? isLoading}
-        readOnly={isReadOnly}
-        required={isRequired}
+        disabled={disabled}
+        readOnly={readonly}
+        required={required}
         className={
           isUnstyled
             ? className
             : classNames(
                 inputFieldClasses({
-                  size: size,
+                  size,
                   variant,
-                  invalid: isInvalid,
+                  invalid,
                   isLeftAddon: inputGroupProps.isLeftAddon,
                   isRightAddon: inputGroupProps.isRightAddon,
                   isPrefix: inputGroupProps.isPrefix,

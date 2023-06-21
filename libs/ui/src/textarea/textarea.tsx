@@ -37,31 +37,52 @@ const textareaClasses = cva(
 );
 
 // InputField Component (With ErrorMessage)
-export type Textarea = JSX.IntrinsicElements["textarea"] & {
+export type Textarea = Omit<JSX.IntrinsicElements["textarea"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnStyled?: boolean;
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  isLoading?: boolean;
+  isReadOnly?: boolean;
+  isRequired?: boolean;
 };
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   (
     {
       className,
       variant = "outline",
-      isUnStyled = false,
       size = "md",
+      isUnStyled = false,
+      isDisabled = false,
+      isInvalid = false,
+      isLoading = false,
+      isReadOnly = false,
+      isRequired = false,
       ...props
     },
     forwardedRef
   ) => {
-    const { isDisabled, isInvalid, isLoading, isReadOnly, isRequired, name } =
-      useFieldControlContext() ?? {};
+    const context = useFieldControlContext() ?? {};
+
+    const name = props.name || context.name,
+      disabled =
+        isDisabled ||
+        props.disabled ||
+        context.isDisabled ||
+        isLoading ||
+        context.isLoading,
+      invalid = isInvalid || context.isInvalid,
+      readonly = isReadOnly || props.readOnly || context.isReadOnly,
+      required = isRequired || props.required || context.isRequired;
+
     return (
       <textarea
         {...props}
-        name={name ?? props.name}
-        disabled={isDisabled ?? isLoading ?? props.disabled}
-        readOnly={isReadOnly ?? props.readOnly}
-        required={isRequired ?? props.required}
+        name={name}
+        disabled={disabled}
+        readOnly={readonly}
+        required={required}
         className={
           isUnStyled
             ? className
@@ -69,7 +90,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
                 textareaClasses({
                   size,
                   variant,
-                  invalid: isInvalid,
+                  invalid,
                 }),
                 className
               )
