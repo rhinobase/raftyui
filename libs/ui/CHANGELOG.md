@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.14](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.13...ui-1.0.0-beta.14) (2023-06-22)
+
+
+### Bug Fixes
+
+* improved combobox functionality and API fetching in story of combobox ([a6aca12](https://github.com/rhinobase/design-system/commit/a6aca1292ee4e4f296184fa7e7530c16707a4860))
+* improved props usage in input and textarea to remove any kind of error or warning ([32a1c6a](https://github.com/rhinobase/design-system/commit/32a1c6a944219047c4ce233622c3edb176a70d56))
+* minor improvement in the input field ([d11eee7](https://github.com/rhinobase/design-system/commit/d11eee708a65adf6cf4fff7e3c5ada78397349f0))
+* removed isUnstyled prop from subcomponents of accordion where it was not required ([1e85dad](https://github.com/rhinobase/design-system/commit/1e85dad03bf6cc20f55196bd539ed0aa7820142d))
+
 ## [1.0.0-beta.13](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.12...ui-1.0.0-beta.13) (2023-06-20)
 
 
