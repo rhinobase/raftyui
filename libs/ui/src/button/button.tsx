@@ -461,6 +461,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     children,
     leftIcon: LeftIcon,
     rightIcon: RightIcon,
+    type = "button",
     ...props
   }: Button,
   forwardedRef
@@ -471,6 +472,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   return (
     <button
       {...props}
+      type={type}
       disabled={disabled}
       className={
         isUnstyled
