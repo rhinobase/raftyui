@@ -85,7 +85,6 @@ export function PopoverContent({
   children,
   triggerState,
   className,
-  isNonModal,
   offset = 8,
   isUnstyled = false,
   ...props
@@ -110,7 +109,9 @@ export function PopoverContent({
 
   return (
     <PopoverContentProvider value={values}>
-      {!isNonModal && <div {...underlayProps} className="fixed left-0 top-0" />}
+      {!props.isNonModal && (
+        <div {...underlayProps} className="fixed left-0 top-0" />
+      )}
       <div
         {...popoverProps}
         className={

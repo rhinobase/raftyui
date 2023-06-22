@@ -2,7 +2,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Combobox, ComboboxItem, Spinner } from "@rafty/ui";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const meta: Meta<typeof Combobox> = {
   title: "Form / Combobox",
@@ -32,12 +32,7 @@ export const Default: Story = {
   render: function Render({ size, variant }) {
     return (
       <div className="w-[500px]">
-        <Combobox
-          size={size}
-          variant={variant}
-          label="Favorite Animal"
-          onInputChange={(value) => console.log(value)}
-        >
+        <Combobox size={size} variant={variant} label="Favorite Animal">
           <ComboboxItem textValue="red panda">
             <div className="flex items-center gap-2">
               <div className="h-5 w-5 rounded-full bg-red-200">RP</div>Red Panda
@@ -56,14 +51,16 @@ export const Default: Story = {
 
 export const InfiniteScroll: Story = {
   render: function Render() {
-    const [search, setSearch] = useState<string | undefined>();
+    const isFocused = useRef(false);
+    const [search, setSearch] = useState<string>();
+    const [selected, setSelected] = useState<string>();
 
     const { data, isFetching, hasNextPage, fetchNextPage, isLoading } =
       useInfiniteQuery({
-        queryKey: ["photos", search],
+        queryKey: ["photos", search && !selected ? search : undefined],
         queryFn: async ({ pageParam = 0 }) => {
           const res = await fetch(
-            search
+            search && !selected
               ? `https://api.unsplash.com/search/photos?client_id=${CLIENT_ID}&query=${search}&page=${
                   pageParam + 1
                 }`
@@ -77,11 +74,11 @@ export const InfiniteScroll: Story = {
           return jsonData;
         },
         getNextPageParam: (lastPage, pages) => {
-          console.log(lastPage.length == 0);
           if (lastPage.length == 0) return undefined;
           return pages.length;
         },
       });
+
     const observer = useRef<IntersectionObserver>();
     const lastElement = useCallback(
       (node: HTMLDivElement) => {
@@ -98,7 +95,20 @@ export const InfiniteScroll: Story = {
     const pages = data?.pages.flat() ?? [];
     const page_length = pages.length;
 
+    useEffect(() => {
+      // If selected exists and combobox is not focused, update the input value with the selected key text
+      // This allows the input value to be up to date when items load for the first time or the selected key text is updated server side.
+      if (!isFocused.current && selected) {
+        const element = pages.find((item) => item.id === selected);
+        if (element && element !== search) {
+          setSearch(element.alt_description);
+        }
+      }
+    }, [isFocused, selected]);
+
     const options = [];
+
+    console.log(search, selected, page_length);
 
     if (page_length != 0)
       options.push(
@@ -146,11 +156,31 @@ export const InfiniteScroll: Story = {
         </ComboboxItem>
       );
 
+    function onInputChange(value: string) {
+      if (value == "" || selected != search) setSelected(undefined);
+      setSearch(value);
+    }
+
+    function onSelectionChange(key: React.Key) {
+      const element = pages.find((item) => item.id == key);
+      if (element) {
+        setSelected(element.id);
+        setSearch(element.alt_description);
+      } else {
+        setSelected(undefined);
+        setSearch(undefined);
+      }
+    }
+
     return (
       <div className="w-[500px]">
         <Combobox
-          label="Favorite Animal"
-          onInputChange={setSearch}
+          label="Select Image"
+          onFocusChange={(focus) => (isFocused.current = focus)}
+          inputValue={search}
+          onInputChange={onInputChange}
+          selectedKey={selected}
+          onSelectionChange={onSelectionChange}
           isLoading={isLoading || isFetching}
         >
           {options}

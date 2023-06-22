@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
-import { useComboBox, useFilter, useButton } from "react-aria";
+import { useComboBox, useButton } from "react-aria";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { InputField, InputGroup, Suffix } from "../input";
 import { Button } from "../button";
