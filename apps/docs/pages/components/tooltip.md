@@ -26,7 +26,7 @@ import { Tooltip } from "@rafty/ui";
 
 ## Side
 
-Using the `side` prop you can adjust where your tooltip will be displayed.Vales can be `top, right, bottom, left`.
+Using the `side` prop you can adjust where your tooltip will be displayed. Values can be `top, right, bottom, left`.
 
 ### top
 
@@ -35,12 +35,12 @@ Using the `side` prop you can adjust where your tooltip will be displayed.Vales 
   <Button size="fab">
     <PlusIcon className="h-6 w-6" />
   </Button>
+</Tooltip>
 ```
 
 ### right
 
 ```jsx
-</Tooltip>
 <Tooltip side="right" content="Hover me">
   <Button size="fab">
     <PlusIcon className="h-6 w-6" />
@@ -70,7 +70,7 @@ Using the `side` prop you can adjust where your tooltip will be displayed.Vales 
 
 ## Align
 
-Using the `align` prop you can adjust the alignment of tooltip. Vales can be `center, start, end`.
+Using the `align` prop you can adjust the alignment of tooltip. Values can be `center, start, end`.
 
 ### center
 
