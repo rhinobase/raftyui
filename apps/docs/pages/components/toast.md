@@ -49,6 +49,10 @@ Pass `visible` prop to set visibility of toast
 <Toast title="Success Banner" severity="success" visible />
 ```
 
+### API
+
+---
+
 ### Root
 
 | Property | Description | Type                                     | Default |

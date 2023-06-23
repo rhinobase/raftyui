@@ -87,6 +87,10 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 </ToggleGroup>
 ```
 
+### API
+
+---
+
 ### Root
 
 | Property           | Description | Type                      | Default   |

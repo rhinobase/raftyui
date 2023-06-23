@@ -165,3 +165,53 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   </TabContent>
 </Tab>
 ```
+
+### API
+
+---
+
+### Root
+
+| Properties         | Description | Type                      | Default            |
+| ------------------ | ----------- | ------------------------- | ------------------ |
+| className          |             | `string`                  |                    |
+| asChild            |             | `boolean`                 | `false`            |
+| defaultValue       |             | `string`                  |                    |
+| value              |             | `string`                  | `No default value` |
+| onValueChange      |             | `function`                | `No default value` |
+| orientation        |             | `enum`                    | `horizontal`       |
+| dir                |             | `enum`                    |                    |
+| activationMode     |             | `enum`                    | `automatic`        |
+| [data-orientation] |             | `vertical` \ `horizontal` |                    |
+
+### List
+
+| Properties         | Description | Type                      | Default |
+| ------------------ | ----------- | ------------------------- | ------- |
+| className          |             | `string`                  |         |
+| asChild            |             | `boolean`                 | `false` |
+| loop               |             | `boolean`                 | `true`  |
+| [data-orientation] |             | `vertical` \ `horizontal` |         |
+
+### Trigger
+
+| Properties         | Description | Type                       | Default |
+| ------------------ | ----------- | -------------------------- | ------- |
+| className          |             | `string`                   |         |
+| asChild            |             | `boolean`                  | `false` |
+| value\*            |             | `string`                   |         |
+| disabled           |             | `boolean`                  | `false` |
+| [data-state]       |             | `active` \ `inactive`      |         |
+| [data-disabled]    |             | `Present when disabled   ` |         |
+| [data-orientation] |             | `vertical` \ `horizontal`  |         |
+
+### Content
+
+| Properties         | Description | Type                      | Default |
+| ------------------ | ----------- | ------------------------- | ------- |
+| className          |             | `string`                  |         |
+| asChild            |             | `boolean`                 | `false` |
+| value\*            |             | `string `                 |         |
+| forceMount         |             | `boolean`                 |         |
+| [data-state]       |             | `active` \ `inactive`     |         |
+| [data-orientation] |             | `vertical` \ `horizontal` |         |

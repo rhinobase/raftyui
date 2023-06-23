@@ -51,3 +51,14 @@ Pass the `type` prop if you need to increase and decrease the stat type. Values 
   </StatHelpText>
 </Stat>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property  | Description | Type                               | Default  |
+| --------- | ----------- | ---------------------------------- | -------- |
+| className |             | `string`                           |          |
+| type      |             | `increase` \ `decrease` \ `normal` | `normal` |

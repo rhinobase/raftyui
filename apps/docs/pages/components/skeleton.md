@@ -19,3 +19,13 @@ You can set height and width of a skeleton by passing values in calssName
 ```jsx
 <Skeleton className="h-8 w-full" />
 ```
+
+### API
+
+---
+
+### Root
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |

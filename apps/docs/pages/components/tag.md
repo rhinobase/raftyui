@@ -40,3 +40,16 @@ Pass the `colorScheme` prop if you need to adjust the color of the tag. Values c
 <Tag colorScheme="warning">Tag text</Tag>
 <Tag colorScheme="error">Tag text</Tag>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property    | Description | Type                                                      | Default     |
+| ----------- | ----------- | --------------------------------------------------------- | ----------- |
+| className   |             | string                                                    |             |
+| children    |             | ReactNode                                                 |             |
+| size        |             | `sm` \ `md` \ `lg`                                        | "md"        |
+| colorScheme |             | `primary` \ `secondary` \ `error` \ `success` \ `warning` | `secondary` |

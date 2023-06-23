@@ -231,3 +231,40 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   </Table>
 </TableContainer>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property   | Description | Type                    | Default  |
+| ---------- | ----------- | ----------------------- | -------- |
+| className  |             | `string`                |          |
+| size:      |             | `sm` \ `md` \ \ `lg` \  | `md`     |
+| variant:   |             | `simple` \ `striped`    | `simple` |
+| isBarebone |             | `boolean`               |          |
+
+### Head
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |
+
+### Body
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |
+
+### Tr
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |
+
+### Td
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |

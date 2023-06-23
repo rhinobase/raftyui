@@ -21,3 +21,13 @@ Text takes font size in className.
 ```jsx
 <Text className="text-lg"> In love with React & Next</Text>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |

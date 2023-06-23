@@ -38,10 +38,15 @@ Pass `isUnstyled` prop to remove style from textarea.
 <Textarea placeholder="abc" isUnstyled />
 ```
 
+### API
+
+---
+
 ### Root
 
 | Property   | Description | Type                          | Default   |
 | ---------- | ----------- | ----------------------------- | --------- |
+| className  |             | `string`                      |           |
 | variant    |             | `solid` / `outline` / `ghost` | `outline` |
 | size       |             | `sm` / `md` / `lg`            | `md`      |
 | isUnStyled |             | boolean                       | `false`   |

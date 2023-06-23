@@ -33,3 +33,15 @@ Pass the `isRequired` prop to make search-field Required.
 ```jsx
 <TagField isRequired />
 ```
+
+### API
+
+---
+
+### Roots
+
+| Property    | Description | Type                     | Default |
+| ----------- | ----------- | ------------------------ | ------- |
+| className   |             | `string`                 |         |
+| initialData |             | string                   |         |
+| onChange    |             | (tags: string[]) => void |         |

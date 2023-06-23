@@ -102,6 +102,10 @@ Using the `align` prop you can adjust the alignment of tooltip. Vales can be `ce
 </Tooltip>
 ```
 
+### API
+
+---
+
 ### Root
 
 | Property      | Description | Type                                  | Default  |

@@ -29,3 +29,15 @@ Pass the `size` prop if you need to adjust the size of the spinner. Values can b
 <Spinner size="md" />
 <Spinner size="lg" />
 ```
+
+### API
+
+---
+
+### Root
+
+| Property      | Description | Type               | Default |
+| ------------- | ----------- | ------------------ | ------- |
+| className     |             | `string`           |         |
+| size          |             | `sm` \ `md` \ `lg` | `md`    |
+| inheritParent |             | `boolean`          |         |
