@@ -49,6 +49,14 @@ Pass `visible` prop to set visibility of toast
 <Toast title="Success Banner" severity="success" visible />
 ```
 
+## Used with react-hot-toast
+
+```jsx
+{
+  toast.custom((t) => <Toast title="Your request have been submitted, we will contact you shortly!" severity={"success"} visible={t.visible} />);
+}
+```
+
 ### API
 
 ---

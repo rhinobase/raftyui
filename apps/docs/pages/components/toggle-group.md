@@ -111,7 +111,7 @@ Pass `isUnstyled` prop to remove style from a particular sub component.
 | [data-orientation] |                                                                                                                                                        | `vertical` / `horizontal`             | -           |
 | size               |                                                                                                                                                        | `sm` / `md` / `lg`                    | `md`        |
 | isBarebone         | Removes style from whole component                                                                                                                     | `boolean`                             | `false`     |
-| isUnstyled         | Removes style from whole component                                                                                                                     | `boolean`                             | `false`     |
+| isUnstyled         | Removes style from component                                                                                                                           | `boolean`                             | `false`     |
 
 ### Item
 
@@ -123,4 +123,4 @@ Pass `isUnstyled` prop to remove style from a particular sub component.
 | [data-state]       |                                                                | `on` / `off`              |         |
 | [data-disabled]    |                                                                | Present when disabled     |         |
 | [data-orientation] |                                                                | `vertical` / `horizontal` |         |
-| isUnstyled         | Removes style from whole component                             | `boolean`                 | `false` |
+| isUnstyled         | Removes style from component                                   | `boolean`                 | `false` |

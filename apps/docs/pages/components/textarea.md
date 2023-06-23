@@ -24,9 +24,21 @@ import { Textarea } from "@rafty/ui";
 
 Pass the `variant` prop if you need to adjust visual style of the textarea. Values can be `solid, outline, ghost`.
 
+### Solid
+
 ```jsx
 <Textarea placeholder="abc" variant="solid" />
+```
+
+### Outline
+
+```jsx
 <Textarea placeholder="abc" variant="outline" />
+```
+
+### Ghost
+
+```jsx
 <Textarea placeholder="abc" variant="ghost" />
 ```
 
