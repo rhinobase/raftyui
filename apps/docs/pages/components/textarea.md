@@ -37,3 +37,16 @@ Pass `isUnstyled` prop to remove style from textarea.
 ```jsx
 <Textarea placeholder="abc" isUnstyled />
 ```
+
+### Root
+
+| Property   | Description | Type                          | Default |
+| ---------- | ----------- | ----------------------------- | ------- |
+| variant    |             | `solid` / `outline` / `ghost` |         |
+| size       |             | `sm` / `md` / `lg`            |         |
+| isUnStyled |             | boolean                       |         |
+| isDisabled |             | boolean                       |         |
+| isInvalid  |             | boolean                       |         |
+| isLoading  |             | boolean                       |         |
+| isReadOnly |             | boolean                       |         |
+| isRequired |             | boolean                       |         |

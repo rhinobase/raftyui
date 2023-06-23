@@ -48,3 +48,12 @@ Pass `visible` prop to set visibility of toast
 ```jsx
 <Toast title="Success Banner" severity="success" visible />
 ```
+
+### Root
+
+| Property | Description | Type                                     | Default |
+| -------- | ----------- | ---------------------------------------- | ------- |
+| title    |             | string                                   | -       |
+| message? |             | string                                   | -       |
+| severity |             | `error` / `warning` / `info` / `success` | -       |
+| visible? |             | boolean                                  | -       |
