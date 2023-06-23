@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { InputField, NumberField } from "@rafty/ui";
+import { useState } from "react";
 
 const meta: Meta<typeof InputField> = {
   title: "Form / NumberField",
@@ -26,18 +27,13 @@ export default meta;
 type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
-  render: ({ size, variant, readOnly, disabled, required }) => (
-    <>
+  render: function NumberFieldStory() {
+    const [value, setValue] = useState(0);
+    return (
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
-        <h4 className="font-bold">Number Field</h4>
-        <NumberField
-          variant={variant}
-          isReadOnly={readOnly}
-          isDisabled={disabled}
-          isRequired={required}
-          size={size}
-        />
+        <h4 className="font-bold">Number Field - {value}</h4>
+        <NumberField value={value} onChange={setValue} />
       </div>
-    </>
-  ),
+    );
+  },
 };
