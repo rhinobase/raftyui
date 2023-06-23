@@ -40,13 +40,13 @@ Pass `isUnstyled` prop to remove style from textarea.
 
 ### Root
 
-| Property   | Description | Type                          | Default |
-| ---------- | ----------- | ----------------------------- | ------- |
-| variant    |             | `solid` / `outline` / `ghost` |         |
-| size       |             | `sm` / `md` / `lg`            |         |
-| isUnStyled |             | boolean                       |         |
-| isDisabled |             | boolean                       |         |
-| isInvalid  |             | boolean                       |         |
-| isLoading  |             | boolean                       |         |
-| isReadOnly |             | boolean                       |         |
-| isRequired |             | boolean                       |         |
+| Property   | Description | Type                          | Default   |
+| ---------- | ----------- | ----------------------------- | --------- |
+| variant    |             | `solid` / `outline` / `ghost` | `outline` |
+| size       |             | `sm` / `md` / `lg`            | `md`      |
+| isUnStyled |             | boolean                       | `false`   |
+| isDisabled |             | boolean                       | `false`   |
+| isInvalid  |             | boolean                       | `false`   |
+| isLoading  |             | boolean                       | `false`   |
+| isReadOnly |             | boolean                       | `false`   |
+| isRequired |             | boolean                       | `false`   |
