@@ -142,7 +142,7 @@ Use the `variant` prop to change the style of your card. You can set the value t
 Pass `isBarebone` prop to remove all style in card
 
 ```jsx
-<Card is>
+<Card>
   <CardHeader>Customer dashboard</CardHeader>
   <CardBody>View a summary of all your customers over the last month. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.</CardBody>
   <CardFooter className="flex">
@@ -154,3 +154,34 @@ Pass `isBarebone` prop to remove all style in card
   </CardFooter>
 </Card>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property   | Description                        | Type                     | Default |
+| ---------- | ---------------------------------- | ------------------------ | ------- |
+| size       |                                    | `sm,md,lg`               | md      |
+| variant    |                                    | `outline,solid,elevated` | solid   |
+| isBarebone | Removes style from whole component | `boolean`                | false   |
+| isUnstyled | Removes Style from component       | `boolean`                | false   |
+
+### Header
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |
+
+### Body
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |
+
+### Footer
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |

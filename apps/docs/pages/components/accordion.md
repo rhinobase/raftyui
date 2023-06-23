@@ -152,8 +152,8 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | ------------- | ---------------------------------- | -------------------- | ---------------- |
 | collapsible   | To Cloase all the Accordion Items  | `boolean`            | false            |
 | type          | To Open Multiple Accordion Items   | `single`/ `multiple` | single           |
-| isBarebone    | Removes style from whole component | `boolean`            | true             |
-| UnStyled      | Removes Style from component       | `boolean`            | true             |
+| isBarebone    | Removes style from whole component | `boolean`            | false            |
+| UnStyled      | Removes Style from component       | `boolean`            | false            |
 | value         |                                    | `string`             | No default value |
 | defaultValue  |                                    | `string`             | No default value |
 | onValueChange |                                    | `function`           | No default value |
@@ -185,7 +185,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | Data               |             | Attribute                 | Values  |
 | [data-state]       |             | `open` / `closed`         |         |
 | [data-disabled]    |             | Present when disabled     |         |
-| [data-orientation] |             | `vertical` \ `horizontal` |         |
+| [data-orientation] |             | `vertical` / `horizontal` |         |
 
 ### Trigger
 

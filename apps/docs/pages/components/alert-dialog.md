@@ -120,61 +120,69 @@ Pass `isUnstyled` prop to remove style from a sub component
 
 ### Root
 
-| Property     | Description | Type             | Default          |
-| ------------ | ----------- | ---------------- | ---------------- |
-| defaultOpen  |             | `boolean `       | No default value |
-| open boolean |             | No default value |                  |
-| onOpenChange |             | function         |                  |
+| Property     | Description                        | Type             | Default          |
+| ------------ | ---------------------------------- | ---------------- | ---------------- |
+| defaultOpen  |                                    | `boolean `       | No default value |
+| isbareBone   | Removes style from whole component | `boolean`        | false            |
+| open boolean |                                    | No default value |                  |
+| onOpenChange |                                    | function         |                  |
 
 ### Trigger
 
-| Property       | Description | Type              | Default |
-| -------------- | ----------- | ----------------- | ------- |
-| asChild        |             | `boolean`         | false   |
-| Data Attribute |             | Values            |         |
-| [data-state]   |             | `open` / `closed` |         |
+| Property       | Description                  | Type              | Default |
+| -------------- | ---------------------------- | ----------------- | ------- |
+| isUnstyled     | Removes Style from component | `boolean`         | false   |
+| asChild        |                              | `boolean`         | false   |
+| Data Attribute |                              | Values            |         |
+| [data-state]   |                              | `open` / `closed` |         |
 
 ### Overlay
 
-| Property       | Description | Type              | Default          |
-| -------------- | ----------- | ----------------- | ---------------- |
-| asChild        |             | `boolean`         | false            |
-| forceMount     |             | `boolean`         | No default value |
-| Data Attribute |             | Values            |                  |
-| [data-state]   |             | `open` / `closed` |                  |
+| Property       | Description                  | Type              | Default          |
+| -------------- | ---------------------------- | ----------------- | ---------------- |
+| isUnstyled     | Removes Style from component | `boolean`         | false            |
+| asChild        |                              | `boolean`         | false            |
+| forceMount     |                              | `boolean`         | No default value |
+| Data Attribute |                              | Values            |                  |
+| [data-state]   |                              | `open` / `closed` |                  |
 
 ### Content
 
-| Property         | Description | Type              | Default          |
-| ---------------- | ----------- | ----------------- | ---------------- |
-| asChild          |             | `boolean`         | false            |
-| forceMount       |             | `boolean`         | No default value |
-| onOpenAutoFocus  |             | `function`        | No default value |
-| onCloseAutoFocus |             | `function`        | No default value |
-| onEscapeKeyDown  |             | `function`        | No default value |
-| Data Attribute   |             | Values            |                  |
-| [data-state]     |             | `open` / `closed` |                  |
+| Property         | Description                  | Type              | Default          |
+| ---------------- | ---------------------------- | ----------------- | ---------------- |
+| asChild          |                              | `boolean`         | false            |
+| isUnstyled       | Removes Style from component | `boolean`         | false            |
+| forceMount       |                              | `boolean`         | No default value |
+| onOpenAutoFocus  |                              | `function`        | No default value |
+| onCloseAutoFocus |                              | `function`        | No default value |
+| onEscapeKeyDown  |                              | `function`        | No default value |
+| Data Attribute   |                              | Values            |                  |
+| [data-state]     |                              | `open` / `closed` |                  |
 
 ### Title
 
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |
+| asChild    |                              | `boolean` | false   |
 
 ### Cancel
 
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |
+| asChild    |                              | `boolean` | false   |
 
 ### Action
 
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |
+| asChild    |                              | `boolean` | false   |
 
 ### Description
 
-| Property | Description | Type    | Default |
-| -------- | ----------- | ------- | ------- |
-| asChild  |             | boolean | false   |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |
+| asChild    |                              | `boolean` | false   |

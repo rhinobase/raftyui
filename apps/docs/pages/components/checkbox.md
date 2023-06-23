@@ -22,7 +22,7 @@ Pass `defaultSelected` prop to set default check the checkbox.
 <Checkbox defaultSelected>Checkbox</Checkbox>
 ```
 
-## Disabled Checkbox
+## Disabled
 
 Pass `isDisabled` prop to disable checkbox.
 
@@ -37,3 +37,30 @@ Pass `isIndeterminate` prop to set checkbox to indeterminate.
 ```jsx
 <Checkbox isIndeterminate>Checkbox</Checkbox>
 ```
+
+### Selected
+
+```jsx
+<Checkbox isSelected>Checkbox</Checkbox>
+```
+
+### Read Only
+
+```jsx
+<Checkbox isReadOnly>Checkbox</Checkbox>
+```
+
+### Required
+
+```jsx
+<Checkbox isRequired>Checkbox</Checkbox>
+```
+
+| Property        | Description | Type      | Default |
+| --------------- | ----------- | --------- | ------- |
+| isDisabled      |             | `boolean` | false   |
+| defaultSelected |             | `boolean` | false   |
+| isIndeterminate |             | `boolean` | false   |
+| isSlected       |             | `boolean` | false   |
+| isReadOnly      |             | `boolean` | false   |
+| isRequired      |             | `boolean` | false   |

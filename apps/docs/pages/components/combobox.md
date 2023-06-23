@@ -138,3 +138,30 @@ Use the `variant` prop to change the visual style of the Combobox. You can set t
   <ComboboxItem>Snake</ComboboxItem>
 </Combobox>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property          | Description | Type                    | Default          |
+| ----------------- | ----------- | ----------------------- | ---------------- |
+| size              |             | `sm,md,lg`              | md               |
+| variant           |             | `solid, outline, ghost` | solid            |
+| onFocusChange     |             | `function`              | No default value |
+| onInputChange     |             | `function`              | No default value |
+| selectedKey       |             | `Key/ null`             | No default value |
+| onSelectionChange |             | `function`              | No default value |
+| inputValue        |             | Value                   |                  |
+| isLoading         |             | `boolean`               | false            |
+| isSlected         |             | `boolean`               | false            |
+| isReadOnly        |             | `boolean`               | false            |
+| isRequired        |             | `boolean`               | false            |
+
+### Item
+
+| Property  | Description | Type       | Default          |
+| --------- | ----------- | ---------- | ---------------- |
+| key       |             | `Key/null` | No default value |
+| textValue |             | `string`   | No default value |

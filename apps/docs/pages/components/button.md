@@ -22,12 +22,14 @@ import { button } from "@rafty/ui";
 
 ## Size
 
-Use the `size` prop to change the size of the button. You can set the value to `sm, md, or lg`.
+Use the `size` prop to change the size of the button. You can set the value to `sm, md, lg,fab,icon`.
 
 ```jsx
 <Button size="sm">Button</Button>
 <Button size="md">Button</Button>
 <Button size="lg">Button</Button>
+<Button size="fab">Button</Button>
+<Button size="icon">Button</Button>
 ```
 
 ## ColorScheme
@@ -78,3 +80,19 @@ Pass ` isUnstyled` prop to remove style component.
 ```jsx
 <Button isUnstyled>Button text</Button>
 ```
+
+### API
+
+---
+
+| Property    | Description                  | Type                                                     | Default   |
+| ----------- | ---------------------------- | -------------------------------------------------------- | --------- |
+| size        |                              | `sm,md,lg,fab,icon`                                      | md        |
+| colorScheme |                              | `primary,secondary,error,success`                        | secondary |
+| variant     |                              | `solid,ghost,outline`                                    | solid     |
+| leftIcon    |                              | `ReactElement<any, string / JSXElementConstructor<any>>` |           |
+| righttIcon  |                              | `ReactElement<any, string / JSXElementConstructor<any>>` |           |
+| isActive    |                              | `boolean`                                                | false     |
+| isLoading   |                              | `boolean`                                                | false     |
+| isDisabled  |                              | `boolean`                                                | false     |
+| isUnstyled  | Removes Style from component | `boolean`                                                | false     |
