@@ -58,7 +58,7 @@ Pass `visible` prop to set visibility of toast
 | Property  | Description | Type                                     | Default |
 | --------- | ----------- | ---------------------------------------- | ------- |
 | className |             | `string`                                 |         |
-| title     |             | string                                   |         |
-| message?  |             | string                                   |         |
+| title     |             | `string`                                 |         |
+| message?  |             | `string`                                 |         |
 | severity  |             | `error` / `warning` / `info` / `success` |         |
-| visible?  |             | boolean                                  |         |
+| visible?  |             | `boolean`                                |         |

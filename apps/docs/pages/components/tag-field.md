@@ -40,8 +40,8 @@ Pass the `isRequired` prop to make search-field Required.
 
 ### Roots
 
-| Property    | Description | Type                     | Default |
-| ----------- | ----------- | ------------------------ | ------- |
-| className   |             | `string`                 |         |
-| initialData |             | string                   |         |
-| onChange    |             | (tags: string[]) => void |         |
+| Property    | Description | Type                       | Default |
+| ----------- | ----------- | -------------------------- | ------- |
+| className   |             | `string`                   |         |
+| initialData |             | `string`                   |         |
+| onChange    |             | `(tags: string[]) => void` |         |

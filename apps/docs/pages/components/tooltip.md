@@ -111,8 +111,8 @@ Using the `align` prop you can adjust the alignment of tooltip. Values can be `c
 | Property      | Description | Type                                  | Default  |
 | ------------- | ----------- | ------------------------------------- | -------- |
 | className     |             | `string`                              |          |
-| children      |             | `React.ReactNode`                     | -        |
-| content       |             | `React.ReactNode`                     | -        |
+| children\*    |             | `React.ReactNode`                     | -        |
+| content\*     |             | `React.ReactNode`                     | -        |
 | isArrow       |             | `boolean`                             | `true`   |
 | delayDuration |             | `number`                              | `50`     |
 | hasAnimation  |             | `boolean`                             | `true`   |
