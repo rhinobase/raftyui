@@ -87,6 +87,7 @@ Pass ` isUnstyled` prop to remove style component.
 
 | Property    | Description                  | Type                                                     | Default   |
 | ----------- | ---------------------------- | -------------------------------------------------------- | --------- |
+| className   |                              | `string`                                                 |           |
 | size        |                              | `sm,md,lg,fab,icon`                                      | md        |
 | colorScheme |                              | `primary,secondary,error,success`                        | secondary |
 | variant     |                              | `solid,ghost,outline`                                    | solid     |

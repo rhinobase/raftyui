@@ -4,7 +4,7 @@ pageTitle: Checkbox - Rafty UI
 description: Checkbox
 ---
 
-## Import
+### Import
 
 Checkbox component is used in forms when a user needs to select multiple values from several options.
 
@@ -14,47 +14,89 @@ Checkbox component is used in forms when a user needs to select multiple values 
 import { Checkbox, CheckboxGroup } from "@rafty/ui";
 ```
 
-## Usage
+### Usage
 
 Pass `defaultSelected` prop to set default check the checkbox.
 
 ```jsx
-<Checkbox defaultSelected>Checkbox</Checkbox>
+<CheckboxGroup>
+  <Checkbox>Checkbox</Checkbox>
+</CheckboxGroup>
 ```
 
-## Disabled
+### Default Selected
+
+```jsx
+<CheckboxGroup>
+  <Checkbox defaultSelected>Checkbox</Checkbox>
+</CheckboxGroup>
+```
+
+### Disabled
 
 Pass `isDisabled` prop to disable checkbox.
 
+This property can also be passed in child/ sub component
+
 ```jsx
-<Checkbox isDisabled>Checkbox</Checkbox>
+<CheckboxGroup isDisabled>
+  <Checkbox>Checkbox</Checkbox>
+</CheckboxGroup>
 ```
 
-## Indeterminate
+### Indeterminate
 
 Pass `isIndeterminate` prop to set checkbox to indeterminate.
 
 ```jsx
-<Checkbox isIndeterminate>Checkbox</Checkbox>
+<CheckboxGroup>
+  <Checkbox isIndeterminate>Checkbox</Checkbox>
+</CheckboxGroup>
 ```
 
 ### Selected
 
 ```jsx
-<Checkbox isSelected>Checkbox</Checkbox>
+<CheckboxGroup>
+  <Checkbox isSelected>Checkbox</Checkbox>
+</CheckboxGroup>
 ```
 
 ### Read Only
 
+This property can also be passed in child/ sub component
+
 ```jsx
-<Checkbox isReadOnly>Checkbox</Checkbox>
+<CheckboxGroup isReadOnly>
+  <Checkbox>Checkbox</Checkbox>
+</CheckboxGroup>
 ```
 
 ### Required
 
+This property can also be passed in child/ sub component
+
 ```jsx
-<Checkbox isRequired>Checkbox</Checkbox>
+<CheckboxGroup isRequired>
+  <Checkbox>Checkbox</Checkbox>
+</CheckboxGroup>
 ```
+
+### API
+
+---
+
+### Checkbox Group
+
+| Property        | Description | Type      | Default |
+| --------------- | ----------- | --------- | ------- |
+| className       |             | `string`  |         |
+| isDisabled      |             | `boolean` | false   |
+| defaultSelected |             | `boolean` | false   |
+| isReadOnly      |             | `boolean` | false   |
+| isRequired      |             | `boolean` | false   |
+
+### Checkbox
 
 | Property        | Description | Type      | Default |
 | --------------- | ----------- | --------- | ------- |

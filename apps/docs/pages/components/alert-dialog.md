@@ -122,6 +122,7 @@ Pass `isUnstyled` prop to remove style from a sub component
 
 | Property     | Description                        | Type             | Default          |
 | ------------ | ---------------------------------- | ---------------- | ---------------- |
+| className    |                                    | `string`         |                  |
 | defaultOpen  |                                    | `boolean `       | No default value |
 | isbareBone   | Removes style from whole component | `boolean`        | false            |
 | open boolean |                                    | No default value |                  |
@@ -131,6 +132,7 @@ Pass `isUnstyled` prop to remove style from a sub component
 
 | Property       | Description                  | Type              | Default |
 | -------------- | ---------------------------- | ----------------- | ------- |
+| className      |                              | `string`          |         |
 | isUnstyled     | Removes Style from component | `boolean`         | false   |
 | asChild        |                              | `boolean`         | false   |
 | Data Attribute |                              | Values            |         |
@@ -140,6 +142,7 @@ Pass `isUnstyled` prop to remove style from a sub component
 
 | Property       | Description                  | Type              | Default          |
 | -------------- | ---------------------------- | ----------------- | ---------------- |
+| className      |                              | `string`          |                  |
 | isUnstyled     | Removes Style from component | `boolean`         | false            |
 | asChild        |                              | `boolean`         | false            |
 | forceMount     |                              | `boolean`         | No default value |
@@ -150,6 +153,7 @@ Pass `isUnstyled` prop to remove style from a sub component
 
 | Property         | Description                  | Type              | Default          |
 | ---------------- | ---------------------------- | ----------------- | ---------------- |
+| className        |                              | `string`          |                  |
 | asChild          |                              | `boolean`         | false            |
 | isUnstyled       | Removes Style from component | `boolean`         | false            |
 | forceMount       |                              | `boolean`         | No default value |
@@ -163,26 +167,26 @@ Pass `isUnstyled` prop to remove style from a sub component
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
+| className  |                              | `string`  |         |
 | isUnstyled | Removes Style from component | `boolean` | false   |
 | asChild    |                              | `boolean` | false   |
 
 ### Cancel
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
-| asChild    |                              | `boolean` | false   |
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| asChild  |             | `boolean` | false   |
 
 ### Action
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
-| asChild    |                              | `boolean` | false   |
+| Property | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| asChild  |             | `boolean` | false   |
 
 ### Description
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
+| className  |                              | `string`  |         |
 | isUnstyled | Removes Style from component | `boolean` | false   |
 | asChild    |                              | `boolean` | false   |

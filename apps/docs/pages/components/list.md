@@ -34,6 +34,17 @@ import { ListItem, OrderedList, UnorderedList, List } from "@rafty/ui";
 </OrderedList>
 ```
 
+### UnOrdered List
+
+```jsx
+<List>
+  <ListItem>Lorem ipsum dolor sit amet</ListItem>
+  <ListItem>Consectetur adipiscing elit</ListItem>
+  <ListItem>Integer molestie lorem at massa</ListItem>
+  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+</List>
+```
+
 ## Unstyled
 
 Pass `isUnstyled` to remove style in list.
@@ -46,3 +57,14 @@ Pass `isUnstyled` to remove style in list.
   <ListItem>Facilisis in pretium nisl aliquet</ListItem>
 </List>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property  | Description                  | Type      | Default |
+| --------- | ---------------------------- | --------- | ------- |
+| className |                              | `string`  |         |
+| UnStyled  | Removes Style from component | `boolean` | false   |

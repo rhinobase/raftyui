@@ -48,3 +48,16 @@ To show an animated progress, pass the `isIndeterminate` prop.
 ```jsx
 <Progress value={80} colorScheme="primary" isIndeterminate />
 ```
+
+### API
+
+---
+
+### Root
+
+| Property        | Description | Type                                        | Default |
+| --------------- | ----------- | ------------------------------------------- | ------- |
+| className       |             | `string`                                    |         |
+| size            |             | `sm` \ `md` \ `lg`                          | `md`    |
+| isIndeterminate |             | `boolean`                                   |         |
+| colorScheme     |             | `primary"` \ `warning`\ `success` \ `error` |         |

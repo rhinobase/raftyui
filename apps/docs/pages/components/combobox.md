@@ -147,6 +147,7 @@ Use the `variant` prop to change the visual style of the Combobox. You can set t
 
 | Property          | Description | Type                    | Default          |
 | ----------------- | ----------- | ----------------------- | ---------------- |
+
 | size              |             | `sm,md,lg`              | md               |
 | variant           |             | `solid, outline, ghost` | solid            |
 | onFocusChange     |             | `function`              | No default value |
