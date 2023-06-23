@@ -18,6 +18,7 @@ import { FieldControl, FieldLabel, InputField } from "@rafty/ui";
 <FieldControl name="email">
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
 
@@ -31,6 +32,7 @@ Pass the `orientation` prop if you need to adjust the orientation of the fieldco
 <FieldControl name="email" orientation="col">
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
 
@@ -40,6 +42,7 @@ Pass the `orientation` prop if you need to adjust the orientation of the fieldco
 <FieldControl name="email" orientation="row">
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
 
@@ -49,6 +52,7 @@ Pass the `orientation` prop if you need to adjust the orientation of the fieldco
 <FieldControl name="email" orientation="row-reverse">
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
 
@@ -60,6 +64,7 @@ Pass `isRequired` prop to make filed required.
 <FieldControl name="email" isRequired>
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
 
@@ -71,6 +76,7 @@ Pass `isDisabled` to disable field.
 <FieldControl name="email">
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
 
@@ -82,5 +88,53 @@ Pass `isReadOnly` to disable field.
 <FieldControl name="email" isReadOnly>
   <FieldLabel>Email Address</FieldLabel>
   <InputField />
+  <ErrorMessage>! error</ErrorMessage>
 </FieldControl>
 ```
+
+### Loading
+
+```jsx
+<FieldControl name="email" isLoading>
+  <FieldLabel>Email Address</FieldLabel>
+  <InputField />
+  <ErrorMessage>! error</ErrorMessage>
+</FieldControl>
+```
+
+### Invalid
+
+```jsx
+<FieldControl name="email" isInvalid>
+  <FieldLabel>Email Address</FieldLabel>
+  <InputField />
+  <ErrorMessage>! error</ErrorMessage>
+</FieldControl>
+```
+
+### API
+
+---
+
+### Root
+
+| Property    | Description | Type                    | Default |
+| ----------- | ----------- | ----------------------- | ------- |
+| orientation |             | `col, row, row-reverse` | col     |
+| isRequired  |             | `boolean`               | false   |
+| isDisabled  |             | `boolean`               | false   |
+| isReadOnly  |             | `boolean`               | false   |
+| isLoading   |             | `boolean`               | false   |
+| isInvalid   |             | `boolean`               | false   |
+
+### Label
+
+| Property | Description | Type     | Default |
+| -------- | ----------- | -------- | ------- |
+| htmlFor  |             | `string` |         |
+
+### Error Message
+
+| Property | Description | Type          | Default |
+| -------- | ----------- | ------------- | ------- |
+| key      |             | `Key` /`null` |         |

@@ -151,7 +151,7 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 | Property             | Description | Type              | Default          |
 | -------------------- | ----------- | ----------------- | ---------------- |
-| isUnstyled           |             | `boolean`         |                  |
+| isUnstyled           |             | `boolean`         | false            |
 | asChild              |             | `boolean`         | false            |
 | forceMount           |             | boolean           | No default value |
 | onOpenAutoFocus      |             | function          | No default value |
@@ -166,19 +166,19 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
-| isUnstyled |             | `boolean` |         |
+| isUnstyled |             | `boolean` | false   |
 | asChild    |             | `boolean` | false   |
 
 ### Title
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
-| isUnstyled |             | `boolean` |         |
+| isUnstyled |             | `boolean` | false   |
 | asChild    |             | `boolean` | false   |
 
 ### Descriptiom
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
-| isUnstyled |             | `boolean` |         |
+| isUnstyled |             | `boolean` | false   |
 | asChild    |             | `boolean` | false   |
