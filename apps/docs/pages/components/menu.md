@@ -131,3 +131,197 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   </MenuContent>
 </Menu>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property      | Description | Type         | Default          |
+| ------------- | ----------- | ------------ | ---------------- |
+| className     |             | `string`     |                  |
+| asChild       |             | `boolean`    | false            |
+| defaultValue  |             | `string`     | No default value |
+| value         |             | `string`     | No default value |
+| onValueChange |             | `function`   | No default value |
+| dir           |             | `ltr`/ `rtl` | No default value |
+| loop          |             | `boolean`    | false            |
+
+### Menu
+
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
+| isBarebone |             | `boolean` | false   |
+| asChild    |             | `boolean` | false   |
+| value      |             | `string`  |         |
+
+### Triger
+
+| Property           | Description | Type                       | Default |
+| ------------------ | ----------- | -------------------------- | ------- |
+| className          |             | `string`                   |         |
+| isActive           |             | `bollean`                  | false   |
+| itemScope          |             | `boolean`                  | false   |
+| isLoading          |             | `boolean`                  | false   |
+| isUnstyled         |             | `boolean`                  | false   |
+| isDisabled         |             | `boolean`                  | false   |
+| asChild            |             | `boolean`                  | false   |
+| [data-state]       |             | `open` / `closed`          |         |
+| [data-highlighted] |             | `Present when highlighted` |         |
+| [data-disabled]    |             | `Present when disabled`    |         |
+
+### Content
+
+| Property             | Description | Type                                | Default          |
+| -------------------- | ----------- | ----------------------------------- | ---------------- |
+| className            |             | `string`                            |                  |
+| isUnstyled           |             | `boolean`                           | false            |
+| asChild              |             | `boolean`                           | false            |
+| loop                 |             | `boolean`                           | false            |
+| onCloseAutoFocus     |             | `function`                          | No default value |
+| onEscapeKeyDown      |             | `function`                          | No default value |
+| onPointerDownOutside |             | `function`                          | No default value |
+| onFocusOutside       |             | `function`                          | No default value |
+| onInteractOutside    |             | `function`                          | No default value |
+| forceMount           |             | `boolean `                          | No default value |
+| side                 |             | `partial` / `always`                | "bottom"         |
+| sideOffset           |             | `number `                           | 0                |
+| align                |             | `partial` / `always`                | "center"         |
+| alignOffset          |             | `number `                           | 0                |
+| avoidCollisions      |             | `boolean`                           | true             |
+| collisionBoundary    |             | `Boundary`                          | []               |
+| collisionPadding     |             | `number` / `Padding`                | 0                |
+| arrowPadding         |             | `number `                           | 0                |
+| sticky               |             | `partial` / `always`                | "partial"        |
+| hideWhenDetached     |             | `boolean `                          | false            |
+| [data-state]         |             | `open` / `closed `                  |
+| [data-side]          |             | `left` / `right` / `bottom` / `top` |                  |
+| [data-align]         |             | `start` / `end` / `center`          |                  |
+
+### Arrow
+
+| Property  | Description | Type      | Default |
+| --------- | ----------- | --------- | ------- |
+| className |             | `string`  |         |
+| asChild   |             | `boolean` | false   |
+| width     |             | `number`  | 10      |
+| height    |             | `number`  | 5       |
+
+### Item
+
+| Property           | Description | Type                     | Default          |
+| ------------------ | ----------- | ------------------------ | ---------------- |
+| className          |             | `string`                 |                  |
+| isUnstyled         |             | `boolean`                | false            |
+| asChild            |             | `boolean`                | false            |
+| disabled           |             | `boolean`                | No default value |
+| onSelect           |             | `function`               | No default value |
+| textValue          |             | `string`                 | No default value |
+| [data-highlighted] |             | Present when highlighted |                  |
+| [data-disabled]    |             | Present when disabled    |                  |
+
+### Group
+
+| Property  | Description | Type      | Default |
+| --------- | ----------- | --------- | ------- |
+| className |             | `string`  |         |
+| asChild   |             | `boolean` | false   |
+
+### Label
+
+| Property  | Description | Type      | Default |
+| --------- | ----------- | --------- | ------- |
+| className |             | `string`  |         |
+| asChild   |             | `boolean` | false   |
+
+### CheckboxItem
+
+| Property           | Description | Type                        | Default          |
+| ------------------ | ----------- | --------------------------- | ---------------- |
+| className          |             | `string`                    |                  |
+| asChild            |             | `boolean`                   | false            |
+| checked            |             | `boolean` / `indeterminate` | No default value |
+| onCheckedChange    |             | `function`                  | No default value |
+| disabled           |             | `boolean`                   | No default value |
+| onSelect           |             | `function`                  | No default value |
+| textValue          |             | `string`                    | No default value |
+| [data-state]       |             | `checked` / `unchecked `    |                  |
+| [data-highlighted] |             | Present when highlighted    |                  |
+| [data-disabled]    |             | Present when disabled       |                  |
+
+### RadioGroup
+
+| Property      | Description | Type       | Default          |
+| ------------- | ----------- | ---------- | ---------------- |
+| className     |             | `string`   |                  |
+| asChild       |             | `boolean`  | false            |
+| value         |             | `string`   | No default value |
+| onValueChange |             | `function` |                  |
+
+### RadioItem
+
+| Property  | Description | Type       | Default          |
+| --------- | ----------- | ---------- | ---------------- |
+| className |             | `string`   |                  |
+| asChild   |             | `boolean`  | false            |
+| value     |             | `string`   | No default value |
+| disabled  |             | `boolean`  | No default value |
+| onSelect  |             | `function` | No default value |
+| textValue |             | `string`   |                  |
+
+### Separator
+
+| Property  | Description | Type      | Default |
+| --------- | ----------- | --------- | ------- |
+| className |             | `string`  |         |
+| asChild   |             | `boolean` | false   |
+
+### Sub
+
+| Property     | Description | Type       | Default          |
+| ------------ | ----------- | ---------- | ---------------- |
+| className    |             | `string`   |                  |
+| defaultOpen  |             | `boolean`  | No default value |
+| open         |             | `boolean`  | No default value |
+| onOpenChange |             | `function` |                  |
+
+### SubTriger
+
+| Property           | Description | Type                     | Default          |
+| ------------------ | ----------- | ------------------------ | ---------------- |
+| className          |             | `string`                 |                  |
+| isUnstyled         |             | `boolean`                | false            |
+| asChild            |             | `boolean`                | false            |
+| disabled           |             | `boolean`                | No default value |
+| textValue          |             | `string`                 | No default value |
+| [data-state]       |             | `open` / `closed`        |                  |
+| [data-highlighted] |             | Present when highlighted |                  |
+| [data-disabled]    |             | Present when disabled    |                  |
+
+### SubContent
+
+| Property             | Description | Type                                | Default          |
+| -------------------- | ----------- | ----------------------------------- | ---------------- |
+| className            |             | `string`                            |                  |
+| isUnstyled           |             | `boolean`                           | false            |
+| asChild              |             | `boolean`                           | false            |
+| loop                 |             | `boolean`                           | false            |
+| onEscapeKeyDown      |             | `function`                          | No default value |
+| onPointerDownOutside |             | `function`                          | No default value |
+| onFocusOutside       |             | `function`                          | No default value |
+| onInteractOutside    |             | `function`                          | No default value |
+| forceMount           |             | `boolean`                           | No default value |
+| sideOffset           |             | `number`                            | 0                |
+| alignOffset          |             | `number`                            | 0                |
+| avoidCollisions      |             | `boolean`                           | true             |
+| collisionBoundary    |             | `Boundary`                          | []               |
+| collisionPadding     |             | `number` / `Padding`                | 0                |
+| arrowPadding         |             | `number`                            | 0                |
+| sticky               |             | `partial` / `always`                | partial          |
+| hideWhenDetached     |             | `boolean`                           | false            |
+| [data-state]         |             | `open` / `closed`                   |
+| [data-side]          |             | `left` / `right` / `bottom` / `top` |
+| [data-align]         |             | `start` / `end` / `center`          |
+| [data-orientation]   |             | `vertical` / `horizontal`           |
