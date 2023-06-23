@@ -111,15 +111,15 @@ Using the `align` prop you can adjust the alignment of tooltip. Values can be `c
 | Property      | Description | Type                                  | Default  |
 | ------------- | ----------- | ------------------------------------- | -------- |
 | className     |             | `string`                              |          |
-| children      |             | React.ReactNode                       | -        |
-| content       |             | React.ReactNode                       | -        |
-| isArrow       |             | boolean                               | true     |
-| delayDuration |             | number                                | 50       |
-| hasAnimation  |             | boolean                               | true     |
-| open          |             | boolean                               | -        |
-| defaultOpen   |             | boolean                               | -        |
+| children      |             | `React.ReactNode`                     | -        |
+| content       |             | `React.ReactNode`                     | -        |
+| isArrow       |             | `boolean`                             | `true`   |
+| delayDuration |             | `number`                              | `50`     |
+| hasAnimation  |             | `boolean`                             | `true`   |
+| open          |             | `boolean`                             | -        |
+| defaultOpen   |             | `boolean`                             | -        |
 | side          |             | `top` / `right` / `bottom` / `left" ` | `top`    |
 | align         |             | `start` / `center` / `end`            | `center` |
-| sideOffset    |             | number                                | 10       |
-| alignOffset   |             | number                                | -        |
-| onOpenChange  |             | (open: boolean) => void               | -        |
+| sideOffset    |             | `number`                              | `10`     |
+| alignOffset   |             | `number`                              | -        |
+| onOpenChange  |             | `(open: boolean) => void`             | -        |
