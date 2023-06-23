@@ -172,53 +172,53 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Root
 
-| Properties         | Description                        | Type                      | Default            |
-| ------------------ | ---------------------------------- | ------------------------- | ------------------ |
-| className          |                                    | `string`                  |                    |
-| isBarebone         | Removes style from whole component | `boolean`                 | `false`            |
-| isUnStyled         | Removes style from component       | `boolean`                 | `false`            |
-| asChild            |                                    | `boolean`                 | `false`            |
-| defaultValue       |                                    | `string`                  |                    |
-| value              |                                    | `string`                  | `No default value` |
-| onValueChange      |                                    | `function`                | `No default value` |
-| orientation        |                                    | `horizontal`/ `vertical`  | `horizontal`       |
-| dir                |                                    | `enum`                    |                    |
-| activationMode     |                                    | `enum`                    | `automatic`        |
-| [data-orientation] |                                    | `vertical` \ `horizontal` |                    |
-| size               |                                    | `sm` / `md` / `lg`        | `md`               |
-| variant            |                                    | `line` \ `enclosed`       |                    |
+| Properties         | Description                                                                                                                            | Type                                   | Default            |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------ |
+| className          |                                                                                                                                        | `string`                               |                    |
+| isBarebone         | Removes style from whole component                                                                                                     | `boolean`                              | `false`            |
+| isUnStyled         | Removes style from component                                                                                                           | `boolean`                              | `false`            |
+| asChild            |                                                                                                                                        | `boolean`                              | `false`            |
+| defaultValue       | The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.         | `string`                               |                    |
+| value              | The controlled value of the tab to activate. Should be used in conjunction with `onValueChange`.                                       | `string`                               | `No default value` |
+| onValueChange      | Event handler called when the value changes.                                                                                           | `(value: string) => void`              | `No default value` |
+| orientation        | The orientation of the component.                                                                                                      | `horizontal` / `vertical`/ `undefined` | `horizontal`       |
+| dir                | The reading direction of the tabs. If omitted, inherits globally from `DirectionProvider` or assumes LTR (left-to-right) reading mode. | `ltr` / `rtl`                          |                    |
+| activationMode     | When `automatic`, tabs are activated when receiving focus. When `manual`, tabs are activated when clicked.                             | `automatic` / `manual`                 | `automatic`        |
+| [data-orientation] |                                                                                                                                        | `vertical` / `horizontal`              |                    |
+| size               |                                                                                                                                        | `sm` / `md` / `lg`                     | `md`               |
+| variant            |                                                                                                                                        | `line` / `enclosed`                    |                    |
 
 ### List
 
-| Properties         | Description                  | Type                      | Default |
-| ------------------ | ---------------------------- | ------------------------- | ------- |
-| className          |                              | `string`                  |         |
-| asChild            |                              | `boolean`                 | `false` |
-| loop               |                              | `boolean`                 | `true`  |
-| [data-orientation] |                              | `vertical` \ `horizontal` |         |
-| isUnStyled         | Removes style from component | `boolean`                 | `false` |
+| Properties         | Description                                                                        | Type                      | Default |
+| ------------------ | ---------------------------------------------------------------------------------- | ------------------------- | ------- |
+| className          |                                                                                    | `string`                  |         |
+| asChild            |                                                                                    | `boolean`                 | `false` |
+| loop               | When `true`, keyboard navigation will loop from last tab to first, and vice versa. | `boolean`                 | `true`  |
+| [data-orientation] |                                                                                    | `vertical` / `horizontal` |         |
+| isUnStyled         | Removes style from component                                                       | `boolean`                 | `false` |
 
 ### Trigger
 
-| Properties         | Description                  | Type                       | Default |
-| ------------------ | ---------------------------- | -------------------------- | ------- |
-| className          |                              | `string`                   |         |
-| asChild            |                              | `boolean`                  | `false` |
-| value\*            |                              | `string`                   |         |
-| disabled           |                              | `boolean`                  | `false` |
-| [data-state]       |                              | `active` \ `inactive`      |         |
-| [data-disabled]    |                              | `Present when disabled   ` |         |
-| [data-orientation] |                              | `vertical` \ `horizontal`  |         |
-| isUnStyled         | Removes style from component | `boolean`                  | `false` |
+| Properties         | Description                                                   | Type                       | Default |
+| ------------------ | ------------------------------------------------------------- | -------------------------- | ------- |
+| className          |                                                               | `string`                   |         |
+| asChild            |                                                               | `boolean`                  | `false` |
+| value\*            | A unique value that associates the trigger with a content.    | `string`                   |         |
+| disabled           | When `true`, prevents the user from interacting with the tab. | `boolean`                  | `false` |
+| [data-state]       |                                                               | `active` / `inactive`      |         |
+| [data-disabled]    |                                                               | `Present when disabled   ` |         |
+| [data-orientation] |                                                               | `vertical` / `horizontal`  |         |
+| isUnStyled         | Removes style from component                                  | `boolean`                  | `false` |
 
 ### Content
 
-| Properties         | Description                  | Type                      | Default |
-| ------------------ | ---------------------------- | ------------------------- | ------- |
-| className          |                              | `string`                  |         |
-| asChild            |                              | `boolean`                 | `false` |
-| value\*            |                              | `string `                 |         |
-| forceMount         |                              | `boolean`                 |         |
-| [data-state]       |                              | `active` \ `inactive`     |         |
-| [data-orientation] |                              | `vertical` \ `horizontal` |         |
-| isUnStyled         | Removes style from component | `boolean`                 | `false` |
+| Properties         | Description                                                                                                           | Type                      | Default |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------- |
+| className          |                                                                                                                       | `string`                  |         |
+| asChild            |                                                                                                                       | `boolean`                 | `false` |
+| value\*            | A unique value that associates the content with a trigger.                                                            | `string `                 |         |
+| forceMount         | Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. | `boolean`                 |         |
+| [data-state]       |                                                                                                                       | `active` / `inactive`     |         |
+| [data-orientation] |                                                                                                                       | `vertical` / `horizontal` |         |
+| isUnStyled         | Removes style from component                                                                                          | `boolean`                 | `false` |
