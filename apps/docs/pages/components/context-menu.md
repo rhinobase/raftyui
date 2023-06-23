@@ -108,6 +108,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property     | Description                        | Type          | Default          |
 | ------------ | ---------------------------------- | ------------- | ---------------- |
+| className    |                                    | `string`      |                  |
 | size         |                                    | `sm, md, lg`  | md               |
 | isBarebone   | Removes style from whole component | `boolean`     | false            |
 | dir          |                                    | `ltr` / `rtl` | No default value |
@@ -115,6 +116,8 @@ Pass `isBarebone` prop to remove all style in context-menu.
 | modal        |                                    | `boolean`     | true             |
 
 ### Trigger
+
+`ContextMenuTrigger`composes `Button` component
 
 | Property       | Description                  | Type              | Default |
 | -------------- | ---------------------------- | ----------------- | ------- |
@@ -128,6 +131,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property             | Description                  | Type                               | Default          |
 | -------------------- | ---------------------------- | ---------------------------------- | ---------------- |
+| className            |                              | `string`                           |                  |
 | isUnstyled           | Removes Style from component | `boolean`                          |                  |
 | asChild              |                              | `boolean`                          | false            |
 | loop                 |                              | `boolean`                          | false            |
@@ -153,6 +157,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property           | Description                  | Type                     | Default          |
 | ------------------ | ---------------------------- | ------------------------ | ---------------- |
+| className          |                              | `string`                 |                  |
 | isUnstyled         | Removes Style from component | `boolean`                |                  |
 | asChild            |                              | `boolean`                | false            |
 | disabled           |                              | `boolean`                | No default value |
@@ -172,6 +177,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
+| className  |                              | `string`  |         |
 | isUnstyled | Removes Style from component | `boolean` |         |
 | asChild    |                              | `boolean` | false   |
 
@@ -179,6 +185,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property           | Description                  | Type                                         | Default          |
 | ------------------ | ---------------------------- | -------------------------------------------- | ---------------- |
+| className          |                              | `string`                                     |                  |
 | isUnstyled         | Removes Style from component | `boolean`                                    |                  |
 | asChild            |                              | `boolean`                                    | false            |
 | checked            |                              | `boolean` / 'indeterminate' No default value |                  |
@@ -195,6 +202,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property      | Description | Type       | Default          |
 | ------------- | ----------- | ---------- | ---------------- |
+| className     |             | `string`   |                  |
 | asChild       |             | `boolean`  | false            |
 | value         |             | `string`   | No default value |
 | onValueChange |             | `function` |
@@ -203,6 +211,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property           | Description                  | Type                                      | Default          |
 | ------------------ | ---------------------------- | ----------------------------------------- | ---------------- |
+| className          |                              | `string`                                  |                  |
 | isUnstyled         | Removes Style from component | `boolean`                                 |                  |
 | asChild            |                              | boolean                                   | false            |
 | value\*            |                              | string                                    | default value    |
@@ -218,6 +227,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
+| className  |                              | `string`  |         |
 | isUnstyled | Removes Style from component | `boolean` |         |
 | asChild    |                              | `boolean` | false   |
 
@@ -231,8 +241,11 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 ### Sub Trigger
 
+`ContextMenuSubTrigger`composes `Button` component
+
 | Property           | Description                  | Type                     | Default          |
 | ------------------ | ---------------------------- | ------------------------ | ---------------- |
+| className          |                              | `string`                 |                  |
 | isUnstyled         | Removes Style from component | `boolean`                |                  |
 | asChild            |                              | `boolean`                | false            |
 | disabled           |                              | `boolean`                | No default value |
@@ -246,6 +259,7 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 | Property             | Description                  | Type                 | Default          |
 | -------------------- | ---------------------------- | -------------------- | ---------------- |
+| className            |                              | `string`             |                  |
 | isUnstyled           | Removes Style from component | `boolean`            |                  |
 | asChild              |                              | `boolean`            | false            |
 | loop                 |                              | `boolean`            | false            |

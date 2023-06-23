@@ -130,6 +130,8 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 ### Trigger
 
+`DialogTrigger`composes `Button` component
+
 | Property       | Description | Type              | Default |
 | -------------- | ----------- | ----------------- | ------- |
 | isUnstyled     |             | `boolean`         |         |
@@ -141,6 +143,7 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 | Property       | Description | Type              | Default          |
 | -------------- | ----------- | ----------------- | ---------------- |
+| className      |             | `string`          |                  |
 | isUnstyled     |             | `boolean`         |                  |
 | asChild        |             | boolean           | false            |
 | forceMount     |             | boolean           | No default value |
@@ -151,6 +154,7 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 | Property             | Description | Type              | Default          |
 | -------------------- | ----------- | ----------------- | ---------------- |
+| className            |             | `string`          |                  |
 | isUnstyled           |             | `boolean`         | false            |
 | asChild              |             | `boolean`         | false            |
 | forceMount           |             | boolean           | No default value |
@@ -173,6 +177,7 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
 | isUnstyled |             | `boolean` | false   |
 | asChild    |             | `boolean` | false   |
 
@@ -180,5 +185,6 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
 | isUnstyled |             | `boolean` | false   |
 | asChild    |             | `boolean` | false   |

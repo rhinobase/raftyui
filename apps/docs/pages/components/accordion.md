@@ -150,7 +150,6 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property      | Description                        | Type                 | Default          |
 | ------------- | ---------------------------------- | -------------------- | ---------------- |
-| className     |                                    | string               |                  |
 | collapsible   | To Cloase all the Accordion Items  | `boolean`            | false            |
 | type          | To Open Multiple Accordion Items   | `single`/ `multiple` | single           |
 | isBarebone    | Removes style from whole component | `boolean`            | false            |
@@ -170,7 +169,6 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property           | Description | Type                      | Default |
 | ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | string                    |         |
 | asChild            |             | `boolean`                 | false   |
 | disabled           |             | `boolean`                 | false   |
 | value              |             | `string`                  |         |
@@ -183,6 +181,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property           | Description | Type                      | Default |
 | ------------------ | ----------- | ------------------------- | ------- |
+| className          |             | `string`                  |         |
 | asChild            |             | boolean                   | false   |
 | Data               |             | Attribute                 | Values  |
 | [data-state]       |             | `open` / `closed`         |         |
@@ -191,8 +190,11 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Trigger
 
+`AccordionTrigger`composes `Button` component
+
 | Property           | Description | Type                      | Default |
 | ------------------ | ----------- | ------------------------- | ------- |
+| className          |             | `string`                  |         |
 | asChild            |             | boolean                   | false   |
 | Data Attribute     |             | Values                    |         |
 | [data-state]       |             | `open` / `closed`         |         |
@@ -203,6 +205,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property                         | Description | Type                                           | Default          |
 | -------------------------------- | ----------- | ---------------------------------------------- | ---------------- |
+| className                        |             | `string`                                       |                  |
 | asChild                          |             | boolean                                        | false            |
 | forceMount                       |             | boolean                                        | No default value |
 | Data Attribute                   |             | Values                                         |                  |

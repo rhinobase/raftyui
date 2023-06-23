@@ -144,6 +144,7 @@ Pass the `side` prop if you need to adjust the side of the Drawer. Values can be
 
 | Property       | Description | Type              | Default          |
 | -------------- | ----------- | ----------------- | ---------------- |
+| className      |             | `string`          |                  |
 | isUnstyled     |             | `boolean`         |                  |
 | asChild        |             | boolean           | false            |
 | forceMount     |             | boolean           | No default value |
@@ -154,6 +155,7 @@ Pass the `side` prop if you need to adjust the side of the Drawer. Values can be
 
 | Property             | Description | Type              | Default          |
 | -------------------- | ----------- | ----------------- | ---------------- |
+| className            |             | `string`          |                  |
 | isUnstyled           |             | `boolean`         | false            |
 | asChild              |             | `boolean`         | false            |
 | forceMount           |             | boolean           | No default value |
@@ -169,6 +171,7 @@ Pass the `side` prop if you need to adjust the side of the Drawer. Values can be
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
 | isUnstyled |             | `boolean` | false   |
 | asChild    |             | `boolean` | false   |
 
@@ -176,4 +179,5 @@ Pass the `side` prop if you need to adjust the side of the Drawer. Values can be
 
 | Property   | Description | Type      | Default |
 | ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
 | isUnstyled |             | `boolean` | false   |

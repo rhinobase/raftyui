@@ -179,6 +179,7 @@ Pass `isUnstyled` prop to remove all style from a particalr sub component.
 
 | Property   | Description                                    | Type                                       | Default |
 | ---------- | ---------------------------------------------- | ------------------------------------------ | ------- |
+| className  |                                                | `string`                                   |         |
 | status     | Show color of alert based on status            | `error, success, warning, info`            | info    |
 | variant    | change visual style of alert                   | `subtle, solid, left-accent or top-accent` | solid   |
 | size       | Change size of alert                           | `sm, md, lg`                               | md      |

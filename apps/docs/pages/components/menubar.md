@@ -258,3 +258,68 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   </MenubarMenu>
 </Menubar>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property      | Description                        | Type             | Default          |
+| ------------- | ---------------------------------- | ---------------- | ---------------- |
+| size          |                                    | `sm, md, lg`     | md               |
+| isBarebone    | Removes style from whole component | `boolean`        | false            |
+| asChild       |                                    | `boolean`        | false            |
+| defaultValue  |                                    | `string`         | No default value |
+| value         |                                    | `string`         | No default value |
+| onValueChange |                                    | `function`       | No default value |
+| dir           | `ltr` / `rtl`                      | No default value |
+| loop          |                                    | `boolean`        | false            |
+
+### Menu
+
+| Property | Description | Type    | Default |
+| -------- | ----------- | ------- | ------- |
+| asChild  |             | boolean | false   |
+| value    |             | string  |         |
+
+### Trigger
+
+`MenubarTrigger`composes `Button` component
+
+| Property           | Description | Type                     | Default |
+| ------------------ | ----------- | ------------------------ | ------- |
+| asChild            |             | boolean                  | false   |
+| Data Attribute     |             | Values                   |         |
+| [data-state]       |             | `open` / `closed`        |         |
+| [data-highlighted] |             | Present when highlighted |         |
+| [data-disabled]    |             | Present when disabled    |         |
+
+### Conetnt
+
+| Property             | Description | Type                                | Default          |
+| -------------------- | ----------- | ----------------------------------- | ---------------- | --- |
+| asChild              |             | boolean                             | false            |
+| loop                 |             | boolean                             | false            |
+| onCloseAutoFocus     |             | function                            | No default value |
+| onEscapeKeyDown      |             | function                            | No default value |
+| onPointerDownOutside |             | function                            | No default value |
+| onFocusOutside       |             | function                            | No default value |
+| onInteractOutside    |             | function                            | No default value |
+| forceMount           |             | boolean                             | No default value |
+| side                 |             | `top` / `right` / `bottom` /`left`  | bottom           |
+| sideOffset           |             | number                              | 0                |
+| align                |             | `start` / `center` / `end`          | center           |
+| alignOffset          |             | number                              | 0                |
+| avoidCollisions      |             | boolean                             | true             |
+| collisionBoundary    |             | Boundary                            | []               |
+| collisionPadding     |             | number                              | 0                |     |
+| arrowPadding         |             | number                              | 0                |
+| sticky               |             | `partial` / `always`                | "partial"        |
+| hideWhenDetached     |             | boolean                             | false            |
+| Data Attribute       |             | Values                              |                  |
+| [data-state]         |             | `open`                              | `closed`         |
+| [data-side]          |             | `left` / `right` / `bottom` / `top` |                  |
+| [data-align] "start" | "end"       | "center"                            |
+| CSS Variable         |
+| Description          |
