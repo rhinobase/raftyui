@@ -63,3 +63,18 @@ Pass the `isDisabled` prop to make search-field Disabled.
 ```jsx
 <SearchField isDisabled />
 ```
+
+### API
+
+---
+
+### Root
+
+| Property   | Description | Type                          | Default   |
+| ---------- | ----------- | ----------------------------- | --------- |
+| className  |             | `string`                      |           |
+| variant    |             | `solid` \ `outline` \ `ghost` | `outline` |
+| size       |             | `sm` \ `md` \ `lg`            | `md`      |
+| isDisabled |             | `boolean`                     | `false`   |
+| isRequired |             | `boolean`                     | `false`   |
+| isReadOnly |             | `boolean`                     | `false`   |
