@@ -181,7 +181,6 @@ Pass `isBarebone` prop to remove all style in card
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
 | className  |                              | `string`  |         |
-| ---------- | ---------------------------- | --------- | ------- |
 | isUnstyled | Removes Style from component | `boolean` | false   |
 
 ### Footer

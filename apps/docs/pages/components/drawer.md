@@ -131,41 +131,41 @@ Pass the `side` prop if you need to adjust the side of the Drawer. Values can be
 
 ### Root
 
-| Property     | Description | Type           | Default          |
-| ------------ | ----------- | -------------- | ---------------- |
-| size         |             | `sm, md, lg`   | md               |
-| side         |             | `left`/`right` | right            |
-| defaultOpen  |             | boolean        | No default value |
-| open         |             | boolean        | No default value |
-| onOpenChange |             | function       | No default value |
-| modal        |             | boolean        | true             |
+| Property     | Description | Type           | Default |
+| ------------ | ----------- | -------------- | ------- |
+| size         |             | `sm, md, lg`   | `md`    |
+| side         |             | `left`/`right` | `right` |
+| defaultOpen  |             | boolean        | -       |
+| open         |             | boolean        | -       |
+| onOpenChange |             | function       | -       |
+| modal        |             | boolean        | true    |
 
 ### Overlay
 
-| Property       | Description | Type              | Default          |
-| -------------- | ----------- | ----------------- | ---------------- |
-| className      |             | `string`          |                  |
-| isUnstyled     |             | `boolean`         |                  |
-| asChild        |             | boolean           | false            |
-| forceMount     |             | boolean           | No default value |
-| Data Attribute |             | Values            |                  |
-| [data-state]   |             | "open" / "closed" |                  |
+| Property       | Description | Type              | Default |
+| -------------- | ----------- | ----------------- | ------- |
+| className      |             | `string`          |         |
+| isUnstyled     |             | `boolean`         |         |
+| asChild        |             | boolean           | `false` |
+| forceMount     |             | boolean           | -       |
+| Data Attribute |             | Values            |         |
+| [data-state]   |             | "open" / "closed" |         |
 
 ### Content
 
-| Property             | Description | Type              | Default          |
-| -------------------- | ----------- | ----------------- | ---------------- |
-| className            |             | `string`          |                  |
-| isUnstyled           |             | `boolean`         | false            |
-| asChild              |             | `boolean`         | false            |
-| forceMount           |             | boolean           | No default value |
-| onOpenAutoFocus      |             | function          | No default value |
-| onCloseAutoFocus     |             | function          | No default value |
-| onEscapeKeyDown      |             | function          | No default value |
-| onPointerDownOutside |             | function          | No default value |
-| onInteractOutside    |             | function          | No default value |
-| Data Attribute       |             | Values            |                  |
-| [data-state]         |             | `open` / `closed` |                  |
+| Property             | Description | Type              | Default |
+| -------------------- | ----------- | ----------------- | ------- |
+| className            |             | `string`          |         |
+| isUnstyled           |             | `boolean`         | `false` |
+| asChild              |             | `boolean`         | `false` |
+| forceMount           |             | boolean           | -       |
+| onOpenAutoFocus      |             | function          | -       |
+| onCloseAutoFocus     |             | function          | -       |
+| onEscapeKeyDown      |             | function          | -       |
+| onPointerDownOutside |             | function          | -       |
+| onInteractOutside    |             | function          | -       |
+| Data Attribute       |             | Values            |         |
+| [data-state]         |             | `open` / `closed` |         |
 
 ### Close
 

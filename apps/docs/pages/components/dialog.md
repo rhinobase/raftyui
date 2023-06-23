@@ -119,14 +119,14 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 ### Root
 
-| Property     | Description                        | Type         | Default          |
-| ------------ | ---------------------------------- | ------------ | ---------------- |
-| size         |                                    | `sm, md, lg` | md               |
-| isBarebone   | Removes style from whole component | `boolean`    | false            |
-| defaultOpen  |                                    | boolean      | No default value |
-| open         |                                    | boolean      | No default value |
-| onOpenChange |                                    | function     | No default value |
-| modal        |                                    | boolean      | true             |
+| Property     | Description                        | Type         | Default |
+| ------------ | ---------------------------------- | ------------ | ------- |
+| size         |                                    | `sm, md, lg` | md      |
+| isBarebone   | Removes style from whole component | `boolean`    | false   |
+| defaultOpen  |                                    | boolean      | -       |
+| open         |                                    | boolean      | -       |
+| onOpenChange |                                    | function     | -       |
+| modal        |                                    | boolean      | true    |
 
 ### Trigger
 
@@ -141,30 +141,30 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 ### Overlay
 
-| Property       | Description | Type              | Default          |
-| -------------- | ----------- | ----------------- | ---------------- |
-| className      |             | `string`          |                  |
-| isUnstyled     |             | `boolean`         |                  |
-| asChild        |             | boolean           | false            |
-| forceMount     |             | boolean           | No default value |
-| Data Attribute |             | Values            |                  |
-| [data-state]   |             | "open" / "closed" |                  |
+| Property       | Description | Type              | Default |
+| -------------- | ----------- | ----------------- | ------- |
+| className      |             | `string`          |         |
+| isUnstyled     |             | `boolean`         |         |
+| asChild        |             | boolean           | false   |
+| forceMount     |             | boolean           | -       |
+| Data Attribute |             | Values            |         |
+| [data-state]   |             | "open" / "closed" |         |
 
 ### Content
 
-| Property             | Description | Type              | Default          |
-| -------------------- | ----------- | ----------------- | ---------------- |
-| className            |             | `string`          |                  |
-| isUnstyled           |             | `boolean`         | false            |
-| asChild              |             | `boolean`         | false            |
-| forceMount           |             | boolean           | No default value |
-| onOpenAutoFocus      |             | function          | No default value |
-| onCloseAutoFocus     |             | function          | No default value |
-| onEscapeKeyDown      |             | function          | No default value |
-| onPointerDownOutside |             | function          | No default value |
-| onInteractOutside    |             | function          | No default value |
-| Data Attribute       |             | Values            |                  |
-| [data-state]         |             | `open` / `closed` |                  |
+| Property             | Description | Type              | Default |
+| -------------------- | ----------- | ----------------- | ------- |
+| className            |             | `string`          |         |
+| isUnstyled           |             | `boolean`         | false   |
+| asChild              |             | `boolean`         | false   |
+| forceMount           |             | boolean           | -       |
+| onOpenAutoFocus      |             | function          | -       |
+| onCloseAutoFocus     |             | function          | -       |
+| onEscapeKeyDown      |             | function          | -       |
+| onPointerDownOutside |             | function          | -       |
+| onInteractOutside    |             | function          | -       |
+| Data Attribute       |             | Values            |         |
+| [data-state]         |             | `open` / `closed` |         |
 
 ### Close
 

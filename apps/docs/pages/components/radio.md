@@ -122,3 +122,24 @@ Pass the `isDisabled` prop if you need to disable the radio-group.
   </RadioGroup>
 </div>
 ```
+
+### API
+
+### Root
+
+| Property     | Description | Type                                    | Default |
+| ------------ | ----------- | --------------------------------------- | ------- |
+| defaultValue |             | `string` / `undefined`                  |         |
+| isDisabled   |             | `boolean` / `undefined`                 |         |
+| isReadOnly   |             | `boolean` / `undefined`                 |         |
+| isRequired   |             | `boolean` / `undefined`                 |         |
+| name         |             | `string` / `undefined`                  |         |
+| onChange     |             | ((value: string) => void) / `undefined` |         |
+| value        |             | `string` / `undefined`                  |         |
+
+### Radio
+
+| Property   | Description | Type                    | Default |
+| ---------- | ----------- | ----------------------- | ------- |
+| value\*    |             | `string`                |         |
+| isDisabled |             | `boolean` / `undefined` |         |

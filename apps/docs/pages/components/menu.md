@@ -138,15 +138,17 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Root
 
-| Property      | Description | Type         | Default          |
-| ------------- | ----------- | ------------ | ---------------- |
-| className     |             | `string`     |                  |
-| asChild       |             | `boolean`    | false            |
-| defaultValue  |             | `string`     | No default value |
-| value         |             | `string`     | No default value |
-| onValueChange |             | `function`   | No default value |
-| dir           |             | `ltr`/ `rtl` | No default value |
-| loop          |             | `boolean`    | false            |
+| Property      | Description | Type             | Default          |
+| ------------- | ----------- | ---------------- | ---------------- |
+| className     |             | `string`         |                  |
+| isBarebone    |             | `boolean`        | false            |
+| asChild       |             | `boolean`        | false            |
+| defaultValue  |             | `string`         | No default value |
+| value         |             | `string`         | No default value |
+| onValueChange |             | `function`       | No default value |
+| dir           |             | `ltr`/ `rtl`     | No default value |
+| loop          |             | `boolean`        | false            |
+| size          |             | `sm`\ `md`\ `lg` | `md`             |
 
 ### Menu
 
@@ -157,20 +159,24 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | asChild    |             | `boolean` | false   |
 | value      |             | `string`  |         |
 
-### Triger
+### Trigger
 
-| Property           | Description | Type                       | Default |
-| ------------------ | ----------- | -------------------------- | ------- |
-| className          |             | `string`                   |         |
-| isActive           |             | `bollean`                  | false   |
-| itemScope          |             | `boolean`                  | false   |
-| isLoading          |             | `boolean`                  | false   |
-| isUnstyled         |             | `boolean`                  | false   |
-| isDisabled         |             | `boolean`                  | false   |
-| asChild            |             | `boolean`                  | false   |
-| [data-state]       |             | `open` / `closed`          |         |
-| [data-highlighted] |             | `Present when highlighted` |         |
-| [data-disabled]    |             | `Present when disabled`    |         |
+| Property           | Description | Type                                        | Default |
+| ------------------ | ----------- | ------------------------------------------- | ------- |
+| className          |             | `string`                                    |         |
+| isActive           |             | `bollean`                                   | false   |
+| itemScope          |             | `boolean`                                   | false   |
+| isLoading          |             | `boolean`                                   | false   |
+| isUnstyled         |             | `boolean`                                   | false   |
+| isDisabled         |             | `boolean`                                   | false   |
+| asChild            |             | `boolean`                                   | false   |
+| [data-state]       |             | `open` / `closed`                           |         |
+| [data-highlighted] |             | `Present when highlighted`                  |         |
+| [data-disabled]    |             | `Present when disabled`                     |         |
+| size               |             | `sm`/ `md`/ `lg` / `icon` / `fab`           | `md`    |
+| variant            |             | `solid` / `outline` / `ghost` / `undefined` |         |
+| leftIcon           |             | `JSX.Element` / `undefined `                |         |
+| RightIcon          |             | `JSX.Element` / `undefined `                |         |
 
 ### Content
 
@@ -231,16 +237,18 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Label
 
-| Property  | Description | Type      | Default |
-| --------- | ----------- | --------- | ------- |
-| className |             | `string`  |         |
-| asChild   |             | `boolean` | false   |
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| isUnstyled |             | `boolean` | false   |
+| className  |             | `string`  |         |
+| asChild    |             | `boolean` | false   |
 
 ### CheckboxItem
 
 | Property           | Description | Type                        | Default          |
 | ------------------ | ----------- | --------------------------- | ---------------- |
 | className          |             | `string`                    |                  |
+| isUnstyled         |             | `boolean`                   | false            |
 | asChild            |             | `boolean`                   | false            |
 | checked            |             | `boolean` / `indeterminate` | No default value |
 | onCheckedChange    |             | `function`                  | No default value |
@@ -262,14 +270,15 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### RadioItem
 
-| Property  | Description | Type       | Default          |
-| --------- | ----------- | ---------- | ---------------- |
-| className |             | `string`   |                  |
-| asChild   |             | `boolean`  | false            |
-| value     |             | `string`   | No default value |
-| disabled  |             | `boolean`  | No default value |
-| onSelect  |             | `function` | No default value |
-| textValue |             | `string`   |                  |
+| Property   | Description | Type       | Default          |
+| ---------- | ----------- | ---------- | ---------------- |
+| className  |             | `string`   |                  |
+| isUnstyled |             | `boolean`  | false            |
+| asChild    |             | `boolean`  | false            |
+| value      |             | `string`   | No default value |
+| disabled   |             | `boolean`  | No default value |
+| onSelect   |             | `function` | No default value |
+| textValue  |             | `string`   |                  |
 
 ### Separator
 
@@ -287,7 +296,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | open         |             | `boolean`  | No default value |
 | onOpenChange |             | `function` |                  |
 
-### SubTriger
+### SubTrigger
 
 | Property           | Description | Type                     | Default          |
 | ------------------ | ----------- | ------------------------ | ---------------- |

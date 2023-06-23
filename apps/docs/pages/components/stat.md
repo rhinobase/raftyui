@@ -62,3 +62,27 @@ Pass the `type` prop if you need to increase and decrease the stat type. Values 
 | --------- | ----------- | ---------------------------------- | -------- |
 | className |             | `string`                           |          |
 | type      |             | `increase` \ `decrease` \ `normal` | `normal` |
+
+### Label
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |
+
+### Value
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |
+
+### HelpText
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |
+
+### Icon
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |

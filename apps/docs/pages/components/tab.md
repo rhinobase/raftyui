@@ -179,10 +179,14 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | defaultValue       |             | `string`                  |                    |
 | value              |             | `string`                  | `No default value` |
 | onValueChange      |             | `function`                | `No default value` |
-| orientation        |             | `enum`                    | `horizontal`       |
+| orientation        |             | `horizontal`/ `vertical`  | `horizontal`       |
 | dir                |             | `enum`                    |                    |
 | activationMode     |             | `enum`                    | `automatic`        |
 | [data-orientation] |             | `vertical` \ `horizontal` |                    |
+| isBarebone         |             | `boolean`                 | `false`            |
+| isUnStyled         |             | `boolean`                 | `false`            |
+| size               |             | `sm` / `md` / `lg`        | `md`               |
+| variant            |             | `line` \ `enclosed`       |                    |
 
 ### List
 
@@ -192,6 +196,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | asChild            |             | `boolean`                 | `false` |
 | loop               |             | `boolean`                 | `true`  |
 | [data-orientation] |             | `vertical` \ `horizontal` |         |
+| isUnStyled         |             | `boolean`                 | `false` |
 
 ### Trigger
 
@@ -204,6 +209,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | [data-state]       |             | `active` \ `inactive`      |         |
 | [data-disabled]    |             | `Present when disabled   ` |         |
 | [data-orientation] |             | `vertical` \ `horizontal`  |         |
+| isUnStyled         |             | `boolean`                  | `false` |
 
 ### Content
 
@@ -215,3 +221,4 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 | forceMount         |             | `boolean`                 |         |
 | [data-state]       |             | `active` \ `inactive`     |         |
 | [data-orientation] |             | `vertical` \ `horizontal` |         |
+| isUnStyled         |             | `boolean`                 | `false` |

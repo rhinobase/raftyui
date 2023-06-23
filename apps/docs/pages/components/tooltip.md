@@ -110,6 +110,7 @@ Using the `align` prop you can adjust the alignment of tooltip. Vales can be `ce
 
 | Property      | Description | Type                                  | Default  |
 | ------------- | ----------- | ------------------------------------- | -------- |
+| className     |             | `string`                              |          |
 | children      |             | React.ReactNode                       | -        |
 | content       |             | React.ReactNode                       | -        |
 | isArrow       |             | boolean                               | true     |

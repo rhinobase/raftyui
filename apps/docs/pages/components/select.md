@@ -96,11 +96,15 @@ Pass the `variant` prop if you need to adjust the visual style of the select. Va
 
 ### Root
 
-| Property           | Description | Type                                | Default   |
-| ------------------ | ----------- | ----------------------------------- | --------- |
-| className          |             | `string`                            |           |
-| size               |             | `sm` \ `md` \ `lg`                  | `md`      |
-| variant            |             | `solid` \ `outline` \ `ghost`       | `outline` |
-| onSelectionChange  |             | `((key: Key) => any)` \ `undefined` |           |
-| defaultSelectedKey |             | `Key`\ `undefined`                  |           |
-| selectedKey        |             | `Key` \ `null` \ `undefined`        |           |
+| Property           | Description | Type                                        | Default   |
+| ------------------ | ----------- | ------------------------------------------- | --------- |
+| className          |             | `string`                                    |           |
+| size               |             | `sm` \ `md` \ `lg`                          | `md`      |
+| variant            |             | `solid` \ `outline` \ `ghost`               | `outline` |
+| onSelectionChange  |             | `((key: Key) => any)` \ `undefined`         |           |
+| defaultSelectedKey |             | `Key`\ `undefined`                          |           |
+| selectedKey        |             | `Key` \ `null` \ `undefined`                |           |
+| placeholder        |             | `string`                                    |           |
+| isDisabled         |             | `boolean` \ `undefined`                     |           |
+| isRequired         |             | `boolean` \ `undefined`                     |           |
+| onOpenChange       |             | `((isOpen: boolean) => void)` \ `undefined` |           |

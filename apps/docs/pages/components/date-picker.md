@@ -47,3 +47,14 @@ Use the `variant` prop to change the visual style of the DatePicker. You can set
 ---
 
 ### Root
+
+| Property     | Description | Type                                     | Default |
+| ------------ | ----------- | ---------------------------------------- | ------- |
+| variant      |             | `solid` / `outline` / `ghost`;           |         |
+| size         |             | `sm` / `md` / `lg`;                      |         |
+| onChange     |             | ((value: DateValue) => void) / undefined |         |
+| defaultValue |             | DateValue / null / undefined             |         |
+| value        |             | DateValue / null / undefined             |         |
+| isRequired   |             | `boolean`                                | false   |
+| isDisabled   |             | `boolean`                                | false   |
+| isReadOnly   |             | `boolean`                                | false   |

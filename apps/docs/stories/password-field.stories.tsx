@@ -13,7 +13,7 @@ const meta: Meta<typeof PasswordField> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["solid", "outline", "ghost", "unstyled"],
+      options: ["solid", "outline", "ghost"],
     },
     size: {
       control: "select",

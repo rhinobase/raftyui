@@ -103,6 +103,6 @@ This property can also be passed in child/ sub component
 | isDisabled      |             | `boolean` | false   |
 | defaultSelected |             | `boolean` | false   |
 | isIndeterminate |             | `boolean` | false   |
-| isSlected       |             | `boolean` | false   |
+| isSelected      |             | `boolean` | false   |
 | isReadOnly      |             | `boolean` | false   |
 | isRequired      |             | `boolean` | false   |

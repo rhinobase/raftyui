@@ -55,9 +55,10 @@ Pass `visible` prop to set visibility of toast
 
 ### Root
 
-| Property | Description | Type                                     | Default |
-| -------- | ----------- | ---------------------------------------- | ------- |
-| title    |             | string                                   | -       |
-| message? |             | string                                   | -       |
-| severity |             | `error` / `warning` / `info` / `success` | -       |
-| visible? |             | boolean                                  | -       |
+| Property  | Description | Type                                     | Default |
+| --------- | ----------- | ---------------------------------------- | ------- |
+| className |             | `string`                                 |         |
+| title     |             | string                                   |         |
+| message?  |             | string                                   |         |
+| severity  |             | `error` / `warning` / `info` / `success` |         |
+| visible?  |             | boolean                                  |         |

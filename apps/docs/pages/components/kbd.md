@@ -19,3 +19,13 @@ import { Kbd } from "@rafty/ui";
 ```jsx
 <Kbd>shift + K</Kbd>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` |         |

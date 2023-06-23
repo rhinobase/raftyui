@@ -70,11 +70,16 @@ Pass the `isDisabled` prop to make search-field Disabled.
 
 ### Root
 
-| Property   | Description | Type                          | Default   |
-| ---------- | ----------- | ----------------------------- | --------- |
-| className  |             | `string`                      |           |
-| variant    |             | `solid` \ `outline` \ `ghost` | `outline` |
-| size       |             | `sm` \ `md` \ `lg`            | `md`      |
-| isDisabled |             | `boolean`                     | `false`   |
-| isRequired |             | `boolean`                     | `false`   |
-| isReadOnly |             | `boolean`                     | `false`   |
+| Property     | Description | Type                                                                                     | Default   |
+| ------------ | ----------- | ---------------------------------------------------------------------------------------- | --------- |
+| className    |             | `string`                                                                                 |           |
+| name         |             | `string` \ `undefined `                                                                  |           |
+| value        |             | `string` \ `undefined `                                                                  |           |
+| variant      |             | `solid` \ `outline` \ `ghost`                                                            | `outline` |
+| size         |             | `sm` \ `md` \ `lg`                                                                       | `md`      |
+| defaultValue |             | `string` \ `undefined`                                                                   | `md`      |
+| isDisabled   |             | `boolean`                                                                                | `false`   |
+| isRequired   |             | `boolean`                                                                                | `false`   |
+| isReadOnly   |             | `boolean`                                                                                | `false`   |
+| onChange     |             | ((value: string) => void) / undefined                                                    |           |
+| inputMode    |             | `search` \ `text` \ `none` \ `url` \ `tel` \ `email` \ `numeric` \ `decimal` \ undefined |           |
