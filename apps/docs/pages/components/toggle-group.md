@@ -86,3 +86,37 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   <ToggleGroupItem value="3">3</ToggleGroupItem>
 </ToggleGroup>
 ```
+
+### Root
+
+| Property           | Description | Type                      | Default   |
+| ------------------ | ----------- | ------------------------- | --------- |
+| asChild            |             | boolean                   | false     |
+| type\*             |             | enum                      | -         |
+| value              |             | string                    | -         |
+| defaultValue       |             | string                    | -         |
+| onValueChange      |             | function                  | -         |
+| value              |             | string[]                  | []        |
+| defaultValue       |             | string[]                  | []        |
+| onValueChange      |             | function                  | -         |
+| disabled           |             | boolean                   | false     |
+| rovingFocus        |             | boolean                   | true      |
+| orientation        |             | enum                      | undefined |
+| dir                |             | enum                      | -         |
+| loop               |             | boolean                   | true      |
+| [data-orientation] |             | `vertical` / `horizontal` | true      |
+| size               |             | `sm` / `md` / `lg`        | `md`      |
+| isBarebone         |             | boolean                   | false     |
+| isUnstyled         |             | boolean                   | false     |
+
+### Item
+
+| Property           | Description | Type                      | Default |
+| ------------------ | ----------- | ------------------------- | ------- |
+| asChild            |             | boolean                   | false   |
+| value\*            |             | string                    | -       |
+| disabled           |             | boolean                   | -       |
+| [data-state]       |             | `on` / `off`              |         |
+| [data-disabled]    |             | Present when disabled     |         |
+| [data-orientation] |             | `vertical` / `horizontal` |         |
+| isUnstyled         |             | boolean                   | false   |

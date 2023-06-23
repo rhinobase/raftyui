@@ -101,3 +101,20 @@ Using the `align` prop you can adjust the alignment of tooltip. Vales can be `ce
   </Button>
 </Tooltip>
 ```
+
+### Root
+
+| Property      | Description | Type                                  | Default  |
+| ------------- | ----------- | ------------------------------------- | -------- |
+| children      |             | React.ReactNode                       | -        |
+| content       |             | React.ReactNode                       | -        |
+| isArrow       |             | boolean                               | true     |
+| delayDuration |             | number                                | 50       |
+| hasAnimation  |             | boolean                               | true     |
+| open          |             | boolean                               | -        |
+| defaultOpen   |             | boolean                               | -        |
+| side          |             | `top` / `right` / `bottom` / `left" ` | `top`    |
+| align         |             | `start` / `center` / `end`            | `center` |
+| sideOffset    |             | number                                | 10       |
+| alignOffset   |             | number                                | -        |
+| onOpenChange  |             | (open: boolean) => void               | -        |
