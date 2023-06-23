@@ -54,7 +54,7 @@ Using the `type` prop you can set the type of toggle-group. Values can be `singl
 Using the `defaultValue` prop you can set the default value of toggle-group.
 
 ```jsx
-<ToggleGroup type="single" defaultValue="1">
+<ToggleGroup type="single" defaultValue="3">
   <ToggleGroupItem value="1">1</ToggleGroupItem>
   <ToggleGroupItem value="2">2</ToggleGroupItem>
   <ToggleGroupItem value="3">3</ToggleGroupItem>
@@ -63,7 +63,7 @@ Using the `defaultValue` prop you can set the default value of toggle-group.
 
 ## Barebone
 
-Pass `isBarebone` prop to remove all style in toggle-group.
+Pass `isBarebone` prop to remove all style in toggle-group and its sub components.
 
 ```jsx
 <ToggleGroup type="single" defaultValue="1" isBarebone>
@@ -75,7 +75,7 @@ Pass `isBarebone` prop to remove all style in toggle-group.
 
 ## UnStyled
 
-Pass ` isUnstyled` prop to remove style from a particulart sub component.
+Pass `isUnstyled` prop to remove style from a particular sub component.
 
 ```jsx
 <ToggleGroup type="single" defaultValue="1">
