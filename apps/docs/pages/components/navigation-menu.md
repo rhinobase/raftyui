@@ -138,40 +138,40 @@ Pass `isBarebone` prop to remove all style in Navigation Menu.
 
 ### Root
 
-| Property           | Description | Type                      | Default      |
-| ------------------ | ----------- | ------------------------- | ------------ |
-| className          |             | `string`                  | -            |
-| isBarebone         |             | `boolean`                 | -            |
-| isUnstyled         |             | `boolean`                 | false        |
-| defaultValue       |             | `string`                  | -            |
-| value              |             | `string`                  | -            |
-| onValueChange      |             | `function`                | -            |
-| delayDuration      |             | `number`                  | 200          |
-| skipDelayDuration  |             | `number`                  | 300          |
-| dir                |             | `ltr` / `rtl`             | -            |
-| orientation        |             | `ltr` / `rtl`             | "horizontal" |
-| [data-orientation] |             | `vertical` / `horizontal` |              |
+| Property           | Description                        | Type                      | Default      |
+| ------------------ | ---------------------------------- | ------------------------- | ------------ |
+| className          |                                    | `string`                  | -            |
+| isBarebone         | Removes style from whole component | `boolean`                 | -            |
+| isUnstyled         | Removes style from component       | `boolean`                 | false        |
+| defaultValue       |                                    | `string`                  | -            |
+| value              |                                    | `string`                  | -            |
+| onValueChange      |                                    | `function`                | -            |
+| delayDuration      |                                    | `number`                  | 200          |
+| skipDelayDuration  |                                    | `number`                  | 300          |
+| dir                |                                    | `ltr` / `rtl`             | -            |
+| orientation        |                                    | `ltr` / `rtl`             | "horizontal" |
+| [data-orientation] |                                    | `vertical` / `horizontal` |              |
 
 ### Sub
 
-| Property           | Description | Type                      | Default      |
-| ------------------ | ----------- | ------------------------- | ------------ |
-| className          |             | `string`                  | -            |
-| isBarebone         |             | `boolean`                 | false        |
-| defaultValue       |             | `string`                  | -            |
-| value              |             | `string`                  | -            |
-| onValueChange      |             | `function`                | -            |
-| orientation        |             | `horizontal` / `vertical` | "horizontal" |
-| [data-orientation] |             | `vertical` / `horizontal` |              |
+| Property           | Description                  | Type                      | Default      |
+| ------------------ | ---------------------------- | ------------------------- | ------------ |
+| className          |                              | `string`                  | -            |
+| isBarebone         | Removes style from component | `boolean`                 | false        |
+| defaultValue       |                              | `string`                  | -            |
+| value              |                              | `string`                  | -            |
+| onValueChange      |                              | `function`                | -            |
+| orientation        |                              | `horizontal` / `vertical` | "horizontal" |
+| [data-orientation] |                              | `vertical` / `horizontal` |              |
 
 ### List
 
-| Property           | Description | Type                      | Default |
-| ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | `string`                  |         |
-| isUnstyled         |             | `boolean`                 | false   |
-| asChild            |             | `boolean`                 | false   |
-| [data-orientation] |             | `vertical` / `horizontal` |         |
+| Property           | Description                  | Type                      | Default |
+| ------------------ | ---------------------------- | ------------------------- | ------- |
+| className          |                              | `string`                  |         |
+| isUnstyled         | Removes style from component | `boolean`                 | false   |
+| asChild            |                              | `boolean`                 | false   |
+| [data-orientation] |                              | `vertical` / `horizontal` |         |
 
 ### Item
 
@@ -183,38 +183,38 @@ Pass `isBarebone` prop to remove all style in Navigation Menu.
 
 ### Trigger
 
-| Property        | Description | Type                  | Default |
-| --------------- | ----------- | --------------------- | ------- |
-| className       |             | `string`              |         |
-| isUnstyled      |             | `boolean`             | false   |
-| asChild         |             | `boolean`             | false   |
-| [data-state]    |             | `open` / `closed`     |         |
-| [data-disabled] |             | Present when disabled |         |
+| Property        | Description                  | Type                  | Default |
+| --------------- | ---------------------------- | --------------------- | ------- |
+| className       |                              | `string`              |         |
+| isUnstyled      | Removes style from component | `boolean`             | false   |
+| asChild         |                              | `boolean`             | false   |
+| [data-state]    |                              | `open` / `closed`     |         |
+| [data-disabled] |                              | Present when disabled |         |
 
 ### Content
 
-| Property                    | Description | Type                                              | Default |
-| --------------------------- | ----------- | ------------------------------------------------- | ------- |
-| className                   |             | `string`                                          |         |
-| isUnstyled                  |             | `boolean`                                         | false   |
-| asChild                     |             | `boolean`                                         | false   |
-| disableOutsidePointerEvents |             | `boolean`                                         | false   |
-| onEscapeKeyDown             |             | `function`                                        | -       |
-| onPointerDownOutside        |             | `function`                                        | -       |
-| onFocusOutside              |             | `function`                                        | -       |
-| onInteractOutside           |             | `function`                                        | -       |
-| forceMount                  |             | `boolean`                                         | -       |
-| [data-state]                |             | `open` / `closed`                                 |         |
-| [data-motion]               |             | `to-start` / `to-end `/ `from-start` / `from-end` |         |
-| [data-orientation]          |             | `vertical` / `horizontal`                         |         |
+| Property                    | Description                  | Type                                              | Default |
+| --------------------------- | ---------------------------- | ------------------------------------------------- | ------- |
+| className                   |                              | `string`                                          |         |
+| isUnstyled                  | Removes style from component | `boolean`                                         | false   |
+| asChild                     |                              | `boolean`                                         | false   |
+| disableOutsidePointerEvents |                              | `boolean`                                         | false   |
+| onEscapeKeyDown             |                              | `function`                                        | -       |
+| onPointerDownOutside        |                              | `function`                                        | -       |
+| onFocusOutside              |                              | `function`                                        | -       |
+| onInteractOutside           |                              | `function`                                        | -       |
+| forceMount                  |                              | `boolean`                                         | -       |
+| [data-state]                |                              | `open` / `closed`                                 |         |
+| [data-motion]               |                              | `to-start` / `to-end `/ `from-start` / `from-end` |         |
+| [data-orientation]          |                              | `vertical` / `horizontal`                         |         |
 
 ### Link
 
-| Property      | Description | Type                | Default |
-| ------------- | ----------- | ------------------- | ------- |
-| className     |             | `string`            |         |
-| isUnstyled    |             | `boolean`           | false   |
-| asChild       |             | `boolean`           | false   |
-| active        |             | `boolean`           | false   |
-| onSelect      |             | `function`          | -       |
-| [data-active] |             | Present when active |         |
+| Property      | Description                  | Type                | Default |
+| ------------- | ---------------------------- | ------------------- | ------- |
+| className     |                              | `string`            |         |
+| isUnstyled    | Removes style from component | `boolean`           | false   |
+| asChild       |                              | `boolean`           | false   |
+| active        |                              | `boolean`           | false   |
+| onSelect      |                              | `function`          | -       |
+| [data-active] |                              | Present when active |         |

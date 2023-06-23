@@ -238,12 +238,12 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Root
 
-| Property   | Description | Type                    | Default  |
-| ---------- | ----------- | ----------------------- | -------- |
-| className  |             | `string`                |          |
-| size:      |             | `sm` \ `md` \ \ `lg` \  | `md`     |
-| variant:   |             | `simple` \ `striped`    | `simple` |
-| isBarebone |             | `boolean`               |          |
+| Property   | Description                        | Type                    | Default  |
+| ---------- | ---------------------------------- | ----------------------- | -------- |
+| className  |                                    | `string`                |          |
+| size:      |                                    | `sm` \ `md` \ \ `lg` \  | `md`     |
+| variant:   |                                    | `simple` \ `striped`    | `simple` |
+| isBarebone | Removes style from whole component | `boolean`               |          |
 
 ### Head
 

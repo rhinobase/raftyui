@@ -172,53 +172,53 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Root
 
-| Properties         | Description | Type                      | Default            |
-| ------------------ | ----------- | ------------------------- | ------------------ |
-| className          |             | `string`                  |                    |
-| asChild            |             | `boolean`                 | `false`            |
-| defaultValue       |             | `string`                  |                    |
-| value              |             | `string`                  | `No default value` |
-| onValueChange      |             | `function`                | `No default value` |
-| orientation        |             | `horizontal`/ `vertical`  | `horizontal`       |
-| dir                |             | `enum`                    |                    |
-| activationMode     |             | `enum`                    | `automatic`        |
-| [data-orientation] |             | `vertical` \ `horizontal` |                    |
-| isBarebone         |             | `boolean`                 | `false`            |
-| isUnStyled         |             | `boolean`                 | `false`            |
-| size               |             | `sm` / `md` / `lg`        | `md`               |
-| variant            |             | `line` \ `enclosed`       |                    |
+| Properties         | Description                        | Type                      | Default            |
+| ------------------ | ---------------------------------- | ------------------------- | ------------------ |
+| className          |                                    | `string`                  |                    |
+| isBarebone         | Removes style from whole component | `boolean`                 | `false`            |
+| isUnStyled         | Removes style from component       | `boolean`                 | `false`            |
+| asChild            |                                    | `boolean`                 | `false`            |
+| defaultValue       |                                    | `string`                  |                    |
+| value              |                                    | `string`                  | `No default value` |
+| onValueChange      |                                    | `function`                | `No default value` |
+| orientation        |                                    | `horizontal`/ `vertical`  | `horizontal`       |
+| dir                |                                    | `enum`                    |                    |
+| activationMode     |                                    | `enum`                    | `automatic`        |
+| [data-orientation] |                                    | `vertical` \ `horizontal` |                    |
+| size               |                                    | `sm` / `md` / `lg`        | `md`               |
+| variant            |                                    | `line` \ `enclosed`       |                    |
 
 ### List
 
-| Properties         | Description | Type                      | Default |
-| ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | `string`                  |         |
-| asChild            |             | `boolean`                 | `false` |
-| loop               |             | `boolean`                 | `true`  |
-| [data-orientation] |             | `vertical` \ `horizontal` |         |
-| isUnStyled         |             | `boolean`                 | `false` |
+| Properties         | Description                  | Type                      | Default |
+| ------------------ | ---------------------------- | ------------------------- | ------- |
+| className          |                              | `string`                  |         |
+| asChild            |                              | `boolean`                 | `false` |
+| loop               |                              | `boolean`                 | `true`  |
+| [data-orientation] |                              | `vertical` \ `horizontal` |         |
+| isUnStyled         | Removes style from component | `boolean`                 | `false` |
 
 ### Trigger
 
-| Properties         | Description | Type                       | Default |
-| ------------------ | ----------- | -------------------------- | ------- |
-| className          |             | `string`                   |         |
-| asChild            |             | `boolean`                  | `false` |
-| value\*            |             | `string`                   |         |
-| disabled           |             | `boolean`                  | `false` |
-| [data-state]       |             | `active` \ `inactive`      |         |
-| [data-disabled]    |             | `Present when disabled   ` |         |
-| [data-orientation] |             | `vertical` \ `horizontal`  |         |
-| isUnStyled         |             | `boolean`                  | `false` |
+| Properties         | Description                  | Type                       | Default |
+| ------------------ | ---------------------------- | -------------------------- | ------- |
+| className          |                              | `string`                   |         |
+| asChild            |                              | `boolean`                  | `false` |
+| value\*            |                              | `string`                   |         |
+| disabled           |                              | `boolean`                  | `false` |
+| [data-state]       |                              | `active` \ `inactive`      |         |
+| [data-disabled]    |                              | `Present when disabled   ` |         |
+| [data-orientation] |                              | `vertical` \ `horizontal`  |         |
+| isUnStyled         | Removes style from component | `boolean`                  | `false` |
 
 ### Content
 
-| Properties         | Description | Type                      | Default |
-| ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | `string`                  |         |
-| asChild            |             | `boolean`                 | `false` |
-| value\*            |             | `string `                 |         |
-| forceMount         |             | `boolean`                 |         |
-| [data-state]       |             | `active` \ `inactive`     |         |
-| [data-orientation] |             | `vertical` \ `horizontal` |         |
-| isUnStyled         |             | `boolean`                 | `false` |
+| Properties         | Description                  | Type                      | Default |
+| ------------------ | ---------------------------- | ------------------------- | ------- |
+| className          |                              | `string`                  |         |
+| asChild            |                              | `boolean`                 | `false` |
+| value\*            |                              | `string `                 |         |
+| forceMount         |                              | `boolean`                 |         |
+| [data-state]       |                              | `active` \ `inactive`     |         |
+| [data-orientation] |                              | `vertical` \ `horizontal` |         |
+| isUnStyled         | Removes style from component | `boolean`                 | `false` |
