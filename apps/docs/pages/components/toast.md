@@ -16,9 +16,9 @@ import { Toast } from "@rafty/ui";
 
 ## Usage
 
-The toast will close itself when the close button is clicked, or after a timeout.
+The toast will close itself after a timeout.
 
-Toasts can be configured to appear at either the top or the bottom of an application window, and it is possible to have more than one toast onscreen at a time.
+Toasts by default appears at the top of an application window, and it is possible to have more than one toast onscreen at a time.
 
 ```jsx
 <Toast title="Success Banner" severity="success" />
