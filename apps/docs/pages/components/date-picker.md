@@ -41,3 +41,9 @@ Use the `variant` prop to change the visual style of the DatePicker. You can set
 <DatePicker variant="ghost" />
 <DatePicker variant="outline" />
 ```
+
+### API
+
+---
+
+### Root

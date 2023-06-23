@@ -112,3 +112,73 @@ Pass `isBarebone` prop to remove all style in dialog.
   </DialogContent>
 </Dialog>
 ```
+
+### API
+
+---
+
+### Root
+
+| Property     | Description                        | Type         | Default          |
+| ------------ | ---------------------------------- | ------------ | ---------------- |
+| size         |                                    | `sm, md, lg` | md               |
+| isBarebone   | Removes style from whole component | `boolean`    | false            |
+| defaultOpen  |                                    | boolean      | No default value |
+| open         |                                    | boolean      | No default value |
+| onOpenChange |                                    | function     | No default value |
+| modal        |                                    | boolean      | true             |
+
+### Trigger
+
+| Property       | Description | Type              | Default |
+| -------------- | ----------- | ----------------- | ------- |
+| isUnstyled     |             | `boolean`         |         |
+| asChild        |             | `boolean`         | false   |
+| Data Attribute |             | Values            |         |
+| [data-state]   |             | `open` / `closed` |         |
+
+### Overlay
+
+| Property       | Description | Type              | Default          |
+| -------------- | ----------- | ----------------- | ---------------- |
+| isUnstyled     |             | `boolean`         |                  |
+| asChild        |             | boolean           | false            |
+| forceMount     |             | boolean           | No default value |
+| Data Attribute |             | Values            |                  |
+| [data-state]   |             | "open" / "closed" |                  |
+
+### Content
+
+| Property             | Description | Type              | Default          |
+| -------------------- | ----------- | ----------------- | ---------------- |
+| isUnstyled           |             | `boolean`         |                  |
+| asChild              |             | `boolean`         | false            |
+| forceMount           |             | boolean           | No default value |
+| onOpenAutoFocus      |             | function          | No default value |
+| onCloseAutoFocus     |             | function          | No default value |
+| onEscapeKeyDown      |             | function          | No default value |
+| onPointerDownOutside |             | function          | No default value |
+| onInteractOutside    |             | function          | No default value |
+| Data Attribute       |             | Values            |                  |
+| [data-state]         |             | `open` / `closed` |                  |
+
+### Close
+
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| isUnstyled |             | `boolean` |         |
+| asChild    |             | `boolean` | false   |
+
+### Title
+
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| isUnstyled |             | `boolean` |         |
+| asChild    |             | `boolean` | false   |
+
+### Descriptiom
+
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| isUnstyled |             | `boolean` |         |
+| asChild    |             | `boolean` | false   |
