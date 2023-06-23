@@ -267,8 +267,10 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property      | Description                        | Type          | Default          |
 | ------------- | ---------------------------------- | ------------- | ---------------- |
-| size          |                                    | `sm, md, lg`  | md               |
+| className     |                                    | `string`      |                  |
 | isBarebone    | Removes style from whole component | `boolean`     | false            |
+| isUnStyled    | Removes Style from component       | `boolean`     | false            |
+| size          |                                    | `sm, md, lg`  | md               |
 | asChild       |                                    | `boolean`     | false            |
 | defaultValue  |                                    | `string`      | No default value |
 | value         |                                    | `string`      | No default value |
@@ -299,6 +301,8 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property             | Description | Type                                | Default          |
 | -------------------- | ----------- | ----------------------------------- | ---------------- |
+| className            |             | `string`                            |                  |
+| isUnstyled           |             | `boolean`                           | false            |
 | asChild              |             | `boolean`                           | false            |
 | loop                 |             | `boolean`                           | false            |
 | onCloseAutoFocus     |             | `function`                          | No default value |
@@ -327,6 +331,8 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property           | Description | Type                     | Default          |
 | ------------------ | ----------- | ------------------------ | ---------------- |
+| className          |             | `string`                 |                  |
+| isUnstyled         |             | `boolean`                | false            |
 | asChild            |             | `boolean`                | false            |
 | disabled           |             | `boolean`                | No default value |
 | onSelect           |             | `function`               | No default value |
@@ -343,14 +349,18 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Label
 
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
+| isUnstyled |             | `boolean` | false   |
+| asChild    |             | `boolean` | false   |
 
 ### CheckboxItem
 
 | Property           | Description | Type                                         | Default          |
 | ------------------ | ----------- | -------------------------------------------- | ---------------- |
+| className          |             | `string`                                     |                  |
+| isUnstyled         |             | `boolean`                                    | false            |
 | asChild            |             | `boolean`                                    | false            |
 | checked            |             | `boolean` / 'indeterminate' No default value |                  |
 | onCheckedChange    |             | `function`                                   | No default value |
@@ -366,6 +376,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property      | Description | Type       | Default           |
 | ------------- | ----------- | ---------- | ----------------- |
+| className     |             | `string`   |                   |
 | asChild       |             | `boolean`  | false             |
 | asChild       |             | `boolean`  | false             |
 | value         |             | `string`   | No defau`lt value |
@@ -375,6 +386,8 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property           | Description | Type                     | Default          |
 | ------------------ | ----------- | ------------------------ | ---------------- |
+| className          |             | `string`                 |                  |
+| isUnstyled         |             | `boolean`                | false            |
 | asChild            |             | `boolean`                | false            |
 | value              |             | `string`                 | No default value |
 | disabled           |             | `boolean`                | No default value |
@@ -387,9 +400,11 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Saperator
 
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
+| Property   | Description | Type      | Default |
+| ---------- | ----------- | --------- | ------- |
+| className  |             | `string`  |         |
+| isUnstyled |             | `boolean` | false   |
+| asChild    |             | `boolean` | false   |
 
 ### Sub
 
@@ -417,6 +432,8 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property             | Description | Type                           | Default          |
 | -------------------- | ----------- | ------------------------------ | ---------------- |
+| className            |             | `string`                       |                  |
+| isUnstyled           |             | `boolean`                      | false            |
 | asChild              |             | `boolean`                      | false            |
 | loop                 |             | `boolean`                      | false            |
 | onEscapeKeyDown      |             | `function`                     | No default value |
