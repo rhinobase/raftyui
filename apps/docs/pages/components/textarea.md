@@ -17,7 +17,7 @@ import { Textarea } from "@rafty/ui";
 ## Usage
 
 ```jsx
-<Textarea placeholder="abc" />
+<Textarea placeholder="placeholder" />
 ```
 
 ## Variants
@@ -58,7 +58,7 @@ Pass `isUnstyled` prop to remove style from textarea.
 
 | Property   | Description                  | Type                          | Default   |
 | ---------- | ---------------------------- | ----------------------------- | --------- |
-| className  |                              | `string`                      |           |
+| className  |                              | `string`                      | -         |
 | variant    |                              | `solid` / `outline` / `ghost` | `outline` |
 | size       |                              | `sm` / `md` / `lg`            | `md`      |
 | isDisabled |                              | `boolean`                     | `false`   |
