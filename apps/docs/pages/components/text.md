@@ -16,7 +16,7 @@ import { Text } from "@rafty/ui";
 
 ## Usage
 
-Text takes font size in className.
+Text takes tailwind css classes in className and inline css can also be passed using style prop.
 
 ```jsx
 <Text className="text-lg"> In love with React & Next</Text>

@@ -6,7 +6,7 @@ description: Tag
 
 # Import
 
-Tag component is used for items that need to be labeled, categorized, or organized using keywords that describe them.
+Tag component is used for items that need to be labeled, categorized, or organised using keywords that describe them.
 
 - Tag: The wrapper for all the tag elements.
 
@@ -50,6 +50,5 @@ Pass the `colorScheme` prop if you need to adjust the color of the tag. Values c
 | Property    | Description | Type                                                      | Default     |
 | ----------- | ----------- | --------------------------------------------------------- | ----------- |
 | className   |             | `string`                                                  |             |
-| children    |             | `ReactNode`                                               |             |
-| size        |             | `sm` \ `md` \ `lg`                                        | "md"        |
+| size        |             | `sm` \ `md` \ `lg`                                        | `md`        |
 | colorScheme |             | `primary` \ `secondary` \ `error` \ `success` \ `warning` | `secondary` |
