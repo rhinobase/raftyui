@@ -16,6 +16,7 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
+    darkMode: "class",
     extend: {
       fontFamily: {
         sans: [...defaultTheme.fontFamily.sans],

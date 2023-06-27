@@ -46,10 +46,9 @@ export const Tab = forwardRef<HTMLDivElement, Tab>(
 Tab.displayName = "Tab";
 
 // List Component
-export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> &
-  Partial<TabContext> & {
-    isUnstyled?: boolean;
-  };
+export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> & {
+  isUnstyled?: boolean;
+};
 
 export const TabList = forwardRef<HTMLDivElement, TabList>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
