@@ -23,7 +23,9 @@ export const Default: Story = {
     <>
       <div className="flex flex-col gap-4">
         <h4 className="font-bold">Switch</h4>
-        <Switch size={size} isDisabled={isDisabled} />
+        <Switch size={size} isDisabled={isDisabled}>
+          Switch
+        </Switch>
         <h4 className="font-bold">Switch defaultSelected</h4>
         <Switch size={size} defaultSelected isDisabled={isDisabled} />
         <h4 className="font-bold">Switch disabled</h4>

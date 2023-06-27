@@ -9,7 +9,7 @@ description: Table
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default
 
 ```jsx
-import { Table, TableBody, TableContainer, TableFooter, TableHead, Td, Th, Tr } from "@rafty/ui";
+import { TableContainer, Table, TableHead, TableBody, TableFooter, Tr, Th, Td } from "@rafty/ui";
 ```
 
 ## Usage
@@ -19,24 +19,42 @@ import { Table, TableBody, TableContainer, TableFooter, TableHead, Td, Th, Tr } 
   <Table>
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
+
+## Container
+
+Container is a wrapper component for table to put table in a container with border. Its a optional component
 
 ## Size
 
@@ -49,21 +67,35 @@ Pass the `size` prop if you need to adjust the size of the table. Values can be 
   <Table size="sm">
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 <TableContainer>
@@ -75,21 +107,35 @@ Pass the `size` prop if you need to adjust the size of the table. Values can be 
   <Table size="md">
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
@@ -101,21 +147,35 @@ Pass the `size` prop if you need to adjust the size of the table. Values can be 
   <Table size="lg">
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
@@ -131,21 +191,35 @@ Pass the `variant` prop if you need to adjust the visual style of the table. Val
   <Table variant="simple">
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
@@ -157,21 +231,35 @@ Pass the `variant` prop if you need to adjust the visual style of the table. Val
   <Table variant="striped">
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
@@ -185,21 +273,35 @@ Pass `isBarebone` prop to remove all style in table.
   <Table isBarebone>
     <TableHead>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
@@ -213,21 +315,35 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
   <Table>
     <TableHead isUnstyled>
       <Tr>
-        <Th>Name</Th>
-        <Th>Title</Th>
-        <Th>Email</Th>
-        <Th>Role</Th>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
       </Tr>
     </TableHead>
     <TableBody>
       <Tr>
-        <Td>name</Td>
-        <Td>title</Td>
-        <Td>email</Td>
-        <Td>role</Td>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+        <Td>25.4</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+        <Td>30.48</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+        <Td>0.91444</Td>
       </Tr>
     </TableBody>
-    <TableFooter></TableFooter>
+    <TableFooter>
+      <Tr>
+        <Th>To Convert</Th>
+        <Th>Into</Th>
+        <Th>Multiply By</Th>
+      </Tr>
+    </TableFooter>
   </Table>
 </TableContainer>
 ```
@@ -236,35 +352,41 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ---
 
+### Container
+
+| Property  | Description | Type     | Default |
+| --------- | ----------- | -------- | ------- |
+| className |             | `string` | -       |
+
 ### Root
 
 | Property   | Description                        | Type                    | Default  |
 | ---------- | ---------------------------------- | ----------------------- | -------- |
-| className  |                                    | `string`                |          |
-| size:      |                                    | `sm` \ `md` \ \ `lg` \  | `md`     |
-| variant:   |                                    | `simple` \ `striped`    | `simple` |
-| isBarebone | Removes style from whole component | `boolean`               |          |
+| className  |                                    | `string`                | -        |
+| size       |                                    | `sm` \ `md` \ \ `lg` \  | `md`     |
+| variant    |                                    | `simple` \ `striped`    | `simple` |
+| isBarebone | Removes style from whole component | `boolean`               | `false`  |
 
 ### Head
 
 | Property  | Description | Type     | Default |
 | --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |
+| className |             | `string` | -       |
 
 ### Body
 
 | Property  | Description | Type     | Default |
 | --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |
+| className |             | `string` | -       |
 
 ### Tr
 
 | Property  | Description | Type     | Default |
 | --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |
+| className |             | `string` | -       |
 
 ### Td
 
 | Property  | Description | Type     | Default |
 | --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |
+| className |             | `string` | -       |

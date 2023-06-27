@@ -23,7 +23,7 @@ import { TagField } from "@rafty/ui";
 Pass `isDisabled` prop to disable tag-field.
 
 ```jsx
-<TagField />
+<TagField isDisabled />
 ```
 
 ## Required
@@ -42,6 +42,6 @@ Pass the `isRequired` prop to make search-field Required.
 
 | Property    | Description | Type                       | Default |
 | ----------- | ----------- | -------------------------- | ------- |
-| className   |             | `string`                   |         |
-| initialData |             | `string`                   |         |
-| onChange    |             | `(tags: string[]) => void` |         |
+| className   |             | `string`                   | -       |
+| initialData |             | `string`                   | -       |
+| onChange    |             | `(tags: string[]) => void` | -       |
