@@ -41,6 +41,14 @@ const RangePickerClasses = cva(
   }
 );
 
+const IconClasses = {
+  size: {
+    sm: "h-3.5 w-3.5",
+    md: "h-5 w-5",
+    lg: "h-[26px] w-[26px]",
+  },
+};
+
 type RangePicker = {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
@@ -73,13 +81,23 @@ export function RangePicker<T extends DateValue>(
             <ExclamationTriangleIcon className="absolute right-10 h-6 w-6 text-red-500" />
           )}
         </div>
-        <Suffix>
+        <Suffix
+          className={classNames(
+            size === "lg" && "w-12",
+            size === "sm" && "w-8"
+          )}
+        >
           <CalendarButton
             {...buttonProps}
             isActive={state.isOpen}
             variant="ghost"
           >
-            <CalendarIcon className="text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300 h-5 w-5" />
+            <CalendarIcon
+              className={classNames(
+                IconClasses.size[size],
+                "text-secondary-700 dark:text-secondary-200 group-focus-within:text-primary-500 dark:group-focus-within:text-primary-300"
+              )}
+            />
           </CalendarButton>
         </Suffix>
       </InputGroup>
