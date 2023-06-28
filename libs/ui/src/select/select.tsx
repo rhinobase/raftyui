@@ -25,6 +25,7 @@ export function Select<T extends object>(props: Select<T>) {
     variant = "outline",
     className,
     placeholder = "Select an option",
+    isDisabled,
   } = props;
 
   // Get props for child elements from useSelect
@@ -47,6 +48,8 @@ export function Select<T extends object>(props: Select<T>) {
         {...valueProps}
         size={size}
         variant={variant}
+        isActive={state.isOpen}
+        isDisabled={isDisabled}
         className={classNames("!w-full !justify-between", className)}
         rightIcon={
           <ChevronUpDownIcon
