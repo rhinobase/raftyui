@@ -2,25 +2,6 @@ import { HTMLAttributes, SVGProps, forwardRef } from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "@rafty/utils";
 
-export type StatGroup = HTMLAttributes<HTMLDivElement>;
-export const StatGroup = forwardRef<HTMLDivElement, StatGroup>(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <div
-        {...props}
-        className={classNames(
-          "group flex w-full flex-wrap items-start justify-around",
-          className
-        )}
-        ref={forwardedRef}
-      >
-        {children}
-      </div>
-    );
-  }
-);
-StatGroup.displayName = "StatGroup";
-
 export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 export const Stat = forwardRef<HTMLDivElement, Stat>(
   ({ children, className, type = "normal", ...props }, forwardedRef) => {

@@ -88,14 +88,7 @@ export { RadioGroup, Radio, RadioCard } from "./radio";
 export { Select, SelectItem, ListBox } from "./select";
 export { Skeleton } from "./skeleton";
 export { Spinner } from "./spinner";
-export {
-  Stat,
-  StatGroup,
-  StatIcon,
-  StatLabel,
-  StatValue,
-  StatHelpText,
-} from "./stat";
+export { Stat, StatIcon, StatLabel, StatValue, StatHelpText } from "./stat";
 export { Switch } from "./switch";
 export { Tab, TabList, TabTrigger, TabContent } from "./tab";
 export {
