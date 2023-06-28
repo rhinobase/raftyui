@@ -40,13 +40,15 @@ Pass the `isDisabled` prop if you need to disable the switch.
 
 ## Default Selected
 
-Pass the `defaultSelected` prop if you need to set default selected the switch.
+Pass the `defaultSelected` prop if you need to set the switch selected by default and `isSelected` prop is used to manage checked state.
 
 ```jsx
 <Switch defaultSelected />
 ```
 
 ## Read Only
+
+Pass `isReadOnly` prop to restrict user from interecting with switch component.
 
 ```jsx
 <Switch isReadOnly />
@@ -58,12 +60,6 @@ Pass the `defaultSelected` prop if you need to set default selected the switch.
 <Switch size="lg" isRequired />
 ```
 
-## Indeterminate
-
-```jsx
-<Switch size="lg" isIndeterminate />
-```
-
 ### API
 
 ---
@@ -72,8 +68,9 @@ Pass the `defaultSelected` prop if you need to set default selected the switch.
 
 | Property        | Description | Type                    | Default |
 | --------------- | ----------- | ----------------------- | ------- |
-| className       |             | `string`                |         |
-| isSelected      |             | `boolean`               |         |
+| className       |             | `string`                | -       |
+| isSelected      |             | `boolean`               | -       |
 | size            |             | `sm` \ `md` \ `lg`      | `md`    |
-| defaultSelected |             | `boolean` \ `undefined` |         |
-| isDisabled      |             | `boolean` \ `undefined` |         |
+| defaultSelected |             | `boolean` \ `undefined` | -       |
+| isDisabled      |             | `boolean` \ `undefined` | -       |
+| isReadOnly      |             | `boolean` \ `undefined` | -       |
