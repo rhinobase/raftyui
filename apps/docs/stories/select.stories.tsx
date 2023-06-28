@@ -6,6 +6,10 @@ const meta: Meta<typeof Select> = {
   args: {
     size: "md",
     variant: "outline",
+    isDisabled: false,
+    isRequired: false,
+    // isOpen: false,
+    // defaultOpen: false,
   },
   argTypes: {
     size: {
@@ -23,12 +27,14 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
-  render: ({ size, variant }) => (
+  render: ({ size, variant, isDisabled, isRequired }) => (
     <div className="w-[500px]">
       <h4 className="dark:text-secondary-200 mb-4 font-bold">Select</h4>
       <Select
         variant={variant}
         size={size}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
         onSelectionChange={(key) => console.log(key)}
       >
         <SelectItem key="option1">Option 1</SelectItem>
