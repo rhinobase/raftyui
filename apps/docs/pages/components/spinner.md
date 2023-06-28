@@ -25,9 +25,11 @@ import { Spinner } from "@rafty/ui";
 Pass the `size` prop if you need to adjust the size of the spinner. Values can be `sm, md, lg`.
 
 ```jsx
-<Spinner size="sm" />
-<Spinner size="md" />
-<Spinner size="lg" />
+<div className="flex gap-1">
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+</div>
 ```
 
 ### API
@@ -38,6 +40,6 @@ Pass the `size` prop if you need to adjust the size of the spinner. Values can b
 
 | Property      | Description | Type               | Default |
 | ------------- | ----------- | ------------------ | ------- |
-| className     |             | `string`           |         |
+| className     |             | `string`           | -       |
 | size          |             | `sm` \ `md` \ `lg` | `md`    |
-| inheritParent |             | `boolean`          |         |
+| inheritParent |             | `boolean`          | `false` |
