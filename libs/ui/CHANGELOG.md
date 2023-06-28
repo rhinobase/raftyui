@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.17](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.16...ui-1.0.0-beta.17) (2023-06-28)
+
+
+### Bug Fixes
+
+* fixed issue with checkbox type ([8f901bf](https://github.com/rhinobase/raftyui/commit/8f901bf831de05a1179298d1327386f438b80e1e))
+* improvements in switch and tab components ([900860c](https://github.com/rhinobase/raftyui/commit/900860cde6a7ebe51b1352d882ee35ab528c1fad))
+* removed unnecessary subcomponent StatGroup of stat component ([bbd6ae6](https://github.com/rhinobase/raftyui/commit/bbd6ae6ba702ccd6779c297624e3e0e2eba10225))
+* removed used prop isIndeterminate from switch component and small improvements ([94f2809](https://github.com/rhinobase/raftyui/commit/94f280913a18a23bca60ba3efc6acb9b38a7193a))
+* updates in select component ([b106a74](https://github.com/rhinobase/raftyui/commit/b106a748a9576030fcdaa7ea3e3d73e25ab01f4e))
+
 ## [1.0.0-beta.16](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.15...ui-1.0.0-beta.16) (2023-06-22)
 
 ## [1.0.0-beta.15](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.14...ui-1.0.0-beta.15) (2023-06-22)
