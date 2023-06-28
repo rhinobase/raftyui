@@ -13,14 +13,16 @@ export const Default: Story = {
     <>
       <div className="flex w-80 flex-col gap-3 dark:text-white">
         <h2 className="font-bold">CheckBox</h2>
-        <Checkbox
-          name="red"
-          id="sample"
-          onChange={(value) => console.log(value)}
-          value="red"
-        >
-          Red
-        </Checkbox>
+        <CheckboxGroup>
+          <Checkbox
+            name="red"
+            id="sample"
+            onChange={(value) => console.log(value)}
+            value="red"
+          >
+            Red
+          </Checkbox>
+        </CheckboxGroup>
         <Checkbox name="green">Green</Checkbox>
         <h2 className="font-bold">CheckBox indeterminate</h2>
         <Checkbox name="blue" isIndeterminate>
@@ -57,7 +59,7 @@ export const CheckBoxGroup: Story = {
         <CheckboxGroup
           label="Favorite sports"
           onChange={(value) => console.log(value)}
-          // value={["baseball"]}
+          value={["baseball"]}
         >
           <div className="flex flex-col gap-4">
             <Checkbox value="soccer" isDisabled>
