@@ -58,6 +58,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroup>(
     );
   }
 );
+CheckboxGroup.displayName = "CheckboxGroup";
 
 const checkboxClasses = {
   isIndeterminate: [
@@ -190,14 +191,19 @@ const Subbox = forwardRef<HTMLInputElement, Subbox>(
   }
 );
 
-export type Checkbox = AriaCheckboxGroupItemProps | AriaCheckboxProps;
+export type Checkbox = Omit<AriaCheckboxGroupItemProps, "value"> &
+  AriaCheckboxProps;
 
 export const Checkbox = forwardRef<HTMLInputElement, Checkbox>(
   ({ children, ...props }, forwardedRef) => {
     const state = React.useContext(CheckboxGroupContext);
 
     if (!state)
-      return <SingletonCheckbox {...props}>{children}</SingletonCheckbox>;
+      return (
+        <SingletonCheckbox {...props} ref={forwardedRef}>
+          {children}
+        </SingletonCheckbox>
+      );
 
     return (
       <Subbox
@@ -210,3 +216,4 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkbox>(
     );
   }
 );
+Checkbox.displayName = "Checkbox";
