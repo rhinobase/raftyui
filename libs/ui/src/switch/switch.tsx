@@ -10,7 +10,7 @@ import { classNames } from "@rafty/utils";
 
 const switchClasses = {
   size: {
-    sm: "h-4 w-8",
+    sm: "h-4 w-7",
     md: "h-6 w-10",
     lg: "h-7 w-12",
   },
@@ -18,13 +18,13 @@ const switchClasses = {
 
 const switchThumbClasses = {
   size: {
-    sm: "h-3 w-3 group-aria-selected:left-[18px]",
+    sm: "h-3 w-3 group-aria-selected:left-[14px]",
     md: "h-5 w-5 group-aria-selected:left-[18px]",
     lg: "h-6 w-6 group-aria-selected:left-[22px]",
   },
 };
 
-export type Switch = AriaCheckboxProps & {
+export type Switch = Omit<AriaCheckboxProps, "isIndeterminate"> & {
   size?: "sm" | "md" | "lg";
   isSelected?: boolean;
 };
@@ -67,7 +67,18 @@ export function Switch({ size = "md", children, ...props }: Switch) {
           )}
         />
       </div>
-      <span className="font-medium">{children}</span>
+      {children && (
+        <span
+          className={classNames(
+            size === "sm" && "text-sm",
+            size === "md" && "text-base",
+            size === "lg" && "text-lg",
+            "font-medium dark:text-white select-none"
+          )}
+        >
+          {children}
+        </span>
+      )}
     </label>
   );
 }
