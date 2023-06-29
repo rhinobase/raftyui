@@ -84,6 +84,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.44.3",
     "react-stately": "^3.24.0",
+    "tailwindcss-animate": "^1.0.6",
     "tslib": "^2.3.0",
     "vite-tsconfig-paths": "^4.2.0",
     "zod": "^3.21.4"

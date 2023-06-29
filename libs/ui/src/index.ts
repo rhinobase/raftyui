@@ -19,16 +19,7 @@ export { Button } from "./button";
 export { Card, CardBody, CardFooter, CardHeader } from "./card";
 export { Checkbox, CheckboxGroup } from "./checkbox";
 export { Combobox, ComboboxItem, ComboboxSection } from "./combobox";
-export {
-  Dialog,
-  DialogTrigger,
-  DialogOverlay,
-  DialogContent,
-  DialogHeading,
-  DialogBody,
-  DialogClose,
-  DialogCloseButton,
-} from "./dialog";
+export * from "./dialog";
 export {
   Drawer,
   DrawerOverlay,
