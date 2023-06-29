@@ -4,7 +4,7 @@ import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
 
 const textareaClasses = cva(
-  "w-full appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+  "w-full appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
       size: {

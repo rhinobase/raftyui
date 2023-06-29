@@ -30,7 +30,7 @@ const tableClasses = {
   },
 };
 
-export type Table = JSX.IntrinsicElements["table"] &
+export type Table = React.HTMLAttributes<HTMLTableElement> &
   Partial<TableContext> & {
     isUnstyled?: boolean;
   };
@@ -81,7 +81,7 @@ const tableHeadClasses = {
   },
 };
 
-export type TableHead = JSX.IntrinsicElements["thead"] & {
+export type TableHead = React.HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
 };
 
@@ -108,7 +108,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
 TableHead.displayName = "TableHead";
 
 // TableBody Component
-export type TableBody = JSX.IntrinsicElements["tbody"] & {
+export type TableBody = React.HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
 };
 
@@ -142,7 +142,7 @@ const tableFooterClasses = {
   },
 };
 
-export type TableFooter = JSX.IntrinsicElements["tfoot"] & {
+export type TableFooter = React.HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
 };
 
@@ -177,7 +177,9 @@ const tdClasses = {
   },
 };
 
-export type Td = JSX.IntrinsicElements["td"] & { isUnstyled?: boolean };
+export type Td = React.ThHTMLAttributes<HTMLTableCellElement> & {
+  isUnstyled?: boolean;
+};
 
 export const Td = forwardRef<HTMLTableCellElement, Td>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -214,7 +216,9 @@ const thClasses = {
   },
 };
 
-export type Th = JSX.IntrinsicElements["th"] & { isUnstyled?: boolean };
+export type Th = React.ThHTMLAttributes<HTMLTableCellElement> & {
+  isUnstyled?: boolean;
+};
 
 export const Th = forwardRef<HTMLTableCellElement, Th>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -251,7 +255,9 @@ const trClasses = {
   },
 };
 
-export type Tr = JSX.IntrinsicElements["tr"] & { isUnstyled?: boolean };
+export type Tr = React.HTMLAttributes<HTMLTableRowElement> & {
+  isUnstyled?: boolean;
+};
 
 export const Tr = forwardRef<HTMLTableRowElement, Tr>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {

@@ -1,12 +1,13 @@
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { ComponentProps, forwardRef } from "react";
+import { forwardRef } from "react";
 import { TabContext, TabProvider, useTabContext } from "./context";
 import { classNames } from "@rafty/utils";
+import React from "react";
 
 // Root Component
-export type Tab = ComponentProps<(typeof TabsPrimitive)["Root"]> &
+export type Tab = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
   Partial<TabContext> & { isUnstyled?: boolean };
-export const Tab = forwardRef<HTMLDivElement, Tab>(
+export const Tab = forwardRef<React.ElementRef<typeof TabsPrimitive.Root>, Tab>(
   (
     {
       children,
@@ -46,37 +47,40 @@ export const Tab = forwardRef<HTMLDivElement, Tab>(
 Tab.displayName = "Tab";
 
 // List Component
-export type TabList = ComponentProps<(typeof TabsPrimitive)["List"]> & {
+export type TabList = React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.List
+> & {
   isUnstyled?: boolean;
 };
 
-export const TabList = forwardRef<HTMLDivElement, TabList>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { orientation, variant, isBarebone } = useTabContext();
-    const unstyle = isBarebone || isUnstyled;
+export const TabList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  TabList
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { orientation, variant, isBarebone } = useTabContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <TabsPrimitive.List
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                orientation === "vertical" && variant === "enclosed"
-                  ? "dark:border-black"
-                  : "dark:border-secondary-700",
-                "flex rounded-t-md border-b",
-                "data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-0.5 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </TabsPrimitive.List>
-    );
-  }
-);
+  return (
+    <TabsPrimitive.List
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              orientation === "vertical" && variant === "enclosed"
+                ? "dark:border-black"
+                : "dark:border-secondary-700",
+              "flex rounded-t-md border-b",
+              "data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-0.5 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
+              className
+            )
+      }
+      ref={forwardedRef}
+    >
+      {children}
+    </TabsPrimitive.List>
+  );
+});
 TabList.displayName = "TabList";
 
 // Trigger Component
@@ -107,38 +111,41 @@ const triggerClasses = {
   },
 };
 
-export type TabTrigger = ComponentProps<(typeof TabsPrimitive)["Trigger"]> & {
+export type TabTrigger = React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.Trigger
+> & {
   isUnstyled?: boolean;
 };
 
-export const TabTrigger = forwardRef<HTMLButtonElement, TabTrigger>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, variant, orientation, isBarebone } = useTabContext();
-    const unstyle = isBarebone || isUnstyled;
+export const TabTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  TabTrigger
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, variant, orientation, isBarebone } = useTabContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <TabsPrimitive.Trigger
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                triggerClasses.orientation[orientation],
-                triggerClasses.size[size],
-                triggerClasses.variant[variant],
-                "text-secondary-500 dark:text-secondary-400 transition-colors",
-                "data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black",
-                "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </TabsPrimitive.Trigger>
-    );
-  }
-);
+  return (
+    <TabsPrimitive.Trigger
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              triggerClasses.orientation[orientation],
+              triggerClasses.size[size],
+              triggerClasses.variant[variant],
+              "text-secondary-500 dark:text-secondary-400 transition-colors",
+              "data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black",
+              "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
+              className
+            )
+      }
+      ref={forwardedRef}
+    >
+      {children}
+    </TabsPrimitive.Trigger>
+  );
+});
 TabTrigger.displayName = "TabTrigger";
 
 // Content Component
@@ -158,44 +165,47 @@ const tabContentLineVariantClasses = {
   },
 };
 
-export type TabContent = ComponentProps<(typeof TabsPrimitive)["Content"]> & {
+export type TabContent = React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.Content
+> & {
   isUnstyled?: boolean;
 };
 
-export const TabContent = forwardRef<HTMLDivElement, TabContent>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, variant, orientation, isBarebone } = useTabContext();
-    const unstyle = isBarebone || isUnstyled;
+export const TabContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  TabContent
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, variant, orientation, isBarebone } = useTabContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <TabsPrimitive.Content
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                variant === "line" && tabContentLineVariantClasses.size[size],
-                "w-full dark:text-white",
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {orientation === "vertical" && variant === "enclosed" && !unstyle ? (
-          <div className="flex items-stretch" style={{ height: "100%" }}>
-            <div
-              className={classNames(
-                tabContentClasses.size[size],
-                "bg-secondary-100 dark:bg-secondary-800 w-full border-b border-r border-t dark:border-black"
-              )}
-            />
-            {children}
-          </div>
-        ) : (
-          children
-        )}
-      </TabsPrimitive.Content>
-    );
-  }
-);
+  return (
+    <TabsPrimitive.Content
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              variant === "line" && tabContentLineVariantClasses.size[size],
+              "w-full dark:text-white",
+              className
+            )
+      }
+      ref={forwardedRef}
+    >
+      {orientation === "vertical" && variant === "enclosed" && !unstyle ? (
+        <div className="flex items-stretch" style={{ height: "100%" }}>
+          <div
+            className={classNames(
+              tabContentClasses.size[size],
+              "bg-secondary-100 dark:bg-secondary-800 w-full border-b border-r border-t dark:border-black"
+            )}
+          />
+          {children}
+        </div>
+      ) : (
+        children
+      )}
+    </TabsPrimitive.Content>
+  );
+});
 TabContent.displayName = "TabContent";

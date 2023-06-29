@@ -101,5 +101,6 @@ export { Text } from "./text";
 export { Textarea } from "./textarea";
 export { Toast } from "./toast";
 export { ToggleGroup, ToggleGroupItem } from "./toggle-group";
-export { Tooltip } from "./tooltip";
+export { Toggle } from "./toggle";
+export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip";
 export { classNames, mergeRefs } from "@rafty/utils";
