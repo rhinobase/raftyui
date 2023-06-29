@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
-import { AriaProgressBarProps, useProgressBar } from "react-aria";
+import * as React from "react";
+import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { classNames } from "@rafty/utils";
 
 const progressClasses = {
@@ -20,65 +20,38 @@ const progressClasses = {
   },
 };
 
-export type Progress = AriaProgressBarProps &
-  JSX.IntrinsicElements["div"] & {
-    size?: "sm" | "md" | "lg";
-    colorScheme?: "error" | "warning" | "primary" | "success";
-    isInterminate?: boolean;
-  };
+export type Progress = React.ComponentPropsWithoutRef<
+  typeof ProgressPrimitive.Root
+> & {
+  size?: "sm" | "md" | "lg";
+  colorScheme?: "error" | "warning" | "primary" | "success";
+};
 
-export const Progress = forwardRef<HTMLDivElement, Progress>(
-  ({ ...props }, forwardedref) => {
-    const {
-      value = 0,
-      minValue = 0,
-      maxValue = 100,
-      size = "md",
-      className,
-      colorScheme = "primary",
-      isIndeterminate,
-    } = props;
-
-    const { progressBarProps } = useProgressBar(props);
-
-    // Calculate the width of the progress bar as a percentage
-    const percentage = (value - minValue) / (maxValue - minValue);
-    const barWidth = `${Math.round(percentage * 100)}%`;
-
-    return (
-      <div
-        {...progressBarProps}
-        {...props}
+export const Progress = React.forwardRef<
+  React.ElementRef<typeof ProgressPrimitive.Root>,
+  Progress
+>(
+  (
+    { className, value, size = "md", colorScheme = "primary", ...props },
+    ref
+  ) => (
+    <ProgressPrimitive.Root
+      ref={ref}
+      {...props}
+      className={classNames(
+        progressClasses.size[size],
+        "bg-secondary-700 overflow-hidden"
+      )}
+    >
+      <ProgressPrimitive.Indicator
         className={classNames(
-          isIndeterminate && "relative",
-          "bg-secondary-200 dark:bg-secondary-700 group w-full overflow-hidden",
-          progressClasses.size[size],
+          progressClasses.colorScheme[colorScheme],
+          "h-full flex-1 bg-primary transition-all",
           className
         )}
-        ref={forwardedref}
-        data-indeterminate={isIndeterminate}
-      >
-        {isIndeterminate ? (
-          <div
-            className={classNames(
-              progressClasses.size[size],
-              progressClasses.colorScheme[colorScheme],
-              "animate-progress-loading absolute top-0 w-1/3"
-            )}
-          />
-        ) : (
-          <div
-            style={{ width: barWidth }}
-            className={classNames(
-              progressClasses.size[size],
-              progressClasses.colorScheme[colorScheme],
-              "transition-all duration-200"
-            )}
-          />
-        )}
-      </div>
-    );
-  }
+        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+      />
+    </ProgressPrimitive.Root>
+  )
 );
-
-Progress.displayName = "Progress";
+Progress.displayName = ProgressPrimitive.Root.displayName;

@@ -6,7 +6,7 @@ const meta: Meta<typeof Progress> = {
   args: {
     size: "md",
     colorScheme: "primary",
-    isIndeterminate: false,
+    // isIndeterminate: false,
   },
   argTypes: {
     size: {
@@ -17,9 +17,6 @@ const meta: Meta<typeof Progress> = {
       control: "select",
       options: ["primary", "warning", "success", "error"],
     },
-    isIndeterminate: {
-      control: "boolean",
-    },
   },
 };
 
@@ -27,14 +24,9 @@ export default meta;
 type Story = StoryObj<typeof Progress>;
 
 export const Default: Story = {
-  render: ({ size, colorScheme, isIndeterminate }) => (
+  render: ({ size, colorScheme }) => (
     <div className="flex w-full max-w-4xl flex-col gap-4 dark:text-white">
-      <Progress
-        size={size}
-        value={80}
-        colorScheme={colorScheme}
-        isIndeterminate={isIndeterminate}
-      />
+      <Progress colorScheme={colorScheme} size={size} value={20} />
     </div>
   ),
 };
