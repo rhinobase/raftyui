@@ -8,8 +8,8 @@ import {
 import { classNames } from "@rafty/utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-export type NavigationMenu = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Root"]
+export type NavigationMenu = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Root
 > &
   Partial<NavigationMenuContext> & { isUnstyled?: boolean };
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
@@ -23,7 +23,14 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
       <NavigationMenuProvider value={{ isBarebone }}>
         <NavigationMenuPrimitive.Root
           {...props}
-          className={unstyle ? className : classNames("relative", className)}
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  "relative z-10 flex max-w-max flex-1 items-center justify-center",
+                  className
+                )
+          }
           ref={forwardedRef}
         >
           {children}
@@ -35,54 +42,51 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
 );
 NavigationMenu.displayName = "NavigationMenu";
 
-export type NavigationMenuList = ComponentProps<
-  (typeof NavigationMenuPrimitive)["List"]
+export type NavigationMenuList = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.List
 > & { isUnstyled?: boolean };
-export const NavigationMenuList = ({
-  children,
-  className,
-  isUnstyled = false,
-  ...props
-}: NavigationMenuList) => {
-  const { isBarebone } = useNavigationMenuContext();
-  const unstyle = isBarebone || isUnstyled;
 
-  return (
-    <NavigationMenuPrimitive.List
-      {...props}
-      className={
-        unstyle
-          ? className
-          : classNames(
-              "m-0 flex items-center justify-center rounded-md p-1",
-              className
-            )
-      }
-    >
-      {children}
-    </NavigationMenuPrimitive.List>
-  );
-};
+export const NavigationMenuList = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.List>,
+  NavigationMenuList
+>(
+  ({
+    children,
+    className,
+    isUnstyled = false,
+    ...props
+  }: NavigationMenuList) => {
+    const { isBarebone } = useNavigationMenuContext();
+    const unstyle = isBarebone || isUnstyled;
+
+    return (
+      <NavigationMenuPrimitive.List
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                "m-0 p-1 flex justify-center items-center rounded-md",
+                className
+              )
+        }
+      >
+        {children}
+      </NavigationMenuPrimitive.List>
+    );
+  }
+);
 NavigationMenuList.displayName = "NavigationMenuList";
 
 //MenuBar Button Component
 export type NavigationMenuItem = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Item"]
+  typeof NavigationMenuPrimitive.Item
 >;
 
-export const NavigationMenuItem = ({
-  children,
-  className,
-  ...props
-}: NavigationMenuItem) => (
-  <NavigationMenuPrimitive.Item {...props} className={className}>
-    {children}
-  </NavigationMenuPrimitive.Item>
-);
-NavigationMenuItem.displayName = "NavigationMenuItem";
+export const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
-export type NavigationMenuTrigger = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Trigger"]
+export type NavigationMenuTrigger = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Trigger
 > & {
   isUnstyled?: boolean;
 };
@@ -123,8 +127,8 @@ const contentClasses = {
   },
 };
 
-export type NavigationMenuContent = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Content"]
+export type NavigationMenuContent = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Content
 > & { size?: "sm" | "md" | "lg" | "full"; isUnstyled?: boolean };
 export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
@@ -158,9 +162,10 @@ export const NavigationMenuContent = forwardRef<
 );
 NavigationMenuContent.displayName = "NavigationMenu.Content";
 
-export type NavigationMenuLink = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Link"]
+export type NavigationMenuLink = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Link
 > & { isUnstyled?: boolean };
+
 export const NavigationMenuLink = ({
   children,
   className,
@@ -211,8 +216,8 @@ export const NavigationMenuListItem = ({
   </NavigationMenuLink>
 );
 
-type NavigationMenuViewport = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Viewport"]
+type NavigationMenuViewport = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Viewport
 >;
 
 const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
@@ -227,8 +232,8 @@ const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
 };
 NavigationMenuViewport.displayName = "NavigationMenuViewport";
 
-export type NavigationMenuIndicator = ComponentProps<
-  (typeof NavigationMenuPrimitive)["Indicator"]
+export type NavigationMenuIndicator = React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Indicator
 > & { isUnstyled?: boolean };
 export const NavigationMenuIndicator = ({
   className,
