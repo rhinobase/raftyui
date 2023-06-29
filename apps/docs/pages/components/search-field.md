@@ -8,8 +8,6 @@ description: Search Field
 
 A SearchField is a text field designed for searches.
 
-- SearchField
-
 ```jsx
 import { SearchField } from "@rafty/ui";
 ```
@@ -25,9 +23,11 @@ import { SearchField } from "@rafty/ui";
 Pass the `size` prop if you need to adjust the size of the search-field. Values can be `sm, md, lg`.
 
 ```jsx
-<SearchField size="sm"/>
-<SearchField size="md"/>
-<SearchField size="lg"/>
+<div className="space-y-2">
+  <SearchField size="sm" />
+  <SearchField size="md" />
+  <SearchField size="lg" />
+</div>
 ```
 
 ## Variant
@@ -35,9 +35,11 @@ Pass the `size` prop if you need to adjust the size of the search-field. Values 
 Pass the `variant` prop if you need to adjust the visual style of the searxh-field. Values can be `solid, outline, ghost`.
 
 ```jsx
-<SearchField size="solid"/>
-<SearchField size="outline"/>
-<SearchField size="ghost"/>
+<div className="space-y-2">
+  <SearchField size="solid" />
+  <SearchField size="outline" />
+  <SearchField size="ghost" />
+</div>
 ```
 
 ## Read Only
@@ -70,16 +72,16 @@ Pass the `isDisabled` prop to make search-field Disabled.
 
 ### Root
 
-| Property     | Description | Type                                                                                     | Default   |
-| ------------ | ----------- | ---------------------------------------------------------------------------------------- | --------- |
-| className    |             | `string`                                                                                 |           |
-| name         |             | `string` \ `undefined `                                                                  |           |
-| value        |             | `string` \ `undefined `                                                                  |           |
-| variant      |             | `solid` \ `outline` \ `ghost`                                                            | `outline` |
-| size         |             | `sm` \ `md` \ `lg`                                                                       | `md`      |
-| defaultValue |             | `string` \ `undefined`                                                                   | `md`      |
-| isDisabled   |             | `boolean`                                                                                | `false`   |
-| isRequired   |             | `boolean`                                                                                | `false`   |
-| isReadOnly   |             | `boolean`                                                                                | `false`   |
-| onChange     |             | ((value: string) => void) / undefined                                                    |           |
-| inputMode    |             | `search` \ `text` \ `none` \ `url` \ `tel` \ `email` \ `numeric` \ `decimal` \ undefined |           |
+| Property     | Description | Type                                                                                       | Default   |
+| ------------ | ----------- | ------------------------------------------------------------------------------------------ | --------- |
+| className    |             | `string`                                                                                   | -         |
+| name         |             | `string` \ `undefined `                                                                    | -         |
+| value        |             | `string` \ `undefined `                                                                    | -         |
+| variant      |             | `solid` \ `outline` \ `ghost`                                                              | `outline` |
+| size         |             | `sm` \ `md` \ `lg`                                                                         | `md`      |
+| defaultValue |             | `string` \ `undefined`                                                                     | -         |
+| isDisabled   |             | `boolean`                                                                                  | `false`   |
+| isRequired   |             | `boolean`                                                                                  | `false`   |
+| isReadOnly   |             | `boolean`                                                                                  | `false`   |
+| onChange     |             | `((value: string) => void)` / `undefined`                                                  | -         |
+| inputMode    |             | `search` \ `text` \ `none` \ `url` \ `tel` \ `email` \ `numeric` \ `decimal` \ `undefined` | -         |
