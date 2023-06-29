@@ -76,13 +76,7 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
 } from "./navigation-menu";
-export {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverArrow,
-  PopoverClose,
-} from "./popover";
+export { Popover, PopoverTrigger, PopoverContent } from "./popover";
 export { Progress } from "./progress";
 export { RadioGroup, Radio, RadioCard } from "./radio";
 export { Select, SelectItem, ListBox } from "./select";
