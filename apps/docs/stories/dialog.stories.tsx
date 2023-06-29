@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from "@storybook/react";
 import {
   Dialog,
-  DialogBody,
   DialogContent,
   DialogOverlay,
-  DialogHeading,
+  DialogTitle,
   DialogTrigger,
-  DialogCloseButton,
   Button,
+  DialogFooter,
+  DialogDescription,
 } from "@rafty/ui";
 
 const meta: Meta<typeof Dialog> = {
@@ -32,19 +32,15 @@ export const Default: Story = {
     <>
       <Dialog size={size}>
         <DialogTrigger>open</DialogTrigger>
-        <DialogOverlay data-cy="overlay" />
+        <DialogOverlay />
         <DialogContent>
-          <DialogBody>
-            <DialogHeading>Dialog Header</DialogHeading>
-            <p>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
-            </p>
-            <div className="flex items-center justify-end pt-5">
-              <Button>Save Change</Button>
-            </div>
-            <DialogCloseButton />
-          </DialogBody>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you&apos;re done.
+          </DialogDescription>
+          <DialogFooter>
+            <Button>Save Change</Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>
