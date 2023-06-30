@@ -1,14 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { CalendarComponent } from "@rafty/date-picker";
+import { Calendar } from "@rafty/date-picker";
 import { ListItem, UnorderedList } from "@rafty/ui";
 import { ReactNode } from "react";
+import React from "react";
 
-const meta: Meta<typeof CalendarComponent> = {
+const meta: Meta<typeof Calendar> = {
   title: "Form / Calendar",
 };
 
 export default meta;
-type Story = StoryObj<typeof CalendarComponent>;
+type Story = StoryObj<typeof Calendar>;
 
 export const Default: Story = {
   render: function Render() {
@@ -50,12 +51,11 @@ export const Default: Story = {
         ),
       },
     ];
+    const [date, setDate] = React.useState<Date | undefined>();
+
     return (
       <div className="w-full">
-        <CalendarComponent
-          onChange={(date) => console.log(date, date.toString())}
-          cellRender={cellRender}
-        />
+        <Calendar selected={date} onDayClick={setDate} mode="single" />
       </div>
     );
   },
