@@ -7,7 +7,6 @@ import {
   SelectContent,
   SelectLabel,
   SelectItem,
-  SelectSeparator,
 } from "@rafty/ui";
 
 const meta: Meta<typeof Select> = {

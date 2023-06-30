@@ -65,6 +65,7 @@ export {
 export { Popover, PopoverTrigger, PopoverContent } from "./popover";
 export { Progress } from "./progress";
 export { RadioGroup, Radio, RadioCard } from "./radio";
+export { ScrollArea, ScrollBar } from "./scrollarea";
 export {
   Select,
   SelectGroup,
