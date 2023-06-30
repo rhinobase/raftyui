@@ -20,7 +20,7 @@ import {
   Textarea,
   Checkbox,
   CheckboxGroup,
-  Radio,
+  RadioGroupItem,
   RadioGroup,
   Switch,
 } from "@rafty/ui";
@@ -28,7 +28,7 @@ import { DatePicker, RangePicker } from "@rafty/date-picker";
 
 const schema = z.object({
   text_input: z.string().max(255),
-  date: z.string(),
+  date: z.date(),
   combobox: z.string(),
   password: z.string(),
   switch: z.boolean(),
@@ -37,7 +37,7 @@ const schema = z.object({
   radio: z.string(),
   checkbox: z.string(),
   checkboxgroup: z.string().array(),
-  range: z.string(),
+  // range: z.string(),
   select: z.string(),
   textarea: z.string(),
 });
@@ -52,7 +52,7 @@ type Story = StoryObj<typeof InputField>;
 export const Default: Story = {
   render: function Render() {
     const { register, setValue, control } = useForm<z.infer<typeof schema>>({
-      mode: "onChange",
+      // mode: "onChange",
       resolver: zodResolver(schema),
     });
 
@@ -82,7 +82,7 @@ export const Default: Story = {
           <FieldLabel>Select</FieldLabel>
           <Select
             {...register("select")}
-            onSelectionChange={(value) => setValue("select", value as string)}
+            onValueChange={(value) => setValue("select", value as string)}
           >
             <Item key="option1">Option 1</Item>
             <Item key="option2">Option 2</Item>
@@ -120,22 +120,14 @@ export const Default: Story = {
           <FieldLabel>Date</FieldLabel>
           <DatePicker
             {...register("date")}
-            onChange={(value) => {
-              setValue("date", `${value.year}-${value.month}-${value.day}`);
+            onSelect={(value) => {
+              setValue("date", value!);
             }}
           />
         </FieldControl>
         <FieldControl name="range">
           <FieldLabel>Range Picker</FieldLabel>
-          <RangePicker
-            {...register("range")}
-            onChange={(value) => {
-              setValue(
-                "range",
-                `[${value.start.year}-${value.start.month}-${value.start.day}, ${value.end.year}-${value.end.month}-${value.end.day}]`
-              );
-            }}
-          />
+          {/* <RangePicker {...register("range")} /> */}
         </FieldControl>
         <FieldControl name="textarea">
           <FieldLabel>Textarea</FieldLabel>
@@ -181,12 +173,12 @@ export const Default: Story = {
           <FieldLabel>radio</FieldLabel>
           <RadioGroup
             {...register("radio")}
-            onChange={(value) => setValue("radio", value)}
+            onValueChange={(value) => setValue("radio", value)}
           >
             <div className="flex flex-col gap-4">
-              <Radio value="ABC"> ABC</Radio>
-              <Radio value="BCD"> BCD</Radio>
-              <Radio value="CDE"> CDE</Radio>
+              <RadioGroupItem value="ABC"> ABC</RadioGroupItem>
+              <RadioGroupItem value="BCD"> BCD</RadioGroupItem>
+              <RadioGroupItem value="CDE"> CDE</RadioGroupItem>
             </div>
           </RadioGroup>
         </FieldControl>
@@ -195,7 +187,7 @@ export const Default: Story = {
           <FieldLabel>Switch</FieldLabel>
           <Switch
             {...register("switch")}
-            onChange={(isSelected) => setValue("switch", isSelected)}
+            onCheckedChange={(isSelected) => setValue("switch", isSelected)}
           />
         </FieldControl>
       </form>

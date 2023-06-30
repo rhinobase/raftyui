@@ -15,6 +15,7 @@ export {
   DrawerCloseButton,
 } from "./drawer";
 export { FieldControl, FieldLabel, ErrorMessage } from "./field";
+export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hovercard";
 export {
   InputField,
   NumberField,
@@ -28,7 +29,6 @@ export {
 } from "./input";
 export { Kbd } from "./kbd";
 export { Label } from "./label";
-
 export { List, OrderedList, UnorderedList, ListItem } from "./list";
 export {
   Menu,
