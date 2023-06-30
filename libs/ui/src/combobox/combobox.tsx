@@ -6,7 +6,7 @@ import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { InputField, InputGroup, Suffix } from "../input";
 import { Button } from "../button";
 import { PopoverContent } from "../popover";
-import { ListBox } from "../select";
+// import { ListBox } from "../select";
 import { Spinner } from "../spinner";
 
 export {
@@ -81,7 +81,7 @@ export function Combobox<T extends object>({
           </Button>
         </Suffix>
       </InputGroup>
-      <PopoverContent
+      {/* <PopoverContent
         triggerState={state}
         triggerRef={popoverRef}
         scrollRef={listBoxRef}
@@ -98,7 +98,7 @@ export function Combobox<T extends object>({
           shouldUseVirtualFocus
           size={size}
         />
-      </PopoverContent>
+      </PopoverContent> */}
     </div>
   );
 }

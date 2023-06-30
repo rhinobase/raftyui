@@ -65,7 +65,16 @@ export {
 export { Popover, PopoverTrigger, PopoverContent } from "./popover";
 export { Progress } from "./progress";
 export { RadioGroup, Radio, RadioCard } from "./radio";
-export { Select, SelectItem, ListBox } from "./select";
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+} from "./select";
 export { Skeleton } from "./skeleton";
 export { Spinner } from "./spinner";
 export { Stat, StatIcon, StatLabel, StatValue, StatHelpText } from "./stat";
