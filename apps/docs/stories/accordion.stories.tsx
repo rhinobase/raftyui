@@ -10,7 +10,7 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 const meta: Meta<typeof Accordion> = {
   title: "Components / Accordion",
   args: {
-    variant: "ghost",
+    variant: "solid",
     size: "md",
   },
   argTypes: {

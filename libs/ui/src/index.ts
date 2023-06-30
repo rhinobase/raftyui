@@ -1,9 +1,4 @@
-export {
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionTrigger,
-} from "./accordion";
+export * from "./accordion";
 export { Alert, AlertIcon, AlertTitle, AlertDescription } from "./alert";
 export {
   AlertDialog,
