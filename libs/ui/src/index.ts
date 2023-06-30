@@ -2,7 +2,7 @@ export * from "./accordion";
 export * from "./alert";
 export * from "./alertdialog";
 export * from "./button";
-export { Card, CardBody, CardFooter, CardHeader } from "./card";
+export * from "./card";
 export { Checkbox, CheckboxGroup } from "./checkbox";
 export { Combobox, ComboboxItem, ComboboxSection } from "./combobox";
 export * from "./dialog";
