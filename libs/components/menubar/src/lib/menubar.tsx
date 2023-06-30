@@ -79,7 +79,7 @@ export const MenubarTrigger = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center rounded-md text-sm font-semibold outline-none",
+              "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center rounded-md text-sm font-medium outline-none",
               triggerClasses.size[size],
               className
             )
@@ -217,7 +217,7 @@ export const MenubarItem = React.forwardRef<
           unstyle
             ? className
             : classNames(
-                "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pr-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+                "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pr-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
                 itemClasses.size[size],
                 inset && "pl-8",
                 className
@@ -265,7 +265,7 @@ export const MenubarCheckboxItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-semibold outline-none",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-medium outline-none",
               checkboxItemClasses.size[size],
               className
             )
@@ -313,7 +313,7 @@ export const MenubarRadioItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-semibold outline-none",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-medium outline-none",
               radioItemClasses.size[size],
               className
             )
@@ -368,7 +368,7 @@ export const MenubarSubTrigger = React.forwardRef<
           unstyle
             ? className
             : classNames(
-                "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 w-full justify-between gap-2 font-semibold data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+                "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 w-full justify-between gap-2 font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
                 subTriggerClasses.size[size],
                 inset && "pl-8",
                 className
