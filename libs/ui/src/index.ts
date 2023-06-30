@@ -3,8 +3,8 @@ export * from "./alert";
 export * from "./alertdialog";
 export * from "./button";
 export * from "./card";
-export { Checkbox, CheckboxGroup } from "./checkbox";
-export { Combobox, ComboboxItem, ComboboxSection } from "./combobox";
+export * from "./checkbox";
+export * from "./combobox";
 export * from "./dialog";
 export {
   Drawer,
@@ -27,6 +27,8 @@ export {
   Suffix,
 } from "./input";
 export { Kbd } from "./kbd";
+export { Label } from "./label";
+
 export { List, OrderedList, UnorderedList, ListItem } from "./list";
 export {
   Menu,
