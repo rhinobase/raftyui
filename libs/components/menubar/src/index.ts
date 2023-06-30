@@ -3,7 +3,6 @@ export {
   MenubarCheckboxGroup,
   MenubarCheckboxItem,
   MenubarContent,
-  MenubarGroup,
   MenubarItem,
   MenubarLabel,
   MenubarMenu,
