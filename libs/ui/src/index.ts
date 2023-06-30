@@ -15,7 +15,7 @@ export {
   AlertDialogAction,
   AlertDialogCancel,
 } from "./alertdialog";
-export { Button } from "./button";
+export * from "./button";
 export { Card, CardBody, CardFooter, CardHeader } from "./card";
 export { Checkbox, CheckboxGroup } from "./checkbox";
 export { Combobox, ComboboxItem, ComboboxSection } from "./combobox";

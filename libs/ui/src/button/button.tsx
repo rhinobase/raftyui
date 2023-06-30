@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { classNames } from "@rafty/utils";
 import { Spinner } from "../spinner";
 
-const buttonClasses = cva(
+export const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none",
   {
     variants: {
