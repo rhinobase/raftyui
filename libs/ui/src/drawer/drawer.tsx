@@ -99,11 +99,11 @@ const titleClasses = {
 };
 
 export type DrawerTitle = React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.DialogTitle
+  typeof DialogPrimitive.Title
 >;
 
 export const DrawerTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.DialogTitle>,
+  React.ElementRef<typeof DialogPrimitive.Title>,
   DrawerTitle
 >(({ children, className, ...props }, forwardedRef) => {
   const { size } = useDrawerContext();
