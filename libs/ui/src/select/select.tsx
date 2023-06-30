@@ -92,15 +92,19 @@ import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 import { classNames } from "@rafty/ui";
 
-const Select = SelectPrimitive.Root;
+export const Select = SelectPrimitive.Root;
 
-const SelectGroup = SelectPrimitive.Group;
+export const SelectGroup = SelectPrimitive.Group;
 
-const SelectValue = SelectPrimitive.Value;
+export const SelectValue = SelectPrimitive.Value;
 
-const SelectTrigger = React.forwardRef<
+export type SelectTrigger = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Trigger
+>;
+
+export const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+  SelectTrigger
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
@@ -118,9 +122,13 @@ const SelectTrigger = React.forwardRef<
 ));
 SelectTrigger.displayName = "SelecTrigger";
 
-const SelectContent = React.forwardRef<
+export type SelectContent = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Content
+>;
+
+export const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+  SelectContent
 >(({ className, children, position = "popper", ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
@@ -148,9 +156,13 @@ const SelectContent = React.forwardRef<
 ));
 SelectContent.displayName = "SelectContent";
 
-const SelectLabel = React.forwardRef<
+export type SelectLabel = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Label
+>;
+
+export const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+  SelectLabel
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
@@ -163,9 +175,13 @@ const SelectLabel = React.forwardRef<
 ));
 SelectLabel.displayName = "SelectLabel";
 
-const SelectItem = React.forwardRef<
+export type SelectItem = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Item
+>;
+
+export const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
+  SelectItem
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Item
     ref={ref}
@@ -186,9 +202,13 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = "SelectItem";
 
-const SelectSeparator = React.forwardRef<
+export type SelectSeparator = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Separator
+>;
+
+export const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+  SelectSeparator
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
@@ -200,14 +220,3 @@ const SelectSeparator = React.forwardRef<
   />
 ));
 SelectSeparator.displayName = "SelectSeparator";
-
-export {
-  Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-};

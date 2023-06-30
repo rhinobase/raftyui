@@ -1,127 +1,67 @@
-import React from "react";
-import {
-  RadioGroupProps,
-  RadioGroupState,
-  useRadioGroupState,
-} from "react-stately";
-import {
-  AriaRadioProps,
-  VisuallyHidden,
-  useFocusRing,
-  useRadio,
-  useRadioGroup,
-  mergeProps,
-} from "react-aria";
+import * as React from "react";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { classNames } from "@rafty/utils";
-import { ErrorMessage } from "../field";
-import { Text } from "../text";
 import {
   RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
 
-// This is the shared context between the Radio Components
+type RadioGroup = React.ComponentPropsWithoutRef<
+  typeof RadioGroupPrimitive.Root
+> &
+  Partial<RadioGroupContext>;
 
-const RadioContext = React.createContext<RadioGroupState | null>(null);
-
-export type RadioGroup = Omit<RadioGroupProps, "isDisabled"> &
-  Partial<RadioGroupContext> & {
-    children: React.ReactNode;
-  };
-
-// The Parent Component
-export function RadioGroup(props: RadioGroup) {
-  const {
-    children,
-    label,
-    description,
-    errorMessage,
-    validationState,
-    size = "md",
-    isDisabled = false,
-  } = props;
-
-  const state = useRadioGroupState(props);
-  const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } =
-    useRadioGroup(props, state);
-
+const RadioGroup = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+  RadioGroup
+>(({ className, size = "md", isDisabled = false, ...props }, ref) => {
   return (
-    <RadioGroupProvider value={{ size, isDisabled }}>
-      <div {...radioGroupProps}>
-        <span {...labelProps} aria-label="radio">
-          {label}
-        </span>
-        <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
-        {description && <Text {...descriptionProps}>{description}</Text>}
-        {errorMessage && validationState === "invalid" && (
-          <ErrorMessage {...errorMessageProps}>{errorMessage}</ErrorMessage>
-        )}
-      </div>
+    <RadioGroupProvider value={{ size: size, isDisabled: isDisabled }}>
+      <RadioGroupPrimitive.Root
+        className={classNames("grid gap-2", className)}
+        {...props}
+        ref={ref}
+      />
     </RadioGroupProvider>
   );
-}
+});
+RadioGroup.displayName = "RadioGroup";
 
-const radioClasses = {
-  size: {
-    sm: "h-3.5 w-3.5 group-aria-checked:border-4",
-    md: "h-[18px] w-[18px] group-aria-checked:border-[5px]",
-    lg: "h-6 w-6 group-aria-checked:border-[8px]",
-  },
-};
+type RadioGroupItem = React.ComponentPropsWithoutRef<
+  typeof RadioGroupPrimitive.Item
+>;
 
-export type Radio = AriaRadioProps;
-
-export function Radio({ children, ...props }: Radio) {
-  const { size, isDisabled } = useRadioGroupContext();
-
+const RadioGroupItem = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+  RadioGroupItem
+>(({ className, children, ...props }, ref) => {
+  const { size } = useRadioGroupContext();
   return (
-    <RadioCard
-      {...props}
-      isDisabled={isDisabled}
-      className="dark:text-secondary-200 flex items-center gap-2 hover:opacity-80"
-    >
-      <div
-        className={classNames(
-          "border-secondary-400 dark:border-secondary-600 group-data-[selected=true]:border-primary-500 dark:group-data-[selected=true]:border-primary-300 inline-block rounded-full border-2 hover:opacity-70 group-data-[selected=true]:border-4",
-          radioClasses.size[size]
-        )}
-      />
-      {children}
-    </RadioCard>
-  );
-}
-
-export type RadioCard = AriaRadioProps & { className?: string };
-
-export function RadioCard(props: RadioCard) {
-  const { children, className, isDisabled } = props;
-  const state = React.useContext(RadioContext);
-  const ref = React.useRef(null);
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { inputProps } = useRadio(props, state!, ref);
-  const { focusProps } = useFocusRing();
-  const isSelected = state?.selectedValue === props.value;
-  const { isDisabled: isGroupDisabled } = useRadioGroupContext();
-
-  const disabled = isDisabled || isGroupDisabled;
-
-  console.log(isSelected);
-
-  return (
-    <label
-      {...props}
+    <RadioGroupPrimitive.Item
+      ref={ref}
       className={classNames(
-        "group aria-disabled:cursor-not-allowed aria-disabled:opacity-60 dark:aria-disabled:opacity-50",
+        size === "sm" && "h-3.5 w-3.5",
+        size === "md" && "h-5 w-5",
+        size === "lg" && "h-6 w-6",
+        "aspect-square  rounded-full border border-secondary-400 dark:border-secondary-600 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
-      data-selected={isSelected}
-      aria-disabled={disabled}
+      {...props}
     >
-      <VisuallyHidden>
-        <input {...mergeProps(inputProps, focusProps)} ref={ref} />
-      </VisuallyHidden>
-      {children}
-    </label>
+      <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
+        <div
+          className={classNames(
+            size === "sm" && "h-2 w-2",
+            size === "md" && "h-2.5 w-2.5",
+            size === "lg" && "h-3.5 w-3.5",
+            " bg-primary-500 dark:bg-primary-300 rounded-full"
+          )}
+        />
+      </RadioGroupPrimitive.Indicator>
+    </RadioGroupPrimitive.Item>
   );
-}
+});
+RadioGroupItem.displayName = "RadioGroupItem";
+
+export { RadioGroup, RadioGroupItem };
