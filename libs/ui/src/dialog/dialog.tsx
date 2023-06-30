@@ -111,6 +111,13 @@ export const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = "DialogOverlay";
 
 // Dialog Content Component
+const dialogContentClasses = {
+  size: {
+    sm: "max-w-[30rem] p-6",
+    md: "max-w-[35rem] p-7",
+    lg: "max-w-[40rem] p-8",
+  },
+};
 export type DialogContent = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > & {
@@ -143,9 +150,7 @@ export const DialogContent = React.forwardRef<
             unstyle
               ? className
               : classNames(
-                  size === "lg" && "max-w-[60rem] p-8",
-                  size === "md" && "max-w-[40rem] p-7",
-                  size === "sm" && "max-w-[30rem] p-6",
+                  dialogContentClasses.size[size],
                   "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg sm:rounded-lg md:w-full",
                   "bg-white dark:bg-secondary-800 dark:text-secondary-50 dark:border-secondary-700",
                   "duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
@@ -168,64 +173,91 @@ export const DialogContent = React.forwardRef<
 DialogContent.displayName = "DialogContent";
 
 // Dialog Header Component
-export type DialogHeader = React.HTMLAttributes<HTMLDivElement>;
+export type DialogHeader = React.HTMLAttributes<HTMLDivElement> & {
+  isUnstyled?: boolean;
+};
 
 export const DialogHeader = ({
   className,
-  children,
+  isUnstyled,
   ...props
-}: DialogHeader) => (
-  <div
-    {...props}
-    className={classNames(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
-      className
-    )}
-  >
-    {children}
-  </div>
-);
+}: DialogHeader) => {
+  const { isBarebone } = useDialogContext();
+  const unstyle = isBarebone || isUnstyled;
+
+  return (
+    <div
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "flex flex-col space-y-1.5 text-center sm:text-left",
+              className
+            )
+      }
+    />
+  );
+};
 DialogHeader.displayName = "DialogHeader";
 
 // Dialog Footer Component
-export type DialogFooter = React.HTMLAttributes<HTMLDivElement>;
+export type DialogFooter = React.HTMLAttributes<HTMLDivElement> & {
+  isUnstyled?: boolean;
+};
 
-export const DialogFooter = ({ className, ...props }: DialogFooter) => (
-  <div
-    className={classNames(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className
-    )}
-    {...props}
-  />
-);
+export const DialogFooter = ({
+  className,
+  isUnstyled = false,
+  ...props
+}: DialogFooter) => {
+  const { isBarebone } = useDialogContext();
+  const unstyle = isBarebone || isUnstyled;
+
+  return (
+    <div
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+              className
+            )
+      }
+      {...props}
+    />
+  );
+};
 DialogFooter.displayName = "DialogFooter";
 
+// DialogTitle Component
 export type DialogTitle = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Title
->;
+> & { isUnstyled?: boolean };
 
 export const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   DialogTitle
->(({ className, ...props }, forwardedRef) => {
-  const { size } = useDialogContext();
+>(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { isBarebone } = useDialogContext();
+  const unstyle = isBarebone || isUnstyled;
 
   return (
     <DialogPrimitive.Title
       ref={forwardedRef}
-      className={classNames(
-        size === "lg" && "text-xl",
-        size === "md" && "text-xl",
-        size === "sm" && "text-lg",
-        "text-lg font-semibold leading-none tracking-tight",
-        className
-      )}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "text-lg font-semibold leading-none tracking-tight",
+              className
+            )
+      }
       {...props}
     />
   );
 });
-DialogTitle.displayName = DialogPrimitive.Title.displayName;
+DialogTitle.displayName = "DialogTitle";
 
 // Dialog Body Component
 export type DialogDescription = React.ComponentPropsWithoutRef<
@@ -240,17 +272,15 @@ export const DialogDescription = React.forwardRef<
   const unstyle = isBarebone || isUnstyled;
 
   return (
-    <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>
-      <div
-        className={
-          unstyle
-            ? className
-            : classNames("text-sm text-muted-foreground", className)
-        }
-      >
-        {children}
-      </div>
-    </DialogPrimitive.Description>
+    <DialogPrimitive.Description
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames("text-sm text-muted-foreground", className)
+      }
+      ref={forwardedRef}
+    />
   );
 });
 DialogDescription.displayName = "DialogDescription";

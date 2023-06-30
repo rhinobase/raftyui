@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import * as React from "react";
 import { classNames } from "@rafty/utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {
@@ -24,13 +24,17 @@ const alertClasses = cva("flex w-full items-center", {
       info: "",
     },
     variant: {
-      simple: "",
+      simple: "border",
       solid: "",
       "left-accent": "",
       "top-accent": "",
     },
   },
   compoundVariants: [
+    {
+      variant: ["simple", "solid"],
+      className: "rounded-lg",
+    },
     {
       variant: "simple",
       status: "success",
@@ -145,10 +149,10 @@ const alertClasses = cva("flex w-full items-center", {
   ],
 });
 
-export type Alert = JSX.IntrinsicElements["div"] &
+export type Alert = React.HTMLAttributes<HTMLDivElement> &
   Partial<AlertContext> & { isUnstyled?: boolean };
 
-export const Alert = forwardRef<HTMLDivElement, Alert>(
+export const Alert = React.forwardRef<HTMLDivElement, Alert>(
   (
     {
       className,
@@ -182,12 +186,12 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
 );
 Alert.displayName = "Alert";
 
-const alertIconClasses = cva("stroke-2", {
+const alertIconClasses = cva("", {
   variants: {
     size: {
-      sm: "h-4 w-4",
-      md: "h-5 w-5",
-      lg: "h-7 w-7",
+      sm: "h-4 w-4 stroke-2",
+      md: "h-5 w-5 stroke-2",
+      lg: "h-7 w-7 stroke-[1.5]",
     },
     status: {
       success: "",
@@ -230,7 +234,7 @@ const alertIconClasses = cva("stroke-2", {
   ],
 });
 
-const icons = {
+const ICONS = {
   error: ExclamationCircleIcon,
   warning: ExclamationTriangleIcon,
   info: InformationCircleIcon,
@@ -246,7 +250,7 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
   const { size, status, variant, isBarebone } = useAlertContext();
   const unstyle = isBarebone || isUnstyled;
 
-  const Icon = icons[status];
+  const Icon = ICONS[status];
   return (
     <Icon
       className={
@@ -258,55 +262,115 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
   );
 }
 
-const alertTitleClasses = {
-  size: {
-    sm: "font-medium",
-    md: "text-lg font-medium",
-    lg: "text-xl font-semibold",
+const alertTitleClasses = cva("", {
+  variants: {
+    size: {
+      sm: "font-medium",
+      md: "text-lg font-medium",
+      lg: "text-xl font-medium",
+    },
+    status: {
+      success: "",
+      warning: "",
+      error: "",
+      info: "",
+    },
+    variant: {
+      simple: "",
+      solid: "",
+      "left-accent": "",
+      "top-accent": "",
+    },
   },
+  compoundVariants: [
+    {
+      size: ["sm", "md", "lg"],
+      status: "error",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-error-500 dark:text-error-200",
+    },
+    {
+      size: ["sm", "md", "lg"],
+      status: "warning",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-warning-600 dark:text-warning-300",
+    },
+    {
+      size: ["sm", "md", "lg"],
+      status: "info",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-info-500 dark:text-info-200",
+    },
+    {
+      size: ["sm", "md", "lg"],
+      status: "success",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-success-500 dark:text-success-300",
+    },
+  ],
+});
+
+export type AlertTitle = React.HTMLAttributes<HTMLHeadingElement> & {
+  isUnstyled?: boolean;
 };
 
-export type AlertTitle = JSX.IntrinsicElements["h6"] & { isUnstyled?: boolean };
-
-export const AlertTitle = forwardRef<HTMLParagraphElement, AlertTitle>(
+export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useAlertContext();
+    const { size, isBarebone, status, variant } = useAlertContext();
     const unstyle = isUnstyled || isBarebone;
 
     return (
-      <h6
+      <h5
         {...props}
         className={
           unstyle
             ? className
-            : classNames(alertTitleClasses.size[size], className)
+            : classNames(
+                alertTitleClasses({ size, status, variant }),
+                className
+              )
         }
         ref={forwardedRef}
       >
         {children}
-      </h6>
+      </h5>
     );
   }
 );
 AlertTitle.displayName = "AlertTitle";
 
-const alertDescriptionClasses = {
-  size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+const alertDescriptionClasses = cva("", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+    },
+    variant: {
+      simple: "",
+      solid: "",
+      "left-accent": "",
+      "top-accent": "",
+    },
   },
-};
+  compoundVariants: [
+    {
+      size: ["sm", "md", "lg"],
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-secondary-500 dark:text-secondary-200",
+    },
+  ],
+});
 
-export type AlertDescription = JSX.IntrinsicElements["p"] & {
+export type AlertDescription = React.HTMLAttributes<HTMLParagraphElement> & {
   isUnstyled?: boolean;
 };
 
-export const AlertDescription = forwardRef<
+export const AlertDescription = React.forwardRef<
   HTMLParagraphElement,
   AlertDescription
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useAlertContext();
+  const { size, isBarebone, variant } = useAlertContext();
   const unstyle = isUnstyled || isBarebone;
 
   return (
@@ -315,7 +379,7 @@ export const AlertDescription = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(alertDescriptionClasses.size[size], className)
+          : classNames(alertDescriptionClasses({ size, variant }), className)
       }
       ref={forwardedRef}
     >

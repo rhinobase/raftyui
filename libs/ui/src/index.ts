@@ -1,15 +1,6 @@
 export * from "./accordion";
-export { Alert, AlertIcon, AlertTitle, AlertDescription } from "./alert";
-export {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogOverlay,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogBody,
-  AlertDialogAction,
-  AlertDialogCancel,
-} from "./alertdialog";
+export * from "./alert";
+export * from "./alertdialog";
 export * from "./button";
 export { Card, CardBody, CardFooter, CardHeader } from "./card";
 export { Checkbox, CheckboxGroup } from "./checkbox";
