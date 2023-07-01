@@ -19,7 +19,6 @@ export { FieldControl, FieldLabel, ErrorMessage } from "./field";
 export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hovercard";
 export {
   InputField,
-  NumberField,
   PasswordField,
   SearchField,
   InputGroup,
@@ -56,7 +55,7 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
 } from "./navigation-menu";
-export { Popover, PopoverTrigger, PopoverContent } from "./popover";
+export * from "./popover";
 export { Progress } from "./progress";
 export { RadioGroup, RadioGroupItem } from "./radio";
 export { ScrollArea, ScrollBar } from "./scrollarea";
