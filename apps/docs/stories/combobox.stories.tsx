@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { Meta, StoryObj } from "@storybook/react";
-import { Combobox, Spinner } from "@rafty/ui";
+import { Combobox } from "@rafty/ui";
 
 const meta: Meta<typeof Combobox> = {
   title: "Form / Combobox",
@@ -11,12 +10,37 @@ export default meta;
 type Story = StoryObj<typeof Combobox>;
 const CLIENT_ID = "qtSiDbipH06mlQxvVz7alCSFDXnPeEnH446DOxBd-sQ";
 
+const frameworks = [
+  {
+    value: "next.js",
+    label: "Next.js",
+  },
+  {
+    value: "sveltekit",
+    label: "SvelteKit",
+  },
+  {
+    value: "nuxt.js",
+    label: "Nuxt.js",
+  },
+  {
+    value: "remix",
+    label: "Remix",
+  },
+  {
+    value: "astro",
+    label: "Astro",
+  },
+];
+
 export const Default: Story = {
   render: function Render() {
     return (
-      <div className="w-[500px]">
-        <Combobox />
-      </div>
+      <Combobox
+        options={frameworks}
+        placeholder="Select a framework"
+        inputPlaceholder="Search a framework...."
+      />
     );
   },
 };
@@ -145,7 +169,6 @@ export const Default: Story = {
 //     }
 
 //     return (
-//       <div className="w-[500px]">
 //         <Combobox
 //           label="Select Image"
 //           onFocusChange={(focus) => (isFocused.current = focus)}
@@ -157,7 +180,6 @@ export const Default: Story = {
 //         >
 //           {options}
 //         </Combobox>
-//       </div>
 //     );
 //   },
 // };
