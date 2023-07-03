@@ -1,12 +1,13 @@
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { classNames } from "@rafty/utils";
 import {
   RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
+import { Label, classNames } from "@rafty/ui";
 
+// RadioGroup Component
 type RadioGroup = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
 > &
@@ -15,19 +16,30 @@ type RadioGroup = React.ComponentPropsWithoutRef<
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
->(({ className, size = "md", isDisabled = false, ...props }, ref) => {
-  return (
-    <RadioGroupProvider value={{ size: size, isDisabled: isDisabled }}>
-      <RadioGroupPrimitive.Root
-        className={classNames("grid gap-2", className)}
-        {...props}
-        ref={ref}
-      />
-    </RadioGroupProvider>
-  );
-});
+>(
+  (
+    { className, size = "md", isDisabled = false, disabled, ...props },
+    forwardedRef
+  ) => {
+    return (
+      <RadioGroupProvider value={{ size: size, isDisabled: isDisabled }}>
+        <RadioGroupPrimitive.Root
+          {...props}
+          disabled={isDisabled || disabled}
+          className={classNames(
+            size == "sm" ? "gap-2" : "gap-3",
+            "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
+            className
+          )}
+          ref={forwardedRef}
+        />
+      </RadioGroupProvider>
+    );
+  }
+);
 RadioGroup.displayName = "RadioGroup";
 
+// RadioGroupItem Component
 type RadioGroupItem = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
 >;
@@ -36,8 +48,11 @@ const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
 >(({ className, children, ...props }, ref) => {
-  const { size } = useRadioGroupContext();
-  return (
+  const { size, isDisabled } = useRadioGroupContext();
+
+  const disabled = isDisabled || props.disabled;
+
+  const radioItem = (
     <RadioGroupPrimitive.Item
       ref={ref}
       className={classNames(
@@ -61,6 +76,23 @@ const RadioGroupItem = React.forwardRef<
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
+
+  if (children)
+    return (
+      <div className="flex items-center w-max">
+        {radioItem}
+        <Label
+          htmlFor={props.id}
+          className={classNames(
+            disabled && "cursor-not-allowed opacity-50",
+            "pl-2"
+          )}
+        >
+          {children}
+        </Label>
+      </div>
+    );
+  else return radioItem;
 });
 RadioGroupItem.displayName = "RadioGroupItem";
 
