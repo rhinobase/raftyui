@@ -3,7 +3,8 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { Label, classNames } from "@rafty/ui";
 
-export type CheckBox = React.ComponentPropsWithoutRef<
+// Checkbox Component
+export type Checkbox = React.ComponentPropsWithoutRef<
   typeof CheckboxPrimitive.Root
 > & { size?: "sm" | "md" | "lg" };
 
@@ -14,11 +15,11 @@ const CheckBoxIndicatorClasses = {
   size: { sm: "h-2.5 w-2.5", md: "h-3.5 w-3.5", lg: "h-4 w-4" },
 };
 
-const Checkbox = React.forwardRef<
+export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  CheckBox
->(({ className, children, size = "md", ...props }, ref) => (
-  <div className="flex items-center gap-2">
+  Checkbox
+>(({ className, children, size = "md", ...props }, ref) => {
+  const checkbox = (
     <CheckboxPrimitive.Root
       ref={ref}
       className={classNames(
@@ -29,7 +30,7 @@ const Checkbox = React.forwardRef<
       id={props.id}
       {...props}
     >
-      <div className="hidden group-data-[state=indeterminate]:block text-secondary-600">
+      <div className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500">
         <MinusIcon />
       </div>
       <CheckboxPrimitive.Indicator
@@ -45,9 +46,23 @@ const Checkbox = React.forwardRef<
         />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-    <Label htmlFor={props.id}>{children}</Label>
-  </div>
-));
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
+  );
 
-export { Checkbox };
+  if (children)
+    return (
+      <div className="flex items-center w-max">
+        {checkbox}
+        <Label
+          htmlFor={props.id}
+          className={classNames(
+            props.disabled && "cursor-not-allowed opacity-50",
+            "pl-2"
+          )}
+        >
+          {children}
+        </Label>
+      </div>
+    );
+  else return checkbox;
+});
+Checkbox.displayName = "Checkbox";
