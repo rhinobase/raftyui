@@ -1,39 +1,45 @@
 import { Meta, StoryObj } from "@storybook/react";
-import {
-  Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-  SelectLabel,
-  SelectItem,
-} from "@rafty/ui";
+import { Select, Option, Label } from "@rafty/ui";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
+  args: {
+    variant: "outline",
+    size: "md",
+    isDisabled: false,
+    isInvalid: false,
+    isRequired: false,
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    variant: {
+      control: "select",
+      options: ["solid", "outline", "ghost"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
-  render: () => (
+  render: ({ variant, size, isDisabled, isInvalid, isRequired }) => (
     <div className="w-[500px]">
-      <h4 className="dark:text-secondary-200 mb-4 font-bold">Select</h4>
-      <Select>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Fruits</SelectLabel>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
-          </SelectGroup>
-        </SelectContent>
+      <Label isRequired={isRequired}>select</Label>
+      <Select
+        variant={variant}
+        size={size}
+        disabled={isDisabled}
+        isInvalid={isInvalid}
+      >
+        <Option value="apple">Apple</Option>
+        <Option value="banana">Banana</Option>
+        <Option value="blueberry">Blueberry</Option>
+        <Option value="grapes">Grapes</Option>
+        <Option value="pineapple">Pineapple</Option>
       </Select>
     </div>
   ),
