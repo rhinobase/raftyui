@@ -1,5 +1,5 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import React, { ComponentProps, forwardRef } from "react";
+import * as React from "react";
 import { Button } from "../button";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 import { classNames } from "@rafty/utils";
@@ -36,7 +36,9 @@ export const DrawerOverlay = React.forwardRef<
     <DialogPrimitive.Overlay
       {...props}
       className={classNames(
-        "animate-slide-down-fade fixed inset-0 z-40 bg-black bg-opacity-20 transition-opacity ease-in-out dark:bg-opacity-40",
+        "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-sm",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className
       )}
       ref={forwardedRef}
@@ -70,11 +72,10 @@ export const DrawerContent = React.forwardRef<
   const { size, side } = useDrawerContext();
   return (
     <DialogPrimitive.Portal>
-      {/*zIndex one less than Toast */}
       <DialogPrimitive.Content
         {...props}
         className={classNames(
-          "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen min-w-[360px] overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
+          "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
           contentClasses.size[size],
           contentClasses.side[side],
           className
@@ -125,40 +126,59 @@ export const DrawerTitle = React.forwardRef<
 DrawerTitle.displayName = "DrawerTitle";
 
 // Drawer Body Component
-export type DrawerBody = React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.Description
->;
-
-export const DrawerBody = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  DrawerBody
->(({ className, children, ...props }, forwardedRef) => (
-  <DialogPrimitive.Description {...props} ref={forwardedRef} asChild>
-    <div className={className}>{children}</div>
-  </DialogPrimitive.Description>
-));
-DrawerBody.displayName = "DrawerBody";
+export const DrawerDescription = DialogPrimitive.Description;
 
 // Drawer Close Button Component
-export type DrawerCloseButton = ComponentProps<
+export type DrawerClose = React.ComponentPropsWithoutRef<
   (typeof DialogPrimitive)["Close"]
 > &
   Button;
 
-export const DrawerCloseButton = forwardRef<
+export const DrawerClose = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Close>,
-  DrawerCloseButton
->(({ variant = "ghost", size = "icon", className, ...props }, forwardedRef) => {
-  return (
-    <DialogPrimitive.Close ref={forwardedRef} asChild>
-      <Button
+  DrawerClose
+>(
+  (
+    {
+      variant = "ghost",
+      size = "icon",
+      colorScheme,
+      leftIcon = undefined,
+      rightIcon = undefined,
+      isDisabled = false,
+      isLoading = false,
+      isActive = false,
+      asChild,
+      isUnstyled = false,
+      className,
+      children,
+      ...props
+    },
+    forwardedRef
+  ) => {
+    return (
+      <DialogPrimitive.Close
         {...props}
-        variant={variant}
-        size={size}
-        className={classNames("absolute right-5 top-5 rounded-full", className)}
+        className={className}
+        ref={forwardedRef}
+        asChild
       >
-        <XMarkIcon className="h-5 w-5 stroke-2" />
-      </Button>
-    </DialogPrimitive.Close>
-  );
-});
+        {asChild ? (
+          children
+        ) : (
+          <Button
+            variant={variant}
+            size={size}
+            className={classNames(
+              "absolute right-5 top-5 rounded-full",
+              className
+            )}
+          >
+            <XMarkIcon className="h-5 w-5 stroke-2" />
+          </Button>
+        )}
+      </DialogPrimitive.Close>
+    );
+  }
+);
+DrawerClose.displayName = "DrawerClose";

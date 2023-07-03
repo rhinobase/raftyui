@@ -12,8 +12,8 @@ export {
   DrawerOverlay,
   DrawerContent,
   DrawerTitle,
-  DrawerBody,
-  DrawerCloseButton,
+  DrawerDescription,
+  DrawerClose,
 } from "./drawer";
 export { FieldControl, Label, ErrorMessage } from "./field";
 export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hovercard";
