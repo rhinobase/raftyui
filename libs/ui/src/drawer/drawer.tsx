@@ -146,7 +146,7 @@ export type DrawerCloseButton = ComponentProps<
   Button;
 
 export const DrawerCloseButton = forwardRef<
-  HTMLButtonElement,
+  React.ElementRef<typeof DialogPrimitive.Close>,
   DrawerCloseButton
 >(({ variant = "ghost", size = "icon", className, ...props }, forwardedRef) => {
   return (
