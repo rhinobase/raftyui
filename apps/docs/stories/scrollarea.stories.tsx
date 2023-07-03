@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ScrollArea, ScrollBar, SelectSeparator } from "@rafty/ui";
+import { ScrollArea, SelectSeparator } from "@rafty/ui";
 import React from "react";
 
 const meta: Meta<typeof ScrollArea> = {

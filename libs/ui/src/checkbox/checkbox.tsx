@@ -18,10 +18,10 @@ const CheckBoxIndicatorClasses = {
 export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   Checkbox
->(({ className, children, size = "md", ...props }, ref) => {
+>(({ className, children, size = "md", ...props }, forwardedref) => {
   const checkbox = (
     <CheckboxPrimitive.Root
-      ref={ref}
+      ref={forwardedref}
       className={classNames(
         CheckBoxClasses.size[size],
         "group relative shrink-0 rounded-sm border-2 border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",

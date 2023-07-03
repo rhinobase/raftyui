@@ -47,14 +47,14 @@ type RadioGroupItem = React.ComponentPropsWithoutRef<
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
->(({ className, children, ...props }, ref) => {
+>(({ className, children, ...props }, forwardedref) => {
   const { size, isDisabled } = useRadioGroupContext();
 
   const disabled = isDisabled || props.disabled;
 
   const radioItem = (
     <RadioGroupPrimitive.Item
-      ref={ref}
+      ref={forwardedref}
       className={classNames(
         size === "sm" && "h-3.5 w-3.5",
         size === "md" && "h-5 w-5",

@@ -17,7 +17,7 @@ const switchThumbClasses = {
     lg: "h-6 w-6 data-[state=checked]:translate-x-5",
   },
 };
-
+// Switch component
 export type Switch = React.ComponentPropsWithoutRef<
   typeof SwitchPrimitives.Root
 > & {
@@ -27,7 +27,7 @@ export type Switch = React.ComponentPropsWithoutRef<
 export const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   Switch
->(({ className, size = "md", ...props }, ref) => (
+>(({ className, size = "md", ...props }, forwardedref) => (
   <SwitchPrimitives.Root
     className={classNames(
       switchClasses.size[size],
@@ -35,7 +35,7 @@ export const Switch = React.forwardRef<
       className
     )}
     {...props}
-    ref={ref}
+    ref={forwardedref}
   >
     <SwitchPrimitives.Thumb
       className={classNames(
