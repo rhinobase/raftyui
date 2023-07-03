@@ -20,6 +20,7 @@ const progressClasses = {
   },
 };
 
+// Progress Component
 export type Progress = React.ComponentPropsWithoutRef<
   typeof ProgressPrimitive.Root
 > & {

@@ -2,8 +2,10 @@ import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { classNames } from "@rafty/utils";
 
+// TooltipProvider Component
 const TooltipProvider = TooltipPrimitive.Provider;
 
+// Tooltip Component
 export type Tooltip = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Root
 >;
@@ -15,6 +17,7 @@ export const Tooltip = ({ children, ...props }: Tooltip) => (
 );
 Tooltip.displayName = "Tooltip";
 
+// TooltipTrigger Component
 export type TooltipTrigger = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Trigger
 >;
@@ -29,6 +32,7 @@ export const TooltipTrigger = React.forwardRef<
 ));
 TooltipTrigger.displayName = "TooltipTrigger";
 
+// TooltipContent Component
 export type TooltipContent = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Content
 > & { isArrow?: boolean; hasAnimation?: boolean };

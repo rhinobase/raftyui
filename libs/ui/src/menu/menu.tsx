@@ -1,5 +1,4 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { ComponentProps, forwardRef } from "react";
 import { Button } from "../button";
 import { MenuProvider, MenuContext, useMenuContext } from "./context";
 import { classNames } from "@rafty/utils";

@@ -1,7 +1,7 @@
-import { forwardRef } from "react";
 import { useFieldControlContext } from "../field/context";
 import { classNames } from "@rafty/utils";
 import { cva } from "class-variance-authority";
+import React from "react";
 
 const textareaClasses = cva(
   "w-full appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
@@ -36,7 +36,7 @@ const textareaClasses = cva(
   }
 );
 
-// InputField Component (With ErrorMessage)
+// TextArea Component (With ErrorMessage)
 export type Textarea = Omit<JSX.IntrinsicElements["textarea"], "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
@@ -47,7 +47,7 @@ export type Textarea = Omit<JSX.IntrinsicElements["textarea"], "size"> & {
   isReadOnly?: boolean;
   isRequired?: boolean;
 };
-export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
+export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
   (
     {
       className,

@@ -1,5 +1,5 @@
 import { classNames } from "@rafty/utils";
-import { forwardRef } from "react";
+import React from "react";
 
 const dimensions = {
   sm: "18px",
@@ -7,12 +7,13 @@ const dimensions = {
   lg: "36px",
 };
 
+// Spinner Component
 export type Spinner = JSX.IntrinsicElements["svg"] & {
   size?: keyof typeof dimensions;
   inheritParent?: boolean;
 };
 
-export const Spinner = forwardRef<SVGSVGElement, Spinner>(
+export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
   (
     { inheritParent = false, size = "md", className, ...props },
     forwardedRef

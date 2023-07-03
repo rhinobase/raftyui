@@ -1,11 +1,12 @@
-import { forwardRef } from "react";
 import { classNames } from "@rafty/utils";
+import React from "react";
 
+// Kbd Component
 export type Kbd = JSX.IntrinsicElements["kbd"] & {
   isUnstyled?: boolean;
 };
 
-export const Kbd = forwardRef<HTMLElement, Kbd>(
+export const Kbd = React.forwardRef<HTMLElement, Kbd>(
   ({ children, className, isUnstyled = false, ...props }, forwardRef) => (
     <kbd
       {...props}

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel, Textarea } from "@rafty/ui";
+import { FieldControl, Label, Textarea } from "@rafty/ui";
 
 const meta: Meta<typeof Textarea> = {
   title: "Form / Textarea",
@@ -31,7 +31,7 @@ export const Default: Story = {
           isReadOnly={readOnly}
           isRequired={required}
         >
-          <FieldLabel>Enter Message</FieldLabel>
+          <Label>Enter Message</Label>
           <Textarea placeholder="abc" variant={variant} />
         </FieldControl>
       </div>

@@ -8,6 +8,7 @@ import {
 import { classNames } from "@rafty/utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
+// NavigationMenu Component
 export type NavigationMenu = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Root
 > &
@@ -42,6 +43,7 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
 );
 NavigationMenu.displayName = "NavigationMenu";
 
+// NavigationMenuList Component
 export type NavigationMenuList = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.List
 > & { isUnstyled?: boolean };
@@ -78,13 +80,14 @@ export const NavigationMenuList = React.forwardRef<
 );
 NavigationMenuList.displayName = "NavigationMenuList";
 
-//MenuBar Button Component
+// NavigationMenuItem Component
 export type NavigationMenuItem = ComponentProps<
   typeof NavigationMenuPrimitive.Item
 >;
 
 export const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
+// NavigationMenuTrigger Component
 export type NavigationMenuTrigger = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Trigger
 > & {
@@ -118,6 +121,7 @@ export const NavigationMenuTrigger = forwardRef<
 });
 NavigationMenuTrigger.displayName = "NavigationMenuTrigger";
 
+// NavigationMenuContent Component
 const contentClasses = {
   size: {
     sm: "max-w-lg top-2.5 rounded-md",
@@ -162,6 +166,7 @@ export const NavigationMenuContent = forwardRef<
 );
 NavigationMenuContent.displayName = "NavigationMenu.Content";
 
+// NavigationMenuLink Component
 export type NavigationMenuLink = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Link
 > & { isUnstyled?: boolean };
@@ -193,6 +198,7 @@ export const NavigationMenuLink = ({
 };
 NavigationMenuLink.displayName = "NavigationMenuLink";
 
+// NavigationMenuListItem Component
 export type NavigationMenuListItem = {
   title: string;
   href: string;
@@ -215,7 +221,9 @@ export const NavigationMenuListItem = ({
     </div>
   </NavigationMenuLink>
 );
+NavigationMenuListItem.displayName = "NavigationMenuListItem";
 
+// NavigationMenuViewport Component
 type NavigationMenuViewport = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Viewport
 >;
@@ -232,6 +240,7 @@ const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
 };
 NavigationMenuViewport.displayName = "NavigationMenuViewport";
 
+// NavigationMenuIndicator Component
 export type NavigationMenuIndicator = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Indicator
 > & { isUnstyled?: boolean };

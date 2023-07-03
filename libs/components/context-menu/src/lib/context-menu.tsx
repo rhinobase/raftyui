@@ -46,7 +46,7 @@ export const ContextMenuContent = forwardRef<
           unstyle
             ? className
             : classNames(
-                "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
+                "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                 className
               )
         }
@@ -299,7 +299,7 @@ export const ContextMenuSubContent = forwardRef<
               ? className
               : classNames(
                   "data-[side=right]:animate-scale-in origin-top-left",
-                  "dark:bg-secondary-800 min-w-[220px] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+                  "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
                   className
                 )
           }

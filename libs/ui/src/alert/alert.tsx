@@ -186,6 +186,7 @@ export const Alert = React.forwardRef<HTMLDivElement, Alert>(
 );
 Alert.displayName = "Alert";
 
+// AlertIcon component
 const alertIconClasses = cva("", {
   variants: {
     size: {
@@ -262,6 +263,7 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
   );
 }
 
+// AlertTitle component
 const alertTitleClasses = cva("", {
   variants: {
     size: {
@@ -339,6 +341,7 @@ export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
 );
 AlertTitle.displayName = "AlertTitle";
 
+// AlertDescription component
 const alertDescriptionClasses = cva("", {
   variants: {
     size: {

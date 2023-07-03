@@ -1,18 +1,18 @@
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
-import { ComponentProps, forwardRef } from "react";
 import {
   ToggleGroupContext,
   ToggleGroupProvider,
   useToggleGroupContext,
 } from "./context";
 import { classNames } from "@rafty/utils";
+import * as React from "react";
 
 // ToggleGroup Component
-export type ToggleGroup = ComponentProps<
+export type ToggleGroup = React.ComponentProps<
   (typeof ToggleGroupPrimitive)["Root"]
 > &
   Partial<ToggleGroupContext> & { isUnstyled?: boolean };
-export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
+export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
   (
     {
       children,
@@ -57,32 +57,33 @@ const itemClasses = {
   },
 };
 
-export type ToggleGroupItem = ComponentProps<
+export type ToggleGroupItem = React.ComponentProps<
   (typeof ToggleGroupPrimitive)["Item"]
 > & { isUnstyled?: boolean };
 
-export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useToggleGroupContext();
-    const unstyle = isBarebone || isUnstyled;
+export const ToggleGroupItem = React.forwardRef<
+  HTMLButtonElement,
+  ToggleGroupItem
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useToggleGroupContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <ToggleGroupPrimitive.Item
-        className={
-          unstyle
-            ? className
-            : classNames(
-                itemClasses.size[size],
-                "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
-                className
-              )
-        }
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </ToggleGroupPrimitive.Item>
-    );
-  }
-);
+  return (
+    <ToggleGroupPrimitive.Item
+      className={
+        unstyle
+          ? className
+          : classNames(
+              itemClasses.size[size],
+              "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
+              className
+            )
+      }
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </ToggleGroupPrimitive.Item>
+  );
+});
 ToggleGroupItem.displayName = "ToggleGroupItem";

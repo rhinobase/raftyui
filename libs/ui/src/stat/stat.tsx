@@ -1,9 +1,10 @@
-import { HTMLAttributes, SVGProps, forwardRef } from "react";
+import * as React from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "@rafty/utils";
 
-export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
-export const Stat = forwardRef<HTMLDivElement, Stat>(
+// Stat Component
+export type Stat = React.HTMLAttributes<HTMLDivElement> & StatContext;
+export const Stat = React.forwardRef<HTMLDivElement, Stat>(
   ({ children, className, type = "normal", ...props }, forwardedRef) => {
     return (
       <StatProvider value={{ type }}>
@@ -20,8 +21,9 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
 );
 Stat.displayName = "Stat";
 
-export type StatLabel = HTMLAttributes<HTMLDivElement>;
-export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
+// StatLabel Component
+export type StatLabel = React.HTMLAttributes<HTMLDivElement>;
+export const StatLabel = React.forwardRef<HTMLDivElement, StatLabel>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -39,8 +41,9 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
 );
 StatLabel.displayName = "StatLabel";
 
-export type StatValue = HTMLAttributes<HTMLDivElement>;
-export const StatValue = forwardRef<HTMLDivElement, StatValue>(
+// StatValue Component
+export type StatValue = React.HTMLAttributes<HTMLDivElement>;
+export const StatValue = React.forwardRef<HTMLDivElement, StatValue>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <div
@@ -58,6 +61,7 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
 );
 StatValue.displayName = "StatValue";
 
+// StatHelpText Component
 const statHelpTextClasses = {
   type: {
     increase: "text-success-600 dark:text-success-400",
@@ -67,7 +71,7 @@ const statHelpTextClasses = {
 };
 
 export type StatHelpText = JSX.IntrinsicElements["div"];
-export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
+export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {
     const { type } = useStatContext();
     return (
@@ -87,8 +91,9 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
 );
 StatHelpText.displayName = "StatHelpText";
 
-export type StatIcon = SVGProps<SVGSVGElement>;
-export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
+// StatIcon Component
+export type StatIcon = React.SVGProps<SVGSVGElement>;
+export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
   ({ className, height = "14", width = "14", ...props }, forwardedRef) => {
     const { type } = useStatContext();
     if (type === "increase")

@@ -8,18 +8,15 @@ import { Item } from "react-stately";
 import {
   InputField,
   InputGroup,
-  NumberField,
   PasswordField,
   Prefix,
   Suffix,
   FieldControl,
-  FieldLabel,
+  Label,
   Select,
   Combobox,
-  ComboboxItem,
   Textarea,
   Checkbox,
-  CheckboxGroup,
   RadioGroupItem,
   RadioGroup,
   Switch,
@@ -59,11 +56,11 @@ export const Default: Story = {
     return (
       <form className="w-[500px]">
         <FieldControl name="input">
-          <FieldLabel>Input</FieldLabel>
+          <Label>Input</Label>
           <InputField {...register("text_input")} />
         </FieldControl>
         <FieldControl name="inputgroup">
-          <FieldLabel>Input Group</FieldLabel>
+          <Label>Input Group</Label>
           <InputGroup>
             <Prefix>
               <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
@@ -75,11 +72,11 @@ export const Default: Story = {
           </InputGroup>
         </FieldControl>
         <FieldControl name="password">
-          <FieldLabel>Password</FieldLabel>
+          <Label>Password</Label>
           <PasswordField {...register("password")} />
         </FieldControl>
         <FieldControl name="select">
-          <FieldLabel>Select</FieldLabel>
+          <Label>Select</Label>
           <Select
             {...register("select")}
             onValueChange={(value) => setValue("select", value as string)}
@@ -89,8 +86,8 @@ export const Default: Story = {
             <Item key="option3">Option 3</Item>
           </Select>
         </FieldControl>
-        <FieldControl name="combobox">
-          <FieldLabel>ComboBox</FieldLabel>
+        {/* <FieldControl name="combobox">
+          <Label>ComboBox</Label>
           <Combobox
             {...register("combobox")}
             label="Favorite Animal"
@@ -108,16 +105,17 @@ export const Default: Story = {
             <ComboboxItem key="kangaroo">Kangaroo</ComboboxItem>
             <ComboboxItem key="snake">Snake</ComboboxItem>
           </Combobox>
-        </FieldControl>
+        </FieldControl> */}
         <FieldControl name="numberfield">
-          <FieldLabel>Number Field</FieldLabel>
-          <NumberField
+          <Label>Number Field</Label>
+          <InputField
             {...register("numberfield")}
-            onChange={(value) => setValue("numberfield", value)}
+            type="number"
+            inputMode="numeric"
           />
         </FieldControl>
         <FieldControl name="date">
-          <FieldLabel>Date</FieldLabel>
+          <Label>Date</Label>
           <DatePicker
             {...register("date")}
             onSelect={(value) => {
@@ -126,15 +124,15 @@ export const Default: Story = {
           />
         </FieldControl>
         <FieldControl name="range">
-          <FieldLabel>Range Picker</FieldLabel>
+          <Label>Range Picker</Label>
           {/* <RangePicker {...register("range")} /> */}
         </FieldControl>
         <FieldControl name="textarea">
-          <FieldLabel>Textarea</FieldLabel>
+          <Label>Textarea</Label>
           <Textarea {...register("textarea")} />
         </FieldControl>
         <FieldControl name="checkbox">
-          <FieldLabel>Checkbox</FieldLabel>
+          <Label>Checkbox</Label>
           <Checkbox
             value="red"
             {...register("checkbox")}
@@ -158,19 +156,8 @@ export const Default: Story = {
             Blue
           </Checkbox>
         </FieldControl>
-        <FieldControl name="checkboxgroup">
-          <FieldLabel>CheckboxGroup</FieldLabel>
-          <CheckboxGroup
-            {...register("checkboxgroup")}
-            onChange={(value) => setValue("checkboxgroup", value)}
-          >
-            <Checkbox value="red">Red</Checkbox>
-            <Checkbox value="green">Green</Checkbox>
-            <Checkbox value="blue">Blue</Checkbox>
-          </CheckboxGroup>
-        </FieldControl>
         <FieldControl name="radio">
-          <FieldLabel>radio</FieldLabel>
+          <Label>radio</Label>
           <RadioGroup
             {...register("radio")}
             onValueChange={(value) => setValue("radio", value)}
@@ -184,7 +171,7 @@ export const Default: Story = {
         </FieldControl>
         <DevTool control={control} />
         <FieldControl name="switch">
-          <FieldLabel>Switch</FieldLabel>
+          <Label>Switch</Label>
           <Switch
             {...register("switch")}
             onCheckedChange={(isSelected) => setValue("switch", isSelected)}

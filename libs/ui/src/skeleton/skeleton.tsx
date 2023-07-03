@@ -1,6 +1,7 @@
 import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "@rafty/utils";
 
+// Skeleton Component
 export type Skeleton = HTMLAttributes<HTMLDivElement>;
 
 export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
