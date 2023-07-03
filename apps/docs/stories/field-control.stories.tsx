@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel, InputField, Switch } from "@rafty/ui";
+import { FieldControl, Label, InputField, Switch } from "@rafty/ui";
 
 const meta: Meta<typeof FieldControl> = {
   title: "Form / FieldControl",
@@ -22,11 +22,11 @@ export const Deafult: Story = {
   render: ({ orientation }) => (
     <>
       <FieldControl name="field-control" orientation={orientation}>
-        <FieldLabel>String Field</FieldLabel>
+        <Label>String Field</Label>
         <InputField />
       </FieldControl>
       <FieldControl name="field-control" orientation={orientation}>
-        <FieldLabel>Switch field</FieldLabel>
+        <Label>Switch field</Label>
         <Switch />
       </FieldControl>
     </>

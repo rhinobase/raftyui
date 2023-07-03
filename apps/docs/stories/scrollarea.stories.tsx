@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ScrollArea, SelectSeparator } from "@rafty/ui";
+import { ScrollArea } from "@rafty/ui";
 import React from "react";
 
 const meta: Meta<typeof ScrollArea> = {
@@ -25,7 +25,7 @@ export const Default: Story = {
               <div className="text-sm dark:text-secondary-100" key={tag}>
                 {tag}
               </div>
-              <SelectSeparator className="my-2" />
+              <div className="my-2 h-[1px] bg-secondary-300 dark:bg-secondary-700" />
             </React.Fragment>
           ))}
         </div>

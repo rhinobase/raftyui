@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select, Option, Label } from "@rafty/ui";
+import { Select, SelectItem, Label } from "@rafty/ui";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
@@ -35,11 +35,11 @@ export const Default: Story = {
         disabled={isDisabled}
         isInvalid={isInvalid}
       >
-        <Option value="apple">Apple</Option>
-        <Option value="banana">Banana</Option>
-        <Option value="blueberry">Blueberry</Option>
-        <Option value="grapes">Grapes</Option>
-        <Option value="pineapple">Pineapple</Option>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
       </Select>
     </div>
   ),

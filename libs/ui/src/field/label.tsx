@@ -12,10 +12,10 @@ export type Label = React.ComponentPropsWithoutRef<
 export const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   Label
->(({ children, className, ...props }, forwardedRef) => {
+>(({ children, className, isRequired: isReq, ...props }, forwardedRef) => {
   const { name, isRequired } = useFieldControlContext() ?? {
     name: props.htmlFor,
-    isRequired: props.isRequired,
+    isRequired: isReq,
   };
 
   return (

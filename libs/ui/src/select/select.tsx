@@ -100,9 +100,9 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-export type Option = JSX.IntrinsicElements["option"];
+export type SelectItem = JSX.IntrinsicElements["option"];
 
-export const Option = forwardRef<HTMLOptionElement, Option>(
+export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
   ({ ...props }, forwardedRef) => {
     return (
       <option {...props} ref={forwardedRef}>
@@ -112,4 +112,4 @@ export const Option = forwardRef<HTMLOptionElement, Option>(
   }
 );
 
-Option.displayName = "Option";
+SelectItem.displayName = "SelectItem";

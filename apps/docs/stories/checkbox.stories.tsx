@@ -39,6 +39,7 @@ export const Default: Story = {
 
           <h2 className="font-bold">CheckBox indeterminate</h2>
           <Checkbox
+            id="red1"
             name="red1"
             size={size}
             data-state={state}
@@ -55,11 +56,11 @@ export const Default: Story = {
           </Checkbox>
           <h2 className="font-bold">CheckBox defaultChecked</h2>
 
-          <Checkbox name="green1" value="green1" defaultChecked size={size}>
+          <Checkbox id="green1" value="green1" defaultChecked size={size}>
             Green
           </Checkbox>
           <h2 className="font-bold">CheckBox Without Children</h2>
-          <Checkbox size={size} />
+          <Checkbox id="" size={size} />
         </div>
       </>
     );

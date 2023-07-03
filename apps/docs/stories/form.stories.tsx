@@ -114,15 +114,18 @@ export const Default: Story = {
         <FieldControl name="date">
           <Label>Date</Label>
           <DatePicker
-            {...register("date")}
             onSelect={(value) => {
-              setValue("date", value!);
+              console.log("date", value);
             }}
           />
         </FieldControl>
         <FieldControl name="range">
           <Label>Range Picker</Label>
-          {/* <RangePicker {...register("range")} /> */}
+          <RangePicker
+            onSelect={(value) => {
+              console.log("date", value);
+            }}
+          />
         </FieldControl>
         <FieldControl name="textarea">
           <Label>Textarea</Label>
