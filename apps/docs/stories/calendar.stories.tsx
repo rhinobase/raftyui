@@ -60,3 +60,57 @@ export const Default: Story = {
     );
   },
 };
+export const FullScreen: Story = {
+  render: function Render() {
+    const cellRender: { date: string; item: ReactNode }[] = [
+      {
+        date: "2023-06-26",
+        item: (
+          <UnorderedList>
+            <ListItem className="marker:text-primary-500 dark:marker:text-primary-300">
+              Item 1
+            </ListItem>
+            <ListItem>Item 2</ListItem>
+            <ListItem className="marker:text-primary-500 dark:marker:text-primary-300">
+              Item 3
+            </ListItem>
+            <ListItem>Item 4</ListItem>
+            <ListItem className="marker:text-primary-500 dark:marker:text-primary-300">
+              Item 5
+            </ListItem>
+          </UnorderedList>
+        ),
+      },
+      {
+        date: "2023-06-22",
+        item: (
+          <UnorderedList>
+            <ListItem className="marker:text-primary-500 dark:marker:text-primary-300">
+              Item 1
+            </ListItem>
+            <ListItem>Item 2</ListItem>
+            <ListItem className="marker:text-primary-500 dark:marker:text-primary-300">
+              Item 3
+            </ListItem>
+            <ListItem>Item 4</ListItem>
+            <ListItem className="marker:text-primary-500 dark:marker:text-primary-300">
+              Item 5
+            </ListItem>
+          </UnorderedList>
+        ),
+      },
+    ];
+    const [date, setDate] = React.useState<Date | undefined>();
+
+    return (
+      <div className="w-full">
+        <Calendar
+          selected={date}
+          onDayClick={setDate}
+          mode="single"
+          fullScreen
+        />
+      </div>
+    );
+  },
+};
