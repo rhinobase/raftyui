@@ -4,7 +4,6 @@ export * from "./alertdialog";
 export * from "./button";
 export * from "./card";
 export * from "./checkbox";
-export * from "./combobox";
 export * from "./command";
 export * from "./dialog";
 export {
