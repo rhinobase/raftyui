@@ -12,7 +12,6 @@ module.exports = (config) => {
       "libs/ui/src/button",
       "libs/ui/src/card",
       "libs/ui/src/checkbox",
-      "libs/ui/src/combobox",
       "libs/ui/src/dialog",
       "libs/ui/src/drawer",
       "libs/ui/src/field",

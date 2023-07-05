@@ -14,7 +14,6 @@ import {
   FieldControl,
   Label,
   Select,
-  Combobox,
   Textarea,
   Checkbox,
   RadioGroupItem,
@@ -83,26 +82,6 @@ export const Default: Story = {
             <option value="option3">Option 3</option>
           </Select>
         </FieldControl>
-        {/* <FieldControl name="combobox">
-          <Label>ComboBox</Label>
-          <Combobox
-            {...register("combobox")}
-            label="Favorite Animal"
-            onInputChange={(value) => setValue("combobox", value)}
-          >
-            <ComboboxItem key="red panda" textValue="red panda">
-              <div className="flex items-center gap-2">
-                <div className="h-5 w-5 rounded-full bg-red-200">RP</div>Red
-                Panda
-              </div>
-            </ComboboxItem>
-            <ComboboxItem key="cat">Cat</ComboboxItem>
-            <ComboboxItem key="dog">Dog</ComboboxItem>
-            <ComboboxItem key="aardvark">Aardvark</ComboboxItem>
-            <ComboboxItem key="kangaroo">Kangaroo</ComboboxItem>
-            <ComboboxItem key="snake">Snake</ComboboxItem>
-          </Combobox>
-        </FieldControl> */}
         <FieldControl name="numberfield">
           <Label>Number Field</Label>
           <InputField
