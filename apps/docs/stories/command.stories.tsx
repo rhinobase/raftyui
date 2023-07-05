@@ -9,7 +9,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@rafty/ui";
-import { Calendar } from "@rafty/date-picker";
 import {
   CalculatorIcon,
   CalendarIcon,

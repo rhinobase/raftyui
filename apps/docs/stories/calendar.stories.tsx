@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Calendar } from "@rafty/date-picker";
-import { ListItem, UnorderedList } from "@rafty/ui";
+import { ListItem, UnorderedList, Calendar } from "@rafty/ui";
 import { ReactNode } from "react";
 import React from "react";
 

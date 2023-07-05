@@ -12,4 +12,4 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "./lib/context-menu";
+} from "./context-menu";

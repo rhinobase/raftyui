@@ -35,10 +35,7 @@
   "peerDependencies": {
     "react": ">=18",
     "@heroicons/react": ">=2",
-    "react-aria": ">=3.25.0",
-    "react-stately": ">=3.23.0",
     "class-variance-authority": ">=0.6.0",
-    "@internationalized/date": ">=3.2.0",
     "@radix-ui/react-accordion": ">=1.1.1",
     "@radix-ui/react-alert-dialog": ">=1.0.3",
     "@radix-ui/react-dialog": ">=1.0.4",

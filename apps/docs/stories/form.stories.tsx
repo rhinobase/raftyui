@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { PhoneIcon, CheckIcon } from "@heroicons/react/24/outline";
-import { Item } from "react-stately";
 import {
   InputField,
   InputGroup,
@@ -14,13 +13,14 @@ import {
   FieldControl,
   Label,
   Select,
+  DatePicker,
+  RangePicker,
   Textarea,
   Checkbox,
   RadioGroupItem,
   RadioGroup,
   Switch,
 } from "@rafty/ui";
-import { DatePicker, RangePicker } from "@rafty/date-picker";
 
 const schema = z.object({
   text_input: z.string().max(255),

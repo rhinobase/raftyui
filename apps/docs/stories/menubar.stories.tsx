@@ -12,7 +12,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@rafty/menubar";
+} from "@rafty/ui";
 import { useState } from "react";
 
 const meta: Meta<typeof Menubar> = {

@@ -13,4 +13,4 @@ export {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "./lib/menubar";
+} from "./menubar";

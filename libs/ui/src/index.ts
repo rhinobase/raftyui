@@ -19,7 +19,6 @@ export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hovercard";
 export {
   InputField,
   PasswordField,
-  SearchField,
   InputGroup,
   LeftAddon,
   RightAddon,
@@ -81,4 +80,7 @@ export { Toast } from "./toast";
 export { ToggleGroup, ToggleGroupItem } from "./toggle-group";
 export { Toggle } from "./toggle";
 export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip";
+export * from "./date-picker";
+export * from "./menubar";
+export * from "./context-menu";
 export { classNames, mergeRefs } from "@rafty/utils";

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { classNames as cn } from "@rafty/utils";
 import { DayPicker } from "react-day-picker";

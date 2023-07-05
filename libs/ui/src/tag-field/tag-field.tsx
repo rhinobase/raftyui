@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button } from "../button";
 import { InputField } from "../input";
-import { classNames } from "@rafty/utils";
-import { AriaTextFieldProps } from "react-aria";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-export type TagField = Omit<AriaTextFieldProps, "onChange" | "size"> & {
+export type TagField = Omit<InputField, "onChange" | "ref"> & {
   initialData?: string[];
   onChange?: (tags: string[]) => void;
-  className?: string;
 };
 
-export const TagField = ({
-  className,
-  initialData,
-  onChange,
-  ...props
-}: TagField) => {
+export const TagField = ({ initialData, onChange, ...props }: TagField) => {
   const [tag, setTag] = useState<string[]>(initialData ?? []);
 
   useEffect(() => {
@@ -25,7 +17,7 @@ export const TagField = ({
   }, [tag]);
 
   return (
-    <div className={classNames("w-full", className)}>
+    <div className="w-full">
       <div className="flex w-full items-center gap-2">
         <InputField
           {...props}

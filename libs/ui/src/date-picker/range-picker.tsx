@@ -1,7 +1,6 @@
-import * as React from "react";
+import React from "react";
 import { format } from "date-fns";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
-
 import {
   Button,
   Popover,
