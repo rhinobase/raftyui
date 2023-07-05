@@ -1,7 +1,7 @@
-const nrwlConfig = require("@nx/react/plugins/bundle-rollup");
+const nxConfig = require("@nx/react/plugins/bundle-rollup");
 
 module.exports = (config) => {
-  nrwlConfig(config);
+  nxConfig(config);
   return {
     ...config,
     input: [
