@@ -51,13 +51,11 @@ export function Calendar({
           fullScreen ? "text-right px-2" : "w-9 text-[0.8rem] rounded-md ",
           "font-normal"
         ),
-        row: cn(
-          fullScreen ? "grid grid-cols-7 mt-1 gap-2" : "flex w-full mt-2"
-        ),
-        cell: "text-center text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        row: cn(fullScreen ? "grid grid-cols-7 mt-1 gap-2" : "flex w-full"),
+        cell: "cursor-pointer text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           fullScreen
-            ? "h-20 w-full flex flex-col items-end p-2 border-t-2 dark:border-secondary-700"
+            ? "h-28 w-full border-t-2 dark:border-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-700"
             : "h-9 w-9 p-0 font-normal aria-selected:opacity-100 cursor-pointer"
         ),
         day_selected: cn(
