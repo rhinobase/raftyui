@@ -79,6 +79,9 @@ export const CommandList = React.forwardRef<
 ));
 CommandList.displayName = "CommandList";
 
+// CommandLoading Component
+export const CommandLoading = CommandPrimitive.Loading;
+
 // CommandEmpty Component
 export type CommandEmpty = React.ComponentPropsWithoutRef<
   typeof CommandPrimitive.Empty
