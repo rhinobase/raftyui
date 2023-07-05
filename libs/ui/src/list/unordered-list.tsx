@@ -1,11 +1,12 @@
-import { forwardRef } from "react";
+import React from "react";
 import { classNames } from "@rafty/utils";
 
+// UnorderedList Component
 export type UnorderedList = JSX.IntrinsicElements["ul"] & {
   isUnstyled?: boolean;
 };
 
-export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
+export const UnorderedList = React.forwardRef<HTMLUListElement, UnorderedList>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <ul

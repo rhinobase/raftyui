@@ -1,7 +1,7 @@
 export {
   Drawer,
-  DrawerBody,
-  DrawerCloseButton,
+  DrawerDescription,
+  DrawerClose,
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,

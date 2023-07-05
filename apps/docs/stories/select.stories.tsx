@@ -1,15 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select, SelectItem } from "@rafty/ui";
+import { Select, SelectItem, Label } from "@rafty/ui";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
   args: {
-    size: "md",
     variant: "outline",
+    size: "md",
     isDisabled: false,
+    isInvalid: false,
     isRequired: false,
-    // isOpen: false,
-    // defaultOpen: false,
   },
   argTypes: {
     size: {
@@ -18,7 +17,7 @@ const meta: Meta<typeof Select> = {
     },
     variant: {
       control: "select",
-      options: ["outline", "ghost", "solid"],
+      options: ["solid", "outline", "ghost"],
     },
   },
 };
@@ -27,19 +26,20 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
-  render: ({ size, variant, isDisabled, isRequired }) => (
+  render: ({ variant, size, isDisabled, isInvalid, isRequired }) => (
     <div className="w-[500px]">
-      <h4 className="dark:text-secondary-200 mb-4 font-bold">Select</h4>
+      <Label isRequired={isRequired}>select</Label>
       <Select
         variant={variant}
         size={size}
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        onSelectionChange={(key) => console.log(key)}
+        disabled={isDisabled}
+        isInvalid={isInvalid}
       >
-        <SelectItem key="option1">Option 1</SelectItem>
-        <SelectItem key="option2">Option 2</SelectItem>
-        <SelectItem key="option3">Option 3</SelectItem>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
       </Select>
     </div>
   ),

@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { classNames } from "@rafty/utils";
 import { Spinner } from "../spinner";
 
-const buttonClasses = cva(
+export const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none",
   {
     variants: {
@@ -459,8 +459,8 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     isUnstyled = false,
     className,
     children,
-    leftIcon: LeftIcon,
-    rightIcon: RightIcon,
+    leftIcon,
+    rightIcon,
     type = "button",
     ...props
   }: Button,
@@ -498,15 +498,15 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
         </>
       ) : (
         <>
-          {LeftIcon && (
+          {leftIcon && (
             <div className="mr-1 flex h-[20px] items-center justify-center">
-              {LeftIcon}
+              {leftIcon}
             </div>
           )}
           {children}
-          {RightIcon && (
+          {rightIcon && (
             <div className="ml-1 flex h-[20px] items-center justify-center">
-              {RightIcon}
+              {rightIcon}
             </div>
           )}
         </>

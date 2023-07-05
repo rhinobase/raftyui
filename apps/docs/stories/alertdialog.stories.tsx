@@ -2,7 +2,7 @@ import {
   Button,
   AlertDialog,
   AlertDialogAction,
-  AlertDialogBody,
+  AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogOverlay,
@@ -36,10 +36,10 @@ export const Default: Story = {
         <AlertDialogOverlay />
         <AlertDialogContent data-cy="dialogcontent">
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogBody>
+          <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
-          </AlertDialogBody>
+          </AlertDialogDescription>
           <div className="mt-4 flex justify-end gap-6">
             <AlertDialogCancel asChild>
               <Button variant="outline">Cancel</Button>

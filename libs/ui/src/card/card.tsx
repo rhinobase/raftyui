@@ -4,30 +4,31 @@ import { CardContext, CardProvider, useCardContext } from "./context";
 
 // Card Component
 const cardClasses = {
+  size: {
+    sm: "rounded-md",
+    md: "rounded-lg",
+    lg: "rounded-lg",
+  },
   variant: {
-    solid: "bg-secondary-50 dark:bg-secondary-800",
     outline: "bg-transparent border dark:border-secondary-700",
-    elevated: "bg-white dark:bg-secondary-800 drop-shadow-md",
+    elevated: "bg-white dark:bg-secondary-800 drop-shadow-lg",
   },
 };
 
-export type Card = JSX.IntrinsicElements["div"] &
-  Partial<CardContext> & { isUnstyled?: boolean };
+export type Card = React.HTMLAttributes<HTMLDivElement> & Partial<CardContext>;
 
 export const Card = forwardRef<HTMLDivElement, Card>(
   (
     {
-      children,
       className,
-      variant = "outline",
+      variant = "elevated",
       size = "md",
-      isUnstyled = false,
       isBarebone = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = isUnstyled || isBarebone;
+    const unstyle = isBarebone;
 
     return (
       <CardProvider value={{ size, isBarebone, variant }}>
@@ -38,14 +39,13 @@ export const Card = forwardRef<HTMLDivElement, Card>(
               ? className
               : classNames(
                   cardClasses.variant[variant],
+                  cardContentClasses.size[size],
                   "flex flex-col dark:text-white",
                   className
                 )
           }
           ref={forwardedRef}
-        >
-          {children}
-        </div>
+        />
       </CardProvider>
     );
   }
@@ -61,7 +61,7 @@ const cardHeaderClasses = {
   },
 };
 
-export type CardHeader = JSX.IntrinsicElements["div"] & {
+export type CardHeader = React.HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
@@ -87,8 +87,8 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
 );
 CardHeader.displayName = "CardHeader";
 
-// CardBody Component
-const cardBodyClasses = {
+// CardContent Component
+const cardContentClasses = {
   size: {
     sm: "p-3",
     md: "p-4",
@@ -96,9 +96,11 @@ const cardBodyClasses = {
   },
 };
 
-export type CardBody = JSX.IntrinsicElements["div"] & { isUnstyled?: boolean };
+export type CardContent = React.HTMLAttributes<HTMLDivElement> & {
+  isUnstyled?: boolean;
+};
 
-export const CardBody = forwardRef<HTMLDivElement, CardBody>(
+export const CardContent = forwardRef<HTMLDivElement, CardContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone, size } = useCardContext();
     const unstyle = isBarebone || isUnstyled;
@@ -109,7 +111,7 @@ export const CardBody = forwardRef<HTMLDivElement, CardBody>(
         className={
           unstyle
             ? className
-            : classNames(cardBodyClasses.size[size], className)
+            : classNames(cardContentClasses.size[size], className)
         }
         ref={forwardedRef}
       >
@@ -118,7 +120,7 @@ export const CardBody = forwardRef<HTMLDivElement, CardBody>(
     );
   }
 );
-CardBody.displayName = "CardBody";
+CardContent.displayName = "CardContent";
 
 // CardFooter Component
 const cardFooterClasses = {
@@ -129,7 +131,7 @@ const cardFooterClasses = {
   },
 };
 
-export type CardFooter = JSX.IntrinsicElements["div"] & {
+export type CardFooter = React.HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 

@@ -1,5 +1,5 @@
-import * as DisclosurePrimitive from "@radix-ui/react-accordion";
-import { ComponentProps, forwardRef } from "react";
+import * as React from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import {
   AccordionContext,
   AccordionProvider,
@@ -9,10 +9,15 @@ import { classNames } from "@rafty/utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // Accordion Component
-type Accordion = ComponentProps<(typeof DisclosurePrimitive)["Root"]> &
+export type Accordion = React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Root
+> &
   Partial<AccordionContext>;
 
-const Accordion = forwardRef<HTMLDivElement, Accordion>(
+export const Accordion = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Root>,
+  Accordion
+>(
   (
     {
       children,
@@ -28,13 +33,13 @@ const Accordion = forwardRef<HTMLDivElement, Accordion>(
 
     return (
       <AccordionProvider value={{ size, variant, isBarebone }}>
-        <DisclosurePrimitive.Root
+        <AccordionPrimitive.Root
           {...props}
           className={unstyle ? className : classNames("w-full", className)}
           ref={forwardedRef}
         >
           {children}
-        </DisclosurePrimitive.Root>
+        </AccordionPrimitive.Root>
       </AccordionProvider>
     );
   }
@@ -42,24 +47,27 @@ const Accordion = forwardRef<HTMLDivElement, Accordion>(
 Accordion.displayName = "Accordian";
 
 // Accordion Item Component
-type AccordionItem = ComponentProps<(typeof DisclosurePrimitive)["Item"]>;
+export type AccordionItem = React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Item
+>;
 
-const AccordionItem = forwardRef<HTMLDivElement, AccordionItem>(
-  ({ className, children, ...props }, forwardedRef) => {
-    const { isBarebone } = useAccordionContext();
-    const unstyle = isBarebone;
+export const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  AccordionItem
+>(({ className, children, ...props }, forwardedRef) => {
+  const { isBarebone } = useAccordionContext();
+  const unstyle = isBarebone;
 
-    return (
-      <DisclosurePrimitive.Item
-        {...props}
-        className={unstyle ? className : classNames("w-full", className)}
-        ref={forwardedRef}
-      >
-        {children}
-      </DisclosurePrimitive.Item>
-    );
-  }
-);
+  return (
+    <AccordionPrimitive.Item
+      {...props}
+      className={unstyle ? className : classNames("w-full", className)}
+      ref={forwardedRef}
+    >
+      {children}
+    </AccordionPrimitive.Item>
+  );
+});
 AccordionItem.displayName = "AccordionItem";
 
 // Accordion Trigger Component
@@ -75,8 +83,8 @@ const accordionTriggerClasses = {
   },
 };
 
-type AccordionTrigger = ComponentProps<
-  (typeof DisclosurePrimitive)["Trigger"]
+export type AccordionTrigger = React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Trigger
 > & {
   openIcon?: JSX.Element;
   closeIcon?: JSX.Element;
@@ -84,7 +92,10 @@ type AccordionTrigger = ComponentProps<
   showIcon?: boolean;
 };
 
-const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
+export const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  AccordionTrigger
+>(
   (
     {
       children,
@@ -101,37 +112,37 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTrigger>(
     const unstyle = isBarebone || isUnstyled;
 
     return (
-      <DisclosurePrimitive.Header>
-        <DisclosurePrimitive.Trigger
+      <AccordionPrimitive.Header className="flex">
+        <AccordionPrimitive.Trigger
+          {...props}
           className={
             unstyle
               ? className
               : classNames(
-                  "text-secondary-700 dark:text-secondary-300 group flex w-full items-center justify-between",
+                  "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
                   accordionTriggerClasses.size[size],
                   accordionTriggerClasses.variant[variant],
                   className
                 )
           }
-          {...props}
           ref={forwardedRef}
         >
           {children}
           {openIcon && (
-            <span className="hidden stroke-1 group-data-[state=open]:block">
+            <div className="hidden group-data-[state=open]:block">
               {openIcon}
-            </span>
+            </div>
           )}
           {closeIcon && (
-            <span className="stroke-1 group-data-[state=close]:block group-data-[state=open]:hidden">
+            <div className="group-data-[state=close]:block group-data-[state=open]:hidden">
               {closeIcon}
-            </span>
+            </div>
           )}
           {!openIcon && !closeIcon && showIcon && (
-            <ChevronDownIcon className="h-4 w-4 transform stroke-2 duration-200 group-data-[state=open]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 stroke-2 shrink-0 transition-transform duration-200" />
           )}
-        </DisclosurePrimitive.Trigger>
-      </DisclosurePrimitive.Header>
+        </AccordionPrimitive.Trigger>
+      </AccordionPrimitive.Header>
     );
   }
 );
@@ -140,40 +151,39 @@ AccordionTrigger.displayName = "AccordionAccordianTrigger";
 // Accordion Content Component
 const accordionContentClasses = {
   size: {
-    sm: "px-3 pt-1 pb-3 text-sm",
-    md: "px-4 pt-2 pb-4",
-    lg: "px-5 pt-3 pb-5",
+    sm: "px-3 pb-3 text-sm",
+    md: "px-4 pb-4",
+    lg: "px-5 pb-5",
   },
 };
 
-type AccordionContent = ComponentProps<
-  (typeof DisclosurePrimitive)["Content"]
+export type AccordionContent = React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Content
 > & { isUnstyled?: boolean };
 
-const AccordionContent = forwardRef<HTMLDivElement, AccordionContent>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useAccordionContext();
-    const unstyle = isBarebone || isUnstyled;
+export const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  AccordionContent
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useAccordionContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <DisclosurePrimitive.Content
-        className={
-          unstyle
-            ? className
-            : classNames(
-                "dark:text-secondary-100 w-full",
-                accordionContentClasses.size[size],
-                className
-              )
-        }
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </DisclosurePrimitive.Content>
-    );
-  }
-);
+  return (
+    <AccordionPrimitive.Content
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "dark:text-secondary-100 w-full overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+              accordionContentClasses.size[size],
+              className
+            )
+      }
+      ref={forwardedRef}
+    >
+      {children}
+    </AccordionPrimitive.Content>
+  );
+});
 AccordionContent.displayName = "AccordianContent";
-
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

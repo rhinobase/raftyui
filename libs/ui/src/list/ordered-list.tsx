@@ -1,11 +1,12 @@
-import { forwardRef } from "react";
+import React from "react";
 import { classNames } from "@rafty/utils";
 
+// OrderedList Component
 export type OrderedList = JSX.IntrinsicElements["ol"] & {
   isUnstyled?: boolean;
 };
 
-export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
+export const OrderedList = React.forwardRef<HTMLOListElement, OrderedList>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <ol

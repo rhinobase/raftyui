@@ -1,9 +1,10 @@
-import { forwardRef } from "react";
 import { classNames } from "@rafty/utils";
+import React from "react";
 
+// ListItem Component
 export type ListItem = JSX.IntrinsicElements["li"] & { isUnstyled?: boolean };
 
-export const ListItem = forwardRef<HTMLLIElement, ListItem>(
+export const ListItem = React.forwardRef<HTMLLIElement, ListItem>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <li

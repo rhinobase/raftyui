@@ -8,9 +8,7 @@ const meta: Meta<typeof Tab> = {
     orientation: "horizontal",
   },
   argTypes: {
-    size: {
-      control: "select",
-    },
+    size: { control: "select", options: ["sm", "md", "lg"] },
   },
 };
 

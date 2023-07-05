@@ -6,6 +6,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 
+// Toast Component
 const toastClasses = {
   severity: {
     error: "bg-error-600 dark:bg-error-300",

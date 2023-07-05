@@ -6,9 +6,9 @@ const meta: Meta<typeof InputField> = {
   args: {
     size: "md",
     variant: "outline",
-    disabled: false,
-    required: false,
-    readOnly: false,
+    isDisabled: false,
+    isRequired: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -26,15 +26,15 @@ export default meta;
 type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
-  render: ({ size, variant, readOnly, disabled, required }) => (
+  render: ({ size, variant, isReadOnly, isDisabled, isRequired }) => (
     <>
       <div className="flex w-[640px] flex-col gap-6 dark:text-white">
         <h4 className="font-bold">Input Field</h4>
         <InputField
           variant={variant}
-          readOnly={readOnly}
-          disabled={disabled}
-          required={required}
+          isReadOnly={isReadOnly}
+          isDisabled={isDisabled}
+          isRequired={isRequired}
           size={size}
           placeholder="Enter Text"
         />

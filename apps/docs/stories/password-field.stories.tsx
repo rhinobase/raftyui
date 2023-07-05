@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl, FieldLabel, PasswordField } from "@rafty/ui";
+import { FieldControl, Label, PasswordField } from "@rafty/ui";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Form / PasswordField",
@@ -36,7 +36,7 @@ export const Default: Story = {
           isDisabled={disabled}
           isRequired={required}
         >
-          <FieldLabel>Enter Password</FieldLabel>
+          <Label>Enter Password</Label>
           <PasswordField
             aria-label="password"
             variant={variant}

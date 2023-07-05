@@ -1,87 +1,115 @@
-import React from "react";
-import type { AriaSelectProps } from "@react-types/select";
-import { useSelect, HiddenSelect, useButton } from "react-aria";
-import { useSelectState } from "react-stately";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { PopoverContent } from "../popover";
-import { ListBox } from "./listbox";
-import { Button } from "../button";
+import { cva } from "class-variance-authority";
+import { forwardRef } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/utils";
+import { useFieldControlContext } from "../field/context";
 
-export { Item as SelectItem } from "react-stately";
+const selectClasses = cva(
+  "w-full appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+  {
+    variants: {
+      size: {
+        sm: "px-2 py-1 text-sm rounded",
+        md: "px-3 py-1.5 rounded-md",
+        lg: "px-4 py-2 text-lg rounded-md",
+      },
+      invalid: {
+        true: "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:!focus:ring-error-100/20",
+      },
+      variant: {
+        solid: "bg-secondary-50 dark:bg-secondary-800",
+        outline: "",
+        ghost: "",
+      },
+    },
+    compoundVariants: [
+      {
+        variant: ["solid", "outline"],
+        size: ["sm", "md", "lg"],
+        className:
+          "border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
+      },
+      {
+        variant: ["outline", "ghost"],
+        size: ["sm", "md", "lg"],
+        className: "bg-transparent dark:bg-secondary-900",
+      },
+    ],
+  }
+);
 
-export type Select<T> = AriaSelectProps<T> & {
+export type Select = Omit<JSX.IntrinsicElements["select"], "size"> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
-  className?: string;
+  isUnstyled?: boolean;
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  isRequired?: boolean;
 };
 
-export function Select<T extends object>(props: Select<T>) {
-  // Create state based on the incoming props
-  const state = useSelectState(props);
+export const Select = forwardRef<HTMLSelectElement, Select>(
+  (
+    {
+      children,
+      className,
+      size,
+      variant = "outline",
+      isDisabled,
+      isRequired,
+      isInvalid,
+      isUnstyled = false,
+      ...props
+    },
+    forwardedRef
+  ) => {
+    const context = useFieldControlContext() ?? {};
 
-  const {
-    size = "md",
-    variant = "outline",
-    className,
-    placeholder = "Select an option",
-    isDisabled,
-  } = props;
-
-  // Get props for child elements from useSelect
-  const ref = React.useRef(null);
-  const { triggerProps, valueProps, menuProps } = useSelect(props, state, ref);
-
-  // Get props for the button based on the trigger props from useSelect
-  const { buttonProps } = useButton(triggerProps, ref);
-
-  return (
-    <div className="relative">
-      <HiddenSelect
-        state={state}
-        triggerRef={ref}
-        label={props.label}
-        name={props.name}
-      />
-      <Button
-        {...buttonProps}
-        {...valueProps}
-        size={size}
-        variant={variant}
-        isActive={state.isOpen}
-        isDisabled={isDisabled}
-        className={classNames("!w-full !justify-between", className)}
-        rightIcon={
-          <ChevronUpDownIcon
-            className={classNames(
-              state.isOpen ? "text-primary-500" : "text-gray-500",
-              "h-5 w-5"
-            )}
-          />
-        }
-        ref={ref}
-      >
-        <span
-          className={classNames(
-            state.selectedItem
-              ? "dark:text-secondary-200 text-gray-800"
-              : "text-gray-500",
-            "text-md"
-          )}
+    const name = props.name || context.name,
+      disabled =
+        isDisabled || props.disabled || context.isDisabled || context.isLoading,
+      invalid = isInvalid || context.isInvalid,
+      required = isRequired || props.required || context.isRequired;
+    return (
+      <div className="relative">
+        <select
+          {...props}
+          name={name}
+          disabled={disabled}
+          required={required}
+          className={
+            isUnstyled
+              ? className
+              : classNames(
+                  selectClasses({ size: size ?? "md", variant, invalid }),
+                  className
+                )
+          }
+          ref={forwardedRef}
         >
-          {state.selectedItem ? state.selectedItem.rendered : placeholder}
-        </span>
-      </Button>
-      {state.isOpen && (
-        <PopoverContent
-          triggerState={state}
-          triggerRef={ref}
-          placement="bottom start"
-          className="-ml-3 w-full"
-        >
-          <ListBox {...menuProps} state={state} size={size} />
-        </PopoverContent>
-      )}
-    </div>
-  );
-}
+          {children}
+        </select>
+        {!isUnstyled && (
+          <div className="pointer-events-none absolute top-0 right-0 flex h-full w-8 items-center justify-center">
+            <ChevronDownIcon className="dark:text-secondary-200 h-3.5 w-3.5" />
+          </div>
+        )}
+      </div>
+    );
+  }
+);
+
+Select.displayName = "Select";
+
+export type SelectItem = JSX.IntrinsicElements["option"];
+
+export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
+  ({ ...props }, forwardedRef) => {
+    return (
+      <option {...props} ref={forwardedRef}>
+        {props.children}
+      </option>
+    );
+  }
+);
+
+SelectItem.displayName = "SelectItem";

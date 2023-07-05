@@ -16,7 +16,7 @@ const meta: Meta<typeof Table> = {
     size: "md",
   },
   argTypes: {
-    size: { control: "select" },
+    size: { control: "select", options: ["sm", "md", "lg"] },
   },
 };
 
@@ -58,8 +58,8 @@ export const Default: Story = {
               </Tr>
             </TableHead>
             <TableBody>
-              {people.map((person) => (
-                <Tr key={person.email}>
+              {people.map((person, index) => (
+                <Tr key={index}>
                   <Td>{person.name}</Td>
                   <Td>{person.title}</Td>
                   <Td>{person.email}</Td>

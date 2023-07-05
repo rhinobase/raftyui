@@ -1,14 +1,20 @@
 import { Meta, StoryObj } from "@storybook/react";
 import {
   Dialog,
-  DialogBody,
   DialogContent,
   DialogOverlay,
-  DialogHeading,
+  DialogTitle,
   DialogTrigger,
-  DialogCloseButton,
   Button,
+  DialogFooter,
+  DialogDescription,
+  DialogClose,
 } from "@rafty/ui";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",
@@ -32,21 +38,51 @@ export const Default: Story = {
     <>
       <Dialog size={size}>
         <DialogTrigger>open</DialogTrigger>
-        <DialogOverlay data-cy="overlay" />
+        <DialogOverlay />
         <DialogContent>
-          <DialogBody>
-            <DialogHeading>Dialog Header</DialogHeading>
-            <p>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
-            </p>
-            <div className="flex items-center justify-end pt-5">
-              <Button>Save Change</Button>
-            </div>
-            <DialogCloseButton />
-          </DialogBody>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you&apos;re done.
+          </DialogDescription>
+          <DialogFooter>
+            <Button>Save Change</Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>
+  ),
+};
+
+export const ImageDialog: Story = {
+  render: () => (
+    <Dialog>
+      <DialogTrigger>Open</DialogTrigger>
+      <DialogOverlay>
+        <DialogClose asChild>
+          <Button size="icon" variant="ghost" className="fixed top-4 right-4">
+            <XMarkIcon className="w-5 h-5 text-white" />
+          </Button>
+        </DialogClose>
+      </DialogOverlay>
+      <DialogContent
+        isUnstyled
+        className="z-50 max-w-5xl w-full h-max fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        showCloseButton={false}
+      >
+        <Button size="icon" className="fixed -right-60 text-white top-1/2">
+          <ChevronRightIcon className="w-7 h-7" />
+        </Button>
+        <Button size="icon" className="fixed -left-60 text-white top-1/2">
+          <ChevronLeftIcon className="h-7 w-7" />
+        </Button>
+        <img
+          src="https://images.unsplash.com/photo-1682695795798-1b31ea040caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+          className="h-full w-full object-contain"
+          alt="image"
+          width={1000}
+          height={1000}
+        />
+      </DialogContent>
+    </Dialog>
   ),
 };

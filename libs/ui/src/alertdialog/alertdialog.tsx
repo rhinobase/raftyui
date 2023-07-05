@@ -1,5 +1,5 @@
+import * as React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
-import { ComponentProps, forwardRef } from "react";
 import { Button } from "../button";
 import {
   AlertDialogProvider,
@@ -9,31 +9,30 @@ import {
 import { classNames } from "@rafty/utils";
 
 // AlertDialog Component
-export type AlertDialog = ComponentProps<
-  (typeof AlertDialogPrimitive)["AlertDialog"]
+export type AlertDialog = React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Root
 > &
   Partial<AlertDialogContext>;
 
 export const AlertDialog = ({
-  children,
   size = "md",
   isBarebone = false,
   ...props
 }: AlertDialog) => (
   <AlertDialogProvider value={{ size, isBarebone }}>
-    <AlertDialogPrimitive.Root {...props}>{children}</AlertDialogPrimitive.Root>
+    <AlertDialogPrimitive.Root {...props} />
   </AlertDialogProvider>
 );
 AlertDialog.displayName = "AlertDialog";
 
 // AlertDialog Trigger Component
-export type AlertDialogTrigger = ComponentProps<
-  (typeof AlertDialogPrimitive)["AlertDialogTrigger"]
+export type AlertDialogTrigger = React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Trigger
 > &
   Button;
 
-export const AlertDialogTrigger = forwardRef<
-  HTMLButtonElement,
+export const AlertDialogTrigger = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Trigger>,
   AlertDialogTrigger
 >(
   (
@@ -42,12 +41,13 @@ export const AlertDialogTrigger = forwardRef<
       className,
       variant = "ghost",
       colorScheme,
-      leftIcon,
-      rightIcon,
+      leftIcon = undefined,
+      rightIcon = undefined,
       isDisabled = false,
       isActive = false,
       isLoading = false,
       isUnstyled = false,
+      asChild,
       ...props
     },
     forwardedRef
@@ -57,19 +57,23 @@ export const AlertDialogTrigger = forwardRef<
 
     return (
       <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
-        <Button
-          variant={variant}
-          colorScheme={colorScheme}
-          className={className}
-          leftIcon={leftIcon}
-          rightIcon={rightIcon}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
-          isUnstyled={unstyle}
-        >
-          {children}
-        </Button>
+        {asChild ? (
+          children
+        ) : (
+          <Button
+            variant={variant}
+            colorScheme={colorScheme}
+            className={className}
+            leftIcon={leftIcon}
+            rightIcon={rightIcon}
+            isDisabled={isDisabled}
+            isActive={isActive}
+            isLoading={isLoading}
+            isUnstyled={unstyle}
+          >
+            {children}
+          </Button>
+        )}
       </AlertDialogPrimitive.Trigger>
     );
   }
@@ -77,26 +81,27 @@ export const AlertDialogTrigger = forwardRef<
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
 // AlertDialogOverlayComponent
-export type AlertDialogOverlay = ComponentProps<
-  (typeof AlertDialogPrimitive)["AlertDialogOverlay"]
+export type AlertDialogOverlay = React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Overlay
 > & { isUnstyled?: boolean };
 
-export const AlertDialogOverlay = forwardRef<
-  HTMLDivElement,
+export const AlertDialogOverlay = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
   AlertDialogOverlay
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isBarebone } = useAlertDialogContext();
   const unstyle = isBarebone || isUnstyled;
 
   return (
-    /*zIndex one less than Toast */
     <AlertDialogPrimitive.Overlay
       {...props}
       className={
         unstyle
           ? className
           : classNames(
-              "animate-slide-down-fade fixed inset-0 z-40 bg-black bg-opacity-30 transition-opacity",
+              "fixed inset-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-sm",
+              "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
               className
             )
       }
@@ -115,14 +120,14 @@ const alertDialogContentClasses = {
   },
 };
 
-export type AlertDialogContent = ComponentProps<
-  (typeof AlertDialogPrimitive)["AlertDialogContent"]
+export type AlertDialogContent = React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Content
 > & { isUnstyled?: boolean };
 
-export const AlertDialogContent = forwardRef<
-  HTMLDivElement,
+export const AlertDialogContent = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Content>,
   AlertDialogContent
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isBarebone } = useAlertDialogContext();
   const unstyle = isBarebone || isUnstyled;
 
@@ -135,78 +140,131 @@ export const AlertDialogContent = forwardRef<
             ? className
             : classNames(
                 alertDialogContentClasses.size[size],
-                "dark:bg-secondary-800 dark:text-secondary-50 rounded-base fixed left-1/2 top-1/2 z-[9998] min-w-[360px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-auto bg-white text-left shadow-xl transition-all duration-300 focus-visible:outline-none sm:w-full sm:align-middle md:h-auto md:max-h-[inherit]",
+                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg sm:rounded-lg md:w-full",
+                "bg-white dark:bg-secondary-800 dark:text-secondary-50 dark:border-secondary-700",
+                "duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
                 className
               )
         }
         ref={forwardedRef}
-      >
-        {children}
-      </AlertDialogPrimitive.Content>
+      />
     </AlertDialogPrimitive.Portal>
   );
 });
 AlertDialogContent.displayName = "AlertDialogContent";
 
-// AlertDialogTitle Component
-const alertDialogTitleClasses = {
-  size: {
-    sm: "text-lg",
-    md: "text-xl",
-    lg: "text-xl",
-  },
+// AlertDialogHeader
+export type AlertDialogHeader = React.HTMLAttributes<HTMLDivElement> & {
+  isUnstyled?: boolean;
 };
 
-export type AlertDialogTitle = ComponentProps<
-  (typeof AlertDialogPrimitive)["AlertDialogTitle"]
+export const AlertDialogHeader = ({
+  className,
+  isUnstyled = false,
+  ...props
+}: AlertDialogHeader) => {
+  const { isBarebone } = useAlertDialogContext();
+  const unstyle = isBarebone || isUnstyled;
+
+  return (
+    <div
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "flex flex-col space-y-1.5 text-center sm:text-left",
+              className
+            )
+      }
+    />
+  );
+};
+AlertDialogHeader.displayName = "AlertDialogHeader";
+
+// AlertDialogFooter
+export type AlertDialogFooter = React.HTMLAttributes<HTMLDivElement> & {
+  isUnstyled?: boolean;
+};
+
+export const AlertDialogFooter = ({
+  className,
+  isUnstyled,
+  ...props
+}: AlertDialogFooter) => {
+  const { isBarebone } = useAlertDialogContext();
+  const unstyle = isBarebone || isUnstyled;
+
+  return (
+    <div
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+              className
+            )
+      }
+      {...props}
+    />
+  );
+};
+AlertDialogFooter.displayName = "AlertDialogFooter";
+
+// AlertDialogTitle Component
+export type AlertDialogTitle = React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Title
 > & { isUnstyled?: boolean };
 
-export const AlertDialogTitle = forwardRef<HTMLDivElement, AlertDialogTitle>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useAlertDialogContext();
-    const unstyle = isBarebone || isUnstyled;
+export const AlertDialogTitle = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Title>,
+  AlertDialogTitle
+>(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { isBarebone } = useAlertDialogContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <AlertDialogPrimitive.Title
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                alertDialogTitleClasses.size[size],
-                "mb-2 font-semibold",
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </AlertDialogPrimitive.Title>
-    );
-  }
-);
+  return (
+    <AlertDialogPrimitive.Title
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "text-lg font-semibold leading-none tracking-tight",
+              className
+            )
+      }
+      ref={forwardedRef}
+    />
+  );
+});
 AlertDialogTitle.displayName = "AlertDialogTitle";
 
 // AlertDialogBody Component
-export type AlertDialogBody = ComponentProps<
-  (typeof AlertDialogPrimitive)["AlertDialogDescription"]
->;
+export type AlertDialogDescription = React.ComponentPropsWithoutRef<
+  typeof AlertDialogPrimitive.Description
+> & { isUnstyled?: boolean };
 
-export const AlertDialogBody = forwardRef<HTMLDivElement, AlertDialogBody>(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <AlertDialogPrimitive.Description
-        {...props}
-        className={className}
-        ref={forwardedRef}
-        asChild
-      >
-        {children}
-      </AlertDialogPrimitive.Description>
-    );
-  }
-);
-AlertDialogBody.displayName = "AlertDialogBody";
+export const AlertDialogDescription = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Description>,
+  AlertDialogDescription
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { isBarebone } = useAlertDialogContext();
+  const unstyle = isBarebone || isUnstyled;
+
+  return (
+    <AlertDialogPrimitive.Description
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames("text-sm text-muted-foreground", className)
+      }
+      ref={forwardedRef}
+    />
+  );
+});
+AlertDialogDescription.displayName = "AlertDialogDescription";
 
 export const AlertDialogAction = AlertDialogPrimitive.Action;
 export const AlertDialogCancel = AlertDialogPrimitive.Cancel;

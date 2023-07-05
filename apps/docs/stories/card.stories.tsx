@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Card, CardBody, CardFooter, CardHeader, Button } from "@rafty/ui";
+import { Card, CardContent, CardFooter, CardHeader, Button } from "@rafty/ui";
 
 const meta: Meta<typeof Card> = {
   title: "Components / Card",
@@ -31,12 +31,12 @@ export const Default: Story = {
       size={size}
     >
       <CardHeader>Customer dashboard</CardHeader>
-      <CardBody>
+      <CardContent>
         View a summary of all your customers over the last month. Lorem, ipsum
         dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum
         dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa
         minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.
-      </CardBody>
+      </CardContent>
       <CardFooter className="flex">
         <Button variant="outline" colorScheme="error">
           Delete

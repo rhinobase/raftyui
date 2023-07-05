@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import { classNames, getValidChildren } from "@rafty/utils";
 import { InputGroupContext, InputGroupProvider } from "./context";
 
+// InputGroup Component
 export type InputGroup = JSX.IntrinsicElements["div"] &
   Partial<InputGroupContext>;
 
@@ -57,6 +58,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
 );
 InputGroup.displayName = "InputGroup";
 
+// Prefix Component
 export type Prefix = JSX.IntrinsicElements["div"];
 
 export const Prefix = forwardRef<HTMLDivElement, Prefix>(
@@ -78,6 +80,7 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(
 );
 Prefix.displayName = "Prefix";
 
+// Suffix Component
 export type Suffix = JSX.IntrinsicElements["div"];
 
 export const Suffix = forwardRef<HTMLDivElement, Suffix>(
@@ -99,6 +102,7 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
 );
 Suffix.displayName = "Suffix";
 
+// LeftAddon Component
 export type LeftAddon = JSX.IntrinsicElements["div"];
 
 export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
@@ -120,6 +124,7 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
 );
 LeftAddon.displayName = "LeftAddon";
 
+// RightAddon Component
 export type RightAddon = JSX.IntrinsicElements["div"];
 
 export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(

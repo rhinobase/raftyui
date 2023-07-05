@@ -1,6 +1,7 @@
-import { forwardRef, ReactNode } from "react";
 import { classNames } from "@rafty/utils";
+import React from "react";
 
+// Tag Component
 const tagClasses = {
   size: {
     sm: "rounded-sm px-2 text-sm",
@@ -22,13 +23,13 @@ const tagClasses = {
 };
 
 export type Tag = JSX.IntrinsicElements["div"] & {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
   size?: "sm" | "md" | "lg";
   colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
 };
 
-export const Tag = forwardRef<HTMLDivElement, Tag>(
+export const Tag = React.forwardRef<HTMLDivElement, Tag>(
   (
     { children, size = "md", colorScheme = "secondary", className, ...props },
     forwardedRef
