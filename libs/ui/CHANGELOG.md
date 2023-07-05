@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.20](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.19...ui-1.0.0-beta.20) (2023-07-05)
+
+
+### Bug Fixes
+
+* added peerdependencies and added new components to rollup config file ([61b77d4](https://github.com/rhinobase/raftyui/commit/61b77d486cb91a92173e613372a916803d8cd2c3))
+
 ## [1.0.0-beta.19](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.18...ui-1.0.0-beta.19) (2023-07-05)
 
 ## [1.0.0-beta.17](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.16...ui-1.0.0-beta.17) (2023-06-28)
