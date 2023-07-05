@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { classNames } from "@rafty/utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {

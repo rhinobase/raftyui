@@ -41,7 +41,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "husky": "^8.0.0",
     "ngx-deploy-npm": "^6.0.0",
-    "nx": "16.3.1",
+    "nx": "^16.4.3",
     "postcss": "8.4.21",
     "prettier": "^2.6.2",
     "tailwindcss": "3.2.7",

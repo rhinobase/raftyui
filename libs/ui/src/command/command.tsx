@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Command as CommandPrimitive } from "cmdk";
-import { Dialog, DialogContent, classNames } from "@rafty/ui";
+import { Dialog, DialogContent } from "../dialog";
+import { classNames } from "@rafty/utils";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 // Command Component

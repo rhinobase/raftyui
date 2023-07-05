@@ -1,4 +1,4 @@
-const nrwlConfig = require("@nrwl/react/plugins/bundle-rollup");
+const nrwlConfig = require("@nx/react/plugins/bundle-rollup");
 
 module.exports = (config) => {
   nrwlConfig(config);
@@ -10,6 +10,7 @@ module.exports = (config) => {
       "libs/utils/src/context",
       "libs/utils/src/getValidChildren",
       "libs/utils/src/mergeRefs",
+      "libs/utils/src/hooks/useBreakpointValue",
     ],
   };
 };

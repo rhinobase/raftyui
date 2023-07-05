@@ -1,13 +1,9 @@
 import React from "react";
 import { format } from "date-fns";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  classNames,
-} from "@rafty/ui";
+import { classNames } from "@rafty/utils";
+import { Button } from "../button";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import { Calendar } from "./calendar";
 

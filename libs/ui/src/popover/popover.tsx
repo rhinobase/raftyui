@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { classNames } from "@rafty/utils";
 import { Button } from "../button";

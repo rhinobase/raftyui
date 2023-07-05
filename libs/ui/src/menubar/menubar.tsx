@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
 import { classNames } from "@rafty/utils";

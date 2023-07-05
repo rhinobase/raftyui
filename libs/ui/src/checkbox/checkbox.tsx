@@ -1,7 +1,8 @@
-import * as React from "react";
+import React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
-import { Label, classNames } from "@rafty/ui";
+import { Label } from "../field";
+import { classNames } from "@rafty/utils";
 
 // Checkbox Component
 export type Checkbox = React.ComponentPropsWithoutRef<

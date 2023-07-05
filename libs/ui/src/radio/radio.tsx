@@ -1,11 +1,12 @@
-import * as React from "react";
+import React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import {
   RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
-import { Label, classNames } from "@rafty/ui";
+import { classNames } from "@rafty/utils";
+import { Label } from "../field";
 
 // RadioGroup Component
 type RadioGroup = React.ComponentPropsWithoutRef<

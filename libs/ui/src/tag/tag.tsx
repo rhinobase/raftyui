@@ -1,5 +1,5 @@
-import { classNames } from "@rafty/utils";
 import React from "react";
+import { classNames } from "@rafty/utils";
 
 // Tag Component
 const tagClasses = {

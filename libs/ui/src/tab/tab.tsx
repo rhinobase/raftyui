@@ -1,8 +1,8 @@
+import React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { forwardRef } from "react";
 import { TabContext, TabProvider, useTabContext } from "./context";
 import { classNames } from "@rafty/utils";
-import React from "react";
 
 // Root Component
 export type Tab = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &

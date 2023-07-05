@@ -1,5 +1,5 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import * as React from "react";
+import React from "react";
 import { Button } from "../button";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 import { classNames } from "@rafty/utils";

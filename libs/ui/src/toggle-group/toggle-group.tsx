@@ -1,3 +1,4 @@
+import React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import {
   ToggleGroupContext,
@@ -5,7 +6,6 @@ import {
   useToggleGroupContext,
 } from "./context";
 import { classNames } from "@rafty/utils";
-import * as React from "react";
 
 // ToggleGroup Component
 export type ToggleGroup = React.ComponentProps<

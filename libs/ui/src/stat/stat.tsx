@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "@rafty/utils";
 
