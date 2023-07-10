@@ -36,7 +36,10 @@ export const Menubar = React.forwardRef<
             unstyle
               ? className
               : classNames(
-                  "flex items-center rounded-md bg-transparent w-max p-0.5",
+                  size === "sm" && "gap-1",
+                  size === "md" && "gap-2",
+                  size === "lg" && "gap-3",
+                  "flex items-center w-max",
                   className
                 )
           }
