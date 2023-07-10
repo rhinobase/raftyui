@@ -77,14 +77,21 @@ PopoverTrigger.displayName = "PopoverTrigger";
 // PopoverContent Component
 export type PopoverContent = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
-> & { isUnstyled?: boolean };
+> & { isUnstyled?: boolean; isArrow?: boolean };
 
 export const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   PopoverContent
 >(
   (
-    { className, sideOffset = 4, isUnstyled = false, ...props },
+    {
+      children,
+      className,
+      sideOffset = 4,
+      isUnstyled = false,
+      isArrow = false,
+      ...props
+    },
     forwardedRef
   ) => {
     const { isBarebone } = usePopoverContext();
@@ -99,13 +106,18 @@ export const PopoverContent = React.forwardRef<
             unstyle
               ? className
               : classNames(
-                  "z-50 rounded-md border dark:border-secondary-700 bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+                  "z-50 rounded-md p-4 shadow-[0px_4px_10px_6px_rgba(60,60,60,0.1)] outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
                   "dark:bg-secondary-800 bg-white",
                   className
                 )
           }
           ref={forwardedRef}
-        />
+        >
+          {children}
+          {isArrow && (
+            <PopoverPrimitive.Arrow className="fill-white dark:fill-secondary-800" />
+          )}
+        </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>
     );
   }

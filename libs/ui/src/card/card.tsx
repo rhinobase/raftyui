@@ -10,7 +10,7 @@ const cardClasses = {
     lg: "rounded-lg",
   },
   variant: {
-    outline: "bg-transparent border dark:border-secondary-700",
+    outline: "border dark:border-secondary-700",
     elevated: "bg-white dark:bg-secondary-800 drop-shadow-lg",
   },
 };
