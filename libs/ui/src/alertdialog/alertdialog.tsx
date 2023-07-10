@@ -39,38 +39,44 @@ export const AlertDialogTrigger = React.forwardRef<
     {
       children,
       className,
+      size = "md",
       variant = "ghost",
-      colorScheme,
+      colorScheme = "secondary",
       leftIcon = undefined,
       rightIcon = undefined,
       isDisabled = false,
       isActive = false,
       isLoading = false,
       isUnstyled = false,
-      asChild,
+      asChild = false,
       ...props
     },
     forwardedRef
   ) => {
-    const { isBarebone } = useAlertDialogContext();
+    const { isBarebone, size: alertDialogSize } = useAlertDialogContext();
     const unstyle = isBarebone || isUnstyled;
+    const triggerSize = alertDialogSize || size;
+    const buttonProps = {
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isActive,
+      isDisabled,
+      isLoading,
+    };
 
     return (
-      <AlertDialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
+      <AlertDialogPrimitive.Trigger
+        {...props}
+        className={asChild ? className : undefined}
+        ref={forwardedRef}
+        asChild
+      >
         {asChild ? (
           children
         ) : (
-          <Button
-            variant={variant}
-            colorScheme={colorScheme}
-            className={className}
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isDisabled={isDisabled}
-            isActive={isActive}
-            isLoading={isLoading}
-            isUnstyled={unstyle}
-          >
+          <Button size={triggerSize} isUnstyled={unstyle} {...buttonProps}>
             {children}
           </Button>
         )}

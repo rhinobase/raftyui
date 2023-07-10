@@ -4,6 +4,7 @@ import { MenuProvider, MenuContext, useMenuContext } from "./context";
 import { classNames } from "@rafty/utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import React from "react";
+import { cva } from "class-variance-authority";
 
 // Menu Component
 export type Menu = React.ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
@@ -22,6 +23,97 @@ export const Menu = ({
 Menu.displayName = "Menu";
 
 // MenuButton Component
+export const menuTriggerClasses = cva("", {
+  variants: {
+    colorScheme: {
+      primary: "",
+      secondary: "",
+      error: "",
+      success: "",
+    },
+    variant: {
+      solid: "",
+      outline: "",
+      ghost: "",
+    },
+  },
+  compoundVariants: [
+    {
+      colorScheme: "primary",
+      variant: "solid",
+      className:
+        "data-[state=open]:bg-primary-600 dark:data-[state=open]:bg-primary-400/80",
+    },
+    {
+      colorScheme: "secondary",
+      variant: "solid",
+      className:
+        "data-[state=open]:bg-secondary-300 dark:data-[state=open]:bg-secondary-400/80",
+    },
+    {
+      colorScheme: "error",
+      variant: "solid",
+      className:
+        "data-[state=open]:bg-error-600/90 dark:data-[state=open]:bg-error-400/80",
+    },
+    {
+      colorScheme: "success",
+      variant: "solid",
+      className:
+        "data-[state=open]:bg-success-600/90 dark:data-[state=open]:bg-success-400/80",
+    },
+
+    {
+      colorScheme: "primary",
+      variant: "outline",
+      className:
+        "data-[state=open]:bg-primary-200/70 dark:data-[state=open]:bg-primary-400/20",
+    },
+    {
+      colorScheme: "secondary",
+      variant: "outline",
+      className:
+        "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-700/80",
+    },
+    {
+      colorScheme: "error",
+      variant: "outline",
+      className:
+        "data-[state=open]:bg-error-200/60 dark:data-[state=open]:bg-error-300/30",
+    },
+    {
+      colorScheme: "success",
+      variant: "outline",
+      className:
+        "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
+    },
+    {
+      colorScheme: "primary",
+      variant: "ghost",
+      className:
+        "data-[state=open]:bg-primary-200/70 dark:data-[state=open]:bg-primary-400/20",
+    },
+    {
+      colorScheme: "secondary",
+      variant: "ghost",
+      className:
+        "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-700/80",
+    },
+    {
+      colorScheme: "error",
+      variant: "ghost",
+      className:
+        "data-[state=open]:bg-error-200/60 dark:data-[state=open]:bg-error-300/30",
+    },
+    {
+      colorScheme: "success",
+      variant: "ghost",
+      className:
+        "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
+    },
+  ],
+});
+
 export type MenuTrigger = React.ComponentPropsWithoutRef<
   typeof DropdownMenu.Trigger
 > &
@@ -35,43 +127,59 @@ export const MenuTrigger = React.forwardRef<
     {
       className,
       children,
-      variant,
-      size,
+      size = "md",
+      variant = "solid",
+      colorScheme = "secondary",
       leftIcon = undefined,
       rightIcon = undefined,
       isDisabled = false,
       isActive = false,
       isLoading = false,
       isUnstyled = false,
+      asChild = false,
       ...props
     },
     forwardedRef
   ) => {
     const { size: menuSize, isBarebone } = useMenuContext();
     const unstyle = isBarebone || isUnstyled;
+    const triggerSize = menuSize || size;
+    const buttonProps = {
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isActive,
+      isDisabled,
+      isLoading,
+    };
 
     return (
-      <DropdownMenu.Trigger {...props} ref={forwardedRef} asChild>
-        <Button
-          variant={variant}
-          size={menuSize || size}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-500/60",
-                  className
-                )
-          }
-          leftIcon={leftIcon}
-          rightIcon={rightIcon}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
-          isUnstyled={unstyle}
-        >
-          {children}
-        </Button>
+      <DropdownMenu.Trigger
+        {...props}
+        className={asChild ? className : undefined}
+        ref={forwardedRef}
+        asChild
+      >
+        {asChild ? (
+          children
+        ) : (
+          <Button
+            size={triggerSize}
+            isUnstyled={unstyle}
+            className={
+              unstyle
+                ? className
+                : classNames(
+                    menuTriggerClasses({ colorScheme, variant }),
+                    className
+                  )
+            }
+            {...buttonProps}
+          >
+            {children}
+          </Button>
+        )}
       </DropdownMenu.Trigger>
     );
   }
@@ -125,9 +233,9 @@ MenuContent.displayName = "MenuContent";
 // MenuLabel Component
 const menuLabelClasses = {
   size: {
-    sm: "py-1 text-[10px]",
-    md: "py-1 text-[11px]",
-    lg: "py-1.5 text-xs",
+    sm: "px-1.5 py-1 text-[10px]",
+    md: "px-2 py-1 text-[11px]",
+    lg: "px-2.5 py-1.5 text-xs",
   },
 };
 
@@ -151,7 +259,7 @@ export const MenuLabel = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "pl-8 pr-2 text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
+              "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
               menuLabelClasses.size[size],
               className
             )
@@ -167,9 +275,9 @@ MenuLabel.displayName = "MenuLabel";
 // MenuItem Component
 const menuItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "px-2.5 py-1.5 text-xs",
+    md: "px-3.5 py-1.5 text-sm",
+    lg: "px-4 py-2 text-base",
   },
 };
 
@@ -193,7 +301,7 @@ export const MenuItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pl-8 pr-2  font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
               menuItemClasses.size[size],
               className
             )
@@ -212,9 +320,9 @@ export const MenuGroup = DropdownMenu.Group;
 // MenuCheckboxItem Component
 const menuCheckboxItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "pl-6 pr-2.5 py-1.5 text-xs",
+    md: "pl-7 pr-3.5 py-1.5 text-sm",
+    lg: "pl-8 pr-4 py-2 text-base",
   },
 };
 
@@ -236,7 +344,7 @@ export const MenuCheckboxItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-5 py-1.5 font-medium focus:outline-none",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
               menuCheckboxItemClasses.size[size],
               className
             )
@@ -244,8 +352,15 @@ export const MenuCheckboxItem = React.forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <DropdownMenu.ItemIndicator className="absolute left-2">
-        <CheckIcon className="h-3.5 w-3.5 stroke-[3]" />
+      <DropdownMenu.ItemIndicator
+        className={classNames(
+          size === "sm" && "left-1",
+          size === "md" && "left-2",
+          size === "lg" && "left-2.5",
+          "absolute"
+        )}
+      >
+        <CheckIcon className="h-3 w-3 stroke-[3]" />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.CheckboxItem>
   );
@@ -258,9 +373,9 @@ export const MenuRadioGroup = DropdownMenu.RadioGroup;
 // MenuRadioItem Component
 const menuRadioItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "pl-6 pr-2.5 py-1.5 text-xs",
+    md: "pl-7 pr-3.5 py-1.5 text-sm",
+    lg: "pl-8 pr-4 py-2 text-base",
   },
 };
 
@@ -284,7 +399,7 @@ export const MenuRadioItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-medium focus:outline-none",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
               menuRadioItemClasses.size[size],
               className
             )
@@ -292,8 +407,22 @@ export const MenuRadioItem = React.forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <DropdownMenu.ItemIndicator className="absolute left-2">
-        <div className="h-2 w-2 bg-secondary-600 dark:bg-secondary-200 rounded-full" />
+      <DropdownMenu.ItemIndicator
+        className={classNames(
+          size === "sm" && "left-2",
+          size === "md" && "left-2.5",
+          size === "lg" && "left-2.5",
+          "absolute"
+        )}
+      >
+        <div
+          className={classNames(
+            size === "sm" && "h-1.5 w-1.5",
+            size === "md" && "h-2 w-2",
+            size === "lg" && "h-2 w-2",
+            "bg-secondary-600 dark:bg-secondary-200 rounded-full"
+          )}
+        />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.RadioItem>
   );
@@ -311,9 +440,9 @@ MenuSub.displayName = "MenuSub";
 // SubMenuButton Component
 const menuSubTriggerClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "px-2.5 py-1.5 text-xs",
+    md: "px-3.5 py-1.5 text-sm",
+    lg: "px-4 py-2 text-base",
   },
 };
 
@@ -338,7 +467,7 @@ export const MenuSubTrigger = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 py-1.5 pl-8 pr-2 font-medium focus:outline-none",
+              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
               menuSubTriggerClasses.size[size],
               className
             )

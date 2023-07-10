@@ -15,20 +15,22 @@ const cardClasses = {
   },
 };
 
-export type Card = React.HTMLAttributes<HTMLDivElement> & Partial<CardContext>;
+export type Card = React.HTMLAttributes<HTMLDivElement> &
+  Partial<CardContext> & { isUnstyled?: boolean };
 
 export const Card = forwardRef<HTMLDivElement, Card>(
   (
     {
       className,
-      variant = "elevated",
+      variant = "outline",
       size = "md",
+      isUnstyled = false,
       isBarebone = false,
       ...props
     },
     forwardedRef
   ) => {
-    const unstyle = isBarebone;
+    const unstyle = isBarebone || isUnstyled;
 
     return (
       <CardProvider value={{ size, isBarebone, variant }}>
@@ -38,8 +40,8 @@ export const Card = forwardRef<HTMLDivElement, Card>(
             unstyle
               ? className
               : classNames(
+                  cardClasses.size[size],
                   cardClasses.variant[variant],
-                  cardContentClasses.size[size],
                   "flex flex-col dark:text-white",
                   className
                 )

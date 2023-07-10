@@ -3,6 +3,8 @@ import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
 import { classNames } from "@rafty/utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { Button } from "../button";
+import { menuTriggerClasses } from "../menu/menu";
 
 //MenuBar Component
 export type Menubar = React.ComponentPropsWithoutRef<
@@ -54,42 +56,76 @@ export const MenubarMenu = MenubarPrimitive.Menu;
 MenubarMenu.displayName = "MenubarMenu";
 
 //MenuBar Button Component
-const triggerClasses = {
-  size: {
-    sm: "py-2 px-2 text-xs",
-    md: "py-2 px-3 text-sm",
-    lg: "py-3 px-4 text-base",
-  },
-};
 
 export type MenubarTrigger = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Trigger
-> & { isUnstyled?: boolean };
+> &
+  Button;
 export const MenubarTrigger = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Trigger>,
   MenubarTrigger
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+>(
+  (
+    {
+      className,
+      children,
+      size = "md",
+      variant = "solid",
+      colorScheme = "secondary",
+      leftIcon = undefined,
+      rightIcon = undefined,
+      isDisabled = false,
+      isActive = false,
+      isLoading = false,
+      isUnstyled = false,
+      asChild = false,
+      ...props
+    },
+    forwardedRef
+  ) => {
+    const { size: menubarSize, isBarebone } = useMenuBarContext();
+    const unstyle = isBarebone || isUnstyled;
+    const triggerSize = menubarSize || size;
+    const buttonProps = {
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isActive,
+      isDisabled,
+      isLoading,
+    };
 
-  return (
-    <MenubarPrimitive.Trigger
-      {...props}
-      className={
-        unstyle
-          ? className
-          : classNames(
-              "data-[highlighted]:bg-secondary-200 data-[state=open]:bg-secondary-200 dark:text-secondary-100 dark:data-[highlighted]:bg-secondary-800 dark:data-[state=open]:bg-secondary-800 flex select-none items-center rounded-md text-sm font-medium outline-none",
-              triggerClasses.size[size],
-              className
-            )
-      }
-      ref={forwardedRef}
-    >
-      {children}
-    </MenubarPrimitive.Trigger>
-  );
-});
+    return (
+      <MenubarPrimitive.Trigger
+        {...props}
+        className={asChild ? className : undefined}
+        ref={forwardedRef}
+        asChild
+      >
+        {asChild ? (
+          children
+        ) : (
+          <Button
+            size={triggerSize}
+            isUnstyled={unstyle}
+            className={
+              unstyle
+                ? className
+                : classNames(
+                    menuTriggerClasses({ colorScheme, variant }),
+                    className
+                  )
+            }
+            {...buttonProps}
+          >
+            {children}
+          </Button>
+        )}
+      </MenubarPrimitive.Trigger>
+    );
+  }
+);
 MenubarTrigger.displayName = "MenubarTrigger";
 
 //MenuBarContent Component
@@ -137,99 +173,85 @@ MenubarContent.displayName = "MenubarContent";
 //MenuBar Label Component
 const labelClasses = {
   size: {
-    sm: "py-1 text-[10px]",
-    md: "py-1 text-[11px]",
-    lg: "py-1.5 text-xs",
+    sm: "px-1.5 py-1 text-[10px]",
+    md: "px-2 py-1 text-[11px]",
+    lg: "px-2.5 py-1.5 text-xs",
   },
 };
 
 export type MenubarLabel = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Label
 > & {
-  inset?: boolean;
   isUnstyled?: boolean;
 };
 
 export const MenubarLabel = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Label>,
   MenubarLabel
->(
-  (
-    { children, className, inset = true, isUnstyled = false, ...props },
-    forwardedRef
-  ) => {
-    const { size, isBarebone } = useMenuBarContext();
-    const unstyle = isBarebone || isUnstyled;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useMenuBarContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <MenubarPrimitive.Label
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide pr-2",
-                inset && "pl-8",
-                labelClasses.size[size],
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </MenubarPrimitive.Label>
-    );
-  }
-);
+  return (
+    <MenubarPrimitive.Label
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
+              labelClasses.size[size],
+              className
+            )
+      }
+      ref={forwardedRef}
+    >
+      {children}
+    </MenubarPrimitive.Label>
+  );
+});
 MenubarLabel.displayName = "MenubarLabel";
 
 //MenuBar Item Component
 const itemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "px-2.5 py-1.5 text-xs",
+    md: "px-3.5 py-1.5 text-sm",
+    lg: "px-4 py-2 text-base",
   },
 };
 
 export type MenubarItem = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Item
 > & {
-  inset?: boolean;
   isUnstyled?: boolean;
 };
 
 export const MenubarItem = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Item>,
   MenubarItem
->(
-  (
-    { children, className, inset = true, isUnstyled = false, ...props },
-    forwardedRef
-  ) => {
-    const { size, isBarebone } = useMenuBarContext();
-    const unstyle = isBarebone || isUnstyled;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useMenuBarContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <MenubarPrimitive.Item
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 py-1.5 pr-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-                itemClasses.size[size],
-                inset && "pl-8",
-                className
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </MenubarPrimitive.Item>
-    );
-  }
-);
+  return (
+    <MenubarPrimitive.Item
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+              itemClasses.size[size],
+              className
+            )
+      }
+      ref={forwardedRef}
+    >
+      {children}
+    </MenubarPrimitive.Item>
+  );
+});
 MenubarItem.displayName = "MenubarItem";
 
 //MenuBar ChechboxGroup Component
@@ -238,9 +260,9 @@ export const MenubarCheckboxGroup = MenubarPrimitive.Group;
 //Menubar CheckboxItem Component
 const checkboxItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "pl-6 pr-2.5 py-1.5 text-xs",
+    md: "pl-7 pr-3.5 py-1.5 text-sm",
+    lg: "pl-8 pr-4 py-2 text-base",
   },
 };
 
@@ -265,15 +287,22 @@ export const MenubarCheckboxItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-medium outline-none",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
               checkboxItemClasses.size[size],
               className
             )
       }
     >
       {children}
-      <MenubarPrimitive.ItemIndicator className="absolute left-2">
-        <CheckIcon className="h-3.5 w-3.5 stroke-[3]" />
+      <MenubarPrimitive.ItemIndicator
+        className={classNames(
+          size === "sm" && "left-1",
+          size === "md" && "left-2",
+          size === "lg" && "left-2.5",
+          "absolute"
+        )}
+      >
+        <CheckIcon className="h-3 w-3 stroke-[3]" />
       </MenubarPrimitive.ItemIndicator>
     </MenubarPrimitive.CheckboxItem>
   );
@@ -286,9 +315,9 @@ export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
 //Menubar RadioItem component
 const radioItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "pl-6 pr-2.5 py-1.5 text-xs",
+    md: "pl-7 pr-3.5 py-1.5 text-sm",
+    lg: "pl-8 pr-4 py-2 text-base",
   },
 };
 
@@ -313,15 +342,29 @@ export const MenubarRadioItem = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 pl-8 pr-2 py-1.5 font-medium outline-none",
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
               radioItemClasses.size[size],
               className
             )
       }
     >
       {children}
-      <MenubarPrimitive.ItemIndicator className="absolute left-2">
-        <div className="h-2 w-2 bg-secondary-600 dark:bg-secondary-200 rounded-full" />
+      <MenubarPrimitive.ItemIndicator
+        className={classNames(
+          size === "sm" && "left-2",
+          size === "md" && "left-2.5",
+          size === "lg" && "left-2.5",
+          "absolute"
+        )}
+      >
+        <div
+          className={classNames(
+            size === "sm" && "h-1.5 w-1.5",
+            size === "md" && "h-2 w-2",
+            size === "lg" && "h-2 w-2",
+            "bg-secondary-600 dark:bg-secondary-200 rounded-full"
+          )}
+        />
       </MenubarPrimitive.ItemIndicator>
     </MenubarPrimitive.RadioItem>
   );
@@ -336,51 +379,44 @@ MenubarSub.displayName = "MenubarSub";
 //MenuBar SubMenuButton Component
 const subTriggerClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "px-2.5 py-1.5 text-xs",
+    md: "px-3.5 py-1.5 text-sm",
+    lg: "px-4 py-2 text-base",
   },
 };
 
 export type MenubarSubTrigger = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubTrigger
 > & {
-  inset?: boolean;
   isUnstyled?: boolean;
 };
 
 export const MenubarSubTrigger = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.SubTrigger>,
   MenubarSubTrigger
->(
-  (
-    { children, className, inset = true, isUnstyled = false, ...props },
-    forwardedRef
-  ) => {
-    const { size, isBarebone } = useMenuBarContext();
-    const unstyle = isBarebone || isUnstyled;
+>(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  const { size, isBarebone } = useMenuBarContext();
+  const unstyle = isBarebone || isUnstyled;
 
-    return (
-      <MenubarPrimitive.SubTrigger
-        {...props}
-        ref={forwardedRef}
-        className={
-          unstyle
-            ? className
-            : classNames(
-                "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 w-full justify-between gap-2 font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-                subTriggerClasses.size[size],
-                inset && "pl-8",
-                className
-              )
-        }
-      >
-        {children}
-        <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
-      </MenubarPrimitive.SubTrigger>
-    );
-  }
-);
+  return (
+    <MenubarPrimitive.SubTrigger
+      {...props}
+      ref={forwardedRef}
+      className={
+        unstyle
+          ? className
+          : classNames(
+              "relative flex cursor-default select-none items-center rounded-sm outline-none text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 w-full justify-between gap-2 font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+              subTriggerClasses.size[size],
+              className
+            )
+      }
+    >
+      {children}
+      <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
+    </MenubarPrimitive.SubTrigger>
+  );
+});
 MenubarSubTrigger.displayName = "MenubarSubTrigger";
 
 //MenuBar SubContent Component

@@ -37,38 +37,44 @@ export const DialogTrigger = React.forwardRef<
     {
       children,
       className,
+      size = "md",
       variant = "ghost",
-      colorScheme,
+      colorScheme = "secondary",
       leftIcon = undefined,
       rightIcon = undefined,
       isDisabled = false,
       isLoading = false,
       isActive = false,
-      asChild,
+      asChild = false,
       isUnstyled = false,
       ...props
     },
     forwardedRef
   ) => {
-    const { isBarebone } = useDialogContext();
+    const { isBarebone, size: dialogSize } = useDialogContext();
     const unstyle = isBarebone || isUnstyled;
+    const triggerSize = dialogSize || size;
+    const buttonProps = {
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isActive,
+      isDisabled,
+      isLoading,
+    };
 
     return (
-      <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
+      <DialogPrimitive.Trigger
+        {...props}
+        className={asChild ? className : undefined}
+        ref={forwardedRef}
+        asChild
+      >
         {asChild ? (
           children
         ) : (
-          <Button
-            variant={variant}
-            colorScheme={colorScheme}
-            className={className}
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isLoading={isLoading}
-            isDisabled={isDisabled}
-            isActive={isActive}
-            isUnstyled={unstyle}
-          >
+          <Button size={triggerSize} isUnstyled={unstyle} {...buttonProps}>
             {children}
           </Button>
         )}
