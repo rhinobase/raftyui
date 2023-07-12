@@ -10,6 +10,7 @@ module.exports = (config) => {
       "libs/ui/src/alert",
       "libs/ui/src/alertdialog",
       "libs/ui/src/aspect-ratio",
+      "libs/ui/src/avatar",
       "libs/ui/src/button",
       "libs/ui/src/card",
       "libs/ui/src/checkbox",

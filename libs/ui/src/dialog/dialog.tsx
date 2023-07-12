@@ -104,7 +104,7 @@ export const DialogOverlay = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "fixed inset-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-sm",
+              "fixed inset-0 z-50 bg-white/40 dark:bg-black/40 backdrop-blur-sm",
               "data-[state=open]:animate-in data-[state=open]:fade-in-0",
               "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
               className
