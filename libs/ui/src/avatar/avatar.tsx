@@ -12,9 +12,9 @@ export type Avatar = {
 
 const avatarClasses = {
   size: {
-    sm: "h-7 w-7",
-    md: "h-9 w-9",
-    lg: "h-12 w-12",
+    sm: "h-7 w-7 border",
+    md: "h-9 w-9 border-2",
+    lg: "h-12 w-12 border-[2.5px]",
   },
 };
 
@@ -29,7 +29,7 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
     <div
       className={classNames(
         avatarClasses.size[avatarSize],
-        "relative overflow-hidden border border-white dark:border-secondary-900 rounded-full group-data-[group=true]:absolute",
+        "relative overflow-hidden border-white dark:border-secondary-900 rounded-full group-data-[group=true]:absolute",
         className
       )}
       style={style}

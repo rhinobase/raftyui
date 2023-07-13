@@ -20,7 +20,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
     if (excess > 0) childrenWithinMax.push(<Avatar name={"+" + excess} />);
 
     const clones = childrenWithinMax.map((child, index) => {
-      const leftOffset = size === "sm" ? 20 : size === "md" ? 27 : 35;
+      const leftOffset = size === "sm" ? 22 : size === "md" ? 28 : 37;
       const childProps = {
         style: {
           left: 0 + index * leftOffset,
