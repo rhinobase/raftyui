@@ -1,5 +1,6 @@
 import React from "react";
 import { classNames } from "@rafty/utils";
+import { useAvatarGroupContext } from "./context";
 
 export type Avatar = {
   name?: string | null;
@@ -18,11 +19,17 @@ const avatarClasses = {
 };
 
 export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
+  const context = useAvatarGroupContext() ?? {
+    size: size,
+  };
+
+  const avatarSize = context.size;
+
   return (
     <div
       className={classNames(
-        avatarClasses.size[size],
-        "relative overflow-hidden border border-white rounded-full group-data-[group=true]:absolute",
+        avatarClasses.size[avatarSize],
+        "relative overflow-hidden border border-white dark:border-secondary-900 rounded-full group-data-[group=true]:absolute",
         className
       )}
       style={style}
@@ -32,7 +39,9 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
           alt={name}
           src={
             src ||
-            `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURI(name)}`
+            `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+              name
+            )}`
           }
           className="object-cover"
         />

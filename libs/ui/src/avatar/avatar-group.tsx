@@ -1,10 +1,13 @@
 import React from "react";
 import { classNames, getValidChildren } from "@rafty/utils";
+import { AvatarGroupContext, AvatarGroupProvider } from "./context";
+import { Avatar } from "./avatar";
 
-export type AvatarGroup = { max?: number } & JSX.IntrinsicElements["div"];
+export type AvatarGroup = JSX.IntrinsicElements["div"] &
+  Partial<AvatarGroupContext> & { max?: number };
 
 export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
-  ({ max, className, children, ...props }, forwardedRef) => {
+  ({ max, className, children, size = "md", ...props }, forwardedRef) => {
     const validChildren = getValidChildren(children);
 
     //get the avatars within the max
@@ -14,30 +17,33 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
     //get the remaining avatar count
     const excess = max != null ? validChildren.length - max : 0;
 
+    if (excess > 0) childrenWithinMax.push(<Avatar name={"+" + excess} />);
+
     const clones = childrenWithinMax.map((child, index) => {
+      const leftOffset = size === "sm" ? 20 : size === "md" ? 27 : 35;
       const childProps = {
         style: {
-          left: 0 + index * 25,
+          left: 0 + index * leftOffset,
           zIndex: 10 - index,
         },
       };
-
       return React.cloneElement(child, childProps);
     });
 
     return (
-      <div
-        {...props}
-        className={classNames(
-          "group relative flex items-center w-[200px]",
-          className
-        )}
-        data-group={true}
-        ref={forwardedRef}
-      >
-        {excess > 0 && <span>{`+${excess}`}</span>}
-        {clones}
-      </div>
+      <AvatarGroupProvider value={{ size }}>
+        <div
+          {...props}
+          className={classNames(
+            "group relative flex items-center w-[200px]",
+            className
+          )}
+          data-group={true}
+          ref={forwardedRef}
+        >
+          {clones}
+        </div>
+      </AvatarGroupProvider>
     );
   }
 );
