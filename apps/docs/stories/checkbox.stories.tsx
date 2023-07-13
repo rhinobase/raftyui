@@ -32,6 +32,8 @@ export const Default: Story = {
             Green
           </Checkbox>
 
+          <Checkbox id="green" name="green" defaultChecked size={size} />
+
           <h2 className="font-bold">CheckBox Disabled</h2>
           <Checkbox name="blue" disabled size={size}>
             Blue

@@ -49,10 +49,10 @@ export const Checkbox = React.forwardRef<
     </CheckboxPrimitive.Root>
   );
 
-  if (children)
-    return (
-      <div className="flex items-center w-max">
-        {checkbox}
+  return (
+    <div className="flex items-center w-max">
+      {checkbox}
+      {children && (
         <Label
           htmlFor={props.id ?? props.name}
           className={classNames(
@@ -62,8 +62,8 @@ export const Checkbox = React.forwardRef<
         >
           {children}
         </Label>
-      </div>
-    );
-  else return checkbox;
+      )}
+    </div>
+  );
 });
 Checkbox.displayName = "Checkbox";
