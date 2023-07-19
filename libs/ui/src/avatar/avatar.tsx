@@ -43,7 +43,7 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
               name
             )}`
           }
-          className="object-cover"
+          className="object-cover w-full h-full"
         />
       ) : (
         <svg fill="currentColor" viewBox="0 0 24 24">
