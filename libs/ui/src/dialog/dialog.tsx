@@ -53,7 +53,7 @@ export const DialogTrigger = React.forwardRef<
   ) => {
     const { isBarebone, size: dialogSize } = useDialogContext();
     const unstyle = isBarebone || isUnstyled;
-    const triggerSize = dialogSize || size;
+    const triggerSize = size || dialogSize;
     const buttonProps = {
       variant,
       colorScheme,

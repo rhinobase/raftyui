@@ -55,7 +55,7 @@ export const AlertDialogTrigger = React.forwardRef<
   ) => {
     const { isBarebone, size: alertDialogSize } = useAlertDialogContext();
     const unstyle = isBarebone || isUnstyled;
-    const triggerSize = alertDialogSize || size;
+    const triggerSize = size || alertDialogSize;
     const buttonProps = {
       variant,
       colorScheme,

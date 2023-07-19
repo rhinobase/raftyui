@@ -143,7 +143,7 @@ export const MenuTrigger = React.forwardRef<
   ) => {
     const { size: menuSize, isBarebone } = useMenuContext();
     const unstyle = isBarebone || isUnstyled;
-    const triggerSize = menuSize || size;
+    const triggerSize = size || menuSize;
     const buttonProps = {
       variant,
       colorScheme,

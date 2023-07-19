@@ -88,7 +88,7 @@ export const MenubarTrigger = React.forwardRef<
   ) => {
     const { size: menubarSize, isBarebone } = useMenuBarContext();
     const unstyle = isBarebone || isUnstyled;
-    const triggerSize = menubarSize || size;
+    const triggerSize = size || menubarSize;
     const buttonProps = {
       variant,
       colorScheme,
