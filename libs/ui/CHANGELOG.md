@@ -2,6 +2,42 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.25](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.24...ui-1.0.0-beta.25) (2023-07-19)
+
+
+### Bug Fixes
+
+* improved trigger props of components where button is used as trigger ([333575e](https://github.com/rhinobase/raftyui/commit/333575e971902fab80c1b3c4d413110a2bed16e9))
+
+## [1.0.0-beta.24](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.23...ui-1.0.0-beta.24) (2023-07-19)
+
+
+### Bug Fixes
+
+* improved avatar component ([076cf6a](https://github.com/rhinobase/raftyui/commit/076cf6a9d9d73c0f50a377d3530931bbe94ecaee))
+
+## [1.0.0-beta.23](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.22...ui-1.0.0-beta.23) (2023-07-13)
+
+
+### Features
+
+* made avatar component and its story ([6cc0d35](https://github.com/rhinobase/raftyui/commit/6cc0d358adc2cbda9197a7dc422295cd18ec8bef))
+
+
+### Bug Fixes
+
+* fixed the issue where ui was shifting when there was no children in checkbox element ([2546c49](https://github.com/rhinobase/raftyui/commit/2546c492dc175fffda4799b6dfccfb47b8dbe296))
+* improvements in avatar and avatar group component ([2b45e5a](https://github.com/rhinobase/raftyui/commit/2b45e5a2b3a8c28052986c94a442f46c220f1dca))
+* remove bg-transparent from card and added arrow in popover ([33ad406](https://github.com/rhinobase/raftyui/commit/33ad406d49d1bae911624c41c6f85ff5f6c24367))
+* small changes in popover ([2df0d69](https://github.com/rhinobase/raftyui/commit/2df0d698622a7d12113482c27eb26290a1d1e4fe))
+
+## [1.0.0-beta.22](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.21...ui-1.0.0-beta.22) (2023-07-10)
+
+
+### Bug Fixes
+
+* resolved some issues ([42200fd](https://github.com/rhinobase/raftyui/commit/42200fd4137ad0e91d3b09eea113dbb08c2f570c))
+
 ## [1.0.0-beta.21](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.20...ui-1.0.0-beta.21) (2023-07-05)
 
 
