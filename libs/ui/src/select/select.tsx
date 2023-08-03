@@ -5,7 +5,7 @@ import { classNames } from "@rafty/utils";
 import { useFieldControlContext } from "../field/context";
 
 const selectClasses = cva(
-  "w-full appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+  "w-full appearance-none outline-none dark:text-secondary-200 transition-all",
   {
     variants: {
       size: {
@@ -13,8 +13,13 @@ const selectClasses = cva(
         md: "px-3 py-1.5 rounded-md",
         lg: "px-4 py-2 text-lg rounded-md",
       },
-      invalid: {
-        true: "!border-error-500 focus:!ring-error-200 dark:!border-error-400 dark:!focus:ring-error-100/20",
+      disabled: {
+        true: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
+        false: "",
+      },
+      readonly: {
+        true: "bg-secondary-100 dark:bg-secondary-800",
+        false: "",
       },
       variant: {
         solid: "bg-secondary-50 dark:bg-secondary-800",
@@ -25,26 +30,38 @@ const selectClasses = cva(
     compoundVariants: [
       {
         variant: ["solid", "outline"],
-        size: ["sm", "md", "lg"],
         className:
-          "border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
+          "border border-secondary-300 dark:border-zinc-700 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
+      },
+      {
+        variant: ["solid", "outline"],
+        disabled: false,
+        readonly: false,
+        className: "hover:border-primary-500 dark:hover:border-primary-400",
+      },
+      {
+        disabled: false,
+        readonly: false,
+        className: "cursor-pointer",
       },
       {
         variant: ["outline", "ghost"],
-        size: ["sm", "md", "lg"],
         className: "bg-transparent dark:bg-secondary-900",
       },
     ],
   }
 );
 
-export type Select = Omit<JSX.IntrinsicElements["select"], "size"> & {
+export type Select = Omit<
+  JSX.IntrinsicElements["select"],
+  "size" | "disabled" | "required"
+> & {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
   isUnstyled?: boolean;
   isDisabled?: boolean;
-  isInvalid?: boolean;
   isRequired?: boolean;
+  isReadOnly?: boolean;
 };
 
 export const Select = forwardRef<HTMLSelectElement, Select>(
@@ -52,35 +69,46 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
     {
       children,
       className,
-      size,
+      name,
+      size = "md",
       variant = "outline",
-      isDisabled,
-      isRequired,
-      isInvalid,
+      isDisabled = false,
+      isRequired = false,
       isUnstyled = false,
+      isReadOnly = false,
       ...props
     },
     forwardedRef
   ) => {
-    const context = useFieldControlContext() ?? {};
+    const context = useFieldControlContext() ?? {
+      isDisabled: false,
+      isLoading: false,
+      isReadOnly: false,
+      isRequired: false,
+    };
 
-    const name = props.name || context.name,
-      disabled =
-        isDisabled || props.disabled || context.isDisabled || context.isLoading,
-      invalid = isInvalid || context.isInvalid,
-      required = isRequired || props.required || context.isRequired;
+    const field_name = name || context.name,
+      disabled = isDisabled || context.isDisabled || context.isLoading,
+      required = isRequired || context.isRequired,
+      readonly = isReadOnly || context.isReadOnly;
+
     return (
-      <div className="relative">
+      <div className="relative flex w-full items-center">
         <select
           {...props}
-          name={name}
-          disabled={disabled}
+          name={field_name}
+          disabled={disabled || readonly}
           required={required}
           className={
             isUnstyled
               ? className
               : classNames(
-                  selectClasses({ size: size ?? "md", variant, invalid }),
+                  selectClasses({
+                    size: size,
+                    variant,
+                    disabled,
+                    readonly,
+                  }),
                   className
                 )
           }
@@ -89,9 +117,14 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
           {children}
         </select>
         {!isUnstyled && (
-          <div className="pointer-events-none absolute top-0 right-0 flex h-full w-8 items-center justify-center">
-            <ChevronDownIcon className="dark:text-secondary-200 h-3.5 w-3.5" />
-          </div>
+          <ChevronDownIcon
+            className={classNames(
+              size == "sm" && "right-2",
+              size == "md" && "right-3",
+              size == "lg" && "right-4",
+              "dark:text-secondary-200 h-3.5 w-3.5 absolute"
+            )}
+          />
         )}
       </div>
     );
@@ -103,10 +136,10 @@ Select.displayName = "Select";
 export type SelectItem = JSX.IntrinsicElements["option"];
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  ({ ...props }, forwardedRef) => {
+  ({ children, ...props }, forwardedRef) => {
     return (
       <option {...props} ref={forwardedRef}>
-        {props.children}
+        {children}
       </option>
     );
   }

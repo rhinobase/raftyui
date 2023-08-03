@@ -34,15 +34,14 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
       )}
       style={style}
     >
-      {name ? (
+      {name && src ? (
+        <img alt={name} src={src} className="object-cover w-full h-full" />
+      ) : name ? (
         <img
           alt={name}
-          src={
-            src ||
-            `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
-              name
-            )}`
-          }
+          src={`https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
+            name
+          )}`}
           className="object-cover w-full h-full"
         />
       ) : (

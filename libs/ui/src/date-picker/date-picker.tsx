@@ -24,7 +24,15 @@ export function DatePicker(props: DatePicker) {
           className={classNames("!justify-start text-left font-normal w-full")}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? (
+            props.formatters && props.formatters.formatDay ? (
+              props.formatters.formatDay(date)
+            ) : (
+              format(date, "PPP")
+            )
+          ) : (
+            <span>Pick a date</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-auto !p-0 border-0">
