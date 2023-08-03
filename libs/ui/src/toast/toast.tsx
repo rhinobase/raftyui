@@ -28,7 +28,7 @@ export type Toast = {
   visible?: boolean;
 };
 
-export function Toast({ className, severity, visible, ...props }: Toast) {
+export function Toast({ className, severity, visible, title, message }: Toast) {
   let ToastIcon: typeof ExclamationTriangleIcon;
 
   switch (severity) {
@@ -51,23 +51,21 @@ export function Toast({ className, severity, visible, ...props }: Toast) {
       className={classNames(
         toastClasses.severity[severity],
         toastClasses.visible[Number(visible)],
-        "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg drop-shadow-lg",
+        "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg drop-shadow-lg p-4",
         className
       )}
     >
-      <div className="p-4">
-        <div className="flex items-start gap-3">
-          <div className="flex-shrink-0">
-            <ToastIcon className="h-6 w-6 text-white dark:text-black" />
-          </div>
-          <div>
+      <div className="flex items-center gap-3">
+        <ToastIcon className="h-6 w-6 text-white dark:text-black" />
+        <div className="space-y-1">
+          {title && (
             <h6 className="font-medium leading-4 text-white dark:text-black">
-              {props.title}
+              {title}
             </h6>
-            <p className="mt-1 text-sm text-white dark:text-black">
-              {props.message}
-            </p>
-          </div>
+          )}
+          {message && (
+            <p className="text-sm text-white dark:text-black">{message}</p>
+          )}
         </div>
       </div>
     </div>
