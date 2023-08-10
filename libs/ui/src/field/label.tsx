@@ -1,10 +1,9 @@
 import React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
-import { classNames } from "@rafty/ui";
+import { classNames } from "@rafty/utils";
 import { useFieldControlContext } from "./context";
 
 // Label Component
-
 export type Label = React.ComponentPropsWithoutRef<
   typeof LabelPrimitive.Root
 > & { isRequired?: boolean };

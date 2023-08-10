@@ -1,7 +1,13 @@
-# ui
+# rafty/ui
 
-This library was generated with [Nx](https://nx.dev).
+React + Accessiable + Tailwind CSS Dynamic Component Library
 
-## Running unit tests
+## Installation
 
-Run `nx test ui` to execute the unit tests via [Jest](https://jestjs.io).
+```sh
+yarn add @rafty/ui
+
+# or
+
+npm i @rafty/ui
+```
