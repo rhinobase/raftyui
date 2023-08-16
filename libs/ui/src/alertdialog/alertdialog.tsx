@@ -64,6 +64,7 @@ export const AlertDialogTrigger = React.forwardRef<
       isActive,
       isDisabled,
       isLoading,
+      className,
     };
 
     return (

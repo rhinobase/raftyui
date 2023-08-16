@@ -62,6 +62,7 @@ export const DialogTrigger = React.forwardRef<
       isActive,
       isDisabled,
       isLoading,
+      className,
     };
 
     return (
