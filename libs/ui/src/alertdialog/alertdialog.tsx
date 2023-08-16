@@ -121,9 +121,10 @@ AlertDialogOverlay.displayName = "AlertDialogOverlay";
 // AlertDialogContent Component
 const alertDialogContentClasses = {
   size: {
-    sm: "max-w-[30rem] p-6",
-    md: "max-w-[35rem] p-7",
-    lg: "max-w-[40rem] p-8",
+    sm: "max-w-[30rem] p-5",
+    md: "max-w-[40rem] p-6",
+    lg: "max-w-[50rem] p-7",
+    xl: "max-w-[60rem] p-8",
   },
 };
 

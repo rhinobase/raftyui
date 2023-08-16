@@ -8,6 +8,6 @@ export const [AlertDialogProvider, useAlertDialogContext] =
   });
 
 export interface AlertDialogContext {
-  size: "sm" | "md" | "lg";
+  size: "sm" | "md" | "lg" | "xl";
   isBarebone: boolean;
 }

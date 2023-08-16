@@ -7,6 +7,6 @@ export const [DialogProvider, useDialogContext] = createContext<DialogContext>({
 });
 
 export interface DialogContext {
-  size: "sm" | "md" | "lg";
+  size: "sm" | "md" | "lg" | "xl";
   isBarebone: boolean;
 }
