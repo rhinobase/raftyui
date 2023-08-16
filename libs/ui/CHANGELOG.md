@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.27](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.26...ui-1.0.0-beta.27) (2023-08-16)
+
+
+### Features
+
+* added size 'xl' in dialog and alertdialog components ([0ba395e](https://github.com/rhinobase/design-system/commit/0ba395e29711f11d358343fea45e0e9b9a66a14d))
+
+
+### Bug Fixes
+
+* className prop was not passed in trigger buttons of dialog and alertdialog ([9eabd4a](https://github.com/rhinobase/design-system/commit/9eabd4a3cbbd0ae16f8b4802a72551fb849d43d9))
+* minor adjustments and improvements ([d08783b](https://github.com/rhinobase/design-system/commit/d08783b45b2ddde075d2ab42a48f0d69913fd0e0))
+
 ## [1.0.0-beta.26](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.25...ui-1.0.0-beta.26) (2023-08-10)
 
 ## [1.0.0-beta.25](https://github.com/rhinobase/raftyui/compare/ui-1.0.0-beta.24...ui-1.0.0-beta.25) (2023-07-19)
