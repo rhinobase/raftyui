@@ -47,6 +47,7 @@ export const DialogTrigger = React.forwardRef<
       isActive = false,
       asChild = false,
       isUnstyled = false,
+      type = "button",
       ...props
     },
     forwardedRef
@@ -63,6 +64,7 @@ export const DialogTrigger = React.forwardRef<
       isDisabled,
       isLoading,
       className,
+      type,
     };
 
     return (

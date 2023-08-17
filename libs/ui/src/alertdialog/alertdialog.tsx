@@ -49,6 +49,7 @@ export const AlertDialogTrigger = React.forwardRef<
       isLoading = false,
       isUnstyled = false,
       asChild = false,
+      type = "button",
       ...props
     },
     forwardedRef
@@ -65,6 +66,7 @@ export const AlertDialogTrigger = React.forwardRef<
       isDisabled,
       isLoading,
       className,
+      type,
     };
 
     return (
