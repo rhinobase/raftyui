@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.28](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.27...ui-1.0.0-beta.28) (2023-08-17)
+
+
+### Bug Fixes
+
+* passed type prop in dialog & alert dialog trigger ([035ea39](https://github.com/rhinobase/design-system/commit/035ea3902d8e381a78d2862367066a71aceb8d4c))
+
 ## [1.0.0-beta.27](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.26...ui-1.0.0-beta.27) (2023-08-16)
 
 
