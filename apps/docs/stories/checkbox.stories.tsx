@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from "@rafty/ui";
 import { useState } from "react";
+import { CheckedState } from "@radix-ui/react-checkbox";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Form / Checkbox",
@@ -20,9 +21,8 @@ type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   render: function Render({ size }) {
-    const [state, setState] = useState<
-      "checked" | "unchecked" | "indeterminate"
-    >("indeterminate");
+    const [state, setState] = useState<CheckedState>("indeterminate");
+
     return (
       <>
         <div className="flex w-80 flex-col gap-3 dark:text-white">
@@ -44,9 +44,9 @@ export const Default: Story = {
             id="red1"
             name="red1"
             size={size}
-            data-state={state}
+            checked={state}
             onCheckedChange={(checked) =>
-              checked ? setState("checked") : setState("indeterminate")
+              checked ? setState(true) : setState("indeterminate")
             }
           >
             Red

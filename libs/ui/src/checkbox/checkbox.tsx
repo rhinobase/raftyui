@@ -25,26 +25,20 @@ export const Checkbox = React.forwardRef<
       ref={forwardedref}
       className={classNames(
         CheckBoxClasses.size[size],
-        "group relative shrink-0 rounded-sm border border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",
+        "relative shrink-0 rounded-sm border border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",
         className
       )}
       id={props.id}
       {...props}
     >
-      <div className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500">
-        <MinusIcon />
-      </div>
-      <CheckboxPrimitive.Indicator
-        className={classNames(
-          "flex items-center justify-center h-full text-white dark:text-secondary-700"
-        )}
-      >
+      <CheckboxPrimitive.Indicator className="group flex items-center justify-center h-full">
         <CheckIcon
           className={classNames(
             CheckBoxIndicatorClasses.size[size],
-            " stroke-[3]"
+            "stroke-[3] hidden group-data-[state=checked]:block text-white dark:text-secondary-700"
           )}
         />
+        <MinusIcon className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

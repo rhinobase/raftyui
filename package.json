@@ -40,7 +40,7 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "husky": "^8.0.0",
-    "ngx-deploy-npm": "^6.0.0",
+    "ngx-deploy-npm": "^7.0.1",
     "nx": "^16.5.5",
     "postcss": "8.4.21",
     "prettier": "^2.6.2",
@@ -91,7 +91,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.44.3",
     "tailwindcss-animate": "^1.0.6",
-    "tslib": "^2.6.0",
+    "tslib": "^2.6.2",
     "vite-tsconfig-paths": "^4.2.0",
     "zod": "^3.21.4"
   }
