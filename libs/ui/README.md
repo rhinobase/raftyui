@@ -1,8 +1,22 @@
-# rafty/ui
+# Welcome to Rafty UI ⛵
 
 React + Accessiable + Tailwind CSS Dynamic Component Library
 
-## Installation
+- Works out of the box. Rafty UI contains a set of polished React components that work out of the box.
+
+- Flexible & composable. Rafty UI components are built on top of a React UI Primitive for endless composability.
+
+- Accessible. Rafty UI components follows the WAI-ARIA guidelines specifications.
+
+- Dark Mode 😍: All components are dark mode compatible.
+
+## Looking for the documentation?
+
+https://docs.rhinobase.com
+
+## Installing Rafty UI
+
+Rafty UI is made up of multiple components and tools which you can import one by one. All you need to do is install the @rafty/ui package:
 
 ```sh
 yarn add @rafty/ui
@@ -11,46 +25,3 @@ yarn add @rafty/ui
 
 npm i @rafty/ui
 ```
-
-## Components
-
-- [x] Accordion
-- [x] Alert
-- [x] Alert Dialog
-- [x] Aspect Ratio
-- [x] Avatar
-- [x] Button
-- [x] Card
-- [x] Checkbox
-- [x] Command
-- [x] Context Menu
-- [x] Date Picker
-- [x] Dialog
-- [x] Drawer
-- [x] Field
-- [x] Hover Card
-- [x] Input
-- [x] KBD
-- [x] List
-- [x] Menu
-- [x] Menubar
-- [x] Navigation Menu
-- [x] Popover
-- [x] Progress
-- [x] Radio
-- [x] Scrollarea
-- [x] Select
-- [x] Skeleton
-- [x] Spinner
-- [x] Stat
-- [x] Switch
-- [x] Tab
-- [x] Table
-- [x] Tag
-- [x] Tag Field
-- [x] Text
-- [x] Textarea
-- [x] Toast
-- [x] Toggle
-- [x] Toggle Group
-- [x] Tooltip

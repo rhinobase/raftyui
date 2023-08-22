@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.29](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.28...ui-1.0.0-beta.29) (2023-08-22)
+
+
+### Bug Fixes
+
+* resolved issue with checkbox component ([fd8ed9b](https://github.com/rhinobase/design-system/commit/fd8ed9b1278f94e8d0d49f81b4e6bd46a0b68cf4))
+
 ## [1.0.0-beta.28](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.27...ui-1.0.0-beta.28) (2023-08-17)
 
 
