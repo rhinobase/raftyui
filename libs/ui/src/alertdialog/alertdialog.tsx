@@ -258,7 +258,7 @@ export type AlertDialogDescription = React.ComponentPropsWithoutRef<
 export const AlertDialogDescription = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Description>,
   AlertDialogDescription
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isBarebone } = useAlertDialogContext();
   const unstyle = isBarebone || isUnstyled;
 
@@ -268,7 +268,10 @@ export const AlertDialogDescription = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames("text-sm text-muted-foreground", className)
+          : classNames(
+              "text-sm text-secondary-600 dark:text-secondary-400",
+              className
+            )
       }
       ref={forwardedRef}
     />
