@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.30](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.29...ui-1.0.0-beta.30) (2023-08-23)
+
+
+### Bug Fixes
+
+* compatiable with SSR ([9709f2a](https://github.com/rhinobase/design-system/commit/9709f2af7eff32c9c2d48be373563ec93152b53c))
+* fixed issue with alert dialog description component ([4c4f021](https://github.com/rhinobase/design-system/commit/4c4f021d9c94fc8026de37161e5e1510491272cc))
+
 ## [1.0.0-beta.29](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.28...ui-1.0.0-beta.29) (2023-08-22)
 
 

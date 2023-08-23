@@ -1,14 +1,20 @@
+const preserveDirectives = require("rollup-plugin-preserve-directives");
 const nxConfig = require("@nx/react/plugins/bundle-rollup");
 
 module.exports = (config) => {
   nxConfig(config);
   return {
     ...config,
+    output: {
+      ...config.output,
+      preserveModules: true,
+    },
+    plugins: [...config.plugins, preserveDirectives.default()],
     input: [
       config.input,
       "libs/ui/src/accordion",
       "libs/ui/src/alert",
-      "libs/ui/src/alertdialog",
+      "libs/ui/src/alert-dialog",
       "libs/ui/src/aspect-ratio",
       "libs/ui/src/avatar",
       "libs/ui/src/button",
