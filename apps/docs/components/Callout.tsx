@@ -11,7 +11,7 @@ export function Callout({
   children: ReactNode;
 }) {
   return (
-    <Alert size="lg" status={status} className="!items-start rounded-lg">
+    <Alert size="lg" status={status} className="!items-start rounded-lg my-5">
       <AlertIcon />
       <div className="flex flex-1 flex-col">
         <AlertTitle>{title}</AlertTitle>
