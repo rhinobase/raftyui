@@ -84,7 +84,7 @@
     "@tanstack/react-query": "^4.29.14",
     "class-variance-authority": "^0.6.0",
     "cmdk": "^0.2.0",
-    "next": "^13.4.7",
+    "next": "^13.4.19",
     "prism-react-renderer": "^2.0.4",
     "react": "18.2.0",
     "react-day-picker": "^8.8.0",

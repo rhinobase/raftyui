@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import {

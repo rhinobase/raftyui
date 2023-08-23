@@ -1,7 +1,14 @@
-import { useEffect, useState } from "react";
+"use client";
+import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+
+enum Action {
+  ADD,
+  DELETE,
+  RESET,
+}
 
 export type TagField = Omit<InputField, "onChange" | "ref"> & {
   initialData?: string[];
@@ -9,12 +16,32 @@ export type TagField = Omit<InputField, "onChange" | "ref"> & {
 };
 
 export const TagField = ({ initialData, onChange, ...props }: TagField) => {
-  const [tag, setTag] = useState<string[]>(initialData ?? []);
+  const [tag, setTag] = useReducer(
+    (prev: string[], cur: { action: Action; data?: string }) => {
+      if (cur.action === Action.RESET) return [];
 
-  useEffect(() => {
-    if (onChange) onChange(tag);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tag]);
+      let tmp = [...prev];
+      const value = cur.data;
+
+      if (!value)
+        throw new Error(
+          `Tag Field - Data is undefined for ${cur.action} action`
+        );
+
+      if (cur.action === Action.ADD)
+        tmp = Array.from(new Set([...prev, value]));
+      else
+        tmp.splice(
+          tmp.findIndex((item) => item === value),
+          1
+        );
+
+      if (onChange) onChange(tag);
+
+      return tmp;
+    },
+    initialData ?? []
+  );
 
   return (
     <div className="w-full">
@@ -25,17 +52,15 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
             if (event.key === "Enter") {
               event.preventDefault();
               const data = event.currentTarget.value.trim();
-              if (data.length !== 0 && data !== " ") {
-                const tmp = [...new Set<string>([...tag, data])];
-                setTag(tmp);
-              }
+              if (data.length !== 0 && data !== " ")
+                setTag({ action: Action.ADD, data });
               event.currentTarget.value = "";
             }
           }}
         />
         <Button
           variant="ghost"
-          onClick={() => setTag([])}
+          onClick={() => setTag({ action: Action.RESET })}
           className={tag.length < 2 ? "!hidden" : ""}
         >
           Clear All
@@ -51,15 +76,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
           >
             <span className="text-sm leading-[0px]">{value}</span>
             <Button
-              onClick={() => {
-                setTag((prev) => {
-                  prev.splice(
-                    prev.findIndex((item) => item === value),
-                    1
-                  );
-                  return [...prev];
-                });
-              }}
+              onClick={() => setTag({ action: Action.DELETE, data: value })}
               colorScheme="error"
               variant="ghost"
               size="sm"
