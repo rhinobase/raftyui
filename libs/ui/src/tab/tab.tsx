@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { forwardRef } from "react";
@@ -20,7 +19,7 @@ export const Tab = forwardRef<React.ElementRef<typeof TabsPrimitive.Root>, Tab>(
       isUnstyled = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -33,7 +32,7 @@ export const Tab = forwardRef<React.ElementRef<typeof TabsPrimitive.Root>, Tab>(
               ? className
               : classNames(
                   "w-full items-stretch data-[orientation=vertical]:flex",
-                  className
+                  className,
                 )
           }
           orientation={orientation}
@@ -43,7 +42,7 @@ export const Tab = forwardRef<React.ElementRef<typeof TabsPrimitive.Root>, Tab>(
         </TabsPrimitive.Root>
       </TabProvider>
     );
-  }
+  },
 );
 Tab.displayName = "Tab";
 
@@ -73,7 +72,7 @@ export const TabList = React.forwardRef<
                 : "dark:border-secondary-700",
               "flex rounded-t-md border-b",
               "data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-0.5 data-[orientation=vertical]:rounded-t-none data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -101,13 +100,13 @@ const triggerClasses = {
       "data-[orientation=horizontal]:border-b-[2px] data-[orientation=horizontal]:border-b-transparent",
       "data-[orientation=vertical]:border-r-2 data-[orientation=vertical]:border-transparent data-[orientation=vertical]:hover:bg-secondary-50 data-[orientation=vertical]:hover:dark:bg-secondary-700/40",
       "data-[orientation=horizontal]:data-[state=active]:border-primary-500 dark:data-[orientation=horizontal]:data-[state=active]:border-secondary-100",
-      "data-[orientation=vertical]:data-[state=active]:border-primary-500 data-[orientation=vertical]:data-[state=active]:dark:border-primary-400"
+      "data-[orientation=vertical]:data-[state=active]:border-primary-500 data-[orientation=vertical]:data-[state=active]:dark:border-primary-400",
     ),
     enclosed: classNames(
       "data-[orientation=horizontal]:-mb-[2px] data-[orientation=horizontal]:rounded-t-md data-[orientation=horizontal]:border data-[orientation=horizontal]:border-b-0 data-[orientation=horizontal]:border-transparent",
       "data-[orientation=vertical]:mr-[-3px] data-[orientation=vertical]:border-t data-[orientation=vertical]:border-b data-[orientation=vertical]:border-transparent",
       "data-[orientation=horizontal]:data-[state=active]:border-secondary-200 data-[orientation=horizontal]:data-[state=active]:dark:border-secondary-700 data-[orientation=horizontal]:data-[state=active]:dark:border-b-secondary-800 data-[orientation=horizontal]:data-[state=active]:bg-white data-[orientation=horizontal]:data-[state=active]:dark:bg-secondary-900",
-      "data-[orientation=vertical]:data-[state=active]:border-secondary-200 data-[orientation=vertical]:data-[state=active]:dark:border-black"
+      "data-[orientation=vertical]:data-[state=active]:border-secondary-200 data-[orientation=vertical]:data-[state=active]:dark:border-black",
     ),
   },
 };
@@ -138,7 +137,7 @@ export const TabTrigger = React.forwardRef<
               "text-secondary-500 dark:text-secondary-400 transition-colors",
               "data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black",
               "data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -188,7 +187,7 @@ export const TabContent = React.forwardRef<
           : classNames(
               variant === "line" && tabContentLineVariantClasses.size[size],
               "w-full dark:text-white",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -198,7 +197,7 @@ export const TabContent = React.forwardRef<
           <div
             className={classNames(
               tabContentClasses.size[size],
-              "bg-secondary-100 dark:bg-secondary-800 w-full border-b border-r border-t dark:border-black"
+              "bg-secondary-100 dark:bg-secondary-800 w-full border-b border-r border-t dark:border-black",
             )}
           />
           {children}

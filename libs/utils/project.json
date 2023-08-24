@@ -42,6 +42,11 @@
             "glob": "libs/utils/README.md",
             "input": ".",
             "output": "."
+          },
+          {
+            "glob": "libs/utils/CHANGELOG.md",
+            "input": ".",
+            "output": "."
           }
         ]
       }

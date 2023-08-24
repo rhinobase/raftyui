@@ -1,4 +1,3 @@
-"use client";
 import React, { ComponentProps, forwardRef } from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import {
@@ -17,7 +16,7 @@ export type NavigationMenu = React.ComponentPropsWithoutRef<
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   (
     { children, className, isBarebone = false, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -30,7 +29,7 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
               ? className
               : classNames(
                   "relative z-10 flex max-w-max flex-1 items-center justify-center",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -40,7 +39,7 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
         </NavigationMenuPrimitive.Root>
       </NavigationMenuProvider>
     );
-  }
+  },
 );
 NavigationMenu.displayName = "NavigationMenu";
 
@@ -66,7 +65,7 @@ export const NavigationMenuList = ({
           ? className
           : classNames(
               "m-0 p-1 flex justify-center items-center rounded-md",
-              className
+              className,
             )
       }
     >
@@ -104,7 +103,7 @@ export const NavigationMenuTrigger = forwardRef<
           ? className
           : classNames(
               "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -135,7 +134,7 @@ export const NavigationMenuContent = forwardRef<
 >(
   (
     { children, className, size = "md", isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = useNavigationMenuContext();
     const unstyle = isBarebone || isUnstyled;
@@ -149,7 +148,7 @@ export const NavigationMenuContent = forwardRef<
             : classNames(
                 "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
                 contentClasses.size[size],
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -157,7 +156,7 @@ export const NavigationMenuContent = forwardRef<
         {children}
       </NavigationMenuPrimitive.Content>
     );
-  }
+  },
 );
 NavigationMenuContent.displayName = "NavigationMenu.Content";
 
@@ -183,7 +182,7 @@ export const NavigationMenuLink = ({
           ? className
           : classNames(
               "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none",
-              className
+              className,
             )
       }
     >
@@ -227,7 +226,7 @@ const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
     <NavigationMenuPrimitive.Viewport
       {...props}
       className={classNames(
-        "absolute left-0 top-full flex w-full justify-center"
+        "absolute left-0 top-full flex w-full justify-center",
       )}
     />
   );
@@ -253,7 +252,7 @@ export const NavigationMenuIndicator = ({
           ? className
           : classNames(
               "z-[1] flex h-[10px] w-[10px] items-end justify-center overflow-hidden",
-              className
+              className,
             )
       }
     >

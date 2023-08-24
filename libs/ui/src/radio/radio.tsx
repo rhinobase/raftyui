@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import {
@@ -21,7 +20,7 @@ const RadioGroup = React.forwardRef<
 >(
   (
     { className, size = "md", isDisabled = false, disabled, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <RadioGroupProvider value={{ size: size, isDisabled: isDisabled }}>
@@ -31,13 +30,13 @@ const RadioGroup = React.forwardRef<
           className={classNames(
             size == "sm" ? "gap-2" : "gap-3",
             "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
-            className
+            className,
           )}
           ref={forwardedRef}
         />
       </RadioGroupProvider>
     );
-  }
+  },
 );
 RadioGroup.displayName = "RadioGroup";
 
@@ -62,7 +61,7 @@ const RadioGroupItem = React.forwardRef<
         size === "md" && "h-5 w-5",
         size === "lg" && "h-6 w-6",
         "aspect-square  rounded-full border border-secondary-400 dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -72,7 +71,7 @@ const RadioGroupItem = React.forwardRef<
             size === "sm" && "h-2 w-2",
             size === "md" && "h-2.5 w-2.5",
             size === "lg" && "h-3.5 w-3.5",
-            " bg-primary-500 dark:bg-primary-300 rounded-full"
+            " bg-primary-500 dark:bg-primary-300 rounded-full",
           )}
         />
       </RadioGroupPrimitive.Indicator>
@@ -87,7 +86,7 @@ const RadioGroupItem = React.forwardRef<
           htmlFor={props.id}
           className={classNames(
             disabled && "cursor-not-allowed opacity-50",
-            "pl-2"
+            "pl-2",
           )}
         >
           {children}

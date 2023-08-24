@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import { classNames } from "@rafty/utils";
@@ -33,7 +32,7 @@ export const Switch = React.forwardRef<
     className={classNames(
       switchClasses.size[size],
       "peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600",
-      className
+      className,
     )}
     {...props}
     ref={forwardedref}
@@ -41,7 +40,7 @@ export const Switch = React.forwardRef<
     <SwitchPrimitives.Thumb
       className={classNames(
         switchThumbClasses.size[size],
-        "pointer-events-none block rounded-full bg-secondary-100 dark:data-[state=checked]:bg-secondary-900 data-[state=checked]:bg-secondary-100 shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0"
+        "pointer-events-none block rounded-full bg-secondary-100 dark:data-[state=checked]:bg-secondary-900 data-[state=checked]:bg-secondary-100 shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0",
       )}
     />
   </SwitchPrimitives.Root>

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { classNames } from "@rafty/utils";
@@ -51,7 +50,7 @@ export const TooltipContent = React.forwardRef<
       isArrow = true,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => (
     <TooltipPrimitive.Content
       ref={forwardedRef}
@@ -60,7 +59,7 @@ export const TooltipContent = React.forwardRef<
         hasAnimation &&
           "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
         "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md px-2 py-1 text-xs font-medium shadow-md",
-        className
+        className,
       )}
       {...props}
     >
@@ -69,6 +68,6 @@ export const TooltipContent = React.forwardRef<
         <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
       )}
     </TooltipPrimitive.Content>
-  )
+  ),
 );
 TooltipContent.displayName = "TooltipContent";

@@ -1,4 +1,3 @@
-"use client";
 import {
   createContext as createReactContext,
   useContext as useReactContext,
@@ -16,7 +15,7 @@ export interface CreateContextOptions<T> {
 export type CreateContextReturn<T> = [
   React.Provider<T>,
   () => T,
-  React.Context<T>
+  React.Context<T>,
 ];
 
 function getErrorMessage(hook: string, provider: string) {

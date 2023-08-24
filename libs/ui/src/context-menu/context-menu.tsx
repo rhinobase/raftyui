@@ -1,4 +1,3 @@
-"use client";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { ComponentProps, forwardRef } from "react";
 import {
@@ -48,7 +47,7 @@ export const ContextMenuContent = forwardRef<
             ? className
             : classNames(
                 "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -88,7 +87,7 @@ export const ContextMenuLabel = forwardRef<
           : classNames(
               contextMenuLabelClasses.size[size],
               "text-secondary-400 dark:text-secondary-400 select-none pl-8 pr-2 font-semibold uppercase tracking-wide",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -130,7 +129,7 @@ export const ContextMenuItem = forwardRef<
           : classNames(
               contextMenuItemClasses.size[size],
               "text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 rounded py-1.5 pl-8 pr-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -172,7 +171,7 @@ export const ContextMenuCheckboxItem = forwardRef<
           : classNames(
               checkboxItemClasses.size[size],
               "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded pl-8 pr-2 py-1.5 font-medium outline-none",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -217,7 +216,7 @@ export const ContextMenuRadioItem = forwardRef<
           : classNames(
               radioItemClasses.size[size],
               "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded pl-8 pr-2 py-1.5 font-medium outline-none",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -263,7 +262,7 @@ export const ContextMenuSubTrigger = forwardRef<
           : classNames(
               subTriggerClasses.size[size],
               "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 rounded py-1.5 pl-8 pr-2 font-medium outline-none",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -286,7 +285,7 @@ export const ContextMenuSubContent = forwardRef<
 >(
   (
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = useContextMenuContext();
     const unstyle = isBarebone || isUnstyled;
@@ -301,7 +300,7 @@ export const ContextMenuSubContent = forwardRef<
               : classNames(
                   "data-[side=right]:animate-scale-in origin-top-left",
                   "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -311,7 +310,7 @@ export const ContextMenuSubContent = forwardRef<
         </ContextMenuPrimitive.SubContent>
       </ContextMenuPrimitive.Portal>
     );
-  }
+  },
 );
 ContextMenuSubContent.displayName = "ContextMenuSubContent";
 
@@ -344,7 +343,7 @@ export const ContextMenuSeparator = forwardRef<
           : classNames(
               seperatorClasses.size[size],
               "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
-              className
+              className,
             )
       }
     />

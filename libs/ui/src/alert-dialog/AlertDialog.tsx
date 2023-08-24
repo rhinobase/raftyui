@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import { Button } from "../button";
@@ -53,7 +52,7 @@ export const AlertDialogTrigger = React.forwardRef<
       type = "button",
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone, size: alertDialogSize } = useAlertDialogContext();
     const unstyle = isBarebone || isUnstyled;
@@ -86,7 +85,7 @@ export const AlertDialogTrigger = React.forwardRef<
         )}
       </AlertDialogPrimitive.Trigger>
     );
-  }
+  },
 );
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
@@ -112,7 +111,7 @@ export const AlertDialogOverlay = React.forwardRef<
               "fixed inset-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-sm",
               "data-[state=open]:animate-in data-[state=open]:fade-in-0",
               "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -154,7 +153,7 @@ export const AlertDialogContent = React.forwardRef<
                 "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg sm:rounded-lg md:w-full",
                 "bg-white dark:bg-secondary-800 dark:text-secondary-50 dark:border-secondary-700",
                 "duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -185,7 +184,7 @@ export const AlertDialogHeader = ({
           ? className
           : classNames(
               "flex flex-col space-y-1.5 text-center sm:text-left",
-              className
+              className,
             )
       }
     />
@@ -213,7 +212,7 @@ export const AlertDialogFooter = ({
           ? className
           : classNames(
               "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-              className
+              className,
             )
       }
       {...props}
@@ -242,7 +241,7 @@ export const AlertDialogTitle = React.forwardRef<
           ? className
           : classNames(
               "text-lg font-semibold leading-none tracking-tight",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -271,7 +270,7 @@ export const AlertDialogDescription = React.forwardRef<
           ? className
           : classNames(
               "text-sm text-secondary-600 dark:text-secondary-400",
-              className
+              className,
             )
       }
       ref={forwardedRef}

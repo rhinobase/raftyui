@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { classNames } from "@rafty/utils";
@@ -24,7 +23,7 @@ export const Label = React.forwardRef<
       htmlFor={name}
       className={classNames(
         "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
-        className
+        className,
       )}
       ref={forwardedRef}
     >

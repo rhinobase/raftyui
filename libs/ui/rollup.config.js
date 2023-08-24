@@ -1,15 +1,11 @@
-const preserveDirectives = require("rollup-plugin-preserve-directives");
 const nxConfig = require("@nx/react/plugins/bundle-rollup");
+const banner = require("rollup-plugin-banner2");
 
 module.exports = (config) => {
   nxConfig(config);
   return {
     ...config,
-    output: {
-      ...config.output,
-      preserveModules: true,
-    },
-    plugins: [...config.plugins, preserveDirectives.default()],
+    plugins: [...config.plugins, banner(() => "'use client';\n")],
     input: [
       config.input,
       "libs/ui/src/accordion",

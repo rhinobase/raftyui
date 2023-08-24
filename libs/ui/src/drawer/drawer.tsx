@@ -1,4 +1,3 @@
-"use client";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React from "react";
 import { Button } from "../button";
@@ -40,7 +39,7 @@ export const DrawerOverlay = React.forwardRef<
         "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-sm",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-        className
+        className,
       )}
       ref={forwardedRef}
     />
@@ -79,7 +78,7 @@ export const DrawerContent = React.forwardRef<
           "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
           contentClasses.size[size],
           contentClasses.side[side],
-          className
+          className,
         )}
         ref={forwardedRef}
       >
@@ -116,7 +115,7 @@ export const DrawerTitle = React.forwardRef<
       className={classNames(
         "mb-2 font-semibold",
         titleClasses.size[size],
-        className
+        className,
       )}
       ref={forwardedRef}
     >
@@ -155,7 +154,7 @@ export const DrawerClose = React.forwardRef<
       children,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <DialogPrimitive.Close
@@ -172,7 +171,7 @@ export const DrawerClose = React.forwardRef<
             size={size}
             className={classNames(
               "absolute right-5 top-5 rounded-full",
-              className
+              className,
             )}
           >
             <XMarkIcon className="h-5 w-5 stroke-2" />
@@ -180,6 +179,6 @@ export const DrawerClose = React.forwardRef<
         )}
       </DialogPrimitive.Close>
     );
-  }
+  },
 );
 DrawerClose.displayName = "DrawerClose";

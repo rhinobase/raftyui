@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { classNames } from "@rafty/utils";
@@ -46,7 +45,7 @@ export const PopoverTrigger = React.forwardRef<
       size = "md",
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = usePopoverContext();
     const unstyle = isBarebone || isUnstyled;
@@ -71,7 +70,7 @@ export const PopoverTrigger = React.forwardRef<
         )}
       </PopoverPrimitive.Trigger>
     );
-  }
+  },
 );
 PopoverTrigger.displayName = "PopoverTrigger";
 
@@ -93,7 +92,7 @@ export const PopoverContent = React.forwardRef<
       isArrow = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = usePopoverContext();
     const unstyle = isBarebone || isUnstyled;
@@ -109,7 +108,7 @@ export const PopoverContent = React.forwardRef<
               : classNames(
                   "z-50 rounded-md p-4 shadow-[0px_4px_10px_6px_rgba(60,60,60,0.1)] outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
                   "dark:bg-secondary-800 bg-white dark:text-secondary-100",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -121,7 +120,7 @@ export const PopoverContent = React.forwardRef<
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>
     );
-  }
+  },
 );
 PopoverContent.displayName = "PopoverContent";
 

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import { classNames } from "@rafty/utils";
@@ -42,7 +41,7 @@ export const ScrollBar = React.forwardRef<
       "flex touch-none select-none transition-colors",
       orientation === "vertical" && "h-full w-2.5 p-[1px]",
       orientation === "horizontal" && "h-2.5 p-[1px]",
-      className
+      className,
     )}
     {...props}
   >

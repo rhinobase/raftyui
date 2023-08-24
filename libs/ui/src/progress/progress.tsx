@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { classNames } from "@rafty/utils";
@@ -35,25 +34,25 @@ export const Progress = React.forwardRef<
 >(
   (
     { className, value, size = "md", colorScheme = "primary", ...props },
-    ref
+    ref,
   ) => (
     <ProgressPrimitive.Root
       ref={ref}
       {...props}
       className={classNames(
         progressClasses.size[size],
-        "bg-secondary-700 overflow-hidden"
+        "bg-secondary-700 overflow-hidden",
       )}
     >
       <ProgressPrimitive.Indicator
         className={classNames(
           progressClasses.colorScheme[colorScheme],
           "h-full flex-1 bg-primary transition-all",
-          className
+          className,
         )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>
-  )
+  ),
 );
 Progress.displayName = ProgressPrimitive.Root.displayName;

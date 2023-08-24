@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
@@ -27,7 +26,7 @@ export const Checkbox = React.forwardRef<
       className={classNames(
         CheckBoxClasses.size[size],
         "relative shrink-0 rounded-sm border border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",
-        className
+        className,
       )}
       id={props.id}
       {...props}
@@ -36,7 +35,7 @@ export const Checkbox = React.forwardRef<
         <CheckIcon
           className={classNames(
             CheckBoxIndicatorClasses.size[size],
-            "stroke-[3] hidden group-data-[state=checked]:block text-white dark:text-secondary-700"
+            "stroke-[3] hidden group-data-[state=checked]:block text-white dark:text-secondary-700",
           )}
         />
         <MinusIcon className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500" />
@@ -52,7 +51,7 @@ export const Checkbox = React.forwardRef<
           htmlFor={props.id ?? props.name}
           className={classNames(
             props.disabled && "cursor-not-allowed opacity-50",
-            "pl-2"
+            "pl-2",
           )}
         >
           {children}

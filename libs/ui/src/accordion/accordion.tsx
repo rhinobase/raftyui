@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import {
@@ -28,7 +27,7 @@ export const Accordion = React.forwardRef<
       isBarebone = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone;
 
@@ -43,7 +42,7 @@ export const Accordion = React.forwardRef<
         </AccordionPrimitive.Root>
       </AccordionProvider>
     );
-  }
+  },
 );
 Accordion.displayName = "Accordian";
 
@@ -107,7 +106,7 @@ export const AccordionTrigger = React.forwardRef<
       showIcon = true,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { size, variant, isBarebone } = useAccordionContext();
     const unstyle = isBarebone || isUnstyled;
@@ -123,7 +122,7 @@ export const AccordionTrigger = React.forwardRef<
                   "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
                   accordionTriggerClasses.size[size],
                   accordionTriggerClasses.variant[variant],
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -145,7 +144,7 @@ export const AccordionTrigger = React.forwardRef<
         </AccordionPrimitive.Trigger>
       </AccordionPrimitive.Header>
     );
-  }
+  },
 );
 AccordionTrigger.displayName = "AccordionAccordianTrigger";
 
@@ -178,7 +177,7 @@ export const AccordionContent = React.forwardRef<
           : classNames(
               "dark:text-secondary-100 w-full overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
               accordionContentClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}

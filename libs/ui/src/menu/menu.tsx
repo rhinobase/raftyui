@@ -1,4 +1,3 @@
-"use client";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Button } from "../button";
 import { MenuProvider, MenuContext, useMenuContext } from "./context";
@@ -140,7 +139,7 @@ export const MenuTrigger = React.forwardRef<
       asChild = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { size: menuSize, isBarebone } = useMenuContext();
     const unstyle = isBarebone || isUnstyled;
@@ -173,7 +172,7 @@ export const MenuTrigger = React.forwardRef<
                 ? className
                 : classNames(
                     menuTriggerClasses({ colorScheme, variant }),
-                    className
+                    className,
                   )
             }
             {...buttonProps}
@@ -183,7 +182,7 @@ export const MenuTrigger = React.forwardRef<
         )}
       </DropdownMenu.Trigger>
     );
-  }
+  },
 );
 MenuTrigger.displayName = "MenuTrigger";
 
@@ -201,7 +200,7 @@ export const MenuContent = React.forwardRef<
 >(
   (
     { children, className, isArrow = true, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = useMenuContext();
     const unstyle = isBarebone || isUnstyled;
@@ -217,7 +216,7 @@ export const MenuContent = React.forwardRef<
                   "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                   "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
                   "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-sm focus:outline-none",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -227,7 +226,7 @@ export const MenuContent = React.forwardRef<
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     );
-  }
+  },
 );
 MenuContent.displayName = "MenuContent";
 
@@ -262,7 +261,7 @@ export const MenuLabel = React.forwardRef<
           : classNames(
               "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
               menuLabelClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -304,7 +303,7 @@ export const MenuItem = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
               menuItemClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -347,7 +346,7 @@ export const MenuCheckboxItem = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
               menuCheckboxItemClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -358,7 +357,7 @@ export const MenuCheckboxItem = React.forwardRef<
           size === "sm" && "left-1",
           size === "md" && "left-2",
           size === "lg" && "left-2.5",
-          "absolute"
+          "absolute",
         )}
       >
         <CheckIcon className="h-3 w-3 stroke-[3]" />
@@ -402,7 +401,7 @@ export const MenuRadioItem = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
               menuRadioItemClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -413,7 +412,7 @@ export const MenuRadioItem = React.forwardRef<
           size === "sm" && "left-2",
           size === "md" && "left-2.5",
           size === "lg" && "left-2.5",
-          "absolute"
+          "absolute",
         )}
       >
         <div
@@ -421,7 +420,7 @@ export const MenuRadioItem = React.forwardRef<
             size === "sm" && "h-1.5 w-1.5",
             size === "md" && "h-2 w-2",
             size === "lg" && "h-2 w-2",
-            "bg-secondary-600 dark:bg-secondary-200 rounded-full"
+            "bg-secondary-600 dark:bg-secondary-200 rounded-full",
           )}
         />
       </DropdownMenu.ItemIndicator>
@@ -470,7 +469,7 @@ export const MenuSubTrigger = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
               menuSubTriggerClasses.size[size],
-              className
+              className,
             )
       }
     >
@@ -494,7 +493,7 @@ export const MenuSubContent = React.forwardRef<
 >(
   (
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = useMenuContext();
     const unstyle = isBarebone || isUnstyled;
@@ -510,7 +509,7 @@ export const MenuSubContent = React.forwardRef<
                   "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                   "data-[side=right]:animate-scale-in origin-top-left",
                   "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] text-gray-900 focus:outline-none",
-                  className
+                  className,
                 )
           }
           sideOffset={sideOffset}
@@ -520,7 +519,7 @@ export const MenuSubContent = React.forwardRef<
         </DropdownMenu.SubContent>
       </DropdownMenu.Portal>
     );
-  }
+  },
 );
 MenuSubContent.displayName = "MenuSubContent";
 
@@ -555,7 +554,7 @@ export const MenuSeparator = React.forwardRef<
           : classNames(
               "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
               menuSeparatorClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}

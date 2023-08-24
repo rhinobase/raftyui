@@ -1,4 +1,3 @@
-"use client";
 import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input";
@@ -25,7 +24,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
 
       if (!value)
         throw new Error(
-          `Tag Field - Data is undefined for ${cur.action} action`
+          `Tag Field - Data is undefined for ${cur.action} action`,
         );
 
       if (cur.action === Action.ADD)
@@ -33,14 +32,14 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
       else
         tmp.splice(
           tmp.findIndex((item) => item === value),
-          1
+          1,
         );
 
       if (onChange) onChange(tag);
 
       return tmp;
     },
-    initialData ?? []
+    initialData ?? [],
   );
 
   return (

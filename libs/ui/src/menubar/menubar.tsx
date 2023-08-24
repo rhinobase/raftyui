@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
@@ -25,7 +24,7 @@ export const Menubar = React.forwardRef<
       isUnstyled = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -41,7 +40,7 @@ export const Menubar = React.forwardRef<
                   size === "md" && "gap-2",
                   size === "lg" && "gap-3",
                   "flex items-center w-max",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -50,7 +49,7 @@ export const Menubar = React.forwardRef<
         </MenubarPrimitive.Root>
       </MenuBarProvider>
     );
-  }
+  },
 );
 Menubar.displayName = "Menubar";
 
@@ -85,7 +84,7 @@ export const MenubarTrigger = React.forwardRef<
       asChild = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { size: menubarSize, isBarebone } = useMenuBarContext();
     const unstyle = isBarebone || isUnstyled;
@@ -118,7 +117,7 @@ export const MenubarTrigger = React.forwardRef<
                 ? className
                 : classNames(
                     menuTriggerClasses({ colorScheme, variant }),
-                    className
+                    className,
                   )
             }
             {...buttonProps}
@@ -128,7 +127,7 @@ export const MenubarTrigger = React.forwardRef<
         )}
       </MenubarPrimitive.Trigger>
     );
-  }
+  },
 );
 MenubarTrigger.displayName = "MenubarTrigger";
 
@@ -146,7 +145,7 @@ export const MenubarContent = React.forwardRef<
 >(
   (
     { children, className, sideOffset = 5, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = useMenuBarContext();
     const unstyle = isBarebone || isUnstyled;
@@ -161,7 +160,7 @@ export const MenubarContent = React.forwardRef<
               ? className
               : classNames(
                   "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -170,7 +169,7 @@ export const MenubarContent = React.forwardRef<
         </MenubarPrimitive.Content>
       </MenubarPrimitive.Portal>
     );
-  }
+  },
 );
 MenubarContent.displayName = "MenubarContent";
 
@@ -205,7 +204,7 @@ export const MenubarLabel = React.forwardRef<
           : classNames(
               "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
               labelClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -247,7 +246,7 @@ export const MenubarItem = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
               itemClasses.size[size],
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -293,7 +292,7 @@ export const MenubarCheckboxItem = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
               checkboxItemClasses.size[size],
-              className
+              className,
             )
       }
     >
@@ -303,7 +302,7 @@ export const MenubarCheckboxItem = React.forwardRef<
           size === "sm" && "left-1",
           size === "md" && "left-2",
           size === "lg" && "left-2.5",
-          "absolute"
+          "absolute",
         )}
       >
         <CheckIcon className="h-3 w-3 stroke-[3]" />
@@ -348,7 +347,7 @@ export const MenubarRadioItem = React.forwardRef<
           : classNames(
               "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
               radioItemClasses.size[size],
-              className
+              className,
             )
       }
     >
@@ -358,7 +357,7 @@ export const MenubarRadioItem = React.forwardRef<
           size === "sm" && "left-2",
           size === "md" && "left-2.5",
           size === "lg" && "left-2.5",
-          "absolute"
+          "absolute",
         )}
       >
         <div
@@ -366,7 +365,7 @@ export const MenubarRadioItem = React.forwardRef<
             size === "sm" && "h-1.5 w-1.5",
             size === "md" && "h-2 w-2",
             size === "lg" && "h-2 w-2",
-            "bg-secondary-600 dark:bg-secondary-200 rounded-full"
+            "bg-secondary-600 dark:bg-secondary-200 rounded-full",
           )}
         />
       </MenubarPrimitive.ItemIndicator>
@@ -412,7 +411,7 @@ export const MenubarSubTrigger = React.forwardRef<
           : classNames(
               "relative flex cursor-default select-none items-center rounded-sm outline-none text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 w-full justify-between gap-2 font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
               subTriggerClasses.size[size],
-              className
+              className,
             )
       }
     >
@@ -437,7 +436,7 @@ export const MenubarSubContent = React.forwardRef<
 >(
   (
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const { isBarebone } = useMenuBarContext();
     const unstyle = isBarebone || isUnstyled;
@@ -453,7 +452,7 @@ export const MenubarSubContent = React.forwardRef<
               : classNames(
                   "data-[side=right]:animate-scale-in origin-top-left",
                   "p-base dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -462,7 +461,7 @@ export const MenubarSubContent = React.forwardRef<
         </MenubarPrimitive.SubContent>
       </MenubarPrimitive.Portal>
     );
-  }
+  },
 );
 MenubarSubContent.displayName = "MenubarSubContent";
 
@@ -498,7 +497,7 @@ export const MenubarSeparator = React.forwardRef<
           : classNames(
               "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
               seperatorClasses.size[size],
-              className
+              className,
             )
       }
     />

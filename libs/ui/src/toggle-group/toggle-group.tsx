@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import {
@@ -23,7 +22,7 @@ export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
       isUnstyled = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -36,7 +35,7 @@ export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
               ? className
               : classNames(
                   "dark:divide-secondary-700 dark:border-secondary-700 flex w-full items-center divide-x overflow-hidden rounded-md border",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -45,7 +44,7 @@ export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
         </ToggleGroupPrimitive.Root>
       </ToggleGroupProvider>
     );
-  }
+  },
 );
 ToggleGroup.displayName = "ToggleGroup";
 
@@ -77,7 +76,7 @@ export const ToggleGroupItem = React.forwardRef<
           : classNames(
               itemClasses.size[size],
               "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
-              className
+              className,
             )
       }
       {...props}

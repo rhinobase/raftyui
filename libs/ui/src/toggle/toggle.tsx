@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -26,7 +25,7 @@ export const toggleVariants = cva(
       variant: "ghost",
       size: "md",
     },
-  }
+  },
 );
 
 // Toggle component
