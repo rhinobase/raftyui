@@ -1,5 +1,5 @@
 import React from "react";
-import { format } from "date-fns";
+import format from "dateformat";
 import { classNames } from "@rafty/utils";
 import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
@@ -28,7 +28,7 @@ export function DatePicker(props: DatePicker) {
             props.formatters && props.formatters.formatDay ? (
               props.formatters.formatDay(date)
             ) : (
-              format(date, "PPP")
+              format(date, "longDate")
             )
           ) : (
             <span>Pick a date</span>

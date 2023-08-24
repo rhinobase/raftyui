@@ -1,5 +1,5 @@
 import React from "react";
-import { format } from "date-fns";
+import format from "dateformat";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { classNames } from "@rafty/utils";
 import { Button } from "../button";
@@ -28,11 +28,11 @@ export function RangePicker({ className, ...props }: RangePicker) {
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
+                  {format(date.from, "longDate")} -{" "}
+                  {format(date.to, "longDate")}
                 </>
               ) : (
-                format(date.from, "LLL dd, y")
+                format(date.from, "longDate")
               )
             ) : (
               <span>Pick a date</span>

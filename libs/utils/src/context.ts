@@ -39,14 +39,14 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
   function useContext() {
     const context = useReactContext(Context);
 
-    // if (!context && strict) {
-    //   const error = new Error(
-    //     errorMessage ?? getErrorMessage(hookName, providerName),
-    //   );
-    //   error.name = "ContextError";
-    //   Error.captureStackTrace?.(error, useContext);
-    //   throw error;
-    // }
+    if (!context && strict) {
+      const error = new Error(
+        errorMessage ?? getErrorMessage(hookName, providerName),
+      );
+      error.name = "ContextError";
+      Error.captureStackTrace?.(error, useContext);
+      throw error;
+    }
 
     return context;
   }
