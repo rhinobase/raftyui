@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.7](https://github.com/rhinobase/design-system/compare/utils-1.0.0-beta.5...utils-1.0.0-beta.7) (2023-08-24)
+
+
+### Bug Fixes
+
+* compatiable with SSR ([9709f2a](https://github.com/rhinobase/design-system/commit/9709f2af7eff32c9c2d48be373563ec93152b53c))
+* compilation issues ([617e586](https://github.com/rhinobase/design-system/commit/617e5865a84d48710bc3fe580a686ee0ae1aa063))
+* minor adjustments and improvements ([d08783b](https://github.com/rhinobase/design-system/commit/d08783b45b2ddde075d2ab42a48f0d69913fd0e0))
+
 ## [1.0.0-beta.6](https://github.com/rhinobase/design-system/compare/utils-1.0.0-beta.5...utils-1.0.0-beta.6) (2023-08-10)
 
 ## [1.0.0-beta.5](https://github.com/rhinobase/raftyui/compare/utils-1.0.0-beta.4...utils-1.0.0-beta.5) (2023-07-05)
