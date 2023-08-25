@@ -10,8 +10,6 @@ type Story = StoryObj<typeof Kbd>;
 
 export const Default: Story = {
   render: () => (
-    <>
       <Kbd>shift + K</Kbd>
-    </>
   ),
 };
