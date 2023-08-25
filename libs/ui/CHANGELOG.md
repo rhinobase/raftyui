@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.34](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.33...ui-1.0.0-beta.34) (2023-08-25)
+
+
+### Bug Fixes
+
+* add strict: false prop to avatar and input group context ([1e25f1a](https://github.com/rhinobase/design-system/commit/1e25f1aa4eac3e58d63cc6b66155022b67c7c55a))
+* optimized the bundle size ([627aadf](https://github.com/rhinobase/design-system/commit/627aadf23dd13d3e3bf2d303da18ae9de14a255d))
+
 ## [1.0.0-beta.33](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.32...ui-1.0.0-beta.33) (2023-08-25)
 
 ## [1.0.0-beta.32](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.31...ui-1.0.0-beta.32) (2023-08-24)
