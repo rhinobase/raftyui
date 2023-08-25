@@ -447,7 +447,7 @@ export type Button = JSX.IntrinsicElements["button"] & {
   isDisabled?: boolean;
 };
 
-export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
+export const Button = forwardRef<HTMLButtonElement, Button>((
   {
     isLoading = false,
     isActive = false,
@@ -463,9 +463,9 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     rightIcon,
     type = "button",
     ...props
-  }: Button,
+  },
   forwardedRef
-) {
+) => {
   // Buttons are **always** disabled if we're in a `loading` state
   const disabled = props.disabled || isDisabled || isLoading;
 

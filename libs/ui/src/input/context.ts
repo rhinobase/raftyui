@@ -2,6 +2,7 @@ import { createContext } from "@rafty/utils";
 
 export const [InputGroupProvider, useInputGroupContext] =
   createContext<InputGroupContext>({
+    strict: false,
     name: "InputGroupContext",
     hookName: "useInputGroupContext",
     providerName: "<InputGroup />",
