@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { classNames } from "@rafty/utils";

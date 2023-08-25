@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import {

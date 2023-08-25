@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.33](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.32...ui-1.0.0-beta.33) (2023-08-25)
+
+## [1.0.0-beta.32](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.31...ui-1.0.0-beta.32) (2023-08-24)
+
 ## [1.0.0-beta.31](https://github.com/rhinobase/design-system/compare/ui-0.0.1...ui-1.0.0-beta.31) (2023-08-24)
 
 ### Bug Fixes

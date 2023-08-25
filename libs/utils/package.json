@@ -1,7 +1,7 @@
 {
   "name": "@rafty/utils",
   "description": "Utility functions for the @rafty/ui and component libs",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0-beta.10",
   "license": "MIT",
   "keywords": [
     "react",
@@ -26,6 +26,7 @@
   "module": "index.js",
   "types": "src/index.d.ts",
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=18",
+    "core-js": ">=3.32.1"
   }
 }

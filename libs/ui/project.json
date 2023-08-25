@@ -53,9 +53,12 @@
           "@radix-ui/react-separator",
           "@radix-ui/react-switch",
           "@radix-ui/react-tabs",
+          "@radix-ui/react-toggle",
           "@radix-ui/react-toggle-group",
           "@radix-ui/react-tooltip",
-          "@rafty/utils"
+          "dateformat",
+          "@rafty/utils",
+          "core-js"
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "generateExportsField": true,

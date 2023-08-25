@@ -2,6 +2,7 @@ import { createContext } from "@rafty/utils";
 
 export const [FieldControlProvider, useFieldControlContext] =
   createContext<FieldControlContext>({
+    strict: false,
     name: "FieldControlContext",
     hookName: "useFieldControlContext",
     providerName: "<FieldControl />",

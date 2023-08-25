@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0-beta.10](https://github.com/rhinobase/design-system/compare/utils-1.0.0-beta.9...utils-1.0.0-beta.10) (2023-08-25)
+
+## [1.0.0-beta.9](https://github.com/rhinobase/design-system/compare/utils-1.0.0-beta.8...utils-1.0.0-beta.9) (2023-08-24)
+
 ## [1.0.0-beta.8](https://github.com/rhinobase/design-system/compare/utils-1.0.0-beta.7...utils-1.0.0-beta.8) (2023-08-24)
 
 ## [1.0.0-beta.7](https://github.com/rhinobase/design-system/compare/utils-1.0.0-beta.5...utils-1.0.0-beta.7) (2023-08-24)

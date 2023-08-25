@@ -1,3 +1,4 @@
+"use client";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Button } from "../button";
 import { MenuProvider, MenuContext, useMenuContext } from "./context";

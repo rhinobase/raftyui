@@ -1,3 +1,4 @@
+"use client";
 import {
   createContext as createReactContext,
   useContext as useReactContext,
@@ -29,9 +30,10 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     hookName = "useContext",
     providerName = "Provider",
     errorMessage,
+    defaultValue,
   } = options;
 
-  const Context = createReactContext<T | undefined>(undefined);
+  const Context = createReactContext<T | undefined>(defaultValue);
 
   Context.displayName = name;
 

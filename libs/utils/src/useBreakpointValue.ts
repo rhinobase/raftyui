@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect, useState } from "react";
 
 type Breakpoint = "sm" | "md" | "lg" | "xl";
