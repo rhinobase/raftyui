@@ -8,18 +8,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2020",
     "module": "esnext",
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rafty/context-menu": ["libs/components/context-menu/src/index.ts"],
-      "@rafty/date-picker": ["libs/components/date-picker/src/index.ts"],
-      "@rafty/menubar": ["libs/components/menubar/src/index.ts"],
       "@rafty/plugin": ["libs/plugin/src/index.ts"],
-      "@rafty/ui": ["libs/core/src/index.ts"],
+      "@rafty/ui": ["libs/ui/src/index.ts"],
       "@rafty/utils": ["libs/utils/src/index.ts"]
     }
   },

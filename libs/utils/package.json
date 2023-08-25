@@ -1,7 +1,7 @@
 {
   "name": "@rafty/utils",
   "description": "Utility functions for the @rafty/ui and component libs",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.10",
   "license": "MIT",
   "keywords": [
     "react",
@@ -22,17 +22,11 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.mjs"
-    }
-  },
-  "main": "./index.mjs",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "main": "index.cjs",
+  "module": "index.js",
+  "types": "src/index.d.ts",
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": ">=18",
+    "core-js": ">=3.32.1"
   }
 }

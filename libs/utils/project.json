@@ -31,11 +31,20 @@
           "react-dom",
           "react/jsx-runtime"
         ],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "rollupConfig": "libs/utils/rollup.config.js",
         "compiler": "babel",
+        "format": [
+          "cjs",
+          "esm"
+        ],
         "assets": [
           {
             "glob": "libs/utils/README.md",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "libs/utils/CHANGELOG.md",
             "input": ".",
             "output": "."
           }
@@ -48,8 +57,11 @@
         "preset": "conventional"
       }
     },
-    "release": {
-      "executor": "ngx-deploy-npm:deploy"
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
     }
   }
 }

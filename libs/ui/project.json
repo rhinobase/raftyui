@@ -1,0 +1,97 @@
+{
+  "name": "ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ui/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/ui",
+        "tsConfig": "libs/ui/tsconfig.lib.json",
+        "project": "libs/ui/package.json",
+        "entryFile": "libs/ui/src/index.ts",
+        "external": [
+          "react",
+          "react-dom",
+          "react/jsx-runtime",
+          "@heroicons/react",
+          "class-variance-authority",
+          "cmdk",
+          "react-day-picker",
+          "@radix-ui/react-accordion",
+          "@radix-ui/react-alert-dialog",
+          "@radix-ui/react-aspect-ratio",
+          "@radix-ui/react-checkbox",
+          "@radix-ui/react-context-menu",
+          "@radix-ui/react-dialog",
+          "@radix-ui/react-dropdown-menu",
+          "@radix-ui/react-hover-card",
+          "@radix-ui/react-label",
+          "@radix-ui/react-menubar",
+          "@radix-ui/react-navigation-menu",
+          "@radix-ui/react-popover",
+          "@radix-ui/react-progress",
+          "@radix-ui/react-radio-group",
+          "@radix-ui/react-scroll-area",
+          "@radix-ui/react-select",
+          "@radix-ui/react-separator",
+          "@radix-ui/react-switch",
+          "@radix-ui/react-tabs",
+          "@radix-ui/react-toggle",
+          "@radix-ui/react-toggle-group",
+          "@radix-ui/react-tooltip",
+          "dateformat",
+          "@rafty/utils",
+          "core-js"
+        ],
+        "rollupConfig": "libs/ui/rollup.config.js",
+        "generateExportsField": true,
+        "format": [
+          "cjs",
+          "esm"
+        ],
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/ui/CHANGELOG.md",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  }
+}

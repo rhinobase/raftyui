@@ -1,5 +1,6 @@
-import plugin from "tailwindcss/plugin";
-import colors from "tailwindcss/colors";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const plugin = require("tailwindcss/plugin");
+const colors = require("tailwindcss/colors");
 
 module.exports = plugin(
   function () {
@@ -51,6 +52,14 @@ module.exports = plugin(
           full: "9999px",
         },
         keyframes: {
+          "accordion-down": {
+            from: { height: 0 },
+            to: { height: "var(--radix-accordion-content-height)" },
+          },
+          "accordion-up": {
+            from: { height: "var(--radix-accordion-content-height)" },
+            to: { height: 0 },
+          },
           "slide-right": {
             "0%": { left: "-100%" },
             "100%": { left: "0" },
@@ -59,17 +68,15 @@ module.exports = plugin(
             "0%": { right: "-100%" },
             "100%": { right: "0" },
           },
-          "slide-down-fade": {
-            "0%": { opacity: "0", transform: "translateY(-2px)" },
-            "100%": { opacity: "1", transform: "translateY(0)" },
-          },
         },
         animation: {
+          "accordion-down": "accordion-down 0.2s ease-out",
+          "accordion-up": "accordion-up 0.2s ease-out",
           "slide-right": "slide-right 0.4s",
           "slide-left": "slide-left 0.4s",
-          "slide-down-fade": "slide-down-fade 1s cubic-bezier(0.16, 1, 0.3, 1)",
         },
       },
     },
+    plugins: [require("tailwindcss-animate")],
   }
 );
