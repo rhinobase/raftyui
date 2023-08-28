@@ -12,27 +12,29 @@ export type Label = React.ComponentPropsWithoutRef<
 export const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   Label
->(({ children, className, isRequired: isReq, ...props }, forwardedRef) => {
-  const { name, isRequired } = useFieldControlContext() ?? {
-    name: props.htmlFor,
-    isRequired: isReq,
-  };
+>(
+  (
+    { children, className, isRequired: isReq, htmlFor, ...props },
+    forwardedRef,
+  ) => {
+    const { name, isRequired } = useFieldControlContext() ?? {};
 
-  return (
-    <LabelPrimitive.Root
-      {...props}
-      htmlFor={name}
-      className={classNames(
-        "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
-        className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-      {isRequired && (
-        <span className="text-error-500 dark:error-red-400">*</span>
-      )}
-    </LabelPrimitive.Root>
-  );
-});
+    return (
+      <LabelPrimitive.Root
+        {...props}
+        htmlFor={htmlFor ?? name}
+        className={classNames(
+          "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
+          className,
+        )}
+        ref={forwardedRef}
+      >
+        {children}
+        {(isReq || isRequired) && (
+          <span className="text-error-500 dark:error-red-400">*</span>
+        )}
+      </LabelPrimitive.Root>
+    );
+  },
+);
 Label.displayName = "Label";

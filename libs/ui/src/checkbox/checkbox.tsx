@@ -4,6 +4,7 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { Label } from "../field";
 import { classNames } from "@rafty/utils";
+import { useFieldControlContext } from "../field/context";
 
 // Checkbox Component
 export type Checkbox = React.ComponentPropsWithoutRef<
@@ -20,45 +21,55 @@ const CheckBoxIndicatorClasses = {
 export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   Checkbox
->(({ className, children, size = "md", ...props }, forwardedref) => {
-  const checkbox = (
-    <CheckboxPrimitive.Root
-      ref={forwardedref}
-      className={classNames(
-        CheckBoxClasses.size[size],
-        "relative shrink-0 rounded-sm border border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",
-        className,
-      )}
-      id={props.id}
-      {...props}
-    >
-      <CheckboxPrimitive.Indicator className="group flex items-center justify-center h-full">
-        <CheckIcon
-          className={classNames(
-            CheckBoxIndicatorClasses.size[size],
-            "stroke-[3] hidden group-data-[state=checked]:block text-white dark:text-secondary-700",
-          )}
-        />
-        <MinusIcon className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500" />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
-  );
+>(
+  (
+    { className, children, size = "md", name, required, disabled, ...props },
+    forwardedref,
+  ) => {
+    const context = useFieldControlContext() ?? {};
 
-  return (
-    <div className="flex items-center w-max">
-      {checkbox}
-      {children && (
-        <Label
-          htmlFor={props.id ?? props.name}
-          className={classNames(
-            props.disabled && "cursor-not-allowed opacity-50",
-            "pl-2",
-          )}
-        >
-          {children}
-        </Label>
-      )}
-    </div>
-  );
-});
+    const checkbox = (
+      <CheckboxPrimitive.Root
+        {...props}
+        name={name ?? context.name}
+        required={required ?? context.isRequired}
+        disabled={disabled ?? context.isDisabled}
+        className={classNames(
+          CheckBoxClasses.size[size],
+          "relative shrink-0 rounded-sm border border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",
+          className,
+        )}
+        ref={forwardedref}
+      >
+        <CheckboxPrimitive.Indicator className="group flex items-center justify-center h-full">
+          <CheckIcon
+            className={classNames(
+              CheckBoxIndicatorClasses.size[size],
+              "stroke-[3] hidden group-data-[state=checked]:block text-white dark:text-secondary-700",
+            )}
+          />
+          <MinusIcon className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500" />
+        </CheckboxPrimitive.Indicator>
+      </CheckboxPrimitive.Root>
+    );
+
+    return (
+      <div className="flex items-center w-max">
+        {checkbox}
+        {children && (
+          <Label
+            htmlFor={props.id ?? name ?? context.name}
+            className={classNames(
+              (disabled || context.isDisabled) &&
+                "cursor-not-allowed opacity-50",
+              "pl-2",
+            )}
+          >
+            {children}
+          </Label>
+        )}
+      </div>
+    );
+  },
+);
 Checkbox.displayName = "Checkbox";
