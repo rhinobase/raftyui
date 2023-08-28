@@ -9,97 +9,24 @@ description: Navigation Menu
 A collection of links for navigating websites.
 
 ```jsx
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuListItem,
-  NavigationMenuTrigger,
-} from '@rafty/ui'
+import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuListItem, NavigationMenuTrigger } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink href="/">Link</NavigationMenuLink>
-        <NavigationMenuListItem href="#" title="Stitches">
-          CSS-in-JS with best-in-class developer experience.
-        </NavigationMenuListItem>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuIndicator />
-  </NavigationMenuList>
-</NavigationMenu>
-```
+{% example name="navigation-menu:usage" /%}
 
 ## Content Size
 
 Pass the `size` prop if you need to adjust the size of the navigation-menu content. Values can be `sm`, `md`, `lg`.
 
-```jsx
-<NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-      <NavigationMenuContent size="sm">
-        <NavigationMenuLink href="/">Link</NavigationMenuLink>
-        <NavigationMenuListItem href="#" title="Stitches">
-          CSS-in-JS with best-in-class developer experience.
-        </NavigationMenuListItem>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuIndicator />
-  </NavigationMenuList>
-</NavigationMenu>
-```
-
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in Navigation Menu.
 
-```jsx
-<NavigationMenu isBarebone>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-      <NavigationMenuContent size="lg">
-        <NavigationMenuLink href="/">Link</NavigationMenuLink>
-        <NavigationMenuListItem href="#" title="Stitches">
-          CSS-in-JS with best-in-class developer experience.
-        </NavigationMenuListItem>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuIndicator />
-  </NavigationMenuList>
-</NavigationMenu>
-```
-
 ## UnStlyed
 
-```jsx
-<NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-      <NavigationMenuContent isUnstyled>
-        <NavigationMenuLink href="/">Link</NavigationMenuLink>
-        <NavigationMenuListItem href="#" title="Stitches">
-          CSS-in-JS with best-in-class developer experience.
-        </NavigationMenuListItem>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuIndicator />
-  </NavigationMenuList>
-</NavigationMenu>
-```
+{% example name="navigation-menu:unstyled" /%}
 
 ### API
 

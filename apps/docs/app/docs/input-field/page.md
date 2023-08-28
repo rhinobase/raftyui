@@ -11,58 +11,36 @@ Input component is a component that is used to get user input in a text field.
 - InputField
 
 ```jsx
-import { InputField } from '@rafty/ui'
+import { InputField } from "@rafty/ui";
 ```
 
 ### Usage
 
-```jsx
-<InputField placeholder="Basic usage" />
-```
+{% example name="input-field:usage" /%}
 
 ### Size
 
 Use the `size` prop to change the size of the `InputField`. You can set the value to `sm`, `md`, or `lg`.
 
-```jsx
-<InputField size="sm" />
-<InputField size="md" />
-<InputField size="lg" />
-```
+{% example name="input-field:size" /%}
 
 ### Variant
 
 Use the `variant` prop to change the visual style of the `InputField`. You can set the value to `solid`, `ghost`, `outline`.
 
-```jsx
-<InputField variant="solid" />
-<InputField variant="ghost" />
-<InputField variant="outline" />
-```
-
-### Read Only
-
-Pass the `isReadOnly` prop to make input-field Read Only.
-
-```jsx
-<InputField isReadOnly />
-```
+{% example name="input-field:variant" /%}
 
 ### Required
 
 Pass the `isRequired` prop to make input-field Required.
 
-```jsx
-<InputField isRequired />
-```
+{% example name="input-field:required" /%}
 
 ### Disabled
 
 Pass the `isDisabled` prop to make input-field Disabled.
 
-```jsx
-<InputField isDisabled />
-```
+{% example name="input-field:disabled" /%}
 
 ### API
 

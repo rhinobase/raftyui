@@ -14,42 +14,21 @@ import { ListItem, OrderedList, UnorderedList, List } from "@rafty/ui";
 
 ## Usage
 
-{% examples name="list:usage" /%}
+{% example name="list:usage" /%}
 
 ## Ordered List
 
-```jsx
-<OrderedList>
-  <ListItem>Lorem ipsum dolor sit amet</ListItem>
-  <ListItem>Consectetur adipiscing elit</ListItem>
-  <ListItem>Integer molestie lorem at massa</ListItem>
-  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-</OrderedList>
-```
+{% example name="list:order_list" /%}
 
 ### UnOrdered List
 
-```jsx
-<UnorderedList>
-  <ListItem>Lorem ipsum dolor sit amet</ListItem>
-  <ListItem>Consectetur adipiscing elit</ListItem>
-  <ListItem>Integer molestie lorem at massa</ListItem>
-  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-</UnorderedList>
-```
+{% example name="list:unorder_list" /%}
 
 ## Unstyled
 
 Pass `isUnstyled` to remove style in list.
 
-```jsx
-<List isUnstyled>
-  <ListItem>Lorem ipsum dolor sit amet</ListItem>
-  <ListItem>Consectetur adipiscing elit</ListItem>
-  <ListItem>Integer molestie lorem at massa</ListItem>
-  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-</List>
-```
+{% example name="list:unstyled" /%}
 
 ### API
 

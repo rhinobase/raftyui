@@ -11,26 +11,18 @@ Checkbox component is used in forms when a user needs to select multiple values 
 - Checkbox:
 
 ```jsx
-import { Checkbox, CheckboxGroup } from '@rafty/ui'
+import { Checkbox, CheckboxGroup } from "@rafty/ui";
 ```
 
 ### Usage
 
-Pass `defaultSelected` prop to set default check the checkbox.
-
-```jsx
-<CheckboxGroup>
-  <Checkbox>Checkbox</Checkbox>
-</CheckboxGroup>
-```
+{% example name="checkbox:usage" /%}
 
 ### Default Selected
 
-```jsx
-<CheckboxGroup>
-  <Checkbox defaultSelected>Checkbox</Checkbox>
-</CheckboxGroup>
-```
+Pass `defaultSelected` prop to set default check the checkbox.
+
+{% example name="checkbox:default_checked" /%}
 
 ### Disabled
 
@@ -38,49 +30,17 @@ Pass `isDisabled` prop to disable checkbox.
 
 This property can also be passed in child/ sub component
 
-```jsx
-<CheckboxGroup isDisabled>
-  <Checkbox>Checkbox</Checkbox>
-</CheckboxGroup>
-```
+{% example name="checkbox:disabled" /%}
 
-### Indeterminate
+### Checked
 
-Pass `isIndeterminate` prop to set checkbox to indeterminate.
-
-```jsx
-<CheckboxGroup>
-  <Checkbox isIndeterminate>Checkbox</Checkbox>
-</CheckboxGroup>
-```
-
-### Selected
-
-```jsx
-<CheckboxGroup>
-  <Checkbox isSelected>Checkbox</Checkbox>
-</CheckboxGroup>
-```
-
-### Read Only
-
-This property can also be passed in child/ sub component
-
-```jsx
-<CheckboxGroup isReadOnly>
-  <Checkbox>Checkbox</Checkbox>
-</CheckboxGroup>
-```
+{% example name="checkbox:checked" /%}
 
 ### Required
 
 This property can also be passed in child/ sub component
 
-```jsx
-<CheckboxGroup isRequired>
-  <Checkbox>Checkbox</Checkbox>
-</CheckboxGroup>
-```
+{% example name="checkbox:required" /%}
 
 ### API
 

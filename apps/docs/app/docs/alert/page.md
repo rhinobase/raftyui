@@ -14,78 +14,42 @@ Rafty UI exports 4 alert related components.
 - AlertDescr iption: The description of the alert to be announced by screen readers.
 
 ```jsx
-import { Alert, AlertDescription, AlertIcon, AlertTitle } from '@rafty/ui'
+import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Alert>
-  <AlertIcon />
-  <AlertTitle id="title">Title</AlertTitle>
-  <AlertDescription>Description</AlertDescription>
-</Alert>
-```
+{% example name="alert:usage" /%}
 
 ## Size
 
 Pass the `size` prop if you need to adjust the size of the Alert. Values can be `sm`, `md`, `lg`.
 
-```jsx
-<Alert size="sm" status="error">
-  <AlertIcon />
-  <AlertTitle>Title</AlertTitle>
-  <AlertDescription>Description</AlertDescription>
-</Alert>
-```
+{% example name="alert:size" /%}
 
 ## Status
 
 Change the status of the alerts by passing the `status` prop. This affects the color scheme and icon used. Alert supports `error`, `success`, `warning`, `info` statuses.
 
-```jsx
-<Alert status="error">
-  <AlertIcon />
-  <AlertTitle id="title">Title</AlertTitle>
-  <AlertDescription>Description</AlertDescription>
-</Alert>
-```
+{% example name="alert:status" /%}
 
 ## Variant
 
 Pass the `variant` prop if you need to adjust visual style of the alert. Values can be `subtle`, `solid`, `left-accent` or `top-accent`.
 
-```jsx
-<Alert variant="subtle">
-  <AlertIcon />
-  <AlertTitle>Title</AlertTitle>
-  <AlertDescription>Description</AlertDescription>
-</Alert>
-```
+{% example name="alert:variant" /%}
 
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in alert.
 
-```jsx
-<Alert isBarebone status="info">
-  <AlertIcon />
-  <AlertTitle>Title</AlertTitle>
-  <AlertDescription>Description</AlertDescription>
-</Alert>
-```
+{% example name="alert:barebone" /%}
 
 ## UnStyled
 
 Pass `isUnstyled` prop to remove all style from a particalr sub component.
 
-```jsx
-<Alert isUnstyled status="info">
-  <AlertIcon />
-  <AlertTitle>Title</AlertTitle>
-  <AlertDescription>Description</AlertDescription>
-</Alert>
-```
+{% example name="alert:unstyled" /%}
 
 ## API
 

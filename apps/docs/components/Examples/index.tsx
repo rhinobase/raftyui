@@ -26,6 +26,18 @@ import { input_group_examples } from "./input-group";
 import { list_examples } from "./list";
 import { kbd_examples } from "./kbd";
 import { menu_examples } from "./menu";
+import { button_examples } from "./button";
+import { alert_examples } from "./alert";
+import { alert_dialog_examples } from "./alert-dialog";
+import { card_examples } from "./card";
+import { checkbox_examples } from "./checkbox";
+import { context_menu_examples } from "./context-menu";
+import { date_picker_examples } from "./date-picker";
+import { dialog_examples } from "./dialog";
+import { drawer_examples } from "./drawer";
+import { input_field_examples } from "./input-field";
+import { menubar_examples } from "./menubar";
+import { navigation_menu_examples } from "./navigation-menu";
 
 // Map
 const examples: Record<string, JSX.Element> = {
@@ -52,19 +64,31 @@ const examples: Record<string, JSX.Element> = {
   ...list_examples,
   ...kbd_examples,
   ...menu_examples,
+  ...button_examples,
+  ...alert_examples,
+  ...alert_dialog_examples,
+  ...card_examples,
+  ...checkbox_examples,
+  ...context_menu_examples,
+  ...date_picker_examples,
+  ...dialog_examples,
+  ...drawer_examples,
+  ...input_field_examples,
+  ...menubar_examples,
+  ...navigation_menu_examples,
 };
 
 export function Examples({ name }: { name: string }) {
   const Component = examples[name];
 
-  if (!Component) return <div>The component example doesn&apos;t exist</div>;
-
-  console.log(Component);
-
   return (
-    <>
-      <div>{Component}</div>
-      <Fence language="jsx">{reactElementToJSXString(Component)}</Fence>
-    </>
+    <div className="w-full space-y-0">
+      <div className="rounded-t-xl border w-full px-4 pt-4 pb-6 bg-secondary-50 dark:bg-secondary-900 dark:border-secondary-800 flex items-center justify-center">
+        {Component}
+      </div>
+      <Fence language="jsx" className="!-mt-2">
+        {reactElementToJSXString(Component)}
+      </Fence>
+    </div>
   );
 }

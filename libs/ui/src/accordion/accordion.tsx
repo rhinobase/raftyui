@@ -119,7 +119,7 @@ export const AccordionTrigger = React.forwardRef<
           unstyle
             ? className
             : classNames(
-                "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+                "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full",
                 accordionTriggerClasses.size[size],
                 accordionTriggerClasses.variant[variant],
                 className,
