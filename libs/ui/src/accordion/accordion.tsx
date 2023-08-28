@@ -113,37 +113,33 @@ export const AccordionTrigger = React.forwardRef<
     const unstyle = isBarebone || isUnstyled;
 
     return (
-      <AccordionPrimitive.Header className="flex">
-        <AccordionPrimitive.Trigger
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
-                  accordionTriggerClasses.size[size],
-                  accordionTriggerClasses.variant[variant],
-                  className,
-                )
-          }
-          ref={forwardedRef}
-        >
-          {children}
-          {openIcon && (
-            <div className="hidden group-data-[state=open]:block">
-              {openIcon}
-            </div>
-          )}
-          {closeIcon && (
-            <div className="group-data-[state=close]:block group-data-[state=open]:hidden">
-              {closeIcon}
-            </div>
-          )}
-          {!openIcon && !closeIcon && showIcon && (
-            <ChevronDownIcon className="h-4 w-4 stroke-2 shrink-0 transition-transform duration-200" />
-          )}
-        </AccordionPrimitive.Trigger>
-      </AccordionPrimitive.Header>
+      <AccordionPrimitive.Trigger
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+                accordionTriggerClasses.size[size],
+                accordionTriggerClasses.variant[variant],
+                className,
+              )
+        }
+        ref={forwardedRef}
+      >
+        {children}
+        {openIcon && (
+          <div className="hidden group-data-[state=open]:block">{openIcon}</div>
+        )}
+        {closeIcon && (
+          <div className="group-data-[state=close]:block group-data-[state=open]:hidden">
+            {closeIcon}
+          </div>
+        )}
+        {!openIcon && !closeIcon && showIcon && (
+          <ChevronDownIcon className="h-4 w-4 stroke-2 shrink-0 transition-transform duration-200" />
+        )}
+      </AccordionPrimitive.Trigger>
     );
   },
 );
