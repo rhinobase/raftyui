@@ -9,57 +9,12 @@ description: Table
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default
 
 ```jsx
-import {
-  TableContainer,
-  Table,
-  TableHead,
-  TableBody,
-  TableFooter,
-  Tr,
-  Th,
-  Td,
-} from '@rafty/ui'
+import { TableContainer, Table, TableHead, TableBody, TableFooter, Tr, Th, Td } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<TableContainer>
-  <Table>
-    <TableHead>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableHead>
-    <TableBody>
-      <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-        <Td>25.4</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-        <Td>30.48</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-        <Td>0.91444</Td>
-      </Tr>
-    </TableBody>
-    <TableFooter>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableFooter>
-  </Table>
-</TableContainer>
-```
+{% example name="table:usage" /%}
 
 ## Container
 

@@ -9,45 +9,24 @@ description: Progress
 Progress is used to display the progress status for a task that takes a long time or consists of several steps.
 
 ```jsx
-import { Progress } from '@rafty/ui'
+import { Progress } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Progress size={size} value={80} colorScheme={colorScheme} isIndeterminate={isIndeterminate} />
-
-<Progress value={80} />
-```
+{% example name="progress:usage" /%}
 
 ## size
 
 Pass the `size` prop if you need to adjust the size of the progress. Values can be `sm`, `md`, `lg`.
 
-```jsx
-<Progress value={80} size="sm" />
-<Progress value={80} size="md" />
-<Progress value={80} size="lg" />
-```
+{% example name="progress:size" /%}
 
 ## colorScheme
 
 Pass the `colorScheme` prop to change the color of the progess. You can set the value to `primary`, `error`, `success`, `warning`.
 
-```jsx
-<Progress value={80} colorScheme="primary" />
-<Progress value={80} colorScheme="error" />
-<Progress value={80} colorScheme="success" />
-<Progress value={80} colorScheme="warning" />
-```
-
-## isIndeterminate
-
-To show an animated progress, pass the `isIndeterminate` prop.
-
-```jsx
-<Progress value={80} colorScheme="primary" isIndeterminate />
-```
+{% example name="progress:colorschema" /%}
 
 ### API
 

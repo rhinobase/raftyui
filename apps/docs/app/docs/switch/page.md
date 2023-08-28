@@ -11,14 +11,12 @@ The Switch component is used as an alternative for the checkbox component.
 - Switch
 
 ```jsx
-import { Switch } from '@rafty/ui'
+import { Switch } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Switch />
-```
+{% example name="switch:usage" /%}
 
 ## Size
 

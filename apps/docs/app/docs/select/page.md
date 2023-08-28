@@ -9,18 +9,12 @@ description: Select
 Select component is a component that allows users pick a value from predefined options.
 
 ```jsx
-import { Select, SelectItem } from '@rafty/ui'
+import { Select, SelectItem } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Select onSelectionChange={(key) => console.log(key)}>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
-</Select>
-```
+{% example name="select:usage" /%}
 
 ## Size
 

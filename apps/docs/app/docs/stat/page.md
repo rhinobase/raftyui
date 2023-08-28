@@ -9,20 +9,12 @@ description: Stat
 As the name implies, the `Stat` component is used to display some statistics.Its is majorly used in finance projects.
 
 ```jsx
-import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from '@rafty/ui'
+import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Stat type="decrease">
-  <StatLabel>Daily Return</StatLabel>
-  <StatValue>17,770.90</StatValue>
-  <StatHelpText>
-    <StatIcon /> 0.47%
-  </StatHelpText>
-</Stat>
-```
+{% example name="stat:usage" /%}
 
 ## Type
 

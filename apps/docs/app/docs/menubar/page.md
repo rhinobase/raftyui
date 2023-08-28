@@ -9,28 +9,15 @@ description: Menu Bar
 A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
 
 ```jsx
-import {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from '@rafty/ui'
+import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarItem, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from "@rafty/ui";
 ```
 
 ## Usage
 
 ```jsx
-const [bookmarksChecked, setBookmarksChecked] = useState(true)
-const [fullUrlChecked, setFullUrlChecked] = useState(true)
-const [person, setPerson] = useState('1')
+const [bookmarksChecked, setBookmarksChecked] = useState(true);
+const [fullUrlChecked, setFullUrlChecked] = useState(true);
+const [person, setPerson] = useState("1");
 
 return (
   <div className="w-96">
@@ -70,16 +57,10 @@ return (
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent>
-          <MenubarCheckboxItem
-            checked={bookmarksChecked}
-            onCheckedChange={setBookmarksChecked}
-          >
+          <MenubarCheckboxItem checked={bookmarksChecked} onCheckedChange={setBookmarksChecked}>
             Always Show Bookmarks Bar
           </MenubarCheckboxItem>
-          <MenubarCheckboxItem
-            checked={fullUrlChecked}
-            onCheckedChange={setFullUrlChecked}
-          >
+          <MenubarCheckboxItem checked={fullUrlChecked} onCheckedChange={setFullUrlChecked}>
             Always Show Full URLs
           </MenubarCheckboxItem>
           <MenubarSeparator />
@@ -107,7 +88,7 @@ return (
       </MenubarMenu>
     </Menubar>
   </div>
-)
+);
 ```
 
 ## Size

@@ -9,19 +9,12 @@ description: List
 List is used to display list items. It renders a <ul> element by default.
 
 ```jsx
-import { ListItem, OrderedList, UnorderedList, List } from '@rafty/ui'
+import { ListItem, OrderedList, UnorderedList, List } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<List>
-  <ListItem>Lorem ipsum dolor sit amet</ListItem>
-  <ListItem>Consectetur adipiscing elit</ListItem>
-  <ListItem>Integer molestie lorem at massa</ListItem>
-  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-</List>
-```
+{% examples name="list:usage" /%}
 
 ## Ordered List
 

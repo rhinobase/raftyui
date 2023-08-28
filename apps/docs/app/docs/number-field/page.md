@@ -9,7 +9,7 @@ description: Number Field
 NumberField component is a component that is used to get user input in a number field.
 
 ```jsx
-import { NumberField } from '@rafty/ui'
+import { NumberField } from "@rafty/ui";
 ```
 
 ## Usage

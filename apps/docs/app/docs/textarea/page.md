@@ -11,14 +11,12 @@ The Textarea component allows you to easily create multi-line text inputs.
 - Textarea
 
 ```jsx
-import { Textarea } from '@rafty/ui'
+import { Textarea } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Textarea placeholder="placeholder" />
-```
+{% example name="textarea:usage" /%}
 
 ## Variants
 

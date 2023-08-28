@@ -11,42 +11,23 @@ A tooltip is a brief, informative message that appears when a user interacts wit
 - Tooltip
 
 ```jsx
-import { Tooltip } from '@rafty/ui'
+import { Tooltip } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Tooltip content="Hover me">
-  <Button size="fab">
-    <PlusIcon className="h-6 w-6" />
-  </Button>
-</Tooltip>
-```
+{% example name="tooltip:usage" /%}
 
 ## Side
 
 Using the `side` prop you can adjust where your tooltip will be displayed. Values can be `top`, `right`, `bottom`, `left`.
-
-```jsx
-<Tooltip side="top" content="Hover me">
-  <Button size="fab">
-    <PlusIcon className="h-6 w-6" />
-  </Button>
-</Tooltip>
-```
+{% example name="tooltip:side" /%}
 
 ## Align
 
 Using the `align` prop you can adjust the alignment of tooltip. Values can be `center`, `start`, `end`.
 
-```jsx
-<Tooltip align="center" content="Hover me">
-  <Button size="fab">
-    <PlusIcon className="h-6 w-6" />
-  </Button>
-</Tooltip>
-```
+{% example name="tooltip:align" /%}
 
 ### API
 

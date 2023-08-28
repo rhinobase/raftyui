@@ -14,27 +14,12 @@ A set of layered sections of content—known as tab panels—that are displayed 
 - TabContent
 
 ```jsx
-import { Tab, TabTrigger, TabList, TabContent } from '@rafty/ui'
+import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Tab defaultValue="tab1">
-  <TabList>
-    <TabTrigger value="tab1">Tab1</TabTrigger>
-    <TabTrigger value="tab2">Tab2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
-  </TabContent>
-  <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
-  </TabContent>
-</Tab>
-```
+{% example name="tab:usage" /%}
 
 ## Size
 
@@ -47,12 +32,10 @@ Pass the `size` prop if you need to adjust the size of the tab. Values can be `s
     <TabTrigger value="tab2">Tab2</TabTrigger>
   </TabList>
   <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
   <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
 </Tab>
 ```
@@ -68,12 +51,10 @@ Pass the `orientation` prop if you need to adjust the orientation of the Tabs. V
     <TabTrigger value="tab2">Tab2</TabTrigger>
   </TabList>
   <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
   <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
 </Tab>
 ```
@@ -89,12 +70,10 @@ Pass `isBarebone` prop to remove all style in tab and its sub components.
     <TabTrigger value="tab2">Tab2</TabTrigger>
   </TabList>
   <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
   <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
 </Tab>
 ```
@@ -110,12 +89,10 @@ Pass ` isUnstyled` prop to remove style from a particular sub component.
     <TabTrigger value="tab2">Tab2</TabTrigger>
   </TabList>
   <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
   <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count,
-    which decreases latency and power
+    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
   </TabContent>
 </Tab>
 ```

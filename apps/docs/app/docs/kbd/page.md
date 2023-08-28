@@ -11,14 +11,12 @@ The keyboard key component exists to show which key or combination of keys perfo
 - kbd
 
 ```jsx
-import { Kbd } from '@rafty/ui'
+import { Kbd } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Kbd>shift + K</Kbd>
-```
+{% example name="kbd:usage" /%}
 
 ### API
 

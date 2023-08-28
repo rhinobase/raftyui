@@ -9,20 +9,12 @@ description: Input Group
 Input component is a component that is used to get user input in a text field.
 
 ```jsx
-import { InputGroup } from '@rafty/ui'
+import { InputGroup } from "@rafty/ui";
 ```
 
 ### Usage
 
-```jsx
-<InputGroup>
-  <LeftAddon>+234</LeftAddon>
-  <InputField />
-  <RightAddon>
-    <MagnifyingGlassIcon />
-  </RightAddon>
-</InputGroup>
-```
+{% example name="input-group:usage" /%}
 
 ### Left Addon
 

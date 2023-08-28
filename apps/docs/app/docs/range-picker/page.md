@@ -9,14 +9,12 @@ description: Rand Picker
 A date range picker combines two DateFields and a RangeCalendar popover to allow users to enter or select a date and time range.
 
 ```jsx
-import { RangePicker } from '@rafty/ui'
+import { RangePicker } from "@rafty/ui";
 ```
 
 ## Usgae
 
-```jsx
-<RangePicker />
-```
+{% example name="range-picker:usage" /%}
 
 ## Size
 

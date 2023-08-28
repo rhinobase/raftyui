@@ -52,7 +52,7 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
         toastClasses.severity[severity],
         toastClasses.visible[Number(visible)],
         "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg drop-shadow-lg p-4",
-        className
+        className,
       )}
     >
       <div className="flex items-center gap-3">

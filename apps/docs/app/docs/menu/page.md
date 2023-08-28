@@ -9,51 +9,12 @@ description: Menu
 An accessible dropdown menu for the common dropdown menu button design pattern. Menu uses roving tabIndex for focus management.
 
 ```jsx
-import {
-  Menu,
-  MenuCheckboxItem,
-  MenuContent,
-  MenuGroup,
-  MenuItem,
-  MenuLabel,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuSeparator,
-  MenuSub,
-  MenuSubContent,
-  MenuSubTrigger,
-  MenuTrigger,
-} from '@rafty/ui'
+import { Menu, MenuCheckboxItem, MenuContent, MenuGroup, MenuItem, MenuLabel, MenuRadioGroup, MenuRadioItem, MenuSeparator, MenuSub, MenuSubContent, MenuSubTrigger, MenuTrigger } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Menu>
-  <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
-  <MenuContent>
-    <MenuItem>New Tab</MenuItem>
-    <MenuItem>New Window</MenuItem>
-    <MenuItem disabled>New Private Window </MenuItem>
-    <MenuSeparator />
-    <MenuCheckboxItem
-      checked={bookmarksChecked}
-      onCheckedChange={setBookmarksChecked}
-    >
-      Show Bookmarks <div className="RightSlot">⌘+B</div>
-    </MenuCheckboxItem>
-    <MenuCheckboxItem checked={urlsChecked} onCheckedChange={setUrlsChecked}>
-      Show Full URLs
-    </MenuCheckboxItem>
-    <MenuSeparator />
-    <MenuLabel>People</MenuLabel>
-    <MenuRadioGroup value={person} onValueChange={setPerson}>
-      <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
-      <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
-    </MenuRadioGroup>
-  </MenuContent>
-</Menu>
-```
+{% example name="menu:usage" /%}
 
 ## SubMenu
 
@@ -62,9 +23,7 @@ import {
   <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
   <MenuContent>
     <MenuSub>
-      <MenuSubTrigger style={{ justifyContent: 'space-between' }}>
-        More Tools{' '}
-      </MenuSubTrigger>
+      <MenuSubTrigger style={{ justifyContent: "space-between" }}>More Tools </MenuSubTrigger>
       <MenuSubContent>
         <MenuItem className="justify-between">
           Save Page As… <div className="RightSlot">⌘+S</div>
@@ -91,10 +50,7 @@ import {
       <MenuItem disabled>New Private Window </MenuItem>
     </MenuGroup>
     <MenuSeparator />
-    <MenuCheckboxItem
-      checked={bookmarksChecked}
-      onCheckedChange={setBookmarksChecked}
-    >
+    <MenuCheckboxItem checked={bookmarksChecked} onCheckedChange={setBookmarksChecked}>
       Show Bookmarks <div className="RightSlot">⌘+B</div>
     </MenuCheckboxItem>
     <MenuCheckboxItem checked={urlsChecked} onCheckedChange={setUrlsChecked}>

@@ -9,14 +9,12 @@ description: Search Field
 A SearchField is a text field designed for searches.
 
 ```jsx
-import { SearchField } from '@rafty/ui'
+import { SearchField } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<SearchField />
-```
+{% example name="search-field:usage" /%}
 
 ## Size
 

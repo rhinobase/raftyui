@@ -9,45 +9,24 @@ description: Popover
 Displays rich content in a portal, triggered by a button.
 
 ```jsx
-import { Popover, PopoverTrigger, PopoverContent } from '@rafty/ui'
+import { Popover, PopoverTrigger, PopoverContent } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>
-    <div>Popover Content</div>
-  </PopoverContent>
-</Popover>
-```
+{% example name="popover:usage" /%}
 
 ## Default Open
 
 To Open Popover By Default pass `defaultOpen` prop.
 
-```jsx
-<Popover defaultOpen>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>
-    <div>Popover Content</div>
-  </PopoverContent>
-</Popover>
-```
+{% example name="popover:default" /%}
 
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in popover.
 
-```jsx
-<Popover isBarebone>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>
-    <div>Popover Content</div>
-  </PopoverContent>
-</Popover>
-```
+{% example name="popover:barebone" /%}
 
 ### API
 

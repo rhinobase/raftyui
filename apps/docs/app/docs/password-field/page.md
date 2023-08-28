@@ -9,14 +9,12 @@ description: Password Field
 PasswordField component is a component that is used to get user input in a password field.
 
 ```jsx
-import { PasswordField } from '@rafty/ui'
+import { PasswordField } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<PasswordField />
-```
+{% example name="password-field:usage" /%}
 
 ### API
 

@@ -9,14 +9,12 @@ description: Tag Field
 - TagField: TagField is used to create tag on the basis of inputs
 
 ```jsx
-import { TagField } from '@rafty/ui'
+import { TagField } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<TagField />
-```
+{% example name="tag-field:usage" /%}
 
 ## Disabled
 

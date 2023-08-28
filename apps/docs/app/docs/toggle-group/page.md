@@ -12,68 +12,32 @@ A set of two-state buttons that can be toggled on or off.
 - ToggleGroupItem
 
 ```jsx
-import { ToggleGroup, ToggleGroupItem } from '@rafty/ui'
+import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<ToggleGroup type="single">
-  <ToggleGroupItem value="1">1</ToggleGroupItem>
-  <ToggleGroupItem value="2">2</ToggleGroupItem>
-  <ToggleGroupItem value="3">3</ToggleGroupItem>
-</ToggleGroup>
-```
+{% example name="toggle-group:usage" /%}
 
 ## Type
 
 Using the `type` prop you can set the type of toggle-group. Values can be `single`, `multiple`;
-
-```jsx
-<ToggleGroup type="single" defaultValue="1">
-  <ToggleGroupItem value="1">1</ToggleGroupItem>
-  <ToggleGroupItem value="2">2</ToggleGroupItem>
-  <ToggleGroupItem value="3">3</ToggleGroupItem>
-</ToggleGroup>
-```
+{% example name="toggle-group:type" /%}
 
 ## Default Value
 
+{% example name="toggle-group:default" /%}
 Using the `defaultValue` prop you can set the default value of toggle-group.
-
-```jsx
-<ToggleGroup type="single" defaultValue="3">
-  <ToggleGroupItem value="1">1</ToggleGroupItem>
-  <ToggleGroupItem value="2">2</ToggleGroupItem>
-  <ToggleGroupItem value="3">3</ToggleGroupItem>
-</ToggleGroup>
-```
 
 ## Barebone
 
+{% example name="toggle-group:barebone" /%}
 Pass `isBarebone` prop to remove all style in toggle-group and its sub components.
-
-```jsx
-<ToggleGroup type="single" defaultValue="1" isBarebone>
-  <ToggleGroupItem value="1">1</ToggleGroupItem>
-  <ToggleGroupItem value="2">2</ToggleGroupItem>
-  <ToggleGroupItem value="3">3</ToggleGroupItem>
-</ToggleGroup>
-```
 
 ## UnStyled
 
+{% example name="toggle-group:unstyled" /%}
 Pass `isUnstyled` prop to remove style from a particular sub component.
-
-```jsx
-<ToggleGroup type="single" defaultValue="1">
-  <ToggleGroupItem isUnstyled value="1">
-    1
-  </ToggleGroupItem>
-  <ToggleGroupItem value="2">2</ToggleGroupItem>
-  <ToggleGroupItem value="3">3</ToggleGroupItem>
-</ToggleGroup>
-```
 
 ### API
 

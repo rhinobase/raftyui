@@ -11,14 +11,12 @@ Tag component is used for items that need to be labeled, categorized, or organis
 - Tag: The wrapper for all the tag elements.
 
 ```jsx
-import { Tag } from '@rafty/ui'
+import { Tag } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Tag>Tag text</Tag>
-```
+{% example name="tag:usage" /%}
 
 ## Sizes
 

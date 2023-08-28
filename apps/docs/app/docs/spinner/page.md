@@ -11,14 +11,12 @@ Spinners provide a visual cue that an action is processing awaiting a course of 
 - Spinner
 
 ```jsx
-import { Spinner } from '@rafty/ui'
+import { Spinner } from "@rafty/ui";
 ```
 
 ## Usage
 
-```jsx
-<Spinner />
-```
+{% example name="spinner:usage" /%}
 
 ## Size
 
