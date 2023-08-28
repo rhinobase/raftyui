@@ -21,23 +21,13 @@ import { Tag } from "@rafty/ui";
 ## Sizes
 
 Pass the `size` prop if you need to adjust the size of the tag. Values can be `sm, md, lg`.
-
-```jsx
-<Tag size="sm">Tag text</Tag>
-<Tag size="md">Tag text</Tag>
-<Tag size="lg">Tag text</Tag>
-```
+{% example name="tag:sizes" /%}
 
 ## ColorScheme
 
 Pass the `colorScheme` prop if you need to adjust the color of the tag. Values can be `primary,success,warning,error`.
 
-```jsx
-<Tag colorScheme="primary">Tag text</Tag>
-<Tag colorScheme="success">Tag text</Tag>
-<Tag colorScheme="warning">Tag text</Tag>
-<Tag colorScheme="error">Tag text</Tag>
-```
+{% example name="tag:colorschema" /%}
 
 ### API
 

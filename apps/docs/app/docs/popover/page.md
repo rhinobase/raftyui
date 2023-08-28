@@ -25,7 +25,6 @@ To Open Popover By Default pass `defaultOpen` prop.
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in popover.
-
 {% example name="popover:barebone" /%}
 
 ### API

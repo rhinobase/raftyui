@@ -22,41 +22,23 @@ import { Switch } from "@rafty/ui";
 
 Pass the `size` prop if you need to adjust the size of the switch. Values can be `sm`, `md`, `lg`.
 
-```jsx
-<Switch size="sm" />
-<Switch size="md" />
-<Switch size="lg" />
-```
+{% example name="switch:size" /%}
 
 ## Disabled
 
 Pass the `isDisabled` prop if you need to disable the switch.
 
-```jsx
-<Switch isDisabled />
-```
+{% example name="switch:disabled" /%}
 
 ## Default Selected
 
 Pass the `defaultSelected` prop if you need to set the switch selected by default and `isSelected` prop is used to manage checked state.
 
-```jsx
-<Switch defaultSelected />
-```
-
-## Read Only
-
-Pass `isReadOnly` prop to restrict user from interecting with switch component.
-
-```jsx
-<Switch isReadOnly />
-```
+{% example name="switch:selected" /%}
 
 ## Required
 
-```jsx
-<Switch size="lg" isRequired />
-```
+{% example name="switch:required" /%}
 
 ### API
 

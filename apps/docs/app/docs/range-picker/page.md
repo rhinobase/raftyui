@@ -16,26 +16,6 @@ import { RangePicker } from "@rafty/ui";
 
 {% example name="range-picker:usage" /%}
 
-## Size
-
-Pass the `size` prop if you need to adjust the size of the range-picker. Values can be `sm`, `md`, `lg`.
-
-```jsx
-<RangePicker size="sm" />
-<RangePicker size="md" />
-<RangePicker size="lg" />
-```
-
-## Variant
-
-Pass the `variant` prop if you need to adjust the visual style of the range-picker. Values can be `solid`, `outline`, `ghost`.
-
-```jsx
-<RangePicker variant="solid" />
-<RangePicker variant="outline" />
-<RangePicker variant="ghost" />
-```
-
 ### API
 
 ---

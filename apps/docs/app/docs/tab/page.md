@@ -25,77 +25,24 @@ import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
 
 Pass the `size` prop if you need to adjust the size of the tab. Values can be `sm`, `md`, `lg`.
 
-```jsx
-<Tab defaultValue="tab1" size="sm">
-  <TabList>
-    <TabTrigger value="tab1">Tab1</TabTrigger>
-    <TabTrigger value="tab2">Tab2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-  <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-</Tab>
-```
+{% example name="tab:size" /%}
 
 ## Orientation
 
 Pass the `orientation` prop if you need to adjust the orientation of the Tabs. Values can be `horizontal`, `vertical`.
-
-```jsx
-<Tab defaultValue="tab1" orientation="horizontal">
-  <TabList>
-    <TabTrigger value="tab1">Tab1</TabTrigger>
-    <TabTrigger value="tab2">Tab2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-  <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-</Tab>
-```
+{% example name="tab:Orientation" /%}
 
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in tab and its sub components.
 
-```jsx
-<Tab defaultValue="tab1" isBarebone>
-  <TabList>
-    <TabTrigger value="tab1">Tab1</TabTrigger>
-    <TabTrigger value="tab2">Tab2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-  <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-</Tab>
-```
+{% example name="tab:barebone" /%}
 
 ## UnStyled
 
 Pass ` isUnstyled` prop to remove style from a particular sub component.
 
-```jsx
-<Tab defaultValue="tab1">
-  <TabList isUnstyled>
-    <TabTrigger value="tab1">Tab1</TabTrigger>
-    <TabTrigger value="tab2">Tab2</TabTrigger>
-  </TabList>
-  <TabContent value="tab1" className="p-4">
-    1 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-  <TabContent value="tab2" className="p-4">
-    2 large-scale networks, high-radix switches reduce hop and switch count, which decreases latency and power
-  </TabContent>
-</Tab>
-```
+{% example name="tab:unstyled" /%}
 
 ### API
 

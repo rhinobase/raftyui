@@ -20,7 +20,7 @@ export const radio_examples = {
     </RadioGroup>
   ),
   "radio:disabled": (
-    <RadioGroup defaultValue="2">
+    <RadioGroup defaultValue="1" disabled>
       <div className="flex flex-col gap-4">
         <RadioGroupItem value="1">Radio 1</RadioGroupItem>
         <RadioGroupItem value="2">Radio 2</RadioGroupItem>

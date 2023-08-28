@@ -16,30 +16,6 @@ import { Select, SelectItem } from "@rafty/ui";
 
 {% example name="select:usage" /%}
 
-## Size
-
-Pass the `size` prop if you need to adjust the size of the select. Values can be `sm`, `md`, `lg`.
-
-```jsx
-<Select size="sm" onSelectionChange={(key) => console.log(key)}>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
-</Select>
-```
-
-## Variant
-
-Pass the `variant` prop if you need to adjust the visual style of the select. Values can be `solid`, `outline`, `ghost`.
-
-```jsx
-<Select variant="solid" onSelectionChange={(key) => console.log(key)}>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
-</Select>
-```
-
 ### API
 
 ---

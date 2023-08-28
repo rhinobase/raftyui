@@ -38,6 +38,7 @@ import { drawer_examples } from "./drawer";
 import { input_field_examples } from "./input-field";
 import { menubar_examples } from "./menubar";
 import { navigation_menu_examples } from "./navigation-menu";
+import { tooltip_examples } from "./tooltip";
 
 // Map
 const examples: Record<string, JSX.Element> = {
@@ -59,7 +60,6 @@ const examples: Record<string, JSX.Element> = {
   ...textarea_examples,
   ...toast_examples,
   ...toggle_group_examples,
-  ...toast_examples,
   ...input_group_examples,
   ...list_examples,
   ...kbd_examples,
@@ -76,6 +76,7 @@ const examples: Record<string, JSX.Element> = {
   ...input_field_examples,
   ...menubar_examples,
   ...navigation_menu_examples,
+  ...tooltip_examples,
 };
 
 export function Examples({ name }: { name: string }) {

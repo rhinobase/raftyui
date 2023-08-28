@@ -20,17 +20,13 @@ import { TagField } from "@rafty/ui";
 
 Pass `isDisabled` prop to disable tag-field.
 
-```jsx
-<TagField isDisabled />
-```
+{% example name="tag-field:disabled" /%}
 
 ## Required
 
 Pass the `isRequired` prop to make search-field Required.
 
-```jsx
-<TagField isRequired />
-```
+{% example name="tag-field:required" /%}
 
 ### API
 
