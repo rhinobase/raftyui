@@ -57,9 +57,13 @@ export function Hero() {
                     Get started
                   </Button>
                 </a>
-                <a href="https://discord.gg/HJfYwrBMKb" target="_blank">
-                  <Button className="!rounded-full">View on GitHub</Button>
-                </a>
+                <div className="rounded-full bg-white">
+                  <a href="https://discord.gg/HJfYwrBMKb" target="_blank">
+                    <Button variant="ghost" className="!rounded-full">
+                      View on GitHub
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
