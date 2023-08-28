@@ -57,7 +57,7 @@ export function Hero() {
                     Get started
                   </Button>
                 </a>
-                <div className="rounded-full bg-white">
+                <div className="rounded-full bg-white dark:bg-secondary-600 text-white">
                   <a href="https://discord.gg/HJfYwrBMKb" target="_blank">
                     <Button variant="ghost" className="!rounded-full">
                       View on GitHub
