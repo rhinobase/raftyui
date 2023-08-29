@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.1](https://github.com/rhinobase/design-system/compare/ui-1.0.0...ui-1.0.1) (2023-08-29)
+
+
+### Bug Fixes
+
+* added field context props to checkbox and switch components ([b35a5b3](https://github.com/rhinobase/design-system/commit/b35a5b35a90341802164e9f28d7344935b1315da))
+
 ## [1.0.0](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.34...ui-1.0.0) (2023-08-29)
 
 
