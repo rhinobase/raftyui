@@ -1,4 +1,4 @@
-import { ToggleGroup, ToggleGroupItem } from "@radix-ui/react-toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
 export const toggle_group_examples = {
   "toggle-group:usage": (

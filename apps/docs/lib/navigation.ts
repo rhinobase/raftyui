@@ -12,7 +12,7 @@ export const navigation = [
       { title: "Accordion", href: "/docs/components/accordion" },
       {
         title: "Alert",
-        href: "/docs/alert",
+        href: "/docs/components/alert",
       },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
@@ -163,6 +163,12 @@ export const navigation = [
       { title: "React Hook Form", href: "/docs/integrations/react-hook-form" },
       { title: "Formik", href: "/docs/integrations/formik" },
       { title: "Tanstack Query", href: "/docs/integrations/tanstack-query" },
+
+      {
+        title: "Tanstack Infinite Query",
+        href: "/docs/integrations/tanstack-infinite-query",
+      },
+      { title: "Tanstack Table", href: "/docs/integrations/tanstack-table" },
     ],
   },
 ];

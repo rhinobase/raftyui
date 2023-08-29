@@ -23,17 +23,19 @@ export default function HookForm() {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<z.infer<typeof schema>>({
+  } = useForm <
+  z.infer <
+  typeof schema >>
+    {
       resolver: zodResolver(schema),
-    })
-
+    };
 
   return (
     <form onSubmit={handleSubmit((value) => console.log(value))}>
       <FieldControl name="name">
         <Label>Enter Name</Label>
         <InputField placeholder="Enter a Name" {...register("name")} />
-        <ErrorMessage>{errors.name.message}</ErrorMessage>
+        <ErrorMessage>{errors.name?.message}</ErrorMessage>
       </FieldControl>
       <Button type="submit" colorScheme="primary" isLoading={isSubmitting}>
         Submit

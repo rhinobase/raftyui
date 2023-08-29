@@ -8,7 +8,7 @@ export const progress_examples = {
       <Progress value={80} />
     </div>
   ),
-  "porgress:colorschema": (
+  "progress:colorscheme": (
     <div>
       <Progress value={80} colorScheme="primary" />
       <Progress value={80} colorScheme="error" />
