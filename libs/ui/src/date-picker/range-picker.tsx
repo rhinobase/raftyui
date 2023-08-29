@@ -1,7 +1,7 @@
 import React from "react";
 import format from "dateformat";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { CalendarIcon } from "@heroicons/react/24/outline";
@@ -21,7 +21,7 @@ export function RangePicker({ className, ...props }: RangePicker) {
             variant={"outline"}
             className={classNames(
               "w-full !justify-start text-left font-normal",
-              !date && "text-muted-foreground"
+              !date && "text-muted-foreground",
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />

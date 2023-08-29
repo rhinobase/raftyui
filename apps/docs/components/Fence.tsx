@@ -1,7 +1,7 @@
 "use client";
 import { Fragment } from "react";
 import { Highlight, themes } from "prism-react-renderer";
-import { classNames } from "@rafty/utils";
+import { classNames } from "@rafty/ui";
 
 export function Fence({
   children,

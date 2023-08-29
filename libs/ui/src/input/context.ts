@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/utils";
+import { createContext } from "../utils";
 
 export const [InputGroupProvider, useInputGroupContext] =
   createContext<InputGroupContext>({

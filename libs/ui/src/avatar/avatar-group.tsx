@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames, getValidChildren } from "@rafty/utils";
+import { classNames, getValidChildren } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
 import { Avatar } from "./avatar";
 
@@ -36,7 +36,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
           {...props}
           className={classNames(
             "group relative flex items-center w-[200px]",
-            className
+            className,
           )}
           data-group={true}
           ref={forwardedRef}
@@ -45,6 +45,6 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
         </div>
       </AvatarGroupProvider>
     );
-  }
+  },
 );
 AvatarGroup.displayName = "AvatarGroup";

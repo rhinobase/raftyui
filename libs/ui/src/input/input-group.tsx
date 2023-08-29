@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames, getValidChildren } from "@rafty/utils";
+import { classNames, getValidChildren } from "../utils";
 import { InputGroupContext, InputGroupProvider } from "./context";
 
 // InputGroup Component
@@ -17,7 +17,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       isSuffix = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const validChildren = getValidChildren(children);
 
@@ -54,7 +54,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
         </div>
       </InputGroupProvider>
     );
-  }
+  },
 );
 InputGroup.displayName = "InputGroup";
 
@@ -70,13 +70,13 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(
         ref={forwardedRef}
         className={classNames(
           "absolute left-0 top-0 flex h-full w-10 items-center justify-center",
-          className
+          className,
         )}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 Prefix.displayName = "Prefix";
 
@@ -92,13 +92,13 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
         ref={forwardedRef}
         className={classNames(
           "absolute right-0 top-0 flex h-full w-10 items-center justify-center",
-          className
+          className,
         )}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 Suffix.displayName = "Suffix";
 
@@ -114,13 +114,13 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
         ref={forwardedRef}
         className={classNames(
           "bg-secondary-200 dark:bg-secondary-700 dark:text-secondary-200 flex items-center rounded-l-md px-3",
-          className
+          className,
         )}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 LeftAddon.displayName = "LeftAddon";
 
@@ -135,12 +135,12 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
         ref={forwardedRef}
         className={classNames(
           "bg-secondary-200 dark:bg-secondary-700 dark:text-secondary-200 flex items-center rounded-r-md px-3",
-          className
+          className,
         )}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 RightAddon.displayName = "RightAddon";

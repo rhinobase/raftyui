@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 const switchClasses = {
   size: {

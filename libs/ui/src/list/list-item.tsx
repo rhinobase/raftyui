@@ -1,4 +1,4 @@
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import React from "react";
 
 // ListItem Component
@@ -19,7 +19,7 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItem>(
         {children}
       </li>
     );
-  }
+  },
 );
 
 ListItem.displayName = "ListItem";

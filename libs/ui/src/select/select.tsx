@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { useFieldControlContext } from "../field/context";
 
 const selectClasses = cva(
@@ -49,7 +49,7 @@ const selectClasses = cva(
         className: "bg-transparent dark:bg-secondary-900",
       },
     ],
-  }
+  },
 );
 
 export type Select = Omit<
@@ -78,7 +78,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       isReadOnly = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const context = useFieldControlContext() ?? {
       isDisabled: false,
@@ -109,7 +109,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
                     disabled,
                     readonly,
                   }),
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -122,13 +122,13 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
               size == "sm" && "right-2",
               size == "md" && "right-3",
               size == "lg" && "right-4",
-              "dark:text-secondary-200 h-3.5 w-3.5 absolute"
+              "dark:text-secondary-200 h-3.5 w-3.5 absolute",
             )}
           />
         )}
       </div>
     );
-  }
+  },
 );
 
 Select.displayName = "Select";
@@ -142,7 +142,7 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
         {children}
       </option>
     );
-  }
+  },
 );
 
 SelectItem.displayName = "SelectItem";

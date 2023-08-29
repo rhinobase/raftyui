@@ -2,7 +2,7 @@
 import React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { cva, type VariantProps } from "class-variance-authority";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 export const toggleVariants = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none text-secondary-600 dark:text-secondary-200",

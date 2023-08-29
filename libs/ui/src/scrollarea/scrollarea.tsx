@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // ScrollArea component
 export type ScrollArea = React.ComponentPropsWithoutRef<

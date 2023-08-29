@@ -1,6 +1,6 @@
 import { HTMLAttributes, forwardRef } from "react";
 import { TableContext, TableProvider, useTableContext } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // TableContainer Component
 export type TableContainer = HTMLAttributes<HTMLDivElement>;
@@ -11,13 +11,13 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
       {...props}
       className={classNames(
         "dark:ring-secondary-700 mx-auto inline-block w-full overflow-hidden rounded-lg align-middle shadow ring-1 ring-black ring-opacity-5",
-        className
+        className,
       )}
       ref={forwardedRef}
     >
       {children}
     </div>
-  )
+  ),
 );
 TableContainer.displayName = "TableContainer";
 
@@ -46,7 +46,7 @@ export const Table = forwardRef<HTMLTableElement, Table>(
       isBarebone = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -60,7 +60,7 @@ export const Table = forwardRef<HTMLTableElement, Table>(
               : classNames(
                   tableClasses.size[size],
                   "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -69,7 +69,7 @@ export const Table = forwardRef<HTMLTableElement, Table>(
         </table>
       </TableProvider>
     );
-  }
+  },
 );
 Table.displayName = "Table";
 
@@ -103,7 +103,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
         {children}
       </thead>
     );
-  }
+  },
 );
 TableHead.displayName = "TableHead";
 
@@ -130,7 +130,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
         {children}
       </tbody>
     );
-  }
+  },
 );
 TableBody.displayName = "TableBody";
 
@@ -164,7 +164,7 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
         {children}
       </tfoot>
     );
-  }
+  },
 );
 TableFooter.displayName = "TableFooter";
 
@@ -195,7 +195,7 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
             : classNames(
                 tdClasses.size[size],
                 "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -203,7 +203,7 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
         {children}
       </td>
     );
-  }
+  },
 );
 Td.displayName = "Td";
 
@@ -234,7 +234,7 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
             : classNames(
                 thClasses.size[size],
                 "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -242,7 +242,7 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
         {children}
       </th>
     );
-  }
+  },
 );
 Th.displayName = "Th";
 
@@ -277,6 +277,6 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
         {children}
       </tr>
     );
-  }
+  },
 );
 Tr.displayName = "Tr";

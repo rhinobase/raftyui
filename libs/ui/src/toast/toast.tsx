@@ -4,7 +4,7 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // Toast Component
 const toastClasses = {

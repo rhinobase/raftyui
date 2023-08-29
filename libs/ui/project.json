@@ -7,20 +7,14 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/ui/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/ui",
         "tsConfig": "libs/ui/tsconfig.lib.json",
@@ -57,15 +51,11 @@
           "@radix-ui/react-toggle-group",
           "@radix-ui/react-tooltip",
           "dateformat",
-          "@rafty/utils",
           "core-js"
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "generateExportsField": true,
-        "format": [
-          "cjs",
-          "esm"
-        ],
+        "format": ["cjs", "esm"],
         "compiler": "babel",
         "assets": [
           {

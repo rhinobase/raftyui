@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {
   CheckCircleIcon,
@@ -164,7 +164,7 @@ export const Alert = React.forwardRef<HTMLDivElement, Alert>(
       children,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
     return (
@@ -182,7 +182,7 @@ export const Alert = React.forwardRef<HTMLDivElement, Alert>(
         </div>
       </AlertProvider>
     );
-  }
+  },
 );
 Alert.displayName = "Alert";
 
@@ -329,7 +329,7 @@ export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
             ? className
             : classNames(
                 alertTitleClasses({ size, status, variant }),
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -337,7 +337,7 @@ export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
         {children}
       </h5>
     );
-  }
+  },
 );
 AlertTitle.displayName = "AlertTitle";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import format from "dateformat";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Calendar } from "./calendar";

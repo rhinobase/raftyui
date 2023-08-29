@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // OrderedList Component
 export type OrderedList = JSX.IntrinsicElements["ol"] & {
@@ -21,7 +21,7 @@ export const OrderedList = React.forwardRef<HTMLOListElement, OrderedList>(
         {children}
       </ol>
     );
-  }
+  },
 );
 
 OrderedList.displayName = "OrderedList";

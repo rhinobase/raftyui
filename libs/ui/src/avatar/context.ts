@@ -1,8 +1,8 @@
-import { createContext } from "@rafty/utils";
+import { createContext } from "../utils";
 
 export const [AvatarGroupProvider, useAvatarGroupContext] =
   createContext<AvatarGroupContext>({
-    strict:false,
+    strict: false,
     name: "AvatarGroupContext",
     hookName: "useAvatarGroupContext",
     providerName: "<AvatarGroup />",

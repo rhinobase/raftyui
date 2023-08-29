@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // Tag Component
 const tagClasses = {
@@ -32,7 +32,7 @@ export type Tag = JSX.IntrinsicElements["div"] & {
 export const Tag = React.forwardRef<HTMLDivElement, Tag>(
   (
     { children, size = "md", colorScheme = "secondary", className, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <div
@@ -41,14 +41,14 @@ export const Tag = React.forwardRef<HTMLDivElement, Tag>(
           tagClasses.size[size],
           tagClasses.colorScheme[colorScheme],
           "h-max w-max font-medium",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 
 Tag.displayName = "Tag";

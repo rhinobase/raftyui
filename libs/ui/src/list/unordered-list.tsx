@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // UnorderedList Component
 export type UnorderedList = JSX.IntrinsicElements["ul"] & {
@@ -21,7 +21,7 @@ export const UnorderedList = React.forwardRef<HTMLUListElement, UnorderedList>(
         {children}
       </ul>
     );
-  }
+  },
 );
 
 UnorderedList.displayName = "UnorderedList";

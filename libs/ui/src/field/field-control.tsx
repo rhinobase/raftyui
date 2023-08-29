@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { FieldControlContext, FieldControlProvider } from "./context";
 
 // Field Control Component
@@ -22,7 +22,7 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
       className,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => (
     <FieldControlProvider
       value={{
@@ -43,14 +43,14 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
           orientation === "row-reverse" &&
             "flex-row-reverse items-center gap-2",
           "flex w-full",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     </FieldControlProvider>
-  )
+  ),
 );
 
 FieldControl.displayName = "FieldControl";

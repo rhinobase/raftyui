@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { cva } from "class-variance-authority";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { Spinner } from "../spinner";
 
 export const buttonClasses = cva(
@@ -428,7 +428,7 @@ export const buttonClasses = cva(
       variant: "solid",
       size: "md",
     },
-  }
+  },
 );
 
 export type Button = JSX.IntrinsicElements["button"] & {
@@ -447,72 +447,74 @@ export type Button = JSX.IntrinsicElements["button"] & {
   isDisabled?: boolean;
 };
 
-export const Button = forwardRef<HTMLButtonElement, Button>((
-  {
-    isLoading = false,
-    isActive = false,
-    isDisabled = false,
-    colorScheme = "secondary",
-    variant = "solid",
-    size = "md",
-    loadingText,
-    isUnstyled = false,
-    className,
-    children,
-    leftIcon,
-    rightIcon,
-    type = "button",
-    ...props
-  },
-  forwardedRef
-) => {
-  // Buttons are **always** disabled if we're in a `loading` state
-  const disabled = props.disabled || isDisabled || isLoading;
+export const Button = forwardRef<HTMLButtonElement, Button>(
+  (
+    {
+      isLoading = false,
+      isActive = false,
+      isDisabled = false,
+      colorScheme = "secondary",
+      variant = "solid",
+      size = "md",
+      loadingText,
+      isUnstyled = false,
+      className,
+      children,
+      leftIcon,
+      rightIcon,
+      type = "button",
+      ...props
+    },
+    forwardedRef,
+  ) => {
+    // Buttons are **always** disabled if we're in a `loading` state
+    const disabled = props.disabled || isDisabled || isLoading;
 
-  return (
-    <button
-      {...props}
-      type={type}
-      disabled={disabled}
-      className={
-        isUnstyled
-          ? className
-          : classNames(
-              buttonClasses({
-                colorScheme,
-                variant,
-                size,
-                disabled,
-                loading: isLoading,
-                active: isActive,
-              }),
-              className
-            )
-      }
-      ref={forwardedRef}
-    >
-      {isLoading ? (
-        <>
-          <Spinner inheritParent className="mr-2" size="sm" />
-          {loadingText ?? children}
-        </>
-      ) : (
-        <>
-          {leftIcon && (
-            <div className="mr-1 flex h-[20px] items-center justify-center">
-              {leftIcon}
-            </div>
-          )}
-          {children}
-          {rightIcon && (
-            <div className="ml-1 flex h-[20px] items-center justify-center">
-              {rightIcon}
-            </div>
-          )}
-        </>
-      )}
-    </button>
-  );
-});
+    return (
+      <button
+        {...props}
+        type={type}
+        disabled={disabled}
+        className={
+          isUnstyled
+            ? className
+            : classNames(
+                buttonClasses({
+                  colorScheme,
+                  variant,
+                  size,
+                  disabled,
+                  loading: isLoading,
+                  active: isActive,
+                }),
+                className,
+              )
+        }
+        ref={forwardedRef}
+      >
+        {isLoading ? (
+          <>
+            <Spinner inheritParent className="mr-2" size="sm" />
+            {loadingText ?? children}
+          </>
+        ) : (
+          <>
+            {leftIcon && (
+              <div className="mr-1 flex h-[20px] items-center justify-center">
+                {leftIcon}
+              </div>
+            )}
+            {children}
+            {rightIcon && (
+              <div className="ml-1 flex h-[20px] items-center justify-center">
+                {rightIcon}
+              </div>
+            )}
+          </>
+        )}
+      </button>
+    );
+  },
+);
 
 Button.displayName = "Button";

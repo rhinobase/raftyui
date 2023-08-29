@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/utils";
+import { createContext } from "../utils";
 
 export const [DialogProvider, useDialogContext] = createContext<DialogContext>({
   name: "DialogContext",

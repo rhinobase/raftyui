@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/utils";
+import { createContext } from "../utils";
 
 export const [StatProvider, useStatContext] = createContext<StatContext>({
   name: "StatContext",

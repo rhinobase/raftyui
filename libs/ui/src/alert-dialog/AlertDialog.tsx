@@ -7,7 +7,7 @@ import {
   AlertDialogContext,
   useAlertDialogContext,
 } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // AlertDialog Component
 export type AlertDialog = React.ComponentPropsWithoutRef<

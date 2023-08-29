@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { useFieldControlContext } from "../field/context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 import { useInputGroupContext } from "./context";
 
@@ -140,7 +140,7 @@ const inputFieldClasses = cva(
         className: "px-4",
       },
     ],
-  }
+  },
 );
 
 // Input Field
@@ -169,7 +169,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       isRequired = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const context = useFieldControlContext() ?? {};
 
@@ -211,12 +211,12 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
                   isPrefix: inputGroupProps.isPrefix,
                   isSuffix: inputGroupProps.isSuffix,
                 }),
-                className
+                className,
               )
         }
         ref={forwardedRef}
       />
     );
-  }
+  },
 );
 InputField.displayName = "InputField";

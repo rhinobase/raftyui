@@ -6,7 +6,7 @@ import {
   ToggleGroupProvider,
   useToggleGroupContext,
 } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // ToggleGroup Component
 export type ToggleGroup = React.ComponentProps<

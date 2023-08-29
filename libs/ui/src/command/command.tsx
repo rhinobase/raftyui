@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Command as CommandPrimitive } from "cmdk";
 import { Dialog, DialogContent } from "../dialog";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 // Command Component
@@ -15,7 +15,7 @@ export const Command = React.forwardRef<
     {...props}
     className={classNames(
       "flex h-full w-full flex-col overflow-hidden rounded-md bg-white dark:bg-secondary-800 dark:text-secondary-100",
-      className
+      className,
     )}
     ref={forwardedRef}
   />
@@ -52,7 +52,7 @@ export const CommandInput = React.forwardRef<
       {...props}
       className={classNames(
         "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-secondary-500 dark:placeholder:text-secondary-400 disabled:cursor-not-allowed disabled:opacity-50 dark:text-secondary-100",
-        className
+        className,
       )}
       ref={forwardedRef}
     />
@@ -73,7 +73,7 @@ export const CommandList = React.forwardRef<
     {...props}
     className={classNames(
       "max-h-[300px] overflow-y-auto overflow-x-hidden",
-      className
+      className,
     )}
     ref={forwardedRef}
   />
@@ -113,7 +113,7 @@ export const CommandGroup = React.forwardRef<
     {...props}
     className={classNames(
       "overflow-hidden p-1 text-secondary-800 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-secondary-500 [&_[cmdk-group-heading]]:dark:text-secondary-400 dark:text-secondary-100",
-      className
+      className,
     )}
     ref={forwardedRef}
   />
@@ -133,7 +133,7 @@ export const CommandSeparator = React.forwardRef<
     {...props}
     className={classNames(
       "mx-2 h-px bg-secondary-200 dark:bg-secondary-700",
-      className
+      className,
     )}
     ref={forwardedRef}
   />
@@ -153,7 +153,7 @@ export const CommandItem = React.forwardRef<
     {...props}
     className={classNames(
       "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-secondary-100 dark:aria-selected:bg-secondary-700 aria-selected:text-secondary-900 dark:aria-selected:text-secondary-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:text-secondary-100",
-      className
+      className,
     )}
     ref={forwardedRef}
   />
@@ -171,7 +171,7 @@ export const CommandShortcut = React.forwardRef<
     {...props}
     className={classNames(
       "ml-auto text-xs tracking-widest text-muted-foreground",
-      className
+      className,
     )}
     ref={forwardedRef}
   />

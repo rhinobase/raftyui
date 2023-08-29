@@ -3,7 +3,7 @@ import React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Button } from "../button";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // Dialog Component

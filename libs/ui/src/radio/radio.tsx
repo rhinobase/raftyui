@@ -6,7 +6,7 @@ import {
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { Label } from "../field";
 
 // RadioGroup Component

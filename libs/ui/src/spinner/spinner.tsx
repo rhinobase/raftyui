@@ -1,4 +1,4 @@
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import React from "react";
 
 const dimensions = {
@@ -16,7 +16,7 @@ export type Spinner = JSX.IntrinsicElements["svg"] & {
 export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
   (
     { inheritParent = false, size = "md", className, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     return (
       <svg
@@ -24,7 +24,7 @@ export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
         className={classNames(
           !inheritParent && "text-secondary-700 dark:text-secondary-400",
           "animate-spin",
-          className
+          className,
         )}
         width={dimensions[size]}
         height={dimensions[size]}
@@ -40,5 +40,5 @@ export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
         />
       </svg>
     );
-  }
+  },
 );

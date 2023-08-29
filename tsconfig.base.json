@@ -23,10 +23,7 @@
       ],
       "@rafty/ui": [
         "libs/ui/src/index.ts"
-      ],
-      "@rafty/utils": [
-        "libs/utils/src/index.ts"
-      ],
+      ]
     }
   },
   "exclude": [

@@ -51,6 +51,7 @@ module.exports = (config) => {
       "libs/ui/src/toggle",
       "libs/ui/src/toggle-group",
       "libs/ui/src/tooltip",
+      "libs/ui/src/utils",
     ],
   };
 };

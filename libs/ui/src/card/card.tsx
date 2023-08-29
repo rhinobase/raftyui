@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { CardContext, CardProvider, useCardContext } from "./context";
 
 // Card Component
@@ -28,7 +28,7 @@ export const Card = forwardRef<HTMLDivElement, Card>(
       isBarebone = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -43,14 +43,14 @@ export const Card = forwardRef<HTMLDivElement, Card>(
                   cardClasses.size[size],
                   cardClasses.variant[variant],
                   "flex flex-col dark:text-white",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
         />
       </CardProvider>
     );
-  }
+  },
 );
 Card.displayName = "Card";
 
@@ -85,7 +85,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardHeader.displayName = "CardHeader";
 
@@ -120,7 +120,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContent>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardContent.displayName = "CardContent";
 
@@ -155,6 +155,6 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardFooter.displayName = "CardFooter";

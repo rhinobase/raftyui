@@ -1,6 +1,6 @@
 import React from "react";
 import { useFieldControlContext } from "../field/context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 const textareaClasses = cva(
@@ -33,7 +33,7 @@ const textareaClasses = cva(
         className: "bg-transparent",
       },
     ],
-  }
+  },
 );
 
 // TextArea Component (With ErrorMessage)
@@ -61,7 +61,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
       isRequired = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const context = useFieldControlContext() ?? {};
 
@@ -92,13 +92,13 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
                   variant,
                   invalid,
                 }),
-                className
+                className,
               )
         }
         ref={forwardedRef}
       />
     );
-  }
+  },
 );
 
 Textarea.displayName = "Textarea";

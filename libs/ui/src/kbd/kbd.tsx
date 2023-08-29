@@ -1,4 +1,4 @@
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import React from "react";
 
 // Kbd Component
@@ -15,13 +15,13 @@ export const Kbd = React.forwardRef<HTMLElement, Kbd>(
           ? className
           : classNames(
               "text-secondary-500 border-secondary-300 dark:border-secondary-600 dark:text-secondary-300 rounded-md border border-b-4 px-1 text-xs font-medium",
-              className
+              className,
             )
       }
       ref={forwardRef}
     >
       {children}
     </kbd>
-  )
+  ),
 );
 Kbd.displayName = "Kbd";

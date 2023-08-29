@@ -1,6 +1,6 @@
 import React from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 
 // Stat Component
 export type Stat = React.HTMLAttributes<HTMLDivElement> & StatContext;
@@ -17,7 +17,7 @@ export const Stat = React.forwardRef<HTMLDivElement, Stat>(
         </div>
       </StatProvider>
     );
-  }
+  },
 );
 Stat.displayName = "Stat";
 
@@ -30,14 +30,14 @@ export const StatLabel = React.forwardRef<HTMLDivElement, StatLabel>(
         {...props}
         className={classNames(
           "text-secondary-600 dark:text-secondary-400 text-sm font-semibold",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 StatLabel.displayName = "StatLabel";
 
@@ -50,14 +50,14 @@ export const StatValue = React.forwardRef<HTMLDivElement, StatValue>(
         {...props}
         className={classNames(
           "text-2xl font-semibold dark:text-white",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 StatValue.displayName = "StatValue";
 
@@ -80,14 +80,14 @@ export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
         className={classNames(
           statHelpTextClasses.type[type],
           "flex items-center gap-1.5 text-sm font-medium",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 StatHelpText.displayName = "StatHelpText";
 
@@ -125,7 +125,7 @@ export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
         <path d="M2 5.56L2.413 5h11.194l.393.54L8.373 11h-.827L2 5.56z" />
       </svg>
     );
-  }
+  },
 );
 
 StatIcon.displayName = "StatIcon";

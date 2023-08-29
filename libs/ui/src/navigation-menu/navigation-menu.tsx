@@ -6,7 +6,7 @@ import {
   NavigationMenuProvider,
   useNavigationMenuContext,
 } from "./context";
-import { classNames } from "@rafty/utils";
+import { classNames } from "../utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 // NavigationMenu Component
