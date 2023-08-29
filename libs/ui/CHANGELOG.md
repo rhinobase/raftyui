@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.34...ui-1.0.0) (2023-08-29)
+
+
+### Bug Fixes
+
+* improved checkbox by adding field control context logic and improved label ([6be06b8](https://github.com/rhinobase/design-system/commit/6be06b8858613e160140a2b12391a8dafedb427c))
+* removed accordion header from trigger component as it was returning h3 ([0c6725a](https://github.com/rhinobase/design-system/commit/0c6725a3b39225124302ae70e359ca9f0fd06c90))
+* took out the value prop from switch as was creating issue when used in forms ([ad353f2](https://github.com/rhinobase/design-system/commit/ad353f2a698fc0ec1a1549dd933f4d70765d5bff))
+
 ## [1.0.0-beta.34](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.33...ui-1.0.0-beta.34) (2023-08-25)
 
 
