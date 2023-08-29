@@ -10,7 +10,6 @@ export const progress_examples = {
   ),
   "porgress:colorschema": (
     <div>
-      {" "}
       <Progress value={80} colorScheme="primary" />
       <Progress value={80} colorScheme="error" />
       <Progress value={80} colorScheme="success" />

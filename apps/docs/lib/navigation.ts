@@ -9,152 +9,158 @@ export const navigation = [
   {
     title: "Components",
     links: [
-      { title: "Accordion", href: "/docs/accordion" },
+      { title: "Accordion", href: "/docs/components/accordion" },
       {
         title: "Alert",
         href: "/docs/alert",
       },
-      { title: "Alert Dialog", href: "/docs/alert-dialog" },
+      { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
         title: "Button",
-        href: "/docs/button",
+        href: "/docs/components/button",
       },
       {
         title: "Card",
-        href: "/docs/card",
+        href: "/docs/components/card",
       },
       {
         title: "Checkbox",
-        href: "/docs/checkbox",
+        href: "/docs/components/checkbox",
       },
       {
         title: "Combobox",
-        href: "/docs/combobox",
+        href: "/docs/components/combobox",
       },
       {
         title: "Context Menu",
-        href: "/docs/context-menu",
+        href: "/docs/components/context-menu",
       },
       {
         title: "Date Picker",
-        href: "/docs/date-picker",
+        href: "/docs/components/date-picker",
       },
       {
         title: "Dialog",
-        href: "/docs/dialog",
+        href: "/docs/components/dialog",
       },
       {
         title: "Drawer",
-        href: "/docs/drawer",
+        href: "/docs/components/drawer",
       },
       {
         title: "Input Field",
-        href: "/docs/input-field",
+        href: "/docs/components/input-field",
       },
       {
         title: "Input Group",
-        href: "/docs/input-group",
+        href: "/docs/components/input-group",
       },
       {
         title: "Kbd",
-        href: "/docs/kbd",
+        href: "/docs/components/kbd",
       },
       {
         title: "List",
-        href: "/docs/list",
+        href: "/docs/components/list",
       },
       {
         title: "Menu",
-        href: "/docs/menu",
+        href: "/docs/components/menu",
       },
       {
         title: "Menu Bar",
-        href: "/docs/menubar",
+        href: "/docs/components/menubar",
       },
       {
         title: "Navigation Menu",
-        href: "/docs/navigation-menu",
+        href: "/docs/components/navigation-menu",
       },
       {
         title: "Number Field",
-        href: "/docs/number-field",
+        href: "/docs/components/number-field",
       },
       {
         title: "Password Field",
-        href: "/docs/password-field",
+        href: "/docs/components/password-field",
       },
       {
         title: "Popover",
-        href: "/docs/popover",
+        href: "/docs/components/popover",
       },
       {
         title: "Porgress",
-        href: "/docs/progress",
+        href: "/docs/components/progress",
       },
       {
         title: "Radio",
-        href: "/docs/radio",
+        href: "/docs/components/radio",
       },
       {
         title: "Range Picker",
-        href: "/docs/range-picker",
+        href: "/docs/components/range-picker",
       },
       {
         title: "Search Field",
-        href: "/docs/search-field",
+        href: "/docs/components/search-field",
       },
       {
         title: "Select",
-        href: "/docs/select",
+        href: "/docs/components/select",
       },
       {
         title: "Skeleton",
-        href: "/docs/skeleton",
+        href: "/docs/components/skeleton",
       },
       {
         title: "Spinner",
-        href: "/docs/spinner",
+        href: "/docs/components/spinner",
       },
       {
         title: "Stat",
-        href: "/docs/stat",
+        href: "/docs/components/stat",
       },
       {
         title: "Switch",
-        href: "/docs/switch",
+        href: "/docs/components/switch",
       },
       {
         title: "Tab",
-        href: "/docs/tab",
+        href: "/docs/components/tab",
       },
       {
         title: "Table",
-        href: "/docs/table",
+        href: "/docs/components/table",
       },
       {
         title: "Tag Field",
-        href: "/docs/tag-field",
+        href: "/docs/components/tag-field",
       },
       {
         title: "Text",
-        href: "/docs/text",
+        href: "/docs/components/text",
       },
       {
         title: "Textarea",
-        href: "/docs/textarea",
+        href: "/docs/components/textarea",
       },
       {
         title: "Toast",
-        href: "/docs/toast",
+        href: "/docs/components/toast",
       },
       {
         title: "Toggle Group",
-        href: "/docs/toggle-group",
+        href: "/docs/components/toggle-group",
       },
       {
         title: "Tooltip",
-        href: "/docs/tooltip",
+        href: "/docs/components/tooltip",
       },
+    ],
+  },
+  {
+    title: "Integrations",
+    links: [
+      { title: "React Hook Form", href: "/docs/integrations/react-hook-form" },
     ],
   },
 ];
