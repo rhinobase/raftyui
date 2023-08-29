@@ -25,3 +25,45 @@ yarn add @rafty/ui
 
 npm i @rafty/ui
 ```
+
+## Setup
+
+For the styling to work in `@rafty/ui`, you need to make few changes in your `tailwind.config.js` file.
+
+First, install the `@rafty/plugin` package as devDependencies
+
+```sh
+npm i -D @rafty/plugin
+```
+
+And in your `tailwind.config.js` file
+
+```js
+module.exports = {
+  content: [
+    ...,
+    "./node_modules/@rafty/ui/**/*.{js,cjs}",
+  ],
+  theme: {
+    extend: {
+        ...,
+        // (Optional)
+        // Extend the default configuration of @rafty/ui
+        colors: {
+            primary: colors.purple,
+            ...,
+        }
+    },
+  },
+  plugins: [
+    ...,
+    require("@rafty/plugin")
+  ],
+};
+```
+
+## Get Started
+
+```jsx
+import { Button } from "@rafty/ui";
+```
