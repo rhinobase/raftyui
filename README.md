@@ -12,7 +12,7 @@ React + Accessible + Tailwind CSS Dynamic Component Library
 
 ## Looking for the documentation?
 
-https://raftyui.com (Under Development)
+[rafty-ui.rhinobase.io](https://rafty-ui.rhinobase.io) (Under Development)
 
 ## Installing Rafty UI
 
@@ -20,7 +20,7 @@ Rafty UI is made up of multiple components and tools that you can import one by 
 
 ```sh
 yarn add @rafty/ui
-  
+
 # or
 
 npm i @rafty/ui
