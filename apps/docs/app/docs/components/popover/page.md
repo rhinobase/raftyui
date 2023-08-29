@@ -10,6 +10,15 @@ Displays rich content in a portal, triggered by a button.
 
 ```jsx
 import { Popover, PopoverTrigger, PopoverContent } from "@rafty/ui";
+
+() => (
+  <Popover>
+    <PopoverTrigger />
+    <PopoverContent>
+      <PopverClose />
+    </PopoverContent>
+  </Popover>
+);
 ```
 
 ## Usage

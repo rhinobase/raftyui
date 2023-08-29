@@ -11,9 +11,9 @@ export const switch_examples = {
     </div>
   ),
 
-  "switch:disabled": <Switch disabled />,
+  "switch:disabled": <Switch isDisabled />,
 
   "switch:selected": <Switch checked />,
 
-  "switch:required": <Switch size="lg" required />,
+  "switch:required": <Switch size="lg" isRequired />,
 };

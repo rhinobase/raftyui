@@ -10,4 +10,13 @@ export const stat_examples = {
       </StatHelpText>
     </Stat>
   ),
+  "stat:type": (
+    <Stat type="increase">
+      <StatLabel>Daily Return</StatLabel>
+      <StatValue>17,770.90</StatValue>
+      <StatHelpText>
+        <StatIcon /> 0.47%
+      </StatHelpText>
+    </Stat>
+  ),
 };

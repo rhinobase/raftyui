@@ -11,7 +11,14 @@ A tooltip is a brief, informative message that appears when a user interacts wit
 - Tooltip
 
 ```jsx
-import { Tooltip } from "@rafty/ui";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@rafty/ui";
+
+() => (
+  <Tooltip>
+    <TooltipTrigger></TooltipTrigger>
+    <TooltipContent></TooltipContent>
+  </Tooltip>
+);
 ```
 
 ## Usage

@@ -13,6 +13,12 @@ A set of two-state buttons that can be toggled on or off.
 
 ```jsx
 import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
+
+() => (
+  <ToggleGroup>
+    <ToggleGroupItem></ToggleGroupItem>
+  </ToggleGroup>
+);
 ```
 
 ## Usage

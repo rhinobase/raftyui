@@ -10,6 +10,11 @@ Select component is a component that allows users pick a value from predefined o
 
 ```jsx
 import { Select, SelectItem } from "@rafty/ui";
+() => (
+  <Select>
+    <SelectItem></SelectItem>
+  </Select>
+);
 ```
 
 ## Usage

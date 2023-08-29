@@ -10,6 +10,12 @@ Radios are used when only one choice may be selected in a series of options.
 
 ```jsx
 import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
+
+() => (
+  <RadioGroup>
+    <RadioGroupItem></RadioGroupItem>
+  </RadioGroup>
+);
 ```
 
 ## Usage
@@ -20,24 +26,11 @@ import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
 
 {% example name="radio:default" /%}
 
-```jsx
-
-```
-
 ## Disabled
 
 Pass the `isDisabled` prop if you need to disable the radio-group and its sub components.
-{% example name="radio:disabled" /%}
 
-```jsx
-<RadioGroup isDisabled>
-  <div className="flex flex-col gap-4">
-    <Radio value="4">Radio 4</Radio>
-    <Radio value="5">Radio 5</Radio>
-    <Radio value="6">Radio 6</Radio>
-  </div>
-</RadioGroup>
-```
+{% example name="radio:disabled" /%}
 
 ### API
 

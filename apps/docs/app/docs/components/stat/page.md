@@ -10,6 +10,15 @@ As the name implies, the `Stat` component is used to display some statistics.Its
 
 ```jsx
 import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
+() => (
+  <Stat>
+    <StatLabel />
+    <StatValue />
+    <StatHelpText>
+      <StatIcon />
+    </StatHelpText>
+  </Stat>
+);
 ```
 
 ## Usage
@@ -20,15 +29,7 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
 Pass the `type` prop if you need to increase and decrease the stat type. Values can be `increase`, `decrease`, `normal`
 
-```jsx
-<Stat type="increase">
-  <StatLabel>Daily Return</StatLabel>
-  <StatValue>17,770.90</StatValue>
-  <StatHelpText>
-    <StatIcon /> 0.47%
-  </StatHelpText>
-</Stat>
-```
+{% example name="stat:type" /%}
 
 ### API
 

@@ -15,6 +15,15 @@ A set of layered sections of content—known as tab panels—that are displayed 
 
 ```jsx
 import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
+
+() => (
+  <Tab>
+    <TabList>
+      <TabTrigger />
+      <TabContent />
+    </TabList>
+  </Tab>
+);
 ```
 
 ## Usage
