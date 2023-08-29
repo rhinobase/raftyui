@@ -12,7 +12,7 @@ type Story = StoryObj<typeof ScrollArea>;
 export const Default: Story = {
   render: function Render() {
     const tags = Array.from({ length: 50 }).map(
-      (_, i, a) => `v1.2.0-beta.${a.length - i}`
+      (_, i, a) => `v1.2.0-beta.${a.length - i}`,
     );
     return (
       <ScrollArea className="h-72 w-48 rounded-md border dark:border-secondary-700">

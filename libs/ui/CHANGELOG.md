@@ -4,27 +4,24 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.0.1](https://github.com/rhinobase/design-system/compare/ui-1.0.0...ui-1.0.1) (2023-08-29)
 
-
 ### Bug Fixes
 
-* added field context props to checkbox and switch components ([b35a5b3](https://github.com/rhinobase/design-system/commit/b35a5b35a90341802164e9f28d7344935b1315da))
+- added field context props to checkbox and switch components ([b35a5b3](https://github.com/rhinobase/design-system/commit/b35a5b35a90341802164e9f28d7344935b1315da))
 
 ## [1.0.0](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.34...ui-1.0.0) (2023-08-29)
 
-
 ### Bug Fixes
 
-* improved checkbox by adding field control context logic and improved label ([6be06b8](https://github.com/rhinobase/design-system/commit/6be06b8858613e160140a2b12391a8dafedb427c))
-* removed accordion header from trigger component as it was returning h3 ([0c6725a](https://github.com/rhinobase/design-system/commit/0c6725a3b39225124302ae70e359ca9f0fd06c90))
-* took out the value prop from switch as was creating issue when used in forms ([ad353f2](https://github.com/rhinobase/design-system/commit/ad353f2a698fc0ec1a1549dd933f4d70765d5bff))
+- improved checkbox by adding field control context logic and improved label ([6be06b8](https://github.com/rhinobase/design-system/commit/6be06b8858613e160140a2b12391a8dafedb427c))
+- removed accordion header from trigger component as it was returning h3 ([0c6725a](https://github.com/rhinobase/design-system/commit/0c6725a3b39225124302ae70e359ca9f0fd06c90))
+- took out the value prop from switch as was creating issue when used in forms ([ad353f2](https://github.com/rhinobase/design-system/commit/ad353f2a698fc0ec1a1549dd933f4d70765d5bff))
 
 ## [1.0.0-beta.34](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.33...ui-1.0.0-beta.34) (2023-08-25)
 
-
 ### Bug Fixes
 
-* add strict: false prop to avatar and input group context ([1e25f1a](https://github.com/rhinobase/design-system/commit/1e25f1aa4eac3e58d63cc6b66155022b67c7c55a))
-* optimized the bundle size ([627aadf](https://github.com/rhinobase/design-system/commit/627aadf23dd13d3e3bf2d303da18ae9de14a255d))
+- add strict: false prop to avatar and input group context ([1e25f1a](https://github.com/rhinobase/design-system/commit/1e25f1aa4eac3e58d63cc6b66155022b67c7c55a))
+- optimized the bundle size ([627aadf](https://github.com/rhinobase/design-system/commit/627aadf23dd13d3e3bf2d303da18ae9de14a255d))
 
 ## [1.0.0-beta.33](https://github.com/rhinobase/design-system/compare/ui-1.0.0-beta.32...ui-1.0.0-beta.33) (2023-08-25)
 

@@ -9,7 +9,5 @@ export default meta;
 type Story = StoryObj<typeof Kbd>;
 
 export const Default: Story = {
-  render: () => (
-      <Kbd>shift + K</Kbd>
-  ),
+  render: () => <Kbd>shift + K</Kbd>,
 };

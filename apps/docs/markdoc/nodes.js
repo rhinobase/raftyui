@@ -1,19 +1,19 @@
-import { nodes as defaultNodes, Tag } from '@markdoc/markdoc'
-import { slugifyWithCounter } from '@sindresorhus/slugify'
-import yaml from 'js-yaml'
+import { nodes as defaultNodes, Tag } from "@markdoc/markdoc";
+import { slugifyWithCounter } from "@sindresorhus/slugify";
+import yaml from "js-yaml";
 
-import { DocsLayout } from '../components/DocsLayout'
-import { Fence } from '../components/Fence'
-import { Code } from '../components/Code'
+import { DocsLayout } from "../components/DocsLayout";
+import { Fence } from "../components/Fence";
+import { Code } from "../components/Code";
 
-let documentSlugifyMap = new Map()
+let documentSlugifyMap = new Map();
 
 const nodes = {
   document: {
     ...defaultNodes.document,
     render: DocsLayout,
     transform(node, config) {
-      documentSlugifyMap.set(config, slugifyWithCounter())
+      documentSlugifyMap.set(config, slugifyWithCounter());
 
       return new Tag(
         this.render,
@@ -22,23 +22,25 @@ const nodes = {
           nodes: node.children,
         },
         node.transformChildren(config),
-      )
+      );
     },
   },
   heading: {
     ...defaultNodes.heading,
     transform(node, config) {
-      let slugify = documentSlugifyMap.get(config)
-      let attributes = node.transformAttributes(config)
-      let children = node.transformChildren(config)
-      let text = children.filter((child) => typeof child === 'string').join(' ')
-      let id = attributes.id ?? slugify(text)
+      let slugify = documentSlugifyMap.get(config);
+      let attributes = node.transformAttributes(config);
+      let children = node.transformChildren(config);
+      let text = children
+        .filter((child) => typeof child === "string")
+        .join(" ");
+      let id = attributes.id ?? slugify(text);
 
       return new Tag(
         `h${node.attributes.level}`,
         { ...attributes, id },
         children,
-      )
+      );
     },
   },
   th: {
@@ -47,7 +49,7 @@ const nodes = {
       ...defaultNodes.th.attributes,
       scope: {
         type: String,
-        default: 'col',
+        default: "col",
       },
     },
   },
@@ -67,6 +69,6 @@ const nodes = {
       },
     },
   },
-}
+};
 
-export default nodes
+export default nodes;

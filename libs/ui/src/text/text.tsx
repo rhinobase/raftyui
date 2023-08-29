@@ -7,7 +7,7 @@ export const Text = React.forwardRef<HTMLParagraphElement, Text>(
     <p {...props} className={className} ref={forwardedRef}>
       {children}
     </p>
-  )
+  ),
 );
 
 Text.displayName = "Text";

@@ -10,7 +10,7 @@ export const List = React.forwardRef<HTMLUListElement, List>(
         {props.children}
       </ul>
     );
-  }
+  },
 );
 
 List.displayName = "List";

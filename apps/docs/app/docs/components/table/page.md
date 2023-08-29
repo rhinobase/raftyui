@@ -9,24 +9,32 @@ description: Table
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default
 
 ```jsx
-import { TableContainer, Table, TableHead, TableBody, TableFooter,
-Tr, Th, Td } from "@rafty/ui";
+import {
+    TableContainer,
+    Table,
+    TableHead,
+    TableBody,
+    TableFooter,
+    Tr,
+    Th,
+    Td
+} from "@rafty/ui";
 
 ()=>(
     <TableContainer>
-        <Table>
-            <TableHead>
-                <Th>
-                    <Td></Td>
-                </Th>
-            </TableHead>
-            <TableBody>
-                <Tr>
-                    <Td></Td>
-                </Tr>
-            <TableBody>
-            <TableFooter><TableFooter>
-        </Table>
+     <Table>
+      <TableHead>
+        <Tr>
+          <Th/>
+        </Tr>
+      </TableHead>
+      <TableBody>
+        <Tr>
+          <Td/>
+        </Tr>
+      <TableBody>
+      <TableFooter/>
+     </Table>
     </TableContainer>
 )
 ```
