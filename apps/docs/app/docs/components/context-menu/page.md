@@ -10,6 +10,30 @@ Displays a menu located at the pointer triggered by a right-click or a long-pres
 
 ```jsx
 import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSeparator, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from "@rafty/ui";
+
+() => (
+  <ContextMenu>
+    <ContextMenuTrigger />
+    <ContextMenuContent>
+      <ContextMenuItem />
+      <ContextMenuSub>
+        <ContextMenuSubTrigger />
+        <ContextMenuSubContent>
+          <ContextMenuItem />
+          <ContextMenuSeparator />
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+      <ContextMenuSeparator />
+      <ContextMenuCheckboxItem />
+      <ContextMenuCheckboxItem />
+      <ContextMenuSeparator />
+      <ContextMenuLabel />
+      <ContextMenuRadioGroup>
+        <ContextMenuRadioItem />
+      </ContextMenuRadioGroup>
+    </ContextMenuContent>
+  </ContextMenu>
+);
 ```
 
 ## Usage

@@ -16,6 +16,15 @@ Rafty UI exports 5 accordion-related components.
 
 ```jsx
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@rafty/ui";
+
+() => (
+  <Accordion>
+    <AccordionItem>
+      <AccordionTrigger />
+      <AccordionContent />
+    </AccordionItem>
+  </Accordion>
+);
 ```
 
 ## Usage

@@ -9,7 +9,21 @@ description: Dialog
 A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
 
 ```jsx
-import { Dialog, DialogBody, DialogContent, DialogOverlay, DialogHeading, DialogTrigger, DialogCloseButton } from "@rafty/ui";
+import { Dialog, DialogContent, DialogOverlay, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogFooter } from "@rafty/ui";
+
+() => (
+  <Dialog>
+    <DialogTrigger />
+    <DialogOverlay />
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle />
+      </DialogHeader>
+      <DialogDescription />
+      <DialogFooter />
+    </DialogContent>
+  </Dialog>
+);
 ```
 
 ## Usage

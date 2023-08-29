@@ -14,7 +14,14 @@ Rafty UI exports 4 components to help you create a Card.
 - CardFooter: The footer that houses the card actions.
 
 ```jsx
-import { Card, CardBody, CardFooter, CardHeader } from "@rafty/ui";
+import { Card, CardFooter, CardHeader } from "@rafty/ui";
+() => (
+  <Card>
+    <CardHeader />
+    <CardContent />
+    <CardFooter />
+  </Card>
+);
 ```
 
 ## Usage

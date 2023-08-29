@@ -10,6 +10,21 @@ A collection of links for navigating websites.
 
 ```jsx
 import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuListItem, NavigationMenuTrigger } from "@rafty/ui";
+
+() => (
+  <NavigationMenu>
+    <NavigationMenuListItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger />
+        <NavigationMenuContent>
+          <NavigationMenuLink />
+          <NavigationMenuList />
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuIndicator />
+    </NavigationMenuListItem>
+  </NavigationMenu>
+);
 ```
 
 ## Usage

@@ -15,6 +15,14 @@ Rafty UI exports 4 alert related components.
 
 ```jsx
 import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
+
+() => (
+  <Alert>
+    <AlertIcon />
+    <AlertTitle />
+    <AlertDescription />
+  </Alert>
+);
 ```
 
 ## Usage

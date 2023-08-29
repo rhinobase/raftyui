@@ -17,7 +17,24 @@ Rafty UI exports 7 alert dialog related components.
 - AlertDialogCloseButton: The button that closes the dialog.
 
 ```jsx
-import { AlertDialog, AlertDialogAction, AlertDialogBody, AlertDialogCancel, AlertDialogContent, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger } from "@rafty/ui";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger } from "@rafty/ui";
+
+() => (
+  <AlertDialog>
+    <AlertDialogTrigger />
+    <AlertDialogOverlay />
+    <AlertDialogContent>
+      <AlertDialogTitle />
+      <AlertDialogDescription />
+      <AlertDialogCancel>
+        <Button />
+      </AlertDialogCancel>
+      <AlertDialogAction>
+        <Button />
+      </AlertDialogAction>
+    </AlertDialogContent>
+  </AlertDialog>
+);
 ```
 
 ## Usage

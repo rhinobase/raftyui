@@ -10,6 +10,30 @@ A visually persistent menu common in desktop applications that provides quick ac
 
 ```jsx
 import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarItem, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from "@rafty/ui";
+
+() => (
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger />
+      <MenubarContent>
+        <MenubarLabel />
+        <MenubarItem />
+        <MenubarGroup>
+          <MenubarItem />
+        </MenubarGroup>
+        <MenubarCheckboxItem />
+        <MenubarRadioGroup>
+          <MenubarRadioItem />
+        </MenubarRadioGroup>
+        <MenubarSub>
+          <MenubarSubTrigger />
+          <MenubarSubContent />
+        </MenubarSub>
+        <MenubarSeparator />
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+);
 ```
 
 ## Usage

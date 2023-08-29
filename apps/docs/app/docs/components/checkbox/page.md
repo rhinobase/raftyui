@@ -11,7 +11,7 @@ Checkbox component is used in forms when a user needs to select multiple values 
 - Checkbox:
 
 ```jsx
-import { Checkbox, CheckboxGroup } from "@rafty/ui";
+import { Checkbox } from "@rafty/ui";
 ```
 
 ### Usage

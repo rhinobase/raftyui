@@ -9,7 +9,23 @@ description: Menu
 An accessible dropdown menu for the common dropdown menu button design pattern. Menu uses roving tabIndex for focus management.
 
 ```jsx
-import { Menu, MenuCheckboxItem, MenuContent, MenuGroup, MenuItem, MenuLabel, MenuRadioGroup, MenuRadioItem, MenuSeparator, MenuSub, MenuSubContent, MenuSubTrigger, MenuTrigger } from "@rafty/ui";
+import { Menu, MenuTrigger, MenuContent, MenuContent, MenuSeparator, MenuRadioGroup, MenuLabel, MenuRadioItem } from "@rafty/ui";
+
+() => (
+  <Menu>
+    <MenuTrigger />
+    <MenuContent>
+      <MenuItem />
+      <MenuSeparator />
+      <MenuCheckboxItem />
+      <MenuSeparator />
+      <MenuLabel />
+      <MenuRadioGroup>
+        <MenuRadioItem />
+      </MenuRadioGroup>
+    </MenuContent>
+  </Menu>
+);
 ```
 
 ## Usage
