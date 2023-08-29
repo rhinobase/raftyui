@@ -161,6 +161,8 @@ export const navigation = [
     title: "Integrations",
     links: [
       { title: "React Hook Form", href: "/docs/integrations/react-hook-form" },
+      { title: "Formik", href: "/docs/integrations/formik" },
+      { title: "Tanstack Query", href: "/docs/integrations/tanstack-query" },
     ],
   },
 ];
