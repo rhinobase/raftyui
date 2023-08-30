@@ -67,3 +67,7 @@ module.exports = {
 ```jsx
 import { Button } from "@rafty/ui";
 ```
+
+## 🌐 Join the Conversation:
+
+Connect with a vibrant community of developers, and designers on Discord at [discord.gg/rhinobase](https://discord.gg/YtzxUfCk8c). Share your experiences, exchange insights, and shape the evolution of @rafty/ui.
