@@ -41,18 +41,3 @@ Pass the `isRequired` prop to make input-field Required.
 Pass the `isDisabled` prop to make input-field Disabled.
 
 {% example name="input-field:disabled" /%}
-
-### API
-
----
-
-### Input Field
-
-| Property   | Description | Type                    | Default |
-| ---------- | ----------- | ----------------------- | ------- |
-| className  |             | `string`                |         |
-| size       |             | `sm, md, lg`            | md      |
-| variant    |             | `solid, ghost, outline` | solid   |
-| isReadOnly |             | `boolean`               | false   |
-| isRequired |             | `boolean`               | false   |
-| isDisabled |             | `boolean`               | false   |

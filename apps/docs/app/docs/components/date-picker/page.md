@@ -17,20 +17,3 @@ import { DatePicker } from "@rafty/ui";
 ## Usage
 
 {% example name="date-picker:usage" /%}
-
-### API
-
----
-
-### Root
-
-| Property     | Description | Type                                     | Default |
-| ------------ | ----------- | ---------------------------------------- | ------- |
-| variant      |             | `solid` / `outline` / `ghost`;           |         |
-| size         |             | `sm` / `md` / `lg`;                      |         |
-| onChange     |             | ((value: DateValue) => void) / undefined |         |
-| defaultValue |             | DateValue / null / undefined             |         |
-| value        |             | DateValue / null / undefined             |         |
-| isRequired   |             | `boolean`                                | false   |
-| isDisabled   |             | `boolean`                                | false   |
-| isReadOnly   |             | `boolean`                                | false   |

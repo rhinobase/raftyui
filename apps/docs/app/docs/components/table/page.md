@@ -72,41 +72,39 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ---
 
-### Container
-
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` | -       |
-
 ### Root
 
-| Property   | Description                        | Type                    | Default  |
-| ---------- | ---------------------------------- | ----------------------- | -------- |
-| className  |                                    | `string`                | -        |
-| size       |                                    | `sm` \ `md` \ \ `lg` \  | `md`     |
-| variant    |                                    | `simple` \ `striped`    | `simple` |
-| isBarebone | Removes style from whole component | `boolean`               | `false`  |
+| Property   | Description                        | Type      | Default |
+| ---------- | ---------------------------------- | --------- | ------- |
+| isBarebone | Removes style from whole component | `boolean` | `false` |
+| isUnstyled | Removes Style from component       | `string`  | -       |
 
 ### Head
 
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` | -       |
+| Property   | Description                  | Type     | Default |
+| ---------- | ---------------------------- | -------- | ------- |
+| isUnstyled | Removes Style from component | `string` | -       |
 
 ### Body
 
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` | -       |
+| Property   | Description                  | Type     | Default |
+| ---------- | ---------------------------- | -------- | ------- |
+| isUnstyled | Removes Style from component | `string` | -       |
 
 ### Tr
 
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` | -       |
+| Property   | Description                  | Type     | Default |
+| ---------- | ---------------------------- | -------- | ------- |
+| isUnstyled | Removes Style from component | `string` | -       |
 
 ### Td
 
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` | -       |
+| Property   | Description                  | Type     | Default |
+| ---------- | ---------------------------- | -------- | ------- |
+| isUnstyled | Removes Style from component | `string` | -       |
+
+### TableFooter
+
+| Property   | Description                  | Type     | Default |
+| ---------- | ---------------------------- | -------- | ------- |
+| isUnstyled | Removes Style from component | `string` | -       |

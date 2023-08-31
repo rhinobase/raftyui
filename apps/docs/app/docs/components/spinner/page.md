@@ -23,15 +23,3 @@ import { Spinner } from "@rafty/ui";
 Pass the `size` prop if you need to adjust the size of the spinner. Values can be `sm`, `md`, `lg`.
 
 {% example name="spinner:size" /%}
-
-### API
-
----
-
-### Root
-
-| Property      | Description | Type               | Default |
-| ------------- | ----------- | ------------------ | ------- |
-| className     |             | `string`           | -       |
-| size          |             | `sm` \ `md` \ `lg` | `md`    |
-| inheritParent |             | `boolean`          | `false` |

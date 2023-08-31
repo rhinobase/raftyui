@@ -27,15 +27,3 @@ Pass `isDisabled` prop to disable tag-field.
 Pass the `isRequired` prop to make search-field Required.
 
 {% example name="tag-field:required" /%}
-
-### API
-
----
-
-### Roots
-
-| Property    | Description | Type                       | Default |
-| ----------- | ----------- | -------------------------- | ------- |
-| className   |             | `string`                   | -       |
-| initialData |             | `string`                   | -       |
-| onChange    |             | `(tags: string[]) => void` | -       |

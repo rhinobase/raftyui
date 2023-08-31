@@ -24,6 +24,6 @@ import { Kbd } from "@rafty/ui";
 
 ### Root
 
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` |         |

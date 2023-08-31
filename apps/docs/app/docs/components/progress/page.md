@@ -27,16 +27,3 @@ Pass the `size` prop if you need to adjust the size of the progress. Values can 
 Pass the `colorScheme` prop to change the color of the progess. You can set the value to `primary`, `error`, `success`, `warning`.
 
 {% example name="progress:colorscheme" /%}
-
-### API
-
----
-
-### Root
-
-| Property        | Description | Type                                        | Default |
-| --------------- | ----------- | ------------------------------------------- | ------- |
-| className       |             | `string`                                    |         |
-| size            |             | `sm` \ `md` \ `lg`                          | `md`    |
-| isIndeterminate |             | `boolean`                                   |         |
-| colorScheme     |             | `primary"` \ `warning`\ `success` \ `error` |         |

@@ -45,24 +45,3 @@ This property can also be passed in child/ sub component
 ### API
 
 ---
-
-### Checkbox Group
-
-| Property        | Description | Type      | Default |
-| --------------- | ----------- | --------- | ------- |
-| className       |             | `string`  |         |
-| isDisabled      |             | `boolean` | false   |
-| defaultSelected |             | `boolean` | false   |
-| isReadOnly      |             | `boolean` | false   |
-| isRequired      |             | `boolean` | false   |
-
-### Checkbox
-
-| Property        | Description | Type      | Default |
-| --------------- | ----------- | --------- | ------- |
-| isDisabled      |             | `boolean` | false   |
-| defaultSelected |             | `boolean` | false   |
-| isIndeterminate |             | `boolean` | false   |
-| isSelected      |             | `boolean` | false   |
-| isReadOnly      |             | `boolean` | false   |
-| isRequired      |             | `boolean` | false   |

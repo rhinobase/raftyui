@@ -27,17 +27,6 @@ import { Select, SelectItem } from "@rafty/ui";
 
 ### Root
 
-| Property           | Description | Type                                        | Default            |
-| ------------------ | ----------- | ------------------------------------------- | ------------------ |
-| className          |             | `string`                                    | -                  |
-| size               |             | `sm` \ `md` \ `lg`                          | `md`               |
-| variant            |             | `solid` \ `outline` \ `ghost`               | `outline`          |
-| onSelectionChange  |             | `((key: Key) => any)` \ `undefined`         | -                  |
-| defaultSelectedKey |             | `Key`\ `undefined`                          | -                  |
-| selectedKey        |             | `Key` \ `null` \ `undefined`                | -                  |
-| placeholder        |             | `string`                                    | `Select an option` |
-| isDisabled         |             | `boolean` \ `undefined`                     | -                  |
-| isRequired         |             | `boolean` \ `undefined`                     | -                  |
-| onOpenChange       |             | `((isOpen: boolean) => void)` \ `undefined` | -                  |
-| isOpen             |             | `boolean` \ `undefined`                     | -                  |
-| defaultOpen        |             | `boolean` \ `undefined`                     | -                  |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes style from component | `boolean` | `false` |

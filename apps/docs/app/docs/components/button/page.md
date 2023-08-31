@@ -50,15 +50,6 @@ Pass ` isUnstyled` prop to remove style component.
 
 ---
 
-| Property    | Description                  | Type                                                     | Default   |
-| ----------- | ---------------------------- | -------------------------------------------------------- | --------- |
-| className   |                              | `string`                                                 |           |
-| size        |                              | `sm` / `md` / `lg` / `fab` / `icon`                      | md        |
-| colorScheme |                              | `primary` / `secondary` / `error` / `success`            | secondary |
-| variant     |                              | `solid` / `ghost` / `outline`                            | solid     |
-| leftIcon    |                              | `ReactElement<any, string / JSXElementConstructor<any>>` |           |
-| righttIcon  |                              | `ReactElement<any, string / JSXElementConstructor<any>>` |           |
-| isActive    |                              | `boolean`                                                | false     |
-| isLoading   |                              | `boolean`                                                | false     |
-| isDisabled  |                              | `boolean`                                                | false     |
-| isUnstyled  | Removes Style from component | `boolean`                                                | false     |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | false   |

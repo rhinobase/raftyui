@@ -65,32 +65,25 @@ Pass `isUnstyled` prop to remove all style from a particalr sub component.
 
 ### Root
 
-| Property   | Description                                    | Type                                       | Default |
-| ---------- | ---------------------------------------------- | ------------------------------------------ | ------- |
-| className  |                                                | `string`                                   |         |
-| UnStyled   | Removes Style from component and sub-component | `boolean`                                  | false   |
-| isBarebone | Removes style from whole component             | `boolean`                                  | false   |
-| status     | Show color of alert based on status            | `error, success, warning, info`            | info    |
-| variant    | change visual style of alert                   | `subtle, solid, left-accent or top-accent` | solid   |
-| size       | Change size of alert                           | `sm, md, lg`                               | md      |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| UnStyled   | Removes Style from component and sub-component | `boolean` | false   |
+| isBarebone | Removes style from whole component             | `boolean` | false   |
 
 ### Icon
 
-| Property  | Description                                    | Type      | Default |
-| --------- | ---------------------------------------------- | --------- | ------- |
-| className |                                                | `string`  |         |
-| UnStyled  | Removes Style from component and sub-component | `boolean` | false   |
+| Property | Description                                    | Type      | Default |
+| -------- | ---------------------------------------------- | --------- | ------- |
+| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Title
 
-| Property  | Description                                    | Type      | Default |
-| --------- | ---------------------------------------------- | --------- | ------- |
-| className |                                                | `string`  |         |
-| UnStyled  | Removes Style from component and sub-component | `boolean` | false   |
+| Property | Description                                    | Type      | Default |
+| -------- | ---------------------------------------------- | --------- | ------- |
+| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Description
 
-| Property  | Description                                    | Type      | Default |
-| --------- | ---------------------------------------------- | --------- | ------- |
-| className |                                                | `string`  |         |
-| UnStyled  | Removes Style from component and sub-component | `boolean` | false   |
+| Property | Description                                    | Type      | Default |
+| -------- | ---------------------------------------------- | --------- | ------- |
+| UnStyled | Removes Style from component and sub-component | `boolean` | false   |

@@ -18,13 +18,3 @@ import { Text } from "@rafty/ui";
 
 Text takes tailwind css classes in className and inline css can also be passed using style prop.
 {% example name="text:usage" /%}
-
-### API
-
----
-
-### Root
-
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |

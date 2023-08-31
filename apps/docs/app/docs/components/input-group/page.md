@@ -47,13 +47,3 @@ you can add to the left and right of the Inside Input component. Using `InputGro
 you can add to the left and right of the Inside Input component. Using `InputGroup`, `Prefix`, and `Suffix` to help with this use case.
 
 {% example name="input-group:suffix" /%}
-
-### API
-
----
-
-### Root
-
-| Property  | Description | Type     | Default |
-| --------- | ----------- | -------- | ------- |
-| className |             | `string` |         |

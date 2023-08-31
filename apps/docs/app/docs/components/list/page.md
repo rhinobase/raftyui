@@ -35,14 +35,3 @@ import { ListItem List } from "@rafty/ui";
 Pass `isUnstyled` to remove style in list.
 
 {% example name="list:unstyled" /%}
-
-### API
-
----
-
-### Root
-
-| Property  | Description                  | Type      | Default |
-| --------- | ---------------------------- | --------- | ------- |
-| className |                              | `string`  |         |
-| UnStyled  | Removes Style from component | `boolean` | false   |

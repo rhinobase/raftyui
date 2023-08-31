@@ -36,14 +36,6 @@ Pass `isUnstyled` prop to remove style from textarea.
 
 ### Root
 
-| Property   | Description                  | Type                          | Default   |
-| ---------- | ---------------------------- | ----------------------------- | --------- |
-| className  |                              | `string`                      | -         |
-| variant    |                              | `solid` / `outline` / `ghost` | `outline` |
-| size       |                              | `sm` / `md` / `lg`            | `md`      |
-| isDisabled |                              | `boolean`                     | `false`   |
-| isInvalid  |                              | `boolean`                     | `false`   |
-| isLoading  |                              | `boolean`                     | `false`   |
-| isReadOnly |                              | `boolean`                     | `false`   |
-| isRequired |                              | `boolean`                     | `false`   |
-| isUnStyled | Removes style from component | `boolean`                     | `false`   |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnStyled | Removes style from component | `boolean` | `false` |

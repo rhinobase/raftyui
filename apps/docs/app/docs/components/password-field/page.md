@@ -22,13 +22,6 @@ import { PasswordField } from "@rafty/ui";
 
 ### Root
 
-| Property   | Description                  | Type                                      | Default   |
-| ---------- | ---------------------------- | ----------------------------------------- | --------- |
-| className  |                              | `string`                                  |           |
-| name       |                              | `string` / `undefined`                    |           |
-| variant    |                              | `solid` / `outline` / `ghost` / undefined | `outline` |
-| size       |                              | `sm` / `md` / `lg`                        | `md`      |
-| isDisabled |                              | `boolean` / `undefined`                   | `false`   |
-| isReadOnly |                              | `boolean` / `undefined`                   | `false`   |
-| isRequired |                              | `boolean` / `undefined`                   | `false`   |
-| isUnstyled | Removes style from component | `boolean` / `undefined`                   | `false`   |
+| Property   | Description                  | Type                    | Default |
+| ---------- | ---------------------------- | ----------------------- | ------- |
+| isUnstyled | Removes style from component | `boolean` / `undefined` | `false` |

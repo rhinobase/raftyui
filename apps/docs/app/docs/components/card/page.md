@@ -52,31 +52,18 @@ Pass `isBarebone` prop to remove all style in card
 
 ### Root
 
-| Property   | Description                        | Type                     | Default |
-| ---------- | ---------------------------------- | ------------------------ | ------- |
-| className  |                                    | `string`                 |         |
-| size       |                                    | `sm,md,lg`               | md      |
-| variant    |                                    | `outline,solid,elevated` | solid   |
-| isBarebone | Removes style from whole component | `boolean`                | false   |
-| isUnstyled | Removes Style from component       | `boolean`                | false   |
+| Property   | Description                        | Type      | Default |
+| ---------- | ---------------------------------- | --------- | ------- |
+| isBarebone | Removes style from whole component | `boolean` | false   |
 
 ### Header
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| className  |                              | `string`  |         |
-| isUnstyled | Removes Style from component | `boolean` | false   |
-
-### Body
-
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| className  |                              | `string`  |         |
 | isUnstyled | Removes Style from component | `boolean` | false   |
 
 ### Footer
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| className  |                              | `string`  |         |
 | isUnstyled | Removes Style from component | `boolean` | false   |

@@ -17,21 +17,3 @@ import { NumberField } from "@rafty/ui";
 ```jsx
 <NumberField />
 ```
-
-### API
-
----
-
-### Root
-
-| Property   | Description | Type                                      | Default   |
-| ---------- | ----------- | ----------------------------------------- | --------- |
-| className  |             | `string`                                  |           |
-| variant    |             | `solid` / `outline` / `ghost` / undefined | `outline` |
-| size       |             | `sm` / `md` / `lg`                        | `md`      |
-| step       |             | `number` \ `undefined`                    | `1`       |
-| maxValue   |             | `number` \ `undefined`                    |           |
-| minValue   |             | `number` \ `undefined`                    |           |
-| isDisabled |             | `boolean` / `undefined`                   | `false`   |
-| isReadOnly |             | `boolean` / `undefined`                   | `false`   |
-| isRequired |             | `boolean` / `undefined`                   | `false`   |

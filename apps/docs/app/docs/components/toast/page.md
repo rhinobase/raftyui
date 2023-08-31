@@ -43,17 +43,3 @@ Pass `visible` prop to set visibility of toast
 ## Used with react-hot-toast
 
 {% example name="toast:hot-toast" /%}
-
-### API
-
----
-
-### Root
-
-| Property  | Description | Type                                     | Default |
-| --------- | ----------- | ---------------------------------------- | ------- |
-| className |             | `string`                                 |         |
-| title\*   |             | `string`                                 |         |
-| message?  |             | `string`                                 |         |
-| severity  |             | `error` / `warning` / `info` / `success` |         |
-| visible?  |             | `boolean`                                |         |

@@ -67,74 +67,20 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 ### Root
 
-| Property      | Description                        | Type                 | Default          |
-| ------------- | ---------------------------------- | -------------------- | ---------------- |
-| className     |                                    | `string`             |                  |
-| collapsible   | To Cloase all the Accordion Items  | `boolean`            | false            |
-| type          | To Open Multiple Accordion Items   | `single`/ `multiple` | single           |
-| isBarebone    | Removes style from whole component | `boolean`            | false            |
-| UnStyled      | Removes Style from component       | `boolean`            | false            |
-| value         |                                    | `string`             | No default value |
-| defaultValue  |                                    | `string`             | No default value |
-| onValueChange |                                    | `function`           | No default value |
-| value         |                                    | `string[]`           | []               |
-| defaultValue  |                                    | `string[]`           | []               |
-| onValueChange |                                    | `function`           | No default value |
-| collapsible   |                                    | `boolean`            | false            |
-| disabled      |                                    | `boolean`            | false            |
-| dir           |                                    | `enum`               | "ltr"            |
-| orientation   |                                    | `enum`               | "vertical"       |
-| variant       |                                    | `ghost` / `solid`    | `ghost`          |
-| size          |                                    | `sm` / `md` / `lg`   | `md`             |
-
-### Item
-
-| Property           | Description | Type                      | Default |
-| ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | `string`                  |         |
-| asChild            |             | `boolean`                 | false   |
-| disabled           |             | `boolean`                 | false   |
-| value              |             | `string`                  |         |
-| Data Attribute     |             | Values                    |         |
-| [data-state]       |             | `open` / `closed`         |         |
-| [data-disabled]    |             | Present when disabled     |         |
-| [data-orientation] |             | `vertical` / `horizontal` |         |
-
-### Header
-
-| Property           | Description | Type                      | Default |
-| ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | `string`                  |         |
-| asChild            |             | boolean                   | false   |
-| Data               |             | Attribute                 | Values  |
-| [data-state]       |             | `open` / `closed`         |         |
-| [data-disabled]    |             | Present when disabled     |         |
-| [data-orientation] |             | `vertical` / `horizontal` |         |
+| Property   | Description                        | Type      | Default |
+| ---------- | ---------------------------------- | --------- | ------- |
+| isBarebone | Removes style from whole component | `boolean` | false   |
 
 ### Trigger
 
 `AccordionTrigger`composes `Button` component
 
-| Property           | Description | Type                      | Default |
-| ------------------ | ----------- | ------------------------- | ------- |
-| className          |             | `string`                  |         |
-| asChild            |             | boolean                   | false   |
-| Data Attribute     |             | Values                    |         |
-| [data-state]       |             | `open` / `closed`         |         |
-| [data-disabled]    |             | Present when disabled     |         |
-| [data-orientation] |             | `vertical` / `horizontal` |         |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | -       |
 
 ### Content
 
-| Property                         | Description | Type                                           | Default          |
-| -------------------------------- | ----------- | ---------------------------------------------- | ---------------- |
-| className                        |             | `string`                                       |                  |
-| asChild                          |             | boolean                                        | false            |
-| forceMount                       |             | boolean                                        | No default value |
-| Data Attribute                   |             | Values                                         |                  |
-| [data-state]                     |             | `open` / `closed`                              |                  |
-| [data-disabled]                  |             | Present when disabled                          |                  |
-| [data-orientation]               |             | `vertical` / `horizontal`                      |                  |
-| CSS Variable                     |             | Description                                    |                  |
-| --radix-accordion-content-width  |             | The width of the content when it opens/closes  |                  |
-| --radix-accordion-content-height |             | The height of the content when it opens/closes |                  |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | -       |

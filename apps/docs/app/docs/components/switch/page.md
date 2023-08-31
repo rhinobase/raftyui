@@ -39,18 +39,3 @@ Pass the `defaultSelected` prop if you need to set the switch selected by defaul
 ## Required
 
 {% example name="switch:required" /%}
-
-### API
-
----
-
-### Root
-
-| Property        | Description | Type                    | Default |
-| --------------- | ----------- | ----------------------- | ------- |
-| className       |             | `string`                | -       |
-| isSelected      |             | `boolean`               | -       |
-| size            |             | `sm` \ `md` \ `lg`      | `md`    |
-| defaultSelected |             | `boolean` \ `undefined` | -       |
-| isDisabled      |             | `boolean` \ `undefined` | -       |
-| isReadOnly      |             | `boolean` \ `undefined` | -       |
