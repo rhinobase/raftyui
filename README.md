@@ -13,6 +13,12 @@ React + Accessible + Tailwind CSS Dynamic Component Library
 ## Looking for the documentation?
 
 [rafty-ui.rhinobase.io](https://rafty-ui.rhinobase.io) (Under Development)
+Or you can clone this repo and run
+
+```sh
+npm i
+npx nx serve docs
+```
 
 ## Installing Rafty UI
 
