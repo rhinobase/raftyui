@@ -1,3 +1,4 @@
+"use client";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
