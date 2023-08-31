@@ -61,4 +61,14 @@ export const context_menu_examples = {
       </ContextMenuContent>
     </ContextMenu>
   ),
+  "context-menu:unstyled": (
+    <ContextMenu>
+      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] border-2 border-dotted dark:border-secondary-700">
+        Right Click here
+      </ContextMenuTrigger>
+      <ContextMenuContent isUnstyled>
+        <ContextMenuItem>Back</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  ),
 };

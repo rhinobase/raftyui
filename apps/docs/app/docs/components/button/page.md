@@ -46,6 +46,18 @@ Pass ` isUnstyled` prop to remove style component.
 
 {% example name="button:unstyled" /%}
 
+## Active
+
+{% example name="button:active" /%}
+
+## Loading
+
+{% example name="button:loading" /%}
+
+## Disabled
+
+{% example name="button:disabled" /%}
+
 ### API
 
 ---

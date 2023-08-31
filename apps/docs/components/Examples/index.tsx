@@ -41,6 +41,8 @@ import { navigation_menu_examples } from "./navigation-menu";
 import { tooltip_examples } from "./tooltip";
 import { password_field_examples } from "./password-field";
 import { combobox_examples } from "./combobox";
+import { aspect_ratio_examples } from "./aspect-ratio";
+import { calendar_examples } from "./calendar";
 
 // Map
 const examples: Record<string, JSX.Element> = {
@@ -81,6 +83,8 @@ const examples: Record<string, JSX.Element> = {
   ...tooltip_examples,
   ...password_field_examples,
   ...combobox_examples,
+  ...aspect_ratio_examples,
+  ...calendar_examples,
 };
 
 export function Examples({ name }: { name: string }) {

@@ -38,7 +38,7 @@ export const card_examples = {
     </Card>
   ),
   "card:variant": (
-    <Card variant="outline">
+    <Card variant="elevated">
       <CardHeader>Customer dashboard</CardHeader>
       <CardContent>
         View a summary of all your customers over the last month. Lorem, ipsum

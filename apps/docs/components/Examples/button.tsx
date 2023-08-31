@@ -23,32 +23,35 @@ export const button_examples = {
   ),
   "button:colorScheme": (
     <div className="flex gap-4 items-center">
-      <Button colorScheme="primary">Button text</Button>
-      <Button colorScheme="secondary">Button text</Button>
-      <Button colorScheme="error">Button text</Button>
-      <Button colorScheme="success">Button text</Button>
+      <Button colorScheme="primary">Button</Button>
+      <Button colorScheme="secondary">Button</Button>
+      <Button colorScheme="error">Button</Button>
+      <Button colorScheme="success">Button</Button>
     </div>
   ),
   "button:variant": (
     <div className="flex gap-4 items-center">
-      <Button variant="solid">Button text</Button>
-      <Button variant="outline">Button text</Button>
-      <Button variant="ghost">Button text</Button>
+      <Button variant="solid">Button</Button>
+      <Button variant="outline">Button</Button>
+      <Button variant="ghost">Button</Button>
     </div>
   ),
   "button:icons": (
     <div className="flex gap-4 items-center">
       <Button leftIcon={<HiPhone />} colorScheme="primary" variant="solid">
-        Button text
+        Button
       </Button>
       <Button
         rightIcon={<HiPaperAirplane />}
         colorScheme="primary"
         variant="solid"
       >
-        Button text
+        Button
       </Button>
     </div>
   ),
-  "button:unstyled": <Button isUnstyled>Button text</Button>,
+  "button:unstyled": <Button isUnstyled>Button</Button>,
+  "button:active": <Button isActive>Button</Button>,
+  "button:disabled": <Button isDisabled>Button</Button>,
+  "button:loading": <Button isLoading>Button</Button>,
 };

@@ -13,6 +13,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  images: {
+    domains: ["images.unsplash.com"],
+  },
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
 };
 

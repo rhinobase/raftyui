@@ -52,6 +52,10 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 {% example name="context-menu:barebone" /%}
 
+## unstyled
+
+{% example name="context-menu:unstyled" /%}
+
 ### API
 
 ---

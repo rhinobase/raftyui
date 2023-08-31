@@ -16,6 +16,10 @@ export const navigation = [
       },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
+        title: "aspect-ratio",
+        href: "/docs/components/aspect-ratio",
+      },
+      {
         title: "Button",
         href: "/docs/components/button",
       },
@@ -35,6 +39,7 @@ export const navigation = [
         title: "Context Menu",
         href: "/docs/components/context-menu",
       },
+      { title: "Calendar", href: "/docs/components/calendar" },
       {
         title: "Date Picker",
         href: "/docs/components/date-picker",

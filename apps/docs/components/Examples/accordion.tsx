@@ -7,7 +7,7 @@ import {
 
 export const accordion_examples = {
   "accordion:usage": (
-    <Accordion type="multiple">
+    <Accordion type="single">
       <AccordionItem value="1">
         <AccordionTrigger>
           <span className="flex-1 text-left">Section 1 title</span>
@@ -55,7 +55,7 @@ export const accordion_examples = {
     </Accordion>
   ),
   "accordion:multi_item": (
-    <Accordion collapsible type="single">
+    <Accordion type="multiple">
       <AccordionItem value="1">
         <AccordionTrigger>
           <span className="flex-1 text-left">Section 1 title</span>
@@ -103,7 +103,7 @@ export const accordion_examples = {
     </Accordion>
   ),
   "accordion:barebone": (
-    <Accordion isBarebone collapsible type="single" defaultValue="1">
+    <Accordion isBarebone collapsible type="single">
       <AccordionItem value="1">
         <AccordionTrigger>
           <span className="flex-1 text-left">Section 1 title</span>

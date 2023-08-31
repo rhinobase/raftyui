@@ -21,14 +21,12 @@ export const alert_dialog_examples = {
           This action cannot be undone. This will permanently delete your
           account and remove your data from our servers.
         </AlertDialogDescription>
-        <div className="mt-4 flex justify-end gap-6">
-          <AlertDialogCancel asChild>
-            <Button variant="outline">Cancel</Button>
-          </AlertDialogCancel>
-          <AlertDialogAction asChild>
-            <Button colorScheme="error">Yes, delete account</Button>
-          </AlertDialogAction>
-        </div>
+        <AlertDialogCancel asChild>
+          <Button variant="outline">Cancel</Button>
+        </AlertDialogCancel>
+        <AlertDialogAction asChild>
+          <Button colorScheme="error">Yes, delete account</Button>
+        </AlertDialogAction>
       </AlertDialogContent>
     </AlertDialog>
   ),
@@ -46,7 +44,7 @@ export const alert_dialog_examples = {
     </AlertDialog>
   ),
   "alert-dialog:barebone": (
-    <AlertDialog isBarebone size="lg">
+    <AlertDialog isBarebone>
       <AlertDialogTrigger>Open</AlertDialogTrigger>
       <AlertDialogOverlay />
       <AlertDialogContent>
@@ -60,15 +58,40 @@ export const alert_dialog_examples = {
   ),
 
   "alert-dialog:unstyled": (
-    <AlertDialog size="lg">
-      <AlertDialogTrigger>Open</AlertDialogTrigger>
-      <AlertDialogOverlay isUnstyled />
+    <AlertDialog>
+      <AlertDialogTrigger isUnstyled>Open</AlertDialogTrigger>
+      <AlertDialogOverlay />
       <AlertDialogContent>
         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         <AlertDialogDescription>
           This action cannot be undone. This will permanently delete your
           account and remove your data from our servers.
         </AlertDialogDescription>
+        <AlertDialogCancel asChild>
+          <Button className="w-max" size="sm">
+            Close
+          </Button>
+        </AlertDialogCancel>
+      </AlertDialogContent>
+    </AlertDialog>
+  ),
+  "alert-dialog:aschild": (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button>Open</Button>
+      </AlertDialogTrigger>
+      <AlertDialogOverlay />
+      <AlertDialogContent>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your
+          account and remove your data from our servers.
+        </AlertDialogDescription>
+        <AlertDialogCancel asChild>
+          <Button className="w-max" size="sm">
+            Close
+          </Button>
+        </AlertDialogCancel>
       </AlertDialogContent>
     </AlertDialog>
   ),

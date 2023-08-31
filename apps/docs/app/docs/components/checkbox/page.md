@@ -42,6 +42,10 @@ This property can also be passed in child/ sub component
 
 {% example name="checkbox:required" /%}
 
+### size
+
+{% example name="checkbox:size" /%}
+
 ### API
 
 ---

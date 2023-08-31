@@ -1,7 +1,7 @@
 ---
-title: Rand Picker
-pageTitle: Rand Picker - Rafty UI
-description: Rand Picker
+title: Range Picker
+pageTitle: Range Picker - Rafty UI
+description: Range Picker
 ---
 
 ## Import
@@ -12,6 +12,6 @@ A date range picker combines two DateFields and a RangeCalendar popover to allow
 import { RangePicker } from "@rafty/ui";
 ```
 
-## Usgae
+## Usage
 
 {% example name="range-picker:usage" /%}

@@ -6,4 +6,5 @@ export const checkbox_examples = {
   "checkbox:disabled": <Checkbox isDisabled>Checkbox</Checkbox>,
   "checkbox:checked": <Checkbox checked>Checkbox</Checkbox>,
   "checkbox:required": <Checkbox isRequired>Checkbox</Checkbox>,
+  "checkbox:size": <Checkbox size="sm">Checkbox</Checkbox>,
 };

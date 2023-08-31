@@ -4,21 +4,21 @@ export const alert_examples = {
   "alert:usage": (
     <Alert>
       <AlertIcon />
-      <AlertTitle id="title">Title</AlertTitle>
+      <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),
   "alert:size": (
-    <Alert size="sm" status="error">
+    <Alert size="sm">
       <AlertIcon />
       <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),
   "alert:status": (
-    <Alert status="error">
+    <Alert status="info">
       <AlertIcon />
-      <AlertTitle id="title">Title</AlertTitle>
+      <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),
@@ -30,14 +30,14 @@ export const alert_examples = {
     </Alert>
   ),
   "alert:barebone": (
-    <Alert isBarebone status="info">
+    <Alert isBarebone>
       <AlertIcon />
       <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),
   "alert:unstyled": (
-    <Alert isUnstyled status="info">
+    <Alert isUnstyled>
       <AlertIcon />
       <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
