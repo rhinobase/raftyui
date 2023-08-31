@@ -19,4 +19,6 @@ import { Toggle, ToggleItem } from "@rafty/ui";
 
 ## Usage
 
-{% example name="toggle:usage" /%}
+```jsx
+<Toggle />
+```

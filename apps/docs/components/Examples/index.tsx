@@ -40,6 +40,7 @@ import { menubar_examples } from "./menubar";
 import { navigation_menu_examples } from "./navigation-menu";
 import { tooltip_examples } from "./tooltip";
 import { password_field_examples } from "./password-field";
+import { combobox_examples } from "./combobox";
 
 // Map
 const examples: Record<string, JSX.Element> = {
@@ -79,6 +80,7 @@ const examples: Record<string, JSX.Element> = {
   ...navigation_menu_examples,
   ...tooltip_examples,
   ...password_field_examples,
+  ...combobox_examples,
 };
 
 export function Examples({ name }: { name: string }) {

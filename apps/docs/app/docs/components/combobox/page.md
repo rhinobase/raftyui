@@ -1,7 +1,7 @@
 ---
-title: Combo Box
-pageTitle: Combo Box - Rafty UI
-description: Combo Box
+title: ComboBox
+pageTitle: ComboBox - Rafty UI
+description: ComboBox
 ---
 
 ## Import
