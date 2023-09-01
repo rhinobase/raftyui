@@ -16,8 +16,12 @@ export const navigation = [
       },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
-        title: "aspect-ratio",
+        title: "Aspect Ratio",
         href: "/docs/components/aspect-ratio",
+      },
+      {
+        title: "Avatar",
+        href: "/docs/components/avatar",
       },
       {
         title: "Button",

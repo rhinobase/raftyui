@@ -43,10 +43,12 @@ import { password_field_examples } from "./password-field";
 import { combobox_examples } from "./combobox";
 import { aspect_ratio_examples } from "./aspect-ratio";
 import { calendar_examples } from "./calendar";
+import { avatar_examples } from "./avatar";
 
 // Map
 const examples: Record<string, JSX.Element> = {
   ...accordion_examples,
+  ...avatar_examples,
   ...popover_examples,
   ...progress_examples,
   ...radio_examples,

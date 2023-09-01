@@ -14,7 +14,7 @@ const nextConfig = {
     svgr: false,
   },
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "api.dicebear.com"],
   },
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
 };
