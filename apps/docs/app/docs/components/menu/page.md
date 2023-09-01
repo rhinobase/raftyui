@@ -78,6 +78,7 @@ Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
+| isArrow    | Show arrow in content        | `boolean` | true    |
 | isUnstyled | Removes style from component | `boolean` | false   |
 
 ### Arrow
