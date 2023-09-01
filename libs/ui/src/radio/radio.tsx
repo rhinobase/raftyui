@@ -10,12 +10,12 @@ import { classNames } from "../utils";
 import { Label } from "../field";
 
 // RadioGroup Component
-type RadioGroup = React.ComponentPropsWithoutRef<
+export type RadioGroup = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
 > &
   Partial<RadioGroupContext>;
 
-const RadioGroup = React.forwardRef<
+export const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
 >(
@@ -29,7 +29,7 @@ const RadioGroup = React.forwardRef<
           {...props}
           disabled={isDisabled || disabled}
           className={classNames(
-            size == "sm" ? "gap-2" : "gap-3",
+            size === "sm" ? "gap-2" : "gap-3",
             "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
             className,
           )}
@@ -42,11 +42,11 @@ const RadioGroup = React.forwardRef<
 RadioGroup.displayName = "RadioGroup";
 
 // RadioGroupItem Component
-type RadioGroupItem = React.ComponentPropsWithoutRef<
+export type RadioGroupItem = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
 >;
 
-const RadioGroupItem = React.forwardRef<
+export const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
 >(({ className, children, ...props }, forwardedref) => {
@@ -56,7 +56,7 @@ const RadioGroupItem = React.forwardRef<
 
   const radioItem = (
     <RadioGroupPrimitive.Item
-      ref={forwardedref}
+      {...props}
       className={classNames(
         size === "sm" && "h-3.5 w-3.5",
         size === "md" && "h-5 w-5",
@@ -64,7 +64,7 @@ const RadioGroupItem = React.forwardRef<
         "aspect-square  rounded-full border border-secondary-400 dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
-      {...props}
+      ref={forwardedref}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
         <div
@@ -97,5 +97,3 @@ const RadioGroupItem = React.forwardRef<
   else return radioItem;
 });
 RadioGroupItem.displayName = "RadioGroupItem";
-
-export { RadioGroup, RadioGroupItem };
