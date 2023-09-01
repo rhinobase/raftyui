@@ -94,6 +94,6 @@ export const RadioGroupItem = React.forwardRef<
         </Label>
       </div>
     );
-  else return radioItem;
+  return radioItem;
 });
 RadioGroupItem.displayName = "RadioGroupItem";
