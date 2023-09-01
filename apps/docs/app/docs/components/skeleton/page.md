@@ -4,12 +4,13 @@ pageTitle: Skeleton - Rafty UI
 description: Skeleton
 ---
 
-## Import
+## Anatomy
 
-Skeleton is used to display the loading state of some component in the shape and form of the same component.
+Import the component.
 
 ```jsx
 import { Skeleton } from "@rafty/ui";
+<Skeleton />;
 ```
 
 ## Usage

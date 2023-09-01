@@ -4,18 +4,17 @@ pageTitle: List - Rafty UI
 description: List
 ---
 
-## Import
+## Anatomy
 
-List is used to display list items. It renders a <ul> element by default.
+Import all parts and piece them together.
 
 ```jsx
 import { ListItem List } from "@rafty/ui";
 
-() => (
   <List>
     <ListItem />
   </List>
-);
+
 ```
 
 ## Usage

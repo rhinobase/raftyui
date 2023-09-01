@@ -4,21 +4,16 @@ pageTitle: Toggle Group - Rafty UI
 description: Toggle Group
 ---
 
-## Import
+## Anatomy
 
-A set of two-state buttons that can be toggled on or off.
-
-- ToggleGroup
-- ToggleGroupItem
+Import all parts and piece them together.
 
 ```jsx
 import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
-() => (
-  <ToggleGroup>
-    <ToggleGroupItem></ToggleGroupItem>
-  </ToggleGroup>
-);
+<ToggleGroup>
+  <ToggleGroupItem></ToggleGroupItem>
+</ToggleGroup>;
 ```
 
 ## Usage

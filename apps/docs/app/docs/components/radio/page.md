@@ -4,18 +4,16 @@ pageTitle: Radio - Rafty UI
 description: Radio
 ---
 
-## Import
+## Anatomy
 
-Radios are used when only one choice may be selected in a series of options.
+Import all parts and piece them together.
 
 ```jsx
 import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
 
-() => (
-  <RadioGroup>
-    <RadioGroupItem></RadioGroupItem>
-  </RadioGroup>
-);
+<RadioGroup>
+  <RadioGroupItem></RadioGroupItem>
+</RadioGroup>;
 ```
 
 ## Usage

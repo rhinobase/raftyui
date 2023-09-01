@@ -22,7 +22,6 @@ import { tag_examples } from "./tag";
 import { tag_field_examples } from "./tag-field";
 import { text_examples } from "./text";
 import { textarea_examples } from "./textarea";
-import { input_group_examples } from "./input-group";
 import { list_examples } from "./list";
 import { kbd_examples } from "./kbd";
 import { menu_examples } from "./menu";
@@ -35,7 +34,6 @@ import { context_menu_examples } from "./context-menu";
 import { date_picker_examples } from "./date-picker";
 import { dialog_examples } from "./dialog";
 import { drawer_examples } from "./drawer";
-import { input_field_examples } from "./input-field";
 import { menubar_examples } from "./menubar";
 import { navigation_menu_examples } from "./navigation-menu";
 import { tooltip_examples } from "./tooltip";
@@ -43,6 +41,12 @@ import { password_field_examples } from "./password-field";
 import { combobox_examples } from "./combobox";
 import { aspect_ratio_examples } from "./aspect-ratio";
 import { calendar_examples } from "./calendar";
+import { field_control_examples } from "./field-control";
+import { command_examples } from "./command";
+import { label_examples } from "./label";
+import { input_examples } from "./input-field";
+import { toggle_examples } from "./toggle";
+import { hover_card_examples } from "./hover-card";
 import { avatar_examples } from "./avatar";
 
 // Map
@@ -55,6 +59,8 @@ const examples: Record<string, JSX.Element> = {
   ...range_picker_examples,
   ...select_examples,
   ...spinner_examples,
+  ...command_examples,
+  ...label_examples,
   ...skeleton_examples,
   ...stat_examples,
   ...switch_examples,
@@ -62,11 +68,11 @@ const examples: Record<string, JSX.Element> = {
   ...table_examples,
   ...tag_examples,
   ...tag_field_examples,
+  ...field_control_examples,
   ...text_examples,
   ...textarea_examples,
   ...toast_examples,
   ...toggle_group_examples,
-  ...input_group_examples,
   ...list_examples,
   ...kbd_examples,
   ...menu_examples,
@@ -79,7 +85,9 @@ const examples: Record<string, JSX.Element> = {
   ...date_picker_examples,
   ...dialog_examples,
   ...drawer_examples,
-  ...input_field_examples,
+  ...input_examples,
+  ...toggle_examples,
+  ...hover_card_examples,
   ...menubar_examples,
   ...navigation_menu_examples,
   ...tooltip_examples,

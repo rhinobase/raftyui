@@ -4,27 +4,19 @@ pageTitle: Accordion - Rafty UI
 description: Accordion
 ---
 
-## Import
+## Anatomy
 
-Rafty UI exports 5 accordion-related components.
-
-- Accordion: The wrapper that uses cloneElement to pass props to AccordionItem children.
-- AccordionItem: A single accordion item.
-- AccordionButton: The button that toggles the expand/collapse state of the accordion item. This button must be wrapped in an element with role heading.
-- AccordionPanel: The container for the details to be revealed.
-- AccordionIcon: A chevron-down icon that rotates based on the expanded/collapsed state
+Import all parts and piece them together.
 
 ```jsx
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@rafty/ui";
 
-() => (
-  <Accordion>
-    <AccordionItem>
-      <AccordionTrigger />
-      <AccordionContent />
-    </AccordionItem>
-  </Accordion>
-);
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger />
+    <AccordionContent />
+  </AccordionItem>
+</Accordion>;
 ```
 
 ## Usage

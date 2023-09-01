@@ -44,6 +44,7 @@ export const navigation = [
         href: "/docs/components/context-menu",
       },
       { title: "Calendar", href: "/docs/components/calendar" },
+      { title: "Command", href: "/docs/components/command" },
       {
         title: "Date Picker",
         href: "/docs/components/date-picker",
@@ -57,12 +58,16 @@ export const navigation = [
         href: "/docs/components/drawer",
       },
       {
-        title: "Input Field",
-        href: "/docs/components/input-field",
+        title: "Field Control",
+        href: "/docs/components/field-control",
       },
       {
-        title: "Input Group",
-        href: "/docs/components/input-group",
+        title: "Hover Card",
+        href: "/docs/components/hover-card",
+      },
+      {
+        title: "Input Field",
+        href: "/docs/components/input-field",
       },
       {
         title: "Kbd",
@@ -71,6 +76,10 @@ export const navigation = [
       {
         title: "List",
         href: "/docs/components/list",
+      },
+      {
+        title: "Label",
+        href: "/docs/components/label",
       },
       {
         title: "Menu",
@@ -83,10 +92,6 @@ export const navigation = [
       {
         title: "Navigation Menu",
         href: "/docs/components/navigation-menu",
-      },
-      {
-        title: "Number Field",
-        href: "/docs/components/number-field",
       },
       {
         title: "Password Field",
@@ -155,6 +160,10 @@ export const navigation = [
       {
         title: "Toast",
         href: "/docs/components/toast",
+      },
+      {
+        title: "Toggle",
+        href: "/docs/components/toggle",
       },
       {
         title: "Toggle Group",

@@ -4,24 +4,18 @@ pageTitle: Card - Rafty UI
 description: Card
 ---
 
-## Import
+## Anatomy
 
-Rafty UI exports 4 components to help you create a Card.
-
-- Card: The parent wrapper that provides context for its children.
-- CardHeader: The wrapper that contains a card's header.
-- CardBody: The wrapper that houses the card's main content.
-- CardFooter: The footer that houses the card actions.
+Import all parts and piece them together.
 
 ```jsx
 import { Card, CardFooter, CardHeader } from "@rafty/ui";
-() => (
-  <Card>
-    <CardHeader />
-    <CardContent />
-    <CardFooter />
-  </Card>
-);
+
+<Card>
+  <CardHeader />
+  <CardContent />
+  <CardFooter />
+</Card>;
 ```
 
 ## Usage

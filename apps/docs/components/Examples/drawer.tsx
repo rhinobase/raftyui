@@ -20,7 +20,7 @@ function Example() {
         <DrawerContent>
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
-            This is sample drawer description. :)
+            This is sample drawer description. :
           </DrawerDescription>
           <DrawerClose />
         </DrawerContent>
@@ -40,7 +40,7 @@ function Size() {
         <DrawerContent>
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
-            This is sample drawer description. :)
+            This is sample drawer description.
           </DrawerDescription>
           <DrawerClose />
         </DrawerContent>
@@ -59,7 +59,7 @@ function Side() {
         <DrawerContent>
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
-            This is sample drawer description. :)
+            This is sample drawer description.
           </DrawerDescription>
           <DrawerClose />
         </DrawerContent>

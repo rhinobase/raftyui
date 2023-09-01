@@ -4,21 +4,19 @@ pageTitle: Popover - Rafty UI
 description: Popover
 ---
 
-## Import
+## Anatomy
 
-Displays rich content in a portal, triggered by a button.
+Import all parts and piece them together.
 
 ```jsx
 import { Popover, PopoverTrigger, PopoverContent } from "@rafty/ui";
 
-() => (
-  <Popover>
-    <PopoverTrigger />
-    <PopoverContent>
-      <PopverClose />
-    </PopoverContent>
-  </Popover>
-);
+<Popover>
+  <PopoverTrigger />
+  <PopoverContent>
+    <PopverClose />
+  </PopoverContent>
+</Popover>;
 ```
 
 ## Usage

@@ -4,14 +4,14 @@ pageTitle: Switch - Rafty UI
 description: Switch
 ---
 
-## Import
+## Anatomy
 
-The Switch component is used as an alternative for the checkbox component.
-
-- Switch
+Import the component.
 
 ```jsx
 import { Switch } from "@rafty/ui";
+
+<Switch />;
 ```
 
 ## Usage

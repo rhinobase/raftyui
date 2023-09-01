@@ -4,9 +4,9 @@ pageTitle: Table - Rafty UI
 description: Table
 ---
 
-## Import
+## Anatomy
 
-Table component is used to organize and display data efficiently. It renders a `<table>` element by default
+Import all parts and piece them together.
 
 ```jsx
 import {
@@ -20,7 +20,7 @@ import {
     Td
 } from "@rafty/ui";
 
-()=>(
+
     <TableContainer>
      <Table>
       <TableHead>
@@ -36,7 +36,7 @@ import {
       <TableFooter/>
      </Table>
     </TableContainer>
-)
+
 ```
 
 ## Usage

@@ -4,14 +4,14 @@ pageTitle: Text Area - Rafty UI
 description: Text Area
 ---
 
-## Import
+## Anatomy
 
-The Textarea component allows you to easily create multi-line text inputs.
-
-- Textarea
+Import the component.
 
 ```jsx
 import { Textarea } from "@rafty/ui";
+
+<Textarea />;
 ```
 
 ## Usage

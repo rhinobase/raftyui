@@ -4,27 +4,25 @@ pageTitle: Navigation Menu - Rafty UI
 description: Navigation Menu
 ---
 
-## Import
+## Anatomy
 
-A collection of links for navigating websites.
+Import all parts and piece them together.
 
 ```jsx
 import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuListItem, NavigationMenuTrigger } from "@rafty/ui";
 
-() => (
-  <NavigationMenu>
-    <NavigationMenuListItem>
-      <NavigationMenuItem>
-        <NavigationMenuTrigger />
-        <NavigationMenuContent>
-          <NavigationMenuLink />
-          <NavigationMenuList />
-        </NavigationMenuContent>
-      </NavigationMenuItem>
-      <NavigationMenuIndicator />
-    </NavigationMenuListItem>
-  </NavigationMenu>
-);
+<NavigationMenu>
+  <NavigationMenuListItem>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger />
+      <NavigationMenuContent>
+        <NavigationMenuLink />
+        <NavigationMenuList />
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuIndicator />
+  </NavigationMenuListItem>
+</NavigationMenu>;
 ```
 
 ## Usage

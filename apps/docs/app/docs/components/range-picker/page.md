@@ -4,12 +4,14 @@ pageTitle: Range Picker - Rafty UI
 description: Range Picker
 ---
 
-## Import
+## Anatomy
 
-A date range picker combines two DateFields and a RangeCalendar popover to allow users to enter or select a date and time range.
+Import all parts and piece them together.
 
 ```jsx
 import { RangePicker } from "@rafty/ui";
+
+<RangePicker />;
 ```
 
 ## Usage

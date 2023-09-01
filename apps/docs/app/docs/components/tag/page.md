@@ -4,14 +4,14 @@ pageTitle: Tag - Rafty UI
 description: Tag
 ---
 
-# Import
+# Anatomy
 
-Tag component is used for items that need to be labeled, categorized, or organised using keywords that describe them.
-
-- Tag: The wrapper for all the tag elements.
+Import the component.
 
 ```jsx
 import { Tag } from "@rafty/ui";
+
+<Tag />;
 ```
 
 ## Usage

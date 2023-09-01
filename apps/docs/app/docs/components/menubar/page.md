@@ -4,36 +4,34 @@ pageTitle: Menu Bar - Rafty UI
 description: Menu Bar
 ---
 
-## Import
+## Anatomy
 
-A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+Import all parts and piece them together.
 
 ```jsx
 import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarItem, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from "@rafty/ui";
 
-() => (
-  <Menubar>
-    <MenubarMenu>
-      <MenubarTrigger />
-      <MenubarContent>
-        <MenubarLabel />
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger />
+    <MenubarContent>
+      <MenubarLabel />
+      <MenubarItem />
+      <MenubarGroup>
         <MenubarItem />
-        <MenubarGroup>
-          <MenubarItem />
-        </MenubarGroup>
-        <MenubarCheckboxItem />
-        <MenubarRadioGroup>
-          <MenubarRadioItem />
-        </MenubarRadioGroup>
-        <MenubarSub>
-          <MenubarSubTrigger />
-          <MenubarSubContent />
-        </MenubarSub>
-        <MenubarSeparator />
-      </MenubarContent>
-    </MenubarMenu>
-  </Menubar>
-);
+      </MenubarGroup>
+      <MenubarCheckboxItem />
+      <MenubarRadioGroup>
+        <MenubarRadioItem />
+      </MenubarRadioGroup>
+      <MenubarSub>
+        <MenubarSubTrigger />
+        <MenubarSubContent />
+      </MenubarSub>
+      <MenubarSeparator />
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>;
 ```
 
 ## Usage

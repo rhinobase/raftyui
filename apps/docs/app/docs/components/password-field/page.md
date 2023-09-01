@@ -4,12 +4,14 @@ pageTitle: Password Field - Rafty UI
 description: Password Field
 ---
 
-## Import
+## Anatomy
 
-PasswordField component is a component that is used to get user input in a password field.
+Import the component.
 
 ```jsx
 import { PasswordField } from "@rafty/ui";
+
+<PasswordField />;
 ```
 
 ## Usage

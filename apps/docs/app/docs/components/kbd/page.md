@@ -4,14 +4,16 @@ pageTitle: Keyboard Key - Rafty UI
 description: Keyboard Key
 ---
 
-## Import
+## Anatomy
 
-The keyboard key component exists to show which key or combination of keys performs a given action.
+Import the component.
 
 - kbd
 
 ```jsx
 import { Kbd } from "@rafty/ui";
+
+<Kbd />;
 ```
 
 ## Usage

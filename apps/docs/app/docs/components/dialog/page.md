@@ -4,26 +4,24 @@ pageTitle: Dialog - Rafty UI
 description: Dialog
 ---
 
-## Import
+## Anatomy
 
-A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+Import all parts and piece them together.
 
 ```jsx
 import { Dialog, DialogContent, DialogOverlay, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogFooter } from "@rafty/ui";
 
-() => (
-  <Dialog>
-    <DialogTrigger />
-    <DialogOverlay />
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle />
-      </DialogHeader>
-      <DialogDescription />
-      <DialogFooter />
-    </DialogContent>
-  </Dialog>
-);
+<Dialog>
+  <DialogTrigger />
+  <DialogOverlay />
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle />
+    </DialogHeader>
+    <DialogDescription />
+    <DialogFooter />
+  </DialogContent>
+</Dialog>;
 ```
 
 ## Usage

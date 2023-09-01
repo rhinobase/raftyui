@@ -4,21 +4,20 @@ pageTitle: Stat - Rafty UI
 description: Stat
 ---
 
-## Import
+## Anatomy
 
-As the name implies, the `Stat` component is used to display some statistics.Its is majorly used in finance projects.
+Import all parts and piece them together.
 
 ```jsx
 import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
-() => (
-  <Stat>
-    <StatLabel />
-    <StatValue />
-    <StatHelpText>
-      <StatIcon />
-    </StatHelpText>
-  </Stat>
-);
+
+<Stat>
+  <StatLabel />
+  <StatValue />
+  <StatHelpText>
+    <StatIcon />
+  </StatHelpText>
+</Stat>;
 ```
 
 ## Usage

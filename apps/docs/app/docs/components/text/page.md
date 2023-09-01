@@ -4,14 +4,14 @@ pageTitle: Text - Rafty UI
 description: Text
 ---
 
-# Import
+# Anatomy
 
-Text is the used to render text and paragraphs within an interface.
-
-- Text
+Import the component.
 
 ```jsx
 import { Text } from "@rafty/ui";
+
+<Text />;
 ```
 
 ## Usage

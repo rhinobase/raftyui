@@ -4,14 +4,14 @@ pageTitle: Spinner - Rafty UI
 description: Spinner
 ---
 
-## Import
+## Anatomy
 
-Spinners provide a visual cue that an action is processing awaiting a course of change or a result.
-
-- Spinner
+Import the component.
 
 ```jsx
 import { Spinner } from "@rafty/ui";
+
+<Spinner />;
 ```
 
 ## Usage

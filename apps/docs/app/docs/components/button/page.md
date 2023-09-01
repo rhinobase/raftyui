@@ -4,12 +4,14 @@ pageTitle: Button - Rafty UI
 description: Button
 ---
 
-## Import
+## Anatomy
 
-Button component is used to trigger an action or event, such as submitting a form, opening a Dialog, canceling an action, or performing a delete operation.
+Import the component.
 
 ```jsx
 import { Button } from "@rafty/ui";
+
+<Button />;
 ```
 
 ## Usage

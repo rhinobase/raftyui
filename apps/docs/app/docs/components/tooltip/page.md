@@ -4,21 +4,17 @@ pageTitle: Tooltip - Rafty UI
 description: Tooltip
 ---
 
-## Import
+## Anatomy
 
-A tooltip is a brief, informative message that appears when a user interacts with an element.
-
-- Tooltip
+Import all parts and piece them together.
 
 ```jsx
 import { Tooltip, TooltipTrigger, TooltipContent } from "@rafty/ui";
 
-() => (
-  <Tooltip>
-    <TooltipTrigger></TooltipTrigger>
-    <TooltipContent></TooltipContent>
-  </Tooltip>
-);
+<Tooltip>
+  <TooltipTrigger></TooltipTrigger>
+  <TooltipContent></TooltipContent>
+</Tooltip>;
 ```
 
 ## Usage

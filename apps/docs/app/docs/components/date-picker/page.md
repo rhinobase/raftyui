@@ -4,14 +4,14 @@ pageTitle: Date Picker - Rafty UI
 description: Date Picker
 ---
 
-## Import
+## Anatomy
 
-DatePickers combine a DateField and a Calendar popover to allow users to enter or select a date and time value.
-
-- DatePicker
+Import the component.
 
 ```jsx
 import { DatePicker } from "@rafty/ui";
+
+<DatePicker />;
 ```
 
 ## Usage

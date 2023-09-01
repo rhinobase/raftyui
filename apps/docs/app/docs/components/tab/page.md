@@ -4,26 +4,19 @@ pageTitle: Tab - Rafty UI
 description: Tab
 ---
 
-## Import
+## Anatomy
 
-A set of layered sections of content—known as tab panels—that are displayed one at a time.
-
-- Tab
-- TabTrigger
-- TabList
-- TabContent
+Import all parts and piece them together.
 
 ```jsx
 import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
 
-() => (
-  <Tab>
-    <TabList>
-      <TabTrigger />
-      <TabContent />
-    </TabList>
-  </Tab>
-);
+<Tab>
+  <TabList>
+    <TabTrigger />
+    <TabContent />
+  </TabList>
+</Tab>;
 ```
 
 ## Usage

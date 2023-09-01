@@ -4,12 +4,14 @@ pageTitle: AspectRatio - Rafty UI
 description: AspectRatio
 ---
 
-## Import
+## Anatomy
+
+Import the component.
 
 ```jsx
 import { AspectRatio } from "@rafty/ui";
 
-() => <AspectRatio />;
+<AspectRatio />;
 ```
 
 ## Usage

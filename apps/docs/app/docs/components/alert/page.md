@@ -4,25 +4,18 @@ pageTitle: Alert - Rafty UI
 description: Alert
 ---
 
-## Import
+## Anatomy
 
-Rafty UI exports 4 alert related components.
-
-- Alert: The wrapper for alert components.
-- AlertIcon: The visual icon for the alert that changes based on the status prop.
-- AlertTitle: The title of the alert to be announced by screen readers.
-- AlertDescr iption: The description of the alert to be announced by screen readers.
+Import all parts and piece them together.
 
 ```jsx
 import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 
-() => (
-  <Alert>
-    <AlertIcon />
-    <AlertTitle />
-    <AlertDescription />
-  </Alert>
-);
+<Alert>
+  <AlertIcon />
+  <AlertTitle />
+  <AlertDescription />
+</Alert>;
 ```
 
 ## Usage

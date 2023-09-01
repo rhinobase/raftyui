@@ -4,17 +4,16 @@ pageTitle: Select - Rafty UI
 description: Select
 ---
 
-## Import
+## Anatomy
 
-Select component is a component that allows users pick a value from predefined options.
+Import all parts and piece them together.
 
 ```jsx
 import { Select, SelectItem } from "@rafty/ui";
-() => (
-  <Select>
-    <SelectItem></SelectItem>
-  </Select>
-);
+
+<Select>
+  <SelectItem></SelectItem>
+</Select>;
 ```
 
 ## Usage

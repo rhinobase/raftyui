@@ -4,14 +4,14 @@ pageTitle: Toast - Rafty UI
 description: Toast
 ---
 
-## Import
+## Anatomy
 
-The toast component is used to give feedback to users after an action has taken place.
-
-- Toast
+Import the component.
 
 ```jsx
 import { Toast } from "@rafty/ui";
+
+<Toast />;
 ```
 
 ## Usage

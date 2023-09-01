@@ -4,20 +4,18 @@ pageTitle: Input Group - Rafty UI
 description: Input Group
 ---
 
-## Import
+## Anatomy
 
-Input component is a component that is used to get user input in a text field.
+Import all parts and piece them together.
 
 ```jsx
 import { InputGroup, LeftAddon, RightAddon, InputField } from "@rafty/ui";
 
-() => (
-  <InputGroup>
-    <LeftAddon />
-    <InputField />
-    <RightAddon />
-  </InputGroup>
-);
+<InputGroup>
+  <LeftAddon />
+  <InputField />
+  <RightAddon />
+</InputGroup>;
 ```
 
 ### Usage

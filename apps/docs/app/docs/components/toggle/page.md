@@ -4,21 +4,16 @@ pageTitle: Toggle - Rafty UI
 description: Toggle
 ---
 
-## Import
+## Anatomy
 
-A set of two-state buttons that can be toggled on or off.
-
-- Toggle
-- ToggleItem
+Import the component.
 
 ```jsx
-import { Toggle, ToggleItem } from "@rafty/ui";
+import { Toggle } from "@rafty/ui";
 
-() => <Toggle />;
+<Toggle />;
 ```
 
 ## Usage
 
-```jsx
-<Toggle />
-```
+{% example name="toggle:usage" /%}

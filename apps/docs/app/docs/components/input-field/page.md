@@ -4,14 +4,14 @@ pageTitle: InputField - Rafty UI
 description: InputField
 ---
 
-## Import
+## Anatomy
 
-Input component is a component that is used to get user input in a text field.
-
-- InputField
+Import the component.
 
 ```jsx
 import { InputField } from "@rafty/ui";
+
+<InputField />;
 ```
 
 ### Usage
@@ -47,6 +47,22 @@ Pass the `isDisabled` prop to make input-field Disabled.
 Pass ` isUnstyled` prop to remove style component
 
 {% example name="input-field:unstyled" /%}
+
+### Left Addon
+
+{% example name="input-field:left_addon" /%}
+
+### Right Addon
+
+{% example name="input-field:right_addon" /%}
+
+### Prefix
+
+{% example name="input-field:prefix" /%}
+
+### Suffix
+
+{% example name="input-field:suffix" /%}
 
 ### API
 

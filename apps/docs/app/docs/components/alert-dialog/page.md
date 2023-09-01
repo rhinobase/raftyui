@@ -4,37 +4,27 @@ pageTitle: Alert Dialog - Rafty UI
 description: Alert Dialog
 ---
 
-## Import
+## Anatomy
 
-Rafty UI exports 7 alert dialog related components.
-
-- AlertDialog: provides context and state for the dialog.
-- AlertDialogHeader: should contain the title announced by screen readers.
-- AlertDialogBody: should contain the description announced by screen readers.
-- AlertDialogFooter: should contain the actions of the dialog.
-- AlertDialogOverlay: The dimmed overlay behind the dialog.
-- AlertDialogContent: The wrapper for the alert dialog's content.
-- AlertDialogCloseButton: The button that closes the dialog.
+Import all parts and piece them together.
 
 ```jsx
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger } from "@rafty/ui";
 
-() => (
-  <AlertDialog>
-    <AlertDialogTrigger />
-    <AlertDialogOverlay />
-    <AlertDialogContent>
-      <AlertDialogTitle />
-      <AlertDialogDescription />
-      <AlertDialogCancel>
-        <Button />
-      </AlertDialogCancel>
-      <AlertDialogAction>
-        <Button />
-      </AlertDialogAction>
-    </AlertDialogContent>
-  </AlertDialog>
-);
+<AlertDialog>
+  <AlertDialogTrigger />
+  <AlertDialogOverlay />
+  <AlertDialogContent>
+    <AlertDialogTitle />
+    <AlertDialogDescription />
+    <AlertDialogCancel>
+      <Button />
+    </AlertDialogCancel>
+    <AlertDialogAction>
+      <Button />
+    </AlertDialogAction>
+  </AlertDialogContent>
+</AlertDialog>;
 ```
 
 ## Usage

@@ -4,12 +4,14 @@ pageTitle: Tag Field - Rafty UI
 description: Tag Field
 ---
 
-# Import
+# Anatomy
 
-- TagField: TagField is used to create tag on the basis of inputs
+Import the component.
 
 ```jsx
 import { TagField } from "@rafty/ui";
+
+<TagField />;
 ```
 
 ## Usage

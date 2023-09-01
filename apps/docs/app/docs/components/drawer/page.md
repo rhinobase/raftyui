@@ -4,9 +4,9 @@ pageTitle: Drawer - Rafty UI
 description: Drawer
 ---
 
-## Import
+## Anatomy
 
-The Drawer component is a panel that slides out from the edge of the screen. It can be useful when you need users to complete a task or view some details without leaving the current page.
+Import all parts and piece them together.
 
 ```jsx
 import { Drawer, DrawerOverlay, DrawerContent, DrawerTitle, DrawerDescription } from "@rafty/ui";

@@ -4,9 +4,33 @@ pageTitle: ComboBox - Rafty UI
 description: ComboBox
 ---
 
-## Import
+## Anatomy
 
-ComboBoxes combine a text entry with a picker menu, allowing users to filter longer lists to only the selections matching a query.
+Import all parts and piece them together.
+
+```jsx
+import { Popover, PopoverTrigger, Avatar, PopoverContent, Command, CommandList, CommandGroup, CommandItem, CommandLoading, Spinner, Text, CommandEmpty } from "@rafty/ui";
+
+<Popover>
+  <PopoverTrigger>
+    <Avatar />
+  </PopoverTrigger>
+  <PopoverContent>
+    <Command>
+      <CommandList>
+        <CommandGroup>
+          <CommandItem />
+          <CommandLoading>
+            <Spinner />
+            <Text />
+          </CommandLoading>
+          <CommandEmpty />
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  </PopoverContent>
+</Popover>;
+```
 
 ## Usage
 

@@ -4,12 +4,14 @@ pageTitle: Progress - Rafty UI
 description: Progress
 ---
 
-## Import
+## Anatomy
 
-Progress is used to display the progress status for a task that takes a long time or consists of several steps.
+Import the component.
 
 ```jsx
 import { Progress } from "@rafty/ui";
+
+<Progress />;
 ```
 
 ## Usage

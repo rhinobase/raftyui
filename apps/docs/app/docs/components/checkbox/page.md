@@ -4,14 +4,16 @@ pageTitle: Checkbox - Rafty UI
 description: Checkbox
 ---
 
-## Import
+## Anatomy
 
-Checkbox component is used in forms when a user needs to select multiple values from several options.
+Import the component.
 
 - Checkbox:
 
 ```jsx
 import { Checkbox } from "@rafty/ui";
+
+<Checkbox />;
 ```
 
 ### Usage
