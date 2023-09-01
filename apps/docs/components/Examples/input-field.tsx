@@ -27,7 +27,12 @@ export const input_examples = {
   ),
   "input-field:required": <InputField isRequired />,
   "input-field:disabled": <InputField isDisabled />,
-  "input-field:unstyled": <InputField isUnstyled />,
+  "input-field:unstyled": (
+    <InputField
+      isUnstyled
+      className=" rounded-md  bg-zinc-800 border hover:border-primary-500 "
+    />
+  ),
   "input-field:loading": <InputField isLoading />,
   "input-field:readonly": <InputField isReadOnly />,
 

@@ -12,6 +12,7 @@ export const switch_examples = {
   ),
 
   "switch:disabled": <Switch isDisabled />,
+  "switch:readonly": <Switch isReadOnly />,
 
   "switch:selected": <Switch checked />,
 

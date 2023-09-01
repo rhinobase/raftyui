@@ -48,6 +48,7 @@ import { input_examples } from "./input-field";
 import { toggle_examples } from "./toggle";
 import { hover_card_examples } from "./hover-card";
 import { avatar_examples } from "./avatar";
+import { scroll_area_examples } from "./scroll-area";
 
 // Map
 const examples: Record<string, JSX.Element> = {
@@ -70,6 +71,7 @@ const examples: Record<string, JSX.Element> = {
   ...tag_field_examples,
   ...field_control_examples,
   ...text_examples,
+  ...scroll_area_examples,
   ...textarea_examples,
   ...toast_examples,
   ...toggle_group_examples,

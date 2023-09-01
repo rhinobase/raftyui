@@ -39,3 +39,7 @@ Pass the `defaultSelected` prop if you need to set the switch selected by defaul
 ## Required
 
 {% example name="switch:required" /%}
+
+## IsReadOnly
+
+{% example name="switch:readonly" /%}

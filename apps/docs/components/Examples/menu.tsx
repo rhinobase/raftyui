@@ -115,11 +115,17 @@ export const menu_examples = {
   ),
   "menu:barebone": (
     <Menu isBarebone>
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
-      <MenuContent>
-        <MenuItem>New Tab</MenuItem>
-        <MenuItem>New Window</MenuItem>
-        <MenuItem disabled>New Private Window </MenuItem>
+      <MenuTrigger
+        className="flex items-center space-x-2 px-3 py-2 bg-zinc-800 text-white rounded-md hover:bg-zinc-600"
+        rightIcon={<HiOutlineChevronDown className="w-5 h-5" />}
+      >
+        Actions
+      </MenuTrigger>
+
+      <MenuContent className="bg-zinc-800 rounded-md shadow-md py-10 px-4  space-y-2 text-white">
+        <MenuItem className="hover:bg-zinc-700   ">New Tab</MenuItem>
+        <MenuItem className="hover:bg-zinc-700 ">New Window</MenuItem>
+        <MenuItem className="text-zinc-500 ">New Private Window</MenuItem>
       </MenuContent>
     </Menu>
   ),

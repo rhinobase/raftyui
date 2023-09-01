@@ -114,6 +114,10 @@ export const navigation = [
         href: "/docs/components/range-picker",
       },
       {
+        title: "Scroll Area",
+        href: "/docs/components/scroll-area",
+      },
+      {
         title: "Search Field",
         href: "/docs/components/search-field",
       },

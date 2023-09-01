@@ -49,7 +49,7 @@ export const table_examples = {
   ),
   "table:variant": (
     <TableContainer>
-      <Table variant="simple">
+      <Table variant="striped">
         <TableHead>
           <Tr>
             <Th>To Convert</Th>
@@ -126,7 +126,7 @@ export const table_examples = {
   ),
   "table:container": (
     <TableContainer>
-      <Table variant="simple">
+      <Table>
         <TableHead>
           <Tr>
             <Th>To Convert</Th>
