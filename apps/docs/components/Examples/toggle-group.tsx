@@ -9,7 +9,14 @@ export const toggle_group_examples = {
     </ToggleGroup>
   ),
   "toggle-group:type": (
-    <ToggleGroup type="single" defaultValue="1">
+    <ToggleGroup type="multiple" defaultValue={["1"]}>
+      <ToggleGroupItem value="1">1</ToggleGroupItem>
+      <ToggleGroupItem value="2">2</ToggleGroupItem>
+      <ToggleGroupItem value="3">3</ToggleGroupItem>
+    </ToggleGroup>
+  ),
+  "toggle-group:size": (
+    <ToggleGroup type="single" defaultValue="1" size="sm">
       <ToggleGroupItem value="1">1</ToggleGroupItem>
       <ToggleGroupItem value="2">2</ToggleGroupItem>
       <ToggleGroupItem value="3">3</ToggleGroupItem>

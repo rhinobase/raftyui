@@ -43,7 +43,7 @@ Pass `isBarebone` prop to remove style in Alert Dialog
 
 {% example name="alert-dialog:barebone" /%}
 
-## UnStyled
+## Unstyled
 
 Pass `isUnstyled` prop to remove style from a sub component
 

@@ -20,6 +20,10 @@ import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
 
 {% example name="radio:usage" /%}
 
+## Size
+
+{% example name="radio:size" /%}
+
 ## Default Value
 
 {% example name="radio:default" /%}

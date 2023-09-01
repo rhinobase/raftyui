@@ -23,6 +23,10 @@ import { Popover, PopoverTrigger, PopoverContent } from "@rafty/ui";
 
 {% example name="popover:usage" /%}
 
+## Size
+
+{% example name="popover:size" /%}
+
 ## Default Open
 
 To Open Popover By Default pass `defaultOpen` prop.

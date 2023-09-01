@@ -20,6 +20,10 @@ import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
 {% example name="toggle-group:usage" /%}
 
+## Size
+
+{% example name="toggle-group:size" /%}
+
 ## Type
 
 Using the `type` prop you can set the type of toggle-group. Values can be `single`, `multiple`;

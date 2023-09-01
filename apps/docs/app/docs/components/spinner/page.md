@@ -23,3 +23,9 @@ import { Spinner } from "@rafty/ui";
 Pass the `size` prop if you need to adjust the size of the spinner. Values can be `sm`, `md`, `lg`.
 
 {% example name="spinner:size" /%}
+
+## InheritParent
+
+InheritParent prop let spinner inherit color props from its parent element when true
+
+{% example name="spinner:InheritParent" /%}

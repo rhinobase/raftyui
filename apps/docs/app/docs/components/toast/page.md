@@ -33,13 +33,3 @@ Pass the `message` prop to pass message into the toast
 Pass the `severity` prop if you need to adjust the color of the toast. Values can be `success`, `info`, `error`, `warning`.
 
 {% example name="toast:severity" /%}
-
-## Visible
-
-Pass `visible` prop to set visibility of toast
-
-{% example name="toast:visible" /%}
-
-## Used with react-hot-toast
-
-{% example name="toast:hot-toast" /%}

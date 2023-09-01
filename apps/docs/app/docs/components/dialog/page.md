@@ -34,11 +34,19 @@ Pass the `size` prop if you need to adjust the size of the dialog. Values can be
 
 {% example name="dialog:size" /%}
 
+## AsChild
+
+{% example name="dialog:asChild" /%}
+
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in dialog.
 
 {% example name="dialog:barebone" /%}
+
+## Unstyled
+
+{% example name="dialog:unstyled" /%}
 
 ### API
 
@@ -66,9 +74,10 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 ### Content
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | false   |
+| Property        | Description                      | Type      | Default |
+| --------------- | -------------------------------- | --------- | ------- |
+| showCloseButton | show default dialog close button | `boolean` | true    |
+| isUnstyled      | Removes style from component     | `boolean` | false   |
 
 ### Close
 

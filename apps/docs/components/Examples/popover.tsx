@@ -9,6 +9,14 @@ export const popover_examples = {
       </PopoverContent>
     </Popover>
   ),
+  "popover:size": (
+    <Popover size="lg">
+      <PopoverTrigger>Open</PopoverTrigger>
+      <PopoverContent>
+        <div>Popover Content</div>
+      </PopoverContent>
+    </Popover>
+  ),
   "popover:default": (
     <Popover defaultOpen>
       <PopoverTrigger>Open</PopoverTrigger>

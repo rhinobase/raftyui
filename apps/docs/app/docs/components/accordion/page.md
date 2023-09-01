@@ -47,7 +47,7 @@ Pass `isBarebone` prop to remove all style in accordion.
 
 {% example name="accordion:barebone" /%}
 
-## UnStyled
+## Unstyled
 
 Pass ` isUnstyled` prop to remove style from a particulart sub component.
 

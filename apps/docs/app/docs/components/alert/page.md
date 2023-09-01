@@ -46,7 +46,7 @@ Pass `isBarebone` prop to remove all style in alert.
 
 {% example name="alert:barebone" /%}
 
-## UnStyled
+## Unstyled
 
 Pass `isUnstyled` prop to remove all style from a particalr sub component.
 
