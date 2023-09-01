@@ -33,9 +33,13 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 
 Pass the `size` prop if you need to adjust the size of the navigation-menu content. Values can be `sm`, `md`, `lg`.
 
+{% example name="navigation-menu:size" /%}
+
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in Navigation Menu.
+
+{% example name="navigation-menu:barebone" /%}
 
 ## UnStlyed
 

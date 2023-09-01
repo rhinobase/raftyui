@@ -56,8 +56,13 @@ export const card_examples = {
     </Card>
   ),
   "card:barebone": (
-    <Card isBarebone>
-      <CardHeader>Customer dashboard</CardHeader>
+    <Card
+      isBarebone
+      className="bg-white p-4 shadow-md rounded-lg dark:bg-secondary-800 space-y-4 dark:text-white"
+    >
+      <CardHeader className="font-semibold text-xl">
+        Customer dashboard
+      </CardHeader>
       <CardContent>
         View a summary of all your customers over the last month. Lorem, ipsum
         dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum

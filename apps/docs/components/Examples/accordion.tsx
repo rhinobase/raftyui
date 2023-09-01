@@ -103,22 +103,36 @@ export const accordion_examples = {
     </Accordion>
   ),
   "accordion:barebone": (
-    <Accordion isBarebone collapsible type="single">
-      <AccordionItem value="1">
-        <AccordionTrigger>
+    <Accordion
+      isBarebone
+      collapsible
+      type="single"
+      className="w-full space-y-2"
+    >
+      <AccordionItem
+        value="1"
+        className="bg-white dark:bg-secondary-800 dark:text-white shadow-md p-2 px-4 rounded-lg"
+      >
+        <AccordionTrigger className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full">
           <span className="flex-1 text-left">Section 1 title</span>
         </AccordionTrigger>
-        <AccordionContent data-cy="content">
+        <AccordionContent
+          data-cy="content"
+          className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="2">
-        <AccordionTrigger>
+      <AccordionItem
+        value="2"
+        className="bg-white dark:bg-secondary-800 dark:text-white shadow-md p-2 px-4 rounded-lg"
+      >
+        <AccordionTrigger className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full">
           <span className="flex-1 text-left">Section 2 title</span>
         </AccordionTrigger>
-        <AccordionContent>
+        <AccordionContent className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
@@ -128,8 +142,14 @@ export const accordion_examples = {
   ),
   "accordion:unstyled": (
     <Accordion collapsible type="single" defaultValue="1">
-      <AccordionItem value="1">
-        <AccordionTrigger isUnstyled>
+      <AccordionItem
+        value="1"
+        className="bg-white dark:bg-secondary-800 dark:text-white p-2 px-4 rounded-lg"
+      >
+        <AccordionTrigger
+          isUnstyled
+          className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full"
+        >
           <span className="flex-1 text-left">Section 1 title</span>
         </AccordionTrigger>
         <AccordionContent data-cy="content">

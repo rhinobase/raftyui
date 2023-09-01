@@ -50,7 +50,14 @@ export const button_examples = {
       </Button>
     </div>
   ),
-  "button:unstyled": <Button isUnstyled>Button</Button>,
+  "button:unstyled": (
+    <Button
+      isUnstyled
+      className="bg-white px-5 p-2 hover:bg-secondary-200 rounded-lg dark:bg-secondary-500 dark:text-white dark:hover:bg-secondary-700"
+    >
+      Button
+    </Button>
+  ),
   "button:active": <Button isActive>Button</Button>,
   "button:disabled": <Button isDisabled>Button</Button>,
   "button:loading": <Button isLoading>Button</Button>,

@@ -30,6 +30,10 @@ import { Menu, MenuTrigger, MenuContent, MenuContent, MenuSeparator, MenuRadioGr
 
 {% example name="menu:usage" /%}
 
+## Size
+
+{% example name="menu:size" /%}
+
 ## SubMenu
 
 {% example name="menu:submenu" /%}
@@ -45,6 +49,8 @@ import { Menu, MenuTrigger, MenuContent, MenuContent, MenuSeparator, MenuRadioGr
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in Menu.
+
+{% example name="menu:barebone" /%}
 
 ## UnStyled
 
