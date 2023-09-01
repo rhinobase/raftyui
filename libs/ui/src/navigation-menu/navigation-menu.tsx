@@ -74,6 +74,7 @@ export const NavigationMenuList = ({
     </NavigationMenuPrimitive.List>
   );
 };
+NavigationMenuList.displayName = "NavigationMenuList";
 
 // NavigationMenuItem Component
 export type NavigationMenuItem = ComponentProps<
@@ -81,6 +82,7 @@ export type NavigationMenuItem = ComponentProps<
 >;
 
 export const NavigationMenuItem = NavigationMenuPrimitive.Item;
+NavigationMenuItem.displayName = "NavigationMenuItem";
 
 // NavigationMenuTrigger Component
 export type NavigationMenuTrigger = React.ComponentPropsWithoutRef<
@@ -129,6 +131,7 @@ const contentClasses = {
 export type NavigationMenuContent = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Content
 > & { size?: "sm" | "md" | "lg" | "full"; isUnstyled?: boolean };
+
 export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
   NavigationMenuContent
@@ -191,6 +194,7 @@ export const NavigationMenuLink = ({
     </NavigationMenuPrimitive.Link>
   );
 };
+NavigationMenuLink.displayName = "NavigationMenuLink";
 
 // NavigationMenuListItem Component
 export type NavigationMenuListItem = {
@@ -238,6 +242,7 @@ NavigationMenuViewport.displayName = "NavigationMenuViewport";
 export type NavigationMenuIndicator = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Indicator
 > & { isUnstyled?: boolean };
+
 export const NavigationMenuIndicator = ({
   className,
   isUnstyled = false,

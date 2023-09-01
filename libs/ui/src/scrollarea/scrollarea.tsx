@@ -26,11 +26,11 @@ export const ScrollArea = React.forwardRef<
 ));
 ScrollArea.displayName = "ScrollArea";
 
+// ScrollBar component
 export type ScrollBar = React.ComponentPropsWithoutRef<
   typeof ScrollAreaPrimitive.ScrollAreaScrollbar
 >;
 
-// ScrollBar component
 export const ScrollBar = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   ScrollBar

@@ -5,9 +5,11 @@ import { classNames } from "../utils";
 
 // HoverCard Component
 export const HoverCard = HoverCardPrimitive.Root;
+HoverCard.displayName = "HoverCard";
 
 // HoverCardTrigger Component
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
+HoverCardTrigger.displayName = "HoverCardTrigger";
 
 // HoverCardContent Component
 export type HoverCardContent = React.ComponentPropsWithoutRef<

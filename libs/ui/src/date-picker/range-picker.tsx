@@ -7,7 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import { Calendar } from "./calendar";
 
-type RangePicker = Omit<DayPickerRangeProps, "mode">;
+export type RangePicker = Omit<DayPickerRangeProps, "mode">;
 
 export function RangePicker({ className, ...props }: RangePicker) {
   const [date, setDate] = React.useState<DateRange | undefined>(props.selected);

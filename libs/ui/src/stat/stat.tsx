@@ -4,6 +4,7 @@ import { classNames } from "../utils";
 
 // Stat Component
 export type Stat = React.HTMLAttributes<HTMLDivElement> & StatContext;
+
 export const Stat = React.forwardRef<HTMLDivElement, Stat>(
   ({ children, className, type = "normal", ...props }, forwardedRef) => {
     return (
@@ -23,6 +24,7 @@ Stat.displayName = "Stat";
 
 // StatLabel Component
 export type StatLabel = React.HTMLAttributes<HTMLDivElement>;
+
 export const StatLabel = React.forwardRef<HTMLDivElement, StatLabel>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
@@ -43,6 +45,7 @@ StatLabel.displayName = "StatLabel";
 
 // StatValue Component
 export type StatValue = React.HTMLAttributes<HTMLDivElement>;
+
 export const StatValue = React.forwardRef<HTMLDivElement, StatValue>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
@@ -71,6 +74,7 @@ const statHelpTextClasses = {
 };
 
 export type StatHelpText = JSX.IntrinsicElements["div"];
+
 export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {
     const { type } = useStatContext();
@@ -93,6 +97,7 @@ StatHelpText.displayName = "StatHelpText";
 
 // StatIcon Component
 export type StatIcon = React.SVGProps<SVGSVGElement>;
+
 export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
   ({ className, height = "14", width = "14", ...props }, forwardedRef) => {
     const { type } = useStatContext();

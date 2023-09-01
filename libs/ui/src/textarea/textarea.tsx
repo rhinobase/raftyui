@@ -47,6 +47,7 @@ export type Textarea = Omit<JSX.IntrinsicElements["textarea"], "size"> & {
   isReadOnly?: boolean;
   isRequired?: boolean;
 };
+
 export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
   (
     {

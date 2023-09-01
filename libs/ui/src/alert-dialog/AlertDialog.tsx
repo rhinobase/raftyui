@@ -281,4 +281,7 @@ export const AlertDialogDescription = React.forwardRef<
 AlertDialogDescription.displayName = "AlertDialogDescription";
 
 export const AlertDialogAction = AlertDialogPrimitive.Action;
+AlertDialogAction.displayName = "AlertDialogAction";
+
 export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
+AlertDialogCancel.displayName = "AlertDialogCancel";

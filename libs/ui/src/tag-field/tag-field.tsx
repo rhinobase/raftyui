@@ -4,7 +4,7 @@ import { Button } from "../button";
 import { InputField } from "../input";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-enum Action {
+enum ACTION {
   ADD,
   DELETE,
   RESET,
@@ -17,8 +17,8 @@ export type TagField = Omit<InputField, "onChange" | "ref"> & {
 
 export const TagField = ({ initialData, onChange, ...props }: TagField) => {
   const [tag, setTag] = useReducer(
-    (prev: string[], cur: { action: Action; data?: string }) => {
-      if (cur.action === Action.RESET) return [];
+    (prev: string[], cur: { action: ACTION; data?: string }) => {
+      if (cur.action === ACTION.RESET) return [];
 
       let tmp = [...prev];
       const value = cur.data;
@@ -28,7 +28,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
           `Tag Field - Data is undefined for ${cur.action} action`,
         );
 
-      if (cur.action === Action.ADD)
+      if (cur.action === ACTION.ADD)
         tmp = Array.from(new Set([...prev, value]));
       else
         tmp.splice(
@@ -53,14 +53,14 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
               event.preventDefault();
               const data = event.currentTarget.value.trim();
               if (data.length !== 0 && data !== " ")
-                setTag({ action: Action.ADD, data });
+                setTag({ action: ACTION.ADD, data });
               event.currentTarget.value = "";
             }
           }}
         />
         <Button
           variant="ghost"
-          onClick={() => setTag({ action: Action.RESET })}
+          onClick={() => setTag({ action: ACTION.RESET })}
           className={tag.length < 2 ? "!hidden" : ""}
         >
           Clear All
@@ -76,7 +76,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
           >
             <span className="text-sm leading-[0px]">{value}</span>
             <Button
-              onClick={() => setTag({ action: Action.DELETE, data: value })}
+              onClick={() => setTag({ action: ACTION.DELETE, data: value })}
               colorScheme="error"
               variant="ghost"
               size="sm"

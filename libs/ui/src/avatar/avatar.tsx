@@ -52,3 +52,4 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
     </div>
   );
 }
+Avatar.displayName = "Avatar";

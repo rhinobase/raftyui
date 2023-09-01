@@ -3,7 +3,7 @@ import { classNames as cn } from "../utils";
 import { DayPicker } from "react-day-picker";
 import { buttonClasses } from "../button";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
+export type Calendar = React.ComponentProps<typeof DayPicker> & {
   fullScreen?: boolean;
 };
 
@@ -13,7 +13,7 @@ export function Calendar({
   fullScreen = false,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: Calendar) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}

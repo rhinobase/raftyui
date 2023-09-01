@@ -297,5 +297,5 @@ export const DialogDescription = React.forwardRef<
 DialogDescription.displayName = "DialogDescription";
 
 // Dialog Close Component
-
 export const DialogClose = DialogPrimitive.Close;
+DialogClose.displayName = "DialogClose";

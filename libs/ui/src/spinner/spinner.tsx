@@ -1,7 +1,7 @@
 import { classNames } from "../utils";
 import React from "react";
 
-const dimensions = {
+const DIMENSIONS = {
   sm: "18px",
   md: "24px",
   lg: "36px",
@@ -9,7 +9,7 @@ const dimensions = {
 
 // Spinner Component
 export type Spinner = JSX.IntrinsicElements["svg"] & {
-  size?: keyof typeof dimensions;
+  size?: keyof typeof DIMENSIONS;
   inheritParent?: boolean;
 };
 
@@ -26,8 +26,8 @@ export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
           "animate-spin",
           className,
         )}
-        width={dimensions[size]}
-        height={dimensions[size]}
+        width={DIMENSIONS[size]}
+        height={DIMENSIONS[size]}
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -42,5 +42,4 @@ export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
     );
   },
 );
-
 Spinner.displayName = "Spinner";

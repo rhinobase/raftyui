@@ -32,6 +32,7 @@ ContextMenuTrigger.displayName = "ContextMenuTrigger";
 export type ContextMenuContent = React.ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Content
 > & { isUnstyled?: boolean };
+
 export const ContextMenuContent = forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Content>,
   ContextMenuContent
@@ -72,6 +73,7 @@ const contextMenuLabelClasses = {
 export type ContextMenuLabel = React.ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Label
 > & { isUnstyled?: boolean };
+
 export const ContextMenuLabel = forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Label>,
   ContextMenuLabel
@@ -143,6 +145,7 @@ ContextMenuItem.displayName = "ContextMenuItem";
 
 //ContextMenu ChechboxGroup Component
 export const ContextMenuCheckBoxGroup = ContextMenuPrimitive.Group;
+ContextMenuCheckBoxGroup.displayName = "ContextMenuCheckBoxGroup";
 
 //ContextMenu CheckboxItem Component
 const checkboxItemClasses = {
@@ -156,6 +159,7 @@ const checkboxItemClasses = {
 export type ContextMenuCheckboxItem = React.ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.CheckboxItem
 > & { isUnstyled?: boolean };
+
 export const ContextMenuCheckboxItem = forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
   ContextMenuCheckboxItem
@@ -188,6 +192,7 @@ ContextMenuCheckboxItem.displayName = "ContextMenuCheckboxItem";
 
 //ContextMenu RadioGroup Component
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
+ContextMenuRadioGroup.displayName = "ContextMenuRadioGroup";
 
 //ContextMenu RadioItem Component
 const radioItemClasses = {

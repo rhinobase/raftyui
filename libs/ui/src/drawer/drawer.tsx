@@ -128,6 +128,7 @@ DrawerTitle.displayName = "DrawerTitle";
 
 // Drawer Body Component
 export const DrawerDescription = DialogPrimitive.Description;
+DrawerDescription.displayName = "DrawerDescription";
 
 // Drawer Close Button Component
 export type DrawerClose = React.ComponentPropsWithoutRef<

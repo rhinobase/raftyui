@@ -36,6 +36,7 @@ export const CommandDialog = ({ children, ...props }: CommandDialog) => {
     </Dialog>
   );
 };
+CommandDialog.displayName = "CommandDialog";
 
 // CommandInput Component
 export type CommandInput = React.ComponentPropsWithoutRef<
@@ -82,6 +83,7 @@ CommandList.displayName = "CommandList";
 
 // CommandLoading Component
 export const CommandLoading = CommandPrimitive.Loading;
+CommandLoading.displayName = "CommandLoading";
 
 // CommandEmpty Component
 export type CommandEmpty = React.ComponentPropsWithoutRef<

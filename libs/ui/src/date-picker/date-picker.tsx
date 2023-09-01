@@ -7,7 +7,7 @@ import { Calendar } from "./calendar";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import { DayPickerSingleProps } from "react-day-picker";
 
-type DatePicker = Omit<DayPickerSingleProps, "mode">;
+export type DatePicker = Omit<DayPickerSingleProps, "mode">;
 
 export function DatePicker(props: DatePicker) {
   const [date, setDate] = React.useState<Date>();

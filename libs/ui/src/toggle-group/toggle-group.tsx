@@ -13,6 +13,7 @@ export type ToggleGroup = React.ComponentProps<
   (typeof ToggleGroupPrimitive)["Root"]
 > &
   Partial<ToggleGroupContext> & { isUnstyled?: boolean };
+
 export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
   (
     {

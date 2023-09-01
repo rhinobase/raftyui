@@ -45,7 +45,7 @@ export const Accordion = React.forwardRef<
     );
   },
 );
-Accordion.displayName = "Accordian";
+Accordion.displayName = "Accordion";
 
 // Accordion Item Component
 export type AccordionItem = React.ComponentPropsWithoutRef<
@@ -143,7 +143,7 @@ export const AccordionTrigger = React.forwardRef<
     );
   },
 );
-AccordionTrigger.displayName = "AccordionAccordianTrigger";
+AccordionTrigger.displayName = "AccordionTrigger";
 
 // Accordion Content Component
 const accordionContentClasses = {
@@ -183,4 +183,4 @@ export const AccordionContent = React.forwardRef<
     </AccordionPrimitive.Content>
   );
 });
-AccordionContent.displayName = "AccordianContent";
+AccordionContent.displayName = "AccordionContent";

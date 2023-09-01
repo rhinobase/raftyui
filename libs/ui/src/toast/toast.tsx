@@ -71,3 +71,4 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
     </div>
   );
 }
+Toast.displayName = "Toast";

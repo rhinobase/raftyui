@@ -317,6 +317,7 @@ MenuItem.displayName = "MenuItem";
 
 // MenuCheckboxGroup Component
 export const MenuGroup = DropdownMenu.Group;
+MenuGroup.displayName = "MenuGroup";
 
 // MenuCheckboxItem Component
 const menuCheckboxItemClasses = {
@@ -370,6 +371,7 @@ MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
 // MenuRadioGroup Component
 export const MenuRadioGroup = DropdownMenu.RadioGroup;
+MenuRadioGroup.displayName = "MenuRadioGroup";
 
 // MenuRadioItem Component
 const menuRadioItemClasses = {

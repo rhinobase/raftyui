@@ -8,6 +8,7 @@ import { classNames } from "../utils";
 // Root Component
 export type Tab = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
   Partial<TabContext> & { isUnstyled?: boolean };
+
 export const Tab = forwardRef<React.ElementRef<typeof TabsPrimitive.Root>, Tab>(
   (
     {

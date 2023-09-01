@@ -262,6 +262,7 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
     />
   );
 }
+AlertIcon.displayName = "AlertIcon";
 
 // AlertTitle component
 const alertTitleClasses = cva("", {

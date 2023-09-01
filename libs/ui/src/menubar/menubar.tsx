@@ -260,6 +260,7 @@ MenubarItem.displayName = "MenubarItem";
 
 //MenuBar ChechboxGroup Component
 export const MenubarCheckboxGroup = MenubarPrimitive.Group;
+MenubarCheckboxGroup.displayName = "MenubarCheckboxGroup";
 
 //Menubar CheckboxItem Component
 const checkboxItemClasses = {
@@ -315,6 +316,7 @@ MenubarCheckboxItem.displayName = "MenubarCheckboxItem";
 
 //MenuBar RadioGroup Component
 export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
+MenubarRadioGroup.displayName = "MenubarRadioGroup";
 
 //Menubar RadioItem component
 const radioItemClasses = {
@@ -373,10 +375,9 @@ export const MenubarRadioItem = React.forwardRef<
     </MenubarPrimitive.RadioItem>
   );
 });
-MenubarRadioItem.displayName = "MenuBar.RadioItem";
+MenubarRadioItem.displayName = "MenubarRadioItem";
 
 //MenuBar SubMenu Component
-
 export const MenubarSub = MenubarPrimitive.Sub;
 MenubarSub.displayName = "MenubarSub";
 

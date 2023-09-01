@@ -20,6 +20,7 @@ export const Popover = ({
     <PopoverPrimitive.Root {...props} />
   </PopoverProvider>
 );
+Popover.displayName = "Popover";
 
 // PopoverTrigger Component
 export type PopoverTrigger = React.ComponentPropsWithoutRef<
@@ -126,3 +127,4 @@ export const PopoverContent = React.forwardRef<
 PopoverContent.displayName = "PopoverContent";
 
 export const PopoverClose = PopoverPrimitive.Close;
+PopoverClose.displayName = "PopoverClose";

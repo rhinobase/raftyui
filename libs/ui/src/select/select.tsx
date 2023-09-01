@@ -119,9 +119,9 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
         {!isUnstyled && (
           <ChevronDownIcon
             className={classNames(
-              size == "sm" && "right-2",
-              size == "md" && "right-3",
-              size == "lg" && "right-4",
+              size === "sm" && "right-2",
+              size === "md" && "right-3",
+              size === "lg" && "right-4",
               "dark:text-secondary-200 h-3.5 w-3.5 absolute",
             )}
           />
