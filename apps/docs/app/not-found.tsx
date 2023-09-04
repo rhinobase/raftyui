@@ -11,7 +11,7 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="text-secondary-500 dark:text-secondary-400 mt-2 text-sm">
-          Sorry, we couldn’t find the page you’re looking for.
+          Sorry, we couldn&apos;t find the page you&apos;re looking for.
         </p>
         <Link
           href="/"

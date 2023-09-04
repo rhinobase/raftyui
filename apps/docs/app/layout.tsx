@@ -24,10 +24,11 @@ const lexend = localFont({
 export const metadata: Metadata = {
   title: {
     template: "%s - Docs",
-    default: "CacheAdvance - Never miss the cache again.",
+    default:
+      "@rafty/ui - React + A11y + Tailwind CSS Dynamic Component Library",
   },
   description:
-    "Cache every single thing your app could ever do ahead of time, so your code never even has to run at all.",
+    "Explore the components, and witness the magic of accessible, stylish, SSR Ready, and dark mode-compatible interfaces.",
 };
 
 export default function RootLayout({

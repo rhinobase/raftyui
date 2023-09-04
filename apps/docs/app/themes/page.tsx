@@ -12,7 +12,6 @@ import {
   PopoverContent,
   PopoverTrigger,
   RangePicker,
-  Tag,
   TagField,
   Textarea,
 } from "@rafty/ui";
@@ -25,24 +24,25 @@ import AlertOpen from "./Alert";
 import AlertDialogOpen from "./AlertDialog";
 import ButtonOpen from "./Button";
 import CheckBox from "./CheckBox";
-import ComboBoxExample from "./ComboBox";
+import ComboBox from "./ComboBox";
 import CommandOpen from "./Command";
 import ContextMenuOpen from "./ContextMenu";
 import DrawerOpen from "./Drawer";
 import MenuBarOpen from "./MenuBar";
 import ProgressShow from "./Progress";
-import RadioExample from "./Radio";
-import SpinnerExample from "./Spinner";
-import SelectExample from "./Select";
+import Radio from "./Radio";
+import Spinner from "./Spinner";
+import Select from "./Select";
 import StatShow from "./Stat";
 import SwitchButton from "./Switch";
-import TabExample from "./Tab";
-import TableExample from "./Table";
-import ToastExample from "./Toast";
+import Tab from "./Tab";
+import Table from "./Table";
+import Toast from "./Toast";
 import ToggleGroups from "./ToggleGroup";
+import { useTheme } from "next-themes";
 
 enum ColorTheme {
-  ORANGE = "orange",
+  PURPLE = "purple",
   GREEN = "green",
   RED = "red",
   ROSE = "rose",
@@ -55,6 +55,7 @@ enum ColorTheme {
 
 const COMPONENTS = [
   MenuOpen,
+  CommandOpen,
   DatePicker,
   MenuBarOpen,
   Accordian,
@@ -62,42 +63,30 @@ const COMPONENTS = [
   AlertDialogOpen,
   ButtonOpen,
   CheckBox,
-  ComboBoxExample,
-  CommandOpen,
+  ComboBox,
   ContextMenuOpen,
+  Radio,
   DrawerOpen,
   InputField,
   PasswordField,
   ProgressShow,
   TagField,
   RangePicker,
-  RadioExample,
-  SelectExample,
-  SpinnerExample,
+  Select,
+  Spinner,
   StatShow,
   SwitchButton,
-  TabExample,
-  TableExample,
-  ToastExample,
+  Tab,
+  Table,
+  Toast,
   ToggleGroups,
   Textarea,
   Calendar,
 ];
 
 export default function Home() {
-  const [theme, setTheme] = useState<ColorTheme>();
-  const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const THEMES = [
-    "zinc",
-    "slate",
-    "stone",
-    "rose",
-    "orange",
-    "blue",
-    "yellow",
-    "green",
-    "red",
-  ];
+  const { setTheme } = useTheme();
+  const [color, setColor] = useState<ColorTheme>(ColorTheme.PURPLE);
 
   return (
     <div className="p-10 w-full">
@@ -109,63 +98,64 @@ export default function Home() {
           </h4>
         </div>
         <div className="p-3 flex items-center gap-4 justify-end">
-          <Button
-            size="icon"
-            className="!bg-orange-500 "
-            onClick={() => setTheme(ColorTheme.ORANGE)}
-          />
-          <Button
-            size="icon"
-            className="!bg-green-500"
-            onClick={() => setTheme(ColorTheme.GREEN)}
-          />
-          <Button
-            size="icon"
-            className="!bg-blue-500"
-            onClick={() => setTheme(ColorTheme.ORANGE)}
-          />
-          <Button
-            size="icon"
-            className="!bg-red-500"
-            onClick={() => setTheme(ColorTheme.ORANGE)}
-          />
+          {Object.keys(ColorTheme)
+            .slice(0, 4)
+            .map((c) => (
+              <Button
+                key={c}
+                size="icon"
+                className={`!bg-${c}-500 !rounded-full`}
+                onClick={() => setColor(c as ColorTheme)}
+              >
+                {color == c && <HiCheck className="text-white font-bold" />}
+              </Button>
+            ))}
           <Popover>
             <PopoverTrigger>Customize</PopoverTrigger>
-            <PopoverContent>
+            <PopoverContent showArrow>
               <div className="w-[300px] p-2 space-y-2">
                 <h5 className="text-xs">Color</h5>
                 <div className="grid grid-cols-3 gap-2">
-                  {THEMES.map((color) => (
+                  {Object.keys(ColorTheme).map((c) => (
                     <Button
-                      key={color}
+                      key={c}
                       size="sm"
                       variant="outline"
+                      className="capitalize"
                       leftIcon={
                         <div
-                          className={`h-4 w-4 bg-${color}-500 rounded-full items-center`}
+                          className={`h-4 w-4 bg-${c.toLowerCase()}-500 rounded-full flex justify-center items-center`}
                         >
-                          {selectedColor === color && (
+                          {color === c && (
                             <HiCheck
                               className="text-white font-bold"
-                              size={15}
+                              size={12}
                             />
                           )}
                         </div>
                       }
-                      onClick={() => {
-                        setSelectedColor(color);
-                      }}
+                      onClick={() => setColor(c as ColorTheme)}
                     >
-                      {color}
+                      {c.toLowerCase()}
                     </Button>
                   ))}
                 </div>
                 <h5 className="text-xs">Mode</h5>
                 <div className="flex gap-4">
-                  <Button variant="outline" size="sm" leftIcon={<BsSun />}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    leftIcon={<BsSun />}
+                    onClick={() => setTheme("light")}
+                  >
                     Light
                   </Button>
-                  <Button variant="outline" size="sm" leftIcon={<BsMoon />}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    leftIcon={<BsMoon />}
+                    onClick={() => setTheme("dark")}
+                  >
                     Dark
                   </Button>
                 </div>

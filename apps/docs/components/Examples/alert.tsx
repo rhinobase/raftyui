@@ -22,17 +22,17 @@ export const alert_examples = {
         <AlertTitle>Title</AlertTitle>
         <AlertDescription>Description</AlertDescription>
       </Alert>
-      <Alert status="error">
-        <AlertIcon />
-        <AlertTitle>Title</AlertTitle>
-        <AlertDescription>Description</AlertDescription>
-      </Alert>
       <Alert status="success">
         <AlertIcon />
         <AlertTitle>Title</AlertTitle>
         <AlertDescription>Description</AlertDescription>
       </Alert>
       <Alert status="warning">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert status="error">
         <AlertIcon />
         <AlertTitle>Title</AlertTitle>
         <AlertDescription>Description</AlertDescription>
