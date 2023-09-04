@@ -14,7 +14,7 @@ import {
 import { useReducer, useState } from "react";
 import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
 
-function Example() {
+export default function Example() {
   const [isOpen, setOpen] = useState(false);
   const pages = [
     {
