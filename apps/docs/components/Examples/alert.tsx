@@ -16,18 +16,52 @@ export const alert_examples = {
     </Alert>
   ),
   "alert:status": (
-    <Alert status="info">
-      <AlertIcon />
-      <AlertTitle>Title</AlertTitle>
-      <AlertDescription>Description</AlertDescription>
-    </Alert>
+    <div className="space-y-4 w-full">
+      <Alert>
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert status="error">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert status="success">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert status="warning">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+    </div>
   ),
   "alert:variant": (
-    <Alert variant="simple">
-      <AlertIcon />
-      <AlertTitle>Title</AlertTitle>
-      <AlertDescription>Description</AlertDescription>
-    </Alert>
+    <div className="space-y-4 w-full">
+      <Alert>
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert variant="solid">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert variant="left-accent">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+      <Alert variant="top-accent">
+        <AlertIcon />
+        <AlertTitle>Title</AlertTitle>
+        <AlertDescription>Description</AlertDescription>
+      </Alert>
+    </div>
   ),
   "alert:barebone": (
     <Alert
