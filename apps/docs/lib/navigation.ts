@@ -118,10 +118,6 @@ export const navigation = [
         href: "/docs/components/scroll-area",
       },
       {
-        title: "Search Field",
-        href: "/docs/components/search-field",
-      },
-      {
         title: "Select",
         href: "/docs/components/select",
       },
