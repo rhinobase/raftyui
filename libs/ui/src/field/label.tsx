@@ -31,7 +31,7 @@ export const Label = React.forwardRef<
       >
         {children}
         {(isReq || isRequired) && (
-          <span className="text-error-500 dark:error-red-400">*</span>
+          <span className="text-red-500 dark:text-red-400">*</span>
         )}
       </LabelPrimitive.Root>
     );

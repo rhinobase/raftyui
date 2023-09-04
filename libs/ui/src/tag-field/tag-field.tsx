@@ -80,7 +80,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
               colorScheme="error"
               variant="ghost"
               size="sm"
-              className="!text-secondary-400 hover:!text-error-500 !p-[1px]"
+              className="!text-secondary-400 hover:!text-red-500 !p-[1px]"
             >
               <XMarkIcon className="h-3.5 w-3.5 stroke-[2]" />
             </Button>

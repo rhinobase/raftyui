@@ -39,97 +39,97 @@ const alertClasses = cva("flex w-full items-center", {
       variant: "simple",
       status: "success",
       className:
-        "border-success-600 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
+        "border-green-600 bg-green-300/75 text-secondary-900 dark:bg-green-400/40 dark:text-secondary-100",
     },
     {
       variant: "simple",
       status: "warning",
       className:
-        "border-warning-600 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
+        "border-amber-600 bg-amber-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
     },
     {
       variant: "simple",
       status: "error",
       className:
-        "border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
+        "border-red-500 bg-red-300/75 text-secondary-900 dark:bg-red-400/40 dark:text-secondary-100",
     },
     {
       variant: "simple",
       status: "info",
       className:
-        "bg-info-200 dark:bg-info-400/40 border-info-500 text-secondary-900 dark:text-secondary-100",
+        "bg-blue-200 dark:bg-blue-400/40 border-blue-500 text-secondary-900 dark:text-secondary-100",
     },
     {
       variant: "solid",
       status: "success",
       className:
-        "border-success-500 bg-success-500 text-white dark:bg-success-400 dark:text-secondary-100",
+        "border-green-500 bg-green-500 text-white dark:bg-green-400 dark:text-secondary-100",
     },
     {
       variant: "solid",
       status: "warning",
       className:
-        "border-warning-500 bg-warning-500 text-white dark:text-secondary-100 dark:bg-warning-400",
+        "border-amber-500 bg-amber-500 text-white dark:text-secondary-100 dark:bg-amber-400",
     },
     {
       variant: "solid",
       status: "error",
       className:
-        "border-error-500 bg-error-500 text-white dark:bg-error-400 dark:text-secondary-100",
+        "border-red-500 bg-red-500 text-white dark:bg-red-400 dark:text-secondary-100",
     },
     {
       variant: "solid",
       status: "info",
       className:
-        "bg-info-500 dark:bg-info-400 border-info-500 text-white dark:text-secondary-100",
+        "bg-blue-500 dark:bg-blue-400 border-blue-500 text-white dark:text-secondary-100",
     },
     {
       variant: "left-accent",
       status: "success",
       className:
-        "border-l-4 border-success-500 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
+        "border-l-4 border-green-500 bg-green-300/75 text-secondary-900 dark:bg-green-400/40 dark:text-secondary-100",
     },
     {
       variant: "left-accent",
       status: "warning",
       className:
-        "border-l-4 border-warning-500 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
+        "border-l-4 border-amber-500 bg-amber-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
     },
     {
       variant: "left-accent",
       status: "error",
       className:
-        "border-l-4 border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
+        "border-l-4 border-red-500 bg-red-300/75 text-secondary-900 dark:bg-red-400/40 dark:text-secondary-100",
     },
     {
       variant: "left-accent",
       status: "info",
       className:
-        "bg-info-200 dark:bg-info-400/40 border-l-4 border-info-500 text-secondary-900 dark:text-secondary-100",
+        "bg-blue-200 dark:bg-blue-400/40 border-l-4 border-blue-500 text-secondary-900 dark:text-secondary-100",
     },
     {
       variant: "top-accent",
       status: "success",
       className:
-        "border-t-4 border-success-500 bg-success-300/75 text-secondary-900 dark:bg-success-400/40 dark:text-secondary-100",
+        "border-t-4 border-green-500 bg-green-300/75 text-secondary-900 dark:bg-green-400/40 dark:text-secondary-100",
     },
     {
       variant: "top-accent",
       status: "warning",
       className:
-        "border-t-4 border-warning-500 bg-warning-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-warning-400/40",
+        "border-t-4 border-amber-500 bg-amber-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
     },
     {
       variant: "top-accent",
       status: "error",
       className:
-        "border-t-4 border-error-500 bg-error-300/75 text-secondary-900 dark:bg-error-400/40 dark:text-secondary-100",
+        "border-t-4 border-red-500 bg-red-300/75 text-secondary-900 dark:bg-red-400/40 dark:text-secondary-100",
     },
     {
       variant: "top-accent",
       status: "info",
       className:
-        "bg-info-200 dark:bg-info-400/40 border-t-4 border-info-500 text-secondary-900 dark:text-secondary-100",
+        "bg-blue-200 dark:bg-blue-400/40 border-t-4 border-blue-500 text-secondary-900 dark:text-secondary-100",
     },
     {
       variant: "top-accent",
@@ -212,25 +212,25 @@ const alertIconClasses = cva("", {
       size: ["sm", "md", "lg"],
       status: "error",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-error-500 dark:text-error-200",
+      className: "text-red-500 dark:text-red-200",
     },
     {
       size: ["sm", "md", "lg"],
       status: "warning",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-warning-600 dark:text-warning-300",
+      className: "text-amber-600 dark:text-amber-300",
     },
     {
       size: ["sm", "md", "lg"],
       status: "info",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-info-500 dark:text-info-200",
+      className: "text-blue-500 dark:text-blue-200",
     },
     {
       size: ["sm", "md", "lg"],
       status: "success",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-success-500 dark:text-success-300",
+      className: "text-green-500 dark:text-green-300",
     },
   ],
 });
@@ -290,25 +290,25 @@ const alertTitleClasses = cva("", {
       size: ["sm", "md", "lg"],
       status: "error",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-error-500 dark:text-error-200",
+      className: "text-red-500 dark:text-red-200",
     },
     {
       size: ["sm", "md", "lg"],
       status: "warning",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-warning-600 dark:text-warning-300",
+      className: "text-amber-600 dark:text-amber-300",
     },
     {
       size: ["sm", "md", "lg"],
       status: "info",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-info-500 dark:text-info-200",
+      className: "text-blue-500 dark:text-blue-200",
     },
     {
       size: ["sm", "md", "lg"],
       status: "success",
       variant: ["simple", "left-accent", "top-accent"],
-      className: "text-success-500 dark:text-success-300",
+      className: "text-green-500 dark:text-green-300",
     },
   ],
 });

@@ -11,13 +11,13 @@ const progressClasses = {
   },
   colorScheme: {
     error:
-      "bg-error-500 dark:bg-error-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-error-300 group-data-[indeterminate=true]:via-error-500 group-data-[indeterminate=true]:to-error-300",
+      "bg-red-500 dark:bg-red-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-red-300 group-data-[indeterminate=true]:via-red-500 group-data-[indeterminate=true]:to-red-300",
     warning:
-      "bg-warning-500 dark:bg-warning-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-warning-300 group-data-[indeterminate=true]:via-warning-500 group-data-[indeterminate=true]:to-warning-300",
+      "bg-amber-500 dark:bg-amber-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-amber-300 group-data-[indeterminate=true]:via-amber-500 group-data-[indeterminate=true]:to-amber-300",
     primary:
       "bg-primary-500 dark:bg-primary-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-primary-300 group-data-[indeterminate=true]:via-primary-500 group-data-[indeterminate=true]:to-primary-300",
     success:
-      "bg-success-500 dark:bg-success-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-success-300 group-data-[indeterminate=true]:via-success-500 group-data-[indeterminate=true]:to-success-300",
+      "bg-green-500 dark:bg-green-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-green-300 group-data-[indeterminate=true]:via-green-500 group-data-[indeterminate=true]:to-green-300",
   },
 };
 

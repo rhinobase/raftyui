@@ -20,7 +20,7 @@ const inputFieldClasses = cva(
         ghost: "border border-transparent",
       },
       invalid: {
-        true: "border-error-500 focus:ring-error-200 dark:border-error-400 dark:focus:ring-error-100/20",
+        true: "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
       },
       isLeftAddon: {
         true: "",

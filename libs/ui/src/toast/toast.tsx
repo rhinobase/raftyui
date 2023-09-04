@@ -9,10 +9,10 @@ import { classNames } from "../utils";
 // Toast Component
 const toastClasses = {
   severity: {
-    error: "bg-error-600 dark:bg-error-300",
-    warning: "bg-warning-500 dark:bg-warning-300",
-    info: "bg-info-500 dark:bg-info-200",
-    success: "bg-success-600 dark:bg-success-200",
+    error: "bg-red-600 dark:bg-red-300",
+    warning: "bg-amber-500 dark:bg-amber-300",
+    info: "bg-blue-500 dark:bg-blue-200",
+    success: "bg-green-600 dark:bg-green-200",
   },
   visible: [
     "animate-leave", // false

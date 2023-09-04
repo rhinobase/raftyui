@@ -67,8 +67,8 @@ StatValue.displayName = "StatValue";
 // StatHelpText Component
 const statHelpTextClasses = {
   type: {
-    increase: "text-success-600 dark:text-success-400",
-    decrease: "text-error-600 dark:text-error-400",
+    increase: "text-green-600 dark:text-green-400",
+    decrease: "text-red-600 dark:text-red-400",
     normal: "dark:text-secondary-300",
   },
 };
@@ -109,7 +109,7 @@ export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
           height={height}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
-          className={classNames("text-success-500", className)}
+          className={classNames("text-green-500", className)}
           fill="currentColor"
           ref={forwardedRef}
         >
@@ -123,7 +123,7 @@ export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
         height={height}
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
-        className={classNames("text-error-500", className)}
+        className={classNames("text-red-500", className)}
         fill="currentColor"
         ref={forwardedRef}
       >

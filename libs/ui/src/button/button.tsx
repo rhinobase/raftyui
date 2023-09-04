@@ -118,21 +118,21 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "solid",
         className:
-          "border-transparent bg-error-500/75 text-secondary-200 dark:bg-error-300/80 dark:text-secondary-600",
+          "border-transparent bg-red-500/75 text-secondary-200 dark:bg-red-300/80 dark:text-secondary-600",
       },
       {
         loading: true,
         colorScheme: "error",
         variant: "solid",
         className:
-          "border-transparent bg-error-500/75 text-secondary-200 dark:bg-error-300/80 dark:text-secondary-600",
+          "border-transparent bg-red-500/75 text-secondary-200 dark:bg-red-300/80 dark:text-secondary-600",
       },
       {
         active: true,
         colorScheme: "error",
         variant: "solid",
         className:
-          "border-transparent bg-error-600/90 dark:bg-error-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-transparent bg-red-600/90 dark:bg-red-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       {
         disabled: false,
@@ -141,7 +141,7 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "solid",
         className:
-          "border-transparent bg-error-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-500 hover:bg-error-600/90 dark:bg-error-300 dark:hover:bg-error-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-transparent bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-500 hover:bg-red-600/90 dark:bg-red-300 dark:hover:bg-red-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       // Success Solid
       {
@@ -149,21 +149,21 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "solid",
         className:
-          "border-transparent bg-success-500/75 text-secondary-200 dark:bg-success-300/80 dark:text-secondary-600",
+          "border-transparent bg-green-500/75 text-secondary-200 dark:bg-green-300/80 dark:text-secondary-600",
       },
       {
         loading: true,
         colorScheme: "success",
         variant: "solid",
         className:
-          "border-transparent bg-success-500/75 text-secondary-200 dark:bg-success-300/80 dark:text-secondary-600",
+          "border-transparent bg-green-500/75 text-secondary-200 dark:bg-green-300/80 dark:text-secondary-600",
       },
       {
         active: true,
         colorScheme: "success",
         variant: "solid",
         className:
-          "border-transparent bg-success-600/90 dark:bg-success-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-transparent bg-green-600/90 dark:bg-green-400/80 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-500 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       {
         disabled: false,
@@ -172,7 +172,7 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "solid",
         className:
-          "border-transparent bg-success-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-500 hover:bg-success-600/90 dark:bg-success-300 dark:hover:bg-success-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-transparent bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-500 hover:bg-green-600/90 dark:bg-green-300 dark:hover:bg-green-400 dark:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       // Primary Outline
       {
@@ -242,21 +242,21 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "outline",
         className:
-          "bg-transparent border-error-300/75 text-error-400/70 dark:border-error-200/50 dark:text-error-200/60",
+          "bg-transparent border-red-300/75 text-red-400/70 dark:border-red-200/50 dark:text-red-200/60",
       },
       {
         loading: true,
         colorScheme: "error",
         variant: "outline",
         className:
-          "bg-transparent border-error-300/75 text-error-400/70 dark:border-error-200/50 dark:text-error-200/60",
+          "bg-transparent border-red-300/75 text-red-400/70 dark:border-red-200/50 dark:text-red-200/60",
       },
       {
         active: true,
         colorScheme: "error",
         variant: "outline",
         className:
-          "border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-red-500 dark:border-red-300/80 text-red-500 dark:text-red-300 bg-red-200/60 dark:bg-red-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       {
         disabled: false,
@@ -265,7 +265,7 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "outline",
         className:
-          "bg-transparent border-error-500 dark:border-error-300/80 text-error-500 dark:text-error-300 hover:bg-error-200/30 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "bg-transparent border-red-500 dark:border-red-300/80 text-red-500 dark:text-red-300 hover:bg-red-200/30 dark:hover:bg-red-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       // Success Outline
       {
@@ -273,21 +273,21 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "outline",
         className:
-          "bg-transparent border-success-300/75 text-success-400/70 dark:border-success-200/50 dark:text-success-200/60",
+          "bg-transparent border-green-300/75 text-green-400/70 dark:border-green-200/50 dark:text-green-200/60",
       },
       {
         loading: true,
         colorScheme: "success",
         variant: "outline",
         className:
-          "bg-transparent border-success-300/75 text-success-400/70 dark:border-success-200/50 dark:text-success-200/60",
+          "bg-transparent border-green-300/75 text-green-400/70 dark:border-green-200/50 dark:text-green-200/60",
       },
       {
         active: true,
         colorScheme: "success",
         variant: "outline",
         className:
-          "border-success-500 dark:border-success-300/80 text-success-500 dark:text-success-300 bg-success-200/60 dark:bg-success-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-green-500 dark:border-green-300/80 text-green-500 dark:text-green-300 bg-green-200/60 dark:bg-green-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       {
         disabled: false,
@@ -296,7 +296,7 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "outline",
         className:
-          "bg-transparent border-success-500 dark:border-success-300/80 text-success-500 dark:text-success-300 hover:bg-success-200/30 dark:hover:bg-success-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "bg-transparent border-green-500 dark:border-green-300/80 text-green-500 dark:text-green-300 hover:bg-green-200/30 dark:hover:bg-green-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       // Primary Ghost
       {
@@ -366,21 +366,21 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-error-400/80 dark:text-error-300/60",
+          "bg-transparent border-transparent text-red-400/80 dark:text-red-300/60",
       },
       {
         loading: true,
         colorScheme: "error",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-error-400/80 dark:text-error-300/60",
+          "bg-transparent border-transparent text-red-400/80 dark:text-red-300/60",
       },
       {
         active: true,
         colorScheme: "error",
         variant: "ghost",
         className:
-          "border-transparent text-error-500 dark:text-error-300 bg-error-200/60 dark:bg-error-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-transparent text-red-500 dark:text-red-300 bg-red-200/60 dark:bg-red-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       {
         disabled: false,
@@ -389,7 +389,7 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-error-500 dark:text-error-300 hover:bg-error-200/40 dark:hover:bg-error-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-error-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "bg-transparent border-transparent text-red-500 dark:text-red-300 hover:bg-red-200/40 dark:hover:bg-red-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       // Success Ghost
       {
@@ -397,21 +397,21 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-success-400/80 dark:text-success-300/60",
+          "bg-transparent border-transparent text-green-400/80 dark:text-green-300/60",
       },
       {
         loading: true,
         colorScheme: "success",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-success-400/80 dark:text-success-300/60",
+          "bg-transparent border-transparent text-green-400/80 dark:text-green-300/60",
       },
       {
         active: true,
         colorScheme: "success",
         variant: "ghost",
         className:
-          "border-transparent text-success-500 dark:text-success-300 bg-success-200/60 dark:bg-success-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "border-transparent text-green-500 dark:text-green-300 bg-green-200/60 dark:bg-green-300/30 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
       {
         disabled: false,
@@ -420,7 +420,7 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-success-500 dark:text-success-300 hover:bg-success-200/40 dark:hover:bg-success-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-success-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
+          "bg-transparent border-transparent text-green-500 dark:text-green-300 hover:bg-green-200/40 dark:hover:bg-green-300/10 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-green-200 dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900",
       },
     ],
     defaultVariants: {
