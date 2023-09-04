@@ -2,14 +2,12 @@ import { Progress } from "@rafty/ui";
 
 export const progress_examples = {
   "progress:usage": (
-    <div>
+    <div className="w-full ">
       <Progress size="lg" value={80} colorScheme="primary" />
-
-      <Progress value={80} />
     </div>
   ),
   "progress:colorscheme": (
-    <div>
+    <div className="w-full space-y-3">
       <Progress value={80} colorScheme="primary" />
       <Progress value={80} colorScheme="error" />
       <Progress value={80} colorScheme="success" />
@@ -17,7 +15,7 @@ export const progress_examples = {
     </div>
   ),
   "progress:size": (
-    <div>
+    <div className="w-full space-y-3">
       <Progress value={80} size="sm" />
       <Progress value={80} size="md" />
       <Progress value={80} size="lg" />

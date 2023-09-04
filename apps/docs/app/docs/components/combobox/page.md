@@ -9,7 +9,7 @@ description: ComboBox
 Import all parts and piece them together.
 
 ```jsx
-import { Popover, PopoverTrigger, Avatar, PopoverContent, Command, CommandList, CommandGroup, CommandItem, CommandLoading, Spinner, Text, CommandEmpty } from "@rafty/ui";
+import { Popover, PopoverTrigger, Avatar, PopoverContent, Command, CommandList, CommandGroup, CommandItem, Text, CommandEmpty } from "@rafty/ui";
 
 <Popover>
   <PopoverTrigger>
@@ -19,12 +19,9 @@ import { Popover, PopoverTrigger, Avatar, PopoverContent, Command, CommandList, 
     <Command>
       <CommandList>
         <CommandGroup>
-          <CommandItem />
-          <CommandLoading>
-            <Spinner />
+          <CommandItem>
             <Text />
-          </CommandLoading>
-          <CommandEmpty />
+          </CommandItem>
         </CommandGroup>
       </CommandList>
     </Command>
