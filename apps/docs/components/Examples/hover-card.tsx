@@ -7,14 +7,14 @@ export const hover_card_examples = {
         <img
           className="block h-[45px] w-[45px] rounded-full"
           src="https://i.pinimg.com/1200x/db/9b/f5/db9bf5ebc394015d62141539ed1bfd7c.jpg"
-          alt="Radix UI"
+          alt="Rafty UI"
         />
       </HoverCardTrigger>
       <HoverCardContent className="w-[300px] not-prose space-y-4">
         <img
           className="h-14 w-14 rounded-full"
           src="https://i.pinimg.com/1200x/db/9b/f5/db9bf5ebc394015d62141539ed1bfd7c.jpg"
-          alt="Radix UI"
+          alt="Rafty UI"
         />
         <div className="flex flex-col gap-4">
           <Text>Rafty</Text>
