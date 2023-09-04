@@ -4,6 +4,10 @@ pageTitle: Button - Rafty UI
 description: Button
 ---
 
+Buttons enable users to take action and make choices with a single click.
+
+It is built over native html button component, enhanced with our styling conventions and additional props to manage various states, sizes, colors, and inclusion of icons.
+
 ## Anatomy
 
 Import the component.
@@ -16,29 +20,33 @@ import { Button } from "@rafty/ui";
 
 ## Usage
 
+By default, it is a medium sized secondary solid button with hover effects and focus ring.
+
 {% example name="button:usage" /%}
 
 ## Size
 
-Use the `size` prop to change the size of the button. You can set the value to `sm`, `md`, `lg`, `fab`, `icon`.
+- There are 5 `size` options in button: `sm`, `md`, `lg`, `icon` & `fab` and by default it is set to `md`.
+- `icon` size is used when you want only icon and no text in button
+- `fab` size is used for circular button.
 
 {% example name="button:size" /%}
 
 ## ColorScheme
 
-Use the `colorScheme` prop to change the color of the button. You can set the value to `primary`, `secondary`, `error` and `success`.
+There are 4 `colorScheme` in button: `primary`, `secondary`, `error` & `success` and by default it is set to `primary`.
 
 {% example name="button:colorScheme" /%}
 
 ## Variant
 
-Use the `variant` prop to change the visual style of the Button. You can set the value to `solid`, `ghost`, `outline`.
+There are 3 `variant` in button: `solid`, `outline` & `ghost` and by default it is set to `solid`.
 
 {% example name="button:variant" /%}
 
 ## LeftIcon & RightIcon
 
-Use the `leftIcon` and `rightIcon` prop to set Icon in Button.
+You can pass JSX Element in `leftIcon` & `rightIcon` props to add icon on left & right side of button.
 
 {% example name="button:icons" /%}
 
