@@ -104,7 +104,7 @@ export function Examples({ name }: { name: string }) {
 
   return (
     <div className="w-full space-y-0">
-      <div className="not-prose rounded-t-xl border w-full px-4 pt-4 pb-6 bg-secondary-50 dark:bg-secondary-900 dark:border-secondary-800 flex items-center justify-center">
+      <div className="not-prose rounded-t-xl border w-full px-4 pt-4 pb-6 bg-transparent dark:bg-secondary-900 dark:border-secondary-800 flex items-center justify-center">
         {Component}
       </div>
       <Fence language="jsx" className="!-mt-2">

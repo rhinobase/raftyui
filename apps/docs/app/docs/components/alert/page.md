@@ -4,6 +4,10 @@ pageTitle: Alert - Rafty UI
 description: Alert
 ---
 
+An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
+
+This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -24,19 +28,19 @@ import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 
 ## Size
 
-Pass the `size` prop if you need to adjust the size of the Alert. Values can be `sm`, `md`, `lg`.
+There are 3 `size` options: `sm`, `md` & `lg`. By default, it is set to `md`.
 
 {% example name="alert:size" /%}
 
 ## Status
 
-Change the status of the alerts by passing the `status` prop. This affects the color scheme and icon used. Alert supports `error`, `success`, `warning`, `info` statuses.
+There are 4 `status` options in alert: `success`, `warning`, `error` & `info`. By default, it is set to `info`.
 
 {% example name="alert:status" /%}
 
 ## Variant
 
-Pass the `variant` prop if you need to adjust visual style of the alert. Values can be `subtle`, `solid`, `left-accent` or `top-accent`.
+There are 4 `variant` options in alert: `simple`, `solid`, `left-accent` & `top-accent`. By default, the value for variant is `simple`.
 
 {% example name="alert:variant" /%}
 

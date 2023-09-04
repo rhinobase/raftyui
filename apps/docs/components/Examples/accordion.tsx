@@ -9,19 +9,15 @@ export const accordion_examples = {
   "accordion:usage": (
     <Accordion type="single">
       <AccordionItem value="1">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 1 title</span>
-        </AccordionTrigger>
-        <AccordionContent data-cy="content">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="2">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 2 title</span>
-        </AccordionTrigger>
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
         <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -33,19 +29,15 @@ export const accordion_examples = {
   "accordion:collapsible": (
     <Accordion type="single" collapsible>
       <AccordionItem value="1">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 1 title</span>
-        </AccordionTrigger>
-        <AccordionContent data-cy="content">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="2">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 2 title</span>
-        </AccordionTrigger>
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
         <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -57,19 +49,15 @@ export const accordion_examples = {
   "accordion:multi_item": (
     <Accordion type="multiple">
       <AccordionItem value="1">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 1 title</span>
-        </AccordionTrigger>
-        <AccordionContent data-cy="content">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="2">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 2 title</span>
-        </AccordionTrigger>
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
         <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -79,21 +67,37 @@ export const accordion_examples = {
     </Accordion>
   ),
   "accordion:defaultvalue": (
-    <Accordion collapsible type="single" defaultValue="1">
+    <Accordion type="single" defaultValue="1">
       <AccordionItem value="1">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 1 title</span>
-        </AccordionTrigger>
-        <AccordionContent data-cy="content">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="2">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 2 title</span>
-        </AccordionTrigger>
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+  "accordion:variant": (
+    <Accordion type="single" variant="ghost">
+      <AccordionItem value="1">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="2">
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
         <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -114,12 +118,9 @@ export const accordion_examples = {
         className="bg-white dark:bg-secondary-800 dark:text-white shadow-md p-2 px-4 rounded-lg"
       >
         <AccordionTrigger className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full">
-          <span className="flex-1 text-left">Section 1 title</span>
+          Section 1 title
         </AccordionTrigger>
-        <AccordionContent
-          data-cy="content"
-          className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
-        >
+        <AccordionContent className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
@@ -130,7 +131,7 @@ export const accordion_examples = {
         className="bg-white dark:bg-secondary-800 dark:text-white shadow-md p-2 px-4 rounded-lg"
       >
         <AccordionTrigger className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full">
-          <span className="flex-1 text-left">Section 2 title</span>
+          Section 2 title
         </AccordionTrigger>
         <AccordionContent className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -150,18 +151,16 @@ export const accordion_examples = {
           isUnstyled
           className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full"
         >
-          <span className="flex-1 text-left">Section 1 title</span>
+          Section 1 title
         </AccordionTrigger>
-        <AccordionContent data-cy="content">
+        <AccordionContent>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="2">
-        <AccordionTrigger>
-          <span className="flex-1 text-left">Section 2 title</span>
-        </AccordionTrigger>
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
         <AccordionContent isUnstyled>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
