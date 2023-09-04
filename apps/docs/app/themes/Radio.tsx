@@ -1,7 +1,7 @@
 import { RadioGroup, RadioGroupItem } from "@rafty/ui";
 import React from "react";
 
-export default function Radio() {
+export default function RadioExample() {
   return (
     <>
       <RadioGroup>

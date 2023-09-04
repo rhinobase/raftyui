@@ -14,7 +14,7 @@ import {
 import { useReducer, useState } from "react";
 import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
 
-export default function Example() {
+export default function ComboBoxExample() {
   const [isOpen, setOpen] = useState(false);
   const pages = [
     {
@@ -50,11 +50,10 @@ export default function Example() {
 
     return undefined;
   }, undefined);
-  console.log(selected);
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
-      <div className="relative flex items-center w-[300px]">
+      <div className="relative flex items-center w-[240px]">
         <PopoverTrigger
           variant="outline"
           role="combobox"
@@ -92,7 +91,7 @@ export default function Example() {
           </Button>
         )}
       </div>
-      <PopoverContent className="!p-0 !w-[302px]">
+      <PopoverContent className="!p-0 !w-[240px]">
         <Command shouldFilter={false}>
           <CommandList>
             <CommandGroup>
@@ -121,7 +120,3 @@ export default function Example() {
     </Popover>
   );
 }
-
-export const combobox_examples = {
-  "combobox:usage": <Example />,
-};

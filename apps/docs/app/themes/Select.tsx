@@ -1,7 +1,7 @@
 import { Select, SelectItem } from "@rafty/ui";
 import React from "react";
 
-export default function Selected() {
+export default function SelectExample() {
   return (
     <>
       <Select>

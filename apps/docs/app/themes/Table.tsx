@@ -9,10 +9,10 @@ import {
   Tr,
 } from "@rafty/ui";
 
-export default function TableBox() {
+export default function TableExample() {
   return (
     <>
-      <TableContainer>
+      <TableContainer className="overflow-x-auto h-full w-full">
         <Table>
           <TableHead>
             <Tr>

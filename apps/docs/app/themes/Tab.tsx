@@ -1,6 +1,6 @@
 import { Tab, TabContent, TabList, TabTrigger } from "@rafty/ui";
 
-export default function Tabing() {
+export default function TabExample() {
   return (
     <>
       <Tab defaultValue="tab1">
