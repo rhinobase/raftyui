@@ -33,10 +33,6 @@ module.exports = {
       colors: {
         primary: colors.purple,
         secondary: colors.zinc,
-        error: colors.red,
-        warning: colors.amber,
-        info: colors.blue,
-        success: colors.green,
       },
       padding: {
         none: "0px",

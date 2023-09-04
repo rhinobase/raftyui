@@ -24,10 +24,6 @@ module.exports = plugin(
             900: "#002C5C",
           },
           secondary: colors.zinc,
-          error: colors.red,
-          warning: colors.amber,
-          info: colors.blue,
-          success: colors.green,
         },
         padding: {
           none: "0px",
