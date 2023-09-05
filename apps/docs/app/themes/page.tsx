@@ -1,19 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Button,
-  Calendar,
   Card,
   CardContent,
-  DatePicker,
-  InputField,
-  PasswordField,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  RangePicker,
-  TagField,
-  Textarea,
+  classNames,
 } from "@rafty/ui";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { HiCheck } from "react-icons/hi2";
@@ -40,23 +34,30 @@ import Table from "./Table";
 import Toast from "./Toast";
 import ToggleGroups from "./ToggleGroup";
 import { useTheme } from "next-themes";
+import TextAreaExample from "./TextAreaExample";
+import PasswordFieldExample from "./PasswordFieldExample";
+import InputFieldExample from "./InputFieldExample";
+import TagFieldExample from "./TagFieldExample";
+import RangePickerExample from "./RangePickerExample";
+import CalendarExample from "./CalendarExample";
+import DatePickerExample from "./DatePickerExample";
 
 enum ColorTheme {
-  PURPLE = "purple",
-  GREEN = "green",
-  RED = "red",
-  ROSE = "rose",
-  STONE = "stone",
-  YELLOW = "yellow",
-  BLUE = "blue",
-  SLATE = "slate",
-  ZINC = "zinc",
+  PURPLE = "#a855f7",
+  GREEN = "#22c55e",
+  RED = "#ef4444",
+  ROSE = "#f43f5e",
+  STONE = "#78716c",
+  YELLOW = "#eab308",
+  BLUE = "#3b82f6",
+  SLATE = "#64748b",
+  ZINC = "#71717a",
 }
 
 const COMPONENTS = [
   MenuOpen,
   CommandOpen,
-  DatePicker,
+  DatePickerExample,
   MenuBarOpen,
   Accordian,
   AlertOpen,
@@ -67,11 +68,11 @@ const COMPONENTS = [
   ContextMenuOpen,
   Radio,
   DrawerOpen,
-  InputField,
-  PasswordField,
+  InputFieldExample,
+  PasswordFieldExample,
   ProgressShow,
-  TagField,
-  RangePicker,
+  TagFieldExample,
+  RangePickerExample,
   Select,
   Spinner,
   StatShow,
@@ -80,12 +81,12 @@ const COMPONENTS = [
   Table,
   Toast,
   ToggleGroups,
-  Textarea,
-  Calendar,
+  TextAreaExample,
+  CalendarExample,
 ];
 
 export default function Home() {
-  const { setTheme } = useTheme();
+  const { setTheme, theme, themes } = useTheme();
   const [color, setColor] = useState<ColorTheme>(ColorTheme.PURPLE);
 
   return (
@@ -98,66 +99,76 @@ export default function Home() {
           </h4>
         </div>
         <div className="p-3 flex items-center gap-4 justify-end">
-          {Object.keys(ColorTheme)
+          {Object.entries(ColorTheme)
             .slice(0, 4)
-            .map((c) => (
-              <Button
-                key={c}
-                size="icon"
-                className={`!bg-${c}-500 !rounded-full`}
-                onClick={() => setColor(c as ColorTheme)}
-              >
-                {color == c && <HiCheck className="text-white font-bold" />}
-              </Button>
-            ))}
+            .map(([c, value]) => {
+              return (
+                <Button
+                  key={c}
+                  size="icon"
+                  style={{ background: value }}
+                  className="!rounded-full"
+                  onClick={() => setColor(c as ColorTheme)}
+                >
+                  {color == c && <HiCheck className="text-white font-bold" />}
+                </Button>
+              );
+            })}
           <Popover>
             <PopoverTrigger>Customize</PopoverTrigger>
             <PopoverContent showArrow>
-              <div className="w-[300px] p-2 space-y-2">
-                <h5 className="text-xs">Color</h5>
-                <div className="grid grid-cols-3 gap-2">
-                  {Object.keys(ColorTheme).map((c) => (
-                    <Button
-                      key={c}
-                      size="sm"
-                      variant="outline"
-                      className="capitalize"
-                      leftIcon={
-                        <div
-                          className={`h-4 w-4 bg-${c.toLowerCase()}-500 rounded-full flex justify-center items-center`}
-                        >
-                          {color === c && (
-                            <HiCheck
-                              className="text-white font-bold"
-                              size={12}
-                            />
-                          )}
-                        </div>
-                      }
-                      onClick={() => setColor(c as ColorTheme)}
-                    >
-                      {c.toLowerCase()}
-                    </Button>
-                  ))}
+              <div className="w-[300px] p-2 space-y-3">
+                <div className="space-y-1">
+                  <h5 className="text-xs font-medium">Color</h5>
+                  <div className="grid grid-cols-3 gap-2">
+                    {Object.entries(ColorTheme).map(([c, value]) => (
+                      <Button
+                        key={c}
+                        size="sm"
+                        variant="outline"
+                        className="capitalize"
+                        leftIcon={
+                          <div
+                            style={{ background: value }}
+                            className="h-3 w-3 rounded-full flex justify-center items-center"
+                          >
+                            {color === c && (
+                              <HiCheck
+                                className="text-white font-bold"
+                                size={12}
+                              />
+                            )}
+                          </div>
+                        }
+                        onClick={() => setColor(c as ColorTheme)}
+                      >
+                        {c.toLowerCase()}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
-                <h5 className="text-xs">Mode</h5>
-                <div className="flex gap-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    leftIcon={<BsSun />}
-                    onClick={() => setTheme("light")}
-                  >
-                    Light
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    leftIcon={<BsMoon />}
-                    onClick={() => setTheme("dark")}
-                  >
-                    Dark
-                  </Button>
+                <div className="space-y-1">
+                  <h5 className="text-xs font-medium">Mode</h5>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      leftIcon={<BsSun size={13} />}
+                      isActive={theme == themes[0]}
+                      onClick={() => setTheme("light")}
+                    >
+                      Light
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      leftIcon={<BsMoon size={13} />}
+                      isActive={theme == themes[1]}
+                      onClick={() => setTheme("dark")}
+                    >
+                      Dark
+                    </Button>
+                  </div>
                 </div>
               </div>
             </PopoverContent>

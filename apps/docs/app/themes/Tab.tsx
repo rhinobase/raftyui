@@ -8,12 +8,15 @@ export default function TabExample() {
         <TabTrigger value="tab2">Tab2</TabTrigger>
       </TabList>
       <TabContent value="tab1" className="p-4">
-        1 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum deserunt
+        error cupiditate nam praesentium vitae. Ratione fuga dolore sint,
+        deleniti eveniet blanditiis eius quod omnis aliquid dolores id aut illo?
       </TabContent>
       <TabContent value="tab2" className="p-4">
-        2 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur
+        officia tenetur assumenda ea quam, nesciunt totam explicabo amet esse.
+        Fuga ullam itaque dolor molestias similique autem voluptates explicabo
+        possimus enim.
       </TabContent>
     </Tab>
   );

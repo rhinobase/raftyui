@@ -1,10 +1,8 @@
-import { Switch } from "@radix-ui/react-switch";
+import { Switch } from "@rafty/ui";
 
 export default function SwitchButton() {
   return (
-    <div className="flex gap-2 items-center">
-      <Switch />
-      <Switch />
+    <div className="flex justify-center">
       <Switch />
     </div>
   );

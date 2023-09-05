@@ -52,71 +52,73 @@ export default function ComboBoxExample() {
   }, undefined);
 
   return (
-    <Popover open={isOpen} onOpenChange={setOpen}>
-      <div className="relative flex items-center w-[240px]">
-        <PopoverTrigger
-          variant="outline"
-          role="combobox"
-          aria-expanded={isOpen}
-          className="w-full justify-between h-[50px]"
-          rightIcon={
-            <HiChevronUpDown
-              className={classNames(
-                isOpen
-                  ? "text-primary-500"
-                  : "text-secondary-500 dark:text-secondary-400",
-                "h-4 w-4 shrink-0 stroke-1",
-              )}
-            />
-          }
-        >
-          {selected ? (
-            <div className="flex items-center gap-2 w-full">
-              <Avatar name={selected.name} src={selected.link} />
-              <Text>{selected.name}</Text>
-            </div>
-          ) : (
-            "Select Item"
-          )}
-        </PopoverTrigger>
-        {selected && (
-          <Button
-            size="icon"
-            colorScheme="error"
-            variant="ghost"
-            className="absolute right-10 z-20 !p-1"
-            onClick={() => dispatch("")}
+    <div className="flex justify-center">
+      <Popover open={isOpen} onOpenChange={setOpen}>
+        <div className="relative flex items-center w-[240px]">
+          <PopoverTrigger
+            variant="outline"
+            role="combobox"
+            aria-expanded={isOpen}
+            className="w-full justify-between h-[50px]"
+            rightIcon={
+              <HiChevronUpDown
+                className={classNames(
+                  isOpen
+                    ? "text-primary-500"
+                    : "text-secondary-500 dark:text-secondary-400",
+                  "h-4 w-4 shrink-0 stroke-1",
+                )}
+              />
+            }
           >
-            <HiXMark className="h-3.5 w-3.5 stroke-1" />
-          </Button>
-        )}
-      </div>
-      <PopoverContent className="!p-0 !w-[240px]">
-        <Command shouldFilter={false}>
-          <CommandList>
-            <CommandGroup>
-              {pages.map((item) => {
-                return (
-                  <CommandItem
-                    key={item.id}
-                    value={item.id}
-                    onSelect={dispatch}
-                  >
-                    <div className="flex items-center gap-2 w-full">
-                      <Avatar name={item.name} src={item.link} />
-                      <Text>{item.name}</Text>
-                      <div className="flex-1" />
-                      {selected?.id == item.id && (
-                        <HiCheck className="h-3.5 w-3.5 stroke-1" />
-                      )}
-                    </div>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+            {selected ? (
+              <div className="flex items-center gap-2 w-full">
+                <Avatar name={selected.name} src={selected.link} />
+                <Text>{selected.name}</Text>
+              </div>
+            ) : (
+              "Select Item"
+            )}
+          </PopoverTrigger>
+          {selected && (
+            <Button
+              size="icon"
+              colorScheme="error"
+              variant="ghost"
+              className="absolute right-10 z-20 !p-1"
+              onClick={() => dispatch("")}
+            >
+              <HiXMark className="h-3.5 w-3.5 stroke-1" />
+            </Button>
+          )}
+        </div>
+        <PopoverContent className="!p-0 !w-[240px]">
+          <Command shouldFilter={false}>
+            <CommandList>
+              <CommandGroup>
+                {pages.map((item) => {
+                  return (
+                    <CommandItem
+                      key={item.id}
+                      value={item.id}
+                      onSelect={dispatch}
+                    >
+                      <div className="flex items-center gap-2 w-full">
+                        <Avatar name={item.name} src={item.link} />
+                        <Text>{item.name}</Text>
+                        <div className="flex-1" />
+                        {selected?.id == item.id && (
+                          <HiCheck className="h-3.5 w-3.5 stroke-1" />
+                        )}
+                      </div>
+                    </CommandItem>
+                  );
+                })}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 }
