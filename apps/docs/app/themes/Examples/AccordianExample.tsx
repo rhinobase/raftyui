@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@rafty/ui";
 
-export default function Accordian() {
+export function AccordianExample() {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="1">

@@ -1,6 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@rafty/ui";
 
-export default function RadioExample() {
+export function RadioGroupExample() {
   return (
     <RadioGroup defaultValue="1">
       <div className="flex flex-col gap-4">

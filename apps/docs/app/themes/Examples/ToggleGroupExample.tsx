@@ -1,6 +1,6 @@
 import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
-export default function ToggleGroups() {
+export function ToggleGroupExample() {
   return (
     <ToggleGroup type="single" defaultValue="1">
       <ToggleGroupItem value="1">1</ToggleGroupItem>

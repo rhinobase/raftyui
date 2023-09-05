@@ -17,7 +17,7 @@ import {
   CommandShortcut,
 } from "@rafty/ui";
 
-export default function CommandOpen() {
+export function CommandExample() {
   return (
     <Command className="rounded-lg border dark:border-secondary-700 shadow-md">
       <CommandInput placeholder="Type a command or search..." />

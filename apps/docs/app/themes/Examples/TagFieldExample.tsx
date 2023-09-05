@@ -1,5 +1,5 @@
 import { TagField } from "@rafty/ui";
 
-export default function TagFieldExample() {
+export function TagFieldExample() {
   return <TagField initialData={["sample", "asd"]} />;
 }

@@ -13,11 +13,11 @@ import {
   ContextMenuTrigger,
 } from "@rafty/ui";
 
-export default function ContextMenuOpen() {
+export function ContextMenuExample() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] border-2 border-dotted dark:border-secondary-700">
-        Right Click here
+      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] rounded-lg border-2 border-dotted border-secondary-300 dark:border-secondary-700 text-secondary-400 dark:text-secondary-500 select-none">
+        right click here
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem>Back</ContextMenuItem>

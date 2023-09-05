@@ -13,7 +13,7 @@ import {
   MenubarTrigger,
 } from "@rafty/ui";
 
-export default function MenuBarOpen() {
+export function MenubarExample() {
   return (
     <div className="flex justify-center">
       <Menubar>
@@ -52,8 +52,12 @@ export default function MenuBarOpen() {
         <MenubarMenu>
           <MenubarTrigger variant="ghost">View</MenubarTrigger>
           <MenubarContent>
-            <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
-            <MenubarCheckboxItem>Always Show Full URLs</MenubarCheckboxItem>
+            <MenubarCheckboxItem checked>
+              Always Show Bookmarks Bar
+            </MenubarCheckboxItem>
+            <MenubarCheckboxItem checked>
+              Always Show Full URLs
+            </MenubarCheckboxItem>
             <MenubarSeparator />
             <MenubarItem>Reload</MenubarItem>
             <MenubarItem>Force Reload</MenubarItem>

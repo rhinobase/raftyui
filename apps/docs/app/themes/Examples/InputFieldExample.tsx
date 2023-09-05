@@ -1,10 +1,10 @@
 import { ErrorMessage, FieldControl, InputField, Label } from "@rafty/ui";
 
-export default function InputFieldExample() {
+export function InputFieldExample() {
   return (
     <FieldControl name="input" isRequired>
       <Label>InputField</Label>
-      <InputField />
+      <InputField type="text" />
       <ErrorMessage>This is a sample error message</ErrorMessage>
     </FieldControl>
   );

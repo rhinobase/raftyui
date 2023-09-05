@@ -1,6 +1,6 @@
 import { FieldControl, Label, RangePicker, Text } from "@rafty/ui";
 
-export default function RangePickerExample() {
+export function RangePickerExample() {
   return (
     <FieldControl name="rangepicker" isRequired>
       <Label>Select Days</Label>

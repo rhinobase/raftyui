@@ -10,34 +10,39 @@ import {
   PopoverTrigger,
   Button,
   classNames,
+  CommandInput,
 } from "@rafty/ui";
 import { useReducer, useState } from "react";
 import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
 
-export default function ComboBoxExample() {
+const DATA = [
+  {
+    id: "1",
+    name: "Jhon",
+    link: "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FydG9vbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    id: "2",
+    name: "Jack",
+    link: "https://images.unsplash.com/photo-1606663889134-b1dedb5ed8b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhcnRvb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    id: "3",
+    name: "Bruce",
+    link: "https://images.unsplash.com/photo-1639628735078-ed2f038a193e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGNhcnRvb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    id: "4",
+    name: "Alley",
+    link: "https://images.unsplash.com/photo-1635586409095-b5d87cebe12b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNhcnRvb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+  },
+];
+
+export function ComboboxExample() {
   const [isOpen, setOpen] = useState(false);
-  const pages = [
-    {
-      id: "1",
-      name: "Jhon",
-      link: "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FydG9vbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    },
-    {
-      id: "2",
-      name: "Jack",
-      link: "https://images.unsplash.com/photo-1606663889134-b1dedb5ed8b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhcnRvb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-    },
-    {
-      id: "3",
-      name: "Bruce",
-      link: "https://images.unsplash.com/photo-1639628735078-ed2f038a193e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGNhcnRvb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-    },
-    {
-      id: "4",
-      name: "Alley",
-      link: "https://images.unsplash.com/photo-1635586409095-b5d87cebe12b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNhcnRvb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-    },
-  ];
+
+  const [search, setSearch] = useState();
+
   const [selected, dispatch] = useReducer((prev: any, cur: any): any => {
     // Checking if we have a value or not
     const value = prev?.id == cur ? undefined : cur;
@@ -45,7 +50,7 @@ export default function ComboBoxExample() {
 
     if (value)
       return {
-        ...pages?.find((data) => data.id === value),
+        ...DATA?.find((data) => data.id === value),
       };
 
     return undefined;
@@ -59,7 +64,7 @@ export default function ComboBoxExample() {
             variant="outline"
             role="combobox"
             aria-expanded={isOpen}
-            className="w-full justify-between h-[50px]"
+            className="w-full justify-between min-h-[54px]"
             rightIcon={
               <HiChevronUpDown
                 className={classNames(
@@ -77,7 +82,7 @@ export default function ComboBoxExample() {
                 <Text>{selected.name}</Text>
               </div>
             ) : (
-              "Select Item"
+              "Select a person"
             )}
           </PopoverTrigger>
           {selected && (
@@ -93,14 +98,15 @@ export default function ComboBoxExample() {
           )}
         </div>
         <PopoverContent className="!p-0 !w-[240px]">
-          <Command shouldFilter={false}>
+          <Command>
+            <CommandInput placeholder="search" />
             <CommandList>
               <CommandGroup>
-                {pages.map((item) => {
+                {DATA.map((item) => {
                   return (
                     <CommandItem
                       key={item.id}
-                      value={item.id}
+                      value={item.name}
                       onSelect={dispatch}
                     >
                       <div className="flex items-center gap-2 w-full">

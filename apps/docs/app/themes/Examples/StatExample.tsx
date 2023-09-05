@@ -1,6 +1,6 @@
 import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
-export default function StatShow() {
+export function StatExample() {
   return (
     <Stat type="decrease">
       <StatLabel>Daily Return</StatLabel>
