@@ -30,7 +30,7 @@ export const input_examples = {
   "input-field:unstyled": (
     <InputField
       isUnstyled
-      className=" rounded-md  bg-zinc-800 border hover:border-primary-500 "
+      className="rounded-md transition-colors duration-300 bg-transparent  border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-cyan-500 hover:border-cyan-500 dark:hover:border-cyan-500"
     />
   ),
   "input-field:loading": <InputField isLoading />,

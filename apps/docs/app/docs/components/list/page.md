@@ -13,12 +13,11 @@ This is made using native ol, ul & li html tags, making all native props availab
 Import all parts and piece them together.
 
 ```jsx
-import { ListItem List } from "@rafty/ui";
+import { List, ListItem } from "@rafty/ui";
 
-  <List>
-    <ListItem />
-  </List>
-
+<List>
+  <ListItem />
+</List>;
 ```
 
 ## Usage

@@ -16,8 +16,8 @@ Import all parts and piece them together.
 import { Tooltip, TooltipTrigger, TooltipContent } from "@rafty/ui";
 
 <Tooltip>
-  <TooltipTrigger></TooltipTrigger>
-  <TooltipContent></TooltipContent>
+  <TooltipTrigger />
+  <TooltipContent />
 </Tooltip>;
 ```
 

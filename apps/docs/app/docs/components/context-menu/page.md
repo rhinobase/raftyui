@@ -28,7 +28,6 @@ import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuIt
     </ContextMenuSub>
     <ContextMenuSeparator />
     <ContextMenuCheckboxItem />
-    <ContextMenuCheckboxItem />
     <ContextMenuSeparator />
     <ContextMenuLabel />
     <ContextMenuRadioGroup>

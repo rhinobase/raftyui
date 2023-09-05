@@ -13,7 +13,7 @@ This is a custom-made component, you can pass name and different states like isR
 Import all parts and piece them together.
 
 ```jsx
-import { FieldControl } from "@rafty/ui";
+import { FieldControl, Label, InputField, ErrorMessage } from "@rafty/ui";
 
 <FieldControl>
   <Label />

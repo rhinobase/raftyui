@@ -13,7 +13,7 @@ This is a custom component crafted to adhere to our styling conventions, resulti
 Import all parts and piece them together.
 
 ```jsx
-import { Card, CardFooter, CardHeader } from "@rafty/ui";
+import { Card, CardFooter, CardContent, CardHeader } from "@rafty/ui";
 
 <Card>
   <CardHeader />

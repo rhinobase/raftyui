@@ -13,10 +13,10 @@ This component is made on top of [Radix UIs Radio Group Component](https://www.r
 Import all parts and piece them together.
 
 ```jsx
-import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
+import { RadioGroup, RadioGroupItem } from "@rafty/ui";
 
 <RadioGroup>
-  <RadioGroupItem></RadioGroupItem>
+  <RadioGroupItem />
 </RadioGroup>;
 ```
 

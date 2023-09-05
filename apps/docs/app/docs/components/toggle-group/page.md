@@ -16,7 +16,7 @@ Import all parts and piece them together.
 import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
 <ToggleGroup>
-  <ToggleGroupItem></ToggleGroupItem>
+  <ToggleGroupItem />
 </ToggleGroup>;
 ```
 

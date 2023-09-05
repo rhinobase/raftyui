@@ -81,7 +81,7 @@ export const alert_dialog_examples = {
     <AlertDialog>
       <AlertDialogTrigger
         isUnstyled
-        className="shadow-md px-6 bg-white p-2 rounded-md hover:bg-secondary-300 dark:hover:bg-secondary-800"
+        className=" px-6  p-2 rounded-md text-secondary-100 hover:bg-secondary-200 dark:hover:bg-secondary-800 dark:bg-secondary-900"
       >
         Open
       </AlertDialogTrigger>

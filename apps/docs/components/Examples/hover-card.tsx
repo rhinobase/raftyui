@@ -6,14 +6,14 @@ export const hover_card_examples = {
       <HoverCardTrigger asChild>
         <img
           className="block h-[45px] w-[45px] rounded-full"
-          src="https://i.pinimg.com/1200x/db/9b/f5/db9bf5ebc394015d62141539ed1bfd7c.jpg"
+          src="https://images.unsplash.com/photo-1634195130430-2be61200b66a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjkyfHxjYXJ0b29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
           alt="Rafty UI"
         />
       </HoverCardTrigger>
       <HoverCardContent className="w-[300px] not-prose space-y-4">
         <img
           className="h-14 w-14 rounded-full"
-          src="https://i.pinimg.com/1200x/db/9b/f5/db9bf5ebc394015d62141539ed1bfd7c.jpg"
+          src="https://images.unsplash.com/photo-1634195130430-2be61200b66a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjkyfHxjYXJ0b29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
           alt="Rafty UI"
         />
         <div className="flex flex-col gap-4">
