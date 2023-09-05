@@ -42,13 +42,13 @@ export const Progress = React.forwardRef<
       {...props}
       className={classNames(
         progressClasses.size[size],
-        "bg-secondary-700 overflow-hidden",
+        "bg-secondary-100 dark:bg-secondary-700 overflow-hidden",
       )}
     >
       <ProgressPrimitive.Indicator
         className={classNames(
           progressClasses.colorScheme[colorScheme],
-          "h-full flex-1 bg-primary transition-all",
+          "h-full flex-1 transition-all",
           className,
         )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
