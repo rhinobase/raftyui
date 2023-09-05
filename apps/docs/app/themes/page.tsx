@@ -12,6 +12,8 @@ import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import Masonry from "react-responsive-masonry";
 import { TotalRevenueExample } from "./Examples";
 import { useTheme } from "next-themes";
+import TableExample from "./Examples/TableExample";
+import CounterExample from "./Examples/CounterExample";
 
 const ColorTheme = {
   purple: "!bg-purple-500",
@@ -117,6 +119,7 @@ export default function Home() {
             </CardContent>
           </Card>
         ))}
+        <CounterExample />
       </Masonry>
     </div>
   );
