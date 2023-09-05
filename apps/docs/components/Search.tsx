@@ -392,7 +392,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         type="button"
         variant="outline"
         onClick={() => setOpen(true)}
-        className="hidden w-[400px] !justify-start !gap-2 md:flex"
+        className="hidden w-[300px] !justify-start !gap-2 md:flex"
       >
         <HiMagnifyingGlass size={16} />
         Search docs

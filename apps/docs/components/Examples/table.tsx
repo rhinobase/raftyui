@@ -85,44 +85,41 @@ export const table_examples = {
     </TableContainer>
   ),
   "table:size": (
-    <>
-      <TableContainer>
-        <Table size="sm">
-          <TableHead>
-            <Tr>
-              <Th>To Convert</Th>
-              <Th>Into</Th>
-              <Th>Multiply By</Th>
-            </Tr>
-          </TableHead>
-          <TableBody>
-            <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td>25.4</Td>
-            </Tr>
-            <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td>30.48</Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td>0.91444</Td>
-            </Tr>
-          </TableBody>
-          <TableFooter>
-            <Tr>
-              <Th>To Convert</Th>
-              <Th>Into</Th>
-              <Th>Multiply By</Th>
-            </Tr>
-          </TableFooter>
-        </Table>
-      </TableContainer>
-      <TableContainer></TableContainer>
-    </>
+    <TableContainer>
+      <Table size="sm">
+        <TableHead>
+          <Tr>
+            <Th>To Convert</Th>
+            <Th>Into</Th>
+            <Th>Multiply By</Th>
+          </Tr>
+        </TableHead>
+        <TableBody>
+          <Tr>
+            <Td>inches</Td>
+            <Td>millimetres (mm)</Td>
+            <Td>25.4</Td>
+          </Tr>
+          <Tr>
+            <Td>feet</Td>
+            <Td>centimetres (cm)</Td>
+            <Td>30.48</Td>
+          </Tr>
+          <Tr>
+            <Td>yards</Td>
+            <Td>metres (m)</Td>
+            <Td>0.91444</Td>
+          </Tr>
+        </TableBody>
+        <TableFooter>
+          <Tr>
+            <Th>To Convert</Th>
+            <Th>Into</Th>
+            <Th>Multiply By</Th>
+          </Tr>
+        </TableFooter>
+      </Table>
+    </TableContainer>
   ),
   "table:container": (
     <TableContainer>
@@ -163,36 +160,69 @@ export const table_examples = {
   ),
   "table:barebone": (
     <TableContainer>
-      <Table isBarebone>
-        <TableHead>
+      <Table
+        isBarebone
+        className="divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y"
+      >
+        <TableHead className="bg-secondary-100 dark:bg-secondary-700/80">
           <Tr>
-            <Th>To Convert</Th>
-            <Th>Into</Th>
-            <Th>Multiply By</Th>
+            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+              To Convert
+            </Th>
+            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+              Into
+            </Th>
+            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+              Multiply By
+            </Th>
           </Tr>
         </TableHead>
-        <TableBody>
+        <TableBody className="dark:bg-secondary-700/40 bg-white">
           <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>25.4</Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              inches
+            </Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              millimetres (mm)
+            </Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              25.4
+            </Td>
           </Tr>
           <Tr>
-            <Td>feet</Td>
-            <Td>centimetres (cm)</Td>
-            <Td>30.48</Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              feet
+            </Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              centimetres (cm)
+            </Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              30.48
+            </Td>
           </Tr>
           <Tr>
-            <Td>yards</Td>
-            <Td>metres (m)</Td>
-            <Td>0.91444</Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              yards
+            </Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              metres (m)
+            </Td>
+            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+              0.91444
+            </Td>
           </Tr>
         </TableBody>
-        <TableFooter>
+        <TableFooter className="bg-secondary-100 dark:bg-secondary-700/80">
           <Tr>
-            <Th>To Convert</Th>
-            <Th>Into</Th>
-            <Th>Multiply By</Th>
+            <Th className="px-4 py-3text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+              To Convert
+            </Th>
+            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+              Into
+            </Th>
+            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+              Multiply By
+            </Th>
           </Tr>
         </TableFooter>
       </Table>
@@ -201,7 +231,7 @@ export const table_examples = {
   "table:unstyled": (
     <TableContainer>
       <Table>
-        <TableHead isUnstyled>
+        <TableHead isUnstyled className="bg-transparent">
           <Tr>
             <Th>To Convert</Th>
             <Th>Into</Th>

@@ -46,7 +46,6 @@ export default function Projects() {
   const observer = useRef<IntersectionObserver>();
   const lastElementRef = useCallback(
     (node: HTMLDivElement) => {
-      console.log(node, "hello");
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((enteris) => {

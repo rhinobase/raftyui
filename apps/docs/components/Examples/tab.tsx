@@ -102,10 +102,28 @@ export const tab_examples = {
     </Tab>
   ),
   "tab:barebone": (
-    <Tab defaultValue="tab1" isBarebone>
-      <TabList>
-        <TabTrigger value="tab1">Tab1</TabTrigger>
-        <TabTrigger value="tab2">Tab2</TabTrigger>
+    <Tab
+      defaultValue="tab1"
+      isBarebone
+      className="w-full items-stretch data-[orientation=vertical]:flex"
+    >
+      <TabList className="dark:border-black dark:border-secondary-700 border-b">
+        <TabTrigger
+          value="tab1"
+          className="text-secondary-500 dark:text-secondary-400 transition-colors
+              data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black
+              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed p-4 data-[state=active]:border-b-2 data-[state=active]:border-blue-500 dark:data-[state=active]:border-secondary-500"
+        >
+          Tab1
+        </TabTrigger>
+        <TabTrigger
+          value="tab2"
+          className="text-secondary-500 dark:text-secondary-400 transition-colors
+              data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black
+              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed p-4 data-[state=active]:border-b-2 data-[state=active]:border-blue-500 dark:data-[state=active]:border-secondary-500"
+        >
+          Tab2
+        </TabTrigger>
       </TabList>
       <TabContent value="tab1" className="p-4">
         1 large-scale networks, high-radix switches reduce hop and switch count,

@@ -92,19 +92,11 @@ export const Default: Story = {
         </FieldControl>
         <FieldControl name="date">
           <Label>Date</Label>
-          <DatePicker
-            onSelect={(value) => {
-              console.log("date", value);
-            }}
-          />
+          <DatePicker onSelect={(value) => console.log("date", value)} />
         </FieldControl>
         <FieldControl name="range">
           <Label>Range Picker</Label>
-          <RangePicker
-            onSelect={(value) => {
-              console.log("date", value);
-            }}
-          />
+          <RangePicker onSelect={(value) => console.log("date", value)} />
         </FieldControl>
         <FieldControl name="textarea">
           <Label>Textarea</Label>

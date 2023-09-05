@@ -10,10 +10,14 @@ import {
 } from "@rafty/ui";
 import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import Masonry from "react-responsive-masonry";
-import { TotalRevenueExample } from "./Examples";
+import {
+  CookieSettingsExample,
+  RangePickerExample,
+  TotalRevenueExample,
+} from "./Examples";
 import { useTheme } from "next-themes";
-import TableExample from "./Examples/TableExample";
 import CounterExample from "./Examples/CounterExample";
+import { CreateAnAccountExample } from "./Examples/CreateAnAccountExample";
 
 const ColorTheme = {
   purple: "!bg-purple-500",
@@ -27,7 +31,12 @@ const ColorTheme = {
   emerald: "!bg-emerald-500",
 };
 
-const COMPONENTS = [TotalRevenueExample];
+const COMPONENTS = [
+  TotalRevenueExample,
+  RangePickerExample,
+  CookieSettingsExample,
+  CreateAnAccountExample,
+];
 
 export default function Home() {
   const { setTheme, theme, themes } = useTheme();
