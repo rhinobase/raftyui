@@ -10,7 +10,7 @@ enum ACTION {
   RESET,
 }
 
-export type TagField = Omit<InputField, "onChange" | "ref"> & {
+export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
   initialData?: string[];
   onChange?: (tags: string[]) => void;
 };
@@ -48,6 +48,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
       <div className="flex w-full items-center gap-2">
         <InputField
           {...props}
+          type="string"
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               event.preventDefault();
