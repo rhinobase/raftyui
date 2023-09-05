@@ -11,42 +11,40 @@ import {
 
 export default function TableExample() {
   return (
-    <>
-      <TableContainer className="overflow-x-auto h-full w-full">
-        <Table>
-          <TableHead>
-            <Tr>
-              <Th>To Convert</Th>
-              <Th>Into</Th>
-              <Th>Multiply By</Th>
-            </Tr>
-          </TableHead>
-          <TableBody>
-            <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td>25.4</Td>
-            </Tr>
-            <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td>30.48</Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td>0.91444</Td>
-            </Tr>
-          </TableBody>
-          <TableFooter>
-            <Tr>
-              <Th>To Convert</Th>
-              <Th>Into</Th>
-              <Th>Multiply By</Th>
-            </Tr>
-          </TableFooter>
-        </Table>
-      </TableContainer>
-    </>
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <Tr>
+            <Th>To Convert</Th>
+            <Th>Into</Th>
+            <Th>Multiply By</Th>
+          </Tr>
+        </TableHead>
+        <TableBody>
+          <Tr>
+            <Td>inches</Td>
+            <Td>millimetres (mm)</Td>
+            <Td>25.4</Td>
+          </Tr>
+          <Tr>
+            <Td>feet</Td>
+            <Td>centimetres (cm)</Td>
+            <Td>30.48</Td>
+          </Tr>
+          <Tr>
+            <Td>yards</Td>
+            <Td>metres (m)</Td>
+            <Td>0.91444</Td>
+          </Tr>
+        </TableBody>
+        <TableFooter>
+          <Tr>
+            <Th>To Convert</Th>
+            <Th>Into</Th>
+            <Th>Multiply By</Th>
+          </Tr>
+        </TableFooter>
+      </Table>
+    </TableContainer>
   );
 }

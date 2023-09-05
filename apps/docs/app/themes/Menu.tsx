@@ -1,5 +1,4 @@
 import { MenuContent, MenuItem, MenuTrigger, Menu } from "@rafty/ui";
-import React from "react";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 
 export default function MenuOpen() {
