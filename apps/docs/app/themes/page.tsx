@@ -10,36 +10,7 @@ import {
 } from "@rafty/ui";
 import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import Masonry from "react-responsive-masonry";
-import {
-  AccordianExample,
-  AlertDialogExample,
-  AlertExample,
-  ButtonExample,
-  CalendarExample,
-  CheckboxExample,
-  ComboboxExample,
-  CommandExample,
-  ContextMenuExample,
-  DatePickerExample,
-  DrawerExample,
-  InputFieldExample,
-  MenuExample,
-  MenubarExample,
-  PasswordFieldExample,
-  ProgressExample,
-  RadioGroupExample,
-  RangePickerExample,
-  SelectExample,
-  SpinnerExample,
-  StatExample,
-  SwitchExample,
-  TabExample,
-  TableExample,
-  TagFieldExample,
-  TextareaExample,
-  ToastExample,
-  ToggleGroupExample,
-} from "./Examples";
+import { TotalRevenueExample } from "./Examples";
 import { useTheme } from "next-themes";
 
 const ColorTheme = {
@@ -54,36 +25,7 @@ const ColorTheme = {
   emerald: "!bg-emerald-500",
 };
 
-const COMPONENTS = [
-  MenuExample,
-  CommandExample,
-  DatePickerExample,
-  MenubarExample,
-  AccordianExample,
-  AlertExample,
-  AlertDialogExample,
-  ButtonExample,
-  CheckboxExample,
-  ComboboxExample,
-  ContextMenuExample,
-  RadioGroupExample,
-  DrawerExample,
-  InputFieldExample,
-  PasswordFieldExample,
-  ProgressExample,
-  TagFieldExample,
-  RangePickerExample,
-  SelectExample,
-  SpinnerExample,
-  StatExample,
-  SwitchExample,
-  TabExample,
-  TableExample,
-  ToastExample,
-  ToggleGroupExample,
-  TextareaExample,
-  CalendarExample,
-];
+const COMPONENTS = [TotalRevenueExample];
 
 export default function Home() {
   const { setTheme, theme, themes } = useTheme();
@@ -169,7 +111,7 @@ export default function Home() {
       </div>
       <Masonry columnsCount={3} gutter="15px" className="mt-10">
         {COMPONENTS.map((Component, index) => (
-          <Card key={index}>
+          <Card key={index} size="lg">
             <CardContent>
               <Component />
             </CardContent>
