@@ -153,9 +153,9 @@ TabTrigger.displayName = "TabTrigger";
 // Content Component
 const tabContentClasses = {
   size: {
-    sm: "w-1 min-w-[4px]",
-    md: "w-1.5 min-w-[6px]",
-    lg: "w-2 min-w-[8px]",
+    sm: "w-full min-w-[4px] max-w-[4px]",
+    md: "w-full min-w-[6px] max-w-[6px]",
+    lg: "w-full min-w-[8px] max-w-[8px]",
   },
 };
 
@@ -199,7 +199,7 @@ export const TabContent = React.forwardRef<
           <div
             className={classNames(
               tabContentClasses.size[size],
-              "bg-secondary-100 dark:bg-secondary-800 w-full border-b border-r border-t dark:border-black",
+              "bg-secondary-100 dark:bg-secondary-800 border-b border-r border-t dark:border-black",
             )}
           />
           {children}
