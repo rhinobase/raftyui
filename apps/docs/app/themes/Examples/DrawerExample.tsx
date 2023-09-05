@@ -9,7 +9,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-export default function DrawerOpen() {
+export function DrawerExample() {
   const [isOpen, setOpen] = useState(false);
   return (
     <div className="flex justify-center">

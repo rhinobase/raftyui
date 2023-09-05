@@ -48,7 +48,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
       <div className="flex w-full items-center gap-2">
         <InputField
           {...props}
-          type="string"
+          type="text"
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               event.preventDefault();

@@ -9,11 +9,13 @@ import {
   Button,
 } from "@rafty/ui";
 
-export default function AlertDialogOpen() {
+export function AlertDialogExample() {
   return (
     <div className="flex justify-center">
       <AlertDialog>
-        <AlertDialogTrigger>Open</AlertDialogTrigger>
+        <AlertDialogTrigger colorScheme="error" variant="solid">
+          Delete Account
+        </AlertDialogTrigger>
         <AlertDialogOverlay />
         <AlertDialogContent>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -21,9 +23,14 @@ export default function AlertDialogOpen() {
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
           </AlertDialogDescription>
-          <AlertDialogCancel asChild>
-            <Button className="w-max">Close</Button>
-          </AlertDialogCancel>
+          <div className="flex justify-between">
+            <AlertDialogCancel asChild>
+              <Button>Cancel</Button>
+            </AlertDialogCancel>
+            <AlertDialogCancel asChild>
+              <Button colorScheme="error">Delete</Button>
+            </AlertDialogCancel>
+          </div>
         </AlertDialogContent>
       </AlertDialog>
     </div>

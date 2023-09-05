@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 
-export default function AlertOpen() {
+export function AlertExample() {
   return (
     <Alert>
       <AlertIcon />

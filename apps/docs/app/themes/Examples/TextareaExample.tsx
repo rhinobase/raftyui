@@ -1,6 +1,6 @@
 import { FieldControl, Label, Text, Textarea } from "@rafty/ui";
 
-export default function TextAreaExample() {
+export function TextareaExample() {
   return (
     <FieldControl name="textarea" isRequired>
       <Label>TextArea</Label>

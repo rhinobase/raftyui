@@ -1,7 +1,7 @@
 import { MenuContent, MenuItem, MenuTrigger, Menu } from "@rafty/ui";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 
-export default function MenuOpen() {
+export function MenuExample() {
   return (
     <div className="flex justify-center">
       <Menu>

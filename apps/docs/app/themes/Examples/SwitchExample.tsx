@@ -1,6 +1,6 @@
 import { Switch } from "@rafty/ui";
 
-export default function SwitchButton() {
+export function SwitchExample() {
   return (
     <div className="flex justify-center">
       <Switch />

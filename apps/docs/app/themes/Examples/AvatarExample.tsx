@@ -1,6 +1,6 @@
 import { Avatar } from "@rafty/ui";
 
-export default function AvatarImage() {
+export function AvatarExample() {
   return (
     <Avatar
       size="lg"

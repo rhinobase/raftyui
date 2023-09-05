@@ -17,7 +17,7 @@ export default function TableExample() {
 
   return (
     <TableContainer>
-      <Table className="table-fixed w-full" size="sm">
+      <Table className="table-fixed w-full">
         <TableHead>
           <Tr>
             <Th style={{ width: 30 }}>
@@ -29,8 +29,8 @@ export default function TableExample() {
                 }
               />
             </Th>
-            <Th style={{ width: 100 }}>To Convert</Th>
-            <Th style={{ width: 130 }}>Into</Th>
+            <Th style={{ width: 108 }}>To Convert</Th>
+            <Th style={{ width: 110 }}>Into</Th>
             <Th style={{ textAlign: "end" }}>Multiply By</Th>
           </Tr>
         </TableHead>

@@ -1,5 +1,5 @@
 import { Checkbox } from "@rafty/ui";
 
-export default function CheckBox() {
+export function CheckboxExample() {
   return <Checkbox>Checkbox</Checkbox>;
 }

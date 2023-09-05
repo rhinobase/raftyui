@@ -1,5 +1,5 @@
 import { DatePicker } from "@rafty/ui";
 
-export default function DatePickerExample() {
+export function DatePickerExample() {
   return <DatePicker />;
 }
