@@ -4,6 +4,10 @@ pageTitle: Switch - Rafty UI
 description: Switch
 ---
 
+A control that allows the user to toggle between checked and not checked.It is used as an alternative for the checkbox component.
+
+This component is made on top of [Radix UIs Switch Component](https://www.radix-ui.com/primitives/docs/components/switch) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+
 ## Anatomy
 
 Import the component.
@@ -20,13 +24,13 @@ import { Switch } from "@rafty/ui";
 
 ## Size
 
-Pass the `size` prop if you need to adjust the size of the switch. Values can be `sm`, `md`, `lg`.
+There are 3 size options in spinner: `sm`, `md` (default) & `lg
 
 {% example name="switch:size" /%}
 
-## Disabled
+## IsDisabled
 
-Pass the `isDisabled` prop if you need to disable the switch.
+IsDisabled prop is used to show select component in disabled state.
 
 {% example name="switch:disabled" /%}
 
@@ -36,10 +40,14 @@ Pass the `defaultSelected` prop if you need to set the switch selected by defaul
 
 {% example name="switch:selected" /%}
 
-## Required
+## IsRequired
+
+IsRequired prop is used to show select in required state.
 
 {% example name="switch:required" /%}
 
 ## IsReadOnly
+
+IsReadOnly prop is used to show select in read-only state
 
 {% example name="switch:readonly" /%}

@@ -4,6 +4,10 @@ pageTitle: Dialog - Rafty UI
 description: Dialog
 ---
 
+Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+
+This component is made on top of [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -30,11 +34,13 @@ import { Dialog, DialogContent, DialogOverlay, DialogHeader, DialogTitle, Dialog
 
 ## Sizes
 
-Pass the `size` prop if you need to adjust the size of the dialog. Values can be `sm`, `md`, `lg`.
+There are 4 `size` options in dialog component: `sm`, `md` (default), `lg` & `xl`.
 
 {% example name="dialog:size" /%}
 
 ## AsChild
+
+Our Button component is forwarded within the Alert Dialog Trigger component, enabling you to utilize all button props in the trigger. Additionally, if you wish to use your own trigger, you can use the `asChild` prop.
 
 {% example name="dialog:asChild" /%}
 
@@ -43,6 +49,12 @@ Pass the `size` prop if you need to adjust the size of the dialog. Values can be
 Pass `isBarebone` prop to remove all style in dialog.
 
 {% example name="dialog:barebone" /%}
+
+## ShowCloseButton
+
+The showCloseButton prop exists in DialogContent subcomponent and it is used to show/hide default close button in dialog.
+
+{% example name="dialog:closebutton" /%}
 
 ## Unstyled
 

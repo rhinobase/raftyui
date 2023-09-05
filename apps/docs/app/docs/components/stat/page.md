@@ -4,6 +4,10 @@ pageTitle: Stat - Rafty UI
 description: Stat
 ---
 
+Stat component is used to display statistics/numbers.
+
+This is a custom component made according to our styling conventions limiting the props available
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -26,6 +30,6 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
 ## Type
 
-Pass the `type` prop if you need to increase and decrease the stat type. Values can be `increase`, `decrease`, `normal`
+The type prop is used to define type of stat, it has 3 options: `increase`, `decrease` & `normal` (default).
 
 {% example name="stat:type" /%}

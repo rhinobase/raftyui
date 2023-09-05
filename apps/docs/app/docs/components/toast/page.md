@@ -4,6 +4,10 @@ pageTitle: Toast - Rafty UI
 description: Toast
 ---
 
+The toast component is used to give feedback to users after an action has taken place.
+
+This is a custom-made component according to our styling conventions, limiting the available props and styling options.
+
 ## Anatomy
 
 Import the component.
@@ -22,14 +26,26 @@ Toasts by default appears at the top of an application window, and it is possibl
 
 {% example name="toast:usage" /%}
 
+## Title
+
+The title is another required prop for in toast.
+
+{% example name="toast:title" /%}
+
 ## Message
 
-Pass the `message` prop to pass message into the toast
+The message prop is used to display description below title in toast
 
 {% example name="toast:message" /%}
 
 ## Severity
 
-Pass the `severity` prop if you need to adjust the color of the toast. Values can be `success`, `info`, `error`, `warning`.
+There are 4 `severity` options in toast: `error`, `warning`, `info` & `success`. It is a required prop.
 
 {% example name="toast:severity" /%}
+
+## Visible
+
+The visible prop is used to manage the visibility of toast.
+
+{% example name="toast:visible" /%}

@@ -4,6 +4,8 @@ pageTitle: Menu - Rafty UI
 description: Menu
 ---
 
+Displays a menu to the user—such as a set of actions or functions—triggered by a button. This component is made on top of [Radix UIs Dropdown Menu Component](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -32,6 +34,8 @@ import { Menu, MenuTrigger, MenuContent, MenuContent, MenuSeparator, MenuRadioGr
 
 ## Size
 
+There are 3 `size` options in Menu: `sm`, `md` (default) & `lg`.
+
 {% example name="menu:size" /%}
 
 ## SubMenu
@@ -57,6 +61,12 @@ Pass `isBarebone` prop to remove all style in Menu.
 Pass ` isUnstyled` prop to remove style from a particulart sub component.
 
 {% example name="menu:unstyled" /%}
+
+## IsArrow
+
+The `isArrow` prop exists in Menu Content subcomponent and is used to show/hide arrow on content. By default, its value is true.
+
+{% example name="menu:isarrow" /%}
 
 ### API
 

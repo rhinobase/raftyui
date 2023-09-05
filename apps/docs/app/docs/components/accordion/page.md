@@ -6,7 +6,7 @@ description: Accordion
 
 The accordion component allows the user to show and hide sections of related content on a page.
 
-This component is made on top of [Radix UIs Accordion Component](https://www.radix-ui.com/primitives/docs/components/accordion) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent). These props have been forwarded to you, granting access to all its native properties.
+This component is made on top of [Radix UIs Accordion Component](https://www.radix-ui.com/primitives/docs/components/accordion) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
 
 ## Anatomy
 
@@ -37,7 +37,8 @@ when using type `single`, the `collapsible` prop allows closing content when cli
 
 ## Expand Multiple items at once
 
-If you set type `multiple` then the accordion will permit multiple items to be expanded at once.
+- If you set type `multiple` then the accordion will permit multiple items to be expanded at once.
+- when using type `multiple` value and default value are `string [] ` and `onValueChange` function is like `(value: string []) => void`
 
 {% example name="accordion:multi_item" /%}
 
@@ -45,9 +46,15 @@ If you set type `multiple` then the accordion will permit multiple items to be e
 
 {% example name="accordion:defaultvalue" /%}
 
+## Size
+
+There are 3 `size` options in accordion: `sm`, `md` (default) & `lg`.
+
+{% example name="accordion:size" /%}
+
 ## Variant
 
-There are 2 variants for accordion, i.e., `solid` & `ghost`. By default, it is set to `solid`.
+There are 2 `variant` options in accordion: `solid` (default) & `ghost`.
 
 {% example name="accordion:variant" /%}
 

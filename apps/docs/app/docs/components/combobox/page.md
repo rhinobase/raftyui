@@ -4,31 +4,7 @@ pageTitle: ComboBox - Rafty UI
 description: ComboBox
 ---
 
-## Anatomy
-
-Import all parts and piece them together.
-
-```jsx
-import { Popover, PopoverTrigger, Avatar, PopoverContent, Command, CommandList, CommandGroup, CommandItem, Text, CommandEmpty } from "@rafty/ui";
-
-<Popover>
-  <PopoverTrigger>
-    <Avatar />
-  </PopoverTrigger>
-  <PopoverContent>
-    <Command>
-      <CommandList>
-        <CommandGroup>
-          <CommandItem>
-            <Text />
-          </CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </Command>
-  </PopoverContent>
-</Popover>;
-```
-
-## Usage
+This is not a premade component available in rafty/ui but we can make it using `Popover` & `Command` components.
+Here is a example showing how you can make it.
 
 {% example name="combobox:usage" /%}

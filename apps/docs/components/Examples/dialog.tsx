@@ -39,6 +39,21 @@ export const dialog_examples = {
       </DialogContent>
     </Dialog>
   ),
+  "dialog:closebutton": (
+    <Dialog>
+      <DialogTrigger>open</DialogTrigger>
+      <DialogOverlay />
+      <DialogContent showCloseButton>
+        <DialogHeader>Dialog Header</DialogHeader>
+        <DialogDescription>
+          Make changes to your profile here. Click save when you&apos;re done.
+        </DialogDescription>
+        <div className="flex items-center justify-end pt-5">
+          <Button>Save Change</Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  ),
   "dialog:asChild": (
     <Dialog size="sm">
       <DialogTrigger asChild>

@@ -4,6 +4,10 @@ pageTitle: Skeleton - Rafty UI
 description: Skeleton
 ---
 
+Skeleton is used to display the loading state of some component.
+
+This is custom made component with our understanding and usage limiting the props available.
+
 ## Anatomy
 
 Import the component.

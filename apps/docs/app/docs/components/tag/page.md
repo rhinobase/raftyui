@@ -4,6 +4,8 @@ pageTitle: Tag - Rafty UI
 description: Tag
 ---
 
+Tag component is utilized to label, categorize, or organize items using descriptive keywords.
+
 # Anatomy
 
 Import the component.
@@ -20,11 +22,12 @@ import { Tag } from "@rafty/ui";
 
 ## Sizes
 
-Pass the `size` prop if you need to adjust the size of the tag. Values can be `sm, md, lg`.
+There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`.
+
 {% example name="tag:sizes" /%}
 
 ## ColorScheme
 
-Pass the `colorScheme` prop if you need to adjust the color of the tag. Values can be `primary,success,warning,error`.
+There are 5 `colorScheme` options available: `primary`, `secondary` (default), `error`, `success` & `warning`.
 
 {% example name="tag:colorschema" /%}

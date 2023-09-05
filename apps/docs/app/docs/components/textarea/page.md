@@ -4,6 +4,8 @@ pageTitle: Text Area - Rafty UI
 description: Text Area
 ---
 
+The Text area component allows you to easily create multi-line text inputs.
+
 ## Anatomy
 
 Import the component.

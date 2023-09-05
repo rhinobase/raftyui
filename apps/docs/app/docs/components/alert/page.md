@@ -6,7 +6,7 @@ description: Alert
 
 An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
 
-This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props
+This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props.
 
 ## Anatomy
 
@@ -28,19 +28,19 @@ import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options: `sm`, `md` & `lg`. By default, it is set to `md`.
+There are 3 `size` options available: `sm`, `md` (default) & `lg`
 
 {% example name="alert:size" /%}
 
 ## Status
 
-There are 4 `status` options in alert: `success`, `warning`, `error` & `info`. By default, it is set to `info`.
+There are 4 `status` options in alert: `success`, `warning`, `error` & `info` (default).
 
 {% example name="alert:status" /%}
 
 ## Variant
 
-There are 4 `variant` options in alert: `simple`, `solid`, `left-accent` & `top-accent`. By default, the value for variant is `simple`.
+There are 4 `variant` options in alert: `simple` (default), `solid`, `left-accent` & `top-accent`.
 
 {% example name="alert:variant" /%}
 

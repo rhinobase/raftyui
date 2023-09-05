@@ -35,6 +35,7 @@ export const input_examples = {
   ),
   "input-field:loading": <InputField isLoading />,
   "input-field:readonly": <InputField isReadOnly />,
+  "input-field:invalid": <InputField isDisabled />,
 
   "input-field:left_addon": (
     <InputGroup>

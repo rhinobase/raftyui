@@ -4,6 +4,10 @@ pageTitle: Progress - Rafty UI
 description: Progress
 ---
 
+Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+
+This component is made on top of [Radix UIs Progress Component](https://www.radix-ui.com/primitives/docs/components/progress) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+
 ## Anatomy
 
 Import the component.
@@ -20,12 +24,12 @@ import { Progress } from "@rafty/ui";
 
 ## size
 
-Pass the `size` prop if you need to adjust the size of the progress. Values can be `sm`, `md`, `lg`.
+There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 
 {% example name="progress:size" /%}
 
 ## colorScheme
 
-Pass the `colorScheme` prop to change the color of the progess. You can set the value to `primary`, `error`, `success`, `warning`.
+There are 4 `colorScheme` options in progress: `primary` (default), `error`, `warning` & `success`.
 
 {% example name="progress:colorscheme" /%}

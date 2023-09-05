@@ -4,6 +4,10 @@ pageTitle: List - Rafty UI
 description: List
 ---
 
+List is used to display list items. It renders a <ul> element by default.
+
+This is made using native ol, ul & li html tags, making all native props available for use.
+
 ## Anatomy
 
 Import all parts and piece them together.

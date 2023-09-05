@@ -4,6 +4,10 @@ pageTitle: Table - Rafty UI
 description: Table
 ---
 
+Table component is used to organize and display data efficiently. It renders a `<table>` element by default.
+
+Table and its subcomponents are made upon native table components
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -43,29 +47,34 @@ import {
 
 {% example name="table:usage" /%}
 
-## Container
+## TableContainer
 
-Container is a wrapper component for table to put table in a container with border. Its a optional component
+It is a custom additional component used to enclose Table in a container.
+
 {% example name="table:container" /%}
 
 ## Size
 
-Pass the `size` prop if you need to adjust the size of the table. Values can be `sm`, `md`, `lg`.
+There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`
+
 {% example name="table:size" /%}
 
 ## Variant
 
-Pass the `variant` prop if you need to adjust the visual style of the table. Values can be `simple`, `striped`.
+There are 2 `variants` in the table: `simple` (default) & `striped`.
+
 {% example name="table:variant" /%}
 
 ## Barebone
 
 Pass `isBarebone` prop to remove all style in table.
+
 {% example name="table:barebone" /%}
 
 ## UnStyled
 
 Pass ` isUnstyled` prop to remove style from a particulart sub component.
+
 {% example name="table:unstyled" /%}
 
 ### API

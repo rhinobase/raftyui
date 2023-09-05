@@ -102,6 +102,21 @@ export const menu_examples = {
       </MenuContent>
     </Menu>
   ),
+  "menu:isarrow": (
+    <Menu>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
+      <MenuContent isArrow>
+        <MenuItem>New Tab</MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem>New Private Window </MenuItem>
+        <MenuLabel>People</MenuLabel>
+        <MenuRadioGroup value="1">
+          <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
+          <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
+        </MenuRadioGroup>
+      </MenuContent>
+    </Menu>
+  ),
   "menu:barebone": (
     <Menu isBarebone>
       <MenuTrigger

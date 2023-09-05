@@ -4,6 +4,10 @@ pageTitle: Menu Bar - Rafty UI
 description: Menu Bar
 ---
 
+A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.
+
+This component is made on top of [Radix UIs Menu Component](https://www.radix-ui.com/primitives/docs/components/menubar) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -40,7 +44,7 @@ import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarItem, MenubarMenu,
 
 ## Size
 
-Pass the `size` prop if you need to adjust the size of the menubar. Values can be `sm`, `md`, `lg`.
+There are 3 `size` options in the menu bar: `sm`, `md` (default) & `lg`.
 
 {% example name="menubar:size" /%}
 

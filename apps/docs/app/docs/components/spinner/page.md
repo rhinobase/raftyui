@@ -4,6 +4,8 @@ pageTitle: Spinner - Rafty UI
 description: Spinner
 ---
 
+Spinners provide a visual cue that an action is processing awaiting a course of change or a result.
+
 ## Anatomy
 
 Import the component.
@@ -20,12 +22,12 @@ import { Spinner } from "@rafty/ui";
 
 ## Size
 
-Pass the `size` prop if you need to adjust the size of the spinner. Values can be `sm`, `md`, `lg`.
+There are 3 `size` options in spinner: `sm`, `md` (default) & `lg
 
 {% example name="spinner:size" /%}
 
 ## InheritParent
 
-InheritParent prop let spinner inherit color props from its parent element when true
+InheritParent prop lets spinner inherit color props from its parent element when true
 
 {% example name="spinner:InheritParent" /%}

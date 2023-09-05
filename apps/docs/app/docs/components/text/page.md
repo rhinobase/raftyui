@@ -4,6 +4,8 @@ pageTitle: Text - Rafty UI
 description: Text
 ---
 
+Text is used to render text and paragraphs within an interface. It renders a <p> element by default.
+
 # Anatomy
 
 Import the component.

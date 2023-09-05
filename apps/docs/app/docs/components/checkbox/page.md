@@ -4,6 +4,10 @@ pageTitle: Checkbox - Rafty UI
 description: Checkbox
 ---
 
+Checkboxes give users binary choices when presented with multiple options in a series.
+
+This component is made on top of [Radix UIs Checkbox Component](https://www.radix-ui.com/primitives/docs/components/checkbox.) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+
 ## Anatomy
 
 Import the component.
@@ -17,6 +21,8 @@ import { Checkbox } from "@rafty/ui";
 ```
 
 ### Usage
+
+Checkbox component is used in forms when a user needs to select multiple values from several options.
 
 {% example name="checkbox:usage" /%}
 
@@ -45,6 +51,8 @@ This property can also be passed in child/ sub component
 {% example name="checkbox:required" /%}
 
 ### size
+
+There are 3 `size` options in checkbox: `sm`, `md` (default) & `lg`.
 
 {% example name="checkbox:size" /%}
 

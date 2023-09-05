@@ -4,6 +4,10 @@ pageTitle: Tab - Rafty UI
 description: Tab
 ---
 
+A set of layered sections of content—known as tab panels—that are displayed one at a time.
+
+This component is made on top of [Radix UIs Tabs Component](https://www.radix-ui.com/primitives/docs/components/tabs) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -25,14 +29,28 @@ import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
 
 ## Size
 
-Pass the `size` prop if you need to adjust the size of the tab. Values can be `sm`, `md`, `lg`.
+There are 3 size options in spinner: `sm`, `md` (default) & `lg`.
 
 {% example name="tab:size" /%}
 
+## Variant
+
+There are 2 `variant` options in tab: `line` (default) & `enclosed`.
+
+{% example name="tab:variant" /%}
+
 ## Orientation
 
-Pass the `orientation` prop if you need to adjust the orientation of the Tabs. Values can be `horizontal`, `vertical`.
-{% example name="tab:Orientation" /%}
+There are 2 `orientation` options in tab: `horizontal` (default) & `vertical`.
+Both `orientation` supports all `variant`.
+
+### Vertical Line Variant
+
+{% example name="tab:Orientation-line" /%}
+
+### Vertical Enclosed Variant
+
+{% example name="tab:Orientation-enclosed" /%}
 
 ## Barebone
 

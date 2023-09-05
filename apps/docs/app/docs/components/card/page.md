@@ -4,6 +4,10 @@ pageTitle: Card - Rafty UI
 description: Card
 ---
 
+A card is a generic container for grouping related UI elements and content.
+
+This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props.
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -24,13 +28,13 @@ import { Card, CardFooter, CardHeader } from "@rafty/ui";
 
 ## Size
 
-Use the `size` prop to change the size of the Card. You can set the value to `sm`, `md`, or `lg`.
+There are 3 `size` options available: `sm`, `md` (default) & `lg`.
 
 {% example name="card:size" /%}
 
 ## Variant
 
-Use the `variant` prop to change the style of your card. You can set the value to `elevated`, `outline`, and `solid` If the variant prop is not passed, the default variant, outline is used.
+There are 2 `variant` options available: `outline` (default) & `elevated`
 
 {% example name="card:variant" /%}
 

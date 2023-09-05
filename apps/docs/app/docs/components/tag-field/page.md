@@ -4,6 +4,8 @@ pageTitle: Tag Field - Rafty UI
 description: Tag Field
 ---
 
+Tag field is used to add tags via input field.
+
 # Anatomy
 
 Import the component.

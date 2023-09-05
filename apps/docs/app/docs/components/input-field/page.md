@@ -4,6 +4,10 @@ pageTitle: InputField - Rafty UI
 description: InputField
 ---
 
+Input field is a component that is used to get user input in a text field.
+
+This is a custom component made upon native html label component and its props.
+
 ## Anatomy
 
 Import the component.
@@ -14,33 +18,51 @@ import { InputField } from "@rafty/ui";
 <InputField />;
 ```
 
-### Usage
+## Usage
 
 {% example name="input-field:usage" /%}
 
-### Size
+## Size
 
-Use the `size` prop to change the size of the `InputField`. You can set the value to `sm`, `md`, or `lg`.
+There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
 {% example name="input-field:size" /%}
 
-### Variant
+## Variant
 
-Use the `variant` prop to change the visual style of the `InputField`. You can set the value to `solid`, `ghost`, `outline`.
+There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`.
 
 {% example name="input-field:variant" /%}
 
-### Required
+## IsRequired
 
-Pass the `isRequired` prop to make input-field Required.
+`isRequired` prop is used to show required field. It adds red star (\*) after Lable.
 
 {% example name="input-field:required" /%}
 
-### Disabled
+## IsDisabled
 
-Pass the `isDisabled` prop to make input-field Disabled.
+`isDisabled` prop is used to disable subcomponent or children field.
 
 {% example name="input-field:disabled" /%}
+
+## IsReadOnly
+
+`isReadOnly` prop is used to change field state to read-only.
+
+{% example name="input-field:readonly" /%}
+
+## IsInvalid
+
+`isInvalid` prop is used to show invalid field on certain condition.
+
+{% example name="input-field:invalid" /%}
+
+## IsLoading
+
+`isLoading` prop is used to show a field in a loading state.
+
+{% example name="input-field:loading" /%}
 
 ### unstyled
 

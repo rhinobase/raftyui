@@ -4,6 +4,10 @@ pageTitle: Context Menu - Rafty UI
 description: Context Menu
 ---
 
+It displays a menu located at the pointer, triggered by a right-click or a long-press.
+
+This component is made on top of [Radix UIs Context Menu Component](https://www.radix-ui.com/primitives/docs/components/context-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+
 # Anatomy
 
 Import all parts and piece them together.
@@ -36,11 +40,13 @@ import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuIt
 
 ## Usage
 
+Unlike other similar components like Dialog, Menu, etc., it is not made of a button component. You can use any element as its trigger.
+
 {% example name="context-menu:usage" /%}
 
 ## Size
 
-Use the `size` prop to change the size of the ContextMenu. You can set the value to `sm`, `md`, or `lg`.
+There are 3 `size` options in Context Menu: `sm`, `md` (default), & `lg`.s
 
 {% example name="context-menu:size" /%}
 

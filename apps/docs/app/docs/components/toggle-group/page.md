@@ -4,6 +4,10 @@ pageTitle: Toggle Group - Rafty UI
 description: Toggle Group
 ---
 
+A set of two-state buttons that can be toggled on or off.
+
+This component is made on top of [Radix UIs Toggle Group Component](https://www.radix-ui.com/primitives/docs/components/toggle-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -21,6 +25,8 @@ import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 {% example name="toggle-group:usage" /%}
 
 ## Size
+
+There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`.
 
 {% example name="toggle-group:size" /%}
 

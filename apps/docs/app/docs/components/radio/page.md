@@ -4,6 +4,10 @@ pageTitle: Radio - Rafty UI
 description: Radio
 ---
 
+A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.
+
+This component is made on top of [Radix UIs Radio Group Component](https://www.radix-ui.com/primitives/docs/components/radio-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+
 ## Anatomy
 
 Import all parts and piece them together.
@@ -21,6 +25,8 @@ import { Radio, RadioCard, RadioGroup } from "@rafty/ui";
 {% example name="radio:usage" /%}
 
 ## Size
+
+There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 
 {% example name="radio:size" /%}
 

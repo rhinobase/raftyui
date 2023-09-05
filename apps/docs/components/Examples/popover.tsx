@@ -1,11 +1,17 @@
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@rafty/ui";
+import {
+  Button,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Text,
+} from "@rafty/ui";
 
 export const popover_examples = {
   "popover:usage": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
       <PopoverContent>
-        <div>Popover Content</div>
+        <Text>Popover Content</Text>
       </PopoverContent>
     </Popover>
   ),
@@ -13,7 +19,16 @@ export const popover_examples = {
     <Popover size="lg">
       <PopoverTrigger>Open</PopoverTrigger>
       <PopoverContent>
-        <div>Popover Content</div>
+        <Text>Popover Content</Text>
+      </PopoverContent>
+    </Popover>
+  ),
+
+  "popover:showarrow": (
+    <Popover>
+      <PopoverTrigger>Open</PopoverTrigger>
+      <PopoverContent showArrow>
+        <Text>Popover Content</Text>
       </PopoverContent>
     </Popover>
   ),
@@ -21,28 +36,25 @@ export const popover_examples = {
     <Popover defaultOpen>
       <PopoverTrigger>Open</PopoverTrigger>
       <PopoverContent>
-        <div>Popover Content</div>
+        <Text>Popover Content</Text>
       </PopoverContent>
     </Popover>
   ),
   "popover:barebone": (
     <Popover isBarebone>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent className="bg-gray-800 rounded-lg shadow-lg w-[300px]">
-        <div className="p-4 flex flex-col gap-4 text-white">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore.
-          </p>
-          <div className="flex justify-end gap-3">
-            <p className="text-gray-300">Step 2 of 4</p>
-            <Button className="!bg-green-300 !text-black" size="sm">
-              Demo 1
-            </Button>
-            <Button className="!bg-blue-300 !text-black" size="sm">
-              Demo 2
-            </Button>
-          </div>
+      <PopoverContent className="bg-secondary-100 dark:bg-gray-800 rounded-lg shadow-lg w-[300px] p-4 space-y-4">
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </Text>
+        <div className="flex justify-end gap-3">
+          <Button className="!bg-green-300 !text-black" size="sm">
+            Demo 1
+          </Button>
+          <Button className="!bg-blue-300 !text-black" size="sm">
+            Demo 2
+          </Button>
         </div>
       </PopoverContent>
     </Popover>

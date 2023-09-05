@@ -26,7 +26,7 @@ By default, the Avatar component displays a generic Person Icon. You can replace
 
 ## Size
 
-There are 3 `size` of Avatar Component: `sm`, `md` & `lg`. By default, it is set to `md`.
+There are 3 `size` options in Avatar Component: `sm`, `md` (default) & `lg`.
 
 {% example name="avatar:size" /%}
 
