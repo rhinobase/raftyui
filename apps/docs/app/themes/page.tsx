@@ -15,10 +15,12 @@ import {
   CounterExample,
   RangePickerExample,
   ReportIssueExample,
+  SubscriptionsExample,
   TotalRevenueExample,
 } from "./Examples";
 import { useTheme } from "next-themes";
 import { CreateAnAccountExample } from "./Examples/CreateAnAccountExample";
+import { TeamMembersExample } from "./Examples/TeamMembersExample";
 
 const ColorTheme = {
   purple: "!bg-purple-500",
@@ -39,6 +41,8 @@ const COMPONENTS = [
   CreateAnAccountExample,
   CounterExample,
   ReportIssueExample,
+  TeamMembersExample,
+  SubscriptionsExample,
 ];
 
 export default function Home() {

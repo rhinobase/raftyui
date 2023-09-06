@@ -50,7 +50,6 @@ function Example() {
 
     return undefined;
   }, undefined);
-  console.log(selected);
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
