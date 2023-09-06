@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Card, Text } from "@rafty/ui";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-export default function CounterExample() {
+export function CounterExample() {
   const [count, setCount] = useState(200);
 
   return (

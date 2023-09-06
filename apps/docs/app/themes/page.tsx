@@ -12,11 +12,12 @@ import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import Masonry from "react-responsive-masonry";
 import {
   CookieSettingsExample,
+  CounterExample,
   RangePickerExample,
+  ReportIssueExample,
   TotalRevenueExample,
 } from "./Examples";
 import { useTheme } from "next-themes";
-import CounterExample from "./Examples/CounterExample";
 import { CreateAnAccountExample } from "./Examples/CreateAnAccountExample";
 
 const ColorTheme = {
@@ -36,6 +37,8 @@ const COMPONENTS = [
   RangePickerExample,
   CookieSettingsExample,
   CreateAnAccountExample,
+  CounterExample,
+  ReportIssueExample,
 ];
 
 export default function Home() {
@@ -128,7 +131,6 @@ export default function Home() {
             </CardContent>
           </Card>
         ))}
-        <CounterExample />
       </Masonry>
     </div>
   );
