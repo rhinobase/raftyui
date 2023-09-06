@@ -21,18 +21,7 @@ import {
   TotalRevenueExample,
 } from "./Examples";
 import { useTheme } from "next-themes";
-
-const ColorTheme = {
-  purple: "!bg-purple-500",
-  teal: "!bg-teal-500",
-  fuchsia: "!bg-fuchsia-500",
-  rose: "!bg-rose-500",
-  pink: "!bg-pink-500",
-  indigo: "!bg-indigo-500",
-  blue: "!bg-blue-500",
-  sky: "!bg-sky-500",
-  emerald: "!bg-emerald-500",
-};
+import { ColorTheme, useColorStore } from "./store";
 
 const COMPONENTS = [
   TotalRevenueExample,
@@ -46,7 +35,7 @@ const COMPONENTS = [
 ];
 
 export default function Home() {
-  const [color, setColor] = useState<keyof typeof ColorTheme>("purple");
+  const { color, changeColor } = useColorStore();
 
   return (
     <div className={`py-10 px-10 md:px-0 w-full theme-${color}`}>
@@ -65,14 +54,14 @@ export default function Home() {
                 key={c}
                 size="fab"
                 className={`${value} !p-1 min-h-[26px] min-w-[26px]`}
-                onClick={() => setColor(c as keyof typeof ColorTheme)}
+                onClick={() => changeColor(c as keyof typeof ColorTheme)}
               >
                 {color == c && (
                   <HiCheck className="text-white stroke-1 font-bold" />
                 )}
               </Button>
             ))}
-          <CustomizePopover color={color} setColor={setColor} />
+          <CustomizePopover />
         </div>
       </div>
       <ResponsiveMasonry
@@ -93,14 +82,10 @@ export default function Home() {
   );
 }
 
-function CustomizePopover({
-  color,
-  setColor,
-}: {
-  color: keyof typeof ColorTheme;
-  setColor: Dispatch<SetStateAction<keyof typeof ColorTheme>>;
-}) {
+function CustomizePopover() {
+  const { color, changeColor } = useColorStore();
   const { setTheme, theme, themes } = useTheme();
+
   return (
     <Popover>
       <PopoverTrigger variant="outline">Customize</PopoverTrigger>
@@ -121,7 +106,7 @@ function CustomizePopover({
                       className={`h-3 w-3 rounded-full ${value} flex justify-center items-center`}
                     />
                   }
-                  onClick={() => setColor(c as keyof typeof ColorTheme)}
+                  onClick={() => changeColor(c as keyof typeof ColorTheme)}
                 >
                   {c}
                 </Button>

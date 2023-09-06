@@ -6,13 +6,13 @@ export function CounterExample() {
   const [count, setCount] = useState(200);
 
   return (
-    <Card variant="outline" className="!p-5 flex !gap-11 ">
+    <div className="space-y-8">
       <div className=" py-2">
         <Text className="text-xl font-bold">Move goal</Text>
         <Text className="text-gray-500">Set your daily activity goal.</Text>
       </div>
 
-      <div className="flex gap-6 justify-center">
+      <div className="flex justify-between items-center">
         <Button
           variant="outline"
           size="fab"
@@ -25,7 +25,7 @@ export function CounterExample() {
           <AiOutlineMinus />
         </Button>
         <div className="w-full flex justify-center items-center flex-col">
-          <Text className=" text-5xl tabular-nums">{count}</Text>
+          <Text className="text-5xl tabular-nums">{count}</Text>
           <Text>CALORIES/DAY</Text>
         </div>
 
@@ -41,9 +41,14 @@ export function CounterExample() {
           <AiOutlinePlus />
         </Button>
       </div>
-      <Button variant="solid" colorScheme="primary">
+      <Button
+        type="button"
+        variant="solid"
+        colorScheme="primary"
+        className="!w-full"
+      >
         Set Goal
       </Button>
-    </Card>
+    </div>
   );
 }

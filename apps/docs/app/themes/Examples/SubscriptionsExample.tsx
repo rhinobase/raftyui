@@ -1,3 +1,4 @@
+"use client";
 import { Bar } from "react-chartjs-2";
 import { Text } from "@rafty/ui";
 import {
@@ -6,19 +7,34 @@ import {
   LinearScale,
   BarElement,
 } from "chart.js";
+import { useCallback, useEffect, useState } from "react";
+import { useColorStore } from "../store";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
-const chartData = {
-  labels: ["a", "b", "c", "d", "e", "f", "g", "h"],
-  datasets: [
-    {
-      data: [6, 5, 3, 5, 2, 3, 6, 5],
-      backgroundColor: "#a855f7",
-    },
-  ],
-};
 
 export function SubscriptionsExample() {
+  const color = useColorStore((state) => state.color);
+  const [variable, setVariable] = useState<string>();
+
+  const cssvar = useCallback(
+    (name: string) => {
+      const value = getComputedStyle(
+        document.getElementsByClassName(`theme-${color}`)[0],
+      )
+        .getPropertyValue(name)
+        .split(" ")
+        .join(",");
+      return `rgb(${value})`;
+    },
+    [color],
+  );
+
+  useEffect(() => {
+    setVariable(cssvar("--color-primary-500"));
+  }, [color]);
+
+  console.log(variable);
+
   return (
     <div>
       <div>
@@ -28,7 +44,15 @@ export function SubscriptionsExample() {
       </div>
       <div className="py-4">
         <Bar
-          data={chartData}
+          data={{
+            labels: Array(8).fill(""),
+            datasets: [
+              {
+                data: [6, 5, 3, 5, 2, 3, 6, 5],
+                backgroundColor: variable,
+              },
+            ],
+          }}
           options={{
             responsive: true,
             scales: { x: { display: false }, y: { display: false } },
