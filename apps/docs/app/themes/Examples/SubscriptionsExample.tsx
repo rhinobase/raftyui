@@ -33,8 +33,6 @@ export function SubscriptionsExample() {
     setVariable(cssvar("--color-primary-500"));
   }, [color]);
 
-  console.log(variable);
-
   return (
     <div>
       <div>
@@ -55,7 +53,15 @@ export function SubscriptionsExample() {
           }}
           options={{
             responsive: true,
-            scales: { x: { display: false }, y: { display: false } },
+            scales: {
+              x: { display: false },
+              y: { display: false },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
             interaction: {
               mode: "index",
               intersect: false,

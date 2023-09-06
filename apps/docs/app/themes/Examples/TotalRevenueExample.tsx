@@ -29,10 +29,9 @@ export function TotalRevenueExample() {
 
   useEffect(() => {
     const data = {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      labels: Array(8).fill(""),
       datasets: [
         {
-          label: "Revenue",
           data: [1000, 1500, 2000, 1800, 2500, 2200],
           borderColor: "rgb(75, 192, 192)",
           borderWidth: 2,
@@ -45,7 +44,7 @@ export function TotalRevenueExample() {
     new Chart(ctx, {
       type: "line",
       data: data,
-      Options: Option,
+      options: Option,
     });
   }, []);
 
@@ -64,6 +63,7 @@ export function TotalRevenueExample() {
               {
                 data: [6, 5, 3, 5, 2, 3, 6, 5],
                 backgroundColor: variable,
+                borderColor: variable,
               },
             ],
           }}
@@ -78,6 +78,11 @@ export function TotalRevenueExample() {
               intersect: false,
               includeInvisible: false,
               axis: "r",
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
             },
           }}
         ></Line>
