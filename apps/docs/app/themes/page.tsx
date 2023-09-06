@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   Button,
   Card,
@@ -9,18 +9,18 @@ import {
   PopoverTrigger,
 } from "@rafty/ui";
 import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
-import Masonry from "react-responsive-masonry";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import {
   CookieSettingsExample,
   CounterExample,
+  CreateAnAccountExample,
+  PaymentMethodExample,
   RangePickerExample,
   ReportIssueExample,
   SubscriptionsExample,
   TotalRevenueExample,
 } from "./Examples";
 import { useTheme } from "next-themes";
-import { CreateAnAccountExample } from "./Examples/CreateAnAccountExample";
-import { TeamMembersExample } from "./Examples/TeamMembersExample";
 
 const ColorTheme = {
   purple: "!bg-purple-500",
@@ -41,16 +41,15 @@ const COMPONENTS = [
   CreateAnAccountExample,
   CounterExample,
   ReportIssueExample,
-  TeamMembersExample,
   SubscriptionsExample,
+  PaymentMethodExample,
 ];
 
 export default function Home() {
-  const { setTheme, theme, themes } = useTheme();
   const [color, setColor] = useState<keyof typeof ColorTheme>("purple");
 
   return (
-    <div className={`p-10 w-full theme-${color}`}>
+    <div className={`py-10 px-10 md:px-0 w-full theme-${color}`}>
       <div className="flex justify-between">
         <div>
           <h1 className="text-5xl font-bold">Make it yours.</h1>
@@ -73,69 +72,87 @@ export default function Home() {
                 )}
               </Button>
             ))}
-          <Popover>
-            <PopoverTrigger variant="outline">Customize</PopoverTrigger>
-            <PopoverContent showArrow align="end">
-              <div className="w-[300px] p-2 space-y-3">
-                <div className="space-y-1">
-                  <h5 className="text-xs font-medium">Color</h5>
-                  <div className="grid grid-cols-3 gap-2">
-                    {Object.entries(ColorTheme).map(([c, value]) => (
-                      <Button
-                        key={c}
-                        size="sm"
-                        isActive={color == c}
-                        variant="outline"
-                        className="capitalize !justify-start"
-                        leftIcon={
-                          <div
-                            className={`h-3 w-3 rounded-full ${value} flex justify-center items-center`}
-                          />
-                        }
-                        onClick={() => setColor(c as keyof typeof ColorTheme)}
-                      >
-                        {c}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <h5 className="text-xs font-medium">Mode</h5>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      leftIcon={<HiOutlineSun size={15} />}
-                      isActive={theme == themes[0]}
-                      onClick={() => setTheme("light")}
-                    >
-                      Light
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      leftIcon={<HiOutlineMoon size={15} />}
-                      isActive={theme == themes[1]}
-                      onClick={() => setTheme("dark")}
-                    >
-                      Dark
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </PopoverContent>
-          </Popover>
+          <CustomizePopover color={color} setColor={setColor} />
         </div>
       </div>
-      <Masonry columnsCount={3} gutter="15px" className="mt-10">
-        {COMPONENTS.map((Component, index) => (
-          <Card key={index} size="lg">
-            <CardContent>
-              <Component />
-            </CardContent>
-          </Card>
-        ))}
-      </Masonry>
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{ 500: 1, 750: 2, 1100: 3 }}
+        className="mt-10"
+      >
+        <Masonry gutter="15px">
+          {COMPONENTS.map((Component, index) => (
+            <Card key={index} size="lg">
+              <CardContent>
+                <Component />
+              </CardContent>
+            </Card>
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
     </div>
+  );
+}
+
+function CustomizePopover({
+  color,
+  setColor,
+}: {
+  color: keyof typeof ColorTheme;
+  setColor: Dispatch<SetStateAction<keyof typeof ColorTheme>>;
+}) {
+  const { setTheme, theme, themes } = useTheme();
+  return (
+    <Popover>
+      <PopoverTrigger variant="outline">Customize</PopoverTrigger>
+      <PopoverContent showArrow align="end">
+        <div className="w-[300px] p-2 space-y-3">
+          <div className="space-y-1">
+            <h5 className="text-xs font-medium">Color</h5>
+            <div className="grid grid-cols-3 gap-2">
+              {Object.entries(ColorTheme).map(([c, value]) => (
+                <Button
+                  key={c}
+                  size="sm"
+                  isActive={color == c}
+                  variant="outline"
+                  className="capitalize !justify-start"
+                  leftIcon={
+                    <div
+                      className={`h-3 w-3 rounded-full ${value} flex justify-center items-center`}
+                    />
+                  }
+                  onClick={() => setColor(c as keyof typeof ColorTheme)}
+                >
+                  {c}
+                </Button>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-1">
+            <h5 className="text-xs font-medium">Mode</h5>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<HiOutlineSun size={15} />}
+                isActive={theme == themes[0]}
+                onClick={() => setTheme("light")}
+              >
+                Light
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<HiOutlineMoon size={15} />}
+                isActive={theme == themes[1]}
+                onClick={() => setTheme("dark")}
+              >
+                Dark
+              </Button>
+            </div>
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }

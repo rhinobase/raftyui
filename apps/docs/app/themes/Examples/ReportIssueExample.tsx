@@ -61,8 +61,6 @@ function AreaSelect() {
   const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useState(AREA_DATA.at(0));
 
-  console.log(selected);
-
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
       <div className="relative flex items-center w-[150px]">
@@ -127,8 +125,6 @@ function SecurityLevel() {
 
   const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useState(SECURITY_DATA.at(0));
-
-  console.log(selected);
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>

@@ -9,7 +9,6 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-  classNames,
 } from "@rafty/ui";
 import { useReducer, useState } from "react";
 import { HiCheck, HiChevronDown } from "react-icons/hi";
