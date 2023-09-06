@@ -20,6 +20,7 @@ import {
   MenuLabel,
   MenuItem,
   MenuSeparator,
+  classNames,
 } from "@rafty/ui";
 import { HiChevronDown, HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -95,7 +96,7 @@ export function TableExample() {
           Manage your payments.
         </h5>
       </div>
-      <div className="flex gap-x-6">
+      <div className="flex justify-between">
         <InputGroup>
           <Prefix>
             <HiOutlineMagnifyingGlass className="stroke-2 text-secondary-400" />
@@ -166,11 +167,12 @@ function PaymentTable({
   }[];
 }) {
   return (
-    <TableContainer className="!overflow-x-auto">
-      <Table className="table-fixed w-full" size="sm">
+    <TableContainer>
+      <Table className="table-fixed" size="sm">
         <TableHead>
           <Tr>
             <Th style={{ width: 30 }}>
+              {/* need to improve check box select functionality  */}
               <Checkbox size="sm" />
             </Th>
             {show.map((value) => (
@@ -199,7 +201,7 @@ function PaymentTable({
                   <MenuTrigger variant="ghost" size="icon">
                     <HiDotsHorizontal />
                   </MenuTrigger>
-                  <MenuContent className="!min-w-[11rem] !z-50" align="end">
+                  <MenuContent className="!min-w-[11rem] !z-50">
                     <MenuLabel className="leading-4">Actions</MenuLabel>
                     <MenuItem>Copy payment ID</MenuItem>
                     <MenuSeparator />

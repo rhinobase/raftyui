@@ -9,7 +9,6 @@ import {
   PopoverTrigger,
 } from "@rafty/ui";
 import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import {
   CookieSettingsExample,
   CounterExample,
@@ -18,6 +17,8 @@ import {
   RangePickerExample,
   ReportIssueExample,
   SubscriptionsExample,
+  TableExample,
+  TeamMembersExample,
   TotalRevenueExample,
 } from "./Examples";
 import { useTheme } from "next-themes";
@@ -32,6 +33,7 @@ const COMPONENTS = [
   ReportIssueExample,
   SubscriptionsExample,
   PaymentMethodExample,
+  TableExample,
 ];
 
 export default function Home() {
@@ -64,20 +66,119 @@ export default function Home() {
           <CustomizePopover />
         </div>
       </div>
-      <ResponsiveMasonry
-        columnsCountBreakPoints={{ 500: 1, 750: 2, 1100: 3 }}
-        className="mt-10"
-      >
-        <Masonry gutter="15px">
-          {COMPONENTS.map((Component, index) => (
-            <Card key={index} size="lg">
+
+      <div className="md:grids-col-2 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4 mt-10">
+        <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
+            <Card>
               <CardContent>
-                <Component />
+                <TotalRevenueExample />
               </CardContent>
             </Card>
-          ))}
-        </Masonry>
-      </ResponsiveMasonry>
+            <Card>
+              <CardContent>
+                <SubscriptionsExample />
+              </CardContent>
+            </Card>
+          </div>
+          <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
+            <Card>
+              <CardContent>
+                <RangePickerExample />
+              </CardContent>
+            </Card>
+            <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+              <Card>
+                <CardContent>
+                  <CounterExample />
+                </CardContent>
+              </Card>
+            </div>
+            <div className="pt-3 sm:col-span-2 xl:pt-4">
+              <Card>
+                <CardContent>
+                  <div />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="space-y-4 xl:space-y-4">
+              <Card>
+                <CardContent>
+                  <TeamMembersExample />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent>
+                  <CookieSettingsExample />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent>
+                  <PaymentMethodExample />
+                </CardContent>
+              </Card>
+            </div>
+            <div className="space-y-4 xl:space-y-4">
+              <Card>
+                <CardContent>
+                  <div />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent>
+                  <CreateAnAccountExample />
+                </CardContent>
+              </Card>
+              <div className="hidden xl:block">
+                <Card>
+                  <CardContent>
+                    <ReportIssueExample />
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
+          <div className="hidden gap-1 sm:grid-cols-[280px_1fr] md:grid">
+            <Card>
+              <CardContent>
+                <RangePickerExample />
+              </CardContent>
+            </Card>
+            <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-3">
+              <Card>
+                <CardContent>
+                  <CounterExample />
+                </CardContent>
+              </Card>
+            </div>
+            <div className="pt-3 sm:col-span-2 xl:pt-3">
+              <Card>
+                <CardContent>
+                  <div />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <Card>
+              <CardContent>
+                <TableExample />
+              </CardContent>
+            </Card>
+          </div>
+          <div className="xl:hidden">
+            <Card>
+              <CardContent>
+                <ReportIssueExample />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

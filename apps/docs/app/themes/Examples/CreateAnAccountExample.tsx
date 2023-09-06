@@ -49,7 +49,7 @@ export function CreateAnAccountExample() {
         variant="solid"
         colorScheme="primary"
         className="!w-full"
-        type="submit"
+        type="button"
       >
         Create Account
       </Button>
