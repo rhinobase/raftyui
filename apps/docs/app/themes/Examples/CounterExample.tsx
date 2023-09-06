@@ -20,6 +20,7 @@ export default function CounterExample() {
             if (count > 200) setCount(count - 10);
           }}
           className="!p-3"
+          isDisabled={count == 200}
         >
           <AiOutlineMinus />
         </Button>
@@ -33,8 +34,9 @@ export default function CounterExample() {
           size="fab"
           className="!p-3"
           onClick={() => {
-            if (count < 500) setCount(count + 10);
+            if (count < 400) setCount(count + 10);
           }}
+          isDisabled={count == 400}
         >
           <AiOutlinePlus />
         </Button>
