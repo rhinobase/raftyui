@@ -1,3 +1,4 @@
+import React, { useState, useRef, useReducer, ReactNode } from "react";
 import {
   Avatar,
   AvatarGroup,
@@ -9,6 +10,7 @@ import {
   CommandItem,
   CommandList,
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -20,9 +22,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-  classNames,
 } from "@rafty/ui";
-import { ReactNode, useEffect, useReducer, useRef, useState } from "react";
 import { BiSend } from "react-icons/bi";
 import { HiCheck, HiOutlinePlus } from "react-icons/hi";
 
@@ -60,18 +60,27 @@ const USERS_DATA = [
 ];
 
 export function ChatBoxExample() {
-  const [messageText, setMessageText] = useState<string>();
+  const [messageText, setMessageText] = useState<string>("");
   const [messages, setMessages] = useState<string[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   function sendMessage() {
     if (messageText) setMessages((prev) => [...prev, messageText]);
-    setMessageText(undefined);
-    inputRef.current!.value = "";
+    setMessageText("");
+    if (inputRef.current) inputRef.current.value = "";
   }
 
+  const [selected, dispatch] = useReducer((prev: number[], cur: number) => {
+    const index = prev.findIndex((num) => num === cur);
+
+    if (index === -1) prev.push(cur);
+    else prev.splice(index, 1);
+
+    return [...prev].sort();
+  }, []);
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex gap-4 justify-between items-center">
         <Avatar
           name="Jackson Lee"
@@ -86,9 +95,9 @@ export function ChatBoxExample() {
           </Text>
         </div>
         <div className="flex-1" />
-        <NewMessageDialog />
+        <NewMessageDialog selected={selected} dispatch={dispatch} />
       </div>
-      <div className="space-y-2.5">
+      <div className="space-y-3">
         <MessageComponent className="bg-secondary-100 dark:bg-secondary-800">
           Hi, how can I help you today?
         </MessageComponent>
@@ -119,12 +128,12 @@ export function ChatBoxExample() {
           ref={inputRef}
           placeholder="Type your message..."
           onChange={(e) => setMessageText(e.currentTarget.value)}
-          onKeyDown={(e) => e.key == "Enter" && sendMessage()}
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <Button
           size="icon"
           colorScheme="primary"
-          isDisabled={messageText == undefined}
+          isDisabled={!messageText}
           className="!p-2"
           onClick={sendMessage}
         >
@@ -135,20 +144,13 @@ export function ChatBoxExample() {
   );
 }
 
-function NewMessageDialog() {
-  const [selected, mutate] = useReducer((prev: any, cur: any): any => {
-    const value = prev?.id == cur ? undefined : cur;
-
-    if (value)
-      return {
-        ...USERS_DATA?.find((data) => data.id === value),
-      };
-
-    return undefined;
-  }, undefined);
-
-  console.log(selected);
-
+function NewMessageDialog({
+  selected,
+  dispatch,
+}: {
+  selected: number[];
+  dispatch: React.Dispatch<number>;
+}) {
   return (
     <Dialog>
       <Tooltip>
@@ -176,7 +178,7 @@ function NewMessageDialog() {
                 <CommandItem
                   key={index}
                   className="!rounded-lg"
-                  onSelect={() => mutate(user.id)}
+                  onSelect={() => dispatch(user.id)}
                 >
                   <div className="flex w-full gap-3 items-center">
                     <Avatar name="Jackson Lee" src={user.src} />
@@ -189,7 +191,9 @@ function NewMessageDialog() {
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {/* <HiCheck className="text-primary-500 dark:text-primary-400" /> */}
+                    {selected.includes(user.id) && (
+                      <HiCheck className="text-primary-500 dark:text-primary-400" />
+                    )}
                   </div>
                 </CommandItem>
               ))}
@@ -197,16 +201,25 @@ function NewMessageDialog() {
           </CommandList>
         </Command>
         <DialogFooter className="!p-4 !justify-between items-center">
-          {selected ? (
-            <Avatar name={selected.name} src={selected.src} />
+          {selected.length > 0 ? (
+            <AvatarGroup>
+              {selected.map((user_index) => {
+                const name = USERS_DATA[user_index - 1]?.name;
+                const src = USERS_DATA[user_index - 1]?.src;
+
+                return <Avatar key={user_index} name={name} src={src} />;
+              })}
+            </AvatarGroup>
           ) : (
             <Text className="text-sm dark:text-secondary-500 text-secondary-400">
               Select users to add to this thread.
             </Text>
           )}
-          <Button colorScheme="primary" disabled={!selected}>
-            Continue
-          </Button>
+          <DialogClose asChild>
+            <Button colorScheme="primary" disabled={!selected.length}>
+              Continue
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -222,10 +235,7 @@ function MessageComponent({
 }) {
   return (
     <Text
-      className={classNames(
-        "w-max px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium dark:text-secondary-100 leading-snug",
-        className,
-      )}
+      className={`w-max px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium dark:text-secondary-100 leading-snug ${className}`}
     >
       {children}
     </Text>

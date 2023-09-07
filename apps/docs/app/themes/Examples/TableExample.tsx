@@ -24,6 +24,7 @@ import {
 } from "@rafty/ui";
 import { HiChevronDown, HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { HiDotsHorizontal } from "react-icons/hi";
+import { tr } from "@markdoc/markdoc/dist/src/schema";
 
 type DataType = {
   status: string;
@@ -111,19 +112,6 @@ export function TableExample() {
         <SelectColumns show={show} toggle={dispatch} />
       </div>
       <PaymentTable show={show} data={results} />
-      <div className="flex justify-between items-center">
-        <Text className="text-sm dark:text-secondary-500 text-secondary-400">
-          0 of {results.length} row(s) selected.
-        </Text>
-        <div className="flex gap-3">
-          <Button variant="outline" isDisabled>
-            Previous
-          </Button>
-          <Button variant="outline" isDisabled>
-            Next
-          </Button>
-        </div>
-      </div>
     </div>
   );
 }
@@ -166,54 +154,95 @@ function PaymentTable({
     amount: string;
   }[];
 }) {
+  const [checked, setChecked] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const checkLength = checked.filter((item) => item).length;
+
   return (
-    <TableContainer>
-      <Table className="table-fixed" size="sm">
-        <TableHead>
-          <Tr>
-            <Th style={{ width: 30 }}>
-              {/* need to improve check box select functionality  */}
-              <Checkbox size="sm" />
-            </Th>
-            {show.map((value) => (
-              <Th key={value} className="capitalize w-max">
-                {value}
+    <>
+      <TableContainer>
+        <Table className="table-fixed" size="sm">
+          <TableHead>
+            <Tr>
+              <Th style={{ width: 30 }}>
+                {/* need to check CheckBox select functionality  */}
+                <Checkbox
+                  size="sm"
+                  checked={checkLength === 6}
+                  onCheckedChange={(check: boolean) =>
+                    setChecked([check, check, check, check, check, check])
+                  }
+                />
               </Th>
-            ))}
-            <Th style={{ width: 45 }}>
-              <span className="sr-only">action</span>
-            </Th>
-          </Tr>
-        </TableHead>
-        <TableBody className="dark:!bg-secondary-950">
-          {data.map((item, index) => (
-            <Tr key={index}>
-              <Td>
-                <Checkbox size="sm" />
-              </Td>
-              {show.map((value, index) => (
-                <Td key={index + value} className="truncate">
-                  {item[value as keyof DataType]}
-                </Td>
+              {show.map((value) => (
+                <Th key={value} className="capitalize w-max">
+                  {value}
+                </Th>
               ))}
-              <Td>
-                <Menu size="sm">
-                  <MenuTrigger variant="ghost" size="icon">
-                    <HiDotsHorizontal />
-                  </MenuTrigger>
-                  <MenuContent className="!min-w-[11rem] !z-50">
-                    <MenuLabel className="leading-4">Actions</MenuLabel>
-                    <MenuItem>Copy payment ID</MenuItem>
-                    <MenuSeparator />
-                    <MenuItem>View customer</MenuItem>
-                    <MenuItem>View payment details</MenuItem>
-                  </MenuContent>
-                </Menu>
-              </Td>
+              <Th style={{ width: 45 }}>
+                <span className="sr-only">action</span>
+              </Th>
             </Tr>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody className="dark:!bg-secondary-950">
+            {data.map((item, index) => (
+              <Tr key={index}>
+                <Td>
+                  <Checkbox
+                    size="sm"
+                    checked={checked[index]}
+                    onCheckedChange={(check: boolean) =>
+                      setChecked((prev) => {
+                        const updatedChecked = [...prev];
+                        updatedChecked[index] = check;
+                        return updatedChecked;
+                      })
+                    }
+                  />
+                </Td>
+                {show.map((value, index) => (
+                  <Td key={index + value} className="truncate">
+                    {item[value as keyof DataType]}
+                  </Td>
+                ))}
+                <Td>
+                  <Menu size="sm">
+                    <MenuTrigger variant="ghost" size="icon">
+                      <HiDotsHorizontal />
+                    </MenuTrigger>
+                    <MenuContent className="!min-w-[11rem] !z-50">
+                      <MenuLabel className="leading-4">Actions</MenuLabel>
+                      <MenuItem>Copy payment ID</MenuItem>
+                      <MenuSeparator />
+                      <MenuItem>View customer</MenuItem>
+                      <MenuItem>View payment details</MenuItem>
+                    </MenuContent>
+                  </Menu>
+                </Td>
+              </Tr>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <div className="flex justify-between items-center">
+        <Text className="text-sm dark:text-secondary-500 text-secondary-400">
+          {checkLength} of {data.length} row(s) selected.
+        </Text>
+        <div className="flex gap-3">
+          <Button variant="outline" isDisabled>
+            Previous
+          </Button>
+          <Button variant="outline" isDisabled>
+            Next
+          </Button>
+        </div>
+      </div>
+    </>
   );
 }
