@@ -2,7 +2,7 @@ export * from "./CookieSettingsExample";
 export * from "./CounterExample";
 export * from "./CreateAnAccountExample";
 export * from "./PaymentMethodExample";
-export * from "./RangePickerExample";
+export * from "./CalendarExample";
 export * from "./ReportIssueExample";
 export * from "./SubscriptionsExample";
 export * from "./TableExample";

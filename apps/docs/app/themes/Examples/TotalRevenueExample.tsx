@@ -59,6 +59,7 @@ export function TotalRevenueExample() {
               {
                 data: [113, 114, 113, 112, 111, 112, 117],
                 borderColor: variable,
+                backgroundColor: "white",
                 tension: 0.3,
               },
             ],

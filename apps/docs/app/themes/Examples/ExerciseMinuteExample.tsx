@@ -8,25 +8,40 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
-  Legend,
-} from "chart.js";
+} from "chart.js/auto";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+);
 
 export function ExerciseMinuteExample() {
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  );
-
   const color = useColorStore((state) => state.color);
-  const [primaryVariable, setPrimaryVariable] = useState<string>();
-  const [secondaryVariable, setSecondaryVariable] = useState<string>();
+  const [primaryVariable, setPrimaryVariable] = useState<string>("");
+  const [secondaryVariable, setSecondaryVariable] = useState<string>("");
+
+  const customTooltipPlugin = {
+    id: "customTooltip",
+    afterDraw: (chart: any) => {
+      const ctx = chart.ctx;
+      const tooltip = chart.tooltip;
+      const x = tooltip.caretX;
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, chart.chartArea.top);
+      ctx.lineTo(x, chart.chartArea.bottom);
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "#9e9e9e";
+      ctx.stroke();
+      ctx.restore();
+    },
+  };
+
+  ChartJS.register(customTooltipPlugin);
 
   const cssvar = useCallback(
     (name: string, opacity?: number) => {
@@ -50,49 +65,63 @@ export function ExerciseMinuteExample() {
 
   return (
     <div className="space-y-1">
-      <Text className="text-sm font-medium">Total Revenue</Text>
-      <div>
-        <Text className="text-2xl font-bold">$15,231.89</Text>
-        <Text className="text-xs opacity-60">+20.1% from last month</Text>
-      </div>
-      <div>
-        <Line
-          data={{
-            labels: Array(8).fill(""),
-            datasets: [
-              {
-                data: [115, 113, 119, 110, 112, 110, 113],
-                borderColor: primaryVariable,
-                tension: 0.3,
+      <Text className="text-lg  font-semibold">Exercise Minutes</Text>
+      <Text className="text-xs opacity-60">
+        Your exercise minutes are ahead of where you normally are.
+      </Text>
+
+      <div className="py-8">
+        <div>
+          <Line
+            className="w-full"
+            id="tooltipLine"
+            data={{
+              labels: Array(8).fill(""),
+              datasets: [
+                {
+                  label: "Today",
+                  data: [240, 139, 980, 390, 480, 380, 430, 380],
+                  borderColor: primaryVariable,
+                  tension: 0.3,
+                  backgroundColor: "white",
+                },
+                {
+                  label: "Average",
+                  data: [400, 300, 200, 278, 189, 239, 349, 239],
+                  borderColor: secondaryVariable,
+                  fill: false,
+                  cubicInterpolationMode: "monotone",
+                  tension: 0.3,
+                  backgroundColor: "white",
+                },
+              ],
+            }}
+            style={{ width: "100%", height: 200 }}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  display: false,
+                },
+                y: { display: false },
               },
-              {
-                label: "Linear interpolation (default)",
-                data: [115, 118, 114, 112, 111, 110, 117],
-                borderColor: secondaryVariable,
-                fill: false,
-                cubicInterpolationMode: "monotone",
-                tension: 0.4,
+              interaction: {
+                mode: "index",
+                intersect: false,
               },
-            ],
-          }}
-          width="308"
-          height="80"
-          options={{
-            responsive: true,
-            scales: { x: { display: true }, y: { display: false } },
-            interaction: {
-              mode: "index",
-              intersect: false,
-              includeInvisible: false,
-              axis: "r",
-            },
-            plugins: {
-              legend: {
-                display: false,
+              plugins: {
+                legend: {
+                  display: false,
+                },
+
+                tooltip: {
+                  enabled: true,
+                },
               },
-            },
-          }}
-        ></Line>
+            }}
+          />
+        </div>
       </div>
     </div>
   );

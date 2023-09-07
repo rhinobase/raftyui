@@ -14,7 +14,7 @@ import {
   CounterExample,
   CreateAnAccountExample,
   PaymentMethodExample,
-  RangePickerExample,
+  CalendarExample,
   ReportIssueExample,
   SubscriptionsExample,
   TableExample,
@@ -71,11 +71,7 @@ export default function Home() {
             </Card>
           </div>
           <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
-            <Card>
-              <CardContent>
-                <RangePickerExample />
-              </CardContent>
-            </Card>
+            <CalendarExample />
             <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
               <Card>
                 <CardContent>
@@ -132,11 +128,8 @@ export default function Home() {
         </div>
         <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
           <div className="hidden gap-1 sm:grid-cols-[280px_1fr] md:grid">
-            <Card>
-              <CardContent>
-                <RangePickerExample />
-              </CardContent>
-            </Card>
+            <CalendarExample />
+
             <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-3">
               <Card>
                 <CardContent>
@@ -147,7 +140,7 @@ export default function Home() {
             <div className="pt-3 sm:col-span-2 xl:pt-3">
               <Card>
                 <CardContent>
-                  <div />
+                  <ExerciseMinuteExample />
                 </CardContent>
               </Card>
             </div>

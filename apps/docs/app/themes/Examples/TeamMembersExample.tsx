@@ -91,7 +91,6 @@ function TeamMembers() {
   const [isOpen, setOpen] = useState(false);
 
   const [selected, dispatch] = useReducer((prev: any, cur: any): any => {
-    // Checking if we have a value or not
     const value = prev.id == cur ? prev.id : cur;
     setOpen(false);
 
@@ -140,7 +139,7 @@ function TeamMembers() {
                     {selected.id == item.id && (
                       <HiCheck
                         size={16}
-                        className="text-primary-500 dark:text-primary-400"
+                        className="text-primary-500  dark:text-primary-500"
                       />
                     )}
                   </CommandItem>
