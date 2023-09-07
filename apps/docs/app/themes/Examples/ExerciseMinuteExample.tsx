@@ -13,7 +13,7 @@ import {
   Legend,
 } from "chart.js";
 
-export function TotalRevenueExample() {
+export function ExerciseMinuteExample() {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -25,23 +25,27 @@ export function TotalRevenueExample() {
   );
 
   const color = useColorStore((state) => state.color);
-  const [variable, setVariable] = useState<string>();
+  const [primaryVariable, setPrimaryVariable] = useState<string>();
+  const [secondaryVariable, setSecondaryVariable] = useState<string>();
 
   const cssvar = useCallback(
-    (name: string) => {
+    (name: string, opacity?: number) => {
       const value = getComputedStyle(
         document.getElementsByClassName(`theme-${color}`)[0],
       )
         .getPropertyValue(name)
         .split(" ")
         .join(",");
+
+      if (opacity) return `rgba(${value},${opacity})`;
       return `rgb(${value})`;
     },
     [color],
   );
 
   useEffect(() => {
-    setVariable(cssvar("--color-primary-500"));
+    setPrimaryVariable(cssvar("--color-primary-500"));
+    setSecondaryVariable(cssvar("--color-primary-500", 0.3));
   }, [color]);
 
   return (
@@ -57,17 +61,25 @@ export function TotalRevenueExample() {
             labels: Array(8).fill(""),
             datasets: [
               {
-                data: [113, 114, 113, 112, 111, 112, 117],
-                borderColor: variable,
+                data: [115, 113, 119, 110, 112, 110, 113],
+                borderColor: primaryVariable,
                 tension: 0.3,
+              },
+              {
+                label: "Linear interpolation (default)",
+                data: [115, 118, 114, 112, 111, 110, 117],
+                borderColor: secondaryVariable,
+                fill: false,
+                cubicInterpolationMode: "monotone",
+                tension: 0.4,
               },
             ],
           }}
-          width="303"
+          width="308"
           height="80"
           options={{
             responsive: true,
-            scales: { x: { display: false }, y: { display: false } },
+            scales: { x: { display: true }, y: { display: false } },
             interaction: {
               mode: "index",
               intersect: false,

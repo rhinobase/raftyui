@@ -20,6 +20,7 @@ import {
   TableExample,
   TeamMembersExample,
   TotalRevenueExample,
+  ExerciseMinuteExample,
 } from "./Examples";
 import { useTheme } from "next-themes";
 import { ColorTheme, useColorStore } from "./store";
@@ -33,6 +34,7 @@ const COMPONENTS = [
   ReportIssueExample,
   SubscriptionsExample,
   PaymentMethodExample,
+  ExerciseMinuteExample,
   TableExample,
 ];
 

@@ -8,3 +8,4 @@ export * from "./SubscriptionsExample";
 export * from "./TableExample";
 export * from "./TeamMembersExample";
 export * from "./TotalRevenueExample";
+export * from "./ExerciseMinuteExample";
