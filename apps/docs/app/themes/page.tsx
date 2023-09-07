@@ -1,5 +1,4 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
 import {
   Button,
   Card,
@@ -10,6 +9,7 @@ import {
 } from "@rafty/ui";
 import { HiCheck, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import {
+  ChatBoxExample,
   CookieSettingsExample,
   CounterExample,
   CreateAnAccountExample,
@@ -24,19 +24,6 @@ import {
 } from "./Examples";
 import { useTheme } from "next-themes";
 import { ColorTheme, useColorStore } from "./store";
-
-const COMPONENTS = [
-  TotalRevenueExample,
-  RangePickerExample,
-  CookieSettingsExample,
-  CreateAnAccountExample,
-  CounterExample,
-  ReportIssueExample,
-  SubscriptionsExample,
-  PaymentMethodExample,
-  ExerciseMinuteExample,
-  TableExample,
-];
 
 export default function Home() {
   const { color, changeColor } = useColorStore();
@@ -125,7 +112,7 @@ export default function Home() {
             <div className="space-y-4 xl:space-y-4">
               <Card>
                 <CardContent>
-                  <div />
+                  <ChatBoxExample />
                 </CardContent>
               </Card>
               <Card>
