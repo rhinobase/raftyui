@@ -19,7 +19,7 @@ export function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn(
         fullScreen ? "px-8 py-10 w-full" : "p-3 w-max",
-        "dark:bg-secondary-800  dark:text-secondary-100 border dark:border-secondary-700 rounded-md",
+        "dark:bg-secondary-800 dark:text-secondary-100 border dark:border-secondary-700 rounded-lg",
         className,
       )}
       classNames={{
@@ -45,17 +45,17 @@ export function Calendar({
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
-        head_row: cn(fullScreen ? "grid grid-cols-7 gap-2 py-4" : "flex"),
+        head_row: cn(fullScreen ? "grid grid-cols-7 gap-2 py-10" : "flex mb-2"),
         head_cell: cn(
           fullScreen ? "text-right px-2" : "w-9 text-[0.8rem] rounded-md ",
-          "font-normal",
+          "font-medium text-secondary-600 dark:text-secondary-400",
         ),
         row: cn(fullScreen ? "grid grid-cols-7 mt-1 gap-2" : "flex w-full"),
         cell: "cursor-pointer text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           fullScreen
             ? "h-28 w-full border-t-2 dark:border-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-700"
-            : "h-9 w-9 p-0 font-normal aria-selected:opacity-100 cursor-pointer",
+            : "h-9 w-9 p-0 font-normal aria-selected:opacity-100 rounded-md flex items-center justify-center text-center hover:bg-secondary-200/80 dark:hover:bg-secondary-500 cursor-pointer",
         ),
         day_selected: cn(
           props.mode === "single" && !fullScreen && "rounded-md",
@@ -69,8 +69,8 @@ export function Calendar({
             ? "!border-primary-500 dark:!border-primary-300"
             : "ring-1 dark:ring-primary-300 ring-primary-500 relative z-10",
         ),
-        day_outside: "opacity-50",
-        day_disabled: "opacity-50",
+        day_outside: "opacity-40",
+        day_disabled: "opacity-40",
         day_range_start: "!rounded-l-md",
         day_range_end: "!rounded-r-md",
         day_range_middle:
@@ -79,10 +79,10 @@ export function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => (
+        IconLeft: () => (
           <ChevronLeftIcon className="h-4 w-4 dark:text-secondary-100" />
         ),
-        IconRight: ({ ...props }) => (
+        IconRight: () => (
           <ChevronRightIcon className="h-4 w-4 dark:text-secondary-100" />
         ),
       }}

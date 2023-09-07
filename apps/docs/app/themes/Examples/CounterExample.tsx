@@ -49,9 +49,9 @@ export function CounterExample() {
   }, [color]);
 
   return (
-    <div className="space-y-6">
-      <div className=" py-2">
-        <Text className="text-xl font-bold">Move goal</Text>
+    <div className="space-y-3 w-[290px] h-[255px]">
+      <div>
+        <Text className="text-md font-semibold">Move goal</Text>
         <Text className="text-gray-500">Set your daily activity goal.</Text>
       </div>
 
@@ -85,12 +85,12 @@ export function CounterExample() {
         </Button>
       </div>
       <Bar
-        className="w-60 !mt-2"
+        className="w-60"
         data={{
           labels: Array(13).fill(""),
           datasets: [
             {
-              data: [4, 5, 3, 5, 2, 3, 3, 5, 3, 4, 2, 2, 3],
+              data: [4, 4.5, 3.5, 4.5, 3.5, 3.9, 3.4, 4.5, 3.5, 4, 3.5, 3, 3],
               backgroundColor: secondaryVariable,
             },
           ],
@@ -113,14 +113,14 @@ export function CounterExample() {
             axis: "r",
           },
         }}
-        height={70}
+        height={50}
         style={{ height: 100 }}
       />
       <Button
         type="button"
         variant="solid"
         colorScheme="primary"
-        className="!w-full"
+        className="!w-full "
       >
         Set Goal
       </Button>
