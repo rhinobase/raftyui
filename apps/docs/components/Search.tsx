@@ -402,6 +402,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
       <Button
         type="button"
         variant="ghost"
+        size="icon"
         onClick={() => setOpen(true)}
         className="md:hidden"
       >

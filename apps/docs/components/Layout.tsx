@@ -55,33 +55,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
           <Logo className="hidden h-9 w-auto fill-secondary-700 dark:fill-primary-100 lg:block" />
         </Link>
       </div>
-      <div className="flex gap-4">
-        <Link href="/themes">
-          <Button
-            variant="ghost"
-            colorScheme={
-              pathname_array.at(0) == "themes" ? "primary" : "secondary"
-            }
-            className="!py-1"
-            isActive={pathname_array.at(0) == "themes"}
-          >
-            Themes
-          </Button>
-        </Link>
-        <Link href="/docs/components/accordion">
-          <Button
-            variant="ghost"
-            colorScheme={
-              pathname_array.at(1) == "components" ? "primary" : "secondary"
-            }
-            className="!py-1"
-            isActive={pathname_array.at(1) == "components"}
-          >
-            Component
-          </Button>
-        </Link>
-      </div>
-      <div className="relative flex basis-0 justify-end gap-1 md:flex-grow md:gap-2 lg:gap-6">
+      <div className="relative flex basis-0 items-center justify-end gap-1 md:flex-grow md:gap-2 lg:gap-4">
         <SearchButton setOpen={setSearchOpen} />
         <ThemeSelector />
         <a

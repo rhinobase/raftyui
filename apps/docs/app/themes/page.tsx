@@ -29,15 +29,15 @@ export default function Home() {
   const { color, changeColor } = useColorStore();
 
   return (
-    <div className={`py-10 px-10 md:px-0 w-full theme-${color}`}>
-      <div className="flex justify-between">
+    <div className={`lg:py-10 p-4 lg:px-10 md:px-0 w-full theme-${color}`}>
+      <div className="flex justify-start lg:justify-between flex-col lg:flex-row">
         <div>
-          <h1 className="text-5xl font-bold">Make it yours.</h1>
-          <h4 className="text-secondary-400 text-lg">
+          <h1 className="text-3xl md:text-5xl font-bold">Make it yours.</h1>
+          <h4 className="text-secondary-400 text-sm lg:text-lg">
             Hand-picked themes that you can copy and paste into your apps.
           </h4>
         </div>
-        <div className="p-3 flex items-center gap-3 justify-end">
+        <div className="flex items-center gap-3 py-2 lg:justify-end">
           {Object.entries(ColorTheme)
             .slice(0, 4)
             .map(([c, value]) => (
