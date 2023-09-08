@@ -10,6 +10,7 @@ import {
   LineElement,
   Tooltip,
 } from "chart.js/auto";
+import { CSSVariableValue } from "./SubscriptionsExample";
 
 ChartJS.register(
   CategoryScale,
@@ -21,15 +22,23 @@ ChartJS.register(
 
 export function ExerciseMinuteExample() {
   const color = useColorStore((state) => state.color);
-  const [primaryVariable, setPrimaryVariable] = useState<string>("");
-  const [secondaryVariable, setSecondaryVariable] = useState<string>("");
+  const [variable, setVariable] = useState<string>();
 
-  const customTooltipPlugin = {
+  const cssvar = useCallback(
+    (name: string) => CSSVariableValue(name, color),
+    [color],
+  );
+
+  useEffect(() => {
+    setVariable(cssvar("--color-primary-500"));
+  }, [color]);
+
+  ChartJS.register({
     id: "customTooltip",
-    afterDraw: (chart: any) => {
+    afterDraw: (chart) => {
       const ctx = chart.ctx;
       const tooltip = chart.tooltip;
-      const x = tooltip.caretX;
+      const x = tooltip?.caretX;
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(x, chart.chartArea.top);
@@ -39,29 +48,7 @@ export function ExerciseMinuteExample() {
       ctx.stroke();
       ctx.restore();
     },
-  };
-
-  ChartJS.register(customTooltipPlugin);
-
-  const cssvar = useCallback(
-    (name: string, opacity?: number) => {
-      const value = getComputedStyle(
-        document.getElementsByClassName(`theme-${color}`)[0],
-      )
-        .getPropertyValue(name)
-        .split(" ")
-        .join(",");
-
-      if (opacity) return `rgba(${value},${opacity})`;
-      return `rgb(${value})`;
-    },
-    [color],
-  );
-
-  useEffect(() => {
-    setPrimaryVariable(cssvar("--color-primary-500"));
-    setSecondaryVariable(cssvar("--color-primary-500", 0.3));
-  }, [color]);
+  });
 
   return (
     <div className="space-y-1">
@@ -81,14 +68,14 @@ export function ExerciseMinuteExample() {
                 {
                   label: "Today",
                   data: [240, 139, 980, 390, 480, 380, 430, 380],
-                  borderColor: primaryVariable,
+                  borderColor: `rgb(${variable})`,
                   tension: 0.3,
                   backgroundColor: "white",
                 },
                 {
                   label: "Average",
                   data: [400, 300, 200, 278, 189, 239, 349, 239],
-                  borderColor: secondaryVariable,
+                  borderColor: `rgba(${variable}, 0.3)`,
                   fill: false,
                   cubicInterpolationMode: "monotone",
                   tension: 0.3,

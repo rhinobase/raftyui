@@ -102,7 +102,7 @@ export const navigation = [
         href: "/docs/components/popover",
       },
       {
-        title: "Porgress",
+        title: "Progress",
         href: "/docs/components/progress",
       },
       {

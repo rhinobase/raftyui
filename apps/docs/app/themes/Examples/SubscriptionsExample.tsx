@@ -9,6 +9,13 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import { useColorStore } from "../store";
 
+export function CSSVariableValue(name: string, color: string) {
+  return getComputedStyle(document.getElementsByClassName(`theme-${color}`)[0])
+    .getPropertyValue(name)
+    .split(" ")
+    .join(",");
+}
+
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 export function SubscriptionsExample() {
@@ -16,15 +23,7 @@ export function SubscriptionsExample() {
   const [variable, setVariable] = useState<string>();
 
   const cssvar = useCallback(
-    (name: string) => {
-      const value = getComputedStyle(
-        document.getElementsByClassName(`theme-${color}`)[0],
-      )
-        .getPropertyValue(name)
-        .split(" ")
-        .join(",");
-      return `rgb(${value})`;
-    },
+    (name: string) => CSSVariableValue(name, color),
     [color],
   );
 
@@ -46,7 +45,7 @@ export function SubscriptionsExample() {
             datasets: [
               {
                 data: [6, 5, 3, 5, 2, 3, 6, 5],
-                backgroundColor: variable,
+                backgroundColor: `rgb(${variable})`,
               },
             ],
           }}
