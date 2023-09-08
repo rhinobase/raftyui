@@ -13,58 +13,53 @@ import {
 import { useReducer, useState } from "react";
 import { HiCheck, HiChevronDown } from "react-icons/hi";
 
+const MEMBERS_DATA = [
+  {
+    name: "Jackson Lee",
+    email: "jack@example.com",
+  },
+  {
+    name: "Sofia Davis",
+    email: "sofia@example.com",
+  },
+  {
+    name: "Max Escobar",
+    email: "max@example.com",
+  },
+];
+
 export function TeamMembersExample() {
   return (
-    <div>
-      <Text className="font-semibold text-md">Team Members</Text>
-      <Text className="text-secondary-500">
-        Invite your team members to collaborate.
-      </Text>
-      <div className="space-y-4  py-4 w-full">
-        <div className="flex gap-4 justify-between items-center ">
-          <Avatar
-            name="Jackson Lee"
-            src="https://api.dicebear.com/7.x/notionists/svg?seed=Willow"
-          />
-          <div className="">
-            <Text className="font-semibold text-sm">Jackson Lee</Text>
-            <Text className="text-secondary-500">p@example.com</Text>
+    <div className="space-y-4">
+      <div>
+        <Text className="font-semibold text-xl leading-snug">Team Members</Text>
+        <Text className="text-sm opacity-60">
+          Invite your team members to collaborate.
+        </Text>
+      </div>
+      <div className="space-y-3.5 w-full">
+        {MEMBERS_DATA.map((member, index) => (
+          <div key={index} className="flex gap-2.5 items-center w-full">
+            <Avatar
+              name={member.name}
+              src={`https://api.dicebear.com/7.x/notionists/svg?seed=${member.name}`}
+            />
+            <div>
+              <Text className="font-semibold leading-snug">{member.name}</Text>
+              <Text className="text-sm opacity-50 leading-snug">
+                {member.email}
+              </Text>
+            </div>
+            <div className="flex-1" />
+            <MemberRoleMenu />
           </div>
-          <div className="flex-1" />
-          <TeamMembers />
-        </div>
-
-        <div className="flex gap-4 justify-between items-center">
-          <Avatar
-            name="Sofia Davis"
-            src="https://api.dicebear.com/7.x/adventurer/svg?seed=Abby"
-          />
-          <div>
-            <Text className="font-semibold text-sm">Sofia davis</Text>
-            <Text className="text-secondary-500">y@example.com</Text>
-          </div>
-          <div className="flex-1" />
-
-          <TeamMembers />
-        </div>
-        <div className="flex gap-4 justify-between items-center">
-          <Avatar
-            name="Allige Bith"
-            src="https://api.dicebear.com/7.x/notionists/svg?seed=Max"
-          />
-          <div>
-            <Text className="font-semibold text-sm">Max </Text>
-            <Text className="text-secondary-500">d@example.com</Text>
-          </div>
-          <div className="flex-1" />
-          <TeamMembers />
-        </div>
+        ))}
       </div>
     </div>
   );
 }
 
-const TEAM_MEMBER = [
+const MEMBER_ROLES = [
   {
     id: "1",
     title: "Viewer",
@@ -87,7 +82,7 @@ const TEAM_MEMBER = [
   },
 ];
 
-function TeamMembers() {
+function MemberRoleMenu() {
   const [isOpen, setOpen] = useState(false);
 
   const [selected, dispatch] = useReducer((prev: any, cur: any): any => {
@@ -96,32 +91,30 @@ function TeamMembers() {
 
     if (value)
       return {
-        ...TEAM_MEMBER?.find((data) => data.id === value),
+        ...MEMBER_ROLES?.find((data) => data.id === value),
       };
 
     return undefined;
-  }, TEAM_MEMBER.at(0));
+  }, MEMBER_ROLES.at(0));
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
-      <div className="relative flex items-center w-[150px]">
-        <PopoverTrigger
-          variant="outline"
-          size="md"
-          role="combobox"
-          aria-expanded={isOpen}
-          className="w-full justify-between capitalize"
-          rightIcon={<HiChevronDown />}
-        >
-          {selected?.title}
-        </PopoverTrigger>
-      </div>
-      <PopoverContent className="!p-0 !w-[330px]">
+      <PopoverTrigger
+        variant="outline"
+        size="md"
+        role="combobox"
+        aria-expanded={isOpen}
+        className="justify-between capitalize"
+        rightIcon={<HiChevronDown />}
+      >
+        {selected?.title}
+      </PopoverTrigger>
+      <PopoverContent className="!p-0 !w-[320px]">
         <Command>
           <CommandInput placeholder="Search role" />
           <CommandList>
             <CommandGroup>
-              {TEAM_MEMBER.map((item) => {
+              {MEMBER_ROLES.map((item) => {
                 return (
                   <CommandItem
                     key={item.title}
@@ -130,18 +123,13 @@ function TeamMembers() {
                     className="!px-3 !py-2 !rounded"
                   >
                     <div>
-                      <Text className="leading-5">{item.title}</Text>
-                      <Text className="text-secondary-500 dark:text-secondary-400 leading-5">
+                      <Text className="leading-snug">{item.title}</Text>
+                      <Text className="opacity-50 leading-snug">
                         {item.discription}
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {selected.id == item.id && (
-                      <HiCheck
-                        size={16}
-                        className="text-primary-500  dark:text-primary-500"
-                      />
-                    )}
+                    {selected.id == item.id && <HiCheck size={16} />}
                   </CommandItem>
                 );
               })}

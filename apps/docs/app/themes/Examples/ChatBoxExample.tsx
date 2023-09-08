@@ -103,7 +103,7 @@ export function ChatBoxExample() {
         </MessageComponent>
         <div className="flex flex-row-reverse">
           <MessageComponent className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
-            Hey, I&aposm having trouble with my account.
+            Hey, I&apos;m having trouble with my account.
           </MessageComponent>
         </div>
         <MessageComponent className="bg-secondary-100 dark:bg-secondary-800">
@@ -111,7 +111,7 @@ export function ChatBoxExample() {
         </MessageComponent>
         <div className="flex flex-row-reverse">
           <MessageComponent className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
-            I can&apost log in.
+            I can&apos;t log in.
           </MessageComponent>
         </div>
         {messages &&
@@ -129,6 +129,7 @@ export function ChatBoxExample() {
           placeholder="Type your message..."
           onChange={(e) => setMessageText(e.currentTarget.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          className="placeholder:text-sm"
         />
         <Button
           size="icon"

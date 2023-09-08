@@ -29,7 +29,9 @@ export default function Home() {
   const { color, changeColor } = useColorStore();
 
   return (
-    <div className={`lg:py-10 p-4 lg:px-10 md:px-0 w-full theme-${color}`}>
+    <div
+      className={`md:py-10 px-4 py-4 md:px-10 lg:px-0 w-full theme-${color}`}
+    >
       <div className="flex justify-start lg:justify-between flex-col lg:flex-row">
         <div>
           <h1 className="text-3xl md:text-5xl font-bold">Make it yours.</h1>

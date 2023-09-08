@@ -48,41 +48,38 @@ export function TotalRevenueExample() {
     <div className="space-y-1">
       <Text className="text-sm font-medium">Total Revenue</Text>
       <div>
-        <Text className="text-2xl font-bold">$15,231.89</Text>
+        <Text className="text-2xl font-bold leading-snug">$15,231.89</Text>
         <Text className="text-xs opacity-60">+20.1% from last month</Text>
       </div>
-      <div>
-        <Line
-          data={{
-            labels: Array(8).fill(""),
-            datasets: [
-              {
-                data: [113, 114, 113, 112, 111, 112, 117],
-                borderColor: variable,
-                backgroundColor: "white",
-                tension: 0.3,
-              },
-            ],
-          }}
-          width="303"
-          height="80"
-          options={{
-            responsive: true,
-            scales: { x: { display: false }, y: { display: false } },
-            interaction: {
-              mode: "index",
-              intersect: false,
-              includeInvisible: false,
-              axis: "r",
+      <Line
+        data={{
+          labels: Array(7).fill(""),
+          datasets: [
+            {
+              data: [113, 114, 113, 112, 111, 112, 117],
+              borderColor: variable,
+              backgroundColor: "white",
+              tension: 0.3,
             },
-            plugins: {
-              legend: {
-                display: false,
-              },
+          ],
+        }}
+        height={80}
+        options={{
+          responsive: true,
+          scales: { x: { display: false }, y: { display: false } },
+          interaction: {
+            mode: "index",
+            intersect: false,
+            includeInvisible: false,
+            axis: "r",
+          },
+          plugins: {
+            legend: {
+              display: false,
             },
-          }}
-        ></Line>
-      </div>
+          },
+        }}
+      />
     </div>
   );
 }

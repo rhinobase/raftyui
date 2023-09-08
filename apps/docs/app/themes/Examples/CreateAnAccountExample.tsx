@@ -43,7 +43,7 @@ export function CreateAnAccountExample() {
       </FieldControl>
       <FieldControl name="password" isRequired>
         <Label>Password</Label>
-        <PasswordField />
+        <PasswordField autoComplete="new-password" />
       </FieldControl>
       <Button
         variant="solid"

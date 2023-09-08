@@ -32,11 +32,13 @@ export function SubscriptionsExample() {
   }, [color]);
 
   return (
-    <div>
-      <div>
-        <Text className="text-md font-semibold">Subscriptions</Text>
-        <Text className="text-2xl font-bold">+2350</Text>
-        <Text className="text-secondary-700 ">+180.1% from last month</Text>
+    <>
+      <div className="space-y-1">
+        <Text className="text-sm font-medium">Subscriptions</Text>
+        <div>
+          <Text className="text-2xl font-bold leading-snug">+2350</Text>
+          <Text className="text-xs opacity-60">+180.1% from last month</Text>
+        </div>
       </div>
       <div className="py-4">
         <Bar
@@ -71,6 +73,6 @@ export function SubscriptionsExample() {
           style={{ height: 100 }}
         />
       </div>
-    </div>
+    </>
   );
 }

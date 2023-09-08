@@ -20,14 +20,14 @@ export function CookieSettingsExample() {
   ];
   return (
     <>
-      <h1 className="text-xl font-semibold">Cookie Settings</h1>
-      <h5 className="text-sm text-secondary-400 dark:text-secondary-500">
+      <Text className="text-xl font-semibold">Cookie Settings</Text>
+      <Text className="text-sm opacity-60 leading-snug">
         Manage your cookie settings here.
-      </h5>
+      </Text>
       {Content.map((item, index) => (
         <div key={index} className="flex gap-4 py-3 items-center">
           <div>
-            <h5 className="text-sm">{item.heading}</h5>
+            <Text className="text-sm">{item.heading}</Text>
             <Text className="text-xs text-secondary-500 dark:text-secondary-400">
               {item.discription}
             </Text>

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useReducer, useState } from "react";
+import { Dispatch, useReducer, useState } from "react";
 import {
   Checkbox,
   InputField,
@@ -24,15 +24,16 @@ import {
 } from "@rafty/ui";
 import { HiChevronDown, HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { HiDotsHorizontal } from "react-icons/hi";
-import { tr } from "@markdoc/markdoc/dist/src/schema";
 
-type DataType = {
+type HeadersType = {
   status: string;
   email: string;
   amount: string;
 };
-const options: (keyof DataType)[] = ["status", "email", "amount"];
-const TABLE_DATA: ({ id: string } & DataType)[] = [
+
+const COLUMNS: (keyof HeadersType)[] = ["status", "email", "amount"];
+
+const TABLE_DATA: ({ id: string } & HeadersType)[] = [
   {
     id: "0",
     status: "Success",
@@ -73,7 +74,7 @@ const TABLE_DATA: ({ id: string } & DataType)[] = [
 
 export function TableExample() {
   const [show, dispatch] = useReducer(
-    (prev: (keyof DataType)[], cur: keyof DataType) => {
+    (prev: (keyof HeadersType)[], cur: keyof HeadersType) => {
       const index = prev.findIndex((val) => val == cur);
 
       if (index == -1) prev.push(cur);
@@ -81,7 +82,7 @@ export function TableExample() {
 
       return [...prev].sort().reverse();
     },
-    [...options],
+    [...COLUMNS],
   );
 
   const [search, setSearch] = useState("");
@@ -109,26 +110,26 @@ export function TableExample() {
             onChange={(e) => setSearch(e.currentTarget.value)}
           />
         </InputGroup>
-        <SelectColumns show={show} toggle={dispatch} />
+        <ColumnsSelectMenu show={show} toggle={dispatch} />
       </div>
-      <PaymentTable show={show} data={results} />
+      <TableComponent show={show} data={results} />
     </div>
   );
 }
 
-const SelectColumns = ({
+const ColumnsSelectMenu = ({
   show,
   toggle,
 }: {
-  show: (keyof DataType)[];
-  toggle: Dispatch<keyof DataType>;
+  show: (keyof HeadersType)[];
+  toggle: Dispatch<keyof HeadersType>;
 }) => (
   <Menu>
     <MenuTrigger variant="outline" rightIcon={<HiChevronDown />}>
-      Column
+      Columns
     </MenuTrigger>
     <MenuContent className="!min-w-[10rem]" align="end">
-      {options.map((value) => (
+      {COLUMNS.map((value) => (
         <MenuCheckboxItem
           key={value}
           checked={show.includes(value)}
@@ -142,7 +143,7 @@ const SelectColumns = ({
   </Menu>
 );
 
-function PaymentTable({
+function TableComponent({
   data,
   show,
 }: {
@@ -154,14 +155,7 @@ function PaymentTable({
     amount: string;
   }[];
 }) {
-  const [checked, setChecked] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [checked, setChecked] = useState([true, true, true, true, true, true]);
   const checkLength = checked.filter((item) => item).length;
 
   return (
@@ -171,7 +165,6 @@ function PaymentTable({
           <TableHead>
             <Tr>
               <Th style={{ width: 30 }}>
-                {/* need to check CheckBox select functionality  */}
                 <Checkbox
                   size="sm"
                   checked={checkLength === 6}
@@ -180,8 +173,14 @@ function PaymentTable({
                   }
                 />
               </Th>
-              {show.map((value) => (
-                <Th key={value} className="capitalize w-max">
+              {show.map((value, index) => (
+                <Th
+                  key={value}
+                  className={classNames(
+                    index == 2 && "text-center",
+                    "capitalize w-max",
+                  )}
+                >
                   {value}
                 </Th>
               ))}
@@ -207,8 +206,14 @@ function PaymentTable({
                   />
                 </Td>
                 {show.map((value, index) => (
-                  <Td key={index + value} className="truncate">
-                    {item[value as keyof DataType]}
+                  <Td
+                    key={index + value}
+                    className={classNames(
+                      index == 2 && "text-center",
+                      "truncate",
+                    )}
+                  >
+                    {item[value as keyof HeadersType]}
                   </Td>
                 ))}
                 <Td>
@@ -216,7 +221,7 @@ function PaymentTable({
                     <MenuTrigger variant="ghost" size="icon">
                       <HiDotsHorizontal />
                     </MenuTrigger>
-                    <MenuContent className="!min-w-[11rem] !z-50">
+                    <MenuContent className="!min-w-[9rem] !z-50">
                       <MenuLabel className="leading-4">Actions</MenuLabel>
                       <MenuItem>Copy payment ID</MenuItem>
                       <MenuSeparator />

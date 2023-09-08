@@ -25,7 +25,7 @@ ChartJS.register(
 );
 
 export function CounterExample() {
-  const [count, setCount] = useState(200);
+  const [count, setCount] = useState(350);
   const color = useColorStore((state) => state.color);
   const [secondaryVariable, setSecondaryVariable] = useState<string>("");
 
@@ -51,8 +51,10 @@ export function CounterExample() {
   return (
     <div className="space-y-3 w-[290px] h-[255px]">
       <div>
-        <Text className="text-md font-semibold">Move goal</Text>
-        <Text className="text-gray-500">Set your daily activity goal.</Text>
+        <Text className="text-2xl font-semibold leading-snug">Move goal</Text>
+        <Text className="text-sm opacity-60">
+          Set your daily activity goal.
+        </Text>
       </div>
 
       <div className="flex justify-between items-center">
