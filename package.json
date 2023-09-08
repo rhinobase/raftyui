@@ -111,6 +111,7 @@
     "react-hook-form": "^7.45.4",
     "react-icons": "^4.10.1",
     "react-responsive-masonry": "^2.1.7",
+    "recharts": "^2.8.0",
     "simple-functional-loader": "^1.2.1",
     "tailwindcss-animate": "^1.0.6",
     "tslib": "^2.6.2",

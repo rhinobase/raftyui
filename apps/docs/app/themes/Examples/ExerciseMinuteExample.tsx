@@ -1,24 +1,45 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { LineChart, Line, Tooltip } from "recharts";
 import { Text } from "@rafty/ui";
-import { Line } from "react-chartjs-2";
+import { useCallback, useEffect, useState } from "react";
 import { useColorStore } from "../store";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-} from "chart.js/auto";
-import { CSSVariableValue } from "./SubscriptionsExample";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-);
+const data = [
+  {
+    uv: 4000,
+    pv: 2400,
+  },
+  {
+    uv: 3000,
+    pv: 1398,
+  },
+  {
+    uv: 2000,
+    pv: 9800,
+  },
+  {
+    uv: 2780,
+    pv: 3908,
+  },
+  {
+    uv: 1890,
+    pv: 4800,
+  },
+  {
+    uv: 2390,
+    pv: 3800,
+  },
+  {
+    uv: 3490,
+    pv: 4300,
+  },
+];
+
+export function CSSVariableValue(name: string, color: string) {
+  return getComputedStyle(document.getElementsByClassName(`theme-${color}`)[0])
+    .getPropertyValue(name)
+    .split(" ")
+    .join(",");
+}
 
 export function ExerciseMinuteExample() {
   const color = useColorStore((state) => state.color);
@@ -33,82 +54,50 @@ export function ExerciseMinuteExample() {
     setVariable(cssvar("--color-primary-500"));
   }, [color]);
 
-  ChartJS.register({
-    id: "customTooltip",
-    afterDraw: (chart) => {
-      const ctx = chart.ctx;
-      const tooltip = chart.tooltip;
-      const x = tooltip?.caretX;
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(x, chart.chartArea.top);
-      ctx.lineTo(x, chart.chartArea.bottom);
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = "#9e9e9e";
-      ctx.stroke();
-      ctx.restore();
-    },
-  });
-
   return (
     <div className="space-y-1">
-      <Text className="text-lg  font-semibold">Exercise Minutes</Text>
+      <Text className="text-lg font-semibold">Exercise Minutes</Text>
       <Text className="text-xs opacity-60">
         Your exercise minutes are ahead of where you normally are.
       </Text>
-
       <div className="py-8">
-        <div>
-          <Line
-            className="w-full"
-            id="tooltipLine"
-            data={{
-              labels: Array(8).fill(""),
-              datasets: [
-                {
-                  label: "Today",
-                  data: [240, 139, 980, 390, 480, 380, 430, 380],
-                  borderColor: `rgb(${variable})`,
-                  tension: 0.3,
-                  backgroundColor: "white",
-                },
-                {
-                  label: "Average",
-                  data: [400, 300, 200, 278, 189, 239, 349, 239],
-                  borderColor: `rgba(${variable}, 0.3)`,
-                  fill: false,
-                  cubicInterpolationMode: "monotone",
-                  tension: 0.3,
-                  backgroundColor: "white",
-                },
-              ],
-            }}
-            style={{ width: "100%", height: 200 }}
-            options={{
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                x: {
-                  display: false,
-                },
-                y: { display: false },
-              },
-              interaction: {
-                mode: "index",
-                intersect: false,
-              },
-              plugins: {
-                legend: {
-                  display: false,
-                },
+        <LineChart width={550} height={300} data={data}>
+          <Tooltip
+            content={({ active, payload }) => {
+              if (active && payload && payload.length) {
+                return (
+                  <div className="rounded-lg border bg-background p-2 shadow-sm">
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="flex flex-col">
+                        <span className="text-[0.70rem] uppercase text-muted-foreground">
+                          Average
+                        </span>
+                        <span className="font-bold text-muted-foreground">
+                          {payload[0].value}
+                        </span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[0.70rem] uppercase text-muted-foreground">
+                          Today
+                        </span>
+                        <span className="font-bold">{payload[1].value}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
 
-                tooltip: {
-                  enabled: true,
-                },
-              },
+              return null;
             }}
           />
-        </div>
+          <Line
+            type="monotone"
+            dataKey="pv"
+            stroke={`rgb(${variable})`}
+            activeDot={{ r: 6 }}
+          />
+          <Line type="monotone" dataKey="uv" stroke={`rgba(${variable},0.3)`} />
+        </LineChart>
       </div>
     </div>
   );
