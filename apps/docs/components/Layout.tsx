@@ -12,6 +12,24 @@ import { BsDiscord, BsGithub, BsTwitter } from "react-icons/bs";
 import { Button, classNames } from "@rafty/ui";
 import { HiBars3 } from "react-icons/hi2";
 
+const navigation = [
+  {
+    name: "GitHub",
+    href: "https://github.com/rhinobase/raftyui",
+    icon: BsGithub,
+  },
+  {
+    name: "Discord",
+    href: "https://discord.gg/HJfYwrBMKb",
+    icon: BsDiscord,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/rhinobaseio",
+    icon: BsTwitter,
+  },
+];
+
 type Header = {
   isDrawerOpen: boolean;
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
@@ -20,9 +38,6 @@ type Header = {
 
 function Header({ setDrawerOpen, setSearchOpen }: Header) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
-
-  const pathname_array = pathname.split("/").splice(1);
 
   useEffect(() => {
     function onScroll() {
@@ -58,33 +73,18 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
       <div className="relative flex basis-0 items-center justify-end gap-1 md:flex-grow md:gap-2 lg:gap-4">
         <SearchButton setOpen={setSearchOpen} />
         <ThemeSelector />
-        <a
-          href="https://github.com/rhinobase/raftyui"
-          target="_blank"
-          aria-label="GitHub"
-        >
-          <Button variant="ghost" size="icon">
-            <BsGithub size={18} />
-          </Button>
-        </a>
-        <a
-          href="https://discord.gg/HJfYwrBMKb"
-          target="_blank"
-          aria-label="Discord"
-        >
-          <Button variant="ghost" size="icon">
-            <BsDiscord size={18} />
-          </Button>
-        </a>
-        <a
-          href="https://twitter.com/rhinobaseio"
-          target="_blank"
-          aria-label="Twitter"
-        >
-          <Button variant="ghost" size="icon">
-            <BsTwitter size={18} />
-          </Button>
-        </a>
+        {navigation.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            target="_blank"
+            aria-label={item.name}
+          >
+            <Button variant="ghost" size="icon">
+              <item.icon size={18} />
+            </Button>
+          </a>
+        ))}
       </div>
     </header>
   );
