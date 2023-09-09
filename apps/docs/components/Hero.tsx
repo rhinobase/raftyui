@@ -7,7 +7,6 @@ import {
   CookieSettingsExample,
   TeamMembersExample,
 } from "../app/themes/Examples";
-import Masonry from "react-responsive-masonry";
 
 export function Hero() {
   return (
@@ -18,7 +17,7 @@ export function Hero() {
             <Image
               className="absolute bottom-full right-full -mb-56 -mr-72 opacity-50"
               src={blurCyanImage}
-              alt=""
+              alt="Blurred Cyan Circle"
               width={530}
               height={530}
               unoptimized
@@ -26,11 +25,12 @@ export function Hero() {
             />
             <div className="relative">
               <p className="inline bg-gradient-to-r from-indigo-200 via-primary-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
-                Never miss the cache again.
+                Building Design System Made Easy.
               </p>
               <p className="mt-3 text-2xl tracking-tight text-secondary-400">
-                Cache every single thing your app could ever do ahead of time,
-                so your code never even has to run at all.
+                Explore our library of responsive and accessible UI components,
+                meticulously crafted to align seamlessly with your app&apos;s
+                design system.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
                 <a href="#getting-started">
@@ -55,7 +55,7 @@ export function Hero() {
             <Image
               className="absolute -right-64 -top-64"
               src={blurCyanImage}
-              alt=""
+              alt="Blurred Cyan Circle"
               width={530}
               height={530}
               unoptimized
@@ -64,19 +64,20 @@ export function Hero() {
             <Image
               className="absolute -bottom-40 -right-44"
               src={blurIndigoImage}
-              alt=""
+              alt="Blurred Indigo Circle"
               width={567}
               height={567}
               unoptimized
               priority
             />
-            <div className="w-[720px]">
-              <Masonry gutter="20px" columnsCount={2} className="p">
-                <Card className="!object-cover">
+            <div className="w-full text-white">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-[700px]">
+                <Card>
                   <CardContent>
-                    <TeamMembersExample />
+                    <CookieSettingsExample />
                   </CardContent>
                 </Card>
+
                 <Card>
                   <CardContent>
                     <ChatBoxExample />
@@ -84,11 +85,11 @@ export function Hero() {
                 </Card>
                 <Card>
                   <CardContent>
-                    <CookieSettingsExample />
+                    <TeamMembersExample />
                   </CardContent>
                 </Card>
                 <Calendar />
-              </Masonry>
+              </div>
             </div>
           </div>
         </div>

@@ -62,7 +62,7 @@ const YEARS = [
 ];
 
 export function PaymentMethodExample() {
-  const [isselect, setIsSelect] = useState<number>(0);
+  const [isSelect, setSelected] = useState<number>(0);
 
   return (
     <div className="space-y-4">
@@ -82,9 +82,9 @@ export function PaymentMethodExample() {
             return (
               <div
                 key={index}
-                onClick={() => setIsSelect(index)}
+                onClick={() => setSelected(index)}
                 className={classNames(
-                  isselect == index
+                  isSelect == index
                     ? "ring-2 ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400"
                     : "dark:border-secondary-700",
                   "w-full p-4 flex justify-center items-center flex-col gap-2 border rounded-md dark:hover:bg-secondary-900/70 hover:bg-secondary-50 transition-all ease-in-out cursor-pointer",

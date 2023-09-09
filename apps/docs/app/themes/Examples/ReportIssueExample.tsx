@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Command,
   Text,
@@ -14,7 +15,6 @@ import {
   Button,
   FieldControl,
 } from "@rafty/ui";
-import { useState } from "react";
 import { HiCheck, HiChevronUpDown } from "react-icons/hi2";
 
 export function ReportIssueExample() {

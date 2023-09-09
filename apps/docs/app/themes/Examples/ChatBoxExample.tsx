@@ -1,4 +1,4 @@
-import React, { useState, useRef, useReducer, ReactNode } from "react";
+import { useState, useRef, useReducer, ReactNode } from "react";
 import {
   Avatar,
   AvatarGroup,
@@ -22,6 +22,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  classNames,
 } from "@rafty/ui";
 import { BiSend } from "react-icons/bi";
 import { HiCheck, HiOutlinePlus } from "react-icons/hi";
@@ -70,15 +71,6 @@ export function ChatBoxExample() {
     if (inputRef.current) inputRef.current.value = "";
   }
 
-  const [selected, dispatch] = useReducer((prev: number[], cur: number) => {
-    const index = prev.findIndex((num) => num === cur);
-
-    if (index === -1) prev.push(cur);
-    else prev.splice(index, 1);
-
-    return [...prev].sort();
-  }, []);
-
   return (
     <div className="space-y-6">
       <div className="flex gap-4 justify-between items-center">
@@ -95,31 +87,31 @@ export function ChatBoxExample() {
           </Text>
         </div>
         <div className="flex-1" />
-        <NewMessageDialog selected={selected} dispatch={dispatch} />
+        <NewMessageDialog />
       </div>
       <div className="space-y-3">
-        <MessageComponent className="bg-secondary-100 dark:bg-secondary-800">
+        <Message className="bg-secondary-100 dark:bg-secondary-800">
           Hi, how can I help you today?
-        </MessageComponent>
+        </Message>
         <div className="flex flex-row-reverse">
-          <MessageComponent className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
+          <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
             Hey, I&apos;m having trouble with my account.
-          </MessageComponent>
+          </Message>
         </div>
-        <MessageComponent className="bg-secondary-100 dark:bg-secondary-800">
+        <Message className="bg-secondary-100 dark:bg-secondary-800">
           What seems to be the problem?
-        </MessageComponent>
+        </Message>
         <div className="flex flex-row-reverse">
-          <MessageComponent className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
+          <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
             I can&apos;t log in.
-          </MessageComponent>
+          </Message>
         </div>
         {messages &&
           messages.map((m, i) => (
             <div key={i} className="flex flex-row-reverse">
-              <MessageComponent className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
+              <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
                 {m}
-              </MessageComponent>
+              </Message>
             </div>
           ))}
       </div>
@@ -145,13 +137,16 @@ export function ChatBoxExample() {
   );
 }
 
-function NewMessageDialog({
-  selected,
-  dispatch,
-}: {
-  selected: number[];
-  dispatch: React.Dispatch<number>;
-}) {
+function NewMessageDialog() {
+  const [selected, dispatch] = useReducer((prev: number[], cur: number) => {
+    const index = prev.findIndex((num) => num === cur);
+
+    if (index === -1) prev.push(cur);
+    else prev.splice(index, 1);
+
+    return [...prev].sort();
+  }, []);
+
   return (
     <Dialog>
       <Tooltip>
@@ -227,7 +222,7 @@ function NewMessageDialog({
   );
 }
 
-function MessageComponent({
+function Message({
   className,
   children,
 }: {
@@ -236,7 +231,10 @@ function MessageComponent({
 }) {
   return (
     <Text
-      className={`w-max px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium dark:text-secondary-100 leading-snug ${className}`}
+      className={classNames(
+        "w-max px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium text-secondary-800 dark:text-secondary-100 leading-snug",
+        className,
+      )}
     >
       {children}
     </Text>

@@ -1,123 +1,47 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Text } from "@rafty/ui";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { Bar } from "react-chartjs-2";
+import { Bar, BarChart, ResponsiveContainer } from "recharts";
 
-import { useColorStore } from "../store";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-);
+const data = [
+  {
+    value: 4000,
+  },
+  {
+    value: 3000,
+  },
+  {
+    value: 2000,
+  },
+  {
+    value: 2780,
+  },
+  {
+    value: 1890,
+  },
+  {
+    value: 2390,
+  },
+  {
+    value: 3490,
+  },
+];
 
 export function CounterExample() {
-  const [count, setCount] = useState(350);
-  const color = useColorStore((state) => state.color);
-  const [secondaryVariable, setSecondaryVariable] = useState<string>("");
-
-  const cssvar = useCallback(
-    (name: string, opacity?: number) => {
-      const value = getComputedStyle(
-        document.getElementsByClassName(`theme-${color}`)[0],
-      )
-        .getPropertyValue(name)
-        .split(" ")
-        .join(",");
-
-      if (opacity) return `rgba(${value},${opacity})`;
-      return `rgb(${value})`;
-    },
-    [color],
-  );
-
-  useEffect(() => {
-    setSecondaryVariable(cssvar("--color-primary-500", 0.2));
-  }, [color]);
-
   return (
-    <div className="space-y-3 w-[290px] h-[255px]">
+    <div className="space-y-2 h-full w-full">
       <div>
         <Text className="text-2xl font-semibold leading-snug">Move goal</Text>
         <Text className="text-sm opacity-60">
           Set your daily activity goal.
         </Text>
       </div>
-
-      <div className="flex justify-between items-center">
-        <Button
-          variant="outline"
-          size="fab"
-          onClick={() => {
-            if (count > 200) setCount(count - 10);
-          }}
-          className="!p-3"
-          isDisabled={count == 200}
-        >
-          <AiOutlineMinus />
-        </Button>
-        <div className="w-full flex justify-center items-center flex-col">
-          <Text className="text-5xl tabular-nums">{count}</Text>
-          <Text>CALORIES/DAY</Text>
-        </div>
-
-        <Button
-          variant="outline"
-          size="fab"
-          className="!p-3"
-          onClick={() => {
-            if (count < 400) setCount(count + 10);
-          }}
-          isDisabled={count == 400}
-        >
-          <AiOutlinePlus />
-        </Button>
-      </div>
-      <Bar
-        className="w-60"
-        data={{
-          labels: Array(13).fill(""),
-          datasets: [
-            {
-              data: [4, 4.5, 3.5, 4.5, 3.5, 3.9, 3.4, 4.5, 3.5, 4, 3.5, 3, 3],
-              backgroundColor: secondaryVariable,
-            },
-          ],
-        }}
-        options={{
-          responsive: true,
-          scales: {
-            x: { display: false },
-            y: { display: false },
-          },
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-          interaction: {
-            mode: "index",
-            intersect: false,
-            includeInvisible: false,
-            axis: "r",
-          },
-        }}
-        height={50}
-        style={{ height: 100 }}
-      />
+      <Counter />
+      <ResponsiveContainer height={100}>
+        <BarChart width={310} height={100} data={data} margin={{ top: 15 }}>
+          <Bar dataKey="value" className="fill-primary-500" />
+        </BarChart>
+      </ResponsiveContainer>
       <Button
         type="button"
         variant="solid"
@@ -125,6 +49,37 @@ export function CounterExample() {
         className="!w-full "
       >
         Set Goal
+      </Button>
+    </div>
+  );
+}
+
+function Counter() {
+  const [count, setCount] = useState(350);
+
+  return (
+    <div className="flex justify-between items-center">
+      <Button
+        variant="outline"
+        size="fab"
+        onClick={() => setCount(count - 10)}
+        className="!p-3"
+        isDisabled={count <= 200}
+      >
+        <AiOutlineMinus />
+      </Button>
+      <div className="w-full flex justify-center items-center flex-col">
+        <Text className="text-5xl tabular-nums">{count}</Text>
+        <Text>CALORIES/DAY</Text>
+      </div>
+      <Button
+        variant="outline"
+        size="fab"
+        className="!p-3"
+        onClick={() => setCount(count + 10)}
+        isDisabled={count >= 400}
+      >
+        <AiOutlinePlus />
       </Button>
     </div>
   );
