@@ -4,15 +4,19 @@ const colors = require("tailwindcss/colors");
 
 async function main() {
   const items = [
-    "purple",
+    "gray",
+    "red",
+    "orange",
+    "yellow",
+    "green",
     "teal",
-    "fuchsia",
-    "rose",
-    "pink",
-    "indigo",
-    "blue",
     "sky",
-    "emerald",
+    "blue",
+    "indigo",
+    "purple",
+    "fuchsia",
+    "pink",
+    "rose",
   ];
 
   for (let index = 0; index < items.length; index++) {
