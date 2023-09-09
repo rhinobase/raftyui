@@ -1,5 +1,5 @@
 import { Text } from "@rafty/ui";
-import { Line, LineChart } from "recharts";
+import { Line, LineChart, ResponsiveContainer } from "recharts";
 
 const data = [
   {
@@ -32,25 +32,27 @@ export function TotalRevenueExample() {
       <div>
         <Text className="text-2xl font-bold leading-snug">$15,231.89</Text>
         <Text className="text-xs opacity-60">+20.1% from last month</Text>
-        <LineChart
-          width={300}
-          height={90}
-          data={data}
-          margin={{ top: 30, left: 10, right: 7 }}
-        >
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke=""
-            strokeWidth={2}
-            className="stroke-primary-500"
-            dot={{
-              stroke: "stroke-primary-500",
-              strokeWidth: 2,
-              fill: "white",
-            }}
-          />
-        </LineChart>
+        <ResponsiveContainer height={100}>
+          <LineChart
+            width={300}
+            height={90}
+            data={data}
+            margin={{ top: 30, left: 10, right: 7 }}
+          >
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke=""
+              strokeWidth={2}
+              className="stroke-primary-500"
+              dot={{
+                stroke: "stroke-primary-500",
+                strokeWidth: 2,
+                fill: "white",
+              }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );

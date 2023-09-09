@@ -1,4 +1,4 @@
-import { LineChart, Line, Tooltip } from "recharts";
+import { LineChart, Line, Tooltip, ResponsiveContainer } from "recharts";
 import { Text } from "@rafty/ui";
 
 const data = [
@@ -36,61 +36,63 @@ export function ExerciseMinuteExample() {
   return (
     <div className="space-y-1">
       <Text className="text-lg font-semibold">Exercise Minutes</Text>
-      <Text className="text-xs opacity-60">
+      <Text className="text-sm opacity-60">
         Your exercise minutes are ahead of where you normally are.
       </Text>
-      <LineChart
-        width={550}
-        height={300}
-        data={data}
-        margin={{ top: 20, right: 7, left: 7 }}
-      >
-        <Tooltip
-          content={({ active, payload }) => {
-            if (!(active && payload && payload.length)) return;
+      <ResponsiveContainer height={230}>
+        <LineChart
+          width={550}
+          height={300}
+          data={data}
+          margin={{ top: 20, right: 7, left: 7 }}
+        >
+          <Tooltip
+            content={({ active, payload }) => {
+              if (!(active && payload && payload.length)) return;
 
-            return (
-              <div className="grid grid-cols-2 gap-2 rounded-lg border p-2 dark:bg-secondary-800 bg-white">
-                <div className="flex flex-col">
-                  <span className="text-[0.70rem] uppercase text-muted-foreground">
-                    Average
-                  </span>
-                  <span className="font-bold text-muted-foreground">
-                    {payload[0].value}
-                  </span>
+              return (
+                <div className="grid grid-cols-2 gap-2 rounded-lg border p-2 dark:bg-secondary-800 bg-white">
+                  <div className="flex flex-col">
+                    <span className="text-[0.70rem] uppercase text-muted-foreground">
+                      Average
+                    </span>
+                    <span className="font-bold text-muted-foreground">
+                      {payload[0].value}
+                    </span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[0.70rem] uppercase text-muted-foreground">
+                      Today
+                    </span>
+                    <span className="font-bold">{payload[1].value}</span>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-[0.70rem] uppercase text-muted-foreground">
-                    Today
-                  </span>
-                  <span className="font-bold">{payload[1].value}</span>
-                </div>
-              </div>
-            );
-          }}
-        />
-        <Line
-          type="monotone"
-          dataKey="b"
-          strokeWidth={2}
-          activeDot={{
-            r: 6,
-            className: "fill-primary-500",
-          }}
-          stroke=""
-          className="stroke-primary-500"
-        />
-        <Line
-          type="monotone"
-          dataKey="a"
-          strokeWidth={2}
-          activeDot={{
-            className: "fill-primary-500",
-          }}
-          stroke=""
-          className="stroke-primary-500/30"
-        />
-      </LineChart>
+              );
+            }}
+          />
+          <Line
+            type="monotone"
+            dataKey="b"
+            strokeWidth={2}
+            activeDot={{
+              r: 6,
+              className: "fill-primary-500",
+            }}
+            stroke=""
+            className="stroke-primary-500"
+          />
+          <Line
+            type="monotone"
+            dataKey="a"
+            strokeWidth={2}
+            activeDot={{
+              className: "fill-primary-500",
+            }}
+            stroke=""
+            className="stroke-primary-500/30"
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 }

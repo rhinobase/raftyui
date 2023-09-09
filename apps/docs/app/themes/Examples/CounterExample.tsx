@@ -37,9 +37,9 @@ export function CounterExample() {
         </Text>
       </div>
       <Counter />
-      <ResponsiveContainer height={100}>
+      <ResponsiveContainer height={70}>
         <BarChart width={310} height={100} data={data} margin={{ top: 15 }}>
-          <Bar dataKey="value" className="fill-primary-500" />
+          <Bar dataKey="value" className="fill-primary-500/40" />
         </BarChart>
       </ResponsiveContainer>
       <Button
