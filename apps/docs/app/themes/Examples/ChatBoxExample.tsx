@@ -1,4 +1,4 @@
-import { useState, useRef, useReducer, ReactNode } from "react";
+import { useRef, useReducer, ReactNode } from "react";
 import {
   Avatar,
   AvatarGroup,
@@ -61,15 +61,21 @@ const USERS_DATA = [
 ];
 
 export function ChatBoxExample() {
-  const [messageText, setMessageText] = useState<string>("");
-  const [messages, setMessages] = useState<string[]>([]);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const ref = useRef<HTMLInputElement | null>(null);
 
-  function sendMessage() {
-    if (messageText) setMessages((prev) => [...prev, messageText]);
-    setMessageText("");
-    if (inputRef.current) inputRef.current.value = "";
-  }
+  const [messages, dispatch] = useReducer((prev: string[]) => {
+    // Checking for reference
+    if (!ref.current) return prev;
+
+    // Checking if there is a message
+    const value = ref.current.value;
+    if (value == "") return prev;
+
+    const tmp = [...prev, value];
+    ref.current.value = "";
+
+    return tmp;
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -107,28 +113,26 @@ export function ChatBoxExample() {
           </Message>
         </div>
         {messages &&
-          messages.map((m, i) => (
-            <div key={i} className="flex flex-row-reverse">
+          messages.map((message, index) => (
+            <div key={index} className="flex flex-row-reverse">
               <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
-                {m}
+                {message}
               </Message>
             </div>
           ))}
       </div>
       <div className="flex gap-2 items-center">
         <InputField
-          ref={inputRef}
+          ref={ref}
           placeholder="Type your message..."
-          onChange={(e) => setMessageText(e.currentTarget.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          onKeyDown={(e) => e.key === "Enter" && dispatch()}
           className="placeholder:text-sm"
         />
         <Button
           size="icon"
           colorScheme="primary"
-          isDisabled={!messageText}
           className="!p-2"
-          onClick={sendMessage}
+          onClick={dispatch}
         >
           <BiSend size={20} />
         </Button>

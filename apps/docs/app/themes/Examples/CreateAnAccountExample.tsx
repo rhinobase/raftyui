@@ -36,7 +36,6 @@ export function CreateAnAccountExample() {
           OR CONTINUE WITH
         </h5>
       </div>
-
       <FieldControl name="email" isRequired>
         <Label>Email</Label>
         <InputField type="email" />

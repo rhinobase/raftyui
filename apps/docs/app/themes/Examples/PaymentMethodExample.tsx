@@ -1,24 +1,17 @@
 import {
-  Command,
-  CommandGroup,
   CommandItem,
-  CommandList,
   FieldControl,
   InputField,
   Label,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Text,
   classNames,
 } from "@rafty/ui";
 import { useState } from "react";
 import { BsCreditCard, BsPaypal, BsApple } from "react-icons/bs";
-import { HiChevronUpDown } from "react-icons/hi2";
 import { HiCheck } from "react-icons/hi";
-import { IconType } from "react-icons/lib";
+import { Selector } from "./Selector";
 
-const PAYMENT_METHODS: { logo: IconType; heading: string }[] = [
+const PAYMENT_METHODS = [
   {
     logo: BsCreditCard,
     heading: "Card",
@@ -134,117 +127,37 @@ export function PaymentMethodExample() {
 }
 
 function ExpireMonthSelect() {
-  const [isOpen, setOpen] = useState(false);
-  const [selectedMonths, setSelectedMonths] = useState(MONTHS[0]);
+  const [selected, setSelected] = useState(MONTHS[0]);
 
   return (
-    <Popover open={isOpen} onOpenChange={setOpen} modal>
-      <div className="relative flex items-center w-[100px]">
-        <PopoverTrigger
-          variant="outline"
-          role="combobox"
-          aria-expanded={isOpen}
-          className="w-full justify-between capitalize"
-          rightIcon={
-            <HiChevronUpDown
-              className={classNames(
-                isOpen
-                  ? "text-primary-500"
-                  : "text-secondary-500 dark:text-secondary-400",
-                "h-4 w-4 shrink-0 stroke-1",
-              )}
-            />
-          }
-        >
-          {selectedMonths}
-        </PopoverTrigger>
-      </div>
-      <PopoverContent className="!p-0 !w-[120px]">
-        <Command shouldFilter={false}>
-          <CommandList className="!max-h-full">
-            <CommandGroup>
-              {MONTHS.map((month) => {
-                return (
-                  <CommandItem
-                    key={month}
-                    value={month}
-                    onSelect={(value) =>
-                      setSelectedMonths((prev) =>
-                        prev == value ? prev : value,
-                      )
-                    }
-                  >
-                    <div className="flex items-center gap-2 w-full">
-                      <div className="w-3.5">
-                        {selectedMonths == month && <HiCheck />}
-                      </div>
-                      <Text className="capitalize">{month}</Text>
-                      <div className="flex-1" />
-                    </div>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Selector value={selected}>
+      {MONTHS.map((month) => (
+        <CommandItem key={month} value={month} onSelect={setSelected}>
+          <div className="flex items-center gap-2 w-full">
+            <div className="w-3.5">{selected == month && <HiCheck />}</div>
+            <Text className="capitalize">{month}</Text>
+            <div className="flex-1" />
+          </div>
+        </CommandItem>
+      ))}
+    </Selector>
   );
 }
 
 function ExpireYearSelect() {
-  const [isOpenYears, setOpenYears] = useState(false);
-  const [selectedYears, setSelectedYears] = useState(YEARS[0]);
+  const [selected, setSelected] = useState(YEARS[0]);
 
   return (
-    <Popover open={isOpenYears} onOpenChange={setOpenYears}>
-      <div className="relative flex items-center w-[100px]">
-        <PopoverTrigger
-          variant="outline"
-          role="combobox"
-          aria-expanded={isOpenYears}
-          className="w-full justify-between capitalize"
-          rightIcon={
-            <HiChevronUpDown
-              className={classNames(
-                isOpenYears
-                  ? "text-primary-500"
-                  : "text-secondary-500 dark:text-secondary-400",
-                "h-4 w-4 shrink-0 stroke-1",
-              )}
-            />
-          }
-        >
-          {selectedYears}
-        </PopoverTrigger>
-      </div>
-      <PopoverContent className="!p-0 !w-[120px]">
-        <Command shouldFilter={false}>
-          <CommandList className="!max-h-full">
-            <CommandGroup>
-              {YEARS.map((year) => {
-                return (
-                  <CommandItem
-                    key={year}
-                    value={year}
-                    onSelect={(value) =>
-                      setSelectedYears((prev) => (prev == value ? prev : value))
-                    }
-                  >
-                    <div className="flex items-center gap-2 w-full ">
-                      <div className="w-3.5">
-                        {selectedYears == year && <HiCheck />}
-                      </div>
-                      <Text>{year}</Text>
-                      <div className="flex-1" />
-                    </div>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Selector value={selected}>
+      {YEARS.map((year) => (
+        <CommandItem key={year} value={year} onSelect={setSelected}>
+          <div className="flex items-center gap-2 w-full ">
+            <div className="w-3.5">{selected == year && <HiCheck />}</div>
+            <Text>{year}</Text>
+            <div className="flex-1" />
+          </div>
+        </CommandItem>
+      ))}
+    </Selector>
   );
 }

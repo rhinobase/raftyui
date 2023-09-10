@@ -3,31 +3,31 @@ import { Bar, BarChart, ResponsiveContainer } from "recharts";
 
 const data = [
   {
-    value: 4000,
+    value: 400,
   },
   {
-    value: 3000,
+    value: 300,
   },
   {
-    value: 2000,
+    value: 200,
   },
   {
-    value: 2780,
+    value: 278,
   },
   {
-    value: 1890,
+    value: 189,
   },
   {
-    value: 2390,
+    value: 239,
   },
   {
-    value: 2490,
+    value: 249,
   },
   {
-    value: 1790,
+    value: 179,
   },
   {
-    value: 3490,
+    value: 349,
   },
 ];
 

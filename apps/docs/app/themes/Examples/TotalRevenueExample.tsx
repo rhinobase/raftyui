@@ -3,25 +3,25 @@ import { Line, LineChart, ResponsiveContainer } from "recharts";
 
 const data = [
   {
-    value: 1000,
+    value: 100,
   },
   {
-    value: 2000,
+    value: 200,
   },
   {
-    value: 1500,
+    value: 150,
   },
   {
-    value: 1400,
+    value: 140,
   },
   {
-    value: 1890,
+    value: 189,
   },
   {
-    value: 2000,
+    value: 200,
   },
   {
-    value: 3800,
+    value: 380,
   },
 ];
 

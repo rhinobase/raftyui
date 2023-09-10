@@ -25,15 +25,16 @@ import {
 import { HiChevronDown, HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { HiDotsHorizontal } from "react-icons/hi";
 
-type HeadersType = {
+type Header = {
+  id: string;
   status: string;
   email: string;
   amount: string;
 };
 
-const COLUMNS: (keyof HeadersType)[] = ["status", "email", "amount"];
+const COLUMNS: (keyof Header)[] = ["status", "email", "amount"];
 
-const TABLE_DATA: ({ id: string } & HeadersType)[] = [
+const TABLE_DATA: Header[] = [
   {
     id: "0",
     status: "Success",
@@ -74,7 +75,7 @@ const TABLE_DATA: ({ id: string } & HeadersType)[] = [
 
 export function TableExample() {
   const [show, dispatch] = useReducer(
-    (prev: (keyof HeadersType)[], cur: keyof HeadersType) => {
+    (prev: (keyof Header)[], cur: keyof Header) => {
       const index = prev.findIndex((val) => val == cur);
 
       if (index == -1) prev.push(cur);
@@ -85,9 +86,10 @@ export function TableExample() {
     [...COLUMNS],
   );
 
-  const [search, setSearch] = useState("");
-  const results = TABLE_DATA.filter((item) =>
-    item.email.toLowerCase().includes(search.toLowerCase()),
+  const [search, setSearch] = useState<string>();
+  const results = TABLE_DATA.filter(
+    (item) =>
+      !search || item.email.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -121,8 +123,8 @@ const ColumnsSelectMenu = ({
   show,
   toggle,
 }: {
-  show: (keyof HeadersType)[];
-  toggle: Dispatch<keyof HeadersType>;
+  show: (keyof Header)[];
+  toggle: Dispatch<keyof Header>;
 }) => (
   <Menu>
     <MenuTrigger variant="outline" rightIcon={<HiChevronDown />}>
@@ -143,18 +145,7 @@ const ColumnsSelectMenu = ({
   </Menu>
 );
 
-function TableComponent({
-  data,
-  show,
-}: {
-  show: string[];
-  data: {
-    id: string;
-    status: string;
-    email: string;
-    amount: string;
-  }[];
-}) {
+function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
   const [checked, setChecked] = useState([true, true, true, true, true, true]);
   const checkLength = checked.filter((item) => item).length;
 
@@ -213,7 +204,7 @@ function TableComponent({
                       "truncate",
                     )}
                   >
-                    {item[value as keyof HeadersType]}
+                    {item[value as keyof Header]}
                   </Td>
                 ))}
                 <Td>

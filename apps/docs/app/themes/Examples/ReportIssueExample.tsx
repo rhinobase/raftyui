@@ -1,21 +1,24 @@
 import { useState } from "react";
 import {
-  Command,
   Text,
-  CommandGroup,
   CommandItem,
-  CommandList,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  classNames,
   InputField,
   Label,
   Textarea,
   Button,
   FieldControl,
 } from "@rafty/ui";
-import { HiCheck, HiChevronUpDown } from "react-icons/hi2";
+import { HiCheck } from "react-icons/hi2";
+import { Selector } from "./Selector";
+
+const ROLES = ["team", "billing", "account", "deployments", "support"];
+const SEVERITYS = [
+  "severity 1",
+  "severity 2",
+  "severity 3",
+  "severity 4",
+  "severity 5",
+];
 
 export function ReportIssueExample() {
   return (
@@ -29,7 +32,7 @@ export function ReportIssueExample() {
       <div className="grid grid-cols-2">
         <FieldControl name="team">
           <Label>Team</Label>
-          <AreaSelect />
+          <RoleSelector />
         </FieldControl>
         <FieldControl name="security">
           <Label>Security Level</Label>
@@ -55,126 +58,42 @@ export function ReportIssueExample() {
   );
 }
 
-const AREA_DATA = ["team", "billing", "account", "deployments", "support"];
-
-function AreaSelect() {
-  const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useState(AREA_DATA.at(0));
+function RoleSelector() {
+  const [selected, setSelected] = useState(ROLES[0]);
 
   return (
-    <Popover open={isOpen} onOpenChange={setOpen}>
-      <div className="relative flex items-center w-[150px]">
-        <PopoverTrigger
-          variant="outline"
-          role="combobox"
-          aria-expanded={isOpen}
-          className="w-full justify-between capitalize"
-          rightIcon={
-            <HiChevronUpDown
-              className={classNames(
-                isOpen
-                  ? "text-primary-500"
-                  : "text-secondary-500 dark:text-secondary-400",
-                "h-4 w-4 shrink-0 stroke-1",
-              )}
-            />
-          }
-        >
-          {selected}
-        </PopoverTrigger>
-      </div>
-      <PopoverContent className="!p-0 !w-[150px]">
-        <Command shouldFilter={false}>
-          <CommandList>
-            <CommandGroup>
-              {AREA_DATA.map((item, index) => {
-                return (
-                  <CommandItem
-                    key={index}
-                    value={item}
-                    onSelect={(value) =>
-                      setSelected((prev) => (prev == value ? prev : value))
-                    }
-                  >
-                    <div className="flex items-center gap-2 w-full">
-                      <Text className="capitalize">{item}</Text>
-                      <div className="flex-1" />
-                      {selected == item && (
-                        <HiCheck className="h-3.5 w-3.5 stroke-1 text-primary-500 dark:text-primary-400" />
-                      )}
-                    </div>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Selector value={selected}>
+      {ROLES.map((role) => (
+        <CommandItem key={role} value={role} onSelect={setSelected}>
+          <div className="flex items-center gap-2 w-full">
+            <Text className="capitalize">{role}</Text>
+            <div className="flex-1" />
+            {selected == role && (
+              <HiCheck className="h-3.5 w-3.5 stroke-1 text-primary-500 dark:text-primary-400" />
+            )}
+          </div>
+        </CommandItem>
+      ))}
+    </Selector>
   );
 }
 
 function SecurityLevel() {
-  const SECURITY_DATA = [
-    "severity 1",
-    "severity 2",
-    "severity 3",
-    "severity 4",
-    "severity 5",
-  ];
-
-  const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useState(SECURITY_DATA.at(0));
+  const [selected, setSelected] = useState(SEVERITYS[0]);
 
   return (
-    <Popover open={isOpen} onOpenChange={setOpen}>
-      <div className="relative flex items-center w-[150px]">
-        <PopoverTrigger
-          variant="outline"
-          role="combobox"
-          aria-expanded={isOpen}
-          className="w-full justify-between capitalize"
-          rightIcon={
-            <HiChevronUpDown
-              className={classNames(
-                isOpen
-                  ? "text-primary-500"
-                  : "text-secondary-500 dark:text-secondary-400",
-                "h-4 w-4 shrink-0 stroke-1",
-              )}
-            />
-          }
-        >
-          {selected}
-        </PopoverTrigger>
-      </div>
-      <PopoverContent className="!p-0 !w-[150px]">
-        <Command shouldFilter={false}>
-          <CommandList>
-            <CommandGroup>
-              {SECURITY_DATA.map((item, index) => {
-                return (
-                  <CommandItem
-                    key={index}
-                    value={item}
-                    onSelect={(value) =>
-                      setSelected((prev) => (prev == value ? prev : value))
-                    }
-                  >
-                    <div className="flex items-center gap-2 w-full">
-                      <Text className="capitalize">{item}</Text>
-                      <div className="flex-1" />
-                      {selected == item && (
-                        <HiCheck className="h-3.5 w-3.5 stroke-1 text-primary-500 dark:text-primary-400" />
-                      )}
-                    </div>
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Selector value={selected}>
+      {SEVERITYS.map((severity) => (
+        <CommandItem key={severity} value={severity} onSelect={setSelected}>
+          <div className="flex items-center gap-2 w-full">
+            <Text className="capitalize">{severity}</Text>
+            <div className="flex-1" />
+            {selected == severity && (
+              <HiCheck className="h-3.5 w-3.5 stroke-1 text-primary-500 dark:text-primary-400" />
+            )}
+          </div>
+        </CommandItem>
+      ))}
+    </Selector>
   );
 }

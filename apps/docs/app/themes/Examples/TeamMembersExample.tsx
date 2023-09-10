@@ -13,7 +13,7 @@ import {
 import { useReducer, useState } from "react";
 import { HiCheck, HiChevronDown } from "react-icons/hi";
 
-const MEMBERS_DATA = [
+const MEMBERS = [
   {
     name: "Jackson Lee",
     email: "jack@example.com",
@@ -38,17 +38,15 @@ export function TeamMembersExample() {
         </Text>
       </div>
       <div className="space-y-3.5 w-full">
-        {MEMBERS_DATA.map((member, index) => (
-          <div key={index} className="flex gap-2.5 items-center w-full">
+        {MEMBERS.map(({ name, email }) => (
+          <div key={email} className="flex gap-2.5 items-center w-full">
             <Avatar
-              name={member.name}
-              src={`https://api.dicebear.com/7.x/notionists/svg?seed=${member.name}`}
+              name={name}
+              src={`https://api.dicebear.com/7.x/notionists/svg?seed=${name}`}
             />
             <div>
-              <Text className="font-semibold leading-snug">{member.name}</Text>
-              <Text className="text-sm opacity-50 leading-snug">
-                {member.email}
-              </Text>
+              <Text className="font-semibold leading-snug">{name}</Text>
+              <Text className="text-sm opacity-50 leading-snug">{email}</Text>
             </div>
             <div className="flex-1" />
             <MemberRoleMenu />
@@ -59,43 +57,45 @@ export function TeamMembersExample() {
   );
 }
 
-const MEMBER_ROLES = [
+type Role = {
+  id: string;
+  title: string;
+  description: string;
+};
+const ROLES: Role[] = [
   {
     id: "1",
     title: "Viewer",
-    discription: "Can view and comment.",
+    description: "Can view and comment.",
   },
   {
     id: "2",
     title: "Developer",
-    discription: "Can view,comment and edit.",
+    description: "Can view,comment and edit.",
   },
   {
     id: "3",
     title: "Billing",
-    discription: "Can view,comment and manage billing.",
+    description: "Can view,comment and manage billing.",
   },
   {
     id: "4",
     title: "Owner",
-    discription: "Admin-level access to all resources",
+    description: "Admin-level access to all resources",
   },
 ];
 
 function MemberRoleMenu() {
   const [isOpen, setOpen] = useState(false);
 
-  const [selected, dispatch] = useReducer((prev: any, cur: any): any => {
-    const value = prev.id == cur ? prev.id : cur;
+  const [selected, dispatch] = useReducer((_: Role, cur: string) => {
     setOpen(false);
+    const role = ROLES.find((data) => data.id === cur);
 
-    if (value)
-      return {
-        ...MEMBER_ROLES?.find((data) => data.id === value),
-      };
+    if (!role) throw new Error("ID doesn't exist!");
 
-    return undefined;
-  }, MEMBER_ROLES.at(0));
+    return role;
+  }, ROLES[0]);
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
@@ -114,22 +114,22 @@ function MemberRoleMenu() {
           <CommandInput placeholder="Search role" />
           <CommandList>
             <CommandGroup>
-              {MEMBER_ROLES.map((item) => {
+              {ROLES.map(({ id, title, description }) => {
                 return (
                   <CommandItem
-                    key={item.title}
-                    value={item.id}
+                    key={title}
+                    value={id}
                     onSelect={dispatch}
                     className="!px-3 !py-2 !rounded"
                   >
                     <div>
-                      <Text className="leading-snug">{item.title}</Text>
+                      <Text className="leading-snug">{title}</Text>
                       <Text className="opacity-50 leading-snug">
-                        {item.discription}
+                        {description}
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {selected.id == item.id && <HiCheck size={16} />}
+                    {selected.id == id && <HiCheck size={16} />}
                   </CommandItem>
                 );
               })}
