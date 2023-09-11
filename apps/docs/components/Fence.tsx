@@ -15,9 +15,12 @@ export function Fence({
 }) {
   const [isCopied, setIsCopied] = useState(false);
 
-  const Copy_Paste = children.trimEnd();
+  const content = children.trimEnd();
+
+  console.log(language, content);
+
   const handleCopyClick = () => {
-    navigator.clipboard.writeText(Copy_Paste);
+    navigator.clipboard.writeText(content);
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
@@ -25,7 +28,7 @@ export function Fence({
   };
 
   return (
-    <Highlight code={Copy_Paste} language={language} theme={themes.dracula}>
+    <Highlight code={content} language={language} theme={themes.dracula}>
       {({ className, style, tokens, getTokenProps }) => (
         <pre
           className={classNames(className, _className, "relative")}

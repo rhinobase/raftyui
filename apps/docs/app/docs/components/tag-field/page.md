@@ -1,7 +1,7 @@
 ---
 title: Tag Field
 pageTitle: Tag Field - Rafty UI
-description: Tag Field
+description: Tag field is used to add tags via input field.
 ---
 
 Tag field is used to add tags via input field.

@@ -1,7 +1,7 @@
 ---
 title: Popover
 pageTitle: Popover - Rafty UI
-description: Popover
+description: Displays rich content in a portal, triggered by a button.
 ---
 
 Displays rich content in a portal, triggered by a button.

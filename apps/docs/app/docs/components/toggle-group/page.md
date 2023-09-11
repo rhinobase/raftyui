@@ -1,7 +1,7 @@
 ---
 title: Toggle Group
 pageTitle: Toggle Group - Rafty UI
-description: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
 ---
 
 A set of two-state buttons that can be toggled on or off.

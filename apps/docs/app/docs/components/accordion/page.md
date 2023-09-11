@@ -1,7 +1,7 @@
 ---
 title: Accordion
 pageTitle: Accordion - Rafty UI
-description: Accordion
+description: The accordion component allows the user to show and hide sections of related content on a page.
 ---
 
 The accordion component allows the user to show and hide sections of related content on a page.

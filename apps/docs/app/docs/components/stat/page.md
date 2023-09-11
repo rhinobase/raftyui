@@ -1,7 +1,7 @@
 ---
 title: Stat
 pageTitle: Stat - Rafty UI
-description: Stat
+description: Stat component is used to display statistics/numbers.
 ---
 
 Stat component is used to display statistics/numbers.

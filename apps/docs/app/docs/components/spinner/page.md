@@ -1,7 +1,7 @@
 ---
 title: Spinner
 pageTitle: Spinner - Rafty UI
-description: Spinner
+description: Spinners provide a visual cue that an action is processing awaiting a course of change or a result.
 ---
 
 Spinners provide a visual cue that an action is processing awaiting a course of change or a result.

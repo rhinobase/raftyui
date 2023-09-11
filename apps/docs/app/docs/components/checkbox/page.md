@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 pageTitle: Checkbox - Rafty UI
-description: Checkbox
+description: Checkboxes give users binary choices when presented with multiple options in a series.
 ---
 
 Checkboxes give users binary choices when presented with multiple options in a series.

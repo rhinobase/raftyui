@@ -31,10 +31,10 @@ const tags = {
     ),
   },
   example: {
-    selfClosing: true,
     render: Examples,
     attributes: {
       name: { type: String },
+      children: { type: String, default: "" },
     },
   },
   "quick-links": {

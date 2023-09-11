@@ -1,7 +1,7 @@
 ---
 title: AspectRatio
 pageTitle: AspectRatio - Rafty UI
-description: AspectRatio
+description: The Aspect Ratio component resizes its contents to match the desired ratio.
 ---
 
 The Aspect Ratio component resizes its contents to match the desired ratio.

@@ -1,7 +1,7 @@
 ---
 title: Radio
 pageTitle: Radio - Rafty UI
-description: Radio
+description: A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.
 ---
 
 A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.

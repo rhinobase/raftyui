@@ -1,7 +1,7 @@
 ---
 title: Range Picker
 pageTitle: Range Picker - Rafty UI
-description: Range Picker
+description: The Time Range Picker enables the user to select a time range.
 ---
 
 The Time Range Picker enables the user to select a time range.

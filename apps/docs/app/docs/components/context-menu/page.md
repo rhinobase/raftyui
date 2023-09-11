@@ -1,7 +1,7 @@
 ---
 title: Context Menu
 pageTitle: Context Menu - Rafty UI
-description: Context Menu
+description: It displays a menu located at the pointer, triggered by a right-click or a long-press.
 ---
 
 It displays a menu located at the pointer, triggered by a right-click or a long-press.

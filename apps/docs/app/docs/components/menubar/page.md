@@ -1,7 +1,7 @@
 ---
 title: Menu Bar
 pageTitle: Menu Bar - Rafty UI
-description: Menu Bar
+description: A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.
 ---
 
 A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.

@@ -1,7 +1,7 @@
 ---
 title: Drawer
 pageTitle: Drawer - Rafty UI
-description: Drawer
+description: The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
 ---
 
 The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
@@ -29,13 +29,53 @@ import { Drawer, DrawerOverlay, DrawerContent, DrawerClose, DrawerTitle, DrawerD
 
 ## Usage
 
-{% example name="drawer:usage" /%}
+{% example name="drawer:usage" %}
+
+```jsx
+const [isOpen, setOpen] = useState(false);
+
+return (
+  <>
+    <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+    <Drawer open={isOpen} onOpenChange={setOpen}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerTitle>Drawer Header</DrawerTitle>
+        <DrawerDescription>This is sample drawer description. :</DrawerDescription>
+        <DrawerClose />
+      </DrawerContent>
+    </Drawer>
+  </>
+);
+```
+
+{% /example %}
 
 ## Size
 
 There are 4 `size` options available in the drawer: `sm`, `md` (default), `lg` & `full`.
 
-{% example name="drawer:size" /%}
+{% example name="drawer:size" %}
+
+```jsx
+const [isOpen, setOpen] = useState(false);
+
+return (
+  <>
+    <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+    <Drawer size="sm" open={isOpen} onOpenChange={setOpen}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerTitle>Drawer Header</DrawerTitle>
+        <DrawerDescription>This is sample drawer description.</DrawerDescription>
+        <DrawerClose />
+      </DrawerContent>
+    </Drawer>
+  </>
+);
+```
+
+{% /example %}
 
 ## Side
 

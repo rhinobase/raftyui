@@ -1,7 +1,7 @@
 ---
 title: Toggle
 pageTitle: Toggle - Rafty UI
-description: Toggle
+description: A two-state button that can be either on or off.
 ---
 
 A two-state button that can be either on or off.

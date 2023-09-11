@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 import { Fence } from "../Fence";
 import reactElementToJSXString from "react-element-to-jsx-string";
 
@@ -38,7 +38,6 @@ import { menubar_examples } from "./menubar";
 import { navigation_menu_examples } from "./navigation-menu";
 import { tooltip_examples } from "./tooltip";
 import { password_field_examples } from "./password-field";
-import { combobox_examples } from "./combobox";
 import { aspect_ratio_examples } from "./aspect-ratio";
 import { calendar_examples } from "./calendar";
 import { field_control_examples } from "./field-control";
@@ -94,12 +93,17 @@ const examples: Record<string, JSX.Element> = {
   ...navigation_menu_examples,
   ...tooltip_examples,
   ...password_field_examples,
-  ...combobox_examples,
   ...aspect_ratio_examples,
   ...calendar_examples,
 };
 
-export function Examples({ name }: { name: string }) {
+export function Examples({
+  name,
+  children,
+}: {
+  name: string;
+  children?: ReactNode;
+}) {
   const Component = examples[name];
 
   return (
@@ -107,9 +111,11 @@ export function Examples({ name }: { name: string }) {
       <div className="not-prose rounded-t-xl border w-full px-4 pt-4 pb-6 bg-transparent dark:bg-secondary-900 dark:border-secondary-800 flex items-center justify-center">
         {Component}
       </div>
-      <Fence language="jsx" className="!-mt-2">
-        {reactElementToJSXString(Component)}
-      </Fence>
+      {children || (
+        <Fence language="jsx" className="!-mt-2">
+          {reactElementToJSXString(Component)}
+        </Fence>
+      )}
     </div>
   );
 }

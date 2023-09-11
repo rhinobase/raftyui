@@ -1,7 +1,7 @@
 ---
 title: Command
-pageTitle: Commandl - Rafty UI
-description: Command
+pageTitle: Command - Rafty UI
+description: The Command component in React can function as a menu and also serves as an accessible combobox.
 ---
 
 The Command component in React can function as a menu and also serves as an accessible combobox.

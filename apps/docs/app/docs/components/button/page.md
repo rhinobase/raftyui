@@ -1,7 +1,7 @@
 ---
 title: Button
 pageTitle: Button - Rafty UI
-description: Button
+description: Buttons enable users to take action and make choices with a single click.
 ---
 
 Buttons enable users to take action and make choices with a single click.

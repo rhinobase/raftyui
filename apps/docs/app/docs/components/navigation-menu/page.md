@@ -1,7 +1,7 @@
 ---
 title: Navigation Menu
 pageTitle: Navigation Menu - Rafty UI
-description: Navigation Menu
+description: A collection of links for navigating websites.
 ---
 
 A collection of links for navigating websites. This component is made on top of [Radix UIs Navigation Menu Component](https://www.radix-ui.com/primitives/docs/components/navigation-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).

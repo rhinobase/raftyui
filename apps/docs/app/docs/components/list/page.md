@@ -1,7 +1,7 @@
 ---
 title: List
 pageTitle: List - Rafty UI
-description: List
+description: List is used to display list items. It renders a <ul> element by default.
 ---
 
 List is used to display list items. It renders a <ul> element by default.

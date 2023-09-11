@@ -37,10 +37,6 @@ export const navigation = [
         href: "/docs/components/checkbox",
       },
       {
-        title: "Combobox",
-        href: "/docs/components/combobox",
-      },
-      {
         title: "Context Menu",
         href: "/docs/components/context-menu",
       },

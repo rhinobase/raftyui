@@ -1,7 +1,7 @@
 ---
 title: Hover Card
 pageTitle: Hover Card - Rafty UI
-description: Hover Card
+description: For sighted users to preview content available behind a link.
 ---
 
 For sighted users to preview content available behind a link.

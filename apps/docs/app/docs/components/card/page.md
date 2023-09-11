@@ -1,7 +1,7 @@
 ---
 title: Card
 pageTitle: Card - Rafty UI
-description: Card
+description: A card is a generic container for grouping related UI elements and content.
 ---
 
 A card is a generic container for grouping related UI elements and content.

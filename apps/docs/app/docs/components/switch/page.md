@@ -1,7 +1,7 @@
 ---
 title: Switch
 pageTitle: Switch - Rafty UI
-description: Switch
+description: A control that allows the user to toggle between checked and not checked.It is used as an alternative for the checkbox component.
 ---
 
 A control that allows the user to toggle between checked and not checked.It is used as an alternative for the checkbox component.

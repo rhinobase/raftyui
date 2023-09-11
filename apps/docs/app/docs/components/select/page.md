@@ -1,7 +1,7 @@
 ---
 title: Select
 pageTitle: Select - Rafty UI
-description: Select
+description: Select component is a component that allows users to pick a value from predefined options.
 ---
 
 Select component is a component that allows users to pick a value from predefined options.
