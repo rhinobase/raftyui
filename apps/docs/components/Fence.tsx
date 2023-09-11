@@ -17,8 +17,6 @@ export function Fence({
 
   const content = children.trimEnd();
 
-  console.log(language, content);
-
   const handleCopyClick = () => {
     navigator.clipboard.writeText(content);
     setIsCopied(true);

@@ -2,9 +2,7 @@ import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { classNames } from "@rafty/ui";
-
 import { Providers } from "./providers";
-import { Layout } from "../components/Layout";
 
 import "../styles/globals.css";
 
@@ -46,9 +44,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full bg-white selection:bg-[#79ffe1] dark:bg-secondary-950 dark:selection:bg-[#f81ce5] dark:selection:text-white">
-        <Providers>
-          <Layout>{children}</Layout>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
