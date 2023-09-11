@@ -51,7 +51,7 @@ export function Hero() {
               </div>
             </div>
           </div>
-          <div className="relative lg:static xl:pl-10">
+          <div className="relative lg:static xl:pl-10 lg:w-max">
             <Image
               className="absolute -right-64 -top-64"
               src={blurCyanImage}
@@ -70,7 +70,7 @@ export function Hero() {
               unoptimized
               priority
             />
-            <div className="w-full dark">
+            <div className="w-full dark relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-[700px]">
                 <Card>
                   <CardContent>

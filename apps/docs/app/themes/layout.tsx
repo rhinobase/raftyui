@@ -1,5 +1,13 @@
 "use client";
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@rafty/ui";
+import {
+  Button,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@rafty/ui";
 import { HiCheck, HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
 import { useTheme } from "next-themes";
 import { useState } from "react";
@@ -49,16 +57,21 @@ export default function ThemeBuilderLayout({
         </div>
         <div className="flex items-center gap-3 py-2 lg:justify-end">
           {defaults.map((c) => (
-            <Button
-              key={c}
-              size="fab"
-              className={`${ColorTheme[c]} !p-1 min-h-[26px] min-w-[26px]`}
-              onClick={() => changeColor(c as keyof typeof ColorTheme)}
-            >
-              {color == c && (
-                <HiCheck className="text-white stroke-1 font-bold" />
-              )}
-            </Button>
+            <Tooltip key={c}>
+              <TooltipTrigger asChild>
+                <Button
+                  key={c}
+                  size="fab"
+                  className={`${ColorTheme[c]} !p-1 min-h-[26px] min-w-[26px]`}
+                  onClick={() => changeColor(c as keyof typeof ColorTheme)}
+                >
+                  {color == c && (
+                    <HiCheck className="text-white stroke-1 font-bold" />
+                  )}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="top">{c}</TooltipContent>
+            </Tooltip>
           ))}
           <Popover>
             <PopoverTrigger variant="outline">Customize</PopoverTrigger>
