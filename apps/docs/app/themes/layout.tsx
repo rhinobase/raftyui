@@ -1,6 +1,11 @@
 "use client";
 import {
   Button,
+  Dialog,
+  DialogContent,
+  Text,
+  DialogOverlay,
+  DialogTrigger,
   Popover,
   PopoverClose,
   PopoverContent,
@@ -8,11 +13,13 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  DialogTitle,
 } from "@rafty/ui";
 import { HiCheck, HiOutlineMoon, HiOutlineSun, HiX } from "react-icons/hi";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-
+import { Fence } from "../../components/Fence";
+import { PiPaintBrushHouseholdLight } from "react-icons/pi";
 const ColorTheme = {
   gray: "!bg-gray-500",
   red: "!bg-red-500",
@@ -56,7 +63,7 @@ export default function ThemeBuilderLayout({
             Hand-picked themes that you can copy and paste into your apps.
           </h4>
         </div>
-        <div className="flex items-center gap-3 py-2 lg:justify-end">
+        <div className="flex items-center gap-1.5 md:gap-3 py-2 lg:justify-end">
           {defaults.map((c) => (
             <Tooltip key={c}>
               <TooltipTrigger asChild>
@@ -75,7 +82,12 @@ export default function ThemeBuilderLayout({
             </Tooltip>
           ))}
           <Popover>
-            <PopoverTrigger variant="outline">Customize</PopoverTrigger>
+            <PopoverTrigger
+              variant="outline"
+              leftIcon={<PiPaintBrushHouseholdLight />}
+            >
+              Customize
+            </PopoverTrigger>
             <PopoverContent showArrow align="end">
               <div className="w-[300px] p-2 space-y-3">
                 <div className="space-y-1.5">
@@ -131,6 +143,39 @@ export default function ThemeBuilderLayout({
               </PopoverClose>
             </PopoverContent>
           </Popover>
+          <Dialog>
+            <DialogTrigger variant="outline">Copy code</DialogTrigger>
+            <DialogOverlay />
+            <DialogContent className="space-y-2 !p-5">
+              <div>
+                <DialogTitle>Theme</DialogTitle>
+                <Text className="text-sm opacity-50">
+                  Copy and paste the following code into your{" "}
+                  <em>tailwind.config.js</em> file.
+                </Text>
+              </div>
+              <Fence language="js" className="rounded-xl px-5 py-4">
+                {`const colors = require('tailwindcss/colors')
+
+{
+  darkMode: "class", // optional
+  content: [
+    ...
+    "./node_modules/@rafty/ui/**/*.{js,mjs}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: colors.${color},
+        secondary: colors.zinc, // default
+      },
+    },
+  },
+  plugins: [require("@rafty/plugin")],
+}`}
+              </Fence>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       {children}

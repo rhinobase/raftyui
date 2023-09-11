@@ -182,9 +182,8 @@ export const navigation = [
       { title: "React Hook Form", href: "/docs/integrations/react-hook-form" },
       { title: "Formik", href: "/docs/integrations/formik" },
       { title: "Tanstack Query", href: "/docs/integrations/tanstack-query" },
-
       {
-        title: "Tanstack Infinite Query",
+        title: "Combobox",
         href: "/docs/integrations/tanstack-infinite-query",
       },
       { title: "Tanstack Table", href: "/docs/integrations/tanstack-table" },
