@@ -22,11 +22,11 @@ const lexend = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Docs",
-    default: "@rafty/ui - Building Design System Made Easy",
+    template: "%s - rafty UI Docs",
+    default: "rafty UI - Building Design System Made Easy",
   },
   description:
-    "Explore the components, and witness the magic of accessible, stylish, SSR Ready, and dark mode-compatible interfaces.",
+    "Explore the components, and start building on top of it, SSR Ready, and dark mode-compatible interfaces.",
 };
 
 export default function RootLayout({
