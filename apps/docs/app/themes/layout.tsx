@@ -19,7 +19,7 @@ import { HiCheck, HiOutlineMoon, HiOutlineSun, HiX } from "react-icons/hi";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import { Fence } from "../../components/Fence";
-import { PiPaintBrushHouseholdLight } from "react-icons/pi";
+import { PiCopyBold, PiPaintBrushHouseholdLight } from "react-icons/pi";
 const ColorTheme = {
   gray: "!bg-gray-500",
   red: "!bg-red-500",
@@ -63,7 +63,7 @@ export default function ThemeBuilderLayout({
             Hand-picked themes that you can copy and paste into your apps.
           </h4>
         </div>
-        <div className="flex items-center gap-1.5 md:gap-3 py-2 lg:justify-end">
+        <div className="flex items-center gap-1.5 md:gap-3 py-2">
           {defaults.map((c) => (
             <Tooltip key={c}>
               <TooltipTrigger asChild>
@@ -81,13 +81,21 @@ export default function ThemeBuilderLayout({
               <TooltipContent side="top">{c}</TooltipContent>
             </Tooltip>
           ))}
+          <div className="flex-1 md:hidden" />
           <Popover>
             <PopoverTrigger
               variant="outline"
               leftIcon={<PiPaintBrushHouseholdLight />}
+              className="hidden md:flex"
             >
               Customize
             </PopoverTrigger>
+            <PopoverTrigger
+              variant="outline"
+              size="icon"
+              leftIcon={<PiPaintBrushHouseholdLight />}
+              className="md:hidden"
+            />
             <PopoverContent showArrow align="end">
               <div className="w-[300px] p-2 space-y-3">
                 <div className="space-y-1.5">
@@ -144,7 +152,15 @@ export default function ThemeBuilderLayout({
             </PopoverContent>
           </Popover>
           <Dialog>
-            <DialogTrigger variant="outline">Copy code</DialogTrigger>
+            <DialogTrigger variant="outline" className="md:block hidden">
+              Copy code
+            </DialogTrigger>
+            <DialogTrigger
+              variant="outline"
+              size="icon"
+              className="md:hidden"
+              leftIcon={<PiCopyBold />}
+            />
             <DialogOverlay />
             <DialogContent className="space-y-2 !p-5">
               <div>
@@ -161,7 +177,7 @@ export default function ThemeBuilderLayout({
   darkMode: "class", // optional
   content: [
     ...
-    "./node_modules/@rafty/ui/**/*.{js,mjs}",
+    "./node_modules/@rafty/ui/**/*.{js,cjs}",
   ],
   theme: {
     extend: {

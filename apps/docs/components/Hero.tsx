@@ -70,7 +70,7 @@ export function Hero() {
               unoptimized
               priority
             />
-            <div className="w-full dark relative z-10">
+            <div className="w-full dark relative z-10 hidden md:block">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-[700px]">
                 <Card>
                   <CardContent>
