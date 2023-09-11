@@ -55,7 +55,7 @@ const YEARS = [
 ];
 
 export function PaymentMethodExample() {
-  const [isSelect, setSelected] = useState<number>(0);
+  const [isSelect, setSelected] = useState(0);
 
   return (
     <div className="space-y-4">
@@ -69,28 +69,24 @@ export function PaymentMethodExample() {
       </div>
       <form className="space-y-3">
         <div className="grid grid-cols-3 gap-3">
-          {PAYMENT_METHODS.map((item, index) => {
-            const PaymentLogo = item.logo;
-
-            return (
-              <div
-                key={index}
-                onClick={() => setSelected(index)}
-                className={classNames(
-                  isSelect == index
-                    ? "ring-2 ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400"
-                    : "dark:border-secondary-700",
-                  "w-full p-4 flex justify-center items-center flex-col gap-2 border rounded-md dark:hover:bg-secondary-900/70 hover:bg-secondary-50 transition-all ease-in-out cursor-pointer",
-                )}
-              >
-                <PaymentLogo
-                  size={30}
-                  className="text-secondary-600 dark:text-secondary-400"
-                />
-                <Text className="text-sm">{item.heading}</Text>
-              </div>
-            );
-          })}
+          {PAYMENT_METHODS.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => setSelected(index)}
+              className={classNames(
+                isSelect == index
+                  ? "ring-2 ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400"
+                  : "dark:border-secondary-700",
+                "w-full p-4 flex justify-center items-center flex-col gap-2 border rounded-md dark:hover:bg-secondary-900/70 hover:bg-secondary-50 transition-all ease-in-out cursor-pointer",
+              )}
+            >
+              <item.logo
+                size={30}
+                className="text-secondary-600 dark:text-secondary-400"
+              />
+              <Text className="text-sm">{item.heading}</Text>
+            </div>
+          ))}
         </div>
         <FieldControl name="name">
           <Label>Name</Label>

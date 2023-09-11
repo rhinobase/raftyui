@@ -30,31 +30,26 @@ import { HiCheck, HiOutlinePlus } from "react-icons/hi";
 const USERS_DATA = [
   {
     id: 1,
-    src: "https://api.dicebear.com/7.x/notionists/svg?seed=Olivia",
     name: "Olivia Martin",
     email: "m@example.com",
   },
   {
     id: 2,
-    src: "https://api.dicebear.com/7.x/notionists/svg?seed=Issabella",
     name: "Issabella Nguyen",
     email: "isabella.nguyen@example.com",
   },
   {
     id: 3,
-    src: "https://api.dicebear.com/7.x/notionists/svg?seed=Emma",
     name: "Emma Wilson",
     email: "emma@example.com",
   },
   {
     id: 4,
-    src: "https://api.dicebear.com/7.x/notionists/svg?seed=Jackson",
     name: "Jackson Lee",
     email: "p@example.com",
   },
   {
     id: 5,
-    src: "https://api.dicebear.com/7.x/notionists/svg?seed=William",
     name: "William Kim",
     email: "will@email.com",
   },
@@ -81,8 +76,8 @@ export function ChatBoxExample() {
     <div className="space-y-6">
       <div className="flex gap-4 justify-between items-center">
         <Avatar
-          name="Jackson Lee"
-          src="https://api.dicebear.com/7.x/notionists/svg?seed=Willow"
+          name={USERS_DATA[3].name}
+          src={`https://api.dicebear.com/7.x/notionists/svg?seed=${USERS_DATA[3].name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
         />
         <div>
           <Text className="font-semibold text-sm leading-tight">
@@ -181,7 +176,10 @@ function NewMessageDialog() {
                   onSelect={() => dispatch(user.id)}
                 >
                   <div className="flex w-full gap-3 items-center">
-                    <Avatar name="Jackson Lee" src={user.src} />
+                    <Avatar
+                      name={user.name}
+                      src={`https://api.dicebear.com/7.x/notionists/svg?seed=${user.name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
+                    />
                     <div>
                       <Text className="font-semibold text-sm leading-tight">
                         {user.name}
@@ -191,9 +189,7 @@ function NewMessageDialog() {
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {selected.includes(user.id) && (
-                      <HiCheck className="text-primary-500 dark:text-primary-400" />
-                    )}
+                    {selected.includes(user.id) && <HiCheck />}
                   </div>
                 </CommandItem>
               ))}
@@ -205,9 +201,13 @@ function NewMessageDialog() {
             <AvatarGroup>
               {selected.map((user_index) => {
                 const name = USERS_DATA[user_index - 1]?.name;
-                const src = USERS_DATA[user_index - 1]?.src;
-
-                return <Avatar key={user_index} name={name} src={src} />;
+                return (
+                  <Avatar
+                    key={user_index}
+                    name={name}
+                    src={`https://api.dicebear.com/7.x/notionists/svg?seed=${name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
+                  />
+                );
               })}
             </AvatarGroup>
           ) : (

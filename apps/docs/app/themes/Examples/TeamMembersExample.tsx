@@ -42,7 +42,7 @@ export function TeamMembersExample() {
           <div key={email} className="flex gap-2.5 items-center w-full">
             <Avatar
               name={name}
-              src={`https://api.dicebear.com/7.x/notionists/svg?seed=${name}`}
+              src={`https://api.dicebear.com/7.x/notionists/svg?seed=${name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
             />
             <div>
               <Text className="font-semibold leading-snug">{name}</Text>
@@ -65,22 +65,22 @@ type Role = {
 const ROLES: Role[] = [
   {
     id: "1",
-    title: "Viewer",
+    title: "viewer",
     description: "Can view and comment.",
   },
   {
     id: "2",
-    title: "Developer",
+    title: "developer",
     description: "Can view,comment and edit.",
   },
   {
     id: "3",
-    title: "Billing",
+    title: "billing",
     description: "Can view,comment and manage billing.",
   },
   {
     id: "4",
-    title: "Owner",
+    title: "owner",
     description: "Admin-level access to all resources",
   },
 ];
@@ -90,7 +90,7 @@ function MemberRoleMenu() {
 
   const [selected, dispatch] = useReducer((_: Role, cur: string) => {
     setOpen(false);
-    const role = ROLES.find((data) => data.id === cur);
+    const role = ROLES.find((data) => data.title === cur);
 
     if (!role) throw new Error("ID doesn't exist!");
 
@@ -117,13 +117,13 @@ function MemberRoleMenu() {
               {ROLES.map(({ id, title, description }) => {
                 return (
                   <CommandItem
-                    key={title}
-                    value={id}
+                    key={id}
+                    value={title}
                     onSelect={dispatch}
                     className="!px-3 !py-2 !rounded"
                   >
                     <div>
-                      <Text className="leading-snug">{title}</Text>
+                      <Text className="leading-snug capitalize">{title}</Text>
                       <Text className="opacity-50 leading-snug">
                         {description}
                       </Text>

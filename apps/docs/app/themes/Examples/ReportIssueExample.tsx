@@ -24,12 +24,14 @@ export function ReportIssueExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="font-semibold">Report an issue</Text>
-        <Text className="text-gray-500">
+        <Text className="font-semibold text-2xl leading-snug">
+          Report an issue
+        </Text>
+        <Text className="opacity-60 text-sm">
           What area are you having problems with?
         </Text>
       </div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-3">
         <FieldControl name="team">
           <Label>Team</Label>
           <RoleSelector />
@@ -68,9 +70,7 @@ function RoleSelector() {
           <div className="flex items-center gap-2 w-full">
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
-            {selected == role && (
-              <HiCheck className="h-3.5 w-3.5 stroke-1 text-primary-500 dark:text-primary-400" />
-            )}
+            {selected == role && <HiCheck className="h-3.5 w-3.5 stroke-1" />}
           </div>
         </CommandItem>
       ))}
@@ -89,7 +89,7 @@ function SecurityLevel() {
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />
             {selected == severity && (
-              <HiCheck className="h-3.5 w-3.5 stroke-1 text-primary-500 dark:text-primary-400" />
+              <HiCheck className="h-3.5 w-3.5 stroke-1" />
             )}
           </div>
         </CommandItem>
