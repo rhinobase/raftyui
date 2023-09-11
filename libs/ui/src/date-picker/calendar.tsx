@@ -45,12 +45,15 @@ export function Calendar({
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
-        head_row: cn(fullScreen ? "grid grid-cols-7 gap-2 py-10" : "flex mb-2"),
+        head_row: cn(
+          fullScreen ? "gap-2 py-10" : "gap-1 mb-2",
+          "grid grid-cols-7",
+        ),
         head_cell: cn(
           fullScreen ? "text-right px-2" : "w-9 text-[0.8rem] rounded-md ",
           "font-medium text-secondary-600 dark:text-secondary-400",
         ),
-        row: cn(fullScreen ? "grid grid-cols-7 mt-1 gap-2" : "flex w-full"),
+        row: cn(fullScreen ? "mt-1 gap-2" : "gap-1 mb-1", "grid grid-cols-7"),
         cell: "cursor-pointer text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           fullScreen
