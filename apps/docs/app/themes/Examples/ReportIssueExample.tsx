@@ -8,7 +8,7 @@ import {
   Button,
   FieldControl,
 } from "@rafty/ui";
-import { HiCheck } from "react-icons/hi2";
+import { HiCheck } from "react-icons/hi";
 import { Selector } from "./Selector";
 
 const ROLES = ["team", "billing", "account", "deployments", "support"];
@@ -70,7 +70,7 @@ function RoleSelector() {
           <div className="flex items-center gap-2 w-full">
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
-            {selected == role && <HiCheck className="h-3.5 w-3.5 stroke-1" />}
+            {selected == role && <HiCheck className="opacity-60" />}
           </div>
         </CommandItem>
       ))}
@@ -88,9 +88,7 @@ function SecurityLevel() {
           <div className="flex items-center gap-2 w-full">
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />
-            {selected == severity && (
-              <HiCheck className="h-3.5 w-3.5 stroke-1" />
-            )}
+            {selected == severity && <HiCheck className="opacity-60" />}
           </div>
         </CommandItem>
       ))}

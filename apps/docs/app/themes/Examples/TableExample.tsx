@@ -22,7 +22,8 @@ import {
   MenuSeparator,
   classNames,
 } from "@rafty/ui";
-import { HiChevronDown, HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { HiChevronDown, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { HiDotsHorizontal } from "react-icons/hi";
 
 type Header = {
@@ -95,10 +96,10 @@ export function TableExample() {
   return (
     <div className="space-y-4">
       <div>
-        <h2 className="text-2xl font-semibold">Payments</h2>
-        <h5 className="text-sm text-secondary-400 dark:text-secondary-500">
+        <Text className="text-2xl font-semibold leading-snug">Payments</Text>
+        <Text className="text-sm opacity-60 leading-snug">
           Manage your payments.
-        </h5>
+        </Text>
       </div>
       <div className="flex justify-between">
         <InputGroup>
@@ -127,7 +128,7 @@ const ColumnsSelectMenu = ({
   toggle: Dispatch<keyof Header>;
 }) => (
   <Menu>
-    <MenuTrigger variant="outline" rightIcon={<HiChevronDown />}>
+    <MenuTrigger variant="outline" rightIcon={<HiChevronDown size={18} />}>
       Columns
     </MenuTrigger>
     <MenuContent className="!min-w-[10rem]" align="end">
@@ -230,12 +231,12 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         <Text className="text-sm dark:text-secondary-500 text-secondary-400">
           {checkLength} of {data.length} row(s) selected.
         </Text>
-        <div className="flex gap-3">
-          <Button variant="outline" isDisabled>
-            Previous
+        <div className="flex gap-2">
+          <Button variant="outline" size="icon" isDisabled>
+            <HiChevronLeft size={20} />
           </Button>
-          <Button variant="outline" isDisabled>
-            Next
+          <Button variant="outline" size="icon" isDisabled>
+            <HiChevronRight size={20} />
           </Button>
         </div>
       </div>

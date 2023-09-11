@@ -1,7 +1,7 @@
 import { LineChart, Line, Tooltip, ResponsiveContainer } from "recharts";
 import { Text } from "@rafty/ui";
 
-const data = [
+const DATA = [
   {
     a: 4000,
     b: 2400,
@@ -35,15 +35,19 @@ const data = [
 export function ExerciseMinuteExample() {
   return (
     <div className="space-y-1">
-      <Text className="text-lg font-semibold">Exercise Minutes</Text>
-      <Text className="text-sm opacity-60">
-        Your exercise minutes are ahead of where you normally are.
-      </Text>
+      <div>
+        <Text className="text-xl font-semibold leading-snug">
+          Exercise Minutes
+        </Text>
+        <Text className="text-sm opacity-60">
+          Your exercise minutes are ahead of where you normally are.
+        </Text>
+      </div>
       <ResponsiveContainer height={230}>
         <LineChart
           width={550}
           height={300}
-          data={data}
+          data={DATA}
           margin={{ top: 20, right: 7, left: 7 }}
         >
           <Tooltip

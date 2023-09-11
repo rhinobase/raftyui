@@ -2,13 +2,14 @@
 import {
   Button,
   Popover,
+  PopoverClose,
   PopoverContent,
   PopoverTrigger,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@rafty/ui";
-import { HiCheck, HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
+import { HiCheck, HiOutlineMoon, HiOutlineSun, HiX } from "react-icons/hi";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 
@@ -77,7 +78,7 @@ export default function ThemeBuilderLayout({
             <PopoverTrigger variant="outline">Customize</PopoverTrigger>
             <PopoverContent showArrow align="end">
               <div className="w-[300px] p-2 space-y-3">
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   <h5 className="text-xs font-medium">Color</h5>
                   <div className="grid grid-cols-3 gap-2">
                     {Object.entries(ColorTheme).map(([c, value]) => (
@@ -101,7 +102,7 @@ export default function ThemeBuilderLayout({
                     ))}
                   </div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   <h5 className="text-xs font-medium">Mode</h5>
                   <div className="flex gap-2">
                     <Button
@@ -125,6 +126,9 @@ export default function ThemeBuilderLayout({
                   </div>
                 </div>
               </div>
+              <PopoverClose className="p-1 absolute top-2 right-2">
+                <HiX className="opacity-60" />
+              </PopoverClose>
             </PopoverContent>
           </Popover>
         </div>

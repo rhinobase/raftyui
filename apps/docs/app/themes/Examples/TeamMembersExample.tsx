@@ -105,7 +105,7 @@ function MemberRoleMenu() {
         role="combobox"
         aria-expanded={isOpen}
         className="justify-between capitalize"
-        rightIcon={<HiChevronDown />}
+        rightIcon={<HiChevronDown size={18} />}
       >
         {selected?.title}
       </PopoverTrigger>
@@ -129,7 +129,9 @@ function MemberRoleMenu() {
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {selected.id == id && <HiCheck size={16} />}
+                    {selected.id == id && (
+                      <HiCheck size={16} className="opacity-60" />
+                    )}
                   </CommandItem>
                 );
               })}

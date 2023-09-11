@@ -130,7 +130,9 @@ function ExpireMonthSelect() {
       {MONTHS.map((month) => (
         <CommandItem key={month} value={month} onSelect={setSelected}>
           <div className="flex items-center gap-2 w-full">
-            <div className="w-3.5">{selected == month && <HiCheck />}</div>
+            <div className="w-3.5">
+              {selected == month && <HiCheck className="opacity-60" />}
+            </div>
             <Text className="capitalize">{month}</Text>
             <div className="flex-1" />
           </div>
@@ -148,7 +150,9 @@ function ExpireYearSelect() {
       {YEARS.map((year) => (
         <CommandItem key={year} value={year} onSelect={setSelected}>
           <div className="flex items-center gap-2 w-full ">
-            <div className="w-3.5">{selected == year && <HiCheck />}</div>
+            <div className="w-3.5">
+              {selected == year && <HiCheck className="opacity-60" />}
+            </div>
             <Text>{year}</Text>
             <div className="flex-1" />
           </div>

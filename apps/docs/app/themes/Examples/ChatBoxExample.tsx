@@ -160,9 +160,9 @@ function NewMessageDialog() {
       <DialogContent className="!p-0 dark:!bg-secondary-900">
         <DialogHeader className="!p-4">
           <DialogTitle>New message</DialogTitle>
-          <DialogTitle className="!text-sm">
+          <Text className="text-sm leading-tight opacity-60">
             Invite a user to this thread. This will create a new group message.
-          </DialogTitle>
+          </Text>
         </DialogHeader>
         <Command className="border-y dark:border-secondary-700 !rounded-none dark:!bg-secondary-900">
           <CommandInput placeholder="Type a command or search..." />
@@ -189,7 +189,9 @@ function NewMessageDialog() {
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {selected.includes(user.id) && <HiCheck />}
+                    {selected.includes(user.id) && (
+                      <HiCheck className="opacity-60" />
+                    )}
                   </div>
                 </CommandItem>
               ))}
