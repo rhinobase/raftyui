@@ -29,28 +29,25 @@ export const navigation_menu_examples = {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid grid-cols-2 w-[600px]">
-              <NavigationMenuListItem title="Introduction" href="#">
-                Build high-quality, accessible design systems and web apps.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Getting started" href="#">
-                A quick tutorial to get you up and running with Radix
-                Primitives.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Styling" href="#">
-                Unstyled and compatible with any styling solution.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Animation" href="#">
-                Use CSS keyframes or any animation library of your choice.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Accessibility" href="#">
-                Tested in a range of browsers and assistive technologies.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Releases" href="#">
-                Radix Primitives releases and their changelogs.
-              </NavigationMenuListItem>
-            </ul>
+          <NavigationMenuContent className="grid grid-cols-2 w-[300px] md:w-[600px]">
+            <NavigationMenuListItem title="Introduction" href="#">
+              Build high-quality, accessible design systems and web apps.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Getting started" href="#">
+              A quick tutorial to get you up and running with Radix Primitives.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Styling" href="#">
+              Unstyled and compatible with any styling solution.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Animation" href="#">
+              Use CSS keyframes or any animation library of your choice.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Accessibility" href="#">
+              Tested in a range of browsers and assistive technologies.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Releases" href="#">
+              Radix Primitives releases and their changelogs.
+            </NavigationMenuListItem>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
@@ -67,7 +64,10 @@ export const navigation_menu_examples = {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-          <NavigationMenuContent size="sm">
+          <NavigationMenuContent
+            size="sm"
+            className="grid grid-cols-2 w-[300px] md:w-[600px]"
+          >
             <NavigationMenuListItem href="#" title="Stitches">
               CSS-in-JS with best-in-class developer experience.
             </NavigationMenuListItem>
@@ -82,28 +82,25 @@ export const navigation_menu_examples = {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid grid-cols-2 w-[600px]">
-              <NavigationMenuListItem title="Introduction" href="#">
-                Build high-quality, accessible design systems and web apps.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Getting started" href="#">
-                A quick tutorial to get you up and running with Radix
-                Primitives.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Styling" href="#">
-                Unstyled and compatible with any styling solution.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Animation" href="#">
-                Use CSS keyframes or any animation library of your choice.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Accessibility" href="#">
-                Tested in a range of browsers and assistive technologies.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Releases" href="#">
-                Radix Primitives releases and their changelogs.
-              </NavigationMenuListItem>
-            </ul>
+          <NavigationMenuContent className="grid grid-cols-2 w-[300px] md:w-[600px]">
+            <NavigationMenuListItem title="Introduction" href="#">
+              Build high-quality, accessible design systems and web apps.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Getting started" href="#">
+              A quick tutorial to get you up and running with Radix Primitives.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Styling" href="#">
+              Unstyled and compatible with any styling solution.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Animation" href="#">
+              Use CSS keyframes or any animation library of your choice.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Accessibility" href="#">
+              Tested in a range of browsers and assistive technologies.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Releases" href="#">
+              Radix Primitives releases and their changelogs.
+            </NavigationMenuListItem>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
@@ -125,7 +122,7 @@ export const navigation_menu_examples = {
           <NavigationMenuTrigger className="data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none">
             Learn
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="max-w-2xl top-2.5 rounded-md animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200">
+          <NavigationMenuContent className="max-w-2xl top-2.5 rounded-md animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200 grid grid-cols-2 w-[300px] md:w-[600px]">
             <NavigationMenuListItem href="#" title="Stitches">
               CSS-in-JS with best-in-class developer experience.
             </NavigationMenuListItem>
@@ -142,28 +139,25 @@ export const navigation_menu_examples = {
           <NavigationMenuTrigger className="data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none">
             Overview
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="max-w-2xl top-2.5 rounded-md animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200">
-            <ul className="grid grid-cols-2 w-[600px]">
-              <NavigationMenuListItem title="Introduction" href="#">
-                Build high-quality, accessible design systems and web apps.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Getting started" href="#">
-                A quick tutorial to get you up and running with Radix
-                Primitives.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Styling" href="#">
-                Unstyled and compatible with any styling solution.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Animation" href="#">
-                Use CSS keyframes or any animation library of your choice.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Accessibility" href="#">
-                Tested in a range of browsers and assistive technologies.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Releases" href="#">
-                Radix Primitives releases and their changelogs.
-              </NavigationMenuListItem>
-            </ul>
+          <NavigationMenuContent className="max-w-2xl grid grid-cols-2 w-[300px] md:w-[600px] top-2.5 rounded-md animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200">
+            <NavigationMenuListItem title="Introduction" href="#">
+              Build high-quality, accessible design systems and web apps.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Getting started" href="#">
+              A quick tutorial to get you up and running with Radix Primitives.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Styling" href="#">
+              Unstyled and compatible with any styling solution.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Animation" href="#">
+              Use CSS keyframes or any animation library of your choice.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Accessibility" href="#">
+              Tested in a range of browsers and assistive technologies.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Releases" href="#">
+              Radix Primitives releases and their changelogs.
+            </NavigationMenuListItem>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
@@ -201,28 +195,25 @@ export const navigation_menu_examples = {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid grid-cols-2 w-[600px]">
-              <NavigationMenuListItem title="Introduction" href="#">
-                Build high-quality, accessible design systems and web apps.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Getting started" href="#">
-                A quick tutorial to get you up and running with Radix
-                Primitives.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Styling" href="#">
-                Unstyled and compatible with any styling solution.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Animation" href="#">
-                Use CSS keyframes or any animation library of your choice.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Accessibility" href="#">
-                Tested in a range of browsers and assistive technologies.
-              </NavigationMenuListItem>
-              <NavigationMenuListItem title="Releases" href="#">
-                Radix Primitives releases and their changelogs.
-              </NavigationMenuListItem>
-            </ul>
+          <NavigationMenuContent className="grid grid-cols-2 w-[300px] md:w-[600px]">
+            <NavigationMenuListItem title="Introduction" href="#">
+              Build high-quality, accessible design systems and web apps.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Getting started" href="#">
+              A quick tutorial to get you up and running with Radix Primitives.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Styling" href="#">
+              Unstyled and compatible with any styling solution.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Animation" href="#">
+              Use CSS keyframes or any animation library of your choice.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Accessibility" href="#">
+              Tested in a range of browsers and assistive technologies.
+            </NavigationMenuListItem>
+            <NavigationMenuListItem title="Releases" href="#">
+              Radix Primitives releases and their changelogs.
+            </NavigationMenuListItem>
           </NavigationMenuContent>
         </NavigationMenuItem>
 

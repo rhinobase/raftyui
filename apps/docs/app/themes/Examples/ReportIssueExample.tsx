@@ -31,7 +31,7 @@ export function ReportIssueExample() {
           What area are you having problems with?
         </Text>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <FieldControl name="team">
           <Label>Team</Label>
           <RoleSelector />
@@ -50,8 +50,10 @@ export function ReportIssueExample() {
         <Textarea placeholder="Please include all information relevant to your issue." />
       </FieldControl>
 
-      <div className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+        <Button variant="outline" className="mb-2 sm:mb-0">
+          Cancel
+        </Button>
         <Button variant="solid" colorScheme="primary">
           Submit
         </Button>

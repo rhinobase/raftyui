@@ -170,7 +170,10 @@ export default function ThemeBuilderLayout({
                   <em>tailwind.config.js</em> file.
                 </Text>
               </div>
-              <Fence language="js" className="rounded-xl px-5 py-4">
+              <Fence
+                language="js"
+                className="rounded-xl px-5 py-4 overflow-x-auto"
+              >
                 {`const colors = require('tailwindcss/colors')
 
 {

@@ -238,7 +238,7 @@ function Message({
   return (
     <Text
       className={classNames(
-        "w-max px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium text-secondary-800 dark:text-secondary-100 leading-snug",
+        "px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium text-secondary-800 dark:text-secondary-100 leading-snug",
         className,
       )}
     >

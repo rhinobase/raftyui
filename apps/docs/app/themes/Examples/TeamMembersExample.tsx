@@ -37,10 +37,11 @@ export function TeamMembersExample() {
           Invite your team members to collaborate.
         </Text>
       </div>
-      <div className="space-y-3.5 w-full">
+      <div className="space-y-3">
         {MEMBERS.map(({ name, email }) => (
-          <div key={email} className="flex gap-2.5 items-center w-full">
+          <div key={email} className="flex gap-2.5 items-center">
             <Avatar
+              className="hidden md:block"
               name={name}
               src={`https://api.dicebear.com/7.x/notionists/svg?seed=${name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
             />
@@ -109,7 +110,7 @@ function MemberRoleMenu() {
       >
         {selected?.title}
       </PopoverTrigger>
-      <PopoverContent className="!p-0 !w-[320px]">
+      <PopoverContent className="!p-0 sm:!w-[320px]">
         <Command>
           <CommandInput placeholder="Search role" />
           <CommandList>

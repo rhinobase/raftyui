@@ -342,7 +342,7 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
       <DialogOverlay />
       <DialogContent
         showCloseButton={false}
-        className="!top-[15%] !-translate-y-0 !p-0"
+        className="!top-[15%] !-translate-y-0 !p-0 lg:max-w-[40rem] max-w-[370px]"
       >
         <div {...autocomplete.getRootProps({})}>
           <form

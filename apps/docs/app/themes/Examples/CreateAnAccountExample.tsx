@@ -20,7 +20,7 @@ export function CreateAnAccountExample() {
         </Text>
       </div>
       <form className="space-y-3">
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center flex-col sm:flex-row sm:gap-6">
           <Button
             variant="outline"
             leftIcon={<BsGithub size={18} />}
