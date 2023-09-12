@@ -1,12 +1,12 @@
 ---
-title: React Hook Form
-pageTitle: React Hook Form - Rafty UI
-description: React Hook Form
+title: Rafty UI + React Hook Form
+nextjs:
+  metadata:
+    title: React Hook Form
+    description: React Hook Form
 ---
 
-## Usage
-
-This example shows how to build a simple form with Rafty UI's form components and the React Hook Form form library:
+This example shows how to build a simple form with Rafty UI's form components and the [React Hook Form](https://react-hook-form.com/) form library:
 
 ```jsx
 import { useForm } from "react-hook-form";

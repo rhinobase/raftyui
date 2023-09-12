@@ -1,7 +1,9 @@
 ---
-title: Accordion
-pageTitle: Accordion - Rafty UI
-description: Accordion
+title: Installation
+nextjs:
+  metadata:
+    title: Installation
+    description: Installation
 ---
 
 ## Import

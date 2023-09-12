@@ -1,12 +1,12 @@
 ---
-title: Tanstack Infinite Query
-pageTitle: Infinite Query - Rafty UI
-description: Tanstack Infinite Query
+title: Rafty UI + React Query
+nextjs:
+  metadata:
+    title: Combobox
+    description: Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern.
 ---
 
-## Import
-
-Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern.
+Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern. Over here we are using [TanStack React Query](https://tanstack.com/query/latest) for fetching the data.
 
 ```jsx
 import { useInfiniteQuery } from "@tanstack/react-query";

@@ -62,7 +62,7 @@ const nodes = {
     },
   },
   code: {
-    render: Kbd,
+    render: ({ content }) => <Kbd>{content}</Kbd>,
     attributes: {
       content: {
         type: String,
