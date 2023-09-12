@@ -1,7 +1,9 @@
 ---
 title: Date Picker
-pageTitle: Date Picker - Rafty UI
-description: The Date Picker component lets the user select a date.
+nextjs:
+  metadata:
+    title: Date Picker
+    description: The Date Picker component lets the user select a date.
 ---
 
 The Date Picker component lets the user select a date.

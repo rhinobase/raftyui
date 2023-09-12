@@ -1,7 +1,9 @@
 ---
 title: Toggle
-pageTitle: Toggle - Rafty UI
-description: A two-state button that can be either on or off.
+nextjs:
+  metadata:
+    title: Toggle
+    description: A two-state button that can be either on or off.
 ---
 
 A two-state button that can be either on or off.

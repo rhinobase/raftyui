@@ -1,7 +1,9 @@
 ---
 title: Card
-pageTitle: Card - Rafty UI
-description: A card is a generic container for grouping related UI elements and content.
+nextjs:
+  metadata:
+    title: Card
+    description: A card is a generic container for grouping related UI elements and content.
 ---
 
 A card is a generic container for grouping related UI elements and content.

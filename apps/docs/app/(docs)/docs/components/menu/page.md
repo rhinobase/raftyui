@@ -1,7 +1,9 @@
 ---
 title: Menu
-pageTitle: Menu - Rafty UI
-description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+nextjs:
+  metadata:
+    title: Menu
+    description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
 ---
 
 Displays a menu to the user—such as a set of actions or functions—triggered by a button. This component is made on top of [Radix UIs Dropdown Menu Component](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).

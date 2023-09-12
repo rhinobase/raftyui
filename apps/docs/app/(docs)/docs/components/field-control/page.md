@@ -1,7 +1,9 @@
 ---
 title: Field Control
-pageTitle: Field Control - Rafty UI
-description: Field Control is used in forms to provide context to children fields. Along with Field control it is recommended to use Label and Error Message components.
+nextjs:
+  metadata:
+    title: Field Control
+    description: Field Control is used in forms to provide context to children fields. Along with Field control it is recommended to use Label and Error Message components.
 ---
 
 Field Control is used in forms to provide context to children fields. Along with Field control it is recommended to use Label and Error Message components.

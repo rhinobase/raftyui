@@ -1,7 +1,9 @@
 ---
 title: Tab
-pageTitle: Tab - Rafty UI
-description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+nextjs:
+  metadata:
+    title: Tab
+    description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 ---
 
 A set of layered sections of content—known as tab panels—that are displayed one at a time.

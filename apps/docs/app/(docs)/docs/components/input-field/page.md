@@ -1,7 +1,9 @@
 ---
 title: InputField
-pageTitle: InputField - Rafty UI
-description: Input field is a component that is used to get user input in a text field.
+nextjs:
+  metadata:
+    title: InputField
+    description: Input field is a component that is used to get user input in a text field.
 ---
 
 Input field is a component that is used to get user input in a text field.

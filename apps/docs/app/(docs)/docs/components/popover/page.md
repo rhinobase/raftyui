@@ -1,7 +1,9 @@
 ---
 title: Popover
-pageTitle: Popover - Rafty UI
-description: Displays rich content in a portal, triggered by a button.
+nextjs:
+  metadata:
+    title: Popover
+    description: Displays rich content in a portal, triggered by a button.
 ---
 
 Displays rich content in a portal, triggered by a button.

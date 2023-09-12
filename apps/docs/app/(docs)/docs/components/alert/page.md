@@ -1,7 +1,9 @@
 ---
 title: Alert
-pageTitle: Alert - Rafty UI
-description: An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
+nextjs:
+  metadata:
+    title: Alert
+    description: An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
 ---
 
 An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.

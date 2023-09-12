@@ -1,7 +1,9 @@
 ---
 title: Checkbox
-pageTitle: Checkbox - Rafty UI
-description: Checkboxes give users binary choices when presented with multiple options in a series.
+nextjs:
+  metadata:
+    title: Checkbox
+    description: Checkboxes give users binary choices when presented with multiple options in a series.
 ---
 
 Checkboxes give users binary choices when presented with multiple options in a series.

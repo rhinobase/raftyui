@@ -1,7 +1,9 @@
 ---
 title: Tag
-pageTitle: Tag - Rafty UI
-description: Tag component is utilized to label, categorize, or organize items using descriptive keywords.
+nextjs:
+  metadata:
+    title: Tag
+    description: Tag component is utilized to label, categorize, or organize items using descriptive keywords.
 ---
 
 Tag component is utilized to label, categorize, or organize items using descriptive keywords.

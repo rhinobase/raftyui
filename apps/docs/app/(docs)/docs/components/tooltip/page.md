@@ -1,7 +1,9 @@
 ---
 title: Tooltip
-pageTitle: Tooltip - Rafty UI
-description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+nextjs:
+  metadata:
+    title: Tooltip
+    description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
 ---
 
 A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.

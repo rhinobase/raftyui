@@ -1,7 +1,9 @@
 ---
 title: Skeleton
-pageTitle: Skeleton - Rafty UI
-description: Skeleton is used to display the loading state of some component.
+nextjs:
+  metadata:
+    title: Skeleton
+    description: Skeleton is used to display the loading state of some component.
 ---
 
 Skeleton is used to display the loading state of some component.

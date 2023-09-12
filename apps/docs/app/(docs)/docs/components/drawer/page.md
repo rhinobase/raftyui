@@ -1,7 +1,9 @@
 ---
 title: Drawer
-pageTitle: Drawer - Rafty UI
-description: The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
+nextjs:
+  metadata:
+    title: Drawer
+    description: The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
 ---
 
 The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.

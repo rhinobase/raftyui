@@ -1,7 +1,9 @@
 ---
 title: Password Field
-pageTitle: Password Field - Rafty UI
-description: Just like Input Field, Password Field is used for password inputs but gives an extra functionality of show and hide password.
+nextjs:
+  metadata:
+    title: Password Field
+    description: Just like Input Field, Password Field is used for password inputs but gives an extra functionality of show and hide password.
 ---
 
 Just like Input Field, Password Field is used for password inputs but gives an extra functionality of show and hide password.

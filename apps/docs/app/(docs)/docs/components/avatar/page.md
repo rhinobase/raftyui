@@ -1,7 +1,9 @@
 ---
 title: Avatar
-pageTitle: Avatar - Rafty UI
-description: The Avatar component is used to represent a user and can display the profile picture, initials or fallback icon.
+nextjs:
+  metadata:
+    title: Avatar
+    description: The Avatar component is used to represent a user and can display the profile picture, initials or fallback icon.
 ---
 
 The Avatar component is used to represent a user and can display the profile picture, initials or fallback icon.

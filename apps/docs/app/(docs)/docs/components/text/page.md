@@ -1,7 +1,9 @@
 ---
 title: Text
-pageTitle: Text - Rafty UI
-description: Text is used to render text and paragraphs within an interface. It renders a <p> element by default.
+nextjs:
+  metadata:
+    title: Text
+    description: Text is used to render text and paragraphs within an interface. It renders a <p> element by default.
 ---
 
 Text is used to render text and paragraphs within an interface. It renders a <p> element by default.

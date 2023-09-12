@@ -1,7 +1,9 @@
 ---
 title: Calendar
-pageTitle: Calendar - Rafty UI
-description: The Calendar component allows the user to select a date without the need for input fields or pop-up modals.
+nextjs:
+  metadata:
+    title: Calendar
+    description: The Calendar component allows the user to select a date without the need for input fields or pop-up modals.
 ---
 
 The Calendar component allows the user to select a date without the need for input fields or pop-up modals.

@@ -1,7 +1,9 @@
 ---
 title: Scroll Area
-pageTitle: Scroll Area - Rafty UI
-description: Enhances native scroll functionality for custom, cross-browser styling.
+nextjs:
+  metadata:
+    title: Scroll Area
+    description: Enhances native scroll functionality for custom, cross-browser styling.
 ---
 
 Enhances native scroll functionality for custom, cross-browser styling.

@@ -1,7 +1,9 @@
 ---
 title: Table
-pageTitle: Table - Rafty UI
-description: Table component is used to organize and display data efficiently. It renders a `<table>` element by default.
+nextjs:
+  metadata:
+    title: Table
+    description: Table component is used to organize and display data efficiently. It renders a `<table>` element by default.
 ---
 
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default.

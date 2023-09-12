@@ -1,7 +1,9 @@
 ---
 title: Alert Dialog
-pageTitle: Alert Dialog - Rafty UI
-description: It is a modal dialog that interrupts the user with important content and expects a response.
+nextjs:
+  metadata:
+    title: Alert Dialog
+    description: It is a modal dialog that interrupts the user with important content and expects a response.
 ---
 
 It is a modal dialog that interrupts the user with important content and expects a response.

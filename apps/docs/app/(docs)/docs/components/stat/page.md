@@ -1,7 +1,9 @@
 ---
 title: Stat
-pageTitle: Stat - Rafty UI
-description: Stat component is used to display statistics/numbers.
+nextjs:
+  metadata:
+    title: Stat
+    description: Stat component is used to display statistics/numbers.
 ---
 
 Stat component is used to display statistics/numbers.

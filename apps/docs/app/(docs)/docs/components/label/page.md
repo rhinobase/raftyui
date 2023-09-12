@@ -1,7 +1,9 @@
 ---
 title: Label
-pageTitle: Label - Rafty UI
-description: Renders an accessible label associated with controls.
+nextjs:
+  metadata:
+    title: Label
+    description: Renders an accessible label associated with controls.
 ---
 
 Renders an accessible label associated with controls.

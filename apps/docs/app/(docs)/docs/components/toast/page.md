@@ -1,7 +1,9 @@
 ---
 title: Toast
-pageTitle: Toast - Rafty UI
-description: The toast component is used to give feedback to users after an action has taken place.
+nextjs:
+  metadata:
+    title: Toast
+    description: The toast component is used to give feedback to users after an action has taken place.
 ---
 
 The toast component is used to give feedback to users after an action has taken place.

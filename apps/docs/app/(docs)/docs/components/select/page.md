@@ -1,7 +1,9 @@
 ---
 title: Select
-pageTitle: Select - Rafty UI
-description: Select component is a component that allows users to pick a value from predefined options.
+nextjs:
+  metadata:
+    title: Select
+    description: Select component is a component that allows users to pick a value from predefined options.
 ---
 
 Select component is a component that allows users to pick a value from predefined options.

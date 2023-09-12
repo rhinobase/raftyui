@@ -1,7 +1,9 @@
 ---
 title: List
-pageTitle: List - Rafty UI
-description: List is used to display list items. It renders a <ul> element by default.
+nextjs:
+  metadata:
+    title: List
+    description: List is used to display list items. It renders a <ul> element by default.
 ---
 
 List is used to display list items. It renders a <ul> element by default.

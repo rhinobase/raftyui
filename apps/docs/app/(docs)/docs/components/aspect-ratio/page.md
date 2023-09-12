@@ -1,7 +1,9 @@
 ---
 title: AspectRatio
-pageTitle: AspectRatio - Rafty UI
-description: The Aspect Ratio component resizes its contents to match the desired ratio.
+nextjs:
+  metadata:
+    title: AspectRatio
+    description: The Aspect Ratio component resizes its contents to match the desired ratio.
 ---
 
 The Aspect Ratio component resizes its contents to match the desired ratio.
