@@ -1,16 +1,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { classNames } from "@rafty/ui";
-
 import { navigation } from "../lib/navigation";
-
-function ArrowIcon(props: React.ComponentPropsWithoutRef<"svg">) {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" {...props}>
-      <path d="m9.182 13.423-1.17-1.16 3.505-3.505H3V7.065h8.517l-3.506-3.5L9.181 2.4l5.512 5.511-5.511 5.512Z" />
-    </svg>
-  );
-}
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
 function PageLink({
   title,
@@ -20,7 +12,7 @@ function PageLink({
 }: Omit<React.ComponentPropsWithoutRef<"div">, "dir" | "title"> & {
   title: string;
   href: string;
-  dir?: "previous" | "next";
+  dir?: "next" | "previous";
 }) {
   return (
     <div {...props}>
@@ -36,12 +28,7 @@ function PageLink({
           )}
         >
           {title}
-          <ArrowIcon
-            className={classNames(
-              "h-4 w-4 flex-none fill-current",
-              dir === "previous" && "-scale-x-100",
-            )}
-          />
+          {dir === "next" ? <HiArrowRight /> : <HiArrowLeft />}
         </Link>
       </dd>
     </div>

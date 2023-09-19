@@ -7,7 +7,7 @@ export const textarea_examples = {
     <Textarea
       placeholder="abc"
       isUnStyled
-      className="outline-none hover:border-green-300 border border-secondary-200 bg-transparent rounded-md focus:ring-1 focus:ring-sky-300 ring-offset-0 dark:border-secondary-500"
+      className="outline-none hover:border-green-300 p-2 w-full border border-secondary-200 bg-transparent rounded-md focus:ring-1 focus:ring-sky-300 ring-offset-0 dark:border-secondary-500"
     />
   ),
 };

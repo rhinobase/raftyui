@@ -58,7 +58,7 @@ function Counter() {
   const [count, setCount] = useState(350);
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex items-center">
       <Button
         variant="outline"
         size="fab"
@@ -68,7 +68,7 @@ function Counter() {
       >
         <HiMinus size={18} />
       </Button>
-      <div className="w-full flex justify-center items-center flex-col">
+      <div className="w-full flex items-center flex-col">
         <Text className="text-5xl tabular-nums">{count}</Text>
         <Text className="text-sm font-medium opacity-50 leading-none">
           CALORIES/DAY

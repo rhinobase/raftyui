@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams, useSearchParams } from "next/navigation";
 import { Hero } from "../components/Hero";
 import { Logo, Logomark } from "../components/Logo";
 import { MobileNavigation } from "../components/MobileNavigation";
@@ -10,6 +10,7 @@ import { ThemeSelector } from "../components/ThemeSelector";
 import { BsDiscord, BsGithub, BsTwitter } from "react-icons/bs";
 import { Button, classNames } from "@rafty/ui";
 import { HiBars3 } from "react-icons/hi2";
+import { Layout } from "../components/Layout";
 
 const navigation = [
   {
@@ -93,6 +94,7 @@ type Wrapper = { children: React.ReactNode };
 
 export function Wrapper({ children }: Wrapper) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const isHomePage = pathname === "/";
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
@@ -100,7 +102,11 @@ export function Wrapper({ children }: Wrapper) {
   useEffect(() => {
     setDrawerOpen(false);
     setSearchOpen(false);
-  }, [pathname]);
+  }, [pathname, searchParams]);
+
+  let component = children;
+
+  if (isHomePage) component = <Layout>{children}</Layout>;
 
   return (
     <>
@@ -112,7 +118,7 @@ export function Wrapper({ children }: Wrapper) {
         />
         {isHomePage && <Hero />}
         <div className="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
-          {children}
+          {component}
         </div>
       </div>
       <MobileNavigation isOpen={isDrawerOpen} setOpen={setDrawerOpen} />

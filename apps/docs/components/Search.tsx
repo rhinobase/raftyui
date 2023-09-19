@@ -58,7 +58,6 @@ function useAutocomplete({
     if (!itemUrl) {
       return;
     }
-
     router.push(itemUrl);
 
     if (

@@ -17,7 +17,7 @@ import {
 } from "@rafty/ui";
 import { HiCheck, HiOutlineMoon, HiOutlineSun, HiX } from "react-icons/hi";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Fence } from "../../components/Fence";
 import { PiCopyBold, PiPaintBrushHouseholdLight } from "react-icons/pi";
 const ColorTheme = {
@@ -50,7 +50,6 @@ export default function ThemeBuilderLayout({
   children: React.ReactNode;
 }) {
   const [color, changeColor] = useState<keyof typeof ColorTheme>("purple");
-  const { setTheme, theme, themes } = useTheme();
 
   return (
     <div
@@ -82,75 +81,7 @@ export default function ThemeBuilderLayout({
             </Tooltip>
           ))}
           <div className="flex-1 md:hidden" />
-          <Popover>
-            <PopoverTrigger
-              variant="outline"
-              leftIcon={<PiPaintBrushHouseholdLight />}
-              className="hidden md:flex"
-            >
-              Customize
-            </PopoverTrigger>
-            <PopoverTrigger
-              variant="outline"
-              size="icon"
-              leftIcon={<PiPaintBrushHouseholdLight />}
-              className="md:hidden"
-            />
-            <PopoverContent showArrow align="end">
-              <div className="w-[300px] p-2 space-y-3">
-                <div className="space-y-1.5">
-                  <h5 className="text-xs font-medium">Color</h5>
-                  <div className="grid grid-cols-3 gap-2">
-                    {Object.entries(ColorTheme).map(([c, value]) => (
-                      <Button
-                        key={c}
-                        size="sm"
-                        isActive={color == c}
-                        variant="outline"
-                        className="capitalize !justify-start"
-                        leftIcon={
-                          <div
-                            className={`h-3 w-3 rounded-full ${value} flex justify-center items-center`}
-                          />
-                        }
-                        onClick={() =>
-                          changeColor(c as keyof typeof ColorTheme)
-                        }
-                      >
-                        {c}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  <h5 className="text-xs font-medium">Mode</h5>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      leftIcon={<HiOutlineSun size={15} />}
-                      isActive={theme == themes[0]}
-                      onClick={() => setTheme("light")}
-                    >
-                      Light
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      leftIcon={<HiOutlineMoon size={15} />}
-                      isActive={theme == themes[1]}
-                      onClick={() => setTheme("dark")}
-                    >
-                      Dark
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <PopoverClose className="p-1 absolute top-2 right-2">
-                <HiX className="opacity-60" />
-              </PopoverClose>
-            </PopoverContent>
-          </Popover>
+          <CustomizeMenu color={color} changeColor={changeColor} />
           <Dialog>
             <DialogTrigger variant="outline" className="md:block hidden">
               Copy code
@@ -199,5 +130,86 @@ export default function ThemeBuilderLayout({
       </div>
       {children}
     </div>
+  );
+}
+
+function CustomizeMenu({
+  color,
+  changeColor,
+}: {
+  color: keyof typeof ColorTheme;
+  changeColor: Dispatch<SetStateAction<keyof typeof ColorTheme>>;
+}) {
+  const { setTheme, theme, themes } = useTheme();
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <div>
+          <Button
+            variant="outline"
+            leftIcon={<PiPaintBrushHouseholdLight />}
+            className="hidden md:flex"
+          >
+            Customize
+          </Button>
+          <Button variant="outline" size="icon" className="md:hidden">
+            <PiPaintBrushHouseholdLight />
+          </Button>
+        </div>
+      </PopoverTrigger>
+      <PopoverContent showArrow align="end">
+        <div className="w-[300px] p-2 space-y-3">
+          <div className="space-y-1.5">
+            <h5 className="text-xs font-medium">Color</h5>
+            <div className="grid grid-cols-3 gap-2">
+              {Object.entries(ColorTheme).map(([c, value]) => (
+                <Button
+                  key={c}
+                  size="sm"
+                  isActive={color == c}
+                  variant="outline"
+                  className="capitalize !justify-start"
+                  leftIcon={
+                    <div
+                      className={`h-3 w-3 rounded-full ${value} flex justify-center items-center`}
+                    />
+                  }
+                  onClick={() => changeColor(c as keyof typeof ColorTheme)}
+                >
+                  {c}
+                </Button>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-1.5">
+            <h5 className="text-xs font-medium">Mode</h5>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<HiOutlineSun size={15} />}
+                isActive={theme == themes[0]}
+                onClick={() => setTheme("light")}
+              >
+                Light
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<HiOutlineMoon size={15} />}
+                isActive={theme == themes[1]}
+                onClick={() => setTheme("dark")}
+              >
+                Dark
+              </Button>
+            </div>
+          </div>
+        </div>
+        <PopoverClose className="p-1 absolute top-2 right-2">
+          <HiX className="opacity-60" />
+        </PopoverClose>
+      </PopoverContent>
+    </Popover>
   );
 }

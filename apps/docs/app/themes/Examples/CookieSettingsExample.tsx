@@ -40,7 +40,7 @@ export function CookieSettingsExample() {
           <Switch defaultChecked={index < 2} />
         </div>
       ))}
-      <Button variant="outline" colorScheme="primary" className="!w-full !mt-5">
+      <Button variant="outline" colorScheme="primary" className="!w-full">
         Save preference
       </Button>
     </div>
