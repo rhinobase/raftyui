@@ -13,7 +13,17 @@ Displays a menu to the user—such as a set of actions or functions—triggered 
 Import all parts and piece them together.
 
 ```jsx
-import { Menu, MenuTrigger, MenuItem, MenuCheckboxItem, MenuContent, MenuSeparator, MenuRadioGroup, MenuLabel, MenuRadioItem } from "@rafty/ui";
+import {
+  Menu,
+  MenuTrigger,
+  MenuItem,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuSeparator,
+  MenuRadioGroup,
+  MenuLabel,
+  MenuRadioItem,
+} from "@rafty/ui";
 
 <Menu>
   <MenuTrigger />

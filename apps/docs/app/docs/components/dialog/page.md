@@ -15,7 +15,16 @@ This component is made on top of [Radix UIs Dialog Component](https://www.radix-
 Import all parts and piece them together.
 
 ```jsx
-import { Dialog, DialogContent, DialogOverlay, DialogHeader, DialogTitle, DialogTrigger, DialogDescription, DialogFooter } from "@rafty/ui";
+import {
+  Dialog,
+  DialogContent,
+  DialogOverlay,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogDescription,
+  DialogFooter,
+} from "@rafty/ui";
 
 <Dialog>
   <DialogTrigger />

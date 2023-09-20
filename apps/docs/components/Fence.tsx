@@ -26,38 +26,37 @@ export function Fence({
   };
 
   return (
-    <Highlight code={content} language={language} theme={themes.dracula}>
-      {({ className, style, tokens, getTokenProps }) => (
-        <pre
-          className={classNames(className, _className, "relative")}
-          style={style}
-        >
-          <Button
-            onClick={handleCopyClick}
-            className="absolute right-1 top-1 "
-            variant="outline"
-            size="icon"
-          >
-            {isCopied ? (
-              <HiCheck className="text-green-300" />
-            ) : (
-              <HiDuplicate className="text-slate-200" />
-            )}
-          </Button>
-          <code>
-            {tokens.map((line, lineIndex) => (
-              <Fragment key={lineIndex}>
-                {line
-                  .filter((token) => !token.empty)
-                  .map((token, tokenIndex) => (
-                    <span key={tokenIndex} {...getTokenProps({ token })} />
-                  ))}
-                {"\n"}
-              </Fragment>
-            ))}
-          </code>
-        </pre>
-      )}
-    </Highlight>
+    <div className="relative">
+      <Highlight code={content} language={language} theme={themes.dracula}>
+        {({ className, style, tokens, getTokenProps }) => (
+          <pre className={classNames(className, _className)} style={style}>
+            <Button
+              onClick={handleCopyClick}
+              className="absolute right-1 top-1 "
+              variant="outline"
+              size="icon"
+            >
+              {isCopied ? (
+                <HiCheck className="text-green-300" />
+              ) : (
+                <HiDuplicate className="text-slate-200" />
+              )}
+            </Button>
+            <code>
+              {tokens.map((line, lineIndex) => (
+                <Fragment key={lineIndex}>
+                  {line
+                    .filter((token) => !token.empty)
+                    .map((token, tokenIndex) => (
+                      <span key={tokenIndex} {...getTokenProps({ token })} />
+                    ))}
+                  {"\n"}
+                </Fragment>
+              ))}
+            </code>
+          </pre>
+        )}
+      </Highlight>
+    </div>
   );
 }

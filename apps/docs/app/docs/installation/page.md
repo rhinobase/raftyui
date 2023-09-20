@@ -17,7 +17,13 @@ Rafty UI exports 5 accordion-related components.
 - AccordionIcon: A chevron-down icon that rotates based on the expanded/collapsed state
 
 ```jsx
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@rafty/ui";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@rafty/ui";
 ```
 
 ## Usage

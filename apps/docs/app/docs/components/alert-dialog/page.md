@@ -15,7 +15,16 @@ This component is made on top of [Radix UIs Alert Dialog Component](https://www.
 Import all parts and piece them together.
 
 ```jsx
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger, AlertDialogDescription } from "@rafty/ui";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  AlertDialogDescription,
+} from "@rafty/ui";
 
 <AlertDialog>
   <AlertDialogTrigger />

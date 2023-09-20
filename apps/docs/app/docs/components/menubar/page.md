@@ -15,7 +15,22 @@ This component is made on top of [Radix UIs Menu Component](https://www.radix-ui
 Import all parts and piece them together.
 
 ```jsx
-import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarMenu, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarSub, MenubarLabel, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from "@rafty/ui";
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarSub,
+  MenubarLabel,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@rafty/ui";
 
 <Menubar>
   <MenubarMenu>

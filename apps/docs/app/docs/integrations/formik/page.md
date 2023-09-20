@@ -28,7 +28,11 @@ export default function App() {
     <form onSubmit={formik.handleSubmit}>
       <FieldControl name="email">
         <Label>Email Address</Label>
-        <InputField type="email" onChange={formik.handleChange} value={formik.values.email} />
+        <InputField
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
       </FieldControl>
       <Button type="submit">Submit</Button>
     </form>

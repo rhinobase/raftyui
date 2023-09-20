@@ -15,7 +15,12 @@ This component is made on top of [Radix UIs Accordion Component](https://www.rad
 Import all parts and piece them together.
 
 ```jsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@rafty/ui";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@rafty/ui";
 
 <Accordion>
   <AccordionItem>

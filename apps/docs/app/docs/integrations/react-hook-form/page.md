@@ -10,7 +10,13 @@ This example shows how to build a simple form with Rafty UI's form components an
 
 ```jsx
 import { useForm } from "react-hook-form";
-import { FieldControl, Label, InputField, ErrorMessage, Button } from "@rafty/ui";
+import {
+  FieldControl,
+  Label,
+  InputField,
+  ErrorMessage,
+  Button,
+} from "@rafty/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 

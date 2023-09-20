@@ -13,7 +13,16 @@ A collection of links for navigating websites. This component is made on top of 
 Import all parts and piece them together.
 
 ```jsx
-import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuListItem, NavigationMenuTrigger } from "@rafty/ui";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuListItem,
+  NavigationMenuTrigger,
+} from "@rafty/ui";
 
 <NavigationMenu>
   <NavigationMenuListItem>

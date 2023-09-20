@@ -15,7 +15,14 @@ This component is made using [Radix UIs Dialog Component](https://www.radix-ui.c
 Import all parts and piece them together.
 
 ```jsx
-import { Drawer, DrawerOverlay, DrawerContent, DrawerClose, DrawerTitle, DrawerDescription } from "@rafty/ui";
+import {
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerClose,
+  DrawerTitle,
+  DrawerDescription,
+} from "@rafty/ui";
 
 () => (
   <Drawer>
@@ -43,7 +50,9 @@ return (
       <DrawerOverlay />
       <DrawerContent>
         <DrawerTitle>Drawer Header</DrawerTitle>
-        <DrawerDescription>This is sample drawer description. :</DrawerDescription>
+        <DrawerDescription>
+          This is sample drawer description. :
+        </DrawerDescription>
         <DrawerClose />
       </DrawerContent>
     </Drawer>
@@ -69,7 +78,9 @@ return (
       <DrawerOverlay />
       <DrawerContent>
         <DrawerTitle>Drawer Header</DrawerTitle>
-        <DrawerDescription>This is sample drawer description.</DrawerDescription>
+        <DrawerDescription>
+          This is sample drawer description.
+        </DrawerDescription>
         <DrawerClose />
       </DrawerContent>
     </Drawer>
