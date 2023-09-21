@@ -29,10 +29,10 @@ const data = [
 
 export function CounterExample() {
   return (
-    <div className="space-y-2 h-full w-full">
+    <div className="h-full w-full space-y-2">
       <div>
         <Text className="text-2xl font-semibold leading-snug">Move goal</Text>
-        <Text className="text-sm opacity-60 leading-snug">
+        <Text className="text-sm leading-snug opacity-60">
           Set your daily activity goal
         </Text>
       </div>
@@ -68,9 +68,9 @@ function Counter() {
       >
         <HiMinus size={18} />
       </Button>
-      <div className="w-full flex items-center flex-col">
+      <div className="flex w-full flex-col items-center">
         <Text className="text-5xl tabular-nums">{count}</Text>
-        <Text className="text-sm font-medium opacity-50 leading-none">
+        <Text className="text-sm font-medium leading-none opacity-50">
           CALORIES/DAY
         </Text>
       </div>

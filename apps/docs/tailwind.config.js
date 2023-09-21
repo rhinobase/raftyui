@@ -1,6 +1,5 @@
 const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 const { join } = require("path");
-const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -113,5 +112,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), "prettier-plugin-tailwindcss"],
+  plugins: [require("@tailwindcss/typography")],
 };

@@ -37,7 +37,7 @@ export const DrawerOverlay = React.forwardRef<
     <DialogPrimitive.Overlay
       {...props}
       className={classNames(
-        "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-sm",
+        "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 backdrop-blur-sm dark:bg-black/60",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className,

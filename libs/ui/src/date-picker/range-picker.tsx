@@ -39,7 +39,7 @@ export function RangePicker({ className, ...props }: RangePicker) {
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto !p-0 border-none" align="start">
+        <PopoverContent className="w-auto border-none !p-0" align="start">
           <Calendar
             initialFocus
             mode="range"

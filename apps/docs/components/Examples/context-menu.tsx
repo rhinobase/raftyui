@@ -16,7 +16,7 @@ import {
 export const context_menu_examples = {
   "context-menu:usage": (
     <ContextMenu>
-      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] border-2 border-dotted dark:border-secondary-700">
+      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
         Right Click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -45,7 +45,7 @@ export const context_menu_examples = {
   ),
   "context-menu:size": (
     <ContextMenu size="sm">
-      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] border-2 border-dotted dark:border-secondary-700">
+      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
         Right Click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -74,48 +74,48 @@ export const context_menu_examples = {
   ),
   "context-menu:barebone": (
     <ContextMenu isBarebone>
-      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] border-2 border-dotted dark:border-secondary-700">
+      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
         Right Click here
       </ContextMenuTrigger>
-      <ContextMenuContent className="dark:bg-secondary-800 bg-white p-1  text-sm rounded-md w-[200px] space-y-1.5">
-        <ContextMenuItem className="hover:bg-secondary-200 px-2 rounded-md dark:hover:bg-secondary-700  py-1 cursor-pointer">
+      <ContextMenuContent className="dark:bg-secondary-800 w-[200px] space-y-1.5  rounded-md bg-white p-1 text-sm">
+        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md  px-2 py-1">
           Back
         </ContextMenuItem>
         <ContextMenuSub>
-          <ContextMenuSubTrigger className="hover:bg-secondary-200 cursor-pointer px-2 rounded-md flex items-center w-full justify-between dark:hover:bg-secondary-700 hover:border-none py-1">
+          <ContextMenuSubTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex w-full cursor-pointer items-center justify-between rounded-md px-2 py-1 hover:border-none">
             More Tools
           </ContextMenuSubTrigger>
-          <ContextMenuSubContent className="dark:bg-secondary-800 cursor-pointer bg-white p-1 w-[180px] ml-1 rounded-md text-sm py-2 space-y-2">
-            <ContextMenuItem className="hover:bg-secondary-200 cursor-pointer px-2 rounded-md dark:hover:bg-secondary-700 hover:border-none py-1">
+          <ContextMenuSubContent className="dark:bg-secondary-800 ml-1 w-[180px] cursor-pointer space-y-2 rounded-md bg-white p-1 py-2 text-sm">
+            <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1 hover:border-none">
               Save Page As...
             </ContextMenuItem>
             <ContextMenuSeparator />
-            <ContextMenuItem className="hover:bg-secondary-200 cursor-pointer px-2 rounded-md dark:hover:bg-secondary-700 hover:border-none py-1">
+            <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1 hover:border-none">
               Developer Tools
             </ContextMenuItem>
           </ContextMenuSubContent>
         </ContextMenuSub>
-        <ContextMenuSeparator className="border dark:border-secondary-700 border-secondary-200" />
-        <ContextMenuCheckboxItem className="hover:bg-secondary-200 cursor-pointer px-2 rounded-md dark:hover:bg-secondary-700 hover:border-none py-1">
+        <ContextMenuSeparator className="dark:border-secondary-700 border-secondary-200 border" />
+        <ContextMenuCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1 hover:border-none">
           Show Bookmarks
         </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem className="hover:bg-secondary-200 cursor-pointer px-2 rounded-md dark:hover:bg-secondary-700 hover:border-none py-1">
+        <ContextMenuCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1 hover:border-none">
           Show Full URLs
         </ContextMenuCheckboxItem>
-        <ContextMenuSeparator className="border  dark:border-secondary-700 border-secondary-200" />
-        <ContextMenuLabel className="px-1 cursor-context-menu rounded-md  dark:text-secondary-400 hover:border-none text-xs">
+        <ContextMenuSeparator className="dark:border-secondary-700  border-secondary-200 border" />
+        <ContextMenuLabel className="dark:text-secondary-400 cursor-context-menu rounded-md  px-1 text-xs hover:border-none">
           People
         </ContextMenuLabel>
         <ContextMenuRadioGroup>
           <ContextMenuRadioItem
             value="1"
-            className="hover:bg-secondary-200 px-1 rounded-md cursor-pointer dark:hover:bg-secondary-700 hover:border-none py-1 "
+            className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-1 py-1 hover:border-none "
           >
             Jack
           </ContextMenuRadioItem>
           <ContextMenuRadioItem
             value="2"
-            className="hover:bg-secondary-200 px-1 rounded-md cursor-pointer dark:hover:bg-secondary-700 hover:border-none py-1"
+            className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-1 py-1 hover:border-none"
           >
             Denial
           </ContextMenuRadioItem>
@@ -125,12 +125,12 @@ export const context_menu_examples = {
   ),
   "context-menu:unstyled": (
     <ContextMenu>
-      <ContextMenuTrigger className="flex items-center justify-center w-full h-[200px] border-2 border-dotted dark:border-secondary-700">
+      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
         Right Click here
       </ContextMenuTrigger>
       <ContextMenuContent
         isUnstyled
-        className="dark:bg-secondary-800 p-1 w-[200px] bg-white rounded-md text-sm "
+        className="dark:bg-secondary-800 w-[200px] rounded-md bg-white p-1 text-sm "
       >
         <ContextMenuItem>Back</ContextMenuItem>
         <ContextMenuSub>

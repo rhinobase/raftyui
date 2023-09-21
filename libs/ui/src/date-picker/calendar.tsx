@@ -18,8 +18,8 @@ export function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        fullScreen ? "px-8 py-10 w-full" : "p-3 w-max",
-        "dark:bg-secondary-800 dark:text-secondary-100 border dark:border-secondary-700 rounded-lg",
+        fullScreen ? "w-full px-8 py-10" : "w-max p-3",
+        "dark:bg-secondary-800 dark:text-secondary-100 dark:border-secondary-700 rounded-lg border",
         className,
       )}
       classNames={{
@@ -83,10 +83,10 @@ export function Calendar({
       }}
       components={{
         IconLeft: () => (
-          <ChevronLeftIcon className="h-4 w-4 dark:text-secondary-100" />
+          <ChevronLeftIcon className="dark:text-secondary-100 h-4 w-4" />
         ),
         IconRight: () => (
-          <ChevronRightIcon className="h-4 w-4 dark:text-secondary-100" />
+          <ChevronRightIcon className="dark:text-secondary-100 h-4 w-4" />
         ),
       }}
       {...props}

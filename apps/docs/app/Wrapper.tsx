@@ -53,9 +53,9 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
   return (
     <header
       className={classNames(
-        "sticky top-0 z-50 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-secondary-900/5 transition duration-500 dark:shadow-none sm:px-6 md:gap-6 lg:px-8",
+        "shadow-secondary-900/5 sticky top-0 z-50 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md transition duration-500 dark:shadow-none sm:px-6 md:gap-6 lg:px-8",
         isScrolled
-          ? "backdrop-blur dark:bg-secondary-950/95 dark:[@supports(backdrop-filter:blur(0))]:bg-secondary-950/75"
+          ? "dark:bg-secondary-950/95 dark:[@supports(backdrop-filter:blur(0))]:bg-secondary-950/75 backdrop-blur"
           : "dark:bg-transparent",
       )}
     >
@@ -67,7 +67,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
       <div className="relative flex flex-grow basis-0 items-center">
         <Link href="/" aria-label="Home page">
           <Logomark className="h-9 w-9 lg:hidden" />
-          <Logo className="hidden h-9 w-auto fill-secondary-700 dark:fill-primary-100 lg:block" />
+          <Logo className="fill-secondary-700 dark:fill-primary-100 hidden h-9 w-auto lg:block" />
         </Link>
       </div>
       <div className="relative flex basis-0 items-center justify-end gap-1 md:flex-grow md:gap-2 lg:gap-4">
@@ -117,7 +117,7 @@ export function Wrapper({ children }: Wrapper) {
           setSearchOpen={setSearchOpen}
         />
         {isHomePage && <Hero />}
-        <div className="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+        <div className="max-w-8xl relative mx-auto flex w-full flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
           {component}
         </div>
       </div>

@@ -135,12 +135,12 @@ export const accordion_examples = {
     >
       <AccordionItem
         value="1"
-        className="bg-white dark:bg-secondary-800 dark:text-white shadow-md p-2 px-4 rounded-lg"
+        className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white"
       >
-        <AccordionTrigger className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full">
+        <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
           Section 1 title
         </AccordionTrigger>
-        <AccordionContent className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
@@ -148,12 +148,12 @@ export const accordion_examples = {
       </AccordionItem>
       <AccordionItem
         value="2"
-        className="bg-white dark:bg-secondary-800 dark:text-white shadow-md p-2 px-4 rounded-lg"
+        className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white"
       >
-        <AccordionTrigger className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full">
+        <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
           Section 2 title
         </AccordionTrigger>
-        <AccordionContent className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
@@ -165,11 +165,11 @@ export const accordion_examples = {
     <Accordion collapsible type="single" defaultValue="1">
       <AccordionItem
         value="1"
-        className="bg-white dark:bg-secondary-800 dark:text-white p-2 px-4 rounded-lg"
+        className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 dark:text-white"
       >
         <AccordionTrigger
           isUnstyled
-          className="flex items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full"
+          className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180"
         >
           Section 1 title
         </AccordionTrigger>

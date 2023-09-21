@@ -121,8 +121,8 @@ export const menu_examples = {
     <Menu isBarebone>
       <MenuTrigger
         size="sm"
-        className="flex items-center space-x-2 px-3 py-2  bg-secondary-200 dark:bg-secondary-600 text-black rounded-md border-none dark:text-white dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark"
-        rightIcon={<HiOutlineChevronDown className="w-5 h-5" />}
+        className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
+        rightIcon={<HiOutlineChevronDown className="h-5 w-5" />}
       >
         Actions
       </MenuTrigger>
@@ -130,12 +130,12 @@ export const menu_examples = {
       <MenuContent
         isArrow={false}
         sideOffset={5}
-        className="bg-secondary-100 text-black  dark:text-white rounded-md shadow-md p-2 space-y-1  dark:bg-secondary-800 dark:text-primary "
+        className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-2 text-black  shadow-md dark:text-white "
       >
-        <MenuItem className="hover:bg-primary-dark rounded-md p-1 hover:bg-secondary-300 dark:hover:bg-secondary-700 ">
+        <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 ">
           New Tab
         </MenuItem>
-        <MenuItem className="hover:bg-primary-dark p-1 hover:bg-secondary-300  rounded-md dark:hover:bg-secondary-700 ">
+        <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700  rounded-md p-1 ">
           New Window
         </MenuItem>
         <MenuItem className="text-primary dark:text-secondary rounded-md p-1">
@@ -151,7 +151,7 @@ export const menu_examples = {
       </MenuTrigger>
       <MenuContent
         isUnstyled
-        className="dark:bg-secondary-800 bg-white rounded-md p-2"
+        className="dark:bg-secondary-800 rounded-md bg-white p-2"
       >
         <MenuItem>New Tab</MenuItem>
         <MenuItem>New Window</MenuItem>

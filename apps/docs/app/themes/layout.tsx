@@ -53,27 +53,27 @@ export default function ThemeBuilderLayout({
 
   return (
     <div
-      className={`md:py-10 px-4 py-4 md:px-10 lg:px-0 w-full theme-${color}`}
+      className={`w-full px-4 py-4 md:px-10 md:py-10 lg:px-0 theme-${color}`}
     >
-      <div className="flex justify-start lg:justify-between flex-col lg:flex-row">
+      <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
-          <h1 className="text-3xl md:text-5xl font-bold">Make it yours.</h1>
+          <h1 className="text-3xl font-bold md:text-5xl">Make it yours.</h1>
           <h4 className="text-secondary-400 text-sm lg:text-lg">
             Hand-picked themes that you can copy and paste into your apps.
           </h4>
         </div>
-        <div className="flex items-center gap-1.5 md:gap-3 py-2">
+        <div className="flex items-center gap-1.5 py-2 md:gap-3">
           {defaults.map((c) => (
             <Tooltip key={c}>
               <TooltipTrigger asChild>
                 <Button
                   key={c}
                   size="fab"
-                  className={`${ColorTheme[c]} !p-1 min-h-[26px] min-w-[26px]`}
+                  className={`${ColorTheme[c]} min-h-[26px] min-w-[26px] !p-1`}
                   onClick={() => changeColor(c as keyof typeof ColorTheme)}
                 >
                   {color == c && (
-                    <HiCheck className="text-white stroke-1 font-bold" />
+                    <HiCheck className="stroke-1 font-bold text-white" />
                   )}
                 </Button>
               </TooltipTrigger>
@@ -83,7 +83,7 @@ export default function ThemeBuilderLayout({
           <div className="flex-1 md:hidden" />
           <CustomizeMenu color={color} changeColor={changeColor} />
           <Dialog>
-            <DialogTrigger variant="outline" className="md:block hidden">
+            <DialogTrigger variant="outline" className="hidden md:block">
               Copy code
             </DialogTrigger>
             <DialogTrigger
@@ -103,7 +103,7 @@ export default function ThemeBuilderLayout({
               </div>
               <Fence
                 language="js"
-                className="rounded-xl px-5 py-4 overflow-x-auto"
+                className="overflow-x-auto rounded-xl px-5 py-4"
               >
                 {`const colors = require('tailwindcss/colors')
 
@@ -159,7 +159,7 @@ function CustomizeMenu({
         </div>
       </PopoverTrigger>
       <PopoverContent showArrow align="end">
-        <div className="w-[300px] p-2 space-y-3">
+        <div className="w-[300px] space-y-3 p-2">
           <div className="space-y-1.5">
             <h5 className="text-xs font-medium">Color</h5>
             <div className="grid grid-cols-3 gap-2">
@@ -169,10 +169,10 @@ function CustomizeMenu({
                   size="sm"
                   isActive={color == c}
                   variant="outline"
-                  className="capitalize !justify-start"
+                  className="!justify-start capitalize"
                   leftIcon={
                     <div
-                      className={`h-3 w-3 rounded-full ${value} flex justify-center items-center`}
+                      className={`h-3 w-3 rounded-full ${value} flex items-center justify-center`}
                     />
                   }
                   onClick={() => changeColor(c as keyof typeof ColorTheme)}
@@ -206,7 +206,7 @@ function CustomizeMenu({
             </div>
           </div>
         </div>
-        <PopoverClose className="p-1 absolute top-2 right-2">
+        <PopoverClose className="absolute right-2 top-2 p-1">
           <HiX className="opacity-60" />
         </PopoverClose>
       </PopoverContent>

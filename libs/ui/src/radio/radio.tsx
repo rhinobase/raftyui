@@ -61,7 +61,7 @@ export const RadioGroupItem = React.forwardRef<
         size === "sm" && "h-3.5 w-3.5",
         size === "md" && "h-5 w-5",
         size === "lg" && "h-6 w-6",
-        "aspect-square  rounded-full border border-secondary-400 dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "border-secondary-400  dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus-visible:ring-ring aspect-square rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       ref={forwardedref}
@@ -81,7 +81,7 @@ export const RadioGroupItem = React.forwardRef<
 
   if (children)
     return (
-      <div className="flex items-center w-max">
+      <div className="flex w-max items-center">
         {radioItem}
         <Label
           htmlFor={props.id}

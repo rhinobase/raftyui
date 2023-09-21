@@ -32,13 +32,13 @@ export function TeamMembersExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="font-semibold text-xl leading-snug">Team Members</Text>
+        <Text className="text-xl font-semibold leading-snug">Team Members</Text>
         <Text className="text-sm opacity-60">
           Invite your team members to collaborate.
         </Text>
       </div>
       {MEMBERS.map(({ name, email }) => (
-        <div key={email} className="flex gap-2.5 items-center">
+        <div key={email} className="flex items-center gap-2.5">
           <Avatar
             className="hidden md:block"
             name={name}
@@ -46,7 +46,7 @@ export function TeamMembersExample() {
           />
           <div>
             <Text className="font-semibold leading-snug">{name}</Text>
-            <Text className="text-sm opacity-50 leading-snug">{email}</Text>
+            <Text className="text-sm leading-snug opacity-50">{email}</Text>
           </div>
           <div className="flex-1" />
           <MemberRoleMenu />
@@ -119,11 +119,11 @@ function MemberRoleMenu() {
                     key={id}
                     value={title}
                     onSelect={dispatch}
-                    className="!px-3 !py-2 !rounded"
+                    className="!rounded !px-3 !py-2"
                   >
                     <div>
-                      <Text className="leading-snug capitalize">{title}</Text>
-                      <Text className="opacity-50 leading-snug">
+                      <Text className="capitalize leading-snug">{title}</Text>
+                      <Text className="leading-snug opacity-50">
                         {description}
                       </Text>
                     </div>

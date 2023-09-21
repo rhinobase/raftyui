@@ -119,7 +119,7 @@ export const AccordionTrigger = React.forwardRef<
           unstyle
             ? className
             : classNames(
-                "text-secondary-700 dark:text-secondary-300 group flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180 w-full",
+                "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
                 accordionTriggerClasses.size[size],
                 accordionTriggerClasses.variant[variant],
                 className,
@@ -137,7 +137,7 @@ export const AccordionTrigger = React.forwardRef<
           </div>
         )}
         {!openIcon && !closeIcon && showIcon && (
-          <ChevronDownIcon className="h-4 w-4 stroke-2 shrink-0 transition-transform duration-200" />
+          <ChevronDownIcon className="h-4 w-4 shrink-0 stroke-2 transition-transform duration-200" />
         )}
       </AccordionPrimitive.Trigger>
     );
@@ -172,7 +172,7 @@ export const AccordionContent = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "dark:text-secondary-100 w-full overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+              "dark:text-secondary-100 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down w-full overflow-hidden transition-all",
               accordionContentClasses.size[size],
               className,
             )

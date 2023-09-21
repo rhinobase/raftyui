@@ -29,7 +29,7 @@ export function MobileNavigation({ isOpen, setOpen }: MobileNavigation) {
     >
       <DrawerOverlay />
       <DrawerContent className="!w-full !max-w-[70vw] !p-0">
-        <div className="sticky top-0 z-[60] bg-white dark:bg-secondary-800 p-6">
+        <div className="dark:bg-secondary-800 sticky top-0 z-[60] bg-white p-6">
           <Link href="/" aria-label="Home page">
             <Logomark className="h-9 w-9" />
           </Link>

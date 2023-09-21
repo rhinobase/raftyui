@@ -19,7 +19,7 @@ import {
 
 export const command_examples = {
   "command:usage": (
-    <Command className="rounded-lg border dark:border-secondary-700 shadow-md">
+    <Command className="dark:border-secondary-700 rounded-lg border shadow-md">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>

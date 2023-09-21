@@ -75,9 +75,9 @@ export function PaymentMethodExample() {
               onClick={() => setSelected(index)}
               className={classNames(
                 isSelect == index
-                  ? "ring-2 ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400"
+                  ? "ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400 ring-2"
                   : "dark:border-secondary-700",
-                "w-full p-4 flex justify-center items-center flex-col gap-2 border rounded-md dark:hover:bg-secondary-900/70 hover:bg-secondary-50 transition-all ease-in-out cursor-pointer",
+                "dark:hover:bg-secondary-900/70 hover:bg-secondary-50 flex w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-md border p-4 transition-all ease-in-out",
               )}
             >
               <item.logo
@@ -100,7 +100,7 @@ export function PaymentMethodExample() {
           <Label>Card Number</Label>
           <InputField />
         </FieldControl>
-        <div className="flex gap-2 w-full items-center">
+        <div className="flex w-full items-center gap-2">
           <FieldControl name="month">
             <Label>Expires</Label>
             <ExpireMonthSelect />
@@ -113,7 +113,7 @@ export function PaymentMethodExample() {
             <Label>CVC</Label>
             <InputField
               placeholder="CVC"
-              className="placeholder:text-sm !py-2"
+              className="!py-2 placeholder:text-sm"
             />
           </FieldControl>
         </div>
@@ -129,7 +129,7 @@ function ExpireMonthSelect() {
     <Selector value={selected}>
       {MONTHS.map((month) => (
         <CommandItem key={month} value={month} onSelect={setSelected}>
-          <div className="flex items-center gap-2 w-full">
+          <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
               {selected == month && <HiCheck className="opacity-60" />}
             </div>
@@ -149,7 +149,7 @@ function ExpireYearSelect() {
     <Selector value={selected}>
       {YEARS.map((year) => (
         <CommandItem key={year} value={year} onSelect={setSelected}>
-          <div className="flex items-center gap-2 w-full ">
+          <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
               {selected == year && <HiCheck className="opacity-60" />}
             </div>

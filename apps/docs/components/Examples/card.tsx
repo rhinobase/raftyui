@@ -58,9 +58,9 @@ export const card_examples = {
   "card:barebone": (
     <Card
       isBarebone
-      className="bg-white p-4 shadow-md rounded-lg dark:bg-secondary-800 space-y-4 dark:text-white"
+      className="dark:bg-secondary-800 space-y-4 rounded-lg bg-white p-4 shadow-md dark:text-white"
     >
-      <CardHeader className="font-semibold text-xl">
+      <CardHeader className="text-xl font-semibold">
         Customer dashboard
       </CardHeader>
       <CardContent>

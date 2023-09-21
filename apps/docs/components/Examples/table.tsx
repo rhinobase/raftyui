@@ -166,61 +166,61 @@ export const table_examples = {
       >
         <TableHead className="bg-secondary-100 dark:bg-secondary-700/80">
           <Tr>
-            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+            <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
               To Convert
             </Th>
-            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+            <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
               Into
             </Th>
-            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+            <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
               Multiply By
             </Th>
           </Tr>
         </TableHead>
         <TableBody className="dark:bg-secondary-700/40 bg-white">
           <Tr>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               inches
             </Td>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               millimetres (mm)
             </Td>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               25.4
             </Td>
           </Tr>
           <Tr>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               feet
             </Td>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               centimetres (cm)
             </Td>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               30.48
             </Td>
           </Tr>
           <Tr>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               yards
             </Td>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               metres (m)
             </Td>
-            <Td className="px-4 py-3 text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm">
+            <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
               0.91444
             </Td>
           </Tr>
         </TableBody>
         <TableFooter className="bg-secondary-100 dark:bg-secondary-700/80">
           <Tr>
-            <Th className="px-4 py-3text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+            <Th className="py-3text-secondary-600 dark:text-secondary-300 px-4 text-left text-sm font-semibold">
               To Convert
             </Th>
-            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+            <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
               Into
             </Th>
-            <Th className="px-4 py-3 text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold">
+            <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
               Multiply By
             </Th>
           </Tr>

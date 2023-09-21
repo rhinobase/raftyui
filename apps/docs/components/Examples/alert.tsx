@@ -16,7 +16,7 @@ export const alert_examples = {
     </Alert>
   ),
   "alert:status": (
-    <div className="space-y-4 w-full">
+    <div className="w-full space-y-4">
       <Alert>
         <AlertIcon />
         <AlertTitle>Title</AlertTitle>
@@ -40,7 +40,7 @@ export const alert_examples = {
     </div>
   ),
   "alert:variant": (
-    <div className="space-y-4 w-full">
+    <div className="w-full space-y-4">
       <Alert>
         <AlertIcon />
         <AlertTitle>Title</AlertTitle>
@@ -66,7 +66,7 @@ export const alert_examples = {
   "alert:barebone": (
     <Alert
       isBarebone
-      className="flex items-center w-full h-16 gap-1 p-4 border dark:text-white rounded-md bg-green-300/40 border-green-500"
+      className="flex h-16 w-full items-center gap-1 rounded-md border border-green-500 bg-green-300/40 p-4 dark:text-white"
     >
       <AlertIcon className="h-7 w-7" />
       <AlertTitle>Title</AlertTitle>
@@ -76,7 +76,7 @@ export const alert_examples = {
   "alert:unstyled": (
     <Alert
       isUnstyled
-      className="flex items-center w-full h-14 gap-1 p-4 border text-white rounded-md bg-red-400/50 border-red-500"
+      className="flex h-14 w-full items-center gap-1 rounded-md border border-red-500 bg-red-400/50 p-4 text-white"
     >
       <AlertIcon />
       <AlertTitle>Title</AlertTitle>

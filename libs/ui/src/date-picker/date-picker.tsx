@@ -21,7 +21,7 @@ export function DatePicker(props: DatePicker) {
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
-          className={classNames("!justify-start text-left font-normal w-full")}
+          className={classNames("w-full !justify-start text-left font-normal")}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
           {date ? (
@@ -35,7 +35,7 @@ export function DatePicker(props: DatePicker) {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-auto !p-0 border-0">
+      <PopoverContent align="start" className="w-auto border-0 !p-0">
         <Calendar
           mode="single"
           {...props}

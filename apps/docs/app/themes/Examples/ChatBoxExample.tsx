@@ -74,13 +74,13 @@ export function ChatBoxExample() {
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-4 justify-between items-center">
+      <div className="flex items-center justify-between gap-4">
         <Avatar
           name={USERS_DATA[3].name}
           src={`https://api.dicebear.com/7.x/notionists/svg?seed=${USERS_DATA[3].name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
         />
         <div>
-          <Text className="font-semibold text-sm leading-tight">
+          <Text className="text-sm font-semibold leading-tight">
             Jackson Lee
           </Text>
           <Text className="text-secondary-500 text-sm leading-tight">
@@ -95,7 +95,7 @@ export function ChatBoxExample() {
           Hi, how can I help you today?
         </Message>
         <div className="flex flex-row-reverse">
-          <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
+          <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
             Hey, I&apos;m having trouble with my account.
           </Message>
         </div>
@@ -103,20 +103,20 @@ export function ChatBoxExample() {
           What seems to be the problem?
         </Message>
         <div className="flex flex-row-reverse">
-          <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
+          <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
             I can&apos;t log in.
           </Message>
         </div>
         {messages &&
           messages.map((message, index) => (
             <div key={index} className="flex flex-row-reverse">
-              <Message className="bg-primary-500 dark:bg-primary-300/90 !text-white dark:!text-secondary-900 dark:!font-semibold">
+              <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
                 {message}
               </Message>
             </div>
           ))}
       </div>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <InputField
           ref={ref}
           placeholder="Type your message..."
@@ -157,14 +157,14 @@ function NewMessageDialog() {
         <TooltipContent>New message</TooltipContent>
       </Tooltip>
       <DialogOverlay />
-      <DialogContent className="!p-0 dark:!bg-secondary-900">
+      <DialogContent className="dark:!bg-secondary-900 !p-0">
         <DialogHeader className="!p-4">
           <DialogTitle>New message</DialogTitle>
           <Text className="text-sm leading-tight opacity-60">
             Invite a user to this thread. This will create a new group message.
           </Text>
         </DialogHeader>
-        <Command className="border-y dark:border-secondary-700 !rounded-none dark:!bg-secondary-900">
+        <Command className="dark:border-secondary-700 dark:!bg-secondary-900 !rounded-none border-y">
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
@@ -175,13 +175,13 @@ function NewMessageDialog() {
                   className="!rounded-lg"
                   onSelect={() => dispatch(user.id)}
                 >
-                  <div className="flex w-full gap-3 items-center">
+                  <div className="flex w-full items-center gap-3">
                     <Avatar
                       name={user.name}
                       src={`https://api.dicebear.com/7.x/notionists/svg?seed=${user.name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
                     />
                     <div>
-                      <Text className="font-semibold text-sm leading-tight">
+                      <Text className="text-sm font-semibold leading-tight">
                         {user.name}
                       </Text>
                       <Text className="text-secondary-500 text-sm leading-tight">
@@ -198,7 +198,7 @@ function NewMessageDialog() {
             </CommandGroup>
           </CommandList>
         </Command>
-        <DialogFooter className="!p-4 !justify-between items-center">
+        <DialogFooter className="items-center !justify-between !p-4">
           {selected.length > 0 ? (
             <AvatarGroup>
               {selected.map((user_index) => {
@@ -213,7 +213,7 @@ function NewMessageDialog() {
               })}
             </AvatarGroup>
           ) : (
-            <Text className="text-sm dark:text-secondary-500 text-secondary-400">
+            <Text className="dark:text-secondary-500 text-secondary-400 text-sm">
               Select users to add to this thread.
             </Text>
           )}
@@ -238,7 +238,7 @@ function Message({
   return (
     <Text
       className={classNames(
-        "px-3 py-1.5 rounded-md max-w-[75%] text-sm font-medium text-secondary-800 dark:text-secondary-100 leading-snug",
+        "text-secondary-800 dark:text-secondary-100 max-w-[75%] rounded-md px-3 py-1.5 text-sm font-medium leading-snug",
         className,
       )}
     >

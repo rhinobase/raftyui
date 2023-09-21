@@ -24,14 +24,14 @@ export function ReportIssueExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="font-semibold text-2xl leading-snug">
+        <Text className="text-2xl font-semibold leading-snug">
           Report an issue
         </Text>
-        <Text className="opacity-60 text-sm">
+        <Text className="text-sm opacity-60">
           What area are you having problems with?
         </Text>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         <FieldControl name="team">
           <Label>Team</Label>
           <RoleSelector />
@@ -67,7 +67,7 @@ function RoleSelector() {
     <Selector value={selected}>
       {ROLES.map((role) => (
         <CommandItem key={role} value={role} onSelect={setSelected}>
-          <div className="flex items-center gap-2 w-full">
+          <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
             {selected == role && <HiCheck className="opacity-60" />}
@@ -85,7 +85,7 @@ function SecurityLevel() {
     <Selector value={selected}>
       {SEVERITYS.map((severity) => (
         <CommandItem key={severity} value={severity} onSelect={setSelected}>
-          <div className="flex items-center gap-2 w-full">
+          <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />
             {selected == severity && <HiCheck className="opacity-60" />}

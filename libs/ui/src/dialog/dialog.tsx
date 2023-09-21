@@ -108,7 +108,7 @@ export const DialogOverlay = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "fixed inset-0 z-50 bg-white/40 dark:bg-black/40 backdrop-blur-sm",
+              "fixed inset-0 z-50 bg-white/40 backdrop-blur-sm dark:bg-black/40",
               "data-[state=open]:animate-in data-[state=open]:fade-in-0",
               "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
               className,
@@ -162,9 +162,9 @@ export const DialogContent = React.forwardRef<
               ? className
               : classNames(
                   dialogContentClasses.size[size],
-                  "fixed left-[50%] top-[50%] z-50 w-full -translate-x-1/2 -translate-y-1/2 shadow-lg rounded-lg",
-                  "bg-white dark:bg-secondary-800 dark:text-secondary-50",
-                  "duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+                  "fixed left-[50%] top-[50%] z-50 w-full -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg",
+                  "dark:bg-secondary-800 dark:text-secondary-50 bg-white",
+                  "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
                   className,
                 )
           }
@@ -172,7 +172,7 @@ export const DialogContent = React.forwardRef<
         >
           {children}
           {showCloseButton && (
-            <DialogPrimitive.Close className="absolute right-4 top-4 rounded p-1 transition-all hover:bg-secondary-200/70 dark:hover:bg-secondary-500/70 focus:outline-none">
+            <DialogPrimitive.Close className="hover:bg-secondary-200/70 dark:hover:bg-secondary-500/70 absolute right-4 top-4 rounded p-1 transition-all focus:outline-none">
               <XMarkIcon className="h-4 w-4 stroke-2 " />
             </DialogPrimitive.Close>
           )}
@@ -288,7 +288,7 @@ export const DialogDescription = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames("text-sm text-muted-foreground", className)
+          : classNames("text-muted-foreground text-sm", className)
       }
       ref={forwardedRef}
     />

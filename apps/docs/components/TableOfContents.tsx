@@ -64,7 +64,7 @@ export function TableOfContents({
           <>
             <h2
               id="on-this-page-title"
-              className="font-display text-sm font-medium text-secondary-900 dark:text-white"
+              className="font-display text-secondary-900 text-sm font-medium dark:text-white"
             >
               On this page
             </h2>
@@ -77,7 +77,7 @@ export function TableOfContents({
                       className={classNames(
                         isActive(section)
                           ? "text-primary-500 dark:text-primary-400"
-                          : "font-normal text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300",
+                          : "text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300 font-normal",
                       )}
                     >
                       {section.title}
@@ -86,7 +86,7 @@ export function TableOfContents({
                   {section.children.length > 0 && (
                     <ol
                       role="list"
-                      className="mt-2 space-y-3 pl-5 text-secondary-500 dark:text-secondary-400"
+                      className="text-secondary-500 dark:text-secondary-400 mt-2 space-y-3 pl-5"
                     >
                       {section.children.map((subSection) => (
                         <li key={subSection.id}>

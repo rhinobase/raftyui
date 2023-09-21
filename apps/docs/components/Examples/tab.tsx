@@ -107,20 +107,20 @@ export const tab_examples = {
       isBarebone
       className="w-full items-stretch data-[orientation=vertical]:flex"
     >
-      <TabList className="dark:border-black dark:border-secondary-700 border-b">
+      <TabList className="dark:border-secondary-700 border-b dark:border-black">
         <TabTrigger
           value="tab1"
-          className="text-secondary-500 dark:text-secondary-400 transition-colors
-              data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black
-              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed p-4 data-[state=active]:border-b-2 data-[state=active]:border-blue-500 dark:data-[state=active]:border-secondary-500"
+          className="text-secondary-500 dark:text-secondary-400 data-[state=active]:dark:text-secondary-100
+              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
+              dark:data-[state=active]:border-secondary-500 p-4 transition-colors data-[disabled]:cursor-not-allowed data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:text-black"
         >
           Tab1
         </TabTrigger>
         <TabTrigger
           value="tab2"
-          className="text-secondary-500 dark:text-secondary-400 transition-colors
-              data-[state=active]:dark:text-secondary-100 data-[state=active]:text-black
-              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600 data-[disabled]:cursor-not-allowed p-4 data-[state=active]:border-b-2 data-[state=active]:border-blue-500 dark:data-[state=active]:border-secondary-500"
+          className="text-secondary-500 dark:text-secondary-400 data-[state=active]:dark:text-secondary-100
+              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
+              dark:data-[state=active]:border-secondary-500 p-4 transition-colors data-[disabled]:cursor-not-allowed data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:text-black"
         >
           Tab2
         </TabTrigger>

@@ -59,20 +59,20 @@ export const ImageDialog: Story = {
       <DialogTrigger>Open</DialogTrigger>
       <DialogOverlay>
         <DialogClose asChild>
-          <Button size="icon" variant="ghost" className="fixed top-4 right-4">
-            <XMarkIcon className="w-5 h-5 text-white" />
+          <Button size="icon" variant="ghost" className="fixed right-4 top-4">
+            <XMarkIcon className="h-5 w-5 text-white" />
           </Button>
         </DialogClose>
       </DialogOverlay>
       <DialogContent
         isUnstyled
-        className="z-50 max-w-5xl w-full h-max fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="fixed left-1/2 top-1/2 z-50 h-max w-full max-w-5xl -translate-x-1/2 -translate-y-1/2"
         showCloseButton={false}
       >
-        <Button size="icon" className="fixed -right-60 text-white top-1/2">
-          <ChevronRightIcon className="w-7 h-7" />
+        <Button size="icon" className="fixed -right-60 top-1/2 text-white">
+          <ChevronRightIcon className="h-7 w-7" />
         </Button>
-        <Button size="icon" className="fixed -left-60 text-white top-1/2">
+        <Button size="icon" className="fixed -left-60 top-1/2 text-white">
           <ChevronLeftIcon className="h-7 w-7" />
         </Button>
         <img

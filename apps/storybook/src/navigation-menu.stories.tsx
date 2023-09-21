@@ -20,7 +20,7 @@ type Story = StoryObj<typeof NavigationMenu>;
 export const Default: Story = {
   render: () => (
     <>
-      <div className="h-screen w-full mx-auto">
+      <div className="mx-auto h-screen w-full">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>

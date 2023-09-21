@@ -30,21 +30,21 @@ export const list_examples = {
     <List>
       <ListItem
         isUnstyled
-        className="flex gap-2 items-center font-bold text-xl "
+        className="flex items-center gap-2 text-xl font-bold "
       >
         <HiCheckCircle />
         Lorem ipsum dolor sit amet, consectetur adipisicing elit
       </ListItem>
-      <ListItem className="flex gap-2 items-center">
+      <ListItem className="flex items-center gap-2">
         <HiCheckCircle />
         Assumenda, quia temporibus eveniet a libero incidunt suscipit
       </ListItem>
 
-      <ListItem className="flex gap-2 items-center">
+      <ListItem className="flex items-center gap-2">
         <HiCheckCircle />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
-      <ListItem className="flex gap-2 items-center">
+      <ListItem className="flex items-center gap-2">
         <HiCheckCircle />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>

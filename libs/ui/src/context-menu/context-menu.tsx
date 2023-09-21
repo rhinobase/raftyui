@@ -175,7 +175,7 @@ export const ContextMenuCheckboxItem = forwardRef<
           ? className
           : classNames(
               checkboxItemClasses.size[size],
-              "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded pl-8 pr-2 py-1.5 font-medium outline-none",
+              "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded py-1.5 pl-8 pr-2 font-medium outline-none",
               className,
             )
       }
@@ -221,7 +221,7 @@ export const ContextMenuRadioItem = forwardRef<
           ? className
           : classNames(
               radioItemClasses.size[size],
-              "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded pl-8 pr-2 py-1.5 font-medium outline-none",
+              "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded py-1.5 pl-8 pr-2 font-medium outline-none",
               className,
             )
       }
@@ -229,7 +229,7 @@ export const ContextMenuRadioItem = forwardRef<
     >
       {children}
       <ContextMenuPrimitive.ItemIndicator className="absolute left-2">
-        <div className="h-2 w-2 bg-secondary-600 dark:bg-secondary-200 rounded-full" />
+        <div className="bg-secondary-600 dark:bg-secondary-200 h-2 w-2 rounded-full" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.RadioItem>
   );

@@ -171,7 +171,7 @@ function SearchResult({
 
   return (
     <li
-      className="group block cursor-default rounded-lg px-3 py-2 aria-selected:bg-secondary-100 dark:aria-selected:bg-secondary-700/30"
+      className="aria-selected:bg-secondary-100 dark:aria-selected:bg-secondary-700/30 group block cursor-default rounded-lg px-3 py-2"
       aria-labelledby={`${id}-hierarchy ${id}-title`}
       {...autocomplete.getItemProps({
         item: result,
@@ -181,7 +181,7 @@ function SearchResult({
       <div
         id={`${id}-title`}
         aria-hidden="true"
-        className="text-sm text-secondary-700 group-aria-selected:text-primary-600 dark:text-secondary-300 dark:group-aria-selected:text-primary-400"
+        className="text-secondary-700 group-aria-selected:text-primary-600 dark:text-secondary-300 dark:group-aria-selected:text-primary-400 text-sm"
       >
         <HighlightQuery text={result.title} query={query} />
       </div>
@@ -189,7 +189,7 @@ function SearchResult({
         <div
           id={`${id}-hierarchy`}
           aria-hidden="true"
-          className="mt-0.5 truncate whitespace-nowrap text-xs text-secondary-500 dark:text-secondary-400"
+          className="text-secondary-500 dark:text-secondary-400 mt-0.5 truncate whitespace-nowrap text-xs"
         >
           {hierarchy.map((item, itemIndex, items) => (
             <Fragment key={itemIndex}>
@@ -198,7 +198,7 @@ function SearchResult({
                 className={
                   itemIndex === items.length - 1
                     ? "sr-only"
-                    : "mx-2 text-secondary-300 dark:text-secondary-700"
+                    : "text-secondary-300 dark:text-secondary-700 mx-2"
                 }
               >
                 /
@@ -222,9 +222,9 @@ function SearchResults({
 }) {
   if (collection.items.length === 0) {
     return (
-      <p className="px-4 py-8 text-center text-sm text-secondary-700 dark:text-secondary-400">
+      <p className="text-secondary-700 dark:text-secondary-400 px-4 py-8 text-center text-sm">
         No results for &ldquo;
-        <span className="break-words text-secondary-900 dark:text-white">
+        <span className="text-secondary-900 break-words dark:text-white">
           {query}
         </span>
         &rdquo;
@@ -285,7 +285,7 @@ const SearchInput = forwardRef<
         />
         {autocompleteState.status === "stalled" && (
           <Suffix>
-            <LoadingIcon className="h-6 w-6 animate-spin stroke-secondary-200 text-secondary-400 dark:stroke-secondary-700 dark:text-secondary-500" />
+            <LoadingIcon className="stroke-secondary-200 text-secondary-400 dark:stroke-secondary-700 dark:text-secondary-500 h-6 w-6 animate-spin" />
           </Suffix>
         )}
       </InputGroup>
@@ -341,7 +341,7 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
       <DialogOverlay />
       <DialogContent
         showCloseButton={false}
-        className="!top-[15%] !-translate-y-0 !p-0 lg:max-w-[40rem] max-w-[370px]"
+        className="!top-[15%] max-w-[370px] !-translate-y-0 !p-0 lg:max-w-[40rem]"
       >
         <div {...autocomplete.getRootProps({})}>
           <form
@@ -358,7 +358,7 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
             />
             <div
               ref={panelRef}
-              className="rounded-b-md border-t border-secondary-200 bg-white px-2 py-3 empty:hidden dark:border-secondary-400/10 dark:bg-secondary-800"
+              className="border-secondary-200 dark:border-secondary-400/10 dark:bg-secondary-800 rounded-b-md border-t bg-white px-2 py-3 empty:hidden"
               {...autocomplete.getPanelProps({})}
             >
               {autocompleteState.isOpen && (

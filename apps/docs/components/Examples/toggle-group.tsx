@@ -34,23 +34,23 @@ export const toggle_group_examples = {
       type="single"
       defaultValue="1"
       isBarebone
-      className="flex w-full h-9"
+      className="flex h-9 w-full"
     >
       <ToggleGroupItem
         value="1"
-        className="border w-full   dark:text-white rounded-l-md  dark:data-[state=on]:bg-slate-500 dark:border-secondary-800 data-[state=on]:bg-blue-100 font-bold data-[state=on]:text-blue-600 "
+        className="dark:border-secondary-800 w-full   rounded-l-md border  font-bold data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 dark:text-white dark:data-[state=on]:bg-slate-500 "
       >
         1
       </ToggleGroupItem>
       <ToggleGroupItem
         value="2"
-        className="border w-full   dark:text-white  dark:data-[state=on]:bg-slate-500 data-[state=on]:bg-blue-100 dark:border-secondary-800 font-bold data-[state=on]:text-blue-600 "
+        className="dark:border-secondary-800 w-full   border  font-bold data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 dark:text-white dark:data-[state=on]:bg-slate-500 "
       >
         2
       </ToggleGroupItem>
       <ToggleGroupItem
         value="3"
-        className="border w-full dark:text-white  rounded-r-md  dark:data-[state=on]:bg-slate-500 dark:border-secondary-800 data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 font-bold"
+        className="dark:border-secondary-800 w-full rounded-r-md  border  font-bold data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 dark:text-white dark:data-[state=on]:bg-slate-500"
       >
         3
       </ToggleGroupItem>

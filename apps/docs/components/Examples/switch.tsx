@@ -4,7 +4,7 @@ export const switch_examples = {
   "switch:usage": <Switch />,
 
   "switch:size": (
-    <div className="flex gap-4 items-center">
+    <div className="flex items-center gap-4">
       <Switch size="sm" />
       <Switch size="md" />
       <Switch size="lg" />

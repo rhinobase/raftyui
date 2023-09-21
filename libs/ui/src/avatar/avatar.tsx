@@ -29,20 +29,20 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
     <div
       className={classNames(
         avatarClasses.size[avatarSize],
-        "relative overflow-hidden border-white dark:border-secondary-900 rounded-full group-data-[group=true]:absolute",
+        "dark:border-secondary-900 relative overflow-hidden rounded-full border-white group-data-[group=true]:absolute",
         className,
       )}
       style={style}
     >
       {name && src ? (
-        <img alt={name} src={src} className="object-cover w-full h-full" />
+        <img alt={name} src={src} className="h-full w-full object-cover" />
       ) : name ? (
         <img
           alt={name}
           src={`https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
             name,
           )}`}
-          className="object-cover w-full h-full"
+          className="h-full w-full object-cover"
         />
       ) : (
         <svg fill="currentColor" viewBox="0 0 24 24">

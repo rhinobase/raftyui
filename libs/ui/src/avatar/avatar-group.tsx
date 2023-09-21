@@ -35,7 +35,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
         <div
           {...props}
           className={classNames(
-            "group relative flex items-center w-[200px]",
+            "group relative flex w-[200px] items-center",
             className,
           )}
           data-group={true}

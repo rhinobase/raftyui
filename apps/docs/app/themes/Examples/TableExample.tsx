@@ -97,14 +97,14 @@ export function TableExample() {
     <div className="space-y-4">
       <div>
         <Text className="text-2xl font-semibold leading-snug">Payments</Text>
-        <Text className="text-sm opacity-60 leading-snug">
+        <Text className="text-sm leading-snug opacity-60">
           Manage your payments.
         </Text>
       </div>
       <div className="flex justify-between">
         <InputGroup>
           <Prefix>
-            <HiOutlineMagnifyingGlass className="stroke-2 text-secondary-400" />
+            <HiOutlineMagnifyingGlass className="text-secondary-400 stroke-2" />
           </Prefix>
           <InputField
             type="search"
@@ -170,7 +170,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                   key={value}
                   className={classNames(
                     index == 2 && "text-center",
-                    "capitalize w-max",
+                    "w-max capitalize",
                   )}
                 >
                   {value}
@@ -213,7 +213,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                     <MenuTrigger variant="ghost" size="icon">
                       <HiDotsHorizontal />
                     </MenuTrigger>
-                    <MenuContent className="!min-w-[9rem] !z-50">
+                    <MenuContent className="!z-50 !min-w-[9rem]">
                       <MenuLabel className="leading-4">Actions</MenuLabel>
                       <MenuItem>Copy payment ID</MenuItem>
                       <MenuSeparator />
@@ -227,8 +227,8 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <div className="flex justify-between items-center">
-        <Text className="text-sm dark:text-secondary-500 text-secondary-400">
+      <div className="flex items-center justify-between">
+        <Text className="dark:text-secondary-500 text-secondary-400 text-sm">
           {checkLength} of {data.length} row(s) selected.
         </Text>
         <div className="flex gap-2">

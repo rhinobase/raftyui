@@ -56,25 +56,25 @@ export const Checkbox = React.forwardRef<
         required={required}
         className={classNames(
           CheckBoxClasses.size[size],
-          "relative shrink-0 rounded-sm border border-secondary-400 dark:border-secondary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 ",
+          "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ",
           className,
         )}
         ref={forwardedref}
       >
-        <CheckboxPrimitive.Indicator className="group flex items-center justify-center h-full">
+        <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
           <CheckIcon
             className={classNames(
               CheckBoxIndicatorClasses.size[size],
-              "stroke-[3] hidden group-data-[state=checked]:block text-white dark:text-secondary-700",
+              "dark:text-secondary-700 hidden stroke-[3] text-white group-data-[state=checked]:block",
             )}
           />
-          <MinusIcon className="hidden group-data-[state=indeterminate]:block text-secondary-600 dark:text-secondary-500" />
+          <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
     );
 
     return (
-      <div className="flex items-center w-max">
+      <div className="flex w-max items-center">
         {checkbox}
         {children && (
           <Label

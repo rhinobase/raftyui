@@ -65,7 +65,7 @@ export const NavigationMenuList = ({
         unstyle
           ? className
           : classNames(
-              "m-0 p-1 flex justify-center items-center rounded-md",
+              "m-0 flex items-center justify-center rounded-md p-1",
               className,
             )
       }

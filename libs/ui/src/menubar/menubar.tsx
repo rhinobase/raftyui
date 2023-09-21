@@ -40,7 +40,7 @@ export const Menubar = React.forwardRef<
                   size === "sm" && "gap-1",
                   size === "md" && "gap-2",
                   size === "lg" && "gap-3",
-                  "flex items-center w-max",
+                  "flex w-max items-center",
                   className,
                 )
           }
@@ -411,7 +411,7 @@ export const MenubarSubTrigger = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "relative flex cursor-default select-none items-center rounded-sm outline-none text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 w-full justify-between gap-2 font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+              "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 relative flex w-full cursor-default select-none items-center justify-between gap-2 rounded-sm font-medium outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
               subTriggerClasses.size[size],
               className,
             )

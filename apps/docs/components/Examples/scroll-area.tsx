@@ -2,7 +2,7 @@ import { ScrollArea } from "@rafty/ui";
 
 export const scroll_area_examples = {
   "scrollarea:usage": (
-    <ScrollArea className="w-[200px] h-[225px] ">
+    <ScrollArea className="h-[225px] w-[200px] ">
       <div className="dark:divide-secondary-700 divide-y">
         <div className="px-2 py-1">
           <p className="text-center">Sample 1</p>

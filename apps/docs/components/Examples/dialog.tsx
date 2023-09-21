@@ -76,14 +76,14 @@ export const dialog_examples = {
   ),
   "dialog:barebone": (
     <Dialog isBarebone>
-      <DialogTrigger className="bg-white dark:bg-secondary-800 px-6 p-2 rounded-lg shadow-md hover:bg-secondary-100">
+      <DialogTrigger className="dark:bg-secondary-800 hover:bg-secondary-100 rounded-lg bg-white p-2 px-6 shadow-md">
         open
       </DialogTrigger>
-      <DialogOverlay className="bg-black/30 w-full h-full fixed inset-0 z-50 dark:bg-black/60" />
+      <DialogOverlay className="fixed inset-0 z-50 h-full w-full bg-black/30 dark:bg-black/60" />
       <DialogContent
-        className="fixed left-[50%] top-[50%] z-50 md:w-[600px] w-[389px] -translate-x-1/2 -translate-y-1/2 shadow-lg rounded-lg p-4
-                  bg-white dark:bg-secondary-800 dark:text-secondary-50
-                  duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]"
+        className="dark:bg-secondary-800 dark:text-secondary-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2
+                  data-[state=open]:slide-in-from-top-[48%] fixed left-[50%]
+                  top-[50%] z-50 w-[389px] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-4 shadow-lg duration-200 md:w-[600px]"
       >
         <DialogHeader>Dialog Header</DialogHeader>
         <DialogDescription>
@@ -99,7 +99,7 @@ export const dialog_examples = {
     <Dialog>
       <DialogTrigger
         isUnstyled
-        className=" px-4 p-2 rounded-lg  dark:hover:bg-secondary-800 hover:bg-secondary-100"
+        className=" dark:hover:bg-secondary-800 hover:bg-secondary-100 rounded-lg  p-2 px-4"
       >
         open
       </DialogTrigger>

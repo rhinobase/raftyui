@@ -62,9 +62,9 @@ export const Default: Story = {
 export const FullScreen: Story = {
   render: function Render() {
     const cellRender: JSX.Element | undefined = (
-      <div className="h-full px-1 flex flex-col">
-        <p className="text-right mb-1">5</p>
-        <div className="overflow-y-auto flex-1 text-left">
+      <div className="flex h-full flex-col px-1">
+        <p className="mb-1 text-right">5</p>
+        <div className="flex-1 overflow-y-auto text-left">
           <UnorderedList>
             <ListItem className="marker:text-success-500 dark:marker:text-success-300">
               Item 1
@@ -85,7 +85,7 @@ export const FullScreen: Story = {
     const [date, setDate] = React.useState<Date | undefined>();
 
     return (
-      <div className="w-full -mx-20">
+      <div className="-mx-20 w-full">
         <Calendar
           selected={date}
           onDayClick={setDate}
@@ -95,7 +95,7 @@ export const FullScreen: Story = {
               date.getDate() == new Date().getDate() ? (
                 cellRender
               ) : (
-                <div className="w-full h-full text-right p-1">
+                <div className="h-full w-full p-1 text-right">
                   {date.getDate()}
                 </div>
               ),

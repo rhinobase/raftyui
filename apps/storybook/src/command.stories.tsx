@@ -28,7 +28,7 @@ type Story = StoryObj<typeof Command>;
 export const Default: Story = {
   render: () => (
     <div className="w-full">
-      <Command className="rounded-lg border dark:border-secondary-700 shadow-md">
+      <Command className="dark:border-secondary-700 rounded-lg border shadow-md">
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
