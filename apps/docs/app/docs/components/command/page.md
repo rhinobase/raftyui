@@ -15,9 +15,25 @@ When you render items with it, it automatically filters and sorts them. It offer
 Import the component.
 
 ```jsx
-import { Command } from "@rafty/ui";
+import {
+  Command,
+  CommandList,
+  CommandInput,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+} from "@rafty/ui";
 
-<Command />;
+<Command>
+  <CommandInput />
+  <CommandList>
+    <CommandEmpty />
+    <CommandGroup>
+      <CommandItem />
+    </CommandGroup>
+    <CommandSeparator />
+  </CommandList>
+</Command>;
 ```
 
 ## Usage

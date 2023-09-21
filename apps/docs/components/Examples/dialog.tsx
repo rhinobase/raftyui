@@ -96,7 +96,7 @@ export const dialog_examples = {
     <Dialog>
       <DialogTrigger
         isUnstyled
-        className="bg-white dark:bg-secondary-800 px-6 p-2 rounded-lg shadow-md hover:bg-secondary-100"
+        className=" px-4 p-2 rounded-lg  dark:hover:bg-secondary-800 hover:bg-secondary-100"
       >
         open
       </DialogTrigger>

@@ -15,13 +15,11 @@ This component is made on top of [Radix UIs Hover Card Component](https://www.ra
 Import all parts and piece them together.
 
 ```jsx
-import { HoverCard, HoverCardTrigger, HoverCardContent, Text } from "@rafty/ui";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@rafty/ui";
 
 <HoverCard>
   <HoverCardTrigger />
-  <HoverCardContent>
-    <Text />
-  </HoverCardContent>
+  <HoverCardContent />
 </HoverCard>;
 ```
 

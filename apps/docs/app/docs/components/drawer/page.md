@@ -96,6 +96,26 @@ You can decide from which side you want to open the drawer and you can choose be
 
 {% example name="drawer:side" /%}
 
+```jsx
+const [isOpen, setOpen] = useState(false);
+
+return (
+  <>
+    <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+    <Drawer side="left" open={isOpen} onOpenChange={setOpen}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerTitle>Drawer Header</DrawerTitle>
+        <DrawerDescription>
+          This is sample drawer description.
+        </DrawerDescription>
+        <DrawerClose />
+      </DrawerContent>
+    </Drawer>
+  </>
+);
+```
+
 ### API
 
 ---
