@@ -278,7 +278,7 @@ export type DialogDescription = React.ComponentPropsWithoutRef<
 export const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   DialogDescription
->(({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
+>(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isBarebone } = useDialogContext();
   const unstyle = isBarebone || isUnstyled;
 
