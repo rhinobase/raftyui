@@ -29,7 +29,10 @@ export function Fence({
     <div className="relative">
       <Highlight code={content} language={language} theme={themes.dracula}>
         {({ className, style, tokens, getTokenProps }) => (
-          <pre className={classNames(className, _className)} style={style}>
+          <pre
+            className={classNames(className, _className, "!-mt-2")}
+            style={style}
+          >
             <Button
               onClick={handleCopyClick}
               className="absolute right-1 top-1 "

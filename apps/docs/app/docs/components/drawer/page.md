@@ -24,16 +24,14 @@ import {
   DrawerDescription,
 } from "@rafty/ui";
 
-() => (
-  <Drawer>
-    <DrawerOverlay />
-    <DrawerContent>
-      <DrawerTitle />
-      <DrawerDescription />
-      <DrawerClose />
-    </DrawerContent>
-  </Drawer>
-);
+<Drawer>
+  <DrawerOverlay />
+  <DrawerContent>
+    <DrawerTitle />
+    <DrawerDescription />
+    <DrawerClose />
+  </DrawerContent>
+</Drawer>;
 ```
 
 ## Usage

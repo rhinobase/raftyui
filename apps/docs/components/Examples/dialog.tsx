@@ -6,6 +6,7 @@ import {
   DialogOverlay,
   DialogTrigger,
   DialogDescription,
+  DialogClose,
 } from "@rafty/ui";
 
 export const dialog_examples = {
@@ -49,7 +50,9 @@ export const dialog_examples = {
           Make changes to your profile here. Click save when you&apos;re done.
         </DialogDescription>
         <div className="flex items-center justify-end pt-5">
-          <Button>Save Change</Button>
+          <DialogClose asChild>
+            <Button>Save Change</Button>
+          </DialogClose>
         </div>
       </DialogContent>
     </Dialog>

@@ -63,7 +63,7 @@ Pass `isBarebone` prop to remove all style in dialog.
 
 ## ShowCloseButton
 
-The showCloseButton prop exists in DialogContent subcomponent and it is used to show/hide default close button in dialog.
+The showCloseButton prop exists in DialogContent subcomponent and it is used to show/hide default close button in dialog. Its default value is true.
 
 {% example name="dialog:closebutton" /%}
 

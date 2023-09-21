@@ -50,7 +50,7 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 `isReadOnly` prop is used to change field state to read only.
 
-{% example name="field-control:orientation" /%}
+{% example name="field-control:readonly" /%}
 
 ## IsInvalid
 

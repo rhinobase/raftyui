@@ -112,9 +112,7 @@ export function Examples({
         {Component}
       </div>
       {children || (
-        <Fence language="jsx" className="!-mt-2">
-          {reactElementToJSXString(Component)}
-        </Fence>
+        <Fence language="jsx">{reactElementToJSXString(Component)}</Fence>
       )}
     </div>
   );
