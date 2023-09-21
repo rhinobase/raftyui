@@ -7,14 +7,21 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "libs/ui/**/*.{ts,tsx,js,jsx}",
+          "libs/ui/package.json"
+        ]
       }
     },
     "build": {
       "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/ui",
         "tsConfig": "libs/ui/tsconfig.lib.json",
@@ -55,8 +62,11 @@
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "generateExportsField": true,
-        "format": ["cjs", "esm"],
-        "compiler": "babel",
+        "format": [
+          "cjs",
+          "esm"
+        ],
+        "compiler": "swc",
         "assets": [
           {
             "glob": "libs/ui/CHANGELOG.md",
