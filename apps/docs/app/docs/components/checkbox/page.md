@@ -14,8 +14,6 @@ This component is made on top of [Radix UIs Checkbox Component](https://www.radi
 
 Import the component.
 
-- Checkbox:
-
 ```jsx
 import { Checkbox } from "@rafty/ui";
 

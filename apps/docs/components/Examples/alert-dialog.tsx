@@ -21,12 +21,14 @@ export const alert_dialog_examples = {
           This action cannot be undone. This will permanently delete your
           account and remove your data from our servers.
         </AlertDialogDescription>
-        <AlertDialogCancel asChild>
-          <Button variant="outline">Cancel</Button>
-        </AlertDialogCancel>
-        <AlertDialogAction asChild>
-          <Button colorScheme="error">Yes, delete account</Button>
-        </AlertDialogAction>
+        <div className="flex items-center justify-between">
+          <AlertDialogCancel asChild>
+            <Button variant="outline">Cancel</Button>
+          </AlertDialogCancel>
+          <AlertDialogAction asChild>
+            <Button colorScheme="error">Yes, delete account</Button>
+          </AlertDialogAction>
+        </div>
       </AlertDialogContent>
     </AlertDialog>
   ),

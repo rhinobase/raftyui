@@ -27,8 +27,16 @@ export const checkbox_examples = {
     </Checkbox>
   ),
   "checkbox:size": (
-    <Checkbox size="sm" id="6">
-      Checkbox
-    </Checkbox>
+    <div className="space-y-3">
+      <Checkbox size="sm" id="6">
+        Checkbox
+      </Checkbox>
+      <Checkbox size="md" id="7">
+        Checkbox
+      </Checkbox>
+      <Checkbox size="lg" id="8">
+        Checkbox
+      </Checkbox>
+    </div>
   ),
 };

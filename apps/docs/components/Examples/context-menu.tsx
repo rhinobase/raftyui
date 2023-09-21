@@ -30,11 +30,13 @@ export const context_menu_examples = {
           </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
-        <ContextMenuCheckboxItem>Show Bookmarks</ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem checked>
+          Show Bookmarks
+        </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
         <ContextMenuSeparator />
         <ContextMenuLabel>People</ContextMenuLabel>
-        <ContextMenuRadioGroup>
+        <ContextMenuRadioGroup value="2">
           <ContextMenuRadioItem value="1">Jack</ContextMenuRadioItem>
           <ContextMenuRadioItem value="2">Denial</ContextMenuRadioItem>
         </ContextMenuRadioGroup>
@@ -57,11 +59,13 @@ export const context_menu_examples = {
           </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
-        <ContextMenuCheckboxItem>Show Bookmarks</ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem checked>
+          Show Bookmarks
+        </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
         <ContextMenuSeparator />
         <ContextMenuLabel>People</ContextMenuLabel>
-        <ContextMenuRadioGroup>
+        <ContextMenuRadioGroup value="2">
           <ContextMenuRadioItem value="1">Jack</ContextMenuRadioItem>
           <ContextMenuRadioItem value="2">Denial</ContextMenuRadioItem>
         </ContextMenuRadioGroup>

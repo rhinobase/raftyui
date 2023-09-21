@@ -17,7 +17,7 @@ Import the component.
 ```jsx
 import { Avatar } from "@rafty/ui";
 
-() => <Avatar />;
+<Avatar />;
 ```
 
 ## Usage
