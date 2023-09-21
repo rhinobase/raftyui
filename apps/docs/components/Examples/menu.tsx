@@ -122,7 +122,7 @@ export const menu_examples = {
       <MenuTrigger
         size="sm"
         className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
-        rightIcon={<HiOutlineChevronDown className="h-5 w-5" />}
+        rightIcon={<HiOutlineChevronDown size={16} />}
       >
         Actions
       </MenuTrigger>
@@ -130,7 +130,7 @@ export const menu_examples = {
       <MenuContent
         isArrow={false}
         sideOffset={5}
-        className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-2 text-black  shadow-md dark:text-white "
+        className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-1 text-black  shadow-md dark:text-white "
       >
         <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 ">
           New Tab

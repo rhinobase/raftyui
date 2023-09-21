@@ -30,12 +30,12 @@ export const input_examples = {
   "input-field:unstyled": (
     <InputField
       isUnstyled
-      className="rounded-md border border-gray-300 bg-transparent  transition-colors duration-300 hover:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-600 dark:hover:border-cyan-500"
+      className="w-full rounded-md border border-gray-300 bg-transparent p-1 transition-colors duration-300 hover:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-600 dark:hover:border-cyan-500"
     />
   ),
   "input-field:loading": <InputField isLoading />,
   "input-field:readonly": <InputField isReadOnly />,
-  "input-field:invalid": <InputField isDisabled />,
+  "input-field:invalid": <InputField isInvalid />,
 
   "input-field:left_addon": (
     <InputGroup>
