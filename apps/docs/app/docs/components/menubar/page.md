@@ -38,9 +38,7 @@ import {
     <MenubarContent>
       <MenubarLabel />
       <MenubarItem />
-      <MenubarGroup>
-        <MenubarItem />
-      </MenubarGroup>
+      <MenubarGroup />
       <MenubarCheckboxItem />
       <MenubarRadioGroup>
         <MenubarRadioItem />

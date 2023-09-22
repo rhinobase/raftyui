@@ -66,7 +66,7 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% example name="input-field:loading" /%}
 
-### unstyled
+### Unstyled
 
 Pass ` isUnstyled` prop to remove style component
 

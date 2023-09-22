@@ -15,34 +15,23 @@ Table and its subcomponents are made upon native table components
 Import all parts and piece them together.
 
 ```jsx
-import {
-    TableContainer,
-    Table,
-    TableHead,
-    TableBody,
-    TableFooter,
-    Tr,
-    Th,
-    Td
-} from "@rafty/ui";
+import {TableContainer,Table,TableHead,TableBody,TableFooter,Tr,Th,Td} from "@rafty/ui";
 
-
-    <TableContainer>
-     <Table>
-      <TableHead>
-        <Tr>
-          <Th/>
-        </Tr>
-      </TableHead>
-      <TableBody>
-        <Tr>
-          <Td/>
-        </Tr>
-      <TableBody>
-      <TableFooter/>
-     </Table>
-    </TableContainer>
-
+  <TableContainer>
+  <Table>
+    <TableHead>
+      <Tr>
+        <Th/>
+      </Tr>
+    </TableHead>
+    <TableBody>
+      <Tr>
+        <Td/>
+      </Tr>
+    <TableBody>
+    <TableFooter/>
+  </Table>
+  </TableContainer>
 ```
 
 ## Usage

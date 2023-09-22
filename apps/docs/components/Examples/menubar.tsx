@@ -51,7 +51,9 @@ export const menubar_examples = {
       <MenubarMenu>
         <MenubarTrigger variant="ghost">View</MenubarTrigger>
         <MenubarContent>
-          <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+          <MenubarCheckboxItem checked>
+            Always Show Bookmarks Bar
+          </MenubarCheckboxItem>
           <MenubarCheckboxItem>Always Show Full URLs</MenubarCheckboxItem>
           <MenubarSeparator />
           <MenubarItem>Reload</MenubarItem>
@@ -115,7 +117,9 @@ export const menubar_examples = {
       <MenubarMenu>
         <MenubarTrigger variant="ghost">View</MenubarTrigger>
         <MenubarContent>
-          <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+          <MenubarCheckboxItem checked>
+            Always Show Bookmarks Bar
+          </MenubarCheckboxItem>
           <MenubarCheckboxItem>Always Show Full URLs</MenubarCheckboxItem>
           <MenubarSeparator />
           <MenubarItem>Reload</MenubarItem>

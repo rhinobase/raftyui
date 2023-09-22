@@ -32,13 +32,13 @@ There are 3 size options in spinner: `sm`, `md` (default) & `lg
 
 ## IsDisabled
 
-IsDisabled prop is used to show select component in disabled state.
+isDisabled prop is used to show select component in disabled state.
 
 {% example name="switch:disabled" /%}
 
-## Default Selected
+## Checked
 
-Pass the `defaultSelected` prop if you need to set the switch selected by default and `isSelected` prop is used to manage checked state.
+Pass the `checked` prop is used to manage checked state.
 
 {% example name="switch:selected" /%}
 

@@ -10,7 +10,7 @@ export const spinner_examples = {
     </div>
   ),
   "spinner:InheritParent": (
-    <div className="text-primary-500 dark:text-primary-400 flex gap-1">
+    <div className="text-primary-500 dark:text-primary-400">
       <Spinner inheritParent />
     </div>
   ),
