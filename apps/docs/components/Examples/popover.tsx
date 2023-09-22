@@ -10,16 +10,39 @@ export const popover_examples = {
   "popover:usage": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent>
-        <Text>Popover Content</Text>
+      <PopoverContent className="!w-64">
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </Text>
+        <div className="flex justify-end gap-3 py-1">
+          <Button size="sm" colorScheme="success">
+            Demo 1
+          </Button>
+          <Button size="sm" colorScheme="error">
+            Demo 2
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   ),
   "popover:size": (
-    <Popover size="lg">
+    <Popover size="sm">
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent>
-        <Text>Popover Content</Text>
+
+      <PopoverContent className="!w-64">
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </Text>
+        <div className="flex justify-end gap-3 py-1">
+          <Button size="sm" colorScheme="success">
+            Demo 1
+          </Button>
+          <Button size="sm" colorScheme="error">
+            Demo 2
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   ),
@@ -27,16 +50,38 @@ export const popover_examples = {
   "popover:showarrow": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent showArrow>
-        <Text>Popover Content</Text>
+      <PopoverContent className="!w-64">
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </Text>
+        <div className="flex justify-end gap-3 py-1">
+          <Button size="sm" colorScheme="success">
+            Demo 1
+          </Button>
+          <Button size="sm" colorScheme="error">
+            Demo 2
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   ),
   "popover:default": (
     <Popover defaultOpen>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent>
-        <Text>Popover Content</Text>
+      <PopoverContent className="!w-64">
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore.
+        </Text>
+        <div className="flex justify-end gap-3 py-1">
+          <Button size="sm" colorScheme="success">
+            Demo 1
+          </Button>
+          <Button size="sm" colorScheme="error">
+            Demo 2
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   ),

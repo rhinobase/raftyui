@@ -23,7 +23,7 @@ export const tab_examples = {
   ),
 
   "tab:size": (
-    <Tab variant="enclosed">
+    <Tab size="sm">
       <TabList>
         <TabTrigger value="tab1">Tab1</TabTrigger>
         <TabTrigger value="tab2">Tab2</TabTrigger>
@@ -105,49 +105,64 @@ export const tab_examples = {
     <Tab
       defaultValue="tab1"
       isBarebone
-      className="w-full items-stretch data-[orientation=vertical]:flex"
+      className="flex w-full items-stretch md:flex-col"
     >
       <TabList className="dark:border-secondary-700 border-b dark:border-black">
         <TabTrigger
           value="tab1"
           className="text-secondary-500 dark:text-secondary-400 data-[state=active]:dark:text-secondary-100
-              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
-              dark:data-[state=active]:border-secondary-500 p-4 transition-colors data-[disabled]:cursor-not-allowed data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:text-black"
+          data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
+          p-4 transition-colors data-[disabled]:cursor-not-allowed
+          data-[state=active]:border-b-2 data-[state=active]:border-blue-500
+          data-[state=active]:text-black dark:data-[state=active]:border-blue-400"
         >
           Tab1
         </TabTrigger>
         <TabTrigger
           value="tab2"
           className="text-secondary-500 dark:text-secondary-400 data-[state=active]:dark:text-secondary-100
-              data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
-              dark:data-[state=active]:border-secondary-500 p-4 transition-colors data-[disabled]:cursor-not-allowed data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:text-black"
+          data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
+          p-4 transition-colors data-[disabled]:cursor-not-allowed
+          data-[state=active]:border-b-2 data-[state=active]:border-blue-500
+          data-[state=active]:text-black dark:data-[state=active]:border-blue-400"
         >
           Tab2
         </TabTrigger>
       </TabList>
       <TabContent value="tab1" className="p-4">
-        1 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium,
+        nulla velit asperiores expedita error assumenda tempore ut dolores
+        commodi minima incidunt cupiditate hic earum nemo, sunt porro, nobis
+        distinctio recusandae.
       </TabContent>
       <TabContent value="tab2" className="p-4">
-        2 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nostrum
+        earum minus, aliquid doloremque optio harum odio repellat! Doloribus
+        consectetur facere, repellendus omnis rerum dicta consequuntur iure
+        dignissimos. Numquam, accusamus?
       </TabContent>
     </Tab>
   ),
   "tab:unstyled": (
     <Tab defaultValue="tab1">
-      <TabList isUnstyled>
+      <TabList
+        isUnstyled
+        className="border-secondary-200 dark:border-secondary-700 border-b"
+      >
         <TabTrigger value="tab1">Tab1</TabTrigger>
         <TabTrigger value="tab2">Tab2</TabTrigger>
       </TabList>
       <TabContent value="tab1" className="p-4">
-        1 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ut
+        veniam sequi totam accusantium beatae hic doloribus facilis qui cum,
+        explicabo iste distinctio! Nostrum sunt incidunt consequatur in
+        quibusdam assumenda.
       </TabContent>
       <TabContent value="tab2" className="p-4">
-        2 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur
+        alias eius voluptas ratione dolorum accusantium cum quam eum labore
+        debitis. Ipsum, soluta? Numquam, minima fuga. Libero incidunt doloremque
+        qui omnis.
       </TabContent>
     </Tab>
   ),

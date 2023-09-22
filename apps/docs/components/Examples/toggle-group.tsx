@@ -58,7 +58,13 @@ export const toggle_group_examples = {
   ),
   "toggle-group:unstyled": (
     <ToggleGroup type="single" defaultValue="1">
-      <ToggleGroupItem value="1">1</ToggleGroupItem>
+      <ToggleGroupItem
+        value="1"
+        isUnstyled
+        className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-300 w-full px-3  py-1"
+      >
+        1
+      </ToggleGroupItem>
       <ToggleGroupItem value="2">2</ToggleGroupItem>
       <ToggleGroupItem value="3">3</ToggleGroupItem>
     </ToggleGroup>

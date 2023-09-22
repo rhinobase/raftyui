@@ -15,7 +15,12 @@ This component is made on top of [Radix UIs Popover Component](https://www.radix
 Import all parts and piece them together.
 
 ```jsx
-import { Popover, PopoverTrigger, PopoverContent } from "@rafty/ui";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopverClose,
+} from "@rafty/ui";
 
 <Popover>
   <PopoverTrigger />

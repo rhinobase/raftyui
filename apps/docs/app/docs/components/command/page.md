@@ -21,19 +21,29 @@ import {
   CommandInput,
   CommandEmpty,
   CommandGroup,
+  CommandSeparator
   CommandItem,
+  CommandDialog,
+  CommandShortcut,
+  CommandLoading
+
 } from "@rafty/ui";
 
-<Command>
-  <CommandInput />
-  <CommandList>
-    <CommandEmpty />
-    <CommandGroup>
-      <CommandItem />
-    </CommandGroup>
-    <CommandSeparator />
-  </CommandList>
-</Command>;
+ <Command>
+     <CommandDialog>
+     <CommandInput />
+      <CommandList>
+      <CommandLoading/>
+        <CommandEmpty />
+        <CommandGroup>
+          <CommandItem>
+            <CommandShortcut />
+          </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+      </CommandList>
+      </CommandDialog>
+    </Command>
 ```
 
 ## Usage

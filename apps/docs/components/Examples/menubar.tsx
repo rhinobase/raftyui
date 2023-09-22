@@ -147,26 +147,26 @@ export const menubar_examples = {
     </Menubar>
   ),
   "menubar:barebone": (
-    <Menubar isBarebone className="flex w-max items-center">
+    <Menubar className="flex w-max items-center">
       <MenubarMenu>
         <MenubarTrigger
           variant="ghost"
-          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 transition-all dark:text-white"
+          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 focus:outline-none dark:text-white"
         >
           File
         </MenubarTrigger>
-        <MenubarContent className="dark:bg-secondary-800 w-[200px] space-y-3 rounded-md bg-white p-2 text-xs">
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1  transition-all">
+        <MenubarContent className="dark:bg-secondary-800 w-full space-y-2 rounded-md bg-white p-2 py-1.5 text-sm">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             New Tab
           </MenubarItem>
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             New Window
           </MenubarItem>
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             New Incognito Window
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Print
           </MenubarItem>
         </MenubarContent>
@@ -174,46 +174,46 @@ export const menubar_examples = {
       <MenubarMenu>
         <MenubarTrigger
           variant="ghost"
-          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 transition-all dark:text-white"
+          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 focus:outline-none dark:text-white"
         >
           Edit
         </MenubarTrigger>
-        <MenubarContent className="dark:bg-secondary-800 w-[200px] space-y-3 rounded-md bg-white p-2 text-xs">
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+        <MenubarContent className="dark:bg-secondary-800 w-[200px] space-y-1 rounded-md bg-white p-2 text-sm">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Undo
           </MenubarItem>
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Redo
           </MenubarItem>
           <MenubarSeparator />
           <MenubarSub>
-            <MenubarSubTrigger className="hover:bg-secondary-200 flex cursor-pointer items-center justify-between rounded-md px-4 py-1 transition-all">
+            <MenubarSubTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center justify-between rounded-lg px-4 py-1.5 focus:outline-none">
               Find
             </MenubarSubTrigger>
-            <MenubarSubContent className="dark:bg-secondary-800 ml-1 w-[200px] space-y-3 rounded-md bg-white p-2 text-xs">
-              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+            <MenubarSubContent className="dark:bg-secondary-800 ml-1 w-[200px] space-y-1 rounded-md bg-white p-2 text-sm">
+              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
                 Search the web…
               </MenubarItem>
               <MenubarSeparator />
-              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
                 Find…
               </MenubarItem>
-              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
                 Find Next
               </MenubarItem>
-              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+              <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
                 Find Previous
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSeparator />
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Cut
           </MenubarItem>
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Copy
           </MenubarItem>
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Paste
           </MenubarItem>
         </MenubarContent>
@@ -221,30 +221,33 @@ export const menubar_examples = {
       <MenubarMenu>
         <MenubarTrigger
           variant="ghost"
-          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 transition-all dark:text-white"
+          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 focus:outline-none dark:text-white"
         >
           View
         </MenubarTrigger>
-        <MenubarContent className="dark:bg-secondary-800 w-[215px] space-y-3 rounded-md bg-white p-2 text-xs">
-          <MenubarCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+        <MenubarContent className="dark:bg-secondary-800 text-md w-full space-y-1 rounded-md bg-white p-2 text-sm">
+          <MenubarCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1.5 focus:outline-none">
             Always Show Bookmarks Bar
           </MenubarCheckboxItem>
-          <MenubarCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarCheckboxItem
+            checked
+            className="hover:bg-secondary-200 item-center dark:hover:bg-secondary-700 flex cursor-pointer rounded-md py-1.5 pl-6 focus:outline-none"
+          >
             Always Show Full URLs
           </MenubarCheckboxItem>
           <MenubarSeparator />
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Reload
           </MenubarItem>
-          <MenubarItem className="hover:bg-secondary-200 cursor-pointe dark:hover:bg-secondary-700r rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Force Reload
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Toggle Fullscreen
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+          <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Hide Sidebar
           </MenubarItem>
         </MenubarContent>
@@ -252,36 +255,36 @@ export const menubar_examples = {
       <MenubarMenu>
         <MenubarTrigger
           variant="ghost"
-          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 transition-all dark:text-white"
+          className="hover:bg-secondary-200 dark:hover:bg-secondary-700 rounded-md px-4 py-1 focus:outline-none dark:text-white"
         >
           Profiles
         </MenubarTrigger>
-        <MenubarContent className="dark:bg-secondary-800 w-[200px] space-y-3 rounded-md bg-white p-2 text-xs">
+        <MenubarContent className="dark:bg-secondary-800 w-[180px] space-y-1 rounded-md bg-white p-2 px-1 text-sm">
           <MenubarRadioGroup value="1">
             <MenubarRadioItem
               value="1"
-              className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-4 py-1 transition-all"
+              className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center gap-2 rounded-md py-1.5 pl-6 focus:outline-none"
             >
               Andy
             </MenubarRadioItem>
             <MenubarRadioItem
               value="2"
-              className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all"
+              className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md py-1.5 pl-6 focus:outline-none"
             >
               Benolt
             </MenubarRadioItem>
             <MenubarRadioItem
               value="3"
-              className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all"
+              className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md py-1.5 pl-6 focus:outline-none"
             >
               Luis
             </MenubarRadioItem>
             <MenubarSeparator />
-            <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+            <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1.5 focus:outline-none">
               Edit…
             </MenubarItem>
             <MenubarSeparator />
-            <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1 transition-all">
+            <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1.5 focus:outline-none">
               Add Profile…
             </MenubarItem>
           </MenubarRadioGroup>
@@ -294,7 +297,12 @@ export const menubar_examples = {
       <MenubarMenu>
         <MenubarTrigger variant="ghost">File</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem isUnstyled>New Tab</MenubarItem>
+          <MenubarItem
+            isUnstyled
+            className="hover:bg-secondary-100 dark:hover:bg-secondary-700/60 cursor-pointer rounded-sm px-3.5 py-1.5 text-sm focus:outline-none"
+          >
+            New Tab
+          </MenubarItem>
           <MenubarItem>New Window</MenubarItem>
           <MenubarItem>New Incognito Window</MenubarItem>
           <MenubarSeparator />

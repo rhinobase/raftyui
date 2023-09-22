@@ -76,7 +76,7 @@ export const dialog_examples = {
   ),
   "dialog:barebone": (
     <Dialog isBarebone>
-      <DialogTrigger className="dark:bg-secondary-800 hover:bg-secondary-100 rounded-lg bg-white p-2 px-6 shadow-md">
+      <DialogTrigger className=" dark:hover:bg-secondary-800 hover:bg-secondary-100 rounded-lg p-2 px-6 dark:text-white">
         open
       </DialogTrigger>
       <DialogOverlay className="fixed inset-0 z-50 h-full w-full bg-black/30 dark:bg-black/60" />

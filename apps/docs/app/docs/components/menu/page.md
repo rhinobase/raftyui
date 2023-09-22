@@ -31,7 +31,6 @@ import {
     <MenuItem />
     <MenuSeparator />
     <MenuCheckboxItem />
-    <MenuSeparator />
     <MenuLabel />
     <MenuRadioGroup>
       <MenuRadioItem />

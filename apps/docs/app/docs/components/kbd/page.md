@@ -14,8 +14,6 @@ This component is built using native html kbd tag and its props, making all nati
 
 Import the component.
 
-- kbd
-
 ```jsx
 import { Kbd } from "@rafty/ui";
 
