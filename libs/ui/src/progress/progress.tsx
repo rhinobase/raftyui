@@ -27,6 +27,7 @@ export type Progress = React.ComponentPropsWithoutRef<
 > & {
   size?: "sm" | "md" | "lg";
   colorScheme?: "error" | "warning" | "primary" | "success";
+  indicatorClassName?: string;
 };
 
 export const Progress = React.forwardRef<
@@ -34,7 +35,14 @@ export const Progress = React.forwardRef<
   Progress
 >(
   (
-    { className, value, size = "md", colorScheme = "primary", ...props },
+    {
+      className,
+      indicatorClassName,
+      value,
+      size = "md",
+      colorScheme = "primary",
+      ...props
+    },
     ref,
   ) => (
     <ProgressPrimitive.Root
@@ -42,7 +50,8 @@ export const Progress = React.forwardRef<
       {...props}
       className={classNames(
         progressClasses.size[size],
-        "bg-secondary-100 dark:bg-secondary-700 overflow-hidden",
+        "bg-secondary-100 dark:bg-secondary-700 w-full overflow-hidden",
+        indicatorClassName,
       )}
     >
       <ProgressPrimitive.Indicator
