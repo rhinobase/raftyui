@@ -92,7 +92,7 @@ return (
 
 You can decide from which side you want to open the drawer and you can choose between `left` or `right` (default).
 
-{% example name="drawer:side" /%}
+{% example name="drawer:side" %}
 
 ```jsx
 const [isOpen, setOpen] = useState(false);
@@ -113,6 +113,8 @@ return (
   </>
 );
 ```
+
+{% /example %}
 
 ### API
 

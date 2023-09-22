@@ -132,13 +132,13 @@ export const menu_examples = {
         sideOffset={5}
         className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-1 text-black  shadow-md dark:text-white "
       >
-        <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 ">
+        <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 text-sm">
           New Tab
         </MenuItem>
-        <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700  rounded-md p-1 ">
+        <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700  rounded-md p-1 text-sm ">
           New Window
         </MenuItem>
-        <MenuItem className="text-primary dark:text-secondary rounded-md p-1">
+        <MenuItem className="text-primary dark:text-secondary-400 cursor-context-menu rounded-md p-1 text-sm ">
           New Private Window
         </MenuItem>
       </MenuContent>

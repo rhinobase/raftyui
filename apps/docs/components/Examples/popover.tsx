@@ -43,7 +43,7 @@ export const popover_examples = {
   "popover:barebone": (
     <Popover isBarebone>
       <PopoverTrigger
-        className="rounded-md bg-slate-100 px-4 py-2 hover:bg-slate-100 hover:text-purple-600 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
+        className="rounded-md bg-slate-100 px-4 py-2 hover:bg-slate-100 hover:text-purple-600 dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-500"
         size="lg"
       >
         Open
