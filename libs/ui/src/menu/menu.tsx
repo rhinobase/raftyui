@@ -234,9 +234,9 @@ MenuContent.displayName = "MenuContent";
 // MenuLabel Component
 const menuLabelClasses = {
   size: {
-    sm: "px-1.5 py-1 text-[10px]",
-    md: "px-2 py-1 text-[11px]",
-    lg: "px-2.5 py-1.5 text-xs",
+    sm: "px-1.5 text-[10px]",
+    md: "px-2 text-[11px]",
+    lg: "px-2.5 text-xs",
   },
 };
 

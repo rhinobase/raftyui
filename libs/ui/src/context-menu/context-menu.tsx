@@ -48,7 +48,9 @@ export const ContextMenuContent = forwardRef<
           unstyle
             ? className
             : classNames(
-                "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
+                "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
+                "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
+                "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-sm focus:outline-none",
                 className,
               )
         }
@@ -64,9 +66,9 @@ ContextMenuContent.displayName = "ContextMenuContent";
 //ContextMenu Label Component
 const contextMenuLabelClasses = {
   size: {
-    sm: "py-1 text-[10px]",
-    md: "py-1 text-[11px]",
-    lg: "py-1.5 text-xs",
+    sm: "px-1.5 text-[10px]",
+    md: "px-2 text-[11px]",
+    lg: "px-2.5 text-xs",
   },
 };
 
@@ -88,8 +90,8 @@ export const ContextMenuLabel = forwardRef<
         unstyle
           ? className
           : classNames(
+              "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
               contextMenuLabelClasses.size[size],
-              "text-secondary-400 dark:text-secondary-400 select-none pl-8 pr-2 font-semibold uppercase tracking-wide",
               className,
             )
       }
@@ -104,9 +106,9 @@ ContextMenuLabel.displayName = "ContextMenuLabel";
 //ContextMenu Item Component
 const contextMenuItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "px-2.5 py-1.5 text-xs",
+    md: "px-3.5 py-1.5 text-sm",
+    lg: "px-4 py-2 text-base",
   },
 };
 
@@ -130,8 +132,8 @@ export const ContextMenuItem = forwardRef<
         unstyle
           ? className
           : classNames(
+              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
               contextMenuItemClasses.size[size],
-              "text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 rounded py-1.5 pl-8 pr-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
               className,
             )
       }
@@ -150,9 +152,9 @@ ContextMenuCheckBoxGroup.displayName = "ContextMenuCheckBoxGroup";
 //ContextMenu CheckboxItem Component
 const checkboxItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "pl-6 pr-2.5 py-1.5 text-xs",
+    md: "pl-7 pr-3.5 py-1.5 text-sm",
+    lg: "pl-8 pr-4 py-2 text-base",
   },
 };
 
@@ -174,16 +176,23 @@ export const ContextMenuCheckboxItem = forwardRef<
         unstyle
           ? className
           : classNames(
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
               checkboxItemClasses.size[size],
-              "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded py-1.5 pl-8 pr-2 font-medium outline-none",
               className,
             )
       }
       ref={forwardedRef}
     >
       {children}
-      <ContextMenuPrimitive.ItemIndicator className="absolute left-2">
-        <CheckIcon className="h-3.5 w-3.5 stroke-[3]" />
+      <ContextMenuPrimitive.ItemIndicator
+        className={classNames(
+          size === "sm" && "left-1",
+          size === "md" && "left-2",
+          size === "lg" && "left-2.5",
+          "absolute",
+        )}
+      >
+        <CheckIcon className="h-3 w-3 stroke-[3]" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.CheckboxItem>
   );
@@ -197,9 +206,9 @@ ContextMenuRadioGroup.displayName = "ContextMenuRadioGroup";
 //ContextMenu RadioItem Component
 const radioItemClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "pl-6 pr-2.5 py-1.5 text-xs",
+    md: "pl-7 pr-3.5 py-1.5 text-sm",
+    lg: "pl-8 pr-4 py-2 text-base",
   },
 };
 
@@ -220,16 +229,30 @@ export const ContextMenuRadioItem = forwardRef<
         unstyle
           ? className
           : classNames(
+              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
               radioItemClasses.size[size],
-              "text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 rounded py-1.5 pl-8 pr-2 font-medium outline-none",
               className,
             )
       }
       ref={forwardedRef}
     >
       {children}
-      <ContextMenuPrimitive.ItemIndicator className="absolute left-2">
-        <div className="bg-secondary-600 dark:bg-secondary-200 h-2 w-2 rounded-full" />
+      <ContextMenuPrimitive.ItemIndicator
+        className={classNames(
+          size === "sm" && "left-2",
+          size === "md" && "left-2.5",
+          size === "lg" && "left-2.5",
+          "absolute",
+        )}
+      >
+        <div
+          className={classNames(
+            size === "sm" && "h-1.5 w-1.5",
+            size === "md" && "h-2 w-2",
+            size === "lg" && "h-2 w-2",
+            "bg-secondary-600 dark:bg-secondary-200 rounded-full",
+          )}
+        />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.RadioItem>
   );
@@ -243,9 +266,9 @@ ContextMenuSub.displayName = "ContextMenuSub";
 //ContextMenu SubMenuButton Component
 const subTriggerClasses = {
   size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
+    sm: "px-2.5 py-1.5 text-xs",
+    md: "px-3.5 py-1.5 text-sm",
+    lg: "px-4 py-2 text-base",
   },
 };
 
@@ -259,6 +282,7 @@ export const ContextMenuSubTrigger = forwardRef<
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isBarebone } = useContextMenuContext();
   const unstyle = isBarebone || isUnstyled;
+
   return (
     <ContextMenuPrimitive.SubTrigger
       {...props}
@@ -266,8 +290,8 @@ export const ContextMenuSubTrigger = forwardRef<
         unstyle
           ? className
           : classNames(
+              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
               subTriggerClasses.size[size],
-              "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 rounded py-1.5 pl-8 pr-2 font-medium outline-none",
               className,
             )
       }
@@ -304,13 +328,14 @@ export const ContextMenuSubContent = forwardRef<
             unstyle
               ? className
               : classNames(
+                  "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                   "data-[side=right]:animate-scale-in origin-top-left",
-                  "dark:bg-secondary-800 min-w-[12rem] rounded-md bg-white p-1 shadow-[0px_10px_38px_0px_rgba(22,23,24,0.05),0px_-5px_38px_0px_rgba(22,23,24,0.05)]",
+                  "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] text-gray-900 focus:outline-none",
                   className,
                 )
           }
-          ref={forwardedRef}
           sideOffset={sideOffset}
+          ref={forwardedRef}
         >
           {children}
         </ContextMenuPrimitive.SubContent>
@@ -332,6 +357,7 @@ const seperatorClasses = {
 export type ContextMenuSeparator = React.ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Separator
 > & { isUnstyled?: boolean };
+
 export const ContextMenuSeparator = forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Separator>,
   ContextMenuSeparator
@@ -347,8 +373,8 @@ export const ContextMenuSeparator = forwardRef<
         unstyle
           ? className
           : classNames(
-              seperatorClasses.size[size],
               "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
+              seperatorClasses.size[size],
               className,
             )
       }
