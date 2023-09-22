@@ -40,9 +40,9 @@ There are 3 `size` options in popover: `sm`, `md` (default) & `lg`
 
 {% example name="popover:size" /%}
 
-## Default Open
+## Open
 
-To Open Popover By Default pass `defaultOpen` prop.
+To manage open state of popover you can use `open` prop and to open popover by default pass `defaultOpen` prop.
 
 {% example name="popover:default" /%}
 

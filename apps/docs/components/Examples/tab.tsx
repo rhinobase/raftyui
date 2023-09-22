@@ -1,4 +1,4 @@
-import { Tab, TabContent, TabList, TabTrigger } from "@rafty/ui";
+import { Tab, TabContent, TabList, TabTrigger, Text } from "@rafty/ui";
 
 export const tab_examples = {
   "tab:usage": (
@@ -64,7 +64,7 @@ export const tab_examples = {
   ),
 
   "tab:Orientation-line": (
-    <Tab defaultValue="tab1" orientation="vertical">
+    <Tab defaultValue="tab1" orientation="vertical" className="h-[200px]">
       <TabList>
         <TabTrigger value="tab1">Tab1</TabTrigger>
         <TabTrigger value="tab2">Tab2</TabTrigger>
@@ -84,20 +84,29 @@ export const tab_examples = {
     </Tab>
   ),
   "tab:Orientation-enclosed": (
-    <Tab defaultValue="tab1" orientation="vertical" variant="enclosed">
+    <Tab
+      defaultValue="tab1"
+      orientation="vertical"
+      variant="enclosed"
+      className="h-[200px]"
+    >
       <TabList>
         <TabTrigger value="tab1">Tab1</TabTrigger>
         <TabTrigger value="tab2">Tab2</TabTrigger>
       </TabList>
       <TabContent value="tab1">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero quasi
-        id nesciunt ipsam quaerat ad quod sunt provident! Quidem quod velit ut
-        corporis dolore ipsum, rerum provident magnam impedit nisi.
+        <Text className="px-3">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero quasi
+          id nesciunt ipsam quaerat ad quod sunt provident! Quidem quod velit ut
+          corporis dolore ipsum, rerum provident magnam impedit nisi.
+        </Text>
       </TabContent>
       <TabContent value="tab2">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-        suscipit est rerum ullam rem quos quo veniam maxime! Eius labore porro
-        dolor, ad accusamus vel culpa delectus non at quae!
+        <Text className="px-3">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
+          suscipit est rerum ullam rem quos quo veniam maxime! Eius labore porro
+          dolor, ad accusamus vel culpa delectus non at quae!
+        </Text>
       </TabContent>
     </Tab>
   ),

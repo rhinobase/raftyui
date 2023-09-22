@@ -10,17 +10,15 @@ export const popover_examples = {
   "popover:usage": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent className="!w-64">
+      <PopoverContent className="!w-96 space-y-3">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
         </Text>
-        <div className="flex justify-end gap-3 py-1">
-          <Button size="sm" colorScheme="success">
-            Demo 1
-          </Button>
-          <Button size="sm" colorScheme="error">
-            Demo 2
+        <div className="flex justify-end gap-3">
+          <Button size="sm">Button</Button>
+          <Button size="sm" colorScheme="primary">
+            Button
           </Button>
         </div>
       </PopoverContent>
@@ -29,18 +27,15 @@ export const popover_examples = {
   "popover:size": (
     <Popover size="sm">
       <PopoverTrigger>Open</PopoverTrigger>
-
-      <PopoverContent className="!w-64">
+      <PopoverContent className="!w-96 space-y-3">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
         </Text>
-        <div className="flex justify-end gap-3 py-1">
-          <Button size="sm" colorScheme="success">
-            Demo 1
-          </Button>
-          <Button size="sm" colorScheme="error">
-            Demo 2
+        <div className="flex justify-end gap-3">
+          <Button size="sm">Button</Button>
+          <Button size="sm" colorScheme="primary">
+            Button
           </Button>
         </div>
       </PopoverContent>
@@ -50,7 +45,7 @@ export const popover_examples = {
   "popover:showarrow": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent className="!w-64">
+      <PopoverContent className="!w-96 space-y-3">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
@@ -67,9 +62,9 @@ export const popover_examples = {
     </Popover>
   ),
   "popover:default": (
-    <Popover defaultOpen>
+    <Popover open>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent className="!w-64">
+      <PopoverContent className="!w-96 space-y-3">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
