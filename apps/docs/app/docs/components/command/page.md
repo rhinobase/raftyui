@@ -12,7 +12,7 @@ When you render items with it, it automatically filters and sorts them. It offer
 
 ## Anatomy
 
-Import the component.
+Import all parts and piece them together.
 
 ```jsx
 import {

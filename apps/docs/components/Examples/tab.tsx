@@ -23,7 +23,7 @@ export const tab_examples = {
   ),
 
   "tab:size": (
-    <Tab size="sm">
+    <Tab size="sm" defaultValue="tab1">
       <TabList>
         <TabTrigger value="tab1">Tab1</TabTrigger>
         <TabTrigger value="tab2">Tab2</TabTrigger>

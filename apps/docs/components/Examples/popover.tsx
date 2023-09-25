@@ -45,12 +45,12 @@ export const popover_examples = {
   "popover:showarrow": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent className="!w-96 space-y-3" showArrow>
+      <PopoverContent className="!w-96" showArrow>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
         </Text>
-        <div className="flex justify-end gap-3 py-1">
+        <div className="mt-3 flex justify-end gap-3 py-1">
           <Button size="sm" colorScheme="success">
             Demo 1
           </Button>
