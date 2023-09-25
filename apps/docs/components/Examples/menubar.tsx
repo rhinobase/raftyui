@@ -165,7 +165,7 @@ export const menubar_examples = {
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             New Incognito Window
           </MenubarItem>
-          <MenubarSeparator />
+          <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Print
           </MenubarItem>
@@ -185,7 +185,7 @@ export const menubar_examples = {
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Redo
           </MenubarItem>
-          <MenubarSeparator />
+          <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
           <MenubarSub>
             <MenubarSubTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center justify-between rounded-lg px-4 py-1.5 focus:outline-none">
               Find
@@ -194,7 +194,7 @@ export const menubar_examples = {
               <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
                 Search the web…
               </MenubarItem>
-              <MenubarSeparator />
+              <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
               <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
                 Find…
               </MenubarItem>
@@ -206,7 +206,7 @@ export const menubar_examples = {
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
-          <MenubarSeparator />
+          <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Cut
           </MenubarItem>
@@ -235,18 +235,18 @@ export const menubar_examples = {
           >
             Always Show Full URLs
           </MenubarCheckboxItem>
-          <MenubarSeparator />
+          <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Reload
           </MenubarItem>
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Force Reload
           </MenubarItem>
-          <MenubarSeparator />
+          <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Toggle Fullscreen
           </MenubarItem>
-          <MenubarSeparator />
+          <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
           <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-4 py-1.5 focus:outline-none">
             Hide Sidebar
           </MenubarItem>
@@ -279,11 +279,11 @@ export const menubar_examples = {
             >
               Luis
             </MenubarRadioItem>
-            <MenubarSeparator />
+            <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
             <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1.5 focus:outline-none">
               Edit…
             </MenubarItem>
-            <MenubarSeparator />
+            <MenubarSeparator className="border-secondary-200 dark:border-secondary-700 border " />
             <MenubarItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-2 py-1.5 focus:outline-none">
               Add Profile…
             </MenubarItem>
@@ -299,7 +299,7 @@ export const menubar_examples = {
         <MenubarContent>
           <MenubarItem
             isUnstyled
-            className="hover:bg-secondary-100 dark:hover:bg-secondary-700/60 cursor-pointer rounded-sm px-3.5 py-1.5 text-sm focus:outline-none"
+            className="hover:bg-secondary-100 dark:hover:bg-secondary-700/60 text-secondary-600 dark:text-secondary-200 cursor-pointer rounded-sm px-3.5 py-1.5 text-sm font-medium focus:outline-none"
           >
             New Tab
           </MenubarItem>

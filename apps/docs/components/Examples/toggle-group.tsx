@@ -38,19 +38,19 @@ export const toggle_group_examples = {
     >
       <ToggleGroupItem
         value="1"
-        className="dark:border-secondary-800 w-full   rounded-l-md border  font-bold data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 dark:text-white dark:data-[state=on]:bg-slate-500 "
+        className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-l-md border font-bold "
       >
         1
       </ToggleGroupItem>
       <ToggleGroupItem
         value="2"
-        className="dark:border-secondary-800 w-full   border  font-bold data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 dark:text-white dark:data-[state=on]:bg-slate-500 "
+        className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300 dark:data-[state=on]:bg-primary-300/20 w-full border font-bold"
       >
         2
       </ToggleGroupItem>
       <ToggleGroupItem
         value="3"
-        className="dark:border-secondary-800 w-full rounded-r-md  border  font-bold data-[state=on]:bg-blue-100 data-[state=on]:text-blue-600 dark:text-white dark:data-[state=on]:bg-slate-500"
+        className="dark:border-secondary-800 data-[state=on]:bg-primary-100 data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-r-md border font-bold"
       >
         3
       </ToggleGroupItem>
@@ -61,7 +61,7 @@ export const toggle_group_examples = {
       <ToggleGroupItem
         value="1"
         isUnstyled
-        className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-300 w-full px-3  py-1"
+        className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 w-full px-3 py-1  font-semibold"
       >
         1
       </ToggleGroupItem>

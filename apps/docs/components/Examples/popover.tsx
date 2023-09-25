@@ -45,7 +45,7 @@ export const popover_examples = {
   "popover:showarrow": (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent className="!w-96 space-y-3">
+      <PopoverContent className="!w-96 space-y-3" showArrow>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
