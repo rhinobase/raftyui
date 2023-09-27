@@ -23,13 +23,13 @@
   },
   "exports": {
     ".": {
-      "types": "./index.d.ts",
+      "types": "./index.esm.d.ts",
       "import": "./index.esm.js"
     }
   },
   "sideEffects": false,
-  "module": "index.mjs.js",
-  "types": "index.d.ts",
+  "module": "index.esm.js",
+  "types": "index.esm.d.ts",
   "peerDependencies": {
     "@heroicons/react": "2.0.18",
     "@radix-ui/react-accordion": "1.1.2",
