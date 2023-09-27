@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.5](https://github.com/rhinobase/design-system/compare/ui-1.0.4...ui-1.0.5) (2023-09-27)
+
+
+### Bug Fixes
+
+* dropped the support for commonjs ([c027b2d](https://github.com/rhinobase/design-system/commit/c027b2d031e8d8d04154f639383135ead049d636))
+
 ## [1.0.4](https://github.com/rhinobase/design-system/compare/ui-1.0.3...ui-1.0.4) (2023-09-27)
 
 

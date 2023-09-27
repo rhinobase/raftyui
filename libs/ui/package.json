@@ -1,7 +1,7 @@
 {
   "name": "@rafty/ui",
   "description": "React + A11y + Tailwind CSS Dynamic Component Library ",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "keywords": [
     "react",
