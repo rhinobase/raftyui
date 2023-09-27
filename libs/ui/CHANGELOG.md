@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.6](https://github.com/rhinobase/design-system/compare/ui-1.0.5...ui-1.0.6) (2023-09-27)
+
+
+### Bug Fixes
+
+* corrected types location in package.json ([4879394](https://github.com/rhinobase/design-system/commit/4879394ff1d51031a80ebc233c8a0fd8514780ba))
+
 ## [1.0.5](https://github.com/rhinobase/design-system/compare/ui-1.0.4...ui-1.0.5) (2023-09-27)
 
 
