@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.3](https://github.com/rhinobase/design-system/compare/ui-1.0.2...ui-1.0.3) (2023-09-27)
+
+
+### Bug Fixes
+
+* added indicatorClassName to add className to popover subcomponent and styling improvement ([52fcd3c](https://github.com/rhinobase/design-system/commit/52fcd3c7cea5992353c7a8aff5708cdd8b654ec4))
+
 ## [1.0.2](https://github.com/rhinobase/design-system/compare/ui-1.0.1...ui-1.0.2) (2023-09-21)
 
 
