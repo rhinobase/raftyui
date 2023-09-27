@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.4](https://github.com/rhinobase/design-system/compare/ui-1.0.3...ui-1.0.4) (2023-09-27)
+
+
+### Bug Fixes
+
+* reverted back to babel ([f079fe6](https://github.com/rhinobase/design-system/commit/f079fe6d511a459de25b69ecf4fad97ac7e52982))
+
 ## [1.0.3](https://github.com/rhinobase/design-system/compare/ui-1.0.2...ui-1.0.3) (2023-09-27)
 
 ### Bug Fixes
