@@ -4,24 +4,22 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.0.3](https://github.com/rhinobase/design-system/compare/ui-1.0.2...ui-1.0.3) (2023-09-27)
 
-
 ### Bug Fixes
 
-* added indicatorClassName to add className to popover subcomponent and styling improvement ([52fcd3c](https://github.com/rhinobase/design-system/commit/52fcd3c7cea5992353c7a8aff5708cdd8b654ec4))
+- added indicatorClassName to add className to popover subcomponent and styling improvement ([52fcd3c](https://github.com/rhinobase/design-system/commit/52fcd3c7cea5992353c7a8aff5708cdd8b654ec4))
 
 ## [1.0.2](https://github.com/rhinobase/design-system/compare/ui-1.0.1...ui-1.0.2) (2023-09-21)
 
-
 ### Bug Fixes
 
-* added displayName in spinner ([89aa180](https://github.com/rhinobase/design-system/commit/89aa1802f3242be9647bdf067b25b725a3f05dc0))
-* added missing displayName to all components ([e61bd49](https://github.com/rhinobase/design-system/commit/e61bd49a583afa9222d064048c0b1c69d407d719))
-* fixed issue with dialog description component ([849371d](https://github.com/rhinobase/design-system/commit/849371d775212a23a1f7202bbaf84824383f9654))
-* improve progress component styling ([9daf490](https://github.com/rhinobase/design-system/commit/9daf49014ba5721556f576d4f92e18a5bd0e9013))
-* improvement in tag field ([7700999](https://github.com/rhinobase/design-system/commit/77009997aee6efbcf881b652c4f5f9182778756c))
-* minor improvement in radio component ([53deaf9](https://github.com/rhinobase/design-system/commit/53deaf941e8d123d63505c412fce01e1e62c9233))
-* prop updation in tag field component ([6d8c902](https://github.com/rhinobase/design-system/commit/6d8c902f3dc1a20f191f0f450aa0e3d139ea04e6))
-* radio improvement ([b1f160a](https://github.com/rhinobase/design-system/commit/b1f160acabdb5c35e0ec479e16e785c0e581cfc6))
+- added displayName in spinner ([89aa180](https://github.com/rhinobase/design-system/commit/89aa1802f3242be9647bdf067b25b725a3f05dc0))
+- added missing displayName to all components ([e61bd49](https://github.com/rhinobase/design-system/commit/e61bd49a583afa9222d064048c0b1c69d407d719))
+- fixed issue with dialog description component ([849371d](https://github.com/rhinobase/design-system/commit/849371d775212a23a1f7202bbaf84824383f9654))
+- improve progress component styling ([9daf490](https://github.com/rhinobase/design-system/commit/9daf49014ba5721556f576d4f92e18a5bd0e9013))
+- improvement in tag field ([7700999](https://github.com/rhinobase/design-system/commit/77009997aee6efbcf881b652c4f5f9182778756c))
+- minor improvement in radio component ([53deaf9](https://github.com/rhinobase/design-system/commit/53deaf941e8d123d63505c412fce01e1e62c9233))
+- prop updation in tag field component ([6d8c902](https://github.com/rhinobase/design-system/commit/6d8c902f3dc1a20f191f0f450aa0e3d139ea04e6))
+- radio improvement ([b1f160a](https://github.com/rhinobase/design-system/commit/b1f160acabdb5c35e0ec479e16e785c0e581cfc6))
 
 ## [1.0.1](https://github.com/rhinobase/design-system/compare/ui-1.0.0...ui-1.0.1) (2023-08-29)
 

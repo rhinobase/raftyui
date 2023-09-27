@@ -6,13 +6,9 @@
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/storybook/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["apps/storybook/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "serve": {
@@ -29,9 +25,7 @@
     },
     "build": {
       "executor": "@nx/storybook:build",
-      "outputs": [
-        "{options.outputDir}"
-      ],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/storybook",
         "configDir": "apps/storybook/.storybook"

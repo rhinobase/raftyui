@@ -4,17 +4,15 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.0.0](https://github.com/rhinobase/design-system/compare/plugin-1.0.0-beta.6...plugin-1.0.0) (2023-09-27)
 
-
 ### Features
 
-* added color variables to plugin and config files & added variable css in css files ([e76c61b](https://github.com/rhinobase/design-system/commit/e76c61b1303bcced6d606ab48004046a23bb20b6))
-
+- added color variables to plugin and config files & added variable css in css files ([e76c61b](https://github.com/rhinobase/design-system/commit/e76c61b1303bcced6d606ab48004046a23bb20b6))
 
 ### Bug Fixes
 
-* removed error, warning, info & success color variables from plugin and tailwind config files ([56123a8](https://github.com/rhinobase/design-system/commit/56123a8ecc7ff35b494696aea1774a9078a2af50))
-* removed the dependency on tslib in plugin ([34b915c](https://github.com/rhinobase/design-system/commit/34b915ce32af693a6626b1c4e647cce10e106af4))
-* rollbacked the plugin file ([dabb5cd](https://github.com/rhinobase/design-system/commit/dabb5cd9df48d4a7557d2d70237d665b2d8224cc))
+- removed error, warning, info & success color variables from plugin and tailwind config files ([56123a8](https://github.com/rhinobase/design-system/commit/56123a8ecc7ff35b494696aea1774a9078a2af50))
+- removed the dependency on tslib in plugin ([34b915c](https://github.com/rhinobase/design-system/commit/34b915ce32af693a6626b1c4e647cce10e106af4))
+- rollbacked the plugin file ([dabb5cd](https://github.com/rhinobase/design-system/commit/dabb5cd9df48d4a7557d2d70237d665b2d8224cc))
 
 ## [1.0.0-beta.6](https://github.com/rhinobase/design-system/compare/plugin-1.0.0-beta.5...plugin-1.0.0-beta.6) (2023-07-22)
 
