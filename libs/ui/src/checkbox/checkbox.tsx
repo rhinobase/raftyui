@@ -84,6 +84,7 @@ export const Checkbox = React.forwardRef<
                 "cursor-not-allowed opacity-50",
               "pl-2",
             )}
+            isRequired={required}
           >
             {children}
           </Label>
