@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.7](https://github.com/rhinobase/design-system/compare/ui-1.0.6...ui-1.0.7) (2023-09-29)
+
+
+### Bug Fixes
+
+* added isRequired prop in label that we are rendering in child element ([6b47e20](https://github.com/rhinobase/design-system/commit/6b47e20ee2606e8d226e8b8f9a98bbaf1b9a1632))
+
 ## [1.0.6](https://github.com/rhinobase/design-system/compare/ui-1.0.5...ui-1.0.6) (2023-09-27)
 
 
