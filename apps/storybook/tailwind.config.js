@@ -1,5 +1,6 @@
 const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 const { join } = require("path");
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -28,19 +29,7 @@ module.exports = {
           900: "rgb(var(--color-primary-900) / 1)",
           950: "rgb(var(--color-primary-950) / 1)",
         },
-        secondary: {
-          50: "rgb(var(--color-secondary-50) / 1)",
-          100: "rgb(var(--color-secondary-100) / 1)",
-          200: "rgb(var(--color-secondary-200) / 1)",
-          300: "rgb(var(--color-secondary-300) / 1)",
-          400: "rgb(var(--color-secondary-400) / 1)",
-          500: "rgb(var(--color-secondary-500) / 1)",
-          600: "rgb(var(--color-secondary-600) / 1)",
-          700: "rgb(var(--color-secondary-700) / 1)",
-          800: "rgb(var(--color-secondary-800) / 1)",
-          900: "rgb(var(--color-secondary-900) / 1)",
-          950: "rgb(var(--color-secondary-950) / 1)",
-        },
+        secondary: colors.zinc,
       },
       padding: {
         none: "0px",

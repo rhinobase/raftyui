@@ -7,7 +7,7 @@
       "files": "package.json",
       "rules": {
         "@nx/dependency-checks": [
-          "error",
+          2,
           {
             "checkMissingDependencies": false
           }

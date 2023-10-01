@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx run-many -all -t build",
+    "build-all": "nx run-many -all -t build",
     "commit": "czg",
     "check-lock-files": "node ./scripts/check-lock-files.js",
     "prepare": "is-ci || husky install"
