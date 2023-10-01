@@ -4,31 +4,27 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ## [1.0.7](https://github.com/rhinobase/design-system/compare/ui-1.0.6...ui-1.0.7) (2023-09-29)
 
-
 ### Bug Fixes
 
-* added isRequired prop in label that we are rendering in child element ([6b47e20](https://github.com/rhinobase/design-system/commit/6b47e20ee2606e8d226e8b8f9a98bbaf1b9a1632))
+- added isRequired prop in label that we are rendering in child element ([6b47e20](https://github.com/rhinobase/design-system/commit/6b47e20ee2606e8d226e8b8f9a98bbaf1b9a1632))
 
 ## [1.0.6](https://github.com/rhinobase/design-system/compare/ui-1.0.5...ui-1.0.6) (2023-09-27)
 
-
 ### Bug Fixes
 
-* corrected types location in package.json ([4879394](https://github.com/rhinobase/design-system/commit/4879394ff1d51031a80ebc233c8a0fd8514780ba))
+- corrected types location in package.json ([4879394](https://github.com/rhinobase/design-system/commit/4879394ff1d51031a80ebc233c8a0fd8514780ba))
 
 ## [1.0.5](https://github.com/rhinobase/design-system/compare/ui-1.0.4...ui-1.0.5) (2023-09-27)
 
-
 ### Bug Fixes
 
-* dropped the support for commonjs ([c027b2d](https://github.com/rhinobase/design-system/commit/c027b2d031e8d8d04154f639383135ead049d636))
+- dropped the support for commonjs ([c027b2d](https://github.com/rhinobase/design-system/commit/c027b2d031e8d8d04154f639383135ead049d636))
 
 ## [1.0.4](https://github.com/rhinobase/design-system/compare/ui-1.0.3...ui-1.0.4) (2023-09-27)
 
-
 ### Bug Fixes
 
-* reverted back to babel ([f079fe6](https://github.com/rhinobase/design-system/commit/f079fe6d511a459de25b69ecf4fad97ac7e52982))
+- reverted back to babel ([f079fe6](https://github.com/rhinobase/design-system/commit/f079fe6d511a459de25b69ecf4fad97ac7e52982))
 
 ## [1.0.3](https://github.com/rhinobase/design-system/compare/ui-1.0.2...ui-1.0.3) (2023-09-27)
 

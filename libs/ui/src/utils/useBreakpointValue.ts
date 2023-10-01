@@ -20,7 +20,7 @@ export function useBreakpointValue<T = unknown>(props?: {
 
     // Removing the event listener
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [handleResize]);
 
   useEffect(() => {
     if (!width) return;

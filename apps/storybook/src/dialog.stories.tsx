@@ -35,21 +35,19 @@ type Story = StoryObj<typeof Dialog>;
 
 export const Default: Story = {
   render: ({ size }) => (
-    <>
-      <Dialog size={size}>
-        <DialogTrigger>open</DialogTrigger>
-        <DialogOverlay />
-        <DialogContent>
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DialogDescription>
-          <DialogFooter>
-            <Button>Save Change</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </>
+    <Dialog size={size}>
+      <DialogTrigger>open</DialogTrigger>
+      <DialogOverlay />
+      <DialogContent>
+        <DialogTitle>Dialog Title</DialogTitle>
+        <DialogDescription>
+          Make changes to your profile here. Click save when you&apos;re done.
+        </DialogDescription>
+        <DialogFooter>
+          <Button>Save Change</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   ),
 };
 
@@ -78,7 +76,7 @@ export const ImageDialog: Story = {
         <img
           src="https://images.unsplash.com/photo-1682695795798-1b31ea040caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
           className="h-full w-full object-contain"
-          alt="image"
+          alt="Unsplash"
           width={1000}
           height={1000}
         />

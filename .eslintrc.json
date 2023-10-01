@@ -4,6 +4,17 @@
   "plugins": ["@nx"],
   "overrides": [
     {
+      "files": "package.json",
+      "rules": {
+        "@nx/dependency-checks": [
+          "error",
+          {
+            "checkMissingDependencies": false
+          }
+        ]
+      }
+    },
+    {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
