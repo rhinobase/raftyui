@@ -21,6 +21,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: pnpm i
-    - run: pnpm build
+        cache: 'npm'
+    - run: npm i
+    - run: npm run build
