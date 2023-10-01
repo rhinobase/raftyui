@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "build": "nx run-many -all -t build",
+    "commit": "czg",
+    "check-lock-files": "node ./scripts/check-lock-files.js",
+    "prepare": "is-ci || husky install"
   },
   "private": true,
   "devDependencies": {
-    "@commitlint/cli": "^17.7.2",
-    "@commitlint/config-conventional": "^17.7.0",
     "@jscutlery/semver": "^3.1.0",
     "@nx/eslint-plugin": "16.9.1",
     "@nx/js": "16.9.1",
@@ -38,6 +38,7 @@
     "@typescript-eslint/parser": "5.62.0",
     "@vitejs/plugin-react-swc": "^3.4.0",
     "autoprefixer": "^10.4.16",
+    "czg": "^1.7.1",
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.5.3",
     "eslint-config-prettier": "^8.10.0",
@@ -46,6 +47,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
     "lint-staged": "^14.0.1",
     "ngx-deploy-npm": "^7.0.1",
     "nx": "16.9.1",
