@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Builder
 
 on:
   push:
@@ -17,10 +17,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i
-    - run: npm run build
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm i
+    - name: Building @rafty/ui and docs
+      run: pnpm build
