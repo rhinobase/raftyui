@@ -27,18 +27,16 @@ type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
   render: ({ size, variant, isReadOnly, isDisabled, isRequired }) => (
-    <>
-      <div className="flex w-[640px] flex-col gap-6 dark:text-white">
-        <h4 className="font-bold">Input Field</h4>
-        <InputField
-          variant={variant}
-          isReadOnly={isReadOnly}
-          isDisabled={isDisabled}
-          isRequired={isRequired}
-          size={size}
-          placeholder="Enter Text"
-        />
-      </div>
-    </>
+    <div className="flex w-[640px] flex-col gap-6 dark:text-white">
+      <h4 className="font-bold">Input Field</h4>
+      <InputField
+        variant={variant}
+        isReadOnly={isReadOnly}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+        size={size}
+        placeholder="Enter Text"
+      />
+    </div>
   ),
 };

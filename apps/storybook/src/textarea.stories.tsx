@@ -22,19 +22,17 @@ type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
   render: ({ variant, disabled, required, readOnly }) => (
-    <>
-      <div className="flex w-[640px] flex-col gap-6 dark:text-white">
-        <h4>Textarea</h4>
-        <FieldControl
-          name=""
-          isDisabled={disabled}
-          isReadOnly={readOnly}
-          isRequired={required}
-        >
-          <Label>Enter Message</Label>
-          <Textarea placeholder="abc" variant={variant} />
-        </FieldControl>
-      </div>
-    </>
+    <div className="flex w-[640px] flex-col gap-6 dark:text-white">
+      <h4>Textarea</h4>
+      <FieldControl
+        name=""
+        isDisabled={disabled}
+        isReadOnly={readOnly}
+        isRequired={required}
+      >
+        <Label>Enter Message</Label>
+        <Textarea placeholder="abc" variant={variant} />
+      </FieldControl>
+    </div>
   ),
 };

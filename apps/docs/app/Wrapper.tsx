@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname, useParams, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Hero } from "../components/Hero";
 import { Logo, Logomark } from "../components/Logo";
 import { MobileNavigation } from "../components/MobileNavigation";

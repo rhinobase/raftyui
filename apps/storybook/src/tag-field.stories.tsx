@@ -9,9 +9,5 @@ export default meta;
 type Story = StoryObj<typeof TagField>;
 
 export const Default: Story = {
-  render: () => (
-    <>
-      <TagField />
-    </>
-  ),
+  render: () => <TagField />,
 };

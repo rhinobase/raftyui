@@ -10,13 +10,11 @@ type Story = StoryObj<typeof OrderedList>;
 
 export const Default: Story = {
   render: () => (
-    <>
-      <OrderedList>
-        <ListItem>Lorem ipsum dolor sit amet</ListItem>
-        <ListItem>Consectetur adipiscing elit</ListItem>
-        <ListItem>Integer molestie lorem at massa</ListItem>
-        <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-      </OrderedList>
-    </>
+    <OrderedList>
+      <ListItem>Lorem ipsum dolor sit amet</ListItem>
+      <ListItem>Consectetur adipiscing elit</ListItem>
+      <ListItem>Integer molestie lorem at massa</ListItem>
+      <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+    </OrderedList>
   ),
 };

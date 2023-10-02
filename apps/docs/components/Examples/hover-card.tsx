@@ -1,17 +1,18 @@
 import { HoverCard, HoverCardContent, HoverCardTrigger, Text } from "@rafty/ui";
+import Image from "next/image";
 
 export const hover_card_examples = {
   "hover-card:usage": (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <img
+        <Image
           className="block h-[45px] w-[45px] cursor-pointer rounded-full"
           src="https://images.unsplash.com/photo-1634195130430-2be61200b66a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjkyfHxjYXJ0b29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
           alt="Rafty UI"
         />
       </HoverCardTrigger>
       <HoverCardContent className="not-prose w-[300px] space-y-4">
-        <img
+        <Image
           className="h-14 w-14 rounded-full"
           src="https://images.unsplash.com/photo-1634195130430-2be61200b66a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjkyfHxjYXJ0b29ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
           alt="Rafty UI"

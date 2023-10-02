@@ -46,31 +46,29 @@ export const Default: Story = {
       },
     ];
     return (
-      <>
-        <TableContainer className="max-w-2xl">
-          <Table size={size}>
-            <TableHead>
-              <Tr>
-                <Th>Name</Th>
-                <Th>Title</Th>
-                <Th>Email</Th>
-                <Th>Role</Th>
+      <TableContainer className="max-w-2xl">
+        <Table size={size}>
+          <TableHead>
+            <Tr>
+              <Th>Name</Th>
+              <Th>Title</Th>
+              <Th>Email</Th>
+              <Th>Role</Th>
+            </Tr>
+          </TableHead>
+          <TableBody>
+            {people.map((person, index) => (
+              <Tr key={index}>
+                <Td>{person.name}</Td>
+                <Td>{person.title}</Td>
+                <Td>{person.email}</Td>
+                <Td>{person.role}</Td>
               </Tr>
-            </TableHead>
-            <TableBody>
-              {people.map((person, index) => (
-                <Tr key={index}>
-                  <Td>{person.name}</Td>
-                  <Td>{person.title}</Td>
-                  <Td>{person.email}</Td>
-                  <Td>{person.role}</Td>
-                </Tr>
-              ))}
-            </TableBody>
-            <TableFooter></TableFooter>
-          </Table>
-        </TableContainer>
-      </>
+            ))}
+          </TableBody>
+          <TableFooter></TableFooter>
+        </Table>
+      </TableContainer>
     );
   },
 };

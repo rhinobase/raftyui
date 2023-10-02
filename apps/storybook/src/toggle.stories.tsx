@@ -19,10 +19,8 @@ type Story = StoryObj<typeof Toggle>;
 
 export const Default: Story = {
   render: () => (
-    <>
-      <div className="flex w-80 flex-col gap-6">
-        <Toggle>B</Toggle>
-      </div>
-    </>
+    <div className="flex w-80 flex-col gap-6">
+      <Toggle>B</Toggle>
+    </div>
   ),
 };
