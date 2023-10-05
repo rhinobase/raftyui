@@ -6,7 +6,12 @@
       "files": ["*.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
-        "@nx/dependency-checks": "error"
+        "@nx/dependency-checks": [
+          "error",
+          {
+            "ignoredFiles": ["libs/ui/rollup.config.js"]
+          }
+        ]
       }
     },
     {
