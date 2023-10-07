@@ -22,8 +22,8 @@ const lexend = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - rafty UI Docs",
-    default: "rafty UI - Building Design System Made Easy",
+    template: "%s - Rafty UI Docs",
+    default: "Rafty UI - Building Design System Made Easy",
   },
   description:
     "Explore the components, and start building on top of it, SSR Ready, and dark mode-compatible interfaces.",

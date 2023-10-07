@@ -4,7 +4,6 @@ import yaml from "js-yaml";
 
 import { DocsLayout } from "../components/DocsLayout";
 import { Fence } from "../components/Fence";
-import { Kbd } from "@rafty/ui";
 
 let documentSlugifyMap = new Map();
 
@@ -57,14 +56,6 @@ const nodes = {
     render: Fence,
     attributes: {
       language: {
-        type: String,
-      },
-    },
-  },
-  code: {
-    render: ({ content }) => <Kbd>{content}</Kbd>,
-    attributes: {
-      content: {
         type: String,
       },
     },
