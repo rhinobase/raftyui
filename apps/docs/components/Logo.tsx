@@ -1,12 +1,13 @@
 import { classNames } from "@rafty/ui";
-import { useTheme } from "next-themes";
 
 function LogomarkPaths() {
-  const { theme } = useTheme();
-  const stroke = theme == "light" ? "#8b5cf6" : "#a78bfa";
-
   return (
-    <g fill="none" stroke={stroke} strokeLinejoin="round" strokeWidth={3}>
+    <g
+      fill="none"
+      strokeLinejoin="round"
+      strokeWidth={3}
+      className="stroke-indigo-500 dark:stroke-indigo-300"
+    >
       <path d="M10.308 5L18 17.5 10.308 30 2.615 17.5 10.308 5z" />
       <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z" />
     </g>
@@ -37,7 +38,7 @@ export function Logo({
       >
         <LogomarkPaths />
       </svg>
-      <h1 className="dark:via-primary-400 font-display inline bg-gradient-to-r from-indigo-500 via-primary-500 to-indigo-500 dark:from-indigo-300 dark:to-indigo-300 bg-clip-text text-3xl leading-none tracking-tight text-transparent">
+      <h1 className="dark:via-primary-300 font-display inline bg-gradient-to-r from-indigo-500 via-primary-500 to-indigo-500 dark:from-indigo-300 dark:to-indigo-300 bg-clip-text text-3xl leading-none tracking-tight text-transparent">
         Rafty UI
       </h1>
     </div>
