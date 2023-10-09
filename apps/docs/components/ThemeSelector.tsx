@@ -28,7 +28,7 @@ export function ThemeSelector() {
         <BsSun className="stroke-[0.5] dark:hidden" size={18} />
         <BsMoon className="hidden stroke-[0.5] dark:block" size={18} />
       </MenuTrigger>
-      <MenuContent className="!z-50">
+      <MenuContent className="!z-50 !gap-0.5">
         {themes.map((item) => (
           <MenuItem
             key={item.value}

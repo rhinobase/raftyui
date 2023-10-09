@@ -59,7 +59,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
           : "dark:bg-transparent",
       )}
     >
-      <div className="mr-3 flex lg:hidden">
+      <div className="mr-3 md:mr-0 flex lg:hidden">
         <Button size="icon" variant="ghost" onClick={() => setDrawerOpen(true)}>
           <HiBars3 size={20} />
         </Button>
@@ -67,7 +67,10 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
       <div className="relative flex flex-grow basis-0 items-center">
         <Link href="/" aria-label="Home page">
           <Logomark className="h-9 w-9 lg:hidden" />
-          <Logo className="fill-secondary-700 dark:fill-primary-100 hidden h-9 w-auto lg:block" />
+          <Logo
+            className="hidden lg:flex"
+            svgClassName="fill-secondary-700 dark:fill-primary-100 h-9 w-auto"
+          />
         </Link>
       </div>
       <div className="relative flex basis-0 items-center justify-end gap-1 md:flex-grow md:gap-2 lg:gap-4">

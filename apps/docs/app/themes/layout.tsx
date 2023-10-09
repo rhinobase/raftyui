@@ -19,7 +19,11 @@ import { HiCheck, HiOutlineMoon, HiOutlineSun, HiX } from "react-icons/hi";
 import { useTheme } from "next-themes";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Fence } from "../../components/Fence";
-import { PiCopyBold, PiPaintBrushHouseholdLight } from "react-icons/pi";
+import {
+  HiOutlineDocumentDuplicate,
+  HiOutlinePaintBrush,
+} from "react-icons/hi2";
+
 const ColorTheme = {
   gray: "!bg-gray-500",
   red: "!bg-red-500",
@@ -82,50 +86,7 @@ export default function ThemeBuilderLayout({
           ))}
           <div className="flex-1 md:hidden" />
           <CustomizeMenu color={color} changeColor={changeColor} />
-          <Dialog>
-            <DialogTrigger variant="outline" className="hidden md:block">
-              Copy code
-            </DialogTrigger>
-            <DialogTrigger
-              variant="outline"
-              size="icon"
-              className="md:hidden"
-              leftIcon={<PiCopyBold />}
-            />
-            <DialogOverlay />
-            <DialogContent className="space-y-2 !p-5">
-              <div>
-                <DialogTitle>Theme</DialogTitle>
-                <Text className="text-sm opacity-50">
-                  Copy and paste the following code into your{" "}
-                  <em>tailwind.config.js</em> file.
-                </Text>
-              </div>
-              <Fence
-                language="js"
-                className="overflow-x-auto rounded-xl px-5 py-4"
-              >
-                {`const colors = require('tailwindcss/colors')
-
-{
-  darkMode: "class", // optional
-  content: [
-    ...
-    "./node_modules/@rafty/ui/**/*.{js,cjs}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        primary: colors.${color},
-        secondary: colors.zinc, // default
-      },
-    },
-  },
-  plugins: [require("@rafty/plugin")],
-}`}
-              </Fence>
-            </DialogContent>
-          </Dialog>
+          <CopyCodeDialog color={color} />
         </div>
       </div>
       {children}
@@ -148,13 +109,13 @@ function CustomizeMenu({
         <div>
           <Button
             variant="outline"
-            leftIcon={<PiPaintBrushHouseholdLight />}
+            leftIcon={<HiOutlinePaintBrush size={19} />}
             className="hidden md:flex"
           >
             Customize
           </Button>
           <Button variant="outline" size="icon" className="md:hidden">
-            <PiPaintBrushHouseholdLight />
+            <HiOutlinePaintBrush size={19} />
           </Button>
         </div>
       </PopoverTrigger>
@@ -211,5 +172,48 @@ function CustomizeMenu({
         </PopoverClose>
       </PopoverContent>
     </Popover>
+  );
+}
+
+function CopyCodeDialog({ color }: { color: keyof typeof ColorTheme }) {
+  return (
+    <Dialog>
+      <DialogTrigger variant="outline" className="hidden md:block">
+        Copy code
+      </DialogTrigger>
+      <DialogTrigger variant="outline" size="icon" className="md:hidden">
+        <HiOutlineDocumentDuplicate size={19} />
+      </DialogTrigger>
+      <DialogOverlay />
+      <DialogContent className="space-y-2 !p-5">
+        <div>
+          <DialogTitle>Theme</DialogTitle>
+          <Text className="text-sm opacity-50">
+            Copy and paste the following code into your{" "}
+            <em>tailwind.config.js</em> file.
+          </Text>
+        </div>
+        <Fence language="js" className="overflow-x-auto rounded-xl px-5 py-4">
+          {`const colors = require('tailwindcss/colors')
+
+{
+  darkMode: "class", // optional
+  content: [
+    ...
+    "./node_modules/@rafty/ui/**/*.{js,cjs}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: colors.${color},
+        secondary: colors.zinc, // default
+      },
+    },
+  },
+  plugins: [require("@rafty/plugin")],
+}`}
+        </Fence>
+      </DialogContent>
+    </Dialog>
   );
 }

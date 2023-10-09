@@ -18,14 +18,15 @@ const icons = {
 };
 
 const iconStyles = {
-  blue: "[--icon-foreground:theme(colors.secondary.900)] [--icon-background:theme(colors.white)]",
-  amber:
-    "[--icon-foreground:theme(colors.amber.900)] [--icon-background:theme(colors.amber.100)]",
+  indigo:
+    "[--icon-foreground:theme(colors.indigo.900)] [--icon-background:theme(colors.white)]",
+  violet:
+    "[--icon-foreground:theme(colors.violet.900)] [--icon-background:theme(colors.violet.100)]",
 };
 
 export function Icon({
   icon,
-  color = "blue",
+  color = "indigo",
   className,
   ...props
 }: {
@@ -49,19 +50,19 @@ export function Icon({
 }
 
 const gradients = {
-  blue: [
-    { stopColor: "#0EA5E9" },
-    { stopColor: "#22D3EE", offset: ".527" },
-    { stopColor: "#818CF8", offset: 1 },
+  indigo: [
+    { stopColor: "#818cf8" },
+    { stopColor: "#c4b5fd", offset: ".527" },
+    { stopColor: "#a5b4fc", offset: 1 },
   ],
-  amber: [
+  violet: [
     { stopColor: "#FDE68A", offset: ".08" },
     { stopColor: "#F59E0B", offset: ".837" },
   ],
 };
 
 export function Gradient({
-  color = "blue",
+  color = "indigo",
   ...props
 }: {
   color?: keyof typeof gradients;
