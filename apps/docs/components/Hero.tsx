@@ -34,18 +34,14 @@ export function Hero() {
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
                 <a href="#getting-started">
-                  <Button colorScheme="primary" className="!rounded-full">
-                    Get started
-                  </Button>
+                  <Button colorScheme="primary">Get started</Button>
                 </a>
-                <div className="dark:bg-secondary-600 rounded-full bg-white text-white">
+                <div className="dark:bg-secondary-600 rounded-md bg-white text-white">
                   <a
                     href="https://github.com/rhinobase/raftyui"
                     target="_blank"
                   >
-                    <Button variant="ghost" className="!rounded-full">
-                      View on GitHub
-                    </Button>
+                    <Button variant="ghost">View on GitHub</Button>
                   </a>
                 </div>
               </div>
