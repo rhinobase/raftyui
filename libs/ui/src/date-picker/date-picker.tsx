@@ -1,50 +1,56 @@
-import React from "react";
+"use client";
+import { CalendarIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
-import { classNames } from "../utils";
+import { useReducer, useState } from "react";
+import { DayPickerSingleProps } from "react-day-picker";
 import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
+import { classNames } from "../utils";
 import { Calendar } from "./calendar";
-import { CalendarIcon } from "@heroicons/react/24/outline";
-import { DayPickerSingleProps } from "react-day-picker";
 
-export type DatePicker = Omit<DayPickerSingleProps, "mode">;
+export type DatePicker = {
+  onSelect?: (value?: Date) => void;
+} & Omit<DayPickerSingleProps, "mode" | "onSelect">;
 
 export function DatePicker(props: DatePicker) {
-  const [date, setDate] = React.useState<Date>();
+  const [isOpen, setOpen] = useState(false);
+  const [selected, setSelected] = useReducer((_?: Date, cur?: Date) => {
+    // Converting the value
+    const value = cur ? new Date(format(cur, "yyyy-mm-dd")) : undefined;
 
-  React.useEffect(() => {
-    setDate(props.selected);
-  }, [props.selected]);
+    // Sending the value
+    props.onSelect?.(value);
+
+    // Cleanup
+    setOpen(false);
+
+    return value;
+  }, props.selected);
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={classNames("w-full !justify-start text-left font-normal")}
-        >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? (
-            props.formatters && props.formatters.formatDay ? (
-              props.formatters.formatDay(date)
-            ) : (
-              format(date, "longDate")
-            )
+    <Popover open={isOpen} onOpenChange={setOpen}>
+      <PopoverTrigger
+        variant="outline"
+        className="w-full !justify-start text-left font-normal"
+        leftIcon={<CalendarIcon className="h-4 w-4" />}
+      >
+        {selected ? (
+          props.formatters && props.formatters.formatDay ? (
+            props.formatters.formatDay(selected)
           ) : (
-            <span>Pick a date</span>
-          )}
-        </Button>
+            format(selected, "longDate")
+          )
+        ) : (
+          <span>Pick a date</span>
+        )}
       </PopoverTrigger>
       <PopoverContent align="start" className="w-auto border-0 !p-0">
         <Calendar
-          mode="single"
           {...props}
-          selected={date}
-          onSelect={(date, selectedDay, activeModifiers, e) => {
-            setDate(date);
-            if (props.onSelect && date)
-              props.onSelect(date, selectedDay, activeModifiers, e);
-          }}
+          mode="single"
+          selected={selected}
+          onSelect={setSelected}
+          defaultMonth={selected}
           initialFocus
         />
       </PopoverContent>
