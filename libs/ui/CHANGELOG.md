@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com/rhinobase/design-system/compare/ui-1.0.7...ui-1.1.0) (2023-10-10)
+
+
+### Bug Fixes
+
+* added formatting in pre commit ([c90c9fc](https://github.com/rhinobase/design-system/commit/c90c9fcef66f0f01a0ffa75d0ce9f808c69ce059))
+* **rafty docs:** improve date picker ([b3d9723](https://github.com/rhinobase/design-system/commit/b3d97235398a1fcfd6bcdd1d07d78189f25e8299))
+
 ## [1.0.7](https://github.com/rhinobase/design-system/compare/ui-1.0.6...ui-1.0.7) (2023-09-29)
 
 ### Bug Fixes
