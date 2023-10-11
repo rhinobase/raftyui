@@ -1,4 +1,4 @@
-# Welcome to Rafty UI ⛵
+# Welcome to rafty/ui
 
 React + Accessible + Tailwind CSS Dynamic Component Library
 
@@ -24,9 +24,9 @@ To use Rafty UI in your project, run one of the following commands in your termi
 
 ```sh
 npm i @rafty/ui
-
+# or
 yarn add @rafty/ui
-
+# or
 pnpm i @rafty/ui
 ```
 
