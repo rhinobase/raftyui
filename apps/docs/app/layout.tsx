@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 
 import "../styles/globals.css";
 import { Wrapper } from "./Wrapper";
+import { CookieConcent } from "./CookieConcent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Providers>
           <Wrapper>{children}</Wrapper>
         </Providers>
+        <CookieConcent />
       </body>
     </html>
   );
