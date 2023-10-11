@@ -3,9 +3,7 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
 import { useReducer, useState } from "react";
 import { DayPickerSingleProps } from "react-day-picker";
-import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import { classNames } from "../utils";
 import { Calendar } from "./calendar";
 
 export type DatePicker = {
