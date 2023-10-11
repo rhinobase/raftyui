@@ -1,12 +1,22 @@
-import { ReactNode } from "react";
+import React from "react";
+import { classNames } from "../utils";
 
 // Error Message Component
-export type ErrorMessage = {
-  children: ReactNode;
-};
+export type ErrorMessage = JSX.IntrinsicElements["p"];
 
-export function ErrorMessage({ children }: ErrorMessage) {
+export const ErrorMessage = React.forwardRef<
+  HTMLParagraphElement,
+  ErrorMessage
+>(({ className, ...props }, forwardedRef) => {
   return (
-    <p className="my-0.5 text-sm text-red-600 dark:text-red-400">{children}</p>
+    <p
+      {...props}
+      className={classNames(
+        "my-0.5 text-sm text-red-600 dark:text-red-400",
+        className,
+      )}
+      ref={forwardedRef}
+    />
   );
-}
+});
+ErrorMessage.displayName = "ErrorMessage";

@@ -10,7 +10,7 @@ export type DatePicker = {
   onSelect?: (value?: Date) => void;
 } & Omit<DayPickerSingleProps, "mode" | "onSelect">;
 
-export function DatePicker(props: DatePicker) {
+export const DatePicker = (props: DatePicker) => {
   const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useReducer((_?: Date, cur?: Date) => {
     // Converting the value
@@ -54,4 +54,6 @@ export function DatePicker(props: DatePicker) {
       </PopoverContent>
     </Popover>
   );
-}
+};
+
+DatePicker.displayName = "DatePicker";

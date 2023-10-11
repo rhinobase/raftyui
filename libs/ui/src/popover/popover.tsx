@@ -79,7 +79,7 @@ PopoverTrigger.displayName = "PopoverTrigger";
 // PopoverContent Component
 export type PopoverContent = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
-> & { isUnstyled?: boolean; showArrow?: boolean };
+> & { isUnstyled?: boolean; showArrow?: boolean; arrowClassName?: string };
 
 export const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
@@ -92,6 +92,7 @@ export const PopoverContent = React.forwardRef<
       sideOffset = 4,
       isUnstyled = false,
       showArrow = false,
+      arrowClassName,
       ...props
     },
     forwardedRef,
@@ -117,7 +118,12 @@ export const PopoverContent = React.forwardRef<
         >
           {children}
           {showArrow && (
-            <PopoverPrimitive.Arrow className="dark:fill-secondary-800 fill-white" />
+            <PopoverPrimitive.Arrow
+              className={classNames(
+                "dark:fill-secondary-800 fill-white",
+                arrowClassName,
+              )}
+            />
           )}
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>

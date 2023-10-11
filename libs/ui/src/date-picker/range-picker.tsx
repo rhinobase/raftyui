@@ -11,7 +11,7 @@ export type RangePicker = {
   onSelect?: (value?: DateRange) => void;
 } & Omit<DayPickerRangeProps, "mode" | "onSelect">;
 
-export function RangePicker({ className, ...props }: RangePicker) {
+export const RangePicker = ({ className, ...props }: RangePicker) => {
   const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useReducer(
     (_?: DateRange, cur?: DateRange) => {
@@ -90,4 +90,5 @@ export function RangePicker({ className, ...props }: RangePicker) {
       </PopoverContent>
     </Popover>
   );
-}
+};
+RangePicker.displayName = "RangePicker";
