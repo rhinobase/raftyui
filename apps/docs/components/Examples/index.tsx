@@ -38,13 +38,11 @@ import { menubar_examples } from "./menubar";
 import { navigation_menu_examples } from "./navigation-menu";
 import { tooltip_examples } from "./tooltip";
 import { password_field_examples } from "./password-field";
-import { aspect_ratio_examples } from "./aspect-ratio";
 import { calendar_examples } from "./calendar";
 import { field_control_examples } from "./field-control";
 import { command_examples } from "./command";
 import { label_examples } from "./label";
 import { input_examples } from "./input-field";
-import { toggle_examples } from "./toggle";
 import { hover_card_examples } from "./hover-card";
 import { avatar_examples } from "./avatar";
 import { scroll_area_examples } from "./scroll-area";
@@ -87,13 +85,11 @@ const examples: Record<string, JSX.Element> = {
   ...dialog_examples,
   ...drawer_examples,
   ...input_examples,
-  ...toggle_examples,
   ...hover_card_examples,
   ...menubar_examples,
   ...navigation_menu_examples,
   ...tooltip_examples,
   ...password_field_examples,
-  ...aspect_ratio_examples,
   ...calendar_examples,
 };
 

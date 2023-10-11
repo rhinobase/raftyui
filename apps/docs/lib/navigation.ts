@@ -16,10 +16,6 @@ export const navigation = [
       },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
-        title: "Aspect Ratio",
-        href: "/docs/components/aspect-ratio",
-      },
-      {
         title: "Avatar",
         href: "/docs/components/avatar",
       },
@@ -156,10 +152,6 @@ export const navigation = [
       {
         title: "Toast",
         href: "/docs/components/toast",
-      },
-      {
-        title: "Toggle",
-        href: "/docs/components/toggle",
       },
       {
         title: "Toggle Group",

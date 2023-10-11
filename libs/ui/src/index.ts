@@ -1,7 +1,6 @@
 export * from "./accordion";
 export * from "./alert";
 export * from "./alert-dialog";
-export * from "./aspect-ratio";
 export * from "./avatar";
 export * from "./button";
 export * from "./card";
@@ -35,7 +34,6 @@ export * from "./tag-field";
 export * from "./text";
 export * from "./textarea";
 export * from "./toast";
-export * from "./toggle";
 export * from "./toggle-group";
 export * from "./tooltip";
 export { classNames, mergeRefs, useBreakpointValue } from "./utils";
