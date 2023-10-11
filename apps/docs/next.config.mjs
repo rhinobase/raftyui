@@ -13,6 +13,9 @@ const nextConfig = {
     svgr: false,
   },
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
+  images: {
+    domains: ["images.unsplash.com"],
+  },
 };
 
 const plugins = [

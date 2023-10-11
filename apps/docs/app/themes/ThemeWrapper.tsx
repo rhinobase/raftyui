@@ -134,7 +134,11 @@ function CustomizeMenu({
           </Button>
         </div>
       </PopoverTrigger>
-      <PopoverContent showArrow align="end">
+      <PopoverContent
+        showArrow
+        className="dark:!bg-secondary-900"
+        arrowClassName="dark:!fill-secondary-900"
+      >
         <div className="w-[300px] space-y-3 p-2">
           <div className="space-y-1.5">
             <h5 className="text-xs font-medium">Color</h5>
@@ -200,10 +204,10 @@ function CopyCodeDialog({ color }: { color: keyof typeof ColorTheme }) {
         <HiOutlineDocumentDuplicate size={19} />
       </DialogTrigger>
       <DialogOverlay />
-      <DialogContent className="space-y-2 !p-5">
-        <div>
+      <DialogContent className="!p-5">
+        <div className="space-y-1 mb-5">
           <DialogTitle>Theme</DialogTitle>
-          <Text className="text-sm opacity-50">
+          <Text className="text-sm opacity-50 leading-snug">
             Copy and paste the following code into your{" "}
             <em>tailwind.config.js</em> file.
           </Text>

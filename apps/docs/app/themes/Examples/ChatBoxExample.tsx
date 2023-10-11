@@ -12,8 +12,6 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogFooter,
-  DialogHeader,
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
@@ -158,12 +156,12 @@ function NewMessageDialog() {
       </Tooltip>
       <DialogOverlay />
       <DialogContent className="dark:!bg-secondary-900 !p-0">
-        <DialogHeader className="!p-4">
+        <div className="p-4 space-y-2">
           <DialogTitle>New message</DialogTitle>
           <Text className="text-sm leading-tight opacity-60">
             Invite a user to this thread. This will create a new group message.
           </Text>
-        </DialogHeader>
+        </div>
         <Command className="dark:border-secondary-700 dark:!bg-secondary-900 !rounded-none border-y">
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
@@ -198,7 +196,7 @@ function NewMessageDialog() {
             </CommandGroup>
           </CommandList>
         </Command>
-        <DialogFooter className="items-center !justify-between !p-4">
+        <div className="flex items-center justify-between p-4">
           {selected.length > 0 ? (
             <AvatarGroup>
               {selected.map((user_index) => {
@@ -222,7 +220,7 @@ function NewMessageDialog() {
               Continue
             </Button>
           </DialogClose>
-        </DialogFooter>
+        </div>
       </DialogContent>
     </Dialog>
   );
