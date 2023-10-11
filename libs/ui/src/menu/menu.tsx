@@ -511,7 +511,7 @@ export const MenuSubContent = React.forwardRef<
               : classNames(
                   "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                   "data-[side=right]:animate-scale-in origin-top-left",
-                  "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] text-gray-900 focus:outline-none",
+                  "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] text-secondary-900 focus:outline-none",
                   className,
                 )
           }

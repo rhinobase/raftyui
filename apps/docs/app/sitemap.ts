@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const files = glob.sync("**/page.md", { cwd: pagesDir });
 
   return files.map((file) => ({
-    url: file === "page.md" ? "/" : `/${file.replace(/\/page\.md$/, "")}`,
+    url:
+      "https://rafty.rhinobase.io" +
+      (file === "page.md" ? "/" : `/${file.replace(/\/page\.md$/, "")}`),
   }));
 }

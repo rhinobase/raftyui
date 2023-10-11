@@ -29,7 +29,7 @@ export const input_examples = {
   "input-field:unstyled": (
     <InputField
       isUnstyled
-      className="w-full rounded-md border border-gray-300 bg-transparent p-1 transition-colors duration-300 hover:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-600 dark:hover:border-cyan-500"
+      className="w-full rounded-md border border-secondary-300 bg-transparent p-1 transition-colors duration-300 hover:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-secondary-600 dark:hover:border-cyan-500"
     />
   ),
   "input-field:loading": <InputField isLoading />,

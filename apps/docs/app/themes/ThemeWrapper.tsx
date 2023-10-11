@@ -90,6 +90,21 @@ export default function ThemeBuilderWrapper({
         </div>
       </div>
       {children}
+      <div className="flex flex-col md:flex-row items-center gap-2 md:justify-between mt-4 md:mt-10">
+        <p className="text-xs leading-none text-secondary-500">
+          This page is inspired by{" "}
+          <a
+            href="https://x.com/shadcn?t=2gBGi1FW3vmW37m13hN-TA&s=33"
+            target="_blank"
+            className="text-blue-500 dark:text-blue-400"
+          >
+            @shadcn
+          </a>
+        </p>
+        <p className="text-xs leading-none text-secondary-500">
+          &copy; {new Date().getFullYear()} rhinobase, Inc. All rights reserved.
+        </p>
+      </div>
     </div>
   );
 }

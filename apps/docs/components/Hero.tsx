@@ -33,8 +33,8 @@ export function Hero() {
                 design system.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
-                <a href="#getting-started">
-                  <Button colorScheme="primary">Get started</Button>
+                <a href="/themes">
+                  <Button colorScheme="primary">Explore Themes</Button>
                 </a>
                 <div className="dark:bg-secondary-600 rounded-md bg-white text-white">
                   <a
