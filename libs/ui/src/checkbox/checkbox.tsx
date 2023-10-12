@@ -12,7 +12,11 @@ const CheckBoxClasses = {
   size: { sm: "h-4 w-4", md: "h-5 w-5", lg: "h-6 w-6" },
 };
 const CheckBoxIndicatorClasses = {
-  size: { sm: "h-2.5 w-2.5", md: "h-3.5 w-3.5", lg: "h-4 w-4" },
+  size: {
+    sm: "h-3 w-3 stroke-[4]",
+    md: "h-4 w-4 stroke-[3.5]",
+    lg: "h-5 w-5 stroke-[3]",
+  },
 };
 
 export type Checkbox = Omit<
@@ -65,7 +69,7 @@ export const Checkbox = React.forwardRef<
           <CheckIcon
             className={classNames(
               CheckBoxIndicatorClasses.size[size],
-              "dark:text-secondary-700 hidden stroke-[3] text-white group-data-[state=checked]:block",
+              "dark:text-secondary-700 hidden text-white group-data-[state=checked]:block",
             )}
           />
           <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
