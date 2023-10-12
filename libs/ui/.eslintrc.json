@@ -9,7 +9,8 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "ignoredFiles": ["libs/ui/rollup.config.js"]
+            "ignoredFiles": ["libs/ui/rollup.config.js"],
+            "ignoredDependencies": ["core-js"]
           }
         ]
       }

@@ -51,8 +51,7 @@
           "@radix-ui/react-tabs",
           "@radix-ui/react-toggle-group",
           "@radix-ui/react-tooltip",
-          "dateformat",
-          "core-js"
+          "dateformat"
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "generateExportsField": true,
