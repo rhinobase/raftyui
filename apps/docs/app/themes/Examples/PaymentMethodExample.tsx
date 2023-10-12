@@ -90,15 +90,15 @@ export function PaymentMethodExample() {
         </div>
         <FieldControl name="name">
           <Label>Name</Label>
-          <InputField />
+          <InputField aria-label="Enter Your Name" />
         </FieldControl>
         <FieldControl name="city">
           <Label>City</Label>
-          <InputField />
+          <InputField aria-label="Enter Your City" />
         </FieldControl>
         <FieldControl name="card">
           <Label>Card Number</Label>
-          <InputField />
+          <InputField aria-label="Enter Your Card Number" />
         </FieldControl>
         <div className="flex w-full items-center gap-2">
           <FieldControl name="month">

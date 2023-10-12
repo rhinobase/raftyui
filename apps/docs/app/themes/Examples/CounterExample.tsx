@@ -65,6 +65,7 @@ function Counter() {
         onClick={() => setCount(count - 10)}
         className="!p-2"
         isDisabled={count <= 200}
+        aria-label="Decrement Value"
       >
         <HiMinus size={18} />
       </Button>
@@ -80,6 +81,7 @@ function Counter() {
         className="!p-2"
         onClick={() => setCount(count + 10)}
         isDisabled={count >= 400}
+        aria-label="Increment Value"
       >
         <HiPlus size={18} />
       </Button>

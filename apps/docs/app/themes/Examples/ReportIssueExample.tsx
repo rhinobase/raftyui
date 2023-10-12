@@ -66,7 +66,12 @@ function RoleSelector() {
   return (
     <Selector value={selected}>
       {ROLES.map((role) => (
-        <CommandItem key={role} value={role} onSelect={setSelected}>
+        <CommandItem
+          aria-label="Select Roles"
+          key={role}
+          value={role}
+          onSelect={setSelected}
+        >
           <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
@@ -84,7 +89,12 @@ function SecurityLevel() {
   return (
     <Selector value={selected}>
       {SEVERITYS.map((severity) => (
-        <CommandItem key={severity} value={severity} onSelect={setSelected}>
+        <CommandItem
+          aria-label="Choose the Severity"
+          key={severity}
+          value={severity}
+          onSelect={setSelected}
+        >
           <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />

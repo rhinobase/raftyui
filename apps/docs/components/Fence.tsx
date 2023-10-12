@@ -38,6 +38,7 @@ export function Fence({
               className="absolute right-1 top-1 "
               variant="outline"
               size="icon"
+              aria-label="Copy"
             >
               {isCopied ? (
                 <HiCheck className="text-green-300" />

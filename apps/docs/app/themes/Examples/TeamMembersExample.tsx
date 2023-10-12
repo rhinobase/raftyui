@@ -46,10 +46,10 @@ export function TeamMembersExample() {
           />
           <div>
             <Text className="font-semibold leading-snug">{name}</Text>
-            <Text className="text-sm leading-snug opacity-50">{email}</Text>
+            <Text className="text-sm leading-snug opacity-80">{email}</Text>
           </div>
           <div className="flex-1" />
-          <MemberRoleMenu />
+          <MemberRoleMenu label={name} />
         </div>
       ))}
     </div>
@@ -84,7 +84,7 @@ const ROLES: Role[] = [
   },
 ];
 
-function MemberRoleMenu() {
+function MemberRoleMenu({ label }: { label: string }) {
   const [isOpen, setOpen] = useState(false);
 
   const [selected, dispatch] = useReducer((_: Role, cur: string) => {
@@ -105,6 +105,7 @@ function MemberRoleMenu() {
         aria-expanded={isOpen}
         className="justify-between capitalize"
         rightIcon={<HiChevronDown size={18} />}
+        aria-label={label}
       >
         {selected?.title}
       </PopoverTrigger>

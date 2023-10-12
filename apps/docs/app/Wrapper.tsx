@@ -65,7 +65,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
         </Button>
       </div>
       <div className="relative flex flex-grow basis-0 items-center">
-        <Link href="/" aria-label="Home page">
+        <Link href="/" aria-label="Rafty Logo">
           <Logomark className="h-9 w-9 lg:hidden" />
           <Logo
             className="hidden lg:flex"
@@ -83,7 +83,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
             target="_blank"
             aria-label={item.name}
           >
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label={item.name}>
               <item.icon size={18} />
             </Button>
           </a>
