@@ -1,5 +1,6 @@
 const preserveDirectives = require("rollup-plugin-preserve-directives");
 const nxConfig = require("@nx/react/plugins/bundle-rollup");
+const terser = require("@rollup/plugin-terser");
 
 module.exports = (_config) => {
   const config = nxConfig(_config);
@@ -10,7 +11,7 @@ module.exports = (_config) => {
       ...config.output,
       preserveModules: true,
     },
-    plugins: [...config.plugins, preserveDirectives.default()],
+    plugins: [...config.plugins, preserveDirectives.default(), terser()],
     input: [
       config.input.index,
       "libs/ui/src/accordion",

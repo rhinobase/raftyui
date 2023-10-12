@@ -7,7 +7,10 @@
     "react",
     "rafty-ui",
     "rafty",
-    "component"
+    "design-system",
+    "tailwind",
+    "tailwindcss",
+    "tailwind-css"
   ],
   "homepage": "https://github.com/rhinobase/raftyui#readme",
   "publishConfig": {
@@ -16,20 +19,18 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhinobase/raftyui.git",
-    "directory": "libs/components/tooltip"
+    "directory": "libs/ui"
   },
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "exports": {
-    ".": {
-      "types": "./index.esm.d.ts",
-      "import": "./index.esm.js"
-    }
+    "types": "./index.cjs.d.ts",
+    "import": "./index.esm.js",
+    "require": "./index.cjs.js"
   },
   "sideEffects": false,
-  "module": "index.esm.js",
-  "types": "index.esm.d.ts",
+  "types": "./index.cjs.d.ts",
   "peerDependencies": {
     "@heroicons/react": "2.0.18",
     "@radix-ui/react-accordion": "1.1.2",

@@ -20,6 +20,7 @@
     "@nx/storybook": "16.10.0",
     "@nx/vite": "16.10.0",
     "@nx/workspace": "16.10.0",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-url": "^8.0.2",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/core-server": "^7.4.6",

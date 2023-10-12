@@ -1,12 +1,12 @@
+import { classNames } from "@rafty/ui";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { classNames } from "@rafty/ui";
 import { Providers } from "./providers";
 
 import "../styles/globals.css";
-import { Wrapper } from "./Wrapper";
 import { CookieConcent } from "./CookieConcent";
+import { Wrapper } from "./Wrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,6 +28,35 @@ export const metadata: Metadata = {
   },
   description:
     "Explore the components, and start building on top of it, SSR Ready, and dark mode-compatible interfaces.",
+  themeColor: "#09090b",
+  category: "technology",
+  twitter: {
+    card: "summary_large_image",
+    title: "rafty/ui",
+    description: "React + Accessible + Tailwind CSS Dynamic Component Library",
+    creator: "@rhinobaseio",
+    images: ["https://rafty.rhinobase.io/logo.png"],
+  },
+  openGraph: {
+    title: "@rafty/ui",
+    description: "React + Accessible + Tailwind CSS Dynamic Component Library",
+    url: "https://rafty.rhinobase.io",
+    siteName: "@rafty/ui Docs",
+    images: [
+      {
+        url: "https://rafty.rhinobase.io/logo.png",
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "https://rafty.rhinobase.io/logo.png",
+        width: 1800,
+        height: 1600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
