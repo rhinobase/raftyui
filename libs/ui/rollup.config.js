@@ -17,6 +17,7 @@ module.exports = (_config) => {
       "libs/ui/src/alert",
       "libs/ui/src/alert-dialog",
       "libs/ui/src/avatar",
+      "libs/ui/src/badge",
       "libs/ui/src/button",
       "libs/ui/src/card",
       "libs/ui/src/checkbox",
