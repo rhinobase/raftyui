@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.1](https://github.com/rhinobase/design-system/compare/ui-1.1.0...ui-1.1.1) (2023-10-12)
+
+
+### Features
+
+* **ui:** added new badge component ([b211a05](https://github.com/rhinobase/design-system/commit/b211a054e681272341e6c718d612225aee50b81d))
+
+
+### Bug Fixes
+
+* **ui:** added core-js package ([999ca3f](https://github.com/rhinobase/design-system/commit/999ca3f5879089d033b2b01602b766a56bb5697e))
+* **ui:** improve date picker and range picker ([a0eee23](https://github.com/rhinobase/design-system/commit/a0eee23da6d48773084a0f35540bfe759888243c))
+
 ## [1.1.0](https://github.com/rhinobase/design-system/compare/ui-1.0.7...ui-1.1.0) (2023-10-10)
 
 ### Bug Fixes
