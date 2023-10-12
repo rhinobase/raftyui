@@ -46,6 +46,7 @@ export const DatePicker = (props: DatePicker) => {
         <Calendar
           {...props}
           mode="single"
+          showOutsideDays
           selected={selected}
           onSelect={setSelected}
           defaultMonth={selected}
