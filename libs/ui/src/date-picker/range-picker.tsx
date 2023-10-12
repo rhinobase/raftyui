@@ -35,14 +35,15 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
     props.selected,
   );
 
-  const display = [];
+  let display = "";
   if (selected?.from)
-    display.push(
-      props.formatters?.formatDay?.(selected.from) ??
-        format(selected.from, "longDate"),
-    );
+    display +=
+      String(
+        props.formatters?.formatDay?.(selected.from) ??
+          format(selected.from, "longDate"),
+      ) + " - ";
   if (selected?.to)
-    display.push(
+    display += String(
       props.formatters?.formatDay?.(selected.to) ??
         format(selected.to, "longDate"),
     );
@@ -58,7 +59,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
         )}
         leftIcon={<CalendarIcon className="h-4 w-4" />}
       >
-        {display.length !== 0 ? display.join(" - ") : "Pick a range"}
+        {display.length !== 0 ? display : "Pick a range"}
         <div className="flex-1" />
         {selected && (
           <div
