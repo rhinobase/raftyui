@@ -211,7 +211,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                 <Td>
                   <Menu size="sm">
                     <MenuTrigger variant="ghost" size="icon">
-                      <HiDotsHorizontal />
+                      <HiDotsHorizontal className="text-secondary-700 dark:text-secondary-200" />
                     </MenuTrigger>
                     <MenuContent className="!z-50 !min-w-[9rem]">
                       <MenuLabel className="leading-4">Actions</MenuLabel>
@@ -233,10 +233,16 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         </Text>
         <div className="flex gap-2">
           <Button variant="outline" size="icon" isDisabled>
-            <HiChevronLeft size={20} />
+            <HiChevronLeft
+              size={20}
+              className="text-secondary-700 dark:text-secondary-200"
+            />
           </Button>
           <Button variant="outline" size="icon" isDisabled>
-            <HiChevronRight size={20} />
+            <HiChevronRight
+              size={20}
+              className="text-secondary-700 dark:text-secondary-200"
+            />
           </Button>
         </div>
       </div>

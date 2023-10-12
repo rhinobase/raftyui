@@ -44,11 +44,14 @@ export function CreateAnAccountExample() {
         </div>
         <FieldControl name="email" isRequired>
           <Label>Email</Label>
-          <InputField type="email" />
+          <InputField type="email" aria-label="Fill Email" />
         </FieldControl>
         <FieldControl name="password" isRequired>
           <Label>Password</Label>
-          <PasswordField autoComplete="new-password" />
+          <PasswordField
+            autoComplete="new-password"
+            aria-label="Enter the Strong Passwrod"
+          />
         </FieldControl>
         <Button
           variant="solid"

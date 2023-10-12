@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 export const CONCENT_COOKIE_NAME = "rga";
 
 export function CookieConcent() {
-  const [cookies, setCookie] = useCookies();
+  const [, setCookie] = useCookies();
 
   // TODO: Fix this rendering
   const isConcentGiven = true; // cookies[CONCENT_COOKIE_NAME];

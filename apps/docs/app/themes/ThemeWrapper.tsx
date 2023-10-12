@@ -61,7 +61,7 @@ export default function ThemeBuilderWrapper({
     >
       <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
-          <h1 className="text-3xl font-bold md:text-5xl">Make it yours.</h1>
+          <h1 className="text-3xl font-bold md:text-3xl">Make it yours.</h1>
           <h4 className="text-secondary-400 text-sm lg:text-lg">
             Hand-picked themes that you can copy and paste into your apps.
           </h4>
@@ -91,12 +91,12 @@ export default function ThemeBuilderWrapper({
       </div>
       {children}
       <div className="flex flex-col md:flex-row items-center gap-2 md:justify-between mt-4 md:mt-10">
-        <p className="text-xs leading-none text-secondary-500">
+        <p className="text-xs leading-none text-secondary-600">
           This page is inspired by{" "}
           <a
             href="https://x.com/shadcn?t=2gBGi1FW3vmW37m13hN-TA&s=33"
             target="_blank"
-            className="text-blue-500 dark:text-blue-400"
+            className="text-blue-600 font-medium dark:text-blue-400"
           >
             @shadcn
           </a>
@@ -126,6 +126,7 @@ function CustomizeMenu({
             variant="outline"
             leftIcon={<HiOutlinePaintBrush size={19} />}
             className="hidden md:flex"
+            aria-label="Select Theme Color"
           >
             Customize
           </Button>
