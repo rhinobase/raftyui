@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Tab
     description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+    twitter:
+      title: Tab
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tab
+    openGraph:
+      title: Tab
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tab
 ---
 
 A set of layered sections of content—known as tab panels—that are displayed one at a time.

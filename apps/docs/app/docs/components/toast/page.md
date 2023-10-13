@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Toast
     description: The toast component is used to give feedback to users after an action has taken place.
+    twitter:
+      title: Toast
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Toast
+    openGraph:
+      title: Toast
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Toast
 ---
 
 The toast component is used to give feedback to users after an action has taken place.

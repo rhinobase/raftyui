@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Table
     description: Table component is used to organize and display data efficiently. It renders a `<table>` element by default.
+    twitter:
+      title: Table
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Table
+    openGraph:
+      title: Table
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Table
 ---
 
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default.

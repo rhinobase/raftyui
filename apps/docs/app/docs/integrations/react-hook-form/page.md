@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: React Hook Form
     description: React Hook Form
+    twitter:
+      title: React Hook Form
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=React&20Hook%20Form
+    openGraph:
+      title: React Hook Form
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=React&20Hook%20Form
 ---
 
 This example shows how to build a simple form with Rafty UI's form components and the [React Hook Form](https://react-hook-form.com/) form library:

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Spinner
     description: Spinners provide a visual cue that an action is processing awaiting a course of change or a result.
+    twitter:
+      title: Spinner
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Spinner
+    openGraph:
+      title: Spinner
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Spinner
 ---
 
 Spinners provide a visual cue that an action is processing awaiting a course of change or a result.

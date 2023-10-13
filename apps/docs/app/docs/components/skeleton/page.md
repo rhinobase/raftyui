@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Skeleton
     description: Skeleton is used to display the loading state of some component.
+    twitter:
+      title: Skeleton
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Skeleton
+    openGraph:
+      title: Skeleton
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Skeleton
 ---
 
 Skeleton is used to display the loading state of some component.

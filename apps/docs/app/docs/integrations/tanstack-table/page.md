@@ -2,8 +2,16 @@
 title: Rafty UI + Tanstack Table
 nextjs:
   metadata:
-    title: Table
+    title: Tanstack Table
     description: Tanstack Table
+    twitter:
+      title: Tanstack Table
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tanstack%20Table
+    openGraph:
+      title: Tanstack Table
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tanstack%20Table
 ---
 
 This example shows how to build a sortable data table with Rafty UI's table components, and the [Tanstack Table](https://tanstack.com/table/v8/).

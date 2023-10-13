@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Combobox
     description: Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern.
+    twitter:
+      title: Combobox
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Combobox
+    openGraph:
+      title: Combobox
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Combobox
 ---
 
 Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern. Over here we are using [TanStack React Query](https://tanstack.com/query/latest) for fetching the data.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Tooltip
     description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+    twitter:
+      title: Tooltip
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tooltip
+    openGraph:
+      title: Tooltip
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tooltip
 ---
 
 A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.

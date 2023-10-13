@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Tag Field
     description: Tag field is used to add tags via input field.
+    twitter:
+      title: Tag Field
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tag%20Field
+    openGraph:
+      title: Tag Field
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tag%20Field
 ---
 
 Tag field is used to add tags via input field.

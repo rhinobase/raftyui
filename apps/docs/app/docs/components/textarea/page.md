@@ -2,6 +2,14 @@
 title: Text Area
 pageTitle: Text Area
 description: The Text area component allows you to easily create multi-line text inputs.
+twitter:
+  title: Text Area
+  images:
+    url: https://rafty.rhinobase.io/api/og?title=Text%20Area
+openGraph:
+  title: Text Area
+  images:
+    url: https://rafty.rhinobase.io/api/og?title=Text%20Area
 ---
 
 The Text area component allows you to easily create multi-line text inputs.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Switch
     description: A control that allows the user to toggle between checked and not checked.It is used as an alternative for the checkbox component.
+    twitter:
+      title: Switch
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Switch
+    openGraph:
+      title: Switch
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Switch
 ---
 
 A control that allows the user to toggle between checked and not checked.It is used as an alternative for the checkbox component.

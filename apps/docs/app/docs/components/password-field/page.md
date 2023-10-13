@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Password Field
     description: Just like Input Field, Password Field is used for password inputs but gives an extra functionality of show and hide password.
+    twitter:
+      title: Password Field
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Password%20Field
+    openGraph:
+      title: Password Field
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Password%20Field
 ---
 
 Just like Input Field, Password Field is used for password inputs but gives an extra functionality of show and hide password.

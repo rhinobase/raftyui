@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Select
     description: Select component is a component that allows users to pick a value from predefined options.
+    twitter:
+      title: Select
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Select
+    openGraph:
+      title: Select
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Select
 ---
 
 Select component is a component that allows users to pick a value from predefined options.

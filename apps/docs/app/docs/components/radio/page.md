@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Radio
     description: A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.
+    twitter:
+      title: Radio
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Radio
+    openGraph:
+      title: Radio
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Radio
 ---
 
 A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Scroll Area
     description: Enhances native scroll functionality for custom, cross-browser styling.
+    twitter:
+      title: Scroll Area
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Scroll%20Area
+    openGraph:
+      title: Scroll Area
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Scroll%20Area
 ---
 
 Enhances native scroll functionality for custom, cross-browser styling.

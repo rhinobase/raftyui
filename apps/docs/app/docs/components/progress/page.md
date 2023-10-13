@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Progress
     description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+    twitter:
+      title: Progress
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Progress
+    openGraph:
+      title: Progress
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Progress
 ---
 
 Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.

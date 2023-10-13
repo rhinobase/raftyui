@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Toggle Group
     description: A set of two-state buttons that can be toggled on or off.
+    twitter:
+      title: Toggle Group
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Toggle%20Group
+    openGraph:
+      title: Toggle Group
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Toggle%20Group
 ---
 
 A set of two-state buttons that can be toggled on or off.

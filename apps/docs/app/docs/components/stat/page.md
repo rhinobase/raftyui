@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Stat
     description: Stat component is used to display statistics/numbers.
+    twitter:
+      title: Stat
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Stat
+    openGraph:
+      title: Stat
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Stat
 ---
 
 Stat component is used to display statistics/numbers.

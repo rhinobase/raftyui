@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from "@rafty/ui";
 import Image from "next/image";
+import Logo from "../public/rhinobase.png";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
             By{" "}
             <Image
               className="rounded-md "
-              src="/rhinobase.png"
+              src={Logo}
               alt="rhinobase"
               width={30}
               height={30}

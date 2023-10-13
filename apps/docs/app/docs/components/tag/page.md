@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Tag
     description: Tag component is utilized to label, categorize, or organize items using descriptive keywords.
+    twitter:
+      title: Tag
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tag
+    openGraph:
+      title: Tag
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Tag
 ---
 
 Tag component is utilized to label, categorize, or organize items using descriptive keywords.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Popover
     description: Displays rich content in a portal, triggered by a button.
+    twitter:
+      title: Popover
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Popover
+    openGraph:
+      title: Popover
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Popover
 ---
 
 Displays rich content in a portal, triggered by a button.

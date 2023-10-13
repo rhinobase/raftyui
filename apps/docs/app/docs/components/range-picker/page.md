@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Range Picker
     description: The Time Range Picker enables the user to select a time range.
+    twitter:
+      title: Range Picker
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Range%20Picker
+    openGraph:
+      title: Range Picker
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Range%20Picker
 ---
 
 The Time Range Picker enables the user to select a time range.
