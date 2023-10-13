@@ -60,7 +60,7 @@ export default function App() {
             <CardHeader className="!text-xl font-extrabold">
               Docs{" "}
               <p className="inline-block transition-transform group-hover:translate-x-1 ">
-              &gt;
+                &gt;
               </p>
             </CardHeader>
             <CardContent className="!text-secondary-400">
@@ -78,7 +78,7 @@ export default function App() {
             <CardHeader className="!text-xl font-extrabold">
               Themes{" "}
               <p className="inline-block transition-transform group-hover:translate-x-1 ">
-              &gt;
+                &gt;
               </p>
             </CardHeader>
             <CardContent className="!text-secondary-400">
@@ -97,7 +97,7 @@ export default function App() {
             <CardHeader className="!text-xl font-extrabold">
               Templates{" "}
               <p className="inline-block transition-transform group-hover:translate-x-1 ">
-              &gt;
+                &gt;
               </p>
             </CardHeader>
             <CardContent className="!text-secondary-400">
@@ -116,7 +116,7 @@ export default function App() {
             <CardHeader className="!text-xl font-extrabold">
               Components{" "}
               <p className="inline-block transition-transform group-hover:translate-x-1 ">
-              &gt;
+                &gt;
               </p>
             </CardHeader>
             <CardContent className="!text-secondary-400">
