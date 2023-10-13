@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rafty UI - Next.js App Router example in TypeScript
 
-## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with Rafty UI installed.
 
-First, run the development server:
+## How to use
+
+Download the example [or clone the repo](https://github.com/rhinobase/raftyui):
+
+<!-- #default-branch-switch -->
 
 ```bash
+npx create-next-app rafty-nextjs-ts --example https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-ts
+cd rafty-nextjs-ts
+```
+
+Install it and run:
+
+```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+or:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<!-- #default-branch-switch -->
 
-## Learn More
+[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/rhinobase/raftyui/tree/main/examples/rafty-nextjs-ts)
 
-To learn more about Next.js, take a look at the following resources:
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/rhinobase/raftyui/tree/main/examples/rafty-nextjs-ts)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Learn more
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To learn more about this example:
 
-## Deploy on Vercel
+- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Customizing Rafty UI](https://rafty.rhinobase.io) - approaches to customizing Rafty UI.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## What's next?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- #default-branch-switch -->
+
+You now have a working example project.
+You can head back to the documentation and continue by browsing the [templates](https://rafty.rhinobase.io/docs/examples) section.
