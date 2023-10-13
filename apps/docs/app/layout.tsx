@@ -32,24 +32,30 @@ export const metadata: Metadata = {
   category: "technology",
   twitter: {
     card: "summary_large_image",
-    title: "rafty/ui",
+    title: {
+      template: "%s - rafty/ui Docs",
+      default: "rafty/ui Docs",
+    },
     description: "React + Accessible + Tailwind CSS Dynamic Component Library",
     creator: "@rhinobaseio",
-    images: ["https://rafty.rhinobase.io/logo.png"],
+    images: ["https://rafty.rhinobase.io/api/og"],
   },
   openGraph: {
-    title: "@rafty/ui",
+    title: {
+      template: "%s - rafty/ui Docs",
+      default: "rafty/ui Docs",
+    },
     description: "React + Accessible + Tailwind CSS Dynamic Component Library",
     url: "https://rafty.rhinobase.io",
     siteName: "@rafty/ui Docs",
     images: [
       {
-        url: "https://rafty.rhinobase.io/logo.png",
+        url: "https://rafty.rhinobase.io/api/og",
         width: 800,
         height: 600,
       },
       {
-        url: "https://rafty.rhinobase.io/logo.png",
+        url: "https://rafty.rhinobase.io/api/og",
         width: 1800,
         height: 1600,
       },

@@ -3,6 +3,8 @@ export const navigation = [
     title: "Introduction",
     links: [
       { title: "Getting started", href: "/" },
+      { title: "Examples", href: "/docs/examples" },
+      { title: "Customizations", href: "/docs/customizations" },
       { title: "Themes", href: "/themes" },
     ],
   },

@@ -1,6 +1,6 @@
 import { classNames } from "@rafty/ui";
 
-function LogomarkPaths() {
+export function LogomarkPaths() {
   return (
     <g
       fill="none"

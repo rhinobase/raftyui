@@ -1,5 +1,6 @@
 import { Callout } from "../components/Callout";
 import { Examples } from "../components/Examples";
+import { ExternalCodeLinks } from "../components/ExternalCodeLinks";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
 
 const tags = {
@@ -49,6 +50,9 @@ const tags = {
       icon: { type: String },
       href: { type: String },
     },
+  },
+  "external-code-links": {
+    render: ExternalCodeLinks,
   },
 };
 
