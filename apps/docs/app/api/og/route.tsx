@@ -41,7 +41,7 @@ export async function GET(request: Request) {
                 "linear-gradient(to bottom,rgba(165, 180, 252, 0.2),transparent)",
             }}
           />
-          <div style={{ display: "flex", width: 80, height: 80 }}>
+          <div style={{ display: "flex", width: 120, height: 120 }}>
             <svg
               aria-hidden="true"
               viewBox="0 0 35 35"
@@ -62,7 +62,7 @@ export async function GET(request: Request) {
           </div>
           <div
             style={{
-              fontSize: 50,
+              fontSize: 90,
               fontStyle: "normal",
               letterSpacing: "-0.025em",
               color: "transparent",
@@ -73,7 +73,13 @@ export async function GET(request: Request) {
           >
             {title}
           </div>
-          <i style={{ color: "white", fontSize: 14, marginTop: 30 }}>
+          <i
+            style={{
+              color: "white",
+              fontSize: 30,
+              marginTop: 30,
+            }}
+          >
             npm i @rafty/ui
           </i>
         </div>
