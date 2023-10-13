@@ -7,22 +7,11 @@ export const metadata: Metadata = {
   description: "Hand-picked themes that you can copy and paste into your apps.",
   twitter: {
     title: "Themes",
-    images: ["https://rafty.rhinobase.io/api/og?title=Themes"],
+    images: { url: "https://rafty.rhinobase.io/api/og?title=Themes" },
   },
   openGraph: {
     title: "Themes",
-    images: [
-      {
-        url: "https://rafty.rhinobase.io/api/og?title=Themes",
-        width: 800,
-        height: 600,
-      },
-      {
-        url: "https://rafty.rhinobase.io/api/og?title=Themes",
-        width: 1800,
-        height: 1600,
-      },
-    ],
+    images: { url: "https://rafty.rhinobase.io/api/og?title=Themes" },
   },
 };
 

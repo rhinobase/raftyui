@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Accordion
     description: The accordion component allows the user to show and hide sections of related content on a page.
+    twitter:
+      title: Accordion
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Accordion
+    openGraph:
+      title: Accordion
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Accordion
 ---
 
 The accordion component allows the user to show and hide sections of related content on a page.

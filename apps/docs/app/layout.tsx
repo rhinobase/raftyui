@@ -38,7 +38,11 @@ export const metadata: Metadata = {
     },
     description: "React + Accessible + Tailwind CSS Dynamic Component Library",
     creator: "@rhinobaseio",
-    images: ["https://rafty.rhinobase.io/api/og"],
+    images: {
+      width: 1200,
+      height: 630,
+      url: "https://rafty.rhinobase.io/api/og",
+    },
   },
   openGraph: {
     title: {
@@ -48,18 +52,11 @@ export const metadata: Metadata = {
     description: "React + Accessible + Tailwind CSS Dynamic Component Library",
     url: "https://rafty.rhinobase.io",
     siteName: "@rafty/ui Docs",
-    images: [
-      {
-        url: "https://rafty.rhinobase.io/api/og",
-        width: 800,
-        height: 600,
-      },
-      {
-        url: "https://rafty.rhinobase.io/api/og",
-        width: 1800,
-        height: 1600,
-      },
-    ],
+    images: {
+      width: 1200,
+      height: 630,
+      url: "https://rafty.rhinobase.io/api/og",
+    },
     locale: "en_US",
     type: "website",
   },
