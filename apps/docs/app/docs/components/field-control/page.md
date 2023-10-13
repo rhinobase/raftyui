@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Field Control
     description: Field Control is used in forms to provide context to children fields. Along with Field control it is recommended to use Label and Error Message components.
+    twitter:
+      title: Field Control
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Field%20Control
+    openGraph:
+      title: Field Control
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Field%20Control
 ---
 
 Field Control is used in forms to provide context to children fields. Along with Field control it is recommended to use Label and Error Message components.

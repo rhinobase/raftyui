@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Checkbox
     description: Checkboxes give users binary choices when presented with multiple options in a series.
+    twitter:
+      title: Checkbox
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Checkbox
+    openGraph:
+      title: Checkbox
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Checkbox
 ---
 
 Checkboxes give users binary choices when presented with multiple options in a series.

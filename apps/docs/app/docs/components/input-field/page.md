@@ -1,9 +1,17 @@
 ---
-title: InputField
+title: Input Field
 nextjs:
   metadata:
-    title: InputField
+    title: Input Field
     description: Input field is a component that is used to get user input in a text field.
+    twitter:
+      title: Input Field
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Input%20Field
+    openGraph:
+      title: Input Field
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Input%20Field
 ---
 
 Input field is a component that is used to get user input in a text field.

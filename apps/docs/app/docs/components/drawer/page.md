@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Drawer
     description: The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
+    twitter:
+      title: Drawer
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Drawer
+    openGraph:
+      title: Drawer
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Drawer
 ---
 
 The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.

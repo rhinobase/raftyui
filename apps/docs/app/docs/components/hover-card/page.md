@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Hover Card
     description: For sighted users to preview content available behind a link.
+    twitter:
+      title: Hover Card
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Hover%20Card
+    openGraph:
+      title: Hover Card
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Hover%20Card
 ---
 
 For sighted users to preview content available behind a link.

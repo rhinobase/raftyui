@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Keyboard Key
     description: The keyboard key component exists to show which key or combination of keys performs a given action.
+    twitter:
+      title: Keyboard Key
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Keyboard%20Key
+    openGraph:
+      title: Keyboard Key
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Keyboard%20Key
 ---
 
 The keyboard key component exists to show which key or combination of keys performs a given action.

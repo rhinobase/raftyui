@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Navigation Menu
     description: A collection of links for navigating websites.
+    twitter:
+      title: Navigation Menu
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Navigation%20Menu
+    openGraph:
+      title: Navigation Menu
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Navigation%20Menu
 ---
 
 A collection of links for navigating websites. This component is made on top of [Radix UIs Navigation Menu Component](https://www.radix-ui.com/primitives/docs/components/navigation-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).

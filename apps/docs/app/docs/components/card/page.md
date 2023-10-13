@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Card
     description: A card is a generic container for grouping related UI elements and content.
+    twitter:
+      title: Card
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Card
+    openGraph:
+      title: Card
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Card
 ---
 
 A card is a generic container for grouping related UI elements and content.

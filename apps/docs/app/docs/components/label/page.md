@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Label
     description: Renders an accessible label associated with controls.
+    twitter:
+      title: Label
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Label
+    openGraph:
+      title: Label
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Label
 ---
 
 Renders an accessible label associated with controls.

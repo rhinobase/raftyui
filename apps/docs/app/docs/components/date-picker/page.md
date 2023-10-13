@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Date Picker
     description: The Date Picker component lets the user select a date.
+    twitter:
+      title: Date Picker
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Date%20Picker
+    openGraph:
+      title: Date Picker
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Date%20Picker
 ---
 
 The Date Picker component lets the user select a date.

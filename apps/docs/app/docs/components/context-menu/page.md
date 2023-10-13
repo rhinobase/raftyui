@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Context Menu
     description: It displays a menu located at the pointer, triggered by a right-click or a long-press.
+    twitter:
+      title: Context Menu
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Context%20Menu
+    openGraph:
+      title: Context Menu
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Context%20Menu
 ---
 
 It displays a menu located at the pointer, triggered by a right-click or a long-press.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Avatar
     description: The Avatar component is used to represent a user and can display the profile picture, initials or fallback icon.
+    twitter:
+      title: Avatar
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Avatar
+    openGraph:
+      title: Avatar
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Avatar
 ---
 
 The Avatar component is used to represent a user and can display the profile picture, initials or fallback icon.

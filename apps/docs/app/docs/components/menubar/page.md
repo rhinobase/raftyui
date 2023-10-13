@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Menu Bar
     description: A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.
+    twitter:
+      title: Menu Bar
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
+    openGraph:
+      title: Menu Bar
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
 ---
 
 A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.

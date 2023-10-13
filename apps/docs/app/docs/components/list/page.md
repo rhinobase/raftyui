@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: List
     description: List is used to display list items. It renders a <ul> element by default.
+    twitter:
+      title: List
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=List
+    openGraph:
+      title: List
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=List
 ---
 
 List is used to display list items. It renders a <ul> element by default.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Command
     description: The Command component in React can function as a menu and also serves as an accessible combobox.
+    twitter:
+      title: Command
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Command
+    openGraph:
+      title: Command
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Command
 ---
 
 The Command component in React can function as a menu and also serves as an accessible combobox.

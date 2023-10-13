@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Dialog
     description: Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+    twitter:
+      title: Dialog
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Dialog
+    openGraph:
+      title: Dialog
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Dialog
 ---
 
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.

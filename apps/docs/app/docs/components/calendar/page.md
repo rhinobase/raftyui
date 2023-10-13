@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Calendar
     description: The Calendar component allows the user to select a date without the need for input fields or pop-up modals.
+    twitter:
+      title: Calendar
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Calendar
+    openGraph:
+      title: Calendar
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Calendar
 ---
 
 The Calendar component allows the user to select a date without the need for input fields or pop-up modals.

@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Alert Dialog
     description: It is a modal dialog that interrupts the user with important content and expects a response.
+    twitter:
+      title: Alert Dialog
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Alert%20Dialog
+    openGraph:
+      title: Alert Dialog
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Alert%20Dialog
 ---
 
 It is a modal dialog that interrupts the user with important content and expects a response.

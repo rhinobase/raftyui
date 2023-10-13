@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Badge
     description: A badge is used to indicate current status in the form of a dot.
+    twitter:
+      title: Badge
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Badge
+    openGraph:
+      title: Badge
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Badge
 ---
 
 A badge is used to indicate current status in the form of a dot.

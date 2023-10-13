@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Alert
     description: An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
+    twitter:
+      title: Alert
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Alert
+    openGraph:
+      title: Alert
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Alert
 ---
 
 An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.

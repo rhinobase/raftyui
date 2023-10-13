@@ -4,6 +4,14 @@ nextjs:
   metadata:
     title: Button
     description: Buttons enable users to take action and make choices with a single click.
+    twitter:
+      title: Button
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Button
+    openGraph:
+      title: Button
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Button
 ---
 
 Buttons enable users to take action and make choices with a single click.
