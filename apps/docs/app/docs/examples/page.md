@@ -1,20 +1,18 @@
 ---
-title: Example
+title: Examples
 nextjs:
   metadata:
-    title: Example
+    title: Examples
     description: A collection of example, boilerplates, and scaffolds to jumpstart your next Rafty UI project.
     twitter:
-      title: Example
+      title: Examples
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Example
+        url: https://rafty.rhinobase.io/api/og?title=Examples
     openGraph:
-      title: Example
+      title: Examples
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Example
+        url: https://rafty.rhinobase.io/api/og?title=Examples
 ---
-
-## Examples
 
 A collection of example, boilerplates, and scaffolds to jumpstart your next Rafty UI project.
 
