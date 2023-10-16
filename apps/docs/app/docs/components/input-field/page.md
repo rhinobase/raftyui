@@ -46,7 +46,7 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 ## IsRequired
 
-`isRequired` prop is used to show required field. It adds red star (\*) after Lable.
+`isRequired` prop is used to show required field. It adds red star (\*) after label.
 
 {% example name="input-field:required" /%}
 

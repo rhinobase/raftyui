@@ -74,6 +74,6 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 ## ErrorMessage
 
-ErrorMessage will show an error message on error during data input in field or form submission.
+ErrorMessage component will display an error message when there is an error during data input in a field or during form submission.
 
 {% example name="field-control:errormessage" /%}

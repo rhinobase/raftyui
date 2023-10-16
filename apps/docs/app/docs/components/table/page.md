@@ -72,7 +72,7 @@ Pass `isBarebone` prop to remove all style in table.
 
 ## UnStyled
 
-Pass ` isUnstyled` prop to remove style from a particulart sub component.
+Pass ` isUnstyled` prop to remove style from a particular sub component.
 
 {% example name="table:unstyled" /%}
 
