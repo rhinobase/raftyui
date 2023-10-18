@@ -3,7 +3,7 @@ import {
   QueryClientProvider,
   useInfiniteQuery,
 } from "@tanstack/react-query";
-import { useCallback, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import {
   Avatar,
   Button,
@@ -24,6 +24,15 @@ import {
 import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
 
 function Combobox() {
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const [contentwidth, setContentWidth] = useState(0);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    setContentWidth(triggerRef.current?.offsetWidth);
+  }, []);
+
   const [isOpen, setOpen] = useState(false);
 
   const { data, error, fetchNextPage, hasNextPage, isLoading, isFetching } =
@@ -65,14 +74,15 @@ function Combobox() {
     return undefined;
   }, undefined);
 
-  if (error) return;
+  if (error) return <>Unable to load data!</>;
 
-  if (pages)
-    return (
-      <div className="max-w-lg w-full mx-auto">
+  return (
+    <div className="max-w-lg w-full mx-auto">
+      <div className={!pages ? "invisible" : undefined}>
         <Popover open={isOpen} onOpenChange={setOpen}>
           <div className="relative flex items-center">
             <PopoverTrigger
+              ref={triggerRef}
               variant="outline"
               role="combobox"
               aria-expanded={isOpen}
@@ -112,36 +122,47 @@ function Combobox() {
               </Button>
             )}
           </div>
-          <PopoverContent className="!p-0 !w-[512px]">
+          <PopoverContent className="!p-0" style={{ width: contentwidth }}>
             <Command shouldFilter={false}>
               <CommandList>
                 <CommandGroup>
-                  {pages.map((item, index) => {
-                    const isLastElement = pages.length == index + 1;
+                  {pages ? (
+                    pages.map((item, index) => {
+                      const isLastElement = pages.length == index + 1;
 
-                    return (
-                      <CommandItem
-                        key={item.id}
-                        value={item.id}
-                        onSelect={dispatch}
-                      >
-                        <div
-                          className="flex items-center gap-2 w-full"
-                          ref={isLastElement ? lastElementRef : undefined}
+                      return (
+                        <CommandItem
+                          key={item.id}
+                          value={item.id}
+                          onSelect={dispatch}
                         >
-                          <Avatar
-                            name={item.name}
-                            src={item.links.patch.small}
-                          />
-                          <Text>{item.name}</Text>
-                          <div className="flex-1" />
-                          {selected?.id == item.id && (
-                            <HiCheck className="h-3.5 w-3.5 stroke-1" />
-                          )}
-                        </div>
-                      </CommandItem>
-                    );
-                  })}
+                          <div
+                            className="flex items-center gap-2 w-full"
+                            ref={isLastElement ? lastElementRef : undefined}
+                          >
+                            <Avatar
+                              name={item.name}
+                              src={item.links.patch.small}
+                            />
+                            <Text>{item.name}</Text>
+                            <div className="flex-1" />
+                            {selected?.id == item.id && (
+                              <HiCheck className="h-3.5 w-3.5 stroke-1" />
+                            )}
+                          </div>
+                        </CommandItem>
+                      );
+                    })
+                  ) : (
+                    <CommandLoading>
+                      <div className="flex select-none items-center justify-center gap-2 py-4">
+                        <Spinner size="sm" />{" "}
+                        <Text className="text-sm text-secondary-500">
+                          Loading
+                        </Text>
+                      </div>
+                    </CommandLoading>
+                  )}
                   {(isLoading || isFetching) && (
                     <CommandLoading>
                       <div className="flex select-none items-center justify-center gap-2 py-4">
@@ -152,7 +173,7 @@ function Combobox() {
                       </div>
                     </CommandLoading>
                   )}
-                  {pages.length == 0 && !isLoading && (
+                  {pages?.length == 0 && !isLoading && (
                     <CommandEmpty>No data found</CommandEmpty>
                   )}
                 </CommandGroup>
@@ -161,8 +182,11 @@ function Combobox() {
           </PopoverContent>
         </Popover>
       </div>
-    );
-  return <Skeleton className="max-w-lg w-full mx-auto h-[42px] rounded-md" />;
+      {!pages && (
+        <Skeleton className="max-w-lg w-full mx-auto h-[42px] rounded-md !-mt-[42px]" />
+      )}
+    </div>
+  );
 }
 
 const CLIENT = new QueryClient();
