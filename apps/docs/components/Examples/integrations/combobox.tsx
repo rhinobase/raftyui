@@ -1,25 +1,8 @@
----
-title: Rafty UI + React Query
-nextjs:
-  metadata:
-    title: Combobox
-    description: Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern.
-    twitter:
-      title: Combobox
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=Combobox
-    openGraph:
-      title: Combobox
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=Combobox
----
-
-Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern. Over here we are using [TanStack React Query](https://tanstack.com/query/latest) for fetching the data.
-
-{% example name="combobox:usage" %}
-
-```jsx
-import { useInfiniteQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
 import { useCallback, useReducer, useRef, useState } from "react";
 import {
   Avatar,
@@ -33,13 +16,14 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Skeleton,
   Spinner,
   Text,
   classNames,
 } from "@rafty/ui";
 import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
 
-export default function Projects() {
+function Combobox() {
   const [isOpen, setOpen] = useState(false);
 
   const { data, error, fetchNextPage, hasNextPage, isLoading, isFetching } =
@@ -47,7 +31,7 @@ export default function Projects() {
       queryKey: ["projects"],
       queryFn: () => {
         return fetch("https://api.spacexdata.com/v4/launches/past").then(
-          (res) => res.json()
+          (res) => res.json(),
         );
       },
       getNextPageParam: (_, pages) => pages.length,
@@ -63,7 +47,7 @@ export default function Projects() {
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading, hasNextPage]
+    [isLoading, hasNextPage],
   );
 
   const pages = data?.pages.flat();
@@ -85,7 +69,7 @@ export default function Projects() {
 
   if (pages)
     return (
-      <div className=" max-w-lg w-full mx-auto">
+      <div className="max-w-lg w-full mx-auto">
         <Popover open={isOpen} onOpenChange={setOpen}>
           <div className="relative flex items-center">
             <PopoverTrigger
@@ -99,7 +83,7 @@ export default function Projects() {
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "h-4 w-4 shrink-0 stroke-1"
+                    "h-4 w-4 shrink-0 stroke-1",
                   )}
                 />
               }
@@ -180,6 +164,13 @@ export default function Projects() {
     );
   return <Skeleton className="max-w-lg w-full mx-auto h-[42px] rounded-md" />;
 }
-```
 
-{% /example %}
+const CLIENT = new QueryClient();
+
+export const combobox_examples = {
+  "combobox:usage": (
+    <QueryClientProvider client={CLIENT}>
+      <Combobox />
+    </QueryClientProvider>
+  ),
+};

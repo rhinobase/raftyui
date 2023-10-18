@@ -8,6 +8,6 @@ export const [ContextMenuProvider, useContextMenuContext] =
   });
 
 export interface ContextMenuContext {
-  size: "sm" | "md" | "lg";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly isBarebone: boolean;
 }

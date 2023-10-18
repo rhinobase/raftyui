@@ -1,24 +1,3 @@
----
-title: Rafty UI + React Hook Form
-nextjs:
-  metadata:
-    title: React Hook Form
-    description: React Hook Form
-    twitter:
-      title: React Hook Form
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=React&20Hook%20Form
-    openGraph:
-      title: React Hook Form
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=React&20Hook%20Form
----
-
-This example shows how to build a simple form with Rafty UI's form components and the [React Hook Form](https://react-hook-form.com/) form library:
-
-{% example name="react_hook_forms:usage" %}
-
-```jsx
 import { useForm } from "react-hook-form";
 import {
   FieldControl,
@@ -34,22 +13,22 @@ const schema = z.object({
   name: z.string().min(4).max(50),
 });
 
-export default function HookForm() {
+function HookForm() {
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm <
-  z.infer <
-  typeof schema >>
-    {
-      resolver: zodResolver(schema),
-    };
+  } = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+  });
 
   return (
     <form
-      onSubmit={handleSubmit((values) => console.log(values))}
+      onSubmit={handleSubmit((values) => {
+        console.log(values);
+        reset();
+      })}
       className="space-y-2"
     >
       <FieldControl name="name" isRequired>
@@ -68,6 +47,7 @@ export default function HookForm() {
     </form>
   );
 }
-```
 
-{% /example %}
+export const react_hook_forms_examples = {
+  "react_hook_forms:usage": <HookForm />,
+};

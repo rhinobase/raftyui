@@ -1,28 +1,7 @@
----
-title: Rafty UI + Formik
-nextjs:
-  metadata:
-    title: Formik
-    description: Formik
-    twitter:
-      title: Formik
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=Formik
-    openGraph:
-      title: Formik
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=Formik
----
-
-The way we start building forms with [Formik](https://formik.org/) is by using its `useFormik` hook that returns us the formik instance. That Formik instance contains pretty much everything we need to connect our form's UI elements and submit handler. Let's see a pure React + Formik example:
-
-{% example name="formik:usage" %}
-
-```jsx
 import { useFormik } from "formik";
 import { FieldControl, Label, InputField, Button } from "@rafty/ui";
 
-export default function App() {
+function Formik() {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -54,6 +33,7 @@ export default function App() {
     </form>
   );
 }
-```
 
-{% /example %}
+export const formik_examples = {
+  "formik:usage": <Formik />,
+};

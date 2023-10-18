@@ -14,4 +14,4 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Fiber
 ---
 
-coming soon
+coming soon...

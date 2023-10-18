@@ -431,23 +431,25 @@ export const buttonClasses = cva(
   },
 );
 
-export type Button = JSX.IntrinsicElements["button"] & {
-  className?: string;
-  /* Left aligned icon*/
-  leftIcon?: JSX.Element;
-  /* Right aligned icon */
-  rightIcon?: JSX.Element;
-  loadingText?: string;
-  isUnstyled?: boolean;
-  colorScheme?: "primary" | "secondary" | "error" | "success";
-  variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg" | "icon" | "fab";
-  isLoading?: boolean;
-  isActive?: boolean;
-  isDisabled?: boolean;
-};
+export type Button<T extends React.ElementType = "button"> =
+  React.ComponentPropsWithoutRef<T> & {
+    as?: T;
+    className?: string;
+    /* Left aligned icon*/
+    leftIcon?: JSX.Element;
+    /* Right aligned icon */
+    rightIcon?: JSX.Element;
+    loadingText?: string;
+    isUnstyled?: boolean;
+    colorScheme?: "primary" | "secondary" | "error" | "success";
+    variant?: "solid" | "outline" | "ghost";
+    size?: "sm" | "md" | "lg" | "icon" | "fab";
+    isLoading?: boolean;
+    isActive?: boolean;
+    isDisabled?: boolean;
+  };
 
-export const Button = forwardRef<HTMLButtonElement, Button>(
+export const Button = forwardRef<React.ElementRef<"button">, Button>(
   (
     {
       isLoading = false,
@@ -463,6 +465,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(
       leftIcon,
       rightIcon,
       type = "button",
+      as: Element = "button",
       ...props
     },
     forwardedRef,
@@ -471,7 +474,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(
     const disabled = props.disabled || isDisabled || isLoading;
 
     return (
-      <button
+      <Element
         {...props}
         type={type}
         disabled={disabled}
@@ -512,7 +515,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(
             )}
           </>
         )}
-      </button>
+      </Element>
     );
   },
 );

@@ -47,6 +47,12 @@ import { textarea_examples } from "./textarea";
 import { toast_examples } from "./toast";
 import { toggle_group_examples } from "./toggle-group";
 import { tooltip_examples } from "./tooltip";
+import {
+  combobox_examples,
+  formik_examples,
+  react_hook_forms_examples,
+  tanstack_table_examples,
+} from "./integrations";
 
 // All Examples
 const examples: Record<string, JSX.Element> = {
@@ -59,12 +65,14 @@ const examples: Record<string, JSX.Element> = {
   ...calendar_examples,
   ...card_examples,
   ...checkbox_examples,
+  ...combobox_examples,
   ...command_examples,
   ...context_menu_examples,
   ...date_picker_examples,
   ...dialog_examples,
   ...drawer_examples,
   ...field_control_examples,
+  ...formik_examples,
   ...hover_card_examples,
   ...input_examples,
   ...kbd_examples,
@@ -78,6 +86,7 @@ const examples: Record<string, JSX.Element> = {
   ...progress_examples,
   ...radio_examples,
   ...range_picker_examples,
+  ...react_hook_forms_examples,
   ...scroll_area_examples,
   ...select_examples,
   ...skeleton_examples,
@@ -88,6 +97,7 @@ const examples: Record<string, JSX.Element> = {
   ...table_examples,
   ...tag_field_examples,
   ...tag_examples,
+  ...tanstack_table_examples,
   ...text_examples,
   ...textarea_examples,
   ...toast_examples,

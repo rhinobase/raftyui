@@ -45,6 +45,20 @@ export function Hero() {
                   </a>
                 </div>
               </div>
+              <div className="mt-4">
+                <a
+                  href="https://www.producthunt.com/products/rafty-ui?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-rafty&#0045;ui"
+                  target="_blank"
+                >
+                  <img
+                    src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=556315&theme=dark"
+                    alt="Rafty&#0032;UI - Radix&#0032;UI&#0032;&#0043;&#0032;Tailwind&#0032;CSS&#0032;&#0045;&#0032;React&#0032;Component&#0032;Lib | Product Hunt"
+                    style={{ width: 250, height: 54 }}
+                    width="250"
+                    height="54"
+                  />
+                </a>
+              </div>
             </div>
           </div>
           <div className="relative lg:static lg:w-max xl:pl-10">
@@ -73,7 +87,6 @@ export function Hero() {
                     <CookieSettingsExample />
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardContent>
                     <ChatBoxExample />

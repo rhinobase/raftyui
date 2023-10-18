@@ -1,25 +1,4 @@
----
-title: Rafty UI + Tanstack Table
-nextjs:
-  metadata:
-    title: Tanstack Table
-    description: Tanstack Table
-    twitter:
-      title: Tanstack Table
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=Tanstack%20Table
-    openGraph:
-      title: Tanstack Table
-      images:
-        url: https://rafty.rhinobase.io/api/og?title=Tanstack%20Table
----
-
-This example shows how to build a sortable data table with Rafty UI's table components, and the [Tanstack Table](https://tanstack.com/table/v8/).
-
-{% example name="tanstack_table:usage" %}
-
-```jsx
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import {
   ColumnDef,
   flexRender,
@@ -38,16 +17,24 @@ import {
 import {
   Button,
   InputField,
+  InputGroup,
+  Prefix,
   Spinner,
   Table,
   TableBody,
+  TableContainer,
   TableHead,
   Td,
   Th,
   Tr,
+  classNames,
 } from "@rafty/ui";
-import { useQuery } from "@tanstack/react-query";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
 type DataType = {
   flight_number: number;
@@ -59,55 +46,6 @@ type DataType = {
     rocket_name: string;
   };
 };
-
-export default function App() {
-  const { data, isLoading } = useQuery<DataType[]>({
-    queryKey: ["demo"],
-    queryFn: async () =>
-      await fetch("https://api.spacexdata.com/v3/launches").then((res) =>
-        res.json()
-      ),
-  });
-
-  const columns = useMemo<ColumnDef<DataType>[]>(
-    () => [
-      {
-        header: "Id",
-        accessorKey: "flight_number",
-      },
-      {
-        header: "Mission Name",
-        accessorKey: "mission_name",
-      },
-      {
-        header: "Launch Year",
-        accessorKey: "launch_year",
-      },
-      {
-        header: "Tentative",
-        accessorKey: "is_tentative",
-      },
-      {
-        header: "Launch Window",
-        accessorKey: "launch_window",
-      },
-      {
-        header: "Rocket Name",
-        cell: ({ row }) => row.original.rocket.rocket_name,
-      },
-    ],
-    []
-  );
-
-  if (isLoading)
-    return (
-      <div className="flex item-center justify-center mt-6 ">
-        <Spinner className="text-cyan-400 " size="lg" />
-      </div>
-    );
-
-  if (data) return <BasicTable data={data} columns={columns} />;
-}
 
 function BasicTable({
   data,
@@ -239,6 +177,61 @@ function BasicTable({
   );
 }
 
-```
+function TanstackTable() {
+  const { data, isLoading } = useQuery<DataType[]>({
+    queryKey: ["demo"],
+    queryFn: async () =>
+      await fetch("https://api.spacexdata.com/v3/launches").then((res) =>
+        res.json(),
+      ),
+  });
 
-{% /example %}
+  const columns = useMemo<ColumnDef<DataType>[]>(
+    () => [
+      {
+        header: "Id",
+        accessorKey: "flight_number",
+      },
+      {
+        header: "Mission Name",
+        accessorKey: "mission_name",
+      },
+      {
+        header: "Launch Year",
+        accessorKey: "launch_year",
+      },
+      {
+        header: "Tentative",
+        accessorKey: "is_tentative",
+      },
+      {
+        header: "Launch Window",
+        accessorKey: "launch_window",
+      },
+      {
+        header: "Rocket Name",
+        cell: ({ row }) => row.original.rocket.rocket_name,
+      },
+    ],
+    [],
+  );
+
+  if (isLoading)
+    return (
+      <div className="flex item-center justify-center">
+        <Spinner className="text-cyan-400 " size="lg" />
+      </div>
+    );
+
+  if (data) return <BasicTable data={data} columns={columns} />;
+}
+
+const CLIENT = new QueryClient();
+
+export const tanstack_table_examples = {
+  "tanstack_table:usage": (
+    <QueryClientProvider client={CLIENT}>
+      <TanstackTable />
+    </QueryClientProvider>
+  ),
+};
