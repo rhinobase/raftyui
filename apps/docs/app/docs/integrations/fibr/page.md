@@ -2,17 +2,19 @@
 title: Rafty UI + Fibr
 nextjs:
   metadata:
-    title: Fibr
-    description: Fibr
+    title: Rafty UI + Fibr
+    description: Rafty UI + Fibr
     twitter:
-      title: Fibr
+      title: Rafty UI + Fibr
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Fibr
+        url: https://rafty.rhinobase.io/api/og?title=Rafty%20UI%20+%20Fibr
     openGraph:
-      title: Fibr
+      title: Rafty UI + Fibr
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Fibr
+        url: https://rafty.rhinobase.io/api/og?title=Rafty%20UI%20+%20Fibr
 ---
+
+Fibr equips developers to build their forms 10x faster by simplifying form structure, generation, validation, theming, submission, error handling, and more. Check out [Fibr](https://www.npmjs.com/package/@fibr/react).
 
 {% example name="fibr:usage" %}
 
@@ -29,19 +31,17 @@ import { useFormContext } from "react-hook-form";
 const validation = z.object({
   name: z.string().min(4).max(30),
   email: z.string().min(8).max(50),
-  message: z.string().min(4).max(200),
 });
 
 export function Fibr() {
   return (
     <FibrProvider plugins={[raftyFiberPlugin, customPlugin]}>
       <FibrForm
-        blueprint={f.form({
+        blueprint={f.form<z.infer<typeof validation>, Resolver<FieldValues>>({
           validation: zodResolver(validation),
           fields: {
             name: f.string({ label: "Name", required: true }),
             email: f.custom({ type: "email", label: "Email", required: true }),
-            message: f.text({ label: "Message", required: true }),
           },
         })}
         onSubmit={({ values }) => console.log(values)}

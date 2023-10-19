@@ -206,6 +206,7 @@ export const LoadingVariants: Story = {
     </>
   ),
 };
+
 export const ButtonWithIcons: Story = {
   render: ({ colorScheme }) => (
     <>
@@ -306,3 +307,16 @@ export const ButtonWithIcons: Story = {
     </>
   ),
 };
+
+// export const AsButton: Story = {
+//   render: ({ colorScheme }) => (
+//     <Button
+//       as="a"
+//       colorScheme={colorScheme}
+//       href="https://rafty.rhinobase.io"
+//       target="_blank"
+//     >
+//       Docs Link
+//     </Button>
+//   ),
+// };

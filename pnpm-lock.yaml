@@ -12,14 +12,14 @@ dependencies:
     specifier: ^7.22.15
     version: 7.22.15(@babel/core@7.23.0)
   '@fibr/core':
-    specifier: ^0.2.0
-    version: 0.2.0
+    specifier: ^0.3.0
+    version: 0.3.0(@swc/helpers@0.5.3)
   '@fibr/rafty':
     specifier: ^0.1.0
-    version: 0.1.0(@fibr/core@0.2.0)(@fibr/react@0.2.0)(@rafty/ui@1.1.1)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react-icons@4.11.0)(react@18.2.0)
+    version: 0.1.0(@fibr/core@0.3.0)(@fibr/react@0.3.0)(@rafty/ui@1.1.1)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react-icons@4.11.0)(react@18.2.0)
   '@fibr/react':
-    specifier: ^0.2.0
-    version: 0.2.0(@fibr/core@0.2.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
+    specifier: ^0.3.0
+    version: 0.3.0(@fibr/core@0.3.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
   '@heroicons/react':
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
@@ -255,7 +255,7 @@ devDependencies:
     version: 1.6.8(@swc/core@1.3.92)(typescript@5.2.2)
   '@swc/core':
     specifier: ^1.3.92
-    version: 1.3.92
+    version: 1.3.92(@swc/helpers@0.5.3)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
@@ -288,7 +288,7 @@ devDependencies:
     version: 5.62.0(eslint@8.51.0)(typescript@5.2.2)
   '@vitejs/plugin-react-swc':
     specifier: ^3.4.0
-    version: 3.4.0(vite@4.4.11)
+    version: 3.4.0(@swc/helpers@0.5.3)(vite@4.4.11)
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.31)
@@ -2180,13 +2180,15 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
 
-  /@fibr/core@0.2.0:
-    resolution: {integrity: sha512-OfGkEQLtUAikUbuReN4tCfPNjEx8uSW2w7YDIh4/vqgRsya8OFx61YaWBZXOH6wd2GmeCPiSBv9T9+MVDEk9bw==}
+  /@fibr/core@0.3.0(@swc/helpers@0.5.3):
+    resolution: {integrity: sha512-z1vBujfYtvvstWSx8jTK1gtDZLZeyuRyGO0yrHi3gKFQxQYBMgUiYfVHCIkcLMY0NOej4NGPdoxeMTe0eI3iNw==}
+    peerDependencies:
+      '@swc/helpers': ~0.5.0
     dependencies:
       '@swc/helpers': 0.5.3
     dev: false
 
-  /@fibr/rafty@0.1.0(@fibr/core@0.2.0)(@fibr/react@0.2.0)(@rafty/ui@1.1.1)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react-icons@4.11.0)(react@18.2.0):
+  /@fibr/rafty@0.1.0(@fibr/core@0.3.0)(@fibr/react@0.3.0)(@rafty/ui@1.1.1)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react-icons@4.11.0)(react@18.2.0):
     resolution: {integrity: sha512-agndFetcnZwzz3p0sawWWVeJmLqjUGElMJ8IbeFpC48UIn5E3DIsHLBY3hs1hvBR5LKIeGl9C2zqrQ70+5oB7w==}
     peerDependencies:
       '@fibr/core': '*'
@@ -2198,8 +2200,8 @@ packages:
       react-hook-form: ^7.46.2
       react-icons: ^4.11.0
     dependencies:
-      '@fibr/core': 0.2.0
-      '@fibr/react': 0.2.0(@fibr/core@0.2.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
+      '@fibr/core': 0.3.0(@swc/helpers@0.5.3)
+      '@fibr/react': 0.3.0(@fibr/core@0.3.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
       '@rafty/ui': 1.1.1(@heroicons/react@2.0.18)(@radix-ui/react-accordion@1.1.2)(@radix-ui/react-alert-dialog@1.0.5)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-context-menu@2.1.5)(@radix-ui/react-dialog@1.0.5)(@radix-ui/react-dropdown-menu@2.0.6)(@radix-ui/react-hover-card@1.0.7)(@radix-ui/react-label@2.0.2)(@radix-ui/react-menubar@1.0.4)(@radix-ui/react-navigation-menu@1.1.4)(@radix-ui/react-popover@1.0.7)(@radix-ui/react-progress@1.0.3)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-scroll-area@1.0.5)(@radix-ui/react-switch@1.0.3)(@radix-ui/react-tabs@1.0.4)(@radix-ui/react-toggle-group@1.0.4)(@radix-ui/react-tooltip@1.0.7)(class-variance-authority@0.7.0)(cmdk@0.2.0)(core-js@3.33.0)(dateformat@5.0.3)(react-day-picker@8.8.2)(react@18.2.0)
       core-js: 3.33.0
       lodash: 4.17.21
@@ -2208,8 +2210,8 @@ packages:
       react-icons: 4.11.0(react@18.2.0)
     dev: false
 
-  /@fibr/react@0.2.0(@fibr/core@0.2.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0):
-    resolution: {integrity: sha512-NLrVVItRo7W/I99WWVBE26kdYZaSpnAw7rVyM6ZpeBW9D6zrGt3OihRT/6wo9h1rKNvSem5Pez9FC/f41JImaQ==}
+  /@fibr/react@0.3.0(@fibr/core@0.3.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0):
+    resolution: {integrity: sha512-xmE5TSvrfr/30FvwyzO5uLU2m4E51vBqF+dXvqmfGpykGlQg3nBBVpXxUcZWQa102hUdA2RhIwoFbuhlfyJNvQ==}
     peerDependencies:
       '@fibr/core': '*'
       core-js: ^3.33.0
@@ -2217,7 +2219,7 @@ packages:
       react: ^18.2.0
       react-hook-form: ^7.46.2
     dependencies:
-      '@fibr/core': 0.2.0
+      '@fibr/core': 0.3.0(@swc/helpers@0.5.3)
       core-js: 3.33.0
       lodash: 4.17.21
       react: 18.2.0
@@ -5946,7 +5948,7 @@ packages:
     peerDependencies:
       '@swc/core': '>= 1.3'
     dependencies:
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
     dev: true
 
   /@swc-node/register@1.6.8(@swc/core@1.3.92)(typescript@5.2.2):
@@ -5957,7 +5959,7 @@ packages:
     dependencies:
       '@swc-node/core': 1.10.6(@swc/core@1.3.92)
       '@swc-node/sourcemap-support': 0.3.0
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
       colorette: 2.0.20
       debug: 4.3.4
       pirates: 4.0.6
@@ -6064,7 +6066,7 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core@1.3.92:
+  /@swc/core@1.3.92(@swc/helpers@0.5.3):
     resolution: {integrity: sha512-vx0vUrf4YTEw59njOJ46Ha5i0cZTMYdRHQ7KXU29efN1MxcmJH2RajWLPlvQarOP1ab9iv9cApD7SMchDyx2vA==}
     engines: {node: '>=10'}
     requiresBuild: true
@@ -6075,6 +6077,7 @@ packages:
         optional: true
     dependencies:
       '@swc/counter': 0.1.2
+      '@swc/helpers': 0.5.3
       '@swc/types': 0.1.5
     optionalDependencies:
       '@swc/core-darwin-arm64': 1.3.92
@@ -6876,12 +6879,12 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /@vitejs/plugin-react-swc@3.4.0(vite@4.4.11):
+  /@vitejs/plugin-react-swc@3.4.0(@swc/helpers@0.5.3)(vite@4.4.11):
     resolution: {integrity: sha512-m7UaA4Uvz82N/0EOVpZL4XsFIakRqrFKeSNxa1FBLSXGvWrWRBwmZb4qxk+ZIVAZcW3c3dn5YosomDgx62XWcQ==}
     peerDependencies:
       vite: ^4
     dependencies:
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
       vite: 4.4.11(@types/node@20.8.4)
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -12175,7 +12178,7 @@ packages:
       '@nrwl/tao': 16.10.0(@swc-node/register@1.6.8)(@swc/core@1.3.92)
       '@parcel/watcher': 2.0.4
       '@swc-node/register': 1.6.8(@swc/core@1.3.92)(typescript@5.2.2)
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.6
@@ -14830,7 +14833,7 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.19
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
       esbuild: 0.18.20
       jest-worker: 27.5.1
       schema-utils: 3.3.0
@@ -14998,7 +15001,7 @@ packages:
         optional: true
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
       '@tsconfig/node10': 1.0.9
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
@@ -15030,7 +15033,7 @@ packages:
         optional: true
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
-      '@swc/core': 1.3.92
+      '@swc/core': 1.3.92(@swc/helpers@0.5.3)
       '@tsconfig/node10': 1.0.9
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3

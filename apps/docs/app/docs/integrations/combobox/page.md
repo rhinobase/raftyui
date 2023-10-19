@@ -1,5 +1,5 @@
 ---
-title: Rafty UI + React Query
+title: Rafty UI + React Query = Combobox
 nextjs:
   metadata:
     title: Combobox

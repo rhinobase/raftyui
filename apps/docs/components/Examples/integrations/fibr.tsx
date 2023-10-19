@@ -5,24 +5,26 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, InputField, Toast } from "@rafty/ui";
 import toast from "react-hot-toast";
 import z from "zod";
-import { useFormContext } from "react-hook-form";
+import { FieldValues, Resolver, useFormContext } from "react-hook-form";
 
 const validation = z.object({
   name: z.string().min(4).max(30),
   email: z.string().min(8).max(50),
-  message: z.string().min(4).max(200),
 });
 
 export function Fibr() {
   return (
     <FibrProvider plugins={[raftyFibrPlugin, customPlugin]}>
       <FibrForm
-        blueprint={f.form({
+        blueprint={f.form<z.infer<typeof validation>, Resolver<FieldValues>>({
           validation: zodResolver(validation),
           fields: {
             name: f.string({ label: "Name", required: true }),
-            email: f.custom({ type: "email", label: "Email", required: true }),
-            message: f.text({ label: "Message", required: true }),
+            email: f.custom({
+              type: "email",
+              label: "Email",
+              required: true,
+            }),
           },
         })}
         onSubmit={({ values }) => console.log(values)}
