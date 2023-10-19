@@ -8,7 +8,7 @@ export const [AccordionProvider, useAccordionContext] =
   });
 
 export interface AccordionContext {
-  size: "sm" | "md" | "lg";
-  variant: "solid" | "ghost";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly variant: "solid" | "ghost";
+  readonly isBarebone: boolean;
 }

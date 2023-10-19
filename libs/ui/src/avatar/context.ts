@@ -9,5 +9,5 @@ export const [AvatarGroupProvider, useAvatarGroupContext] =
   });
 
 export interface AvatarGroupContext {
-  size: "sm" | "md" | "lg";
+  readonly size: "sm" | "md" | "lg";
 }

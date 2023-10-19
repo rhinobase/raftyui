@@ -7,7 +7,7 @@ export const [CardProvider, useCardContext] = createContext<CardContext>({
 });
 
 export interface CardContext {
-  size: "sm" | "md" | "lg";
-  variant: "outline" | "elevated";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly variant: "outline" | "elevated";
+  readonly isBarebone: boolean;
 }

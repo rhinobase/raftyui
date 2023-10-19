@@ -7,8 +7,8 @@ export const [AlertProvider, useAlertContext] = createContext<AlertContext>({
 });
 
 export interface AlertContext {
-  size: "sm" | "md" | "lg";
-  status: "success" | "warning" | "error" | "info";
-  variant: "simple" | "solid" | "left-accent" | "top-accent";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly status: "success" | "warning" | "error" | "info";
+  readonly variant: "simple" | "solid" | "left-accent" | "top-accent";
+  readonly isBarebone: boolean;
 }

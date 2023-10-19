@@ -8,6 +8,6 @@ export const [MenuBarProvider, useMenuBarContext] =
   });
 
 export interface MenuBarContext {
-  size: "sm" | "md" | "lg";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly isBarebone: boolean;
 }

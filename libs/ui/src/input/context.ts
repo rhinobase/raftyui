@@ -9,8 +9,8 @@ export const [InputGroupProvider, useInputGroupContext] =
   });
 
 export interface InputGroupContext {
-  isLeftAddon: boolean;
-  isRightAddon: boolean;
-  isPrefix: boolean;
-  isSuffix: boolean;
+  readonly isLeftAddon: boolean;
+  readonly isRightAddon: boolean;
+  readonly isPrefix: boolean;
+  readonly isSuffix: boolean;
 }

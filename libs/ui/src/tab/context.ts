@@ -7,8 +7,8 @@ export const [TabProvider, useTabContext] = createContext<TabContext>({
 });
 
 export interface TabContext {
-  size: "sm" | "md" | "lg";
-  variant: "line" | "enclosed";
-  orientation: "horizontal" | "vertical";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly variant: "line" | "enclosed";
+  readonly orientation: "horizontal" | "vertical";
+  readonly isBarebone: boolean;
 }

@@ -7,6 +7,6 @@ export const [DrawerProvider, useDrawerContext] = createContext<DrawerContext>({
 });
 
 export interface DrawerContext {
-  size: "sm" | "md" | "lg" | "full";
-  side: "right" | "left";
+  readonly size: "sm" | "md" | "lg" | "full";
+  readonly side: "right" | "left";
 }

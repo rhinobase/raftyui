@@ -9,11 +9,11 @@ export const [FieldControlProvider, useFieldControlContext] =
   });
 
 export interface FieldControlContext {
-  name: string;
-  orientation: "row" | "col" | "row-reverse";
-  isRequired: boolean;
-  isDisabled: boolean;
-  isReadOnly: boolean;
-  isInvalid: boolean;
-  isLoading: boolean;
+  readonly name: string;
+  readonly orientation: "row" | "col" | "row-reverse";
+  readonly isRequired: boolean;
+  readonly isDisabled: boolean;
+  readonly isReadOnly: boolean;
+  readonly isInvalid: boolean;
+  readonly isLoading: boolean;
 }

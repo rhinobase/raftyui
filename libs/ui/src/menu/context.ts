@@ -7,6 +7,6 @@ export const [MenuProvider, useMenuContext] = createContext<MenuContext>({
 });
 
 export interface MenuContext {
-  size: "sm" | "md" | "lg";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly isBarebone: boolean;
 }

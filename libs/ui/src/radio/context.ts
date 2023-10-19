@@ -8,6 +8,6 @@ export const [RadioGroupProvider, useRadioGroupContext] =
   });
 
 export interface RadioGroupContext {
-  size: "sm" | "md" | "lg";
-  isDisabled: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly isDisabled: boolean;
 }

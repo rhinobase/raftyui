@@ -15,7 +15,7 @@ export function ExternalCodeLinks() {
         }}
       />
       <CardElement
-        title="Next.js Page Router"
+        title="Next.js Pages Router"
         icon={NextjsIcon}
         href={{
           js: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-pages-router",

@@ -8,5 +8,5 @@ export const [NavigationMenuProvider, useNavigationMenuContext] =
   });
 
 export interface NavigationMenuContext {
-  isBarebone: boolean;
+  readonly isBarebone: boolean;
 }

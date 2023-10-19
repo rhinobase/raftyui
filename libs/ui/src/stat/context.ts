@@ -7,5 +7,5 @@ export const [StatProvider, useStatContext] = createContext<StatContext>({
 });
 
 export interface StatContext {
-  type: "increase" | "decrease" | "normal";
+  readonly type: "increase" | "decrease" | "normal";
 }

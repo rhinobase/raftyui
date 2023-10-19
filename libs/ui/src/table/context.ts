@@ -7,7 +7,7 @@ export const [TableProvider, useTableContext] = createContext<TableContext>({
 });
 
 export interface TableContext {
-  size: "sm" | "md" | "lg";
-  variant: "simple" | "striped";
-  isBarebone: boolean;
+  readonly size: "sm" | "md" | "lg";
+  readonly variant: "simple" | "striped";
+  readonly isBarebone: boolean;
 }
