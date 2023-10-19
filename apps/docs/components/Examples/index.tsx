@@ -50,6 +50,7 @@ import { tooltip_examples } from "./tooltip";
 import {
   combobox_examples,
   formik_examples,
+  fibr_examples,
   react_hook_forms_examples,
   tanstack_table_examples,
 } from "./integrations";
@@ -73,6 +74,7 @@ const examples: Record<string, JSX.Element> = {
   ...drawer_examples,
   ...field_control_examples,
   ...formik_examples,
+  ...fibr_examples,
   ...hover_card_examples,
   ...input_examples,
   ...kbd_examples,

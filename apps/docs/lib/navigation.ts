@@ -179,7 +179,7 @@ export const navigation = [
         href: "/docs/integrations/combobox",
       },
       { title: "Tanstack Table", href: "/docs/integrations/tanstack-table" },
-      { title: "Fiber", href: "/docs/integrations/fiber" },
+      { title: "Fibr", href: "/docs/integrations/fibr" },
     ],
   },
 ];

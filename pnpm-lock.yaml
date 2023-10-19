@@ -11,6 +11,15 @@ dependencies:
   '@babel/preset-react':
     specifier: ^7.22.15
     version: 7.22.15(@babel/core@7.23.0)
+  '@fibr/core':
+    specifier: ^0.2.0
+    version: 0.2.0
+  '@fibr/rafty':
+    specifier: ^0.1.0
+    version: 0.1.0(@fibr/core@0.2.0)(@fibr/react@0.2.0)(@rafty/ui@1.1.1)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react-icons@4.11.0)(react@18.2.0)
+  '@fibr/react':
+    specifier: ^0.2.0
+    version: 0.2.0(@fibr/core@0.2.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
   '@heroicons/react':
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
@@ -167,6 +176,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.47.0
     version: 7.47.0(react@18.2.0)
+  react-hot-toast:
+    specifier: ^2.4.1
+    version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
   react-icons:
     specifier: ^4.11.0
     version: 4.11.0(react@18.2.0)
@@ -2167,6 +2179,50 @@ packages:
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
+
+  /@fibr/core@0.2.0:
+    resolution: {integrity: sha512-OfGkEQLtUAikUbuReN4tCfPNjEx8uSW2w7YDIh4/vqgRsya8OFx61YaWBZXOH6wd2GmeCPiSBv9T9+MVDEk9bw==}
+    dependencies:
+      '@swc/helpers': 0.5.3
+    dev: false
+
+  /@fibr/rafty@0.1.0(@fibr/core@0.2.0)(@fibr/react@0.2.0)(@rafty/ui@1.1.1)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react-icons@4.11.0)(react@18.2.0):
+    resolution: {integrity: sha512-agndFetcnZwzz3p0sawWWVeJmLqjUGElMJ8IbeFpC48UIn5E3DIsHLBY3hs1hvBR5LKIeGl9C2zqrQ70+5oB7w==}
+    peerDependencies:
+      '@fibr/core': '*'
+      '@fibr/react': '*'
+      '@rafty/ui': '*'
+      core-js: ^3.33.0
+      lodash: ^4.17.21
+      react: ^18.2.0
+      react-hook-form: ^7.46.2
+      react-icons: ^4.11.0
+    dependencies:
+      '@fibr/core': 0.2.0
+      '@fibr/react': 0.2.0(@fibr/core@0.2.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
+      '@rafty/ui': 1.1.1(@heroicons/react@2.0.18)(@radix-ui/react-accordion@1.1.2)(@radix-ui/react-alert-dialog@1.0.5)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-context-menu@2.1.5)(@radix-ui/react-dialog@1.0.5)(@radix-ui/react-dropdown-menu@2.0.6)(@radix-ui/react-hover-card@1.0.7)(@radix-ui/react-label@2.0.2)(@radix-ui/react-menubar@1.0.4)(@radix-ui/react-navigation-menu@1.1.4)(@radix-ui/react-popover@1.0.7)(@radix-ui/react-progress@1.0.3)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-scroll-area@1.0.5)(@radix-ui/react-switch@1.0.3)(@radix-ui/react-tabs@1.0.4)(@radix-ui/react-toggle-group@1.0.4)(@radix-ui/react-tooltip@1.0.7)(class-variance-authority@0.7.0)(cmdk@0.2.0)(core-js@3.33.0)(dateformat@5.0.3)(react-day-picker@8.8.2)(react@18.2.0)
+      core-js: 3.33.0
+      lodash: 4.17.21
+      react: 18.2.0
+      react-hook-form: 7.47.0(react@18.2.0)
+      react-icons: 4.11.0(react@18.2.0)
+    dev: false
+
+  /@fibr/react@0.2.0(@fibr/core@0.2.0)(core-js@3.33.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0):
+    resolution: {integrity: sha512-NLrVVItRo7W/I99WWVBE26kdYZaSpnAw7rVyM6ZpeBW9D6zrGt3OihRT/6wo9h1rKNvSem5Pez9FC/f41JImaQ==}
+    peerDependencies:
+      '@fibr/core': '*'
+      core-js: ^3.33.0
+      lodash: ^4.17.21
+      react: ^18.2.0
+      react-hook-form: ^7.46.2
+    dependencies:
+      '@fibr/core': 0.2.0
+      core-js: 3.33.0
+      lodash: 4.17.21
+      react: 18.2.0
+      react-hook-form: 7.47.0(react@18.2.0)
+    dev: false
 
   /@floating-ui/core@1.5.0:
     resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==}
@@ -4707,6 +4763,62 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.1
 
+  /@rafty/ui@1.1.1(@heroicons/react@2.0.18)(@radix-ui/react-accordion@1.1.2)(@radix-ui/react-alert-dialog@1.0.5)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-context-menu@2.1.5)(@radix-ui/react-dialog@1.0.5)(@radix-ui/react-dropdown-menu@2.0.6)(@radix-ui/react-hover-card@1.0.7)(@radix-ui/react-label@2.0.2)(@radix-ui/react-menubar@1.0.4)(@radix-ui/react-navigation-menu@1.1.4)(@radix-ui/react-popover@1.0.7)(@radix-ui/react-progress@1.0.3)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-scroll-area@1.0.5)(@radix-ui/react-switch@1.0.3)(@radix-ui/react-tabs@1.0.4)(@radix-ui/react-toggle-group@1.0.4)(@radix-ui/react-tooltip@1.0.7)(class-variance-authority@0.7.0)(cmdk@0.2.0)(core-js@3.33.0)(dateformat@5.0.3)(react-day-picker@8.8.2)(react@18.2.0):
+    resolution: {integrity: sha512-7BM8AYWSOWwfw6qpDBNi+bFertpz3TlebTdPum5caaZ8YvIfSPE4vgIOD7AZkyuw5TntEm7MQ1wFxSBf+uuUWg==}
+    peerDependencies:
+      '@heroicons/react': 2.0.18
+      '@radix-ui/react-accordion': 1.1.2
+      '@radix-ui/react-alert-dialog': 1.0.5
+      '@radix-ui/react-checkbox': 1.0.4
+      '@radix-ui/react-context-menu': 2.1.5
+      '@radix-ui/react-dialog': 1.0.5
+      '@radix-ui/react-dropdown-menu': 2.0.6
+      '@radix-ui/react-hover-card': 1.0.7
+      '@radix-ui/react-label': 2.0.2
+      '@radix-ui/react-menubar': 1.0.4
+      '@radix-ui/react-navigation-menu': 1.1.4
+      '@radix-ui/react-popover': 1.0.7
+      '@radix-ui/react-progress': 1.0.3
+      '@radix-ui/react-radio-group': 1.1.3
+      '@radix-ui/react-scroll-area': 1.0.5
+      '@radix-ui/react-switch': 1.0.3
+      '@radix-ui/react-tabs': 1.0.4
+      '@radix-ui/react-toggle-group': 1.0.4
+      '@radix-ui/react-tooltip': 1.0.7
+      class-variance-authority: 0.7.0
+      cmdk: 0.2.0
+      core-js: ^3.33.0
+      dateformat: 5.0.3
+      react: 18.2.0
+      react-day-picker: 8.8.2
+    dependencies:
+      '@heroicons/react': 2.0.18(react@18.2.0)
+      '@radix-ui/react-accordion': 1.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-alert-dialog': 1.0.5(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-checkbox': 1.0.4(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-context-menu': 2.1.5(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-dialog': 1.0.5(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-dropdown-menu': 2.0.6(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-hover-card': 1.0.7(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-label': 2.0.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-menubar': 1.0.4(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-navigation-menu': 1.1.4(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-popover': 1.0.7(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-progress': 1.0.3(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-radio-group': 1.1.3(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-scroll-area': 1.0.5(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-switch': 1.0.3(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-tabs': 1.0.4(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-toggle-group': 1.0.4(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-tooltip': 1.0.7(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      class-variance-authority: 0.7.0
+      cmdk: 0.2.0(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      core-js: 3.33.0
+      dateformat: 5.0.3
+      react: 18.2.0
+      react-day-picker: 8.8.2(date-fns@2.30.0)(react@18.2.0)
+    dev: false
+
   /@resvg/resvg-wasm@2.4.1:
     resolution: {integrity: sha512-yi6R0HyHtsoWTRA06Col4WoDs7SvlXU3DLMNP2bdAgs7HK18dTEVl1weXgxRzi8gwLteGUbIg29zulxIB3GSdg==}
     engines: {node: '>= 10'}
@@ -5990,7 +6102,6 @@ packages:
     resolution: {integrity: sha512-FaruWX6KdudYloq1AHD/4nU+UsMTdNE8CKyrseXWEcgjDAbvkwJg2QGPAnfIJLIWsjZOSPLOAykK6fuYp4vp4A==}
     dependencies:
       tslib: 2.6.2
-    dev: true
 
   /@swc/types@0.1.5:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
@@ -10255,6 +10366,14 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: false
 
+  /goober@2.1.13(csstype@3.1.2):
+    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.2
+    dev: false
+
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -13347,6 +13466,20 @@ packages:
       react: ^16.8.0 || ^17 || ^18
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: 2.1.13(csstype@3.1.2)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /react-icons@4.11.0(react@18.2.0):
