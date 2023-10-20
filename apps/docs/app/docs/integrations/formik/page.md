@@ -5,11 +5,11 @@ nextjs:
     title: Rafty UI + Formik
     description: Formik
     twitter:
-        title: Rafty UI + Formik
+      title: Rafty UI + Formik
       images:
         url: https://rafty.rhinobase.io/api/og?title=Rafty%20UI%20+%20Formik
     openGraph:
-          title: Rafty UI + Formik
+      title: Rafty UI + Formik
       images:
         url: https://rafty.rhinobase.io/api/og?title=Rafty%20UI%20+%20Formik
 ---

@@ -2,16 +2,16 @@
 title: Rafty UI + React Query = Combobox
 nextjs:
   metadata:
-    title: Combobox
+    title: Rafty UI + React Query = Combobox
     description: Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern.
     twitter:
-      title: Combobox
+      title: Rafty UI + React Query = Combobox
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Combobox
+        url: https://rafty.rhinobase.io/api/og?title=Rafty%20UI%20+%20React%20Query%20=%20Combobox
     openGraph:
-      title: Combobox
+      title: Rafty UI + React Query = Combobox
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Combobox
+        url: https://rafty.rhinobase.io/api/og?title=Rafty%20UI%20+%20React%20Query%20=%20Combobox
 ---
 
 Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern. Over here we are using [TanStack React Query](https://tanstack.com/query/latest) for fetching the data.
@@ -40,6 +40,15 @@ import {
 import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
 
 export default function Projects() {
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const [contentwidth, setContentWidth] = useState(0);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    setContentWidth(triggerRef.current?.offsetWidth);
+  }, []);
+
   const [isOpen, setOpen] = useState(false);
 
   const { data, error, fetchNextPage, hasNextPage, isLoading, isFetching } =
@@ -47,7 +56,7 @@ export default function Projects() {
       queryKey: ["projects"],
       queryFn: () => {
         return fetch("https://api.spacexdata.com/v4/launches/past").then(
-          (res) => res.json()
+          (res) => res.json(),
         );
       },
       getNextPageParam: (_, pages) => pages.length,
@@ -63,7 +72,7 @@ export default function Projects() {
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading, hasNextPage]
+    [isLoading, hasNextPage],
   );
 
   const pages = data?.pages.flat();
@@ -81,14 +90,15 @@ export default function Projects() {
     return undefined;
   }, undefined);
 
-  if (error) return;
+  if (error) return <>Unable to load data!</>;
 
-  if (pages)
-    return (
-      <div className=" max-w-lg w-full mx-auto">
+  return (
+    <div className="max-w-lg w-full mx-auto">
+      <div className={!pages ? "invisible" : undefined}>
         <Popover open={isOpen} onOpenChange={setOpen}>
           <div className="relative flex items-center">
             <PopoverTrigger
+              ref={triggerRef}
               variant="outline"
               role="combobox"
               aria-expanded={isOpen}
@@ -99,7 +109,7 @@ export default function Projects() {
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "h-4 w-4 shrink-0 stroke-1"
+                    "h-4 w-4 shrink-0 stroke-1",
                   )}
                 />
               }
@@ -128,36 +138,47 @@ export default function Projects() {
               </Button>
             )}
           </div>
-          <PopoverContent className="!p-0 !w-[512px]">
+          <PopoverContent className="!p-0" style={{ width: contentwidth }}>
             <Command shouldFilter={false}>
               <CommandList>
                 <CommandGroup>
-                  {pages.map((item, index) => {
-                    const isLastElement = pages.length == index + 1;
+                  {pages ? (
+                    pages.map((item, index) => {
+                      const isLastElement = pages.length == index + 1;
 
-                    return (
-                      <CommandItem
-                        key={item.id}
-                        value={item.id}
-                        onSelect={dispatch}
-                      >
-                        <div
-                          className="flex items-center gap-2 w-full"
-                          ref={isLastElement ? lastElementRef : undefined}
+                      return (
+                        <CommandItem
+                          key={item.id}
+                          value={item.id}
+                          onSelect={dispatch}
                         >
-                          <Avatar
-                            name={item.name}
-                            src={item.links.patch.small}
-                          />
-                          <Text>{item.name}</Text>
-                          <div className="flex-1" />
-                          {selected?.id == item.id && (
-                            <HiCheck className="h-3.5 w-3.5 stroke-1" />
-                          )}
-                        </div>
-                      </CommandItem>
-                    );
-                  })}
+                          <div
+                            className="flex items-center gap-2 w-full"
+                            ref={isLastElement ? lastElementRef : undefined}
+                          >
+                            <Avatar
+                              name={item.name}
+                              src={item.links.patch.small}
+                            />
+                            <Text>{item.name}</Text>
+                            <div className="flex-1" />
+                            {selected?.id == item.id && (
+                              <HiCheck className="h-3.5 w-3.5 stroke-1" />
+                            )}
+                          </div>
+                        </CommandItem>
+                      );
+                    })
+                  ) : (
+                    <CommandLoading>
+                      <div className="flex select-none items-center justify-center gap-2 py-4">
+                        <Spinner size="sm" />
+                        <Text className="text-sm text-secondary-500">
+                          Loading
+                        </Text>
+                      </div>
+                    </CommandLoading>
+                  )}
                   {(isLoading || isFetching) && (
                     <CommandLoading>
                       <div className="flex select-none items-center justify-center gap-2 py-4">
@@ -168,7 +189,7 @@ export default function Projects() {
                       </div>
                     </CommandLoading>
                   )}
-                  {pages.length == 0 && !isLoading && (
+                  {pages?.length == 0 && !isLoading && (
                     <CommandEmpty>No data found</CommandEmpty>
                   )}
                 </CommandGroup>
@@ -177,8 +198,11 @@ export default function Projects() {
           </PopoverContent>
         </Popover>
       </div>
-    );
-  return <Skeleton className="max-w-lg w-full mx-auto h-[42px] rounded-md" />;
+      {!pages && (
+        <Skeleton className="max-w-lg w-full mx-auto h-[42px] rounded-md !-mt-[42px]" />
+      )}
+    </div>
+  );
 }
 ```
 

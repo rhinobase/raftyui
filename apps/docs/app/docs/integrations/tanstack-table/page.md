@@ -2,7 +2,7 @@
 title: Rafty UI + Tanstack Table
 nextjs:
   metadata:
-      title: Rafty UI + Tanstack Table
+    title: Rafty UI + Tanstack Table
     description: Tanstack Table
     twitter:
       title: Rafty UI + Tanstack Table

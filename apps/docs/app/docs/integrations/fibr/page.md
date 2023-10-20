@@ -33,7 +33,7 @@ const validation = z.object({
   email: z.string().min(8).max(50),
 });
 
-export function Fibr() {
+export default function FibrForm() {
   return (
     <FibrProvider plugins={[raftyFiberPlugin, customPlugin]}>
       <FibrForm
