@@ -68,7 +68,7 @@ module.exports = {
 
 ## Connect with us
 
-Whether you're a beginner or advanced Chakra UI user, joining our community is the best way to connect with like-minded people who build great products with the library.
+Whether you're a beginner or advanced Rafty UI user, joining our community is the best way to connect with like-minded people who build great products with the library.
 
 ### Contributing
 
