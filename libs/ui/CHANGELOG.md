@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.1](https://github.com/rhinobase/design-system/compare/ui-1.2.0...ui-1.2.1) (2023-10-21)
+
 ## [1.2.0](https://github.com/rhinobase/design-system/compare/ui-1.1.1...ui-1.2.0) (2023-10-21)
 
 ### Features
