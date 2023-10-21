@@ -63,7 +63,3 @@ This property can also be passed in child/ sub component
 There are 3 `size` options in checkbox: `sm`, `md` (default) & `lg`.
 
 {% example name="checkbox:size" /%}
-
-### API
-
----

@@ -14,13 +14,13 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Customization
 ---
 
-If you want to make changes in default styling, update `tailwind.config.js` file. You can extend `theme` object provided by TailwindCSS to override our default themings.
+If you want to make changes to the default styling, update the tailwind.config.js file. You can extend the theme object provided by TailwindCSS to override our default theming.
 
 ## Colors
 
 #### Customizing the default color palette for your project.
 
-Rafty UI includes an expertly-crafted default color palette out-of-the-box that is a great starting point if you don’t have your own specific branding in mind.
+Customize the default color palette for your project. Rafty UI includes an expertly-crafted default color palette out-of-the-box, making it a great starting point if you don’t have your own specific branding in mind.
 
 {% callout title="Global Constants" %}
 Few colors are globally constants like -
@@ -76,7 +76,7 @@ module.exports = {
 
 ## Padding
 
-We have made our padding classes separate from that of tailwind's default padding classes. You can put your custom values in our padding classes in order to make changes in whole theme and sizing of rafty components. Whereas, if you need to make changes to an individual component you have to do that on component level.
+We have separated our padding classes from Tailwind’s default padding classes. You can input your custom values into our padding classes to make changes to the entire theme and sizing of Rafty components. However, if you need to modify an individual component, you should do that at the component level.
 
 ```jsx
 const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
@@ -116,7 +116,7 @@ module.exports = {
 
 ## Border Radius
 
-In case of border radius, we have worked with the default classes of TailwindCSS. So you can put values other than the values showed in the example (these are the default values as per TailwindCSS) to make changes in the overall theme and rafty components.
+For border radius, we’ve utilized the default classes of TailwindCSS. Feel free to use values different from those shown in the example (which are TailwindCSS’s default values) to customize the overall theme and Rafty components.
 
 ```jsx
 const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");

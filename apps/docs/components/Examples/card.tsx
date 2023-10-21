@@ -10,11 +10,10 @@ export const card_examples = {
         dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa
         minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.
       </CardContent>
-      <CardFooter className="flex">
+      <CardFooter className="flex justify-between">
         <Button variant="outline" colorScheme="error">
           Delete
         </Button>
-        <div className="flex-1" />
         <Button variant="outline">View here</Button>
       </CardFooter>
     </Card>
@@ -22,18 +21,19 @@ export const card_examples = {
   "card:size": (
     <Card size="sm">
       <CardHeader>Customer dashboard</CardHeader>
-      <CardContent>
+      <CardContent className="text-sm">
         View a summary of all your customers over the last month. Lorem, ipsum
         dolor sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum
         dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa
         minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.
       </CardContent>
-      <CardFooter className="flex">
-        <Button variant="outline" colorScheme="error">
+      <CardFooter className="flex justify-between">
+        <Button size="sm" variant="outline" colorScheme="error">
           Delete
         </Button>
-        <div className="flex-1" />
-        <Button variant="outline">View here</Button>
+        <Button size="sm" variant="outline">
+          View here
+        </Button>
       </CardFooter>
     </Card>
   ),
@@ -46,11 +46,10 @@ export const card_examples = {
         dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa
         minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.
       </CardContent>
-      <CardFooter className="flex">
+      <CardFooter className="flex justify-between">
         <Button variant="outline" colorScheme="error">
           Delete
         </Button>
-        <div className="flex-1" />
         <Button variant="outline">View here</Button>
       </CardFooter>
     </Card>
@@ -69,11 +68,10 @@ export const card_examples = {
         dolor sit, amet consectetur adipisicing elit. Officia, eveniet culpa
         minima ipsa rem in mollitia inventore laboriosam necessitatibus itaque.
       </CardContent>
-      <CardFooter className="flex">
+      <CardFooter className="flex justify-between">
         <Button variant="outline" colorScheme="error">
           Delete
         </Button>
-        <div className="flex-1" />
         <Button variant="outline">View here</Button>
       </CardFooter>
     </Card>

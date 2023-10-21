@@ -74,13 +74,7 @@ export const menu_examples = {
         All Feature
       </MenuTrigger>
       <MenuContent>
-        <MenuGroup>
-          <MenuItem>New Tab</MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>New Private Window </MenuItem>
-        </MenuGroup>
-        <MenuSeparator />
-        <MenuCheckboxItem>
+        <MenuCheckboxItem checked>
           Show Bookmarks <div className="RightSlot">⌘+B</div>
         </MenuCheckboxItem>
         <MenuCheckboxItem>Show Full URLs</MenuCheckboxItem>
@@ -91,9 +85,6 @@ export const menu_examples = {
     <Menu>
       <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
       <MenuContent>
-        <MenuItem>New Tab</MenuItem>
-        <MenuItem>New Window</MenuItem>
-        <MenuItem disabled>New Private Window </MenuItem>
         <MenuLabel>People</MenuLabel>
         <MenuRadioGroup value="1">
           <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>

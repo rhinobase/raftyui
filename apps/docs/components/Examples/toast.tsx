@@ -10,7 +10,7 @@ export const toast_examples = {
     />
   ),
   "toast:severity": (
-    <div className="space-y-4 ">
+    <div className="w-full flex flex-col gap-4 items-center">
       <Toast title="Success Banner" severity="success" />
       <Toast title="Success Banner" severity="warning" />
       <Toast title="Success Banner" severity="info" />

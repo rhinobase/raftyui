@@ -74,12 +74,9 @@ export const alert_examples = {
     </Alert>
   ),
   "alert:unstyled": (
-    <Alert
-      isUnstyled
-      className="flex h-14 w-full items-center gap-1 rounded-md border border-red-500 bg-red-400/50 p-4 text-white"
-    >
+    <Alert>
       <AlertIcon />
-      <AlertTitle>Title</AlertTitle>
+      <AlertTitle isUnstyled>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),

@@ -1,6 +1,8 @@
 import { HoverCard, HoverCardContent, HoverCardTrigger, Text } from "@rafty/ui";
 import Image from "next/image";
 
+Image.displayName = "Image";
+
 export const hover_card_examples = {
   "hover-card:usage": (
     <HoverCard>
