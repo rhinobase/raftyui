@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.0](https://github.com/rhinobase/design-system/compare/ui-1.1.1...ui-1.2.0) (2023-10-21)
+
+
+### Features
+
+* exported all classes variables from components and converted them to cva ([6de1f5a](https://github.com/rhinobase/design-system/commit/6de1f5a9ab49dd001c41ff3cf3667eba506ceaa4))
+
+
+### Bug Fixes
+
+* corrected ssr for all components ([6ff1c6a](https://github.com/rhinobase/design-system/commit/6ff1c6ae478167f440dc71582ff95efa1c9de06d))
+* minor corrections ([20ed6de](https://github.com/rhinobase/design-system/commit/20ed6ded81e81579ad494c9c11792357d27e20f0))
+
 ## [1.1.1](https://github.com/rhinobase/design-system/compare/ui-1.1.0...ui-1.1.1) (2023-10-12)
 
 ### Features
