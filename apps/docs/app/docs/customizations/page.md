@@ -14,7 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Customization
 ---
 
-If you want to make changes to the default styling, update the tailwind.config.js file. You can extend the theme object provided by TailwindCSS to override our default theming.
+If you want to make changes to the default styling, update the `tailwind.config.js` file. You can extend the `theme` object provided by TailwindCSS to override our default theming.
 
 ## Colors
 
