@@ -3,6 +3,8 @@ import React from "react";
 import { classNames, getValidChildren } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
 import { Avatar } from "./avatar";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { calculateWidth } from "./utils";
 
 export type AvatarGroup = JSX.IntrinsicElements["div"] &

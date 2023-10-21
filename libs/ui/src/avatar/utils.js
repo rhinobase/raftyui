@@ -4,7 +4,7 @@
  * @param {number} length - No of Avatar components in the group
  * @returns {number} The width of the AvatarGroup
  */
-export function calculateWidth(size: "sm" | "md" | "lg", length: number) {
+export function calculateWidth(size, length) {
   switch (size) {
     case "sm":
       return 28 + length * 22;
