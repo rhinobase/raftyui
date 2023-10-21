@@ -3,7 +3,7 @@ import { useFieldControlContext } from "../field/context";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
-const textareaClasses = cva(
+export const textareaClasses = cva(
   "w-full appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
@@ -33,6 +33,11 @@ const textareaClasses = cva(
         className: "bg-transparent",
       },
     ],
+    defaultVariants: {
+      size: "md",
+      variant: "outline",
+      invalid: false,
+    },
   },
 );
 

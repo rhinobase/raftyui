@@ -8,6 +8,7 @@ import {
   useAlertDialogContext,
 } from "./context";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // AlertDialog Component
 export type AlertDialog = React.ComponentPropsWithoutRef<
@@ -122,14 +123,22 @@ export const AlertDialogOverlay = React.forwardRef<
 AlertDialogOverlay.displayName = "AlertDialogOverlay";
 
 // AlertDialogContent Component
-const alertDialogContentClasses = {
-  size: {
-    sm: "max-w-[30rem] p-5",
-    md: "max-w-[40rem] p-6",
-    lg: "max-w-[50rem] p-7",
-    xl: "max-w-[60rem] p-8",
+export const alertDialogContentClasses = cva(
+  "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg sm:rounded-lg md:w-full dark:bg-secondary-800 dark:text-secondary-50 dark:border-secondary-700 bg-white data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
+  {
+    variants: {
+      size: {
+        sm: "max-w-[30rem] p-5",
+        md: "max-w-[40rem] p-6",
+        lg: "max-w-[50rem] p-7",
+        xl: "max-w-[60rem] p-8",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type AlertDialogContent = React.ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Content
@@ -149,13 +158,7 @@ export const AlertDialogContent = React.forwardRef<
         className={
           unstyle
             ? className
-            : classNames(
-                alertDialogContentClasses.size[size],
-                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg sm:rounded-lg md:w-full",
-                "dark:bg-secondary-800 dark:text-secondary-50 dark:border-secondary-700 bg-white",
-                "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
-                className,
-              )
+            : classNames(alertDialogContentClasses({ size }), className)
         }
         ref={forwardedRef}
       />

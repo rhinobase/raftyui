@@ -49,6 +49,12 @@ const selectClasses = cva(
         className: "bg-transparent dark:bg-secondary-900",
       },
     ],
+    defaultVariants: {
+      size: "md",
+      variant: "outline",
+      disabled: false,
+      readonly: false,
+    },
   },
 );
 
@@ -136,12 +142,8 @@ Select.displayName = "Select";
 export type SelectItem = JSX.IntrinsicElements["option"];
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <option {...props} ref={forwardedRef}>
-        {children}
-      </option>
-    );
+  (props, forwardedRef) => {
+    return <option {...props} ref={forwardedRef} />;
   },
 );
 

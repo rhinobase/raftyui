@@ -5,19 +5,37 @@ import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { Label } from "../field";
 import { classNames } from "../utils";
 import { useFieldControlContext } from "../field/context";
+import { cva } from "class-variance-authority";
 
 // Checkbox Component
 
-const CheckBoxClasses = {
-  size: { sm: "h-4 w-4", md: "h-5 w-5", lg: "h-6 w-6" },
-};
-const CheckBoxIndicatorClasses = {
-  size: {
-    sm: "h-3 w-3 stroke-[4]",
-    md: "h-4 w-4 stroke-[3.5]",
-    lg: "h-5 w-5 stroke-[3]",
+export const CheckBoxClasses = cva(
+  "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      size: { sm: "h-4 w-4", md: "h-5 w-5", lg: "h-6 w-6" },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
+
+export const CheckBoxIndicatorClasses = cva(
+  "dark:text-secondary-700 hidden text-white group-data-[state=checked]:block",
+  {
+    variants: {
+      size: {
+        sm: "h-3 w-3 stroke-[4]",
+        md: "h-4 w-4 stroke-[3.5]",
+        lg: "h-5 w-5 stroke-[3]",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
 export type Checkbox = Omit<
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
@@ -58,19 +76,12 @@ export const Checkbox = React.forwardRef<
         name={name}
         disabled={disabled}
         required={required}
-        className={classNames(
-          CheckBoxClasses.size[size],
-          "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ",
-          className,
-        )}
+        className={classNames(CheckBoxClasses({ size }), className)}
         ref={forwardedref}
       >
         <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
           <CheckIcon
-            className={classNames(
-              CheckBoxIndicatorClasses.size[size],
-              "dark:text-secondary-700 hidden text-white group-data-[state=checked]:block",
-            )}
+            className={classNames(CheckBoxIndicatorClasses({ size }))}
           />
           <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
         </CheckboxPrimitive.Indicator>

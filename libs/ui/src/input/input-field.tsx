@@ -4,7 +4,7 @@ import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 import { useInputGroupContext } from "./context";
 
-const inputFieldClasses = cva(
+export const inputFieldClasses = cva(
   "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
@@ -140,6 +140,15 @@ const inputFieldClasses = cva(
         className: "px-4",
       },
     ],
+    defaultVariants: {
+      size: "md",
+      variant: "outline",
+      invalid: false,
+      isLeftAddon: false,
+      isPrefix: false,
+      isRightAddon: false,
+      isSuffix: false,
+    },
   },
 );
 

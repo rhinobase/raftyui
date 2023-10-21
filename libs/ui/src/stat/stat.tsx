@@ -1,6 +1,7 @@
 import React from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // Stat Component
 export type Stat = React.HTMLAttributes<HTMLDivElement> & StatContext;
@@ -65,27 +66,32 @@ export const StatValue = React.forwardRef<HTMLDivElement, StatValue>(
 StatValue.displayName = "StatValue";
 
 // StatHelpText Component
-const statHelpTextClasses = {
-  type: {
-    increase: "text-green-600 dark:text-green-400",
-    decrease: "text-red-600 dark:text-red-400",
-    normal: "dark:text-secondary-300",
+export const statHelpTextClasses = cva(
+  "flex items-center gap-1.5 text-sm font-medium",
+  {
+    variants: {
+      type: {
+        increase: "text-green-600 dark:text-green-400",
+        decrease: "text-red-600 dark:text-red-400",
+        normal: "dark:text-secondary-300",
+      },
+    },
+    defaultVariants: {
+      type: "normal",
+    },
   },
-};
+);
 
 export type StatHelpText = JSX.IntrinsicElements["div"];
 
 export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {
     const { type } = useStatContext();
+
     return (
       <div
         {...props}
-        className={classNames(
-          statHelpTextClasses.type[type],
-          "flex items-center gap-1.5 text-sm font-medium",
-          className,
-        )}
+        className={classNames(statHelpTextClasses({ type }), className)}
         ref={forwardedRef}
       >
         {children}

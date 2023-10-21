@@ -2,6 +2,7 @@
 import React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // ScrollArea component
 export type ScrollArea = React.ComponentPropsWithoutRef<
@@ -27,6 +28,21 @@ export const ScrollArea = React.forwardRef<
 ScrollArea.displayName = "ScrollArea";
 
 // ScrollBar component
+export const scrollAreaScrollbarClasses = cva(
+  "flex touch-none select-none transition-colors",
+  {
+    variants: {
+      orientation: {
+        vertical: "h-full w-2.5 p-px",
+        horizontal: "h-2.5 p-px",
+      },
+    },
+    defaultVariants: {
+      orientation: "vertical",
+    },
+  },
+);
+
 export type ScrollBar = React.ComponentPropsWithoutRef<
   typeof ScrollAreaPrimitive.ScrollAreaScrollbar
 >;
@@ -39,9 +55,7 @@ export const ScrollBar = React.forwardRef<
     ref={forwardedref}
     orientation={orientation}
     className={classNames(
-      "flex touch-none select-none transition-colors",
-      orientation === "vertical" && "h-full w-2.5 p-px",
-      orientation === "horizontal" && "h-2.5 p-px",
+      scrollAreaScrollbarClasses({ orientation }),
       className,
     )}
     {...props}

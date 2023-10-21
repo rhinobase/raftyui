@@ -10,7 +10,7 @@ import {
 import { cva } from "class-variance-authority";
 
 // Alert Component
-const alertClasses = cva("flex w-full items-center", {
+export const alertClasses = cva("flex w-full items-center", {
   variants: {
     size: {
       sm: "py-2 px-2.5 gap-1.5",
@@ -147,6 +147,11 @@ const alertClasses = cva("flex w-full items-center", {
       className: "pt-3",
     },
   ],
+  defaultVariants: {
+    size: "md",
+    status: "info",
+    variant: "simple",
+  },
 });
 
 export type Alert = React.HTMLAttributes<HTMLDivElement> &
@@ -187,7 +192,7 @@ export const Alert = React.forwardRef<HTMLDivElement, Alert>(
 Alert.displayName = "Alert";
 
 // AlertIcon component
-const alertIconClasses = cva("", {
+export const alertIconClasses = cva("", {
   variants: {
     size: {
       sm: "h-4 w-4 stroke-2",
@@ -233,6 +238,11 @@ const alertIconClasses = cva("", {
       className: "text-green-500 dark:text-green-300",
     },
   ],
+  defaultVariants: {
+    size: "md",
+    status: "info",
+    variant: "simple",
+  },
 });
 
 const ICONS = {
@@ -265,7 +275,7 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
 AlertIcon.displayName = "AlertIcon";
 
 // AlertTitle component
-const alertTitleClasses = cva("", {
+export const alertTitleClasses = cva("", {
   variants: {
     size: {
       sm: "font-medium",
@@ -311,6 +321,11 @@ const alertTitleClasses = cva("", {
       className: "text-green-500 dark:text-green-300",
     },
   ],
+  defaultVariants: {
+    size: "md",
+    status: "info",
+    variant: "simple",
+  },
 });
 
 export type AlertTitle = React.HTMLAttributes<HTMLHeadingElement> & {
@@ -343,7 +358,7 @@ export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
 AlertTitle.displayName = "AlertTitle";
 
 // AlertDescription component
-const alertDescriptionClasses = cva("", {
+export const alertDescriptionClasses = cva("", {
   variants: {
     size: {
       sm: "text-xs",
@@ -364,6 +379,10 @@ const alertDescriptionClasses = cva("", {
       className: "text-secondary-500 dark:text-secondary-200",
     },
   ],
+  defaultVariants: {
+    size: "md",
+    variant: "simple",
+  },
 });
 
 export type AlertDescription = React.HTMLAttributes<HTMLParagraphElement> & {

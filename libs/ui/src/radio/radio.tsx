@@ -8,8 +8,25 @@ import {
 } from "./context";
 import { classNames } from "../utils";
 import { Label } from "../field";
+import { cva } from "class-variance-authority";
 
 // RadioGroup Component
+export const radioGroupClasses = cva(
+  "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      size: {
+        sm: "gap-2",
+        md: "gap-3",
+        lg: "gap-3",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
 export type RadioGroup = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
 > &
@@ -28,11 +45,7 @@ export const RadioGroup = React.forwardRef<
         <RadioGroupPrimitive.Root
           {...props}
           disabled={isDisabled || disabled}
-          className={classNames(
-            size === "sm" ? "gap-2" : "gap-3",
-            "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
-            className,
-          )}
+          className={classNames(radioGroupClasses({ size }), className)}
           ref={forwardedRef}
         />
       </RadioGroupProvider>
@@ -42,6 +55,38 @@ export const RadioGroup = React.forwardRef<
 RadioGroup.displayName = "RadioGroup";
 
 // RadioGroupItem Component
+export const radioGroupItemClasses = cva(
+  "border-secondary-400  dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus-visible:ring-ring aspect-square rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      size: {
+        sm: "h-3.5 w-3.5",
+        md: "h-5 w-5",
+        lg: "h-6 w-6",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
+export const radioGroupItemIndicatorClasses = cva(
+  "bg-primary-500 dark:bg-primary-300 rounded-full",
+  {
+    variants: {
+      size: {
+        sm: "h-2 w-2",
+        md: "h-2.5 w-2.5",
+        lg: "h-3.5 w-3.5",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
 export type RadioGroupItem = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
 >;
@@ -57,24 +102,11 @@ export const RadioGroupItem = React.forwardRef<
   const radioItem = (
     <RadioGroupPrimitive.Item
       {...props}
-      className={classNames(
-        size === "sm" && "h-3.5 w-3.5",
-        size === "md" && "h-5 w-5",
-        size === "lg" && "h-6 w-6",
-        "border-secondary-400  dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus-visible:ring-ring aspect-square rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-        className,
-      )}
+      className={classNames(radioGroupItemClasses({ size }), className)}
       ref={forwardedref}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <div
-          className={classNames(
-            size === "sm" && "h-2 w-2",
-            size === "md" && "h-2.5 w-2.5",
-            size === "lg" && "h-3.5 w-3.5",
-            " bg-primary-500 dark:bg-primary-300 rounded-full",
-          )}
-        />
+        <div className={radioGroupItemIndicatorClasses({ size })} />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );

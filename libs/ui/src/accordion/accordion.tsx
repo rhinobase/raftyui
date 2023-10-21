@@ -8,6 +8,7 @@ import {
 } from "./context";
 import { classNames } from "../utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 
 // Accordion Component
 export type Accordion = React.ComponentPropsWithoutRef<
@@ -72,17 +73,26 @@ export const AccordionItem = React.forwardRef<
 AccordionItem.displayName = "AccordionItem";
 
 // Accordion Trigger Component
-const accordionTriggerClasses = {
-  size: {
-    sm: "px-2.5 py-1 text-sm",
-    md: "px-3 py-2",
-    lg: "px-4 py-2.5 text-lg",
+export const accordionTriggerClasses = cva(
+  "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+  {
+    variants: {
+      size: {
+        sm: "px-2.5 py-1 text-sm",
+        md: "px-3 py-2",
+        lg: "px-4 py-2.5 text-lg",
+      },
+      variant: {
+        solid: "bg-secondary-50/80 dark:bg-secondary-800/20",
+        ghost: "hover:bg-secondary-50/80 dark:hover:bg-secondary-800/20",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      variant: "solid",
+    },
   },
-  variant: {
-    solid: "bg-secondary-50/80 dark:bg-secondary-800/20",
-    ghost: "hover:bg-secondary-50/80 dark:hover:bg-secondary-800/20",
-  },
-};
+);
 
 export type AccordionTrigger = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Trigger
@@ -118,12 +128,7 @@ export const AccordionTrigger = React.forwardRef<
         className={
           unstyle
             ? className
-            : classNames(
-                "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
-                accordionTriggerClasses.size[size],
-                accordionTriggerClasses.variant[variant],
-                className,
-              )
+            : classNames(accordionTriggerClasses({ size, variant }), className)
         }
         ref={forwardedRef}
       >
@@ -146,13 +151,21 @@ export const AccordionTrigger = React.forwardRef<
 AccordionTrigger.displayName = "AccordionTrigger";
 
 // Accordion Content Component
-const accordionContentClasses = {
-  size: {
-    sm: "px-3 pb-3 text-sm",
-    md: "px-4 pb-4",
-    lg: "px-5 pb-5",
+export const accordionContentClasses = cva(
+  "dark:text-secondary-100 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down w-full overflow-hidden transition-all",
+  {
+    variants: {
+      size: {
+        sm: "px-3 pb-3 text-sm",
+        md: "px-4 pb-4",
+        lg: "px-5 pb-5",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type AccordionContent = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Content
@@ -171,11 +184,7 @@ export const AccordionContent = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "dark:text-secondary-100 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down w-full overflow-hidden transition-all",
-              accordionContentClasses.size[size],
-              className,
-            )
+          : classNames(accordionContentClasses({ size }), className)
       }
       ref={forwardedRef}
     >

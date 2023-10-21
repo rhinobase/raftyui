@@ -2,7 +2,7 @@ import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const badgeClasses = cva("rounded-full", {
+export const badgeClasses = cva("rounded-full", {
   variants: {
     size: {
       sm: "w-2 h-2",

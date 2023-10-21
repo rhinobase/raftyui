@@ -7,6 +7,7 @@ import {
   useToggleGroupContext,
 } from "./context";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // ToggleGroup Component
 export type ToggleGroup = React.ComponentProps<
@@ -51,13 +52,21 @@ export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
 ToggleGroup.displayName = "ToggleGroup";
 
 // ToggleItem Component
-const itemClasses = {
-  size: {
-    sm: "px-3 py-[2px] text-sm",
-    md: "px-3 py-1",
-    lg: "px-3 py-2 text-lg",
+export const toggleGroupItemClasses = cva(
+  "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
+  {
+    variants: {
+      size: {
+        sm: "px-3 py-[2px] text-sm",
+        md: "px-3 py-1",
+        lg: "px-3 py-2 text-lg",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type ToggleGroupItem = React.ComponentProps<
   (typeof ToggleGroupPrimitive)["Item"]
@@ -75,11 +84,7 @@ export const ToggleGroupItem = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              itemClasses.size[size],
-              "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
-              className,
-            )
+          : classNames(toggleGroupItemClasses({ size }), className)
       }
       {...props}
       ref={forwardedRef}

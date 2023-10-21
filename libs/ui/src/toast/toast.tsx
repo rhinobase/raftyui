@@ -5,20 +5,30 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // Toast Component
-const toastClasses = {
-  severity: {
-    error: "bg-red-600 dark:bg-red-300",
-    warning: "bg-amber-500 dark:bg-amber-300",
-    info: "bg-blue-500 dark:bg-blue-200",
-    success: "bg-green-600 dark:bg-green-200",
+export const toastClasses = cva(
+  "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg p-4 drop-shadow-lg",
+  {
+    variants: {
+      severity: {
+        error: "bg-red-600 dark:bg-red-300",
+        warning: "bg-amber-500 dark:bg-amber-300",
+        info: "bg-blue-500 dark:bg-blue-200",
+        success: "bg-green-600 dark:bg-green-200",
+      },
+      visible: {
+        false: "animate-leave",
+        true: "animate-enter",
+      },
+    },
+    defaultVariants: {
+      severity: "info",
+      visible: false,
+    },
   },
-  visible: [
-    "animate-leave", // false
-    "animate-enter", // true
-  ],
-};
+);
 
 export type Toast = {
   className?: string;
@@ -28,7 +38,13 @@ export type Toast = {
   visible?: boolean;
 };
 
-export function Toast({ className, severity, visible, title, message }: Toast) {
+export function Toast({
+  className,
+  severity,
+  visible = false,
+  title,
+  message,
+}: Toast) {
   let ToastIcon: typeof ExclamationTriangleIcon;
 
   switch (severity) {
@@ -47,14 +63,7 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
   }
 
   return (
-    <div
-      className={classNames(
-        toastClasses.severity[severity],
-        toastClasses.visible[Number(visible)],
-        "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg p-4 drop-shadow-lg",
-        className,
-      )}
-    >
+    <div className={classNames(toastClasses({ severity, visible }), className)}>
       <div className="flex items-center gap-3">
         <ToastIcon className="h-6 w-6 text-white dark:text-black" />
         <div className="space-y-1">

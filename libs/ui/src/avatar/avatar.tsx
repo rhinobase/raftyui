@@ -1,6 +1,7 @@
 import React from "react";
 import { classNames } from "../utils";
 import { useAvatarGroupContext } from "./context";
+import { cva } from "class-variance-authority";
 
 export type Avatar = {
   name?: string | null;
@@ -10,13 +11,21 @@ export type Avatar = {
   size?: "sm" | "md" | "lg";
 };
 
-const avatarClasses = {
-  size: {
-    sm: "h-7 w-7 border",
-    md: "h-9 w-9 border-2",
-    lg: "h-12 w-12 border-[2.5px]",
+export const avatarClasses = cva(
+  "dark:border-secondary-900 relative overflow-hidden rounded-full border-white group-data-[group=true]:absolute",
+  {
+    variants: {
+      size: {
+        sm: "h-7 w-7 border",
+        md: "h-9 w-9 border-2",
+        lg: "h-12 w-12 border-[2.5px]",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
   const context = useAvatarGroupContext() ?? {
@@ -27,11 +36,7 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
 
   return (
     <div
-      className={classNames(
-        avatarClasses.size[avatarSize],
-        "dark:border-secondary-900 relative overflow-hidden rounded-full border-white group-data-[group=true]:absolute",
-        className,
-      )}
+      className={classNames(avatarClasses({ size: avatarSize }), className)}
       style={style}
     >
       {name && src ? (

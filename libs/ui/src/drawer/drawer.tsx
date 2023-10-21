@@ -5,6 +5,7 @@ import { Button } from "../button";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 import { classNames } from "../utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 
 // Drawer Component
 export type Drawer = React.ComponentPropsWithoutRef<
@@ -49,18 +50,27 @@ export const DrawerOverlay = React.forwardRef<
 DrawerOverlay.displayName = "DrawerOverlay";
 
 // Drawer Content Component
-const contentClasses = {
-  size: {
-    sm: "max-w-2xl",
-    md: "max-w-3xl",
-    lg: "max-w-5xl",
-    full: "w-full",
+export const drawerContentClasses = cva(
+  "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
+  {
+    variants: {
+      size: {
+        sm: "max-w-2xl",
+        md: "max-w-3xl",
+        lg: "max-w-5xl",
+        full: "w-full",
+      },
+      side: {
+        left: "animate-slide-right left-0",
+        right: "animate-slide-left right-0",
+      },
+    },
+    defaultVariants: {
+      side: "right",
+      size: "md",
+    },
   },
-  side: {
-    left: "animate-slide-right left-0",
-    right: "animate-slide-left right-0",
-  },
-};
+);
 
 export type DrawerContent = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
@@ -75,12 +85,7 @@ export const DrawerContent = React.forwardRef<
     <DialogPrimitive.Portal>
       <DialogPrimitive.Content
         {...props}
-        className={classNames(
-          "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
-          contentClasses.size[size],
-          contentClasses.side[side],
-          className,
-        )}
+        className={classNames(drawerContentClasses({ side, size }), className)}
         ref={forwardedRef}
       >
         {children}
@@ -91,14 +96,19 @@ export const DrawerContent = React.forwardRef<
 DrawerContent.displayName = "DrawerContent";
 
 // Drawer Title Component
-const titleClasses = {
-  size: {
-    sm: "text-lg",
-    md: "text-xl",
-    lg: "text-xl",
-    full: "text-xl",
+export const drawerTitleClasses = cva("mb-2 font-semibold", {
+  variants: {
+    size: {
+      sm: "text-lg",
+      md: "text-xl",
+      lg: "text-xl",
+      full: "text-xl",
+    },
   },
-};
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 export type DrawerTitle = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Title
@@ -113,11 +123,7 @@ export const DrawerTitle = React.forwardRef<
   return (
     <DialogPrimitive.Title
       {...props}
-      className={classNames(
-        "mb-2 font-semibold",
-        titleClasses.size[size],
-        className,
-      )}
+      className={classNames(drawerTitleClasses({ size }), className)}
       ref={forwardedRef}
     >
       {children}

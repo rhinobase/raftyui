@@ -8,6 +8,7 @@ import {
 } from "./context";
 import { classNames } from "../utils";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 
 // NavigationMenu Component
 export type NavigationMenu = React.ComponentPropsWithoutRef<
@@ -65,7 +66,7 @@ export const NavigationMenuList = ({
         unstyle
           ? className
           : classNames(
-              "m-0 flex items-center justify-center rounded-md p-1",
+              "flex items-center justify-center rounded-md p-1",
               className,
             )
       }
@@ -112,21 +113,29 @@ export const NavigationMenuTrigger = forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <ChevronDownIcon className="h-3.5 w-3.5 stroke-[3] duration-200 group-data-[state=open]:rotate-180" />
+      <ChevronDownIcon className="h-3 w-3 stroke-[3] duration-200 group-data-[state=open]:rotate-180" />
     </NavigationMenuPrimitive.Trigger>
   );
 });
 NavigationMenuTrigger.displayName = "NavigationMenuTrigger";
 
 // NavigationMenuContent Component
-const contentClasses = {
-  size: {
-    sm: "max-w-lg top-2.5 rounded-md",
-    md: "max-w-2xl top-2.5 rounded-md",
-    lg: "max-w-6xl top-2.5 rounded-md",
-    full: "-top-1 w-screen",
+export const navigationMenuContentClasses = cva(
+  "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
+  {
+    variants: {
+      size: {
+        sm: "max-w-lg top-2.5 rounded-md",
+        md: "max-w-2xl top-2.5 rounded-md",
+        lg: "max-w-6xl top-2.5 rounded-md",
+        full: "-top-1 w-screen",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type NavigationMenuContent = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Content
@@ -149,11 +158,7 @@ export const NavigationMenuContent = forwardRef<
         className={
           unstyle
             ? className
-            : classNames(
-                "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
-                contentClasses.size[size],
-                className,
-              )
+            : classNames(navigationMenuContentClasses({ size }), className)
         }
         ref={forwardedRef}
       >

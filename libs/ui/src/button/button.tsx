@@ -427,6 +427,9 @@ export const buttonClasses = cva(
       colorScheme: "secondary",
       variant: "solid",
       size: "md",
+      active: false,
+      disabled: false,
+      loading: false,
     },
   },
 );

@@ -5,6 +5,7 @@ import { Button } from "../button";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 import { classNames } from "../utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 
 // Dialog Component
 export type Dialog = React.ComponentPropsWithoutRef<
@@ -121,14 +122,23 @@ export const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = "DialogOverlay";
 
 // Dialog Content Component
-const dialogContentClasses = {
-  size: {
-    sm: "max-w-[30rem] p-5",
-    md: "max-w-[40rem] p-6",
-    lg: "max-w-[50rem] p-7",
-    xl: "max-w-[60rem] p-8",
+export const dialogContentClasses = cva(
+  "fixed left-[50%] top-[50%] z-50 w-full -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg dark:bg-secondary-800 dark:text-secondary-50 bg-white data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
+  {
+    variants: {
+      size: {
+        sm: "max-w-[30rem] p-5",
+        md: "max-w-[40rem] p-6",
+        lg: "max-w-[50rem] p-7",
+        xl: "max-w-[60rem] p-8",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
+
 export type DialogContent = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > & {
@@ -160,20 +170,14 @@ export const DialogContent = React.forwardRef<
           className={
             unstyle
               ? className
-              : classNames(
-                  dialogContentClasses.size[size],
-                  "fixed left-[50%] top-[50%] z-50 w-full -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg",
-                  "dark:bg-secondary-800 dark:text-secondary-50 bg-white",
-                  "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
-                  className,
-                )
+              : classNames(dialogContentClasses({ size }), className)
           }
           ref={forwardedRef}
         >
           {children}
           {showCloseButton && (
             <DialogPrimitive.Close className="hover:bg-secondary-200/70 dark:hover:bg-secondary-500/70 absolute right-4 top-4 rounded p-1 transition-all focus:outline-none">
-              <XMarkIcon className="h-4 w-4 stroke-2 " />
+              <XMarkIcon className="h-4 w-4 stroke-2" />
             </DialogPrimitive.Close>
           )}
         </DialogPrimitive.Content>
@@ -285,11 +289,7 @@ export const DialogDescription = React.forwardRef<
   return (
     <DialogPrimitive.Description
       {...props}
-      className={
-        unstyle
-          ? className
-          : classNames("text-muted-foreground text-sm", className)
-      }
+      className={unstyle ? className : classNames("text-sm", className)}
       ref={forwardedRef}
     />
   );

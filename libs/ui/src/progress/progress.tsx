@@ -2,24 +2,41 @@
 import React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
-const progressClasses = {
-  size: {
-    sm: "h-2",
-    md: "h-3",
-    lg: "h-4",
+export const progressClasses = cva(
+  "bg-secondary-100 dark:bg-secondary-700 w-full overflow-hidden",
+  {
+    variants: {
+      size: {
+        sm: "h-2",
+        md: "h-3",
+        lg: "h-4",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-  colorScheme: {
-    error:
-      "bg-red-500 dark:bg-red-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-red-300 group-data-[indeterminate=true]:via-red-500 group-data-[indeterminate=true]:to-red-300",
-    warning:
-      "bg-amber-500 dark:bg-amber-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-amber-300 group-data-[indeterminate=true]:via-amber-500 group-data-[indeterminate=true]:to-amber-300",
-    primary:
-      "bg-primary-500 dark:bg-primary-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-primary-300 group-data-[indeterminate=true]:via-primary-500 group-data-[indeterminate=true]:to-primary-300",
-    success:
-      "bg-green-500 dark:bg-green-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-green-300 group-data-[indeterminate=true]:via-green-500 group-data-[indeterminate=true]:to-green-300",
+);
+
+export const progressIndicatorClasses = cva("h-full flex-1 transition-all", {
+  variants: {
+    colorScheme: {
+      error:
+        "bg-red-500 dark:bg-red-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-red-300 group-data-[indeterminate=true]:via-red-500 group-data-[indeterminate=true]:to-red-300",
+      warning:
+        "bg-amber-500 dark:bg-amber-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-amber-300 group-data-[indeterminate=true]:via-amber-500 group-data-[indeterminate=true]:to-amber-300",
+      primary:
+        "bg-primary-500 dark:bg-primary-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-primary-300 group-data-[indeterminate=true]:via-primary-500 group-data-[indeterminate=true]:to-primary-300",
+      success:
+        "bg-green-500 dark:bg-green-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-green-300 group-data-[indeterminate=true]:via-green-500 group-data-[indeterminate=true]:to-green-300",
+    },
   },
-};
+  defaultVariants: {
+    colorScheme: "primary",
+  },
+});
 
 // Progress Component
 export type Progress = React.ComponentPropsWithoutRef<
@@ -43,22 +60,17 @@ export const Progress = React.forwardRef<
       colorScheme = "primary",
       ...props
     },
-    ref,
+    forwardedRef,
   ) => (
     <ProgressPrimitive.Root
-      ref={ref}
       {...props}
-      className={classNames(
-        progressClasses.size[size],
-        "bg-secondary-100 dark:bg-secondary-700 w-full overflow-hidden",
-        indicatorClassName,
-      )}
+      className={classNames(progressClasses({ size }), className)}
+      ref={forwardedRef}
     >
       <ProgressPrimitive.Indicator
         className={classNames(
-          progressClasses.colorScheme[colorScheme],
-          "h-full flex-1 transition-all",
-          className,
+          progressIndicatorClasses({ colorScheme }),
+          indicatorClassName,
         )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />

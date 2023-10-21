@@ -1,6 +1,7 @@
 import { HTMLAttributes, forwardRef } from "react";
 import { TableContext, TableProvider, useTableContext } from "./context";
 import { classNames } from "../utils";
+import { cva } from "class-variance-authority";
 
 // TableContainer Component
 export type TableContainer = HTMLAttributes<HTMLDivElement>;
@@ -22,13 +23,21 @@ export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
 TableContainer.displayName = "TableContainer";
 
 // Table Component
-const tableClasses = {
-  size: {
-    sm: "p-2",
-    md: "p-4",
-    lg: "p-6",
+export const tableClasses = cva(
+  "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
+  {
+    variants: {
+      size: {
+        sm: "p-2",
+        md: "p-4",
+        lg: "p-6",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type Table = React.HTMLAttributes<HTMLTableElement> &
   Partial<TableContext> & {
@@ -55,13 +64,7 @@ export const Table = forwardRef<HTMLTableElement, Table>(
         <table
           {...props}
           className={
-            unstyle
-              ? className
-              : classNames(
-                  tableClasses.size[size],
-                  "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
-                  className,
-                )
+            unstyle ? className : classNames(tableClasses({ size }), className)
           }
           ref={forwardedRef}
         >
@@ -74,12 +77,17 @@ export const Table = forwardRef<HTMLTableElement, Table>(
 Table.displayName = "Table";
 
 // TableHead Component
-const tableHeadClasses = {
-  variant: {
-    simple: "bg-transparent",
-    striped: "bg-secondary-100 dark:bg-secondary-700/80",
+export const tableHeadClasses = cva("", {
+  variants: {
+    variant: {
+      simple: "bg-transparent",
+      striped: "bg-secondary-100 dark:bg-secondary-700/80",
+    },
   },
-};
+  defaultVariants: {
+    variant: "simple",
+  },
+});
 
 export type TableHead = React.HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
@@ -96,7 +104,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
         className={
           unstyle
             ? className
-            : classNames(tableHeadClasses.variant[variant], className)
+            : classNames(tableHeadClasses({ variant }), className)
         }
         ref={forwardedRef}
       >
@@ -135,12 +143,17 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
 TableBody.displayName = "TableBody";
 
 // TableFooter Component
-const tableFooterClasses = {
-  variant: {
-    simple: "bg-transparent",
-    striped: "bg-secondary-100 dark:bg-secondary-700/80",
+export const tableFooterClasses = cva("", {
+  variants: {
+    variant: {
+      simple: "bg-transparent",
+      striped: "bg-secondary-100 dark:bg-secondary-700/80",
+    },
   },
-};
+  defaultVariants: {
+    variant: "simple",
+  },
+});
 
 export type TableFooter = React.HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
@@ -157,7 +170,7 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
         className={
           unstyle
             ? className
-            : classNames(tableFooterClasses.variant[variant], className)
+            : classNames(tableFooterClasses({ variant }), className)
         }
         ref={forwardedRef}
       >
@@ -169,13 +182,21 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
 TableFooter.displayName = "TableFooter";
 
 // Td Component
-const tdClasses = {
-  size: {
-    sm: "p-2",
-    md: "px-4 py-3",
-    lg: "px-6 py-5",
+export const tdClasses = cva(
+  "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
+  {
+    variants: {
+      size: {
+        sm: "p-2",
+        md: "px-4 py-3",
+        lg: "px-6 py-5",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type Td = React.ThHTMLAttributes<HTMLTableCellElement> & {
   isUnstyled?: boolean;
@@ -190,13 +211,7 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
       <td
         {...props}
         className={
-          unstyle
-            ? className
-            : classNames(
-                tdClasses.size[size],
-                "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
-                className,
-              )
+          unstyle ? className : classNames(tdClasses({ size }), className)
         }
         ref={forwardedRef}
       >
@@ -208,13 +223,21 @@ export const Td = forwardRef<HTMLTableCellElement, Td>(
 Td.displayName = "Td";
 
 // Th Component
-const thClasses = {
-  size: {
-    sm: "p-2",
-    md: "px-4 py-3",
-    lg: "px-6 py-5",
+export const thClasses = cva(
+  "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
+  {
+    variants: {
+      size: {
+        sm: "p-2",
+        md: "px-4 py-3",
+        lg: "px-6 py-5",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type Th = React.ThHTMLAttributes<HTMLTableCellElement> & {
   isUnstyled?: boolean;
@@ -229,13 +252,7 @@ export const Th = forwardRef<HTMLTableCellElement, Th>(
       <th
         {...props}
         className={
-          unstyle
-            ? className
-            : classNames(
-                thClasses.size[size],
-                "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
-                className,
-              )
+          unstyle ? className : classNames(thClasses({ size }), className)
         }
         ref={forwardedRef}
       >
@@ -248,12 +265,17 @@ Th.displayName = "Th";
 
 // Tr Component
 
-const trClasses = {
-  variant: {
-    simple: "bg-transparent",
-    striped: "even:bg-secondary-100 dark:even:bg-secondary-700/50",
+export const trClasses = cva("", {
+  variants: {
+    variant: {
+      simple: "bg-transparent",
+      striped: "even:bg-secondary-100 dark:even:bg-secondary-700/50",
+    },
   },
-};
+  defaultVariants: {
+    variant: "simple",
+  },
+});
 
 export type Tr = React.HTMLAttributes<HTMLTableRowElement> & {
   isUnstyled?: boolean;
@@ -268,9 +290,7 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
       <tr
         {...props}
         className={
-          unstyle
-            ? className
-            : classNames(trClasses.variant[variant], className)
+          unstyle ? className : classNames(trClasses({ variant }), className)
         }
         ref={forwardedRef}
       >

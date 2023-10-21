@@ -6,8 +6,16 @@ import { classNames } from "../utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "../button";
 import { menuTriggerClasses } from "../menu/menu";
+import { cva } from "class-variance-authority";
 
 //MenuBar Component
+export const menubarClasses = cva("flex w-max items-center", {
+  variants: { size: { sm: "gap-1", md: "gap-2", lg: "gap-3" } },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
 export type Menubar = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Root
 > &
@@ -36,13 +44,7 @@ export const Menubar = React.forwardRef<
           className={
             unstyle
               ? className
-              : classNames(
-                  size === "sm" && "gap-1",
-                  size === "md" && "gap-2",
-                  size === "lg" && "gap-3",
-                  "flex w-max items-center",
-                  className,
-                )
+              : classNames(menubarClasses({ size }), className)
           }
           ref={forwardedRef}
         >
@@ -175,13 +177,21 @@ export const MenubarContent = React.forwardRef<
 MenubarContent.displayName = "MenubarContent";
 
 //MenuBar Label Component
-const labelClasses = {
-  size: {
-    sm: "px-1.5 py-1 text-[10px]",
-    md: "px-2 py-1 text-[11px]",
-    lg: "px-2.5 py-1.5 text-xs",
+export const menubarLabelClasses = cva(
+  "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
+  {
+    variants: {
+      size: {
+        sm: "px-1.5 py-1 text-[10px]",
+        md: "px-2 py-1 text-[11px]",
+        lg: "px-2.5 py-1.5 text-xs",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type MenubarLabel = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Label
@@ -202,11 +212,7 @@ export const MenubarLabel = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
-              labelClasses.size[size],
-              className,
-            )
+          : classNames(menubarLabelClasses({ size }), className)
       }
       ref={forwardedRef}
     >
@@ -217,13 +223,21 @@ export const MenubarLabel = React.forwardRef<
 MenubarLabel.displayName = "MenubarLabel";
 
 //MenuBar Item Component
-const itemClasses = {
-  size: {
-    sm: "px-2.5 py-1.5 text-xs",
-    md: "px-3.5 py-1.5 text-sm",
-    lg: "px-4 py-2 text-base",
+export const menubarItemClasses = cva(
+  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+  {
+    variants: {
+      size: {
+        sm: "px-2.5 py-1.5 text-xs",
+        md: "px-3.5 py-1.5 text-sm",
+        lg: "px-4 py-2 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type MenubarItem = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Item
@@ -244,11 +258,7 @@ export const MenubarItem = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-              itemClasses.size[size],
-              className,
-            )
+          : classNames(menubarItemClasses({ size }), className)
       }
       ref={forwardedRef}
     >
@@ -263,13 +273,34 @@ export const MenubarCheckboxGroup = MenubarPrimitive.Group;
 MenubarCheckboxGroup.displayName = "MenubarCheckboxGroup";
 
 //Menubar CheckboxItem Component
-const checkboxItemClasses = {
-  size: {
-    sm: "pl-6 pr-2.5 py-1.5 text-xs",
-    md: "pl-7 pr-3.5 py-1.5 text-sm",
-    lg: "pl-8 pr-4 py-2 text-base",
+export const menubarCheckboxItemClasses = cva(
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
+  {
+    variants: {
+      size: {
+        sm: "pl-6 pr-2.5 py-1.5 text-xs",
+        md: "pl-7 pr-3.5 py-1.5 text-sm",
+        lg: "pl-8 pr-4 py-2 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
+
+export const menubarCheckboxItemIndicatorClasses = cva("absolute", {
+  variants: {
+    size: {
+      sm: "left-1",
+      md: "left-2",
+      lg: "left-2.5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 export type MenubarCheckboxItem = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.CheckboxItem
@@ -291,21 +322,12 @@ export const MenubarCheckboxItem = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
-              checkboxItemClasses.size[size],
-              className,
-            )
+          : classNames(menubarCheckboxItemClasses({ size }), className)
       }
     >
       {children}
       <MenubarPrimitive.ItemIndicator
-        className={classNames(
-          size === "sm" && "left-1",
-          size === "md" && "left-2",
-          size === "lg" && "left-2.5",
-          "absolute",
-        )}
+        className={menubarCheckboxItemIndicatorClasses({ size })}
       >
         <CheckIcon className="h-3 w-3 stroke-[3]" />
       </MenubarPrimitive.ItemIndicator>
@@ -319,13 +341,50 @@ export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
 MenubarRadioGroup.displayName = "MenubarRadioGroup";
 
 //Menubar RadioItem component
-const radioItemClasses = {
-  size: {
-    sm: "pl-6 pr-2.5 py-1.5 text-xs",
-    md: "pl-7 pr-3.5 py-1.5 text-sm",
-    lg: "pl-8 pr-4 py-2 text-base",
+export const menubarRadioItemClasses = cva(
+  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
+  {
+    variants: {
+      size: {
+        sm: "pl-6 pr-2.5 py-1.5 text-xs",
+        md: "pl-7 pr-3.5 py-1.5 text-sm",
+        lg: "pl-8 pr-4 py-2 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
+
+export const menubarRadioItemIndicatorClasses = cva("absolute", {
+  variants: {
+    size: {
+      sm: "left-2",
+      md: "left-2.5",
+      lg: "left-2.5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export const menubarRadioItemIndicatorChildClasses = cva(
+  "bg-secondary-600 dark:bg-secondary-200 rounded-full",
+  {
+    variants: {
+      size: {
+        sm: "h-1.5 w-1.5",
+        md: "h-2 w-2",
+        lg: "h-2 w-2",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
 export type MenubarRadioItem = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.RadioItem
@@ -347,30 +406,14 @@ export const MenubarRadioItem = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium outline-none",
-              radioItemClasses.size[size],
-              className,
-            )
+          : classNames(menubarRadioItemClasses({ size }), className)
       }
     >
       {children}
       <MenubarPrimitive.ItemIndicator
-        className={classNames(
-          size === "sm" && "left-2",
-          size === "md" && "left-2.5",
-          size === "lg" && "left-2.5",
-          "absolute",
-        )}
+        className={menubarRadioItemIndicatorClasses({ size })}
       >
-        <div
-          className={classNames(
-            size === "sm" && "h-1.5 w-1.5",
-            size === "md" && "h-2 w-2",
-            size === "lg" && "h-2 w-2",
-            "bg-secondary-600 dark:bg-secondary-200 rounded-full",
-          )}
-        />
+        <div className={menubarRadioItemIndicatorChildClasses({ size })} />
       </MenubarPrimitive.ItemIndicator>
     </MenubarPrimitive.RadioItem>
   );
@@ -382,13 +425,21 @@ export const MenubarSub = MenubarPrimitive.Sub;
 MenubarSub.displayName = "MenubarSub";
 
 //MenuBar SubMenuButton Component
-const subTriggerClasses = {
-  size: {
-    sm: "px-2.5 py-1.5 text-xs",
-    md: "px-3.5 py-1.5 text-sm",
-    lg: "px-4 py-2 text-base",
+export const menubarSubTriggerClasses = cva(
+  "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 relative flex w-full cursor-default select-none items-center justify-between gap-2 rounded-sm font-medium outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+  {
+    variants: {
+      size: {
+        sm: "px-2.5 py-1.5 text-xs",
+        md: "px-3.5 py-1.5 text-sm",
+        lg: "px-4 py-2 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type MenubarSubTrigger = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubTrigger
@@ -410,11 +461,7 @@ export const MenubarSubTrigger = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 relative flex w-full cursor-default select-none items-center justify-between gap-2 rounded-sm font-medium outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-              subTriggerClasses.size[size],
-              className,
-            )
+          : classNames(menubarSubTriggerClasses({ size }), className)
       }
     >
       {children}
@@ -468,13 +515,21 @@ export const MenubarSubContent = React.forwardRef<
 MenubarSubContent.displayName = "MenubarSubContent";
 
 // MenuBarDivider Component
-const seperatorClasses = {
-  size: {
-    sm: "my-1",
-    md: "my-[5px]",
-    lg: "my-1.5",
+export const menubarSeperatorClasses = cva(
+  "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
+  {
+    variants: {
+      size: {
+        sm: "my-1",
+        md: "my-[5px]",
+        lg: "my-1.5",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 export type MenubarSeparator = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Separator
@@ -496,11 +551,7 @@ export const MenubarSeparator = React.forwardRef<
       className={
         unstyle
           ? className
-          : classNames(
-              "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
-              seperatorClasses.size[size],
-              className,
-            )
+          : classNames(menubarSeperatorClasses({ size }), className)
       }
     />
   );
