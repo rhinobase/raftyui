@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { StatContext, StatProvider, useStatContext } from "./context";
 import { classNames } from "../utils";

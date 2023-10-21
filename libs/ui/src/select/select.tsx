@@ -1,3 +1,4 @@
+"use client";
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";

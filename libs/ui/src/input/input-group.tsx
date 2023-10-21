@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef } from "react";
 import { classNames, getValidChildren } from "../utils";
 import { InputGroupContext, InputGroupProvider } from "./context";

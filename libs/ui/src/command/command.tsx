@@ -1,4 +1,5 @@
-import * as React from "react";
+"use client";
+import React from "react";
 import { Command as CommandPrimitive } from "cmdk";
 import { Dialog, DialogContent } from "../dialog";
 import { classNames } from "../utils";

@@ -1,3 +1,4 @@
+"use client";
 import { HTMLAttributes, forwardRef } from "react";
 import { TableContext, TableProvider, useTableContext } from "./context";
 import { classNames } from "../utils";

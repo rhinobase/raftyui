@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { classNames } from "../utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";

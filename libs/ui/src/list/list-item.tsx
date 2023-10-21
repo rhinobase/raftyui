@@ -1,5 +1,5 @@
-import { classNames } from "../utils";
 import React from "react";
+import { classNames } from "../utils";
 
 // ListItem Component
 export type ListItem = JSX.IntrinsicElements["li"] & { isUnstyled?: boolean };

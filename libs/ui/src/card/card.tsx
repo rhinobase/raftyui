@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef } from "react";
 import { classNames } from "../utils";
 import { CardContext, CardProvider, useCardContext } from "./context";

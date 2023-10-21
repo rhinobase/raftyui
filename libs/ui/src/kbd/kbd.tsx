@@ -1,5 +1,5 @@
-import { classNames } from "../utils";
 import React from "react";
+import { classNames } from "../utils";
 
 // Kbd Component
 export type Kbd = JSX.IntrinsicElements["kbd"] & {
