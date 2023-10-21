@@ -24,11 +24,6 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "exports": {
-    "types": "./index.cjs.d.ts",
-    "import": "./index.esm.js",
-    "require": "./index.cjs.js"
-  },
   "sideEffects": false,
   "types": "./index.cjs.d.ts",
   "peerDependencies": {
