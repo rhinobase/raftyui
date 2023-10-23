@@ -1,13 +1,10 @@
 "use client";
 import { Button, Text } from "@rafty/ui";
 import Script from "next/script";
-import { useCookies } from "react-cookie";
 
-export const CONCENT_COOKIE_NAME = "rga";
+// export const CONCENT_COOKIE_NAME = "rccn";
 
 export function CookieConcent() {
-  const [, setCookie] = useCookies();
-
   // TODO: Fix this rendering
   const isConcentGiven = true; // cookies[CONCENT_COOKIE_NAME];
 
@@ -39,17 +36,7 @@ export function CookieConcent() {
             We use cookies to enhance your user experience. By using our
             webiste, you agree to our use of cookies.
           </Text>
-          <Button
-            onClick={() =>
-              setCookie(CONCENT_COOKIE_NAME, true, {
-                path: "/",
-                maxAge: 100_000_000,
-              })
-            }
-            colorScheme="primary"
-          >
-            Accept
-          </Button>
+          <Button colorScheme="primary">Got it!</Button>
         </div>
       </div>
     );

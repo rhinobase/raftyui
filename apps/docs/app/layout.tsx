@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     "Explore the components, and start building on top of it, SSR Ready, and dark mode-compatible interfaces.",
   themeColor: "#09090b",
   category: "technology",
+  metadataBase: new URL("https://rafty.rhinobase.io"),
   twitter: {
     card: "summary_large_image",
     title: {
