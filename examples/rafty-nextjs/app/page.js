@@ -1,9 +1,9 @@
 "use client";
-import { Card, CardContent, CardHeader, Button } from "@rafty/ui";
+import { useState } from "react";
 import Image from "next/image";
+import { Card, CardContent, CardHeader, Button } from "@rafty/ui";
 import Logo from "../public/rhinobase.png";
 import { BsMoon, BsSun } from "react-icons/bs";
-import { useState } from "react";
 
 export default function Home() {
   const [isDark, setDarkMode] = useState(false);
