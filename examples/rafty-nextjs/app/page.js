@@ -8,8 +8,6 @@ import { BsMoon, BsSun } from "react-icons/bs";
 export default function Home() {
   const [isDark, setDarkMode] = useState(false);
 
-  console.log(isDark);
-
   return (
     <div className={isDark ? "dark" : undefined}>
       <main className="text-black dark:text-white bg-gradient-to-b from-primary-50/80 to-white dark:from-black dark:to-black flex min-h-screen flex-col items-center justify-between p-4 md:p-24 space-y-4 h-full ">
@@ -25,7 +23,7 @@ export default function Home() {
           </Button>
           <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
             <a
-              className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+              className="flex place-items-center gap-2 p-8 lg:p-0"
               href="https://rhinobase.io?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
               target="_blank"
               rel="noopener noreferrer"
