@@ -1,48 +1,75 @@
 import Image, { StaticImageData } from "next/image";
-import { HiChevronRight } from "react-icons/hi";
+import { Fragment } from "react";
 import NextjsIcon from "../public/frameworks/nextjs.svg";
 import VitejsIcon from "../public/frameworks/vite.svg";
+
+enum Language {
+  JS = "js",
+  TS = "ts",
+}
+
+type ExampleType = {
+  title: string;
+  icon: StaticImageData;
+  examples: LinkComponent[];
+};
+
+const EXAMPLE_TEMPLATES: ExampleType[] = [
+  {
+    title: "Next.js App Router",
+    icon: NextjsIcon,
+    examples: [
+      {
+        language: Language.JS,
+        href: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs",
+      },
+      {
+        language: Language.TS,
+        href: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-ts",
+      },
+    ],
+  },
+  {
+    title: "Next.js Pages Router",
+    icon: NextjsIcon,
+    examples: [
+      {
+        language: Language.JS,
+        href: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-pages-router",
+      },
+      {
+        language: Language.TS,
+        href: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-pages-router-ts",
+      },
+    ],
+  },
+  {
+    title: "Vite.js",
+    icon: VitejsIcon,
+    examples: [
+      {
+        language: Language.JS,
+        href: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-vite",
+      },
+      {
+        language: Language.TS,
+        href: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-vite-ts",
+      },
+    ],
+  },
+];
 
 export function ExternalCodeLinks() {
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
-      <CardElement
-        title="Next.js App Router"
-        icon={NextjsIcon}
-        href={{
-          js: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs",
-          ts: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-ts",
-        }}
-      />
-      <CardElement
-        title="Next.js Pages Router"
-        icon={NextjsIcon}
-        href={{
-          js: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-pages-router",
-          ts: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-nextjs-pages-router-ts",
-        }}
-      />
-      <CardElement
-        title="Vite.js"
-        icon={VitejsIcon}
-        href={{
-          js: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-vite",
-          ts: "https://github.com/rhinobase/raftyui/tree/main/examples/rafty-vite-ts",
-        }}
-      />
+      {EXAMPLE_TEMPLATES.map((example, index) => (
+        <CardElement key={index} {...example} />
+      ))}
     </div>
   );
 }
 
-function CardElement({
-  title,
-  href,
-  icon,
-}: {
-  title: string;
-  href: { ts?: string; js?: string };
-  icon: StaticImageData;
-}) {
+function CardElement({ title, examples, icon }: ExampleType) {
   return (
     <div className="w-full px-4 py-5 rounded-xl border border-secondary-200 dark:border-secondary-800 flex items-center gap-4">
       <Image src={icon} alt={title} className="!m-0 w-10 h-10" />
@@ -50,33 +77,34 @@ function CardElement({
         <h5 className="not-prose !text-xl !font-medium !leading-none tracking-tight">
           {title}
         </h5>
-        <div className="flex flex-wrap gap-1">
-          {href.js && <LinkComponent href={href.js} language="js" />}
-          {href.js && href.ts && (
-            <span className="text-sm font-medium opacity-40">/</span>
-          )}
-          {href.ts && <LinkComponent href={href.ts} language="ts" />}
+        <div className="flex flex-wrap items-center gap-1">
+          {examples.map((example, index) => (
+            <Fragment key={index}>
+              {index !== 0 && (
+                <span className="text-sm font-medium opacity-40">/</span>
+              )}
+              <LinkComponent {...example} />
+            </Fragment>
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-function LinkComponent({
-  href,
-  language,
-}: {
+type LinkComponent = {
+  language: Language;
   href: string;
-  language: "js" | "ts";
-}) {
-  const lang = language == "js" ? "JS" : "TS";
+};
+
+function LinkComponent({ href, language }: LinkComponent) {
   return (
     <a
       href={href}
-      className="not-prose flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-500 !text-xs !font-medium !leading-none"
+      className="not-prose text-blue-600/90 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 !text-xs !font-medium !leading-none transition-all ease-in-out"
       target="_blank"
     >
-      View {lang} example <HiChevronRight />
+      View {language.toUpperCase()} example
     </a>
   );
 }
