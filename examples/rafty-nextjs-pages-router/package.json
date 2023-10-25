@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rafty/ui": "^1.1.1",
-    "next": "13.5.4",
+    "@rafty/ui": "^1.2.2",
+    "dateformat": "^5.0.3",
+    "next": "^13.5.6",
     "react": "^18",
     "react-dom": "^18"
   },
