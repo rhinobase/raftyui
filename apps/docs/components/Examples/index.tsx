@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode } from "react";
 import reactElementToJSXString from "react-element-to-jsx-string";
 import { Fence } from "../Fence";
