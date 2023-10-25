@@ -69,7 +69,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Card className="group dark:hover:bg-secondary-950 hover:bg-white !h-full transition-all ease-in-out">
-              <CardHeader className="!text-xl font-extrabold">
+              <CardHeader className="!text-xl">
                 Docs{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
                   &gt;
@@ -87,7 +87,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Card className="group dark:hover:bg-secondary-950 hover:bg-white !h-full transition-all ease-in-out">
-              <CardHeader className="!text-xl font-extrabold">
+              <CardHeader className="!text-xl">
                 Themes{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
                   &gt;
@@ -106,7 +106,7 @@ export default function Home() {
             className="lg:mb-0 md:mb-20"
           >
             <Card className="group dark:hover:bg-secondary-950 hover:bg-white !h-full transition-all ease-in-out">
-              <CardHeader className="!text-xl font-extrabold">
+              <CardHeader className="!text-xl">
                 Templates{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
                   &gt;
@@ -125,7 +125,7 @@ export default function Home() {
             className="mb-40 lg:mb-0 md:mb-20"
           >
             <Card className="group dark:hover:bg-secondary-950 hover:bg-white !h-full transition-all ease-in-out ">
-              <CardHeader className="!text-xl font-extrabold">
+              <CardHeader className="!text-xl">
                 Components{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
                   &gt;
