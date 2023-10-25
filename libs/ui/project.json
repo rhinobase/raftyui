@@ -55,7 +55,6 @@
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "generateExportsField": true,
-        "format": ["esm", "cjs"],
         "compiler": "babel",
         "assets": [
           {
