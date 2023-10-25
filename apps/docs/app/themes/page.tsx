@@ -1,4 +1,3 @@
-"use client";
 import { Card, CardContent, Calendar } from "@rafty/ui";
 import {
   TotalRevenueExample,

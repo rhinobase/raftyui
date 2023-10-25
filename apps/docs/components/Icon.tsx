@@ -1,4 +1,3 @@
-"use client";
 import { useId } from "react";
 import { classNames } from "@rafty/ui";
 import { InstallationIcon } from "./icons/InstallationIcon";

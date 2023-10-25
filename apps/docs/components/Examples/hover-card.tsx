@@ -1,3 +1,4 @@
+"use client";
 import { HoverCard, HoverCardContent, HoverCardTrigger, Text } from "@rafty/ui";
 import Image from "next/image";
 

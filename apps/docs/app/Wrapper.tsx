@@ -12,7 +12,7 @@ import { Button, classNames } from "@rafty/ui";
 import { HiBars3 } from "react-icons/hi2";
 import { Layout } from "../components/Layout";
 
-const navigation = [
+const NAVIGATION = [
   {
     name: "GitHub",
     href: "https://github.com/rhinobase/raftyui",
@@ -76,7 +76,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
       <div className="relative flex basis-0 items-center justify-end gap-1 md:flex-grow md:gap-2 lg:gap-4">
         <SearchButton setOpen={setSearchOpen} />
         <ThemeSelector />
-        {navigation.map((item) => (
+        {NAVIGATION.map((item) => (
           <a
             key={item.name}
             href={item.href}

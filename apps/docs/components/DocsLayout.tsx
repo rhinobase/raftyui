@@ -1,4 +1,3 @@
-"use client";
 import { type Node } from "@markdoc/markdoc";
 import { DocsHeader } from "../components/DocsHeader";
 import { PrevNextLinks } from "../components/PrevNextLinks";

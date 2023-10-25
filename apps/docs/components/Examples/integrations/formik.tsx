@@ -1,3 +1,4 @@
+"use client";
 import { useFormik } from "formik";
 import { FieldControl, Label, InputField, Button } from "@rafty/ui";
 
