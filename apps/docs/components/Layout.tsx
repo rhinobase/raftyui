@@ -1,4 +1,3 @@
-"use client";
 import { Navigation } from "../components/Navigation";
 
 type Layout = { children: React.ReactNode };

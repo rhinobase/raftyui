@@ -24,7 +24,7 @@ import {
   HiOutlinePaintBrush,
 } from "react-icons/hi2";
 
-const ColorTheme = {
+const COLOR_THEME = {
   gray: "!bg-gray-500",
   red: "!bg-red-500",
   orange: "!bg-orange-500",
@@ -40,7 +40,7 @@ const ColorTheme = {
   rose: "!bg-rose-500",
 };
 
-const defaults: (keyof typeof ColorTheme)[] = [
+const defaults: (keyof typeof COLOR_THEME)[] = [
   "purple",
   "red",
   "green",
@@ -53,7 +53,7 @@ export default function ThemeBuilderWrapper({
 }: {
   children: ReactNode;
 }) {
-  const [color, changeColor] = useState<keyof typeof ColorTheme>("purple");
+  const [color, changeColor] = useState<keyof typeof COLOR_THEME>("purple");
 
   return (
     <div
@@ -73,8 +73,8 @@ export default function ThemeBuilderWrapper({
                 <Button
                   key={c}
                   size="fab"
-                  className={`${ColorTheme[c]} min-h-[26px] min-w-[26px] !p-1`}
-                  onClick={() => changeColor(c as keyof typeof ColorTheme)}
+                  className={`${COLOR_THEME[c]} min-h-[26px] min-w-[26px] !p-1`}
+                  onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                 >
                   {color == c && (
                     <HiCheck className="stroke-1 font-bold text-white" />
@@ -113,8 +113,8 @@ function CustomizeMenu({
   color,
   changeColor,
 }: {
-  color: keyof typeof ColorTheme;
-  changeColor: Dispatch<SetStateAction<keyof typeof ColorTheme>>;
+  color: keyof typeof COLOR_THEME;
+  changeColor: Dispatch<SetStateAction<keyof typeof COLOR_THEME>>;
 }) {
   const { setTheme, theme, themes } = useTheme();
 
@@ -144,7 +144,7 @@ function CustomizeMenu({
           <div className="space-y-1.5">
             <h5 className="text-xs font-medium">Color</h5>
             <div className="grid grid-cols-3 gap-2">
-              {Object.entries(ColorTheme).map(([c, value]) => (
+              {Object.entries(COLOR_THEME).map(([c, value]) => (
                 <Button
                   key={c}
                   size="sm"
@@ -156,7 +156,7 @@ function CustomizeMenu({
                       className={`h-3 w-3 rounded-full ${value} flex items-center justify-center`}
                     />
                   }
-                  onClick={() => changeColor(c as keyof typeof ColorTheme)}
+                  onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                 >
                   {c}
                 </Button>
@@ -195,7 +195,7 @@ function CustomizeMenu({
   );
 }
 
-function CopyCodeDialog({ color }: { color: keyof typeof ColorTheme }) {
+function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
   return (
     <Dialog>
       <DialogTrigger variant="outline" className="hidden md:block">

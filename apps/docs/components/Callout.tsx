@@ -1,8 +1,7 @@
-"use client";
 import { classNames } from "@rafty/ui";
 import { Icon } from "./Icon";
 
-const styles = {
+const STYLES = {
   note: {
     container:
       "bg-primary-50 dark:bg-secondary-800/60 dark:ring-1 dark:ring-secondary-300/10",
@@ -31,7 +30,7 @@ export function Callout({
 }: {
   title: string;
   children: React.ReactNode;
-  type?: keyof typeof styles;
+  type?: keyof typeof STYLES;
 }) {
   const IconComponent = icons[type];
 
@@ -39,17 +38,17 @@ export function Callout({
     <div
       className={classNames(
         "my-8 flex rounded-3xl p-6",
-        styles[type].container,
+        STYLES[type].container,
       )}
     >
       <IconComponent className="h-8 w-8 flex-none" />
       <div className="ml-4 flex-auto">
         <p
-          className={classNames("font-display m-0 text-xl", styles[type].title)}
+          className={classNames("font-display m-0 text-xl", STYLES[type].title)}
         >
           {title}
         </p>
-        <div className={classNames("prose mt-2.5", styles[type].body)}>
+        <div className={classNames("prose mt-2.5", STYLES[type].body)}>
           {children}
         </div>
       </div>

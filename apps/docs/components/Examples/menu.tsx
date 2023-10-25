@@ -11,7 +11,6 @@ import {
   MenuSub,
   MenuSubContent,
   MenuSubTrigger,
-  MenuGroup,
 } from "@rafty/ui";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 

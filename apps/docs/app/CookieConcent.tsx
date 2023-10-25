@@ -1,4 +1,3 @@
-"use client";
 import { Button, Text } from "@rafty/ui";
 import Script from "next/script";
 

@@ -1,3 +1,4 @@
+"use client";
 import f from "@fibr/core";
 import raftyFibrPlugin, { FieldWrapper } from "@fibr/rafty";
 import { FibrForm, FibrProvider, FieldProps, Fields } from "@fibr/react";

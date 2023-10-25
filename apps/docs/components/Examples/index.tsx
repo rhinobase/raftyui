@@ -1,4 +1,3 @@
-"use client";
 import { ReactNode } from "react";
 import reactElementToJSXString from "react-element-to-jsx-string";
 import { Fence } from "../Fence";
@@ -58,16 +57,16 @@ import {
 // All Examples
 const examples: Record<string, JSX.Element> = {
   ...accordion_examples,
-  ...alert_dialog_examples,
   ...alert_examples,
+  ...alert_dialog_examples,
   ...avatar_examples,
   ...badge_examples,
   ...button_examples,
   ...calendar_examples,
   ...card_examples,
   ...checkbox_examples,
-  ...combobox_examples,
   ...command_examples,
+  ...combobox_examples,
   ...context_menu_examples,
   ...date_picker_examples,
   ...dialog_examples,
@@ -97,8 +96,8 @@ const examples: Record<string, JSX.Element> = {
   ...switch_examples,
   ...tab_examples,
   ...table_examples,
-  ...tag_field_examples,
   ...tag_examples,
+  ...tag_field_examples,
   ...tanstack_table_examples,
   ...text_examples,
   ...textarea_examples,
