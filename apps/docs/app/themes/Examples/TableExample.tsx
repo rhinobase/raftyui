@@ -1,3 +1,4 @@
+"use client";
 import { Dispatch, useReducer, useState } from "react";
 import {
   Checkbox,

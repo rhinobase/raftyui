@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Button, Text } from "@rafty/ui";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";

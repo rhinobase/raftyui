@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useReducer, ReactNode } from "react";
 import {
   Avatar,
