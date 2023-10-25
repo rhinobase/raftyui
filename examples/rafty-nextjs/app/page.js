@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, Button } from "@rafty/ui";
 import Logo from "../public/rhinobase.png";
-import { BsMoon, BsSun } from "react-icons/bs";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   const [isDark, setDarkMode] = useState(false);
@@ -18,8 +18,8 @@ export default function Home() {
             aria-label="Theme"
             onClick={() => setDarkMode((prev) => !prev)}
           >
-            <BsSun className="stroke-[0.5] dark:hidden" size={18} />
-            <BsMoon className="hidden stroke-[0.5] dark:block" size={18} />
+            <SunIcon className="h-5 w-5 stroke-2 dark:hidden" />
+            <MoonIcon className="h-5 w-5 stroke-2 hidden dark:block" />
           </Button>
           <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
             <a
