@@ -12,7 +12,7 @@
     "tailwindcss",
     "tailwind-css"
   ],
-  "homepage": "https://github.com/rhinobase/raftyui#readme",
+  "homepage": "https://rafty.rhinobase.io/",
   "publishConfig": {
     "access": "public"
   },
