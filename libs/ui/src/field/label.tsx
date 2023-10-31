@@ -24,15 +24,14 @@ export const Label = React.forwardRef<
         {...props}
         htmlFor={htmlFor ?? name}
         className={classNames(
+          (isReq || isRequired) &&
+            "after:content-['*'] after:ml-0.5 after:text-red-500 after:dark:text-red-400",
           "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
           className,
         )}
         ref={forwardedRef}
       >
         {children}
-        {(isReq || isRequired) && (
-          <span className="text-red-500 dark:text-red-400">*</span>
-        )}
       </LabelPrimitive.Root>
     );
   },
