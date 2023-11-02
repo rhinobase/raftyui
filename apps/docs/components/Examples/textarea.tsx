@@ -5,6 +5,9 @@ export const textarea_examples = {
   "textarea:variant": (
     <Textarea placeholder="This is a sample placeholder" variant="solid" />
   ),
+  "textarea:disabled": (
+    <Textarea placeholder="this is sample placeholder" isDisabled />
+  ),
   "textarea:unstyled": (
     <Textarea
       placeholder="This is a sample placeholder"

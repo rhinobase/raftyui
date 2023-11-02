@@ -40,6 +40,12 @@ Pass `isUnstyled` prop to remove style from textarea.
 
 {% example name="textarea:unstyled" /%}
 
+## Disabled
+
+Pass `isDisabled` prop to put textarea in disabled state.
+
+{% example name="textarea:disabled" /%}
+
 ### API
 
 ---
