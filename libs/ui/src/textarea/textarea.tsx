@@ -5,7 +5,7 @@ import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
 export const textareaClasses = cva(
-  "w-full appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+  "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
   {
     variants: {
       size: {
@@ -14,23 +14,41 @@ export const textareaClasses = cva(
         lg: "rounded-md px-4 py-2 text-lg",
       },
       variant: {
-        solid: "bg-secondary-50 dark:bg-secondary-800/20",
-        outline:
-          "read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
-        ghost: "border border-transparent",
+        solid: "",
+        outline: "",
+        ghost: "",
       },
       invalid: {
-        true: "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
+        true: "",
+        false: "",
       },
     },
     compoundVariants: [
       {
-        variant: ["solid", "outline"],
+        variant: "solid",
+        invalid: false,
+        className: "bg-secondary-50 dark:bg-secondary-900",
+      },
+      {
+        variant: "ghost",
+        invalid: false,
+        className: "border-transparent",
+      },
+      {
+        variant: ["solid", "outline", "ghost"],
+        invalid: true,
         className:
-          "border border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
+          "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
+      },
+      {
+        variant: ["solid", "outline"],
+        invalid: false,
+        className:
+          "border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
       },
       {
         variant: ["outline", "ghost"],
+        invalid: false,
         className: "bg-transparent",
       },
     ],

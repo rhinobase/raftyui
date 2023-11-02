@@ -68,12 +68,14 @@ export function Toast({
         <ToastIcon className="h-6 w-6 text-white dark:text-black" />
         <div className="space-y-1">
           {title && (
-            <h6 className="font-medium leading-4 text-white dark:text-black">
+            <h6 className="font-medium leading-tight text-white dark:text-black">
               {title}
             </h6>
           )}
           {message && (
-            <p className="text-sm text-white dark:text-black">{message}</p>
+            <p className="text-sm leading-tight text-white dark:text-black">
+              {message}
+            </p>
           )}
         </div>
       </div>

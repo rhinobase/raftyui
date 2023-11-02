@@ -305,7 +305,12 @@ ContextMenuSub.displayName = "ContextMenuSub";
 
 //ContextMenu SubMenuButton Component
 export const contextMenuSubTriggerClasses = cva(
-  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
+  classNames(
+    "rounded-base flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
+    "text-secondary-600 dark:text-secondary-200",
+    "data-[state=open]:bg-secondary-200/70 dark:data-[state=open]:bg-secondary-700/60",
+    "focus:bg-secondary-200/70 dark:focus:bg-secondary-700/60",
+  ),
   {
     variants: {
       size: {

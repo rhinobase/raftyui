@@ -15,24 +15,44 @@ const selectClasses = cva(
         lg: "px-4 py-2 text-lg rounded-md",
       },
       disabled: {
-        true: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
+        true: "",
         false: "",
       },
       readonly: {
-        true: "bg-secondary-100 dark:bg-secondary-800",
+        true: "",
         false: "",
       },
       variant: {
-        solid: "bg-secondary-50 dark:bg-secondary-800",
+        solid: "",
         outline: "",
         ghost: "",
       },
     },
     compoundVariants: [
       {
+        variant: "solid",
+        disabled: false,
+        readonly: false,
+        className: "bg-secondary-50 dark:bg-secondary-900",
+      },
+      {
+        variant: ["solid", "outline", "ghost"],
+        disabled: true,
+        readonly: false,
+        className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
+      },
+      {
+        variant: ["solid", "outline", "ghost"],
+        disabled: false,
+        readonly: true,
+        className: "bg-secondary-100 dark:bg-secondary-800",
+      },
+      {
         variant: ["solid", "outline"],
+        disabled: false,
+        readonly: false,
         className:
-          "border border-secondary-300 dark:border-zinc-700 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
+          "border border-secondary-300 dark:border-zinc-700 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
       },
       {
         variant: ["solid", "outline"],
@@ -41,12 +61,15 @@ const selectClasses = cva(
         className: "hover:border-primary-500 dark:hover:border-primary-400",
       },
       {
+        variant: ["solid", "outline", "ghost"],
         disabled: false,
         readonly: false,
         className: "cursor-pointer",
       },
       {
         variant: ["outline", "ghost"],
+        disabled: false,
+        readonly: false,
         className: "bg-transparent dark:bg-secondary-900",
       },
     ],
@@ -129,7 +152,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
               size === "sm" && "right-2",
               size === "md" && "right-3",
               size === "lg" && "right-4",
-              "dark:text-secondary-200 absolute h-3.5 w-3.5",
+              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2",
             )}
           />
         )}

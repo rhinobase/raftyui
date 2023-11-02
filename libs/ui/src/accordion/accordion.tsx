@@ -74,7 +74,7 @@ AccordionItem.displayName = "AccordionItem";
 
 // Accordion Trigger Component
 export const accordionTriggerClasses = cva(
-  "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+  "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all",
   {
     variants: {
       size: {
@@ -142,7 +142,7 @@ export const AccordionTrigger = React.forwardRef<
           </div>
         )}
         {!openIcon && !closeIcon && showIcon && (
-          <ChevronDownIcon className="h-4 w-4 shrink-0 stroke-2 transition-transform duration-200" />
+          <ChevronDownIcon className="h-4 w-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180" />
         )}
       </AccordionPrimitive.Trigger>
     );
