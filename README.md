@@ -2,13 +2,13 @@
 
 React + Accessible + Tailwind CSS Dynamic Component Library
 
-- Works out of the box. Rafty UI contains a set of polished React components that work out of the box.
+- Works out of the box. Rafty UI contains polished React components that work out of the box.
 
-- Flexible & composable. Rafty UI components are built on top of a Radix UI Primitive and Tailwind CSS for endless composability.
+- Flexible & composable: Rafty UI components are built on top of a Radix UI Primitive and Tailwind CSS for endless composability 🧰.
 
-- SSR. Rafty UI components support React SSR functionality.
+- SSR: Rafty UI components support React SSR functionality 😍.
 
-- Dark Mode 😍: All components are dark mode compatible.
+- Dark Mode: All components are dark mode compatible 🌙.
 
 ## Looking for the documentation?
 
@@ -32,7 +32,7 @@ pnpm i @rafty/ui
 
 ### Setup
 
-For the styling to work in `@rafty/ui`, you need to make few changes in your `tailwind.config.js` file.
+For the styling to work in `@rafty/ui`, you must make a few changes to your `tailwind.config.js` file.
 
 First, install the `@rafty/plugin` package as devDependencies
 
@@ -68,7 +68,7 @@ module.exports = {
 
 ## Connect with us
 
-Whether you're a beginner or advanced Rafty UI user, joining our community is the best way to connect with like-minded people who build great products with the library.
+Whether you're a beginner or an advanced Rafty UI user, joining our community is the best way to connect with like-minded people who build great products with the library.
 
 ### Contributing
 
@@ -78,4 +78,4 @@ Feel like contributing? That's awesome! We have a [contributing guide](https://g
 
 Connect with a vibrant community of developers, and designers on Discord at [discord.gg/rhinobase](https://discord.gg/YtzxUfCk8c). Share your experiences, exchange insights, and shape the evolution of @rafty/ui.
 
-Follow us on twitter for the latest news [@rhinobaseio](https://twitter.com/rhinobaseio)
+Follow us on Twitter for the latest news [@rhinobaseio](https://twitter.com/rhinobaseio)
