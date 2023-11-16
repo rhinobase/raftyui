@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import { forwardRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 import { useFieldControlContext } from "../field/context";
@@ -52,13 +52,14 @@ const selectClasses = cva(
         disabled: false,
         readonly: false,
         className:
-          "border border-secondary-300 dark:border-zinc-700 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+          "border border-secondary-300 dark:border-zinc-700 group-focus:ring-primary-200 group-focus:border-primary-500 dark:group-focus:ring-primary-100/20 dark:group-focus:border-primary-400 group-focus:ring-2",
       },
       {
         variant: ["solid", "outline"],
         disabled: false,
         readonly: false,
-        className: "hover:border-primary-500 dark:hover:border-primary-400",
+        className:
+          "group-hover:border-primary-500 dark:group-hover:border-primary-400",
       },
       {
         variant: ["solid", "outline", "ghost"],
@@ -123,7 +124,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       readonly = isReadOnly || context.isReadOnly;
 
     return (
-      <div className="relative flex w-full items-center">
+      <div className="group relative flex w-full items-center">
         <select
           {...props}
           name={field_name}
@@ -152,7 +153,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
               size === "sm" && "right-2",
               size === "md" && "right-3",
               size === "lg" && "right-4",
-              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2",
+              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2 cursor-pointer pointer-events-none",
             )}
           />
         )}
