@@ -1,5 +1,5 @@
 "use client";
-import React, { ComponentProps, forwardRef } from "react";
+import React, { ComponentProps, PropsWithChildren, forwardRef } from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import {
   NavigationMenuContext,
@@ -202,11 +202,10 @@ export const NavigationMenuLink = ({
 NavigationMenuLink.displayName = "NavigationMenuLink";
 
 // NavigationMenuListItem Component
-export type NavigationMenuListItem = {
+export type NavigationMenuListItem = PropsWithChildren<{
   title: string;
   href: string;
-  children: React.ReactNode;
-};
+}>;
 
 export const NavigationMenuListItem = ({
   title,

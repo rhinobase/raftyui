@@ -1,4 +1,4 @@
-import { Children, isValidElement } from "react";
+import { Children, ReactElement, ReactNode, isValidElement } from "react";
 
 /**
  * Gets only the valid children of a component,
@@ -6,8 +6,8 @@ import { Children, isValidElement } from "react";
  *
  * @param children the children
  */
-export function getValidChildren(children: React.ReactNode) {
+export function getValidChildren(children: ReactNode) {
   return Children.toArray(children).filter((child) =>
     isValidElement(child),
-  ) as React.ReactElement<any, any>[];
+  ) as ReactElement<any, any>[];
 }

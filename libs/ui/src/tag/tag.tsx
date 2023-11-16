@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
@@ -28,16 +28,14 @@ export const tagClasses = cva("h-max w-max font-medium", {
   },
 });
 
-export type Tag = JSX.IntrinsicElements["div"] & {
-  children: React.ReactNode;
-  className?: string;
+export type Tag = HTMLAttributes<HTMLDivElement> & {
   size?: "sm" | "md" | "lg";
   colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
 };
 
 export const Tag = React.forwardRef<HTMLDivElement, Tag>(
   (
-    { children, size = "md", colorScheme = "secondary", className, ...props },
+    { size = "md", colorScheme = "secondary", className, ...props },
     forwardedRef,
   ) => {
     return (
@@ -45,9 +43,7 @@ export const Tag = React.forwardRef<HTMLDivElement, Tag>(
         {...props}
         className={classNames(tagClasses({ size, colorScheme }), className)}
         ref={forwardedRef}
-      >
-        {children}
-      </div>
+      />
     );
   },
 );
