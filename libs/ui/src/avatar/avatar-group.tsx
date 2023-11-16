@@ -7,7 +7,7 @@ import { Avatar } from "./avatar";
 // @ts-ignore
 import { calculateWidth } from "./utils";
 
-export type AvatarGroup = JSX.IntrinsicElements["div"] &
+export type AvatarGroup = React.HTMLAttributes<HTMLDivElement> &
   Partial<AvatarGroupContext> & { max?: number };
 
 export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(

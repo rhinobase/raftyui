@@ -3,7 +3,7 @@ import React from "react";
 import { classNames } from "../utils";
 
 // Error Message Component
-export type ErrorMessage = JSX.IntrinsicElements["p"];
+export type ErrorMessage = React.HTMLAttributes<HTMLParagraphElement>;
 
 export const ErrorMessage = React.forwardRef<
   HTMLParagraphElement,

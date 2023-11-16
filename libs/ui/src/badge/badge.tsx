@@ -1,4 +1,4 @@
-import { HTMLAttributes, forwardRef } from "react";
+import React from "react";
 import { classNames } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -23,10 +23,10 @@ export const badgeClasses = cva("rounded-full", {
   },
 });
 
-export type Badge = Omit<HTMLAttributes<HTMLDivElement>, "children"> &
+export type Badge = Omit<React.HTMLAttributes<HTMLDivElement>, "children"> &
   VariantProps<typeof badgeClasses>;
 
-export const Badge = forwardRef<HTMLDivElement, Badge>(
+export const Badge = React.forwardRef<HTMLDivElement, Badge>(
   ({ className, size, status, ...props }, forwardedRef) => {
     return (
       <div

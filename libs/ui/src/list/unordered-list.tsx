@@ -2,7 +2,7 @@ import React from "react";
 import { classNames } from "../utils";
 
 // UnorderedList Component
-export type UnorderedList = JSX.IntrinsicElements["ul"] & {
+export type UnorderedList = React.HTMLAttributes<HTMLUListElement> & {
   isUnstyled?: boolean;
 };
 

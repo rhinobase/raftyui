@@ -2,7 +2,9 @@ import React from "react";
 import { classNames } from "../utils";
 
 // ListItem Component
-export type ListItem = JSX.IntrinsicElements["li"] & { isUnstyled?: boolean };
+export type ListItem = React.HTMLAttributes<HTMLLIElement> & {
+  isUnstyled?: boolean;
+};
 
 export const ListItem = React.forwardRef<HTMLLIElement, ListItem>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {

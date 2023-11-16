@@ -1,21 +1,21 @@
 "use client";
-import React, { ComponentProps, forwardRef } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { cva } from "class-variance-authority";
+import React from "react";
+import { classNames } from "../utils";
 import {
   NavigationMenuContext,
   NavigationMenuProvider,
   useNavigationMenuContext,
 } from "./context";
-import { classNames } from "../utils";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { cva } from "class-variance-authority";
 
 // NavigationMenu Component
 export type NavigationMenu = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Root
 > &
   Partial<NavigationMenuContext> & { isUnstyled?: boolean };
-export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
+export const NavigationMenu = React.forwardRef<HTMLDivElement, NavigationMenu>(
   (
     { children, className, isBarebone = false, isUnstyled = false, ...props },
     forwardedRef,
@@ -78,7 +78,7 @@ export const NavigationMenuList = ({
 NavigationMenuList.displayName = "NavigationMenuList";
 
 // NavigationMenuItem Component
-export type NavigationMenuItem = ComponentProps<
+export type NavigationMenuItem = React.ComponentProps<
   typeof NavigationMenuPrimitive.Item
 >;
 
@@ -92,7 +92,7 @@ export type NavigationMenuTrigger = React.ComponentPropsWithoutRef<
   isUnstyled?: boolean;
 };
 
-export const NavigationMenuTrigger = forwardRef<
+export const NavigationMenuTrigger = React.forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -141,7 +141,7 @@ export type NavigationMenuContent = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Content
 > & { size?: "sm" | "md" | "lg" | "full"; isUnstyled?: boolean };
 
-export const NavigationMenuContent = forwardRef<
+export const NavigationMenuContent = React.forwardRef<
   HTMLDivElement,
   NavigationMenuContent
 >(
@@ -202,11 +202,10 @@ export const NavigationMenuLink = ({
 NavigationMenuLink.displayName = "NavigationMenuLink";
 
 // NavigationMenuListItem Component
-export type NavigationMenuListItem = {
+export type NavigationMenuListItem = React.PropsWithChildren<{
   title: string;
   href: string;
-  children: React.ReactNode;
-};
+}>;
 
 export const NavigationMenuListItem = ({
   title,

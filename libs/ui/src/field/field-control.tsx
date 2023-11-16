@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef } from "react";
+import React from "react";
 import { classNames } from "../utils";
 import { FieldControlContext, FieldControlProvider } from "./context";
 import { cva } from "class-variance-authority";
@@ -18,12 +18,12 @@ export const fieldControlClasses = cva("flex w-full", {
   },
 });
 
-export type FieldControl = JSX.IntrinsicElements["div"] &
+export type FieldControl = React.HTMLAttributes<HTMLDivElement> &
   Partial<FieldControlContext> & {
     name: FieldControlContext["name"];
   };
 
-export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
+export const FieldControl = React.forwardRef<HTMLDivElement, FieldControl>(
   (
     {
       name,

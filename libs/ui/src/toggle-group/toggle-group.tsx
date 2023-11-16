@@ -1,13 +1,13 @@
 "use client";
-import React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
+import { cva } from "class-variance-authority";
+import React from "react";
+import { classNames } from "../utils";
 import {
   ToggleGroupContext,
   ToggleGroupProvider,
   useToggleGroupContext,
 } from "./context";
-import { classNames } from "../utils";
-import { cva } from "class-variance-authority";
 
 // ToggleGroup Component
 export type ToggleGroup = React.ComponentProps<

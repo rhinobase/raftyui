@@ -83,7 +83,7 @@ export const statHelpTextClasses = cva(
   },
 );
 
-export type StatHelpText = JSX.IntrinsicElements["div"];
+export type StatHelpText = React.HTMLAttributes<HTMLDivElement>;
 
 export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {
@@ -103,7 +103,7 @@ export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
 StatHelpText.displayName = "StatHelpText";
 
 // StatIcon Component
-export type StatIcon = React.SVGProps<SVGSVGElement>;
+export type StatIcon = React.SVGAttributes<SVGSVGElement>;
 
 export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
   ({ className, height = "14", width = "14", ...props }, forwardedRef) => {

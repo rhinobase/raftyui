@@ -1,7 +1,7 @@
 import React from "react";
 
 // List Component
-export type List = JSX.IntrinsicElements["ul"];
+export type List = React.HTMLAttributes<HTMLUListElement>;
 
 export const List = React.forwardRef<HTMLUListElement, List>(
   ({ className, ...props }, forwardedRef) => {

@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef } from "react";
+import React from "react";
 import { classNames } from "../utils";
 import { CardContext, CardProvider, useCardContext } from "./context";
 import { cva } from "class-variance-authority";
@@ -26,7 +26,7 @@ export const cardClasses = cva("flex flex-col dark:text-white", {
 export type Card = React.HTMLAttributes<HTMLDivElement> &
   Partial<CardContext> & { isUnstyled?: boolean };
 
-export const Card = forwardRef<HTMLDivElement, Card>(
+export const Card = React.forwardRef<HTMLDivElement, Card>(
   (
     {
       className,
@@ -75,7 +75,7 @@ export type CardHeader = React.HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
-export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
+export const CardHeader = React.forwardRef<HTMLDivElement, CardHeader>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone, size } = useCardContext();
     const unstyle = isBarebone || isUnstyled;
@@ -115,7 +115,7 @@ export type CardContent = React.HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
-export const CardContent = forwardRef<HTMLDivElement, CardContent>(
+export const CardContent = React.forwardRef<HTMLDivElement, CardContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone, size } = useCardContext();
     const unstyle = isBarebone || isUnstyled;
@@ -155,7 +155,7 @@ export type CardFooter = React.HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
-export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
+export const CardFooter = React.forwardRef<HTMLDivElement, CardFooter>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { isBarebone, size } = useCardContext();
     const unstyle = isUnstyled || isBarebone;

@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { classNames } from "../utils";
+import React from "react";
 import { Button } from "../button";
+import { classNames } from "../utils";
 import { PopoverContext, PopoverProvider, usePopoverContext } from "./context";
 
 // Popover Component

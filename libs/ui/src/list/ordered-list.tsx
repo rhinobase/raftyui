@@ -2,7 +2,7 @@ import React from "react";
 import { classNames } from "../utils";
 
 // OrderedList Component
-export type OrderedList = JSX.IntrinsicElements["ol"] & {
+export type OrderedList = React.OlHTMLAttributes<HTMLOListElement> & {
   isUnstyled?: boolean;
 };
 

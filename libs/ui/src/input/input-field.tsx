@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef } from "react";
+import React from "react";
 import { useFieldControlContext } from "../field/context";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
@@ -154,7 +154,10 @@ export const inputFieldClasses = cva(
 );
 
 // Input Field
-export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
+export type InputField = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
@@ -165,7 +168,7 @@ export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
   isRequired?: boolean;
 };
 
-export const InputField = forwardRef<HTMLInputElement, InputField>(
+export const InputField = React.forwardRef<HTMLInputElement, InputField>(
   (
     {
       className,

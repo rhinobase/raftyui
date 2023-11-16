@@ -1,13 +1,13 @@
 "use client";
-import { forwardRef } from "react";
+import React from "react";
 import { classNames, getValidChildren } from "../utils";
 import { InputGroupContext, InputGroupProvider } from "./context";
 
 // InputGroup Component
-export type InputGroup = JSX.IntrinsicElements["div"] &
+export type InputGroup = React.HTMLAttributes<HTMLDivElement> &
   Partial<InputGroupContext>;
 
-export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
+export const InputGroup = React.forwardRef<HTMLDivElement, InputGroup>(
   (
     {
       children,
@@ -60,9 +60,9 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
 InputGroup.displayName = "InputGroup";
 
 // Prefix Component
-export type Prefix = JSX.IntrinsicElements["div"];
+export type Prefix = React.HTMLAttributes<HTMLDivElement>;
 
-export const Prefix = forwardRef<HTMLDivElement, Prefix>(
+export const Prefix = React.forwardRef<HTMLDivElement, Prefix>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -82,9 +82,9 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(
 Prefix.displayName = "Prefix";
 
 // Suffix Component
-export type Suffix = JSX.IntrinsicElements["div"];
+export type Suffix = React.HTMLAttributes<HTMLDivElement>;
 
-export const Suffix = forwardRef<HTMLDivElement, Suffix>(
+export const Suffix = React.forwardRef<HTMLDivElement, Suffix>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -104,9 +104,9 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
 Suffix.displayName = "Suffix";
 
 // LeftAddon Component
-export type LeftAddon = JSX.IntrinsicElements["div"];
+export type LeftAddon = React.HTMLAttributes<HTMLDivElement>;
 
-export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
+export const LeftAddon = React.forwardRef<HTMLDivElement, LeftAddon>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -126,9 +126,9 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
 LeftAddon.displayName = "LeftAddon";
 
 // RightAddon Component
-export type RightAddon = JSX.IntrinsicElements["div"];
+export type RightAddon = React.HTMLAttributes<HTMLDivElement>;
 
-export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
+export const RightAddon = React.forwardRef<HTMLDivElement, RightAddon>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <div

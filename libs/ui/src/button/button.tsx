@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import React from "react";
 import { cva } from "class-variance-authority";
 import { classNames } from "../utils";
 import { Spinner } from "../spinner";
@@ -452,7 +452,7 @@ export type Button<T extends React.ElementType = "button"> =
     isDisabled?: boolean;
   };
 
-export const Button = forwardRef<React.ElementRef<"button">, Button>(
+export const Button = React.forwardRef<React.ElementRef<"button">, Button>(
   (
     {
       isLoading = false,
