@@ -83,7 +83,7 @@ const selectClasses = cva(
 );
 
 export type Select = Omit<
-  JSX.IntrinsicElements["select"],
+  React.SelectHTMLAttributes<HTMLSelectElement>,
   "size" | "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
@@ -163,7 +163,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-export type SelectItem = JSX.IntrinsicElements["option"];
+export type SelectItem = React.HTMLAttributes<HTMLOptionElement>;
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
   (props, forwardedRef) => {

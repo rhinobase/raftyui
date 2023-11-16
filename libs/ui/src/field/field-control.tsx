@@ -18,7 +18,7 @@ export const fieldControlClasses = cva("flex w-full", {
   },
 });
 
-export type FieldControl = JSX.IntrinsicElements["div"] &
+export type FieldControl = React.HTMLAttributes<HTMLDivElement> &
   Partial<FieldControlContext> & {
     name: FieldControlContext["name"];
   };

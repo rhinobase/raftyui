@@ -83,7 +83,7 @@ export const statHelpTextClasses = cva(
   },
 );
 
-export type StatHelpText = JSX.IntrinsicElements["div"];
+export type StatHelpText = React.HTMLAttributes<HTMLDivElement>;
 
 export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {

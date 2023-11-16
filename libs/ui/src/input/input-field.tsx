@@ -154,7 +154,10 @@ export const inputFieldClasses = cva(
 );
 
 // Input Field
-export type InputField = Omit<JSX.IntrinsicElements["input"], "size"> & {
+export type InputField = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;

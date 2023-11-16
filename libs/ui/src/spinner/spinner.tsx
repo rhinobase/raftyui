@@ -8,7 +8,7 @@ const DIMENSIONS = {
 };
 
 // Spinner Component
-export type Spinner = JSX.IntrinsicElements["svg"] & {
+export type Spinner = React.SVGAttributes<SVGSVGElement> & {
   size?: keyof typeof DIMENSIONS;
   inheritParent?: boolean;
 };

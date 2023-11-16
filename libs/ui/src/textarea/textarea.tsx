@@ -61,7 +61,10 @@ export const textareaClasses = cva(
 );
 
 // TextArea Component (With ErrorMessage)
-export type Textarea = Omit<JSX.IntrinsicElements["textarea"], "size"> & {
+export type Textarea = Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "size"
+> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnStyled?: boolean;
