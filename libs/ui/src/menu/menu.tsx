@@ -1,11 +1,11 @@
 "use client";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { Button } from "../button";
-import { MenuProvider, MenuContext, useMenuContext } from "./context";
-import { classNames } from "../utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { Button } from "../button";
+import { classNames } from "../utils";
+import { MenuContext, MenuProvider, useMenuContext } from "./context";
 
 // Menu Component
 export type Menu = React.ComponentPropsWithoutRef<typeof DropdownMenu.Root> &

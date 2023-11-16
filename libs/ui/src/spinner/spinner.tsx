@@ -15,7 +15,7 @@ export type Spinner = React.SVGAttributes<SVGSVGElement> & {
 
 export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
   (
-    { inheritParent = false, size = "md", className, ...props },
+    { inheritParent = false, size = "md", className, children, ...props },
     forwardedRef,
   ) => {
     return (

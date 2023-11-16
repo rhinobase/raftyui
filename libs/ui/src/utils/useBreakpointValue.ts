@@ -1,17 +1,17 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import React from "react";
 
 type Breakpoint = "sm" | "md" | "lg" | "xl";
 
 export function useBreakpointValue<T = unknown>(props?: {
   [K in Breakpoint]?: T;
 }) {
-  const [breakpoint, setBreakPoint] = useState<Breakpoint>("sm");
-  const [width, setWidth] = useState<number>();
+  const [breakpoint, setBreakPoint] = React.useState<Breakpoint>("sm");
+  const [width, setWidth] = React.useState<number>();
 
-  const handleResize = useCallback(() => setWidth(window.innerWidth), []);
+  const handleResize = React.useCallback(() => setWidth(window.innerWidth), []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Calling for the first time, to initialize the value
     handleResize();
 
@@ -22,7 +22,7 @@ export function useBreakpointValue<T = unknown>(props?: {
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!width) return;
 
     if (width < 768) setBreakPoint("sm");

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
 
@@ -28,7 +28,7 @@ export const tagClasses = cva("h-max w-max font-medium", {
   },
 });
 
-export type Tag = HTMLAttributes<HTMLDivElement> & {
+export type Tag = React.HTMLAttributes<HTMLDivElement> & {
   size?: "sm" | "md" | "lg";
   colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
 };

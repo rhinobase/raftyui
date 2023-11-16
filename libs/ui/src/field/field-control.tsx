@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef } from "react";
+import React from "react";
 import { classNames } from "../utils";
 import { FieldControlContext, FieldControlProvider } from "./context";
 import { cva } from "class-variance-authority";
@@ -23,7 +23,7 @@ export type FieldControl = React.HTMLAttributes<HTMLDivElement> &
     name: FieldControlContext["name"];
   };
 
-export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
+export const FieldControl = React.forwardRef<HTMLDivElement, FieldControl>(
   (
     {
       name,

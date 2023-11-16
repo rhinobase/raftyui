@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef } from "react";
+import React from "react";
 import { useFieldControlContext } from "../field/context";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
@@ -168,7 +168,7 @@ export type InputField = Omit<
   isRequired?: boolean;
 };
 
-export const InputField = forwardRef<HTMLInputElement, InputField>(
+export const InputField = React.forwardRef<HTMLInputElement, InputField>(
   (
     {
       className,

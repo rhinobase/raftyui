@@ -1,7 +1,7 @@
 "use client";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
-import { useReducer, useState } from "react";
+import React from "react";
 import { DayPickerSingleProps } from "react-day-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Calendar } from "./calendar";
@@ -11,8 +11,8 @@ export type DatePicker = {
 } & Omit<DayPickerSingleProps, "mode" | "onSelect">;
 
 export const DatePicker = (props: DatePicker) => {
-  const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useReducer((_?: Date, cur?: Date) => {
+  const [isOpen, setOpen] = React.useState(false);
+  const [selected, setSelected] = React.useReducer((_?: Date, cur?: Date) => {
     // Converting the value
     const value = cur ? new Date(format(cur, "yyyy-mm-dd")) : undefined;
 

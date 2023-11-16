@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import { forwardRef } from "react";
+import React from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 import { useFieldControlContext } from "../field/context";
@@ -94,7 +94,7 @@ export type Select = Omit<
   isReadOnly?: boolean;
 };
 
-export const Select = forwardRef<HTMLSelectElement, Select>(
+export const Select = React.forwardRef<HTMLSelectElement, Select>(
   (
     {
       children,
@@ -163,9 +163,9 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-export type SelectItem = React.HTMLAttributes<HTMLOptionElement>;
+export type SelectItem = React.OptionHTMLAttributes<HTMLOptionElement>;
 
-export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
+export const SelectItem = React.forwardRef<HTMLOptionElement, SelectItem>(
   (props, forwardedRef) => {
     return <option {...props} ref={forwardedRef} />;
   },

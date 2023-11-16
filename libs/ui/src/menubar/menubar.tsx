@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
-import * as MenubarPrimitive from "@radix-ui/react-menubar";
-import { MenuBarProvider, MenuBarContext, useMenuBarContext } from "./context";
-import { classNames } from "../utils";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import { cva } from "class-variance-authority";
+import React from "react";
 import { Button } from "../button";
 import { menuTriggerClasses } from "../menu/menu";
-import { cva } from "class-variance-authority";
+import { classNames } from "../utils";
+import { MenuBarContext, MenuBarProvider, useMenuBarContext } from "./context";
 
 //MenuBar Component
 export const menubarClasses = cva("flex w-max items-center", {
