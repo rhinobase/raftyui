@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.0](https://github.com/rhinobase/design-system/compare/ui-1.2.1...ui-1.3.0) (2023-11-16)
+
+
+### Bug Fixes
+
+* **ui:** fixed bug of select not opening and not focusing when clicked on icon ([10140cd](https://github.com/rhinobase/design-system/commit/10140cd7a0cdff4dbf76deb2107121ba1cf79f92))
+
 ## [1.2.2](https://github.com/rhinobase/design-system/compare/ui-1.2.1...ui-1.2.2) (2023-10-25)
 
 ## [1.2.1](https://github.com/rhinobase/design-system/compare/ui-1.2.0...ui-1.2.1) (2023-10-21)
