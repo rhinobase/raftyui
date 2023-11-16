@@ -8,38 +8,43 @@ import {
 } from "@rafty/ui";
 import { BsMoon, BsSun, BsTv } from "react-icons/bs";
 
-const themes = [
-  { name: "Light", value: "light", icon: BsSun },
-  { name: "Dark", value: "dark", icon: BsMoon },
-  { name: "System", value: "system", icon: BsTv },
-];
+const THEMES = {
+  light: BsSun,
+  dark: BsMoon,
+  system: BsTv,
+} as const;
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme();
+
+  let TriggerIcon = THEMES.dark;
+  if (theme && theme in THEMES)
+    TriggerIcon = THEMES[theme as keyof typeof THEMES];
 
   return (
     <Menu>
       <MenuTrigger
         size="icon"
         variant="ghost"
-        aria-label="Theme"
+        aria-label="Change Theme"
+        title="Change Theme"
         className="hidden md:block"
       >
-        <BsSun className="stroke-[0.5] dark:hidden" size={18} />
-        <BsMoon className="hidden stroke-[0.5] dark:block" size={18} />
+        <TriggerIcon size={18} className="stroke-[0.5]" />
       </MenuTrigger>
       <MenuContent className="!z-50 !gap-0.5">
-        {themes.map((item) => (
+        {Object.entries(THEMES).map(([name, Icon]) => (
           <MenuItem
-            key={item.value}
-            onClick={() => setTheme(item.value)}
+            key={name}
+            onClick={() => setTheme(name)}
             className={classNames(
-              theme == item.value &&
+              theme == name &&
                 "!bg-secondary-200/70 !text-primary-500 dark:!bg-secondary-700/60 dark:!text-primary-400",
+              "!capitalize",
             )}
           >
-            <item.icon size={18} className="stroke-[0.5]" />
-            {item.name}
+            <Icon size={18} className="stroke-[0.5]" />
+            {name}
           </MenuItem>
         ))}
       </MenuContent>
