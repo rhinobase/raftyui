@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 import { useFieldControlContext } from "../field/context";
@@ -80,7 +80,7 @@ const selectClasses = cva(
       disabled: false,
       readonly: false,
     },
-  },
+  }
 );
 
 export type Select = Omit<
@@ -109,7 +109,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       isReadOnly = false,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     const context = useFieldControlContext() ?? {
       isDisabled: false,
@@ -140,7 +140,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
                     disabled,
                     readonly,
                   }),
-                  className,
+                  className
                 )
           }
           ref={forwardedRef}
@@ -153,13 +153,13 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
               size === "sm" && "right-2",
               size === "md" && "right-3",
               size === "lg" && "right-4",
-              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2 cursor-pointer pointer-events-none",
+              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2 cursor-pointer pointer-events-none"
             )}
           />
         )}
       </div>
     );
-  },
+  }
 );
 
 Select.displayName = "Select";
@@ -169,7 +169,7 @@ export type SelectItem = JSX.IntrinsicElements["option"];
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
   (props, forwardedRef) => {
     return <option {...props} ref={forwardedRef} />;
-  },
+  }
 );
 
 SelectItem.displayName = "SelectItem";
