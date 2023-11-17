@@ -103,7 +103,7 @@ function useAutocomplete({
           ];
         });
       },
-    })
+    }),
   );
 
   return { autocomplete, autocompleteState };
@@ -163,10 +163,10 @@ function SearchResult({
   const id = useId();
 
   const sectionTitle = navigation.find((section) =>
-    section.links.find((link) => link.href === result.url.split("#")[0])
+    section.links.find((link) => link.href === result.url.split("#")[0]),
   )?.title;
   const hierarchy = [sectionTitle, result.pageTitle].filter(
-    (x): x is string => typeof x === "string"
+    (x): x is string => typeof x === "string",
   );
 
   return (
@@ -308,7 +308,7 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
       setOpen(false);
       autocomplete.setQuery("");
     },
-    [setOpen]
+    [setOpen],
   );
 
   const { autocomplete, autocompleteState } = useAutocomplete({
@@ -381,7 +381,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
 
   useEffect(() => {
     setModifierKey(
-      /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? "⌘" : "Ctrl"
+      /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? "⌘" : "Ctrl",
     );
   }, []);
 

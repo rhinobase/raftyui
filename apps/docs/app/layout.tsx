@@ -29,6 +29,15 @@ export const metadata: Metadata = {
   description:
     "Explore the components, and start building on top of it, SSR Ready, and dark mode-compatible interfaces.",
   themeColor: "#09090b",
+  keywords: [
+    "rhinobase",
+    "react",
+    "rafty",
+    "tailwind",
+    "css",
+    "components",
+    "library",
+  ],
   authors: [
     {
       name: "Rhinobase Team",
