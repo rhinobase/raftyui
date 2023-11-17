@@ -6,8 +6,7 @@
     "build-all": "nx run-many -all -t build",
     "commit": "czg",
     "check-lock-files": "node ./scripts/check-lock-files.js",
-    "prepare": "is-ci || husky install",
-    "format": "prettier . -w"
+    "prepare": "is-ci || husky install"
   },
   "private": true,
   "devDependencies": {
@@ -54,8 +53,8 @@
     "ngx-deploy-npm": "^7.0.1",
     "nx": "16.10.0",
     "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.5",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "sharp": "^0.32.6",
     "tailwindcss": "^3.3.3",
