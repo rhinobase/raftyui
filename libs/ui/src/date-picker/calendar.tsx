@@ -105,14 +105,8 @@ export function Calendar({
         IconRight: () => (
           <ChevronRightIcon className="dark:text-secondary-100 stroke-2" />
         ),
-        Dropdown: ({ children, value, onChange }) => (
-          <Select
-            value={value}
-            variant="solid"
-            onChange={onChange}
-            className="!w-max !pr-6"
-            size="sm"
-          >
+        Dropdown: ({ children, ...props }) => (
+          <Select {...props} variant="solid" className="!w-max !pr-6" size="sm">
             {children}
           </Select>
         ),
