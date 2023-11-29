@@ -17,9 +17,7 @@ const THEMES = {
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme();
 
-  let TriggerIcon = THEMES.dark;
-  if (theme && theme in THEMES)
-    TriggerIcon = THEMES[theme as keyof typeof THEMES];
+  const TriggerIcon = THEMES[theme as keyof typeof THEMES];
 
   return (
     <Menu>
@@ -38,7 +36,7 @@ export function ThemeSelector() {
             key={name}
             onClick={() => setTheme(name)}
             className={classNames(
-              theme == name &&
+              theme === name &&
                 "!bg-secondary-200/70 !text-primary-500 dark:!bg-secondary-700/60 dark:!text-primary-400",
               "!capitalize",
             )}
