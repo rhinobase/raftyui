@@ -1,11 +1,14 @@
+"use client";
 import {
   Menu,
   MenuContent,
   MenuItem,
   MenuTrigger,
+  Spinner,
   classNames,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const THEMES = {
   light: (
@@ -48,9 +51,13 @@ const THEMES = {
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme();
+  const [isLoading, setLoading] = useState(true);
 
-  const TriggerIcon = THEMES[(theme as keyof typeof THEMES) ?? "dark"];
+  useEffect(() => {
+    if (theme) setLoading(false);
+  }, [theme]);
 
+  const TriggerIcon = THEMES[theme as keyof typeof THEMES];
   return (
     <Menu>
       <MenuTrigger
@@ -60,7 +67,7 @@ export function ThemeSelector() {
         title="Change Theme"
         className="hidden md:block"
       >
-        {TriggerIcon}
+        {!isLoading ? TriggerIcon : <Spinner size="sm" />}
       </MenuTrigger>
       <MenuContent className="!z-50 !gap-0.5">
         {Object.entries(THEMES).map(([name, icon]) => (

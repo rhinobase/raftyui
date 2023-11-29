@@ -1,16 +1,27 @@
+"use client";
+import { Button, Skeleton } from "@rafty/ui";
 import Image from "next/image";
-import { Button, Calendar, CardContent, Card, classNames } from "@rafty/ui";
 import blurCyanImage from "../images/blur-cyan.png";
 import blurIndigoImage from "../images/blur-indigo.png";
-import {
-  ChatBoxExample,
-  CookieSettingsExample,
-  TeamMembersExample,
-} from "../app/themes/Examples";
-import { useState } from "react";
+import dynamic from "next/dynamic";
+import { useWindowSize } from "@uidotdev/usehooks";
+
+const HeroCard = dynamic(
+  () => import("./HeroCard").then((mod) => mod.HeroCard),
+  {
+    loading: () => (
+      <div className="grid grid-cols-2 gap-4">
+        <Skeleton className="w-[342px] h-[359px] rounded-md" />
+        <Skeleton className="w-[342px] h-[359px] rounded-md" />
+        <Skeleton className="w-[342px] h-[305px] rounded-md" />
+        <Skeleton className="w-[302px] h-[305px] rounded-md" />
+      </div>
+    ),
+  },
+);
 
 export function Hero() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { width } = useWindowSize();
 
   return (
     <div className="bg-secondary-950 overflow-hidden dark:-mb-32 dark:-mt-[82px] dark:pb-32 dark:pt-[4.75rem]">
@@ -82,32 +93,8 @@ export function Hero() {
               priority
               unoptimized
             />
-            <div
-              className={classNames(
-                "dark relative hidden w-full md:block",
-                isOpen ? "z-50" : "z-10",
-              )}
-            >
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:w-[700px]">
-                <Card>
-                  <CardContent>
-                    <CookieSettingsExample />
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent>
-                    <ChatBoxExample
-                      onClick={() => setIsOpen((prev) => !prev)}
-                    />
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent>
-                    <TeamMembersExample />
-                  </CardContent>
-                </Card>
-                <Calendar />
-              </div>
+            <div className="hidden md:block w-[700px] h-[680px]">
+              {width && width >= 768 && <HeroCard />}
             </div>
           </div>
         </div>

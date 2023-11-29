@@ -100,6 +100,7 @@
     "@storybook/react-vite": "7.4.6",
     "@tanstack/react-query": "4.36.1",
     "@tanstack/react-table": "8.10.7",
+    "@uidotdev/usehooks": "^2.4.1",
     "class-variance-authority": "0.7.0",
     "cmdk": "0.2.0",
     "core-js": "3.33.0",
