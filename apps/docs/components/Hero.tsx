@@ -74,7 +74,7 @@ export function Hero() {
               unoptimized
             />
             <Image
-              className="absolute -bottom-40 -right-44 w-auto"
+              className="absolute -bottom-40 -right-44"
               src={blurIndigoImage}
               alt="Blurred Indigo Circle"
               width={567}
