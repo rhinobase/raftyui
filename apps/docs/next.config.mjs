@@ -14,9 +14,13 @@ const nextConfig = {
   },
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
   images: {
-    domains: ["images.unsplash.com", "api.producthunt.com"],
+    remotePatterns: [
+      { hostname: "images.unsplash.com" },
+      { hostname: "api.producthunt.com" },
+    ],
     dangerouslyAllowSVG: true,
   },
+  // reactStrictMode: false,
 };
 
 const plugins = [

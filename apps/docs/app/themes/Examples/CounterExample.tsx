@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Button, Text } from "@rafty/ui";
+import { useState } from "react";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";
-import { HiMinus, HiPlus } from "react-icons/hi";
 
 const data = [
   {
@@ -68,7 +68,7 @@ function Counter() {
         isDisabled={count <= 200}
         aria-label="Decrement Value"
       >
-        <HiMinus size={18} />
+        <MinusIcon height={18} />
       </Button>
       <div className="flex w-full flex-col items-center">
         <Text className="text-5xl tabular-nums">{count}</Text>
@@ -84,7 +84,7 @@ function Counter() {
         isDisabled={count >= 400}
         aria-label="Increment Value"
       >
-        <HiPlus size={18} />
+        <PlusIcon height={18} />
       </Button>
     </div>
   );

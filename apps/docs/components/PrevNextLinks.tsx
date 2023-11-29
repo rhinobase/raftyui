@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { classNames } from "@rafty/ui";
 import { navigation } from "../lib/navigation";
-import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 function PageLink({
   title,
@@ -29,7 +29,11 @@ function PageLink({
           )}
         >
           {title}
-          {dir === "next" ? <HiArrowRight /> : <HiArrowLeft />}
+          {dir === "next" ? (
+            <ArrowRightIcon height={15} />
+          ) : (
+            <ArrowLeftIcon height={15} />
+          )}
         </Link>
       </dd>
     </div>

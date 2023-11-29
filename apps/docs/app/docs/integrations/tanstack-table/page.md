@@ -19,9 +19,36 @@ This example shows how to build a sortable data table with Rafty UI's table comp
 {% example name="tanstack_table:usage" %}
 
 ```jsx
-import React, { useState, useEffect, useMemo } from "react";
+import {
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Button,
+  InputField,
+  InputGroup,
+  Prefix,
+  Spinner,
+  Table,
+  TableBody,
+  TableContainer,
+  TableHead,
+  Td,
+  Th,
+  Tr,
+  classNames,
+} from "@rafty/ui";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import {
   ColumnDef,
+  ColumnSort,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -29,25 +56,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import {
-  RiArrowDownFill,
-  RiArrowLeftDoubleFill,
-  RiArrowRightDoubleFill,
-  RiArrowUpFill,
-} from "react-icons/ri";
-import {
-  Button,
-  InputField,
-  Spinner,
-  Table,
-  TableBody,
-  TableHead,
-  Td,
-  Th,
-  Tr,
-} from "@rafty/ui";
-import { useQuery } from "@tanstack/react-query";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { useMemo, useState } from "react";
 
 type DataType = {
   flight_number: number;
@@ -137,7 +146,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <HiOutlineMagnifyingGlass />
+          <MagnifyingGlassIcon width={16} />
         </Prefix>
         <InputField
           variant="outline"
@@ -176,9 +185,9 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <RiArrowUpFill />
+                            <ArrowUpIcon height={12} />
                           ) : header.column.getIsSorted() === "desc" ? (
-                            <RiArrowDownFill />
+                            <ArrowDownIcon height={12} />
                           ) : null}
                         </div>
                       )}
@@ -220,7 +229,7 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={<RiArrowLeftDoubleFill />}
+          leftIcon={<ArrowLeftIcon width={10} />}
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -228,7 +237,7 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={<RiArrowRightDoubleFill />}
+          rightIcon={<ArrowRightIcon width={10} />}
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >

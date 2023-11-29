@@ -21,6 +21,7 @@ export function Hero() {
               width={530}
               height={530}
               priority
+              unoptimized
             />
             <div className="relative">
               <p className="via-primary-400 font-display inline bg-gradient-to-r from-indigo-200 to-indigo-200 bg-clip-text text-5xl tracking-tight text-transparent">
@@ -67,6 +68,7 @@ export function Hero() {
               width={530}
               height={530}
               priority
+              unoptimized
             />
             <Image
               className="absolute -bottom-40 -right-44 w-auto"
@@ -75,6 +77,7 @@ export function Hero() {
               width={567}
               height={567}
               priority
+              unoptimized
             />
             <div className="dark relative z-10 hidden w-full md:block">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:w-[700px]">

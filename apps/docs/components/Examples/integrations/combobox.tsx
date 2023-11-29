@@ -1,10 +1,9 @@
 "use client";
 import {
-  QueryClient,
-  QueryClientProvider,
-  useInfiniteQuery,
-} from "@tanstack/react-query";
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+  CheckIcon,
+  ChevronUpDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Button,
@@ -22,7 +21,12 @@ import {
   Text,
   classNames,
 } from "@rafty/ui";
-import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 
 function Combobox() {
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -89,7 +93,7 @@ function Combobox() {
               aria-expanded={isOpen}
               className="w-full justify-between"
               rightIcon={
-                <HiChevronUpDown
+                <ChevronUpDownIcon
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
@@ -119,7 +123,7 @@ function Combobox() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <HiXMark className="h-3.5 w-3.5 stroke-1" />
+                <XMarkIcon className="h-3.5 w-3.5 stroke-1" />
               </Button>
             )}
           </div>
@@ -148,7 +152,7 @@ function Combobox() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <HiCheck className="h-3.5 w-3.5 stroke-1" />
+                              <CheckIcon className="h-3.5 w-3.5 stroke-1" />
                             )}
                           </div>
                         </CommandItem>

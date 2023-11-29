@@ -1,6 +1,6 @@
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@rafty/ui";
 import Link from "next/link";
-import { HiArrowRight } from "react-icons/hi";
 
 export default function NotFound() {
   return (
@@ -18,7 +18,7 @@ export default function NotFound() {
           </p>
         </div>
         <Link href="/">
-          <Button rightIcon={<HiArrowRight />} variant="ghost">
+          <Button rightIcon={<ArrowRightIcon height={16} />} variant="ghost">
             Go back home
           </Button>
         </Link>

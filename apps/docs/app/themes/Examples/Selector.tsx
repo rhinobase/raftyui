@@ -8,7 +8,7 @@ import {
   classNames,
 } from "@rafty/ui";
 import { useState, ReactNode } from "react";
-import { HiChevronUpDown } from "react-icons/hi2";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function Selector({
   value,
@@ -27,7 +27,7 @@ export function Selector({
         aria-expanded={isOpen}
         className="w-full justify-between capitalize"
         rightIcon={
-          <HiChevronUpDown
+          <ChevronUpDownIcon
             className={classNames(
               isOpen
                 ? "text-primary-500"
