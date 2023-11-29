@@ -20,7 +20,6 @@ export function Hero() {
               alt="Blurred Cyan Circle"
               width={530}
               height={530}
-              unoptimized
               priority
             />
             <div className="relative">
@@ -50,10 +49,9 @@ export function Hero() {
                   href="https://www.producthunt.com/products/rafty-ui?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-rafty&#0045;ui"
                   target="_blank"
                 >
-                  <img
+                  <Image
                     src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=556315&theme=dark"
                     alt="Rafty&#0032;UI - Radix&#0032;UI&#0032;&#0043;&#0032;Tailwind&#0032;CSS&#0032;&#0045;&#0032;React&#0032;Component&#0032;Lib | Product Hunt"
-                    style={{ width: 250, height: 54 }}
                     width="250"
                     height="54"
                   />
@@ -68,16 +66,14 @@ export function Hero() {
               alt="Blurred Cyan Circle"
               width={530}
               height={530}
-              unoptimized
               priority
             />
             <Image
-              className="absolute -bottom-40 -right-44"
+              className="absolute -bottom-40 -right-44 w-auto"
               src={blurIndigoImage}
               alt="Blurred Indigo Circle"
               width={567}
               height={567}
-              unoptimized
               priority
             />
             <div className="dark relative z-10 hidden w-full md:block">

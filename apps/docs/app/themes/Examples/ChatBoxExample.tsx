@@ -117,6 +117,7 @@ export function ChatBoxExample() {
       </div>
       <div className="flex items-center gap-2">
         <InputField
+          name="chat input"
           ref={ref}
           placeholder="Type your message..."
           onKeyDown={(e) => e.key === "Enter" && dispatch()}
@@ -149,7 +150,12 @@ function NewMessageDialog() {
     <Dialog>
       <Tooltip>
         <TooltipTrigger asChild>
-          <DialogTrigger size="fab" variant="outline" className="!p-2">
+          <DialogTrigger
+            size="fab"
+            variant="outline"
+            className="!p-2"
+            aria-label="add people"
+          >
             <HiOutlinePlus size={16} />
           </DialogTrigger>
         </TooltipTrigger>
@@ -217,7 +223,11 @@ function NewMessageDialog() {
             </Text>
           )}
           <DialogClose asChild>
-            <Button colorScheme="primary" disabled={!selected.length}>
+            <Button
+              colorScheme="primary"
+              disabled={!selected.length}
+              aria-label="add"
+            >
               Continue
             </Button>
           </DialogClose>

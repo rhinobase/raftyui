@@ -14,7 +14,8 @@ const nextConfig = {
   },
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "api.producthunt.com"],
+    dangerouslyAllowSVG: true,
   },
 };
 
