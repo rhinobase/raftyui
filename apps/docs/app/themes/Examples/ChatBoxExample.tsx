@@ -53,7 +53,7 @@ const USERS_DATA = [
   },
 ];
 
-export function ChatBoxExample() {
+export function ChatBoxExample({ onClick }: { onClick?: () => void }) {
   const ref = useRef<HTMLInputElement | null>(null);
 
   const [messages, dispatch] = useReducer((prev: string[]) => {
@@ -86,7 +86,7 @@ export function ChatBoxExample() {
           </Text>
         </div>
         <div className="flex-1" />
-        <NewMessageDialog />
+        <NewMessageDialog onClick={onClick} />
       </div>
       <div className="space-y-3">
         <Message className="bg-secondary-100 dark:bg-secondary-800">
@@ -144,7 +144,7 @@ export function ChatBoxExample() {
   );
 }
 
-function NewMessageDialog() {
+function NewMessageDialog({ onClick }: { onClick?: () => void }) {
   const [selected, dispatch] = useReducer((prev: number[], cur: number) => {
     const index = prev.findIndex((num) => num === cur);
 
@@ -155,7 +155,7 @@ function NewMessageDialog() {
   }, []);
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={onClick}>
       <Tooltip>
         <TooltipTrigger asChild>
           <DialogTrigger

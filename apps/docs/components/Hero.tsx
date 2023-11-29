@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button, Calendar, CardContent, Card } from "@rafty/ui";
+import { Button, Calendar, CardContent, Card, classNames } from "@rafty/ui";
 import blurCyanImage from "../images/blur-cyan.png";
 import blurIndigoImage from "../images/blur-indigo.png";
 import {
@@ -7,8 +7,11 @@ import {
   CookieSettingsExample,
   TeamMembersExample,
 } from "../app/themes/Examples";
+import { useState } from "react";
 
 export function Hero() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="bg-secondary-950 overflow-hidden dark:-mb-32 dark:-mt-[82px] dark:pb-32 dark:pt-[4.75rem]">
       <div className="py-16 sm:px-2 lg:relative lg:px-0 lg:py-20">
@@ -79,7 +82,12 @@ export function Hero() {
               priority
               unoptimized
             />
-            <div className="dark relative z-10 hidden w-full md:block">
+            <div
+              className={classNames(
+                "dark relative hidden w-full md:block",
+                isOpen ? "z-50" : "z-10",
+              )}
+            >
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:w-[700px]">
                 <Card>
                   <CardContent>
@@ -88,7 +96,9 @@ export function Hero() {
                 </Card>
                 <Card>
                   <CardContent>
-                    <ChatBoxExample />
+                    <ChatBoxExample
+                      onClick={() => setIsOpen((prev) => !prev)}
+                    />
                   </CardContent>
                 </Card>
                 <Card>

@@ -20,7 +20,7 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
   },
-  // reactStrictMode: false,
+  reactStrictMode: false,
 };
 
 const plugins = [
