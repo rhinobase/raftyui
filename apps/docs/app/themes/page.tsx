@@ -27,7 +27,7 @@ const CounterExample = dynamic(
 const TeamMembersExample = dynamic(
   () =>
     import("./Cards/TeamMembersExample").then((mod) => mod.TeamMembersExample),
-  { loading: () => <Skeleton className="h-[225px] w-[312px]" /> },
+  { loading: () => <Skeleton className="h-[226px] w-[312px]" /> },
 );
 
 const CookieSettingsExample = dynamic(
