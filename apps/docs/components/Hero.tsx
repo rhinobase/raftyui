@@ -11,10 +11,10 @@ const HeroCard = dynamic(
   {
     loading: () => (
       <div className="grid grid-cols-2 gap-4">
-        <Skeleton className="w-[342px] h-[359px] rounded-md" />
-        <Skeleton className="w-[342px] h-[359px] rounded-md" />
-        <Skeleton className="w-[342px] h-[305px] rounded-md" />
-        <Skeleton className="w-[302px] h-[305px] rounded-md" />
+        <Skeleton className="h-[359px] w-[342px] rounded-md" />
+        <Skeleton className="h-[359px] w-[342px] rounded-md" />
+        <Skeleton className="h-[260px] w-[342px] rounded-md" />
+        <Skeleton className="h-[305px] w-[302px] rounded-md" />
       </div>
     ),
   },
@@ -29,7 +29,7 @@ export function Hero() {
         <div className="lg:max-w-8xl mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
           <div className="relative z-10 md:text-center lg:text-left">
             <Image
-              className="absolute bottom-full right-full -mb-56 -mr-72 opacity-50 w-[530px] h-[530px]"
+              className="absolute bottom-full right-full -mb-56 -mr-72 h-[530px] w-[530px] opacity-50"
               src={blurCyanImage}
               alt="Blurred Cyan Circle"
               priority
@@ -73,18 +73,18 @@ export function Hero() {
           </div>
           <div className="relative lg:static lg:w-max xl:pl-10">
             <Image
-              className="absolute -right-64 -top-64 w-[530px] h-[530px]"
+              className="absolute -right-64 -top-64 h-[530px] w-[530px]"
               src={blurCyanImage}
               alt="Blurred Cyan Circle"
               priority
             />
             <Image
-              className="absolute -bottom-40 -right-44 w-[567px] h-[567px]"
+              className="absolute -bottom-40 -right-44 h-[567px] w-[567px]"
               src={blurIndigoImage}
               alt="Blurred Indigo Circle"
               priority
             />
-            <div className="hidden md:block w-[700px] h-[680px] relative">
+            <div className="relative hidden h-[680px] w-[700px] md:block">
               {width && width >= 768 && <HeroCard />}
             </div>
           </div>

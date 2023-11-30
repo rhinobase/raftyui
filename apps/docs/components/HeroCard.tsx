@@ -4,7 +4,7 @@ import {
   ChatBoxExample,
   CookieSettingsExample,
   TeamMembersExample,
-} from "../app/themes/Examples";
+} from "../app/themes/Cards";
 import { useState } from "react";
 
 export function HeroCard() {
