@@ -13,6 +13,12 @@ export interface CreateContextOptions<T> {
   defaultValue?: T;
 }
 
+export type CreateContextReturn<T> = [
+  React.Provider<T>,
+  () => T,
+  React.Context<T>,
+];
+
 function getErrorMessage(hook: string, provider: string) {
   return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`;
 }
@@ -46,5 +52,5 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     return context;
   }
 
-  return [Context.Provider, useContext, Context];
+  return [Context.Provider, useContext, Context] as CreateContextReturn<T>;
 }
