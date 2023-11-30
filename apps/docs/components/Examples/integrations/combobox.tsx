@@ -28,6 +28,16 @@ import {
 } from "@tanstack/react-query";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 
+type SpaceXData = {
+  id: string;
+  name: string;
+  links: {
+    patch: {
+      small: string;
+    };
+  };
+};
+
 function Combobox() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [contentwidth, setContentWidth] = useState(0);
@@ -41,13 +51,12 @@ function Combobox() {
   const [isOpen, setOpen] = useState(false);
 
   const { data, error, fetchNextPage, hasNextPage, isLoading, isFetching } =
-    useInfiniteQuery({
+    useInfiniteQuery<SpaceXData>({
       queryKey: ["projects"],
-      queryFn: () => {
-        return fetch("https://api.spacexdata.com/v4/launches/past").then(
-          (res) => res.json(),
-        );
-      },
+      queryFn: () =>
+        fetch("https://api.spacexdata.com/v4/launches/past").then((res) =>
+          res.json(),
+        ),
       getNextPageParam: (_, pages) => pages.length,
     });
 
@@ -66,18 +75,18 @@ function Combobox() {
 
   const pages = data?.pages.flat();
 
-  const [selected, dispatch] = useReducer((prev: any, cur: any): any => {
-    // Checking if we have a value or not
-    const value = prev?.id == cur ? undefined : cur;
-    setOpen(false);
+  const [selected, dispatch] = useReducer(
+    (prev: SpaceXData | undefined, cur: string): SpaceXData | undefined => {
+      // Checking if we have a value or not
+      const value = prev?.id == cur ? undefined : cur;
+      setOpen(false);
 
-    if (value)
-      return {
-        ...pages?.find((data) => data.id === value),
-      };
+      if (value && pages) return pages.find((data) => data.id === value);
 
-    return undefined;
-  }, undefined);
+      return undefined;
+    },
+    undefined,
+  );
 
   if (error) return <>Unable to load data!</>;
 
@@ -107,7 +116,7 @@ function Combobox() {
                 <div className="flex items-center gap-2 w-full ">
                   <Avatar
                     name={selected.name}
-                    src={selected.links?.patch?.small}
+                    src={selected.links.patch.small}
                   />
                   <Text>{selected.name}</Text>
                 </div>
