@@ -173,7 +173,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
       </Tooltip>
       <DialogOverlay />
       <DialogContent className="dark:!bg-secondary-900 !p-0">
-        <div className="p-4 space-y-2">
+        <div className="space-y-2 p-4">
           <DialogTitle>New message</DialogTitle>
           <Text className="text-sm leading-tight opacity-60">
             Invite a user to this thread. This will create a new group message.

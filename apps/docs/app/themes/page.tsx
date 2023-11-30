@@ -1,18 +1,81 @@
 "use client";
-import { Card, CardContent, Calendar } from "@rafty/ui";
-import {
-  TotalRevenueExample,
-  SubscriptionsExample,
-  CounterExample,
-  TeamMembersExample,
-  CookieSettingsExample,
-  PaymentMethodExample,
-  ChatBoxExample,
-  CreateAnAccountExample,
-  ReportIssueExample,
-  ExerciseMinuteExample,
-  TableExample,
-} from "./Examples";
+import { Card, CardContent, Calendar, Skeleton } from "@rafty/ui";
+import dynamic from "next/dynamic";
+
+const TotalRevenueExample = dynamic(
+  () =>
+    import("./Cards/TotalRevenueExample").then(
+      (mod) => mod.TotalRevenueExample,
+    ),
+  { loading: () => <Skeleton className="h-[177px] w-[312px]" /> },
+);
+
+const SubscriptionsExample = dynamic(
+  () =>
+    import("./Cards/SubscriptionsExample").then(
+      (mod) => mod.SubscriptionsExample,
+    ),
+  { loading: () => <Skeleton className="h-[178px] w-[312px]" /> },
+);
+
+const CounterExample = dynamic(
+  () => import("./Cards/CounterExample").then((mod) => mod.CounterExample),
+  { loading: () => <Skeleton className="h-[ h-[264px] w-[258px]" /> },
+);
+
+const TeamMembersExample = dynamic(
+  () =>
+    import("./Cards/TeamMembersExample").then((mod) => mod.TeamMembersExample),
+  { loading: () => <Skeleton className="h-[225px] w-[312px]" /> },
+);
+
+const CookieSettingsExample = dynamic(
+  () =>
+    import("./Cards/CookieSettingsExample").then(
+      (mod) => mod.CookieSettingsExample,
+    ),
+  { loading: () => <Skeleton className="h-[326px] w-[312px]" /> },
+);
+
+const PaymentMethodExample = dynamic(
+  () =>
+    import("./Cards/PaymentMethodExample").then(
+      (mod) => mod.PaymentMethodExample,
+    ),
+  { loading: () => <Skeleton className="h-[485px] w-[312px]" /> },
+);
+
+const ChatBoxExample = dynamic(
+  () => import("./Cards/ChatBoxExample").then((mod) => mod.ChatBoxExample),
+  { loading: () => <Skeleton className="h-[322px] w-[312px]" /> },
+);
+
+const CreateAnAccountExample = dynamic(
+  () =>
+    import("./Cards/CreateAnAccountExample").then(
+      (mod) => mod.CreateAnAccountExample,
+    ),
+  { loading: () => <Skeleton className="h-[348px] w-[312px]" /> },
+);
+
+const ReportIssueExample = dynamic(
+  () =>
+    import("./Cards/ReportIssueExample").then((mod) => mod.ReportIssueExample),
+  { loading: () => <Skeleton className="h-[407px] w-[312px]" /> },
+);
+
+const ExerciseMinuteExample = dynamic(
+  () =>
+    import("./Cards/ExerciseMinuteExample").then(
+      (mod) => mod.ExerciseMinuteExample,
+    ),
+  { loading: () => <Skeleton className="h-[286px] w-[554px]" /> },
+);
+
+const TableExample = dynamic(
+  () => import("./Cards/TableExample").then((mod) => mod.TableExample),
+  { loading: () => <Skeleton className="h-[489px] w-[554px]" /> },
+);
 
 export default function ThemeComponents() {
   return (
