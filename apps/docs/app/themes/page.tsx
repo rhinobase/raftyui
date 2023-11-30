@@ -21,7 +21,7 @@ const SubscriptionsExample = dynamic(
 
 const CounterExample = dynamic(
   () => import("./Cards/CounterExample").then((mod) => mod.CounterExample),
-  { loading: () => <Skeleton className="h-[ h-[264px] w-[258px]" /> },
+  { loading: () => <Skeleton className="h-[264px] w-[258px]" /> },
 );
 
 const TeamMembersExample = dynamic(
