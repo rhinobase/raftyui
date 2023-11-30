@@ -60,7 +60,12 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
       )}
     >
       <div className="mr-3 md:mr-0 flex lg:hidden">
-        <Button size="icon" variant="ghost" onClick={() => setDrawerOpen(true)}>
+        <Button
+          size="icon"
+          variant="ghost"
+          onClick={() => setDrawerOpen(true)}
+          aria-label="Drawer Menu"
+        >
           <Bars3Icon height={20} width={20} />
         </Button>
       </div>

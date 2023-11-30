@@ -133,6 +133,7 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           colorScheme="primary"
           className="!p-2"
           onClick={dispatch}
+          aria-label="Send"
         >
           <PaperAirplaneIcon height={18} width={18} />
         </Button>
