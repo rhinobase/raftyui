@@ -23,7 +23,7 @@ export function HeroCard() {
             <ChatBoxExample onClick={() => setIsOpen((prev) => !prev)} />
           </CardContent>
         </Card>
-        <Card>
+        <Card className="h-max">
           <CardContent>
             <TeamMembersExample />
           </CardContent>

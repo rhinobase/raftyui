@@ -29,11 +29,9 @@ export function Hero() {
         <div className="lg:max-w-8xl mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
           <div className="relative z-10 md:text-center lg:text-left">
             <Image
-              className="absolute bottom-full right-full -mb-56 -mr-72 opacity-50"
+              className="absolute bottom-full right-full -mb-56 -mr-72 opacity-50 w-[530px] h-[530px]"
               src={blurCyanImage}
               alt="Blurred Cyan Circle"
-              width={530}
-              height={530}
               priority
               unoptimized
             />
@@ -67,8 +65,8 @@ export function Hero() {
                   <Image
                     src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=556315&theme=dark"
                     alt="Rafty&#0032;UI - Radix&#0032;UI&#0032;&#0043;&#0032;Tailwind&#0032;CSS&#0032;&#0045;&#0032;React&#0032;Component&#0032;Lib | Product Hunt"
-                    width="250"
-                    height="54"
+                    width={250}
+                    height={54}
                   />
                 </a>
               </div>
@@ -76,24 +74,20 @@ export function Hero() {
           </div>
           <div className="relative lg:static lg:w-max xl:pl-10">
             <Image
-              className="absolute -right-64 -top-64"
+              className="absolute -right-64 -top-64 w-[530px] h-[530px]"
               src={blurCyanImage}
               alt="Blurred Cyan Circle"
-              width={530}
-              height={530}
               priority
               unoptimized
             />
             <Image
-              className="absolute -bottom-40 -right-44"
+              className="absolute -bottom-40 -right-44 w-[567px] h-[567px]"
               src={blurIndigoImage}
               alt="Blurred Indigo Circle"
-              width={567}
-              height={567}
               priority
               unoptimized
             />
-            <div className="hidden md:block w-[700px] h-[680px]">
+            <div className="hidden md:block w-[700px] h-[680px] relative">
               {width && width >= 768 && <HeroCard />}
             </div>
           </div>
