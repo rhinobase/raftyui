@@ -1,6 +1,14 @@
-# Welcome to rafty/ui
+# Rafty UI
 
-React + Accessible + Tailwind CSS Dynamic Component Library
+## React + Accessibility + Tailwind CSS
+
+![Bundle Size](https://badgen.net/bundlephobia/minzip/@rafty/ui) ![LICENSE](https://img.shields.io/github/license/rhinobase/raftyui) ![Downloads](https://img.shields.io/npm/dm/@rafty/ui.svg?style=flat) ![Stars](https://badgen.net/github/stars/rhinobase/raftyui)
+
+Rafty UI is a comprehensive library of accessible, reusable, and composable React components that streamlines the development of modern web applications and websites. The library offers a diverse range of components that can be easily combined to build complex user interfaces while adhering to accessibility best practices.
+
+---
+
+## Features
 
 - Works out of the box. Rafty UI contains polished React components that work out of the box.
 
