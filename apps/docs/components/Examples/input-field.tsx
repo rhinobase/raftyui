@@ -1,4 +1,9 @@
 import {
+  CheckIcon,
+  MagnifyingGlassIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/outline";
+import {
   InputField,
   InputGroup,
   LeftAddon,
@@ -6,7 +11,6 @@ import {
   RightAddon,
   Suffix,
 } from "@rafty/ui";
-import { HiPhone, HiCheck, HiMagnifyingGlass } from "react-icons/hi2";
 
 export const input_examples = {
   "input-field:usage": <InputField placeholder="Basic usage" />,
@@ -41,7 +45,7 @@ export const input_examples = {
   "input-field:left_addon": (
     <InputGroup>
       <LeftAddon>
-        <HiPhone />
+        <PhoneIcon height={16} width={16} />
       </LeftAddon>
       <InputField type="tel" placeholder="Phone number" />
     </InputGroup>
@@ -50,14 +54,14 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <RightAddon>
-        <HiMagnifyingGlass />
+        <MagnifyingGlassIcon height={16} width={16} />
       </RightAddon>
     </InputGroup>
   ),
   "input-field:prefix": (
     <InputGroup>
       <Prefix>
-        <HiPhone />
+        <PhoneIcon height={16} width={16} />
       </Prefix>
       <InputField />
     </InputGroup>
@@ -66,7 +70,7 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <Suffix>
-        <HiCheck className="stroke-1 text-green-500" />
+        <CheckIcon height={16} width={16} className="stroke-1 text-green-500" />
       </Suffix>
     </InputGroup>
   ),

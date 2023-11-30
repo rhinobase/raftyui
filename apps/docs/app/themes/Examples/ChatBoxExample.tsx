@@ -1,5 +1,9 @@
 "use client";
-import { useRef, useReducer, ReactNode } from "react";
+import {
+  CheckIcon,
+  PlusIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   AvatarGroup,
@@ -23,8 +27,7 @@ import {
   TooltipTrigger,
   classNames,
 } from "@rafty/ui";
-import { BiSend } from "react-icons/bi";
-import { HiCheck, HiOutlinePlus } from "react-icons/hi";
+import { ReactNode, useReducer, useRef } from "react";
 
 const USERS_DATA = [
   {
@@ -54,7 +57,9 @@ const USERS_DATA = [
   },
 ];
 
-export function ChatBoxExample() {
+type ChatBoxExample = NewMessageDialog;
+
+export function ChatBoxExample({ onClick }: ChatBoxExample) {
   const ref = useRef<HTMLInputElement | null>(null);
 
   const [messages, dispatch] = useReducer((prev: string[]) => {
@@ -87,7 +92,7 @@ export function ChatBoxExample() {
           </Text>
         </div>
         <div className="flex-1" />
-        <NewMessageDialog />
+        <NewMessageDialog onClick={onClick} />
       </div>
       <div className="space-y-3">
         <Message className="bg-secondary-100 dark:bg-secondary-800">
@@ -129,14 +134,18 @@ export function ChatBoxExample() {
           className="!p-2"
           onClick={dispatch}
         >
-          <BiSend size={20} />
+          <PaperAirplaneIcon height={18} width={18} />
         </Button>
       </div>
     </div>
   );
 }
 
-function NewMessageDialog() {
+type NewMessageDialog = {
+  onClick?: () => void;
+};
+
+function NewMessageDialog({ onClick }: NewMessageDialog) {
   const [selected, dispatch] = useReducer((prev: number[], cur: number) => {
     const index = prev.findIndex((num) => num === cur);
 
@@ -147,7 +156,7 @@ function NewMessageDialog() {
   }, []);
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={onClick}>
       <Tooltip>
         <TooltipTrigger asChild>
           <DialogTrigger
@@ -156,7 +165,7 @@ function NewMessageDialog() {
             className="!p-2"
             aria-label="add people"
           >
-            <HiOutlinePlus size={16} />
+            <PlusIcon height={16} width={16} />
           </DialogTrigger>
         </TooltipTrigger>
         <TooltipContent>New message</TooltipContent>
@@ -195,7 +204,11 @@ function NewMessageDialog() {
                     </div>
                     <div className="flex-1" />
                     {selected.includes(user.id) && (
-                      <HiCheck className="opacity-60" />
+                      <CheckIcon
+                        height={16}
+                        width={16}
+                        className="opacity-60"
+                      />
                     )}
                   </div>
                 </CommandItem>

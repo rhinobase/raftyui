@@ -1,10 +1,10 @@
-import { Button } from "@rafty/ui";
 import {
-  HiPhone,
-  HiPaperAirplane,
-  HiArchiveBox,
-  HiBackspace,
-} from "react-icons/hi2";
+  ArchiveBoxIcon,
+  BackspaceIcon,
+  PaperAirplaneIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/outline";
+import { Button } from "@rafty/ui";
 
 export const button_examples = {
   "button:usage": <Button>Button</Button>,
@@ -14,10 +14,10 @@ export const button_examples = {
       <Button size="md">Button</Button>
       <Button size="lg">Button</Button>
       <Button size="fab">
-        <HiArchiveBox />
+        <ArchiveBoxIcon height={16} width={16} />
       </Button>
       <Button size="icon">
-        <HiBackspace />
+        <BackspaceIcon height={16} width={16} />
       </Button>
     </div>
   ),
@@ -38,11 +38,15 @@ export const button_examples = {
   ),
   "button:icons": (
     <div className="flex items-center gap-4">
-      <Button leftIcon={<HiPhone />} colorScheme="primary" variant="solid">
+      <Button
+        leftIcon={<PhoneIcon height={16} width={16} />}
+        colorScheme="primary"
+        variant="solid"
+      >
         Button
       </Button>
       <Button
-        rightIcon={<HiPaperAirplane />}
+        rightIcon={<PaperAirplaneIcon height={16} width={16} />}
         colorScheme="primary"
         variant="solid"
       >

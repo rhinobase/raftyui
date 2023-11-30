@@ -2,11 +2,11 @@ import { classNames } from "@rafty/ui";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { Providers } from "./providers";
-
+import { PropsWithChildren } from "react";
 import "../styles/globals.css";
 import { CookieConcent } from "./CookieConcent";
 import { Wrapper } from "./Wrapper";
+import { Providers } from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +28,6 @@ export const metadata: Metadata = {
   },
   description:
     "Explore the components, and start building on top of it, SSR Ready, and dark mode-compatible interfaces.",
-  themeColor: "#09090b",
   keywords: [
     "rhinobase",
     "react",
@@ -78,11 +77,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       lang="en"
@@ -93,6 +88,9 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
+      <head>
+        <meta name="theme-color" content="#09090b" />
+      </head>
       <body className="dark:bg-secondary-950 flex min-h-full bg-white selection:bg-[#79ffe1] selection:text-secondary-700 dark:selection:bg-[#f81ce5] dark:selection:text-white">
         <Providers>
           <Wrapper>{children}</Wrapper>

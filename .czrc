@@ -1,0 +1,22 @@
+{
+  "scopes": [
+    {
+      "value": "web",
+      "name": "web:        anything Website specific"
+    },
+    {
+      "value": "ui",
+      "name": "ui:         anything UI specific"
+    },
+    {
+      "value": "plugin",
+      "name": "plugin:            anything Plugin specific"
+    },
+    {
+      "value": "stroybook",
+      "name": "stroybook:           anything Stroybook specific"
+    }
+  ],
+  "scopesSearchValue": true,
+  "allowCustomScopes": false
+}

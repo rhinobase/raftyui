@@ -1,24 +1,31 @@
-import { useTheme } from "next-themes";
+"use client";
 import {
   Menu,
-  MenuTrigger,
   MenuContent,
   MenuItem,
+  MenuTrigger,
+  Spinner,
   classNames,
 } from "@rafty/ui";
-import { BsMoon, BsSun, BsTv } from "react-icons/bs";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { SunIcon, MoonIcon, TvIcon } from "@heroicons/react/24/outline";
 
 const THEMES = {
-  light: BsSun,
-  dark: BsMoon,
-  system: BsTv,
+  light: SunIcon,
+  dark: MoonIcon,
+  system: TvIcon,
 } as const;
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme();
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (theme) setLoading(false);
+  }, [theme]);
 
   const TriggerIcon = THEMES[theme as keyof typeof THEMES];
-
   return (
     <Menu>
       <MenuTrigger
@@ -28,7 +35,11 @@ export function ThemeSelector() {
         title="Change Theme"
         className="hidden md:block"
       >
-        <TriggerIcon size={18} className="stroke-[0.5]" />
+        {!isLoading ? (
+          <TriggerIcon height={18} width={18} className="stroke-2" />
+        ) : (
+          <Spinner size="sm" />
+        )}
       </MenuTrigger>
       <MenuContent className="!z-50 !gap-0.5">
         {Object.entries(THEMES).map(([name, Icon]) => (
@@ -41,7 +52,7 @@ export function ThemeSelector() {
               "!capitalize",
             )}
           >
-            <Icon size={18} className="stroke-[0.5]" />
+            <Icon height={18} width={18} className="stroke-2" />
             {name}
           </MenuItem>
         ))}

@@ -1,8 +1,8 @@
 "use client";
-import { Fragment, useState } from "react";
-import { Highlight, themes } from "prism-react-renderer";
+import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { Button, classNames } from "@rafty/ui";
-import { HiCheck, HiDuplicate } from "react-icons/hi";
+import { Highlight, themes } from "prism-react-renderer";
+import { Fragment, useState } from "react";
 
 export function Fence({
   children,
@@ -41,9 +41,13 @@ export function Fence({
               aria-label="Copy"
             >
               {isCopied ? (
-                <HiCheck className="text-green-300" />
+                <CheckIcon height={16} width={16} className="text-green-300" />
               ) : (
-                <HiDuplicate className="text-slate-200" />
+                <DocumentDuplicateIcon
+                  height={16}
+                  width={16}
+                  className="text-slate-200"
+                />
               )}
             </Button>
             <code>

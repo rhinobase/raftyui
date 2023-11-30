@@ -1,10 +1,9 @@
 "use client";
 import {
-  QueryClient,
-  QueryClientProvider,
-  useInfiniteQuery,
-} from "@tanstack/react-query";
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+  CheckIcon,
+  ChevronUpDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Button,
@@ -22,7 +21,22 @@ import {
   Text,
   classNames,
 } from "@rafty/ui";
-import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+
+type SpaceXData = {
+  id: string;
+  name: string;
+  links: {
+    patch: {
+      small: string;
+    };
+  };
+};
 
 function Combobox() {
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -37,13 +51,12 @@ function Combobox() {
   const [isOpen, setOpen] = useState(false);
 
   const { data, error, fetchNextPage, hasNextPage, isLoading, isFetching } =
-    useInfiniteQuery({
+    useInfiniteQuery<SpaceXData>({
       queryKey: ["projects"],
-      queryFn: () => {
-        return fetch("https://api.spacexdata.com/v4/launches/past").then(
-          (res) => res.json(),
-        );
-      },
+      queryFn: () =>
+        fetch("https://api.spacexdata.com/v4/launches/past").then((res) =>
+          res.json(),
+        ),
       getNextPageParam: (_, pages) => pages.length,
     });
 
@@ -62,18 +75,18 @@ function Combobox() {
 
   const pages = data?.pages.flat();
 
-  const [selected, dispatch] = useReducer((prev: any, cur: any): any => {
-    // Checking if we have a value or not
-    const value = prev?.id == cur ? undefined : cur;
-    setOpen(false);
+  const [selected, dispatch] = useReducer(
+    (prev: SpaceXData | undefined, cur: string): SpaceXData | undefined => {
+      // Checking if we have a value or not
+      const value = prev?.id == cur ? undefined : cur;
+      setOpen(false);
 
-    if (value)
-      return {
-        ...pages?.find((data) => data.id === value),
-      };
+      if (value && pages) return pages.find((data) => data.id === value);
 
-    return undefined;
-  }, undefined);
+      return undefined;
+    },
+    undefined,
+  );
 
   if (error) return <>Unable to load data!</>;
 
@@ -89,12 +102,14 @@ function Combobox() {
               aria-expanded={isOpen}
               className="w-full justify-between"
               rightIcon={
-                <HiChevronUpDown
+                <ChevronUpDownIcon
+                  height={16}
+                  width={16}
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "h-4 w-4 shrink-0 stroke-1",
+                    "shrink-0 stroke-1",
                   )}
                 />
               }
@@ -103,7 +118,7 @@ function Combobox() {
                 <div className="flex items-center gap-2 w-full ">
                   <Avatar
                     name={selected.name}
-                    src={selected.links?.patch?.small}
+                    src={selected.links.patch.small}
                   />
                   <Text>{selected.name}</Text>
                 </div>
@@ -119,7 +134,7 @@ function Combobox() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <HiXMark className="h-3.5 w-3.5 stroke-1" />
+                <XMarkIcon height={14} width={14} className="stroke-1" />
               </Button>
             )}
           </div>
@@ -148,7 +163,11 @@ function Combobox() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <HiCheck className="h-3.5 w-3.5 stroke-1" />
+                              <CheckIcon
+                                height={14}
+                                width={14}
+                                className="stroke-1"
+                              />
                             )}
                           </div>
                         </CommandItem>

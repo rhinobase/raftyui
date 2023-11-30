@@ -7,7 +7,8 @@ import React from "react";
  * @param children the children
  */
 export function getValidChildren(children: React.ReactNode) {
-  return React.Children.toArray(children).filter((child) =>
-    React.isValidElement(child),
+  return React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ) as React.ReactElement<any, any>[];
 }

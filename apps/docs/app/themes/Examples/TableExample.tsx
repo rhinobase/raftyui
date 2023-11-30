@@ -1,31 +1,35 @@
 "use client";
-import { Dispatch, useReducer, useState } from "react";
 import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  EllipsisHorizontalIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Button,
   Checkbox,
   InputField,
   InputGroup,
+  Menu,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuItem,
+  MenuLabel,
+  MenuSeparator,
+  MenuTrigger,
   Prefix,
-  Text,
   Table,
   TableBody,
   TableContainer,
   TableHead,
   Td,
+  Text,
   Th,
   Tr,
-  Button,
-  Menu,
-  MenuTrigger,
-  MenuContent,
-  MenuCheckboxItem,
-  MenuLabel,
-  MenuItem,
-  MenuSeparator,
   classNames,
 } from "@rafty/ui";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { HiChevronDown, HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { HiDotsHorizontal } from "react-icons/hi";
+import { Dispatch, useReducer, useState } from "react";
 
 type Header = {
   id: string;
@@ -105,7 +109,11 @@ export function TableExample() {
       <div className="flex justify-between">
         <InputGroup>
           <Prefix>
-            <HiOutlineMagnifyingGlass className="text-secondary-400 stroke-2" />
+            <MagnifyingGlassIcon
+              height={16}
+              width={16}
+              className="text-secondary-400 stroke-2"
+            />
           </Prefix>
           <InputField
             type="search"
@@ -129,7 +137,10 @@ const ColumnsSelectMenu = ({
   toggle: Dispatch<keyof Header>;
 }) => (
   <Menu>
-    <MenuTrigger variant="outline" rightIcon={<HiChevronDown size={18} />}>
+    <MenuTrigger
+      variant="outline"
+      rightIcon={<ChevronDownIcon height={16} width={16} />}
+    >
       Columns
     </MenuTrigger>
     <MenuContent className="!min-w-[10rem]" align="end">
@@ -212,7 +223,11 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                 <Td>
                   <Menu size="sm">
                     <MenuTrigger variant="ghost" size="icon">
-                      <HiDotsHorizontal className="text-secondary-700 dark:text-secondary-200" />
+                      <EllipsisHorizontalIcon
+                        height={16}
+                        width={16}
+                        className="text-secondary-700 dark:text-secondary-200"
+                      />
                     </MenuTrigger>
                     <MenuContent className="!z-50 !min-w-[9rem]">
                       <MenuLabel className="leading-4">Actions</MenuLabel>
@@ -234,14 +249,16 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         </Text>
         <div className="flex gap-2">
           <Button variant="outline" size="icon" isDisabled>
-            <HiChevronLeft
-              size={20}
+            <ChevronLeftIcon
+              height={16}
+              width={16}
               className="text-secondary-700 dark:text-secondary-200"
             />
           </Button>
           <Button variant="outline" size="icon" isDisabled>
-            <HiChevronRight
-              size={20}
+            <ChevronRightIcon
+              height={16}
+              width={16}
               className="text-secondary-700 dark:text-secondary-200"
             />
           </Button>

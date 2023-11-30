@@ -1,28 +1,31 @@
 "use client";
 import {
+  CheckIcon,
+  DocumentDuplicateIcon,
+  MoonIcon,
+  PaintBrushIcon,
+  SunIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import {
   Button,
   Dialog,
   DialogContent,
-  Text,
   DialogOverlay,
+  DialogTitle,
   DialogTrigger,
   Popover,
   PopoverClose,
   PopoverContent,
   PopoverTrigger,
+  Text,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-  DialogTitle,
 } from "@rafty/ui";
-import { HiCheck, HiOutlineMoon, HiOutlineSun, HiX } from "react-icons/hi";
 import { useTheme } from "next-themes";
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import { Fence } from "../../components/Fence";
-import {
-  HiOutlineDocumentDuplicate,
-  HiOutlinePaintBrush,
-} from "react-icons/hi2";
 
 const COLOR_THEME = {
   gray: "!bg-gray-500",
@@ -38,7 +41,7 @@ const COLOR_THEME = {
   fuchsia: "!bg-fuchsia-500",
   pink: "!bg-pink-500",
   rose: "!bg-rose-500",
-};
+} as const;
 
 const defaults: (keyof typeof COLOR_THEME)[] = [
   "purple",
@@ -48,11 +51,7 @@ const defaults: (keyof typeof COLOR_THEME)[] = [
   "gray",
 ];
 
-export default function ThemeBuilderWrapper({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
   const [color, changeColor] = useState<keyof typeof COLOR_THEME>("purple");
 
   return (
@@ -62,9 +61,9 @@ export default function ThemeBuilderWrapper({
       <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
           <h1 className="text-3xl font-bold md:text-3xl">Make it yours.</h1>
-          <h4 className="text-secondary-400 text-sm lg:text-lg">
+          <h2 className="text-secondary-400 text-sm lg:text-lg">
             Hand-picked themes that you can copy and paste into your apps.
-          </h4>
+          </h2>
         </div>
         <div className="flex items-center gap-1.5 py-2 md:gap-3">
           {defaults.map((c) => (
@@ -75,9 +74,14 @@ export default function ThemeBuilderWrapper({
                   size="fab"
                   className={`${COLOR_THEME[c]} min-h-[26px] min-w-[26px] !p-1`}
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
+                  name={`${c} button`}
                 >
                   {color == c && (
-                    <HiCheck className="stroke-1 font-bold text-white" />
+                    <CheckIcon
+                      height={16}
+                      width={16}
+                      className="stroke-1 text-white"
+                    />
                   )}
                 </Button>
               </TooltipTrigger>
@@ -124,14 +128,14 @@ function CustomizeMenu({
         <div>
           <Button
             variant="outline"
-            leftIcon={<HiOutlinePaintBrush size={19} />}
+            leftIcon={<PaintBrushIcon height={19} width={19} />}
             className="hidden md:flex"
             aria-label="Select Theme Color"
           >
             Customize
           </Button>
           <Button variant="outline" size="icon" className="md:hidden">
-            <HiOutlinePaintBrush size={19} />
+            <PaintBrushIcon height={19} width={19} />
           </Button>
         </div>
       </PopoverTrigger>
@@ -169,7 +173,7 @@ function CustomizeMenu({
               <Button
                 variant="outline"
                 size="sm"
-                leftIcon={<HiOutlineSun size={15} />}
+                leftIcon={<SunIcon height={15} width={15} />}
                 isActive={theme == themes[0]}
                 onClick={() => setTheme("light")}
               >
@@ -178,7 +182,7 @@ function CustomizeMenu({
               <Button
                 variant="outline"
                 size="sm"
-                leftIcon={<HiOutlineMoon size={15} />}
+                leftIcon={<MoonIcon height={15} width={15} />}
                 isActive={theme == themes[1]}
                 onClick={() => setTheme("dark")}
               >
@@ -188,7 +192,7 @@ function CustomizeMenu({
           </div>
         </div>
         <PopoverClose className="absolute right-2 top-2 p-1">
-          <HiX className="opacity-60" />
+          <XMarkIcon height={16} width={16} className="opacity-60" />
         </PopoverClose>
       </PopoverContent>
     </Popover>
@@ -202,7 +206,7 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
         Copy code
       </DialogTrigger>
       <DialogTrigger variant="outline" size="icon" className="md:hidden">
-        <HiOutlineDocumentDuplicate size={19} />
+        <DocumentDuplicateIcon height={19} width={19} />
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent className="!p-5">

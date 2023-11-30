@@ -1,4 +1,5 @@
 "use client";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import {
   CommandItem,
   FieldControl,
@@ -8,8 +9,7 @@ import {
   classNames,
 } from "@rafty/ui";
 import { useState } from "react";
-import { BsCreditCard, BsPaypal, BsApple } from "react-icons/bs";
-import { HiCheck } from "react-icons/hi";
+import { BsApple, BsCreditCard, BsPaypal } from "react-icons/bs";
 import { Selector } from "./Selector";
 
 const PAYMENT_METHODS = [
@@ -132,7 +132,9 @@ function ExpireMonthSelect() {
         <CommandItem key={month} value={month} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
-              {selected == month && <HiCheck className="opacity-60" />}
+              {selected == month && (
+                <CheckIcon width={16} height={16} className="opacity-60" />
+              )}
             </div>
             <Text className="capitalize">{month}</Text>
             <div className="flex-1" />
@@ -152,7 +154,9 @@ function ExpireYearSelect() {
         <CommandItem key={year} value={year} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
-              {selected == year && <HiCheck className="opacity-60" />}
+              {selected == year && (
+                <CheckIcon width={16} height={16} className="opacity-60" />
+              )}
             </div>
             <Text>{year}</Text>
             <div className="flex-1" />

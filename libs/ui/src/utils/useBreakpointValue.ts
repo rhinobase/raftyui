@@ -33,5 +33,5 @@ export function useBreakpointValue<T = unknown>(props?: {
 
   if (!props) return undefined;
 
-  return props[breakpoint as keyof typeof props];
+  return props[breakpoint];
 }

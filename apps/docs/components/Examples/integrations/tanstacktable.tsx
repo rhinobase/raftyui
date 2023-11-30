@@ -1,20 +1,11 @@
 "use client";
-import React, { useState, useMemo } from "react";
 import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import {
-  RiArrowDownFill,
-  RiArrowLeftDoubleFill,
-  RiArrowRightDoubleFill,
-  RiArrowUpFill,
-} from "react-icons/ri";
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   InputField,
@@ -35,7 +26,17 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import {
+  ColumnDef,
+  ColumnSort,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { useMemo, useState } from "react";
 
 type DataType = {
   flight_number: number;
@@ -55,7 +56,7 @@ function BasicTable({
   data: DataType[];
   columns: ColumnDef<DataType>[];
 }) {
-  const [sort, setSort] = useState<any[]>([]);
+  const [sort, setSort] = useState<ColumnSort[]>([]);
   const [filter, setFilter] = useState<string>("");
 
   const table = useReactTable({
@@ -76,7 +77,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <HiOutlineMagnifyingGlass />
+          <MagnifyingGlassIcon height={16} width={16} />
         </Prefix>
         <InputField
           variant="outline"
@@ -101,6 +102,8 @@ function BasicTable({
                       className={classNames(
                         isLastColumn && "text-center",
                         index == 0 ? "w-10" : "w-max",
+                        header.column.getCanSort() == true &&
+                          "cursor-pointer select-none",
                       )}
                     >
                       {header.isPlaceholder ? null : (
@@ -115,9 +118,17 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <RiArrowUpFill />
+                            <ArrowUpIcon
+                              height={12}
+                              width={12}
+                              className="stroke-[3]"
+                            />
                           ) : header.column.getIsSorted() === "desc" ? (
-                            <RiArrowDownFill />
+                            <ArrowDownIcon
+                              height={12}
+                              width={12}
+                              className="stroke-[3]"
+                            />
                           ) : null}
                         </div>
                       )}
@@ -159,7 +170,9 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={<RiArrowLeftDoubleFill />}
+          leftIcon={
+            <ArrowLeftIcon height={12} width={12} className="stroke-[3]" />
+          }
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -167,7 +180,9 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={<RiArrowRightDoubleFill />}
+          rightIcon={
+            <ArrowRightIcon height={12} width={12} className="stroke-[3]" />
+          }
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >

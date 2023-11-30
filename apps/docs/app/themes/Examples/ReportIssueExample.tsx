@@ -1,15 +1,15 @@
 "use client";
-import { useState } from "react";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import {
-  Text,
+  Button,
   CommandItem,
+  FieldControl,
   InputField,
   Label,
+  Text,
   Textarea,
-  Button,
-  FieldControl,
 } from "@rafty/ui";
-import { HiCheck } from "react-icons/hi";
+import { useState } from "react";
 import { Selector } from "./Selector";
 
 const ROLES = ["team", "billing", "account", "deployments", "support"];
@@ -76,7 +76,9 @@ function RoleSelector() {
           <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
-            {selected == role && <HiCheck className="opacity-60" />}
+            {selected == role && (
+              <CheckIcon height={16} width={16} className="opacity-60" />
+            )}
           </div>
         </CommandItem>
       ))}
@@ -99,7 +101,9 @@ function SecurityLevel() {
           <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />
-            {selected == severity && <HiCheck className="opacity-60" />}
+            {selected == severity && (
+              <CheckIcon height={16} width={16} className="opacity-60" />
+            )}
           </div>
         </CommandItem>
       ))}

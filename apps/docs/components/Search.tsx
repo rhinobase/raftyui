@@ -1,23 +1,11 @@
 "use client";
 import {
-  Dispatch,
-  forwardRef,
-  Fragment,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
-import Highlighter from "react-highlight-words";
-import { useRouter } from "next/navigation";
-import {
+  createAutocomplete,
   type AutocompleteApi,
   type AutocompleteCollection,
   type AutocompleteState,
-  createAutocomplete,
 } from "@algolia/autocomplete-core";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
   Button,
   Dialog,
@@ -30,9 +18,21 @@ import {
   Prefix,
   Suffix,
 } from "@rafty/ui";
-import { type Result } from "../markdoc/search.mjs";
+import { useRouter } from "next/navigation";
+import {
+  Dispatch,
+  forwardRef,
+  Fragment,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
+import Highlighter from "react-highlight-words";
 import { navigation } from "../lib/navigation";
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import { type Result } from "../markdoc/search.mjs";
 
 type EmptyObject = Record<string, never>;
 
@@ -261,7 +261,7 @@ const SearchInput = forwardRef<
     <FieldControl name="search">
       <InputGroup>
         <Prefix>
-          <HiMagnifyingGlass />
+          <MagnifyingGlassIcon height={18} width={18} className="stroke-2" />
         </Prefix>
         <InputField
           ref={inputRef}
@@ -393,7 +393,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         onClick={() => setOpen(true)}
         className="hidden w-[300px] !justify-start !gap-2 md:flex"
       >
-        <HiMagnifyingGlass size={16} />
+        <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
         Search docs
         <div className="flex-1" />
         {modifierKey && <Kbd>{modifierKey} K</Kbd>}
@@ -405,7 +405,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         onClick={() => setOpen(true)}
         className="md:hidden"
       >
-        <HiMagnifyingGlass size={20} />
+        <MagnifyingGlassIcon height={16} width={16} />
       </Button>
     </>
   );

@@ -1,23 +1,25 @@
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
   Menu,
-  MenuTrigger,
+  MenuCheckboxItem,
   MenuContent,
   MenuItem,
-  MenuSeparator,
-  MenuCheckboxItem,
   MenuLabel,
   MenuRadioGroup,
   MenuRadioItem,
+  MenuSeparator,
   MenuSub,
   MenuSubContent,
   MenuSubTrigger,
+  MenuTrigger,
 } from "@rafty/ui";
-import { HiOutlineChevronDown } from "react-icons/hi2";
 
 export const menu_examples = {
   "menu:usage": (
     <Menu>
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+        Actions
+      </MenuTrigger>
       <MenuContent>
         <MenuItem>New Tab</MenuItem>
         <MenuItem>New Window</MenuItem>
@@ -27,7 +29,9 @@ export const menu_examples = {
   ),
   "menu:size": (
     <Menu size="sm">
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+        Actions
+      </MenuTrigger>
       <MenuContent>
         <MenuItem>New Tab</MenuItem>
         <MenuItem>New Window</MenuItem>
@@ -48,7 +52,9 @@ export const menu_examples = {
   ),
   "menu:submenu": (
     <Menu>
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+        Actions
+      </MenuTrigger>
       <MenuContent>
         <MenuSub>
           <MenuSubTrigger style={{ justifyContent: "space-between" }}>
@@ -69,7 +75,7 @@ export const menu_examples = {
   ),
   "menu:menu_checkbox_item": (
     <Menu>
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>
+      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
         All Feature
       </MenuTrigger>
       <MenuContent>
@@ -82,7 +88,9 @@ export const menu_examples = {
   ),
   "menu:radio_group": (
     <Menu>
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+        Actions
+      </MenuTrigger>
       <MenuContent>
         <MenuLabel>People</MenuLabel>
         <MenuRadioGroup value="1">
@@ -94,7 +102,9 @@ export const menu_examples = {
   ),
   "menu:isarrow": (
     <Menu>
-      <MenuTrigger rightIcon={<HiOutlineChevronDown />}>Actions</MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+        Actions
+      </MenuTrigger>
       <MenuContent isArrow>
         <MenuItem>New Tab</MenuItem>
         <MenuItem>New Window</MenuItem>
@@ -112,7 +122,7 @@ export const menu_examples = {
       <MenuTrigger
         size="sm"
         className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
-        rightIcon={<HiOutlineChevronDown size={16} />}
+        rightIcon={<ChevronDownIcon height={16} width={16} />}
       >
         Actions
       </MenuTrigger>
@@ -136,7 +146,10 @@ export const menu_examples = {
   ),
   "menu:unstyled": (
     <Menu>
-      <MenuTrigger size="icon" rightIcon={<HiOutlineChevronDown />}>
+      <MenuTrigger
+        size="icon"
+        rightIcon={<ChevronDownIcon height={16} width={16} />}
+      >
         Actions
       </MenuTrigger>
       <MenuContent

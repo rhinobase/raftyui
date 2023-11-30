@@ -1,16 +1,16 @@
 "use client";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Button, classNames } from "@rafty/ui";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { BsDiscord, BsGithub, BsTwitterX } from "react-icons/bs";
 import { Hero } from "../components/Hero";
+import { Layout } from "../components/Layout";
 import { Logo, Logomark } from "../components/Logo";
 import { MobileNavigation } from "../components/MobileNavigation";
 import { SearchButton, SearchDialog } from "../components/Search";
 import { ThemeSelector } from "../components/ThemeSelector";
-import { BsDiscord, BsGithub, BsTwitter } from "react-icons/bs";
-import { Button, classNames } from "@rafty/ui";
-import { HiBars3 } from "react-icons/hi2";
-import { Layout } from "../components/Layout";
 
 const NAVIGATION = [
   {
@@ -26,7 +26,7 @@ const NAVIGATION = [
   {
     name: "Twitter",
     href: "https://twitter.com/rhinobaseio",
-    icon: BsTwitter,
+    icon: BsTwitterX,
   },
 ];
 
@@ -53,7 +53,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
   return (
     <header
       className={classNames(
-        "shadow-secondary-900/5 sticky top-0 z-50 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md transition duration-500 dark:shadow-none sm:px-6 md:gap-6 lg:px-8",
+        "shadow-secondary-900/5 sticky top-0 z-40 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md transition duration-500 dark:shadow-none sm:px-6 md:gap-6 lg:px-8",
         isScrolled
           ? "dark:bg-secondary-950/95 dark:[@supports(backdrop-filter:blur(0))]:bg-secondary-950/75 backdrop-blur"
           : "dark:bg-transparent",
@@ -61,7 +61,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
     >
       <div className="mr-3 md:mr-0 flex lg:hidden">
         <Button size="icon" variant="ghost" onClick={() => setDrawerOpen(true)}>
-          <HiBars3 size={20} />
+          <Bars3Icon height={20} width={20} />
         </Button>
       </div>
       <div className="relative flex flex-grow basis-0 items-center">

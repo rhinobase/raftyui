@@ -19,8 +19,11 @@ Rendering lists that can additively "load more" data onto an existing set of dat
 {% example name="combobox:usage" %}
 
 ```jsx
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useCallback, useReducer, useRef, useState } from "react";
+import {
+  CheckIcon,
+  ChevronUpDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Button,
@@ -33,13 +36,19 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Skeleton,
   Spinner,
   Text,
   classNames,
 } from "@rafty/ui";
-import { HiCheck, HiChevronUpDown, HiXMark } from "react-icons/hi2";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 
-export default function Projects() {
+function Combobox() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [contentwidth, setContentWidth] = useState(0);
 
@@ -104,12 +113,14 @@ export default function Projects() {
               aria-expanded={isOpen}
               className="w-full justify-between"
               rightIcon={
-                <HiChevronUpDown
+                <ChevronUpDownIcon
+                  height={16}
+                  width={16}
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "h-4 w-4 shrink-0 stroke-1",
+                    "shrink-0 stroke-1",
                   )}
                 />
               }
@@ -134,7 +145,7 @@ export default function Projects() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <HiXMark className="h-3.5 w-3.5 stroke-1" />
+                <XMarkIcon height={14} width={14} className="stroke-1" />
               </Button>
             )}
           </div>
@@ -163,7 +174,7 @@ export default function Projects() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <HiCheck className="h-3.5 w-3.5 stroke-1" />
+                              <CheckIcon height={14} width={14} className="stroke-1" />
                             )}
                           </div>
                         </CommandItem>

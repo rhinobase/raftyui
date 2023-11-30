@@ -6,7 +6,7 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
@@ -57,11 +57,6 @@
         "generateExportsField": true,
         "compiler": "babel",
         "assets": [
-          {
-            "glob": "libs/ui/CHANGELOG.md",
-            "input": ".",
-            "output": "."
-          },
           {
             "glob": "README.md",
             "input": ".",
