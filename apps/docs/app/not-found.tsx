@@ -18,7 +18,10 @@ export default function NotFound() {
           </p>
         </div>
         <Link href="/">
-          <Button rightIcon={<ArrowRightIcon height={16} />} variant="ghost">
+          <Button
+            rightIcon={<ArrowRightIcon height={16} width={16} />}
+            variant="ghost"
+          >
             Go back home
           </Button>
         </Link>

@@ -28,11 +28,13 @@ export function Selector({
         className="w-full justify-between capitalize"
         rightIcon={
           <ChevronUpDownIcon
+            height={16}
+            width={16}
             className={classNames(
               isOpen
                 ? "text-primary-500"
                 : "text-secondary-500 dark:text-secondary-400",
-              "h-4 w-4 shrink-0 stroke-1",
+              "shrink-0 stroke-1",
             )}
           />
         }

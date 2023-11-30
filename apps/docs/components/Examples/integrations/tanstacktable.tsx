@@ -77,7 +77,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <MagnifyingGlassIcon width={16} />
+          <MagnifyingGlassIcon height={16} width={16} />
         </Prefix>
         <InputField
           variant="outline"
@@ -116,9 +116,9 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <ArrowUpIcon height={12} />
+                            <ArrowUpIcon height={12} width={16} />
                           ) : header.column.getIsSorted() === "desc" ? (
-                            <ArrowDownIcon height={12} />
+                            <ArrowDownIcon height={12} width={16} />
                           ) : null}
                         </div>
                       )}
@@ -160,7 +160,7 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={<ArrowLeftIcon width={10} />}
+          leftIcon={<ArrowLeftIcon height={16} width={16} />}
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -168,7 +168,7 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={<ArrowRightIcon width={10} />}
+          rightIcon={<ArrowRightIcon height={16} width={16} />}
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >

@@ -41,9 +41,13 @@ export function Fence({
               aria-label="Copy"
             >
               {isCopied ? (
-                <CheckIcon className="text-green-300 h-4" />
+                <CheckIcon height={16} width={16} className="text-green-300" />
               ) : (
-                <DocumentDuplicateIcon className="text-slate-200 h-4" />
+                <DocumentDuplicateIcon
+                  height={16}
+                  width={16}
+                  className="text-slate-200"
+                />
               )}
             </Button>
             <code>

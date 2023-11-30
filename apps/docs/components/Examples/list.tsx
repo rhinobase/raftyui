@@ -32,20 +32,20 @@ export const list_examples = {
         isUnstyled
         className="flex items-center gap-2 text-xl font-bold "
       >
-        <CheckCircleIcon height={18} />
+        <CheckCircleIcon height={16} width={16} />
         Lorem ipsum dolor sit amet, consectetur adipisicing elit
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon height={18} />
+        <CheckCircleIcon height={16} width={16} />
         Assumenda, quia temporibus eveniet a libero incidunt suscipit
       </ListItem>
 
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon height={18} />
+        <CheckCircleIcon height={16} width={16} />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon height={18} />
+        <CheckCircleIcon height={16} width={16} />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
     </List>
