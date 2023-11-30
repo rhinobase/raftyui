@@ -70,7 +70,7 @@ function EditOnGithub({ pathname }: { pathname: string }) {
   // Link to .md file
   const href = [
     "https://github.com/rhinobase/raftyui/blob/main/apps/docs/app",
-    pathname,
+    pathname == "/" ? "" : pathname,
     "/page.md",
   ].join("");
 
