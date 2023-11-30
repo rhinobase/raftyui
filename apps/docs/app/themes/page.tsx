@@ -1,5 +1,6 @@
 "use client";
 import { Card, CardContent, Calendar, Skeleton } from "@rafty/ui";
+import { useWindowSize } from "@uidotdev/usehooks";
 import dynamic from "next/dynamic";
 
 const TotalRevenueExample = dynamic(
@@ -78,6 +79,8 @@ const TableExample = dynamic(
 );
 
 export default function ThemeComponents() {
+  const { width } = useWindowSize();
+
   return (
     <div className="md:grids-col-2 mt-10 grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4 ">
       <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
@@ -165,7 +168,7 @@ export default function ThemeComponents() {
         <div className="hidden md:block">
           <Card>
             <CardContent>
-              <TableExample />
+              {width && width >= 768 && <TableExample />}
             </CardContent>
           </Card>
         </div>
