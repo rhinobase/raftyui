@@ -33,7 +33,6 @@ export function Hero() {
               src={blurCyanImage}
               alt="Blurred Cyan Circle"
               priority
-              unoptimized
             />
             <div className="relative">
               <p className="via-primary-400 font-display inline bg-gradient-to-r from-indigo-200 to-indigo-200 bg-clip-text text-5xl tracking-tight text-transparent">
@@ -78,14 +77,12 @@ export function Hero() {
               src={blurCyanImage}
               alt="Blurred Cyan Circle"
               priority
-              unoptimized
             />
             <Image
               className="absolute -bottom-40 -right-44 w-[567px] h-[567px]"
               src={blurIndigoImage}
               alt="Blurred Indigo Circle"
               priority
-              unoptimized
             />
             <div className="hidden md:block w-[700px] h-[680px] relative">
               {width && width >= 768 && <HeroCard />}

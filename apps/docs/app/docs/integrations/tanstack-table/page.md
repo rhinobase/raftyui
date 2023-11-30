@@ -186,9 +186,9 @@ function BasicTable({
                           )}
                           {header.column.getIsSorted() === "asc" ? (
                             <ArrowUpIcon height={12} width={12} />
-                          ) : header.column.getIsSorted() === "desc" ? (
+                          ) : header.column.getIsSorted() === "desc" && (
                             <ArrowDownIcon height={12} width={12} />
-                          ) : null}
+                          )}
                         </div>
                       )}
                     </Th>

@@ -123,13 +123,15 @@ function BasicTable({
                               width={12}
                               className="stroke-[3]"
                             />
-                          ) : header.column.getIsSorted() === "desc" ? (
-                            <ArrowDownIcon
-                              height={12}
-                              width={12}
-                              className="stroke-[3]"
-                            />
-                          ) : null}
+                          ) : (
+                            header.column.getIsSorted() === "desc" && (
+                              <ArrowDownIcon
+                                height={12}
+                                width={12}
+                                className="stroke-[3]"
+                              />
+                            )
+                          )}
                         </div>
                       )}
                     </Th>

@@ -8,19 +8,20 @@ import {
   ArrowRightIcon,
   PencilIcon,
 } from "@heroicons/react/24/outline";
+import { HTMLAttributes } from "react";
 
 function PageLink({
   title,
   href,
   dir = "next",
   ...props
-}: Omit<React.ComponentPropsWithoutRef<"div">, "dir" | "title"> & {
+}: Omit<HTMLAttributes<HTMLDListElement>, "title" | "dir"> & {
   title: string;
   href: string;
   dir?: "next" | "previous";
 }) {
   return (
-    <div {...props}>
+    <dl {...props}>
       <dt className="font-display text-secondary-900 text-sm font-medium dark:text-white">
         {dir === "next" ? "Next" : "Previous"}
       </dt>
@@ -40,7 +41,7 @@ function PageLink({
           )}
         </Link>
       </dd>
-    </div>
+    </dl>
   );
 }
 
@@ -56,13 +57,13 @@ export function PrevNextLinks() {
   }
 
   return (
-    <dl className="border-secondary-200 dark:border-secondary-800 mt-12 flex flex-col border-t">
+    <div className="border-secondary-200 dark:border-secondary-800 mt-12 flex flex-col border-t">
       <EditOnGithub pathname={pathname} />
       <div className="flex mt-6">
         {previousPage && <PageLink dir="previous" {...previousPage} />}
         {nextPage && <PageLink className="ml-auto text-right" {...nextPage} />}
       </div>
-    </dl>
+    </div>
   );
 }
 
