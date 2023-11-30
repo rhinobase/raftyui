@@ -103,11 +103,13 @@ function Combobox() {
               className="w-full justify-between"
               rightIcon={
                 <ChevronUpDownIcon
+                  height={16}
+                  width={16}
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "h-4 w-4 shrink-0 stroke-1",
+                    "shrink-0 stroke-1",
                   )}
                 />
               }
@@ -132,7 +134,7 @@ function Combobox() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <XMarkIcon className="h-3.5 w-3.5 stroke-1" />
+                <XMarkIcon height={14} width={14} className="stroke-1" />
               </Button>
             )}
           </div>
@@ -161,7 +163,11 @@ function Combobox() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <CheckIcon className="h-3.5 w-3.5 stroke-1" />
+                              <CheckIcon
+                                height={14}
+                                width={14}
+                                className="stroke-1"
+                              />
                             )}
                           </div>
                         </CommandItem>

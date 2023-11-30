@@ -105,7 +105,7 @@ function MemberRoleMenu({ label }: { label: string }) {
         role="combobox"
         aria-expanded={isOpen}
         className="justify-between capitalize"
-        rightIcon={<ChevronDownIcon height={15} />}
+        rightIcon={<ChevronDownIcon height={15} width={15} />}
         aria-label={label}
       >
         {selected?.title}
@@ -131,7 +131,11 @@ function MemberRoleMenu({ label }: { label: string }) {
                     </div>
                     <div className="flex-1" />
                     {selected.id == id && (
-                      <CheckIcon className="opacity-60 h-4" />
+                      <CheckIcon
+                        height={16}
+                        width={16}
+                        className="opacity-60"
+                      />
                     )}
                   </CommandItem>
                 );

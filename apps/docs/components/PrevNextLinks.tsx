@@ -30,9 +30,9 @@ function PageLink({
         >
           {title}
           {dir === "next" ? (
-            <ArrowRightIcon height={15} />
+            <ArrowRightIcon height={15} width={15} />
           ) : (
-            <ArrowLeftIcon height={15} />
+            <ArrowLeftIcon height={15} width={15} />
           )}
         </Link>
       </dd>

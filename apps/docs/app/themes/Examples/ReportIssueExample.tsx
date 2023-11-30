@@ -76,7 +76,9 @@ function RoleSelector() {
           <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
-            {selected == role && <CheckIcon className="opacity-60 h-4" />}
+            {selected == role && (
+              <CheckIcon height={16} width={16} className="opacity-60" />
+            )}
           </div>
         </CommandItem>
       ))}
@@ -99,7 +101,9 @@ function SecurityLevel() {
           <div className="flex w-full items-center gap-2">
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />
-            {selected == severity && <CheckIcon className="opacity-60 h-4" />}
+            {selected == severity && (
+              <CheckIcon height={16} width={16} className="opacity-60" />
+            )}
           </div>
         </CommandItem>
       ))}

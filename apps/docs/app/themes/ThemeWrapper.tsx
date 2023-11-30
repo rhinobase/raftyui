@@ -80,7 +80,11 @@ export default function ThemeBuilderWrapper({
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                 >
                   {color == c && (
-                    <CheckIcon className="stroke-1 font-bold text-white h-4" />
+                    <CheckIcon
+                      height={16}
+                      width={16}
+                      className="stroke-1 text-white"
+                    />
                   )}
                 </Button>
               </TooltipTrigger>
@@ -127,14 +131,14 @@ function CustomizeMenu({
         <div>
           <Button
             variant="outline"
-            leftIcon={<PaintBrushIcon height={19} />}
+            leftIcon={<PaintBrushIcon height={19} width={19} />}
             className="hidden md:flex"
             aria-label="Select Theme Color"
           >
             Customize
           </Button>
           <Button variant="outline" size="icon" className="md:hidden">
-            <PaintBrushIcon height={19} />
+            <PaintBrushIcon height={19} width={19} />
           </Button>
         </div>
       </PopoverTrigger>
@@ -172,7 +176,7 @@ function CustomizeMenu({
               <Button
                 variant="outline"
                 size="sm"
-                leftIcon={<SunIcon height={15} />}
+                leftIcon={<SunIcon height={15} width={15} />}
                 isActive={theme == themes[0]}
                 onClick={() => setTheme("light")}
               >
@@ -181,7 +185,7 @@ function CustomizeMenu({
               <Button
                 variant="outline"
                 size="sm"
-                leftIcon={<MoonIcon height={15} />}
+                leftIcon={<MoonIcon height={15} width={15} />}
                 isActive={theme == themes[1]}
                 onClick={() => setTheme("dark")}
               >
@@ -191,7 +195,7 @@ function CustomizeMenu({
           </div>
         </div>
         <PopoverClose className="absolute right-2 top-2 p-1">
-          <XMarkIcon className="opacity-60 h-4" />
+          <XMarkIcon height={16} width={16} className="opacity-60" />
         </PopoverClose>
       </PopoverContent>
     </Popover>
@@ -205,7 +209,7 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
         Copy code
       </DialogTrigger>
       <DialogTrigger variant="outline" size="icon" className="md:hidden">
-        <DocumentDuplicateIcon height={19} />
+        <DocumentDuplicateIcon height={19} width={19} />
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent className="!p-5">

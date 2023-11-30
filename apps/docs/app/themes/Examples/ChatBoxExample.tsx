@@ -1,5 +1,9 @@
 "use client";
-import { CheckIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  CheckIcon,
+  PlusIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   AvatarGroup,
@@ -128,16 +132,7 @@ export function ChatBoxExample({ onClick }: { onClick?: () => void }) {
           className="!p-2"
           onClick={dispatch}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-send rotate-45 stroke-1"
-            viewBox="0 0 16 16"
-          >
-            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
-          </svg>
+          <PaperAirplaneIcon height={18} width={18} />
         </Button>
       </div>
     </div>
@@ -164,7 +159,7 @@ function NewMessageDialog({ onClick }: { onClick?: () => void }) {
             className="!p-2"
             aria-label="add people"
           >
-            <PlusIcon height={16} />
+            <PlusIcon height={16} width={16} />
           </DialogTrigger>
         </TooltipTrigger>
         <TooltipContent>New message</TooltipContent>
@@ -203,7 +198,11 @@ function NewMessageDialog({ onClick }: { onClick?: () => void }) {
                     </div>
                     <div className="flex-1" />
                     {selected.includes(user.id) && (
-                      <CheckIcon className="opacity-60 h-4" />
+                      <CheckIcon
+                        height={16}
+                        width={16}
+                        className="opacity-60"
+                      />
                     )}
                   </div>
                 </CommandItem>

@@ -109,7 +109,11 @@ export function TableExample() {
       <div className="flex justify-between">
         <InputGroup>
           <Prefix>
-            <MagnifyingGlassIcon className="text-secondary-400 stroke-2 h-4" />
+            <MagnifyingGlassIcon
+              height={16}
+              width={16}
+              className="text-secondary-400 stroke-2"
+            />
           </Prefix>
           <InputField
             type="search"
@@ -133,7 +137,10 @@ const ColumnsSelectMenu = ({
   toggle: Dispatch<keyof Header>;
 }) => (
   <Menu>
-    <MenuTrigger variant="outline" rightIcon={<ChevronDownIcon height={15} />}>
+    <MenuTrigger
+      variant="outline"
+      rightIcon={<ChevronDownIcon height={15} width={15} />}
+    >
       Columns
     </MenuTrigger>
     <MenuContent className="!min-w-[10rem]" align="end">
@@ -216,7 +223,11 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                 <Td>
                   <Menu size="sm">
                     <MenuTrigger variant="ghost" size="icon">
-                      <EllipsisHorizontalIcon className="text-secondary-700 dark:text-secondary-200 w-4" />
+                      <EllipsisHorizontalIcon
+                        height={16}
+                        width={16}
+                        className="text-secondary-700 dark:text-secondary-200"
+                      />
                     </MenuTrigger>
                     <MenuContent className="!z-50 !min-w-[9rem]">
                       <MenuLabel className="leading-4">Actions</MenuLabel>
@@ -238,10 +249,18 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         </Text>
         <div className="flex gap-2">
           <Button variant="outline" size="icon" isDisabled>
-            <ChevronLeftIcon className="text-secondary-700 dark:text-secondary-200 h-4" />
+            <ChevronLeftIcon
+              height={16}
+              width={16}
+              className="text-secondary-700 dark:text-secondary-200"
+            />
           </Button>
           <Button variant="outline" size="icon" isDisabled>
-            <ChevronRightIcon className="text-secondary-700 dark:text-secondary-200 h-4" />
+            <ChevronRightIcon
+              height={16}
+              width={16}
+              className="text-secondary-700 dark:text-secondary-200"
+            />
           </Button>
         </div>
       </div>

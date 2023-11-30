@@ -14,10 +14,10 @@ export const button_examples = {
       <Button size="md">Button</Button>
       <Button size="lg">Button</Button>
       <Button size="fab">
-        <ArchiveBoxIcon height={18} />
+        <ArchiveBoxIcon height={18} width={18} />
       </Button>
       <Button size="icon">
-        <BackspaceIcon height={18} />
+        <BackspaceIcon height={18} width={18} />
       </Button>
     </div>
   ),
@@ -39,14 +39,14 @@ export const button_examples = {
   "button:icons": (
     <div className="flex items-center gap-4">
       <Button
-        leftIcon={<PhoneIcon height={18} />}
+        leftIcon={<PhoneIcon height={18} width={18} />}
         colorScheme="primary"
         variant="solid"
       >
         Button
       </Button>
       <Button
-        rightIcon={<PaperAirplaneIcon height={18} />}
+        rightIcon={<PaperAirplaneIcon height={18} width={18} />}
         colorScheme="primary"
         variant="solid"
       >
