@@ -58,11 +58,6 @@
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/ui/CHANGELOG.md",
-            "input": ".",
-            "output": "."
-          },
-          {
             "glob": "README.md",
             "input": ".",
             "output": "."

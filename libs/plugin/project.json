@@ -11,7 +11,13 @@
         "outputPath": "dist/libs/plugin",
         "main": "libs/plugin/src/index.ts",
         "tsConfig": "libs/plugin/tsconfig.lib.json",
-        "assets": ["libs/plugin/*.md"]
+        "assets": [
+          {
+            "glob": "libs/plugin/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     },
     "publish": {
