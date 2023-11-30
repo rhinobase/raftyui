@@ -24,7 +24,7 @@ import {
   TooltipTrigger,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import { Fence } from "../../components/Fence";
 
 const COLOR_THEME = {
@@ -41,7 +41,7 @@ const COLOR_THEME = {
   fuchsia: "!bg-fuchsia-500",
   pink: "!bg-pink-500",
   rose: "!bg-rose-500",
-};
+} as const;
 
 const defaults: (keyof typeof COLOR_THEME)[] = [
   "purple",
@@ -51,11 +51,7 @@ const defaults: (keyof typeof COLOR_THEME)[] = [
   "gray",
 ];
 
-export default function ThemeBuilderWrapper({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
   const [color, changeColor] = useState<keyof typeof COLOR_THEME>("purple");
 
   return (
@@ -65,9 +61,9 @@ export default function ThemeBuilderWrapper({
       <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
           <h1 className="text-3xl font-bold md:text-3xl">Make it yours.</h1>
-          <h4 className="text-secondary-400 text-sm lg:text-lg">
+          <h2 className="text-secondary-400 text-sm lg:text-lg">
             Hand-picked themes that you can copy and paste into your apps.
-          </h4>
+          </h2>
         </div>
         <div className="flex items-center gap-1.5 py-2 md:gap-3">
           {defaults.map((c) => (
@@ -78,6 +74,7 @@ export default function ThemeBuilderWrapper({
                   size="fab"
                   className={`${COLOR_THEME[c]} min-h-[26px] min-w-[26px] !p-1`}
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
+                  name={`${c} button`}
                 >
                   {color == c && (
                     <CheckIcon
