@@ -2,15 +2,15 @@
   "scopes": [
     {
       "value": "web",
-      "name": "web:        anything Website specific"
+      "name": "web:                 anything Website specific"
     },
     {
       "value": "ui",
-      "name": "ui:         anything UI specific"
+      "name": "ui:                  anything UI specific"
     },
     {
       "value": "plugin",
-      "name": "plugin:            anything Plugin specific"
+      "name": "plugin:              anything Plugin specific"
     },
     {
       "value": "stroybook",
