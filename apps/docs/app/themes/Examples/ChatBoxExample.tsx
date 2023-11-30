@@ -57,7 +57,9 @@ const USERS_DATA = [
   },
 ];
 
-export function ChatBoxExample({ onClick }: { onClick?: () => void }) {
+type ChatBoxExample = NewMessageDialog;
+
+export function ChatBoxExample({ onClick }: ChatBoxExample) {
   const ref = useRef<HTMLInputElement | null>(null);
 
   const [messages, dispatch] = useReducer((prev: string[]) => {
@@ -139,7 +141,11 @@ export function ChatBoxExample({ onClick }: { onClick?: () => void }) {
   );
 }
 
-function NewMessageDialog({ onClick }: { onClick?: () => void }) {
+type NewMessageDialog = {
+  onClick?: () => void;
+};
+
+function NewMessageDialog({ onClick }: NewMessageDialog) {
   const [selected, dispatch] = useReducer((prev: number[], cur: number) => {
     const index = prev.findIndex((num) => num === cur);
 

@@ -132,7 +132,9 @@ function ExpireMonthSelect() {
         <CommandItem key={month} value={month} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
-              {selected == month && <CheckIcon className="opacity-60 h-4" />}
+              {selected == month && (
+                <CheckIcon width={16} height={16} className="opacity-60" />
+              )}
             </div>
             <Text className="capitalize">{month}</Text>
             <div className="flex-1" />
@@ -152,7 +154,9 @@ function ExpireYearSelect() {
         <CommandItem key={year} value={year} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
-              {selected == year && <CheckIcon className="opacity-60 h-4" />}
+              {selected == year && (
+                <CheckIcon width={16} height={16} className="opacity-60" />
+              )}
             </div>
             <Text>{year}</Text>
             <div className="flex-1" />

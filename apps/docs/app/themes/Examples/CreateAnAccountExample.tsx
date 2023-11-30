@@ -21,10 +21,18 @@ export function CreateAnAccountExample() {
       </div>
       <form className="space-y-3">
         <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
-          <Button variant="outline" leftIcon={<BsGithub />} className="!w-full">
+          <Button
+            variant="outline"
+            leftIcon={<BsGithub size={18} />}
+            className="!w-full"
+          >
             Github
           </Button>
-          <Button variant="outline" leftIcon={<BsGoogle />} className="!w-full">
+          <Button
+            variant="outline"
+            leftIcon={<BsGoogle size={18} />}
+            className="!w-full"
+          >
             Google
           </Button>
         </div>

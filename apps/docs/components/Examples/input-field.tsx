@@ -45,7 +45,7 @@ export const input_examples = {
   "input-field:left_addon": (
     <InputGroup>
       <LeftAddon>
-        <PhoneIcon height={20} width={20} />
+        <PhoneIcon height={16} width={16} />
       </LeftAddon>
       <InputField type="tel" placeholder="Phone number" />
     </InputGroup>
@@ -54,14 +54,14 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <RightAddon>
-        <MagnifyingGlassIcon height={20} width={20} />
+        <MagnifyingGlassIcon height={16} width={16} />
       </RightAddon>
     </InputGroup>
   ),
   "input-field:prefix": (
     <InputGroup>
       <Prefix>
-        <PhoneIcon height={20} width={20} />
+        <PhoneIcon height={16} width={16} />
       </Prefix>
       <InputField />
     </InputGroup>

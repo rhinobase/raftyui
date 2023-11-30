@@ -116,9 +116,9 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <ArrowUpIcon height={12} width={16} />
+                            <ArrowUpIcon height={12} width={12} />
                           ) : header.column.getIsSorted() === "desc" ? (
-                            <ArrowDownIcon height={12} width={16} />
+                            <ArrowDownIcon height={12} width={12} />
                           ) : null}
                         </div>
                       )}
@@ -160,7 +160,7 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={<ArrowLeftIcon height={16} width={16} />}
+          leftIcon={<ArrowLeftIcon height={12} width={12} />}
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -168,7 +168,7 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={<ArrowRightIcon height={16} width={16} />}
+          rightIcon={<ArrowRightIcon height={12} width={12} />}
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >

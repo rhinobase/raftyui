@@ -139,7 +139,7 @@ const ColumnsSelectMenu = ({
   <Menu>
     <MenuTrigger
       variant="outline"
-      rightIcon={<ChevronDownIcon height={15} width={15} />}
+      rightIcon={<ChevronDownIcon height={16} width={16} />}
     >
       Columns
     </MenuTrigger>

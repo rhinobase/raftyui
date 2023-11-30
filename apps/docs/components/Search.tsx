@@ -261,7 +261,7 @@ const SearchInput = forwardRef<
     <FieldControl name="search">
       <InputGroup>
         <Prefix>
-          <MagnifyingGlassIcon height={20} width={20} />
+          <MagnifyingGlassIcon height={16} width={16} />
         </Prefix>
         <InputField
           ref={inputRef}
@@ -405,7 +405,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         onClick={() => setOpen(true)}
         className="md:hidden"
       >
-        <MagnifyingGlassIcon height={20} width={20} />
+        <MagnifyingGlassIcon height={16} width={16} />
       </Button>
     </>
   );
