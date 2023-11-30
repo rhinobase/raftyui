@@ -261,7 +261,7 @@ const SearchInput = forwardRef<
     <FieldControl name="search">
       <InputGroup>
         <Prefix>
-          <MagnifyingGlassIcon height={16} width={16} />
+          <MagnifyingGlassIcon height={18} width={18} className="stroke-2" />
         </Prefix>
         <InputField
           ref={inputRef}
@@ -393,7 +393,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         onClick={() => setOpen(true)}
         className="hidden w-[300px] !justify-start !gap-2 md:flex"
       >
-        <MagnifyingGlassIcon height={20} width={20} />
+        <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
         Search docs
         <div className="flex-1" />
         {modifierKey && <Kbd>{modifierKey} K</Kbd>}

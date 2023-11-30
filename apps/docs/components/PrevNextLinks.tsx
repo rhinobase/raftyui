@@ -28,15 +28,15 @@ function PageLink({
         <Link
           href={href}
           className={classNames(
-            "text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300 flex items-center gap-x-1 text-base font-semibold",
+            "text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300 flex items-center gap-1.5 text-base font-semibold",
             dir === "previous" && "flex-row-reverse",
           )}
         >
           {title}
           {dir === "next" ? (
-            <ArrowRightIcon height={15} width={15} />
+            <ArrowRightIcon height={15} width={15} className="stroke-[3]" />
           ) : (
-            <ArrowLeftIcon height={15} width={15} />
+            <ArrowLeftIcon height={15} width={15} className="stroke-[3]" />
           )}
         </Link>
       </dd>
