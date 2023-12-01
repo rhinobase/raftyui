@@ -5,9 +5,9 @@ import cookies from "js-cookie";
 import { useState } from "react";
 
 type CookieConsent = {
-  // undefined - User hasn't choosen anything
-  // 1 - User has accepted
-  // 0 - User has denied
+  // undefined - The user hasn't chosen anything
+  // 1 - The user has accepted
+  // 0 - The user has denied
   defaultValue?: string;
   cookieKey: string;
 };
@@ -18,7 +18,7 @@ export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
   function handleGivenConsent(accept: boolean) {
     const token = String(Number(accept));
     return () => {
-      cookies.set(cookieKey, token);
+      cookies.set(cookieKey, token, { expires: 15 });
       setConsent(token);
     };
   }
