@@ -10,7 +10,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { BsDiscord, BsGithub, BsTwitterX } from "react-icons/bs";
+import { BsDiscord, BsGithub, BsTwitter } from "react-icons/bs";
 import { Hero } from "../components/Hero";
 import { Layout } from "../components/Layout";
 import { Logo, Logomark } from "../components/Logo";
@@ -32,7 +32,7 @@ const NAVIGATION = [
   {
     name: "Twitter",
     href: "https://twitter.com/rhinobaseio",
-    icon: BsTwitterX,
+    icon: BsTwitter,
   },
 ];
 
