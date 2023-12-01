@@ -1,7 +1,8 @@
 "use client";
 import { ThemeProvider } from "next-themes";
+import { PropsWithChildren } from "react";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: PropsWithChildren) {
   return (
     <ThemeProvider
       attribute="class"

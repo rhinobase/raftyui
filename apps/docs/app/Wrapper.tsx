@@ -3,7 +3,13 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import { Button, classNames } from "@rafty/ui";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { BsDiscord, BsGithub, BsTwitterX } from "react-icons/bs";
 import { Hero } from "../components/Hero";
 import { Layout } from "../components/Layout";
@@ -59,7 +65,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
           : "dark:bg-transparent",
       )}
     >
-      <div className="mr-3 md:mr-0 flex lg:hidden">
+      <div className="mr-3 flex md:mr-0 lg:hidden">
         <Button
           size="icon"
           variant="ghost"
@@ -98,9 +104,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
   );
 }
 
-type Wrapper = { children: React.ReactNode };
-
-export function Wrapper({ children }: Wrapper) {
+export function Wrapper({ children }: PropsWithChildren) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const isHomePage = pathname === "/";

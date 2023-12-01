@@ -1,8 +1,7 @@
+import { PropsWithChildren } from "react";
 import { Navigation } from "../components/Navigation";
 
-type Layout = { children: React.ReactNode };
-
-export function Layout({ children }: Layout) {
+export function Layout({ children }: PropsWithChildren) {
   return (
     <>
       <div className="hidden lg:relative lg:block lg:flex-none">

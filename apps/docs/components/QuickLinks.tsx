@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Icon } from "../components/Icon";
+import { PropsWithChildren } from "react";
 
-export function QuickLinks({ children }: { children: React.ReactNode }) {
+export function QuickLinks({ children }: PropsWithChildren) {
   return (
     <div className="not-prose my-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
       {children}
