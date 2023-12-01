@@ -4,9 +4,10 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
 import "../styles/globals.css";
-import { CookieConcent } from "./CookieConcent";
+import { CookieConsent } from "./CookieConsent";
 import { Wrapper } from "./Wrapper";
 import { Providers } from "./providers";
+import { cookies } from "next/headers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,7 +78,14 @@ export const metadata: Metadata = {
   },
 };
 
+// Cookie name for analytics consent
+const CONSENT_COOKIE_NAME = "rccn";
+
 export default function RootLayout({ children }: PropsWithChildren) {
+  // Checking if we already have a cookie
+  const cookieStore = cookies();
+  const isConsentGiven = cookieStore.get(CONSENT_COOKIE_NAME);
+
   return (
     <html
       lang="en"
@@ -91,11 +99,14 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <meta name="theme-color" content="#09090b" />
       </head>
-      <body className="dark:bg-secondary-950 flex min-h-full bg-white selection:bg-[#79ffe1] selection:text-secondary-700 dark:selection:bg-[#f81ce5] dark:selection:text-white">
+      <body className="dark:bg-secondary-950 selection:text-secondary-700 flex min-h-full bg-white selection:bg-[#79ffe1] dark:selection:bg-[#f81ce5] dark:selection:text-white">
         <Providers>
           <Wrapper>{children}</Wrapper>
         </Providers>
-        <CookieConcent />
+        <CookieConsent
+          defaultValue={isConsentGiven?.value}
+          cookieKey={CONSENT_COOKIE_NAME}
+        />
       </body>
     </html>
   );

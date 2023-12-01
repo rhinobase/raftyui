@@ -56,7 +56,7 @@ export function Hero() {
                   </a>
                 </div>
               </div>
-              <div className="mt-4">
+              <div className="mt-4 flex md:justify-center lg:justify-start">
                 <a
                   href="https://www.producthunt.com/products/rafty-ui?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-rafty&#0045;ui"
                   target="_blank"
