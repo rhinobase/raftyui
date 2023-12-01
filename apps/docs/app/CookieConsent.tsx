@@ -18,7 +18,7 @@ export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
   function handleGivenConsent(accept: boolean) {
     const token = String(Number(accept));
     return () => {
-      cookies.set(cookieKey, token, { expires: 15 });
+      cookies.set(cookieKey, token, !accept ? { expires: 15 } : undefined);
       setConsent(token);
     };
   }
