@@ -4,28 +4,28 @@ import Script from "next/script";
 import cookies from "js-cookie";
 import { useState } from "react";
 
-type CookieConcent = {
+type CookieConsent = {
   defaultValue?: string; // "1" | "0" | undefined
   cookieKey: string;
 };
 
-export function CookieConcent({ defaultValue, cookieKey }: CookieConcent) {
-  const [isConcentGiven, setConcent] = useState(defaultValue);
+export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
+  const [isConsentGiven, setConsent] = useState(defaultValue);
 
-  console.log(isConcentGiven, defaultValue);
+  console.log(isConsentGiven, defaultValue);
 
-  function handleGivenConcent(accept = true) {
+  function handleGivenConsent(accept = true) {
     const token = String(Number(accept));
     return () => {
       cookies.set(cookieKey, token);
-      setConcent(token);
+      setConsent(token);
     };
   }
 
   // Adding google analytics
-  if (isConcentGiven == "1") return <GoogleAnalytics />;
+  if (isConsentGiven == "1") return <GoogleAnalytics />;
   // Asking permission
-  else if (isConcentGiven == undefined)
+  else if (isConsentGiven == undefined)
     return (
       <div className="dark:bg-secondary-900 fixed bottom-0 z-50 w-full bg-white shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none">
         <div className="mx-auto flex max-w-4xl flex-col justify-between gap-4 px-3 py-3 md:flex-row md:items-center md:px-0 md:py-4">
@@ -37,11 +37,11 @@ export function CookieConcent({ defaultValue, cookieKey }: CookieConcent) {
             <Button
               colorScheme="primary"
               size="sm"
-              onClick={handleGivenConcent()}
+              onClick={handleGivenConsent()}
             >
               Accept
             </Button>
-            <Button size="sm" onClick={handleGivenConcent(false)}>
+            <Button size="sm" onClick={handleGivenConsent(false)}>
               Opt out
             </Button>
           </div>

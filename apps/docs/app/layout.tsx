@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
 import "../styles/globals.css";
-import { CookieConcent } from "./CookieConcent";
+import { CookieConsent } from "./CookieConsent";
 import { Wrapper } from "./Wrapper";
 import { Providers } from "./providers";
 import { cookies } from "next/headers";
@@ -103,7 +103,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Providers>
           <Wrapper>{children}</Wrapper>
         </Providers>
-        <CookieConcent
+        <CookieConsent
           defaultValue={isConcentGiven?.value}
           cookieKey={CONCENT_COOKIE_NAME}
         />
