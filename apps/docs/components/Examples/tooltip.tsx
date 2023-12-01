@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { HiOutlinePlus } from "react-icons/hi2";
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from "@rafty/ui";
 
 export const tooltip_examples = {
@@ -6,7 +6,7 @@ export const tooltip_examples = {
     <Tooltip>
       <TooltipTrigger asChild>
         <Button size="fab">
-          <PlusIcon className="h-6 w-6" />
+          <HiOutlinePlus size={24} className="stroke-2" />
         </Button>
       </TooltipTrigger>
       <TooltipContent side="top">Hover Me!</TooltipContent>

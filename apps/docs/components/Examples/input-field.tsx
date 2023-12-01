@@ -1,8 +1,8 @@
 import {
-  CheckIcon,
-  MagnifyingGlassIcon,
-  PhoneIcon,
-} from "@heroicons/react/24/outline";
+  HiOutlineCheck,
+  HiOutlineMagnifyingGlass,
+  HiOutlinePhone,
+} from "react-icons/hi2";
 import {
   InputField,
   InputGroup,
@@ -33,7 +33,7 @@ export const input_examples = {
   "input-field:unstyled": (
     <InputField
       isUnstyled
-      className="w-full rounded-md border border-secondary-300 bg-transparent p-1 transition-colors duration-300 hover:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-secondary-600 dark:hover:border-cyan-500"
+      className="border-secondary-300 dark:border-secondary-600 w-full rounded-md border bg-transparent p-1 transition-colors duration-300 hover:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:hover:border-cyan-500"
     />
   ),
   "input-field:loading": <InputField isLoading />,
@@ -45,7 +45,7 @@ export const input_examples = {
   "input-field:left_addon": (
     <InputGroup>
       <LeftAddon>
-        <PhoneIcon height={16} width={16} />
+        <HiOutlinePhone className="stroke-2" />
       </LeftAddon>
       <InputField type="tel" placeholder="Phone number" />
     </InputGroup>
@@ -54,14 +54,14 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <RightAddon>
-        <MagnifyingGlassIcon height={16} width={16} />
+        <HiOutlineMagnifyingGlass className="stroke-2" />
       </RightAddon>
     </InputGroup>
   ),
   "input-field:prefix": (
     <InputGroup>
       <Prefix>
-        <PhoneIcon height={16} width={16} />
+        <HiOutlinePhone className="stroke-2" />
       </Prefix>
       <InputField />
     </InputGroup>
@@ -70,7 +70,7 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <Suffix>
-        <CheckIcon height={16} width={16} className="stroke-1 text-green-500" />
+        <HiOutlineCheck className="stroke-2 text-green-500" />
       </Suffix>
     </InputGroup>
   ),

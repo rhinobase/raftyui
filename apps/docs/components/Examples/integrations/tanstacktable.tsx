@@ -1,11 +1,11 @@
 "use client";
 import {
-  ArrowDownIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ArrowUpIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+  HiOutlineArrowDown,
+  HiOutlineArrowLeft,
+  HiOutlineArrowRight,
+  HiOutlineArrowUp,
+  HiOutlineMagnifyingGlass,
+} from "react-icons/hi2";
 import {
   Button,
   InputField,
@@ -77,7 +77,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <MagnifyingGlassIcon height={16} width={16} />
+          <HiOutlineMagnifyingGlass />
         </Prefix>
         <InputField
           variant="outline"
@@ -88,7 +88,7 @@ function BasicTable({
         />
       </InputGroup>
       <TableContainer>
-        <Table variant="striped" size="sm" className="table-fixed w-full">
+        <Table variant="striped" size="sm" className="w-full table-fixed">
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
               <Tr key={headerGroup.id}>
@@ -118,16 +118,14 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <ArrowUpIcon
-                              height={12}
-                              width={12}
+                            <HiOutlineArrowUp
+                              size={12}
                               className="stroke-[3]"
                             />
                           ) : (
                             header.column.getIsSorted() === "desc" && (
-                              <ArrowDownIcon
-                                height={12}
-                                width={12}
+                              <HiOutlineArrowDown
+                                size={12}
                                 className="stroke-[3]"
                               />
                             )
@@ -151,7 +149,7 @@ function BasicTable({
                     <Td
                       key={cell.id}
                       id=""
-                      className="whitespace-nowrap truncate"
+                      className="truncate whitespace-nowrap"
                       style={{
                         textAlign:
                           isLastColumn || index == 0 ? "center" : undefined,
@@ -172,9 +170,7 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={
-            <ArrowLeftIcon height={12} width={12} className="stroke-[3]" />
-          }
+          leftIcon={<HiOutlineArrowLeft size={12} className="stroke-[3]" />}
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -182,9 +178,7 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={
-            <ArrowRightIcon height={12} width={12} className="stroke-[3]" />
-          }
+          rightIcon={<HiOutlineArrowRight size={12} className="stroke-[3]" />}
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >
@@ -236,7 +230,7 @@ function TanstackTable() {
 
   if (isLoading)
     return (
-      <div className="flex item-center justify-center">
+      <div className="item-center flex justify-center">
         <Spinner className="text-cyan-400 " size="lg" />
       </div>
     );

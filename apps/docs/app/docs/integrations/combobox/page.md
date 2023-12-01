@@ -20,10 +20,10 @@ Rendering lists that can additively "load more" data onto an existing set of dat
 
 ```jsx
 import {
-  CheckIcon,
-  ChevronUpDownIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+  HiOutlineCheck,
+  HiOutlineChevronUpDown,
+  HiOutlineXMark,
+} from "react-icons/hi2";
 import {
   Avatar,
   Button,
@@ -113,14 +113,12 @@ function Combobox() {
               aria-expanded={isOpen}
               className="w-full justify-between"
               rightIcon={
-                <ChevronUpDownIcon
-                  height={16}
-                  width={16}
+                <HiOutlineChevronUpDown
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "shrink-0 stroke-1",
+                    "shrink-0 stroke-2",
                   )}
                 />
               }
@@ -145,7 +143,7 @@ function Combobox() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <XMarkIcon height={14} width={14} className="stroke-1" />
+                <HiOutlineXMark size={14} className="stroke-2" />
               </Button>
             )}
           </div>
@@ -174,7 +172,7 @@ function Combobox() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <CheckIcon height={14} width={14} className="stroke-1" />
+                              <HiOutlineCheck size={14} className="stroke-2" />
                             )}
                           </div>
                         </CommandItem>

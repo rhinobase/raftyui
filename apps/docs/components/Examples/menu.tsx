@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { HiOutlineChevronDown } from "react-icons/hi2";
 import {
   Menu,
   MenuCheckboxItem,
@@ -17,7 +17,7 @@ import {
 export const menu_examples = {
   "menu:usage": (
     <Menu>
-      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown className="stroke-2" />}>
         Actions
       </MenuTrigger>
       <MenuContent>
@@ -29,7 +29,7 @@ export const menu_examples = {
   ),
   "menu:size": (
     <Menu size="sm">
-      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown className="stroke-2" />}>
         Actions
       </MenuTrigger>
       <MenuContent>
@@ -52,7 +52,7 @@ export const menu_examples = {
   ),
   "menu:submenu": (
     <Menu>
-      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown className="stroke-2" />}>
         Actions
       </MenuTrigger>
       <MenuContent>
@@ -75,7 +75,7 @@ export const menu_examples = {
   ),
   "menu:menu_checkbox_item": (
     <Menu>
-      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown className="stroke-2" />}>
         All Feature
       </MenuTrigger>
       <MenuContent>
@@ -88,7 +88,7 @@ export const menu_examples = {
   ),
   "menu:radio_group": (
     <Menu>
-      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown className="stroke-2" />}>
         Actions
       </MenuTrigger>
       <MenuContent>
@@ -102,7 +102,7 @@ export const menu_examples = {
   ),
   "menu:isarrow": (
     <Menu>
-      <MenuTrigger rightIcon={<ChevronDownIcon height={16} width={16} />}>
+      <MenuTrigger rightIcon={<HiOutlineChevronDown className="stroke-2" />}>
         Actions
       </MenuTrigger>
       <MenuContent isArrow>
@@ -122,7 +122,7 @@ export const menu_examples = {
       <MenuTrigger
         size="sm"
         className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
-        rightIcon={<ChevronDownIcon height={16} width={16} />}
+        rightIcon={<HiOutlineChevronDown className="stroke-2" />}
       >
         Actions
       </MenuTrigger>
@@ -148,7 +148,7 @@ export const menu_examples = {
     <Menu>
       <MenuTrigger
         size="icon"
-        rightIcon={<ChevronDownIcon height={16} width={16} />}
+        rightIcon={<HiOutlineChevronDown className="stroke-2" />}
       >
         Actions
       </MenuTrigger>

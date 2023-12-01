@@ -1,11 +1,11 @@
 import {
-  CalendarIcon,
-  FaceSmileIcon,
-  CalculatorIcon,
-  UserIcon,
-  CreditCardIcon,
-  Cog8ToothIcon,
-} from "@heroicons/react/24/outline";
+  HiOutlineCalendar,
+  HiOutlineFaceSmile,
+  HiOutlineCalculator,
+  HiOutlineUser,
+  HiOutlineCreditCard,
+  HiOutlineCog8Tooth,
+} from "react-icons/hi2";
 import {
   Command,
   CommandList,
@@ -25,32 +25,32 @@ export const command_examples = {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <HiOutlineCalendar className="mr-2 stroke-2" />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <FaceSmileIcon className="mr-2 h-4 w-4" />
+            <HiOutlineFaceSmile className="mr-2 stroke-2" />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem>
-            <CalculatorIcon className="mr-2 h-4 w-4" />
+            <HiOutlineCalculator className="mr-2 stroke-2" />
             <span>Calculator</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <UserIcon className="mr-2 h-4 w-4" />
+            <HiOutlineUser className="mr-2 stroke-2" />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <CreditCardIcon className="mr-2 h-4 w-4" />
+            <HiOutlineCreditCard className="mr-2 stroke-2" />
             <span>Billing</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <Cog8ToothIcon className="mr-2 h-4 w-4" />
+            <HiOutlineCog8Tooth className="mr-2 stroke-2" />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>

@@ -1,9 +1,9 @@
 "use client";
 import {
-  CheckIcon,
-  ChevronUpDownIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+  HiOutlineCheck,
+  HiOutlineChevronUpDown,
+  HiOutlineXMark,
+} from "react-icons/hi2";
 import {
   Avatar,
   Button,
@@ -91,7 +91,7 @@ function Combobox() {
   if (error) return <>Unable to load data!</>;
 
   return (
-    <div className="max-w-lg w-full mx-auto">
+    <div className="mx-auto w-full max-w-lg">
       <div className={!pages ? "invisible" : undefined}>
         <Popover open={isOpen} onOpenChange={setOpen}>
           <div className="relative flex items-center">
@@ -102,20 +102,18 @@ function Combobox() {
               aria-expanded={isOpen}
               className="w-full justify-between"
               rightIcon={
-                <ChevronUpDownIcon
-                  height={16}
-                  width={16}
+                <HiOutlineChevronUpDown
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
                       : "text-secondary-500 dark:text-secondary-400",
-                    "shrink-0 stroke-1",
+                    "shrink-0 stroke-2",
                   )}
                 />
               }
             >
               {selected ? (
-                <div className="flex items-center gap-2 w-full ">
+                <div className="flex w-full items-center gap-2 ">
                   <Avatar
                     name={selected.name}
                     src={selected.links.patch.small}
@@ -134,7 +132,7 @@ function Combobox() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <XMarkIcon height={14} width={14} className="stroke-1" />
+                <HiOutlineXMark size={14} className="stroke-2" />
               </Button>
             )}
           </div>
@@ -153,7 +151,7 @@ function Combobox() {
                           onSelect={dispatch}
                         >
                           <div
-                            className="flex items-center gap-2 w-full"
+                            className="flex w-full items-center gap-2"
                             ref={isLastElement ? lastElementRef : undefined}
                           >
                             <Avatar
@@ -163,11 +161,7 @@ function Combobox() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <CheckIcon
-                                height={14}
-                                width={14}
-                                className="stroke-1"
-                              />
+                              <HiOutlineCheck size={14} className="stroke-2" />
                             )}
                           </div>
                         </CommandItem>
@@ -177,7 +171,7 @@ function Combobox() {
                     <CommandLoading>
                       <div className="flex select-none items-center justify-center gap-2 py-4">
                         <Spinner size="sm" />{" "}
-                        <Text className="text-sm text-secondary-500">
+                        <Text className="text-secondary-500 text-sm">
                           Loading
                         </Text>
                       </div>
@@ -187,7 +181,7 @@ function Combobox() {
                     <CommandLoading>
                       <div className="flex select-none items-center justify-center gap-2 py-4">
                         <Spinner size="sm" />{" "}
-                        <Text className="text-sm text-secondary-500">
+                        <Text className="text-secondary-500 text-sm">
                           Loading
                         </Text>
                       </div>
@@ -203,7 +197,7 @@ function Combobox() {
         </Popover>
       </div>
       {!pages && (
-        <Skeleton className="max-w-lg w-full mx-auto h-[42px] rounded-md !-mt-[42px]" />
+        <Skeleton className="mx-auto !-mt-[42px] h-[42px] w-full max-w-lg rounded-md" />
       )}
     </div>
   );
