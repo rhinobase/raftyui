@@ -80,7 +80,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                     <CheckIcon
                       height={16}
                       width={16}
-                      className="stroke-1 text-white"
+                      className="stroke-[3] text-white"
                     />
                   )}
                 </Button>
@@ -94,18 +94,18 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
         </div>
       </div>
       {children}
-      <div className="flex flex-col md:flex-row items-center gap-2 md:justify-between mt-4 md:mt-10">
-        <p className="text-xs leading-none text-secondary-600">
+      <div className="mt-4 flex flex-col items-center gap-2 md:mt-10 md:flex-row md:justify-between">
+        <p className="text-secondary-600 text-xs leading-none">
           This page is inspired by{" "}
           <a
             href="https://x.com/shadcn?t=2gBGi1FW3vmW37m13hN-TA&s=33"
             target="_blank"
-            className="text-blue-600 font-medium dark:text-blue-400"
+            className="font-medium text-blue-600 dark:text-blue-400"
           >
             @shadcn
           </a>
         </p>
-        <p className="text-xs leading-none text-secondary-500">
+        <p className="text-secondary-500 text-xs leading-none">
           &copy; {new Date().getFullYear()} rhinobase, Inc. All rights reserved.
         </p>
       </div>
@@ -210,9 +210,9 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
       </DialogTrigger>
       <DialogOverlay />
       <DialogContent className="!p-5">
-        <div className="space-y-1 mb-5">
+        <div className="mb-5 space-y-1">
           <DialogTitle>Theme</DialogTitle>
-          <Text className="text-sm opacity-50 leading-snug">
+          <Text className="text-sm leading-snug opacity-50">
             Copy and paste the following code into your{" "}
             <em>tailwind.config.js</em> file.
           </Text>
