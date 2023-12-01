@@ -5,16 +5,17 @@ import cookies from "js-cookie";
 import { useState } from "react";
 
 type CookieConsent = {
-  defaultValue?: string; // "1" | "0" | undefined
+  // undefined - User hasn't choosen anything
+  // 1 - User has accepted
+  // 0 - User has denied
+  defaultValue?: string;
   cookieKey: string;
 };
 
 export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
   const [isConsentGiven, setConsent] = useState(defaultValue);
 
-  console.log(isConsentGiven, defaultValue);
-
-  function handleGivenConsent(accept = true) {
+  function handleGivenConsent(accept: boolean) {
     const token = String(Number(accept));
     return () => {
       cookies.set(cookieKey, token);
@@ -26,33 +27,43 @@ export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
   if (isConsentGiven == "1") return <GoogleAnalytics />;
   // Asking permission
   else if (isConsentGiven == undefined)
-    return (
-      <div className="dark:bg-secondary-900 fixed bottom-0 z-50 w-full bg-white shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none">
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 px-3 py-3 md:flex-row md:items-center md:py-4 lg:px-0">
-          <Text className="max-w-xl text-center text-sm leading-snug opacity-60 md:text-left">
-            We only collect analytics essential to ensuring smooth operation of
-            our services.
-          </Text>
-          <div className="flex w-full gap-3 md:w-auto">
-            <Button
-              colorScheme="primary"
-              size="sm"
-              className="!w-full md:!w-auto"
-              onClick={handleGivenConsent()}
-            >
-              Accept
-            </Button>
-            <Button
-              size="sm"
-              className="!w-full md:!w-auto"
-              onClick={handleGivenConsent(false)}
-            >
-              Opt out
-            </Button>
-          </div>
+    return <CookieConsentBanner handleGivenConsent={handleGivenConsent} />;
+
+  return <></>;
+}
+
+type CookieConsentBanner = {
+  handleGivenConsent: (accept: boolean) => () => void;
+};
+
+function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
+  return (
+    <div className="dark:bg-secondary-900 fixed bottom-0 z-50 w-full bg-white shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none">
+      <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 px-3 py-3 md:flex-row md:items-center md:py-4 lg:px-0">
+        <Text className="max-w-xl text-center text-sm leading-snug opacity-60 md:text-left">
+          We only collect analytics essential to ensuring smooth operation of
+          our services.
+        </Text>
+        <div className="flex w-full gap-3 md:w-auto">
+          <Button
+            colorScheme="primary"
+            size="sm"
+            className="!w-full md:!w-auto"
+            onClick={handleGivenConsent(true)}
+          >
+            Accept
+          </Button>
+          <Button
+            size="sm"
+            className="!w-full md:!w-auto"
+            onClick={handleGivenConsent(false)}
+          >
+            Opt out
+          </Button>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 function GoogleAnalytics() {

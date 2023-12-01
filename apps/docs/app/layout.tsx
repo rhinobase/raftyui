@@ -78,13 +78,13 @@ export const metadata: Metadata = {
   },
 };
 
-// Cookie name for analytics concent
-const CONCENT_COOKIE_NAME = "rccn";
+// Cookie name for analytics consent
+const CONSENT_COOKIE_NAME = "rccn";
 
 export default function RootLayout({ children }: PropsWithChildren) {
   // Checking if we already have a cookie
   const cookieStore = cookies();
-  const isConcentGiven = cookieStore.get(CONCENT_COOKIE_NAME);
+  const isConsentGiven = cookieStore.get(CONSENT_COOKIE_NAME);
 
   return (
     <html
@@ -104,8 +104,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Wrapper>{children}</Wrapper>
         </Providers>
         <CookieConsent
-          defaultValue={isConcentGiven?.value}
-          cookieKey={CONCENT_COOKIE_NAME}
+          defaultValue={isConsentGiven?.value}
+          cookieKey={CONSENT_COOKIE_NAME}
         />
       </body>
     </html>
