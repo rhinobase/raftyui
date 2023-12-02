@@ -26,6 +26,7 @@ import {
 import { useTheme } from "next-themes";
 import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import { Fence } from "../../components/Fence";
+import Link from "next/link";
 
 const COLOR_THEME = {
   gray: "!bg-gray-500",
@@ -97,13 +98,13 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
       <div className="mt-4 flex flex-col items-center gap-2 md:mt-10 md:flex-row md:justify-between">
         <p className="text-secondary-600 text-xs leading-none">
           This page is inspired by{" "}
-          <a
+          <Link
             href="https://x.com/shadcn?t=2gBGi1FW3vmW37m13hN-TA&s=33"
             target="_blank"
             className="font-medium text-blue-600 dark:text-blue-400"
           >
             @shadcn
-          </a>
+          </Link>
         </p>
         <p className="text-secondary-500 text-xs leading-none">
           &copy; {new Date().getFullYear()} rhinobase, Inc. All rights reserved.

@@ -88,7 +88,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
         <SearchButton setOpen={setSearchOpen} />
         <ThemeSelector />
         {NAVIGATION.map((item) => (
-          <a
+          <Link
             key={item.name}
             href={item.href}
             target="_blank"
@@ -97,7 +97,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
             <Button variant="ghost" size="icon" aria-label={item.name}>
               <item.icon size={18} />
             </Button>
-          </a>
+          </Link>
         ))}
       </div>
     </header>

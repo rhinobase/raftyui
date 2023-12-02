@@ -59,7 +59,7 @@ export function PrevNextLinks() {
   return (
     <div className="border-secondary-200 dark:border-secondary-800 mt-12 flex flex-col border-t">
       <EditOnGithub pathname={pathname} />
-      <div className="flex mt-6">
+      <div className="mt-6 flex">
         {previousPage && <PageLink dir="previous" {...previousPage} />}
         {nextPage && <PageLink className="ml-auto text-right" {...nextPage} />}
       </div>
@@ -76,14 +76,14 @@ function EditOnGithub({ pathname }: { pathname: string }) {
   ].join("");
 
   return (
-    <a
+    <Link
       href={href}
-      className="py-4 md:py-6 w-max flex gap-2 items-center text-secondary-500 dark:text-secondary-400 hover:text-blue-500 dark:hover:text-blue-300 transition-all ease-in-out"
+      className="text-secondary-500 dark:text-secondary-400 flex w-max items-center gap-2 py-4 transition-all ease-in-out hover:text-blue-500 dark:hover:text-blue-300 md:py-6"
       target="_blank"
       referrerPolicy="no-referrer"
     >
       <PencilIcon height={15} width={15} className="stroke-2" />
       <p className="text-sm">Edit this page on GitHub</p>
-    </a>
+    </Link>
   );
 }
