@@ -1,5 +1,7 @@
-import { HiOutlineCheckCircle } from "react-icons/hi2";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { List, ListItem, OrderedList, UnorderedList } from "@rafty/ui";
+
+CheckCircleIcon.displayName = "CheckCircleIcon";
 
 export const list_examples = {
   "list:usage": (
@@ -32,20 +34,20 @@ export const list_examples = {
         isUnstyled
         className="flex items-center gap-2 text-xl font-bold "
       >
-        <HiOutlineCheckCircle className="stroke-2" />
+        <CheckCircleIcon width={16} height={16} className="stroke-2" />
         Lorem ipsum dolor sit amet, consectetur adipisicing elit
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <HiOutlineCheckCircle className="stroke-2" />
+        <CheckCircleIcon width={16} height={16} className="stroke-2" />
         Assumenda, quia temporibus eveniet a libero incidunt suscipit
       </ListItem>
 
       <ListItem className="flex items-center gap-2">
-        <HiOutlineCheckCircle className="stroke-2" />
+        <CheckCircleIcon width={16} height={16} className="stroke-2" />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <HiOutlineCheckCircle className="stroke-2" />
+        <CheckCircleIcon width={16} height={16} className="stroke-2" />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
     </List>

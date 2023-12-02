@@ -49,7 +49,7 @@ export const input_examples = {
   "input-field:left_addon": (
     <InputGroup>
       <LeftAddon>
-        <PhoneIcon className="stroke-2" />
+        <PhoneIcon width={16} height={16} className="stroke-2" />
       </LeftAddon>
       <InputField type="tel" placeholder="Phone number" />
     </InputGroup>
@@ -58,14 +58,14 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <RightAddon>
-        <MagnifyingGlassIcon className="stroke-2" />
+        <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
       </RightAddon>
     </InputGroup>
   ),
   "input-field:prefix": (
     <InputGroup>
       <Prefix>
-        <PhoneIcon className="stroke-2" />
+        <PhoneIcon width={16} height={16} className="stroke-2" />
       </Prefix>
       <InputField />
     </InputGroup>
@@ -74,7 +74,7 @@ export const input_examples = {
     <InputGroup>
       <InputField />
       <Suffix>
-        <CheckIcon className="stroke-2 text-green-500" />
+        <CheckIcon width={16} height={16} className="stroke-2 text-green-500" />
       </Suffix>
     </InputGroup>
   ),

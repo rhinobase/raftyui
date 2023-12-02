@@ -1,11 +1,11 @@
 import {
-  HiOutlineCalendar,
-  HiOutlineFaceSmile,
-  HiOutlineCalculator,
-  HiOutlineUser,
-  HiOutlineCreditCard,
-  HiOutlineCog8Tooth,
-} from "react-icons/hi2";
+  CalendarIcon,
+  FaceSmileIcon,
+  CalculatorIcon,
+  UserIcon,
+  CreditCardIcon,
+  Cog8ToothIcon,
+} from "@heroicons/react/24/outline";
 import {
   Command,
   CommandList,
@@ -17,6 +17,13 @@ import {
   CommandShortcut,
 } from "@rafty/ui";
 
+CalendarIcon.displayName = "CalendarIcon";
+FaceSmileIcon.displayName = "FaceSmileIcon";
+CalculatorIcon.displayName = "CalculatorIcon";
+UserIcon.displayName = "UserIcon";
+CreditCardIcon.displayName = "CreditCardIcon";
+Cog8ToothIcon.displayName = "Cog8ToothIcon";
+
 export const command_examples = {
   "command:usage": (
     <Command className="dark:border-secondary-700 rounded-lg border shadow-md">
@@ -25,32 +32,32 @@ export const command_examples = {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <HiOutlineCalendar className="mr-2 stroke-2" />
+            <CalendarIcon width={16} height={16} className="mr-2 stroke-2" />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <HiOutlineFaceSmile className="mr-2 stroke-2" />
+            <FaceSmileIcon width={16} height={16} className="mr-2 stroke-2" />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem>
-            <HiOutlineCalculator className="mr-2 stroke-2" />
+            <CalculatorIcon width={16} height={16} className="mr-2 stroke-2" />
             <span>Calculator</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <HiOutlineUser className="mr-2 stroke-2" />
+            <UserIcon width={16} height={16} className="mr-2 stroke-2" />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <HiOutlineCreditCard className="mr-2 stroke-2" />
+            <CreditCardIcon width={16} height={16} className="mr-2 stroke-2" />
             <span>Billing</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <HiOutlineCog8Tooth className="mr-2 stroke-2" />
+            <Cog8ToothIcon width={16} height={16} className="mr-2 stroke-2" />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>
