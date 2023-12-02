@@ -35,7 +35,7 @@ const validation = z.object({
 
 export default function FibrForm() {
   return (
-    <FibrProvider plugins={[raftyFiberPlugin, customPlugin]}>
+    <FibrProvider plugins={[raftyFibrPlugin, ...]}>
       <FibrForm
         blueprint={f.form<z.infer<typeof validation>, Resolver<FieldValues>>({
           validation: zodResolver(validation),

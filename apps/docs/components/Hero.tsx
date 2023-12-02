@@ -5,6 +5,7 @@ import blurCyanImage from "../images/blur-cyan.png";
 import blurIndigoImage from "../images/blur-indigo.png";
 import dynamic from "next/dynamic";
 import { useWindowSize } from "@uidotdev/usehooks";
+import Link from "next/link";
 
 const HeroCard = dynamic(
   () => import("./HeroCard").then((mod) => mod.HeroCard),
@@ -44,20 +45,20 @@ export function Hero() {
                 design system.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
-                <a href="/themes">
+                <Link href="/themes">
                   <Button colorScheme="primary">Explore Themes</Button>
-                </a>
+                </Link>
                 <div className="dark:bg-secondary-600 rounded-md bg-white text-white">
-                  <a
+                  <Link
                     href="https://github.com/rhinobase/raftyui"
                     target="_blank"
                   >
                     <Button variant="ghost">View on GitHub</Button>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-4 flex md:justify-center lg:justify-start">
-                <a
+                <Link
                   href="https://www.producthunt.com/products/rafty-ui?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-rafty&#0045;ui"
                   target="_blank"
                 >
@@ -67,7 +68,7 @@ export function Hero() {
                     width={250}
                     height={54}
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

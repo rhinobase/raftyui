@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import { Fragment } from "react";
 import NextjsIcon from "../public/frameworks/nextjs.svg";
 import VitejsIcon from "../public/frameworks/vite.svg";
+import Link from "next/link";
 
 enum Language {
   JS = "js",
@@ -61,7 +62,7 @@ const EXAMPLE_TEMPLATES: ExampleType[] = [
 
 export function ExternalCodeLinks() {
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
       {EXAMPLE_TEMPLATES.map((example, index) => (
         <CardElement key={index} {...example} />
       ))}
@@ -71,8 +72,8 @@ export function ExternalCodeLinks() {
 
 function CardElement({ title, examples, icon }: ExampleType) {
   return (
-    <div className="w-full px-4 py-5 rounded-xl border border-secondary-200 dark:border-secondary-800 flex items-center gap-4">
-      <Image src={icon} alt={title} className="!m-0 w-10 h-10" />
+    <div className="border-secondary-200 dark:border-secondary-800 flex w-full items-center gap-4 rounded-xl border px-4 py-5">
+      <Image src={icon} alt={title} className="!m-0 h-10 w-10" />
       <div className="space-y-1.5">
         <h5 className="not-prose !text-xl !font-medium !leading-none tracking-tight">
           {title}
@@ -99,12 +100,12 @@ type LinkComponent = {
 
 function LinkComponent({ href, language }: LinkComponent) {
   return (
-    <a
+    <Link
       href={href}
-      className="not-prose text-blue-600/90 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 !text-xs !font-medium !leading-none transition-all ease-in-out"
+      className="not-prose !text-xs !font-medium !leading-none text-blue-600/90 transition-all ease-in-out hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
       target="_blank"
     >
       View {language.toUpperCase()} example
-    </a>
+    </Link>
   );
 }

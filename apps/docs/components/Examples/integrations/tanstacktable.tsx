@@ -1,11 +1,11 @@
 "use client";
 import {
-  HiOutlineArrowDown,
-  HiOutlineArrowLeft,
-  HiOutlineArrowRight,
-  HiOutlineArrowUp,
-  HiOutlineMagnifyingGlass,
-} from "react-icons/hi2";
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   InputField,
@@ -37,6 +37,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
+
+ArrowDownIcon.displayName = "ArrowDownIcon";
+ArrowLeftIcon.displayName = "ArrowLeftIcon";
+ArrowRightIcon.displayName = "ArrowRightIcon";
+ArrowUpIcon.displayName = "ArrowUpIcon";
+MagnifyingGlassIcon.displayName = "MagnifyingGlassIcon";
 
 type DataType = {
   flight_number: number;
@@ -77,7 +83,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <HiOutlineMagnifyingGlass />
+          <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
         </Prefix>
         <InputField
           variant="outline"
@@ -118,14 +124,16 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <HiOutlineArrowUp
-                              size={12}
+                            <ArrowUpIcon
+                              width={12}
+                              height={12}
                               className="stroke-[3]"
                             />
                           ) : (
                             header.column.getIsSorted() === "desc" && (
-                              <HiOutlineArrowDown
-                                size={12}
+                              <ArrowDownIcon
+                                width={12}
+                                height={12}
                                 className="stroke-[3]"
                               />
                             )
@@ -170,7 +178,9 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={<HiOutlineArrowLeft size={12} className="stroke-[3]" />}
+          leftIcon={
+            <ArrowLeftIcon width={12} height={12} className="stroke-[3]" />
+          }
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -178,7 +188,9 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={<HiOutlineArrowRight size={12} className="stroke-[3]" />}
+          rightIcon={
+            <ArrowRightIcon width={12} height={12} className="stroke-[3]" />
+          }
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >

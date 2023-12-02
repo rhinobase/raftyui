@@ -1,9 +1,9 @@
 "use client";
 import {
-  HiOutlineCheck,
-  HiOutlineChevronUpDown,
-  HiOutlineXMark,
-} from "react-icons/hi2";
+  CheckIcon,
+  ChevronUpDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Button,
@@ -27,6 +27,10 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+
+CheckIcon.displayName = "CheckIcon";
+ChevronUpDownIcon.displayName = "ChevronUpDownIcon";
+XMarkIcon.displayName = "XMarkIcon";
 
 type SpaceXData = {
   id: string;
@@ -102,7 +106,9 @@ function Combobox() {
               aria-expanded={isOpen}
               className="w-full justify-between"
               rightIcon={
-                <HiOutlineChevronUpDown
+                <ChevronUpDownIcon
+                  width={16}
+                  height={16}
                   className={classNames(
                     isOpen
                       ? "text-primary-500"
@@ -132,7 +138,7 @@ function Combobox() {
                 className="absolute right-10 z-20 !p-1"
                 onClick={() => dispatch("")}
               >
-                <HiOutlineXMark size={14} className="stroke-2" />
+                <XMarkIcon width={14} height={14} className="stroke-2" />
               </Button>
             )}
           </div>
@@ -161,7 +167,11 @@ function Combobox() {
                             <Text>{item.name}</Text>
                             <div className="flex-1" />
                             {selected?.id == item.id && (
-                              <HiOutlineCheck size={14} className="stroke-2" />
+                              <CheckIcon
+                                width={14}
+                                height={14}
+                                className="stroke-2"
+                              />
                             )}
                           </div>
                         </CommandItem>

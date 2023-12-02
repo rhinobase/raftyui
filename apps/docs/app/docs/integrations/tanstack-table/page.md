@@ -20,12 +20,12 @@ This example shows how to build a sortable data table with Rafty UI's table comp
 
 ```jsx
 import {
-  HiOutlineArrowDown,
-  HiOutlineArrowLeft,
-  HiOutlineArrowRight,
-  HiOutlineArrowUp,
-  HiOutlineMagnifyingGlass,
-} from "react-icons/hi2";
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   InputField,
@@ -146,7 +146,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <HiOutlineMagnifyingGlass />
+          <MagnifyingGlassIcon width={16} height={16} />
         </Prefix>
         <InputField
           variant="outline"
@@ -185,13 +185,19 @@ function BasicTable({
                             header.getContext(),
                           )}
                           {header.column.getIsSorted() === "asc" ? (
-                            <HiOutlineArrowUp
-                              size={12}
-                              className="stroke-[3]" />
-                          ) : header.column.getIsSorted() === "desc" && (
-                            <HiOutlineArrowDown
-                                size={12}
-                                className="stroke-[3]" />
+                            <ArrowUpIcon
+                              width={12}
+                              height={12}
+                              className="stroke-[3]"
+                            />
+                          ) : (
+                            header.column.getIsSorted() === "desc" && (
+                              <ArrowDownIcon
+                                width={12}
+                                height={12}
+                                className="stroke-[3]"
+                              />
+                            )
                           )}
                         </div>
                       )}
@@ -233,7 +239,9 @@ function BasicTable({
       <div className="flex justify-end gap-3">
         <Button
           size="sm"
-          leftIcon={<HiOutlineArrowLeft size={12} className="stroke-[3]" />}
+          leftIcon={
+            <ArrowLeftIcon width={12} height={12} className="stroke-[3]" />
+          }
           isDisabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -241,7 +249,9 @@ function BasicTable({
         </Button>
         <Button
           size="sm"
-          rightIcon={<HiOutlineArrowRight size={12} className="stroke-[3]" />}
+          rightIcon={
+            <ArrowRightIcon width={12} height={12} className="stroke-[3]" />
+          }
           isDisabled={!table.getCanNextPage()}
           onClick={() => table.nextPage()}
         >

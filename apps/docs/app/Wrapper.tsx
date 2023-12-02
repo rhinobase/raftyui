@@ -88,7 +88,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
         <SearchButton setOpen={setSearchOpen} />
         <ThemeSelector />
         {NAVIGATION.map((item) => (
-          <a
+          <Link
             key={item.name}
             href={item.href}
             target="_blank"
@@ -97,7 +97,7 @@ function Header({ setDrawerOpen, setSearchOpen }: Header) {
             <Button variant="ghost" size="icon" aria-label={item.name}>
               <item.icon size={18} />
             </Button>
-          </a>
+          </Link>
         ))}
       </div>
     </header>
@@ -129,9 +129,9 @@ export function Wrapper({ children }: PropsWithChildren) {
           setSearchOpen={setSearchOpen}
         />
         {isHomePage && <Hero />}
-        <div className="max-w-8xl relative mx-auto flex w-full flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+        <main className="max-w-8xl relative mx-auto flex w-full flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
           {component}
-        </div>
+        </main>
       </div>
       <MobileNavigation isOpen={isDrawerOpen} setOpen={setDrawerOpen} />
       <SearchDialog open={isSearchOpen} setOpen={setSearchOpen} />

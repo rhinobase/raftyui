@@ -171,7 +171,7 @@ function SearchResult({
 
   return (
     <li
-      className="aria-selected:bg-secondary-100 dark:aria-selected:bg-secondary-700/30 group block cursor-default rounded-lg px-3 py-2"
+      className="aria-selected:bg-secondary-100 dark:aria-selected:bg-secondary-700/30 group block cursor-pointer rounded-lg px-3 py-2"
       aria-labelledby={`${id}-hierarchy ${id}-title`}
       {...autocomplete.getItemProps({
         item: result,
