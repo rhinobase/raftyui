@@ -83,7 +83,7 @@ function BasicTable({
     <div className="container mx-auto space-y-4">
       <InputGroup>
         <Prefix>
-          <MagnifyingGlassIcon width={16} height={16} />
+          <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
         </Prefix>
         <InputField
           variant="outline"
