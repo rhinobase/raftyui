@@ -51,13 +51,6 @@
     "core-js": "^3.33.0",
     "dateformat": "^5.0.3",
     "react": "^18.2.0",
-    "react-day-picker": "^8.8.2",
-    "zod": "^3.22.4",
-    "react-hot-toast": "^2.4.1",
-    "@fibr/react": "^0.3.0",
-    "@fibr/rafty": "^0.1.0",
-    "@fibr/core": "^0.3.0",
-    "react-hook-form": "7.47.0",
-    "@hookform/resolvers": "3.3.1"
+    "react-day-picker": "^8.8.2"
   }
 }

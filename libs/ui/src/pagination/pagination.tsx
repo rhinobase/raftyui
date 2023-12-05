@@ -4,7 +4,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Select, SelectItem } from "../select";
-import { PaginationField } from "./PaginationField";
+import { FieldControl } from "../field";
+import { InputField } from "../input";
 
 export const paginationClasses = cva("rounded", {
   variants: {
@@ -59,48 +60,51 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     },
     forwardRef,
   ) => {
-    const [currentPage, setCurrentPage] = useState(current);
+    const [pageSize, setPageSize] = useState(defaultPageSize);
+    const [inputValue, setInputValue] = useState<number>(current);
 
     useEffect(() => {
-      setCurrentPage(current);
+      setInputValue(current);
     }, [current]);
 
-    const totalPages = Math.ceil(total / defaultPageSize);
-    const canPrev = currentPage > 1;
-    const canNext = currentPage < totalPages;
+    const totalPages = Math.ceil(total / pageSize);
+    const canPrev = inputValue > 1;
+    const canNext = inputValue < totalPages;
 
     const onPrev = () => {
       if (canPrev) {
-        const newPage = currentPage - 1;
-        setCurrentPage(newPage);
-        onChange?.(newPage, defaultPageSize);
+        const newPage = inputValue - 1;
+        setInputValue(newPage);
+        onChange?.(newPage, pageSize);
       }
     };
 
     const onNext = () => {
       if (canNext) {
-        const newPage = currentPage + 1;
-        setCurrentPage(newPage);
-        onChange?.(newPage, defaultPageSize);
+        const newPage = inputValue + 1;
+        setInputValue(newPage);
+        onChange?.(newPage, pageSize);
       }
     };
 
     const onPageSizeChange = (value: number) => {
-      onChange?.(currentPage, value);
+      setPageSize(value);
+      onChange?.(1, value);
     };
 
     const onPageChange = (value: number) => {
-      setCurrentPage(value);
-      onChange?.(value, defaultPageSize);
+      setInputValue(value);
+      setInputValue(value);
+      onChange?.(value, pageSize);
     };
-    //added customw pagination number
+
     function CustomPagination() {
-      const maxButtons = 5;
-      const startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
+      const maxButtons = 4;
+      const startPage = Math.max(1, inputValue - Math.floor(maxButtons / 2));
       const endPage = Math.min(totalPages, startPage + maxButtons - 1);
       const pages = [];
       for (let i = startPage; i <= endPage; i++) {
-        const isCurrent = i === currentPage;
+        const isCurrent = i === inputValue;
         pages.push(
           <Button
             key={i}
@@ -127,6 +131,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
             <span>Rows per page:</span>
             <div className="w-[100px]">
               <Select
+                value={pageSize}
                 onChange={(event) => {
                   const value = Number(event.target.value);
                   onPageSizeChange(value);
@@ -141,7 +146,18 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
             </div>
           </div>
         )}
-        {showQuickJumper && <PaginationField onPageChange={onPageChange} />}
+        {showQuickJumper && (
+          <FieldControl name="page" className="!w-[70px]">
+            <InputField
+              type="number"
+              min={0}
+              max={total}
+              value={inputValue}
+              onChange={(e) => setInputValue(Number(e.target.value))}
+            />
+          </FieldControl>
+        )}
+
         <div className="flex items-center gap-3">
           <Button
             variant="ghost"
