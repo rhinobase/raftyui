@@ -28,3 +28,15 @@ export const Default: Story = {
     </div>
   ),
 };
+
+export const Type: Story = {
+  render: () => (
+    <div className="flex w-80 flex-col gap-6">
+      <ToggleGroup type="multiple">
+        <ToggleGroupItem value="1">1</ToggleGroupItem>
+        <ToggleGroupItem value="2">2</ToggleGroupItem>
+        <ToggleGroupItem value="3">3</ToggleGroupItem>
+      </ToggleGroup>
+    </div>
+  ),
+};

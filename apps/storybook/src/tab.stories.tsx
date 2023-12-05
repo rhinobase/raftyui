@@ -6,9 +6,11 @@ const meta: Meta<typeof Tab> = {
   args: {
     size: "md",
     orientation: "horizontal",
+    variant: "line",
   },
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
+    variant: { control: "select", options: ["enclosed", "line"] },
   },
 };
 
@@ -16,13 +18,18 @@ export default meta;
 type Story = StoryObj<typeof Tab>;
 
 export const Variants: Story = {
-  render: ({ size, orientation }) => (
+  render: ({ size, orientation, variant }) => (
     <>
       <div
         data-cy="tab-1"
         className="w-[640px] rounded-md border py-2 dark:border-zinc-700"
       >
-        <Tab defaultValue="tab1" size={size} orientation={orientation}>
+        <Tab
+          defaultValue="tab1"
+          size={size}
+          orientation={orientation}
+          variant={variant}
+        >
           <TabList>
             <TabTrigger value="tab1">Tab1</TabTrigger>
             <TabTrigger value="tab2" disabled>

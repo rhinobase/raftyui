@@ -7,6 +7,7 @@ const meta: Meta<typeof RadioGroup> = {
   args: {
     size: "md",
     isDisabled: false,
+    required: false,
   },
   argTypes: {
     size: {
@@ -21,12 +22,13 @@ export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
-  render: ({ size, isDisabled }) => (
+  render: ({ size, isDisabled, required }) => (
     <div className="flex flex-col gap-4">
       <RadioGroup
         defaultValue="comfortable"
         size={size}
         isDisabled={isDisabled}
+        required={required}
       >
         <RadioGroupItem value="default" id="r1">
           Default

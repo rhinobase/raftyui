@@ -4,16 +4,25 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Popover> = {
   title: "Components / Popover",
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Popover>;
 
 export const Default: Story = {
-  render: () => (
-    <Popover>
+  render: ({ size }) => (
+    <Popover size={size}>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent isArrow>
+      <PopoverContent>
         <div data-cy="content" className="p-6">
           <div>
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">

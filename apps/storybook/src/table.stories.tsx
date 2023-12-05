@@ -14,9 +14,11 @@ const meta: Meta<typeof Table> = {
   title: "Components / Table",
   args: {
     size: "md",
+    variant: "simple",
   },
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
+    variant: { control: "select", options: ["simple", "striped"] },
   },
 };
 
@@ -24,7 +26,7 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
-  render: function Render({ size }) {
+  render: function Render({ size, variant }) {
     const people = [
       {
         name: "Lindsay Walton",
@@ -47,7 +49,7 @@ export const Default: Story = {
     ];
     return (
       <TableContainer className="max-w-2xl">
-        <Table size={size}>
+        <Table size={size} variant={variant}>
           <TableHead>
             <Tr>
               <Th>Name</Th>

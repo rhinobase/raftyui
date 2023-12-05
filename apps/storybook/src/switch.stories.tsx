@@ -5,6 +5,10 @@ const meta: Meta<typeof Switch> = {
   title: "Form / Switch",
   args: {
     size: "md",
+    isReadOnly: false,
+    isDisabled: false,
+    isRequired: false,
+    defaultChecked: false,
   },
   argTypes: {
     size: {
@@ -18,14 +22,18 @@ export default meta;
 type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
-  render: ({ size }) => (
+  render: ({ size, defaultChecked, isDisabled, isReadOnly, isRequired }) => (
     <div className="flex flex-col gap-4 dark:text-white">
       <h4 className="font-bold">Switch</h4>
-      <Switch size={size}>Switch</Switch>
-      <h4 className="font-bold">Switch defaultSelected</h4>
-      <Switch size={size} defaultChecked />
-      <h4 className="font-bold">Switch disabled</h4>
-      <Switch size={size} isDisabled />
+      <Switch
+        size={size}
+        isDisabled={isDisabled}
+        isReadOnly={isReadOnly}
+        isRequired={isRequired}
+        defaultChecked={defaultChecked}
+      >
+        Switch
+      </Switch>
     </div>
   ),
 };
