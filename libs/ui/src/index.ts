@@ -37,4 +37,5 @@ export * from "./textarea";
 export * from "./toast";
 export * from "./toggle-group";
 export * from "./tooltip";
+export * from "./pagination";
 export { classNames, mergeRefs, useBreakpointValue } from "./utils";
