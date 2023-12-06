@@ -49,8 +49,6 @@ const selectClasses = cva(
       },
       {
         variant: ["solid", "outline"],
-        disabled: false,
-        readonly: false,
         className:
           "border border-secondary-300 dark:border-zinc-700 group-focus:ring-primary-200 group-focus:border-primary-500 dark:group-focus:ring-primary-100/20 dark:group-focus:border-primary-400 group-focus:ring-2",
       },
@@ -150,10 +148,10 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
         {!isUnstyled && (
           <ChevronDownIcon
             className={classNames(
-              size === "sm" && "right-2",
-              size === "md" && "right-3",
-              size === "lg" && "right-4",
-              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2 cursor-pointer pointer-events-none",
+              size === "sm" && "right-2 h-3 w-3",
+              size === "md" && "right-3 h-3.5 w-3.5",
+              size === "lg" && "right-4 h-4 w-4",
+              "pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
             )}
           />
         )}
