@@ -17,7 +17,7 @@ const meta: Meta<typeof ToggleGroup> = {
 export default meta;
 type Story = StoryObj<typeof ToggleGroup>;
 
-export const Default: Story = {
+export const SingleType: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-6">
       <ToggleGroup type="single" defaultValue="1">
@@ -29,10 +29,10 @@ export const Default: Story = {
   ),
 };
 
-export const Type: Story = {
+export const MultipleType: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-6">
-      <ToggleGroup type="multiple">
+      <ToggleGroup type="multiple" defaultValue={["1", "2"]}>
         <ToggleGroupItem value="1">1</ToggleGroupItem>
         <ToggleGroupItem value="2">2</ToggleGroupItem>
         <ToggleGroupItem value="3">3</ToggleGroupItem>

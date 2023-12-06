@@ -10,7 +10,7 @@ const meta: Meta<typeof Tag> = {
   argTypes: {
     size: {
       control: "select",
-      options: ["md", "sm", "lg"],
+      options: ["sm", "md", "lg"],
     },
     colorScheme: {
       control: "select",

@@ -3,40 +3,28 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
 const meta: Meta<typeof Stat> = {
   title: "Components / Stat",
+  args: {
+    type: "increase",
+  },
+  argTypes: {
+    type: {
+      control: "select",
+      options: ["increase", "normal", "decrease"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Stat>;
 
 export const Default: Story = {
-  render: () => (
-    <Stat type="normal">
+  render: ({ type }) => (
+    <Stat type={type}>
       <StatLabel>Daily Return</StatLabel>
       <StatValue>17,770.90</StatValue>
       <StatHelpText>
         <StatIcon /> 0.47%
       </StatHelpText>
     </Stat>
-  ),
-};
-
-export const Type: Story = {
-  render: () => (
-    <>
-      <Stat type="decrease">
-        <StatLabel>Daily Return</StatLabel>
-        <StatValue>17,770.90</StatValue>
-        <StatHelpText>
-          <StatIcon /> 0.47%
-        </StatHelpText>
-      </Stat>
-      <Stat type="increase">
-        <StatLabel>Daily Return</StatLabel>
-        <StatValue>17,770.90</StatValue>
-        <StatHelpText>
-          <StatIcon /> 0.47%
-        </StatHelpText>
-      </Stat>
-    </>
   ),
 };

@@ -48,7 +48,7 @@ export const Default: Story = {
       },
     ];
     return (
-      <TableContainer className="max-w-2xl">
+      <TableContainer>
         <Table size={size} variant={variant}>
           <TableHead>
             <Tr>
@@ -68,7 +68,11 @@ export const Default: Story = {
               </Tr>
             ))}
           </TableBody>
-          <TableFooter></TableFooter>
+          <TableFooter>
+            <Tr>
+              <Td colSpan={4}>3 rows of data available</Td>
+            </Tr>
+          </TableFooter>
         </Table>
       </TableContainer>
     );

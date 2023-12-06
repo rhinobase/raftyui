@@ -20,8 +20,8 @@ type Story = StoryObj<typeof Toast>;
 export const Default: Story = {
   render: ({ severity }) => (
     <Toast
-      title="Success Banner"
-      message="Data uploaded to the server. Fire on!"
+      title="Toast Title"
+      message="Sample toast message!"
       severity={severity}
     />
   ),
