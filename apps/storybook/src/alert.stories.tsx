@@ -13,6 +13,7 @@ const meta: Meta<typeof Alert> = {
     status: "info",
     size: "md",
     variant: "simple",
+    isBarebone: false,
   },
   argTypes: {
     status: {
@@ -33,9 +34,14 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
-export const Variants: Story = {
-  render: ({ status, size, variant }) => (
-    <Alert size={size} status={status} variant={variant}>
+export const Default: Story = {
+  render: ({ status, size, variant, isBarebone }) => (
+    <Alert
+      size={size}
+      status={status}
+      variant={variant}
+      isBarebone={isBarebone}
+    >
       <AlertIcon />
       <AlertTitle id="title">Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
@@ -43,16 +49,19 @@ export const Variants: Story = {
   ),
 };
 
-export const AlertWithAction: Story = {
-  render: ({ status, size, variant }) => (
-    <div className="flex w-full max-w-3xl flex-col gap-4">
-      <Alert variant={variant} size={size} status={status}>
-        <AlertIcon />
-        <AlertTitle>Title</AlertTitle>
-        <AlertDescription>Description</AlertDescription>
-        <div className="flex-1" />
-        <Button>Action</Button>
-      </Alert>
-    </div>
+export const WithAction: Story = {
+  render: ({ status, size, variant, isBarebone }) => (
+    <Alert
+      variant={variant}
+      size={size}
+      status={status}
+      isBarebone={isBarebone}
+    >
+      <AlertIcon />
+      <AlertTitle>Title</AlertTitle>
+      <AlertDescription>Description</AlertDescription>
+      <div className="flex-1" />
+      <Button>Action</Button>
+    </Alert>
   ),
 };

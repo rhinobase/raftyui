@@ -15,6 +15,7 @@ const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",
   args: {
     size: "md",
+    isBarebone: false,
   },
   argTypes: {
     size: {
@@ -28,8 +29,8 @@ export default meta;
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  render: ({ size }) => (
-    <AlertDialog size={size}>
+  render: ({ size, isBarebone }) => (
+    <AlertDialog size={size} isBarebone={isBarebone}>
       <AlertDialogTrigger>Open</AlertDialogTrigger>
       <AlertDialogOverlay />
       <AlertDialogContent>

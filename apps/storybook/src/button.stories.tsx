@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
     colorScheme: "secondary",
     isUnstyled: false,
     size: "md",
-    variant: "ghost",
+    variant: "solid",
     isDisabled: false,
     isActive: false,
     isLoading: false,
@@ -23,7 +23,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: "select",
-      options: ["ghost", "solid"],
+      options: ["ghost", "solid", "outline"],
     },
     isUnstyled: {},
     isDisabled: {},
@@ -60,13 +60,30 @@ export const Default: Story = {
 };
 
 export const IconButton: Story = {
-  render: ({ colorScheme }) => (
+  render: ({
+    colorScheme,
+    variant,
+    size,
+    isUnstyled,
+    isDisabled,
+    isActive,
+    isLoading,
+  }) => (
     <>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">
           icon
         </div>
-        <Button data-cy="iconbtn" colorScheme={colorScheme} size="icon">
+        <Button
+          data-cy="iconbtn"
+          size="icon"
+          variant={variant}
+          isUnstyled={isUnstyled}
+          colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -107,14 +124,28 @@ export const IconButton: Story = {
 };
 
 export const ButtonWithIcons: Story = {
-  render: ({ colorScheme }) => (
+  render: ({
+    colorScheme,
+    variant,
+    size,
+    isUnstyled,
+    isDisabled,
+    isActive,
+    isLoading,
+  }) => (
     <>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">
           left icon
         </div>
         <Button
+          size={size}
+          variant={variant}
+          isUnstyled={isUnstyled}
           colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
           leftIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
