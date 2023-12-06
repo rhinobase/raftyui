@@ -14,18 +14,64 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
+  render: ({ size }) => {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <Pagination
+          total={100}
+          pageSizeOptions={[10, 20, 30]}
+          hideOnSinglePage
+          pageSize={10}
+          showQuickJumper
+          showSizeChanger
+          showButton
+          size={size}
+          onChange={console.log}
+          className="flex gap-5"
+        />
+      </div>
+    );
+  },
+};
+
+export const Goto: Story = {
   render: ({ size }) => (
     <div className="flex h-full items-center justify-center">
       <Pagination
         total={100}
         pageSizeOptions={[10, 20, 30]}
-        disabled={false}
-        hideOnSinglePage={false}
-        pagesize={10}
-        showQuickJumper={true}
-        showSizeChanger={true}
-        showTitle={false}
+        pageSize={10}
+        showQuickJumper
         size={size}
+        className="flex gap-5"
+      />
+    </div>
+  ),
+};
+
+export const SizeChanger: Story = {
+  render: ({ size }) => (
+    <div className="flex h-full items-center justify-center">
+      <Pagination
+        total={100}
+        pageSizeOptions={[10, 20, 30]}
+        showSizeChanger
+        pageSize={10}
+        size={size}
+        className="flex gap-5"
+      />
+    </div>
+  ),
+};
+export const WhenSingle: Story = {
+  render: ({ size }) => (
+    <div className="flex h-full items-center justify-center">
+      <Pagination
+        total={100}
+        pageSizeOptions={[10, 20, 30]}
+        pageSize={10}
+        size={size}
+        showButton
         className="flex gap-5"
       />
     </div>

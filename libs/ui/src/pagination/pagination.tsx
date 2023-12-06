@@ -1,11 +1,9 @@
-import React, { forwardRef, useState, useEffect } from "react";
-import { Button } from "../button";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { classNames } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Select, SelectItem } from "../select";
-import { FieldControl } from "../field";
-import { InputField } from "../input";
+import { forwardRef, HTMLAttributes, useEffect, useState } from "react";
+import { classNames } from "../utils";
+import PageSelectMenu from "./PageSelectMenu";
+import PaginationButtons from "./PaginationButtons";
+import PaginationField from "./PaginationField";
 
 export const paginationClasses = cva("rounded", {
   variants: {
@@ -21,25 +19,24 @@ export const paginationClasses = cva("rounded", {
 });
 
 export type Pagination = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "children"
+  HTMLAttributes<HTMLDivElement>,
+  "children" | "onChange"
 > &
   VariantProps<typeof paginationClasses> & {
     total: number;
     pageSize?: number;
     current?: number;
-    onChange?: (page: number, pageSize?: number) => void;
+    showButton?: boolean;
+    onChange?: (page: number, pageSize: number) => void;
     pageSizeOptions: string[] | number[];
     defaultCurrent?: number;
     defaultPageSize?: number;
     disabled?: boolean;
-    hideOnSinglePage: boolean;
-    pagesize?: number;
-    showQuickJumper: boolean | { goButton: React.ReactNode };
+    hideOnSinglePage?: boolean;
+    showQuickJumper?: boolean | { goButton: React.ReactNode };
     showSizeChanger?: boolean;
-    showTitle: boolean;
+    showTitle?: boolean;
     showTotal?: (total: number, range: number) => void;
-    onShowSizeChange?: (current: number, size: number) => void;
   };
 
 export const Pagination = forwardRef<HTMLDivElement, Pagination>(
@@ -55,70 +52,37 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       showQuickJumper = false,
       size = "md",
       onChange,
+      hideOnSinglePage = false,
       showSizeChanger,
+      showButton = false,
       ...props
     },
     forwardRef,
   ) => {
     const [pageSize, setPageSize] = useState(defaultPageSize);
-    const [inputValue, setInputValue] = useState<number>(current);
+    const [inputValue, setInputValue] = useState(current);
+    const totalPages = Math.ceil(total / pageSize);
 
     useEffect(() => {
-      setInputValue(current);
-    }, [current]);
-
-    const totalPages = Math.ceil(total / pageSize);
-    const canPrev = inputValue > 1;
-    const canNext = inputValue < totalPages;
-
-    const onPrev = () => {
-      if (canPrev) {
-        const newPage = inputValue - 1;
-        setInputValue(newPage);
-        onChange?.(newPage, pageSize);
-      }
-    };
-
-    const onNext = () => {
-      if (canNext) {
-        const newPage = inputValue + 1;
-        setInputValue(newPage);
-        onChange?.(newPage, pageSize);
-      }
-    };
+      onChange?.(inputValue, pageSize);
+    }, [onChange, inputValue, pageSize]);
 
     const onPageSizeChange = (value: number) => {
       setPageSize(value);
-      onChange?.(1, value);
+      setInputValue(1);
     };
 
+    const onPrev = () => {
+      setInputValue(inputValue - 1);
+    };
+    const onNext = () => {
+      setInputValue(inputValue + 1);
+    };
     const onPageChange = (value: number) => {
       setInputValue(value);
-      setInputValue(value);
-      onChange?.(value, pageSize);
     };
 
-    function CustomPagination() {
-      const maxButtons = 4;
-      const startPage = Math.max(1, inputValue - Math.floor(maxButtons / 2));
-      const endPage = Math.min(totalPages, startPage + maxButtons - 1);
-      const pages = [];
-      for (let i = startPage; i <= endPage; i++) {
-        const isCurrent = i === inputValue;
-        pages.push(
-          <Button
-            key={i}
-            variant="ghost"
-            size="icon"
-            onClick={() => onPageChange(i)}
-            disabled={isCurrent}
-          >
-            {i}
-          </Button>,
-        );
-      }
-      return pages;
-    }
+    if (hideOnSinglePage && totalPages === 1) return <div ref={forwardRef} />;
 
     return (
       <div
@@ -127,56 +91,28 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
         {...props}
       >
         {showSizeChanger && (
-          <div className="flex items-center gap-2">
-            <span>Rows per page:</span>
-            <div className="w-[100px]">
-              <Select
-                value={pageSize}
-                onChange={(event) => {
-                  const value = Number(event.target.value);
-                  onPageSizeChange(value);
-                }}
-              >
-                {pageSizeOptions.map((size, index) => (
-                  <SelectItem key={index} value={size}>
-                    {size}
-                  </SelectItem>
-                ))}
-              </Select>
-            </div>
-          </div>
+          <PageSelectMenu
+            pageSize={pageSize}
+            pageSizeOptions={pageSizeOptions}
+            onPageSizeChange={onPageSizeChange}
+          />
         )}
         {showQuickJumper && (
-          <FieldControl name="page" className="!w-[70px]">
-            <InputField
-              type="number"
-              min={0}
-              max={total}
-              value={inputValue}
-              onChange={(e) => setInputValue(Number(e.target.value))}
-            />
-          </FieldControl>
+          <PaginationField
+            inputValue={inputValue}
+            onPageChange={onPageChange}
+            totalPages={totalPages}
+          />
         )}
-
-        <div className="flex items-center gap-3">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onPrev}
-            disabled={!canPrev}
-          >
-            <ChevronLeftIcon height={20} width={20} />
-          </Button>
-          <CustomPagination />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onNext}
-            disabled={!canNext}
-          >
-            <ChevronRightIcon height={20} width={20} />
-          </Button>
-        </div>
+        {showButton && (
+          <PaginationButtons
+            inputValue={inputValue}
+            pageSize={pageSize}
+            onPrev={onPrev}
+            onNext={onNext}
+            totalPages={totalPages}
+          />
+        )}
       </div>
     );
   },
