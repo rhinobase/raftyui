@@ -41,7 +41,7 @@ export const Default: Story = {
     return (
       <Menu size={size}>
         <MenuTrigger
-          size="icon"
+          size={size}
           rightIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
