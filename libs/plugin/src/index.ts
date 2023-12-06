@@ -62,12 +62,32 @@ module.exports = plugin(
               "0%": { right: "-100%" },
               "100%": { right: "0" },
             },
+            enterFromRight: {
+              from: { transform: "translate3d(200px,0,0)", opacity: 0 },
+              to: { transform: "translate3d(0,0,0)", opacity: 1 },
+            },
+            enterFromLeft: {
+              from: { transform: "translate3d(-200px,0,0)", opacity: 0 },
+              to: { transform: "translate3d(0,0,0)", opacity: 1 },
+            },
+            exitToRight: {
+              from: { transform: "translate3d(0,0,0)", opacity: 1 },
+              to: { transform: "translate3d(200px,0,0)", opacity: 0 },
+            },
+            exitToLeft: {
+              from: { transform: "translate3d(0,0,0)", opacity: 1 },
+              to: { transform: "translate3d(-200px,0,0)", opacity: 0 },
+            },
           },
           animation: {
             "accordion-down": "accordion-down 0.2s ease-out",
             "accordion-up": "accordion-up 0.2s ease-out",
             "slide-right": "slide-right 0.4s",
             "slide-left": "slide-left 0.4s",
+            enterFromRight: "enterFromRight 250ms ease",
+            enterFromLeft: "enterFromLeft 250ms ease",
+            exitToRight: "exitToRight 250ms ease",
+            exitToLeft: "exitToLeft 250ms ease",
           },
         },
       },
