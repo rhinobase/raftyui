@@ -156,9 +156,9 @@ export const accordionContentClasses = cva(
   {
     variants: {
       size: {
-        sm: "px-3 pb-3 text-sm",
-        md: "px-4 pb-4",
-        lg: "px-5 pb-5",
+        sm: "px-3 text-sm",
+        md: "px-4",
+        lg: "px-5",
       },
     },
     defaultVariants: {
