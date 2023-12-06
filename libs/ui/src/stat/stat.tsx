@@ -123,20 +123,22 @@ export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
           <path d="M14 10.44l-.413.56H2.393L2 10.46 7.627 5h.827L14 10.44z" />
         </svg>
       );
-    return (
-      <svg
-        {...props}
-        width={width}
-        height={height}
-        viewBox="0 0 16 16"
-        xmlns="http://www.w3.org/2000/svg"
-        className={classNames("text-red-500", className)}
-        fill="currentColor"
-        ref={forwardedRef}
-      >
-        <path d="M2 5.56L2.413 5h11.194l.393.54L8.373 11h-.827L2 5.56z" />
-      </svg>
-    );
+    if (type === "decrease")
+      return (
+        <svg
+          {...props}
+          width={width}
+          height={height}
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+          className={classNames("text-red-500", className)}
+          fill="currentColor"
+          ref={forwardedRef}
+        >
+          <path d="M2 5.56L2.413 5h11.194l.393.54L8.373 11h-.827L2 5.56z" />
+        </svg>
+      );
+    return undefined;
   },
 );
 
