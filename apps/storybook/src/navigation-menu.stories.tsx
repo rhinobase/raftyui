@@ -23,10 +23,7 @@ export const Default: Story = {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>
-              Learn
-              {/* <CaretDownIcon className="CaretDown" aria-hidden /> */}
-            </NavigationMenuTrigger>
+            <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
             <NavigationMenuContent data-cy="content" size="sm">
               <div className="grid grid-cols-1">
                 <div>
@@ -64,7 +61,6 @@ export const Default: Story = {
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
-
           <NavigationMenuItem>
             <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
             <NavigationMenuContent className="md">
@@ -109,52 +105,6 @@ export const Default: Story = {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Makers</NavigationMenuTrigger>
-            <NavigationMenuContent size="lg">
-              <ul className="grid w-full grid-cols-2">
-                <NavigationMenuListItem
-                  title="Introduction"
-                  href="/docs/primitives/overview/introduction"
-                >
-                  Build high-quality, accessible design systems and web apps.
-                </NavigationMenuListItem>
-                <NavigationMenuListItem
-                  title="Getting started"
-                  href="/docs/primitives/overview/getting-started"
-                >
-                  A quick tutorial to get you up and running with Radix
-                  Primitives.
-                </NavigationMenuListItem>
-                <NavigationMenuListItem
-                  title="Styling"
-                  href="/docs/primitives/overview/styling"
-                >
-                  Unstyled and compatible with any styling solution.
-                </NavigationMenuListItem>
-                <NavigationMenuListItem
-                  title="Animation"
-                  href="/docs/primitives/overview/animation"
-                >
-                  Use CSS keyframes or any animation library of your choice.
-                </NavigationMenuListItem>
-                <NavigationMenuListItem
-                  title="Accessibility"
-                  href="/docs/primitives/overview/accessibility"
-                >
-                  Tested in a range of browsers and assistive technologies.
-                </NavigationMenuListItem>
-                <NavigationMenuListItem
-                  title="Releases"
-                  href="/docs/primitives/overview/releases"
-                >
-                  Radix Primitives releases and their changelogs.
-                </NavigationMenuListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
           <NavigationMenuItem>
             <NavigationMenuLink
               className="NavigationMenuLink"
