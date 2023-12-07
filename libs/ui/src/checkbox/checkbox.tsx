@@ -93,11 +93,13 @@ export const Checkbox = React.forwardRef<
         {checkbox}
         {children && (
           <Label
-            htmlFor={props.id ?? name ?? context.name}
+            htmlFor={props.id}
             className={classNames(
               (disabled || context.isDisabled) &&
                 "cursor-not-allowed opacity-50",
-              "pl-2",
+              size === "sm" && "pl-1.5 !text-sm",
+              size === "md" && "pl-2 !text-base",
+              size === "lg" && "pl-2.5 !text-lg",
             )}
             isRequired={required}
           >
