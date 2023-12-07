@@ -8,5 +8,5 @@ export const [MenuProvider, useMenuContext] = createContext<MenuContext>({
 
 export interface MenuContext {
   readonly size: "sm" | "md" | "lg";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

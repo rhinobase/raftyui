@@ -18,10 +18,10 @@ export type ContextMenu = React.ComponentProps<
 export const ContextMenu = ({
   children,
   size = "md",
-  isBarebone = false,
+  isUnstyled = false,
   ...props
 }: ContextMenu) => (
-  <ContextMenuProvider value={{ size, isBarebone }}>
+  <ContextMenuProvider value={{ size, isUnstyled }}>
     <ContextMenuPrimitive.Root {...props}>{children}</ContextMenuPrimitive.Root>
   </ContextMenuProvider>
 );
@@ -38,8 +38,8 @@ export const ContextMenuContent = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Content>,
   ContextMenuContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Portal>
@@ -89,8 +89,8 @@ export const ContextMenuLabel = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Label>,
   ContextMenuLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Label
@@ -135,8 +135,8 @@ export const ContextMenuItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Item>,
   ContextMenuItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Item
@@ -196,8 +196,8 @@ export const ContextMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
   ContextMenuCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.CheckboxItem
@@ -272,8 +272,8 @@ export const ContextMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.RadioItem>,
   ContextMenuRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
   return (
     <ContextMenuPrimitive.RadioItem
       {...props}
@@ -333,8 +333,8 @@ export const ContextMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
   ContextMenuSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.SubTrigger
@@ -366,8 +366,8 @@ export const ContextMenuSubContent = React.forwardRef<
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
     forwardedRef,
   ) => {
-    const { isBarebone } = useContextMenuContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+    const unstyle = contextMenuIsUnstyled || isUnstyled;
 
     return (
       <ContextMenuPrimitive.Portal>
@@ -379,7 +379,7 @@ export const ContextMenuSubContent = React.forwardRef<
               : classNames(
                   "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
                   "data-[side=right]:animate-scale-in origin-top-left",
-                  "dark:bg-secondary-800 dark:text-secondary-200 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] text-secondary-900 focus:outline-none",
+                  "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] focus:outline-none",
                   className,
                 )
           }
@@ -419,8 +419,8 @@ export const ContextMenuSeparator = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Separator>,
   ContextMenuSeparator
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useContextMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
+  const unstyle = contextMenuIsUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Separator

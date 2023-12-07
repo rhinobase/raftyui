@@ -13,10 +13,10 @@ export type Popover = React.ComponentPropsWithoutRef<
 
 export const Popover = ({
   size = "md",
-  isBarebone = false,
+  isUnstyled = false,
   ...props
 }: Popover) => (
-  <PopoverProvider value={{ size, isBarebone }}>
+  <PopoverProvider value={{ size, isUnstyled }}>
     <PopoverPrimitive.Root {...props} />
   </PopoverProvider>
 );
@@ -49,8 +49,8 @@ export const PopoverTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isBarebone } = usePopoverContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: popoverIsUnstyled } = usePopoverContext();
+    const unstyle = popoverIsUnstyled || isUnstyled;
 
     return (
       <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -97,8 +97,8 @@ export const PopoverContent = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isBarebone } = usePopoverContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: popoverIsUnstyled } = usePopoverContext();
+    const unstyle = popoverIsUnstyled || isUnstyled;
 
     return (
       <PopoverPrimitive.Portal>
