@@ -12,4 +12,4 @@ export {
   MenuSubContent,
   MenuSubTrigger,
   MenuTrigger,
-} from "./menu";
+} from "./Menu";

@@ -7,4 +7,4 @@ export {
   Td,
   Th,
   Tr,
-} from "./table";
+} from "./Table";

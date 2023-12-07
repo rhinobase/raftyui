@@ -36,7 +36,7 @@ export const Card = React.forwardRef<HTMLDivElement, Card>(
       isBarebone = false,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     const unstyle = isBarebone || isUnstyled;
 
@@ -53,7 +53,7 @@ export const Card = React.forwardRef<HTMLDivElement, Card>(
         />
       </CardProvider>
     );
-  },
+  }
 );
 Card.displayName = "Card";
 
@@ -93,7 +93,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeader>(
         {children}
       </div>
     );
-  },
+  }
 );
 CardHeader.displayName = "CardHeader";
 
@@ -133,7 +133,7 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContent>(
         {children}
       </div>
     );
-  },
+  }
 );
 CardContent.displayName = "CardContent";
 
@@ -173,6 +173,6 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooter>(
         {children}
       </div>
     );
-  },
+  }
 );
 CardFooter.displayName = "CardFooter";

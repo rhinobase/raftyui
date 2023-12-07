@@ -1,9 +1,9 @@
-export { InputField } from "./input-field";
+export { InputField } from "./InputField";
 export {
   InputGroup,
   LeftAddon,
   Prefix,
   RightAddon,
   Suffix,
-} from "./input-group";
-export { PasswordField } from "./password-field";
+} from "./InputGroup";
+export { PasswordField } from "./PasswordField";

@@ -5,4 +5,4 @@ export {
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,
-} from "./drawer";
+} from "./Drawer";

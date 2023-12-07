@@ -7,4 +7,4 @@ export {
   NavigationMenuList,
   NavigationMenuListItem,
   NavigationMenuTrigger,
-} from "./navigation-menu";
+} from "./NavigationMenu";

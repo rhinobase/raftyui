@@ -1,2 +1,2 @@
-export { Avatar } from "./avatar";
-export { AvatarGroup } from "./avatar-group";
+export { Avatar } from "./Avatar";
+export { AvatarGroup } from "./AvatarGroup";

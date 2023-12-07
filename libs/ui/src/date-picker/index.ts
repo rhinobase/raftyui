@@ -1,3 +1,3 @@
-export { DatePicker } from "./date-picker";
-export { RangePicker } from "./range-picker";
-export { Calendar } from "./calendar";
+export { Calendar } from "./Calendar";
+export { DatePicker } from "./DatePicker";
+export { RangePicker } from "./RangePicker";
