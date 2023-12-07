@@ -102,7 +102,15 @@ export const IconButton: Story = {
       </div>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">fab</div>
-        <Button data-cy="iconbtn" colorScheme={colorScheme} size={size}>
+        <Button
+          size="fab"
+          variant={variant}
+          isUnstyled={isUnstyled}
+          colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
