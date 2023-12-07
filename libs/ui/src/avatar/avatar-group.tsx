@@ -17,14 +17,22 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
   ) => {
     const validChildren = getValidChildren(children);
 
+    //max should be one less than number of avatars
+    let childrenToShow = validChildren.length;
+    if (max) {
+      if (max - 1 > -1) childrenToShow = max;
+    }
+
     //get the avatars within the max
-    const childrenWithinMax =
-      max != null ? validChildren.slice(0, max) : validChildren;
+    const childrenWithinMax = validChildren.slice(0, childrenToShow);
 
     const groupWidth = calculateWidth(size, childrenWithinMax.length);
 
     //get the remaining avatar count
-    const excess = max != null ? validChildren.length - max : 0;
+    const excess =
+      childrenToShow < validChildren.length
+        ? validChildren.length - childrenToShow
+        : 0;
 
     if (excess > 0) {
       childrenWithinMax.push(<Avatar name={"+" + excess} />);
