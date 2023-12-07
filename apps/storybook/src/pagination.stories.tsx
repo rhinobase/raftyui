@@ -26,7 +26,10 @@ export const Default: Story = {
           showSizeChanger
           showButton
           size={size}
-          onChange={console.log}
+          // showTotal={(total, range) =>
+          //   `Range is ${range} ,Total ${total} items`
+          // }
+          // onChange={console.log}
           className="flex gap-5"
         />
       </div>
@@ -63,7 +66,7 @@ export const SizeChanger: Story = {
     </div>
   ),
 };
-export const WhenSingle: Story = {
+export const Buttons: Story = {
   render: ({ size }) => (
     <div className="flex h-full items-center justify-center">
       <Pagination

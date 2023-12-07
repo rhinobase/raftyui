@@ -1,5 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { forwardRef, HTMLAttributes, useEffect, useState } from "react";
+import {
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { classNames } from "../utils";
 import PageSelectMenu from "./PageSelectMenu";
 import PaginationButtons from "./PaginationButtons";
@@ -35,8 +41,7 @@ export type Pagination = Omit<
     hideOnSinglePage?: boolean;
     showQuickJumper?: boolean | { goButton: React.ReactNode };
     showSizeChanger?: boolean;
-    showTitle?: boolean;
-    showTotal?: (total: number, range: number) => void;
+    showTotal?: (total: number, range: string) => ReactNode;
   };
 
 export const Pagination = forwardRef<HTMLDivElement, Pagination>(
@@ -48,41 +53,45 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       defaultCurrent = 1,
       current = 1,
       pageSizeOptions,
-      showTitle = true,
       showQuickJumper = false,
       size = "md",
       onChange,
       hideOnSinglePage = false,
       showSizeChanger,
       showButton = false,
+      showTotal,
       ...props
     },
     forwardRef,
   ) => {
     const [pageSize, setPageSize] = useState(defaultPageSize);
-    const [inputValue, setInputValue] = useState(current);
+    const [currentPage, setCurrentPage] = useState(defaultCurrent);
     const totalPages = Math.ceil(total / pageSize);
 
     useEffect(() => {
-      onChange?.(inputValue, pageSize);
-    }, [onChange, inputValue, pageSize]);
+      onChange?.(currentPage, pageSize);
+    }, [onChange, currentPage, pageSize]);
 
     const onPageSizeChange = (value: number) => {
       setPageSize(value);
-      setInputValue(1);
+      setCurrentPage(1);
     };
 
     const onPrev = () => {
-      setInputValue(inputValue - 1);
+      setCurrentPage(currentPage - 1);
     };
     const onNext = () => {
-      setInputValue(inputValue + 1);
+      setCurrentPage(currentPage + 1);
     };
     const onPageChange = (value: number) => {
-      setInputValue(value);
+      setCurrentPage(value);
     };
 
     if (hideOnSinglePage && totalPages === 1) return <div ref={forwardRef} />;
+
+    const startItem = (currentPage - 1) * pageSize + 1;
+    const endItem = Math.min(currentPage * pageSize);
+    const totalRangeComponent = showTotal?.(total, `${startItem} - ${endItem}`);
 
     return (
       <div
@@ -99,14 +108,17 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
         )}
         {showQuickJumper && (
           <PaginationField
-            inputValue={inputValue}
+            inputValue={currentPage}
             onPageChange={onPageChange}
             totalPages={totalPages}
           />
         )}
+        {showTotal && (
+          <span className="flex items-center">{totalRangeComponent}</span>
+        )}
         {showButton && (
           <PaginationButtons
-            inputValue={inputValue}
+            inputValue={currentPage}
             pageSize={pageSize}
             onPrev={onPrev}
             onNext={onNext}
