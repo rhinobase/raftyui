@@ -51,7 +51,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       total = 0,
       defaultPageSize = 10,
       defaultCurrent = 1,
-      current = 1,
+      current,
       pageSizeOptions,
       showQuickJumper = false,
       size = "md",
@@ -68,29 +68,41 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     const [currentPage, setCurrentPage] = useState(defaultCurrent);
     const totalPages = Math.ceil(total / pageSize);
 
+    // If a current value is provided by the user, use it; otherwise, fallback to the default currentPage value
+    const currentValue = current ?? currentPage;
+
     useEffect(() => {
-      onChange?.(currentPage, pageSize);
-    }, [onChange, currentPage, pageSize]);
+      onChange?.(currentValue, pageSize);
+    }, [onChange, currentValue, pageSize]);
 
     const onPageSizeChange = (value: number) => {
       setPageSize(value);
       setCurrentPage(1);
+      onChange?.(1, value);
     };
 
     const onPrev = () => {
-      setCurrentPage(currentPage - 1);
+      const newPage = currentValue - 1;
+      setCurrentPage(newPage);
+      onChange?.(newPage, pageSize);
     };
+
     const onNext = () => {
-      setCurrentPage(currentPage + 1);
+      const newPage = currentValue + 1;
+      setCurrentPage(newPage);
+      onChange?.(newPage, pageSize);
     };
+
     const onPageChange = (value: number) => {
       setCurrentPage(value);
+      onChange?.(value, pageSize);
     };
 
     if (hideOnSinglePage && totalPages === 1) return <div ref={forwardRef} />;
 
-    const startItem = (currentPage - 1) * pageSize + 1;
-    const endItem = Math.min(currentPage * pageSize);
+    const startItem = Math.max((currentValue - 1) * pageSize + 1, 0);
+    const endItem = Math.min(currentValue * pageSize, total);
+
     const totalRangeComponent = showTotal?.(total, `${startItem} - ${endItem}`);
 
     return (
@@ -108,7 +120,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
         )}
         {showQuickJumper && (
           <PaginationField
-            inputValue={currentPage}
+            currentPage={currentValue}
             onPageChange={onPageChange}
             totalPages={totalPages}
           />
@@ -118,7 +130,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
         )}
         {showButton && (
           <PaginationButtons
-            inputValue={currentPage}
+            currentPage={currentValue}
             pageSize={pageSize}
             onPrev={onPrev}
             onNext={onNext}

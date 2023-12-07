@@ -2,7 +2,7 @@ import { Button } from "../button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 type PaginationButtons = {
-  inputValue: number;
+  currentPage: number;
   pageSize: number;
   onNext: () => void;
   onPrev: () => void;
@@ -10,13 +10,13 @@ type PaginationButtons = {
 };
 
 export default function PaginationButtons({
-  inputValue,
+  currentPage,
   totalPages,
   onNext,
   onPrev,
 }: PaginationButtons) {
-  const canPrev = inputValue > 1;
-  const canNext = inputValue < totalPages;
+  const canPrev = currentPage > 1;
+  const canNext = currentPage < totalPages;
 
   return (
     <div className="flex items-center gap-3">

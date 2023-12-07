@@ -1,5 +1,6 @@
 import { Pagination } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
+// import { useState } from "react";
 
 const meta: Meta<typeof Pagination> = {
   title: "Components / Pagination",
@@ -14,7 +15,12 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  render: ({ size }) => {
+  render: function Render({ size }) {
+    // const [current, setCurrent] = useState(3);
+
+    // const onChange = (page: number) => {
+    //   setCurrent(page);
+    // };
     return (
       <div className="flex h-full items-center justify-center">
         <Pagination
@@ -26,10 +32,11 @@ export const Default: Story = {
           showSizeChanger
           showButton
           size={size}
-          // showTotal={(total, range) =>
-          //   `Range is ${range} ,Total ${total} items`
-          // }
-          // onChange={console.log}
+          showTotal={(total, range) =>
+            `Range is ${range} ,Total ${total} items`
+          }
+          // current={current}
+          // onChange={onChange}
           className="flex gap-5"
         />
       </div>

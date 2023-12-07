@@ -3,12 +3,12 @@ import { InputField } from "../input";
 
 type PaginationField = {
   totalPages: number;
-  inputValue: number;
+  currentPage: number;
   onPageChange: (value: number) => void;
 };
 
 export default function PaginationField({
-  inputValue,
+  currentPage,
   onPageChange,
   totalPages,
 }: PaginationField) {
@@ -25,7 +25,7 @@ export default function PaginationField({
       <InputField
         type="number"
         min={1}
-        value={inputValue === 0 ? "" : inputValue}
+        value={currentPage === 0 ? "" : currentPage}
         onChange={(e) => handleInput(Number(e.target.value))}
       />
     </FieldControl>
