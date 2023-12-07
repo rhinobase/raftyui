@@ -4,7 +4,7 @@ import format from "dateformat";
 import React from "react";
 import { DayPickerSingleProps } from "react-day-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import { Calendar } from "./calendar";
+import { Calendar } from "./Calendar";
 
 export type DatePicker = {
   onSelect?: (value?: Date) => void;

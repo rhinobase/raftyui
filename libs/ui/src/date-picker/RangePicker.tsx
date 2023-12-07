@@ -5,7 +5,7 @@ import React from "react";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { classNames } from "../utils";
-import { Calendar } from "./calendar";
+import { Calendar } from "./Calendar";
 
 export type RangePicker = {
   onSelect?: (value?: DateRange) => void;
@@ -64,7 +64,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
         {selected && (
           <div
             title="unselect range"
-            className="ml-2 p-0.5 text-red-500 dark:text-red-300 hover:bg-red-200/40 dark:hover:bg-red-300/10 transition-all ease-in-out rounded"
+            className="ml-2 rounded p-0.5 text-red-500 transition-all ease-in-out hover:bg-red-200/40 dark:text-red-300 dark:hover:bg-red-300/10"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

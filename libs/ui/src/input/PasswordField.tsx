@@ -2,8 +2,8 @@
 import React from "react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/outline";
 import { Button } from "../button";
-import { InputGroup, Suffix } from "./input-group";
-import { InputField } from "./input-field";
+import { InputGroup, Suffix } from "./InputGroup";
+import { InputField } from "./InputField";
 
 // Password Field
 export type PasswordField = InputField;
