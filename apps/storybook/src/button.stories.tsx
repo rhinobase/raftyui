@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@rafty/ui";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
@@ -102,7 +102,7 @@ export const IconButton: Story = {
       </div>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">fab</div>
-        <Button data-cy="iconbtn" colorScheme={colorScheme} size="fab">
+        <Button data-cy="iconbtn" colorScheme={colorScheme} size={size}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -171,7 +171,13 @@ export const ButtonWithIcons: Story = {
           icon right
         </div>
         <Button
+          size={size}
+          variant={variant}
+          isUnstyled={isUnstyled}
           colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
           rightIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -197,7 +203,13 @@ export const ButtonWithIcons: Story = {
           icon left & right
         </div>
         <Button
+          size={size}
+          variant={variant}
+          isUnstyled={isUnstyled}
           colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
           leftIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"

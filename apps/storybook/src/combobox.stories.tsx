@@ -12,6 +12,7 @@ import {
   classNames,
 } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
+import { useEffect, useRef, useState } from "react";
 
 const meta: Meta = {
   title: "Form / Combobox",
@@ -46,8 +47,14 @@ const FRAMEWORK = [
 
 export const Default: Story = {
   render: function Render() {
+    const [contentwidth, setContentWidth] = useState(0);
     const [isOpen, setOpen] = React.useState(false);
     const [value, setValue] = React.useState("");
+    const triggerRef = useRef<HTMLButtonElement>(null);
+
+    useEffect(() => {
+      if (triggerRef.current) setContentWidth(triggerRef.current.offsetWidth);
+    }, []);
 
     return (
       <Popover open={isOpen} onOpenChange={setOpen}>
@@ -55,6 +62,7 @@ export const Default: Story = {
           variant="outline"
           role="combobox"
           aria-expanded={isOpen}
+          ref={triggerRef}
           className="w-full justify-between"
           rightIcon={
             <ChevronUpDownIcon
@@ -71,7 +79,10 @@ export const Default: Story = {
             ? FRAMEWORK.find((framework) => framework.value === value)?.label
             : "Select framework..."}
         </PopoverTrigger>
-        <PopoverContent className="!w-[760px] !p-0">
+        <PopoverContent
+          className="!max-w-full !p-0"
+          style={{ width: contentwidth }}
+        >
           <Command>
             <CommandInput placeholder="Search framework..." />
             <CommandEmpty>No framework found.</CommandEmpty>

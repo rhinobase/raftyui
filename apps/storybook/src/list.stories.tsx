@@ -1,13 +1,18 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { List, ListItem, OrderedList, UnorderedList } from "@rafty/ui";
+import {
+  List,
+  ListItem,
+  OrderedList as OL,
+  UnorderedList as UL,
+} from "@rafty/ui";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
-const meta: Meta<typeof OrderedList> = {
+const meta: Meta<typeof List> = {
   title: "Components / List",
 };
 
 export default meta;
-type Story = StoryObj<typeof OrderedList>;
+type Story = StoryObj<typeof List>;
 
 export const Default: Story = {
   render: () => (
@@ -20,25 +25,25 @@ export const Default: Story = {
   ),
 };
 
-export const Ordered_List: Story = {
+export const OrderedList: Story = {
   render: () => (
-    <OrderedList>
+    <OL>
       <ListItem>Lorem ipsum dolor sit amet</ListItem>
       <ListItem>Consectetur adipiscing elit</ListItem>
       <ListItem>Integer molestie lorem at massa</ListItem>
       <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-    </OrderedList>
+    </OL>
   ),
 };
 
-export const Unordered_List: Story = {
+export const UnorderedList: Story = {
   render: () => (
-    <UnorderedList>
+    <UL>
       <ListItem>Lorem ipsum dolor sit amet</ListItem>
       <ListItem>Consectetur adipiscing elit</ListItem>
       <ListItem>Integer molestie lorem at massa</ListItem>
       <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-    </UnorderedList>
+    </UL>
   ),
 };
 
