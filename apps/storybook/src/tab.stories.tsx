@@ -31,17 +31,19 @@ export const Variants: Story = {
     >
       <TabList>
         <TabTrigger value="tab1">Tab1</TabTrigger>
-        <TabTrigger value="tab2" disabled>
-          Tab2
-        </TabTrigger>
+        <TabTrigger value="tab2">Tab2</TabTrigger>
         <TabTrigger value="tab3">Tab2</TabTrigger>
       </TabList>
-      <TabContent value="tab1" className="p-4">
+      <TabContent value="tab1">
         1 large-scale networks, high-radix switches reduce hop and switch count,
         which decreases latency and power
       </TabContent>
-      <TabContent value="tab3" className="p-4">
+      <TabContent value="tab2">
         2 large-scale networks, high-radix switches reduce hop and switch count,
+        which decreases latency and power
+      </TabContent>
+      <TabContent value="tab3">
+        3 large-scale networks, high-radix switches reduce hop and switch count,
         which decreases latency and power
       </TabContent>
     </Tab>

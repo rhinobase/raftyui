@@ -28,29 +28,31 @@ export const Default: Story = {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
             <NavigationMenuContent data-cy="content" size="sm">
-              <div className="grid grid-cols-1">
-                <div>
-                  <NavigationMenuLink href="/">
-                    <div className="flex">
+              <div className="flex">
+                <div className="max-w-[200px]">
+                  <NavigationMenuLink href="/" className="h-full">
+                    <div className="h-full space-y-2 p-2">
                       <svg
                         aria-hidden
                         width="38"
                         height="38"
                         viewBox="0 0 25 25"
-                        fill="white"
+                        className="fill-black dark:fill-white"
                       >
                         <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z"></path>
                         <path d="M12 0H4V8H12V0Z"></path>
                         <path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"></path>
                       </svg>
-                      <div className="">Radix Primitives</div>
-                      <p className="">
+                      <div className="text-xl font-semibold">
+                        Radix Primitives
+                      </div>
+                      <p className="text-sm font-normal">
                         Unstyled, accessible components for React.
                       </p>
                     </div>
                   </NavigationMenuLink>
                 </div>
-                <div>
+                <div className="flex-1">
                   <NavigationMenuListItem href="#" title="Stitches">
                     CSS-in-JS with best-in-class developer experience.
                   </NavigationMenuListItem>

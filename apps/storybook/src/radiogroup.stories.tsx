@@ -32,16 +32,12 @@ export const Default: Story = {
       <RadioGroupItem value="default" id="default">
         Default
       </RadioGroupItem>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="comfortable" id="comfortable">
-          Comfortable
-        </RadioGroupItem>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="compact" id="compact">
-          Compact
-        </RadioGroupItem>
-      </div>
+      <RadioGroupItem value="comfortable" id="comfortable">
+        Comfortable
+      </RadioGroupItem>
+      <RadioGroupItem value="compact" id="compact">
+        Compact
+      </RadioGroupItem>
     </RadioGroup>
   ),
 };

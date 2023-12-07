@@ -9,7 +9,7 @@ const meta: Meta<typeof ToggleGroup> = {
   argTypes: {
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "full"],
+      options: ["sm", "md", "lg"],
     },
   },
 };
