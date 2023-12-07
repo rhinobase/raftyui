@@ -22,12 +22,12 @@ type Story = StoryObj<typeof NavigationMenu>;
 
 export const Default: Story = {
   render: ({ isBarebone }) => (
-    <div className="mx-auto h-screen w-full">
+    <div className="mx-auto flex h-screen w-full items-center">
       <NavigationMenu isBarebone={isBarebone}>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-            <NavigationMenuContent data-cy="content" size="sm">
+            <NavigationMenuContent>
               <div className="flex">
                 <div className="max-w-[200px]">
                   <NavigationMenuLink href="/" className="h-full">
