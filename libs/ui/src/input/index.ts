@@ -1,4 +1,4 @@
-export { InputField } from "./InputField";
+export { InputField, inputFieldClasses } from "./InputField";
 export {
   InputGroup,
   LeftAddon,

@@ -7,4 +7,10 @@ export {
   Td,
   Th,
   Tr,
+  tableClasses,
+  tableFooterClasses,
+  tableHeadClasses,
+  tdClasses,
+  thClasses,
+  trClasses,
 } from "./Table";

@@ -1,1 +1,10 @@
-export * from "./Card";
+export {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  cardClasses,
+  cardHeaderClasses,
+  cardContentClasses,
+  cardFooterClasses,
+} from "./Card";

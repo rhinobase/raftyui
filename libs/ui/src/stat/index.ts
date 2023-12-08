@@ -1,1 +1,8 @@
-export { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "./Stat";
+export {
+  Stat,
+  StatHelpText,
+  StatIcon,
+  StatLabel,
+  StatValue,
+  statHelpTextClasses,
+} from "./Stat";
