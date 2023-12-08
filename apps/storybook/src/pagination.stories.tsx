@@ -27,7 +27,7 @@ export const Default: Story = {
           total={100}
           pageSizeOptions={[10, 20, 30]}
           hideOnSinglePage
-          pageSize={15}
+          defaultPageSize={20}
           showQuickJumper
           showSizeChanger
           size={size}
@@ -51,7 +51,6 @@ export const Goto: Story = {
       <Pagination
         total={100}
         pageSizeOptions={[10, 20, 30]}
-        pageSize={10}
         showQuickJumper
         size={size}
         className="flex gap-5"
@@ -67,7 +66,6 @@ export const SizeChanger: Story = {
         total={100}
         pageSizeOptions={[10, 20, 30]}
         showSizeChanger
-        pageSize={10}
         size={size}
         className="flex gap-5"
       />
@@ -80,7 +78,6 @@ export const Buttons: Story = {
       <Pagination
         total={100}
         pageSizeOptions={[10, 20, 30]}
-        pageSize={10}
         size={size}
         className="flex gap-5"
       />
