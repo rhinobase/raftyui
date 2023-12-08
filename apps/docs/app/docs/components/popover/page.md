@@ -60,10 +60,10 @@ To make arrow on top of content visible you can use `showArrow` prop. It is a bo
 
 {%example name="popover:showarrow" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in popover.
-{% example name="popover:barebone" /%}
+Pass `isUnstyled` prop in parent component to remove all styles in popover.
+{% example name="popover:unstyled" /%}
 
 ### API
 

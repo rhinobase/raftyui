@@ -69,17 +69,17 @@ There are 3 `size` options in Menu: `sm`, `md` (default) & `lg`.
 
 {% example name="menu:radio_group" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in Menu.
-
-{% example name="menu:barebone" /%}
-
-## UnStyled
-
-Pass ` isUnstyled` prop to remove style from a particular sub component.
+Pass `isUnstyled` prop in parent component to remove style in Menu.
 
 {% example name="menu:unstyled" /%}
+
+## UnStyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="menu:unstyledsub" /%}
 
 ## IsArrow
 

@@ -72,15 +72,17 @@ There are 3 `size` options in Context Menu: `sm`, `md` (default), & `lg`.s
 
 {% example name="context-menu:size" /%}
 
-## Barebone
-
-Pass `isBarebone` prop to remove all style in context-menu.
-
-{% example name="context-menu:barebone" /%}
-
 ## Unstyled
 
+Pass `isUnstyled` prop in parent component to remove style in context-menu.
+
 {% example name="context-menu:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="context-menu:unstyledsub" /%}
 
 ### API
 

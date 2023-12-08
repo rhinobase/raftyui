@@ -58,17 +58,17 @@ There are 4 `size` options in alert dialog component: `sm`, `md` (default), `lg`
 
 {% example name="alert-dialog:size" /%}
 
-## Barebone
-
-Pass `isBarebone` prop to remove style in Alert Dialog
-
-{% example name="alert-dialog:barebone" /%}
-
 ## Unstyled
 
-Pass `isUnstyled` prop to remove style from a sub component
+Pass `isUnstyled` prop in parent component to remove style in Alert Dialog
 
 {% example name="alert-dialog:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component
+
+{% example name="alert-dialog:unstyledsub" /%}
 
 ## Aschild
 

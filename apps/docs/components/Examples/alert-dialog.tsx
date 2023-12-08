@@ -50,8 +50,8 @@ export const alert_dialog_examples = {
       </AlertDialogContent>
     </AlertDialog>
   ),
-  "alert-dialog:barebone": (
-    <AlertDialog isBarebone>
+  "alert-dialog:unstyled": (
+    <AlertDialog isUnstyled>
       <AlertDialogTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-800 rounded-lg p-2 px-4 dark:text-white">
         Open
       </AlertDialogTrigger>
@@ -79,7 +79,7 @@ export const alert_dialog_examples = {
     </AlertDialog>
   ),
 
-  "alert-dialog:unstyled": (
+  "alert-dialog:unstyledsub": (
     <AlertDialog>
       <AlertDialogTrigger
         isUnstyled

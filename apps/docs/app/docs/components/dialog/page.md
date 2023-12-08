@@ -63,11 +63,11 @@ Our Button component is forwarded within the Alert Dialog Trigger component, ena
 
 {% example name="dialog:asChild" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in dialog.
+Pass `isUnstyled` prop in parent component to remove style in dialog.
 
-{% example name="dialog:barebone" /%}
+{% example name="dialog:unstyled" /%}
 
 ## ShowCloseButton
 
@@ -75,9 +75,11 @@ The showCloseButton prop exists in DialogContent subcomponent and it is used to 
 
 {% example name="dialog:closebutton" /%}
 
-## Unstyled
+## Unstyled subcomponent
 
-{% example name="dialog:unstyled" /%}
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="dialog:unstyledsub" /%}
 
 ### API
 

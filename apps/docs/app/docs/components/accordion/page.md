@@ -73,17 +73,17 @@ There are 2 `variant` options in accordion: `solid` (default) & `ghost`.
 
 {% example name="accordion:variant" /%}
 
-## Barebone
-
-Pass `isBarebone` prop to remove all style in accordion.
-
-{% example name="accordion:barebone" /%}
-
 ## Unstyled
 
-Pass ` isUnstyled` prop to remove style from a particular sub component.
+Pass `isUnstyled` prop in parent component to remove style in Accordion.
 
 {% example name="accordion:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="accordion:unstyledsub" /%}
 
 ## API
 
