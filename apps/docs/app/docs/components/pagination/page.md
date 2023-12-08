@@ -30,25 +30,25 @@ import { Pagination } from "@rafty/ui";
 
 {% example name="pagination:usage" /%}
 
-## size
+## Size
 
 {% example name="pagination:size" /%}
 
-## showQuickJumper
+## ShowQuickJumper
 
-{% example name="pagination:showQuickJumper" /%}
+{% example name="pagination:show_quick_jumper" /%}
 
-## total_number
+## TotalNumber
 
-{% example name="pagination:total_number" /%}
+{% example name="pagination:Total_Number" /%}
 
-## showSizeChanger
+## ShowSizeChanger
 
-{% example name="pagination:showSizeChanger" /%}
+{% example name="pagination:show_size_changer" /%}
 
 ## isDisabled
 
-{% example name="pagination:isDisabled" /%}
+{% example name="pagination:is_disabled" /%}
 
 ### API
 
@@ -59,14 +59,14 @@ import { Pagination } from "@rafty/ui";
 | Property         | Description                                                      | Type                                                 | Default    |
 | ---------------- | ---------------------------------------------------------------- | ---------------------------------------------------- | ---------- |
 | total            | Total number of items.                                           | `number`                                             | 0          |
-| pageSize         | Number of items per page.                                        | `number`                                             |            |
-| current          | Current page number.                                             | `number`                                             |            |
-| onChange         | Callback function when page or pageSize changes.                 | `(page: number, pageSize: number) => void`           |            |
+| pageSize         | Number of items per page.                                        | `number`                                             | -          |
+| current          | Current page number.                                             | `number`                                             | -          |
+| onChange         | Callback function when page or pageSize changes.                 | `(page: number, pageSize: number) => void`           | -          |
 | pageSizeOptions  | Options for the page size dropdown.                              | `number[]`                                           | [10,20,50] |
 | defaultCurrent   | Default current page number.                                     | `number`                                             | 1          |
 | defaultPageSize  | Default page size.                                               | `number`                                             | 10         |
-| disabled         | Whether the pagination is disabled.                              | `boolean`                                            |            |
+| disabled         | Whether the pagination is disabled.                              | `boolean`                                            | -          |
 | hideOnSinglePage | Whether to hide pagination on a single page.                     | `boolean`                                            | false      |
 | showQuickJumper  | Whether to show a quick jumper input or customize the go button. | `boolean`                                            | false      |
-| showSizeChanger  | Whether to show the page size changer.                           | `boolean`                                            |            |
-| showTotal        | Callback function to display total and range info.               | `(total:number,range:string) => ReactNode or string` |            |
+| showSizeChanger  | Whether to show the page size changer.                           | `boolean`                                            | -          |
+| showTotal        | Callback function to display total and range info.               | `(total:number,range:string) => ReactNode or string` | -          |

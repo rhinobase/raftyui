@@ -92,16 +92,16 @@ export const navigation = [
         href: "/docs/components/navigation-menu",
       },
       {
+        title: "Pagination",
+        href: "/docs/components/pagination",
+      },
+      {
         title: "Password Field",
         href: "/docs/components/password-field",
       },
       {
         title: "Popover",
         href: "/docs/components/popover",
-      },
-      {
-        title: "Pagination",
-        href: "/docs/components/pagination",
       },
       {
         title: "Progress",
