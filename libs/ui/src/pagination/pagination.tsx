@@ -1,4 +1,5 @@
-import { cva, type VariantProps } from "class-variance-authority";
+"use client";
+import { cva } from "class-variance-authority";
 import {
   forwardRef,
   HTMLAttributes,
@@ -11,43 +12,42 @@ import PageSelectMenu from "./PageSelectMenu";
 import PaginationButtons from "./PaginationButtons";
 import PaginationField from "./PaginationField";
 
-export const paginationClasses = cva("rounded", {
-  variants: {
-    size: {
-      sm: "px-3 pb-3 text-sm",
-      md: "px-4 pb-4",
-      lg: "px-5 pb-5",
+export const paginationClasses = cva(
+  "flex w-full items-center gap-5 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
+  {
+    variants: {
+      size: {
+        sm: "p-2 text-sm",
+        md: "p-2.5",
+        lg: "p-3 text-lg",
+      },
     },
-    disabled: {
-      true: "cursor-not-allowed opacity-50",
+    defaultVariants: {
+      size: "md",
     },
   },
-  defaultVariants: {
-    size: "md",
-  },
-});
+);
 
-export type Pagination = Omit<
+export type PaginationProps = Omit<
   HTMLAttributes<HTMLDivElement>,
   "children" | "onChange"
-> &
-  VariantProps<typeof paginationClasses> & {
-    total: number;
-    pageSize?: number;
-    current?: number;
-    showButton?: boolean;
-    onChange?: (page: number, pageSize: number) => void;
-    pageSizeOptions: string[] | number[];
-    defaultCurrent?: number;
-    defaultPageSize?: number;
-    isDisabled?: boolean;
-    hideOnSinglePage?: boolean;
-    showQuickJumper?: boolean | { goButton: React.ReactNode };
-    showSizeChanger?: boolean;
-    showTotal?: (total: number, range: string) => ReactNode;
-  };
+> & {
+  total: number;
+  pageSize?: number;
+  current?: number;
+  onChange?: (page: number, pageSize: number) => void;
+  pageSizeOptions?: number[];
+  defaultCurrent?: number;
+  defaultPageSize?: number;
+  isDisabled?: boolean;
+  hideOnSinglePage?: boolean;
+  size?: "sm" | "md" | "lg";
+  showQuickJumper?: boolean;
+  showSizeChanger?: boolean;
+  showTotal?: (total: number, range: string) => ReactNode | string;
+};
 
-export const Pagination = forwardRef<HTMLDivElement, Pagination>(
+export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
   (
     {
       className,
@@ -57,13 +57,12 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       current,
       isDisabled,
       pageSize,
-      pageSizeOptions,
+      pageSizeOptions = [10, 20, 50],
       showQuickJumper = false,
       size = "md",
       onChange,
       hideOnSinglePage = false,
       showSizeChanger,
-      showButton = false,
       showTotal,
       ...props
     },
@@ -102,11 +101,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     return (
       <div
         ref={forwardRef}
-        className={classNames(
-          paginationClasses({ size }),
-          className,
-          "aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
-        )}
+        className={classNames(paginationClasses({ size }), className)}
         aria-disabled={isDisabled}
         {...props}
       >
@@ -116,6 +111,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
             pageSizeOptions={pageSizeOptions}
             onPageSizeChange={onPageSizeChange}
             isDisabled={isDisabled}
+            size={size}
           />
         )}
         {showQuickJumper && (
@@ -124,20 +120,22 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
             onPageChange={onPageChange}
             totalPages={totalPages}
             isDisabled={isDisabled}
+            size={size}
           />
         )}
-        {showTotal && (
-          <span className="flex items-center">{totalRangeComponent}</span>
+        {typeof totalRangeComponent === "string" ? (
+          <p>{totalRangeComponent}</p>
+        ) : (
+          totalRangeComponent
         )}
-        {showButton && (
-          <PaginationButtons
-            currentPage={currentValue}
-            onPrev={onPrev}
-            onNext={onNext}
-            totalPages={totalPages}
-            isDisabled={isDisabled}
-          />
-        )}
+        <PaginationButtons
+          currentPage={currentValue}
+          onPrev={onPrev}
+          onNext={onNext}
+          totalPages={totalPages}
+          isDisabled={isDisabled}
+          size={size}
+        />
       </div>
     );
   },

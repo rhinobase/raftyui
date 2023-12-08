@@ -1,5 +1,6 @@
 import { Button } from "../button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { classNames } from "../utils";
 
 type PaginationButtons = {
   currentPage: number;
@@ -7,6 +8,7 @@ type PaginationButtons = {
   onPrev: () => void;
   totalPages: number;
   isDisabled?: boolean;
+  size: "sm" | "md" | "lg";
 };
 
 export default function PaginationButtons({
@@ -15,6 +17,7 @@ export default function PaginationButtons({
   onNext,
   onPrev,
   isDisabled,
+  size,
 }: PaginationButtons) {
   const canPrev = currentPage > 1;
   const canNext = currentPage < totalPages;
@@ -29,7 +32,13 @@ export default function PaginationButtons({
         onClick={onPrev}
         isDisabled={prev_disabled}
       >
-        <ChevronLeftIcon height={20} width={20} />
+        <ChevronLeftIcon
+          className={classNames(
+            size === "sm" && "h-3.5 w-3.5",
+            size === "md" && "h-5 w-5",
+            size === "lg" && "h-6 w-6",
+          )}
+        />
       </Button>
       <Button
         variant="ghost"
@@ -37,7 +46,13 @@ export default function PaginationButtons({
         onClick={onNext}
         isDisabled={next_disabled}
       >
-        <ChevronRightIcon height={20} width={20} />
+        <ChevronRightIcon
+          className={classNames(
+            size === "sm" && "h-3.5 w-3.5",
+            size === "md" && "h-5 w-5",
+            size === "lg" && "h-6 w-6",
+          )}
+        />
       </Button>
     </div>
   );

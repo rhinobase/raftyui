@@ -5,6 +5,7 @@ type PageSelectMenu = {
   pageSizeOptions: string[] | number[];
   onPageSizeChange: (value: number) => void;
   isDisabled?: boolean;
+  size: "sm" | "md" | "lg";
 };
 
 export default function PageSelectMenu({
@@ -12,6 +13,7 @@ export default function PageSelectMenu({
   pageSizeOptions,
   onPageSizeChange,
   isDisabled,
+  size,
 }: PageSelectMenu) {
   return (
     <div className="flex items-center gap-2">
@@ -24,6 +26,7 @@ export default function PageSelectMenu({
             onPageSizeChange(value);
           }}
           isDisabled={isDisabled}
+          size={size}
         >
           {pageSizeOptions.map((size, index) => (
             <SelectItem key={index} value={size}>
