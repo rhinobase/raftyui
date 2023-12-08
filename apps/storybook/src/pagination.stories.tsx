@@ -30,11 +30,12 @@ export const Default: Story = {
           pageSize={15}
           showQuickJumper
           showSizeChanger
-          showButton
           size={size}
-          showTotal={(total, range) =>
-            `Range is ${range} ,Total ${total} items`
-          }
+          showTotal={(total, range) => (
+            <span>
+              Total {total} items, Range is {range}
+            </span>
+          )}
           current={current}
           onChange={onChange}
           className="flex gap-5"
@@ -81,7 +82,6 @@ export const Buttons: Story = {
         pageSizeOptions={[10, 20, 30]}
         pageSize={10}
         size={size}
-        showButton
         className="flex gap-5"
       />
     </div>
