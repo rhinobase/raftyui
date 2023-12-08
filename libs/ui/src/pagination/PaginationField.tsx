@@ -4,24 +4,23 @@ import { InputField } from "../input";
 type PaginationField = {
   totalPages: number;
   currentPage: number;
-  onPageChange: (value: number) => void;
+  onPageNumberChange: (value: number) => void;
   isDisabled?: boolean;
   size: "sm" | "md" | "lg";
 };
 
 export default function PaginationField({
   currentPage,
-  onPageChange,
+  onPageNumberChange,
   totalPages,
   isDisabled,
   size,
 }: PaginationField) {
   const handleInput = (value: number) => {
     let newValue = value;
-    if (newValue > totalPages) {
-      newValue = totalPages;
-    }
-    return onPageChange(newValue);
+    if (newValue > totalPages) newValue = totalPages;
+
+    return onPageNumberChange(newValue);
   };
 
   return (

@@ -1,26 +1,26 @@
 import { Select, SelectItem } from "../select";
 
-type PageSelectMenu = {
-  page: number;
-  pageSizeOptions: string[] | number[];
+export type PageSizeSelect = {
+  itemsPerPage: number;
+  pageSizeOptions: number[];
   onPageSizeChange: (value: number) => void;
   isDisabled?: boolean;
   size: "sm" | "md" | "lg";
 };
 
-export default function PageSelectMenu({
-  page,
+export default function PageSizeSelect({
+  itemsPerPage,
   pageSizeOptions,
   onPageSizeChange,
   isDisabled,
   size,
-}: PageSelectMenu) {
+}: PageSizeSelect) {
   return (
     <div className="flex items-center gap-2">
       <span>Rows per page:</span>
       <div className="w-[100px]">
         <Select
-          value={page}
+          value={itemsPerPage}
           onChange={(event) => {
             const value = Number(event.target.value);
             onPageSizeChange(value);

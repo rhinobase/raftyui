@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { classNames } from "../utils";
-import PageSelectMenu from "./PageSelectMenu";
+import PageSizeSelect from "./PageSizeSelect";
 import PaginationButtons from "./PaginationButtons";
 import PaginationField from "./PaginationField";
 
@@ -28,12 +28,11 @@ export const paginationClasses = cva(
   },
 );
 
-export type PaginationProps = Omit<
+export type Pagination = Omit<
   HTMLAttributes<HTMLDivElement>,
   "children" | "onChange"
 > & {
   total: number;
-  pageSize?: number;
   current?: number;
   onChange?: (page: number, pageSize: number) => void;
   pageSizeOptions?: number[];
@@ -47,7 +46,7 @@ export type PaginationProps = Omit<
   showTotal?: (total: number, range: string) => ReactNode | string;
 };
 
-export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
+export const Pagination = forwardRef<HTMLDivElement, Pagination>(
   (
     {
       className,
@@ -56,7 +55,6 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
       defaultCurrent = 1,
       current,
       isDisabled,
-      pageSize,
       pageSizeOptions = [10, 20, 50],
       showQuickJumper = false,
       size = "md",
@@ -66,48 +64,48 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
       showTotal,
       ...props
     },
-    forwardRef,
+    forwardedRef,
   ) => {
-    const _pageSize = pageSize ?? defaultPageSize;
-    const [page, setPageSize] = useState(_pageSize);
+    const [itemsPerPage, setItemsPerPage] = useState(defaultPageSize);
     const [currentPage, setCurrentPage] = useState(defaultCurrent);
-    const totalPages = Math.ceil(total / page);
+    const totalPages = Math.ceil(total / itemsPerPage);
 
     // If a current value is provided by the user, use it; otherwise, fallback to the default currentPage value
     const currentValue = current ?? currentPage;
 
     useEffect(() => {
-      onChangeHandle(currentPage, page);
-    }, [currentPage, page]);
+      onChangeHandle(currentPage, itemsPerPage);
+    }, [currentPage, itemsPerPage]);
 
-    const onChangeHandle = (page: number, size: number) => {
+    const onChangeHandle = (page: number, pageSize: number) => {
       setCurrentPage(page);
-      setPageSize(size);
-      onChange?.(page, size);
+      setItemsPerPage(pageSize);
+      onChange?.(page, pageSize);
     };
 
     const onPageSizeChange = (value: number) => onChangeHandle(1, value);
-    const onPrev = () => onChangeHandle(currentPage - 1, page);
-    const onNext = () => onChangeHandle(currentPage + 1, page);
-    const onPageChange = (value: number) => onChangeHandle(value, page);
+    const onPrev = () => onChangeHandle(currentPage - 1, itemsPerPage);
+    const onNext = () => onChangeHandle(currentPage + 1, itemsPerPage);
+    const onPageNumberChange = (value: number) =>
+      onChangeHandle(value, itemsPerPage);
 
-    if (hideOnSinglePage && totalPages === 1) return <div ref={forwardRef} />;
+    if (hideOnSinglePage && totalPages === 1) return <div ref={forwardedRef} />;
 
-    const startItem = Math.max((currentValue - 1) * page + 1, 0);
-    const endItem = Math.min(currentValue * page, total);
+    const startItem = Math.max((currentValue - 1) * itemsPerPage + 1, 0);
+    const endItem = Math.min(currentValue * itemsPerPage, total);
 
     const totalRangeComponent = showTotal?.(total, `${startItem} - ${endItem}`);
 
     return (
       <div
-        ref={forwardRef}
+        ref={forwardedRef}
         className={classNames(paginationClasses({ size }), className)}
         aria-disabled={isDisabled}
         {...props}
       >
         {showSizeChanger && (
-          <PageSelectMenu
-            page={page}
+          <PageSizeSelect
+            itemsPerPage={itemsPerPage}
             pageSizeOptions={pageSizeOptions}
             onPageSizeChange={onPageSizeChange}
             isDisabled={isDisabled}
@@ -117,7 +115,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
         {showQuickJumper && (
           <PaginationField
             currentPage={currentValue}
-            onPageChange={onPageChange}
+            onPageNumberChange={onPageNumberChange}
             totalPages={totalPages}
             isDisabled={isDisabled}
             size={size}
