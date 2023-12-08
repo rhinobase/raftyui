@@ -100,6 +100,10 @@ export const navigation = [
         href: "/docs/components/popover",
       },
       {
+        title: "Pagination",
+        href: "/docs/components/pagination",
+      },
+      {
         title: "Progress",
         href: "/docs/components/progress",
       },

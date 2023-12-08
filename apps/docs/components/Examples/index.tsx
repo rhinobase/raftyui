@@ -21,6 +21,7 @@ import { drawer_examples } from "./drawer";
 import { field_control_examples } from "./field-control";
 import { hover_card_examples } from "./hover-card";
 import { input_examples } from "./input-field";
+import { pagination_examples } from "./pagination";
 import { kbd_examples } from "./kbd";
 import { label_examples } from "./label";
 import { list_examples } from "./list";
@@ -79,6 +80,7 @@ const examples: Record<string, JSX.Element> = {
   ...input_examples,
   ...kbd_examples,
   ...label_examples,
+  ...pagination_examples,
   ...list_examples,
   ...menu_examples,
   ...menubar_examples,
