@@ -9,11 +9,11 @@ export const pagination_examples = {
       className="justify-between"
     />
   ),
-  "pagination:showSizeChanger": (
+  "pagination:show_size_changer": (
     <Pagination total={100} pageSize={10} showSizeChanger />
   ),
 
-  "pagination:showQuickJumper": (
+  "pagination:show_quick_jumper": (
     <Pagination total={100} showQuickJumper pageSize={10} />
   ),
   "pagination:size": (
@@ -25,14 +25,14 @@ export const pagination_examples = {
       showSizeChanger
     />
   ),
-  "pagination:total_number": (
+  "pagination:Total_Number": (
     <Pagination
       total={100}
       pageSize={10}
       showTotal={(total, range) => `${range} of ${total} items`}
     />
   ),
-  "pagination:isDisabled": (
+  "pagination:is_disabled": (
     <Pagination
       total={100}
       isDisabled
