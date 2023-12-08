@@ -1,26 +1,29 @@
 import { Select, SelectItem } from "../select";
 
 type PageSelectMenu = {
-  pageSize: number;
+  page: number;
   pageSizeOptions: string[] | number[];
   onPageSizeChange: (value: number) => void;
+  isDisabled?: boolean;
 };
 
 export default function PageSelectMenu({
-  pageSize,
+  page,
   pageSizeOptions,
   onPageSizeChange,
+  isDisabled,
 }: PageSelectMenu) {
   return (
     <div className="flex items-center gap-2">
       <span>Rows per page:</span>
       <div className="w-[100px]">
         <Select
-          value={pageSize}
+          value={page}
           onChange={(event) => {
             const value = Number(event.target.value);
             onPageSizeChange(value);
           }}
+          isDisabled={isDisabled}
         >
           {pageSizeOptions.map((size, index) => (
             <SelectItem key={index} value={size}>

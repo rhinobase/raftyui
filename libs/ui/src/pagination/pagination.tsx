@@ -18,6 +18,9 @@ export const paginationClasses = cva("rounded", {
       md: "px-4 pb-4",
       lg: "px-5 pb-5",
     },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+    },
   },
   defaultVariants: {
     size: "md",
@@ -37,7 +40,7 @@ export type Pagination = Omit<
     pageSizeOptions: string[] | number[];
     defaultCurrent?: number;
     defaultPageSize?: number;
-    disabled?: boolean;
+    isDisabled?: boolean;
     hideOnSinglePage?: boolean;
     showQuickJumper?: boolean | { goButton: React.ReactNode };
     showSizeChanger?: boolean;
@@ -52,6 +55,8 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       defaultPageSize = 10,
       defaultCurrent = 1,
       current,
+      isDisabled,
+      pageSize,
       pageSizeOptions,
       showQuickJumper = false,
       size = "md",
@@ -64,58 +69,53 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     },
     forwardRef,
   ) => {
-    const [pageSize, setPageSize] = useState(defaultPageSize);
+    const _pageSize = pageSize ?? defaultPageSize;
+    const [page, setPageSize] = useState(_pageSize);
     const [currentPage, setCurrentPage] = useState(defaultCurrent);
-    const totalPages = Math.ceil(total / pageSize);
+    const totalPages = Math.ceil(total / page);
 
     // If a current value is provided by the user, use it; otherwise, fallback to the default currentPage value
     const currentValue = current ?? currentPage;
 
     useEffect(() => {
-      onChange?.(currentValue, pageSize);
-    }, [onChange, currentValue, pageSize]);
+      onChangeHandle(currentPage, page);
+    }, [currentPage, page]);
 
-    const onPageSizeChange = (value: number) => {
-      setPageSize(value);
-      setCurrentPage(1);
-      onChange?.(1, value);
+    const onChangeHandle = (page: number, size: number) => {
+      setCurrentPage(page);
+      setPageSize(size);
+      onChange?.(page, size);
     };
 
-    const onPrev = () => {
-      const newPage = currentValue - 1;
-      setCurrentPage(newPage);
-      onChange?.(newPage, pageSize);
-    };
-
-    const onNext = () => {
-      const newPage = currentValue + 1;
-      setCurrentPage(newPage);
-      onChange?.(newPage, pageSize);
-    };
-
-    const onPageChange = (value: number) => {
-      setCurrentPage(value);
-      onChange?.(value, pageSize);
-    };
+    const onPageSizeChange = (value: number) => onChangeHandle(1, value);
+    const onPrev = () => onChangeHandle(currentPage - 1, page);
+    const onNext = () => onChangeHandle(currentPage + 1, page);
+    const onPageChange = (value: number) => onChangeHandle(value, page);
 
     if (hideOnSinglePage && totalPages === 1) return <div ref={forwardRef} />;
 
-    const startItem = Math.max((currentValue - 1) * pageSize + 1, 0);
-    const endItem = Math.min(currentValue * pageSize, total);
+    const startItem = Math.max((currentValue - 1) * page + 1, 0);
+    const endItem = Math.min(currentValue * page, total);
 
     const totalRangeComponent = showTotal?.(total, `${startItem} - ${endItem}`);
 
     return (
       <div
         ref={forwardRef}
-        className={classNames(paginationClasses({ size }), className)}
+        className={classNames(
+          paginationClasses({ size }),
+          className,
+          "aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
+        )}
+        aria-disabled={isDisabled}
         {...props}
       >
         {showSizeChanger && (
           <PageSelectMenu
-            pageSize={pageSize}
+            page={page}
             pageSizeOptions={pageSizeOptions}
             onPageSizeChange={onPageSizeChange}
+            isDisabled={isDisabled}
           />
         )}
         {showQuickJumper && (
@@ -123,6 +123,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
             currentPage={currentValue}
             onPageChange={onPageChange}
             totalPages={totalPages}
+            isDisabled={isDisabled}
           />
         )}
         {showTotal && (
@@ -131,10 +132,10 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
         {showButton && (
           <PaginationButtons
             currentPage={currentValue}
-            pageSize={pageSize}
             onPrev={onPrev}
             onNext={onNext}
             totalPages={totalPages}
+            isDisabled={isDisabled}
           />
         )}
       </div>

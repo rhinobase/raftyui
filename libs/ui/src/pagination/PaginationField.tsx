@@ -5,12 +5,14 @@ type PaginationField = {
   totalPages: number;
   currentPage: number;
   onPageChange: (value: number) => void;
+  isDisabled?: boolean;
 };
 
 export default function PaginationField({
   currentPage,
   onPageChange,
   totalPages,
+  isDisabled,
 }: PaginationField) {
   const handleInput = (value: number) => {
     let newValue = value;
@@ -21,7 +23,7 @@ export default function PaginationField({
   };
 
   return (
-    <FieldControl name="page" className="!w-[70px]">
+    <FieldControl name="page" className="!w-[70px]" isDisabled={isDisabled}>
       <InputField
         type="number"
         min={1}
