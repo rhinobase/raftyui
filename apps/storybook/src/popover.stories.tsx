@@ -13,7 +13,7 @@ export const Default: Story = {
   render: () => (
     <Popover>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent isArrow>
+      <PopoverContent showArrow>
         <div data-cy="content" className="p-6">
           <div>
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
