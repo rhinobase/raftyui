@@ -1,5 +1,5 @@
+import { Select, SelectItem } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import { Select, SelectItem, Label } from "@rafty/ui";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
@@ -27,8 +27,7 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   render: ({ variant, size, isDisabled, isRequired, isReadOnly }) => (
-    <div className="w-[500px]">
-      <Label isRequired={isRequired}>select</Label>
+    <div className="w-[150px]">
       <Select
         variant={variant}
         size={size}

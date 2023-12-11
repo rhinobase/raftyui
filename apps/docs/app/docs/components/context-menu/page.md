@@ -16,7 +16,7 @@ nextjs:
 
 It displays a menu located at the pointer, triggered by a right-click or a long-press.
 
-This component is made on top of [Radix UIs Context Menu Component](https://www.radix-ui.com/primitives/docs/components/context-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Context Menu Component](https://www.radix-ui.com/primitives/docs/components/context-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
 
 # Anatomy
 
@@ -72,15 +72,17 @@ There are 3 `size` options in Context Menu: `sm`, `md` (default), & `lg`.s
 
 {% example name="context-menu:size" /%}
 
-## Barebone
-
-Pass `isBarebone` prop to remove all style in context-menu.
-
-{% example name="context-menu:barebone" /%}
-
 ## Unstyled
 
+Pass `isUnstyled` prop in parent component to remove style in context-menu.
+
 {% example name="context-menu:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="context-menu:unstyledsub" /%}
 
 ### API
 
@@ -88,9 +90,9 @@ Pass `isBarebone` prop to remove all style in context-menu.
 
 ### Root
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isBarebone | Removes style from whole component | `boolean` | false   |
+| Property   | Description                                               | Type      | Default |
+| ---------- | --------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
 
 ### Trigger
 

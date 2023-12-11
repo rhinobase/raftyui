@@ -27,22 +27,19 @@ type Story = StoryObj<typeof PasswordField>;
 
 export const Default: Story = {
   render: ({ size, variant, disabled, readOnly, required }) => (
-    <div className="flex w-[640px] flex-col gap-6 dark:text-white">
-      <h4>Password Field</h4>
-      <FieldControl
+    <FieldControl
+      name="password"
+      isReadOnly={readOnly}
+      isDisabled={disabled}
+      isRequired={required}
+    >
+      <Label>Enter Password</Label>
+      <PasswordField
+        aria-label="password"
+        variant={variant}
+        size={size}
         name="password"
-        isReadOnly={readOnly}
-        isDisabled={disabled}
-        isRequired={required}
-      >
-        <Label>Enter Password</Label>
-        <PasswordField
-          aria-label="password"
-          variant={variant}
-          size={size}
-          name="password"
-        />
-      </FieldControl>
-    </div>
+      />
+    </FieldControl>
   ),
 };

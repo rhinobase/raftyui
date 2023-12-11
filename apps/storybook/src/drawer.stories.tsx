@@ -14,11 +14,16 @@ const meta: Meta<typeof Drawer> = {
   title: "Components / Drawer",
   args: {
     size: "md",
+    side: "right",
   },
   argTypes: {
     size: {
       control: "select",
       options: ["sm", "md", "lg", "full"],
+    },
+    side: {
+      control: "select",
+      options: ["right", "left"],
     },
   },
 };

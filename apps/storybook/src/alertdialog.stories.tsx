@@ -15,25 +15,28 @@ const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",
   args: {
     size: "md",
-    isBarebone: false,
+    isUnstyled: false,
   },
   argTypes: {
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "xl"],
     },
-    isBarebone: {},
+    isUnstyled: {},
   },
 };
 export default meta;
+
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  render: ({ size, isBarebone }) => (
-    <AlertDialog size={size} isBarebone={isBarebone}>
-      <AlertDialogTrigger>Open</AlertDialogTrigger>
+  render: ({ size, isUnstyled }) => (
+    <AlertDialog size={size} isUnstyled={isUnstyled}>
+      <AlertDialogTrigger variant="solid" colorScheme="error">
+        Delete
+      </AlertDialogTrigger>
       <AlertDialogOverlay />
-      <AlertDialogContent data-cy="dialogcontent">
+      <AlertDialogContent>
         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         <AlertDialogDescription>
           This action cannot be undone. This will permanently delete your

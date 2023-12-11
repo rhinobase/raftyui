@@ -26,15 +26,15 @@ export const Accordion = React.forwardRef<
       className,
       size = "md",
       variant = "solid",
-      isBarebone = false,
+      isUnstyled = false,
       ...props
     },
     forwardedRef,
   ) => {
-    const unstyle = isBarebone;
+    const unstyle = isUnstyled;
 
     return (
-      <AccordionProvider value={{ size, variant, isBarebone }}>
+      <AccordionProvider value={{ size, variant, isUnstyled }}>
         <AccordionPrimitive.Root
           {...props}
           className={unstyle ? className : classNames("w-full", className)}
@@ -57,8 +57,8 @@ export const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   AccordionItem
 >(({ className, children, ...props }, forwardedRef) => {
-  const { isBarebone } = useAccordionContext();
-  const unstyle = isBarebone;
+  const { isUnstyled: isParentUnstyled } = useAccordionContext();
+  const unstyle = isParentUnstyled;
 
   return (
     <AccordionPrimitive.Item
@@ -119,8 +119,12 @@ export const AccordionTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size, variant, isBarebone } = useAccordionContext();
-    const unstyle = isBarebone || isUnstyled;
+    const {
+      size,
+      variant,
+      isUnstyled: isParentUnstyled,
+    } = useAccordionContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <AccordionPrimitive.Trigger
@@ -156,9 +160,9 @@ export const accordionContentClasses = cva(
   {
     variants: {
       size: {
-        sm: "px-3 pb-3 text-sm",
-        md: "px-4 pb-4",
-        lg: "px-5 pb-5",
+        sm: "px-3 text-sm",
+        md: "px-4",
+        lg: "px-5",
       },
     },
     defaultVariants: {
@@ -175,8 +179,8 @@ export const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   AccordionContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useAccordionContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useAccordionContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <AccordionPrimitive.Content

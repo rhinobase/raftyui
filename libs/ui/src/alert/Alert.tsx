@@ -156,7 +156,7 @@ export const alertClasses = cva("flex w-full items-center", {
 });
 
 export type Alert = React.HTMLAttributes<HTMLDivElement> &
-  Partial<AlertContext> & { isUnstyled?: boolean };
+  Partial<AlertContext>;
 
 export const Alert = React.forwardRef<HTMLDivElement, Alert>(
   (
@@ -166,15 +166,15 @@ export const Alert = React.forwardRef<HTMLDivElement, Alert>(
       size = "md",
       variant = "simple",
       isUnstyled = false,
-      isBarebone = false,
       children,
       ...props
     },
     forwardedRef,
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isUnstyled;
+
     return (
-      <AlertProvider value={{ status, size, variant, isBarebone }}>
+      <AlertProvider value={{ status, size, variant, isUnstyled }}>
         <div
           {...props}
           className={
@@ -259,10 +259,15 @@ export type AlertIcon = {
 };
 
 export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
-  const { size, status, variant, isBarebone } = useAlertContext();
-  const unstyle = isBarebone || isUnstyled;
-
+  const {
+    size,
+    status,
+    variant,
+    isUnstyled: isParentUnstyled,
+  } = useAlertContext();
+  const unstyle = isParentUnstyled || isUnstyled;
   const Icon = ICONS[status];
+
   return (
     <Icon
       className={
@@ -335,8 +340,13 @@ export type AlertTitle = React.HTMLAttributes<HTMLHeadingElement> & {
 
 export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone, status, variant } = useAlertContext();
-    const unstyle = isUnstyled || isBarebone;
+    const {
+      size,
+      isUnstyled: isParentUnstyled,
+      status,
+      variant,
+    } = useAlertContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <h5
@@ -394,8 +404,8 @@ export const AlertDescription = React.forwardRef<
   HTMLParagraphElement,
   AlertDescription
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone, variant } = useAlertContext();
-  const unstyle = isUnstyled || isBarebone;
+  const { size, isUnstyled: isParentUnstyled, variant } = useAlertContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <p

@@ -71,11 +71,11 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
               setSelected();
             }}
           >
-            <XMarkIcon className="h-3 w-3" />
+            <XMarkIcon className="h-3 w-3 stroke-[2.5]" />
           </div>
         )}
       </PopoverTrigger>
-      <PopoverContent className="w-auto border-none !p-0">
+      <PopoverContent className="w-auto !max-w-max border-none !p-0">
         <Calendar
           {...props}
           initialFocus

@@ -20,10 +20,8 @@ type Story = StoryObj<typeof Spinner>;
 
 export const Default: Story = {
   render: ({ size, inheritParent }) => (
-    <div className="flex h-[calc(100vh-40px)] flex-col items-center justify-center gap-8">
-      <div className="flex items-center gap-3">
-        {size}: <Spinner size={size} inheritParent={inheritParent} />
-      </div>
+    <div className="text-secondary-400 dark:text-secondary-600">
+      <Spinner size={size} inheritParent={inheritParent} />
     </div>
   ),
 };

@@ -13,8 +13,8 @@
       "name": "plugin:              anything Plugin specific"
     },
     {
-      "value": "stroybook",
-      "name": "stroybook:           anything Stroybook specific"
+      "value": "storybook",
+      "name": "storybook:           anything Storybook specific"
     }
   ],
   "scopesSearchValue": true,

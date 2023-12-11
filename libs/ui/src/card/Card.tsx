@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { classNames } from "../utils";
+import { classNames, getValidChildren } from "../utils";
 import { CardContext, CardProvider, useCardContext } from "./context";
 import { cva } from "class-variance-authority";
 
@@ -23,8 +23,7 @@ export const cardClasses = cva("flex flex-col dark:text-white", {
   },
 });
 
-export type Card = React.HTMLAttributes<HTMLDivElement> &
-  Partial<CardContext> & { isUnstyled?: boolean };
+export type Card = React.HTMLAttributes<HTMLDivElement> & Partial<CardContext>;
 
 export const Card = React.forwardRef<HTMLDivElement, Card>(
   (
@@ -33,15 +32,37 @@ export const Card = React.forwardRef<HTMLDivElement, Card>(
       variant = "outline",
       size = "md",
       isUnstyled = false,
-      isBarebone = false,
+      children,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isUnstyled;
+
+    const validChildren = getValidChildren(children);
+
+    const [hasHeader, hasFooter] = validChildren.reduce(
+      (prev, cur) => {
+        // Checking if CardHeader component is present
+        if (cur.type.displayName === CardHeader.displayName) prev[0] = true;
+
+        // Checking if CardFooter component is present
+        if (cur.type.displayName === CardFooter.displayName) prev[1] = true;
+
+        return prev;
+      },
+      [false, false],
+    );
 
     return (
-      <CardProvider value={{ size, isBarebone, variant }}>
+      <CardProvider
+        value={{
+          size,
+          isUnstyled,
+          variant,
+          has: { header: hasHeader, footer: hasFooter },
+        }}
+      >
         <div
           {...props}
           className={
@@ -50,10 +71,12 @@ export const Card = React.forwardRef<HTMLDivElement, Card>(
               : classNames(cardClasses({ size, variant }), className)
           }
           ref={forwardedRef}
-        />
+        >
+          {children}
+        </div>
       </CardProvider>
     );
-  }
+  },
 );
 Card.displayName = "Card";
 
@@ -61,9 +84,9 @@ Card.displayName = "Card";
 export const cardHeaderClasses = cva("", {
   variants: {
     size: {
-      sm: "p-3 font-medium",
-      md: "p-4 text-xl font-semibold",
-      lg: "p-5 text-2xl font-semibold",
+      sm: "p-3",
+      md: "p-4",
+      lg: "p-5",
     },
   },
   defaultVariants: {
@@ -77,8 +100,8 @@ export type CardHeader = React.HTMLAttributes<HTMLDivElement> & {
 
 export const CardHeader = React.forwardRef<HTMLDivElement, CardHeader>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone, size } = useCardContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: isParentUnstyled, size } = useCardContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <div
@@ -93,7 +116,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeader>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardHeader.displayName = "CardHeader";
 
@@ -101,13 +124,79 @@ CardHeader.displayName = "CardHeader";
 export const cardContentClasses = cva("", {
   variants: {
     size: {
-      sm: "p-3",
-      md: "p-4",
-      lg: "p-5",
+      sm: "px-3",
+      md: "px-4",
+      lg: "px-5",
+    },
+    hasHeader: {
+      true: "",
+      false: "",
+    },
+    hasFooter: {
+      true: "",
+      false: "",
     },
   },
+  compoundVariants: [
+    {
+      size: "sm",
+      hasHeader: false,
+      hasFooter: true,
+      className: "pt-3",
+    },
+    {
+      size: "sm",
+      hasHeader: true,
+      hasFooter: false,
+      className: "pb-3",
+    },
+    {
+      size: "sm",
+      hasHeader: false,
+      hasFooter: false,
+      className: "py-3",
+    },
+    {
+      size: "md",
+      hasHeader: false,
+      hasFooter: true,
+      className: "pt-4",
+    },
+    {
+      size: "md",
+      hasHeader: true,
+      hasFooter: false,
+      className: "pb-4",
+    },
+    {
+      size: "md",
+      hasHeader: false,
+      hasFooter: false,
+      className: "py-4",
+    },
+    {
+      size: "lg",
+      hasHeader: false,
+      hasFooter: true,
+      className: "pt-5",
+    },
+    {
+      size: "lg",
+      hasHeader: true,
+      hasFooter: false,
+      className: "pb-5",
+    },
+    {
+      size: "lg",
+      hasHeader: false,
+      hasFooter: false,
+      className: "py-5",
+    },
+  ],
   defaultVariants: {
     size: "md",
+    hasHeader: true,
+    hasFooter: true,
   },
 });
 
@@ -117,8 +206,8 @@ export type CardContent = React.HTMLAttributes<HTMLDivElement> & {
 
 export const CardContent = React.forwardRef<HTMLDivElement, CardContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone, size } = useCardContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: isParentUnstyled, size, has } = useCardContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <div
@@ -126,14 +215,21 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContent>(
         className={
           unstyle
             ? className
-            : classNames(cardContentClasses({ size }), className)
+            : classNames(
+                cardContentClasses({
+                  size,
+                  hasHeader: has.header,
+                  hasFooter: has.footer,
+                }),
+                className,
+              )
         }
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 CardContent.displayName = "CardContent";
 
@@ -157,8 +253,8 @@ export type CardFooter = React.HTMLAttributes<HTMLDivElement> & {
 
 export const CardFooter = React.forwardRef<HTMLDivElement, CardFooter>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone, size } = useCardContext();
-    const unstyle = isUnstyled || isBarebone;
+    const { isUnstyled: isParentUnstyled, size } = useCardContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <div
@@ -173,6 +269,6 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooter>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardFooter.displayName = "CardFooter";

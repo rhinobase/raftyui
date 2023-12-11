@@ -30,7 +30,7 @@ Few colors are globally constants like -
 - Blue for Information
 - Red for Error
 
-But if you wish to override them, you can use `isBarebone` prop in the components through which you can apply your custom styling
+But if you wish to override them, you can use `isUnstyled` prop in the components through which you can apply your custom styling
 {% /callout %}
 
 ```jsx

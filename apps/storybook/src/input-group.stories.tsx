@@ -17,6 +17,9 @@ const meta: Meta<typeof InputField> = {
   title: "Form / InputGroup",
   args: {
     size: "md",
+    isRequired: false,
+    isDisabled: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -30,7 +33,7 @@ export default meta;
 type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
-  render: ({ size }) => (
+  render: ({ size, isDisabled, isReadOnly, isRequired }) => (
     <div className="flex w-full max-w-2xl flex-col gap-4">
       <h4 className="text-center font-bold dark:text-white">
         Input Group With Prefix and Suffix And Size
@@ -39,7 +42,12 @@ export const Default: Story = {
         <Prefix>
           <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
         </Prefix>
-        <InputField size={size} />
+        <InputField
+          size={size}
+          isDisabled={isDisabled}
+          isReadOnly={isReadOnly}
+          isRequired={isRequired}
+        />
         <Suffix>
           <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
         </Suffix>
@@ -48,10 +56,20 @@ export const Default: Story = {
         <Prefix>
           <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
         </Prefix>
-        <InputField size={size} />
+        <InputField
+          size={size}
+          isDisabled={isDisabled}
+          isReadOnly={isReadOnly}
+          isRequired={isRequired}
+        />
       </InputGroup>
       <InputGroup>
-        <InputField size={size} />
+        <InputField
+          size={size}
+          isDisabled={isDisabled}
+          isReadOnly={isReadOnly}
+          isRequired={isRequired}
+        />
         <Suffix>
           <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
         </Suffix>
@@ -62,17 +80,32 @@ export const Default: Story = {
       </h4>
       <InputGroup>
         <LeftAddon>+234</LeftAddon>
-        <InputField size={size} />
+        <InputField
+          size={size}
+          isDisabled={isDisabled}
+          isReadOnly={isReadOnly}
+          isRequired={isRequired}
+        />
         <RightAddon>
           <MagnifyingGlassIcon className="dark:text-secondary-200 h-5 w-5 text-black" />
         </RightAddon>
       </InputGroup>
       <InputGroup>
         <LeftAddon>+234</LeftAddon>
-        <InputField size={size} />
+        <InputField
+          size={size}
+          isDisabled={isDisabled}
+          isReadOnly={isReadOnly}
+          isRequired={isRequired}
+        />
       </InputGroup>
       <InputGroup>
-        <InputField size={size} />
+        <InputField
+          size={size}
+          isDisabled={isDisabled}
+          isReadOnly={isReadOnly}
+          isRequired={isRequired}
+        />
         <RightAddon>
           <MagnifyingGlassIcon className="dark:text-secondary-200 h-5 w-5 text-black" />
         </RightAddon>

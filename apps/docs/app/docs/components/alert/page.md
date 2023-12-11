@@ -54,17 +54,17 @@ There are 4 `variant` options in alert: `simple` (default), `solid`, `left-accen
 
 {% example name="alert:variant" /%}
 
-## Barebone
-
-Pass `isBarebone` prop to remove all style in alert.
-
-{% example name="alert:barebone" /%}
-
 ## Unstyled
 
-Pass `isUnstyled` prop to remove all style from a particalr sub component.
+Pass `isUnstyled` prop in parent component to remove style in Alert.
 
 {% example name="alert:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="alert:unstyledsub" /%}
 
 ## API
 
@@ -74,23 +74,22 @@ Pass `isUnstyled` prop to remove all style from a particalr sub component.
 
 | Property   | Description                                    | Type      | Default |
 | ---------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled   | Removes Style from component and sub-component | `boolean` | false   |
-| isBarebone | Removes style from whole component             | `boolean` | false   |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Icon
 
-| Property | Description                                    | Type      | Default |
-| -------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Title
 
-| Property | Description                                    | Type      | Default |
-| -------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Description
 
-| Property | Description                                    | Type      | Default |
-| -------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |

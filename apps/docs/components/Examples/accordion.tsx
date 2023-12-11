@@ -126,9 +126,9 @@ export const accordion_examples = {
       </AccordionItem>
     </Accordion>
   ),
-  "accordion:barebone": (
+  "accordion:unstyled": (
     <Accordion
-      isBarebone
+      isUnstyled
       collapsible
       type="single"
       className="w-full space-y-2"
@@ -161,7 +161,7 @@ export const accordion_examples = {
       </AccordionItem>
     </Accordion>
   ),
-  "accordion:unstyled": (
+  "accordion:unstyledsub": (
     <Accordion collapsible type="single" defaultValue="1">
       <AccordionItem
         value="1"

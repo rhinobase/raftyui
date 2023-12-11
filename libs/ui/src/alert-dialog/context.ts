@@ -9,5 +9,5 @@ export const [AlertDialogProvider, useAlertDialogContext] =
 
 export interface AlertDialogContext {
   readonly size: "sm" | "md" | "lg" | "xl";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

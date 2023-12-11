@@ -72,8 +72,8 @@ export const context_menu_examples = {
       </ContextMenuContent>
     </ContextMenu>
   ),
-  "context-menu:barebone": (
-    <ContextMenu isBarebone>
+  "context-menu:unstyled": (
+    <ContextMenu isUnstyled>
       <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
         Right Click here
       </ContextMenuTrigger>
@@ -126,7 +126,7 @@ export const context_menu_examples = {
       </ContextMenuContent>
     </ContextMenu>
   ),
-  "context-menu:unstyled": (
+  "context-menu:unstyledsub": (
     <ContextMenu>
       <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
         Right Click here
