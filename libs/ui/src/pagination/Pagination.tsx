@@ -74,8 +74,8 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     const currentValue = current ?? currentPage;
 
     useEffect(() => {
-      onChangeHandle(currentPage, itemsPerPage);
-    }, [currentPage, itemsPerPage]);
+      onChangeHandle(currentValue, itemsPerPage);
+    }, [currentValue, itemsPerPage]);
 
     const onChangeHandle = (page: number, pageSize: number) => {
       setCurrentPage(page);
@@ -83,11 +83,12 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       onChange?.(page, pageSize);
     };
 
-    const onPageSizeChange = (value: number) => onChangeHandle(1, value);
-    const onPrev = () => onChangeHandle(currentPage - 1, itemsPerPage);
-    const onNext = () => onChangeHandle(currentPage + 1, itemsPerPage);
-    const onPageNumberChange = (value: number) =>
-      onChangeHandle(value, itemsPerPage);
+    const onPageSizeChange = (selectedPageSize: number) =>
+      onChangeHandle(1, selectedPageSize);
+    const onPrev = () => onChangeHandle(currentValue - 1, itemsPerPage);
+    const onNext = () => onChangeHandle(currentValue + 1, itemsPerPage);
+    const onPageNumberChange = (inputPageNumber: number) =>
+      onChangeHandle(inputPageNumber, itemsPerPage);
 
     if (hideOnSinglePage && totalPages === 1) return <div ref={forwardedRef} />;
 
