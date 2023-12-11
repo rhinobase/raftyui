@@ -12,6 +12,7 @@ const meta: Meta<typeof Accordion> = {
   args: {
     variant: "solid",
     size: "md",
+    isBarebone: false,
   },
   argTypes: {
     variant: {
@@ -30,14 +31,112 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
-  render: ({ variant, size }) => (
+  render: ({ variant, size, isBarebone }) => (
     <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
       <Accordion
         size={size}
         variant={variant}
+        isBarebone={isBarebone}
         type="single"
         defaultValue="1"
         collapsible
+      >
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            <span className="flex-1 text-left">Section 1 title</span>
+          </AccordionTrigger>
+          <AccordionContent data-cy="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="3">
+          <AccordionTrigger>Section 2 title</AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+};
+
+export const SingleType: Story = {
+  render: ({ variant, size, isBarebone }) => (
+    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
+      <Accordion
+        size={size}
+        variant={variant}
+        isBarebone={isBarebone}
+        type="single"
+        collapsible
+      >
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            <span className="flex-1 text-left">Section 1 title</span>
+          </AccordionTrigger>
+          <AccordionContent data-cy="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="3">
+          <AccordionTrigger>Section 2 title</AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+};
+
+export const MultipleType: Story = {
+  render: ({ variant, size, isBarebone }) => (
+    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
+      <Accordion
+        size={size}
+        variant={variant}
+        isBarebone={isBarebone}
+        type="multiple"
+      >
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            <span className="flex-1 text-left">Section 1 title</span>
+          </AccordionTrigger>
+          <AccordionContent data-cy="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="3">
+          <AccordionTrigger>Section 2 title</AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+};
+
+export const OpenClose: Story = {
+  render: ({ variant, size, isBarebone }) => (
+    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
+      <Accordion
+        size={size}
+        variant={variant}
+        isBarebone={isBarebone}
+        type="multiple"
       >
         <AccordionItem value="1">
           <AccordionTrigger>

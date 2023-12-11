@@ -49,14 +49,14 @@ module.exports = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
-          "slide-right": {
-            "0%": { left: "-100%" },
-            "100%": { left: "0" },
-          },
-          "slide-left": {
-            "0%": { right: "-100%" },
-            "100%": { right: "0" },
-          },
+        },
+        "slide-right": {
+          "0%": { left: "-100%" },
+          "100%": { left: "0" },
+        },
+        "slide-left": {
+          "0%": { right: "-100%" },
+          "100%": { right: "0" },
         },
       },
       animation: {

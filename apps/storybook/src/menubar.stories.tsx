@@ -40,7 +40,7 @@ export const Default: Story = {
       <div className="w-96">
         <Menubar size={size}>
           <MenubarMenu>
-            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarTrigger size={size}>File</MenubarTrigger>
             <MenubarContent>
               <MenubarItem>New Tab</MenubarItem>
               <MenubarItem>New Window</MenubarItem>
@@ -58,7 +58,7 @@ export const Default: Story = {
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>Edit</MenubarTrigger>
+            <MenubarTrigger size={size}>Edit</MenubarTrigger>
 
             <MenubarContent align="start">
               <MenubarItem>Undo</MenubarItem>
@@ -81,7 +81,7 @@ export const Default: Story = {
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>View</MenubarTrigger>
+            <MenubarTrigger size={size}>View</MenubarTrigger>
             <MenubarContent>
               <MenubarCheckboxItem
                 checked={bookmarksChecked}
@@ -105,7 +105,7 @@ export const Default: Story = {
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>Profiles</MenubarTrigger>
+            <MenubarTrigger size={size}>Profiles</MenubarTrigger>
 
             <MenubarContent align="start">
               <MenubarRadioGroup value={person} onValueChange={setPerson}>

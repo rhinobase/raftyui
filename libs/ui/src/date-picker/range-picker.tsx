@@ -64,18 +64,18 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
         {selected && (
           <div
             title="unselect range"
-            className="ml-2 p-0.5 text-red-500 dark:text-red-300 hover:bg-red-200/40 dark:hover:bg-red-300/10 transition-all ease-in-out rounded"
+            className="ml-2 rounded p-0.5 text-red-500 transition-all ease-in-out hover:bg-red-200/40 dark:text-red-300 dark:hover:bg-red-300/10"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               setSelected();
             }}
           >
-            <XMarkIcon className="h-3 w-3" />
+            <XMarkIcon className="h-3 w-3 stroke-[2.5]" />
           </div>
         )}
       </PopoverTrigger>
-      <PopoverContent className="w-auto border-none !p-0">
+      <PopoverContent className="w-auto !max-w-max border-none !p-0">
         <Calendar
           {...props}
           initialFocus

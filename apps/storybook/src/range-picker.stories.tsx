@@ -22,7 +22,7 @@ export const Default: Story = {
     });
 
     return (
-      <div className="w-full max-w-sm space-y-5">
+      <>
         <form onClick={handleSubmit((value) => console.log(value))}>
           <FieldControl name="range">
             <Label>Range picker</Label>
@@ -40,7 +40,7 @@ export const Default: Story = {
           </FieldControl>
         </form>
         <DevTool control={control} />
-      </div>
+      </>
     );
   },
 };
