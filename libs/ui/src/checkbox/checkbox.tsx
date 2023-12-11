@@ -37,6 +37,12 @@ export const CheckBoxIndicatorClasses = cva(
   },
 );
 
+const CHECKBOX_LABEL_CLASSES = {
+  sm: "pl-1.5 !text-sm",
+  md: "pl-2 !text-base",
+  lg: "pl-2.5 !text-lg",
+} as const;
+
 export type Checkbox = Omit<
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
   "disabled" | "required"
@@ -95,11 +101,8 @@ export const Checkbox = React.forwardRef<
           <Label
             htmlFor={props.id}
             className={classNames(
-              (disabled || context.isDisabled) &&
-                "cursor-not-allowed opacity-50",
-              size === "sm" && "pl-1.5 !text-sm",
-              size === "md" && "pl-2 !text-base",
-              size === "lg" && "pl-2.5 !text-lg",
+              CHECKBOX_LABEL_CLASSES[size],
+              disabled && "cursor-not-allowed opacity-50",
             )}
             isRequired={required}
           >

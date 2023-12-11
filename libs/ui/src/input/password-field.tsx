@@ -6,6 +6,12 @@ import { InputGroup, Suffix } from "./input-group";
 import { InputField } from "./input-field";
 import { classNames } from "../utils";
 
+const ICON_CLASSES = {
+  sm: "h-3.5 w-3.5",
+  md: "h-4 h-4",
+  lg: "h-[18px] h-[18px]",
+} as const;
+
 // Password Field
 export type PasswordField = InputField;
 
@@ -13,12 +19,7 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
   ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
     const [showPassword, setShowPassword] = React.useState(false);
 
-    const iconClasses = classNames(
-      size === "sm" && "h-3.5 w-3.5",
-      size === "md" && "h-4 h-4",
-      size === "lg" && "h-[18px] h-[18px]",
-      "stroke-2",
-    );
+    const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 
     return (
       <InputGroup>
@@ -39,11 +40,7 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
             onClick={() => setShowPassword((prev) => !prev)}
             className={classNames(size === "lg" ? "!p-1.5" : "!rounded !p-1")}
           >
-            {showPassword ? (
-              <EyeSlashIcon className={iconClasses} />
-            ) : (
-              <EyeIcon className={iconClasses} />
-            )}
+            <Icon className={classNames(ICON_CLASSES[size], "stroke-2")} />
           </Button>
         </Suffix>
       </InputGroup>

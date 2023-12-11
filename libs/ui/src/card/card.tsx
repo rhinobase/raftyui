@@ -43,11 +43,17 @@ export const Card = React.forwardRef<HTMLDivElement, Card>(
 
     const validChildren = getValidChildren(children);
 
-    const hasHeader = validChildren.some(
-      (child) => child.type.displayName === CardHeader.displayName,
-    );
-    const hasFooter = validChildren.some(
-      (child) => child.type.displayName === CardFooter.displayName,
+    const [hasHeader, hasFooter] = validChildren.reduce(
+      (prev, cur) => {
+        // Checking if CardHeader component is present
+        if (cur.type.displayName === CardHeader.displayName) prev[0] = true;
+
+        // Checking if CardFooter component is present
+        if (cur.type.displayName === CardFooter.displayName) prev[1] = true;
+
+        return prev;
+      },
+      [false, false],
     );
 
     return (

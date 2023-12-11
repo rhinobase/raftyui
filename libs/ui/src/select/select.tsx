@@ -81,6 +81,12 @@ const selectClasses = cva(
   },
 );
 
+const TRIGGER_ICON_CLASSES = {
+  sm: "right-2 h-3 w-3",
+  md: "right-3 h-3.5 w-3.5",
+  lg: "right-4 h-4 w-4",
+} as const;
+
 export type Select = Omit<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   "size" | "disabled" | "required"
@@ -148,9 +154,7 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
         {!isUnstyled && (
           <ChevronDownIcon
             className={classNames(
-              size === "sm" && "right-2 h-3 w-3",
-              size === "md" && "right-3 h-3.5 w-3.5",
-              size === "lg" && "right-4 h-4 w-4",
+              TRIGGER_ICON_CLASSES[size],
               "pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
             )}
           />
