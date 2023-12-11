@@ -95,7 +95,17 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     const startItem = Math.max((currentValue - 1) * itemsPerPage + 1, 0);
     const endItem = Math.min(currentValue * itemsPerPage, total);
 
-    const totalRangeComponent = showTotal?.(total, `${startItem} - ${endItem}`);
+    // const totalRangeComponent = showTotal.(total, `${startItem} - ${endItem}`);
+
+    let totalRangeComponent;
+
+    if (showTotal)
+      totalRangeComponent = showTotal(total, `${startItem} - ${endItem}`);
+
+    let totalRender;
+    if (typeof totalRangeComponent === "string")
+      totalRender = <span>{totalRangeComponent}</span>;
+    else totalRender = totalRangeComponent;
 
     return (
       <div
@@ -122,11 +132,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
             size={size}
           />
         )}
-        {typeof totalRangeComponent === "string" ? (
-          <p>{totalRangeComponent}</p>
-        ) : (
-          totalRangeComponent
-        )}
+        {totalRender}
         <PaginationButtons
           currentPage={currentValue}
           onPrev={onPrev}
