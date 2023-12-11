@@ -5,4 +5,6 @@ export {
   DrawerContent,
   DrawerOverlay,
   DrawerTitle,
-} from "./drawer";
+  drawerContentClasses,
+  drawerTitleClasses,
+} from "./Drawer";

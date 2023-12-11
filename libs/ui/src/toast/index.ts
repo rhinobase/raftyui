@@ -1,1 +1,1 @@
-export { Toast } from "./toast";
+export { Toast, toastClasses } from "./Toast";

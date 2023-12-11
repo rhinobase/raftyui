@@ -4,7 +4,7 @@ import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { cva } from "class-variance-authority";
 import React from "react";
 import { Button } from "../button";
-import { menuTriggerClasses } from "../menu/menu";
+import { menuTriggerClasses } from "../menu/Menu";
 import { classNames } from "../utils";
 import { MenuBarContext, MenuBarProvider, useMenuBarContext } from "./context";
 

@@ -1,1 +1,5 @@
-export { Checkbox } from "./checkbox";
+export {
+  Checkbox,
+  CheckBoxClasses,
+  CheckBoxIndicatorClasses,
+} from "./Checkbox";
