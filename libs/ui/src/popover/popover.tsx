@@ -103,7 +103,7 @@ export const PopoverContent = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: isParentUnstyled } = usePopoverContext();
+    const { isUnstyled: isParentUnstyled, size } = usePopoverContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
     return (

@@ -206,7 +206,7 @@ export type CardContent = React.HTMLAttributes<HTMLDivElement> & {
 
 export const CardContent = React.forwardRef<HTMLDivElement, CardContent>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isUnstyled: isParentUnstyled, size } = useCardContext();
+    const { isUnstyled: isParentUnstyled, size, has } = useCardContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
     return (
