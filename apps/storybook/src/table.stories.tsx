@@ -15,7 +15,7 @@ const meta: Meta<typeof Table> = {
   args: {
     size: "md",
     variant: "simple",
-    isBarebone: false,
+    isUnstyled: false,
   },
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
-  render: function Render({ size, variant, isBarebone }) {
+  render: function Render({ size, variant, isUnstyled }) {
     const people = [
       {
         name: "Lindsay Walton",
@@ -50,7 +50,7 @@ export const Default: Story = {
     ];
     return (
       <TableContainer>
-        <Table size={size} variant={variant} isBarebone={isBarebone}>
+        <Table size={size} variant={variant} isUnstyled={isUnstyled}>
           <TableHead>
             <Tr>
               <Th>Name</Th>

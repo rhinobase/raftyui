@@ -13,7 +13,7 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta: Meta<typeof NavigationMenu> = {
   title: "Components / NavigationMenu",
   args: {
-    isBarebone: false,
+    isUnstyled: false,
   },
 };
 
@@ -21,9 +21,9 @@ export default meta;
 type Story = StoryObj<typeof NavigationMenu>;
 
 export const Default: Story = {
-  render: ({ isBarebone }) => (
+  render: ({ isUnstyled }) => (
     <div className="mx-auto flex h-screen w-full items-center">
-      <NavigationMenu isBarebone={isBarebone}>
+      <NavigationMenu isUnstyled={isUnstyled}>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
