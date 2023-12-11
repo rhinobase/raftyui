@@ -57,8 +57,8 @@ export const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   AccordionItem
 >(({ className, children, ...props }, forwardedRef) => {
-  const { isUnstyled: accordionIsUnstyled } = useAccordionContext();
-  const unstyle = accordionIsUnstyled;
+  const { isUnstyled: isParentUnstyled } = useAccordionContext();
+  const unstyle = isParentUnstyled;
 
   return (
     <AccordionPrimitive.Item
@@ -122,9 +122,9 @@ export const AccordionTrigger = React.forwardRef<
     const {
       size,
       variant,
-      isUnstyled: accordionIsUnstyled,
+      isUnstyled: isParentUnstyled,
     } = useAccordionContext();
-    const unstyle = accordionIsUnstyled || isUnstyled;
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <AccordionPrimitive.Trigger
@@ -179,8 +179,8 @@ export const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   AccordionContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: accordionIsUnstyled } = useAccordionContext();
-  const unstyle = accordionIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useAccordionContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <AccordionPrimitive.Content

@@ -38,8 +38,8 @@ export const ContextMenuContent = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Content>,
   ContextMenuContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Portal>
@@ -89,8 +89,8 @@ export const ContextMenuLabel = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Label>,
   ContextMenuLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Label
@@ -135,8 +135,8 @@ export const ContextMenuItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Item>,
   ContextMenuItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Item
@@ -196,8 +196,8 @@ export const ContextMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
   ContextMenuCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.CheckboxItem
@@ -272,8 +272,8 @@ export const ContextMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.RadioItem>,
   ContextMenuRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
   return (
     <ContextMenuPrimitive.RadioItem
       {...props}
@@ -333,8 +333,8 @@ export const ContextMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
   ContextMenuSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.SubTrigger
@@ -366,8 +366,8 @@ export const ContextMenuSubContent = React.forwardRef<
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
     forwardedRef,
   ) => {
-    const { isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-    const unstyle = contextMenuIsUnstyled || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useContextMenuContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <ContextMenuPrimitive.Portal>
@@ -419,8 +419,8 @@ export const ContextMenuSeparator = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Separator>,
   ContextMenuSeparator
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: contextMenuIsUnstyled } = useContextMenuContext();
-  const unstyle = contextMenuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ContextMenuPrimitive.Separator

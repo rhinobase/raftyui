@@ -142,8 +142,8 @@ export const MenuTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size: menuSize, isUnstyled: menuIsUnstyled } = useMenuContext();
-    const unstyle = menuIsUnstyled || isUnstyled;
+    const { size: menuSize, isUnstyled: isParentUnstyled } = useMenuContext();
+    const unstyle = isParentUnstyled || isUnstyled;
     const triggerSize = size || menuSize;
     const buttonProps = {
       variant,
@@ -211,8 +211,8 @@ export const MenuContent = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: menuIsUnstyled } = useMenuContext();
-    const unstyle = menuIsUnstyled || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useMenuContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <DropdownMenu.Portal>
@@ -266,8 +266,8 @@ export const MenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.Label>,
   MenuLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.Label
@@ -310,8 +310,8 @@ export const MenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.Item>,
   MenuItem
 >(({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.Item
@@ -369,8 +369,8 @@ export const MenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.CheckboxItem>,
   MenuCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.CheckboxItem
@@ -453,8 +453,8 @@ export const MenuRadioItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.RadioItem>,
   MenuRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.RadioItem
@@ -512,8 +512,8 @@ export const MenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.SubTrigger>,
   MenuSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.SubTrigger
@@ -547,8 +547,8 @@ export const MenuSubContent = React.forwardRef<
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
     forwardedRef,
   ) => {
-    const { isUnstyled: menuIsUnstyled } = useMenuContext();
-    const unstyle = menuIsUnstyled || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useMenuContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <DropdownMenu.Portal>
@@ -602,8 +602,8 @@ export const MenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.Separator>,
   MenuSeparator
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.Separator
@@ -625,8 +625,8 @@ type MenuArrow = React.ComponentPropsWithoutRef<typeof DropdownMenu.Arrow> & {
 };
 
 const MenuArrow = ({ className, isUnstyled = false, ...props }: MenuArrow) => {
-  const { isUnstyled: menuIsUnstyled } = useMenuContext();
-  const unstyle = menuIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DropdownMenu.Arrow

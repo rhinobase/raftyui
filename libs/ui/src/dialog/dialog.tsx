@@ -54,9 +54,9 @@ export const DialogTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: dialogIsUnstyled, size: dialogSize } =
+    const { isUnstyled: isParentUnstyled, size: dialogSize } =
       useDialogContext();
-    const unstyle = dialogIsUnstyled || isUnstyled;
+    const unstyle = isParentUnstyled || isUnstyled;
     const triggerSize = size || dialogSize;
     const buttonProps = {
       variant,
@@ -100,8 +100,8 @@ export const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   DialogOverlay
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: dialogIsUnstyled } = useDialogContext();
-  const unstyle = dialogIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DialogPrimitive.Overlay
@@ -161,8 +161,8 @@ export const DialogContent = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size, isUnstyled: dialogIsUnstyled } = useDialogContext();
-    const unstyle = dialogIsUnstyled || isUnstyled;
+    const { size, isUnstyled: isParentUnstyled } = useDialogContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <DialogPrimitive.Portal>
@@ -198,8 +198,8 @@ export const DialogHeader = ({
   isUnstyled,
   ...props
 }: DialogHeader) => {
-  const { isUnstyled: dialogIsUnstyled } = useDialogContext();
-  const unstyle = dialogIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <div
@@ -227,8 +227,8 @@ export const DialogFooter = ({
   isUnstyled = false,
   ...props
 }: DialogFooter) => {
-  const { isUnstyled: dialogIsUnstyled } = useDialogContext();
-  const unstyle = dialogIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <div
@@ -255,8 +255,8 @@ export const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   DialogTitle
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: dialogIsUnstyled } = useDialogContext();
-  const unstyle = dialogIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DialogPrimitive.Title
@@ -284,8 +284,8 @@ export const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   DialogDescription
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: dialogIsUnstyled } = useDialogContext();
-  const unstyle = dialogIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <DialogPrimitive.Description

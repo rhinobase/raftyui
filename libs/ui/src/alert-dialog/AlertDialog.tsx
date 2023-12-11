@@ -56,9 +56,9 @@ export const AlertDialogTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: alertIsUnstyled, size: alertDialogSize } =
+    const { isUnstyled: isParentUnstyled, size: alertDialogSize } =
       useAlertDialogContext();
-    const unstyle = alertIsUnstyled || isUnstyled;
+    const unstyle = isParentUnstyled || isUnstyled;
     const triggerSize = size || alertDialogSize;
     const buttonProps = {
       variant,
@@ -101,8 +101,8 @@ export const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
   AlertDialogOverlay
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: alertIsUnstyled } = useAlertDialogContext();
-  const unstyle = alertIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <AlertDialogPrimitive.Overlay
@@ -149,8 +149,8 @@ export const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
   AlertDialogContent
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: alertIsUnstyled } = useAlertDialogContext();
-  const unstyle = alertIsUnstyled || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useAlertDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <AlertDialogPrimitive.Portal>
@@ -178,8 +178,8 @@ export const AlertDialogHeader = ({
   isUnstyled = false,
   ...props
 }: AlertDialogHeader) => {
-  const { isUnstyled: alertIsUnstyled } = useAlertDialogContext();
-  const unstyle = alertIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <div
@@ -207,8 +207,8 @@ export const AlertDialogFooter = ({
   isUnstyled,
   ...props
 }: AlertDialogFooter) => {
-  const { isUnstyled: alertIsUnstyled } = useAlertDialogContext();
-  const unstyle = alertIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <div
@@ -235,8 +235,8 @@ export const AlertDialogTitle = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Title>,
   AlertDialogTitle
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: alertIsUnstyled } = useAlertDialogContext();
-  const unstyle = alertIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <AlertDialogPrimitive.Title
@@ -264,8 +264,8 @@ export const AlertDialogDescription = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Description>,
   AlertDialogDescription
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isUnstyled: alertIsUnstyled } = useAlertDialogContext();
-  const unstyle = alertIsUnstyled || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <AlertDialogPrimitive.Description

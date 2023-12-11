@@ -41,9 +41,7 @@ export const tableClasses = cva(
 );
 
 export type Table = React.HTMLAttributes<HTMLTableElement> &
-  Partial<TableContext> & {
-    isUnstyled?: boolean;
-  };
+  Partial<TableContext>;
 
 export const Table = React.forwardRef<HTMLTableElement, Table>(
   (
@@ -53,15 +51,14 @@ export const Table = React.forwardRef<HTMLTableElement, Table>(
       size = "md",
       variant = "simple",
       isUnstyled = false,
-      isBarebone = false,
       ...props
     },
     forwardedRef,
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isUnstyled;
 
     return (
-      <TableProvider value={{ size, variant, isBarebone }}>
+      <TableProvider value={{ size, variant, isUnstyled }}>
         <table
           {...props}
           className={
@@ -96,8 +93,8 @@ export type TableHead = React.HTMLAttributes<HTMLTableSectionElement> & {
 
 export const TableHead = React.forwardRef<HTMLTableSectionElement, TableHead>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { variant, isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { variant, isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <thead
@@ -123,8 +120,8 @@ export type TableBody = React.HTMLAttributes<HTMLTableSectionElement> & {
 
 export const TableBody = React.forwardRef<HTMLTableSectionElement, TableBody>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <tbody
@@ -164,8 +161,8 @@ export const TableFooter = React.forwardRef<
   HTMLTableSectionElement,
   TableFooter
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { variant, isBarebone } = useTableContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { variant, isUnstyled: isParentUnstyled } = useTableContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <tfoot
@@ -206,8 +203,8 @@ export type Td = React.ThHTMLAttributes<HTMLTableCellElement> & {
 
 export const Td = React.forwardRef<HTMLTableCellElement, Td>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { size, isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <td
@@ -247,8 +244,8 @@ export type Th = React.ThHTMLAttributes<HTMLTableCellElement> & {
 
 export const Th = React.forwardRef<HTMLTableCellElement, Th>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { size, isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <th
@@ -285,8 +282,8 @@ export type Tr = React.HTMLAttributes<HTMLTableRowElement> & {
 
 export const Tr = React.forwardRef<HTMLTableRowElement, Tr>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { variant, isBarebone } = useTableContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { variant, isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <tr

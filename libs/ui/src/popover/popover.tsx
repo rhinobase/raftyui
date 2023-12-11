@@ -49,8 +49,8 @@ export const PopoverTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: popoverIsUnstyled } = usePopoverContext();
-    const unstyle = popoverIsUnstyled || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = usePopoverContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
@@ -97,8 +97,8 @@ export const PopoverContent = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: popoverIsUnstyled } = usePopoverContext();
-    const unstyle = popoverIsUnstyled || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = usePopoverContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <PopoverPrimitive.Portal>

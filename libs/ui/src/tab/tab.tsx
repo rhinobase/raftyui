@@ -18,16 +18,15 @@ export const Tab = forwardRef<React.ElementRef<typeof TabsPrimitive.Root>, Tab>(
       size = "md",
       variant = "line",
       orientation = "horizontal",
-      isBarebone = false,
       isUnstyled = false,
       ...props
     },
     forwardedRef,
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isUnstyled;
 
     return (
-      <TabProvider value={{ size, variant, orientation, isBarebone }}>
+      <TabProvider value={{ size, variant, orientation, isUnstyled }}>
         <TabsPrimitive.Root
           {...props}
           className={
@@ -102,8 +101,12 @@ export const TabList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   TabList
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { orientation, variant, isBarebone } = useTabContext();
-  const unstyle = isBarebone || isUnstyled;
+  const {
+    orientation,
+    variant,
+    isUnstyled: isParentUnstyled,
+  } = useTabContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <TabsPrimitive.List
@@ -174,8 +177,13 @@ export const TabTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   TabTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, variant, orientation, isBarebone } = useTabContext();
-  const unstyle = isBarebone || isUnstyled;
+  const {
+    size,
+    variant,
+    orientation,
+    isUnstyled: isParentUnstyled,
+  } = useTabContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <TabsPrimitive.Trigger
@@ -223,8 +231,13 @@ export const TabContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   TabContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, variant, orientation, isBarebone } = useTabContext();
-  const unstyle = isBarebone || isUnstyled;
+  const {
+    size,
+    variant,
+    orientation,
+    isUnstyled: isParentUnstyled,
+  } = useTabContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <TabsPrimitive.Content
