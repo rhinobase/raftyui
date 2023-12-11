@@ -12,7 +12,7 @@ const meta: Meta<typeof Accordion> = {
   args: {
     variant: "solid",
     size: "md",
-    isBarebone: false,
+    isUnstyled: false,
   },
   argTypes: {
     variant: {
@@ -31,12 +31,12 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
-  render: ({ variant, size, isBarebone }) => (
+  render: ({ variant, size, isUnstyled }) => (
     <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
       <Accordion
         size={size}
         variant={variant}
-        isBarebone={isBarebone}
+        isUnstyled={isUnstyled}
         type="single"
         defaultValue="1"
         collapsible
@@ -65,12 +65,12 @@ export const Default: Story = {
 };
 
 export const SingleType: Story = {
-  render: ({ variant, size, isBarebone }) => (
+  render: ({ variant, size, isUnstyled }) => (
     <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
       <Accordion
         size={size}
         variant={variant}
-        isBarebone={isBarebone}
+        isUnstyled={isUnstyled}
         type="single"
         collapsible
       >
@@ -98,12 +98,12 @@ export const SingleType: Story = {
 };
 
 export const MultipleType: Story = {
-  render: ({ variant, size, isBarebone }) => (
+  render: ({ variant, size, isUnstyled }) => (
     <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
       <Accordion
         size={size}
         variant={variant}
-        isBarebone={isBarebone}
+        isUnstyled={isUnstyled}
         type="multiple"
       >
         <AccordionItem value="1">
@@ -130,12 +130,12 @@ export const MultipleType: Story = {
 };
 
 export const OpenClose: Story = {
-  render: ({ variant, size, isBarebone }) => (
+  render: ({ variant, size, isUnstyled }) => (
     <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
       <Accordion
         size={size}
         variant={variant}
-        isBarebone={isBarebone}
+        isUnstyled={isUnstyled}
         type="multiple"
       >
         <AccordionItem value="1">
