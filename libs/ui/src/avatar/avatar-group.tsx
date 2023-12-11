@@ -7,6 +7,12 @@ import { Avatar } from "./avatar";
 // @ts-ignore
 import { calculateWidth } from "./utils";
 
+const LEFT_OFFSET = {
+  sm: 22,
+  md: 28,
+  lg: 37,
+} as const;
+
 export type AvatarGroup = React.HTMLAttributes<HTMLDivElement> &
   Partial<AvatarGroupContext> & { max?: number };
 
@@ -17,37 +23,37 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
   ) => {
     const validChildren = getValidChildren(children);
 
-    //max should be one less than number of avatars
+    // Max should be one less than number of avatars
     let childrenToShow = validChildren.length;
-    if (max) {
-      if (max - 1 > -1) childrenToShow = max;
+    if (max && max > 0) {
+      childrenToShow = max;
     }
 
-    //get the avatars within the max
+    // Get the avatars within the max
     const childrenWithinMax = validChildren.slice(0, childrenToShow);
 
-    const groupWidth = calculateWidth(size, childrenWithinMax.length);
+    // Get the remaining avatar count
+    const excess = validChildren.length - childrenToShow;
 
-    //get the remaining avatar count
-    const excess =
-      childrenToShow < validChildren.length
-        ? validChildren.length - childrenToShow
-        : 0;
-
+    // Adding the last Avatar component to show the remaing number of children
     if (excess > 0) {
-      childrenWithinMax.push(<Avatar name={"+" + excess} />);
+      childrenWithinMax.push(<Avatar key="excess" name={`+${excess}`} />);
     }
 
+    // Childrens with correct left offset in a group
     const clones = childrenWithinMax.map((child, index) => {
-      const leftOffset = size === "sm" ? 22 : size === "md" ? 28 : 37;
       const childProps = {
         style: {
-          left: 0 + index * leftOffset,
+          left: index * LEFT_OFFSET[size],
           zIndex: 10 - index,
         },
       };
+
       return React.cloneElement(child, childProps);
     });
+
+    // Width of the Avatar Group component
+    const groupWidth = calculateWidth(size, childrenWithinMax.length);
 
     return (
       <AvatarGroupProvider value={{ size }}>
