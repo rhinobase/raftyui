@@ -54,10 +54,10 @@ export const DialogTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: isParentUnstyled, size: dialogSize } =
+    const { isUnstyled: isParentUnstyled, size: parentSize } =
       useDialogContext();
     const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || dialogSize;
+    const triggerSize = size || parentSize;
     const buttonProps = {
       variant,
       colorScheme,

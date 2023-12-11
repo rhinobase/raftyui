@@ -82,10 +82,10 @@ export const MenubarTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size: menubarSize, isUnstyled: isParentUnstyled } =
+    const { size: parentSize, isUnstyled: isParentUnstyled } =
       useMenuBarContext();
     const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || menubarSize;
+    const triggerSize = size || parentSize;
     const buttonProps = {
       variant,
       colorScheme,

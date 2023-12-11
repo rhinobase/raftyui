@@ -142,9 +142,9 @@ export const MenuTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size: menuSize, isUnstyled: isParentUnstyled } = useMenuContext();
+    const { size: parentSize, isUnstyled: isParentUnstyled } = useMenuContext();
     const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || menuSize;
+    const triggerSize = size || parentSize;
     const buttonProps = {
       variant,
       colorScheme,

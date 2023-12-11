@@ -56,10 +56,10 @@ export const AlertDialogTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: isParentUnstyled, size: alertDialogSize } =
+    const { isUnstyled: isParentUnstyled, size: parentSize } =
       useAlertDialogContext();
     const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || alertDialogSize;
+    const triggerSize = size || parentSize;
     const buttonProps = {
       variant,
       colorScheme,
