@@ -74,23 +74,22 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 | Property   | Description                                    | Type      | Default |
 | ---------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled   | Removes Style from component and sub-component | `boolean` | false   |
-| isBarebone | Removes style from whole component             | `boolean` | false   |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Icon
 
-| Property | Description                                    | Type      | Default |
-| -------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Title
 
-| Property | Description                                    | Type      | Default |
-| -------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
 
 ### Description
 
-| Property | Description                                    | Type      | Default |
-| -------- | ---------------------------------------------- | --------- | ------- |
-| UnStyled | Removes Style from component and sub-component | `boolean` | false   |
+| Property   | Description                                    | Type      | Default |
+| ---------- | ---------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |

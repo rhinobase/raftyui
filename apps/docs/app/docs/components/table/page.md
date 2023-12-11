@@ -82,10 +82,9 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 ### Root
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isBarebone | Removes style from whole component | `boolean` | `false` |
-| isUnstyled | Removes Style from component       | `string`  | -       |
+| Property   | Description                                              | Type      | Default |
+| ---------- | -------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its subcomponents | `boolean` | `false` |
 
 ### Head
 

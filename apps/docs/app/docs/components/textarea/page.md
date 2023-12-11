@@ -54,4 +54,4 @@ Pass `isDisabled` prop to put textarea in disabled state.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnStyled | Removes style from component | `boolean` | `false` |
+| isUnstyled | Removes style from component | `boolean` | `false` |

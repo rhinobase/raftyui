@@ -60,9 +60,9 @@ Pass `isUnstyled` prop in parent component to remove style in Card.
 
 ### Root
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isBarebone | Removes style from whole component | `boolean` | false   |
+| Property   | Description                                               | Type      | Default |
+| ---------- | --------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
 
 ### Header
 
