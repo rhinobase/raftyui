@@ -13,7 +13,7 @@ const meta: Meta<typeof Alert> = {
     status: "info",
     size: "md",
     variant: "simple",
-    isBarebone: false,
+    isUnstyled: false,
   },
   argTypes: {
     status: {
@@ -35,12 +35,12 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
-  render: ({ status, size, variant, isBarebone }) => (
+  render: ({ status, size, variant, isUnstyled }) => (
     <Alert
       size={size}
       status={status}
       variant={variant}
-      isBarebone={isBarebone}
+      isUnstyled={isUnstyled}
     >
       <AlertIcon />
       <AlertTitle id="title">Title</AlertTitle>
@@ -50,12 +50,12 @@ export const Default: Story = {
 };
 
 export const WithAction: Story = {
-  render: ({ status, size, variant, isBarebone }) => (
+  render: ({ status, size, variant, isUnstyled }) => (
     <Alert
       variant={variant}
       size={size}
       status={status}
-      isBarebone={isBarebone}
+      isUnstyled={isUnstyled}
     >
       <AlertIcon />
       <AlertTitle>Title</AlertTitle>

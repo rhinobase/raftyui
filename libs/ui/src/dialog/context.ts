@@ -8,5 +8,5 @@ export const [DialogProvider, useDialogContext] = createContext<DialogContext>({
 
 export interface DialogContext {
   readonly size: "sm" | "md" | "lg" | "xl";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

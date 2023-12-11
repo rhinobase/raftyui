@@ -30,14 +30,12 @@ export const avatarClasses = cva(
 
 export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
   const context = useAvatarGroupContext() ?? {
-    size: size,
+    size,
   };
-
-  const avatarSize = context.size;
 
   return (
     <div
-      className={classNames(avatarClasses({ size: avatarSize }), className)}
+      className={classNames(avatarClasses({ size: context.size }), className)}
       style={style}
     >
       {name && src ? (

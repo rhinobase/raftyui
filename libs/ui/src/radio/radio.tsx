@@ -41,7 +41,7 @@ export const RadioGroup = React.forwardRef<
     forwardedRef,
   ) => {
     return (
-      <RadioGroupProvider value={{ size: size, isDisabled: isDisabled }}>
+      <RadioGroupProvider value={{ size, isDisabled }}>
         <RadioGroupPrimitive.Root
           {...props}
           disabled={isDisabled || disabled}

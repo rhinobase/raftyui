@@ -19,26 +19,19 @@ export const menubarClasses = cva("flex w-max items-center", {
 export type Menubar = React.ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Root
 > &
-  Partial<MenuBarContext> & { isUnstyled?: boolean };
+  Partial<MenuBarContext>;
 export const Menubar = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Root>,
   Menubar
 >(
   (
-    {
-      children,
-      className,
-      size = "md",
-      isBarebone = false,
-      isUnstyled = false,
-      ...props
-    },
+    { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isUnstyled;
 
     return (
-      <MenuBarProvider value={{ size, isBarebone }}>
+      <MenuBarProvider value={{ size, isUnstyled }}>
         <MenubarPrimitive.Root
           {...props}
           className={
@@ -89,9 +82,10 @@ export const MenubarTrigger = React.forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size: menubarSize, isBarebone } = useMenuBarContext();
-    const unstyle = isBarebone || isUnstyled;
-    const triggerSize = size || menubarSize;
+    const { size: parentSize, isUnstyled: isParentUnstyled } =
+      useMenuBarContext();
+    const unstyle = isParentUnstyled || isUnstyled;
+    const triggerSize = size || parentSize;
     const buttonProps = {
       variant,
       colorScheme,
@@ -150,8 +144,8 @@ export const MenubarContent = React.forwardRef<
     { children, className, sideOffset = 5, isUnstyled = false, ...props },
     forwardedRef,
   ) => {
-    const { isBarebone } = useMenuBarContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useMenuBarContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <MenubarPrimitive.Portal>
@@ -203,8 +197,8 @@ export const MenubarLabel = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Label>,
   MenubarLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <MenubarPrimitive.Label
@@ -249,8 +243,8 @@ export const MenubarItem = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Item>,
   MenubarItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <MenubarPrimitive.Item
@@ -312,8 +306,8 @@ export const MenubarCheckboxItem = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.CheckboxItem>,
   MenubarCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <MenubarPrimitive.CheckboxItem
@@ -396,8 +390,8 @@ export const MenubarRadioItem = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.RadioItem>,
   MenubarRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <MenubarPrimitive.RadioItem
@@ -451,8 +445,8 @@ export const MenubarSubTrigger = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.SubTrigger>,
   MenubarSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <MenubarPrimitive.SubTrigger
@@ -487,8 +481,8 @@ export const MenubarSubContent = React.forwardRef<
     { children, className, isUnstyled = false, sideOffset = 10, ...props },
     forwardedRef,
   ) => {
-    const { isBarebone } = useMenuBarContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useMenuBarContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <MenubarPrimitive.Portal>
@@ -541,8 +535,8 @@ export const MenubarSeparator = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Separator>,
   MenubarSeparator
 >(({ className, isUnstyled = true, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useMenuBarContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <MenubarPrimitive.Separator

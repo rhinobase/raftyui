@@ -67,7 +67,7 @@ export type Textarea = Omit<
 > & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
-  isUnStyled?: boolean;
+  isUnstyled?: boolean;
   isDisabled?: boolean;
   isInvalid?: boolean;
   isLoading?: boolean;
@@ -81,7 +81,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
       className,
       variant = "outline",
       size = "md",
-      isUnStyled = false,
+      isUnstyled = false,
       isDisabled = false,
       isInvalid = false,
       isLoading = false,
@@ -112,7 +112,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
         readOnly={readonly}
         required={required}
         className={
-          isUnStyled
+          isUnstyled
             ? className
             : classNames(
                 textareaClasses({

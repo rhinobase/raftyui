@@ -63,9 +63,9 @@ export const alert_examples = {
       </Alert>
     </div>
   ),
-  "alert:barebone": (
+  "alert:unstyled": (
     <Alert
-      isBarebone
+      isUnstyled
       className="flex h-16 w-full items-center gap-1 rounded-md border border-green-500 bg-green-300/40 p-4 dark:text-white"
     >
       <AlertIcon className="h-7 w-7" />
@@ -73,7 +73,7 @@ export const alert_examples = {
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),
-  "alert:unstyled": (
+  "alert:unstyledsub": (
     <Alert>
       <AlertIcon />
       <AlertTitle isUnstyled>Title</AlertTitle>

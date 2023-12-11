@@ -14,16 +14,13 @@ import {
 export type NavigationMenu = React.ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Root
 > &
-  Partial<NavigationMenuContext> & { isUnstyled?: boolean };
+  Partial<NavigationMenuContext>;
 export const NavigationMenu = React.forwardRef<HTMLDivElement, NavigationMenu>(
-  (
-    { children, className, isBarebone = false, isUnstyled = false, ...props },
-    forwardedRef,
-  ) => {
-    const unstyle = isBarebone || isUnstyled;
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const unstyle = isUnstyled;
 
     return (
-      <NavigationMenuProvider value={{ isBarebone }}>
+      <NavigationMenuProvider value={{ isUnstyled }}>
         <NavigationMenuPrimitive.Root
           {...props}
           className={
@@ -56,8 +53,8 @@ export const NavigationMenuList = ({
   isUnstyled = false,
   ...props
 }: NavigationMenuList) => {
-  const { isBarebone } = useNavigationMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <NavigationMenuPrimitive.List
@@ -96,8 +93,8 @@ export const NavigationMenuTrigger = React.forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { isBarebone } = useNavigationMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <NavigationMenuPrimitive.Trigger
@@ -155,8 +152,8 @@ export const NavigationMenuContent = React.forwardRef<
     { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
   ) => {
-    const { isBarebone } = useNavigationMenuContext();
-    const unstyle = isBarebone || isUnstyled;
+    const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
     return (
       <NavigationMenuPrimitive.Content
@@ -186,8 +183,8 @@ export const NavigationMenuLink = ({
   isUnstyled = false,
   ...props
 }: NavigationMenuLink) => {
-  const { isBarebone } = useNavigationMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <NavigationMenuPrimitive.Link
@@ -258,8 +255,9 @@ export const NavigationMenuIndicator = ({
   isUnstyled = false,
   ...props
 }: NavigationMenuIndicator) => {
-  const { isBarebone } = useNavigationMenuContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
+
   return (
     <NavigationMenuPrimitive.Indicator
       {...props}

@@ -13,24 +13,17 @@ import {
 export type ToggleGroup = React.ComponentProps<
   (typeof ToggleGroupPrimitive)["Root"]
 > &
-  Partial<ToggleGroupContext> & { isUnstyled?: boolean };
+  Partial<ToggleGroupContext>;
 
 export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
   (
-    {
-      children,
-      className,
-      size = "md",
-      isBarebone = false,
-      isUnstyled = false,
-      ...props
-    },
+    { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
   ) => {
-    const unstyle = isBarebone || isUnstyled;
+    const unstyle = isUnstyled;
 
     return (
-      <ToggleGroupProvider value={{ size, isBarebone }}>
+      <ToggleGroupProvider value={{ size, isUnstyled }}>
         <ToggleGroupPrimitive.Root
           {...props}
           className={
@@ -76,8 +69,8 @@ export const ToggleGroupItem = React.forwardRef<
   HTMLButtonElement,
   ToggleGroupItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isBarebone } = useToggleGroupContext();
-  const unstyle = isBarebone || isUnstyled;
+  const { size, isUnstyled: isParentUnstyled } = useToggleGroupContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
   return (
     <ToggleGroupPrimitive.Item

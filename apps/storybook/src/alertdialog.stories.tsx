@@ -15,13 +15,14 @@ const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",
   args: {
     size: "md",
-    isBarebone: false,
+    isUnstyled: false,
   },
   argTypes: {
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
     },
+    isUnstyled: {},
   },
 };
 export default meta;
@@ -29,8 +30,8 @@ export default meta;
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  render: ({ size, isBarebone }) => (
-    <AlertDialog size={size} isBarebone={isBarebone}>
+  render: ({ size, isUnstyled }) => (
+    <AlertDialog size={size} isUnstyled={isUnstyled}>
       <AlertDialogTrigger variant="solid" colorScheme="error">
         Delete
       </AlertDialogTrigger>

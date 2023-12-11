@@ -9,5 +9,5 @@ export const [TableProvider, useTableContext] = createContext<TableContext>({
 export interface TableContext {
   readonly size: "sm" | "md" | "lg";
   readonly variant: "simple" | "striped";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

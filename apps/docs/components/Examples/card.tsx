@@ -54,9 +54,9 @@ export const card_examples = {
       </CardFooter>
     </Card>
   ),
-  "card:barebone": (
+  "card:unstyled": (
     <Card
-      isBarebone
+      isUnstyled
       className="dark:bg-secondary-800 space-y-4 rounded-lg bg-white p-4 shadow-md dark:text-white"
     >
       <CardHeader className="text-xl font-semibold">
