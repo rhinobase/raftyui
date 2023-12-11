@@ -56,15 +56,17 @@ Pass the `size` prop if you need to adjust the size of the navigation-menu conte
 
 {% example name="navigation-menu:size" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in Navigation Menu.
-
-{% example name="navigation-menu:barebone" /%}
-
-## UnStlyed
+Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
 
 {% example name="navigation-menu:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="navigation-menu:unstyledsub" /%}
 
 ### API
 

@@ -50,15 +50,17 @@ Using the `type` prop you can set the type of toggle-group. Values can be `singl
 {% example name="toggle-group:default" /%}
 Using the `defaultValue` prop you can set the default value of toggle-group.
 
-## Barebone
+## Unstyled
 
-{% example name="toggle-group:barebone" /%}
-Pass `isBarebone` prop to remove all style in toggle-group and its sub components.
-
-## UnStyled
+Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 
 {% example name="toggle-group:unstyled" /%}
-Pass `isUnstyled` prop to remove style from a particular sub component.
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="toggle-group:unstyledsub" /%}
 
 ### API
 

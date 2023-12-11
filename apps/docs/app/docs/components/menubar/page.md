@@ -71,17 +71,17 @@ There are 3 `size` options in the menu bar: `sm`, `md` (default) & `lg`.
 
 {% example name="menubar:size" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in menubar.
-
-{% example name="menubar:barebone" /%}
-
-## UnStyled
-
-Pass ` isUnstyled` prop to remove style from a particular sub component.
+Pass `isUnstyled` prop in parent component to remove style in menubar.
 
 {% example name="menubar:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="menubar:unstyledsub" /%}
 
 ### API
 

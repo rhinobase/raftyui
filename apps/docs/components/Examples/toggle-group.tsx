@@ -29,11 +29,11 @@ export const toggle_group_examples = {
       <ToggleGroupItem value="3">3</ToggleGroupItem>
     </ToggleGroup>
   ),
-  "toggle-group:barebone": (
+  "toggle-group:unstyled": (
     <ToggleGroup
       type="single"
       defaultValue="1"
-      isBarebone
+      isUnstyled
       className="flex h-9 w-full"
     >
       <ToggleGroupItem
@@ -56,7 +56,7 @@ export const toggle_group_examples = {
       </ToggleGroupItem>
     </ToggleGroup>
   ),
-  "toggle-group:unstyled": (
+  "toggle-group:unstyledsub": (
     <ToggleGroup type="single" defaultValue="1">
       <ToggleGroupItem
         value="1"

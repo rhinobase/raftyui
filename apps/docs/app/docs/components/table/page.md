@@ -64,17 +64,17 @@ There are 2 `variants` in the table: `simple` (default) & `striped`.
 
 {% example name="table:variant" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in table.
-
-{% example name="table:barebone" /%}
-
-## UnStyled
-
-Pass ` isUnstyled` prop to remove style from a particular sub component.
+Pass `isUnstyled` prop in parent component to remove style in table.
 
 {% example name="table:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="table:unstyledsub" /%}
 
 ### API
 

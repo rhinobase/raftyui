@@ -62,17 +62,17 @@ Both `orientation` supports all `variant`.
 
 {% example name="tab:Orientation-enclosed" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in tab and its sub components.
-
-{% example name="tab:barebone" /%}
-
-## UnStyled
-
-Pass ` isUnstyled` prop to remove style from a particular sub component.
+Pass `isUnstyled` prop in parent component to remove style in Tab.
 
 {% example name="tab:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="tab:unstyledsub" /%}
 
 ### API
 

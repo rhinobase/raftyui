@@ -112,9 +112,9 @@ export const navigation_menu_examples = {
       </NavigationMenuList>
     </NavigationMenu>
   ),
-  "navigation-menu:barebone": (
+  "navigation-menu:unstyled": (
     <NavigationMenu
-      isBarebone
+      isUnstyled
       className="relative z-10 flex max-w-max flex-1 items-center justify-center"
     >
       <NavigationMenuList className="m-0 flex items-center justify-center rounded-md p-1">
@@ -172,7 +172,7 @@ export const navigation_menu_examples = {
       </NavigationMenuList>
     </NavigationMenu>
   ),
-  "navigation-menu:unstyled": (
+  "navigation-menu:unstyledsub": (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
