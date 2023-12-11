@@ -3,34 +3,26 @@ import { Toast } from "@rafty/ui";
 
 const meta: Meta<typeof Toast> = {
   title: "Components / Toast",
+  args: {
+    severity: "warning",
+  },
+  argTypes: {
+    severity: {
+      control: "select",
+      options: ["info", "error", "success", "warning"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
 export const Default: Story = {
-  render: () => (
-    <>
-      <Toast
-        title="Success Banner"
-        message="Data uploaded to the server. Fire on!"
-        severity="error"
-      />
-      <Toast
-        title="Success Banner"
-        message="Data uploaded to the server. Fire on!"
-        severity="info"
-      />
-      <Toast
-        title="Success Banner"
-        message="Data uploaded to the server. Fire on!"
-        severity="success"
-      />
-      <Toast
-        title="Success Banner"
-        message="Data uploaded to the server. Fire on!"
-        severity="warning"
-      />
-    </>
+  render: ({ severity }) => (
+    <Toast
+      title="Toast Title"
+      message="Sample toast message!"
+      severity={severity}
+    />
   ),
 };

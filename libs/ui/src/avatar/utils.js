@@ -7,11 +7,11 @@
 export function calculateWidth(size, length) {
   switch (size) {
     case "sm":
-      return 28 + length * 22;
+      return 6 + length * 22;
     case "md":
-      return 36 + length * 28;
+      return 8 + length * 28;
     case "lg":
-      return 48 + length * 37;
+      return 11 + length * 37;
     default:
       return 0;
   }

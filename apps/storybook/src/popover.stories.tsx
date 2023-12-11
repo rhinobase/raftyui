@@ -1,47 +1,42 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Popover, PopoverTrigger, PopoverContent } from "@rafty/ui";
+import { Popover, PopoverTrigger, PopoverContent, Button } from "@rafty/ui";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Popover> = {
   title: "Components / Popover",
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Popover>;
 
 export const Default: Story = {
-  render: () => (
-    <Popover>
+  render: ({ size }) => (
+    <Popover size={size}>
       <PopoverTrigger>Open</PopoverTrigger>
-      <PopoverContent isArrow>
-        <div data-cy="content" className="p-6">
-          <div>
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-              <CheckIcon
-                className="h-6 w-6 text-green-600"
-                aria-hidden="true"
-              />
-            </div>
-            <div className="mt-3 text-center sm:mt-5">
-              <h3 className="text-base font-semibold leading-6 text-gray-900">
-                Payment successful
-              </h3>
-              <div className="mt-2">
-                <p className="text-sm text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur amet labore.
-                </p>
-              </div>
-            </div>
+      <PopoverContent>
+        <div className="flex flex-col items-center gap-4">
+          <div className="rounded-full bg-green-100 p-3">
+            <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
           </div>
-          <div className="mt-5 sm:mt-6">
-            <button
-              type="button"
-              className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Go back to dashboard
-            </button>
+          <div className="text-center">
+            <h3 className="text-lg font-semibold">Payment successful</h3>
+            <p className="text-sm font-medium opacity-60">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequatur amet labore.
+            </p>
           </div>
+          <Button colorScheme="primary" className="mt-2 w-full">
+            Go back to dashboard
+          </Button>
         </div>
       </PopoverContent>
     </Popover>

@@ -12,11 +12,17 @@ const meta: Meta<typeof Alert> = {
   args: {
     status: "info",
     size: "md",
+    variant: "simple",
+    isBarebone: false,
   },
   argTypes: {
     status: {
       control: "select",
       options: ["error", "warning", "info", "success"],
+    },
+    variant: {
+      control: "select",
+      options: ["simple", "solid", "left-accent", "top-accent"],
     },
     size: {
       control: "select",
@@ -28,62 +34,34 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
-export const Variants: Story = {
-  render: ({ status, size }) => (
-    <div className="grid w-full max-w-6xl grid-cols-2 gap-10">
-      <div className="flex flex-col gap-4">
-        <p className="dark:text-white">Simple Variant</p>
-        <Alert size={size} status={status}>
-          <AlertIcon />
-          <AlertTitle id="title">Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-      </div>
-      <div className="flex flex-col gap-4">
-        <p className="dark:text-white">Solid Variant</p>
-        <Alert variant="solid" size={size} status={status}>
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-      </div>
-      <div className="flex flex-col gap-4">
-        <p className="dark:text-white">left-accent Variant</p>
-        <Alert variant="left-accent" size={size} status={status}>
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-      </div>
-      <div className="flex flex-col gap-4">
-        <p className="dark:text-white">top-accent Variant</p>
-        <Alert variant="top-accent" size={size} status={status}>
-          <AlertIcon />
-          <AlertTitle>Title</AlertTitle>
-          <AlertDescription>Description</AlertDescription>
-        </Alert>
-      </div>
-    </div>
+export const Default: Story = {
+  render: ({ status, size, variant, isBarebone }) => (
+    <Alert
+      size={size}
+      status={status}
+      variant={variant}
+      isBarebone={isBarebone}
+    >
+      <AlertIcon />
+      <AlertTitle id="title">Title</AlertTitle>
+      <AlertDescription>Description</AlertDescription>
+    </Alert>
   ),
 };
-export const AlertWithAction: Story = {
-  args: { variant: "simple" },
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["simple", "solid", "left-accent", "top-accent"],
-    },
-  },
 
-  render: ({ status, size, variant }) => (
-    <div className="flex w-full max-w-3xl flex-col gap-4">
-      <Alert variant={variant} size={size} status={status}>
-        <AlertIcon />
-        <AlertTitle>Title</AlertTitle>
-        <AlertDescription>Description</AlertDescription>
-        <div className="flex-1" />
-        <Button>Action</Button>
-      </Alert>
-    </div>
+export const WithAction: Story = {
+  render: ({ status, size, variant, isBarebone }) => (
+    <Alert
+      variant={variant}
+      size={size}
+      status={status}
+      isBarebone={isBarebone}
+    >
+      <AlertIcon />
+      <AlertTitle>Title</AlertTitle>
+      <AlertDescription>Description</AlertDescription>
+      <div className="flex-1" />
+      <Button>Action</Button>
+    </Alert>
   ),
 };

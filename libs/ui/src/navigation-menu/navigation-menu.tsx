@@ -30,7 +30,7 @@ export const NavigationMenu = React.forwardRef<HTMLDivElement, NavigationMenu>(
             unstyle
               ? className
               : classNames(
-                  "relative z-10 flex max-w-max flex-1 items-center justify-center",
+                  "relative z-10 flex w-full flex-1 items-center justify-center",
                   className,
                 )
           }
@@ -106,7 +106,7 @@ export const NavigationMenuTrigger = React.forwardRef<
         unstyle
           ? className
           : classNames(
-              "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none",
+              "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none transition-all ease-in-out",
               className,
             )
       }
@@ -121,16 +121,22 @@ NavigationMenuTrigger.displayName = "NavigationMenuTrigger";
 
 // NavigationMenuContent Component
 export const navigationMenuContentClasses = cva(
-  "animate-slide-down-fade dark:bg-secondary-800 absolute min-w-[220px] origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
+  "animate-slide-down-fade dark:bg-secondary-800 absolute w-full origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
   {
     variants: {
       size: {
-        sm: "max-w-lg top-2.5 rounded-md",
-        md: "max-w-2xl top-2.5 rounded-md",
-        lg: "max-w-6xl top-2.5 rounded-md",
-        full: "-top-1 w-screen",
+        sm: "max-w-lg top-2.5",
+        md: "max-w-2xl top-2.5",
+        lg: "max-w-6xl top-2.5",
+        full: "-top-1 w-[100dvw]",
       },
     },
+    compoundVariants: [
+      {
+        size: ["sm", "md", "lg"],
+        className: "rounded-md",
+      },
+    ],
     defaultVariants: {
       size: "md",
     },
@@ -190,7 +196,7 @@ export const NavigationMenuLink = ({
         unstyle
           ? className
           : classNames(
-              "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none",
+              "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none transition-all ease-in-out",
               className,
             )
       }
@@ -266,7 +272,7 @@ export const NavigationMenuIndicator = ({
             )
       }
     >
-      <div className="dark:bg-secondary-800 relative top-[70%] h-[12px] w-[12px] rotate-45 transform bg-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]" />
+      <div className="dark:bg-secondary-800 relative top-[70%] h-[12px] w-[12px] rotate-45 transform rounded-tl bg-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]" />
     </NavigationMenuPrimitive.Indicator>
   );
 };

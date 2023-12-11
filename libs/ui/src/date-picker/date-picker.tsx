@@ -42,7 +42,7 @@ export const DatePicker = (props: DatePicker) => {
           <span>Pick a date</span>
         )}
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-auto border-0 !p-0">
+      <PopoverContent align="start" className="w-auto !max-w-max border-0 !p-0">
         <Calendar
           {...props}
           mode="single"

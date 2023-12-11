@@ -41,15 +41,15 @@ export const Default: Story = {
     return (
       <Menu size={size}>
         <MenuTrigger
-          size="icon"
+          size={size}
           rightIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth="1.5"
+              strokeWidth="2"
               stroke="currentColor"
-              className="ml-1 h-3 w-3"
+              className="h-4 w-4"
             >
               <path
                 strokeLinecap="round"
