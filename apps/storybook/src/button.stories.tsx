@@ -1,53 +1,89 @@
-import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@rafty/ui";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
   args: {
     colorScheme: "secondary",
+    isUnstyled: false,
+    size: "md",
+    variant: "solid",
+    isDisabled: false,
+    isActive: false,
+    isLoading: false,
   },
   argTypes: {
     colorScheme: {
       control: "select",
       options: ["primary", "secondary", "error", "success"],
     },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    variant: {
+      control: "select",
+      options: ["ghost", "solid", "outline"],
+    },
+    isUnstyled: {},
+    isDisabled: {},
+    isActive: {},
+    isLoading: {},
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Sizes: Story = {
-  render: ({ colorScheme }) => (
-    <>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">sm</div>
-        <Button size="sm" colorScheme={colorScheme}>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">sm</div>
-        <Button colorScheme={colorScheme}>Button text</Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">lg</div>
-        <Button size="lg" colorScheme={colorScheme}>
-          Button text
-        </Button>
-      </div>
-    </>
+export const Default: Story = {
+  render: ({
+    colorScheme,
+    variant,
+    size,
+    isUnstyled,
+    isDisabled,
+    isActive,
+    isLoading,
+  }) => (
+    <Button
+      size={size}
+      variant={variant}
+      isUnstyled={isUnstyled}
+      colorScheme={colorScheme}
+      isDisabled={isDisabled}
+      isActive={isActive}
+      isLoading={isLoading}
+    >
+      Button text
+    </Button>
   ),
 };
 
 export const IconButton: Story = {
-  render: ({ colorScheme }) => (
+  render: ({
+    colorScheme,
+    variant,
+    size,
+    isUnstyled,
+    isDisabled,
+    isActive,
+    isLoading,
+  }) => (
     <>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">
           icon
         </div>
-        <Button data-cy="iconbtn" colorScheme={colorScheme} size="icon">
+        <Button
+          data-cy="iconbtn"
+          size="icon"
+          variant={variant}
+          isUnstyled={isUnstyled}
+          colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -66,7 +102,15 @@ export const IconButton: Story = {
       </div>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">fab</div>
-        <Button data-cy="iconbtn" colorScheme={colorScheme} size="fab">
+        <Button
+          size="fab"
+          variant={variant}
+          isUnstyled={isUnstyled}
+          colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -87,135 +131,29 @@ export const IconButton: Story = {
   ),
 };
 
-export const Variants: Story = {
-  render: ({ colorScheme }) => (
-    <>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Solid
-        </div>
-        <Button colorScheme={colorScheme}>Button text</Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Outline
-        </div>
-        <Button variant="outline" colorScheme={colorScheme}>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Ghost
-        </div>
-        <Button variant="ghost" colorScheme={colorScheme}>
-          Button text
-        </Button>
-      </div>
-    </>
-  ),
-};
-export const ActiveVariants: Story = {
-  render: ({ colorScheme }) => (
-    <>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Solid Active
-        </div>
-        <Button colorScheme={colorScheme} isActive>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Outline Active
-        </div>
-        <Button colorScheme={colorScheme} variant="outline" isActive>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Ghost Active
-        </div>
-        <Button colorScheme={colorScheme} variant="ghost" isActive>
-          Button text
-        </Button>
-      </div>
-    </>
-  ),
-};
-export const DisabledVariants: Story = {
-  render: ({ colorScheme }) => (
-    <>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Solid Disabled
-        </div>
-        <Button colorScheme={colorScheme} isDisabled>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Outline Disabled
-        </div>
-        <Button colorScheme={colorScheme} variant="outline" isDisabled>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Ghsot Disabled
-        </div>
-        <Button colorScheme={colorScheme} variant="ghost" isDisabled>
-          Button text
-        </Button>
-      </div>
-    </>
-  ),
-};
-
-export const LoadingVariants: Story = {
-  render: ({ colorScheme }) => (
-    <>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Solid Loading
-        </div>
-        <Button colorScheme={colorScheme} isLoading>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Outline Loading
-        </div>
-        <Button colorScheme={colorScheme} variant="outline" isLoading>
-          Button text
-        </Button>
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="text-secondary-500 mb-2 text-sm font-semibold">
-          Ghost Loading
-        </div>
-        <Button colorScheme={colorScheme} variant="ghost" isLoading>
-          Button text
-        </Button>
-      </div>
-    </>
-  ),
-};
-
 export const ButtonWithIcons: Story = {
-  render: ({ colorScheme }) => (
+  render: ({
+    colorScheme,
+    variant,
+    size,
+    isUnstyled,
+    isDisabled,
+    isActive,
+    isLoading,
+  }) => (
     <>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">
           left icon
         </div>
         <Button
+          size={size}
+          variant={variant}
+          isUnstyled={isUnstyled}
           colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
           leftIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +179,13 @@ export const ButtonWithIcons: Story = {
           icon right
         </div>
         <Button
+          size={size}
+          variant={variant}
+          isUnstyled={isUnstyled}
           colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
           rightIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +211,13 @@ export const ButtonWithIcons: Story = {
           icon left & right
         </div>
         <Button
+          size={size}
+          variant={variant}
+          isUnstyled={isUnstyled}
           colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          isActive={isActive}
+          isLoading={isLoading}
           leftIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"

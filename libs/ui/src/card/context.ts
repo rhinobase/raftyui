@@ -10,4 +10,8 @@ export interface CardContext {
   readonly size: "sm" | "md" | "lg";
   readonly variant: "outline" | "elevated";
   readonly isUnstyled: boolean;
+  readonly has: {
+    header: boolean;
+    footer: boolean;
+  };
 }

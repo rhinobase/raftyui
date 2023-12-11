@@ -70,7 +70,7 @@ export const Prefix = React.forwardRef<HTMLDivElement, Prefix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "absolute left-0 top-0 flex h-full w-10 items-center justify-center",
+          "absolute left-0 top-0 z-10 flex h-full w-10 items-center justify-center",
           className,
         )}
       >
@@ -92,7 +92,7 @@ export const Suffix = React.forwardRef<HTMLDivElement, Suffix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "absolute right-0 top-0 flex h-full w-10 items-center justify-center",
+          "absolute right-0 top-0 z-10 flex h-full w-10 items-center justify-center",
           className,
         )}
       >

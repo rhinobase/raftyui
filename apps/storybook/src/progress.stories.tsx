@@ -25,8 +25,6 @@ type Story = StoryObj<typeof Progress>;
 
 export const Default: Story = {
   render: ({ size, colorScheme }) => (
-    <div className="flex w-full max-w-4xl flex-col gap-4 dark:text-white">
-      <Progress colorScheme={colorScheme} size={size} value={20} />
-    </div>
+    <Progress colorScheme={colorScheme} size={size} value={20} />
   ),
 };

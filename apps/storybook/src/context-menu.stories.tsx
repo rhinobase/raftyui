@@ -19,6 +19,7 @@ const meta: Meta<typeof ContextMenu> = {
   title: "Components / ContextMenu",
   args: {
     size: "md",
+    isBarebone: false,
   },
   argTypes: {
     size: {
@@ -33,13 +34,13 @@ export default meta;
 type Story = StoryObj<typeof ContextMenu>;
 
 export const Default: Story = {
-  render: function Render({ size }) {
+  render: function Render({ size, isBarebone }) {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
     const [urlsChecked, setUrlsChecked] = useState(false);
     const [person, setPerson] = useState("1");
 
     return (
-      <ContextMenu size={size}>
+      <ContextMenu size={size} isBarebone={isBarebone}>
         <ContextMenuTrigger>
           <div className="border border-dashed p-5 text-center dark:border-zinc-700 dark:text-zinc-100">
             Context

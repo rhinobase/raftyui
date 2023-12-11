@@ -148,6 +148,10 @@ export const navigation = [
         href: "/docs/components/tag-field",
       },
       {
+        title: "Tag",
+        href: "/docs/components/tag",
+      },
+      {
         title: "Text",
         href: "/docs/components/text",
       },

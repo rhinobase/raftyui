@@ -7,6 +7,7 @@ const meta: Meta<typeof RadioGroup> = {
   args: {
     size: "md",
     isDisabled: false,
+    required: false,
   },
   argTypes: {
     size: {
@@ -21,27 +22,22 @@ export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
-  render: ({ size, isDisabled }) => (
-    <div className="flex flex-col gap-4">
-      <RadioGroup
-        defaultValue="comfortable"
-        size={size}
-        isDisabled={isDisabled}
-      >
-        <RadioGroupItem value="default" id="r1">
-          Default
-        </RadioGroupItem>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="comfortable" id="r2">
-            Comfortable
-          </RadioGroupItem>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="compact" id="r3">
-            Compact
-          </RadioGroupItem>
-        </div>
-      </RadioGroup>
-    </div>
+  render: ({ size, isDisabled, required }) => (
+    <RadioGroup
+      defaultValue="comfortable"
+      size={size}
+      isDisabled={isDisabled}
+      required={required}
+    >
+      <RadioGroupItem value="default" id="default">
+        Default
+      </RadioGroupItem>
+      <RadioGroupItem value="comfortable" id="comfortable">
+        Comfortable
+      </RadioGroupItem>
+      <RadioGroupItem value="compact" id="compact">
+        Compact
+      </RadioGroupItem>
+    </RadioGroup>
   ),
 };

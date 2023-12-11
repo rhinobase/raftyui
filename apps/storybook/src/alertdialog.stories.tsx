@@ -20,20 +20,23 @@ const meta: Meta<typeof AlertDialog> = {
   argTypes: {
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "xl"],
     },
     isUnstyled: {},
   },
 };
 export default meta;
+
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
   render: ({ size, isUnstyled }) => (
     <AlertDialog size={size} isUnstyled={isUnstyled}>
-      <AlertDialogTrigger>Open</AlertDialogTrigger>
+      <AlertDialogTrigger variant="solid" colorScheme="error">
+        Delete
+      </AlertDialogTrigger>
       <AlertDialogOverlay />
-      <AlertDialogContent data-cy="dialogcontent">
+      <AlertDialogContent>
         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         <AlertDialogDescription>
           This action cannot be undone. This will permanently delete your
