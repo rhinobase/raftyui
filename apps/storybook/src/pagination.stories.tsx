@@ -31,11 +31,9 @@ export const Default: Story = {
           showQuickJumper
           showSizeChanger
           size={size}
-          showTotal={(total, range) => (
-            <span>
-              Total {total} items, Range is {range}
-            </span>
-          )}
+          showTotal={(total, range) =>
+            `Total ${total} items, Range is ${range}`
+          }
           current={current}
           onChange={onChange}
           className="flex gap-5"
