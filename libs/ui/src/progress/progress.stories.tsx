@@ -7,7 +7,7 @@ const meta: Meta<typeof Progress> = {
   args: {
     size: "md",
     colorScheme: "primary",
-    // isIndeterminate: false,
+    value: 20,
   },
   argTypes: {
     size: {
@@ -25,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof Progress>;
 
 export const Default: Story = {
-  render: ({ size, colorScheme }) => (
-    <Progress colorScheme={colorScheme} size={size} value={20} />
+  render: ({ size, colorScheme, value }) => (
+    <Progress colorScheme={colorScheme} size={size} value={value} />
   ),
 };
