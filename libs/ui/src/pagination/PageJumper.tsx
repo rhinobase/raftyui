@@ -1,8 +1,9 @@
 import { FieldControl } from "../field";
 import { InputField } from "../input";
+import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
 
-export function PaginationField() {
+export function PageJumper() {
   const { size, isDisabled, current, onChange, total, pageSize } =
     usePaginationContext();
 
@@ -13,11 +14,14 @@ export function PaginationField() {
         type="number"
         min={1}
         value={current > 0 ? current : undefined}
-        onChange={(e) => {
-          const value = Number(e.target.value);
-          if (value > total) onChange?.(total, pageSize);
-          else onChange?.(value, pageSize);
-        }}
+        onChange={(e) =>
+          changePage({
+            total,
+            pageSize,
+            onChange,
+            value: Number(e.target.value),
+          })
+        }
       />
     </FieldControl>
   );

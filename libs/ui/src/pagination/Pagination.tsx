@@ -18,21 +18,23 @@ export const paginationClasses = cva("flex w-full items-center gap-4", {
   },
 });
 
+// Required props for the pagination component
+type RequiredProps = "total" | "pageSize" | "current";
+
 export type Pagination = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "onChange"
-> & {
-  pageSizeOptions?: number[];
-} & Partial<PaginationContext>;
+> &
+  Partial<Omit<PaginationContext, RequiredProps>> &
+  Pick<PaginationContext, RequiredProps>;
 
 export const Pagination = React.forwardRef<HTMLDivElement, Pagination>(
   (
     {
-      total = 0,
-      current = 1,
-      pageSize = 10,
-      isDisabled,
-      pageSizeOptions = [10, 20, 50],
+      total,
+      current,
+      pageSize,
+      isDisabled = false,
       size = "md",
       onChange,
       className,
@@ -43,11 +45,11 @@ export const Pagination = React.forwardRef<HTMLDivElement, Pagination>(
     return (
       <PaginationProvider
         value={{
-          total,
           size,
-          isDisabled,
+          total,
           current,
           pageSize,
+          isDisabled,
           onChange,
         }}
       >

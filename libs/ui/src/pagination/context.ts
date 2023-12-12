@@ -10,7 +10,7 @@ export const [PaginationProvider, usePaginationContext] =
 
 export interface PaginationContext {
   readonly size: "sm" | "md" | "lg";
-  readonly isDisabled: boolean | undefined;
+  readonly isDisabled: boolean;
   readonly total: number;
   readonly current: number;
   readonly pageSize: number;

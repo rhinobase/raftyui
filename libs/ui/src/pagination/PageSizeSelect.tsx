@@ -3,39 +3,35 @@ import { Select, SelectItem } from "../select";
 import { usePaginationContext } from "./context";
 
 export type PageSizeSelect = Omit<Select, "value" | "onChange"> & {
-  pageSizeOptions: number[];
+  pageSizes?: (number | { label: string; value: number })[];
 };
 
 export const PageSizeSelect = React.forwardRef<
   HTMLSelectElement,
   PageSizeSelect
->(({ pageSizeOptions, size, isDisabled, ...props }, forwardedRef) => {
-  const {
-    size: parentSize,
-    isDisabled: parentIsDisabled,
-    pageSize,
-    current,
-    onChange,
-  } = usePaginationContext();
+>(({ pageSizes = [10, 20, 50], ...props }, forwardedRef) => {
+  const { size, isDisabled, pageSize, current, onChange } =
+    usePaginationContext();
 
-  const selectSize = size || parentSize,
-    disabled = parentIsDisabled || isDisabled;
+  const options = pageSizes.map((opt) =>
+    typeof opt === "number" ? { label: String(opt), value: opt } : opt,
+  );
 
   return (
     <Select
-      size={selectSize}
-      isDisabled={disabled}
+      size={size}
+      isDisabled={isDisabled}
       value={pageSize}
       onChange={(event) => {
         const value = Number(event.target.value);
-        onChange?.(current, value);
+        if (value !== null && !isNaN(value)) onChange?.(current, value);
       }}
       {...props}
       ref={forwardedRef}
     >
-      {pageSizeOptions.map((size, index) => (
-        <SelectItem key={index} value={size}>
-          {size}
+      {options.map(({ label, value }, index) => (
+        <SelectItem key={index} value={value}>
+          {label}
         </SelectItem>
       ))}
     </Select>

@@ -1,6 +1,7 @@
 import { Button } from "../button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { usePaginationContext } from "./context";
+import { changePage } from "./change-page";
 
 const ICON_CLASSES = {
   sm: "h-3.5 w-3.5",
@@ -22,7 +23,14 @@ export function PaginationButtons() {
       <Button
         variant="ghost"
         size="icon"
-        onClick={() => onChange?.(current - 1, pageSize)}
+        onClick={() =>
+          changePage({
+            total,
+            pageSize,
+            onChange,
+            value: current - 1,
+          })
+        }
         isDisabled={prevDisabled}
       >
         <ChevronLeftIcon className={ICON_CLASSES[size]} />
@@ -30,7 +38,14 @@ export function PaginationButtons() {
       <Button
         variant="ghost"
         size="icon"
-        onClick={() => onChange?.(current + 1, pageSize)}
+        onClick={() =>
+          changePage({
+            total,
+            pageSize,
+            onChange,
+            value: current + 1,
+          })
+        }
         isDisabled={nextDisabled}
       >
         <ChevronRightIcon className={ICON_CLASSES[size]} />
