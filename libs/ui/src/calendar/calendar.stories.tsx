@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Calendar } from "./Calendar";
 import React from "react";
 import { ListItem, UnorderedList } from "../list";
+import { Calendar } from "./Calendar";
 
 const meta: Meta<typeof Calendar> = {
   title: "Form / Calendar",

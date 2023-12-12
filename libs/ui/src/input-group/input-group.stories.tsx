@@ -1,16 +1,16 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
 import {
   CheckIcon,
   MagnifyingGlassIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
+import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { InputField } from "../input-field";
 import { InputGroup } from "./InputGroup";
-import { Prefix } from "./Perfix";
-import { Suffix } from "./Suffix";
 import { LeftAddon } from "./LeftAddon";
+import { Prefix } from "./Perfix";
 import { RightAddon } from "./RightAddon";
+import { Suffix } from "./Suffix";
 
 const meta: Meta<typeof InputField> = {
   title: "Form / InputGroup",

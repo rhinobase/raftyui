@@ -1,7 +1,7 @@
-import React from "react";
 import { cva } from "class-variance-authority";
-import { classNames } from "../utils";
+import React from "react";
 import { Spinner } from "../spinner";
+import { classNames } from "../utils";
 
 export const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none",

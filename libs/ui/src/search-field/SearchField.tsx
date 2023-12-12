@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import React from "react";
 import { InputField } from "../input-field";
 import { InputGroup, Prefix } from "../input-group";
 
@@ -10,7 +10,7 @@ export type SearchField = Omit<InputField, "value" | "onChange"> & {
 };
 
 // SearchField component using forwardRef to expose the input element reference
-export const SearchField = forwardRef<HTMLInputElement, SearchField>(
+export const SearchField = React.forwardRef<HTMLInputElement, SearchField>(
   ({ search, onSearch, ...props }, forwardedRef) => {
     // Render the SearchField UI with an InputGroup, Prefix icon, and InputField
     return (

@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
+import { cva } from "class-variance-authority";
+import React from "react";
 import { Button } from "../button";
+import { classNames } from "../utils";
 import {
-  AlertDialogProvider,
   AlertDialogContext,
+  AlertDialogProvider,
   useAlertDialogContext,
 } from "./context";
-import { classNames } from "../utils";
-import { cva } from "class-variance-authority";
 
 // AlertDialog Component
 export type AlertDialog = React.ComponentPropsWithoutRef<

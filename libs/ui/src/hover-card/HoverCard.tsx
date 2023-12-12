@@ -1,5 +1,5 @@
-import React from "react";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
+import React from "react";
 import { classNames } from "../utils";
 
 // HoverCard Component

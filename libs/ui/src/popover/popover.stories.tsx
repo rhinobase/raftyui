@@ -1,8 +1,8 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Popover, PopoverTrigger, PopoverContent } from "./Popover";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { Button } from "../button";
+import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
 
 const meta: Meta<typeof Popover> = {
   title: "Components / Popover",

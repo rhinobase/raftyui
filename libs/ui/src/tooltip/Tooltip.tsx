@@ -1,5 +1,5 @@
-import React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import React from "react";
 import { classNames } from "../utils";
 
 // TooltipProvider Component

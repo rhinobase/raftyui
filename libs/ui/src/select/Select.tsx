@@ -1,9 +1,9 @@
 "use client";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import React from "react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { classNames } from "../utils";
 import { useFieldControlContext } from "../field-control/context";
+import { classNames } from "../utils";
 
 const selectClasses = cva(
   "w-full appearance-none outline-none dark:text-secondary-200 transition-all",

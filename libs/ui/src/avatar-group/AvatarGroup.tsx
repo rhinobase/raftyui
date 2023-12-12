@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
+import { Avatar } from "../avatar/Avatar";
 import { classNames, getValidChildren } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
-import { Avatar } from "../avatar/Avatar";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { calculateWidth } from "./utils";

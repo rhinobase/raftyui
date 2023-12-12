@@ -1,21 +1,21 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import {
-  Dialog,
-  DialogContent,
-  DialogOverlay,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-  DialogDescription,
-  DialogClose,
-} from "./Dialog";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { Button } from "../button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+} from "./Dialog";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",

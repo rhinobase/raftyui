@@ -1,5 +1,5 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import {
   Menu,
   MenuCheckboxItem,
@@ -15,7 +15,6 @@ import {
   MenuSubTrigger,
   MenuTrigger,
 } from "./Menu";
-import { useState } from "react";
 
 const meta: Meta<typeof Menu> = {
   title: "Components / Menu",
@@ -36,9 +35,9 @@ type Story = StoryObj<typeof Menu>;
 
 export const Default: Story = {
   render: function Render({ size }) {
-    const [bookmarksChecked, setBookmarksChecked] = useState(true);
-    const [urlsChecked, setUrlsChecked] = useState(false);
-    const [person, setPerson] = useState("1");
+    const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
+    const [urlsChecked, setUrlsChecked] = React.useState(false);
+    const [person, setPerson] = React.useState("1");
     return (
       <Menu size={size}>
         <MenuTrigger

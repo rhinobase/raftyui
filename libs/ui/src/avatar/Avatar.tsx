@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
-import { classNames } from "../utils";
-import { useAvatarGroupContext } from "../avatar-group/context";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { useAvatarGroupContext } from "../avatar-group/context";
+import { classNames } from "../utils";
 
 export type Avatar = {
   name?: string | null;

@@ -1,15 +1,14 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { Button } from "../button";
 import {
   Drawer,
-  DrawerDescription,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerOverlay,
   DrawerTitle,
 } from "./Drawer";
-import { useState } from "react";
-import { Button } from "../button";
 
 const meta: Meta<typeof Drawer> = {
   title: "Components / Drawer",
@@ -34,7 +33,7 @@ type Story = StoryObj<typeof Drawer>;
 
 export const Default: Story = {
   render: function Render({ size, side }) {
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = React.useState(false);
     return (
       <div className="flex flex-col gap-4">
         <Button onClick={() => setOpen(true)}>Open</Button>

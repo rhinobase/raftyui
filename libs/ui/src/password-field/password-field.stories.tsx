@@ -1,8 +1,8 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { PasswordField } from "./PasswordField";
+import React from "react";
 import { FieldControl } from "../field-control";
 import { Label } from "../label";
+import { PasswordField } from "./PasswordField";
 
 const meta: Meta<typeof PasswordField> = {
   title: "Form / PasswordField",

@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import { classNames, getValidChildren } from "../utils";
-import { InputGroupContext, InputGroupProvider } from "./context";
-import { RightAddon } from "./RightAddon";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
+import { RightAddon } from "./RightAddon";
 import { Suffix } from "./Suffix";
+import { InputGroupContext, InputGroupProvider } from "./context";
 
 // InputGroup Component
 export type InputGroup = React.HTMLAttributes<HTMLDivElement> &

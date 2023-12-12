@@ -1,8 +1,8 @@
 "use client";
+import { cva } from "class-variance-authority";
 import React from "react";
 import { classNames } from "../utils";
 import { FieldControlContext, FieldControlProvider } from "./context";
-import { cva } from "class-variance-authority";
 
 // Field Control Component
 export const fieldControlClasses = cva("flex w-full", {

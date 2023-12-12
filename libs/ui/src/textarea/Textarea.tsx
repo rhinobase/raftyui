@@ -1,8 +1,8 @@
 "use client";
+import { cva } from "class-variance-authority";
 import React from "react";
 import { useFieldControlContext } from "../field-control/context";
 import { classNames } from "../utils";
-import { cva } from "class-variance-authority";
 
 export const textareaClasses = cva(
   "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",

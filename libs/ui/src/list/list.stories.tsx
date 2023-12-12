@@ -1,8 +1,8 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
-import { ListItem } from "./ListItem";
+import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { List } from "./List";
+import { ListItem } from "./ListItem";
 import { OrderedList as OL } from "./OrderedList";
 import { UnorderedList as UL } from "./UnorderedList";
 

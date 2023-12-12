@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { cva } from "class-variance-authority";
+import React from "react";
+import { classNames } from "../utils";
 import {
   AccordionContext,
   AccordionProvider,
   useAccordionContext,
 } from "./context";
-import { classNames } from "../utils";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { cva } from "class-variance-authority";
 
 // Accordion Component
 export type Accordion = React.ComponentPropsWithoutRef<

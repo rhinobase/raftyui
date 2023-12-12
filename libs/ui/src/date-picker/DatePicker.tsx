@@ -3,8 +3,8 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
 import React from "react";
 import { DayPickerSingleProps } from "react-day-picker";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Calendar } from "../calendar/Calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 
 export type DatePicker = {
   onSelect?: (value?: Date) => void;

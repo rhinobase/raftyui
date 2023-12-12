@@ -1,3 +1,4 @@
+import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import {
   Table,
@@ -9,7 +10,6 @@ import {
   Th,
   Tr,
 } from "./Table";
-import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Table> = {
   title: "Components / Table",

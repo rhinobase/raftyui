@@ -1,5 +1,5 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -14,7 +14,6 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "./Menubar";
-import { useState } from "react";
 
 const meta: Meta<typeof Menubar> = {
   title: "Components / Menubar",
@@ -34,9 +33,9 @@ type Story = StoryObj<typeof Menubar>;
 
 export const Default: Story = {
   render: function Render({ size }) {
-    const [bookmarksChecked, setBookmarksChecked] = useState(true);
-    const [fullUrlChecked, setFullUrlChecked] = useState(true);
-    const [person, setPerson] = useState("1");
+    const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
+    const [fullUrlChecked, setFullUrlChecked] = React.useState(true);
+    const [person, setPerson] = React.useState("1");
     return (
       <div className="w-96">
         <Menubar size={size}>

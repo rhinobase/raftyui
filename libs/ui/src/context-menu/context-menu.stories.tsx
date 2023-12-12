@@ -1,5 +1,5 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -14,7 +14,6 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "./ContextMenu";
-import { useState } from "react";
 
 const meta: Meta<typeof ContextMenu> = {
   title: "Components / ContextMenu",
@@ -36,9 +35,9 @@ type Story = StoryObj<typeof ContextMenu>;
 
 export const Default: Story = {
   render: function Render({ size, isUnstyled }) {
-    const [bookmarksChecked, setBookmarksChecked] = useState(true);
-    const [urlsChecked, setUrlsChecked] = useState(false);
-    const [person, setPerson] = useState("1");
+    const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
+    const [urlsChecked, setUrlsChecked] = React.useState(false);
+    const [person, setPerson] = React.useState("1");
 
     return (
       <ContextMenu size={size} isUnstyled={isUnstyled}>

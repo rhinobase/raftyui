@@ -1,5 +1,13 @@
-import React from "react";
+import {
+  CalculatorIcon,
+  CalendarIcon,
+  Cog8ToothIcon,
+  CreditCardIcon,
+  FaceSmileIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import {
   Command,
   CommandEmpty,
@@ -10,14 +18,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "./Command";
-import {
-  CalculatorIcon,
-  CalendarIcon,
-  Cog8ToothIcon,
-  CreditCardIcon,
-  FaceSmileIcon,
-  UserIcon,
-} from "@heroicons/react/24/outline";
 
 const meta: Meta<typeof Command> = {
   title: "Components / Command",

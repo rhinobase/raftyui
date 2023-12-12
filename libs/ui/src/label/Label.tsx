@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
-import { classNames } from "../utils";
+import React from "react";
 import { useFieldControlContext } from "../field-control/context";
+import { classNames } from "../utils";
 
 // Label Component
 export type Label = React.ComponentPropsWithoutRef<

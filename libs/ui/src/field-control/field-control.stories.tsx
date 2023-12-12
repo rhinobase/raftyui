@@ -1,9 +1,9 @@
-import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { FieldControl } from "./FieldControl";
-import { Label } from "../label";
-import { InputField } from "../input-field";
+import React from "react";
 import { ErrorMessage } from "../error-message";
+import { InputField } from "../input-field";
+import { Label } from "../label";
+import { FieldControl } from "./FieldControl";
 
 const meta: Meta<typeof FieldControl> = {
   title: "Form / FieldControl",
