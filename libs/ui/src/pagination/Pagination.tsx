@@ -12,6 +12,7 @@ import PageSizeSelect from "./PageSizeSelect";
 import PaginationButtons from "./PaginationButtons";
 import PaginationField from "./PaginationField";
 
+// Define CSS classes using class-variance-authority
 export const paginationClasses = cva(
   "flex w-full items-center gap-5 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
   {
@@ -28,6 +29,7 @@ export const paginationClasses = cva(
   },
 );
 
+// Define the pagination props
 export type Pagination = Omit<
   HTMLAttributes<HTMLDivElement>,
   "children" | "onChange"
@@ -46,6 +48,7 @@ export type Pagination = Omit<
   showTotal?: (total: number, range: string) => ReactNode | string;
 };
 
+// Define the Pagination component
 export const Pagination = forwardRef<HTMLDivElement, Pagination>(
   (
     {
@@ -73,40 +76,57 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
     // If a current value is provided by the user, use it; otherwise, fallback to the default currentPage value
     const currentValue = current ?? currentPage;
 
+    // Update the component when current page or items per page changes
     useEffect(() => {
       onChangeHandle(currentValue, itemsPerPage);
     }, [currentValue, itemsPerPage]);
 
+    // Handle page change
     const onChangeHandle = (page: number, pageSize: number) => {
+      // Update the current page and items per page
       setCurrentPage(page);
       setItemsPerPage(pageSize);
+      // Trigger the onChange callback if provided
       onChange?.(page, pageSize);
     };
 
+    // Handle page size change event
     const onPageSizeChange = (selectedPageSize: number) =>
       onChangeHandle(1, selectedPageSize);
+
+    // Handle previous page button click event
     const onPrev = () => onChangeHandle(currentValue - 1, itemsPerPage);
+
+    // Handle next page button click event
     const onNext = () => onChangeHandle(currentValue + 1, itemsPerPage);
+
+    // Handle page number input change event
     const onPageNumberChange = (inputPageNumber: number) =>
       onChangeHandle(inputPageNumber, itemsPerPage);
 
+    // Hide the component if there is only one page and hideOnSinglePage is true
     if (hideOnSinglePage && totalPages === 1) return <div ref={forwardedRef} />;
 
+    // Calculate the range of displayed items
     const startItem = Math.max((currentValue - 1) * itemsPerPage + 1, 0);
     const endItem = Math.min(currentValue * itemsPerPage, total);
 
-    // const totalRangeComponent = showTotal.(total, `${startItem} - ${endItem}`);
-
+    // Generate the total range component
     let totalRangeComponent;
 
     if (showTotal)
       totalRangeComponent = showTotal(total, `${startItem} - ${endItem}`);
 
+    // Render the totalRangeComponent based on its type
     let totalRender;
+
+    // If totalRangeComponent is a string, wrap it in a span element
     if (typeof totalRangeComponent === "string")
       totalRender = <span>{totalRangeComponent}</span>;
+    // If totalRangeComponent is not a string, use it directly
     else totalRender = totalRangeComponent;
 
+    // Render the Pagination component
     return (
       <div
         ref={forwardedRef}
@@ -146,4 +166,5 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
   },
 );
 
+// Set the display name for the component
 Pagination.displayName = "Pagination";
