@@ -1,8 +1,8 @@
 "use client";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { Button } from "../button";
-import { InputField } from "../input";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { InputField } from "../input-field";
 
 enum ACTION {
   ADD,

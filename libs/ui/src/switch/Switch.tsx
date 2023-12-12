@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { classNames } from "../utils";
-import { useFieldControlContext } from "../field/context";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { useFieldControlContext } from "../field-control";
+import { classNames } from "../utils";
 
 export const switchClasses = cva(
   "focus-visible:ring-ring focus-visible:ring-offset-background data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600 peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",

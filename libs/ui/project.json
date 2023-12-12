@@ -55,7 +55,7 @@
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "generateExportsField": true,
-        "compiler": "babel",
+        "compiler": "swc",
         "assets": [
           {
             "glob": "README.md",

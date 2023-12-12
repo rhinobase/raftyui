@@ -9,3 +9,4 @@ export {
   NavigationMenuTrigger,
   navigationMenuContentClasses,
 } from "./NavigationMenu";
+export { useNavigationMenuContext } from "./context";

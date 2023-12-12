@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { cva } from "class-variance-authority";
+import React from "react";
+import { Label } from "../label";
+import { classNames } from "../utils";
 import {
   RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
-import { classNames } from "../utils";
-import { Label } from "../field";
-import { cva } from "class-variance-authority";
 
 // RadioGroup Component
 export const radioGroupClasses = cva(

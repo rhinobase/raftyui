@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
-import { TableContext, TableProvider, useTableContext } from "./context";
-import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { classNames } from "../utils";
+import { TableContext, TableProvider, useTableContext } from "./context";
 
 // TableContainer Component
 export type TableContainer = React.HTMLAttributes<HTMLDivElement>;

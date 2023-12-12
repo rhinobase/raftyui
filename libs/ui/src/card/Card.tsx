@@ -1,8 +1,8 @@
 "use client";
+import { cva } from "class-variance-authority";
 import React from "react";
 import { classNames, getValidChildren } from "../utils";
 import { CardContext, CardProvider, useCardContext } from "./context";
-import { cva } from "class-variance-authority";
 
 // Card Component
 export const cardClasses = cva("flex flex-col dark:text-white", {

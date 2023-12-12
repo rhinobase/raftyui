@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Command as CommandPrimitive } from "cmdk";
+import React from "react";
 import { Dialog, DialogContent } from "../dialog";
 import { classNames } from "../utils";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 // Command Component
 export type Command = React.ComponentPropsWithoutRef<typeof CommandPrimitive>;

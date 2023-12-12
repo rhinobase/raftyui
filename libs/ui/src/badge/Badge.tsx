@@ -1,6 +1,6 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 import { classNames } from "../utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 export const badgeClasses = cva("rounded-full", {
   variants: {

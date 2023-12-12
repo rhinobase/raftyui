@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { Button } from "../button";
-import { DialogContext, DialogProvider, useDialogContext } from "./context";
-import { classNames } from "../utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { Button } from "../button";
+import { classNames } from "../utils";
+import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
 export type Dialog = React.ComponentPropsWithoutRef<

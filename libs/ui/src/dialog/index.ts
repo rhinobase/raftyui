@@ -10,3 +10,4 @@ export {
   DialogTrigger,
   dialogContentClasses,
 } from "./Dialog";
+export { useDialogContext } from "./context";

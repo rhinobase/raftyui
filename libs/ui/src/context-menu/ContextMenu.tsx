@@ -1,14 +1,14 @@
 "use client";
+import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
+import { cva } from "class-variance-authority";
 import React from "react";
+import { classNames } from "../utils";
 import {
-  ContextMenuProvider,
   ContextMenuContext,
+  ContextMenuProvider,
   useContextMenuContext,
 } from "./context";
-import { classNames } from "../utils";
-import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { cva } from "class-variance-authority";
 
 export type ContextMenu = React.ComponentProps<
   (typeof ContextMenuPrimitive)["Root"]

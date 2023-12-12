@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
-import { Label } from "../field";
-import { classNames } from "../utils";
-import { useFieldControlContext } from "../field/context";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { useFieldControlContext } from "../field-control";
+import { Label } from "../label/Label";
+import { classNames } from "../utils";
 
 // Checkbox Component
 

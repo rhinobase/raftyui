@@ -24,3 +24,4 @@ export {
   menubarSeperatorClasses,
   menubarSubTriggerClasses,
 } from "./Menubar";
+export { useMenuBarContext } from "./context";

@@ -22,3 +22,4 @@ export {
   contextMenuSubTriggerClasses,
   seperatorClasses,
 } from "./ContextMenu";
+export { useContextMenuContext } from "./context";

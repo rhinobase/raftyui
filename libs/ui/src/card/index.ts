@@ -8,3 +8,4 @@ export {
   cardContentClasses,
   cardFooterClasses,
 } from "./Card";
+export { useCardContext } from "./context";

@@ -1,7 +1,4 @@
 "use client";
-import React from "react";
-import { classNames } from "../utils";
-import { AlertContext, AlertProvider, useAlertContext } from "./context";
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
@@ -9,6 +6,9 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { classNames } from "../utils";
+import { AlertContext, AlertProvider, useAlertContext } from "./context";
 
 // Alert Component
 export const alertClasses = cva("flex w-full items-center", {

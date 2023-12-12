@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
-import { StatContext, StatProvider, useStatContext } from "./context";
-import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
+import React from "react";
+import { classNames } from "../utils";
+import { StatContext, StatProvider, useStatContext } from "./context";
 
 // Stat Component
 export type Stat = React.HTMLAttributes<HTMLDivElement> & StatContext;

@@ -1,6 +1,6 @@
+import { cva } from "class-variance-authority";
 import React from "react";
 import { classNames } from "../utils";
-import { cva } from "class-variance-authority";
 
 // Tag Component
 export const tagClasses = cva("h-max w-max font-medium", {
