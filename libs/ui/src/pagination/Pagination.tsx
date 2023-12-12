@@ -1,178 +1,63 @@
 "use client";
 import { cva } from "class-variance-authority";
-import {
-  forwardRef,
-  HTMLAttributes,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import React from "react";
 import { classNames } from "../utils";
-import PageSizeSelect from "./PageSizeSelect";
-import PaginationButtons from "./PaginationButtons";
-import PaginationField from "./PaginationField";
+import { PaginationContext, PaginationProvider } from "./context";
 
 // Define CSS classes using class-variance-authority
-export const paginationClasses = cva(
-  "flex w-full items-center gap-5 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
-  {
-    variants: {
-      size: {
-        sm: "p-2 text-sm",
-        md: "p-2.5",
-        lg: "p-3 text-lg",
-      },
-    },
-    defaultVariants: {
-      size: "md",
+export const paginationClasses = cva("flex w-full items-center gap-4", {
+  variants: {
+    size: {
+      sm: "p-2 text-sm",
+      md: "p-2.5",
+      lg: "p-3 text-lg",
     },
   },
-);
+  defaultVariants: {
+    size: "md",
+  },
+});
 
-// Define the pagination props
 export type Pagination = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "children" | "onChange"
+  React.HTMLAttributes<HTMLDivElement>,
+  "onChange"
 > & {
-  total: number;
-  current?: number;
-  pageSize?: number;
-  onChange?: (page: number, pageSize: number) => void;
   pageSizeOptions?: number[];
-  defaultCurrent?: number;
-  defaultPageSize?: number;
-  isDisabled?: boolean;
-  hideOnSinglePage?: boolean;
-  size?: "sm" | "md" | "lg";
-  showQuickJumper?: boolean;
-  showSizeChanger?: boolean;
-  showTotal?: (total: number, range: string) => ReactNode | string;
-};
+} & Partial<PaginationContext>;
 
-// Define the Pagination component
-export const Pagination = forwardRef<HTMLDivElement, Pagination>(
+export const Pagination = React.forwardRef<HTMLDivElement, Pagination>(
   (
     {
-      className,
       total = 0,
-      defaultPageSize = 10,
-      defaultCurrent = 1,
-      current,
-      pageSize,
+      current = 1,
+      pageSize = 10,
       isDisabled,
       pageSizeOptions = [10, 20, 50],
-      showQuickJumper = false,
       size = "md",
       onChange,
-      hideOnSinglePage = false,
-      showSizeChanger,
-      showTotal,
+      className,
       ...props
     },
     forwardedRef,
   ) => {
-    const [itemsPerPage, setItemsPerPage] = useState(defaultPageSize);
-    const [currentPage, setCurrentPage] = useState(defaultCurrent);
-
-    const currentPageSizeValue = pageSize ?? itemsPerPage;
-
-    const totalPages = Math.ceil(total / currentPageSizeValue);
-
-    // If a current value is provided by the user, use it; otherwise, fallback to the default currentPage value
-    const currentValue = current ?? currentPage;
-
-    // Update the component when current page or items per page changes
-    useEffect(() => {
-      onChangeHandle(currentValue, currentPageSizeValue);
-    }, [currentValue, currentPageSizeValue]);
-
-    // Handle page change
-    const onChangeHandle = (page: number, pageSize: number) => {
-      // Update the current page and items per page
-      setCurrentPage(page);
-      setItemsPerPage(pageSize);
-      // Trigger the onChange callback if provided
-      onChange?.(page, pageSize);
-    };
-
-    // Handle page size change event
-    const onPageSizeChange = (selectedPageSize: number) =>
-      onChangeHandle(1, selectedPageSize);
-
-    // Handle previous page button click event
-    const onPrev = () => onChangeHandle(currentValue - 1, currentPageSizeValue);
-
-    // Handle next page button click event
-    const onNext = () => onChangeHandle(currentValue + 1, currentPageSizeValue);
-
-    // Handle page number input change event
-    const onPageNumberChange = (inputPageNumber: number) =>
-      onChangeHandle(inputPageNumber, currentPageSizeValue);
-
-    // Hide the component if there is only one page and hideOnSinglePage is true
-    if (hideOnSinglePage && totalPages === 1) return <div ref={forwardedRef} />;
-
-    // Calculate the range of displayed items
-    const startItem = Math.max(
-      (currentValue - 1) * currentPageSizeValue + 1,
-      0,
-    );
-    const endItem = Math.min(currentValue * currentPageSizeValue, total);
-
-    // Generate the total range component
-    let totalRangeComponent;
-
-    if (showTotal)
-      totalRangeComponent = showTotal(total, `${startItem} - ${endItem}`);
-
-    // Render the totalRangeComponent based on its type
-    let totalRender;
-
-    // If totalRangeComponent is a string, wrap it in a span element
-    if (typeof totalRangeComponent === "string")
-      totalRender = <span>{totalRangeComponent}</span>;
-    // If totalRangeComponent is not a string, use it directly
-    else totalRender = totalRangeComponent;
-
-    // Render the Pagination component
     return (
-      <div
-        ref={forwardedRef}
-        className={classNames(paginationClasses({ size }), className)}
-        aria-disabled={isDisabled}
-        {...props}
+      <PaginationProvider
+        value={{
+          total,
+          size,
+          isDisabled,
+          current,
+          pageSize,
+          onChange,
+        }}
       >
-        {showSizeChanger && (
-          <PageSizeSelect
-            itemsPerPage={currentPageSizeValue}
-            pageSizeOptions={pageSizeOptions}
-            onPageSizeChange={onPageSizeChange}
-            isDisabled={isDisabled}
-            size={size}
-          />
-        )}
-        {showQuickJumper && (
-          <PaginationField
-            currentPage={currentValue}
-            onPageNumberChange={onPageNumberChange}
-            totalPages={totalPages}
-            isDisabled={isDisabled}
-            size={size}
-          />
-        )}
-        {totalRender}
-        <PaginationButtons
-          currentPage={currentValue}
-          onPrev={onPrev}
-          onNext={onNext}
-          totalPages={totalPages}
-          isDisabled={isDisabled}
-          size={size}
+        <div
+          {...props}
+          className={classNames(paginationClasses({ size }), className)}
+          ref={forwardedRef}
         />
-      </div>
+      </PaginationProvider>
     );
   },
 );
-
-// Set the display name for the component
 Pagination.displayName = "Pagination";

@@ -1,27 +1,10 @@
 import { FieldControl } from "../field";
 import { InputField } from "../input";
+import { usePaginationContext } from "./context";
 
-type PaginationField = {
-  totalPages: number;
-  currentPage: number;
-  onPageNumberChange: (value: number) => void;
-  isDisabled?: boolean;
-  size: "sm" | "md" | "lg";
-};
-
-export default function PaginationField({
-  currentPage,
-  onPageNumberChange,
-  totalPages,
-  isDisabled,
-  size,
-}: PaginationField) {
-  const handleInput = (value: number) => {
-    let newValue = value;
-    if (newValue > totalPages) newValue = totalPages;
-
-    return onPageNumberChange(newValue);
-  };
+export function PaginationField() {
+  const { size, isDisabled, current, onChange, total, pageSize } =
+    usePaginationContext();
 
   return (
     <FieldControl name="page" className="!w-[70px]" isDisabled={isDisabled}>
@@ -29,8 +12,12 @@ export default function PaginationField({
         size={size}
         type="number"
         min={1}
-        value={currentPage === 0 ? "" : currentPage}
-        onChange={(e) => handleInput(Number(e.target.value))}
+        value={current > 0 ? current : undefined}
+        onChange={(e) => {
+          const value = Number(e.target.value);
+          if (value > total) onChange?.(total, pageSize);
+          else onChange?.(value, pageSize);
+        }}
       />
     </FieldControl>
   );
