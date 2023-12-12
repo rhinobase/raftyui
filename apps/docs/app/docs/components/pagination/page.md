@@ -28,27 +28,324 @@ import { Pagination } from "@rafty/ui";
 
 ## Usage
 
-{% example name="pagination:usage" /%}
+{% example name="pagination:usage" %}
+
+```jsx
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+  classNames,
+} from "@rafty/ui";
+import { useState } from "react";
+
+function AllPaginationField() {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    limit: 10,
+  });
+  const count = 100;
+  const pages = count / pagination.limit;
+
+  return (
+    <Pagination
+      pages={pages}
+      pageLimit={pagination.limit}
+      currentPage={pagination.current}
+      onChange={(page, pageLimit) =>
+        setPagination((prev) => {
+          if (prev.limit !== pageLimit) return { current: 1, limit: pageLimit };
+          return {
+            current: page,
+            limit: pageLimit,
+          };
+        })
+      }
+    >
+      <div className="flex items-center gap-2">
+        <span>Rows per page:</span>
+        <div className="w-[100px]">
+          <PageSizeSelect />
+        </div>
+      </div>
+      <PageJumper />
+      <div>Total Items : {count}</div>
+      <PaginationButtons />
+    </Pagination>
+  );
+}
+```
+
+{% /example %}
 
 ## Size
 
-{% example name="pagination:size" /%}
+{% example name="pagination:size" %}
 
-## ShowQuickJumper
+```jsx
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+  classNames,
+} from "@rafty/ui";
+import { useState } from "react";
 
-{% example name="pagination:show_quick_jumper" /%}
+function AllPaginationField({
 
-## TotalNumber
+  size,
+}: {
+  size?: "sm" | "md" | "lg";
+}) {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    limit: 10,
+  });
+  const count = 100;
+  const pages = count / pagination.limit;
 
-{% example name="pagination:Total_Number" /%}
+  return (
+    <Pagination
+      pages={pages}
+      pageLimit={pagination.limit}
+      currentPage={pagination.current}
+      onChange={(page, pageLimit) =>
+        setPagination((prev) => {
+          if (prev.limit !== pageLimit) return { current: 1, limit: pageLimit };
+          return {
+            current: page,
+            limit: pageLimit,
+          };
+        })
+      }
+      size={size}
+    >
+      <div
+        className="flex items-center gap-2"
+      >
+        <span>Rows per page:</span>
+        <div className="w-[100px]">
+          <PageSizeSelect />
+        </div>
+      </div>
+      <PageJumper />
+      <div
+      >
+        Total Items : {count}
+      </div>
+      <PaginationButtons />
+    </Pagination>
+  );
+}
+```
 
-## ShowSizeChanger
+{% /example %}
 
-{% example name="pagination:show_size_changer" /%}
+## PageSizeSelect
+
+{% example name="pagination:page_size_select" %}
+
+```jsx
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+  classNames,
+} from "@rafty/ui";
+import { useState } from "react";
+
+function PageSelect() {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    limit: 10,
+  });
+
+  return (
+    <Pagination
+      pages={10}
+      pageLimit={pagination.limit}
+      currentPage={pagination.current}
+      onChange={(page, pageLimit) =>
+        setPagination((prev) => {
+          if (prev.limit !== pageLimit) return { current: 1, limit: pageLimit };
+          return {
+            current: page,
+            limit: pageLimit,
+          };
+        })
+      }
+    >
+      <div className="flex items-center gap-2">
+        <span>Rows per page:</span>
+        <div className="w-[100px]">
+          <PageSizeSelect />
+        </div>
+      </div>
+    </Pagination>
+  );
+}
+```
+
+{% /example %}
+
+## PageJumper
+
+{% example name="pagination:page_jumper" %}
+
+```jsx
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+  classNames,
+} from "@rafty/ui";
+import { useState } from "react";
+
+function PageGoto() {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    limit: 10,
+  });
+
+  return (
+    <Pagination
+      pages={10}
+      pageLimit={pagination.limit}
+      currentPage={pagination.current}
+      onChange={(page, pageLimit) =>
+        setPagination((prev) => {
+          if (prev.limit !== pageLimit) return { current: 1, limit: pageLimit };
+          return {
+            current: page,
+            limit: pageLimit,
+          };
+        })
+      }
+    >
+      <PageJumper />
+    </Pagination>
+  );
+}
+```
+
+{% /example %}
+
+## PaginationButtons
+
+{% example name="pagination:paginatin_buttons" %}
+
+```jsx
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+  classNames,
+} from "@rafty/ui";
+import { useState } from "react";
+
+function PageButtons() {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    limit: 10,
+  });
+
+  return (
+    <Pagination
+      pages={10}
+      pageLimit={pagination.limit}
+      currentPage={pagination.current}
+      onChange={(page, pageLimit) =>
+        setPagination((prev) => {
+          if (prev.limit !== pageLimit) return { current: 1, limit: pageLimit };
+          return {
+            current: page,
+            limit: pageLimit,
+          };
+        })
+      }
+    >
+      <PaginationButtons />
+    </Pagination>
+  );
+}
+```
+
+{% /example %}
 
 ## isDisabled
 
-{% example name="pagination:is_disabled" /%}
+{% example name="pagination:is_disabled" %}
+
+```jsx
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+  classNames,
+} from "@rafty/ui";
+import { useState } from "react";
+
+function AllPaginationField({
+  isDisabled,
+}: {
+  isDisabled?: boolean;
+}) {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    limit: 10,
+  });
+  const count = 100;
+  const pages = count / pagination.limit;
+
+  return (
+    <Pagination
+      pages={pages}
+      pageLimit={pagination.limit}
+      currentPage={pagination.current}
+      onChange={(page, pageLimit) =>
+        setPagination((prev) => {
+          if (prev.limit !== pageLimit) return { current: 1, limit: pageLimit };
+          return {
+            current: page,
+            limit: pageLimit,
+          };
+        })
+      }
+      isDisabled={isDisabled}
+    >
+      <div
+        className={classNames(
+          "flex items-center gap-2",
+          isDisabled && "cursor-not-allowed opacity-50",
+        )}
+        aria-disabled={isDisabled}
+      >
+        <span>Rows per page:</span>
+        <div className="w-[100px]">
+          <PageSizeSelect />
+        </div>
+      </div>
+      <PageJumper />
+      <div
+        className={classNames(isDisabled && "cursor-not-allowed opacity-50")}
+        aria-disabled={isDisabled}
+      >
+        Total Items : {count}
+      </div>
+      <PaginationButtons />
+    </Pagination>
+  );
+}
+
+```
+
+{% /example %}
 
 ### API
 
@@ -56,17 +353,12 @@ import { Pagination } from "@rafty/ui";
 
 ### Root
 
-| Property         | Description                                                      | Type                                                 | Default    |
-| ---------------- | ---------------------------------------------------------------- | ---------------------------------------------------- | ---------- |
-| total            | Total number of items.                                           | `number`                                             | 0          |
-| pageSize         | Number of items per page.                                        | `number`                                             | -          |
-| current          | Current page number.                                             | `number`                                             | -          |
-| onChange         | Callback function when page or pageSize changes.                 | `(page: number, pageSize: number) => void`           | -          |
-| pageSizeOptions  | Options for the page size dropdown.                              | `number[]`                                           | [10,20,50] |
-| defaultCurrent   | Default current page number.                                     | `number`                                             | 1          |
-| defaultPageSize  | Default page size.                                               | `number`                                             | 10         |
-| disabled         | Whether the pagination is disabled.                              | `boolean`                                            | -          |
-| hideOnSinglePage | Whether to hide pagination on a single page.                     | `boolean`                                            | false      |
-| showQuickJumper  | Whether to show a quick jumper input or customize the go button. | `boolean`                                            | false      |
-| showSizeChanger  | Whether to show the page size changer.                           | `boolean`                                            | -          |
-| showTotal        | Callback function to display total and range info.               | `(total:number,range:string) => ReactNode or string` | -          |
+| Property    | Description                                      | Type                                             | Default    |
+| ----------- | ------------------------------------------------ | ------------------------------------------------ | ---------- |
+| pages       | Total number of items.                           | `number`                                         | 0          |
+| currentPage | Current page number.                             | `number`                                         | -          |
+| onChange    | Callback function when page or pageSize changes. | `(page: number, pageSize: number) => void`       | -          |
+| size        | Callback function when page or pageSize changes. | `sm` or `md` or `lg`                             | `md`       |
+| pageSizes   | Options for the page size dropdown.              | `number[]` or `{label: string, value: number}[]` | [10,20,50] |
+| pageLimit   | Default current page number.                     | `number`                                         | 10         |
+| isDisabled  | Whether the pagination is disabled.              | `boolean`                                        | -          |
