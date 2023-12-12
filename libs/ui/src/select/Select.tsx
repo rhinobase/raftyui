@@ -2,7 +2,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import React from "react";
-import { useFieldControlContext } from "../field-control/context";
+import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
 const selectClasses = cva(

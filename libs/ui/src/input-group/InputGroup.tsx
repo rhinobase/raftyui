@@ -20,6 +20,7 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroup>(
       isRightAddon = false,
       isPrefix = false,
       isSuffix = false,
+      size = "md",
       ...props
     },
     forwardedRef,
@@ -48,7 +49,7 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroup>(
 
     return (
       <InputGroupProvider
-        value={{ isLeftAddon, isRightAddon, isPrefix, isSuffix }}
+        value={{ isLeftAddon, isRightAddon, isPrefix, isSuffix, size }}
       >
         <div
           {...props}

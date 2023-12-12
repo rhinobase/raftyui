@@ -11,3 +11,4 @@ export {
   AlertDialogCancel,
   alertDialogContentClasses,
 } from "./AlertDialog";
+export { useAlertDialogContext } from "./context";

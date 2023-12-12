@@ -8,3 +8,4 @@ export {
   drawerContentClasses,
   drawerTitleClasses,
 } from "./Drawer";
+export { useDrawerContext } from "./context";

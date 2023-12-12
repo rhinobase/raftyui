@@ -14,3 +14,4 @@ export {
   thClasses,
   trClasses,
 } from "./Table";
+export { useTableContext } from "./context";

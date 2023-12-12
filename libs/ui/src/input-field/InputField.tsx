@@ -1,8 +1,8 @@
 "use client";
 import { cva } from "class-variance-authority";
 import React from "react";
-import { useFieldControlContext } from "../field-control/context";
-import { useInputGroupContext } from "../input-group/context";
+import { useFieldControlContext } from "../field-control";
+import { useInputGroupContext } from "../input-group";
 import { classNames } from "../utils";
 
 export const inputFieldClasses = cva(
@@ -184,24 +184,25 @@ export const InputField = React.forwardRef<HTMLInputElement, InputField>(
     },
     forwardedRef,
   ) => {
-    const context = useFieldControlContext() ?? {};
+    const fieldControlContext = useFieldControlContext() ?? {};
 
-    const name = props.name || context.name,
+    const name = props.name || fieldControlContext.name,
       disabled =
         isDisabled ||
         props.disabled ||
-        context.isDisabled ||
+        fieldControlContext.isDisabled ||
         isLoading ||
-        context.isLoading,
-      invalid = isInvalid || context.isInvalid,
-      readonly = isReadOnly || props.readOnly || context.isReadOnly,
-      required = isRequired || props.required || context.isRequired;
+        fieldControlContext.isLoading,
+      invalid = isInvalid || fieldControlContext.isInvalid,
+      readonly = isReadOnly || props.readOnly || fieldControlContext.isReadOnly,
+      required = isRequired || props.required || fieldControlContext.isRequired;
 
-    const inputGroupProps = useInputGroupContext() ?? {
+    const inputGroupContext = useInputGroupContext() ?? {
       isLeftAddon: false,
       isRightAddon: false,
       isPrefix: false,
       isSuffix: false,
+      size,
     };
 
     return (
@@ -216,13 +217,13 @@ export const InputField = React.forwardRef<HTMLInputElement, InputField>(
             ? className
             : classNames(
                 inputFieldClasses({
-                  size,
+                  size: inputGroupContext.size,
                   variant,
                   invalid,
-                  isLeftAddon: inputGroupProps.isLeftAddon,
-                  isRightAddon: inputGroupProps.isRightAddon,
-                  isPrefix: inputGroupProps.isPrefix,
-                  isSuffix: inputGroupProps.isSuffix,
+                  isLeftAddon: inputGroupContext.isLeftAddon,
+                  isRightAddon: inputGroupContext.isRightAddon,
+                  isPrefix: inputGroupContext.isPrefix,
+                  isSuffix: inputGroupContext.isSuffix,
                 }),
                 className,
               )

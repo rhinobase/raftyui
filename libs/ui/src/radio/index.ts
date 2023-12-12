@@ -5,3 +5,4 @@ export {
   radioGroupItemClasses,
   radioGroupItemIndicatorClasses,
 } from "./Radio";
+export { useRadioGroupContext } from "./context";

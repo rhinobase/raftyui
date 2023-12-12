@@ -3,3 +3,4 @@ export { LeftAddon } from "./LeftAddon";
 export { Prefix } from "./Perfix";
 export { RightAddon } from "./RightAddon";
 export { Suffix } from "./Suffix";
+export { useInputGroupContext } from "./context";

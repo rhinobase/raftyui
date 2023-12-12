@@ -23,3 +23,4 @@ export {
   menuSubTriggerClasses,
   menuTriggerClasses,
 } from "./Menu";
+export { useMenuContext } from "./context";

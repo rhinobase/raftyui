@@ -22,10 +22,9 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
     const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 
     return (
-      <InputGroup>
+      <InputGroup className="w-full" size={size}>
         <InputField
           {...props}
-          size={size}
           type={showPassword ? "text" : "password"}
           ref={forwardedRef}
         />
@@ -36,7 +35,7 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
             aria-label="show and hide password"
             variant="ghost"
             onClick={() => setShowPassword((prev) => !prev)}
-            className={size !== "lg" ? "!rounded !p-1" : undefined}
+            className="!rounded !p-1"
           >
             <Icon className={classNames(ICON_CLASSES[size], "stroke-2")} />
           </Button>

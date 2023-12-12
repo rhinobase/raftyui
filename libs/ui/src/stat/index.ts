@@ -6,3 +6,4 @@ export {
   StatValue,
   statHelpTextClasses,
 } from "./Stat";
+export { useStatContext } from "./context";

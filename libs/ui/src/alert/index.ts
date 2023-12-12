@@ -8,3 +8,4 @@ export {
   alertIconClasses,
   alertTitleClasses,
 } from "./Alert";
+export { useAlertContext } from "./context";

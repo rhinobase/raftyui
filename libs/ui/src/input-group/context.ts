@@ -13,4 +13,5 @@ export interface InputGroupContext {
   readonly isRightAddon: boolean;
   readonly isPrefix: boolean;
   readonly isSuffix: boolean;
+  readonly size: "sm" | "md" | "lg";
 }

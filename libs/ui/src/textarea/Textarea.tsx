@@ -1,7 +1,7 @@
 "use client";
 import { cva } from "class-variance-authority";
 import React from "react";
-import { useFieldControlContext } from "../field-control/context";
+import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
 export const textareaClasses = cva(
