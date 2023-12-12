@@ -28,20 +28,18 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   render: ({ variant, size, isDisabled, isRequired, isReadOnly }) => (
-    <div className="w-[150px]">
-      <Select
-        variant={variant}
-        size={size}
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        isReadOnly={isReadOnly}
-      >
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="banana">Banana</SelectItem>
-        <SelectItem value="blueberry">Blueberry</SelectItem>
-        <SelectItem value="grapes">Grapes</SelectItem>
-        <SelectItem value="pineapple">Pineapple</SelectItem>
-      </Select>
-    </div>
+    <Select
+      variant={variant}
+      size={size}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      isReadOnly={isReadOnly}
+    >
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="blueberry">Blueberry</SelectItem>
+      <SelectItem value="grapes">Grapes</SelectItem>
+      <SelectItem value="pineapple">Pineapple</SelectItem>
+    </Select>
   ),
 };
