@@ -1,4 +1,9 @@
-import { Pagination } from "@rafty/ui";
+import {
+  PageJumper,
+  PageSizeSelect,
+  Pagination,
+  PaginationButtons,
+} from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
@@ -20,110 +25,189 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  render: ({ size, isDisabled }) => (
-    <div className="flex h-full items-center justify-center">
-      <Pagination
-        total={100}
-        pageSizeOptions={[10, 20, 30]}
-        hideOnSinglePage
-        defaultPageSize={20}
-        showQuickJumper
-        isDisabled={isDisabled}
-        showSizeChanger
-        size={size}
-        showTotal={(total, range) => `Total ${total} items, Range is ${range}`}
-        className="flex gap-5"
-      />
-    </div>
-  ),
-};
-
-export const Goto: Story = {
-  render: ({ size, isDisabled }) => (
-    <div className="flex h-full items-center justify-center">
-      <Pagination
-        total={100}
-        pageSizeOptions={[10, 20, 30]}
-        showQuickJumper
-        size={size}
-        isDisabled={isDisabled}
-        className="flex gap-5"
-      />
-    </div>
-  ),
-};
-
-export const SizeChanger: Story = {
-  render: ({ size, isDisabled }) => (
-    <div className="flex h-full items-center justify-center">
-      <Pagination
-        total={100}
-        pageSizeOptions={[10, 20, 30]}
-        showSizeChanger
-        size={size}
-        isDisabled={isDisabled}
-        className="flex gap-5"
-      />
-    </div>
-  ),
-};
-export const Buttons: Story = {
-  render: ({ size, isDisabled }) => (
-    <div className="flex h-full items-center justify-center">
-      <Pagination
-        total={100}
-        pageSizeOptions={[10, 20, 30]}
-        size={size}
-        isDisabled={isDisabled}
-        className="flex gap-5"
-      />
-    </div>
-  ),
-};
-
-export const ControledPageNumber: Story = {
   render: function Render({ size, isDisabled }) {
-    const [current, setCurrent] = useState(3);
-    const [pageSize, setPageSize] = useState(30);
-    console.log(pageSize);
-
-    const onChange = (page: number, pageSize: number) => {
-      setCurrent(page);
-
-      setPageSize(pageSize);
-    };
+    const [pagination, setPagination] = useState({
+      current: 1,
+      limit: 10,
+    });
+    const count = 100;
+    const pages = count / pagination.limit;
 
     return (
-      <div className="flex h-full items-center justify-center">
-        <Pagination
-          total={100}
-          pageSizeOptions={[10, 20, 30]}
-          hideOnSinglePage
-          showQuickJumper
-          showSizeChanger
-          size={size}
-          isDisabled={isDisabled}
-          current={current}
-          pageSize={pageSize}
-          onChange={onChange}
-          className="flex gap-5"
-        />
-      </div>
+      <Pagination
+        isDisabled={isDisabled}
+        size={size}
+        pages={pages}
+        pageLimit={pagination.limit}
+        currentPage={pagination.current}
+        onChange={(page, pageLimit) =>
+          setPagination((prev) => {
+            if (prev.limit !== pageLimit)
+              return { current: 1, limit: pageLimit };
+            return {
+              current: page,
+              limit: pageLimit,
+            };
+          })
+        }
+      >
+        <div className="flex items-center gap-2">
+          <span>Rows per page:</span>
+          <div className="w-[100px]">
+            <PageSizeSelect />
+          </div>
+        </div>
+        <PageJumper />
+        <div>Total Items : {count}</div>
+        <PaginationButtons />
+      </Pagination>
     );
   },
 };
 
-export const TotalNumber: Story = {
-  render: ({ size, isDisabled }) => (
-    <div className="flex h-full items-center justify-center">
+export const JumperAndButtons: Story = {
+  render: function Render({ size, isDisabled }) {
+    const [pagination, setPagination] = useState({
+      current: 1,
+      limit: 10,
+    });
+
+    return (
       <Pagination
-        total={100}
-        pageSizeOptions={[10, 20, 30]}
-        size={size}
-        showTotal={(total, range) => `Total ${total} items, Range is ${range}`}
         isDisabled={isDisabled}
-        className="flex gap-5"
-      />
-    </div>
-  ),
+        size={size}
+        pages={10}
+        pageLimit={pagination.limit}
+        currentPage={pagination.current}
+        onChange={(page, pageLimit) =>
+          setPagination((prev) => {
+            if (prev.limit !== pageLimit)
+              return { current: 1, limit: pageLimit };
+            return {
+              current: page,
+              limit: pageLimit,
+            };
+          })
+        }
+      >
+        Page : <PageJumper />
+        <PaginationButtons />
+      </Pagination>
+    );
+  },
+};
+
+export const pageSizes: Story = {
+  render: function Render({ size, isDisabled }) {
+    const [pagination, setPagination] = useState({
+      current: 1,
+      limit: 10,
+    });
+
+    return (
+      <Pagination
+        isDisabled={isDisabled}
+        size={size}
+        pages={10}
+        pageLimit={pagination.limit}
+        currentPage={pagination.current}
+        onChange={(page, pageLimit) =>
+          setPagination((prev) => {
+            if (prev.limit !== pageLimit)
+              return { current: 1, limit: pageLimit };
+            return {
+              current: page,
+              limit: pageLimit,
+            };
+          })
+        }
+      >
+        <PageSizeSelect
+          pageSizes={[
+            { label: "10 / Page", value: 10 },
+            20,
+            50,
+            { label: "100 / Page", value: 100 },
+          ]}
+        />
+      </Pagination>
+    );
+  },
+};
+
+export const pageSizesWithNumbersOnly: Story = {
+  render: function Render({ size, isDisabled }) {
+    const [pagination, setPagination] = useState({
+      current: 1,
+      limit: 10,
+    });
+
+    return (
+      <Pagination
+        isDisabled={isDisabled}
+        size={size}
+        pages={10}
+        pageLimit={pagination.limit}
+        currentPage={pagination.current}
+        onChange={(page, pageLimit) =>
+          setPagination((prev) => {
+            if (prev.limit !== pageLimit)
+              return { current: 1, limit: pageLimit };
+            return {
+              current: page,
+              limit: pageLimit,
+            };
+          })
+        }
+      >
+        <PageSizeSelect pageSizes={[10, 20, 30]} />
+      </Pagination>
+    );
+  },
+};
+
+export const pageSizesWithLabelsOnly: Story = {
+  render: function Render({ size, isDisabled }) {
+    const [pagination, setPagination] = useState({
+      current: 1,
+      limit: 10,
+    });
+
+    const pageSizes = [
+      {
+        label: "10 / Page",
+        value: 10,
+      },
+      {
+        label: "20 / Page",
+        value: 20,
+      },
+      {
+        label: "30 / Page",
+        value: 30,
+      },
+    ];
+
+    return (
+      <Pagination
+        isDisabled={isDisabled}
+        size={size}
+        pages={10}
+        pageLimit={pagination.limit}
+        currentPage={pagination.current}
+        onChange={(page, pageLimit) =>
+          setPagination((prev) => {
+            if (prev.limit !== pageLimit)
+              return { current: 1, limit: pageLimit };
+            return {
+              current: page,
+              limit: pageLimit,
+            };
+          })
+        }
+      >
+        <PageSizeSelect pageSizes={pageSizes} />
+      </Pagination>
+    );
+  },
 };
