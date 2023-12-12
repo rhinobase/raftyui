@@ -1,10 +1,11 @@
+"use client";
 import { FieldControl } from "../field";
 import { InputField } from "../input";
 import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
 
 export function PageJumper() {
-  const { size, isDisabled, current, onChange, total, pageSize } =
+  const { size, isDisabled, currentPage, onChange, pages, pageLimit } =
     usePaginationContext();
 
   return (
@@ -13,11 +14,11 @@ export function PageJumper() {
         size={size}
         type="number"
         min={1}
-        value={current > 0 ? current : undefined}
+        value={currentPage > 0 ? currentPage : undefined}
         onChange={(e) =>
           changePage({
-            total,
-            pageSize,
+            pages,
+            pageLimit,
             onChange,
             value: Number(e.target.value),
           })

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Select, SelectItem } from "../select";
 import { usePaginationContext } from "./context";
@@ -10,7 +11,7 @@ export const PageSizeSelect = React.forwardRef<
   HTMLSelectElement,
   PageSizeSelect
 >(({ pageSizes = [10, 20, 50], ...props }, forwardedRef) => {
-  const { size, isDisabled, pageSize, current, onChange } =
+  const { size, isDisabled, pageLimit, currentPage, onChange } =
     usePaginationContext();
 
   const options = pageSizes.map((opt) =>
@@ -21,10 +22,10 @@ export const PageSizeSelect = React.forwardRef<
     <Select
       size={size}
       isDisabled={isDisabled}
-      value={pageSize}
+      value={pageLimit}
       onChange={(event) => {
         const value = Number(event.target.value);
-        if (value !== null && !isNaN(value)) onChange?.(current, value);
+        if (value !== null && !isNaN(value)) onChange?.(currentPage, value);
       }}
       {...props}
       ref={forwardedRef}

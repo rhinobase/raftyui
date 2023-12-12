@@ -1,7 +1,10 @@
-import { Button } from "../button";
+"use client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { usePaginationContext } from "./context";
+import React from "react";
+import { Button } from "../button";
+import { classNames } from "../utils";
 import { changePage } from "./change-page";
+import { usePaginationContext } from "./context";
 
 const ICON_CLASSES = {
   sm: "h-3.5 w-3.5",
@@ -9,26 +12,35 @@ const ICON_CLASSES = {
   lg: "h-6 w-6",
 } as const;
 
-export function PaginationButtons() {
-  const { size, isDisabled, total, current, onChange, pageSize } =
+export type PaginationButtons = React.HTMLAttributes<HTMLDivElement>;
+
+export const PaginationButtons = React.forwardRef<
+  HTMLDivElement,
+  PaginationButtons
+>(({ className, ...props }, forwardedRef) => {
+  const { size, isDisabled, pages, currentPage, onChange, pageLimit } =
     usePaginationContext();
 
-  const canPrev = current > 1;
-  const canNext = current < total;
+  const canPrev = currentPage > 1;
+  const canNext = currentPage < pages;
   const prevDisabled = isDisabled || !canPrev;
   const nextDisabled = isDisabled || !canNext;
 
   return (
-    <div className="flex items-center gap-3">
+    <div
+      className={classNames("flex items-center gap-3", className)}
+      {...props}
+      ref={forwardedRef}
+    >
       <Button
         variant="ghost"
         size="icon"
         onClick={() =>
           changePage({
-            total,
-            pageSize,
+            pages,
+            pageLimit,
             onChange,
-            value: current - 1,
+            value: currentPage - 1,
           })
         }
         isDisabled={prevDisabled}
@@ -40,10 +52,10 @@ export function PaginationButtons() {
         size="icon"
         onClick={() =>
           changePage({
-            total,
-            pageSize,
+            pages,
+            pageLimit,
             onChange,
-            value: current + 1,
+            value: currentPage + 1,
           })
         }
         isDisabled={nextDisabled}
@@ -52,4 +64,4 @@ export function PaginationButtons() {
       </Button>
     </div>
   );
-}
+});
