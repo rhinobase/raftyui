@@ -6,7 +6,8 @@
     "build-all": "nx run-many -all -t build",
     "commit": "czg",
     "check-lock-files": "node ./scripts/check-lock-files.js",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "format": "prettier -w **/*.{js,ts,jsx,tsx,json,md}"
   },
   "private": true,
   "devDependencies": {

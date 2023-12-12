@@ -13,7 +13,7 @@
         "tsConfig": "libs/plugin/tsconfig.lib.json",
         "assets": [
           {
-            "glob": "libs/plugin/README.md",
+            "glob": "README.md",
             "input": ".",
             "output": "."
           }

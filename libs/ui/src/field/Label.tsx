@@ -25,7 +25,7 @@ export const Label = React.forwardRef<
         htmlFor={htmlFor ?? name}
         className={classNames(
           (isReq || isRequired) &&
-            "after:content-['*'] after:ml-0.5 after:text-red-500 after:dark:text-red-400",
+            "after:ml-0.5 after:text-red-500 after:content-['*'] after:dark:text-red-400",
           "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
           className,
         )}
