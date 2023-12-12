@@ -41,7 +41,7 @@ export const Default: Story = {
         aria-label="search"
         variant={variant}
         size={size}
-        name="search..."
+        placeholder="search..."
       />
     </FieldControl>
   ),
