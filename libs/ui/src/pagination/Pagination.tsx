@@ -36,6 +36,7 @@ export type Pagination = Omit<
 > & {
   total: number;
   current?: number;
+  pageSize?: number;
   onChange?: (page: number, pageSize: number) => void;
   pageSizeOptions?: number[];
   defaultCurrent?: number;
@@ -57,6 +58,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       defaultPageSize = 10,
       defaultCurrent = 1,
       current,
+      pageSize,
       isDisabled,
       pageSizeOptions = [10, 20, 50],
       showQuickJumper = false,
@@ -71,15 +73,18 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
   ) => {
     const [itemsPerPage, setItemsPerPage] = useState(defaultPageSize);
     const [currentPage, setCurrentPage] = useState(defaultCurrent);
-    const totalPages = Math.ceil(total / itemsPerPage);
+
+    const currentPageSizeValue = pageSize ?? itemsPerPage;
+
+    const totalPages = Math.ceil(total / currentPageSizeValue);
 
     // If a current value is provided by the user, use it; otherwise, fallback to the default currentPage value
     const currentValue = current ?? currentPage;
 
     // Update the component when current page or items per page changes
     useEffect(() => {
-      onChangeHandle(currentValue, itemsPerPage);
-    }, [currentValue, itemsPerPage]);
+      onChangeHandle(currentValue, currentPageSizeValue);
+    }, [currentValue, currentPageSizeValue]);
 
     // Handle page change
     const onChangeHandle = (page: number, pageSize: number) => {
@@ -95,21 +100,24 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       onChangeHandle(1, selectedPageSize);
 
     // Handle previous page button click event
-    const onPrev = () => onChangeHandle(currentValue - 1, itemsPerPage);
+    const onPrev = () => onChangeHandle(currentValue - 1, currentPageSizeValue);
 
     // Handle next page button click event
-    const onNext = () => onChangeHandle(currentValue + 1, itemsPerPage);
+    const onNext = () => onChangeHandle(currentValue + 1, currentPageSizeValue);
 
     // Handle page number input change event
     const onPageNumberChange = (inputPageNumber: number) =>
-      onChangeHandle(inputPageNumber, itemsPerPage);
+      onChangeHandle(inputPageNumber, currentPageSizeValue);
 
     // Hide the component if there is only one page and hideOnSinglePage is true
     if (hideOnSinglePage && totalPages === 1) return <div ref={forwardedRef} />;
 
     // Calculate the range of displayed items
-    const startItem = Math.max((currentValue - 1) * itemsPerPage + 1, 0);
-    const endItem = Math.min(currentValue * itemsPerPage, total);
+    const startItem = Math.max(
+      (currentValue - 1) * currentPageSizeValue + 1,
+      0,
+    );
+    const endItem = Math.min(currentValue * currentPageSizeValue, total);
 
     // Generate the total range component
     let totalRangeComponent;
@@ -136,7 +144,7 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       >
         {showSizeChanger && (
           <PageSizeSelect
-            itemsPerPage={itemsPerPage}
+            itemsPerPage={currentPageSizeValue}
             pageSizeOptions={pageSizeOptions}
             onPageSizeChange={onPageSizeChange}
             isDisabled={isDisabled}
