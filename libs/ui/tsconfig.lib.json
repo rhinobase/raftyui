@@ -9,5 +9,5 @@
     ]
   },
   "exclude": ["src/**/*.stories.tsx"],
-  "include": ["src/**/*.{js,ts,jsx,tsx}"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
