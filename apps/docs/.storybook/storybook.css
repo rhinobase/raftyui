@@ -35,3 +35,9 @@
     --color-secondary-950: 9 9 11;
   }
 }
+
+html,
+body {
+  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+}
