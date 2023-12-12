@@ -9,12 +9,12 @@ export function PageJumper() {
     usePaginationContext();
 
   return (
-    <FieldControl name="page" className="!w-[70px]" isDisabled={isDisabled}>
+    <FieldControl name="page" className="!w-[100px]" isDisabled={isDisabled}>
       <InputField
         size={size}
         type="number"
         min={1}
-        value={currentPage > 0 ? currentPage : undefined}
+        value={currentPage}
         onChange={(e) =>
           changePage({
             pages,
