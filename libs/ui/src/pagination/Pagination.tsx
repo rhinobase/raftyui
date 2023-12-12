@@ -5,7 +5,7 @@ import { classNames } from "../utils";
 import { PaginationContext, PaginationProvider } from "./context";
 
 // Define CSS classes using class-variance-authority
-export const paginationClasses = cva("flex w-full items-center gap-4", {
+export const paginationClasses = cva("flex items-center gap-4", {
   variants: {
     size: {
       sm: "p-2 text-sm",
