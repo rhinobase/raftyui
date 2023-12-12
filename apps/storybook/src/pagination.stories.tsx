@@ -84,9 +84,13 @@ export const Buttons: Story = {
 export const ControledPageNumber: Story = {
   render: function Render({ size, isDisabled }) {
     const [current, setCurrent] = useState(3);
+    const [pageSize, setPageSize] = useState(30);
+    console.log(pageSize);
 
-    const onChange = (page: number) => {
+    const onChange = (page: number, pageSize: number) => {
       setCurrent(page);
+
+      setPageSize(pageSize);
     };
 
     return (
@@ -100,6 +104,7 @@ export const ControledPageNumber: Story = {
           size={size}
           isDisabled={isDisabled}
           current={current}
+          pageSize={pageSize}
           onChange={onChange}
           className="flex gap-5"
         />
