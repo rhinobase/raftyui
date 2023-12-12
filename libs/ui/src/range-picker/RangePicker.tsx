@@ -5,7 +5,7 @@ import React from "react";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { classNames } from "../utils";
-import { Calendar } from "./Calendar";
+import { Calendar } from "../calendar/Calendar";
 
 export type RangePicker = {
   onSelect?: (value?: DateRange) => void;

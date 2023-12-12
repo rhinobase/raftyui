@@ -2,10 +2,10 @@
 import React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
-import { Label } from "../field";
 import { classNames } from "../utils";
-import { useFieldControlContext } from "../field/context";
+import { useFieldControlContext } from "../field-control/context";
 import { cva } from "class-variance-authority";
+import { Label } from "../label/Label";
 
 // Checkbox Component
 

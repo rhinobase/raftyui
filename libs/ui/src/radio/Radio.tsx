@@ -7,8 +7,9 @@ import {
   useRadioGroupContext,
 } from "./context";
 import { classNames } from "../utils";
-import { Label } from "../field";
+
 import { cva } from "class-variance-authority";
+import { Label } from "../label";
 
 // RadioGroup Component
 export const radioGroupClasses = cva(

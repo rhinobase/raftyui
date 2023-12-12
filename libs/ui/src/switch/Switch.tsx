@@ -2,7 +2,7 @@
 import React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import { classNames } from "../utils";
-import { useFieldControlContext } from "../field/context";
+import { useFieldControlContext } from "../field-control/context";
 import { cva } from "class-variance-authority";
 
 export const switchClasses = cva(

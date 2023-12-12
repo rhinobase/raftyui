@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { useFieldControlContext } from "../field/context";
+import { useFieldControlContext } from "../field-control/context";
 import { classNames } from "../utils";
 import { cva } from "class-variance-authority";
-import { useInputGroupContext } from "./context";
+import { useInputGroupContext } from "../input-group/context";
 
 export const inputFieldClasses = cva(
   "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",

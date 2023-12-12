@@ -1,9 +1,9 @@
 "use client";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/outline";
 import { Button } from "../button";
-import { InputGroup, Suffix } from "./InputGroup";
-import { InputField } from "./InputField";
+import { InputField } from "../input-field";
+import { InputGroup, Suffix } from "../input-group";
 import { classNames } from "../utils";
 
 const ICON_CLASSES = {
@@ -16,7 +16,7 @@ const ICON_CLASSES = {
 export type PasswordField = InputField;
 
 export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
-  ({ className, size = "md", variant = "outline", ...props }, forwardedRef) => {
+  ({ size = "md", ...props }, forwardedRef) => {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const Icon = showPassword ? EyeSlashIcon : EyeIcon;
@@ -25,10 +25,8 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
       <InputGroup>
         <InputField
           {...props}
-          type={showPassword ? "text" : "password"}
-          variant={variant}
           size={size}
-          className={className}
+          type={showPassword ? "text" : "password"}
           ref={forwardedRef}
         />
         <Suffix>
@@ -38,7 +36,7 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
             aria-label="show and hide password"
             variant="ghost"
             onClick={() => setShowPassword((prev) => !prev)}
-            className={classNames(size === "lg" ? "!p-1.5" : "!rounded !p-1")}
+            className={size !== "lg" ? "!rounded !p-1" : undefined}
           >
             <Icon className={classNames(ICON_CLASSES[size], "stroke-2")} />
           </Button>

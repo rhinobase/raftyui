@@ -2,10 +2,10 @@
 import React from "react";
 import { classNames, getValidChildren } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
-import { Avatar } from "./Avatar";
+import { Avatar } from "../avatar/Avatar";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { calculateWidth } from "./utils";
+import { calculateWidth } from "../avatar/utils";
 
 const LEFT_OFFSET = {
   sm: 22,
