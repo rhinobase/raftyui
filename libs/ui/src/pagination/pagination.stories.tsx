@@ -1,11 +1,9 @@
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-} from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { PageJumper } from "./PageJumper";
+import { PageSizeSelect } from "./PageSizeSelect";
+import { Pagination } from "./Pagination";
+import { PaginationButtons } from "./PaginationButtons";
 
 const meta: Meta<typeof Pagination> = {
   title: "Components / Pagination",
