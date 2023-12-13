@@ -10,9 +10,9 @@ const selectClasses = cva(
   {
     variants: {
       size: {
-        sm: "px-2 py-1 text-sm rounded",
-        md: "px-3 py-1.5 rounded-md",
-        lg: "px-4 py-2 text-lg rounded-md",
+        sm: "pl-2 pr-6 py-1 text-sm rounded",
+        md: "pl-3 pr-8 py-1.5 rounded-md",
+        lg: "pl-4 pr-10 py-2 text-lg rounded-md",
       },
       disabled: {
         true: "",
@@ -84,6 +84,12 @@ const selectClasses = cva(
   },
 );
 
+const TRIGGER_ICON_CLASSES = {
+  sm: "right-[7px] h-3 w-3",
+  md: "right-2.5 h-3.5 w-3.5",
+  lg: "right-[13px] h-4 w-4",
+} as const;
+
 export type Select = Omit<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   "size" | "disabled" | "required"
@@ -125,7 +131,7 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
       readonly = isReadOnly || context.isReadOnly;
 
     return (
-      <div className="group relative flex w-full items-center">
+      <div className="group relative flex w-max items-center">
         <select
           {...props}
           name={field_name}
@@ -151,10 +157,8 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
         {!isUnstyled && (
           <ChevronDownIcon
             className={classNames(
-              size === "sm" && "right-2",
-              size === "md" && "right-3",
-              size === "lg" && "right-4",
-              "dark:text-secondary-300 pointer-events-none absolute h-3.5 w-3.5 cursor-pointer stroke-2",
+              TRIGGER_ICON_CLASSES[size],
+              "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
             )}
           />
         )}
