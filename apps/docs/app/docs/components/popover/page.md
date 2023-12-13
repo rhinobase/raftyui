@@ -16,7 +16,7 @@ nextjs:
 
 Displays rich content in a portal, triggered by a button.
 
-This component is made on top of [Radix UIs Popover Component](https://www.radix-ui.com/primitives/docs/components/popover) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Popover Component](https://www.radix-ui.com/primitives/docs/components/popover) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
 
 ## Anatomy
 
@@ -60,10 +60,10 @@ To make arrow on top of content visible you can use `showArrow` prop. It is a bo
 
 {%example name="popover:showarrow" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in popover.
-{% example name="popover:barebone" /%}
+Pass `isUnstyled` prop in parent component to remove all styles in popover.
+{% example name="popover:unstyled" /%}
 
 ### API
 
@@ -71,9 +71,9 @@ Pass `isBarebone` prop to remove all style in popover.
 
 ### Root
 
-| Property   | Description | Type      | Default |
-| ---------- | ----------- | --------- | ------- |
-| isBarebone |             | `boolean` | false   |
+| Property   | Description                                              | Type      | Default |
+| ---------- | -------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its subcomponents | `boolean` | false   |
 
 ### Trigger
 

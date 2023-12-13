@@ -9,4 +9,4 @@ export {
   CommandShortcut,
   CommandSeparator,
   CommandLoading,
-} from "./command";
+} from "./Command";

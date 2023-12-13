@@ -143,8 +143,8 @@ export const menu_examples = {
       </MenuContent>
     </Menu>
   ),
-  "menu:barebone": (
-    <Menu isBarebone>
+  "menu:unstyled": (
+    <Menu isUnstyled>
       <MenuTrigger
         size="sm"
         className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
@@ -172,7 +172,7 @@ export const menu_examples = {
       </MenuContent>
     </Menu>
   ),
-  "menu:unstyled": (
+  "menu:unstyledsub": (
     <Menu>
       <MenuTrigger
         size="icon"

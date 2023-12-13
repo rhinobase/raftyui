@@ -1,1 +1,5 @@
-export { Progress } from "./progress";
+export {
+  Progress,
+  progressClasses,
+  progressIndicatorClasses,
+} from "./Progress";

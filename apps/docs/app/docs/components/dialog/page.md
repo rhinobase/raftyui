@@ -16,7 +16,7 @@ nextjs:
 
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
 
-This component is made on top of [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
 
 ## Anatomy
 
@@ -63,11 +63,11 @@ Our Button component is forwarded within the Alert Dialog Trigger component, ena
 
 {% example name="dialog:asChild" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in dialog.
+Pass `isUnstyled` prop in parent component to remove style in dialog.
 
-{% example name="dialog:barebone" /%}
+{% example name="dialog:unstyled" /%}
 
 ## ShowCloseButton
 
@@ -75,9 +75,11 @@ The showCloseButton prop exists in DialogContent subcomponent and it is used to 
 
 {% example name="dialog:closebutton" /%}
 
-## Unstyled
+## Unstyled subcomponent
 
-{% example name="dialog:unstyled" /%}
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="dialog:unstyledsub" /%}
 
 ### API
 
@@ -85,9 +87,9 @@ The showCloseButton prop exists in DialogContent subcomponent and it is used to 
 
 ### Root
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isBarebone | Removes style from whole component | `boolean` | false   |
+| Property   | Description                                               | Type      | Default |
+| ---------- | --------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
 
 ### Trigger
 

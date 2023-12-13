@@ -80,8 +80,8 @@ export const popover_examples = {
       </PopoverContent>
     </Popover>
   ),
-  "popover:barebone": (
-    <Popover isBarebone>
+  "popover:unstyled": (
+    <Popover isUnstyled>
       <PopoverTrigger
         className="rounded-md bg-slate-100 px-4 py-2 hover:bg-slate-100 hover:text-purple-600 dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-500"
         size="lg"

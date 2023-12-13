@@ -13,4 +13,15 @@ export {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "./menubar";
+  menubarCheckboxItemClasses,
+  menubarCheckboxItemIndicatorClasses,
+  menubarClasses,
+  menubarItemClasses,
+  menubarLabelClasses,
+  menubarRadioItemClasses,
+  menubarRadioItemIndicatorChildClasses,
+  menubarRadioItemIndicatorClasses,
+  menubarSeperatorClasses,
+  menubarSubTriggerClasses,
+} from "./Menubar";
+export { useMenuBarContext } from "./context";

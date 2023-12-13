@@ -16,7 +16,7 @@ nextjs:
 
 A set of two-state buttons that can be toggled on or off.
 
-This component is made on top of [Radix UIs Toggle Group Component](https://www.radix-ui.com/primitives/docs/components/toggle-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Toggle Group Component](https://www.radix-ui.com/primitives/docs/components/toggle-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
 
 ## Anatomy
 
@@ -50,15 +50,17 @@ Using the `type` prop you can set the type of toggle-group. Values can be `singl
 {% example name="toggle-group:default" /%}
 Using the `defaultValue` prop you can set the default value of toggle-group.
 
-## Barebone
+## Unstyled
 
-{% example name="toggle-group:barebone" /%}
-Pass `isBarebone` prop to remove all style in toggle-group and its sub components.
-
-## UnStyled
+Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 
 {% example name="toggle-group:unstyled" /%}
-Pass `isUnstyled` prop to remove style from a particular sub component.
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="toggle-group:unstyledsub" /%}
 
 ### API
 
@@ -66,9 +68,9 @@ Pass `isUnstyled` prop to remove style from a particular sub component.
 
 ### Root
 
-| Property   | Description                        | Type    | Default |
-| ---------- | ---------------------------------- | ------- | ------- |
-| isBarebone | Removes style from whole component | boolean | false   |
+| Property   | Description                                              | Type    | Default |
+| ---------- | -------------------------------------------------------- | ------- | ------- |
+| isUnstyled | Removes style from whole component and its subcomponents | boolean | false   |
 
 ### Item
 

@@ -7,4 +7,11 @@ export {
   Td,
   Th,
   Tr,
-} from "./table";
+  tableClasses,
+  tableFooterClasses,
+  tableHeadClasses,
+  tdClasses,
+  thClasses,
+  trClasses,
+} from "./Table";
+export { useTableContext } from "./context";

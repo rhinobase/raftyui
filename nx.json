@@ -71,5 +71,12 @@
   },
   "workspaceLayout": {
     "projectNameAndRootFormat": "as-provided"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "options": {
+        "cacheableOperations": ["build-storybook"]
+      }
+    }
   }
 }

@@ -74,8 +74,8 @@ export const dialog_examples = {
       </DialogContent>
     </Dialog>
   ),
-  "dialog:barebone": (
-    <Dialog isBarebone>
+  "dialog:unstyled": (
+    <Dialog isUnstyled>
       <DialogTrigger className=" dark:hover:bg-secondary-800 hover:bg-secondary-100 rounded-lg p-2 px-6 dark:text-white">
         open
       </DialogTrigger>
@@ -95,7 +95,7 @@ export const dialog_examples = {
       </DialogContent>
     </Dialog>
   ),
-  "dialog:unstyled": (
+  "dialog:unstyledsub": (
     <Dialog>
       <DialogTrigger
         isUnstyled

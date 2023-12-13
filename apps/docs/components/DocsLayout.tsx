@@ -24,7 +24,7 @@ export function DocsLayout({
           <Prose>{children}</Prose>
         </article>
         <PrevNextLinks />
-        <p className="mt-5 text-center text-xs leading-5 text-secondary-500">
+        <p className="text-secondary-500 mt-5 text-center text-xs leading-5">
           &copy; {new Date().getFullYear()} rhinobase, Inc. All rights reserved.
         </p>
       </div>

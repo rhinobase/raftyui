@@ -28,7 +28,7 @@ export function MobileNavigation({ isOpen, setOpen }: MobileNavigation) {
       side="left"
     >
       <DrawerOverlay />
-      <DrawerContent className="!w-full !max-w-[70vw] !p-0 !h-[100dvh] !overflow-hidden flex flex-col">
+      <DrawerContent className="flex !h-[100dvh] !w-full !max-w-[70vw] flex-col !overflow-hidden !p-0">
         <div className="dark:bg-secondary-800 bg-white p-6">
           <Link href="/" aria-label="Home page">
             <Logomark className="h-9 w-9" />
@@ -36,7 +36,7 @@ export function MobileNavigation({ isOpen, setOpen }: MobileNavigation) {
           <DrawerClose />
         </div>
         <Navigation
-          className="flex-1 px-6 pb-6 overflow-y-auto"
+          className="flex-1 overflow-y-auto px-6 pb-6"
           onLinkClick={onLinkClick}
         />
       </DrawerContent>

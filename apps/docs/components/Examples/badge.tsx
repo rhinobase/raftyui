@@ -9,7 +9,7 @@ export const badge_examples = {
     </div>
   ),
   "badge:status": (
-    <div className="flex items-center gap-1 flex-wrap">
+    <div className="flex flex-wrap items-center gap-1">
       <Badge status="error" />
       <Badge status="info" />
       <Badge status="secondary" />

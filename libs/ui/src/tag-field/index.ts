@@ -1,1 +1,1 @@
-export { TagField } from "./tag-field";
+export { TagField } from "./TagField";
