@@ -52,11 +52,18 @@ export const Default: Story = {
         }
       >
         <div className="flex items-center gap-1">
-          <span>Rows per page:</span>
+          <span className="text-secondary-700 dark:text-secondary-200">
+            Rows per page :
+          </span>
           <PageSizeSelect />
         </div>
-        <PageJumper />
-        <div>Total Items : {count}</div>
+        <div className="flex items-center gap-1">
+          <p className="text-secondary-700 dark:text-secondary-200">Page :</p>
+          <PageJumper />
+        </div>
+        <p className="text-secondary-700 dark:text-secondary-200">
+          Total Items : {count}
+        </p>
         <PaginationButtons />
       </Pagination>
     );
@@ -88,7 +95,10 @@ export const JumperAndButtons: Story = {
           })
         }
       >
-        Page : <PageJumper />
+        <div className="flex items-center gap-1">
+          <p className="text-secondary-700 dark:text-secondary-200">Page :</p>
+          <PageJumper />
+        </div>
         <PaginationButtons />
       </Pagination>
     );
