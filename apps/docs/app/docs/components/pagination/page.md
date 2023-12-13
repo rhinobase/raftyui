@@ -40,7 +40,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-function AllPaginationField() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -65,9 +65,7 @@ function AllPaginationField() {
     >
       <div className="flex items-center gap-2">
         <span>Rows per page:</span>
-        <div className="w-[100px]">
-          <PageSizeSelect />
-        </div>
+        <PageSizeSelect />
       </div>
       <PageJumper />
       <div>Total Items : {count}</div>
@@ -93,12 +91,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-function AllPaginationField({
-
-  size,
-}: {
-  size?: "sm" | "md" | "lg";
-}) {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -120,21 +113,14 @@ function AllPaginationField({
           };
         })
       }
-      size={size}
+      size="sm"
     >
-      <div
-        className="flex items-center gap-2"
-      >
+      <div className="flex items-center gap-2">
         <span>Rows per page:</span>
-        <div className="w-[100px]">
-          <PageSizeSelect />
-        </div>
+        <PageSizeSelect />
       </div>
       <PageJumper />
-      <div
-      >
-        Total Items : {count}
-      </div>
+      <div>Total Items : {count}</div>
       <PaginationButtons />
     </Pagination>
   );
@@ -180,9 +166,7 @@ function PageSelect() {
     >
       <div className="flex items-center gap-2">
         <span>Rows per page:</span>
-        <div className="w-[100px]">
-          <PageSizeSelect />
-        </div>
+        <PageSizeSelect />
       </div>
     </Pagination>
   );
@@ -291,11 +275,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-function AllPaginationField({
-  isDisabled,
-}: {
-  isDisabled?: boolean;
-}) {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -317,32 +297,18 @@ function AllPaginationField({
           };
         })
       }
-      isDisabled={isDisabled}
+      isDisabled
     >
-      <div
-        className={classNames(
-          "flex items-center gap-2",
-          isDisabled && "cursor-not-allowed opacity-50",
-        )}
-        aria-disabled={isDisabled}
-      >
+      <div className="flex cursor-not-allowed items-center gap-2 opacity-50">
         <span>Rows per page:</span>
-        <div className="w-[100px]">
-          <PageSizeSelect />
-        </div>
+        <PageSizeSelect />
       </div>
       <PageJumper />
-      <div
-        className={classNames(isDisabled && "cursor-not-allowed opacity-50")}
-        aria-disabled={isDisabled}
-      >
-        Total Items : {count}
-      </div>
+      <div className="cursor-not-allowed opacity-50">Total Items : {count}</div>
       <PaginationButtons />
     </Pagination>
   );
 }
-
 ```
 
 {% /example %}

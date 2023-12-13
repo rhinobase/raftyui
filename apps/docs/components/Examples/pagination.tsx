@@ -46,9 +46,7 @@ function AllPaginationField({
         aria-disabled={isDisabled}
       >
         <span>Rows per page:</span>
-        <div className="w-[100px]">
-          <PageSizeSelect />
-        </div>
+        <PageSizeSelect />
       </div>
       <PageJumper />
       <div
@@ -85,9 +83,7 @@ function PageSelect() {
     >
       <div className="flex items-center gap-2">
         <span>Rows per page:</span>
-        <div className="w-[100px]">
-          <PageSizeSelect />
-        </div>
+        <PageSizeSelect />
       </div>
     </Pagination>
   );
