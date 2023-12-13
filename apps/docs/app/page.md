@@ -72,6 +72,14 @@ module.exports = {
 };
 ```
 
+## Exploring Components with Storybook
+
+Explore and experiment with our components in Storybook, an interactive playground where you can experience our UI elements in action.
+
+To access Storybook and delve into the world of our components, visit [storybook.rafty.rhinobase.io](https://storybook.rafty.rhinobase.io). There, you'll find a dynamic environment to view, tweak, and understand how each component behaves in various scenarios.
+
+Feel free to play around, experiment with configurations, and get a real feel for the flexibility and versatility of our design elements. We'd love to hear your feedback and thoughts on your Storybook experience!
+
 ## Connect with us
 
 Whether you're a beginner or advanced Rafty UI user, joining our community is the best way to connect with like-minded people who build great products with the library.
