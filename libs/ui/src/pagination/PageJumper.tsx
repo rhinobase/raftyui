@@ -1,6 +1,6 @@
 "use client";
-import { FieldControl } from "../field";
-import { InputField } from "../input";
+import { FieldControl } from "../field-control";
+import { InputField } from "../input-field";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { changePage } from "./change-page";
