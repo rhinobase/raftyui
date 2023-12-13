@@ -263,7 +263,7 @@ function PageButtons() {
 
 ## isDisabled
 
-{% example name="pagination:is_disabled" %}
+{% example name="pagination:disabled" %}
 
 ```jsx
 import {

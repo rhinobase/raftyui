@@ -147,5 +147,5 @@ export const pagination_examples = {
   "pagination:page_size_select": <PageSelect />,
   "pagination:page_jumper": <PageGoto />,
   "pagination:paginatin_buttons": <PageButtons />,
-  "pagination:is_disabled": <AllPaginationField isDisabled />,
+  "pagination:disabled": <AllPaginationField isDisabled />,
 };
