@@ -31,3 +31,16 @@ import { Label } from "@rafty/ui";
 ## Usage
 
 {% example name="label:usage" /%}
+
+## Props
+
+---
+
+### Label
+
+This component is built on top of [Radix Label](https://www.radix-ui.com/primitives/docs/components/label#root)
+
+| Property   | Description                        | Type      | Default |
+| ---------- | ---------------------------------- | --------- | ------- |
+| isRequired | Whether the component is required. | `boolean` |         |
+| htmlFor    | ID of the associated form element. | `string`  |         |

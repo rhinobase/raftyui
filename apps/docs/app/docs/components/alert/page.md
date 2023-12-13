@@ -66,30 +66,41 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% example name="alert:unstyledsub" /%}
 
-## API
+## Props
 
 ---
 
-### Root
+### Alert
+
+`Alert` composes the `div` component.
+
+| Property   | Description                           | Type                                                         | Default    |
+| ---------- | ------------------------------------- | ------------------------------------------------------------ | ---------- |
+| status     | Status of the alert component.        | `"success"` or `"warning"` or `"error"` or `"info"`          | `"info"`   |
+| size       | Size of the alert component.          | `"sm"` or `"md"` or `"lg"`                                   | `"md"`     |
+| variant    | Style variant of the alert component. | `"simple"` or `"solid"` or `"left-accent"` or `"top-accent"` | `"simple"` |
+| isUnstyled | Removes style from whole component    | `boolean`                                                    | `false`    |
+
+### AlertIcon
+
+`AlertIcon` composes the `svg` component.
 
 | Property   | Description                                    | Type      | Default |
 | ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | `false` |
 
-### Icon
+### AlertTitle
 
-| Property   | Description                                    | Type      | Default |
-| ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
-
-### Title
+`AlertIcon` composes the `h5` component.
 
 | Property   | Description                                    | Type      | Default |
 | ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | `false` |
 
-### Description
+### AlertDescription
+
+`AlertIcon` composes the `p` component.
 
 | Property   | Description                                    | Type      | Default |
 | ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | false   |
+| isUnstyled | Removes Style from component and sub-component | `boolean` | `false` |

@@ -39,3 +39,16 @@ There are 5 `status` options in badge: `success`, `warning`, `error`, `info` & `
 There are 3 `size` options available: `sm`, `md` (default) & `lg`
 
 {% example name="badge:size" /%}
+
+## Props
+
+---
+
+### Badge
+
+`Badge` composes the `div` component.
+
+| Property | Description                    | Type                                                                 | Default       |
+| -------- | ------------------------------ | -------------------------------------------------------------------- | ------------- |
+| size     | Size of the Badge component.   | `"sm"` or `"md"` or `"lg"`                                           | `"md"`        |
+| status   | Status of the Badge component. | `"secondary"` or `"error"` or `"success"` or `"warning"` or `"info"` | `"secondary"` |

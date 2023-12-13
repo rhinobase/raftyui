@@ -47,3 +47,23 @@ There are 3 `size` options in Avatar Component: `sm`, `md` (default) & `lg`.
 - To size all the avatars equally, pass the `size` prop in AvatarGroup.
 
 {% example name="avatar:avatar-group" /%}
+
+## Props
+
+---
+
+### Avatar
+
+`Avatar` composes the `div` component.
+
+| Property | Description                   | Type                       | Default |
+| -------- | ----------------------------- | -------------------------- | ------- |
+| size     | Size of the avatar component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+
+### Avatar Group
+
+`Avatar Group` composes the `div` component.
+
+| Property | Description                   | Type                       | Default |
+| -------- | ----------------------------- | -------------------------- | ------- |
+| size     | Size of the avatar component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |

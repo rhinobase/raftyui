@@ -34,3 +34,24 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from "@rafty/ui";
 ## Usage
 
 {% example name="hover-card:usage" /%}
+
+## Props
+
+---
+
+### HoverCard
+
+This component is built on top of [Radix HoverCard](https://www.radix-ui.com/primitives/docs/components/hover-card#root)
+
+### HoverCardTrigger
+
+This component is built on top of [Radix HoverCard](https://www.radix-ui.com/primitives/docs/components/hover-card#trigger)
+
+### HoverCardContent
+
+This component is built on top of [Radix HoverCard](https://www.radix-ui.com/primitives/docs/components/hover-card#content)
+
+| Property   | Description                          | Type                               | Default    |
+| ---------- | ------------------------------------ | ---------------------------------- | ---------- |
+| align      | Alignment of the component.          | `"center"` or `"start"` or `"end"` | `"center"` |
+| sideOffset | Horizontal offset for the component. | `number`                           | 4          |

@@ -74,32 +74,41 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% example name="input-field:loading" /%}
 
-### Unstyled
+## Unstyled
 
 Pass ` isUnstyled` prop to remove style component
 
 {% example name="input-field:unstyled" /%}
 
-### Left Addon
+## Left Addon
 
 {% example name="input-field:left_addon" /%}
 
-### Right Addon
+## Right Addon
 
 {% example name="input-field:right_addon" /%}
 
-### Prefix
+## Prefix
 
 {% example name="input-field:prefix" /%}
 
-### Suffix
+## Suffix
 
 {% example name="input-field:suffix" /%}
 
-### API
+## Props
 
 ---
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+### InputField
+
+| Property   | Description                                   | Type                                  | Default     |
+| ---------- | --------------------------------------------- | ------------------------------------- | ----------- |
+| size       | Size of the alert dialog trigger component.   | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
+| variant    | Style variant of the component.               | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
+| isDisabled | Whether the component is disabled.            | `boolean`                             | `false`     |
+| isRequired | Whether the component is required.            | `boolean`                             | `false`     |
+| isLoading  | Whether the component is in a loading state.  | `boolean`                             | `false`     |
+| isReadOnly | Whether the component is in read-only mode.   | `boolean`                             | `false`     |
+| isUnstyled | Removes Style from component                  | `boolean`                             | `false`     |
+| isInvalid  | Whether the component is in an invalid state. | `boolean`                             | `false`     |

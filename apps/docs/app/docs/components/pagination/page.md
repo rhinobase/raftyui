@@ -352,7 +352,7 @@ function PaginationField() {
 | onChange    | Callback function when page or pageSize changes.             | `(page: number, pageSize: number) => void` | -       |
 | size        | Size of the pagination component.                            | `sm` or `md` or `lg`                       | `md`    |
 | pageLimit   | Maximum number of pages displayed in the pagination control. | `number`                                   | -       |
-| isDisabled  | Whether the pagination is disabled.                          | `boolean`                                  | false   |
+| isDisabled  | Whether the pagination is disabled.                          | `boolean`                                  | `false` |
 
 ### PageSizeSelect
 

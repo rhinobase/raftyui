@@ -68,35 +68,71 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% example name="navigation-menu:unstyledsub" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### NavigationMenu
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#root)
 
 | Property   | Description                                              | Type      | Default |
 | ---------- | -------------------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component and its subcomponents | `boolean` | -       |
+| isUnstyled | Removes style from whole component and its subcomponents | `boolean` | `false` |
 
-### List
+### NavigationMenuList
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
-
-### Trigger
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#list)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
 | isUnstyled | Removes style from component | `boolean` | `false` |
 
-### Content
+### NavigationMenuItem
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#item)
+
+### NavigationMenuTrigger
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#trigger)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
 | isUnstyled | Removes style from component | `boolean` | `false` |
 
-### Link
+### NavigationMenuContent
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#content)
+
+| Property   | Description                                    | Type                                   | Default |
+| ---------- | ---------------------------------------------- | -------------------------------------- | ------- |
+| size       | Size of the navigation menu content component. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`  |
+| isUnstyled | Removes style from component                   | `boolean`                              | `false` |
+
+### NavigationMenuLink
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#link)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes style from component | `boolean` | `false` |
+
+### NavigationMenuListItem
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#item)
+
+| Property | Description                            | Type     | Default |
+| -------- | -------------------------------------- | -------- | ------- |
+| title    | Title of the component.                | `string` |         |
+| href     | Hyperlink reference for the component. | `string` |         |
+
+### NavigationMenuViewport
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#viewport)
+
+### NavigationMenuIndicator
+
+This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#indicator)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |

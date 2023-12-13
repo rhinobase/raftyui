@@ -84,82 +84,108 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% example name="context-menu:unstyledsub" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### ContextMenu
 
-| Property   | Description                                               | Type      | Default |
-| ---------- | --------------------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#root)
 
-### Trigger
+| Property   | Description                                               | Type                       | Default |
+| ---------- | --------------------------------------------------------- | -------------------------- | ------- |
+| size       | Size of the context menu component.                       | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isUnstyled | Removes style from whole component and its sub components | `boolean`                  | `false` |
 
-`ContextMenuTrigger`composes `Button` component
+### ContextMenuTrigger
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
-
-### Content
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#trigger)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### Item
+### ContextMenuContent
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
-
-### Group
-
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
-
-### Label
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#content)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### CheckboxItem
+### ContextMenuItem
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
-
-### RadioGroup
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### RadioItem
+### ContextMenuCheckBoxGroup
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
 
-### Saperator
+| Property | Description                              | Type      | Default |
+| -------- | ---------------------------------------- | --------- | ------- |
+| asChild  | Treats the component as a child element. | `boolean` | `false` |
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+### ContextMenuLabel
 
-### Sub Trigger
-
-`ContextMenuSubTrigger`composes `Button` component
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#label)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### Sub Content
+### ContextMenuCheckboxItem
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#checkboxitem)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### ContextMenuCheckBoxGroup
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
+
+### ContextMenuRadioGroup
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#radiogroup)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### ContextMenuRadioItem
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#radioitem)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### ContextMenuSeparator
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#separator)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### ContextMenuSubTrigger
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#subtrigger)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### ContextMenuSubContent
+
+This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#subcontent)
+
+| Property   | Description                          | Type      | Default |
+| ---------- | ------------------------------------ | --------- | ------- |
+| sideOffset | Horizontal offset for the component. | `number`  | `10`    |
+| isUnstyled | Removes Style from component         | `boolean` | `false` |

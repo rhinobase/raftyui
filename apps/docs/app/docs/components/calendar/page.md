@@ -31,3 +31,11 @@ import { Calendar } from "@rafty/ui";
 ## Usage
 
 {% example name="calendar:usage" /%}
+
+## Props
+
+---
+
+### Calendar
+
+`Calendar` composes the `react-day-picker` component.

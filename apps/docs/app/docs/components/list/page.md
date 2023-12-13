@@ -44,7 +44,7 @@ import { List, ListItem, OrderedList, UnorderedList } from "@rafty/ui";
 
 {% example name="list:order_list" /%}
 
-### UnOrdered List
+## UnOrdered List
 
 {% example name="list:unorder_list" /%}
 
@@ -53,3 +53,35 @@ import { List, ListItem, OrderedList, UnorderedList } from "@rafty/ui";
 Pass `isUnstyled` to remove style in list.
 
 {% example name="list:unstyled" /%}
+
+## Props
+
+---
+
+### List
+
+`List` composes the `ul` component.
+
+### ListItem
+
+`ListItem` composes the `li` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### OrderedList
+
+`OrderedList` composes the `ol` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### UnorderedList
+
+`UnorderedList` composes the `ul` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |

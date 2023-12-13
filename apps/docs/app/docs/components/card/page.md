@@ -54,24 +54,40 @@ Pass `isUnstyled` prop in parent component to remove style in Card.
 
 {% example name="card:unstyled" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### Card
 
-| Property   | Description                                               | Type      | Default |
-| ---------- | --------------------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
+`Card` composes the `div` component.
 
-### Header
+| Property   | Description                                               | Type                        | Default   |
+| ---------- | --------------------------------------------------------- | --------------------------- | --------- |
+| size       | Size of the Card component.                               | `"sm"` or `"md"` or `"lg"`  | `"md"`    |
+| variant    | Style variant of the component.                           | `"outline"` or `"elevated"` | `"ghost"` |
+| isUnstyled | Removes style from whole component and its sub components | `boolean`                   | `false`   |
+
+### CardHeader
+
+`CardHeader` composes the `div` component.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### Footer
+### CardContent
+
+`CardContent` composes the `div` component.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### CardFooter
+
+`CardFooter` composes the `div` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |

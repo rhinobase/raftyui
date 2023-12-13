@@ -76,42 +76,88 @@ Our Button component is forwarded within the Alert Dialog Trigger component, ena
 
 {% example name="alert-dialog:aschild"/%}
 
-## API
+## Props
 
 ---
 
-### Root
+### AlertDialog
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isbareBone | Removes style from whole component | `boolean` | false   |
-
-### Trigger
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#root)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### Overlay
+### AlertDialogTrigger
+
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#trigger)
+
+| Property    | Description                                  | Type                                                     | Default       |
+| ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
+| size        | Size of the alert dialog trigger component.  | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
+| variant     | Style variant of the component.              | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"`     |
+| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
+| leftIcon    | Custom JSX element for the left icon.        | `JSX.Element`                                            | -             |
+| rightIcon   | Custom JSX element for the right icon.       | `JSX.Element`                                            | -             |
+| isDisabled  | Whether the component is disabled.           | `boolean`                                                | `false`       |
+| isActive    | Whether the component is in an active state. | `boolean`                                                | `false`       |
+| isLoading   | Whether the component is in a loading state. | `boolean`                                                | `false`       |
+| isUnstyled  | Removes Style from component                 | `boolean`                                                | `false`       |
+| asChild     | Treats the component as a child element.     | `boolean`                                                | `false`       |
+| type        | Type of the component.                       | `"button"` or `"submit"` or `"reset"`                    | `"button"`    |
+
+### AlertDialogOverlay
+
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#overlay)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### Content
+### AlertDialogContent
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
-
-### Title
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#content)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### Description
+### AlertDialogHeader
+
+`AlertDialogHeader` composes the `div` component.
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | false   |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### AlertDialogFooter
+
+`AlertDialogFooter` composes the `div` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### AlertDialogTitle
+
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#title)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### AlertDialogDescription
+
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#description)
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### AlertDialogAction
+
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#action)
+
+### AlertDialogCancel
+
+This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#cancel)

@@ -338,7 +338,7 @@ export type AlertTitle = React.HTMLAttributes<HTMLHeadingElement> & {
   isUnstyled?: boolean;
 };
 
-export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
+export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitle>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const {
       size,

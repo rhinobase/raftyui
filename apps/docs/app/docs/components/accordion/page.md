@@ -85,25 +85,38 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% example name="accordion:unstyledsub" /%}
 
-## API
+## Props
 
 ---
 
-### Root
+### Accordion
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component | `boolean` | false   |
+This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#root)
 
-### Trigger
+| Property   | Description                               | Type                       | Default   |
+| ---------- | ----------------------------------------- | -------------------------- | --------- |
+| size       | Size of the accordion component.          | `"sm"` or `"md"` or `"lg"` | `"md"`    |
+| variant    | Style variant of the accordion component. | `"solid"` or `"ghost"`     | `"solid"` |
+| isUnstyled | Removes style from whole component        | `boolean`                  | `false`   |
 
-`AccordionTrigger`composes `Button` component
+### AccordionItem
 
-| Property   | Description                                  | Type      | Default |
-| ---------- | -------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from a particular subcomponent | `boolean` | -       |
+This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#root)
 
-### Content
+### AccordionTrigger
+
+This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#trigger)
+
+| Property   | Description                                       | Type          | Default |
+| ---------- | ------------------------------------------------- | ------------- | ------- |
+| openIcon   | Custom JSX element for the open state icon.       | `JSX.Element` | -       |
+| closeIcon  | Custom JSX element for the close state icon.      | `JSX.Element` | -       |
+| showIcon   | Determines whether to display the accordion icon. | `boolean`     | `true`  |
+| isUnstyled | Removes Style from a particular subcomponent      | `boolean`     | `false` |
+
+### AccordionContent
+
+This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#content)
 
 | Property   | Description                                  | Type      | Default |
 | ---------- | -------------------------------------------- | --------- | ------- |

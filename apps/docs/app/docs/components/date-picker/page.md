@@ -31,3 +31,11 @@ import { DatePicker } from "@rafty/ui";
 ## Usage
 
 {% example name="date-picker:usage" /%}
+
+## Props
+
+---
+
+### DatePicker
+
+`DatePicker` composes the `react-day-picker` component.

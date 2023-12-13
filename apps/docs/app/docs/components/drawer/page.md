@@ -124,12 +124,44 @@ return (
 
 {% /example %}
 
-### API
+## Props
 
 ---
 
-### Close
+### Drawer
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | false   |
+This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#root)
+
+| Property | Description                           | Type                                   | Default   |
+| -------- | ------------------------------------- | -------------------------------------- | --------- |
+| size     | Size of the drawer trigger component. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`    |
+| side     |                                       | `"right"` or `"left"`                  | `"right"` |
+
+### DrawerOverlay
+
+This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
+
+### DrawerContent
+
+This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#content)
+
+### DrawerTitle
+
+This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#title)
+
+### DrawerClose
+
+This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#close)
+
+| Property    | Description                                  | Type                                                     | Default   |
+| ----------- | -------------------------------------------- | -------------------------------------------------------- | --------- |
+| size        | Size of the drawer close component.          | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"icon"`  |
+| variant     | Style variant of the component.              | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"` |
+| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` |           |
+| leftIcon    | Custom JSX element for the left icon.        | `JSX.Element`                                            | -         |
+| rightIcon   | Custom JSX element for the right icon.       | `JSX.Element`                                            | -         |
+| isDisabled  | Whether the component is disabled.           | `boolean`                                                | `false`   |
+| isActive    | Whether the component is in an active state. | `boolean`                                                | `false`   |
+| isLoading   | Whether the component is in a loading state. | `boolean`                                                | `false`   |
+| isUnstyled  | Removes Style from component                 | `boolean`                                                | `false`   |
+| asChild     | Treats the component as a child element.     | `boolean`                                                |           |

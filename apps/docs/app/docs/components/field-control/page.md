@@ -77,3 +77,25 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 ErrorMessage component will display an error message when there is an error during data input in a field or during form submission.
 
 {% example name="field-control:errormessage" /%}
+
+## Props
+
+---
+
+### FieldControl
+
+`FieldControl` composes the `div` component.
+
+| Property    | Description                                   | Type                                  | Default |
+| ----------- | --------------------------------------------- | ------------------------------------- | ------- |
+| isDisabled  | Whether the component is disabled.            | `boolean`                             | `false` |
+| isLoading   | Whether the component is in a loading state.  | `boolean`                             | `false` |
+| isReadOnly  | Whether the component is in read-only mode.   | `boolean`                             | `false` |
+| isInvalid   | Whether the component is in an invalid state. | `boolean`                             | `false` |
+| isRequired  | Whether the component is required.            | `boolean`                             | `false` |
+| orientation | Orientation of the component.                 | `"col" `or `"row"` or `"row-reverse"` | `col`   |
+| name        | Name of the component.                        | `string`                              |         |
+
+### ErrorMessage
+
+`ErrorMessage` composes the `p` component.

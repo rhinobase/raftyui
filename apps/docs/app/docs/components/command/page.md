@@ -57,3 +57,47 @@ import {
 ## Usage
 
 {% example name="command:usage" /%}
+
+## Props
+
+---
+
+### Command
+
+`Command` composes the `cmdk` component.
+
+### CommandDialog
+
+`CommandDialog` composes the `cmdk` component.
+
+### CommandInput
+
+`CommandInput` composes the `cmdk` component.
+
+### CommandList
+
+`CommandList` composes the `cmdk` component.
+
+### CommandLoading
+
+`CommandLoading` composes the `cmdk` component.
+
+### CommandEmpty
+
+`CommandEmpty` composes the `cmdk` component.
+
+### CommandGroup
+
+`CommandGroup` composes the `cmdk` component.
+
+### CommandSeparator
+
+`CommandSeparator` composes the `cmdk` component.
+
+### CommandItem
+
+`CommandItem` composes the `cmdk` component.
+
+### CommandShortcut
+
+`CommandShortcut` composes the `cmdk` component.
