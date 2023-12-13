@@ -6,7 +6,7 @@ import { classNames } from "../utils";
 import { useFieldControlContext } from "../field/context";
 
 const selectClasses = cva(
-  "w-full appearance-none outline-none dark:text-secondary-200 transition-all",
+  "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",
   {
     variants: {
       size: {
@@ -52,14 +52,11 @@ const selectClasses = cva(
         disabled: false,
         readonly: false,
         className:
-          "border border-secondary-300 dark:border-zinc-700 group-focus:ring-primary-200 group-focus:border-primary-500 dark:group-focus:ring-primary-100/20 dark:group-focus:border-primary-400 group-focus:ring-2",
+          "group-hover:border-primary-500 dark:group-hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
       },
       {
         variant: ["solid", "outline"],
-        disabled: false,
-        readonly: false,
-        className:
-          "group-hover:border-primary-500 dark:group-hover:border-primary-400",
+        className: "border-secondary-300 dark:border-zinc-700",
       },
       {
         variant: ["solid", "outline", "ghost"],
@@ -72,6 +69,10 @@ const selectClasses = cva(
         disabled: false,
         readonly: false,
         className: "bg-transparent dark:bg-secondary-900",
+      },
+      {
+        variant: "ghost",
+        className: "border-transparent",
       },
     ],
     defaultVariants: {
@@ -153,7 +154,7 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
               size === "sm" && "right-2",
               size === "md" && "right-3",
               size === "lg" && "right-4",
-              "dark:text-secondary-300 absolute h-3.5 w-3.5 stroke-2 cursor-pointer pointer-events-none",
+              "dark:text-secondary-300 pointer-events-none absolute h-3.5 w-3.5 cursor-pointer stroke-2",
             )}
           />
         )}

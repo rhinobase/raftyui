@@ -40,8 +40,12 @@ export const inputFieldClasses = cva(
       {
         variant: ["solid", "outline"],
         size: ["sm", "md", "lg"],
-        className:
-          "border border-secondary-300 dark:border-secondary-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 ",
+        className: classNames(
+          "border border-secondary-300 dark:border-secondary-700 outline-none",
+          "hover:border-primary-500 dark:hover:border-primary-400 disabled:hover:border-secondary-300 dark:disabled:hover:border-secondary-700",
+          "focus:border-primary-500 dark:focus:border-primary-400",
+          "focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-100/20",
+        ),
       },
       {
         variant: ["outline", "ghost"],
