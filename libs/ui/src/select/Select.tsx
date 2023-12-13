@@ -49,6 +49,8 @@ const selectClasses = cva(
       },
       {
         variant: ["solid", "outline"],
+        disabled: false,
+        readonly: false,
         className:
           "group-hover:border-primary-500 dark:group-hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
       },
