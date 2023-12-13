@@ -27,6 +27,7 @@ import { list_examples } from "./list";
 import { menu_examples } from "./menu";
 import { menubar_examples } from "./menubar";
 import { navigation_menu_examples } from "./navigation-menu";
+import { pagination_examples } from "./pagination";
 import { password_field_examples } from "./password-field";
 import { popover_examples } from "./popover";
 import { progress_examples } from "./progress";
@@ -83,6 +84,7 @@ const examples: Record<string, JSX.Element> = {
   ...menu_examples,
   ...menubar_examples,
   ...navigation_menu_examples,
+  ...pagination_examples,
   ...password_field_examples,
   ...popover_examples,
   ...progress_examples,

@@ -6,7 +6,7 @@ import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
 const selectClasses = cva(
-  "w-full appearance-none outline-none dark:text-secondary-200 transition-all",
+  "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",
   {
     variants: {
       size: {
@@ -49,15 +49,14 @@ const selectClasses = cva(
       },
       {
         variant: ["solid", "outline"],
-        className:
-          "border border-secondary-300 dark:border-zinc-700 group-focus:ring-primary-200 group-focus:border-primary-500 dark:group-focus:ring-primary-100/20 dark:group-focus:border-primary-400 group-focus:ring-2",
-      },
-      {
-        variant: ["solid", "outline"],
         disabled: false,
         readonly: false,
         className:
-          "group-hover:border-primary-500 dark:group-hover:border-primary-400",
+          "group-hover:border-primary-500 dark:group-hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+      },
+      {
+        variant: ["solid", "outline"],
+        className: "border-secondary-300 dark:border-zinc-700",
       },
       {
         variant: ["solid", "outline", "ghost"],
@@ -70,6 +69,10 @@ const selectClasses = cva(
         disabled: false,
         readonly: false,
         className: "bg-transparent dark:bg-secondary-900",
+      },
+      {
+        variant: "ghost",
+        className: "border-transparent",
       },
     ],
     defaultVariants: {
@@ -128,7 +131,7 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
       readonly = isReadOnly || context.isReadOnly;
 
     return (
-      <div className="relative flex w-max items-center">
+      <div className="group relative flex w-max items-center">
         <select
           {...props}
           name={field_name}
@@ -155,7 +158,7 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
           <ChevronDownIcon
             className={classNames(
               TRIGGER_ICON_CLASSES[size],
-              "pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
+              "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
             )}
           />
         )}

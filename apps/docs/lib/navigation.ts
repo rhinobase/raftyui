@@ -92,6 +92,10 @@ export const navigation = [
         href: "/docs/components/navigation-menu",
       },
       {
+        title: "Pagination",
+        href: "/docs/components/pagination",
+      },
+      {
         title: "Password Field",
         href: "/docs/components/password-field",
       },
