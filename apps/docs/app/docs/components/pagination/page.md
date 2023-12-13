@@ -347,18 +347,35 @@ function AllPaginationField({
 
 {% /example %}
 
-### API
+## Props
 
 ---
 
-### Root
+### Pagination
 
-| Property    | Description                                      | Type                                             | Default    |
-| ----------- | ------------------------------------------------ | ------------------------------------------------ | ---------- |
-| pages       | Total number of items.                           | `number`                                         | 0          |
-| currentPage | Current page number.                             | `number`                                         | -          |
-| onChange    | Callback function when page or pageSize changes. | `(page: number, pageSize: number) => void`       | -          |
-| size        | Callback function when page or pageSize changes. | `sm` or `md` or `lg`                             | `md`       |
-| pageSizes   | Options for the page size dropdown.              | `number[]` or `{label: string, value: number}[]` | [10,20,50] |
-| pageLimit   | Default current page number.                     | `number`                                         | 10         |
-| isDisabled  | Whether the pagination is disabled.              | `boolean`                                        | -          |
+`Pagination` composes the `div` component.
+
+| Property    | Description                                                  | Type                                       | Default |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------ | ------- |
+| pages       | Total number of pages.                                       | `number`                                   | -       |
+| currentPage | Current page number.                                         | `number`                                   | -       |
+| onChange    | Callback function when page or pageSize changes.             | `(page: number, pageSize: number) => void` | -       |
+| size        | Size of the pagination component.                            | `sm` or `md` or `lg`                       | `md`    |
+| pageLimit   | Maximum number of pages displayed in the pagination control. | `number`                                   | -       |
+| isDisabled  | Whether the pagination is disabled.                          | `boolean`                                  | false   |
+
+### PageSizeSelect
+
+`PageSizeSelect` composes the `Select` component.
+
+| Property  | Description                         | Type                                             | Default    |
+| --------- | ----------------------------------- | ------------------------------------------------ | ---------- |
+| pageSizes | Options for the page size dropdown. | `number[]` or `{label: string, value: number}[]` | [10,20,50] |
+
+### PageJumper
+
+`PageJumper` composes the `InputField` component.
+
+### PaginationButtons
+
+`PaginationButtons` composes the `Select` component.

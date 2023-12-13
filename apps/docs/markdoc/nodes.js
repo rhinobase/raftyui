@@ -2,6 +2,7 @@ import { nodes as defaultNodes, Tag } from "@markdoc/markdoc";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import yaml from "js-yaml";
 
+import { Kbd } from "@rafty/ui";
 import { DocsLayout } from "../components/DocsLayout";
 import { Fence } from "../components/Fence";
 
@@ -56,6 +57,14 @@ const nodes = {
     render: Fence,
     attributes: {
       language: {
+        type: String,
+      },
+    },
+  },
+  code: {
+    render: ({ content }) => <Kbd>{content}</Kbd>,
+    attributes: {
+      content: {
         type: String,
       },
     },

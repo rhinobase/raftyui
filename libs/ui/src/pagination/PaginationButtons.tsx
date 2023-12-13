@@ -3,6 +3,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
 

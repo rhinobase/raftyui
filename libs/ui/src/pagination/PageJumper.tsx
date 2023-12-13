@@ -1,6 +1,8 @@
 "use client";
 import { FieldControl } from "../field";
 import { InputField } from "../input";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
 
