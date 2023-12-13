@@ -51,11 +51,9 @@ export const Default: Story = {
           })
         }
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <span>Rows per page:</span>
-          <div className="w-[100px]">
-            <PageSizeSelect />
-          </div>
+          <PageSizeSelect />
         </div>
         <PageJumper />
         <div>Total Items : {count}</div>
