@@ -10,18 +10,26 @@ export type PageSizeSelect = Omit<Select, "value" | "onChange"> & {
 export const PageSizeSelect = React.forwardRef<
   HTMLSelectElement,
   PageSizeSelect
->(({ pageSizes = [10, 20, 50], ...props }, forwardedRef) => {
-  const { size, isDisabled, pageLimit, currentPage, onChange } =
-    usePaginationContext();
+>(({ pageSizes = [10, 20, 50], size, isDisabled, ...props }, forwardedRef) => {
+  const {
+    size: parentSize,
+    isDisabled: isParentDisabled,
+    pageLimit,
+    currentPage,
+    onChange,
+  } = usePaginationContext();
 
   const options = pageSizes.map((opt) =>
     typeof opt === "number" ? { label: String(opt), value: opt } : opt,
   );
 
+  const componentSize = size || parentSize;
+  const isComponentDisabled = isDisabled || isParentDisabled;
+
   return (
     <Select
-      size={size}
-      isDisabled={isDisabled}
+      size={componentSize}
+      isDisabled={isComponentDisabled}
       value={pageLimit}
       onChange={(event) => {
         const value = Number(event.target.value);
