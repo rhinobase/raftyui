@@ -10,14 +10,27 @@
     "importHelpers": true,
     "target": "ES2020",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rafty/plugin": ["libs/plugin/src/index.js"],
-      "@rafty/ui": ["libs/ui/src/index.ts"]
+      "@rafty/corp": [
+        "libs/corp/src/index.ts"
+      ],
+      "@rafty/plugin": [
+        "libs/plugin/src/index.js"
+      ],
+      "@rafty/ui": [
+        "libs/ui/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

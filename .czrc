@@ -13,6 +13,10 @@
       "name": "plugin:              anything Plugin specific"
     },
     {
+      "value": "corp",
+      "name": "corp:                anything Corp specific"
+    },
+    {
       "value": "storybook",
       "name": "storybook:           anything Storybook specific"
     }
