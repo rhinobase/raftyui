@@ -5,15 +5,15 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/js:swc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/plugin",
-        "main": "libs/plugin/src/index.ts",
+        "main": "libs/plugin/src/index.js",
         "tsConfig": "libs/plugin/tsconfig.lib.json",
         "assets": [
           {
-            "glob": "libs/plugin/README.md",
+            "glob": "README.md",
             "input": ".",
             "output": "."
           }
@@ -28,7 +28,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/plugin/**/*.ts"]
+        "lintFilePatterns": ["libs/plugin/**/*.js", "libs/plugin/package.json"]
       }
     },
     "version": {

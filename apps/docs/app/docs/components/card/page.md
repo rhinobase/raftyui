@@ -48,11 +48,11 @@ There are 2 `variant` options available: `outline` (default) & `elevated`
 
 {% example name="card:variant" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in card
+Pass `isUnstyled` prop in parent component to remove style in Card.
 
-{% example name="card:barebone" /%}
+{% example name="card:unstyled" /%}
 
 ### API
 
@@ -60,9 +60,9 @@ Pass `isBarebone` prop to remove all style in card
 
 ### Root
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isBarebone | Removes style from whole component | `boolean` | false   |
+| Property   | Description                                               | Type      | Default |
+| ---------- | --------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
 
 ### Header
 

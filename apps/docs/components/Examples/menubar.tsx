@@ -146,8 +146,8 @@ export const menubar_examples = {
       </MenubarMenu>
     </Menubar>
   ),
-  "menubar:barebone": (
-    <Menubar className="flex w-max items-center">
+  "menubar:unstyled": (
+    <Menubar className="flex w-max items-center" isUnstyled>
       <MenubarMenu>
         <MenubarTrigger
           variant="ghost"
@@ -292,7 +292,7 @@ export const menubar_examples = {
       </MenubarMenu>
     </Menubar>
   ),
-  "menubar:unstyled": (
+  "menubar:unstyledsub": (
     <Menubar>
       <MenubarMenu>
         <MenubarTrigger variant="ghost">File</MenubarTrigger>

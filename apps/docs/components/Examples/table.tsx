@@ -156,10 +156,10 @@ export const table_examples = {
       </Table>
     </TableContainer>
   ),
-  "table:barebone": (
+  "table:unstyled": (
     <TableContainer>
       <Table
-        isBarebone
+        isUnstyled
         className="divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y"
       >
         <TableHead className="bg-secondary-100 dark:bg-secondary-700/80">
@@ -226,7 +226,7 @@ export const table_examples = {
       </Table>
     </TableContainer>
   ),
-  "table:unstyled": (
+  "table:unstyledsub": (
     <TableContainer>
       <Table>
         <TableHead isUnstyled className="bg-transparent">

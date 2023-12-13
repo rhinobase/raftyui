@@ -10,5 +10,5 @@ export interface TabContext {
   readonly size: "sm" | "md" | "lg";
   readonly variant: "line" | "enclosed";
   readonly orientation: "horizontal" | "vertical";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

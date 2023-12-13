@@ -16,7 +16,7 @@ nextjs:
 
 It is a modal dialog that interrupts the user with important content and expects a response.
 
-This component is made on top of [Radix UIs Alert Dialog Component](https://www.radix-ui.com/primitives/docs/components/alert-dialog) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Alert Dialog Component](https://www.radix-ui.com/primitives/docs/components/alert-dialog) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
 
 ## Anatomy
 
@@ -58,17 +58,17 @@ There are 4 `size` options in alert dialog component: `sm`, `md` (default), `lg`
 
 {% example name="alert-dialog:size" /%}
 
-## Barebone
-
-Pass `isBarebone` prop to remove style in Alert Dialog
-
-{% example name="alert-dialog:barebone" /%}
-
 ## Unstyled
 
-Pass `isUnstyled` prop to remove style from a sub component
+Pass `isUnstyled` prop in parent component to remove style in Alert Dialog
 
 {% example name="alert-dialog:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component
+
+{% example name="alert-dialog:unstyledsub" /%}
 
 ## Aschild
 

@@ -110,10 +110,10 @@ export const tab_examples = {
       </TabContent>
     </Tab>
   ),
-  "tab:barebone": (
+  "tab:unstyled": (
     <Tab
       defaultValue="tab1"
-      isBarebone
+      isUnstyled
       className="flex w-full items-stretch md:flex-col"
     >
       <TabList className="dark:border-secondary-700 border-b dark:border-black">
@@ -152,7 +152,7 @@ export const tab_examples = {
       </TabContent>
     </Tab>
   ),
-  "tab:unstyled": (
+  "tab:unstyledsub": (
     <Tab defaultValue="tab1">
       <TabList
         isUnstyled

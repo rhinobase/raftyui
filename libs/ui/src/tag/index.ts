@@ -1,1 +1,1 @@
-export { Tag } from "./tag";
+export { Tag, tagClasses } from "./Tag";

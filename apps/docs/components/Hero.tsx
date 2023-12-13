@@ -25,7 +25,7 @@ export function Hero() {
   const { width } = useWindowSize();
 
   return (
-    <div className="bg-secondary-950 overflow-hidden dark:-mb-32 dark:-mt-[82px] dark:pb-32 dark:pt-[4.75rem]">
+    <div className="bg-secondary-950 overflow-hidden dark:-mb-32 dark:-mt-[85px] dark:pb-32 dark:pt-[4.75rem]">
       <div className="py-16 sm:px-2 lg:relative lg:px-0 lg:py-20">
         <div className="lg:max-w-8xl mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
           <div className="relative z-10 md:text-center lg:text-left">

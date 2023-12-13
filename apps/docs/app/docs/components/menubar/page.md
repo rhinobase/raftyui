@@ -16,7 +16,7 @@ nextjs:
 
 A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.
 
-This component is made on top of [Radix UIs Menu Component](https://www.radix-ui.com/primitives/docs/components/menubar) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isBarebone` (to remove styling from entire component and its subcomponents) or `isUnstyled` (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Menu Component](https://www.radix-ui.com/primitives/docs/components/menubar) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
 
 ## Anatomy
 
@@ -71,17 +71,17 @@ There are 3 `size` options in the menu bar: `sm`, `md` (default) & `lg`.
 
 {% example name="menubar:size" /%}
 
-## Barebone
+## Unstyled
 
-Pass `isBarebone` prop to remove all style in menubar.
-
-{% example name="menubar:barebone" /%}
-
-## UnStyled
-
-Pass ` isUnstyled` prop to remove style from a particular sub component.
+Pass `isUnstyled` prop in parent component to remove style in menubar.
 
 {% example name="menubar:unstyled" /%}
+
+## Unstyled subcomponent
+
+Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+
+{% example name="menubar:unstyledsub" /%}
 
 ### API
 
@@ -89,9 +89,9 @@ Pass ` isUnstyled` prop to remove style from a particular sub component.
 
 ### Root
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isBarebone | Removes style from whole component | `boolean` | false   |
+| Property   | Description                                              | Type      | Default |
+| ---------- | -------------------------------------------------------- | --------- | ------- |
+| isUnstyled | Removes style from whole component and its subcomponents | `boolean` | false   |
 
 ### Trigger
 

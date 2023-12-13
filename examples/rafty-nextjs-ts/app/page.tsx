@@ -10,8 +10,8 @@ export default function Home() {
 
   return (
     <div className={isDark ? "dark" : undefined}>
-      <main className="text-black dark:text-white bg-gradient-to-b from-primary-50/80 to-white dark:from-black dark:to-black flex min-h-screen flex-col items-center justify-between p-4 md:p-24 space-y-4 h-full ">
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex ">
+      <main className="from-primary-50/80 flex h-full min-h-screen flex-col items-center justify-between space-y-4 bg-gradient-to-b to-white p-4 text-black dark:from-black dark:to-black dark:text-white md:p-24 ">
+        <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex ">
           <Button
             size="icon"
             variant="ghost"
@@ -19,7 +19,7 @@ export default function Home() {
             onClick={() => setDarkMode((prev) => !prev)}
           >
             <SunIcon className="h-5 w-5 stroke-2 dark:hidden" />
-            <MoonIcon className="h-5 w-5 stroke-2 hidden dark:block" />
+            <MoonIcon className="hidden h-5 w-5 stroke-2 dark:block" />
           </Button>
           <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
             <a
@@ -58,17 +58,17 @@ export default function Home() {
               <path d="M18 17.5L10.308 5h15.144l7.933 12.5M18 17.5h15.385L25.452 30H10.308L18 17.5z" />
             </g>
           </svg>
-          <h1 className="dark:via-primary-300 font-display inline bg-gradient-to-r from-indigo-500 via-primary-500 to-indigo-500 dark:from-indigo-300 dark:to-indigo-300 bg-clip-text text-5xl leading-normal tracking-tight text-transparent">
+          <h1 className="dark:via-primary-300 font-display via-primary-500 inline bg-gradient-to-r from-indigo-500 to-indigo-500 bg-clip-text text-5xl leading-normal tracking-tight text-transparent dark:from-indigo-300 dark:to-indigo-300">
             rafty
           </h1>
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  gap-6 max-w-5xl h-full">
+        <div className="grid h-full max-w-5xl grid-cols-1  gap-6 md:grid-cols-2 lg:grid-cols-4">
           <a
             href="https://rafty.rhinobase.io?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Card className="group dark:hover:bg-secondary-950 hover:bg-white !h-full transition-all ease-in-out">
+            <Card className="dark:hover:bg-secondary-950 group !h-full transition-all ease-in-out hover:bg-white">
               <CardHeader className="!text-xl">
                 Docs{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
@@ -86,7 +86,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Card className="group dark:hover:bg-secondary-950 hover:bg-secondary-50 !h-full transition-all ease-in-out">
+            <Card className="dark:hover:bg-secondary-950 hover:bg-secondary-50 group !h-full transition-all ease-in-out">
               <CardHeader className="!text-xl">
                 Themes{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
@@ -103,9 +103,9 @@ export default function Home() {
             href="https://rafty.rhinobase.io/docs/examples?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
-            className="lg:mb-0 md:mb-20"
+            className="md:mb-20 lg:mb-0"
           >
-            <Card className="group dark:hover:bg-secondary-950 hover:bg-secondary-50 !h-full transition-all ease-in-out">
+            <Card className="dark:hover:bg-secondary-950 hover:bg-secondary-50 group !h-full transition-all ease-in-out">
               <CardHeader className="!text-xl">
                 Templates{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">
@@ -122,9 +122,9 @@ export default function Home() {
             href="https://rafty.rhinobase.io/docs/components/accordion?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-40 lg:mb-0 md:mb-20"
+            className="mb-40 md:mb-20 lg:mb-0"
           >
-            <Card className="group dark:hover:bg-secondary-950 hover:bg-secondary-50 !h-full transition-all ease-in-out ">
+            <Card className="dark:hover:bg-secondary-950 hover:bg-secondary-50 group !h-full transition-all ease-in-out ">
               <CardHeader className="!text-xl">
                 Components{" "}
                 <p className="inline-block transition-transform group-hover:translate-x-1 ">

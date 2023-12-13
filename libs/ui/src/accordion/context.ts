@@ -10,5 +10,5 @@ export const [AccordionProvider, useAccordionContext] =
 export interface AccordionContext {
   readonly size: "sm" | "md" | "lg";
   readonly variant: "solid" | "ghost";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

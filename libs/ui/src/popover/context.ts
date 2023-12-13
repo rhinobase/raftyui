@@ -9,5 +9,5 @@ export const [PopoverProvider, usePopoverContext] =
 
 export interface PopoverContext {
   readonly size: "sm" | "md" | "lg";
-  readonly isBarebone: boolean;
+  readonly isUnstyled: boolean;
 }

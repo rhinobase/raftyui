@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rafty/plugin": ["libs/plugin/src/index.ts"],
+      "@rafty/plugin": ["libs/plugin/src/index.js"],
       "@rafty/ui": ["libs/ui/src/index.ts"]
     }
   },

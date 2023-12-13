@@ -142,7 +142,10 @@ function Combobox() {
               </Button>
             )}
           </div>
-          <PopoverContent className="!p-0" style={{ width: contentwidth }}>
+          <PopoverContent
+            className="!max-w-full !p-0"
+            style={{ width: contentwidth }}
+          >
             <Command shouldFilter={false}>
               <CommandList>
                 <CommandGroup>
