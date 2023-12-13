@@ -65,7 +65,7 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/docs",
+        "outputDir": "dist/storybook",
         "configDir": "apps/docs/.storybook"
       },
       "configurations": {
