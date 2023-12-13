@@ -63,7 +63,6 @@
   },
   "dependencies": {
     "@algolia/autocomplete-core": "1.12.1",
-    "@babel/preset-react": "7.22.15",
     "@fibr/core": "0.3.0",
     "@fibr/rafty": "0.1.0",
     "@fibr/react": "0.3.0",
@@ -94,7 +93,6 @@
     "@radix-ui/react-tooltip": "1.0.7",
     "@sindresorhus/slugify": "2.2.1",
     "@storybook/addon-interactions": "7.6.1",
-    "@storybook/builder-vite": "7.4.6",
     "@storybook/react": "7.6.1",
     "@storybook/react-vite": "7.6.1",
     "@swc/helpers": "~0.5.2",
