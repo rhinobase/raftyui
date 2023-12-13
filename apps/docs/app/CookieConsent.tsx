@@ -4,21 +4,25 @@ import Script from "next/script";
 import cookies from "js-cookie";
 import { useState } from "react";
 
-type CookieConsent = {
-  // undefined - The user hasn't chosen anything
-  // 1 - The user has accepted
-  // 0 - The user has denied
-  defaultValue?: string;
-  cookieKey: string;
-};
+// Cookie name for analytics consent
+const CONSENT_COOKIE_NAME = "rccn";
 
-export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
-  const [isConsentGiven, setConsent] = useState(defaultValue);
+// undefined - The user hasn't chosen anything
+// 1 - The user has accepted
+// 0 - The user has denied
+export function CookieConsent() {
+  const [isConsentGiven, setConsent] = useState(
+    cookies.get(CONSENT_COOKIE_NAME),
+  );
 
   function handleGivenConsent(accept: boolean) {
     const token = String(Number(accept));
     return () => {
-      cookies.set(cookieKey, token, !accept ? { expires: 15 } : undefined);
+      cookies.set(
+        CONSENT_COOKIE_NAME,
+        token,
+        !accept ? { expires: 15 } : undefined,
+      );
       setConsent(token);
     };
   }
@@ -28,7 +32,7 @@ export function CookieConsent({ defaultValue, cookieKey }: CookieConsent) {
   // Asking permission
   else if (isConsentGiven == undefined)
     return <CookieConsentBanner handleGivenConsent={handleGivenConsent} />;
-
+  // The user has denied the request
   return <></>;
 }
 

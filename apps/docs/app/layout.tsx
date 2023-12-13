@@ -7,7 +7,6 @@ import "../styles/globals.css";
 import { CookieConsent } from "./CookieConsent";
 import { Wrapper } from "./Wrapper";
 import { Providers } from "./providers";
-import { cookies } from "next/headers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -78,14 +77,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Cookie name for analytics consent
-const CONSENT_COOKIE_NAME = "rccn";
-
 export default function RootLayout({ children }: PropsWithChildren) {
-  // Checking if we already have a cookie
-  const cookieStore = cookies();
-  const isConsentGiven = cookieStore.get(CONSENT_COOKIE_NAME);
-
   return (
     <html
       lang="en"
@@ -94,7 +86,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
         inter.variable,
         lexend.variable,
       )}
-      suppressHydrationWarning
     >
       <head>
         <meta name="theme-color" content="#09090b" />
@@ -103,10 +94,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Providers>
           <Wrapper>{children}</Wrapper>
         </Providers>
-        <CookieConsent
-          defaultValue={isConsentGiven?.value}
-          cookieKey={CONSENT_COOKIE_NAME}
-        />
+        <CookieConsent />
       </body>
     </html>
   );

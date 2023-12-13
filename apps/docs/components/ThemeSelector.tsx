@@ -4,11 +4,9 @@ import {
   MenuContent,
   MenuItem,
   MenuTrigger,
-  Spinner,
   classNames,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { SunIcon, MoonIcon, TvIcon } from "@heroicons/react/24/outline";
 
 const THEMES = {
@@ -19,13 +17,10 @@ const THEMES = {
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme();
-  const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (theme) setLoading(false);
-  }, [theme]);
-
+  // Current theme icon
   const TriggerIcon = THEMES[theme as keyof typeof THEMES];
+
   return (
     <Menu>
       <MenuTrigger
@@ -35,11 +30,7 @@ export function ThemeSelector() {
         title="Change Theme"
         className="hidden md:block"
       >
-        {!isLoading ? (
-          <TriggerIcon height={18} width={18} className="stroke-2" />
-        ) : (
-          <Spinner size="sm" />
-        )}
+        <TriggerIcon height={18} width={18} className="stroke-2" />
       </MenuTrigger>
       <MenuContent className="!z-50 !gap-0.5">
         {Object.entries(THEMES).map(([name, Icon]) => (
