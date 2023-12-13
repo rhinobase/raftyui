@@ -52,7 +52,7 @@ import {
 
 ## Content Size
 
-Pass the `size` prop if you need to adjust the size of the navigation-menu content. Values can be `sm`, `md`, `lg`.
+Pass the `size` prop if you need to adjust the size of the navigation-menu content. Values can be `sm`, `md` (default), `lg` & `full`.
 
 {% example name="navigation-menu:size" /%}
 

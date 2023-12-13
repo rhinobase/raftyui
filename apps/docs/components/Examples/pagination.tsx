@@ -3,7 +3,6 @@ import {
   PageSizeSelect,
   Pagination,
   PaginationButtons,
-  classNames,
 } from "@rafty/ui";
 import { useState } from "react";
 
@@ -38,23 +37,20 @@ function AllPaginationField({
       isDisabled={isDisabled}
       size={size}
     >
-      <div
-        className={classNames(
-          "flex items-center gap-2",
-          isDisabled && "cursor-not-allowed opacity-50",
-        )}
-        aria-disabled={isDisabled}
-      >
-        <span>Rows per page:</span>
+      <div className="flex items-center gap-2">
+        <span
+          className={isDisabled ? "cursor-not-allowed opacity-60" : undefined}
+        >
+          Rows per page:
+        </span>
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div
-        className={classNames(isDisabled && "cursor-not-allowed opacity-50")}
-        aria-disabled={isDisabled}
+      <span
+        className={isDisabled ? "cursor-not-allowed opacity-60" : undefined}
       >
-        Total Items : {count}
-      </div>
+        Total: {count}
+      </span>
       <PaginationButtons />
     </Pagination>
   );
@@ -136,6 +132,7 @@ function PageButtons() {
         })
       }
     >
+      <span>Page: {pagination.current}</span>
       <PaginationButtons />
     </Pagination>
   );

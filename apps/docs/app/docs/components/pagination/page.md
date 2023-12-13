@@ -21,12 +21,23 @@ The Pagination Component is a customizable and user-friendly pagination solution
 Import the component.
 
 ```jsx
-import { Pagination } from "@rafty/ui";
+import {
+  Pagination,
+  PageSizeSelect,
+  PageJumper,
+  PaginationButtons,
+} from "@rafty/ui";
 
-<Pagination />;
+<Pagination>
+  <PageSizeSelect />
+  <PageJumper />
+  <PaginationButtons />
+</Pagination>;
 ```
 
 ## Usage
+
+Pagination component's state can be managed using `onChange` function.
 
 {% example name="pagination:usage" %}
 
@@ -68,7 +79,7 @@ function PaginationField() {
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div>Total Items : {count}</div>
+      <span>Total Items : {count}</span>
       <PaginationButtons />
     </Pagination>
   );
@@ -78,6 +89,8 @@ function PaginationField() {
 {% /example %}
 
 ## Size
+
+Pass the `size` prop if you need to adjust the size of pagination component and its subcomponents. Values can be `sm`, `md` (default) & `lg`.
 
 {% example name="pagination:size" %}
 
@@ -120,7 +133,7 @@ function PaginationField() {
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div>Total Items : {count}</div>
+      <span>Total Items : {count}</span>
       <PaginationButtons />
     </Pagination>
   );
@@ -130,6 +143,8 @@ function PaginationField() {
 {% /example %}
 
 ## PageSizeSelect
+
+PageSizeSelect component can be used to change number of enteries per page. It take `pageSizes` prop, in which you can pass value in either `number[]` or `{label: string, value: number}[]` type. By default, the value of `pageSizes` prop is `[10, 20, 30]`.
 
 {% example name="pagination:page_size_select" %}
 
@@ -143,7 +158,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-function PageSelect() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -177,6 +192,8 @@ function PageSelect() {
 
 ## PageJumper
 
+PageJumber is a number input field which helps you to navigate to a specific page.
+
 {% example name="pagination:page_jumper" %}
 
 ```jsx
@@ -189,7 +206,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-function PageGoto() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -220,6 +237,8 @@ function PageGoto() {
 
 ## PaginationButtons
 
+PaginationButtons containes previous and next buttons which helps in navigating to previous and next page, with the functionality of being disable when on first or last page to not navigate further ahead or behind of the limit.
+
 {% example name="pagination:paginatin_buttons" %}
 
 ```jsx
@@ -232,7 +251,7 @@ import {
 } from "@rafty/ui";
 import { useState } from "react";
 
-function PageButtons() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -253,6 +272,7 @@ function PageButtons() {
         })
       }
     >
+      <span>Page: {pagination.current}</span>
       <PaginationButtons />
     </Pagination>
   );
@@ -262,6 +282,8 @@ function PageButtons() {
 {% /example %}
 
 ## isDisabled
+
+You can manage disabled pagination state using `isDisabled` prop.
 
 {% example name="pagination:disabled" %}
 
@@ -299,12 +321,14 @@ function PaginationField() {
       }
       isDisabled
     >
-      <div className="flex cursor-not-allowed items-center gap-2 opacity-50">
-        <span>Rows per page:</span>
+      <div className="flex items-center gap-2">
+        <span className="cursor-not-allowed opacity-60">Rows per page:</span>
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div className="cursor-not-allowed opacity-50">Total Items : {count}</div>
+      <span className="cursor-not-allowed opacity-60">
+        Total Items : {count}
+      </span>
       <PaginationButtons />
     </Pagination>
   );
