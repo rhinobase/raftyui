@@ -54,4 +54,4 @@ This component is built on top of [Radix HoverCard](https://www.radix-ui.com/pri
 | Property   | Description                          | Type                               | Default    |
 | ---------- | ------------------------------------ | ---------------------------------- | ---------- |
 | align      | Alignment of the component.          | `"center"` or `"start"` or `"end"` | `"center"` |
-| sideOffset | Horizontal offset for the component. | `number`                           | 4          |
+| sideOffset | Horizontal offset for the component. | `number`                           | `4`        |

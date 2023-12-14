@@ -44,12 +44,14 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% example name="password-field:variant" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### PasswordField
 
-| Property   | Description                  | Type                    | Default |
-| ---------- | ---------------------------- | ----------------------- | ------- |
-| isUnstyled | Removes style from component | `boolean` / `undefined` | `false` |
+`PasswordField` composes the `InputField` component.
+
+| Property | Description                           | Type                       | Default |
+| -------- | ------------------------------------- | -------------------------- | ------- |
+| size     | Size of the password field component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |

@@ -76,42 +76,68 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% example name="table:unstyledsub" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### TableContainer
 
-| Property   | Description                                              | Type      | Default |
-| ---------- | -------------------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component and its subcomponents | `boolean` | `false` |
+`TableContainer` composes the `div` component.
 
-### Head
+### Table
 
-| Property   | Description                  | Type     | Default |
-| ---------- | ---------------------------- | -------- | ------- |
-| isUnstyled | Removes Style from component | `string` | -       |
+`Table` composes the `table` component.
 
-### Body
+| Property   | Description                                              | Type                       | Default  |
+| ---------- | -------------------------------------------------------- | -------------------------- | -------- |
+| size       | Size of the switch component.                            | `"sm"` or `"md"` or `"lg"` | `"md"`   |
+| variant    | Style variant of the component.                          | `simple` or `striped`      | `simple` |
+| isUnstyled | Removes style from whole component and its subcomponents | `boolean`                  | `false`  |
 
-| Property   | Description                  | Type     | Default |
-| ---------- | ---------------------------- | -------- | ------- |
-| isUnstyled | Removes Style from component | `string` | -       |
+### TableHead
 
-### Tr
+`TableHead` composes the `thead` component.
 
-| Property   | Description                  | Type     | Default |
-| ---------- | ---------------------------- | -------- | ------- |
-| isUnstyled | Removes Style from component | `string` | -       |
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### TableBody
+
+`TableHead` composes the `tbody` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
 ### Td
 
-| Property   | Description                  | Type     | Default |
-| ---------- | ---------------------------- | -------- | ------- |
-| isUnstyled | Removes Style from component | `string` | -       |
+`Td` composes the `td` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### Th
+
+`Th` composes the `th` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
+
+### Tr
+
+`Tr` composes the `tr` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |
 
 ### TableFooter
 
-| Property   | Description                  | Type     | Default |
-| ---------- | ---------------------------- | -------- | ------- |
-| isUnstyled | Removes Style from component | `string` | -       |
+`TableFooter` composes the `tfoot` component.
+
+| Property   | Description                  | Type      | Default |
+| ---------- | ---------------------------- | --------- | ------- |
+| isUnstyled | Removes Style from component | `boolean` | `false` |

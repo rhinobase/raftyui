@@ -64,12 +64,23 @@ IsReadOnly prop is used to show select in read only state.
 
 {% example name="select:readonly" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### Select
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+`Select` composes the `select` component.
+
+| Property   | Description                                 | Type                                  | Default     |
+| ---------- | ------------------------------------------- | ------------------------------------- | ----------- |
+| size       | Size of the alert dialog trigger component. | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
+| isDisabled | Whether the component is disabled.          | `boolean`                             | `false`     |
+| isUnstyled | Removes style from component                | `boolean`                             | `false`     |
+| isRequired | Whether the component is required.          | `boolean`                             | `false`     |
+| isReadOnly | Whether the component is read-only.         | `boolean`                             | `false`     |
+| variant    | Style variant of the component.             | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
+
+### SelectItem
+
+`SelectItem` composes the `option` component.

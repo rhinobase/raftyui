@@ -49,3 +49,21 @@ There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 Pass the `isDisabled` prop if you need to disable the radio-group and its sub components.
 
 {% example name="radio:disabled" /%}
+
+## Props
+
+---
+
+### RadioGroup
+
+This component is built on top of [Radix RadioGroup](https://www.radix-ui.com/primitives/docs/components/radio-group#root)
+
+| Property   | Description                                 | Type                       | Default |
+| ---------- | ------------------------------------------- | -------------------------- | ------- |
+| size       | Size of the alert dialog trigger component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isDisabled | Whether the component is disabled.          | `boolean`                  | `false` |
+| disabled   | Additional way to specify disabled state.   | `boolean`                  | -       |
+
+### RadioGroupItem
+
+This component is built on top of [Radix RadioGroup](https://www.radix-ui.com/primitives/docs/components/radio-group#item)

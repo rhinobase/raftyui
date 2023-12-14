@@ -62,17 +62,22 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% example name="toggle-group:unstyledsub" /%}
 
-### API
+## Props
 
 ---
 
-### Root
+### ToggleGroup
 
-| Property   | Description                                              | Type    | Default |
-| ---------- | -------------------------------------------------------- | ------- | ------- |
-| isUnstyled | Removes style from whole component and its subcomponents | boolean | false   |
+This component is built on top of [Radix Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group#root)
 
-### Item
+| Property   | Description                                              | Type                       | Default |
+| ---------- | -------------------------------------------------------- | -------------------------- | ------- |
+| size       | Size of the tag component.                               | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isUnstyled | Removes style from whole component and its subcomponents | `boolean`                  | `false` |
+
+### ToggleGroupItem
+
+This component is built on top of [Radix Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |

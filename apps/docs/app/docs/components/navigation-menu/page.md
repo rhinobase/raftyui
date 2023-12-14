@@ -123,8 +123,8 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 | Property | Description                            | Type     | Default |
 | -------- | -------------------------------------- | -------- | ------- |
-| title    | Title of the component.                | `string` |         |
-| href     | Hyperlink reference for the component. | `string` |         |
+| title    | Title of the component.                | `string` | -       |
+| href     | Hyperlink reference for the component. | `string` | -       |
 
 ### NavigationMenuViewport
 

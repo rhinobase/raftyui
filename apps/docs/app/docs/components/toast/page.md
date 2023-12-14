@@ -59,3 +59,18 @@ There are 4 `severity` options in toast: `error`, `warning`, `info` & `success`.
 The visible prop is used to manage the visibility of toast.
 
 {% example name="toast:visible" /%}
+
+## Props
+
+---
+
+### Toast
+
+`Toast` composes the `div` component.
+
+| Property | Description                    | Type                                                | Default |
+| -------- | ------------------------------ | --------------------------------------------------- | ------- |
+| severity | Severity level of the toast.   | `"error"` or `"success"` or `"warning"` or `"info"` | `false` |
+| visible  | Visibility state of the toast. | `boolean`                                           | `false` |
+| title    | Title of the toast.            | `string`                                            | -       |
+| message  | Content/message of the toast.  | `string`                                            | -       |

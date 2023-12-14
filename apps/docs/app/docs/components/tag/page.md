@@ -41,3 +41,16 @@ There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`.
 There are 5 `colorScheme` options available: `primary`, `secondary` (default), `error`, `success` & `warning`.
 
 {% example name="tag:colorschema" /%}
+
+## Props
+
+---
+
+### Tag
+
+`Tag` composes the `div` component.
+
+| Property    | Description                    | Type                                                                    | Default       |
+| ----------- | ------------------------------ | ----------------------------------------------------------------------- | ------------- |
+| size        | Size of the tag component.     | `"sm"` or `"md"` or `"lg"`                                              | `"md"`        |
+| colorScheme | Color scheme of the component. | `"primary"` or `"secondary"` or `"error"` or `"success"` or `"warning"` | `"secondary"` |

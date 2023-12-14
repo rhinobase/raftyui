@@ -31,3 +31,11 @@ import { RangePicker } from "@rafty/ui";
 ## Usage
 
 {% example name="range-picker:usage" /%}
+
+## Props
+
+---
+
+### RangePicker
+
+`RangePicker` composes the `react-day-picker` component.

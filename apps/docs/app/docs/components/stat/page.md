@@ -43,3 +43,36 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 The type prop is used to define type of stat, it has 3 options: `increase`, `decrease` & `normal` (default).
 
 {% example name="stat:type" /%}
+
+## Props
+
+---
+
+### Stat
+
+`Stat` composes the `div` component.
+
+| Property | Description                 | Type                                       | Default    |
+| -------- | --------------------------- | ------------------------------------------ | ---------- |
+| type     | Type of the stat component. | `"increase"` or `"decrease"` or `"normal"` | `"normal"` |
+
+### StatLabel
+
+`StatLabel` composes the `div` component.
+
+### StatValue
+
+`StatValue` composes the `div` component.
+
+### StatHelpText
+
+`StatHelpText` composes the `div` component.
+
+### StatIcon
+
+`StatIcon` composes the `svg` component.
+
+| Property | Description                             | Type     | Default |
+| -------- | --------------------------------------- | -------- | ------- |
+| height   | Height of the stat component in pixels. | `number` | `14`    |
+| width    | Width of the stat component in pixels.  | `number` | `14`    |

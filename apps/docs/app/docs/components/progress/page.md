@@ -32,14 +32,29 @@ import { Progress } from "@rafty/ui";
 
 {% example name="progress:usage" /%}
 
-## size
+## Size
 
 There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 
 {% example name="progress:size" /%}
 
-## colorScheme
+## ColorScheme
 
 There are 4 `colorScheme` options in progress: `primary` (default), `error`, `warning` & `success`.
 
 {% example name="progress:colorscheme" /%}
+
+## Props
+
+---
+
+### Progress
+
+This component is built on top of [Radix Progress](https://www.radix-ui.com/primitives/docs/components/progress#root)
+
+| Property           | Description                                       | Type                                                   | Default     |
+| ------------------ | ------------------------------------------------- | ------------------------------------------------------ | ----------- |
+| size               | Size of the progress component.                   | `"sm"` or `"md"` or `"lg"`                             | `"md"`      |
+| colorScheme        | Color scheme of the component.                    | `"primary"` or `"warning"` or `"error"` or `"success"` | `"primary"` |
+| value              | Value associated with the component.              | `number`                                               | -           |
+| indicatorClassName | Additional class names for the indicator element. | `string`                                               | -           |

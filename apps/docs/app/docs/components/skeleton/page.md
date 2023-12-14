@@ -31,3 +31,11 @@ import { Skeleton } from "@rafty/ui";
 
 You can set height and width of a skeleton by passing values in className prop.
 {% example name="skeleton:usage" /%}
+
+## Props
+
+---
+
+### Skeleton
+
+`Skeleton` composes the `div` component.

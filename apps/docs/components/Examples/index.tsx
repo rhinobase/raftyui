@@ -34,6 +34,7 @@ import { progress_examples } from "./progress";
 import { radio_examples } from "./radio";
 import { range_picker_examples } from "./range-picker";
 import { scroll_area_examples } from "./scroll-area";
+import { search_field_examples } from "./search-field";
 import { select_examples } from "./select";
 import { skeleton_examples } from "./skeleton";
 import { spinner_examples } from "./spinner";
@@ -92,6 +93,7 @@ const examples: Record<string, JSX.Element> = {
   ...range_picker_examples,
   ...react_hook_forms_examples,
   ...scroll_area_examples,
+  ...search_field_examples,
   ...select_examples,
   ...skeleton_examples,
   ...spinner_examples,

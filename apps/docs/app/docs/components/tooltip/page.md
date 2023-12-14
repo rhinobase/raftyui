@@ -34,3 +34,25 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@rafty/ui";
 ## Usage
 
 {% example name="tooltip:usage" /%}
+
+## Props
+
+---
+
+### Tooltip
+
+This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip#root)
+
+### TooltipTrigger
+
+This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip#trigger)
+
+### TooltipContent
+
+This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip#content)
+
+| Property     | Description                                                | Type      | Default |
+| ------------ | ---------------------------------------------------------- | --------- | ------- |
+| hasAnimation | Determines whether the tooltip has animation.              | `boolean` | `true`  |
+| sideOffset   | Horizontal offset for the tooltip.                         | `boolean` | `4`     |
+| isArrow      | Indicates whether to show an arrow in the tooltip content. | `boolean` | `true`  |

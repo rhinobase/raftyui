@@ -157,7 +157,7 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 | ----------- | -------------------------------------------- | -------------------------------------------------------- | --------- |
 | size        | Size of the drawer close component.          | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"icon"`  |
 | variant     | Style variant of the component.              | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"` |
-| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` |           |
+| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` | -         |
 | leftIcon    | Custom JSX element for the left icon.        | `JSX.Element`                                            | -         |
 | rightIcon   | Custom JSX element for the right icon.       | `JSX.Element`                                            | -         |
 | isDisabled  | Whether the component is disabled.           | `boolean`                                                | `false`   |

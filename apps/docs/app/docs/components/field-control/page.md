@@ -94,7 +94,7 @@ ErrorMessage component will display an error message when there is an error duri
 | isInvalid   | Whether the component is in an invalid state. | `boolean`                             | `false` |
 | isRequired  | Whether the component is required.            | `boolean`                             | `false` |
 | orientation | Orientation of the component.                 | `"col" `or `"row"` or `"row-reverse"` | `col`   |
-| name        | Name of the component.                        | `string`                              |         |
+| name        | Name of the component.                        | `string`                              | -       |
 
 ### ErrorMessage
 

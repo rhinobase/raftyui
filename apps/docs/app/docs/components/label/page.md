@@ -42,5 +42,5 @@ This component is built on top of [Radix Label](https://www.radix-ui.com/primiti
 
 | Property   | Description                        | Type      | Default |
 | ---------- | ---------------------------------- | --------- | ------- |
-| isRequired | Whether the component is required. | `boolean` |         |
-| htmlFor    | ID of the associated form element. | `string`  |         |
+| isRequired | Whether the component is required. | `boolean` | -       |
+| htmlFor    | ID of the associated form element. | `string`  | -       |

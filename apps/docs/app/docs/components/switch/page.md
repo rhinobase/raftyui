@@ -61,3 +61,19 @@ IsRequired prop is used to show select in required state.
 IsReadOnly prop is used to show select in read-only state
 
 {% example name="switch:readonly" /%}
+
+## Props
+
+---
+
+### Switch
+
+This component is built on top of [Radix Switch](https://www.radix-ui.com/primitives/docs/components/switch#root)
+
+| Property       | Description                            | Type                       | Default |
+| -------------- | -------------------------------------- | -------------------------- | ------- |
+| size           | Size of the switch component.          | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isDisabled     | Whether the component is disabled.     | `boolean`                  | `false` |
+| defaultChecked | Initial state of the switch component. | `boolean`                  | `false` |
+| isRequired     | Whether the component is required.     | `boolean`                  | `false` |
+| isReadOnly     | Whether the component is read-only.    | `boolean`                  | `false` |

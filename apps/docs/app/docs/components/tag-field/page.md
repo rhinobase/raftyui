@@ -29,3 +29,16 @@ import { TagField } from "@rafty/ui";
 ## Usage
 
 {% example name="tag-field:usage" /%}
+
+## Props
+
+---
+
+### TagField
+
+`TagField` composes the `div` component.
+
+| Property    | Description                                     | Type                       | Default |
+| ----------- | ----------------------------------------------- | -------------------------- | ------- |
+| initialData | Initial set of tags for the TagField component. | `string[]`                 | -       |
+| onChange    | Callback function invoked on tag changes.       | `(tags: string[]) => void` | -       |

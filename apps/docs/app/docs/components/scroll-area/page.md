@@ -31,3 +31,19 @@ import { ScrollArea } from "@rafty/ui";
 ## Usage
 
 {% example name="scrollarea:usage" /%}
+
+## Props
+
+---
+
+### ScrollArea
+
+This component is built on top of [Radix Scroll Area](https://www.radix-ui.com/primitives/docs/components/scroll-area#root)
+
+### ScrollBar
+
+This component is built on top of [Radix Scroll Area](https://www.radix-ui.com/primitives/docs/components/scroll-area#scrollbar)
+
+| Property    | Description                   | Type                       | Default    |
+| ----------- | ----------------------------- | -------------------------- | ---------- |
+| orientation | Orientation of the component. | `horizontal` or `vertical` | `vertical` |

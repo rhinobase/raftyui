@@ -41,3 +41,16 @@ There are 3 `size` options in spinner: `sm`, `md` (default) & `lg
 InheritParent prop lets spinner inherit color props from its parent element when true
 
 {% example name="spinner:InheritParent" /%}
+
+## Props
+
+---
+
+### Spinner
+
+`Spinner` composes the `svg` component.
+
+| Property      | Description                                 | Type                       | Default |
+| ------------- | ------------------------------------------- | -------------------------- | ------- |
+| size          | Size of the alert dialog trigger component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| inheritParent | Inherits style from the parent component.   | `boolean`                  | `false` |
