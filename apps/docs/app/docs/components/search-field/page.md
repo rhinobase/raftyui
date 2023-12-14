@@ -40,7 +40,7 @@ There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
 ## Variant
 
-There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost
+There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`
 
 {% example name="search-field:variant" /%}
 
