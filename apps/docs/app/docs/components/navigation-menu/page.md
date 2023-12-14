@@ -82,7 +82,7 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 ### NavigationMenuList
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#list)
+This component is built on top of [Radix Navigation Menu List](https://www.radix-ui.com/primitives/docs/components/navigation-menu#list)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -90,11 +90,11 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 ### NavigationMenuItem
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#item)
+This component is built on top of [Radix Navigation Menu Item](https://www.radix-ui.com/primitives/docs/components/navigation-menu#item)
 
 ### NavigationMenuTrigger
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#trigger)
+This component is built on top of [Radix Navigation Menu Trigger](https://www.radix-ui.com/primitives/docs/components/navigation-menu#trigger)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -102,7 +102,7 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 ### NavigationMenuContent
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#content)
+This component is built on top of [Radix Navigation Menu Content](https://www.radix-ui.com/primitives/docs/components/navigation-menu#content)
 
 | Property   | Description                                    | Type                                   | Default |
 | ---------- | ---------------------------------------------- | -------------------------------------- | ------- |
@@ -111,7 +111,7 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 ### NavigationMenuLink
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#link)
+This component is built on top of [Radix Navigation Menu Link](https://www.radix-ui.com/primitives/docs/components/navigation-menu#link)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -119,7 +119,7 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 ### NavigationMenuListItem
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#item)
+This component is built on top of [Radix Navigation Menu Item](https://www.radix-ui.com/primitives/docs/components/navigation-menu#item)
 
 | Property | Description                            | Type     | Default |
 | -------- | -------------------------------------- | -------- | ------- |
@@ -128,11 +128,11 @@ This component is built on top of [Radix Navigation Menu](https://www.radix-ui.c
 
 ### NavigationMenuViewport
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#viewport)
+This component is built on top of [Radix Navigation Menu Viewport](https://www.radix-ui.com/primitives/docs/components/navigation-menu#viewport)
 
 ### NavigationMenuIndicator
 
-This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#indicator)
+This component is built on top of [Radix Navigation Menu Indicator](https://www.radix-ui.com/primitives/docs/components/navigation-menu#indicator)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |

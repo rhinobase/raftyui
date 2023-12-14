@@ -91,7 +91,7 @@ This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitiv
 
 ### TabList
 
-This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitives/docs/components/tabs#list)
+This component is built on top of [Radix Tabs List](https://www.radix-ui.com/primitives/docs/components/tabs#list)
 
 | Properties | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -99,7 +99,7 @@ This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitiv
 
 ### TabTrigger
 
-This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitives/docs/components/tabs#trigger)
+This component is built on top of [Radix Tabs Trigger](https://www.radix-ui.com/primitives/docs/components/tabs#trigger)
 
 | Properties | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -107,7 +107,7 @@ This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitiv
 
 ### TabContent
 
-This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitives/docs/components/tabs#content)
+This component is built on top of [Radix Tabs Content](https://www.radix-ui.com/primitives/docs/components/tabs#content)
 
 | Properties | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |

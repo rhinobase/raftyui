@@ -98,11 +98,11 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarMenu
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#menu)
+This component is built on top of [Radix Menubar Menu](https://www.radix-ui.com/primitives/docs/components/menubar#menu)
 
 ### MenubarTrigger
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#trigger)
+This component is built on top of [Radix Menubar Trigger](https://www.radix-ui.com/primitives/docs/components/menubar#trigger)
 
 `MenubarTrigger`composes `Button` component
 
@@ -121,7 +121,7 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarContent
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#content)
+This component is built on top of [Radix Menubar Content](https://www.radix-ui.com/primitives/docs/components/menubar#content)
 
 | Property   | Description                          | Type      | Default |
 | ---------- | ------------------------------------ | --------- | ------- |
@@ -130,7 +130,7 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarItem
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#item)
+This component is built on top of [Radix Menubar Item](https://www.radix-ui.com/primitives/docs/components/menubar#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -138,7 +138,7 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarLabel
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#label)
+This component is built on top of [Radix Menubar Label](https://www.radix-ui.com/primitives/docs/components/menubar#label)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -146,11 +146,11 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarCheckboxGroup
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#group)
+This component is built on top of [Radix Menubar Group](https://www.radix-ui.com/primitives/docs/components/menubar#group)
 
 ### MenubarCheckboxItem
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#checkboxitem)
+This component is built on top of [Radix Menubar Checkbox Item](https://www.radix-ui.com/primitives/docs/components/menubar#checkboxitem)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -158,11 +158,11 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarRadioGroup
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#radiogroup)
+This component is built on top of [Radix Menubar Radio Group](https://www.radix-ui.com/primitives/docs/components/menubar#radiogroup)
 
 ### MenubarRadioItem
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#radioitem)
+This component is built on top of [Radix Menubar Radio Item](https://www.radix-ui.com/primitives/docs/components/menubar#radioitem)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -170,11 +170,11 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarSub
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#sub)
+This component is built on top of [Radix Menubar Sub](https://www.radix-ui.com/primitives/docs/components/menubar#sub)
 
 ### MenubarSeparator
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#separator)
+This component is built on top of [Radix Menubar Separator](https://www.radix-ui.com/primitives/docs/components/menubar#separator)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -182,7 +182,7 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarSubTrigger
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#subtrigger)
+This component is built on top of [Radix Menubar Sub Trigger](https://www.radix-ui.com/primitives/docs/components/menubar#subtrigger)
 
 `MenubarSubTrigger`composes `Button` component
 
@@ -192,7 +192,7 @@ This component is built on top of [Radix Menubar](https://www.radix-ui.com/primi
 
 ### MenubarSubContent
 
-This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#subcontent)
+This component is built on top of [Radix Menubar Sub Content](https://www.radix-ui.com/primitives/docs/components/menubar#subcontent)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |

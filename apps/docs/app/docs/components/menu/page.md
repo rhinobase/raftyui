@@ -102,7 +102,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuTrigger
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#trigger)
+This component is built on top of [Radix Dropdown Menu Trigger](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#trigger)
 
 | Property    | Description                                  | Type                                                     | Default       |
 | ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
@@ -119,7 +119,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuContent
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#content)
+This component is built on top of [Radix Dropdown Menu Content](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#content)
 
 | Property        | Description                                   | Type      | Default |
 | --------------- | --------------------------------------------- | --------- | ------- |
@@ -129,7 +129,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuGroup
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#group)
+This component is built on top of [Radix Dropdown Menu Group](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#group)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -137,7 +137,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuItem
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item)
+This component is built on top of [Radix Dropdown Menu Item](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -145,7 +145,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuLabel
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#label)
+This component is built on top of [Radix Dropdown Menu Label](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#label)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -153,7 +153,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuCheckboxItem
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item)
+This component is built on top of [Radix Dropdown Menu Item](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -161,11 +161,11 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuRadioGroup
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#radiogroup)
+This component is built on top of [Radix Dropdown Menu Radio Group](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#radiogroup)
 
 ### MenuRadioItem
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#radioitem)
+This component is built on top of [Radix Dropdown Menu Radio Item](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#radioitem)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -173,11 +173,11 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuSub
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#sub)
+This component is built on top of [Radix Dropdown Menu Sub](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#sub)
 
 ### MenuSeparator
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#separator)
+This component is built on top of [Radix Dropdown Menu Separator](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#separator)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -185,7 +185,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuSubTrigger
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subtrigger)
+This component is built on top of [Radix Dropdown Menu Sub Trigger](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subtrigger)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -193,7 +193,7 @@ This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com
 
 ### MenuSubContent
 
-This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subcontent)
+This component is built on top of [Radix Dropdown Menu Sub Content](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subcontent)
 
 | Property   | Description                          | Type      | Default |
 | ---------- | ------------------------------------ | --------- | ------- |

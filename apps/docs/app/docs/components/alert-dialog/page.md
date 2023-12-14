@@ -90,7 +90,7 @@ This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/
 
 ### AlertDialogTrigger
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#trigger)
+This component is built on top of [Radix Alert Dialog Trigger](https://www.radix-ui.com/primitives/docs/components/alert-dialog#trigger)
 
 | Property    | Description                                  | Type                                                     | Default       |
 | ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
@@ -108,7 +108,7 @@ This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/
 
 ### AlertDialogOverlay
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#overlay)
+This component is built on top of [Radix Alert Dialog Overlay](https://www.radix-ui.com/primitives/docs/components/alert-dialog#overlay)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -116,7 +116,7 @@ This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/
 
 ### AlertDialogContent
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#content)
+This component is built on top of [Radix Alert Dialog Content](https://www.radix-ui.com/primitives/docs/components/alert-dialog#content)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -140,7 +140,7 @@ This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/
 
 ### AlertDialogTitle
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#title)
+This component is built on top of [Radix Alert Dialog Title](https://www.radix-ui.com/primitives/docs/components/alert-dialog#title)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -148,7 +148,7 @@ This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/
 
 ### AlertDialogDescription
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#description)
+This component is built on top of [Radix Alert Dialog Description](https://www.radix-ui.com/primitives/docs/components/alert-dialog#description)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -156,8 +156,8 @@ This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/
 
 ### AlertDialogAction
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#action)
+This component is built on top of [Radix Alert Dialog Action](https://www.radix-ui.com/primitives/docs/components/alert-dialog#action)
 
 ### AlertDialogCancel
 
-This component is built on top of [Radix Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog#cancel)
+This component is built on top of [Radix Alert Dialog Cancel](https://www.radix-ui.com/primitives/docs/components/alert-dialog#cancel)

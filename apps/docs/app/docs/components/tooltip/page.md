@@ -45,11 +45,11 @@ This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primi
 
 ### TooltipTrigger
 
-This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip#trigger)
+This component is built on top of [Radix Tooltip Trigger](https://www.radix-ui.com/primitives/docs/components/tooltip#trigger)
 
 ### TooltipContent
 
-This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip#content)
+This component is built on top of [Radix Tooltip Content](https://www.radix-ui.com/primitives/docs/components/tooltip#content)
 
 | Property     | Description                                                | Type      | Default |
 | ------------ | ---------------------------------------------------------- | --------- | ------- |

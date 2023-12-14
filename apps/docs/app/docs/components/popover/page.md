@@ -80,7 +80,7 @@ This component is built on top of [Radix Popover](https://www.radix-ui.com/primi
 
 ### PopoverTrigger
 
-This component is built on top of [Radix Popover](https://www.radix-ui.com/primitives/docs/components/popover#trigger)
+This component is built on top of [Radix Popover Trigger](https://www.radix-ui.com/primitives/docs/components/popover#trigger)
 
 | Property    | Description                                  | Type                                                     | Default       |
 | ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
@@ -97,7 +97,7 @@ This component is built on top of [Radix Popover](https://www.radix-ui.com/primi
 
 ### PopoverContent
 
-This component is built on top of [Radix Popover](https://www.radix-ui.com/primitives/docs/components/popover#content)
+This component is built on top of [Radix Popover Content](https://www.radix-ui.com/primitives/docs/components/popover#content)
 
 | Property        | Description                                   | Type      | Default |
 | --------------- | --------------------------------------------- | --------- | ------- |
@@ -108,4 +108,4 @@ This component is built on top of [Radix Popover](https://www.radix-ui.com/primi
 
 ### PopoverClose
 
-This component is built on top of [Radix Popover](https://www.radix-ui.com/primitives/docs/components/popover#close)
+This component is built on top of [Radix Popover Close](https://www.radix-ui.com/primitives/docs/components/popover#close)

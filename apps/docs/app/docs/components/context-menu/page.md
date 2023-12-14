@@ -90,7 +90,7 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 ### ContextMenu
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#root)
+This component is built on top of [Radix Context Menu](https://www.radix-ui.com/primitives/docs/components/context-menu#root)
 
 | Property   | Description                                               | Type                       | Default |
 | ---------- | --------------------------------------------------------- | -------------------------- | ------- |
@@ -99,7 +99,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuTrigger
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#trigger)
+This component is built on top of [Radix Context Menu Trigger](https://www.radix-ui.com/primitives/docs/components/context-menu#trigger)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -107,7 +107,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuContent
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#content)
+This component is built on top of [Radix Context Menu Content](https://www.radix-ui.com/primitives/docs/components/context-menu#content)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -115,7 +115,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuItem
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#item)
+This component is built on top of [Radix Context Menu Item](https://www.radix-ui.com/primitives/docs/components/context-menu#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -123,7 +123,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuCheckBoxGroup
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
+This component is built on top of [Radix Context Menu Group](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
 
 | Property | Description                              | Type      | Default |
 | -------- | ---------------------------------------- | --------- | ------- |
@@ -131,7 +131,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuLabel
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#label)
+This component is built on top of [Radix Context Menu Label](https://www.radix-ui.com/primitives/docs/components/context-menu#label)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -139,19 +139,19 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuCheckboxItem
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#checkboxitem)
+This component is built on top of [Radix Context Menu Checkbox Item](https://www.radix-ui.com/primitives/docs/components/context-menu#checkboxitem)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
 | isUnstyled | Removes Style from component | `boolean` | `false` |
 
-### ContextMenuCheckBoxGroup
+### ContextMenuSub
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
+This component is built on top of [Radix Context Menu Sub](https://www.radix-ui.com/primitives/docs/components/context-menu#sub)
 
 ### ContextMenuRadioGroup
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#radiogroup)
+This component is built on top of [Radix Context Menu Radio Group](https://www.radix-ui.com/primitives/docs/components/context-menu#radiogroup)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -159,7 +159,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuRadioItem
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#radioitem)
+This component is built on top of [Radix Context Menu Radio Item](https://www.radix-ui.com/primitives/docs/components/context-menu#radioitem)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -167,7 +167,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuSeparator
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#separator)
+This component is built on top of [Radix Context Menu Separator](https://www.radix-ui.com/primitives/docs/components/context-menu#separator)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -175,7 +175,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuSubTrigger
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#subtrigger)
+This component is built on top of [Radix Context Menu Sub Trigger](https://www.radix-ui.com/primitives/docs/components/context-menu#subtrigger)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -183,7 +183,7 @@ This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/p
 
 ### ContextMenuSubContent
 
-This component is built on top of [Radix ContextMenu](https://www.radix-ui.com/primitives/docs/components/context-menu#subcontent)
+This component is built on top of [Radix Context Menu Sub Content](https://www.radix-ui.com/primitives/docs/components/context-menu#subcontent)
 
 | Property   | Description                          | Type      | Default |
 | ---------- | ------------------------------------ | --------- | ------- |

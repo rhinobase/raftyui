@@ -56,7 +56,7 @@ Pass the `isDisabled` prop if you need to disable the radio-group and its sub co
 
 ### RadioGroup
 
-This component is built on top of [Radix RadioGroup](https://www.radix-ui.com/primitives/docs/components/radio-group#root)
+This component is built on top of [Radix Radio Group](https://www.radix-ui.com/primitives/docs/components/radio-group#root)
 
 | Property   | Description                                 | Type                       | Default |
 | ---------- | ------------------------------------------- | -------------------------- | ------- |
@@ -66,4 +66,4 @@ This component is built on top of [Radix RadioGroup](https://www.radix-ui.com/pr
 
 ### RadioGroupItem
 
-This component is built on top of [Radix RadioGroup](https://www.radix-ui.com/primitives/docs/components/radio-group#item)
+This component is built on top of [Radix Radio Group Item](https://www.radix-ui.com/primitives/docs/components/radio-group#item)

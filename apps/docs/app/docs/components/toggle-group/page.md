@@ -77,7 +77,7 @@ This component is built on top of [Radix Toggle Group](https://www.radix-ui.com/
 
 ### ToggleGroupItem
 
-This component is built on top of [Radix Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group#item)
+This component is built on top of [Radix Toggle Group Item](https://www.radix-ui.com/primitives/docs/components/toggle-group#item)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |

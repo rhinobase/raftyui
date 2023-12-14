@@ -102,6 +102,8 @@ Pass ` isUnstyled` prop to remove style component
 
 ### InputField
 
+`InputField` composes the `input` component.
+
 | Property   | Description                                   | Type                                  | Default     |
 | ---------- | --------------------------------------------- | ------------------------------------- | ----------- |
 | size       | Size of the alert dialog trigger component.   | `"sm"` or `"md"` or `"lg"`            | `"md"`      |

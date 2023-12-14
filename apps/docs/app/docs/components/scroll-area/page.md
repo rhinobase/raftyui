@@ -42,7 +42,7 @@ This component is built on top of [Radix Scroll Area](https://www.radix-ui.com/p
 
 ### ScrollBar
 
-This component is built on top of [Radix Scroll Area](https://www.radix-ui.com/primitives/docs/components/scroll-area#scrollbar)
+This component is built on top of [Radix Scroll Area Scrollbar](https://www.radix-ui.com/primitives/docs/components/scroll-area#scrollbar)
 
 | Property    | Description                   | Type                       | Default    |
 | ----------- | ----------------------------- | -------------------------- | ---------- |

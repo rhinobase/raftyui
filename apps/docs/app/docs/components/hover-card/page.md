@@ -41,15 +41,15 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from "@rafty/ui";
 
 ### HoverCard
 
-This component is built on top of [Radix HoverCard](https://www.radix-ui.com/primitives/docs/components/hover-card#root)
+This component is built on top of [Radix Hover Card](https://www.radix-ui.com/primitives/docs/components/hover-card#root)
 
 ### HoverCardTrigger
 
-This component is built on top of [Radix HoverCard](https://www.radix-ui.com/primitives/docs/components/hover-card#trigger)
+This component is built on top of [Radix Hover Card Trigger](https://www.radix-ui.com/primitives/docs/components/hover-card#trigger)
 
 ### HoverCardContent
 
-This component is built on top of [Radix HoverCard](https://www.radix-ui.com/primitives/docs/components/hover-card#content)
+This component is built on top of [Radix Hover Card Content](https://www.radix-ui.com/primitives/docs/components/hover-card#content)
 
 | Property   | Description                          | Type                               | Default    |
 | ---------- | ------------------------------------ | ---------------------------------- | ---------- |

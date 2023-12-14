@@ -101,11 +101,11 @@ This component is built on top of [Radix Accordion](https://www.radix-ui.com/pri
 
 ### AccordionItem
 
-This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#root)
+This component is built on top of [Radix Accordion Item](https://www.radix-ui.com/primitives/docs/components/accordion#item)
 
 ### AccordionTrigger
 
-This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#trigger)
+This component is built on top of [Radix Accordion Trigger](https://www.radix-ui.com/primitives/docs/components/accordion#trigger)
 
 | Property   | Description                                       | Type          | Default |
 | ---------- | ------------------------------------------------- | ------------- | ------- |
@@ -116,7 +116,7 @@ This component is built on top of [Radix Accordion](https://www.radix-ui.com/pri
 
 ### AccordionContent
 
-This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#content)
+This component is built on top of [Radix Accordion Content](https://www.radix-ui.com/primitives/docs/components/accordion#content)
 
 | Property   | Description                                  | Type      | Default |
 | ---------- | -------------------------------------------- | --------- | ------- |

@@ -135,23 +135,23 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 | Property | Description                           | Type                                   | Default   |
 | -------- | ------------------------------------- | -------------------------------------- | --------- |
 | size     | Size of the drawer trigger component. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`    |
-| side     |                                       | `"right"` or `"left"`                  | `"right"` |
+| side     | Side from which the drawer triggers.  | `"right"` or `"left"`                  | `"right"` |
 
 ### DrawerOverlay
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
+This component is built on top of [Radix Dialog Overlay](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
 
 ### DrawerContent
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#content)
+This component is built on top of [Radix Dialog Content](https://www.radix-ui.com/primitives/docs/components/dialog#content)
 
 ### DrawerTitle
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#title)
+This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/primitives/docs/components/dialog#title)
 
 ### DrawerClose
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#close)
+This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close)
 
 | Property    | Description                                  | Type                                                     | Default   |
 | ----------- | -------------------------------------------- | -------------------------------------------------------- | --------- |
@@ -164,4 +164,4 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 | isActive    | Whether the component is in an active state. | `boolean`                                                | `false`   |
 | isLoading   | Whether the component is in a loading state. | `boolean`                                                | `false`   |
 | isUnstyled  | Removes Style from component                 | `boolean`                                                | `false`   |
-| asChild     | Treats the component as a child element.     | `boolean`                                                |           |
+| asChild     | Treats the component as a child element.     | `boolean`                                                | -         |

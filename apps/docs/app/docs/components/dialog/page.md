@@ -96,7 +96,7 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 
 ### DialogTrigger
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#trigger)
+This component is built on top of [Radix Dialog Trigger](https://www.radix-ui.com/primitives/docs/components/dialog#trigger)
 
 | Property    | Description                                  | Type                                                     | Default       |
 | ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
@@ -113,7 +113,7 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 
 ### DialogOverlay
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
+This component is built on top of [Radix Dialog Overlay](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -121,7 +121,7 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 
 ### DialogContent
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#content)
+This component is built on top of [Radix Dialog Content](https://www.radix-ui.com/primitives/docs/components/dialog#content)
 
 | Property        | Description                      | Type      | Default |
 | --------------- | -------------------------------- | --------- | ------- |
@@ -146,11 +146,11 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 
 ### DialogClose
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#close)
+This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close)
 
 ### DialogTitle
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#title)
+This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/primitives/docs/components/dialog#title)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
@@ -158,7 +158,7 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 
 ### DialogDescription
 
-This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#description)
+This component is built on top of [Radix Dialog Description](https://www.radix-ui.com/primitives/docs/components/dialog#description)
 
 | Property   | Description                  | Type      | Default |
 | ---------- | ---------------------------- | --------- | ------- |
