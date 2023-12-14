@@ -23,7 +23,8 @@ export const cardClasses = cva("flex flex-col dark:text-white", {
   },
 });
 
-export type Card = HTMLAttributes<HTMLDivElement> & Partial<CardContext>;
+export type Card = HTMLAttributes<HTMLDivElement> &
+  Partial<Omit<CardContext, "has">>;
 
 export const Card = forwardRef<HTMLDivElement, Card>(
   (
