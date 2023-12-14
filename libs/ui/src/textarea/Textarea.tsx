@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { TextareaHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
@@ -62,7 +62,7 @@ export const textareaClasses = cva(
 
 // TextArea Component (With ErrorMessage)
 export type Textarea = Omit<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
   "size"
 > & {
   variant?: "solid" | "outline" | "ghost";
@@ -75,7 +75,7 @@ export type Textarea = Omit<
   isRequired?: boolean;
 };
 
-export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
+export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   (
     {
       className,

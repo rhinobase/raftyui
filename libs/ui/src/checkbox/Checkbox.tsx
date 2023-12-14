@@ -2,7 +2,7 @@
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label/Label";
 import { classNames } from "../utils";
@@ -44,7 +44,7 @@ const CHECKBOX_LABEL_CLASSES = {
 } as const;
 
 export type Checkbox = Omit<
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+  ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
   "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
@@ -53,8 +53,8 @@ export type Checkbox = Omit<
   isRequired?: boolean;
 };
 
-export const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
+export const Checkbox = forwardRef<
+  ElementRef<typeof CheckboxPrimitive.Root>,
   Checkbox
 >(
   (

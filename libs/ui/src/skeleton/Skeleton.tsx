@@ -1,10 +1,10 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Skeleton Component
-export type Skeleton = React.HTMLAttributes<HTMLDivElement>;
+export type Skeleton = HTMLAttributes<HTMLDivElement>;
 
-export const Skeleton = React.forwardRef<HTMLDivElement, Skeleton>(
+export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
   ({ className, ...props }, forwardedRef) => {
     return (
       <div

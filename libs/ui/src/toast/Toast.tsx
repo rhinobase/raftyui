@@ -5,7 +5,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { HTMLAttributes } from "react";
 import { classNames } from "../utils";
 
 // Toast Component
@@ -31,7 +31,7 @@ export const toastClasses = cva(
   },
 );
 
-export type Toast = Pick<React.HTMLAttributes<HTMLDivElement>, "className"> & {
+export type Toast = Pick<HTMLAttributes<HTMLDivElement>, "className"> & {
   title: string;
   message?: string;
   severity: "error" | "warning" | "info" | "success";

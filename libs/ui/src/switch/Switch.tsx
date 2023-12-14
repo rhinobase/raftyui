@@ -1,7 +1,7 @@
 "use client";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
@@ -39,7 +39,7 @@ export const switchThumbClasses = cva(
 
 // Switch component
 export type Switch = Omit<
-  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
+  ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
   "value" | "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
@@ -48,8 +48,8 @@ export type Switch = Omit<
   isRequired?: boolean;
 };
 
-export const Switch = React.forwardRef<
-  React.ElementRef<typeof SwitchPrimitives.Root>,
+export const Switch = forwardRef<
+  ElementRef<typeof SwitchPrimitives.Root>,
   Switch
 >(
   (

@@ -1,6 +1,6 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 
@@ -16,7 +16,7 @@ export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
 };
 
 export const TagField = ({ initialData, onChange, ...props }: TagField) => {
-  const [tag, setTag] = React.useReducer(
+  const [tag, setTag] = useReducer(
     (prev: string[], cur: { action: ACTION; data?: string }) => {
       if (cur.action === ACTION.RESET) return [];
 

@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { PaginationContext, PaginationProvider } from "./context";
 
@@ -21,14 +21,11 @@ export const paginationClasses = cva("flex items-center gap-4", {
 // Required props for the pagination component
 type RequiredProps = "pages" | "pageLimit" | "currentPage";
 
-export type Pagination = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "onChange"
-> &
+export type Pagination = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> &
   Partial<Omit<PaginationContext, RequiredProps>> &
   Pick<PaginationContext, RequiredProps>;
 
-export const Pagination = React.forwardRef<HTMLDivElement, Pagination>(
+export const Pagination = forwardRef<HTMLDivElement, Pagination>(
   (
     {
       pages,

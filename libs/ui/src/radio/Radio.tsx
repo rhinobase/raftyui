@@ -1,7 +1,7 @@
 "use client";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Label } from "../label";
 import { classNames } from "../utils";
 import {
@@ -27,13 +27,13 @@ export const radioGroupClasses = cva(
   },
 );
 
-export type RadioGroup = React.ComponentPropsWithoutRef<
+export type RadioGroup = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
 > &
   Partial<RadioGroupContext>;
 
-export const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+export const RadioGroup = forwardRef<
+  ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
 >(
   (
@@ -87,12 +87,12 @@ export const radioGroupItemIndicatorClasses = cva(
   },
 );
 
-export type RadioGroupItem = React.ComponentPropsWithoutRef<
+export type RadioGroupItem = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
 >;
 
-export const RadioGroupItem = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+export const RadioGroupItem = forwardRef<
+  ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
 >(({ className, children, ...props }, forwardedref) => {
   const { size, isDisabled } = useRadioGroupContext();

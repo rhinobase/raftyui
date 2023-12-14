@@ -1,14 +1,12 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // TooltipProvider Component
 const TooltipProvider = TooltipPrimitive.Provider;
 
 // Tooltip Component
-export type Tooltip = React.ComponentPropsWithoutRef<
-  typeof TooltipPrimitive.Root
->;
+export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>;
 
 export const Tooltip = ({ children, ...props }: Tooltip) => (
   <TooltipProvider>
@@ -18,12 +16,12 @@ export const Tooltip = ({ children, ...props }: Tooltip) => (
 Tooltip.displayName = "Tooltip";
 
 // TooltipTrigger Component
-export type TooltipTrigger = React.ComponentPropsWithoutRef<
+export type TooltipTrigger = ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Trigger
 >;
 
-export const TooltipTrigger = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+export const TooltipTrigger = forwardRef<
+  ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
 >(({ className, children, ...props }, forwardedRef) => (
   <TooltipPrimitive.Trigger ref={forwardedRef} {...props} asChild>
@@ -33,12 +31,12 @@ export const TooltipTrigger = React.forwardRef<
 TooltipTrigger.displayName = "TooltipTrigger";
 
 // TooltipContent Component
-export type TooltipContent = React.ComponentPropsWithoutRef<
+export type TooltipContent = ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Content
 > & { isArrow?: boolean; hasAnimation?: boolean };
 
-export const TooltipContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
+export const TooltipContent = forwardRef<
+  ElementRef<typeof TooltipPrimitive.Content>,
   TooltipContent
 >(
   (

@@ -1,12 +1,12 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // UnorderedList Component
-export type UnorderedList = React.HTMLAttributes<HTMLUListElement> & {
+export type UnorderedList = HTMLAttributes<HTMLUListElement> & {
   isUnstyled?: boolean;
 };
 
-export const UnorderedList = React.forwardRef<HTMLUListElement, UnorderedList>(
+export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <ul

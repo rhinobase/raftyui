@@ -1,9 +1,9 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
-export type RightAddon = React.HTMLAttributes<HTMLDivElement>;
+export type RightAddon = HTMLAttributes<HTMLDivElement>;
 
-export const RightAddon = React.forwardRef<HTMLDivElement, RightAddon>(
+export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <div

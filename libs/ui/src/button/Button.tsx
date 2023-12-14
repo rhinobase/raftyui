@@ -1,5 +1,10 @@
 import { cva } from "class-variance-authority";
-import React from "react";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  forwardRef,
+} from "react";
 import { Spinner } from "../spinner";
 import { classNames } from "../utils";
 
@@ -434,8 +439,8 @@ export const buttonClasses = cva(
   },
 );
 
-export type Button<T extends React.ElementType = "button"> =
-  React.ComponentPropsWithoutRef<T> & {
+export type Button<T extends ElementType = "button"> =
+  ComponentPropsWithoutRef<T> & {
     as?: T;
     className?: string;
     /* Left aligned icon*/
@@ -452,7 +457,7 @@ export type Button<T extends React.ElementType = "button"> =
     isDisabled?: boolean;
   };
 
-export const Button = React.forwardRef<React.ElementRef<"button">, Button>(
+export const Button = forwardRef<ElementRef<"button">, Button>(
   (
     {
       isLoading = false,

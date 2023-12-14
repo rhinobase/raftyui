@@ -1,7 +1,12 @@
 "use client";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import { cva } from "class-variance-authority";
-import React from "react";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  forwardRef,
+} from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import {
@@ -11,7 +16,7 @@ import {
 } from "./context";
 
 // AlertDialog Component
-export type AlertDialog = React.ComponentPropsWithoutRef<
+export type AlertDialog = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Root
 > &
   Partial<AlertDialogContext>;
@@ -28,13 +33,13 @@ export const AlertDialog = ({
 AlertDialog.displayName = "AlertDialog";
 
 // AlertDialog Trigger Component
-export type AlertDialogTrigger = React.ComponentPropsWithoutRef<
+export type AlertDialogTrigger = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Trigger
 > &
   Button;
 
-export const AlertDialogTrigger = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Trigger>,
+export const AlertDialogTrigger = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Trigger>,
   AlertDialogTrigger
 >(
   (
@@ -93,12 +98,12 @@ export const AlertDialogTrigger = React.forwardRef<
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
 // AlertDialogOverlayComponent
-export type AlertDialogOverlay = React.ComponentPropsWithoutRef<
+export type AlertDialogOverlay = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Overlay
 > & { isUnstyled?: boolean };
 
-export const AlertDialogOverlay = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
+export const AlertDialogOverlay = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Overlay>,
   AlertDialogOverlay
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
@@ -141,12 +146,12 @@ export const alertDialogContentClasses = cva(
   },
 );
 
-export type AlertDialogContent = React.ComponentPropsWithoutRef<
+export type AlertDialogContent = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Content
 > & { isUnstyled?: boolean };
 
-export const AlertDialogContent = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Content>,
+export const AlertDialogContent = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Content>,
   AlertDialogContent
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useAlertDialogContext();
@@ -169,7 +174,7 @@ export const AlertDialogContent = React.forwardRef<
 AlertDialogContent.displayName = "AlertDialogContent";
 
 // AlertDialogHeader
-export type AlertDialogHeader = React.HTMLAttributes<HTMLDivElement> & {
+export type AlertDialogHeader = HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
@@ -198,7 +203,7 @@ export const AlertDialogHeader = ({
 AlertDialogHeader.displayName = "AlertDialogHeader";
 
 // AlertDialogFooter
-export type AlertDialogFooter = React.HTMLAttributes<HTMLDivElement> & {
+export type AlertDialogFooter = HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
@@ -227,12 +232,12 @@ export const AlertDialogFooter = ({
 AlertDialogFooter.displayName = "AlertDialogFooter";
 
 // AlertDialogTitle Component
-export type AlertDialogTitle = React.ComponentPropsWithoutRef<
+export type AlertDialogTitle = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Title
 > & { isUnstyled?: boolean };
 
-export const AlertDialogTitle = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Title>,
+export const AlertDialogTitle = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Title>,
   AlertDialogTitle
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
@@ -256,12 +261,12 @@ export const AlertDialogTitle = React.forwardRef<
 AlertDialogTitle.displayName = "AlertDialogTitle";
 
 // AlertDialogBody Component
-export type AlertDialogDescription = React.ComponentPropsWithoutRef<
+export type AlertDialogDescription = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Description
 > & { isUnstyled?: boolean };
 
-export const AlertDialogDescription = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Description>,
+export const AlertDialogDescription = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Description>,
   AlertDialogDescription
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useAlertDialogContext();

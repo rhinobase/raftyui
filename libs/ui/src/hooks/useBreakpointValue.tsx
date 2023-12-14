@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const BREAKPOINTS = {
   sm: 0,
@@ -14,12 +14,12 @@ const KEYS = Object.keys(BREAKPOINTS);
 export function useBreakpointValue<T = unknown>(values?: {
   [K in BreakpointType]?: T;
 }) {
-  const [breakpoint, setBreakPoint] = React.useState<BreakpointType>("sm");
-  const [width, setWidth] = React.useState<number>();
+  const [breakpoint, setBreakPoint] = useState<BreakpointType>("sm");
+  const [width, setWidth] = useState<number>();
 
-  const handleResize = React.useCallback(() => setWidth(window.innerWidth), []);
+  const handleResize = useCallback(() => setWidth(window.innerWidth), []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Calling for the first time, to initialize the value
     handleResize();
 
@@ -30,7 +30,7 @@ export function useBreakpointValue<T = unknown>(values?: {
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!width) return;
 
     if (width < 768) setBreakPoint("sm");

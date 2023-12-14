@@ -1,14 +1,14 @@
 "use client";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { HTMLAttributes } from "react";
 import { useAvatarGroupContext } from "../avatar-group";
 import { classNames } from "../utils";
 
 export type Avatar = {
   name?: string | null;
   src?: string;
-  className?: React.HTMLAttributes<HTMLDivElement>["className"];
-  style?: React.HTMLAttributes<HTMLDivElement>["style"];
+  className?: HTMLAttributes<HTMLDivElement>["className"];
+  style?: HTMLAttributes<HTMLDivElement>["style"];
   size?: "sm" | "md" | "lg";
 };
 

@@ -1,18 +1,15 @@
 "use client";
 import * as LabelPrimitive from "@radix-ui/react-label";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
 // Label Component
-export type Label = React.ComponentPropsWithoutRef<
-  typeof LabelPrimitive.Root
-> & { isRequired?: boolean };
+export type Label = ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & {
+  isRequired?: boolean;
+};
 
-export const Label = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  Label
->(
+export const Label = forwardRef<ElementRef<typeof LabelPrimitive.Root>, Label>(
   (
     { children, className, isRequired: isReq, htmlFor, ...props },
     forwardedRef,

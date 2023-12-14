@@ -2,7 +2,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 import {
   AccordionContext,
@@ -11,13 +11,13 @@ import {
 } from "./context";
 
 // Accordion Component
-export type Accordion = React.ComponentPropsWithoutRef<
+export type Accordion = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Root
 > &
   Partial<AccordionContext>;
 
-export const Accordion = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Root>,
+export const Accordion = forwardRef<
+  ElementRef<typeof AccordionPrimitive.Root>,
   Accordion
 >(
   (
@@ -49,12 +49,12 @@ export const Accordion = React.forwardRef<
 Accordion.displayName = "Accordion";
 
 // Accordion Item Component
-export type AccordionItem = React.ComponentPropsWithoutRef<
+export type AccordionItem = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Item
 >;
 
-export const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
+export const AccordionItem = forwardRef<
+  ElementRef<typeof AccordionPrimitive.Item>,
   AccordionItem
 >(({ className, children, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useAccordionContext();
@@ -94,7 +94,7 @@ export const accordionTriggerClasses = cva(
   },
 );
 
-export type AccordionTrigger = React.ComponentPropsWithoutRef<
+export type AccordionTrigger = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Trigger
 > & {
   openIcon?: JSX.Element;
@@ -103,8 +103,8 @@ export type AccordionTrigger = React.ComponentPropsWithoutRef<
   showIcon?: boolean;
 };
 
-export const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+export const AccordionTrigger = forwardRef<
+  ElementRef<typeof AccordionPrimitive.Trigger>,
   AccordionTrigger
 >(
   (
@@ -171,12 +171,12 @@ export const accordionContentClasses = cva(
   },
 );
 
-export type AccordionContent = React.ComponentPropsWithoutRef<
+export type AccordionContent = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Content
 > & { isUnstyled?: boolean };
 
-export const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
+export const AccordionContent = forwardRef<
+  ElementRef<typeof AccordionPrimitive.Content>,
   AccordionContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useAccordionContext();

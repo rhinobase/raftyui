@@ -1,9 +1,9 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 
 // Text Component
-export type Text = React.HTMLAttributes<HTMLParagraphElement>;
+export type Text = HTMLAttributes<HTMLParagraphElement>;
 
-export const Text = React.forwardRef<HTMLParagraphElement, Text>(
+export const Text = forwardRef<HTMLParagraphElement, Text>(
   ({ children, className, ...props }, forwardedRef) => (
     <p {...props} className={className} ref={forwardedRef}>
       {children}

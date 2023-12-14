@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { useInputGroupContext } from "./context";
 
@@ -9,9 +9,9 @@ export const SHARED_FIX_CLASSES = {
   lg: "w-10",
 };
 
-export type Prefix = React.HTMLAttributes<HTMLDivElement>;
+export type Prefix = HTMLAttributes<HTMLDivElement>;
 
-export const Prefix = React.forwardRef<HTMLDivElement, Prefix>(
+export const Prefix = forwardRef<HTMLDivElement, Prefix>(
   ({ children, className, ...props }, forwardedRef) => {
     const { size } = useInputGroupContext();
 

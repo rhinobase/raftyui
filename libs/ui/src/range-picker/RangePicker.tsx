@@ -1,7 +1,7 @@
 "use client";
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
-import React from "react";
+import { useReducer, useState } from "react";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { Calendar } from "../calendar/Calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
@@ -12,8 +12,8 @@ export type RangePicker = {
 } & Omit<DayPickerRangeProps, "mode" | "onSelect">;
 
 export const RangePicker = ({ className, ...props }: RangePicker) => {
-  const [isOpen, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useReducer(
+  const [isOpen, setOpen] = useState(false);
+  const [selected, setSelected] = useReducer(
     (_?: DateRange, cur?: DateRange) => {
       const value: DateRange | undefined = cur
         ? {

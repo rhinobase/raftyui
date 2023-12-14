@@ -1,4 +1,4 @@
-import React from "react";
+import { useCallback } from "react";
 
 export type useQueryParams = {
   onChange: (path: string) => void;
@@ -11,7 +11,7 @@ export function useQueryParams<T>({
   pathname,
   searchParams,
 }: useQueryParams) {
-  const setQueryParams = React.useCallback(
+  const setQueryParams = useCallback(
     (params: Partial<T>) => {
       const url_search_params = new URLSearchParams(searchParams);
       Object.entries(params).forEach(([key, value]) => {

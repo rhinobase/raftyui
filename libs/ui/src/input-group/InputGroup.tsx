@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames, getValidChildren } from "../utils";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
@@ -8,10 +8,10 @@ import { Suffix } from "./Suffix";
 import { InputGroupContext, InputGroupProvider } from "./context";
 
 // InputGroup Component
-export type InputGroup = React.HTMLAttributes<HTMLDivElement> &
+export type InputGroup = HTMLAttributes<HTMLDivElement> &
   Partial<InputGroupContext>;
 
-export const InputGroup = React.forwardRef<HTMLDivElement, InputGroup>(
+export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
   (
     {
       children,

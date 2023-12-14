@@ -1,14 +1,12 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import { PopoverContext, PopoverProvider, usePopoverContext } from "./context";
 
 // Popover Component
-export type Popover = React.ComponentPropsWithoutRef<
-  typeof PopoverPrimitive.Root
-> &
+export type Popover = ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> &
   Partial<PopoverContext>;
 
 export const Popover = ({
@@ -23,13 +21,13 @@ export const Popover = ({
 Popover.displayName = "Popover";
 
 // PopoverTrigger Component
-export type PopoverTrigger = React.ComponentPropsWithoutRef<
+export type PopoverTrigger = ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Trigger
 > &
   Button;
 
-export const PopoverTrigger = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Trigger>,
+export const PopoverTrigger = forwardRef<
+  ElementRef<typeof PopoverPrimitive.Trigger>,
   PopoverTrigger
 >(
   (
@@ -83,12 +81,12 @@ const POPOVER_CONTENT_CLASSES = {
 } as const;
 
 // PopoverContent Component
-export type PopoverContent = React.ComponentPropsWithoutRef<
+export type PopoverContent = ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
 > & { isUnstyled?: boolean; showArrow?: boolean; arrowClassName?: string };
 
-export const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Content>,
+export const PopoverContent = forwardRef<
+  ElementRef<typeof PopoverPrimitive.Content>,
   PopoverContent
 >(
   (

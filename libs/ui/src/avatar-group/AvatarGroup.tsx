@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { HTMLAttributes, cloneElement, forwardRef } from "react";
 import { Avatar } from "../avatar/Avatar";
 import { classNames, getValidChildren } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
@@ -13,10 +13,10 @@ const LEFT_OFFSET = {
   lg: 37,
 } as const;
 
-export type AvatarGroup = React.HTMLAttributes<HTMLDivElement> &
+export type AvatarGroup = HTMLAttributes<HTMLDivElement> &
   Partial<AvatarGroupContext> & { max?: number };
 
-export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
+export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
   (
     { max, className, children, size = "md", style, ...props },
     forwardedRef,
@@ -49,7 +49,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroup>(
         },
       };
 
-      return React.cloneElement(child, childProps);
+      return cloneElement(child, childProps);
     });
 
     // Width of the Avatar Group component

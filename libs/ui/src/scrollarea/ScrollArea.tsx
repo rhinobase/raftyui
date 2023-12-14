@@ -1,15 +1,15 @@
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // ScrollArea component
-export type ScrollArea = React.ComponentPropsWithoutRef<
+export type ScrollArea = ComponentPropsWithoutRef<
   typeof ScrollAreaPrimitive.Root
 >;
 
-export const ScrollArea = React.forwardRef<
-  React.ElementRef<typeof ScrollAreaPrimitive.Root>,
+export const ScrollArea = forwardRef<
+  ElementRef<typeof ScrollAreaPrimitive.Root>,
   ScrollArea
 >(({ className, children, ...props }, forwardedref) => (
   <ScrollAreaPrimitive.Root
@@ -42,12 +42,12 @@ export const scrollAreaScrollbarClasses = cva(
   },
 );
 
-export type ScrollBar = React.ComponentPropsWithoutRef<
+export type ScrollBar = ComponentPropsWithoutRef<
   typeof ScrollAreaPrimitive.ScrollAreaScrollbar
 >;
 
-export const ScrollBar = React.forwardRef<
-  React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+export const ScrollBar = forwardRef<
+  ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   ScrollBar
 >(({ className, orientation = "vertical", ...props }, forwardedref) => (
   <ScrollAreaPrimitive.ScrollAreaScrollbar

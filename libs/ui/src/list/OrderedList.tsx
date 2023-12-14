@@ -1,12 +1,12 @@
-import React from "react";
+import { OlHTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // OrderedList Component
-export type OrderedList = React.OlHTMLAttributes<HTMLOListElement> & {
+export type OrderedList = OlHTMLAttributes<HTMLOListElement> & {
   isUnstyled?: boolean;
 };
 
-export const OrderedList = React.forwardRef<HTMLOListElement, OrderedList>(
+export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <ol

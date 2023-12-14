@@ -1,15 +1,15 @@
 "use client";
-import React from "react";
+import { forwardRef } from "react";
 import { InputField } from "../input-field";
+import { classNames } from "../utils";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
-import { classNames } from "../utils";
 
 export type PageJumper = Omit<InputField, "onChange" | "value">;
 
-export const PageJumper = React.forwardRef<HTMLInputElement, PageJumper>(
+export const PageJumper = forwardRef<HTMLInputElement, PageJumper>(
   ({ size, isDisabled, className, ...props }, forwardedRef) => {
     const {
       size: parentSize,
