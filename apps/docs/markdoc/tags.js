@@ -1,6 +1,6 @@
 import { Callout } from "../components/Callout";
 import { Examples } from "../components/Examples";
-import { ExternalCodeLinks } from "../components/ExternalCodeLinks";
+import { ExampleCodeRepo } from "../components/ExampleCodeRepo";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
 
 const tags = {
@@ -51,8 +51,8 @@ const tags = {
       href: { type: String },
     },
   },
-  "external-code-links": {
-    render: ExternalCodeLinks,
+  "example-code-repo": {
+    render: ExampleCodeRepo,
   },
 };
 
