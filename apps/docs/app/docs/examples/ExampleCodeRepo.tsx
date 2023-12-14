@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import { Fragment } from "react";
-import NextjsIcon from "../public/frameworks/nextjs.svg";
-import VitejsIcon from "../public/frameworks/vite.svg";
+import NextjsIcon from "../../../public/frameworks/nextjs.svg";
+import VitejsIcon from "../../../public/frameworks/vite.svg";
 import Link from "next/link";
 
 enum Language {

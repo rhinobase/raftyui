@@ -1,6 +1,5 @@
 import { Callout } from "../components/Callout";
 import { Examples } from "../components/Examples";
-import { ExampleCodeRepo } from "../components/ExampleCodeRepo";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
 
 const tags = {
@@ -50,9 +49,6 @@ const tags = {
       icon: { type: String },
       href: { type: String },
     },
-  },
-  "example-code-repo": {
-    render: ExampleCodeRepo,
   },
 };
 
