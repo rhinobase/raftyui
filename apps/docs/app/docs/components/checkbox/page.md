@@ -28,19 +28,19 @@ import { Checkbox } from "@rafty/ui";
 <Checkbox />;
 ```
 
-### Usage
+## Usage
 
 Checkbox component is used in forms when a user needs to select multiple values from several options.
 
 {% example name="checkbox:usage" /%}
 
-### Default Selected
+## Default Selected
 
 Pass `defaultSelected` prop to set default check the checkbox.
 
 {% example name="checkbox:default_checked" /%}
 
-### Disabled
+## Disabled
 
 Pass `isDisabled` prop to disable checkbox.
 
@@ -48,17 +48,17 @@ This property can also be passed in child/ sub component
 
 {% example name="checkbox:disabled" /%}
 
-### Checked
+## Checked
 
 {% example name="checkbox:checked" /%}
 
-### Required
+## Required
 
 This property can also be passed in child/ sub component
 
 {% example name="checkbox:required" /%}
 
-### size
+## size
 
 There are 3 `size` options in checkbox: `sm`, `md` (default) & `lg`.
 
