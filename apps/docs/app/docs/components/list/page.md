@@ -60,28 +60,28 @@ Pass `isUnstyled` to remove style in list.
 
 ### List
 
-`List` composes the `ul` component.
+`List` composes the `<ul>` component.
 
 ### ListItem
 
-`ListItem` composes the `li` component.
+`ListItem` composes the `<li>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### OrderedList
 
-`OrderedList` composes the `ol` component.
+`OrderedList` composes the `<ol>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### UnorderedList
 
-`UnorderedList` composes the `ul` component.
+`UnorderedList` composes the `<ul>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

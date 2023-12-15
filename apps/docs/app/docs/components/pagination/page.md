@@ -343,20 +343,20 @@ function PaginationField() {
 
 ### Pagination
 
-`Pagination` composes the `div` component.
+`Pagination` composes the `<div>` component.
 
-| Property    | Description                                                  | Type                                       | Default |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------ | ------- |
-| pages       | Total number of pages.                                       | `number`                                   | -       |
-| currentPage | Current page number.                                         | `number`                                   | -       |
-| onChange    | Callback function when page or pageSize changes.             | `(page: number, pageSize: number) => void` | -       |
-| size        | Size of the pagination component.                            | `sm` or `md` or `lg`                       | `md`    |
-| pageLimit   | Maximum number of pages displayed in the pagination control. | `number`                                   | -       |
-| isDisabled  | Whether the pagination is disabled.                          | `boolean`                                  | `false` |
+| Property    | Description                                                                                                          | Type                                                          | Default |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------- |
+| pages       | Total number of pages.                                                                                               | `number`                                                      | -       |
+| currentPage | Current page number.                                                                                                 | `number`                                                      | -       |
+| onChange    | Callback function when page or pageSize changes.                                                                     | {% info %}(page: number, pageSize: number) => void{% /info %} | -       |
+| size        | Size of the pagination component.                                                                                    | `sm` or `md` or `lg`                                          | `md`    |
+| pageLimit   | Maximum number of entries to be shown per page by default and you further control it using PageSizeSelect component. | `number`                                                      | -       |
+| isDisabled  | To manage disabled state.                                                                                            | `boolean`                                                     | `false` |
 
 ### PageSizeSelect
 
-`PageSizeSelect` composes the `Select` component.
+`PageSizeSelect` is made using [Select](https://rafty.rhinobase.io/docs/components/select).
 
 | Property  | Description                         | Type                                             | Default    |
 | --------- | ----------------------------------- | ------------------------------------------------ | ---------- |
@@ -364,8 +364,8 @@ function PaginationField() {
 
 ### PageJumper
 
-`PageJumper` composes the `InputField` component.
+`PageJumper` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
 ### PaginationButtons
 
-`PaginationButtons` composes the `Select` component.
+`PaginationButtons` composes the `<div>` component.

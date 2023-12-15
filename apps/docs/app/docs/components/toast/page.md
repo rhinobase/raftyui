@@ -66,7 +66,7 @@ The visible prop is used to manage the visibility of toast.
 
 ### Toast
 
-`Toast` composes the `div` component.
+`Toast` composes the `<div>` component.
 
 | Property | Description                    | Type                                                | Default |
 | -------- | ------------------------------ | --------------------------------------------------- | ------- |

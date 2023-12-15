@@ -93,11 +93,11 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#root)
 
-| Property   | Description                               | Type                       | Default   |
-| ---------- | ----------------------------------------- | -------------------------- | --------- |
-| size       | Size of the accordion component.          | `"sm"` or `"md"` or `"lg"` | `"md"`    |
-| variant    | Style variant of the accordion component. | `"solid"` or `"ghost"`     | `"solid"` |
-| isUnstyled | Removes style from whole component        | `boolean`                  | `false`   |
+| Property   | Description                                            | Type                       | Default   |
+| ---------- | ------------------------------------------------------ | -------------------------- | --------- |
+| size       | Size of the accordion component.                       | `"sm"` or `"md"` or `"lg"` | `"md"`    |
+| variant    | Style variant of the accordion component.              | `"solid"` or `"ghost"`     | `"solid"` |
+| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`   |
 
 ### AccordionItem
 
@@ -107,17 +107,17 @@ This component is built on top of [Radix Accordion Item](https://www.radix-ui.co
 
 This component is built on top of [Radix Accordion Trigger](https://www.radix-ui.com/primitives/docs/components/accordion#trigger)
 
-| Property   | Description                                       | Type          | Default |
-| ---------- | ------------------------------------------------- | ------------- | ------- |
-| openIcon   | Custom JSX element for the open state icon.       | `JSX.Element` | -       |
-| closeIcon  | Custom JSX element for the close state icon.      | `JSX.Element` | -       |
-| showIcon   | Determines whether to display the accordion icon. | `boolean`     | `true`  |
-| isUnstyled | Removes Style from a particular subcomponent      | `boolean`     | `false` |
+| Property   | Description                                                   | Type          | Default |
+| ---------- | ------------------------------------------------------------- | ------------- | ------- |
+| openIcon   | Custom JSX element for the open state icon.                   | `JSX.Element` | -       |
+| closeIcon  | Custom JSX element for the close state icon.                  | `JSX.Element` | -       |
+| showIcon   | Determine whether to display the default open and close icons | `boolean`     | `true`  |
+| isUnstyled | Remove style from this component                              | `boolean`     | `false` |
 
 ### AccordionContent
 
 This component is built on top of [Radix Accordion Content](https://www.radix-ui.com/primitives/docs/components/accordion#content)
 
-| Property   | Description                                  | Type      | Default |
-| ---------- | -------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from a particular subcomponent | `boolean` | -       |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

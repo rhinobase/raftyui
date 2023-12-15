@@ -38,8 +38,8 @@ import { Kbd } from "@rafty/ui";
 
 ### Kbd
 
-`Kbd` composes the `kbd` component.
+`Kbd` composes the `<kbd>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

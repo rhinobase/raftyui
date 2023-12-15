@@ -91,58 +91,58 @@ This component is built on top of [Radix Dialog](https://www.radix-ui.com/primit
 
 | Property   | Description                                               | Type                                 | Default |
 | ---------- | --------------------------------------------------------- | ------------------------------------ | ------- |
-| size       | Size of the dialog trigger component.                     | `"sm"` or `"md"` or `"lg"` or `"xl"` | `"md"`  |
+| size       | Size of the dialog component and its subcomponents.       | `"sm"` or `"md"` or `"lg"` or `"xl"` | `"md"`  |
 | isUnstyled | Removes style from whole component and its sub components | `boolean`                            | `false` |
 
 ### DialogTrigger
 
 This component is built on top of [Radix Dialog Trigger](https://www.radix-ui.com/primitives/docs/components/dialog#trigger)
 
-| Property    | Description                                  | Type                                                     | Default       |
-| ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
-| size        | Size of the dialog trigger component.        | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
-| variant     | Style variant of the component.              | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"`     |
-| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
-| leftIcon    | Custom JSX element for the left icon.        | `JSX.Element`                                            | -             |
-| rightIcon   | Custom JSX element for the right icon.       | `JSX.Element`                                            | -             |
-| isDisabled  | Whether the component is disabled.           | `boolean`                                                | `false`       |
-| isActive    | Whether the component is in an active state. | `boolean`                                                | `false`       |
-| isLoading   | Whether the component is in a loading state. | `boolean`                                                | `false`       |
-| isUnstyled  | Removes Style from component                 | `boolean`                                                | `false`       |
-| asChild     | Treats the component as a child element.     | `boolean`                                                | `false`       |
+| Property    | Description                              | Type                                                     | Default       |
+| ----------- | ---------------------------------------- | -------------------------------------------------------- | ------------- |
+| size        | Size of the dialog trigger component.    | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
+| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"`     |
+| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
+| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -             |
+| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -             |
+| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`       |
+| isActive    | To manage active state.                  | `boolean`                                                | `false`       |
+| isLoading   | To manage loading state.                 | `boolean`                                                | `false`       |
+| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`       |
+| asChild     | Treats the component as a child element. | `boolean`                                                | `false`       |
 
 ### DialogOverlay
 
 This component is built on top of [Radix Dialog Overlay](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### DialogContent
 
 This component is built on top of [Radix Dialog Content](https://www.radix-ui.com/primitives/docs/components/dialog#content)
 
-| Property        | Description                      | Type      | Default |
-| --------------- | -------------------------------- | --------- | ------- |
-| showCloseButton | show default dialog close button | `boolean` | `true`  |
-| isUnstyled      | Removes style from component     | `boolean` | `false` |
+| Property        | Description                         | Type      | Default |
+| --------------- | ----------------------------------- | --------- | ------- |
+| showCloseButton | To show default dialog close button | `boolean` | `true`  |
+| isUnstyled      | Remove style from this component    | `boolean` | `false` |
 
 ### DialogHeader
 
-`DialogHeader`composes `div` component
+`DialogHeader` composes `div` component
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### DialogFooter
 
-`DialogFooter`composes `div` component
+`DialogFooter` composes `div` component
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### DialogClose
 
@@ -152,14 +152,14 @@ This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/
 
 This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/primitives/docs/components/dialog#title)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### DialogDescription
 
 This component is built on top of [Radix Dialog Description](https://www.radix-ui.com/primitives/docs/components/dialog#description)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

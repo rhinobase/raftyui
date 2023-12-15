@@ -1,15 +1,15 @@
 ---
-title: Menu Bar
+title: Menubar
 nextjs:
   metadata:
-    title: Menu Bar
+    title: Menubar
     description: A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.
     twitter:
-      title: Menu Bar
+      title: Menubar
       images:
         url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
     openGraph:
-      title: Menu Bar
+      title: Menubar
       images:
         url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
 ---
@@ -91,10 +91,10 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 This component is built on top of [Radix Menubar](https://www.radix-ui.com/primitives/docs/components/menubar#root)
 
-| Property   | Description                                              | Type                       | Default |
-| ---------- | -------------------------------------------------------- | -------------------------- | ------- |
-| size       | Size of the menubar component.                           | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isUnstyled | Removes style from whole component and its subcomponents | `boolean`                  | `false` |
+| Property   | Description                                            | Type                       | Default |
+| ---------- | ------------------------------------------------------ | -------------------------- | ------- |
+| size       | Size of the menubar component and its subcomponent.    | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false` |
 
 ### MenubarMenu
 
@@ -104,47 +104,45 @@ This component is built on top of [Radix Menubar Menu](https://www.radix-ui.com/
 
 This component is built on top of [Radix Menubar Trigger](https://www.radix-ui.com/primitives/docs/components/menubar#trigger)
 
-`MenubarTrigger`composes `Button` component
-
-| Property    | Description                                  | Type                                                     | Default       |
-| ----------- | -------------------------------------------- | -------------------------------------------------------- | ------------- |
-| size        | Size of the menubar trigger component.       | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
-| variant     | Style variant of the component.              | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"`     |
-| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
-| leftIcon    | Custom JSX element for the left icon.        | `JSX.Element`                                            | -             |
-| rightIcon   | Custom JSX element for the right icon.       | `JSX.Element`                                            | -             |
-| isDisabled  | Whether the component is disabled.           | `boolean`                                                | `false`       |
-| isActive    | Whether the component is in an active state. | `boolean`                                                | `false`       |
-| isLoading   | Whether the component is in a loading state. | `boolean`                                                | `false`       |
-| isUnstyled  | Removes Style from component                 | `boolean`                                                | `false`       |
-| asChild     | Treats the component as a child element.     | `boolean`                                                | `false`       |
+| Property    | Description                              | Type                                                     | Default       |
+| ----------- | ---------------------------------------- | -------------------------------------------------------- | ------------- |
+| size        | Size of the menubar trigger component.   | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
+| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"solid"`     |
+| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
+| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -             |
+| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -             |
+| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`       |
+| isActive    | To manage active state.                  | `boolean`                                                | `false`       |
+| isLoading   | To manage loading state.                 | `boolean`                                                | `false`       |
+| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`       |
+| asChild     | Treats the component as a child element. | `boolean`                                                | `false`       |
 
 ### MenubarContent
 
 This component is built on top of [Radix Menubar Content](https://www.radix-ui.com/primitives/docs/components/menubar#content)
 
-| Property   | Description                          | Type      | Default |
-| ---------- | ------------------------------------ | --------- | ------- |
-| sideOffset | Horizontal offset for the component. | `number`  | `5`     |
-| isUnstyled | Removes style from component         | `boolean` | `false` |
+| Property   | Description                              | Type      | Default |
+| ---------- | ---------------------------------------- | --------- | ------- |
+| sideOffset | Side offset of the content from trigger. | `number`  | `5`     |
+| isUnstyled | Remove style from this component         | `boolean` | `false` |
 
 ### MenubarItem
 
 This component is built on top of [Radix Menubar Item](https://www.radix-ui.com/primitives/docs/components/menubar#item)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### MenubarLabel
 
 This component is built on top of [Radix Menubar Label](https://www.radix-ui.com/primitives/docs/components/menubar#label)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
-### MenubarCheckboxGroup
+### MenubarGroup
 
 This component is built on top of [Radix Menubar Group](https://www.radix-ui.com/primitives/docs/components/menubar#group)
 
@@ -152,9 +150,9 @@ This component is built on top of [Radix Menubar Group](https://www.radix-ui.com
 
 This component is built on top of [Radix Menubar Checkbox Item](https://www.radix-ui.com/primitives/docs/components/menubar#checkboxitem)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### MenubarRadioGroup
 
@@ -164,9 +162,9 @@ This component is built on top of [Radix Menubar Radio Group](https://www.radix-
 
 This component is built on top of [Radix Menubar Radio Item](https://www.radix-ui.com/primitives/docs/components/menubar#radioitem)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### MenubarSub
 
@@ -176,24 +174,22 @@ This component is built on top of [Radix Menubar Sub](https://www.radix-ui.com/p
 
 This component is built on top of [Radix Menubar Separator](https://www.radix-ui.com/primitives/docs/components/menubar#separator)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### MenubarSubTrigger
 
 This component is built on top of [Radix Menubar Sub Trigger](https://www.radix-ui.com/primitives/docs/components/menubar#subtrigger)
 
-`MenubarSubTrigger`composes `Button` component
-
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### MenubarSubContent
 
 This component is built on top of [Radix Menubar Sub Content](https://www.radix-ui.com/primitives/docs/components/menubar#subcontent)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

@@ -48,7 +48,7 @@ There are 5 `colorScheme` options available: `primary`, `secondary` (default), `
 
 ### Tag
 
-`Tag` composes the `div` component.
+`Tag` composes the `<div>` component.
 
 | Property    | Description                    | Type                                                                    | Default       |
 | ----------- | ------------------------------ | ----------------------------------------------------------------------- | ------------- |

@@ -38,4 +38,4 @@ import { Calendar } from "@rafty/ui";
 
 ### Calendar
 
-`Calendar` composes the `react-day-picker` component.
+`Calendar` component is built on top of [React Day Picker](https://react-day-picker.js.org/)

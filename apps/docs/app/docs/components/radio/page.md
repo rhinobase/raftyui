@@ -58,11 +58,10 @@ Pass the `isDisabled` prop if you need to disable the radio-group and its sub co
 
 This component is built on top of [Radix Radio Group](https://www.radix-ui.com/primitives/docs/components/radio-group#root)
 
-| Property   | Description                                 | Type                       | Default |
-| ---------- | ------------------------------------------- | -------------------------- | ------- |
-| size       | Size of the alert dialog trigger component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isDisabled | Whether the component is disabled.          | `boolean`                  | `false` |
-| disabled   | Additional way to specify disabled state.   | `boolean`                  | -       |
+| Property   | Description                                              | Type                       | Default |
+| ---------- | -------------------------------------------------------- | -------------------------- | ------- |
+| size       | Size of the radio group component and its subcomponents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isDisabled | To manage disabled state.                                | `boolean`                  | `false` |
 
 ### RadioGroupItem
 

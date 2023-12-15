@@ -64,40 +64,8 @@ import {
 
 ### Command
 
-`Command` composes the `cmdk` component.
+`Command` component is build upon [Cmdk](https://cmdk.paco.me/) and you can refer their documentation for more props
 
 ### CommandDialog
 
-`CommandDialog` composes the `cmdk` component.
-
-### CommandInput
-
-`CommandInput` composes the `cmdk` component.
-
-### CommandList
-
-`CommandList` composes the `cmdk` component.
-
-### CommandLoading
-
-`CommandLoading` composes the `cmdk` component.
-
-### CommandEmpty
-
-`CommandEmpty` composes the `cmdk` component.
-
-### CommandGroup
-
-`CommandGroup` composes the `cmdk` component.
-
-### CommandSeparator
-
-`CommandSeparator` composes the `cmdk` component.
-
-### CommandItem
-
-`CommandItem` composes the `cmdk` component.
-
-### CommandShortcut
-
-`CommandShortcut` composes the `cmdk` component.
+`CommandDialog` is made using [Dialog](https://rafty.rhinobase.io/docs/components/dialog)

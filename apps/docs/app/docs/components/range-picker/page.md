@@ -38,4 +38,8 @@ import { RangePicker } from "@rafty/ui";
 
 ### RangePicker
 
-`RangePicker` composes the `react-day-picker` component.
+`RangePicker` component is built on top of [React Day Picker](https://react-day-picker.js.org/)
+
+| Property | Description | Type | Default |
+| -------- | ----------- | ---- | ------- |
+| onSelect |             |      |         |

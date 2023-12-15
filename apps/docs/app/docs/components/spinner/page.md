@@ -48,9 +48,9 @@ InheritParent prop lets spinner inherit color props from its parent element when
 
 ### Spinner
 
-`Spinner` composes the `svg` component.
+`Spinner` composes the `<svg>` component.
 
-| Property      | Description                                 | Type                       | Default |
-| ------------- | ------------------------------------------- | -------------------------- | ------- |
-| size          | Size of the alert dialog trigger component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| inheritParent | Inherits style from the parent component.   | `boolean`                  | `false` |
+| Property      | Description                               | Type                       | Default |
+| ------------- | ----------------------------------------- | -------------------------- | ------- |
+| size          | Size of the spinner component.            | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| inheritParent | Inherits style from the parent component. | `boolean`                  | `false` |

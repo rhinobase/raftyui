@@ -72,7 +72,7 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 ### Alert
 
-`Alert` composes the `div` component.
+`Alert` composes the `<div>` component.
 
 | Property   | Description                           | Type                                                         | Default    |
 | ---------- | ------------------------------------- | ------------------------------------------------------------ | ---------- |
@@ -83,24 +83,24 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 ### AlertIcon
 
-`AlertIcon` composes the `svg` component.
+`AlertIcon` composes the `<svg>` component.
 
-| Property   | Description                                    | Type      | Default |
-| ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | `false` |
+| Property   | Description                       | Type      | Default |
+| ---------- | --------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component. | `boolean` | `false` |
 
 ### AlertTitle
 
-`AlertIcon` composes the `h5` component.
+`AlertTitle` composes the `<h5>` component.
 
-| Property   | Description                                    | Type      | Default |
-| ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | `false` |
+| Property   | Description                       | Type      | Default |
+| ---------- | --------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component. | `boolean` | `false` |
 
 ### AlertDescription
 
-`AlertIcon` composes the `p` component.
+`AlertDescription` composes the `<p>` component.
 
-| Property   | Description                                    | Type      | Default |
-| ---------- | ---------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component and sub-component | `boolean` | `false` |
+| Property   | Description                       | Type      | Default |
+| ---------- | --------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component. | `boolean` | `false` |

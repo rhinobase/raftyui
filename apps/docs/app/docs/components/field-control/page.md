@@ -86,15 +86,15 @@ ErrorMessage component will display an error message when there is an error duri
 
 `FieldControl` composes the `div` component.
 
-| Property    | Description                                   | Type                                  | Default |
-| ----------- | --------------------------------------------- | ------------------------------------- | ------- |
-| isDisabled  | Whether the component is disabled.            | `boolean`                             | `false` |
-| isLoading   | Whether the component is in a loading state.  | `boolean`                             | `false` |
-| isReadOnly  | Whether the component is in read-only mode.   | `boolean`                             | `false` |
-| isInvalid   | Whether the component is in an invalid state. | `boolean`                             | `false` |
-| isRequired  | Whether the component is required.            | `boolean`                             | `false` |
-| orientation | Orientation of the component.                 | `"col" `or `"row"` or `"row-reverse"` | `col`   |
-| name        | Name of the component.                        | `string`                              | -       |
+| Property    | Description                   | Type                                  | Default |
+| ----------- | ----------------------------- | ------------------------------------- | ------- |
+| isDisabled  | To manage disabled state.     | `boolean`                             | `false` |
+| isLoading   | To manage loading state.      | `boolean`                             | `false` |
+| isReadOnly  | To manage read-only state.    | `boolean`                             | `false` |
+| isInvalid   | To manage invalid state.      | `boolean`                             | `false` |
+| isRequired  | To manage required state.     | `boolean`                             | `false` |
+| orientation | Orientation of the component. | `"col" `or `"row"` or `"row-reverse"` | `col`   |
+| name        | Name of the field.            | `string`                              | -       |
 
 ### ErrorMessage
 

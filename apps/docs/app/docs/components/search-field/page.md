@@ -50,7 +50,7 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 ### SearchField
 
-`SearchField` composes the `InputField` component.
+`SearchField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
 | Property | Description                                  | Type                                        | Default |
 | -------- | -------------------------------------------- | ------------------------------------------- | ------- |

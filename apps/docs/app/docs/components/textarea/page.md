@@ -52,15 +52,15 @@ Pass `isDisabled` prop to put textarea in disabled state.
 
 ### Textarea
 
-`Textarea` composes the `textarea` component.
+`Textarea` composes the `<textarea>` component.
 
-| Property   | Description                                            | Type                                  | Default     |
-| ---------- | ------------------------------------------------------ | ------------------------------------- | ----------- |
-| size       | Size of the textarea component.                        | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
-| variant    | Style variant of the component.                        | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
-| isDisabled | whether the component is disabled.                     | `boolean`                             | `false`     |
-| isLoading  | whether the component is in a loading state.           | `boolean`                             | `false`     |
-| isRequired | Whether the textarea component is required.            | `boolean`                             | `false`     |
-| isReadOnly | Whether the textarea component is read-only.           | `boolean`                             | `false`     |
-| isInvalid  | Whether the textarea component is in an invalid state. | `boolean`                             | `false`     |
-| isUnstyled | Removes Style from component                           | `boolean`                             | `false`     |
+| Property   | Description                      | Type                                  | Default     |
+| ---------- | -------------------------------- | ------------------------------------- | ----------- |
+| size       | Size of the textarea component.  | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
+| variant    | Style variant of the component.  | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
+| isDisabled | To manage disabled state.        | `boolean`                             | `false`     |
+| isLoading  | To manage loading state.         | `boolean`                             | `false`     |
+| isRequired | To manage required state.        | `boolean`                             | `false`     |
+| isReadOnly | To manage read-only state.       | `boolean`                             | `false`     |
+| isInvalid  | To manage invalid state.         | `boolean`                             | `false`     |
+| isUnstyled | Remove style from this component | `boolean`                             | `false`     |

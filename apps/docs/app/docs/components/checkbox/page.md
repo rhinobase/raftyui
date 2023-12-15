@@ -72,9 +72,9 @@ There are 3 `size` options in checkbox: `sm`, `md` (default) & `lg`.
 
 This component is built on top of [Radix Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox#root)
 
-| Property   | Description                                 | Type                       | Default |
-| ---------- | ------------------------------------------- | -------------------------- | ------- |
-| size       | Size of the alert dialog trigger component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isReadOnly | Whether the component is in read-only mode. | `boolean`                  | `false` |
-| isDisabled | Whether the component is disabled.          | `boolean`                  | `false` |
-| isRequired | Whether the component is required.          | `boolean`                  | `false` |
+| Property   | Description                     | Type                       | Default |
+| ---------- | ------------------------------- | -------------------------- | ------- |
+| size       | Size of the checkbox component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isReadOnly | To manage read-only state.      | `boolean`                  | `false` |
+| isDisabled | To manage disabled state.       | `boolean`                  | `false` |
+| isRequired | To manage required state.       | `boolean`                  | `false` |

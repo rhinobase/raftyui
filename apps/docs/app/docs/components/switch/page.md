@@ -73,7 +73,7 @@ This component is built on top of [Radix Switch](https://www.radix-ui.com/primit
 | Property       | Description                            | Type                       | Default |
 | -------------- | -------------------------------------- | -------------------------- | ------- |
 | size           | Size of the switch component.          | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isDisabled     | Whether the component is disabled.     | `boolean`                  | `false` |
+| isDisabled     | To manage disabled state.              | `boolean`                  | `false` |
 | defaultChecked | Initial state of the switch component. | `boolean`                  | `false` |
-| isRequired     | Whether the component is required.     | `boolean`                  | `false` |
-| isReadOnly     | Whether the component is read-only.    | `boolean`                  | `false` |
+| isRequired     | To manage required state.              | `boolean`                  | `false` |
+| isReadOnly     | To manage read-only state.             | `boolean`                  | `false` |

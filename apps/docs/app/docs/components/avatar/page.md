@@ -54,16 +54,19 @@ There are 3 `size` options in Avatar Component: `sm`, `md` (default) & `lg`.
 
 ### Avatar
 
-`Avatar` composes the `div` component.
+`Avatar` composes the `<div>` component.
 
-| Property | Description                   | Type                       | Default |
-| -------- | ----------------------------- | -------------------------- | ------- |
-| size     | Size of the avatar component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| Property | Description                           | Type                       | Default |
+| -------- | ------------------------------------- | -------------------------- | ------- |
+| name     | User name or initials for the avatar. | `string`                   | -       |
+| src      | URL of the image for the avatar.      | `string`                   | -       |
+| size     | Size of the avatar component.         | `"sm"` or `"md"` or `"lg"` | `"md"`  |
 
 ### Avatar Group
 
-`Avatar Group` composes the `div` component.
+`Avatar Group` composes the `<div>` component.
 
-| Property | Description                   | Type                       | Default |
-| -------- | ----------------------------- | -------------------------- | ------- |
-| size     | Size of the avatar component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| Property | Description                                          | Type                       | Default |
+| -------- | ---------------------------------------------------- | -------------------------- | ------- |
+| max      | Maximum number of avatars to display                 | `number`                   | -       |
+| size     | Size of avatar group component and its subcomponents | `"sm"` or `"md"` or `"lg"` | `"md"`  |

@@ -1,8 +1,13 @@
 "use client";
+import { Skeleton } from "@rafty/ui";
 import dynamic from "next/dynamic";
 import { ReactNode } from "react";
 
-const SandpackEmbed = dynamic(() => import("../SandpackEmbed"));
+const SandpackEmbed = dynamic(() => import("../SandpackEmbed"), {
+  loading: () => (
+    <Skeleton className="h-[700px] w-full rounded-sm lg:h-[350px]" />
+  ),
+});
 
 // // Examples
 // import { accordion_examples } from "./accordion";

@@ -47,7 +47,7 @@ export default function SandpackEmbed({
       }}
     >
       <SandpackLayout
-        className="flex-col-reverse md:flex-row"
+        className="flex-col-reverse !rounded-xl lg:flex-row"
         {...layoutOptions}
       >
         <SandpackCodeEditor

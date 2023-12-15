@@ -37,4 +37,4 @@ Text takes tailwind css classes in className and inline css can also be passed u
 
 ### Text
 
-`Text` composes the `p` component.
+`Text` composes the `<p>` component.

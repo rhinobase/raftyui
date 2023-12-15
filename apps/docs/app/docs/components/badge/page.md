@@ -46,7 +46,7 @@ There are 3 `size` options available: `sm`, `md` (default) & `lg`
 
 ### Badge
 
-`Badge` composes the `div` component.
+`Badge` composes the `<div>` component.
 
 | Property | Description                    | Type                                                                 | Default       |
 | -------- | ------------------------------ | -------------------------------------------------------------------- | ------------- |

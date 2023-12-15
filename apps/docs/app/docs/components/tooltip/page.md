@@ -54,5 +54,5 @@ This component is built on top of [Radix Tooltip Content](https://www.radix-ui.c
 | Property     | Description                                                | Type      | Default |
 | ------------ | ---------------------------------------------------------- | --------- | ------- |
 | hasAnimation | Determines whether the tooltip has animation.              | `boolean` | `true`  |
-| sideOffset   | Horizontal offset for the tooltip.                         | `boolean` | `4`     |
+| sideOffset   | Side offset of the content from trigger.                   | `boolean` | `4`     |
 | isArrow      | Indicates whether to show an arrow in the tooltip content. | `boolean` | `true`  |

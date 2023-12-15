@@ -104,13 +104,13 @@ Pass ` isUnstyled` prop to remove style component
 
 `InputField` composes the `input` component.
 
-| Property   | Description                                   | Type                                  | Default     |
-| ---------- | --------------------------------------------- | ------------------------------------- | ----------- |
-| size       | Size of the alert dialog trigger component.   | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
-| variant    | Style variant of the component.               | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
-| isDisabled | Whether the component is disabled.            | `boolean`                             | `false`     |
-| isRequired | Whether the component is required.            | `boolean`                             | `false`     |
-| isLoading  | Whether the component is in a loading state.  | `boolean`                             | `false`     |
-| isReadOnly | Whether the component is in read-only mode.   | `boolean`                             | `false`     |
-| isUnstyled | Removes Style from component                  | `boolean`                             | `false`     |
-| isInvalid  | Whether the component is in an invalid state. | `boolean`                             | `false`     |
+| Property   | Description                        | Type                                  | Default     |
+| ---------- | ---------------------------------- | ------------------------------------- | ----------- |
+| size       | Size of the input field component. | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
+| variant    | Style variant of the component.    | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
+| isDisabled | To manage disabled state.          | `boolean`                             | `false`     |
+| isRequired | To manage required state.          | `boolean`                             | `false`     |
+| isLoading  | To manage loading state.           | `boolean`                             | `false`     |
+| isReadOnly | To manage read-only state.         | `boolean`                             | `false`     |
+| isUnstyled | Remove style from this component   | `boolean`                             | `false`     |
+| isInvalid  | To manage invalid state.           | `boolean`                             | `false`     |

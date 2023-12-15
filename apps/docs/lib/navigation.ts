@@ -84,7 +84,7 @@ export const navigation = [
         href: "/docs/components/menu",
       },
       {
-        title: "Menu Bar",
+        title: "Menubar",
         href: "/docs/components/menubar",
       },
       {

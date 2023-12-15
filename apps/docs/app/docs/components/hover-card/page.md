@@ -51,7 +51,7 @@ This component is built on top of [Radix Hover Card Trigger](https://www.radix-u
 
 This component is built on top of [Radix Hover Card Content](https://www.radix-ui.com/primitives/docs/components/hover-card#content)
 
-| Property   | Description                          | Type                               | Default    |
-| ---------- | ------------------------------------ | ---------------------------------- | ---------- |
-| align      | Alignment of the component.          | `"center"` or `"start"` or `"end"` | `"center"` |
-| sideOffset | Horizontal offset for the component. | `number`                           | `4`        |
+| Property   | Description                              | Type                               | Default    |
+| ---------- | ---------------------------------------- | ---------------------------------- | ---------- |
+| align      | Alignment of the component.              | `"center"` or `"start"` or `"end"` | `"center"` |
+| sideOffset | Side offset of the content from trigger. | `number`                           | `4`        |

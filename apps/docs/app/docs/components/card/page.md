@@ -60,34 +60,34 @@ Pass `isUnstyled` prop in parent component to remove style in Card.
 
 ### Card
 
-`Card` composes the `div` component.
+`Card` composes the `<div>` component.
 
-| Property   | Description                                               | Type                        | Default   |
-| ---------- | --------------------------------------------------------- | --------------------------- | --------- |
-| size       | Size of the Card component.                               | `"sm"` or `"md"` or `"lg"`  | `"md"`    |
-| variant    | Style variant of the component.                           | `"outline"` or `"elevated"` | `"ghost"` |
-| isUnstyled | Removes style from whole component and its sub components | `boolean`                   | `false`   |
+| Property   | Description                                               | Type                        | Default     |
+| ---------- | --------------------------------------------------------- | --------------------------- | ----------- |
+| size       | Size of the Card component.                               | `"sm"` or `"md"` or `"lg"`  | `"md"`      |
+| variant    | Style variant of the component.                           | `"outline"` or `"elevated"` | `"outline"` |
+| isUnstyled | Removes style from whole component and its sub components | `boolean`                   | `false`     |
 
 ### CardHeader
 
-`CardHeader` composes the `div` component.
+`CardHeader` composes the `<div>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### CardContent
 
-`CardContent` composes the `div` component.
+`CardContent` composes the `<div>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### CardFooter
 
-`CardFooter` composes the `div` component.
+`CardFooter` composes the `<div>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

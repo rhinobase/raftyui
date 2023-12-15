@@ -132,10 +132,10 @@ return (
 
 This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#root)
 
-| Property | Description                           | Type                                   | Default   |
-| -------- | ------------------------------------- | -------------------------------------- | --------- |
-| size     | Size of the drawer trigger component. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`    |
-| side     | Side from which the drawer triggers.  | `"right"` or `"left"`                  | `"right"` |
+| Property | Description                                         | Type                                   | Default   |
+| -------- | --------------------------------------------------- | -------------------------------------- | --------- |
+| size     | Size of the drawer component and its subcomponents. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`    |
+| side     | Side from which drawer enters in screen.            | `"right"` or `"left"`                  | `"right"` |
 
 ### DrawerOverlay
 
@@ -153,15 +153,15 @@ This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/
 
 This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close)
 
-| Property    | Description                                  | Type                                                     | Default   |
-| ----------- | -------------------------------------------- | -------------------------------------------------------- | --------- |
-| size        | Size of the drawer close component.          | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"icon"`  |
-| variant     | Style variant of the component.              | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"` |
-| colorScheme | Color scheme of the component.               | `"primary"` or `"secondary"` or `"error"` or `"success"` | -         |
-| leftIcon    | Custom JSX element for the left icon.        | `JSX.Element`                                            | -         |
-| rightIcon   | Custom JSX element for the right icon.       | `JSX.Element`                                            | -         |
-| isDisabled  | Whether the component is disabled.           | `boolean`                                                | `false`   |
-| isActive    | Whether the component is in an active state. | `boolean`                                                | `false`   |
-| isLoading   | Whether the component is in a loading state. | `boolean`                                                | `false`   |
-| isUnstyled  | Removes Style from component                 | `boolean`                                                | `false`   |
-| asChild     | Treats the component as a child element.     | `boolean`                                                | -         |
+| Property    | Description                              | Type                                                     | Default   |
+| ----------- | ---------------------------------------- | -------------------------------------------------------- | --------- |
+| size        | Size of the drawer close component.      | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"icon"`  |
+| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"` |
+| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | -         |
+| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -         |
+| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -         |
+| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`   |
+| isActive    | To manage active state.                  | `boolean`                                                | `false`   |
+| isLoading   | To manage loading state.                 | `boolean`                                                | `false`   |
+| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`   |
+| asChild     | Treats the component as a child element. | `boolean`                                                | -         |

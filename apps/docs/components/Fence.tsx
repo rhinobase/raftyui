@@ -1,8 +1,10 @@
 "use client";
+import { Skeleton } from "@rafty/ui";
 import dynamic from "next/dynamic";
 
-const CodeBlock = dynamic(() =>
-  import("./CodeBlock").then((mod) => mod.CodeBlock),
+const CodeBlock = dynamic(
+  () => import("./CodeBlock").then((mod) => mod.CodeBlock),
+  { loading: () => <Skeleton className="-mt-2 h-[400px] w-full rounded-xl" /> },
 );
 
 export type Fence = {

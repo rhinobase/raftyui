@@ -50,7 +50,7 @@ The type prop is used to define type of stat, it has 3 options: `increase`, `dec
 
 ### Stat
 
-`Stat` composes the `div` component.
+`Stat` composes the `<div>` component.
 
 | Property | Description                 | Type                                       | Default    |
 | -------- | --------------------------- | ------------------------------------------ | ---------- |
@@ -58,19 +58,19 @@ The type prop is used to define type of stat, it has 3 options: `increase`, `dec
 
 ### StatLabel
 
-`StatLabel` composes the `div` component.
+`StatLabel` composes the `<div>` component.
 
 ### StatValue
 
-`StatValue` composes the `div` component.
+`StatValue` composes the `<div>` component.
 
 ### StatHelpText
 
-`StatHelpText` composes the `div` component.
+`StatHelpText` composes the `<div>` component.
 
 ### StatIcon
 
-`StatIcon` composes the `svg` component.
+`StatIcon` composes the `<svg>` component.
 
 | Property | Description                             | Type     | Default |
 | -------- | --------------------------------------- | -------- | ------- |

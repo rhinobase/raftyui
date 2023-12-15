@@ -36,7 +36,7 @@ import { TagField } from "@rafty/ui";
 
 ### TagField
 
-`TagField` composes the `div` component.
+`TagField` composes the `<div>` component.
 
 | Property    | Description                                     | Type                       | Default |
 | ----------- | ----------------------------------------------- | -------------------------- | ------- |

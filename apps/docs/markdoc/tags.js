@@ -1,5 +1,6 @@
 import { Callout } from "../components/Callout";
 import { Examples } from "../components/Examples";
+import { InfoButton } from "../components/InfoButton";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
 
 const tags = {
@@ -48,6 +49,13 @@ const tags = {
       description: { type: String },
       icon: { type: String },
       href: { type: String },
+    },
+  },
+  info: {
+    render: InfoButton,
+    attributes: {
+      type: { type: String, default: "function" },
+      children: { type: String, default: "" },
     },
   },
 };

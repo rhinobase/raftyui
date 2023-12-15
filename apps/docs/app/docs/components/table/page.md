@@ -82,62 +82,62 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 ### TableContainer
 
-`TableContainer` composes the `div` component.
+`TableContainer` composes the `<div>` component.
 
 ### Table
 
-`Table` composes the `table` component.
+`Table` composes the `<table>` component.
 
-| Property   | Description                                              | Type                       | Default  |
-| ---------- | -------------------------------------------------------- | -------------------------- | -------- |
-| size       | Size of the switch component.                            | `"sm"` or `"md"` or `"lg"` | `"md"`   |
-| variant    | Style variant of the component.                          | `simple` or `striped`      | `simple` |
-| isUnstyled | Removes style from whole component and its subcomponents | `boolean`                  | `false`  |
+| Property   | Description                                            | Type                       | Default  |
+| ---------- | ------------------------------------------------------ | -------------------------- | -------- |
+| size       | Size of the table component.                           | `"sm"` or `"md"` or `"lg"` | `"md"`   |
+| variant    | Style variant of the component.                        | `simple` or `striped`      | `simple` |
+| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`  |
 
 ### TableHead
 
-`TableHead` composes the `thead` component.
+`TableHead` composes the `<thead>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### TableBody
 
-`TableHead` composes the `tbody` component.
+`TableHead` composes the `<tbody>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### Td
 
-`Td` composes the `td` component.
+`Td` composes the `<td>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### Th
 
-`Th` composes the `th` component.
+`Th` composes the `<th>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### Tr
 
-`Tr` composes the `tr` component.
+`Tr` composes the `<tr>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### TableFooter
 
-`TableFooter` composes the `tfoot` component.
+`TableFooter` composes the `<tfoot>` component.
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` | `false` |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

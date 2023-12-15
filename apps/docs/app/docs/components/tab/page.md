@@ -82,33 +82,33 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitives/docs/components/tabs#root)
 
-| Properties  | Description                                             | Type                       | Default      |
-| ----------- | ------------------------------------------------------- | -------------------------- | ------------ |
-| size        | Size of the tab component.                              | `"sm"` or `"md"` or `"lg"` | `"md"`       |
-| isUnstyled  | Removes style from whole component and its subcomponent | boolean                    | `false`      |
-| orientation | Orientation of the component.                           | `horizontal` or `vertical` | `horizontal` |
-| variant     | Style variant of the component.                         | `line` or `enclosed`       | `line`       |
+| Properties  | Description                                            | Type                       | Default      |
+| ----------- | ------------------------------------------------------ | -------------------------- | ------------ |
+| size        | Size of the tab component and its subcomonents.        | `"sm"` or `"md"` or `"lg"` | `"md"`       |
+| isUnstyled  | Remove style from this component and its subcomponents | `boolean`                  | `false`      |
+| orientation | Orientation of the component.                          | `horizontal` or `vertical` | `horizontal` |
+| variant     | Style variant of the component.                        | `line` or `enclosed`       | `line`       |
 
 ### TabList
 
 This component is built on top of [Radix Tabs List](https://www.radix-ui.com/primitives/docs/components/tabs#list)
 
-| Properties | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Properties | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### TabTrigger
 
 This component is built on top of [Radix Tabs Trigger](https://www.radix-ui.com/primitives/docs/components/tabs#trigger)
 
-| Properties | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Properties | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
 ### TabContent
 
 This component is built on top of [Radix Tabs Content](https://www.radix-ui.com/primitives/docs/components/tabs#content)
 
-| Properties | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+| Properties | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

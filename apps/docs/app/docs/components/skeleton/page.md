@@ -38,4 +38,4 @@ You can set height and width of a skeleton by passing values in className prop.
 
 ### Skeleton
 
-`Skeleton` composes the `div` component.
+`Skeleton` composes the `<div>` component.

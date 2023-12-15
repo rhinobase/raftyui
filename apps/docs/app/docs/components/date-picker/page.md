@@ -38,4 +38,4 @@ import { DatePicker } from "@rafty/ui";
 
 ### DatePicker
 
-`DatePicker` composes the `react-day-picker` component.
+`DatePicker` component is built on top of [React Day Picker](https://react-day-picker.js.org/)
