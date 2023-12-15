@@ -12,7 +12,7 @@ import {
 
 // RadioGroup Component
 export const radioGroupClasses = cva(
-  "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
+  "flex flex-col disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       size: {
@@ -27,31 +27,27 @@ export const radioGroupClasses = cva(
   },
 );
 
-export type RadioGroup = ComponentPropsWithoutRef<
-  typeof RadioGroupPrimitive.Root
+export type RadioGroup = Omit<
+  ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
+  "disabled"
 > &
   Partial<RadioGroupContext>;
 
 export const RadioGroup = forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
->(
-  (
-    { className, size = "md", isDisabled = false, disabled, ...props },
-    forwardedRef,
-  ) => {
-    return (
-      <RadioGroupProvider value={{ size, isDisabled }}>
-        <RadioGroupPrimitive.Root
-          {...props}
-          disabled={isDisabled || disabled}
-          className={classNames(radioGroupClasses({ size }), className)}
-          ref={forwardedRef}
-        />
-      </RadioGroupProvider>
-    );
-  },
-);
+>(({ className, size = "md", isDisabled = false, ...props }, forwardedRef) => {
+  return (
+    <RadioGroupProvider value={{ size, isDisabled }}>
+      <RadioGroupPrimitive.Root
+        {...props}
+        disabled={isDisabled}
+        className={classNames(radioGroupClasses({ size }), className)}
+        ref={forwardedRef}
+      />
+    </RadioGroupProvider>
+  );
+});
 RadioGroup.displayName = "RadioGroup";
 
 // RadioGroupItem Component

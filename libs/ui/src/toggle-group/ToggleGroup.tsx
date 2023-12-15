@@ -10,9 +10,7 @@ import {
 } from "./context";
 
 // ToggleGroup Component
-export type ToggleGroup = ComponentProps<
-  (typeof ToggleGroupPrimitive)["Root"]
-> &
+export type ToggleGroup = ComponentProps<typeof ToggleGroupPrimitive.Root> &
   Partial<ToggleGroupContext>;
 
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
@@ -62,7 +60,7 @@ export const toggleGroupItemClasses = cva(
 );
 
 export type ToggleGroupItem = ComponentProps<
-  (typeof ToggleGroupPrimitive)["Item"]
+  typeof ToggleGroupPrimitive.Item
 > & { isUnstyled?: boolean };
 
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(

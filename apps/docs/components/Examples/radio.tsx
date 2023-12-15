@@ -41,7 +41,7 @@ export const radio_examples = {
     </RadioGroup>
   ),
   "radio:disabled": (
-    <RadioGroup defaultValue="1" disabled>
+    <RadioGroup defaultValue="1" isDisabled>
       <RadioGroupItem value="1" id="10">
         Radio 1
       </RadioGroupItem>

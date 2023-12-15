@@ -261,8 +261,8 @@ export const MenubarItem = forwardRef<
 MenubarItem.displayName = "MenubarItem";
 
 //MenuBar ChechboxGroup Component
-export const MenubarCheckboxGroup = MenubarPrimitive.Group;
-MenubarCheckboxGroup.displayName = "MenubarCheckboxGroup";
+export const MenubarGroup = MenubarPrimitive.Group;
+MenubarGroup.displayName = "MenubarGroup";
 
 //Menubar CheckboxItem Component
 export const menubarCheckboxItemClasses = cva(

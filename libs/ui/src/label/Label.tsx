@@ -10,18 +10,18 @@ export type Label = ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & {
 };
 
 export const Label = forwardRef<ElementRef<typeof LabelPrimitive.Root>, Label>(
-  (
-    { children, className, isRequired: isReq, htmlFor, ...props },
-    forwardedRef,
-  ) => {
-    const { name, isRequired } = useFieldControlContext() ?? {};
+  ({ children, className, isRequired, htmlFor, ...props }, forwardedRef) => {
+    const { name, isRequired: isParentRequired } =
+      useFieldControlContext() ?? {};
+
+    const required = isRequired || isParentRequired;
 
     return (
       <LabelPrimitive.Root
         {...props}
         htmlFor={htmlFor ?? name}
         className={classNames(
-          (isReq || isRequired) &&
+          required &&
             "after:ml-0.5 after:text-red-500 after:content-['*'] after:dark:text-red-400",
           "text-secondary-800 dark:text-secondary-200 select-none text-sm font-medium",
           className,

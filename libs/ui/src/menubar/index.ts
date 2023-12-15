@@ -1,6 +1,6 @@
 export {
   Menubar,
-  MenubarCheckboxGroup,
+  MenubarGroup,
   MenubarCheckboxItem,
   MenubarContent,
   MenubarItem,
