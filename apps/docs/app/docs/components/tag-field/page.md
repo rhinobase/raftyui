@@ -38,7 +38,7 @@ import { TagField } from "@rafty/ui";
 
 `TagField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
-| Property    | Description                                     | Type                       | Default |
-| ----------- | ----------------------------------------------- | -------------------------- | ------- |
-| initialData | Initial set of tags for the TagField component. | `string[]`                 | -       |
-| onChange    | Callback function invoked on tag changes.       | `(tags: string[]) => void` | -       |
+| Property    | Description                                     | Type                                          | Default |
+| ----------- | ----------------------------------------------- | --------------------------------------------- | ------- |
+| initialData | Initial set of tags for the TagField component. | `string[]`                                    | -       |
+| onChange    | Callback function invoked on tag changes.       | {% info %}(tags: string[]) => void{% /info %} | -       |

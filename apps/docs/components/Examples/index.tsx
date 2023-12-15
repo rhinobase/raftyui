@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 const SandpackEmbed = dynamic(() => import("../SandpackEmbed"), {
   loading: () => (
-    <Skeleton className="h-[700px] w-full rounded-sm lg:h-[350px]" />
+    <Skeleton className="h-[700px] w-full rounded-xl lg:h-[350px]" />
   ),
 });
 
