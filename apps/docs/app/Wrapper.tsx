@@ -129,7 +129,7 @@ export function Wrapper({ children }: PropsWithChildren) {
           setSearchOpen={setSearchOpen}
         />
         {isHomePage && <Hero />}
-        <main className="max-w-8xl relative mx-auto flex w-full flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+        <main className="relative flex w-full flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
           {component}
         </main>
       </div>
