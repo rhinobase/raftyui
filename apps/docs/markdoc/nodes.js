@@ -1,8 +1,7 @@
 import { nodes as defaultNodes, Tag } from "@markdoc/markdoc";
+import { Kbd } from "@rafty/ui";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import yaml from "js-yaml";
-
-import { Kbd } from "@rafty/ui";
 import { DocsLayout } from "../components/DocsLayout";
 import { Fence } from "../components/Fence";
 
