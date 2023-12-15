@@ -35,7 +35,7 @@ const tags = {
     render: Examples,
     attributes: {
       name: { type: String },
-      children: { type: String, default: "" },
+      children: { type: String },
     },
   },
   "quick-links": {

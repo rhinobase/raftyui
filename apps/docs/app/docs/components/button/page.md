@@ -32,7 +32,17 @@ import { Button } from "@rafty/ui";
 
 By default, it is a medium sized secondary solid button with hover effects and focus ring..
 
-{% example name="button:usage" /%}
+{% example name="button:usage" %}
+
+```jsx
+import { Button } from "@rafty/ui";
+
+export default function App() {
+  return <Button>Button</Button>;
+}
+```
+
+{% /example %}
 
 ## Size
 

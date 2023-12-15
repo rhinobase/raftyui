@@ -23,7 +23,7 @@ export function Prose<T extends React.ElementType = "div">({
         // link underline
         "prose-a:no-underline hover:prose-a:underline",
         // pre
-        "prose-pre:rounded-xl prose-pre:bg-secondary-950 prose-pre:shadow-lg dark:prose-pre:bg-secondary-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-secondary-300/10",
+        "prose-pre:rounded-lg prose-pre:bg-secondary-950 prose-pre:shadow-lg dark:prose-pre:bg-secondary-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-secondary-300/10",
         // hr
         "dark:prose-hr:border-secondary-800",
       )}
