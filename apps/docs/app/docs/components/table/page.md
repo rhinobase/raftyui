@@ -90,7 +90,7 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 | Property   | Description                                            | Type                       | Default    |
 | ---------- | ------------------------------------------------------ | -------------------------- | ---------- |
-| size       | Size of the table component.                           | `"sm"` or `"md"` or `"lg"` | `"md"`     |
+| size       | Size of the table component and its subcomponents.     | `"sm"` or `"md"` or `"lg"` | `"md"`     |
 | variant    | Style variant of the component.                        | `"simple"` or `"striped"`  | `"simple"` |
 | isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`    |
 

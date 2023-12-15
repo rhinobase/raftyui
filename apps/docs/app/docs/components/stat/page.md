@@ -74,5 +74,5 @@ The type prop is used to define type of stat, it has 3 options: `increase`, `dec
 
 | Property | Description        | Type     | Default |
 | -------- | ------------------ | -------- | ------- |
-| height   | height of the icon | `number` | `14`    |
-| width    | width of the icon  | `number` | `14`    |
+| height   | Height of the icon | `number` | `14`    |
+| width    | Width of the icon  | `number` | `14`    |
