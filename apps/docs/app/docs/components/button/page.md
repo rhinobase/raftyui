@@ -35,6 +35,7 @@ By default, it is a medium sized secondary solid button with hover effects and f
 {% example name="button:usage" %}
 
 ```jsx
+import React from "react";
 import { Button } from "@rafty/ui";
 
 export default function App() {

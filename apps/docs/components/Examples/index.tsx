@@ -11,7 +11,7 @@ const SandpackEmbed = dynamic(() => import("../SandpackEmbed"), {
 export function Examples({ children }: { children?: string }) {
   if (!children)
     return (
-      <p className="not-prose dark:bg-secondary-900 dark:border-secondary-800 flex w-full items-center justify-center rounded-lg border bg-transparent px-4 pb-6 pt-4 leading-none">
+      <p className="not-prose dark:bg-secondary-900 dark:border-secondary-800 flex w-full items-center justify-center rounded-lg border bg-transparent p-4 leading-none">
         No Example Found
       </p>
     );
@@ -23,7 +23,7 @@ export function Examples({ children }: { children?: string }) {
   return (
     <SandpackEmbed
       files={{
-        "App.tsx": code,
+        "App.js": code,
       }}
     />
   );

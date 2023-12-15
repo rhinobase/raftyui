@@ -27,7 +27,7 @@ import "./styles.css";
 
 import App from "./App";
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
+const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <div className="flex items-center justify-center h-screen">
@@ -35,23 +35,6 @@ root.render(
     </div>
   </StrictMode>
 );`;
-
-const TailwindConfigFile = `module.exports = {
-  darkMode: "class",
-  content: ["./**/*.{js,ts,jsx,tsx}","./node_modules/@rafty/ui/**/*.js"],
-  plugins: [require("@rafty/plugin")],
-}`;
-
-const PostCssConfigFile = `module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}`;
-
-const StyleCssFile = `@tailwind base;
-@tailwind components;
-@tailwind utilities;`;
 
 export default function SandpackEmbed({
   dependencies,
@@ -65,13 +48,15 @@ export default function SandpackEmbed({
     <SandpackProvider
       files={{
         ...files,
-        "tailwind.config.js": TailwindConfigFile,
-        "postcss.config.js": PostCssConfigFile,
-        "styles.css": StyleCssFile,
-        "index.tsx": ReactMainFile,
+        "index.js": ReactMainFile,
+      }}
+      options={{
+        externalResources: [
+          "https://storybook.rafty.rhinobase.io/assets/preview-LCCjbVOj.css",
+        ],
       }}
       theme={dracula}
-      template="vite-react-ts"
+      template="react"
       customSetup={{
         dependencies: {
           "@rafty/ui": "1.4.0",
@@ -80,9 +65,6 @@ export default function SandpackEmbed({
         },
         devDependencies: {
           "@rafty/plugin": "1.1.0",
-          tailwindcss: "^3.3.6",
-          postcss: "^8.4.31",
-          autoprefixer: "^10.4.16",
           ...devDependencies,
         },
       }}
