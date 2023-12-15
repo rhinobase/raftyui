@@ -10,13 +10,9 @@ const CodeBlock = dynamic(
 export type Fence = {
   children: string;
   language: string;
-  className?: string;
+  live?: boolean;
 };
 
-export function Fence(props: Fence) {
-  return (
-    <div className="relative">
-      <CodeBlock {...props} />
-    </div>
-  );
+export function Fence({ language, children, live }: Fence) {
+  return <CodeBlock language={language} content={children} live={live} />;
 }

@@ -182,6 +182,9 @@ dependencies:
   react-icons:
     specifier: 4.12.0
     version: 4.12.0(react@18.2.0)
+  react-live:
+    specifier: ^4.1.5
+    version: 4.1.5(react-dom@18.2.0)(react@18.2.0)
   recharts:
     specifier: 2.8.0
     version: 2.8.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
@@ -14079,6 +14082,20 @@ packages:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
     dev: false
 
+  /react-live@4.1.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ul3Zwvqvh6KTg8j7xGCT26+c8J9vQ+LFUrZCbrrrzEExuVB/39s1GKG3NsywnL+aGAjpfnUTaVCe7KlKIvVPiw==}
+    engines: {node: '>= 0.12.0', npm: '>= 2.0.0'}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    dependencies:
+      prism-react-renderer: 2.1.0(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      sucrase: 3.34.0
+      use-editable: 2.3.3(react@18.2.0)
+    dev: false
+
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
@@ -16027,6 +16044,14 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.2
       dequal: 2.0.3
+      react: 18.2.0
+    dev: false
+
+  /use-editable@2.3.3(react@18.2.0):
+    resolution: {integrity: sha512-7wVD2JbfAFJ3DK0vITvXBdpd9JAz5BcKAAolsnLBuBn6UDDwBGuCIAGvR3yA2BNKm578vAMVHFCWaOcA+BhhiA==}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
       react: 18.2.0
     dev: false
 

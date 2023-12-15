@@ -35,12 +35,7 @@ By default, it is a medium sized secondary solid button with hover effects and f
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return <Button>Button</Button>;
-}
+<Button>Button</Button>
 ```
 
 {% /example %}
@@ -54,25 +49,17 @@ export default function App() {
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-import { ArchiveBoxIcon, BackspaceIcon } from "@heroicons/react/24/outline";
-
-export default function App() {
-  return (
-    <div className="flex items-center gap-4">
-      <Button size="sm">Button</Button>
-      <Button size="md">Button</Button>
-      <Button size="lg">Button</Button>
-      <Button size="fab">
-        <ArchiveBoxIcon width={16} height={16} className="stroke-2" />
-      </Button>
-      <Button size="icon">
-        <BackspaceIcon width={16} height={16} className="stroke-2" />
-      </Button>
-    </div>
-  );
-}
+<div className="flex items-center gap-4">
+  <Button size="sm">Button</Button>
+  <Button size="md">Button</Button>
+  <Button size="lg">Button</Button>
+  <Button size="fab">
+    <ArchiveBoxIcon width={16} height={16} className="stroke-2" />
+  </Button>
+  <Button size="icon">
+    <BackspaceIcon width={16} height={16} className="stroke-2" />
+  </Button>
+</div>
 ```
 
 {% /example %}
@@ -84,19 +71,12 @@ There are 4 `colorScheme` options in button: `primary` (default), `secondary`, `
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return (
-    <div className="flex items-center gap-4">
-      <Button colorScheme="primary">Button</Button>
-      <Button colorScheme="secondary">Button</Button>
-      <Button colorScheme="error">Button</Button>
-      <Button colorScheme="success">Button</Button>
-    </div>
-  );
-}
+<div className="flex items-center gap-4">
+  <Button colorScheme="primary">Button</Button>
+  <Button colorScheme="secondary">Button</Button>
+  <Button colorScheme="error">Button</Button>
+  <Button colorScheme="success">Button</Button>
+</div>
 ```
 
 {% /example %}
@@ -108,18 +88,11 @@ There are 3 `variant` in button: `solid` (default), `outline` & `ghost`.
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return (
-    <div className="flex items-center gap-4">
-      <Button variant="solid">Button</Button>
-      <Button variant="outline">Button</Button>
-      <Button variant="ghost">Button</Button>
-    </div>
-  );
-}
+<div className="flex items-center gap-4">
+  <Button variant="solid">Button</Button>
+  <Button variant="outline">Button</Button>
+  <Button variant="ghost">Button</Button>
+</div>
 ```
 
 {% /example %}
@@ -132,32 +105,24 @@ export default function App() {
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-import { PaperAirplaneIcon, PhoneIcon } from "@heroicons/react/24/outline";
-
-export default function App() {
-  return (
-    <div className="flex items-center gap-4">
-      <Button
-        leftIcon={<PhoneIcon width={16} height={16} className="stroke-2" />}
-        colorScheme="primary"
-        variant="solid"
-      >
-        Button
-      </Button>
-      <Button
-        rightIcon={
-          <PaperAirplaneIcon width={16} height={16} className="stroke-2" />
-        }
-        colorScheme="primary"
-        variant="solid"
-      >
-        Button
-      </Button>
-    </div>
-  );
-}
+<div className="flex items-center gap-4">
+  <Button
+    leftIcon={<PhoneIcon width={16} height={16} className="stroke-2" />}
+    colorScheme="primary"
+    variant="solid"
+  >
+    Button
+  </Button>
+  <Button
+    rightIcon={
+      <PaperAirplaneIcon width={16} height={16} className="stroke-2" />
+    }
+    colorScheme="primary"
+    variant="solid"
+  >
+    Button
+  </Button>
+</div>
 ```
 
 {% /example %}
@@ -169,19 +134,12 @@ Pass ` isUnstyled` prop to remove style component.
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return (
-    <Button
-      isUnstyled
-      className="hover:bg-secondary-200 dark:bg-secondary-500 dark:hover:bg-secondary-700 rounded-lg bg-white p-2 px-5 dark:text-white"
-    >
-      Button
-    </Button>
-  );
-}
+<Button
+  isUnstyled
+  className="hover:bg-secondary-200 dark:bg-secondary-500 dark:hover:bg-secondary-700 rounded-lg bg-white p-2 px-5 dark:text-white"
+>
+  Button
+</Button>
 ```
 
 {% /example %}
@@ -193,12 +151,7 @@ You can manage the active state of button using `isActive` prop.
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return <Button isActive>Button</Button>;
-}
+<Button isActive>Button</Button>
 ```
 
 {% /example %}
@@ -211,12 +164,7 @@ export default function App() {
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return <Button isLoading>Button</Button>;
-}
+<Button isLoading>Button</Button>
 ```
 
 {% /example %}
@@ -228,12 +176,7 @@ You can manage disabled button state using `isDisabled` prop.
 {% example %}
 
 ```jsx
-import React from "react";
-import { Button } from "@rafty/ui";
-
-export default function App() {
-  return <Button isDisabled>Button</Button>;
-}
+<Button isDisabled>Button</Button>
 ```
 
 {% /example %}
