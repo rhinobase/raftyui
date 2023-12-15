@@ -2,6 +2,29 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## 0.1.0 (2023-12-15)
+
+
+### Features
+
+* added color variables to plugin and config files & added variable css in css files ([e76c61b](https://github.com/rhinobase/raftyui/commit/e76c61b1303bcced6d606ab48004046a23bb20b6))
+
+
+### Bug Fixes
+
+* added formatting in pre commit ([c90c9fc](https://github.com/rhinobase/raftyui/commit/c90c9fcef66f0f01a0ffa75d0ce9f808c69ce059))
+* added tailwind-animate plugin to rafty/plugin as we are now using new animations ([ebf7858](https://github.com/rhinobase/raftyui/commit/ebf785823dd4d36a1628c9ebb058fe55df0cabec))
+* major improvements in dialog component and changes in plugin ([f4bf3ad](https://github.com/rhinobase/raftyui/commit/f4bf3ad8b012170c911112e4840e7906a05a7b86))
+* minor change ([4c63085](https://github.com/rhinobase/raftyui/commit/4c63085f3a3783803789839ae5fbc09494b8028f))
+* **plugin:** corrected the json struct ([1b447ad](https://github.com/rhinobase/raftyui/commit/1b447ad79a37254cb21ce9a2aca0ac40a4f394f4))
+* released new versions ([4b730bf](https://github.com/rhinobase/raftyui/commit/4b730bf27c8cb124237c19da6f952e7bc4a7976d))
+* removed error, warning, info & success color variables from plugin and tailwind config files ([56123a8](https://github.com/rhinobase/raftyui/commit/56123a8ecc7ff35b494696aea1774a9078a2af50))
+* removed the dependency on tslib in plugin ([34b915c](https://github.com/rhinobase/raftyui/commit/34b915ce32af693a6626b1c4e647cce10e106af4))
+* reverted back to babel ([f079fe6](https://github.com/rhinobase/raftyui/commit/f079fe6d511a459de25b69ecf4fad97ac7e52982))
+* rollbacked the plugin file ([dabb5cd](https://github.com/rhinobase/raftyui/commit/dabb5cd9df48d4a7557d2d70237d665b2d8224cc))
+* setting up package publishing ([1edb202](https://github.com/rhinobase/raftyui/commit/1edb20248b82d035a7bd75008bb61cac89559fb5))
+* working on deployment ([7302c8a](https://github.com/rhinobase/raftyui/commit/7302c8a3df8e2364c42020d01f7abbfd28f6550a))
+
 ## [1.0.1](https://github.com/rhinobase/design-system/compare/plugin-1.0.0...plugin-1.0.1) (2023-09-27)
 
 ### Bug Fixes
