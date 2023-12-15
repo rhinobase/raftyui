@@ -28,20 +28,19 @@ export default function SandpackEmbed({
   editorOptions,
   previewOptions,
   files,
-  isHorizontal = false,
 }: SandpackEmbed) {
   return (
     <SandpackProvider
       files={files}
       theme={dracula}
-      template="react-ts"
+      template="vite-react-ts"
       customSetup={{
         dependencies: {
-          "@rafty/ui": "1.1.1",
-          "core-js": "latest",
+          "@rafty/ui": "latest",
           ...dependencies,
         },
         devDependencies: {
+          "@rafty/plugin": "latest",
           ...devDependencies,
         },
       }}
