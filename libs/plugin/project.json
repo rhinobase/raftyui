@@ -11,6 +11,7 @@
         "outputPath": "dist/libs/plugin",
         "main": "libs/plugin/src/index.js",
         "tsConfig": "libs/plugin/tsconfig.lib.json",
+        "external": ["tailwindcss-animate", "tailwindcss"],
         "assets": [
           {
             "glob": "README.md",
