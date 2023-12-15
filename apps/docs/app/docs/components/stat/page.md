@@ -72,7 +72,7 @@ The type prop is used to define type of stat, it has 3 options: `increase`, `dec
 
 `StatIcon` composes the `<svg>` component.
 
-| Property | Description                             | Type     | Default |
-| -------- | --------------------------------------- | -------- | ------- |
-| height   | Height of the stat component in pixels. | `number` | `14`    |
-| width    | Width of the stat component in pixels.  | `number` | `14`    |
+| Property | Description        | Type     | Default |
+| -------- | ------------------ | -------- | ------- |
+| height   | height of the icon | `number` | `14`    |
+| width    | width of the icon  | `number` | `14`    |

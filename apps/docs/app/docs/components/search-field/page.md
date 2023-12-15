@@ -52,8 +52,8 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 `SearchField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
-| Property | Description                                  | Type                                        | Default |
-| -------- | -------------------------------------------- | ------------------------------------------- | ------- |
-| size     | Size of the search field component.          | `"sm"` or `"md"` or `"lg"`                  | `"md"`  |
-| search   | Value of the search field.                   | `string` or `number` or `readonly string[]` | -       |
-| onSearch | Callback function invoked on search changes. | `(value: string) => void`                   | -       |
+| Property | Description                                  | Type                       | Default |
+| -------- | -------------------------------------------- | -------------------------- | ------- |
+| size     | Size of the search field component.          | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| search   | Value of the search field.                   | `string` or `number`       | -       |
+| onSearch | Callback function invoked on search changes. | `(value: string) => void`  | -       |

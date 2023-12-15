@@ -70,10 +70,10 @@ IsReadOnly prop is used to show select in read-only state
 
 This component is built on top of [Radix Switch](https://www.radix-ui.com/primitives/docs/components/switch#root)
 
-| Property       | Description                            | Type                       | Default |
-| -------------- | -------------------------------------- | -------------------------- | ------- |
-| size           | Size of the switch component.          | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isDisabled     | To manage disabled state.              | `boolean`                  | `false` |
-| defaultChecked | Initial state of the switch component. | `boolean`                  | `false` |
-| isRequired     | To manage required state.              | `boolean`                  | `false` |
-| isReadOnly     | To manage read-only state.             | `boolean`                  | `false` |
+| Property       | Description                        | Type                       | Default |
+| -------------- | ---------------------------------- | -------------------------- | ------- |
+| size           | Size of the switch component.      | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isDisabled     | To manage disabled state.          | `boolean`                  | `false` |
+| defaultChecked | To manage default state of switch. | `boolean`                  | `false` |
+| isRequired     | To manage required state.          | `boolean`                  | `false` |
+| isReadOnly     | To manage read-only state.         | `boolean`                  | `false` |

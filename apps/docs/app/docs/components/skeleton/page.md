@@ -38,4 +38,4 @@ You can set height and width of a skeleton by passing values in className prop.
 
 ### Skeleton
 
-`Skeleton` composes the `<div>` component.
+`Skeleton` composes the `<div>` component with the Tailwind CSS pulse animation class. You can use the className prop to apply size and other styling to it.

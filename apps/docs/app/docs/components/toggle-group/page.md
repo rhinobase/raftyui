@@ -73,12 +73,12 @@ This component is built on top of [Radix Toggle Group](https://www.radix-ui.com/
 | Property   | Description                                               | Type                       | Default |
 | ---------- | --------------------------------------------------------- | -------------------------- | ------- |
 | size       | Size of the toggle group component and its subcomponents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isUnstyled | Remove style from this component and its subcomponents    | `boolean`                  | `false` |
+| isUnstyled | Remove style from this component and its subcomponents.   | `boolean`                  | `false` |
 
 ### ToggleGroupItem
 
 This component is built on top of [Radix Toggle Group Item](https://www.radix-ui.com/primitives/docs/components/toggle-group#item)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                       | Type      | Default |
+| ---------- | --------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component. | `boolean` | `false` |

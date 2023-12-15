@@ -40,6 +40,6 @@ import { RangePicker } from "@rafty/ui";
 
 `RangePicker` component is built on top of [React Day Picker](https://react-day-picker.js.org/)
 
-| Property | Description | Type | Default |
-| -------- | ----------- | ---- | ------- |
-| onSelect |             |      |         |
+| Property | Description                                  | Type                                             | Default |
+| -------- | -------------------------------------------- | ------------------------------------------------ | ------- |
+| onSelect | Callback function invoked on date selection. | {% info %}(value?: DateRange) => void{% /info %} | -       |

@@ -70,7 +70,7 @@ The visible prop is used to manage the visibility of toast.
 
 | Property | Description                    | Type                                                | Default |
 | -------- | ------------------------------ | --------------------------------------------------- | ------- |
-| severity | Severity level of the toast.   | `"error"` or `"success"` or `"warning"` or `"info"` | `false` |
+| severity | Severity level of the toast.   | `"error"` or `"success"` or `"warning"` or `"info"` | -       |
 | visible  | Visibility state of the toast. | `boolean`                                           | `false` |
 | title    | Title of the toast.            | `string`                                            | -       |
 | message  | Content/message of the toast.  | `string`                                            | -       |

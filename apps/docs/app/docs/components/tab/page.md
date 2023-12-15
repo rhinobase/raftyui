@@ -82,12 +82,12 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitives/docs/components/tabs#root)
 
-| Properties  | Description                                            | Type                       | Default      |
-| ----------- | ------------------------------------------------------ | -------------------------- | ------------ |
-| size        | Size of the tab component and its subcomonents.        | `"sm"` or `"md"` or `"lg"` | `"md"`       |
-| isUnstyled  | Remove style from this component and its subcomponents | `boolean`                  | `false`      |
-| orientation | Orientation of the component.                          | `horizontal` or `vertical` | `horizontal` |
-| variant     | Style variant of the component.                        | `line` or `enclosed`       | `line`       |
+| Properties  | Description                                            | Type                           | Default        |
+| ----------- | ------------------------------------------------------ | ------------------------------ | -------------- |
+| size        | Size of the tab component and its subcomonents.        | `"sm"` or `"md"` or `"lg"`     | `"md"`         |
+| isUnstyled  | Remove style from this component and its subcomponents | `boolean`                      | `false`        |
+| orientation | Tab orientation.                                       | `"horizontal"` or `"vertical"` | `"horizontal"` |
+| variant     | Tab style variant.                                     | `"line"` or `"enclosed"`       | `"line"`       |
 
 ### TabList
 

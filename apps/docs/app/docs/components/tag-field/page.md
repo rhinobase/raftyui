@@ -36,7 +36,7 @@ import { TagField } from "@rafty/ui";
 
 ### TagField
 
-`TagField` composes the `<div>` component.
+`TagField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
 | Property    | Description                                     | Type                       | Default |
 | ----------- | ----------------------------------------------- | -------------------------- | ------- |

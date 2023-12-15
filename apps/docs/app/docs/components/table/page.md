@@ -88,11 +88,11 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 `Table` composes the `<table>` component.
 
-| Property   | Description                                            | Type                       | Default  |
-| ---------- | ------------------------------------------------------ | -------------------------- | -------- |
-| size       | Size of the table component.                           | `"sm"` or `"md"` or `"lg"` | `"md"`   |
-| variant    | Style variant of the component.                        | `simple` or `striped`      | `simple` |
-| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`  |
+| Property   | Description                                            | Type                       | Default    |
+| ---------- | ------------------------------------------------------ | -------------------------- | ---------- |
+| size       | Size of the table component.                           | `"sm"` or `"md"` or `"lg"` | `"md"`     |
+| variant    | Style variant of the component.                        | `"simple"` or `"striped"`  | `"simple"` |
+| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`    |
 
 ### TableHead
 
