@@ -71,11 +71,13 @@ function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
 }
 
 function GoogleAnalytics() {
+  const MEASUREMENT_ID = "G-8XZ5Q7H2DG";
+
   return (
     <>
       <Script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-K1YEVWQFHZ"
+        src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`}
       />
       <Script id="google-analytics">
         {`
@@ -83,7 +85,7 @@ function GoogleAnalytics() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
-          gtag('config', 'G-K1YEVWQFHZ');
+          gtag('config', '${MEASUREMENT_ID}');
         `}
       </Script>
     </>
