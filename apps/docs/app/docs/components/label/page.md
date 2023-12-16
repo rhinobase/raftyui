@@ -30,7 +30,13 @@ import { Label } from "@rafty/ui";
 
 ## Usage
 
-{% example name="label:usage" /%}
+{% example %}
+
+```jsx
+<Label>Sample</Label>
+```
+
+{% /example %}
 
 ## Props
 

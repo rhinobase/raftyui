@@ -38,21 +38,78 @@ import { List, ListItem, OrderedList, UnorderedList } from "@rafty/ui";
 
 ## Usage
 
-{% example name="list:usage" /%}
+{% example %}
+
+```jsx
+<List>
+  <ListItem>Lorem ipsum dolor sit amet</ListItem>
+  <ListItem>Consectetur adipiscing elit</ListItem>
+  <ListItem>Integer molestie lorem at massa</ListItem>
+  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+</List>
+```
+
+{% /example %}
 
 ## Ordered List
 
-{% example name="list:order_list" /%}
+{% example %}
+
+```jsx
+<OrderedList>
+  <ListItem>Lorem ipsum dolor sit amet</ListItem>
+  <ListItem>Consectetur adipiscing elit</ListItem>
+  <ListItem>Integer molestie lorem at massa</ListItem>
+  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+</OrderedList>
+```
+
+{% /example %}
 
 ## UnOrdered List
 
-{% example name="list:unorder_list" /%}
+{% example %}
+
+```jsx
+<UnorderedList>
+  <ListItem>Lorem ipsum dolor sit amet</ListItem>
+  <ListItem>Consectetur adipiscing elit</ListItem>
+  <ListItem>Integer molestie lorem at massa</ListItem>
+  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+</UnorderedList>
+```
+
+{% /example %}
 
 ## Unstyled
 
 Pass `isUnstyled` to remove style in list.
 
-{% example name="list:unstyled" /%}
+{% example %}
+
+```jsx
+<List>
+  <ListItem isUnstyled className="flex items-center gap-2 text-xl font-bold ">
+    <CheckCircleIcon width={16} height={16} className="stroke-2" />
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit
+  </ListItem>
+  <ListItem className="flex items-center gap-2">
+    <CheckCircleIcon width={16} height={16} className="stroke-2" />
+    Assumenda, quia temporibus eveniet a libero incidunt suscipit
+  </ListItem>
+
+  <ListItem className="flex items-center gap-2">
+    <CheckCircleIcon width={16} height={16} className="stroke-2" />
+    Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+  </ListItem>
+  <ListItem className="flex items-center gap-2">
+    <CheckCircleIcon width={16} height={16} className="stroke-2" />
+    Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+  </ListItem>
+</List>
+```
+
+{% /example %}
 
 ## Props
 

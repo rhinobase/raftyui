@@ -30,7 +30,13 @@ import { DatePicker } from "@rafty/ui";
 
 ## Usage
 
-{% example name="date-picker:usage" /%}
+{% example %}
+
+```jsx
+<DatePicker />
+```
+
+{% /example %}
 
 ## Props
 

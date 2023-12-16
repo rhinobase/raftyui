@@ -30,19 +30,45 @@ import { PasswordField } from "@rafty/ui";
 
 ## Usage
 
-{% example name="password-field:usage" /%}
+{% example %}
+
+```jsx
+<PasswordField />
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
-{%example name="password-field:size"/%}
+{% example %}
+
+```jsx
+<div className="space-y-2">
+  <PasswordField size="sm" />
+  <PasswordField size="md" />
+  <PasswordField size="lg" />
+</div>
+```
+
+{% /example %}
 
 ## Variant
 
 There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`
 
-{% example name="password-field:variant" /%}
+{% example %}
+
+```jsx
+<div className="space-y-2">
+  <PasswordField variant="outline" />
+  <PasswordField variant="ghost" />
+  <PasswordField variant="solid" />
+</div>
+```
+
+{% /example %}
 
 ## Props
 

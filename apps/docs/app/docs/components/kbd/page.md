@@ -30,7 +30,13 @@ import { Kbd } from "@rafty/ui";
 
 ## Usage
 
-{% example name="kbd:usage" /%}
+{% example %}
+
+```jsx
+<Kbd>shift + K</Kbd>
+```
+
+{% /example %}
 
 ## Props
 

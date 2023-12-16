@@ -88,13 +88,56 @@ There are 3 `size` options available: `sm`, `md` (default) & `lg`.
 
 There are 2 `variant` options available: `outline` (default) & `elevated`
 
-{% example name="card:variant" /%}
+{% example %}
+
+```jsx
+<Card variant="elevated">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardContent>
+    View a summary of all your customers over the last month. Lorem, ipsum dolor
+    sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit,
+    amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in
+    mollitia inventore laboriosam necessitatibus itaque.
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+{% /example %}
 
 ## Unstyled
 
 Pass `isUnstyled` prop in parent component to remove style in Card.
 
-{% example name="card:unstyled" /%}
+{% example %}
+
+```jsx
+<Card
+  isUnstyled
+  className="dark:bg-secondary-800 space-y-4 rounded-lg bg-white p-4 shadow-md dark:text-white"
+>
+  <CardHeader className="text-xl font-semibold">Customer dashboard</CardHeader>
+  <CardContent>
+    View a summary of all your customers over the last month. Lorem, ipsum dolor
+    sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit,
+    amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in
+    mollitia inventore laboriosam necessitatibus itaque.
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+{% /example %}
 
 ## Props
 

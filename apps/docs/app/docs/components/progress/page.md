@@ -30,19 +30,46 @@ import { Progress } from "@rafty/ui";
 
 ## Usage
 
-{% example name="progress:usage" /%}
+{% example %}
+
+```jsx
+<Progress size="lg" value={80} colorScheme="primary" className="w-full" />
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 
-{% example name="progress:size" /%}
+{% example %}
+
+```jsx
+<div className="w-full space-y-3">
+  <Progress value={70} size="sm" />
+  <Progress value={40} size="md" />
+  <Progress value={50} size="lg" />
+</div>
+```
+
+{% /example %}
 
 ## ColorScheme
 
 There are 4 `colorScheme` options in progress: `primary` (default), `error`, `warning` & `success`.
 
-{% example name="progress:colorscheme" /%}
+{% example %}
+
+```jsx
+<div className="w-full space-y-3">
+  <Progress value={70} colorScheme="primary" />
+  <Progress value={40} colorScheme="error" />
+  <Progress value={60} colorScheme="success" />
+  <Progress value={50} colorScheme="warning" />
+</div>
+```
+
+{% /example %}
 
 ## Props
 

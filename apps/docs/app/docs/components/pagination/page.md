@@ -39,18 +39,9 @@ import {
 
 Pagination component's state can be managed using `onChange` function.
 
-{% example name="pagination:usage" %}
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -92,18 +83,9 @@ function PaginationField() {
 
 Pass the `size` prop if you need to adjust the size of pagination component and its subcomponents. Values can be `sm`, `md` (default) & `lg`.
 
-{% example name="pagination:size" %}
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -146,18 +128,9 @@ function PaginationField() {
 
 PageSizeSelect component can be used to change number of enteries per page. It take `pageSizes` prop, in which you can pass value in either `number[]` or `{label: string, value: number}[]` type. By default, the value of `pageSizes` prop is `[10, 20, 30]`.
 
-{% example name="pagination:page_size_select" %}
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -194,18 +167,9 @@ function PaginationField() {
 
 PageJumber is a number input field which helps you to navigate to a specific page.
 
-{% example name="pagination:page_jumper" %}
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -239,18 +203,9 @@ function PaginationField() {
 
 PaginationButtons containes previous and next buttons which helps in navigating to previous and next page, with the functionality of being disable when on first or last page to not navigate further ahead or behind of the limit.
 
-{% example name="pagination:paginatin_buttons" %}
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -285,18 +240,9 @@ function PaginationField() {
 
 You can manage disabled pagination state using `isDisabled` prop.
 
-{% example name="pagination:disabled" %}
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
