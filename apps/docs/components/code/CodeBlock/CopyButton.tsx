@@ -1,26 +1,18 @@
-"use client";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { Button } from "@rafty/ui";
-import { useState } from "react";
+import { useCopyToClipboard } from "@uidotdev/usehooks";
 
 export type CopyButton = {
   content: string;
 };
 
 export function CopyButton({ content }: CopyButton) {
-  const [isCopied, setIsCopied] = useState(false);
-
-  const handleCopyClick = () => {
-    navigator.clipboard.writeText(content);
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 5000);
-  };
+  const [copiedText, copyToClipboard] = useCopyToClipboard();
+  const isCopied = Boolean(copiedText);
 
   return (
     <Button
-      onClick={handleCopyClick}
+      onClick={() => copyToClipboard(content)}
       className="absolute right-1 top-1 "
       variant="outline"
       size="icon"
