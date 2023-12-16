@@ -34,37 +34,134 @@ import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 
 ## Usage
 
-{% example name="alert:usage" /%}
+{% example %}
+
+```jsx
+<Alert>
+  <AlertIcon />
+  <AlertTitle>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options available: `sm`, `md` (default) & `lg`
 
-{% example name="alert:size" /%}
+{% example %}
+
+```jsx
+<Alert size="sm">
+  <AlertIcon />
+  <AlertTitle>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+{% /example %}
 
 ## Status
 
 There are 4 `status` options in alert: `success`, `warning`, `error` & `info` (default).
 
-{% example name="alert:status" /%}
+{% example %}
+
+```jsx
+<div className="w-full space-y-4">
+  <Alert>
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+  <Alert status="success">
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+  <Alert status="warning">
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+  <Alert status="error">
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+</div>
+```
+
+{% /example %}
 
 ## Variant
 
 There are 4 `variant` options in alert: `simple` (default), `solid`, `left-accent` & `top-accent`.
 
-{% example name="alert:variant" /%}
+{% example %}
+
+```jsx
+<div className="w-full space-y-4">
+  <Alert>
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+  <Alert variant="solid">
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+  <Alert variant="left-accent">
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+  <Alert variant="top-accent">
+    <AlertIcon />
+    <AlertTitle>Title</AlertTitle>
+    <AlertDescription>Description</AlertDescription>
+  </Alert>
+</div>
+```
+
+{% /example %}
 
 ## Unstyled
 
 Pass `isUnstyled` prop in parent component to remove style in Alert.
 
-{% example name="alert:unstyled" /%}
+{% example %}
+
+```jsx
+<Alert
+  isUnstyled
+  className="flex h-16 w-full items-center gap-1 rounded-md border border-green-500 bg-green-300/40 p-4 dark:text-white"
+>
+  <AlertIcon className="h-7 w-7" />
+  <AlertTitle>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+{% /example %}
 
 ## Unstyled subcomponent
 
 Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
 
-{% example name="alert:unstyledsub" /%}
+{% example %}
+
+```jsx
+<Alert>
+  <AlertIcon />
+  <AlertTitle isUnstyled>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+{% /example %}
 
 ## Props
 

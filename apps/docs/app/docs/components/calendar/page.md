@@ -30,7 +30,13 @@ import { Calendar } from "@rafty/ui";
 
 ## Usage
 
-{% example name="calendar:usage" /%}
+{% example %}
+
+```jsx
+<Calendar />
+```
+
+{% /example %}
 
 ## Props
 

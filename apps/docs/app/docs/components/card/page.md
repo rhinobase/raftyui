@@ -34,13 +34,55 @@ import { Card, CardFooter, CardContent, CardHeader } from "@rafty/ui";
 
 ## Usage
 
-{% example name="card:usage" /%}
+{% example %}
+
+```jsx
+<Card>
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardContent>
+    View a summary of all your customers over the last month. Lorem, ipsum dolor
+    sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit,
+    amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in
+    mollitia inventore laboriosam necessitatibus itaque.
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <Button variant="outline">View here</Button>
+  </CardFooter>
+</Card>
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options available: `sm`, `md` (default) & `lg`.
 
-{% example name="card:size" /%}
+{% example %}
+
+```jsx
+<Card size="sm">
+  <CardHeader>Customer dashboard</CardHeader>
+  <CardContent className="text-sm">
+    View a summary of all your customers over the last month. Lorem, ipsum dolor
+    sit amet consectetur adipisicing elit. Nesciunt, nam? Lorem ipsum dolor sit,
+    amet consectetur adipisicing elit. Officia, eveniet culpa minima ipsa rem in
+    mollitia inventore laboriosam necessitatibus itaque.
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button size="sm" variant="outline" colorScheme="error">
+      Delete
+    </Button>
+    <Button size="sm" variant="outline">
+      View here
+    </Button>
+  </CardFooter>
+</Card>
+```
+
+{% /example %}
 
 ## Variant
 
