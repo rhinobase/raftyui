@@ -1,26 +1,19 @@
 import {
-  CodeEditorProps,
-  PreviewProps,
   SandpackCodeEditor,
   SandpackLayout,
-  SandpackLayoutProps,
   SandpackPreview,
   SandpackProvider,
 } from "@codesandbox/sandpack-react";
 import { dracula } from "@codesandbox/sandpack-themes";
+import {
+  ComboboxContent,
+  FibrContent,
+  FormikContent,
+  ReactHookFormContent,
+  TanstackTableContent,
+} from "./contents";
 
-export type SandpackEmbed = {
-  dependencies?: Record<string, string>;
-  devDependencies?: Record<string, string>;
-  layoutOptions?: SandpackLayoutProps;
-  editorOptions?: CodeEditorProps;
-  previewOptions?: PreviewProps;
-  files: {
-    [x: string]: string;
-  };
-};
-
-const ReactMainFile = `import React, { StrictMode } from "react";
+const Index = `import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
@@ -29,25 +22,40 @@ import App from "./App";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <div className="flex items-center justify-center h-screen">
       <App />
-    </div>
   </StrictMode>
 );`;
 
-export function SandpackEmbed({
-  dependencies,
-  devDependencies,
-  layoutOptions,
-  editorOptions,
-  previewOptions,
-  files,
-}: SandpackEmbed) {
+export type SandpackEmbed = { name: string };
+
+export function SandpackEmbed({ name }: SandpackEmbed) {
+  let data = { files: {}, dependencies: {} };
+
+  switch (name) {
+    case "formik":
+      data = FormikContent;
+      break;
+    case "react-hook-form":
+      data = ReactHookFormContent;
+      break;
+    case "fibr":
+      data = FibrContent;
+      break;
+    case "tanstack-table":
+      data = TanstackTableContent;
+      break;
+    case "combobox":
+      data = ComboboxContent;
+      break;
+  }
+
+  const { dependencies, files } = data;
+
   return (
     <SandpackProvider
       files={{
         ...files,
-        "index.js": ReactMainFile,
+        "index.js": Index,
       }}
       options={{
         externalResources: [
@@ -58,27 +66,18 @@ export function SandpackEmbed({
       template="react"
       customSetup={{
         dependencies: {
-          "@rafty/ui": "1.4.0",
+          "@rafty/ui": "latest",
           "date-fns": "^2.3.0",
           ...dependencies,
         },
         devDependencies: {
-          "@rafty/plugin": "1.1.0",
-          ...devDependencies,
+          "@rafty/plugin": "latest",
         },
       }}
     >
-      <SandpackLayout
-        className="flex-col-reverse !rounded-xl lg:flex-row"
-        {...layoutOptions}
-      >
-        <SandpackCodeEditor
-          showLineNumbers
-          showTabs={false}
-          className="min-h-[350px]"
-          {...editorOptions}
-        />
-        <SandpackPreview className="min-h-[350px]" {...previewOptions} />
+      <SandpackLayout className="flex-col-reverse !rounded-xl lg:flex-row">
+        <SandpackCodeEditor showLineNumbers className="min-h-[700px]" />
+        <SandpackPreview className="min-h-[700px]" />
       </SandpackLayout>
     </SandpackProvider>
   );

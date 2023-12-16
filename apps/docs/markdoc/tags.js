@@ -1,5 +1,5 @@
 import { Callout } from "../components/Callout";
-import { Example } from "../components/code";
+import { Example, Sandpack } from "../components/code";
 import { InfoButton } from "../components/InfoButton";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
 
@@ -55,6 +55,12 @@ const tags = {
     attributes: {
       type: { type: String, default: "function" },
       children: { type: String, default: "" },
+    },
+  },
+  sandpack: {
+    render: Sandpack,
+    attributes: {
+      name: { type: String },
     },
   },
 };
