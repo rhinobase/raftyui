@@ -24,9 +24,8 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "sideEffects": false,
-  "types": "./index.esm.d.ts",
   "dependencies": {
+    "@swc/helpers": "~0.5.2",
     "@heroicons/react": "^2.0.18",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -48,11 +47,12 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
-    "core-js": "^3.33.0",
     "dateformat": "^5.0.3",
     "react-day-picker": "^8.8.2"
   },
   "peerDependencies": {
     "react": "^18.2.0"
-  }
+  },
+  "sideEffects": false,
+  "types": "./index.esm.d.ts"
 }

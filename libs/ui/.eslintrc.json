@@ -10,7 +10,7 @@
           "error",
           {
             "ignoredFiles": ["libs/ui/rollup.config.js"],
-            "ignoredDependencies": ["core-js"]
+            "ignoredDependencies": ["@swc/helpers"]
           }
         ]
       }
