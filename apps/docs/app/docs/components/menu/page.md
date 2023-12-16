@@ -75,29 +75,50 @@ There are 3 `size` options in Menu: `sm`, `md` (default) & `lg`.
 {% example %}
 
 ```jsx
-<Menu size="sm">
-  <MenuTrigger
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
-    Actions
-  </MenuTrigger>
-  <MenuContent>
-    <MenuItem>New Tab</MenuItem>
-    <MenuItem>New Window</MenuItem>
-    <MenuItem disabled>New Private Window </MenuItem>
-    <MenuSeparator />
-    <MenuCheckboxItem checked>
-      Show Bookmarks <div className="RightSlot">⌘+B</div>
-    </MenuCheckboxItem>
-    <MenuCheckboxItem>Show Full URLs</MenuCheckboxItem>
-    <MenuSeparator />
-    <MenuLabel>People</MenuLabel>
-    <MenuRadioGroup value="1">
-      <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
-      <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
-    </MenuRadioGroup>
-  </MenuContent>
-</Menu>
+function MenuExample() {
+  const [isBookmarkChecked, setBookmarkChecked] = useState(true);
+  const [showFullUrls, setShowFullUrls] = useState(true);
+  const [selectedPerson, setSelectedPerson] = useState("pedro");
+
+  return (
+    <Menu size="sm">
+      <MenuTrigger
+        rightIcon={
+          <ChevronDownIcon width={16} height={16} className="stroke-2" />
+        }
+      >
+        Actions
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>New Tab</MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>New Private Window </MenuItem>
+        <MenuSeparator />
+        <MenuCheckboxItem
+          checked={isBookmarkChecked}
+          onCheckedChange={setBookmarkChecked}
+        >
+          Show Bookmarks <div className="RightSlot">⌘+B</div>
+        </MenuCheckboxItem>
+        <MenuCheckboxItem
+          checked={showFullUrls}
+          onCheckedChange={setShowFullUrls}
+        >
+          Show Full URLs
+        </MenuCheckboxItem>
+        <MenuSeparator />
+        <MenuLabel>People</MenuLabel>
+        <MenuRadioGroup
+          value={selectedPerson}
+          onValueChange={setSelectedPerson}
+        >
+          <MenuRadioItem value="pedro">Pedro Duarte</MenuRadioItem>
+          <MenuRadioItem value="colm">Colm Tuite</MenuRadioItem>
+        </MenuRadioGroup>
+      </MenuContent>
+    </Menu>
+  );
+}
 ```
 
 {% /example %}
@@ -139,19 +160,36 @@ There are 3 `size` options in Menu: `sm`, `md` (default) & `lg`.
 {% example %}
 
 ```jsx
-<Menu>
-  <MenuTrigger
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
-    All Feature
-  </MenuTrigger>
-  <MenuContent>
-    <MenuCheckboxItem checked>
-      Show Bookmarks <div className="RightSlot">⌘+B</div>
-    </MenuCheckboxItem>
-    <MenuCheckboxItem>Show Full URLs</MenuCheckboxItem>
-  </MenuContent>
-</Menu>
+function MenuExample() {
+  const [isBookmarkChecked, setBookmarkChecked] = useState(true);
+  const [showFullUrls, setShowFullUrls] = useState(false);
+
+  return (
+    <Menu>
+      <MenuTrigger
+        rightIcon={
+          <ChevronDownIcon width={16} height={16} className="stroke-2" />
+        }
+      >
+        All Feature
+      </MenuTrigger>
+      <MenuContent>
+        <MenuCheckboxItem
+          checked={isBookmarkChecked}
+          onCheckedChange={setBookmarkChecked}
+        >
+          Show Bookmarks <div className="RightSlot">⌘+B</div>
+        </MenuCheckboxItem>
+        <MenuCheckboxItem
+          checked={showFullUrls}
+          onCheckedChange={setShowFullUrls}
+        >
+          Show Full URLs
+        </MenuCheckboxItem>
+      </MenuContent>
+    </Menu>
+  );
+}
 ```
 
 {% /example %}
@@ -161,20 +199,31 @@ There are 3 `size` options in Menu: `sm`, `md` (default) & `lg`.
 {% example %}
 
 ```jsx
-<Menu>
-  <MenuTrigger
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
-    Actions
-  </MenuTrigger>
-  <MenuContent>
-    <MenuLabel>People</MenuLabel>
-    <MenuRadioGroup value="1">
-      <MenuRadioItem value="1">Pedro Duarte</MenuRadioItem>
-      <MenuRadioItem value="2">Colm Tuite</MenuRadioItem>
-    </MenuRadioGroup>
-  </MenuContent>
-</Menu>
+function MenuExample() {
+  const [selectedPerson, setSelectedPerson] = useState("pedro");
+
+  return (
+    <Menu>
+      <MenuTrigger
+        rightIcon={
+          <ChevronDownIcon width={16} height={16} className="stroke-2" />
+        }
+      >
+        Actions
+      </MenuTrigger>
+      <MenuContent>
+        <MenuLabel>People</MenuLabel>
+        <MenuRadioGroup
+          value={selectedPerson}
+          onValueChange={setSelectedPerson}
+        >
+          <MenuRadioItem value="pedro">Pedro Duarte</MenuRadioItem>
+          <MenuRadioItem value="colm">Colm Tuite</MenuRadioItem>
+        </MenuRadioGroup>
+      </MenuContent>
+    </Menu>
+  );
+}
 ```
 
 {% /example %}

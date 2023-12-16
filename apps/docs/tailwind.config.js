@@ -4,7 +4,7 @@ const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 module.exports = {
   darkMode: "class",
   content: [
-    "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}",
+    "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,md,html}",
     "../../libs/ui/src/**/*!(*.stories|*.spec).{ts,tsx}",
     ...createGlobPatternsForDependencies(__dirname),
   ],
