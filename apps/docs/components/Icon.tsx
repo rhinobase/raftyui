@@ -1,5 +1,5 @@
-import { useId } from "react";
 import { classNames } from "@rafty/ui";
+import { useId } from "react";
 import {
   InstallationIcon,
   LightbulbIcon,

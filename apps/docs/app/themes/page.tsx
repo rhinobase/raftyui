@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardContent, Calendar, Skeleton } from "@rafty/ui";
+import { Calendar, Card, CardContent, Skeleton } from "@rafty/ui";
 import { useWindowSize } from "@uidotdev/usehooks";
 import dynamic from "next/dynamic";
 

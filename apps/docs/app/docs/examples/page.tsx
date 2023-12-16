@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { ExampleCodeRepo } from "./ExampleCodeRepo";
 import { DocsLayout } from "../../../components/DocsLayout";
+import { ExampleCodeRepo } from "./ExampleCodeRepo";
 
 export const metadata: Metadata = {
   title: "Examples",

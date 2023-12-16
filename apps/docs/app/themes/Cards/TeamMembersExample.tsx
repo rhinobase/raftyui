@@ -88,14 +88,17 @@ const ROLES: Role[] = [
 function MemberRoleMenu({ label }: { label: string }) {
   const [isOpen, setOpen] = useState(false);
 
-  const [selected, dispatch] = useReducer((_: Role, cur: string) => {
-    setOpen(false);
-    const role = ROLES.find((data) => data.title === cur);
+  const [selected, dispatch] = useReducer(
+    (_: Role, cur: string) => {
+      setOpen(false);
+      const role = ROLES.find((data) => data.title === cur);
 
-    if (!role) throw new Error("ID doesn't exist!");
+      if (!role) throw new Error("ID doesn't exist!");
 
-    return role;
-  }, ROLES[0]);
+      return role;
+    },
+    ROLES[0],
+  );
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>

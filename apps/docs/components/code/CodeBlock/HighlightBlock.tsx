@@ -1,5 +1,5 @@
-import { Fragment } from "react";
 import { Highlight, themes } from "prism-react-renderer";
+import { Fragment } from "react";
 
 export type HighlightBlock = {
   content: string;

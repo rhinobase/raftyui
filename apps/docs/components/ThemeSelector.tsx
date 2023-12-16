@@ -1,4 +1,5 @@
 "use client";
+import { MoonIcon, SunIcon, TvIcon } from "@heroicons/react/24/outline";
 import {
   Menu,
   MenuContent,
@@ -7,7 +8,6 @@ import {
   classNames,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
-import { SunIcon, MoonIcon, TvIcon } from "@heroicons/react/24/outline";
 
 const THEMES = {
   light: SunIcon,

@@ -14,6 +14,7 @@ export function Wrapper({ children }: PropsWithChildren) {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: closing them on page change
   useEffect(() => {
     setDrawerOpen(false);
     setSearchOpen(false);

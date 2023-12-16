@@ -31,13 +31,14 @@ export const PageSizeSelect = forwardRef<HTMLSelectElement, PageSizeSelect>(
         value={pageLimit}
         onChange={(event) => {
           const value = Number(event.target.value);
-          if (value !== null && !isNaN(value)) onChange?.(currentPage, value);
+          if (value !== null && !Number.isNaN(value))
+            onChange?.(currentPage, value);
         }}
         {...props}
         ref={forwardedRef}
       >
-        {options.map(({ label, value }, index) => (
-          <SelectItem key={index} value={value}>
+        {options.map(({ label, value }) => (
+          <SelectItem key={label} value={value}>
             {label}
           </SelectItem>
         ))}

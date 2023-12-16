@@ -72,7 +72,7 @@ export function PaymentMethodExample() {
         <div className="grid grid-cols-3 gap-3">
           {PAYMENT_METHODS.map((item, index) => (
             <div
-              key={index}
+              key={item.heading}
               onClick={() => setSelected(index)}
               className={classNames(
                 isSelect == index
@@ -132,7 +132,7 @@ function ExpireMonthSelect() {
         <CommandItem key={month} value={month} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
-              {selected == month && (
+              {selected === month && (
                 <CheckIcon width={16} height={16} className="opacity-60" />
               )}
             </div>
@@ -154,7 +154,7 @@ function ExpireYearSelect() {
         <CommandItem key={year} value={year} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
-              {selected == year && (
+              {selected === year && (
                 <CheckIcon width={16} height={16} className="opacity-60" />
               )}
             </div>

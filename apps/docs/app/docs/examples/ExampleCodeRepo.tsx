@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
 import NextjsIcon from "../../../public/frameworks/nextjs.svg";
 import VitejsIcon from "../../../public/frameworks/vite.svg";
-import Link from "next/link";
 
 enum Language {
   JS = "js",
@@ -80,7 +80,7 @@ function CardElement({ title, examples, icon }: ExampleType) {
         </h5>
         <div className="flex flex-wrap items-center gap-1">
           {examples.map((example, index) => (
-            <Fragment key={index}>
+            <Fragment key={example.href}>
               {index !== 0 && (
                 <span className="text-sm font-medium opacity-40">/</span>
               )}

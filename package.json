@@ -7,10 +7,11 @@
     "commit": "czg",
     "check-lock-files": "node ./scripts/check-lock-files.js",
     "prepare": "is-ci || husky install",
-    "format": "prettier -w **/*.{js,ts,jsx,tsx,json,md}"
+    "format": "biome check --apply ."
   },
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "1.4.1",
     "@jscutlery/semver": "3.3.0",
     "@nx/eslint": "17.2.3",
     "@nx/eslint-plugin": "17.2.3",
@@ -53,7 +54,6 @@
     "ngx-deploy-npm": "^7.1.0",
     "nx": "17.2.3",
     "postcss": "^8.4.32",
-    "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "swc-loader": "0.1.15",
@@ -107,6 +107,7 @@
     "js-yaml": "4.1.0",
     "next": "14.0.4",
     "next-themes": "0.2.1",
+    "prettier": "^3.1.1",
     "prism-react-renderer": "2.1.0",
     "react": "18.2.0",
     "react-day-picker": "8.8.2",

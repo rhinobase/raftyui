@@ -1,5 +1,5 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import { forwardRef, HTMLAttributes } from "react";
+import { type VariantProps, cva } from "class-variance-authority";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 export const badgeClasses = cva("rounded-full", {

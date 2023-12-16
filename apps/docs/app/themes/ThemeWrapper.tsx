@@ -25,9 +25,9 @@ import {
   TooltipTrigger,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import { Fence } from "../../components/code";
-import Link from "next/link";
 
 const COLOR_THEME = {
   gray: "!bg-gray-500",

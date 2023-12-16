@@ -1,7 +1,7 @@
 "use client";
+import { classNames } from "@rafty/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { classNames } from "@rafty/ui";
 import { navigation } from "../lib/navigation";
 
 export function Navigation({

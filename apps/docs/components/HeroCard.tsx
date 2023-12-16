@@ -1,11 +1,11 @@
 "use client";
 import { Calendar, Card, CardContent, classNames } from "@rafty/ui";
+import { useState } from "react";
 import {
   ChatBoxExample,
   CookieSettingsExample,
   TeamMembersExample,
 } from "../app/themes/Cards";
-import { useState } from "react";
 
 export function HeroCard() {
   const [isOpen, setIsOpen] = useState(false);

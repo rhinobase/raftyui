@@ -1,7 +1,7 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
 import { classNames } from "@rafty/ui";
+import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 
 import { type Section, type Subsection } from "../lib/sections";
 

@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader } from "@rafty/ui";
-import Image from "next/image";
-import Logo from "../public/rhinobase.png";
-import { useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import { Card, CardContent, CardHeader } from "@rafty/ui";
 import { Button } from "@rafty/ui";
+import Image from "next/image";
+import { useState } from "react";
+import Logo from "../public/rhinobase.png";
 
 export default function Home() {
   const [isDark, setDarkMode] = useState(false);

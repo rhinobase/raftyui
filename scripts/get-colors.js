@@ -24,13 +24,11 @@ async function main() {
     console.log(`.theme-${item} {`);
     await Promise.all(
       Object.entries(colors[item]).map(([w, c]) =>
-        axios.get(`https://www.thecolorapi.com/id?hex=${c.slice(1)}`).then(
-          ({
-            data: {
-              rgb: { r, g, b },
-            },
-          }) => console.log(`--color-primary-${w}: ${r} ${g} ${b};`),
-        ),
+        axios
+          .get(`https://www.thecolorapi.com/id?hex=${c.slice(1)}`)
+          .then(({ data: { rgb: { r, g, b } } }) =>
+            console.log(`--color-primary-${w}: ${r} ${g} ${b};`),
+          ),
       ),
     );
     console.log("}");

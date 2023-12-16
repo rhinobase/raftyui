@@ -1,8 +1,8 @@
+import { themes } from "prism-react-renderer";
 import { useState } from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
-import { themes } from "prism-react-renderer";
-import { CopyButton } from "./CopyButton";
 import { CodeContainer } from "./CodeContainer";
+import { CopyButton } from "./CopyButton";
 import { ReactLiveScope } from "./ReactLiveScope";
 
 export type ReactLiveBlock = {

@@ -30,7 +30,7 @@ export function CookieSettingsExample() {
         </Text>
       </div>
       {SETTINGS.map(({ heading, description }, index) => (
-        <div key={index} className="flex items-center justify-between">
+        <div key={heading} className="flex items-center justify-between">
           <div>
             <Text className="text-sm font-medium">{heading}</Text>
             <Text className="max-w-[250px] text-xs opacity-50">

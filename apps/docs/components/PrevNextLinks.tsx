@@ -1,14 +1,14 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { classNames } from "@rafty/ui";
-import { navigation } from "../lib/navigation";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   PencilIcon,
 } from "@heroicons/react/24/outline";
+import { classNames } from "@rafty/ui";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { HTMLAttributes } from "react";
+import { navigation } from "../lib/navigation";
 
 function PageLink({
   title,

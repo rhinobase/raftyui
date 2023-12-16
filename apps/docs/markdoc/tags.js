@@ -1,7 +1,7 @@
 import { Callout } from "../components/Callout";
-import { Example, Sandpack } from "../components/code";
 import { InfoButton } from "../components/InfoButton";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
+import { Example, Sandpack } from "../components/code";
 
 const tags = {
   callout: {

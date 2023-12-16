@@ -1,5 +1,5 @@
-import { composePlugins, withNx } from "@nx/next";
 import withMarkdoc from "@markdoc/next.js";
+import { composePlugins, withNx } from "@nx/next";
 
 import withSearch from "./markdoc/search.mjs";
 

@@ -1,9 +1,9 @@
 "use client";
 import {
-  createAutocomplete,
   type AutocompleteApi,
   type AutocompleteCollection,
   type AutocompleteState,
+  createAutocomplete,
 } from "@algolia/autocomplete-core";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
@@ -21,9 +21,9 @@ import {
 import { useRouter } from "next/navigation";
 import {
   Dispatch,
-  forwardRef,
   Fragment,
   SetStateAction,
+  forwardRef,
   useCallback,
   useEffect,
   useId,

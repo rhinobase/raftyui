@@ -1,12 +1,12 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { classNames, Button } from "@rafty/ui";
+import { Button, classNames } from "@rafty/ui";
+import { useWindowScroll } from "@uidotdev/usehooks";
 import Link from "next/link";
 import type { Dispatch, SetStateAction } from "react";
 import { BsDiscord, BsGithub, BsTwitter } from "react-icons/bs";
 import { Logo, Logomark } from "../components/Logo";
 import { SearchButton } from "../components/Search";
 import { ThemeSelector } from "../components/ThemeSelector";
-import { useWindowScroll } from "@uidotdev/usehooks";
 
 const NAVIGATION = [
   {

@@ -1,11 +1,11 @@
-import { nodes as defaultNodes, Tag } from "@markdoc/markdoc";
+import { Tag, nodes as defaultNodes } from "@markdoc/markdoc";
 import { Kbd } from "@rafty/ui";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import yaml from "js-yaml";
 import { DocsLayout } from "../components/DocsLayout";
 import { Fence } from "../components/code";
 
-let documentSlugifyMap = new Map();
+const documentSlugifyMap = new Map();
 
 const nodes = {
   document: {
@@ -27,13 +27,13 @@ const nodes = {
   heading: {
     ...defaultNodes.heading,
     transform(node, config) {
-      let slugify = documentSlugifyMap.get(config);
-      let attributes = node.transformAttributes(config);
-      let children = node.transformChildren(config);
-      let text = children
+      const slugify = documentSlugifyMap.get(config);
+      const attributes = node.transformAttributes(config);
+      const children = node.transformChildren(config);
+      const text = children
         .filter((child) => typeof child === "string")
         .join(" ");
-      let id = attributes.id ?? slugify(text);
+      const id = attributes.id ?? slugify(text);
 
       return new Tag(
         `h${node.attributes.level}`,

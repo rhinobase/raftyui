@@ -11,9 +11,11 @@ const BREAKPOINTS = {
 type BreakpointType = keyof typeof BREAKPOINTS;
 const KEYS = Object.keys(BREAKPOINTS);
 
-export function useBreakpointValue<T = unknown>(values?: {
-  [K in BreakpointType]?: T;
-}) {
+export function useBreakpointValue<T = unknown>(
+  values?: {
+    [K in BreakpointType]?: T;
+  },
+) {
   const [breakpoint, setBreakPoint] = useState<BreakpointType>("sm");
   const [width, setWidth] = useState<number>();
 

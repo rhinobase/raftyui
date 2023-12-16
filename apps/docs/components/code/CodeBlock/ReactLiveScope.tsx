@@ -1,5 +1,3 @@
-import * as Rafty from "@rafty/ui";
-import React from "react";
 import {
   ArchiveBoxIcon,
   BackspaceIcon,
@@ -17,7 +15,9 @@ import {
   PlusIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import * as Rafty from "@rafty/ui";
 import Image from "next/image";
+import React from "react";
 
 export const ReactLiveScope = {
   React,

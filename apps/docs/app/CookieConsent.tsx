@@ -1,7 +1,7 @@
 "use client";
 import { Button, Text } from "@rafty/ui";
-import Script from "next/script";
 import cookies from "js-cookie";
+import Script from "next/script";
 import { useState } from "react";
 
 // Cookie name for analytics consent
@@ -28,10 +28,12 @@ export function CookieConsent() {
   }
 
   // Adding google analytics
-  if (isConsentGiven == "1") return <GoogleAnalytics />;
+  if (isConsentGiven === "1") return <GoogleAnalytics />;
+
   // Asking permission
-  else if (isConsentGiven == undefined)
+  if (isConsentGiven === undefined)
     return <CookieConsentBanner handleGivenConsent={handleGivenConsent} />;
+
   // The user has denied the request
   return <></>;
 }
