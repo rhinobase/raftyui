@@ -149,7 +149,7 @@ export const tabTriggerClasses = cva(
           "data-[orientation=vertical]:data-[state=active]:border-primary-500 data-[orientation=vertical]:data-[state=active]:dark:border-primary-400",
         ),
         enclosed: classNames(
-          "data-[orientation=horizontal]:-mb-[2px] data-[orientation=horizontal]:rounded-t-md data-[orientation=horizontal]:border data-[orientation=horizontal]:border-b-0 data-[orientation=horizontal]:border-transparent",
+          "data-[orientation=horizontal]:-mb-[1px] data-[orientation=horizontal]:rounded-t-md data-[orientation=horizontal]:border data-[orientation=horizontal]:border-b-0 data-[orientation=horizontal]:border-transparent",
           "data-[orientation=vertical]:mr-[-3px] data-[orientation=vertical]:border-t data-[orientation=vertical]:border-b data-[orientation=vertical]:border-transparent",
           "data-[orientation=horizontal]:data-[state=active]:border-secondary-200 data-[orientation=horizontal]:data-[state=active]:dark:border-secondary-700 data-[orientation=horizontal]:data-[state=active]:dark:border-b-secondary-800 data-[orientation=horizontal]:data-[state=active]:bg-white data-[orientation=horizontal]:data-[state=active]:dark:bg-secondary-900",
           "data-[orientation=vertical]:data-[state=active]:border-secondary-200 data-[orientation=vertical]:data-[state=active]:dark:border-black",

@@ -42,9 +42,13 @@ export const textareaClasses = cva(
       },
       {
         variant: ["solid", "outline"],
-        invalid: false,
-        className:
-          "border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
+        size: ["sm", "md", "lg"],
+        className: classNames(
+          "border border-secondary-300 dark:border-secondary-700 outline-none",
+          "hover:border-primary-500 dark:hover:border-primary-400 disabled:hover:border-secondary-300 dark:disabled:hover:border-secondary-700",
+          "focus:border-primary-500 dark:focus:border-primary-400",
+          "focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-100/20",
+        ),
       },
       {
         variant: ["outline", "ghost"],
