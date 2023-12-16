@@ -3,7 +3,7 @@ import { Kbd } from "@rafty/ui";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import yaml from "js-yaml";
 import { DocsLayout } from "../components/DocsLayout";
-import { Fence } from "../components/Fence";
+import { Fence } from "../components/code";
 
 let documentSlugifyMap = new Map();
 

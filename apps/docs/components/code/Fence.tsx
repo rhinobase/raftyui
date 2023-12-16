@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 
 const CodeBlock = dynamic(
   () => import("./CodeBlock").then((mod) => mod.CodeBlock),
-  { loading: () => <Skeleton className="-mt-2 h-[400px] w-full rounded-lg" /> },
+  {
+    loading: () => <Skeleton className="-mt-2 h-[400px] w-full rounded-lg" />,
+  },
 );
 
 export type Fence = {

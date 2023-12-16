@@ -9,7 +9,7 @@ import {
 } from "@codesandbox/sandpack-react";
 import { dracula } from "@codesandbox/sandpack-themes";
 
-type SandpackEmbed = {
+export type SandpackEmbed = {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   layoutOptions?: SandpackLayoutProps;
@@ -18,7 +18,6 @@ type SandpackEmbed = {
   files: {
     [x: string]: string;
   };
-  isHorizontal?: boolean;
 };
 
 const ReactMainFile = `import React, { StrictMode } from "react";
@@ -36,7 +35,7 @@ root.render(
   </StrictMode>
 );`;
 
-export default function SandpackEmbed({
+export function SandpackEmbed({
   dependencies,
   devDependencies,
   layoutOptions,

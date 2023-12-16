@@ -1,5 +1,5 @@
 import { Callout } from "../components/Callout";
-import { Examples } from "../components/Examples";
+import { Example } from "../components/code";
 import { InfoButton } from "../components/InfoButton";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
 
@@ -32,9 +32,8 @@ const tags = {
     ),
   },
   example: {
-    render: Examples,
+    render: Example,
     attributes: {
-      name: { type: String },
       children: { type: String },
     },
   },

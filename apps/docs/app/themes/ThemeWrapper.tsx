@@ -14,6 +14,7 @@ import {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
+  Kbd,
   Popover,
   PopoverClose,
   PopoverContent,
@@ -25,7 +26,7 @@ import {
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
 import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
-import { Fence } from "../../components/Fence";
+import { Fence } from "../../components/code";
 import Link from "next/link";
 
 const COLOR_THEME = {
@@ -215,10 +216,10 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
           <DialogTitle>Theme</DialogTitle>
           <Text className="text-sm leading-snug opacity-50">
             Copy and paste the following code into your{" "}
-            <em>tailwind.config.js</em> file.
+            <Kbd>tailwind.config.js</Kbd> file.
           </Text>
         </div>
-        <Fence language="js" className="overflow-x-auto rounded-xl px-5 py-4">
+        <Fence language="js">
           {`const colors = require('tailwindcss/colors')
 
 {
