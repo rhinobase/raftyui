@@ -4,6 +4,7 @@ import { themes } from "prism-react-renderer";
 import { CopyButton } from "./CopyButton";
 import { CodeContainer } from "./CodeContainer";
 import { ReactLiveScope } from "./ReactLiveScope";
+import { liveEditorStyle, liveErrorStyle } from "./styles";
 
 export type ReactLiveBlock = {
   code: string;
@@ -21,11 +22,16 @@ export function ReactLiveBlock({ code }: ReactLiveBlock) {
       <LivePreview className="not-porse dark:bg-secondary-900 dark:border-secondary-800 flex w-full items-center justify-center rounded-lg border bg-transparent p-4" />
       <div className="relative z-0">
         <CodeContainer>
-          <LiveEditor onChange={onChange} theme={themes.dracula} />
+          <LiveEditor
+            onChange={onChange}
+            theme={themes.dracula}
+            style={liveEditorStyle}
+            data-gramm="false"
+          />
         </CodeContainer>
         <CopyButton content={editorCode} />
       </div>
-      <LiveError />
+      <LiveError style={liveErrorStyle} />
     </LiveProvider>
   );
 }
