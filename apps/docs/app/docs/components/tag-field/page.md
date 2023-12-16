@@ -28,7 +28,23 @@ import { TagField } from "@rafty/ui";
 
 ## Usage
 
-{% example name="tag-field:usage" /%}
+{% example %}
+
+```jsx
+<TagField />
+```
+
+{% /example %}
+
+## Initial Data
+
+{% example %}
+
+```jsx
+<TagField initialData={["sample", "data"]} />
+```
+
+{% /example %}
 
 ## Props
 

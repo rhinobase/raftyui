@@ -34,31 +34,70 @@ The toast will close itself after a timeout.
 
 Toasts by default appears at the top of an application window, and it is possible to have more than one toast onscreen at a time.
 
-{% example name="toast:usage" /%}
+{% example %}
+
+```jsx
+<Toast title="Success Banner" severity="success" />
+```
+
+{% /example %}
 
 ## Title
 
 The title is another required prop for in toast.
 
-{% example name="toast:title" /%}
+{% example %}
+
+```jsx
+<Toast title="This is sample title" severity="warning" />
+```
+
+{% /example %}
 
 ## Message
 
 The message prop is used to display description below title in toast
 
-{% example name="toast:message" /%}
+{% example %}
+
+```jsx
+<Toast
+  title="Success Banner"
+  message="Data uploaded to the server. Fire on!"
+  severity="success"
+/>
+```
+
+{% /example %}
 
 ## Severity
 
 There are 4 `severity` options in toast: `error`, `warning`, `info` & `success`. It is a required prop.
 
-{% example name="toast:severity" /%}
+{% example %}
+
+```jsx
+<div className="flex w-full flex-col items-center gap-4">
+  <Toast title="Success Banner" severity="success" />
+  <Toast title="Success Banner" severity="warning" />
+  <Toast title="Success Banner" severity="info" />
+  <Toast title="Success Banner" severity="error" />
+</div>
+```
+
+{% /example %}
 
 ## Visible
 
 The visible prop is used to manage the visibility of toast.
 
-{% example name="toast:visible" /%}
+{% example %}
+
+```jsx
+<Toast title="Success Banner" severity="info" visible />
+```
+
+{% /example %}
 
 ## Props
 

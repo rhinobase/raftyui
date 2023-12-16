@@ -5,6 +5,7 @@ import {
   BackspaceIcon,
   PaperAirplaneIcon,
   PhoneIcon,
+  PlusIcon,
 } from "@heroicons/react/24/outline";
 
 export const ReactLiveScope = {
@@ -16,4 +17,5 @@ export const ReactLiveScope = {
   BackspaceIcon,
   PaperAirplaneIcon,
   PhoneIcon,
+  PlusIcon,
 };

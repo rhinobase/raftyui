@@ -26,25 +26,53 @@ import { Textarea } from "@rafty/ui";
 
 ## Usage
 
-{% example name="textarea:usage" /%}
+{% example %}
+
+```jsx
+<Textarea placeholder="This is a sample placeholder" />
+```
+
+{% /example %}
 
 ## Variants
 
 Pass the `variant` prop if you need to adjust visual style of the textarea. Values can be `solid`, `outline`, `ghost`.
 
-{% example name="textarea:variant" /%}
+{% example %}
+
+```jsx
+<Textarea placeholder="This is a sample placeholder" variant="solid" />
+```
+
+{% /example %}
 
 ## UnStyled
 
 Pass `isUnstyled` prop to remove style from textarea.
 
-{% example name="textarea:unstyled" /%}
+{% example %}
+
+```jsx
+<Textarea
+  placeholder="This is a sample placeholder"
+  isUnstyled
+  className="border-secondary-200 dark:border-secondary-500 w-full rounded-md border bg-transparent p-2 outline-none ring-offset-0 hover:border-green-300 focus:ring-1 focus:ring-sky-300"
+/>
+```
+
+{% /example %}
 
 ## Disabled
 
 Pass `isDisabled` prop to put textarea in disabled state.
 
-{% example name="textarea:disabled" /%}
+{% example %}
+
+```jsx
+<Textarea placeholder="this is sample placeholder" isDisabled />
+```
+
+{% /example %}
 
 ## Props
 

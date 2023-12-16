@@ -30,19 +30,45 @@ import { SearchField } from "@rafty/ui";
 
 ## Usage
 
-{% example name="search-field:usage" /%}
+{% example %}
+
+```jsx
+<SearchField />
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
-{%example name="search-field:size"/%}
+{% example %}
+
+```jsx
+<div className="space-y-2">
+  <SearchField size="sm" />
+  <SearchField size="md" />
+  <SearchField size="lg" />
+</div>
+```
+
+{% /example %}
 
 ## Variant
 
 There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`
 
-{% example name="search-field:variant" /%}
+{% example %}
+
+```jsx
+<div className="space-y-2">
+  <SearchField variant="outline" />
+  <SearchField variant="ghost" />
+  <SearchField variant="solid" />
+</div>
+```
+
+{% /example %}
 
 ## Props
 

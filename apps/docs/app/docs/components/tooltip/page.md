@@ -33,7 +33,20 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@rafty/ui";
 
 ## Usage
 
-{% example name="tooltip:usage" /%}
+{% example %}
+
+```jsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Button size="fab">
+      <PlusIcon width={24} height={24} className="stroke-2" />
+    </Button>
+  </TooltipTrigger>
+  <TooltipContent side="top">Hover Me!</TooltipContent>
+</Tooltip>
+```
+
+{% /example %}
 
 ## Props
 

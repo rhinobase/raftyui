@@ -36,13 +36,37 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
 ## Usage
 
-{% example name="stat:usage" /%}
+{% example %}
+
+```jsx
+<Stat type="normal">
+  <StatLabel>Daily Return</StatLabel>
+  <StatValue>17,770.90</StatValue>
+  <StatHelpText>
+    <StatIcon /> 0.47%
+  </StatHelpText>
+</Stat>
+```
+
+{% /example %}
 
 ## Type
 
 The type prop is used to define type of stat, it has 3 options: `increase`, `decrease` & `normal` (default).
 
-{% example name="stat:type" /%}
+{% example %}
+
+```jsx
+<Stat type="increase">
+  <StatLabel>Daily Return</StatLabel>
+  <StatValue>17,770.90</StatValue>
+  <StatHelpText>
+    <StatIcon /> 0.47%
+  </StatHelpText>
+</Stat>
+```
+
+{% /example %}
 
 ## Props
 

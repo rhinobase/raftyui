@@ -32,35 +32,122 @@ import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
 ## Usage
 
-{% example name="toggle-group:usage" /%}
+{% example %}
+
+```jsx
+<ToggleGroup type="single">
+  <ToggleGroupItem value="1">1</ToggleGroupItem>
+  <ToggleGroupItem value="2">2</ToggleGroupItem>
+  <ToggleGroupItem value="3">3</ToggleGroupItem>
+</ToggleGroup>
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`.
 
-{% example name="toggle-group:size" /%}
+{% example %}
+
+```jsx
+<ToggleGroup type="single" defaultValue="1" size="sm">
+  <ToggleGroupItem value="1">1</ToggleGroupItem>
+  <ToggleGroupItem value="2">2</ToggleGroupItem>
+  <ToggleGroupItem value="3">3</ToggleGroupItem>
+</ToggleGroup>
+```
+
+{% /example %}
 
 ## Type
 
 Using the `type` prop you can set the type of toggle-group. Values can be `single`, `multiple`;
-{% example name="toggle-group:type" /%}
+{% example %}
+
+```jsx
+<ToggleGroup type="multiple" defaultValue={["1", "3"]}>
+  <ToggleGroupItem value="1">1</ToggleGroupItem>
+  <ToggleGroupItem value="2">2</ToggleGroupItem>
+  <ToggleGroupItem value="3">3</ToggleGroupItem>
+</ToggleGroup>
+```
+
+{% /example %}
 
 ## Default Value
 
-{% example name="toggle-group:default" /%}
 Using the `defaultValue` prop you can set the default value of toggle-group.
+
+{% example %}
+
+```jsx
+<ToggleGroup type="single" defaultValue="3">
+  <ToggleGroupItem value="1">1</ToggleGroupItem>
+  <ToggleGroupItem value="2">2</ToggleGroupItem>
+  <ToggleGroupItem value="3">3</ToggleGroupItem>
+</ToggleGroup>
+```
+
+{% /example %}
 
 ## Unstyled
 
 Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 
-{% example name="toggle-group:unstyled" /%}
+{% example %}
+
+```jsx
+<ToggleGroup
+  type="single"
+  defaultValue="1"
+  isUnstyled
+  className="flex h-9 w-full"
+>
+  <ToggleGroupItem
+    value="1"
+    className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-l-md border font-bold "
+  >
+    1
+  </ToggleGroupItem>
+  <ToggleGroupItem
+    value="2"
+    className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300 dark:data-[state=on]:bg-primary-300/20 w-full border font-bold"
+  >
+    2
+  </ToggleGroupItem>
+  <ToggleGroupItem
+    value="3"
+    className="dark:border-secondary-800 data-[state=on]:bg-primary-100 data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-r-md border font-bold"
+  >
+    3
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+{% /example %}
 
 ## Unstyled subcomponent
 
 Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
 
-{% example name="toggle-group:unstyledsub" /%}
+{% example %}
+
+```jsx
+<ToggleGroup type="single" defaultValue="1">
+  <ToggleGroupItem
+    value="1"
+    isUnstyled
+    className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 w-full px-3 py-1  font-semibold"
+  >
+    1
+  </ToggleGroupItem>
+  <ToggleGroupItem value="2">2</ToggleGroupItem>
+  <ToggleGroupItem value="3">3</ToggleGroupItem>
+</ToggleGroup>
+```
+
+{% /example %}
 
 ## Props
 

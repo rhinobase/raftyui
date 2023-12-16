@@ -30,7 +30,13 @@ import { RangePicker } from "@rafty/ui";
 
 ## Usage
 
-{% example name="range-picker:usage" /%}
+{% example %}
+
+```jsx
+<RangePicker />
+```
+
+{% /example %}
 
 ## Props
 

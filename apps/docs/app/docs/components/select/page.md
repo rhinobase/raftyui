@@ -32,37 +32,97 @@ import { Select, SelectItem } from "@rafty/ui";
 
 ## Usage
 
-{% example name="select:usage" /%}
+{% example %}
+
+```jsx
+<Select>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
-{% example name="select:size" /%}
+{% example %}
+
+```jsx
+<Select size="sm">
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## Variant
 
 There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`.
 
-{% example name="select:variant" /%}
+{% example %}
+
+```jsx
+<Select variant="solid">
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## IsDisabled
 
 IsDisabled prop is used to show select component in disabled state
 
-{% example name="select:disabled" /%}
+{% example %}
+
+```jsx
+<Select isDisabled>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## IsRequired
 
 IsRequired prop is used to show select in required state.
 
-{% example name="select:required" /%}
+{% example %}
+
+```jsx
+<Select isRequired>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## IsReadOnly
 
 IsReadOnly prop is used to show select in read only state.
 
-{% example name="select:readonly" /%}
+{% example %}
+
+```jsx
+<Select isReadOnly>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## Props
 

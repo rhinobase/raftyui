@@ -30,37 +30,77 @@ import { Switch } from "@rafty/ui";
 
 ## Usage
 
-{% example name="switch:usage" /%}
+{% example %}
+
+```jsx
+<Switch />
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 size options in spinner: `sm`, `md` (default) & `lg
 
-{% example name="switch:size" /%}
+{% example %}
+
+```jsx
+<div className="flex items-center gap-4">
+  <Switch size="sm" />
+  <Switch size="md" />
+  <Switch size="lg" />
+</div>
+```
+
+{% /example %}
 
 ## IsDisabled
 
 isDisabled prop is used to show select component in disabled state.
 
-{% example name="switch:disabled" /%}
+{% example %}
+
+```jsx
+<Switch isDisabled />
+```
+
+{% /example %}
 
 ## Checked
 
 Pass the `checked` prop is used to manage checked state.
 
-{% example name="switch:selected" /%}
+{% example %}
+
+```jsx
+<Switch checked />
+```
+
+{% /example %}
 
 ## IsRequired
 
 IsRequired prop is used to show select in required state.
 
-{% example name="switch:required" /%}
+{% example %}
+
+```jsx
+<Switch isRequired />
+```
+
+{% /example %}
 
 ## IsReadOnly
 
 IsReadOnly prop is used to show select in read-only state
 
-{% example name="switch:readonly" /%}
+{% example %}
+
+```jsx
+<Switch isReadOnly />
+```
+
+{% /example %}
 
 ## Props
 
