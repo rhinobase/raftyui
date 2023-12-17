@@ -12,8 +12,8 @@ export async function GET(request: Request) {
     const hasTitle = searchParams.has("title");
     const title = hasTitle ? searchParams.get("title")?.slice(0, 100) : "rafty";
 
-    const width = 1200,
-      height = 630;
+    const width = 1200;
+    const height = 630;
 
     return new ImageResponse(
       <div
@@ -88,7 +88,7 @@ export async function GET(request: Request) {
       },
     );
   } catch (e: unknown) {
-    return new Response(`Failed to generate the image`, {
+    return new Response("Failed to generate the image", {
       status: 500,
     });
   }

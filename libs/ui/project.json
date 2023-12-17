@@ -65,6 +65,10 @@
         ]
       }
     },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs plugin {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {

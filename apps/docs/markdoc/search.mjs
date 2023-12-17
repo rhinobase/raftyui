@@ -9,14 +9,14 @@ import { createLoader } from "simple-functional-loader";
 const __filename = url.fileURLToPath(import.meta.url);
 const slugify = slugifyWithCounter();
 
-function toString(node) {
+function convertToString(node) {
   let str =
     node.type === "text" && typeof node.attributes?.content === "string"
       ? node.attributes.content
       : "";
   if ("children" in node) {
     for (const child of node.children) {
-      str += toString(child);
+      str += convertToString(child);
     }
   }
   return str;
@@ -27,7 +27,7 @@ function extractSections(node, sections, isRoot = true) {
     slugify.reset();
   }
   if (node.type === "heading" || node.type === "paragraph") {
-    const content = toString(node).trim();
+    const content = convertToString(node).trim();
     if (node.type === "heading" && node.attributes.level <= 2) {
       const hash = node.attributes?.id ?? slugify(content);
       sections.push([content, hash, []]);

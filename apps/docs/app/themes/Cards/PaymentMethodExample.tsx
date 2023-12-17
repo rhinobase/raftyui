@@ -75,7 +75,7 @@ export function PaymentMethodExample() {
               key={item.heading}
               onClick={() => setSelected(index)}
               className={classNames(
-                isSelect == index
+                isSelect === index
                   ? "ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400 ring-2"
                   : "dark:border-secondary-700",
                 "dark:hover:bg-secondary-900/70 hover:bg-secondary-50 flex w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-md border p-4 transition-all ease-in-out",

@@ -23,8 +23,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
           }
         : undefined;
 
-      if (value && cur?.to)
-        value["to"] = new Date(format(cur.to, "yyyy-mm-dd"));
+      if (value && cur?.to) value.to = new Date(format(cur.to, "yyyy-mm-dd"));
 
       props.onSelect?.(value);
 
@@ -37,11 +36,10 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
 
   let display = "";
   if (selected?.from)
-    display +=
-      String(
-        props.formatters?.formatDay?.(selected.from) ??
-          format(selected.from, "longDate"),
-      ) + " - ";
+    display += `${
+      props.formatters?.formatDay?.(selected.from) ??
+      format(selected.from, "longDate")
+    } - `;
   if (selected?.to)
     display += String(
       props.formatters?.formatDay?.(selected.to) ??

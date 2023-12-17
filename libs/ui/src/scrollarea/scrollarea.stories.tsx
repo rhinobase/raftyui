@@ -20,8 +20,8 @@ export const Default: Story = {
           <h4 className="dark:text-secondary-100 mb-4 text-sm font-medium leading-none">
             Tags
           </h4>
-          {tags.map((tag, index) => (
-            <React.Fragment key={index}>
+          {tags.map((tag) => (
+            <React.Fragment key={tag}>
               <div className="dark:text-secondary-100 text-sm" key={tag}>
                 {tag}
               </div>

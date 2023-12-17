@@ -125,10 +125,10 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       isRequired: false,
     };
 
-    const field_name = name || context.name,
-      disabled = isDisabled || context.isDisabled || context.isLoading,
-      required = isRequired || context.isRequired,
-      readonly = isReadOnly || context.isReadOnly;
+    const field_name = name || context.name;
+    const disabled = isDisabled || context.isDisabled || context.isLoading;
+    const required = isRequired || context.isRequired;
+    const readonly = isReadOnly || context.isReadOnly;
 
     return (
       <div className="group relative flex w-max items-center">

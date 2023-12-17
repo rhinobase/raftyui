@@ -33,6 +33,7 @@ export const Spinner = forwardRef<SVGSVGElement, Spinner>(
         fill="currentColor"
         ref={forwardedRef}
       >
+        <title>spinner</title>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

@@ -97,16 +97,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   ) => {
     const context = useFieldControlContext() ?? {};
 
-    const name = props.name || context.name,
-      disabled =
-        isDisabled ||
-        props.disabled ||
-        context.isDisabled ||
-        isLoading ||
-        context.isLoading,
-      invalid = isInvalid || context.isInvalid,
-      readonly = isReadOnly || props.readOnly || context.isReadOnly,
-      required = isRequired || props.required || context.isRequired;
+    const name = props.name || context.name;
+    const disabled =
+      isDisabled ||
+      props.disabled ||
+      context.isDisabled ||
+      isLoading ||
+      context.isLoading;
+    const invalid = isInvalid || context.isInvalid;
+    const readonly = isReadOnly || props.readOnly || context.isReadOnly;
+    const required = isRequired || props.required || context.isRequired;
 
     return (
       <textarea

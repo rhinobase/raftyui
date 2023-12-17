@@ -24,8 +24,8 @@ export function Gradient({
       gradientUnits="userSpaceOnUse"
       {...props}
     >
-      {gradients[color].map((stop, stopIndex) => (
-        <stop key={stopIndex} {...stop} />
+      {gradients[color].map((stop) => (
+        <stop key={stop.stopColor} {...stop} />
       ))}
     </radialGradient>
   );

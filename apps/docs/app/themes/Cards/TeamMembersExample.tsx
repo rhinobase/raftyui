@@ -133,7 +133,7 @@ function MemberRoleMenu({ label }: { label: string }) {
                       </Text>
                     </div>
                     <div className="flex-1" />
-                    {selected.id == id && (
+                    {selected.id === id && (
                       <CheckIcon
                         height={16}
                         width={16}

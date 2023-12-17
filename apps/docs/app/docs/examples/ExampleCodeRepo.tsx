@@ -63,8 +63,8 @@ const EXAMPLE_TEMPLATES: ExampleType[] = [
 export function ExampleCodeRepo() {
   return (
     <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
-      {EXAMPLE_TEMPLATES.map((example, index) => (
-        <CardElement key={index} {...example} />
+      {EXAMPLE_TEMPLATES.map((example) => (
+        <CardElement key={example.title} {...example} />
       ))}
     </div>
   );

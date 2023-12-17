@@ -15,16 +15,13 @@ export function Navigation({
 
   return (
     <nav className={classNames("text-base lg:text-sm", className)}>
-      <ul role="list" className="space-y-9">
+      <ul className="space-y-9">
         {navigation.map((section) => (
           <li key={section.title}>
             <h2 className="font-display text-secondary-900 font-medium dark:text-white">
               {section.title}
             </h2>
-            <ul
-              role="list"
-              className="border-secondary-100 dark:border-secondary-800 lg:border-secondary-200 mt-2 space-y-2 border-l-2 lg:mt-4 lg:space-y-4"
-            >
+            <ul className="border-secondary-100 dark:border-secondary-800 lg:border-secondary-200 mt-2 space-y-2 border-l-2 lg:mt-4 lg:space-y-4">
               {section.links.map((link) => (
                 <li key={link.href} className="relative">
                   <Link

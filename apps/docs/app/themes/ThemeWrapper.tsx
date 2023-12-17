@@ -78,7 +78,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                   name={`${c} button`}
                 >
-                  {color == c && (
+                  {color === c && (
                     <CheckIcon
                       height={16}
                       width={16}
@@ -154,7 +154,7 @@ function CustomizeMenu({
                 <Button
                   key={c}
                   size="sm"
-                  isActive={color == c}
+                  isActive={color === c}
                   variant="outline"
                   className="!justify-start capitalize"
                   leftIcon={
@@ -176,7 +176,7 @@ function CustomizeMenu({
                 variant="outline"
                 size="sm"
                 leftIcon={<SunIcon height={15} width={15} />}
-                isActive={theme == themes[0]}
+                isActive={theme === themes[0]}
                 onClick={() => setTheme("light")}
               >
                 Light
@@ -185,7 +185,7 @@ function CustomizeMenu({
                 variant="outline"
                 size="sm"
                 leftIcon={<MoonIcon height={15} width={15} />}
-                isActive={theme == themes[1]}
+                isActive={theme === themes[1]}
                 onClick={() => setTheme("dark")}
               >
                 Dark

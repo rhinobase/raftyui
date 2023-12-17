@@ -68,7 +68,7 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
 
     // Checking if there is a message
     const value = ref.current.value;
-    if (value == "") return prev;
+    if (value === "") return prev;
 
     const tmp = [...prev, value];
     ref.current.value = "";
@@ -111,14 +111,13 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
             I can&apos;t log in.
           </Message>
         </div>
-        {messages &&
-          messages.map((message, index) => (
-            <div key={index} className="flex flex-row-reverse">
-              <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
-                {message}
-              </Message>
-            </div>
-          ))}
+        {messages?.map((message) => (
+          <div key={message} className="flex flex-row-reverse">
+            <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
+              {message}
+            </Message>
+          </div>
+        ))}
       </div>
       <div className="flex items-center gap-2">
         <InputField
@@ -184,9 +183,9 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
-              {USERS_DATA.map((user, index) => (
+              {USERS_DATA.map((user) => (
                 <CommandItem
-                  key={index}
+                  key={user.id}
                   className="!rounded-lg"
                   onSelect={() => dispatch(user.id)}
                 >

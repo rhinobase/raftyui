@@ -27,7 +27,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
   ) => {
     const validChildren = getValidChildren(children);
 
-    validChildren.forEach((child) => {
+    for (const child of validChildren) {
       switch (child.type.displayName) {
         case LeftAddon.displayName:
           isLeftAddon = true;
@@ -45,7 +45,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
           isSuffix = true;
           break;
       }
-    });
+    }
 
     return (
       <InputGroupProvider

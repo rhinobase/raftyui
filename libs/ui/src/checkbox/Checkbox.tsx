@@ -71,10 +71,10 @@ export const Checkbox = forwardRef<
   ) => {
     const context = useFieldControlContext() ?? {};
 
-    const name = props.name || context.name,
-      disabled =
-        isDisabled || context.isDisabled || isReadOnly || context.isReadOnly,
-      required = isRequired || context.isRequired;
+    const name = props.name || context.name;
+    const disabled =
+      isDisabled || context.isDisabled || isReadOnly || context.isReadOnly;
+    const required = isRequired || context.isRequired;
 
     const checkbox = (
       <CheckboxPrimitive.Root

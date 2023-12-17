@@ -82,9 +82,9 @@ const TABLE_DATA: Header[] = [
 export function TableExample() {
   const [show, dispatch] = useReducer(
     (prev: (keyof Header)[], cur: keyof Header) => {
-      const index = prev.findIndex((val) => val == cur);
+      const index = prev.findIndex((val) => val === cur);
 
-      if (index == -1) prev.push(cur);
+      if (index === -1) prev.push(cur);
       else prev.splice(index, 1);
 
       return [...prev].sort().reverse();
@@ -181,7 +181,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                 <Th
                   key={value}
                   className={classNames(
-                    index == 2 && "text-center",
+                    index === 2 && "text-center",
                     "w-max capitalize",
                   )}
                 >
@@ -195,7 +195,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
           </TableHead>
           <TableBody className="dark:!bg-secondary-950">
             {data.map((item, index) => (
-              <Tr key={index}>
+              <Tr key={item.id}>
                 <Td>
                   <Checkbox
                     size="sm"
@@ -213,7 +213,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                   <Td
                     key={index + value}
                     className={classNames(
-                      index == 2 && "text-center",
+                      index === 2 && "text-center",
                       "truncate",
                     )}
                   >
