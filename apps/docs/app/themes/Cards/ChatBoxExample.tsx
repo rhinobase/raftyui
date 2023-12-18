@@ -170,8 +170,8 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
         </TooltipTrigger>
         <TooltipContent>New message</TooltipContent>
       </Tooltip>
-      <DialogOverlay />
-      <DialogContent className="dark:!bg-secondary-900 !p-0">
+      <DialogOverlay className="!z-[70]" />
+      <DialogContent className="dark:!bg-secondary-900 !p-0 !z-[70]">
         <div className="space-y-2 p-4">
           <DialogTitle>New message</DialogTitle>
           <Text className="text-sm leading-tight opacity-60">

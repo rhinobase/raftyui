@@ -39,7 +39,7 @@ export function Header({ setDrawerOpen, setSearchOpen }: Header) {
   return (
     <header
       className={classNames(
-        "shadow-secondary-900/5 sticky top-0 z-40 flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md transition duration-500 dark:shadow-none sm:px-6 md:gap-6 lg:px-8",
+        "shadow-secondary-900/5 sticky top-0 z-[60] flex flex-none flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md transition duration-500 dark:shadow-none sm:px-6 md:gap-6 lg:px-8",
         isScrolled
           ? "dark:bg-secondary-950/95 dark:[@supports(backdrop-filter:blur(0))]:bg-secondary-950/75 backdrop-blur"
           : "dark:bg-transparent",
