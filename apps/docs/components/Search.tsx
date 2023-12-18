@@ -392,8 +392,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         variant="outline"
         onClick={() => setOpen(true)}
         className="hidden w-[300px] !justify-start !gap-2 md:flex"
-        name="Search"
-        aria-label="Search"
+        aria-label="Search docs"
       >
         <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
         Search docs
@@ -406,8 +405,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         size="icon"
         onClick={() => setOpen(true)}
         className="md:hidden"
-        name="Search"
-        aria-label="Search"
+        aria-label="Search docs"
       >
         <MagnifyingGlassIcon height={16} width={16} />
       </Button>

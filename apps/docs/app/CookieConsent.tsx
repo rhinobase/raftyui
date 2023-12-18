@@ -47,8 +47,6 @@ type CookieConsentBanner = {
 function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
   return (
     <div
-      role="dialog"
-      aria-labelledby="cookie consent banner"
       className="dark:bg-secondary-900 fixed bottom-2 left-2 right-2 z-[100] rounded-lg bg-white p-4 shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none md:bottom-3 md:left-auto md:right-3 md:w-[340px]"
       style={{ pointerEvents: "auto" }}
     >
