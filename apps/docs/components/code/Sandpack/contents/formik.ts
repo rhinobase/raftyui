@@ -18,7 +18,7 @@ export default function App() {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className="space-y-3">
+    <form onSubmit={formik.handleSubmit} className="space-y-4 p-4">
       <FieldControl name="email" isRequired>
         <Label>Email Address</Label>
         <InputField

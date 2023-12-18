@@ -75,9 +75,9 @@ export function SandpackEmbed({ name }: SandpackEmbed) {
         },
       }}
     >
-      <SandpackLayout className="flex-col-reverse !rounded-xl lg:flex-row">
-        <SandpackCodeEditor showLineNumbers className="min-h-[700px]" />
-        <SandpackPreview className="min-h-[700px]" />
+      <SandpackLayout className="flex-col !rounded-xl">
+        <SandpackPreview className="min-h-[400px]" />
+        <SandpackCodeEditor showLineNumbers className="min-h-[400px]" />
       </SandpackLayout>
     </SandpackProvider>
   );

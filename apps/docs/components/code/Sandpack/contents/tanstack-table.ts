@@ -124,7 +124,7 @@ import { Button,
       onGlobalFilterChange: setFilter,
     });
     return (
-      <div className="container mx-auto space-y-4">
+      <div className="space-y-4 p-4">
         <InputGroup>
           <Prefix>
             <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
@@ -219,7 +219,7 @@ import { Button,
             </TableBody>
           </Table>
         </TableContainer>
-        <div className="flex justify-end gap-3">
+        <div className="flex gap-3">
           <Button
             size="sm"
             leftIcon={

@@ -32,7 +32,7 @@ export default function App() {
   return (
     <form
       onSubmit={handleSubmit((values) => console.log(values))}
-      className="space-y-2"
+      className="space-y-4 p-4"
     >
       <FieldControl name="name" isRequired>
         <Label>Name</Label>

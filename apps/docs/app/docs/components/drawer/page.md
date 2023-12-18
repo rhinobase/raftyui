@@ -23,14 +23,7 @@ This component is made using [Radix UIs Dialog Component](https://www.radix-ui.c
 Import all parts and piece them together.
 
 ```jsx
-import {
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerClose,
-  DrawerTitle,
-  DrawerDescription,
-} from "@rafty/ui";
+import { Drawer, DrawerOverlay, DrawerContent, DrawerClose, DrawerTitle, DrawerDescription } from "@rafty/ui";
 
 <Drawer>
   <DrawerOverlay />
@@ -54,12 +47,10 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay className="!z-[70]" />
+        <DrawerContent className="!z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>
-            This is sample drawer description. :
-          </DrawerDescription>
+          <DrawerDescription>This is sample drawer description. :</DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>
@@ -83,13 +74,11 @@ function DrawerExample() {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
-      <Drawer size="sm" open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
+      <Drawer size="full" open={isOpen} onOpenChange={setOpen}>
+        <DrawerOverlay className="!z-[70]" />
+        <DrawerContent className="!z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>
-            This is sample drawer description.
-          </DrawerDescription>
+          <DrawerDescription>This is sample drawer description.</DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>
@@ -114,12 +103,10 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer side="left" open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay className="!z-[70]" />
+        <DrawerContent className="!z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>
-            This is sample drawer description.
-          </DrawerDescription>
+          <DrawerDescription>This is sample drawer description.</DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>

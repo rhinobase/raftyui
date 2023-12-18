@@ -3,6 +3,7 @@ import { Kbd } from "@rafty/ui";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import yaml from "js-yaml";
 import { DocsLayout } from "../components/DocsLayout";
+import { PropsTable } from "../components/PropsTable";
 import { Fence } from "../components/code";
 
 const documentSlugifyMap = new Map();
@@ -51,6 +52,10 @@ const nodes = {
         default: "col",
       },
     },
+  },
+  table: {
+    ...defaultNodes.table,
+    render: PropsTable,
   },
   fence: {
     render: Fence,

@@ -92,7 +92,7 @@ export default function Combobox() {
   if (error) return <>Unable to load data!</>;
 
   return (
-    <div className="mx-auto w-full max-w-lg">
+    <div className="w-full p-4">
       <div className={!pages ? "invisible" : undefined}>
         <Popover open={isOpen} onOpenChange={setOpen}>
           <div className="relative flex items-center">
@@ -140,8 +140,8 @@ export default function Combobox() {
             )}
           </div>
           <PopoverContent
-            className="!max-w-full !p-0"
-            style={{ width: contentwidth }}
+            className="!p-0"
+            style={{ width: contentwidth, maxWidth: "none" }}
           >
             <Command shouldFilter={false}>
               <CommandList>

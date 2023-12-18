@@ -24,7 +24,7 @@ export function ReactLiveBlock({ code }: ReactLiveBlock) {
           <LiveEditor
             onChange={onChange}
             theme={themes.dracula}
-            className="!overflow-x-auto !rounded-lg !font-mono"
+            className="!overflow-x-auto !rounded-lg !font-mono [&>*]:!w-max [&>*]:lg:!min-w-[768px]"
             data-gramm="false"
           />
         </CodeContainer>
