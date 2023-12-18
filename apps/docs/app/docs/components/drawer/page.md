@@ -23,7 +23,14 @@ This component is made using [Radix UIs Dialog Component](https://www.radix-ui.c
 Import all parts and piece them together.
 
 ```jsx
-import { Drawer, DrawerOverlay, DrawerContent, DrawerClose, DrawerTitle, DrawerDescription } from "@rafty/ui";
+import {
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerClose,
+  DrawerTitle,
+  DrawerDescription,
+} from "@rafty/ui";
 
 <Drawer>
   <DrawerOverlay />
@@ -50,7 +57,9 @@ function DrawerExample() {
         <DrawerOverlay className="!z-[70]" />
         <DrawerContent className="!z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>This is sample drawer description. :</DrawerDescription>
+          <DrawerDescription>
+            This is sample drawer description. :
+          </DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>
@@ -78,7 +87,9 @@ function DrawerExample() {
         <DrawerOverlay className="!z-[70]" />
         <DrawerContent className="!z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>This is sample drawer description.</DrawerDescription>
+          <DrawerDescription>
+            This is sample drawer description.
+          </DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>
@@ -106,7 +117,9 @@ function DrawerExample() {
         <DrawerOverlay className="!z-[70]" />
         <DrawerContent className="!z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>This is sample drawer description.</DrawerDescription>
+          <DrawerDescription>
+            This is sample drawer description.
+          </DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>
