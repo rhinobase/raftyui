@@ -60,7 +60,7 @@ module.exports = {
     extend: {
         ...,
         // (Optional)
-        // Extend the default configuration of @rafty/ui
+        // Extend the default configuration
         colors: {
             primary: colors.purple,
             ...,

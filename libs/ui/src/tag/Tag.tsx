@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Tag Component
@@ -28,12 +28,12 @@ export const tagClasses = cva("h-max w-max font-medium", {
   },
 });
 
-export type Tag = React.HTMLAttributes<HTMLDivElement> & {
+export type Tag = HTMLAttributes<HTMLDivElement> & {
   size?: "sm" | "md" | "lg";
   colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
 };
 
-export const Tag = React.forwardRef<HTMLDivElement, Tag>(
+export const Tag = forwardRef<HTMLDivElement, Tag>(
   (
     { size = "md", colorScheme = "secondary", className, ...props },
     forwardedRef,

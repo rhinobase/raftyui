@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@swc/helpers": "~0.5.2"
+  }
 }

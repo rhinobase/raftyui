@@ -2,7 +2,12 @@
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { cva } from "class-variance-authority";
-import React from "react";
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
 import {
   ContextMenuContext,
@@ -10,7 +15,7 @@ import {
   useContextMenuContext,
 } from "./context";
 
-export type ContextMenu = React.ComponentProps<
+export type ContextMenu = ComponentProps<
   (typeof ContextMenuPrimitive)["Root"]
 > &
   Partial<ContextMenuContext>;
@@ -30,12 +35,12 @@ ContextMenu.displayName = "ContextMenu";
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
 ContextMenuTrigger.displayName = "ContextMenuTrigger";
 
-export type ContextMenuContent = React.ComponentPropsWithoutRef<
+export type ContextMenuContent = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Content
 > & { isUnstyled?: boolean };
 
-export const ContextMenuContent = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.Content>,
+export const ContextMenuContent = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.Content>,
   ContextMenuContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useContextMenuContext();
@@ -81,12 +86,12 @@ export const contextMenuLabelClasses = cva(
   },
 );
 
-export type ContextMenuLabel = React.ComponentPropsWithoutRef<
+export type ContextMenuLabel = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Label
 > & { isUnstyled?: boolean };
 
-export const ContextMenuLabel = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.Label>,
+export const ContextMenuLabel = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.Label>,
   ContextMenuLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
@@ -125,14 +130,14 @@ export const contextMenuItemClasses = cva(
   },
 );
 
-export type ContextMenuItem = React.ComponentPropsWithoutRef<
+export type ContextMenuItem = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Item
 > & {
   isUnstyled?: boolean;
 };
 
-export const ContextMenuItem = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.Item>,
+export const ContextMenuItem = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.Item>,
   ContextMenuItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
@@ -188,12 +193,12 @@ export const contextMenuCheckboxItemIndicatorClasses = cva("absolute", {
   },
 });
 
-export type ContextMenuCheckboxItem = React.ComponentPropsWithoutRef<
+export type ContextMenuCheckboxItem = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.CheckboxItem
 > & { isUnstyled?: boolean };
 
-export const ContextMenuCheckboxItem = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
+export const ContextMenuCheckboxItem = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
   ContextMenuCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
@@ -264,12 +269,12 @@ export const contextMenuRadioItemIndicatorChildClasses = cva(
   },
 );
 
-export type ContextMenuRadioItem = React.ComponentPropsWithoutRef<
+export type ContextMenuRadioItem = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.RadioItem
 > & { isUnstyled?: boolean };
 
-export const ContextMenuRadioItem = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.RadioItem>,
+export const ContextMenuRadioItem = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.RadioItem>,
   ContextMenuRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
@@ -325,12 +330,12 @@ export const contextMenuSubTriggerClasses = cva(
   },
 );
 
-export type ContextMenuSubTrigger = React.ComponentPropsWithoutRef<
+export type ContextMenuSubTrigger = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.SubTrigger
 > & { isUnstyled?: boolean };
 
-export const ContextMenuSubTrigger = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
+export const ContextMenuSubTrigger = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
   ContextMenuSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
@@ -354,12 +359,12 @@ export const ContextMenuSubTrigger = React.forwardRef<
 ContextMenuSubTrigger.displayName = "ContextMenuSubTrigger";
 
 //ContextMenu SubContent Component
-export type ContextMenuSubContent = React.ComponentPropsWithoutRef<
+export type ContextMenuSubContent = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.SubContent
 > & { isUnstyled?: boolean };
 
-export const ContextMenuSubContent = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.SubContent>,
+export const ContextMenuSubContent = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.SubContent>,
   ContextMenuSubContent
 >(
   (
@@ -411,12 +416,12 @@ export const seperatorClasses = cva(
   },
 );
 
-export type ContextMenuSeparator = React.ComponentPropsWithoutRef<
+export type ContextMenuSeparator = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.Separator
 > & { isUnstyled?: boolean };
 
-export const ContextMenuSeparator = React.forwardRef<
-  React.ElementRef<typeof ContextMenuPrimitive.Separator>,
+export const ContextMenuSeparator = forwardRef<
+  ElementRef<typeof ContextMenuPrimitive.Separator>,
   ContextMenuSeparator
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();

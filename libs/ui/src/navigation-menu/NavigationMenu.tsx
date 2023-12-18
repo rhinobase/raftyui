@@ -2,7 +2,12 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
-import React from "react";
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  PropsWithChildren,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
 import {
   NavigationMenuContext,
@@ -11,11 +16,11 @@ import {
 } from "./context";
 
 // NavigationMenu Component
-export type NavigationMenu = React.ComponentPropsWithoutRef<
+export type NavigationMenu = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Root
 > &
   Partial<NavigationMenuContext>;
-export const NavigationMenu = React.forwardRef<HTMLDivElement, NavigationMenu>(
+export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const unstyle = isUnstyled;
 
@@ -43,7 +48,7 @@ export const NavigationMenu = React.forwardRef<HTMLDivElement, NavigationMenu>(
 NavigationMenu.displayName = "NavigationMenu";
 
 // NavigationMenuList Component
-export type NavigationMenuList = React.ComponentPropsWithoutRef<
+export type NavigationMenuList = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.List
 > & { isUnstyled?: boolean };
 
@@ -75,7 +80,7 @@ export const NavigationMenuList = ({
 NavigationMenuList.displayName = "NavigationMenuList";
 
 // NavigationMenuItem Component
-export type NavigationMenuItem = React.ComponentProps<
+export type NavigationMenuItem = ComponentProps<
   typeof NavigationMenuPrimitive.Item
 >;
 
@@ -83,13 +88,13 @@ export const NavigationMenuItem = NavigationMenuPrimitive.Item;
 NavigationMenuItem.displayName = "NavigationMenuItem";
 
 // NavigationMenuTrigger Component
-export type NavigationMenuTrigger = React.ComponentPropsWithoutRef<
+export type NavigationMenuTrigger = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Trigger
 > & {
   isUnstyled?: boolean;
 };
 
-export const NavigationMenuTrigger = React.forwardRef<
+export const NavigationMenuTrigger = forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
@@ -140,11 +145,11 @@ export const navigationMenuContentClasses = cva(
   },
 );
 
-export type NavigationMenuContent = React.ComponentPropsWithoutRef<
+export type NavigationMenuContent = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Content
 > & { size?: "sm" | "md" | "lg" | "full"; isUnstyled?: boolean };
 
-export const NavigationMenuContent = React.forwardRef<
+export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
   NavigationMenuContent
 >(
@@ -173,7 +178,7 @@ export const NavigationMenuContent = React.forwardRef<
 NavigationMenuContent.displayName = "NavigationMenu.Content";
 
 // NavigationMenuLink Component
-export type NavigationMenuLink = React.ComponentPropsWithoutRef<
+export type NavigationMenuLink = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Link
 > & { isUnstyled?: boolean };
 
@@ -205,7 +210,7 @@ export const NavigationMenuLink = ({
 NavigationMenuLink.displayName = "NavigationMenuLink";
 
 // NavigationMenuListItem Component
-export type NavigationMenuListItem = React.PropsWithChildren<{
+export type NavigationMenuListItem = PropsWithChildren<{
   title: string;
   href: string;
 }>;
@@ -229,7 +234,7 @@ export const NavigationMenuListItem = ({
 NavigationMenuListItem.displayName = "NavigationMenuListItem";
 
 // NavigationMenuViewport Component
-type NavigationMenuViewport = React.ComponentPropsWithoutRef<
+type NavigationMenuViewport = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Viewport
 >;
 
@@ -246,7 +251,7 @@ const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
 NavigationMenuViewport.displayName = "NavigationMenuViewport";
 
 // NavigationMenuIndicator Component
-export type NavigationMenuIndicator = React.ComponentPropsWithoutRef<
+export type NavigationMenuIndicator = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Indicator
 > & { isUnstyled?: boolean };
 

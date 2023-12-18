@@ -40,71 +40,286 @@ import {
 
 ## Usage
 
-In Accordion parent element, `type` prop is mandatory as it decides whether a `single` item or `multiple` items can be expanded/collapsed at a same time.
+In Accordion parent element, `type` prop is mandatory as it decides whether a `single` item or `multiple` items can be expanded/collapsed at the same time.
 
-{% example name="accordion:usage" /%}
+{% example  %}
+
+```jsx
+<Accordion type="single">
+  <AccordionItem value="1">
+    <AccordionTrigger>Section 1 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
 
 ## Collapsible
 
-when using type `single`, the `collapsible` prop allows closing content when clicking trigger for an open item otherwise one accordion item remains open by default.
+when using type `single`, the `collapsible` prop allows closing content by clicking the trigger for an open item otherwise one accordion item remains open by default.
 
-{% example name="accordion:collapsible" /%}
+{% example  %}
+
+```jsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="1">
+    <AccordionTrigger>Section 1 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example  %}
 
 ## Expand Multiple items at once
 
 - If you set type `multiple` then the accordion will permit multiple items to be expanded at once.
 - when using type `multiple` value and default value are `string [] ` and `onValueChange` function is like `(value: string []) => void`
 
-{% example name="accordion:multi_item" /%}
+{% example %}
+
+```jsx
+<Accordion type="multiple">
+  <AccordionItem value="1">
+    <AccordionTrigger>Section 1 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
 
 ## Expand Item With DefaultValue
 
-{% example name="accordion:defaultvalue" /%}
+{% example %}
+
+```jsx
+<Accordion type="single" defaultValue="1">
+  <AccordionItem value="1">
+    <AccordionTrigger>Section 1 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in accordion: `sm`, `md` (default) & `lg`.
 
-{% example name="accordion:size" /%}
+{% example %}
+
+```jsx
+<Accordion type="single" variant="ghost" size="sm">
+  <AccordionItem value="1">
+    <AccordionTrigger>Section 1 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
 
 ## Variant
 
 There are 2 `variant` options in accordion: `solid` (default) & `ghost`.
 
-{% example name="accordion:variant" /%}
+{% example %}
+
+```jsx
+<Accordion type="single" variant="ghost">
+  <AccordionItem value="1">
+    <AccordionTrigger>Section 1 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
 
 ## Unstyled
 
 Pass `isUnstyled` prop in parent component to remove style in Accordion.
 
-{% example name="accordion:unstyled" /%}
+{% example %}
+
+```jsx
+<Accordion isUnstyled collapsible type="single" className="w-full space-y-2">
+  <AccordionItem
+    value="1"
+    className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white"
+  >
+    <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
+      Section 1 title
+    </AccordionTrigger>
+    <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem
+    value="2"
+    className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white"
+  >
+    <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
+      Section 2 title
+    </AccordionTrigger>
+    <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
 
 ## Unstyled subcomponent
 
 Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
 
-{% example name="accordion:unstyledsub" /%}
+{% example %}
 
-## API
+```jsx
+<Accordion collapsible type="single" defaultValue="1">
+  <AccordionItem
+    value="1"
+    className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 dark:text-white"
+  >
+    <AccordionTrigger
+      isUnstyled
+      className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180"
+    >
+      Section 1 title
+    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionTrigger>Section 2 title</AccordionTrigger>
+    <AccordionContent isUnstyled>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+{% /example %}
+
+## Props
 
 ---
 
-### Root
+### Accordion
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component | `boolean` | false   |
+This component is built on top of [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion#root)
 
-### Trigger
+| Property   | Description                                            | Type                       | Default   |
+| ---------- | ------------------------------------------------------ | -------------------------- | --------- |
+| size       | Size of the accordion component.                       | `"sm"` or `"md"` or `"lg"` | `"md"`    |
+| variant    | Style variant of the accordion component.              | `"solid"` or `"ghost"`     | `"solid"` |
+| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`   |
 
-`AccordionTrigger`composes `Button` component
+### AccordionItem
 
-| Property   | Description                                  | Type      | Default |
-| ---------- | -------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from a particular subcomponent | `boolean` | -       |
+This component is built on top of [Radix Accordion Item](https://www.radix-ui.com/primitives/docs/components/accordion#item)
 
-### Content
+### AccordionTrigger
 
-| Property   | Description                                  | Type      | Default |
-| ---------- | -------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from a particular subcomponent | `boolean` | -       |
+This component is built on top of [Radix Accordion Trigger](https://www.radix-ui.com/primitives/docs/components/accordion#trigger)
+
+| Property   | Description                                                   | Type          | Default |
+| ---------- | ------------------------------------------------------------- | ------------- | ------- |
+| openIcon   | Custom JSX element for the open state icon.                   | `JSX.Element` | -       |
+| closeIcon  | Custom JSX element for the close state icon.                  | `JSX.Element` | -       |
+| showIcon   | Determine whether to display the default open and close icons | `boolean`     | `true`  |
+| isUnstyled | Remove style from this component                              | `boolean`     | `false` |
+
+### AccordionContent
+
+This component is built on top of [Radix Accordion Content](https://www.radix-ui.com/primitives/docs/components/accordion#content)
+
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

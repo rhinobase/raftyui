@@ -2,7 +2,7 @@
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { menuTriggerClasses } from "../menu/Menu";
 import { classNames } from "../utils";
@@ -16,12 +16,10 @@ export const menubarClasses = cva("flex w-max items-center", {
   },
 });
 
-export type Menubar = React.ComponentPropsWithoutRef<
-  typeof MenubarPrimitive.Root
-> &
+export type Menubar = ComponentPropsWithoutRef<typeof MenubarPrimitive.Root> &
   Partial<MenuBarContext>;
-export const Menubar = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Root>,
+export const Menubar = forwardRef<
+  ElementRef<typeof MenubarPrimitive.Root>,
   Menubar
 >(
   (
@@ -56,12 +54,12 @@ MenubarMenu.displayName = "MenubarMenu";
 
 //MenuBar Button Component
 
-export type MenubarTrigger = React.ComponentPropsWithoutRef<
+export type MenubarTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Trigger
 > &
   Button;
-export const MenubarTrigger = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Trigger>,
+export const MenubarTrigger = forwardRef<
+  ElementRef<typeof MenubarPrimitive.Trigger>,
   MenubarTrigger
 >(
   (
@@ -130,14 +128,14 @@ MenubarTrigger.displayName = "MenubarTrigger";
 
 //MenuBarContent Component
 
-export type MenubarContent = React.ComponentPropsWithoutRef<
+export type MenubarContent = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Content
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarContent = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Content>,
+export const MenubarContent = forwardRef<
+  ElementRef<typeof MenubarPrimitive.Content>,
   MenubarContent
 >(
   (
@@ -187,14 +185,14 @@ export const menubarLabelClasses = cva(
   },
 );
 
-export type MenubarLabel = React.ComponentPropsWithoutRef<
+export type MenubarLabel = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Label
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarLabel = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Label>,
+export const MenubarLabel = forwardRef<
+  ElementRef<typeof MenubarPrimitive.Label>,
   MenubarLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
@@ -233,14 +231,14 @@ export const menubarItemClasses = cva(
   },
 );
 
-export type MenubarItem = React.ComponentPropsWithoutRef<
+export type MenubarItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Item
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarItem = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Item>,
+export const MenubarItem = forwardRef<
+  ElementRef<typeof MenubarPrimitive.Item>,
   MenubarItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
@@ -263,8 +261,8 @@ export const MenubarItem = React.forwardRef<
 MenubarItem.displayName = "MenubarItem";
 
 //MenuBar ChechboxGroup Component
-export const MenubarCheckboxGroup = MenubarPrimitive.Group;
-MenubarCheckboxGroup.displayName = "MenubarCheckboxGroup";
+export const MenubarGroup = MenubarPrimitive.Group;
+MenubarGroup.displayName = "MenubarGroup";
 
 //Menubar CheckboxItem Component
 export const menubarCheckboxItemClasses = cva(
@@ -296,14 +294,14 @@ export const menubarCheckboxItemIndicatorClasses = cva("absolute", {
   },
 });
 
-export type MenubarCheckboxItem = React.ComponentPropsWithoutRef<
+export type MenubarCheckboxItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.CheckboxItem
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarCheckboxItem = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.CheckboxItem>,
+export const MenubarCheckboxItem = forwardRef<
+  ElementRef<typeof MenubarPrimitive.CheckboxItem>,
   MenubarCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
@@ -380,14 +378,14 @@ export const menubarRadioItemIndicatorChildClasses = cva(
   },
 );
 
-export type MenubarRadioItem = React.ComponentPropsWithoutRef<
+export type MenubarRadioItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.RadioItem
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarRadioItem = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.RadioItem>,
+export const MenubarRadioItem = forwardRef<
+  ElementRef<typeof MenubarPrimitive.RadioItem>,
   MenubarRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
@@ -435,14 +433,14 @@ export const menubarSubTriggerClasses = cva(
   },
 );
 
-export type MenubarSubTrigger = React.ComponentPropsWithoutRef<
+export type MenubarSubTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubTrigger
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarSubTrigger = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.SubTrigger>,
+export const MenubarSubTrigger = forwardRef<
+  ElementRef<typeof MenubarPrimitive.SubTrigger>,
   MenubarSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
@@ -467,14 +465,14 @@ MenubarSubTrigger.displayName = "MenubarSubTrigger";
 
 //MenuBar SubContent Component
 
-export type MenubarSubContent = React.ComponentPropsWithoutRef<
+export type MenubarSubContent = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubContent
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarSubContent = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.SubContent>,
+export const MenubarSubContent = forwardRef<
+  ElementRef<typeof MenubarPrimitive.SubContent>,
   MenubarSubContent
 >(
   (
@@ -525,14 +523,14 @@ export const menubarSeperatorClasses = cva(
   },
 );
 
-export type MenubarSeparator = React.ComponentPropsWithoutRef<
+export type MenubarSeparator = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Separator
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenubarSeparator = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Separator>,
+export const MenubarSeparator = forwardRef<
+  ElementRef<typeof MenubarPrimitive.Separator>,
   MenubarSeparator
 >(({ className, isUnstyled = true, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();

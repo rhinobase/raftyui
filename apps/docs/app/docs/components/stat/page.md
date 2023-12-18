@@ -36,10 +36,67 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
 ## Usage
 
-{% example name="stat:usage" /%}
+{% example %}
+
+```jsx
+<Stat type="normal">
+  <StatLabel>Daily Return</StatLabel>
+  <StatValue>17,770.90</StatValue>
+  <StatHelpText>
+    <StatIcon /> 0.47%
+  </StatHelpText>
+</Stat>
+```
+
+{% /example %}
 
 ## Type
 
 The type prop is used to define type of stat, it has 3 options: `increase`, `decrease` & `normal` (default).
 
-{% example name="stat:type" /%}
+{% example %}
+
+```jsx
+<Stat type="increase">
+  <StatLabel>Daily Return</StatLabel>
+  <StatValue>17,770.90</StatValue>
+  <StatHelpText>
+    <StatIcon /> 0.47%
+  </StatHelpText>
+</Stat>
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### Stat
+
+`Stat` composes the `<div>` component.
+
+| Property | Description                 | Type                                       | Default    |
+| -------- | --------------------------- | ------------------------------------------ | ---------- |
+| type     | Type of the stat component. | `"increase"` or `"decrease"` or `"normal"` | `"normal"` |
+
+### StatLabel
+
+`StatLabel` composes the `<div>` component.
+
+### StatValue
+
+`StatValue` composes the `<div>` component.
+
+### StatHelpText
+
+`StatHelpText` composes the `<div>` component.
+
+### StatIcon
+
+`StatIcon` composes the `<svg>` component.
+
+| Property | Description        | Type     | Default |
+| -------- | ------------------ | -------- | ------- |
+| height   | Height of the icon | `number` | `14`    |
+| width    | Width of the icon  | `number` | `14`    |

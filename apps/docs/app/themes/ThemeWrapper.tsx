@@ -14,6 +14,7 @@ import {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
+  Kbd,
   Popover,
   PopoverClose,
   PopoverContent,
@@ -24,9 +25,9 @@ import {
   TooltipTrigger,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
-import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
-import { Fence } from "../../components/Fence";
 import Link from "next/link";
+import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
+import { Fence } from "../../components/code";
 
 const COLOR_THEME = {
   gray: "!bg-gray-500",
@@ -57,7 +58,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
 
   return (
     <div
-      className={`w-full px-4 py-4 md:px-10 md:py-10 lg:px-0 theme-${color}`}
+      className={`w-full max-w-7xl mx-auto px-4 py-4 md:px-10 md:py-10 lg:px-0 theme-${color}`}
     >
       <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
@@ -77,7 +78,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                   name={`${c} button`}
                 >
-                  {color == c && (
+                  {color === c && (
                     <CheckIcon
                       height={16}
                       width={16}
@@ -153,7 +154,7 @@ function CustomizeMenu({
                 <Button
                   key={c}
                   size="sm"
-                  isActive={color == c}
+                  isActive={color === c}
                   variant="outline"
                   className="!justify-start capitalize"
                   leftIcon={
@@ -175,7 +176,7 @@ function CustomizeMenu({
                 variant="outline"
                 size="sm"
                 leftIcon={<SunIcon height={15} width={15} />}
-                isActive={theme == themes[0]}
+                isActive={theme === themes[0]}
                 onClick={() => setTheme("light")}
               >
                 Light
@@ -184,7 +185,7 @@ function CustomizeMenu({
                 variant="outline"
                 size="sm"
                 leftIcon={<MoonIcon height={15} width={15} />}
-                isActive={theme == themes[1]}
+                isActive={theme === themes[1]}
                 onClick={() => setTheme("dark")}
               >
                 Dark
@@ -209,16 +210,16 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
       <DialogTrigger variant="outline" size="icon" className="md:hidden">
         <DocumentDuplicateIcon height={19} width={19} />
       </DialogTrigger>
-      <DialogOverlay />
-      <DialogContent className="!p-5">
+      <DialogOverlay className="!z-[70]" />
+      <DialogContent className="!p-5 !z-[70]">
         <div className="mb-5 space-y-1">
           <DialogTitle>Theme</DialogTitle>
           <Text className="text-sm leading-snug opacity-50">
             Copy and paste the following code into your{" "}
-            <em>tailwind.config.js</em> file.
+            <Kbd>tailwind.config.js</Kbd> file.
           </Text>
         </div>
-        <Fence language="js" className="overflow-x-auto rounded-xl px-5 py-4">
+        <Fence language="js">
           {`const colors = require('tailwindcss/colors')
 
 {

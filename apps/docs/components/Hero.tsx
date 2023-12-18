@@ -1,11 +1,11 @@
 "use client";
 import { Button, Skeleton } from "@rafty/ui";
+import { useWindowSize } from "@uidotdev/usehooks";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import blurCyanImage from "../images/blur-cyan.png";
 import blurIndigoImage from "../images/blur-indigo.png";
-import dynamic from "next/dynamic";
-import { useWindowSize } from "@uidotdev/usehooks";
-import Link from "next/link";
 
 const HeroCard = dynamic(
   () => import("./HeroCard").then((mod) => mod.HeroCard),

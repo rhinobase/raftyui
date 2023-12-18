@@ -44,26 +44,28 @@ import {
 
 ## Usage
 
-{% example name="drawer:usage" %}
+{% example %}
 
 ```jsx
-const [isOpen, setOpen] = useState(false);
+function DrawerExample() {
+  const [isOpen, setOpen] = useState(false);
 
-return (
-  <>
-    <Button onClick={() => setOpen(true)}>Open Drawer</Button>
-    <Drawer open={isOpen} onOpenChange={setOpen}>
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerTitle>Drawer Header</DrawerTitle>
-        <DrawerDescription>
-          This is sample drawer description. :
-        </DrawerDescription>
-        <DrawerClose />
-      </DrawerContent>
-    </Drawer>
-  </>
-);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer open={isOpen} onOpenChange={setOpen}>
+        <DrawerOverlay className="!z-[70]" />
+        <DrawerContent className="!z-[70]">
+          <DrawerTitle>Drawer Header</DrawerTitle>
+          <DrawerDescription>
+            This is sample drawer description. :
+          </DrawerDescription>
+          <DrawerClose />
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
 ```
 
 {% /example %}
@@ -72,26 +74,28 @@ return (
 
 There are 4 `size` options available in the drawer: `sm`, `md` (default), `lg` & `full`.
 
-{% example name="drawer:size" %}
+{% example  %}
 
 ```jsx
-const [isOpen, setOpen] = useState(false);
+function DrawerExample() {
+  const [isOpen, setOpen] = useState(false);
 
-return (
-  <>
-    <Button onClick={() => setOpen(true)}>Open Drawer</Button>
-    <Drawer size="sm" open={isOpen} onOpenChange={setOpen}>
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerTitle>Drawer Header</DrawerTitle>
-        <DrawerDescription>
-          This is sample drawer description.
-        </DrawerDescription>
-        <DrawerClose />
-      </DrawerContent>
-    </Drawer>
-  </>
-);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer size="full" open={isOpen} onOpenChange={setOpen}>
+        <DrawerOverlay className="!z-[70]" />
+        <DrawerContent className="!z-[70]">
+          <DrawerTitle>Drawer Header</DrawerTitle>
+          <DrawerDescription>
+            This is sample drawer description.
+          </DrawerDescription>
+          <DrawerClose />
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
 ```
 
 {% /example %}
@@ -100,36 +104,70 @@ return (
 
 You can decide from which side you want to open the drawer and you can choose between `left` or `right` (default).
 
-{% example name="drawer:side" %}
+{% example  %}
 
 ```jsx
-const [isOpen, setOpen] = useState(false);
+function DrawerExample() {
+  const [isOpen, setOpen] = useState(false);
 
-return (
-  <>
-    <Button onClick={() => setOpen(true)}>Open Drawer</Button>
-    <Drawer side="left" open={isOpen} onOpenChange={setOpen}>
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerTitle>Drawer Header</DrawerTitle>
-        <DrawerDescription>
-          This is sample drawer description.
-        </DrawerDescription>
-        <DrawerClose />
-      </DrawerContent>
-    </Drawer>
-  </>
-);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Drawer</Button>
+      <Drawer side="left" open={isOpen} onOpenChange={setOpen}>
+        <DrawerOverlay className="!z-[70]" />
+        <DrawerContent className="!z-[70]">
+          <DrawerTitle>Drawer Header</DrawerTitle>
+          <DrawerDescription>
+            This is sample drawer description.
+          </DrawerDescription>
+          <DrawerClose />
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
 ```
 
 {% /example %}
 
-### API
+## Props
 
 ---
 
-### Close
+### Drawer
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | false   |
+This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#root)
+
+| Property | Description                                         | Type                                   | Default   |
+| -------- | --------------------------------------------------- | -------------------------------------- | --------- |
+| size     | Size of the drawer component and its subcomponents. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`    |
+| side     | Side from which drawer enters in screen.            | `"right"` or `"left"`                  | `"right"` |
+
+### DrawerOverlay
+
+This component is built on top of [Radix Dialog Overlay](https://www.radix-ui.com/primitives/docs/components/dialog#overlay)
+
+### DrawerContent
+
+This component is built on top of [Radix Dialog Content](https://www.radix-ui.com/primitives/docs/components/dialog#content)
+
+### DrawerTitle
+
+This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/primitives/docs/components/dialog#title)
+
+### DrawerClose
+
+This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close)
+
+| Property    | Description                              | Type                                                     | Default   |
+| ----------- | ---------------------------------------- | -------------------------------------------------------- | --------- |
+| size        | Size of the drawer close component.      | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"icon"`  |
+| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"` |
+| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | -         |
+| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -         |
+| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -         |
+| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`   |
+| isActive    | To manage active state.                  | `boolean`                                                | `false`   |
+| isLoading   | To manage loading state.                 | `boolean`                                                | `false`   |
+| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`   |
+| asChild     | Treats the component as a child element. | `boolean`                                                | -         |

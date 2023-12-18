@@ -1,9 +1,9 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 
 // List Component
-export type List = React.HTMLAttributes<HTMLUListElement>;
+export type List = HTMLAttributes<HTMLUListElement>;
 
-export const List = React.forwardRef<HTMLUListElement, List>(
+export const List = forwardRef<HTMLUListElement, List>(
   ({ className, ...props }, forwardedRef) => {
     return (
       <ul ref={forwardedRef} {...props} className={className}>

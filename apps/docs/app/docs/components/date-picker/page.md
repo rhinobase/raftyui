@@ -30,4 +30,18 @@ import { DatePicker } from "@rafty/ui";
 
 ## Usage
 
-{% example name="date-picker:usage" /%}
+{% example %}
+
+```jsx
+<DatePicker />
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### DatePicker
+
+`DatePicker` component is built on top of [React Day Picker](https://react-day-picker.js.org/)

@@ -2,13 +2,13 @@
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import { MenuContext, MenuProvider, useMenuContext } from "./context";
 
 // Menu Component
-export type Menu = React.ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
+export type Menu = ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
   Partial<MenuContext>;
 
 export const Menu = ({
@@ -115,13 +115,13 @@ export const menuTriggerClasses = cva("", {
   ],
 });
 
-export type MenuTrigger = React.ComponentPropsWithoutRef<
+export type MenuTrigger = ComponentPropsWithoutRef<
   typeof DropdownMenu.Trigger
 > &
   Button;
 
-export const MenuTrigger = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Trigger>,
+export const MenuTrigger = forwardRef<
+  ElementRef<typeof DropdownMenu.Trigger>,
   MenuTrigger
 >(
   (
@@ -188,7 +188,7 @@ export const MenuTrigger = React.forwardRef<
 MenuTrigger.displayName = "MenuTrigger";
 
 //MenuContent Component
-export type MenuContent = React.ComponentPropsWithoutRef<
+export type MenuContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.Content
 > & {
   isUnstyled?: boolean;
@@ -196,8 +196,8 @@ export type MenuContent = React.ComponentPropsWithoutRef<
   arrowClassNames?: string;
 };
 
-export const MenuContent = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Content>,
+export const MenuContent = forwardRef<
+  ElementRef<typeof DropdownMenu.Content>,
   MenuContent
 >(
   (
@@ -256,14 +256,12 @@ export const menuLabelClasses = cva(
   },
 );
 
-export type MenuLabel = React.ComponentPropsWithoutRef<
-  typeof DropdownMenu.Label
-> & {
+export type MenuLabel = ComponentPropsWithoutRef<typeof DropdownMenu.Label> & {
   isUnstyled?: boolean;
 };
 
-export const MenuLabel = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Label>,
+export const MenuLabel = forwardRef<
+  ElementRef<typeof DropdownMenu.Label>,
   MenuLabel
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
@@ -300,14 +298,12 @@ export const menuItemClasses = cva(
   },
 );
 
-export type MenuItem = React.ComponentPropsWithoutRef<
-  typeof DropdownMenu.Item
-> & {
+export type MenuItem = ComponentPropsWithoutRef<typeof DropdownMenu.Item> & {
   isUnstyled?: boolean;
 };
 
-export const MenuItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Item>,
+export const MenuItem = forwardRef<
+  ElementRef<typeof DropdownMenu.Item>,
   MenuItem
 >(({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
@@ -361,12 +357,12 @@ export const menuCheckboxItemIndicatorClasses = cva("absolute", {
   },
 });
 
-export type MenuCheckboxItem = React.ComponentPropsWithoutRef<
+export type MenuCheckboxItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.CheckboxItem
 > & { isUnstyled?: boolean };
 
-export const MenuCheckboxItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.CheckboxItem>,
+export const MenuCheckboxItem = forwardRef<
+  ElementRef<typeof DropdownMenu.CheckboxItem>,
   MenuCheckboxItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
@@ -443,14 +439,14 @@ export const menuRadioItemIndicatorChildClasses = cva(
   },
 );
 
-export type MenuRadioItem = React.ComponentPropsWithoutRef<
+export type MenuRadioItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.RadioItem
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenuRadioItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.RadioItem>,
+export const MenuRadioItem = forwardRef<
+  ElementRef<typeof DropdownMenu.RadioItem>,
   MenuRadioItem
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
@@ -478,7 +474,7 @@ export const MenuRadioItem = React.forwardRef<
 MenuRadioItem.displayName = "MenuRadioItem";
 
 // SubMenuComponent
-export type MenuSub = React.ComponentPropsWithoutRef<typeof DropdownMenu.Sub>;
+export type MenuSub = ComponentPropsWithoutRef<typeof DropdownMenu.Sub>;
 
 export const MenuSub = ({ children, ...props }: MenuSub) => (
   <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>
@@ -502,14 +498,14 @@ export const menuSubTriggerClasses = cva(
   },
 );
 
-export type MenuSubTrigger = React.ComponentPropsWithoutRef<
+export type MenuSubTrigger = ComponentPropsWithoutRef<
   typeof DropdownMenu.SubTrigger
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenuSubTrigger = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.SubTrigger>,
+export const MenuSubTrigger = forwardRef<
+  ElementRef<typeof DropdownMenu.SubTrigger>,
   MenuSubTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
@@ -533,14 +529,14 @@ export const MenuSubTrigger = React.forwardRef<
 MenuSubTrigger.displayName = "MenuSubTrigger";
 
 // SubMenuContent Component
-export type MenuSubContent = React.ComponentPropsWithoutRef<
+export type MenuSubContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.SubContent
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenuSubContent = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.SubContent>,
+export const MenuSubContent = forwardRef<
+  ElementRef<typeof DropdownMenu.SubContent>,
   MenuSubContent
 >(
   (
@@ -592,14 +588,14 @@ export const menuSeparatorClasses = cva(
   },
 );
 
-export type MenuSeparator = React.ComponentPropsWithoutRef<
+export type MenuSeparator = ComponentPropsWithoutRef<
   typeof DropdownMenu.Separator
 > & {
   isUnstyled?: boolean;
 };
 
-export const MenuSeparator = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Separator>,
+export const MenuSeparator = forwardRef<
+  ElementRef<typeof DropdownMenu.Separator>,
   MenuSeparator
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
@@ -620,7 +616,7 @@ export const MenuSeparator = React.forwardRef<
 MenuSeparator.displayName = "MenuSeparator";
 
 // MenuArrow Component
-type MenuArrow = React.ComponentPropsWithoutRef<typeof DropdownMenu.Arrow> & {
+type MenuArrow = ComponentPropsWithoutRef<typeof DropdownMenu.Arrow> & {
   isUnstyled?: boolean;
 };
 

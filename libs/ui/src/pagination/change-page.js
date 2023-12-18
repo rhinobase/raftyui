@@ -9,7 +9,7 @@
 export function changePage(params) {
   const { value, pages, pageLimit, onChange } = params;
 
-  if (onChange && value !== undefined && !isNaN(value)) {
+  if (onChange && value !== undefined && !Number.isNaN(value)) {
     if (value > pages) {
       onChange(pages, pageLimit);
     } else if (value < 1) {

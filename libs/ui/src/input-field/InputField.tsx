@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { useInputGroupContext } from "../input-group";
 import { classNames } from "../utils";
@@ -158,10 +158,7 @@ export const inputFieldClasses = cva(
 );
 
 // Input Field
-export type InputField = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "size"
-> & {
+export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
@@ -172,7 +169,7 @@ export type InputField = Omit<
   isRequired?: boolean;
 };
 
-export const InputField = React.forwardRef<HTMLInputElement, InputField>(
+export const InputField = forwardRef<HTMLInputElement, InputField>(
   (
     {
       className,
@@ -190,16 +187,19 @@ export const InputField = React.forwardRef<HTMLInputElement, InputField>(
   ) => {
     const fieldControlContext = useFieldControlContext() ?? {};
 
-    const name = props.name || fieldControlContext.name,
-      disabled =
-        isDisabled ||
-        props.disabled ||
-        fieldControlContext.isDisabled ||
-        isLoading ||
-        fieldControlContext.isLoading,
-      invalid = isInvalid || fieldControlContext.isInvalid,
-      readonly = isReadOnly || props.readOnly || fieldControlContext.isReadOnly,
-      required = isRequired || props.required || fieldControlContext.isRequired;
+    const name = props.name || fieldControlContext.name;
+    const disabled =
+      isDisabled ||
+      props.disabled ||
+      fieldControlContext.isDisabled ||
+      isLoading ||
+      fieldControlContext.isLoading;
+
+    const invalid = isInvalid || fieldControlContext.isInvalid;
+    const readonly =
+      isReadOnly || props.readOnly || fieldControlContext.isReadOnly;
+    const required =
+      isRequired || props.required || fieldControlContext.isRequired;
 
     const inputGroupContext = useInputGroupContext() ?? {
       isLeftAddon: false,

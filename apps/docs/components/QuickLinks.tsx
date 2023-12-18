@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Icon } from "../components/Icon";
 import { PropsWithChildren } from "react";
+import { Icon } from "../components/Icon";
 
 export function QuickLinks({ children }: PropsWithChildren) {
   return (

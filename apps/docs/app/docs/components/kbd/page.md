@@ -30,14 +30,22 @@ import { Kbd } from "@rafty/ui";
 
 ## Usage
 
-{% example name="kbd:usage" /%}
+{% example %}
 
-### API
+```jsx
+<Kbd>shift + K</Kbd>
+```
+
+{% /example %}
+
+## Props
 
 ---
 
-### Root
+### Kbd
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+`Kbd` composes the `<kbd>` component.
+
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |

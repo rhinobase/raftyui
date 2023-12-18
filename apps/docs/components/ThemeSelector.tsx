@@ -1,4 +1,5 @@
 "use client";
+import { MoonIcon, SunIcon, TvIcon } from "@heroicons/react/24/outline";
 import {
   Menu,
   MenuContent,
@@ -7,7 +8,6 @@ import {
   classNames,
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
-import { SunIcon, MoonIcon, TvIcon } from "@heroicons/react/24/outline";
 
 const THEMES = {
   light: SunIcon,
@@ -32,7 +32,7 @@ export function ThemeSelector() {
       >
         <TriggerIcon height={18} width={18} className="stroke-2" />
       </MenuTrigger>
-      <MenuContent className="!z-50 !gap-0.5">
+      <MenuContent className="!z-[60] !gap-0.5">
         {Object.entries(THEMES).map(([name, Icon]) => (
           <MenuItem
             key={name}

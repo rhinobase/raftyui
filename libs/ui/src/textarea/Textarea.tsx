@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { TextareaHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
@@ -42,9 +42,13 @@ export const textareaClasses = cva(
       },
       {
         variant: ["solid", "outline"],
-        invalid: false,
-        className:
-          "border-secondary-300 dark:border-zinc-700 hover:border-primary-500 dark:hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:outline-none focus:ring-2 read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
+        size: ["sm", "md", "lg"],
+        className: classNames(
+          "border border-secondary-300 dark:border-secondary-700 outline-none",
+          "hover:border-primary-500 dark:hover:border-primary-400 disabled:hover:border-secondary-300 dark:disabled:hover:border-secondary-700",
+          "focus:border-primary-500 dark:focus:border-primary-400",
+          "focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-100/20",
+        ),
       },
       {
         variant: ["outline", "ghost"],
@@ -62,7 +66,7 @@ export const textareaClasses = cva(
 
 // TextArea Component (With ErrorMessage)
 export type Textarea = Omit<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
   "size"
 > & {
   variant?: "solid" | "outline" | "ghost";
@@ -75,7 +79,7 @@ export type Textarea = Omit<
   isRequired?: boolean;
 };
 
-export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
+export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   (
     {
       className,
@@ -93,16 +97,16 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Textarea>(
   ) => {
     const context = useFieldControlContext() ?? {};
 
-    const name = props.name || context.name,
-      disabled =
-        isDisabled ||
-        props.disabled ||
-        context.isDisabled ||
-        isLoading ||
-        context.isLoading,
-      invalid = isInvalid || context.isInvalid,
-      readonly = isReadOnly || props.readOnly || context.isReadOnly,
-      required = isRequired || props.required || context.isRequired;
+    const name = props.name || context.name;
+    const disabled =
+      isDisabled ||
+      props.disabled ||
+      context.isDisabled ||
+      isLoading ||
+      context.isLoading;
+    const invalid = isInvalid || context.isInvalid;
+    const readonly = isReadOnly || props.readOnly || context.isReadOnly;
+    const required = isRequired || props.required || context.isRequired;
 
     return (
       <textarea

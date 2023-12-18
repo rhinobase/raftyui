@@ -1,12 +1,12 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // ListItem Component
-export type ListItem = React.HTMLAttributes<HTMLLIElement> & {
+export type ListItem = HTMLAttributes<HTMLLIElement> & {
   isUnstyled?: boolean;
 };
 
-export const ListItem = React.forwardRef<HTMLLIElement, ListItem>(
+export const ListItem = forwardRef<HTMLLIElement, ListItem>(
   ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
     return (
       <li

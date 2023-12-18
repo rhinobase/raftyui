@@ -64,102 +64,291 @@ import {
 
 Unlike other similar components like Dialog, Menu, etc., it is not made of a button component. You can use any element as its trigger.
 
-{% example name="context-menu:usage" /%}
+{% example %}
+
+```jsx
+function ContextMenuExample() {
+  const [isBookmarkChecked, setBookmarkChecked] = useState(true);
+  const [showFullUrls, setShowFullUrls] = useState(true);
+  const [selectedPerson, setSelectedPerson] = useState("Denial");
+
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+        Right Click here
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>Back</ContextMenuItem>
+        <ContextMenuSub>
+          <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+          <ContextMenuSubContent>
+            <ContextMenuItem>Save Page As...</ContextMenuItem>
+            <ContextMenuSeparator />
+            <ContextMenuItem>Developer Tools</ContextMenuItem>
+          </ContextMenuSubContent>
+        </ContextMenuSub>
+        <ContextMenuSeparator />
+        <ContextMenuCheckboxItem
+          checked={isBookmarkChecked}
+          onCheckedChange={setBookmarkChecked}
+        >
+          Show Bookmarks
+        </ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem
+          checked={showFullUrls}
+          onCheckedChange={setShowFullUrls}
+        >
+          Show Full URLs
+        </ContextMenuCheckboxItem>
+        <ContextMenuSeparator />
+        <ContextMenuLabel>People</ContextMenuLabel>
+        <ContextMenuRadioGroup
+          value={selectedPerson}
+          onValueChange={setSelectedPerson}
+        >
+          <ContextMenuRadioItem value="Jack">Jack</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="Denial">Denial</ContextMenuRadioItem>
+        </ContextMenuRadioGroup>
+      </ContextMenuContent>
+    </ContextMenu>
+  );
+}
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in Context Menu: `sm`, `md` (default), & `lg`.s
 
-{% example name="context-menu:size" /%}
+{% example %}
+
+```jsx
+<ContextMenu size="sm">
+  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+    Right Click here
+  </ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Back</ContextMenuItem>
+    <ContextMenuSub>
+      <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+      <ContextMenuSubContent>
+        <ContextMenuItem>Save Page As...</ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem>Developer Tools</ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuCheckboxItem checked>Show Bookmarks</ContextMenuCheckboxItem>
+    <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+    <ContextMenuSeparator />
+    <ContextMenuLabel>People</ContextMenuLabel>
+    <ContextMenuRadioGroup value="2">
+      <ContextMenuRadioItem value="1">Jack</ContextMenuRadioItem>
+      <ContextMenuRadioItem value="2">Denial</ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+{% /example %}
 
 ## Unstyled
 
 Pass `isUnstyled` prop in parent component to remove style in context-menu.
 
-{% example name="context-menu:unstyled" /%}
+{% example %}
+
+```jsx
+<ContextMenu isUnstyled>
+  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+    Right Click here
+  </ContextMenuTrigger>
+  <ContextMenuContent className="dark:bg-secondary-800 w-[200px] space-y-1.5  rounded-md bg-white p-1 text-sm focus:outline-none">
+    <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 py-1focus:outline-none cursor-pointer  rounded-md px-6 py-1 ">
+      Back
+    </ContextMenuItem>
+    <ContextMenuSub>
+      <ContextMenuSubTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex w-full cursor-pointer items-center justify-between rounded-md px-6 py-1 hover:border-none focus:outline-none">
+        More Tools
+      </ContextMenuSubTrigger>
+      <ContextMenuSubContent className="dark:bg-secondary-800 w-[180px]  cursor-pointer space-y-2 rounded-md bg-white p-1 text-sm focus:outline-none">
+        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+          Save Page As...
+        </ContextMenuItem>
+        <ContextMenuSeparator className="dark:border-secondary-700 border-secondary-200 border" />
+        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+          Developer Tools
+        </ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator className="dark:border-secondary-700 border-secondary-200 border" />
+    <ContextMenuCheckboxItem
+      checked
+      className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none focus:outline-none"
+    >
+      Show Bookmarks
+    </ContextMenuCheckboxItem>
+    <ContextMenuCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+      Show Full URLs
+    </ContextMenuCheckboxItem>
+    <ContextMenuSeparator className="dark:border-secondary-700  border-secondary-200 border" />
+    <ContextMenuLabel className="dark:text-secondary-400 cursor-context-menu rounded-md px-6  text-xs hover:border-none focus:outline-none">
+      People
+    </ContextMenuLabel>
+    <ContextMenuRadioGroup value="2">
+      <ContextMenuRadioItem
+        value="1"
+        className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none "
+      >
+        Jack
+      </ContextMenuRadioItem>
+      <ContextMenuRadioItem
+        value="2"
+        className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none focus:outline-none"
+      >
+        Denial
+      </ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+{% /example %}
 
 ## Unstyled subcomponent
 
 Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
 
-{% example name="context-menu:unstyledsub" /%}
+{% example %}
 
-### API
+```jsx
+<ContextMenu>
+  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+    Right Click here
+  </ContextMenuTrigger>
+  <ContextMenuContent
+    isUnstyled
+    className="dark:bg-secondary-800 w-[200px] rounded-md bg-white p-1 text-sm "
+  >
+    <ContextMenuItem>Back</ContextMenuItem>
+    <ContextMenuSub>
+      <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+      <ContextMenuSubContent>
+        <ContextMenuItem>Save Page As...</ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem>Developer Tools</ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuCheckboxItem checked>Show Bookmarks</ContextMenuCheckboxItem>
+    <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+    <ContextMenuSeparator />
+    <ContextMenuLabel>People</ContextMenuLabel>
+    <ContextMenuRadioGroup value="2">
+      <ContextMenuRadioItem value="1">Jack</ContextMenuRadioItem>
+      <ContextMenuRadioItem value="2">Denial</ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+{% /example %}
+
+## Props
 
 ---
 
-### Root
+### ContextMenu
 
-| Property   | Description                                               | Type      | Default |
-| ---------- | --------------------------------------------------------- | --------- | ------- |
-| isUnstyled | Removes style from whole component and its sub components | `boolean` | false   |
+This component is built on top of [Radix Context Menu](https://www.radix-ui.com/primitives/docs/components/context-menu#root)
 
-### Trigger
+| Property   | Description                                              | Type                       | Default |
+| ---------- | -------------------------------------------------------- | -------------------------- | ------- |
+| size       | Size of the context menu component and its subcomonents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| isUnstyled | Removes style from this component and its subcomponents  | `boolean`                  | `false` |
 
-`ContextMenuTrigger`composes `Button` component
+### ContextMenuTrigger
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix Context Menu Trigger](https://www.radix-ui.com/primitives/docs/components/context-menu#trigger)
 
-### Content
+### ContextMenuContent
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix Context Menu Content](https://www.radix-ui.com/primitives/docs/components/context-menu#content)
 
-### Item
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+### ContextMenuItem
 
-### Group
+This component is built on top of [Radix Context Menu Item](https://www.radix-ui.com/primitives/docs/components/context-menu#item)
 
-| Property | Description | Type      | Default |
-| -------- | ----------- | --------- | ------- |
-| asChild  |             | `boolean` | false   |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
-### Label
+### ContextMenuCheckBoxGroup
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix Context Menu Group](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
 
-### CheckboxItem
+| Property | Description                              | Type      | Default |
+| -------- | ---------------------------------------- | --------- | ------- |
+| asChild  | Treats the component as a child element. | `boolean` | `false` |
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+### ContextMenuLabel
 
-### RadioGroup
+This component is built on top of [Radix Context Menu Label](https://www.radix-ui.com/primitives/docs/components/context-menu#label)
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
-### RadioItem
+### ContextMenuCheckboxItem
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix Context Menu Checkbox Item](https://www.radix-ui.com/primitives/docs/components/context-menu#checkboxitem)
 
-### Saperator
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+### ContextMenuSub
 
-### Sub Trigger
+This component is built on top of [Radix Context Menu Sub](https://www.radix-ui.com/primitives/docs/components/context-menu#sub)
 
-`ContextMenuSubTrigger`composes `Button` component
+### ContextMenuRadioGroup
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix Context Menu Radio Group](https://www.radix-ui.com/primitives/docs/components/context-menu#radiogroup)
 
-### Sub Content
+### ContextMenuRadioItem
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes Style from component | `boolean` |         |
+This component is built on top of [Radix Context Menu Radio Item](https://www.radix-ui.com/primitives/docs/components/context-menu#radioitem)
+
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
+
+### ContextMenuSeparator
+
+This component is built on top of [Radix Context Menu Separator](https://www.radix-ui.com/primitives/docs/components/context-menu#separator)
+
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
+
+### ContextMenuSubTrigger
+
+This component is built on top of [Radix Context Menu Sub Trigger](https://www.radix-ui.com/primitives/docs/components/context-menu#subtrigger)
+
+| Property   | Description                      | Type      | Default |
+| ---------- | -------------------------------- | --------- | ------- |
+| isUnstyled | Remove style from this component | `boolean` | `false` |
+
+### ContextMenuSubContent
+
+This component is built on top of [Radix Context Menu Sub Content](https://www.radix-ui.com/primitives/docs/components/context-menu#subcontent)
+
+| Property   | Description                              | Type      | Default |
+| ---------- | ---------------------------------------- | --------- | ------- |
+| sideOffset | Side offset of the content from trigger. | `number`  | `10`    |
+| isUnstyled | Remove style from this component         | `boolean` | `false` |

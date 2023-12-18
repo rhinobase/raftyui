@@ -33,7 +33,10 @@ function checkLockFiles() {
 console.log("🔒🔒🔒 Validating lock files 🔒🔒🔒\n");
 const invalid = checkLockFiles();
 if (invalid.length > 0) {
-  invalid.forEach((e) => console.log(e));
+  for (const e of invalid) {
+    console.log(e);
+  }
+
   process.exit(1);
 } else {
   console.log("Lock file is valid 👍");

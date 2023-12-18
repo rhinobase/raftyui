@@ -5,6 +5,7 @@ export const navigation = [
       { title: "Getting started", href: "/" },
       { title: "Examples", href: "/docs/examples" },
       { title: "Customizations", href: "/docs/customizations" },
+      { title: "Optimizations", href: "/docs/optimizations" },
       { title: "Themes", href: "/themes" },
     ],
   },
@@ -84,7 +85,7 @@ export const navigation = [
         href: "/docs/components/menu",
       },
       {
-        title: "Menu Bar",
+        title: "Menubar",
         href: "/docs/components/menubar",
       },
       {
@@ -118,6 +119,10 @@ export const navigation = [
       {
         title: "Scroll Area",
         href: "/docs/components/scroll-area",
+      },
+      {
+        title: "Search Field",
+        href: "/docs/components/search-field",
       },
       {
         title: "Select",

@@ -1,6 +1,6 @@
 "use client";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { forwardRef, useState } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
@@ -15,9 +15,9 @@ const ICON_CLASSES = {
 // Password Field
 export type PasswordField = InputField;
 
-export const PasswordField = React.forwardRef<HTMLInputElement, PasswordField>(
+export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
   ({ size = "md", ...props }, forwardedRef) => {
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 

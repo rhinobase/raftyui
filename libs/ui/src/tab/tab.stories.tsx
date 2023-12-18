@@ -36,16 +36,22 @@ export const Variants: Story = {
         <TabTrigger value="tab3">Tab2</TabTrigger>
       </TabList>
       <TabContent value="tab1">
-        1 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime
+        laboriosam eos aliquam quae rerum. Doloribus aperiam perferendis natus.
+        Laborum magni unde reiciendis fuga officiis aperiam quidem doloremque
+        libero, eius cupiditate?
       </TabContent>
       <TabContent value="tab2">
-        2 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non deleniti
+        aut quod facilis magni aliquam maxime, placeat esse ducimus ipsum
+        perspiciatis ad corrupti, dolor distinctio voluptatem architecto cum
+        voluptates at?
       </TabContent>
       <TabContent value="tab3">
-        3 large-scale networks, high-radix switches reduce hop and switch count,
-        which decreases latency and power
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore,
+        repellendus dolorem ipsam minus laudantium illum laboriosam harum, ipsa
+        tempore accusantium officiis cum consequuntur doloribus iste quibusdam
+        ea deleniti odio. Quidem.
       </TabContent>
     </Tab>
   ),

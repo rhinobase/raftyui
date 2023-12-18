@@ -28,4 +28,33 @@ import { TagField } from "@rafty/ui";
 
 ## Usage
 
-{% example name="tag-field:usage" /%}
+{% example %}
+
+```jsx
+<TagField />
+```
+
+{% /example %}
+
+## Initial Data
+
+{% example %}
+
+```jsx
+<TagField initialData={["sample", "data"]} />
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### TagField
+
+`TagField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
+
+| Property    | Description                                     | Type                                          | Default |
+| ----------- | ----------------------------------------------- | --------------------------------------------- | ------- |
+| initialData | Initial set of tags for the TagField component. | `string[]`                                    | -       |
+| onChange    | Callback function invoked on tag changes.       | {% info %}(tags: string[]) => void{% /info %} | -       |

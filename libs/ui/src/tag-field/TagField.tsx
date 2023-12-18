@@ -1,13 +1,13 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 
 enum ACTION {
-  ADD,
-  DELETE,
-  RESET,
+  ADD = 0,
+  DELETE = 1,
+  RESET = 2,
 }
 
 export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
@@ -16,7 +16,7 @@ export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
 };
 
 export const TagField = ({ initialData, onChange, ...props }: TagField) => {
-  const [tag, setTag] = React.useReducer(
+  const [tag, setTag] = useReducer(
     (prev: string[], cur: { action: ACTION; data?: string }) => {
       if (cur.action === ACTION.RESET) return [];
 
@@ -68,9 +68,9 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
         </Button>
       </div>
       <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
-        {tag.map((value, idx) => (
+        {tag.map((value) => (
           <div
-            key={idx}
+            key={value}
             className={
               "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
             }

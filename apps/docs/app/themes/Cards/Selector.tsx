@@ -1,3 +1,4 @@
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import {
   Command,
   CommandGroup,
@@ -7,8 +8,7 @@ import {
   PopoverTrigger,
   classNames,
 } from "@rafty/ui";
-import { useState, ReactNode } from "react";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ReactNode, useState } from "react";
 
 export function Selector({
   value,

@@ -1,4 +1,4 @@
-import React from "react";
+import { SVGAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 const DIMENSIONS = {
@@ -8,12 +8,12 @@ const DIMENSIONS = {
 };
 
 // Spinner Component
-export type Spinner = React.SVGAttributes<SVGSVGElement> & {
+export type Spinner = SVGAttributes<SVGSVGElement> & {
   size?: keyof typeof DIMENSIONS;
   inheritParent?: boolean;
 };
 
-export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
+export const Spinner = forwardRef<SVGSVGElement, Spinner>(
   (
     { inheritParent = false, size = "md", className, children, ...props },
     forwardedRef,
@@ -33,6 +33,7 @@ export const Spinner = React.forwardRef<SVGSVGElement, Spinner>(
         fill="currentColor"
         ref={forwardedRef}
       >
+        <title>spinner</title>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

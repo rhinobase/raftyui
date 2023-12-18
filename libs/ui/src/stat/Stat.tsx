@@ -1,13 +1,13 @@
 "use client";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { HTMLAttributes, SVGAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { StatContext, StatProvider, useStatContext } from "./context";
 
 // Stat Component
-export type Stat = React.HTMLAttributes<HTMLDivElement> & StatContext;
+export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 
-export const Stat = React.forwardRef<HTMLDivElement, Stat>(
+export const Stat = forwardRef<HTMLDivElement, Stat>(
   ({ children, className, type = "normal", ...props }, forwardedRef) => {
     return (
       <StatProvider value={{ type }}>
@@ -25,9 +25,9 @@ export const Stat = React.forwardRef<HTMLDivElement, Stat>(
 Stat.displayName = "Stat";
 
 // StatLabel Component
-export type StatLabel = React.HTMLAttributes<HTMLDivElement>;
+export type StatLabel = HTMLAttributes<HTMLDivElement>;
 
-export const StatLabel = React.forwardRef<HTMLDivElement, StatLabel>(
+export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <div
@@ -46,9 +46,9 @@ export const StatLabel = React.forwardRef<HTMLDivElement, StatLabel>(
 StatLabel.displayName = "StatLabel";
 
 // StatValue Component
-export type StatValue = React.HTMLAttributes<HTMLDivElement>;
+export type StatValue = HTMLAttributes<HTMLDivElement>;
 
-export const StatValue = React.forwardRef<HTMLDivElement, StatValue>(
+export const StatValue = forwardRef<HTMLDivElement, StatValue>(
   ({ className, children, ...props }, forwardedRef) => {
     return (
       <div
@@ -83,9 +83,9 @@ export const statHelpTextClasses = cva(
   },
 );
 
-export type StatHelpText = React.HTMLAttributes<HTMLDivElement>;
+export type StatHelpText = HTMLAttributes<HTMLDivElement>;
 
-export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
+export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
   ({ className, children, ...props }, forwardedRef) => {
     const { type } = useStatContext();
 
@@ -103,9 +103,9 @@ export const StatHelpText = React.forwardRef<HTMLDivElement, StatHelpText>(
 StatHelpText.displayName = "StatHelpText";
 
 // StatIcon Component
-export type StatIcon = React.SVGAttributes<SVGSVGElement>;
+export type StatIcon = SVGAttributes<SVGSVGElement>;
 
-export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
+export const StatIcon = forwardRef<SVGSVGElement, StatIcon>(
   ({ className, height = "14", width = "14", ...props }, forwardedRef) => {
     const { type } = useStatContext();
 
@@ -123,6 +123,7 @@ export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
           )}
           ref={forwardedRef}
         >
+          <title>increase</title>
           <path d="M14 10.44l-.413.56H2.393L2 10.46 7.627 5h.827L14 10.44z" />
         </svg>
       );
@@ -138,6 +139,7 @@ export const StatIcon = React.forwardRef<SVGSVGElement, StatIcon>(
           className={classNames("fill-red-500 dark:fill-red-400", className)}
           ref={forwardedRef}
         >
+          <title>decrease</title>
           <path d="M2 5.56L2.413 5h11.194l.393.54L8.373 11h-.827L2 5.56z" />
         </svg>
       );

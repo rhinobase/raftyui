@@ -34,46 +34,142 @@ import { FieldControl, Label, InputField, ErrorMessage } from "@rafty/ui";
 
 ## Usage
 
-{% example name="field-control:usage" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name">
+  <Label>Label</Label>
+  <InputField />
+  <ErrorMessage>Error message will be displayed here</ErrorMessage>
+</FieldControl>
+```
+
+{% /example %}
 
 ## Orientation
 
 There are 3 `orientation` options in field control: `row` (default), `col` & `row-reverse`
 
-{% example name="field-control:orientation" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name" orientation="row">
+  <Label>Name</Label>
+  <InputField />
+</FieldControl>
+```
+
+{% /example %}
 
 ## IsRequired
 
 `isRequired` prop is used to show required field. It adds red star (\*) after Lable.
 
-{% example name="field-control:required" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name" isRequired>
+  <Label>Name</Label>
+  <InputField />
+</FieldControl>
+```
+
+{% /example %}
 
 ## IsDisabled
 
 `isDisabled` prop is used to disable subcomponent or children field.
 
-{% example name="field-control:disabled" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name" isDisabled>
+  <Label>Name</Label>
+  <InputField />
+</FieldControl>
+```
+
+{% /example %}
 
 ## IsReadOnly
 
 `isReadOnly` prop is used to change field state to read only.
 
-{% example name="field-control:readonly" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name" isReadOnly>
+  <Label>Name</Label>
+  <InputField defaultValue="This is a sample default text" />
+</FieldControl>
+```
+
+{% /example %}
 
 ## IsInvalid
 
 `isInvalid` prop is used to show invalid field on certain condition.
 
-{% example name="field-control:invalid" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name" isInvalid>
+  <Label>Name</Label>
+  <InputField />
+</FieldControl>
+```
+
+{% /example %}
 
 ## IsLoading
 
 `isLoading` prop is used to show a field in a loading state.
 
-{% example name="field-control:loading" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name" isLoading>
+  <Label>Name</Label>
+  <InputField />
+</FieldControl>
+```
+
+{% /example %}
 
 ## ErrorMessage
 
 ErrorMessage component will display an error message when there is an error during data input in a field or during form submission.
 
-{% example name="field-control:errormessage" /%}
+{% example %}
+
+```jsx
+<FieldControl name="name">
+  <Label>Name</Label>
+  <InputField />
+  <ErrorMessage>Error message will be displayed here</ErrorMessage>
+</FieldControl>
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### FieldControl
+
+`FieldControl` composes the `div` component.
+
+| Property    | Description                   | Type                                  | Default |
+| ----------- | ----------------------------- | ------------------------------------- | ------- |
+| isDisabled  | To manage disabled state.     | `boolean`                             | `false` |
+| isLoading   | To manage loading state.      | `boolean`                             | `false` |
+| isReadOnly  | To manage read-only state.    | `boolean`                             | `false` |
+| isInvalid   | To manage invalid state.      | `boolean`                             | `false` |
+| isRequired  | To manage required state.     | `boolean`                             | `false` |
+| orientation | Orientation of the component. | `"col" `or `"row"` or `"row-reverse"` | `col`   |
+| name        | Name of the field.            | `string`                              | -       |
+
+### ErrorMessage
+
+`ErrorMessage` composes the `p` component.

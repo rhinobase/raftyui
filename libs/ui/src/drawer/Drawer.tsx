@@ -2,15 +2,13 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
 
 // Drawer Component
-export type Drawer = React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.Root
-> &
+export type Drawer = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DrawerContext>;
 
 export const Drawer = ({
@@ -26,12 +24,12 @@ export const Drawer = ({
 Drawer.displayName = "Drawer";
 
 //Drawer Overlay Component
-export type DrawerOverlay = React.ComponentPropsWithoutRef<
+export type DrawerOverlay = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Overlay
 >;
 
-export const DrawerOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
+export const DrawerOverlay = forwardRef<
+  ElementRef<typeof DialogPrimitive.Overlay>,
   DrawerOverlay
 >(({ className, ...props }, forwardedRef) => {
   return (
@@ -72,12 +70,12 @@ export const drawerContentClasses = cva(
   },
 );
 
-export type DrawerContent = React.ComponentPropsWithoutRef<
+export type DrawerContent = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 >;
 
-export const DrawerContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
+export const DrawerContent = forwardRef<
+  ElementRef<typeof DialogPrimitive.Content>,
   DrawerContent
 >(({ children, className, ...props }, forwardedRef) => {
   const { size, side } = useDrawerContext();
@@ -110,12 +108,12 @@ export const drawerTitleClasses = cva("mb-2 font-semibold", {
   },
 });
 
-export type DrawerTitle = React.ComponentPropsWithoutRef<
+export type DrawerTitle = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Title
 >;
 
-export const DrawerTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
+export const DrawerTitle = forwardRef<
+  ElementRef<typeof DialogPrimitive.Title>,
   DrawerTitle
 >(({ children, className, ...props }, forwardedRef) => {
   const { size } = useDrawerContext();
@@ -137,13 +135,13 @@ export const DrawerDescription = DialogPrimitive.Description;
 DrawerDescription.displayName = "DrawerDescription";
 
 // Drawer Close Button Component
-export type DrawerClose = React.ComponentPropsWithoutRef<
+export type DrawerClose = ComponentPropsWithoutRef<
   (typeof DialogPrimitive)["Close"]
 > &
   Button;
 
-export const DrawerClose = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Close>,
+export const DrawerClose = forwardRef<
+  ElementRef<typeof DialogPrimitive.Close>,
   DrawerClose
 >(
   (

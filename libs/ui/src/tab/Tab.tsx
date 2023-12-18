@@ -1,18 +1,15 @@
 "use client";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 import { TabContext, TabProvider, useTabContext } from "./context";
 
 // Root Component
-export type Tab = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
+export type Tab = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
   Partial<TabContext> & { isUnstyled?: boolean };
 
-export const Tab = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Root>,
-  Tab
->(
+export const Tab = forwardRef<ElementRef<typeof TabsPrimitive.Root>, Tab>(
   (
     {
       children,
@@ -93,14 +90,12 @@ export const tabListClasses = cva(
   },
 );
 
-export type TabList = React.ComponentPropsWithoutRef<
-  typeof TabsPrimitive.List
-> & {
+export type TabList = ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
   isUnstyled?: boolean;
 };
 
-export const TabList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
+export const TabList = forwardRef<
+  ElementRef<typeof TabsPrimitive.List>,
   TabList
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const {
@@ -154,7 +149,7 @@ export const tabTriggerClasses = cva(
           "data-[orientation=vertical]:data-[state=active]:border-primary-500 data-[orientation=vertical]:data-[state=active]:dark:border-primary-400",
         ),
         enclosed: classNames(
-          "data-[orientation=horizontal]:-mb-[2px] data-[orientation=horizontal]:rounded-t-md data-[orientation=horizontal]:border data-[orientation=horizontal]:border-b-0 data-[orientation=horizontal]:border-transparent",
+          "data-[orientation=horizontal]:-mb-[1px] data-[orientation=horizontal]:rounded-t-md data-[orientation=horizontal]:border data-[orientation=horizontal]:border-b-0 data-[orientation=horizontal]:border-transparent",
           "data-[orientation=vertical]:mr-[-3px] data-[orientation=vertical]:border-t data-[orientation=vertical]:border-b data-[orientation=vertical]:border-transparent",
           "data-[orientation=horizontal]:data-[state=active]:border-secondary-200 data-[orientation=horizontal]:data-[state=active]:dark:border-secondary-700 data-[orientation=horizontal]:data-[state=active]:dark:border-b-secondary-800 data-[orientation=horizontal]:data-[state=active]:bg-white data-[orientation=horizontal]:data-[state=active]:dark:bg-secondary-900",
           "data-[orientation=vertical]:data-[state=active]:border-secondary-200 data-[orientation=vertical]:data-[state=active]:dark:border-black",
@@ -169,14 +164,14 @@ export const tabTriggerClasses = cva(
   },
 );
 
-export type TabTrigger = React.ComponentPropsWithoutRef<
+export type TabTrigger = ComponentPropsWithoutRef<
   typeof TabsPrimitive.Trigger
 > & {
   isUnstyled?: boolean;
 };
 
-export const TabTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
+export const TabTrigger = forwardRef<
+  ElementRef<typeof TabsPrimitive.Trigger>,
   TabTrigger
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const {
@@ -223,14 +218,14 @@ const tabContentLineVariantClasses = {
   },
 };
 
-export type TabContent = React.ComponentPropsWithoutRef<
+export type TabContent = ComponentPropsWithoutRef<
   typeof TabsPrimitive.Content
 > & {
   isUnstyled?: boolean;
 };
 
-export const TabContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
+export const TabContent = forwardRef<
+  ElementRef<typeof TabsPrimitive.Content>,
   TabContent
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
   const {

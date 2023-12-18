@@ -1,7 +1,7 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { OptionHTMLAttributes, SelectHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
@@ -91,7 +91,7 @@ const TRIGGER_ICON_CLASSES = {
 } as const;
 
 export type Select = Omit<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
+  SelectHTMLAttributes<HTMLSelectElement>,
   "size" | "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
@@ -102,7 +102,7 @@ export type Select = Omit<
   isReadOnly?: boolean;
 };
 
-export const Select = React.forwardRef<HTMLSelectElement, Select>(
+export const Select = forwardRef<HTMLSelectElement, Select>(
   (
     {
       children,
@@ -125,10 +125,10 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
       isRequired: false,
     };
 
-    const field_name = name || context.name,
-      disabled = isDisabled || context.isDisabled || context.isLoading,
-      required = isRequired || context.isRequired,
-      readonly = isReadOnly || context.isReadOnly;
+    const field_name = name || context.name;
+    const disabled = isDisabled || context.isDisabled || context.isLoading;
+    const required = isRequired || context.isRequired;
+    const readonly = isReadOnly || context.isReadOnly;
 
     return (
       <div className="group relative flex w-max items-center">
@@ -169,9 +169,9 @@ export const Select = React.forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-export type SelectItem = React.OptionHTMLAttributes<HTMLOptionElement>;
+export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
-export const SelectItem = React.forwardRef<HTMLOptionElement, SelectItem>(
+export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
   (props, forwardedRef) => {
     return <option {...props} ref={forwardedRef} />;
   },

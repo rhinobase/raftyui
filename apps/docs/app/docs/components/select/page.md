@@ -16,7 +16,7 @@ nextjs:
 
 Select component is a component that allows users to pick a value from predefined options.
 
-This is a custom component made upon native select and its props according to our styling conventions. All native select props can be used here.
+This is a custom component built upon the native select, adhering to our styling conventions. All native select props can be utilized with this component.
 
 ## Anatomy
 
@@ -32,44 +32,115 @@ import { Select, SelectItem } from "@rafty/ui";
 
 ## Usage
 
-{% example name="select:usage" /%}
+{% example %}
+
+```jsx
+<Select>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
-{% example name="select:size" /%}
+{% example %}
+
+```jsx
+<Select size="sm">
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## Variant
 
 There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`.
 
-{% example name="select:variant" /%}
+{% example %}
+
+```jsx
+<Select variant="solid">
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## IsDisabled
 
 IsDisabled prop is used to show select component in disabled state
 
-{% example name="select:disabled" /%}
+{% example %}
+
+```jsx
+<Select isDisabled>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## IsRequired
 
 IsRequired prop is used to show select in required state.
 
-{% example name="select:required" /%}
+{% example %}
+
+```jsx
+<Select isRequired>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
 
 ## IsReadOnly
 
 IsReadOnly prop is used to show select in read only state.
 
-{% example name="select:readonly" /%}
+{% example %}
 
-### API
+```jsx
+<Select isReadOnly>
+  <SelectItem key="option1">Option 1</SelectItem>
+  <SelectItem key="option2">Option 2</SelectItem>
+  <SelectItem key="option3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
+
+## Props
 
 ---
 
-### Root
+### Select
 
-| Property   | Description                  | Type      | Default |
-| ---------- | ---------------------------- | --------- | ------- |
-| isUnstyled | Removes style from component | `boolean` | `false` |
+`Select` composes the `<select>` component.
+
+| Property   | Description                                         | Type                                  | Default     |
+| ---------- | --------------------------------------------------- | ------------------------------------- | ----------- |
+| size       | Size of the select component and its subcomponents. | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
+| isDisabled | To manage disabled state.                           | `boolean`                             | `false`     |
+| isUnstyled | Remove style from this component                    | `boolean`                             | `false`     |
+| isRequired | To manage required state.                           | `boolean`                             | `false`     |
+| isReadOnly | To manage read-only state.                          | `boolean`                             | `false`     |
+| variant    | Style variant of the component.                     | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
+
+### SelectItem
+
+`SelectItem` composes the `<option>` component.

@@ -21,25 +21,27 @@ The Pagination Component is a customizable and user-friendly pagination solution
 Import the component.
 
 ```jsx
-import { Pagination } from "@rafty/ui";
+import {
+  Pagination,
+  PageSizeSelect,
+  PageJumper,
+  PaginationButtons,
+} from "@rafty/ui";
 
-<Pagination />;
+<Pagination>
+  <PageSizeSelect />
+  <PageJumper />
+  <PaginationButtons />
+</Pagination>;
 ```
 
 ## Usage
 
-{% example name="pagination:usage" %}
+Pagination component's state can be managed using `onChange` function.
+
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -68,7 +70,7 @@ function PaginationField() {
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div>Total Items : {count}</div>
+      <span>Total Items : {count}</span>
       <PaginationButtons />
     </Pagination>
   );
@@ -79,18 +81,11 @@ function PaginationField() {
 
 ## Size
 
-{% example name="pagination:size" %}
+Pass the `size` prop if you need to adjust the size of pagination component and its subcomponents. Values can be `sm`, `md` (default) & `lg`.
+
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -120,7 +115,7 @@ function PaginationField() {
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div>Total Items : {count}</div>
+      <span>Total Items : {count}</span>
       <PaginationButtons />
     </Pagination>
   );
@@ -131,19 +126,12 @@ function PaginationField() {
 
 ## PageSizeSelect
 
-{% example name="pagination:page_size_select" %}
+PageSizeSelect component can be used to change number of enteries per page. It take `pageSizes` prop, in which you can pass value in either `number[]` or `{label: string, value: number}[]` type. By default, the value of `pageSizes` prop is `[10, 20, 30]`.
+
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
-function PageSelect() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -177,19 +165,12 @@ function PageSelect() {
 
 ## PageJumper
 
-{% example name="pagination:page_jumper" %}
+PageJumber is a number input field which helps you to navigate to a specific page.
+
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
-function PageGoto() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -220,19 +201,12 @@ function PageGoto() {
 
 ## PaginationButtons
 
-{% example name="pagination:paginatin_buttons" %}
+PaginationButtons component containes previous and next buttons facilitating navigation to the previous and next pages. The buttons are disabled when on the first or last page to prevent navigating beyond the limits.
+
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
-function PageButtons() {
+function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
     limit: 10,
@@ -253,6 +227,7 @@ function PageButtons() {
         })
       }
     >
+      <span>Page: {pagination.current}</span>
       <PaginationButtons />
     </Pagination>
   );
@@ -263,18 +238,11 @@ function PageButtons() {
 
 ## isDisabled
 
-{% example name="pagination:disabled" %}
+You can manage disabled pagination state using `isDisabled` prop.
+
+{% example %}
 
 ```jsx
-import {
-  PageJumper,
-  PageSizeSelect,
-  Pagination,
-  PaginationButtons,
-  classNames,
-} from "@rafty/ui";
-import { useState } from "react";
-
 function PaginationField() {
   const [pagination, setPagination] = useState({
     current: 1,
@@ -299,12 +267,14 @@ function PaginationField() {
       }
       isDisabled
     >
-      <div className="flex cursor-not-allowed items-center gap-2 opacity-50">
-        <span>Rows per page:</span>
+      <div className="flex items-center gap-2">
+        <span className="cursor-not-allowed opacity-60">Rows per page:</span>
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <div className="cursor-not-allowed opacity-50">Total Items : {count}</div>
+      <span className="cursor-not-allowed opacity-60">
+        Total Items : {count}
+      </span>
       <PaginationButtons />
     </Pagination>
   );
@@ -319,20 +289,20 @@ function PaginationField() {
 
 ### Pagination
 
-`Pagination` composes the `div` component.
+`Pagination` composes the `<div>` component.
 
-| Property    | Description                                                  | Type                                       | Default |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------ | ------- |
-| pages       | Total number of pages.                                       | `number`                                   | -       |
-| currentPage | Current page number.                                         | `number`                                   | -       |
-| onChange    | Callback function when page or pageSize changes.             | `(page: number, pageSize: number) => void` | -       |
-| size        | Size of the pagination component.                            | `sm` or `md` or `lg`                       | `md`    |
-| pageLimit   | Maximum number of pages displayed in the pagination control. | `number`                                   | -       |
-| isDisabled  | Whether the pagination is disabled.                          | `boolean`                                  | false   |
+| Property    | Description                                                                                                          | Type                                                          | Default |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------- |
+| pages       | Total number of pages.                                                                                               | `number`                                                      | -       |
+| currentPage | Current page number.                                                                                                 | `number`                                                      | -       |
+| onChange    | Callback function when page or pageSize changes.                                                                     | {% info %}(page: number, pageSize: number) => void{% /info %} | -       |
+| size        | Size of the pagination component.                                                                                    | `sm` or `md` or `lg`                                          | `md`    |
+| pageLimit   | Maximum number of entries to be shown per page by default and you further control it using PageSizeSelect component. | `number`                                                      | -       |
+| isDisabled  | To manage disabled state.                                                                                            | `boolean`                                                     | `false` |
 
 ### PageSizeSelect
 
-`PageSizeSelect` composes the `Select` component.
+`PageSizeSelect` is made using [Select](https://rafty.rhinobase.io/docs/components/select).
 
 | Property  | Description                         | Type                                             | Default    |
 | --------- | ----------------------------------- | ------------------------------------------------ | ---------- |
@@ -340,8 +310,8 @@ function PaginationField() {
 
 ### PageJumper
 
-`PageJumper` composes the `InputField` component.
+`PageJumper` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
 ### PaginationButtons
 
-`PaginationButtons` composes the `Select` component.
+`PaginationButtons` composes the `<div>` component.

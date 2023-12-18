@@ -19,6 +19,10 @@
     {
       "value": "storybook",
       "name": "storybook:           anything Storybook specific"
+    },
+    {
+      "value": "examples",
+      "name": "examples:            anything Examples specific"
     }
   ],
   "scopesSearchValue": true,

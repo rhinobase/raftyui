@@ -6,7 +6,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { AlertContext, AlertProvider, useAlertContext } from "./context";
 
@@ -155,10 +155,9 @@ export const alertClasses = cva("flex w-full items-center", {
   },
 });
 
-export type Alert = React.HTMLAttributes<HTMLDivElement> &
-  Partial<AlertContext>;
+export type Alert = HTMLAttributes<HTMLDivElement> & Partial<AlertContext>;
 
-export const Alert = React.forwardRef<HTMLDivElement, Alert>(
+export const Alert = forwardRef<HTMLDivElement, Alert>(
   (
     {
       className,
@@ -334,11 +333,11 @@ export const alertTitleClasses = cva("", {
   },
 });
 
-export type AlertTitle = React.HTMLAttributes<HTMLHeadingElement> & {
+export type AlertTitle = HTMLAttributes<HTMLHeadingElement> & {
   isUnstyled?: boolean;
 };
 
-export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitle>(
+export const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitle>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const {
       size,
@@ -396,11 +395,11 @@ export const alertDescriptionClasses = cva("", {
   },
 });
 
-export type AlertDescription = React.HTMLAttributes<HTMLParagraphElement> & {
+export type AlertDescription = HTMLAttributes<HTMLParagraphElement> & {
   isUnstyled?: boolean;
 };
 
-export const AlertDescription = React.forwardRef<
+export const AlertDescription = forwardRef<
   HTMLParagraphElement,
   AlertDescription
 >(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {

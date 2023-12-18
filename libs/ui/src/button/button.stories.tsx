@@ -93,6 +93,7 @@ export const IconButton: Story = {
             stroke="currentColor"
             className="h-6 w-6"
           >
+            <title>plus icon</title>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -120,6 +121,7 @@ export const IconButton: Story = {
             stroke="currentColor"
             className="h-6 w-6"
           >
+            <title>plus fab</title>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -164,6 +166,7 @@ export const ButtonWithIcons: Story = {
               stroke="currentColor"
               className="h-6 w-6"
             >
+              <title>left icon</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -196,6 +199,8 @@ export const ButtonWithIcons: Story = {
               stroke="currentColor"
               className="h-6 w-6"
             >
+              <title>right icon</title>
+
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -228,6 +233,7 @@ export const ButtonWithIcons: Story = {
               stroke="currentColor"
               className="h-6 w-6"
             >
+              <title>left icon</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -244,6 +250,7 @@ export const ButtonWithIcons: Story = {
               stroke="currentColor"
               className="h-6 w-6"
             >
+              <title>right icon</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

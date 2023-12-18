@@ -1,12 +1,12 @@
-import React from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Kbd Component
-export type Kbd = React.HTMLAttributes<HTMLElement> & {
+export type Kbd = HTMLAttributes<HTMLElement> & {
   isUnstyled?: boolean;
 };
 
-export const Kbd = React.forwardRef<HTMLElement, Kbd>(
+export const Kbd = forwardRef<HTMLElement, Kbd>(
   ({ className, isUnstyled = false, ...props }, forwardRef) => (
     <kbd
       {...props}

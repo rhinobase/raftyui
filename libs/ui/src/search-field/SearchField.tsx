@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { forwardRef } from "react";
 import { InputField } from "../input-field";
 import { InputGroup, Prefix } from "../input-group";
 import { classNames } from "../utils";
@@ -15,7 +15,7 @@ export type SearchField = Omit<InputField, "value" | "onChange" | "type"> & {
   onSearch?: (value: string) => void;
 };
 
-export const SearchField = React.forwardRef<HTMLInputElement, SearchField>(
+export const SearchField = forwardRef<HTMLInputElement, SearchField>(
   ({ search, onSearch, size = "md", ...props }, forwardedRef) => {
     return (
       <InputGroup className="w-full" size={size}>

@@ -72,10 +72,11 @@ export function PaymentMethodExample() {
         <div className="grid grid-cols-3 gap-3">
           {PAYMENT_METHODS.map((item, index) => (
             <div
-              key={index}
+              key={item.heading}
               onClick={() => setSelected(index)}
+              onKeyDown={() => setSelected(index)}
               className={classNames(
-                isSelect == index
+                isSelect === index
                   ? "ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400 ring-2"
                   : "dark:border-secondary-700",
                 "dark:hover:bg-secondary-900/70 hover:bg-secondary-50 flex w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-md border p-4 transition-all ease-in-out",
@@ -132,7 +133,7 @@ function ExpireMonthSelect() {
         <CommandItem key={month} value={month} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
-              {selected == month && (
+              {selected === month && (
                 <CheckIcon width={16} height={16} className="opacity-60" />
               )}
             </div>
@@ -154,7 +155,7 @@ function ExpireYearSelect() {
         <CommandItem key={year} value={year} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
-              {selected == year && (
+              {selected === year && (
                 <CheckIcon width={16} height={16} className="opacity-60" />
               )}
             </div>

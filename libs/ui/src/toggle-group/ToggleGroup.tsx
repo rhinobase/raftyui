@@ -1,7 +1,7 @@
 "use client";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentProps, forwardRef } from "react";
 import { classNames } from "../utils";
 import {
   ToggleGroupContext,
@@ -10,12 +10,10 @@ import {
 } from "./context";
 
 // ToggleGroup Component
-export type ToggleGroup = React.ComponentProps<
-  (typeof ToggleGroupPrimitive)["Root"]
-> &
+export type ToggleGroup = ComponentProps<typeof ToggleGroupPrimitive.Root> &
   Partial<ToggleGroupContext>;
 
-export const ToggleGroup = React.forwardRef<HTMLDivElement, ToggleGroup>(
+export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
   (
     { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
@@ -61,29 +59,28 @@ export const toggleGroupItemClasses = cva(
   },
 );
 
-export type ToggleGroupItem = React.ComponentProps<
-  (typeof ToggleGroupPrimitive)["Item"]
+export type ToggleGroupItem = ComponentProps<
+  typeof ToggleGroupPrimitive.Item
 > & { isUnstyled?: boolean };
 
-export const ToggleGroupItem = React.forwardRef<
-  HTMLButtonElement,
-  ToggleGroupItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-  const { size, isUnstyled: isParentUnstyled } = useToggleGroupContext();
-  const unstyle = isParentUnstyled || isUnstyled;
+export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isUnstyled: isParentUnstyled } = useToggleGroupContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
-  return (
-    <ToggleGroupPrimitive.Item
-      className={
-        unstyle
-          ? className
-          : classNames(toggleGroupItemClasses({ size }), className)
-      }
-      {...props}
-      ref={forwardedRef}
-    >
-      {children}
-    </ToggleGroupPrimitive.Item>
-  );
-});
+    return (
+      <ToggleGroupPrimitive.Item
+        className={
+          unstyle
+            ? className
+            : classNames(toggleGroupItemClasses({ size }), className)
+        }
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </ToggleGroupPrimitive.Item>
+    );
+  },
+);
 ToggleGroupItem.displayName = "ToggleGroupItem";

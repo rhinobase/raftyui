@@ -1,5 +1,5 @@
-import { LineChart, Line, Tooltip, ResponsiveContainer } from "recharts";
 import { Text } from "@rafty/ui";
+import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
 
 const DATA = [
   {

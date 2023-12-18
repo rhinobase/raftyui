@@ -1,7 +1,7 @@
 "use client";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Label } from "../label";
 import { classNames } from "../utils";
 import {
@@ -12,7 +12,7 @@ import {
 
 // RadioGroup Component
 export const radioGroupClasses = cva(
-  "flex flex-col disabled:cursor-not-allowed disabled:opacity-50",
+  "flex flex-col disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       size: {
@@ -27,31 +27,27 @@ export const radioGroupClasses = cva(
   },
 );
 
-export type RadioGroup = React.ComponentPropsWithoutRef<
-  typeof RadioGroupPrimitive.Root
+export type RadioGroup = Omit<
+  ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
+  "disabled"
 > &
   Partial<RadioGroupContext>;
 
-export const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+export const RadioGroup = forwardRef<
+  ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
->(
-  (
-    { className, size = "md", isDisabled = false, disabled, ...props },
-    forwardedRef,
-  ) => {
-    return (
-      <RadioGroupProvider value={{ size, isDisabled }}>
-        <RadioGroupPrimitive.Root
-          {...props}
-          disabled={isDisabled || disabled}
-          className={classNames(radioGroupClasses({ size }), className)}
-          ref={forwardedRef}
-        />
-      </RadioGroupProvider>
-    );
-  },
-);
+>(({ className, size = "md", isDisabled = false, ...props }, forwardedRef) => {
+  return (
+    <RadioGroupProvider value={{ size, isDisabled }}>
+      <RadioGroupPrimitive.Root
+        {...props}
+        disabled={isDisabled}
+        className={classNames(radioGroupClasses({ size }), className)}
+        ref={forwardedRef}
+      />
+    </RadioGroupProvider>
+  );
+});
 RadioGroup.displayName = "RadioGroup";
 
 // RadioGroupItem Component
@@ -87,12 +83,12 @@ export const radioGroupItemIndicatorClasses = cva(
   },
 );
 
-export type RadioGroupItem = React.ComponentPropsWithoutRef<
+export type RadioGroupItem = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
 >;
 
-export const RadioGroupItem = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+export const RadioGroupItem = forwardRef<
+  ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
 >(({ className, children, ...props }, forwardedref) => {
   const { size, isDisabled } = useRadioGroupContext();

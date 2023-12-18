@@ -33,4 +33,39 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@rafty/ui";
 
 ## Usage
 
-{% example name="tooltip:usage" /%}
+{% example %}
+
+```jsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Button size="fab">
+      <PlusIcon width={24} height={24} className="stroke-2" />
+    </Button>
+  </TooltipTrigger>
+  <TooltipContent side="top">Hover Me!</TooltipContent>
+</Tooltip>
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### Tooltip
+
+This component is built on top of [Radix Tooltip](https://www.radix-ui.com/primitives/docs/components/tooltip#root)
+
+### TooltipTrigger
+
+This component is built on top of [Radix Tooltip Trigger](https://www.radix-ui.com/primitives/docs/components/tooltip#trigger)
+
+### TooltipContent
+
+This component is built on top of [Radix Tooltip Content](https://www.radix-ui.com/primitives/docs/components/tooltip#content)
+
+| Property     | Description                                                | Type      | Default |
+| ------------ | ---------------------------------------------------------- | --------- | ------- |
+| hasAnimation | Determines whether the tooltip has animation.              | `boolean` | `true`  |
+| sideOffset   | Side offset of the content from trigger.                   | `boolean` | `4`     |
+| isArrow      | Indicates whether to show an arrow in the tooltip content. | `boolean` | `true`  |

@@ -28,16 +28,53 @@ import { Spinner } from "@rafty/ui";
 
 ## Usage
 
-{% example name="spinner:usage" /%}
+{% example %}
+
+```jsx
+<Spinner />
+```
+
+{% /example %}
 
 ## Size
 
 There are 3 `size` options in spinner: `sm`, `md` (default) & `lg
 
-{% example name="spinner:size" /%}
+{% example %}
+
+```jsx
+<div className="flex items-center gap-4">
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+</div>
+```
+
+{% /example %}
 
 ## InheritParent
 
 InheritParent prop lets spinner inherit color props from its parent element when true
 
-{% example name="spinner:InheritParent" /%}
+{% example %}
+
+```jsx
+<div className="text-primary-500 dark:text-primary-400">
+  <Spinner inheritParent />
+</div>
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### Spinner
+
+`Spinner` composes the `<svg>` component.
+
+| Property      | Description                               | Type                       | Default |
+| ------------- | ----------------------------------------- | -------------------------- | ------- |
+| size          | Size of the spinner component.            | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| inheritParent | Inherits style from the parent component. | `boolean`                  | `false` |

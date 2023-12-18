@@ -27,6 +27,7 @@
           "react",
           "react-dom",
           "react/jsx-runtime",
+          "@swc/helpers",
           "@heroicons/react",
           "class-variance-authority",
           "cmdk",
@@ -54,7 +55,6 @@
           "dateformat"
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
-        "generateExportsField": true,
         "compiler": "swc",
         "assets": [
           {
@@ -64,6 +64,10 @@
           }
         ]
       }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs ui {args.ver} {args.tag}",
+      "dependsOn": ["build"]
     },
     "version": {
       "executor": "@jscutlery/semver:version",

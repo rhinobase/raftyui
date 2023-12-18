@@ -30,4 +30,23 @@ import { Label } from "@rafty/ui";
 
 ## Usage
 
-{% example name="label:usage" /%}
+{% example %}
+
+```jsx
+<Label>Sample</Label>
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### Label
+
+This component is built on top of [Radix Label](https://www.radix-ui.com/primitives/docs/components/label#root)
+
+| Property   | Description                        | Type      | Default |
+| ---------- | ---------------------------------- | --------- | ------- |
+| isRequired | To manage required state.          | `boolean` | -       |
+| htmlFor    | ID of the associated form element. | `string`  | -       |

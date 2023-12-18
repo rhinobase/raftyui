@@ -2,15 +2,18 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
-import React from "react";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  forwardRef,
+} from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import { DialogContext, DialogProvider, useDialogContext } from "./context";
 
 // Dialog Component
-export type Dialog = React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.Root
-> &
+export type Dialog = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DialogContext>;
 
 export const Dialog = ({
@@ -26,13 +29,13 @@ export const Dialog = ({
 Dialog.displayName = "Dialog";
 
 // Dialog Button Component
-export type DialogTrigger = React.ComponentPropsWithoutRef<
+export type DialogTrigger = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Trigger
 > &
   Button;
 
-export const DialogTrigger = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Trigger>,
+export const DialogTrigger = forwardRef<
+  ElementRef<typeof DialogPrimitive.Trigger>,
   DialogTrigger
 >(
   (
@@ -90,14 +93,14 @@ export const DialogTrigger = React.forwardRef<
 );
 DialogTrigger.displayName = "DialogTrigger";
 
-export type DialogOverlay = React.ComponentPropsWithoutRef<
+export type DialogOverlay = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Overlay
 > & {
   isUnstyled?: boolean;
 };
 
-export const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
+export const DialogOverlay = forwardRef<
+  ElementRef<typeof DialogPrimitive.Overlay>,
   DialogOverlay
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useDialogContext();
@@ -140,15 +143,15 @@ export const dialogContentClasses = cva(
   },
 );
 
-export type DialogContent = React.ComponentPropsWithoutRef<
+export type DialogContent = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > & {
   isUnstyled?: boolean;
   showCloseButton?: boolean;
 };
 
-export const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
+export const DialogContent = forwardRef<
+  ElementRef<typeof DialogPrimitive.Content>,
   DialogContent
 >(
   (
@@ -189,7 +192,7 @@ export const DialogContent = React.forwardRef<
 DialogContent.displayName = "DialogContent";
 
 // Dialog Header Component
-export type DialogHeader = React.HTMLAttributes<HTMLDivElement> & {
+export type DialogHeader = HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
@@ -218,7 +221,7 @@ export const DialogHeader = ({
 DialogHeader.displayName = "DialogHeader";
 
 // Dialog Footer Component
-export type DialogFooter = React.HTMLAttributes<HTMLDivElement> & {
+export type DialogFooter = HTMLAttributes<HTMLDivElement> & {
   isUnstyled?: boolean;
 };
 
@@ -247,12 +250,12 @@ export const DialogFooter = ({
 DialogFooter.displayName = "DialogFooter";
 
 // DialogTitle Component
-export type DialogTitle = React.ComponentPropsWithoutRef<
+export type DialogTitle = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Title
 > & { isUnstyled?: boolean };
 
-export const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
+export const DialogTitle = forwardRef<
+  ElementRef<typeof DialogPrimitive.Title>,
   DialogTitle
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useDialogContext();
@@ -276,12 +279,12 @@ export const DialogTitle = React.forwardRef<
 DialogTitle.displayName = "DialogTitle";
 
 // Dialog Body Component
-export type DialogDescription = React.ComponentPropsWithoutRef<
+export type DialogDescription = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Description
 > & { isUnstyled?: boolean };
 
-export const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
+export const DialogDescription = forwardRef<
+  ElementRef<typeof DialogPrimitive.Description>,
   DialogDescription
 >(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { isUnstyled: isParentUnstyled } = useDialogContext();

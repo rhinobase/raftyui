@@ -1,7 +1,7 @@
 import { Callout } from "../components/Callout";
-import { Examples } from "../components/Examples";
-import { ExternalCodeLinks } from "../components/ExternalCodeLinks";
+import { InfoButton } from "../components/InfoButton";
 import { QuickLink, QuickLinks } from "../components/QuickLinks";
+import { Example, Sandpack } from "../components/code";
 
 const tags = {
   callout: {
@@ -32,10 +32,9 @@ const tags = {
     ),
   },
   example: {
-    render: Examples,
+    render: Example,
     attributes: {
-      name: { type: String },
-      children: { type: String, default: "" },
+      children: { type: String },
     },
   },
   "quick-links": {
@@ -51,8 +50,18 @@ const tags = {
       href: { type: String },
     },
   },
-  "external-code-links": {
-    render: ExternalCodeLinks,
+  info: {
+    render: InfoButton,
+    attributes: {
+      type: { type: String, default: "function" },
+      children: { type: String, default: "" },
+    },
+  },
+  sandpack: {
+    render: Sandpack,
+    attributes: {
+      name: { type: String },
+    },
   },
 };
 

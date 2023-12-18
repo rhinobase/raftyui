@@ -1,7 +1,7 @@
+import type { Preview } from "@storybook/react";
+import React from "react";
 /* eslint-disable @next/next/no-page-custom-font */
 import "./storybook.css";
-import React from "react";
-import type { Preview } from "@storybook/react";
 
 const DEFAULT_THEME = "light";
 

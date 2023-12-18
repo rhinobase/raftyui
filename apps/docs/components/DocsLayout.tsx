@@ -1,9 +1,9 @@
 import { type Node } from "@markdoc/markdoc";
-import { DocsHeader } from "../components/DocsHeader";
-import { PrevNextLinks } from "../components/PrevNextLinks";
-import { Prose } from "../components/Prose";
-import { TableOfContents } from "../components/TableOfContents";
 import { collectSections } from "../lib/sections";
+import { DocsHeader } from "./DocsHeader";
+import { PrevNextLinks } from "./PrevNextLinks";
+import { Prose } from "./Prose";
+import { TableOfContents } from "./TableOfContents";
 
 export function DocsLayout({
   children,
@@ -18,7 +18,7 @@ export function DocsLayout({
 
   return (
     <>
-      <div className="min-w-0 max-w-2xl flex-auto px-4 py-4 md:py-16 lg:max-w-none lg:pl-8 lg:pr-0 xl:px-16">
+      <div className="mx-auto min-w-0 max-w-2xl flex-auto px-4 py-4 md:py-16 lg:max-w-4xl lg:pl-8 lg:pr-0 xl:px-16">
         <article>
           <DocsHeader title={title} />
           <Prose>{children}</Prose>

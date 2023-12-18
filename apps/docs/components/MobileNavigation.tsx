@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
-import Link from "next/link";
 import { Drawer, DrawerClose, DrawerContent, DrawerOverlay } from "@rafty/ui";
+import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 import { Logomark } from "./Logo";
 import { Navigation } from "./Navigation";
 
@@ -27,8 +27,8 @@ export function MobileNavigation({ isOpen, setOpen }: MobileNavigation) {
       aria-label="Navigation"
       side="left"
     >
-      <DrawerOverlay />
-      <DrawerContent className="flex !h-[100dvh] !w-full !max-w-[70vw] flex-col !overflow-hidden !p-0">
+      <DrawerOverlay className="!z-[70]" />
+      <DrawerContent className="flex !h-[100dvh] !w-full !max-w-[70vw] flex-col !overflow-hidden !p-0 !z-[70]">
         <div className="dark:bg-secondary-800 bg-white p-6">
           <Link href="/" aria-label="Home page">
             <Logomark className="h-9 w-9" />

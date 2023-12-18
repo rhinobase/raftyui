@@ -1,6 +1,6 @@
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { cva } from "class-variance-authority";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 
 export const progressClasses = cva(
@@ -38,7 +38,7 @@ export const progressIndicatorClasses = cva("h-full flex-1 transition-all", {
 });
 
 // Progress Component
-export type Progress = React.ComponentPropsWithoutRef<
+export type Progress = ComponentPropsWithoutRef<
   typeof ProgressPrimitive.Root
 > & {
   size?: "sm" | "md" | "lg";
@@ -46,8 +46,8 @@ export type Progress = React.ComponentPropsWithoutRef<
   indicatorClassName?: string;
 };
 
-export const Progress = React.forwardRef<
-  React.ElementRef<typeof ProgressPrimitive.Root>,
+export const Progress = forwardRef<
+  ElementRef<typeof ProgressPrimitive.Root>,
   Progress
 >(
   (

@@ -30,4 +30,18 @@ import { Calendar } from "@rafty/ui";
 
 ## Usage
 
-{% example name="calendar:usage" /%}
+{% example %}
+
+```jsx
+<Calendar />
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### Calendar
+
+`Calendar` component is built on top of [React Day Picker](https://react-day-picker.js.org/)
