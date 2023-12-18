@@ -7,7 +7,9 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "libs/ui/**/*.{ts,tsx,js,jsx}",
@@ -17,7 +19,9 @@
     },
     "build": {
       "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/ui",
         "tsConfig": "libs/ui/tsconfig.lib.json",
@@ -27,6 +31,7 @@
           "react",
           "react-dom",
           "react/jsx-runtime",
+          "@swc/helpers",
           "@heroicons/react",
           "class-variance-authority",
           "cmdk",
@@ -54,7 +59,6 @@
           "dateformat"
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
-        "generateExportsField": true,
         "compiler": "swc",
         "assets": [
           {
@@ -67,7 +71,9 @@
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs plugin {args.ver} {args.tag}",
-      "dependsOn": ["build"]
+      "dependsOn": [
+        "build"
+      ]
     },
     "version": {
       "executor": "@jscutlery/semver:version",
