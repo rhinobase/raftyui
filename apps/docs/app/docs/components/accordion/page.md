@@ -23,7 +23,12 @@ This component is made on top of [Radix UIs Accordion Component](https://www.rad
 Import all parts and piece them together.
 
 ```jsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@rafty/ui";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@rafty/ui";
 
 <Accordion>
   <AccordionItem>
@@ -43,11 +48,19 @@ In Accordion parent element, `type` prop is mandatory as it decides whether a `s
 <Accordion type="single">
   <AccordionItem value="1">
     <AccordionTrigger>Section 1 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -64,11 +77,19 @@ when using type `single`, the `collapsible` prop allows closing content by click
 <Accordion type="single" collapsible>
   <AccordionItem value="1">
     <AccordionTrigger>Section 1 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -86,11 +107,19 @@ when using type `single`, the `collapsible` prop allows closing content by click
 <Accordion type="multiple">
   <AccordionItem value="1">
     <AccordionTrigger>Section 1 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -105,11 +134,19 @@ when using type `single`, the `collapsible` prop allows closing content by click
 <Accordion type="single" defaultValue="1">
   <AccordionItem value="1">
     <AccordionTrigger>Section 1 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -126,11 +163,19 @@ There are 3 `size` options in accordion: `sm`, `md` (default) & `lg`.
 <Accordion type="single" variant="ghost" size="sm">
   <AccordionItem value="1">
     <AccordionTrigger>Section 1 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -147,11 +192,19 @@ There are 2 `variant` options in accordion: `solid` (default) & `ghost`.
 <Accordion type="single" variant="ghost">
   <AccordionItem value="1">
     <AccordionTrigger>Section 1 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -166,13 +219,31 @@ Pass `isUnstyled` prop in parent component to remove style in Accordion.
 
 ```jsx
 <Accordion isUnstyled collapsible type="single" className="w-full space-y-2">
-  <AccordionItem value="1" className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white">
-    <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">Section 1 title</AccordionTrigger>
-    <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+  <AccordionItem
+    value="1"
+    className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white"
+  >
+    <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
+      Section 1 title
+    </AccordionTrigger>
+    <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
-  <AccordionItem value="2" className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white">
-    <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">Section 2 title</AccordionTrigger>
-    <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+  <AccordionItem
+    value="2"
+    className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 shadow-md dark:text-white"
+  >
+    <AccordionTrigger className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
+      Section 2 title
+    </AccordionTrigger>
+    <AccordionContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden transition-all">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -187,15 +258,29 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 ```jsx
 <Accordion collapsible type="single" defaultValue="1">
-  <AccordionItem value="1" className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 dark:text-white">
-    <AccordionTrigger isUnstyled className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180">
+  <AccordionItem
+    value="1"
+    className="dark:bg-secondary-800 rounded-lg bg-white p-2 px-4 dark:text-white"
+  >
+    <AccordionTrigger
+      isUnstyled
+      className="flex w-full items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180"
+    >
       Section 1 title
     </AccordionTrigger>
-    <AccordionContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
   <AccordionItem value="2">
     <AccordionTrigger>Section 2 title</AccordionTrigger>
-    <AccordionContent isUnstyled>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</AccordionContent>
+    <AccordionContent isUnstyled>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 ```

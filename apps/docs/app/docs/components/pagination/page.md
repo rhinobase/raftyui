@@ -21,7 +21,12 @@ The Pagination Component is a customizable and user-friendly pagination solution
 Import the component.
 
 ```jsx
-import { Pagination, PageSizeSelect, PageJumper, PaginationButtons } from "@rafty/ui";
+import {
+  Pagination,
+  PageSizeSelect,
+  PageJumper,
+  PaginationButtons,
+} from "@rafty/ui";
 
 <Pagination>
   <PageSizeSelect />
@@ -267,7 +272,9 @@ function PaginationField() {
         <PageSizeSelect />
       </div>
       <PageJumper />
-      <span className="cursor-not-allowed opacity-60">Total Items : {count}</span>
+      <span className="cursor-not-allowed opacity-60">
+        Total Items : {count}
+      </span>
       <PaginationButtons />
     </Pagination>
   );
