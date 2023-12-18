@@ -32,7 +32,7 @@ export function ThemeSelector() {
       >
         <TriggerIcon height={18} width={18} className="stroke-2" />
       </MenuTrigger>
-      <MenuContent className="!z-50 !gap-0.5">
+      <MenuContent className="!z-[60] !gap-0.5">
         {Object.entries(THEMES).map(([name, Icon]) => (
           <MenuItem
             key={name}
