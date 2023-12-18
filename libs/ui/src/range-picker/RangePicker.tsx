@@ -68,6 +68,11 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
               e.stopPropagation();
               setSelected();
             }}
+            onKeyDown={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setSelected();
+            }}
           >
             <XMarkIcon className="h-3 w-3 stroke-[2.5]" />
           </div>

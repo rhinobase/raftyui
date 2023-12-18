@@ -33,7 +33,7 @@ export const DatePicker = (props: DatePicker) => {
         leftIcon={<CalendarIcon className="h-4 w-4" />}
       >
         {selected ? (
-          props.formatters && props.formatters.formatDay ? (
+          props.formatters?.formatDay ? (
             props.formatters.formatDay(selected)
           ) : (
             format(selected, "longDate")

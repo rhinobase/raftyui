@@ -74,6 +74,7 @@ export function PaymentMethodExample() {
             <div
               key={item.heading}
               onClick={() => setSelected(index)}
+              onKeyDown={() => setSelected(index)}
               className={classNames(
                 isSelect === index
                   ? "ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400 ring-2"

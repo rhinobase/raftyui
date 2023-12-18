@@ -191,12 +191,12 @@ function SearchResult({
           aria-hidden="true"
           className="text-secondary-500 dark:text-secondary-400 mt-0.5 truncate whitespace-nowrap text-xs"
         >
-          {hierarchy.map((item, itemIndex, items) => (
-            <Fragment key={itemIndex}>
+          {hierarchy.map((item, index, items) => (
+            <Fragment key={item}>
               <HighlightQuery text={item} query={query} />
               <span
                 className={
-                  itemIndex === items.length - 1
+                  index === items.length - 1
                     ? "sr-only"
                     : "text-secondary-300 dark:text-secondary-700 mx-2"
                 }
@@ -338,10 +338,10 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
 
   return (
     <Dialog open={open} onOpenChange={() => close(autocomplete)}>
-      <DialogOverlay />
+      <DialogOverlay className="!z-[70]" />
       <DialogContent
         showCloseButton={false}
-        className="!top-[15%] max-w-[370px] !-translate-y-0 !p-0 lg:max-w-[40rem]"
+        className="!top-[15%] max-w-[370px] !-translate-y-0 !p-0 lg:max-w-[40rem] !z-[70]"
       >
         <div {...autocomplete.getRootProps({})}>
           <form

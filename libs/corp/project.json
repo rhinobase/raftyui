@@ -7,31 +7,21 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/corp/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/corp/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/corp",
         "tsConfig": "libs/corp/tsconfig.lib.json",
         "project": "libs/corp/package.json",
         "entryFile": "libs/corp/src/index.ts",
-        "external": [
-          "react",
-          "react-dom",
-          "react/jsx-runtime"
-        ],
-        "rollupConfig": "libs/ui/rollup.config.js",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "libs/corp/rollup.config.js",
         "compiler": "swc",
         "assets": [
           {
@@ -44,9 +34,7 @@
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs corp {args.ver} {args.tag}",
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "version": {
       "executor": "@jscutlery/semver:version",

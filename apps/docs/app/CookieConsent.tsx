@@ -2,7 +2,7 @@
 import { Button, Text } from "@rafty/ui";
 import cookies from "js-cookie";
 import Script from "next/script";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 // Cookie name for analytics consent
 const CONSENT_COOKIE_NAME = "rccn";
@@ -15,7 +15,9 @@ export function CookieConsent() {
     cookies.get(CONSENT_COOKIE_NAME),
   );
 
-  function handleGivenConsent(accept: boolean) {
+  function handleGivenConsent(
+    accept: boolean,
+  ): MouseEventHandler<HTMLButtonElement> {
     const token = String(Number(accept));
     return () => {
       cookies.set(
@@ -39,18 +41,22 @@ export function CookieConsent() {
 }
 
 type CookieConsentBanner = {
-  handleGivenConsent: (accept: boolean) => () => void;
+  handleGivenConsent: (accept: boolean) => MouseEventHandler<HTMLButtonElement>;
 };
 
 function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
   return (
-    <div className="dark:bg-secondary-900 fixed bottom-0 z-[100] w-full bg-white p-3 shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none md:bottom-3 md:right-3 md:w-[340px] md:rounded-lg md:p-4">
-      <div className="space-y-3 md:space-y-4">
+    <div
+      role="dialog"
+      className="dark:bg-secondary-900 fixed bottom-2 right-2 left-2 z-[100] bg-white shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none md:bottom-3 md:right-3 md:w-[340px] rounded-lg p-4"
+      style={{ pointerEvents: "auto" }}
+    >
+      <div className="space-y-4">
         <Text className="text-center text-sm leading-snug opacity-60 md:text-left">
           We only collect analytics essential to ensuring smooth operation of
           our services.
         </Text>
-        <div className="flex w-full gap-3 md:justify-end">
+        <div className="flex w-full gap-4 md:justify-end">
           <Button
             size="sm"
             className="!w-full md:!w-auto"

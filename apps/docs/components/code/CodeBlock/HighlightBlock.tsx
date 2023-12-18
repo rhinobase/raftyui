@@ -13,13 +13,14 @@ export function HighlightBlock({ content, language }: HighlightBlock) {
         <pre className={className} style={style}>
           <code>
             {tokens.map((line, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: line is an array
               <Fragment key={index}>
                 {line
                   .filter((token) => !token.empty)
-                  .map((token, tokenIndex) => (
-                    <span key={tokenIndex} {...getTokenProps({ token })} />
+                  .map((token) => (
+                    <span key={token.content} {...getTokenProps({ token })} />
                   ))}
-                {index != tokens.length - 1 ? "\n" : ""}
+                {index !== tokens.length - 1 ? "\n" : ""}
               </Fragment>
             ))}
           </code>

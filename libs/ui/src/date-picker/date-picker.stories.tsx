@@ -23,7 +23,7 @@ export const Default: Story = {
 
     return (
       <>
-        <form onClick={handleSubmit((value) => console.log(value))}>
+        <form onSubmit={handleSubmit((value) => console.log(value))}>
           <FieldControl name="date">
             <Label>Date Picker</Label>
             <Controller
