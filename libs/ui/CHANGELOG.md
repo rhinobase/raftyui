@@ -2,6 +2,37 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.1](https://github.com/rhinobase/raftyui/compare/ui-1.3.1...ui-1.3.2) (2023-12-18)
+
+### Features
+
+- **ui:** added isMuted prop to Text component ([7b94f77](https://github.com/rhinobase/raftyui/commit/7b94f77c45a53951bbd548381ab4b4d1101f3bf6))
+- **ui:** added new hook and minor improvements ([64b2663](https://github.com/rhinobase/raftyui/commit/64b266389f18d29c0c5cd4c7f508442020519803))
+- **ui:** changed pagination api ([bdc2f28](https://github.com/rhinobase/raftyui/commit/bdc2f28b43b8b77aad982309bc0d61c5f34c4358))
+- **ui:** exported contexts and added size prop to input-group ([2ca75fe](https://github.com/rhinobase/raftyui/commit/2ca75fe4f5e30965f935f7c2c5e0f417a9ff809a))
+- **web:** working on pagination component ([fe434d5](https://github.com/rhinobase/raftyui/commit/fe434d5685be88d0bfd4576f47929af9e3628fa9))
+
+### Bug Fixes
+
+- config corrections ([334aae2](https://github.com/rhinobase/raftyui/commit/334aae2ee74cb60d797ba79831a92fe08a03b04b))
+- merge conflicts ([632d420](https://github.com/rhinobase/raftyui/commit/632d420f24446cfb50f4b703ed81198526852c8c))
+- **ui:** implement pageSize prop in pagination ([c4ac1f1](https://github.com/rhinobase/raftyui/commit/c4ac1f1003835772b494dc79d17a04070778539c))
+- **ui:** improve pagination ([7e9bd23](https://github.com/rhinobase/raftyui/commit/7e9bd23158e2170f229e7fa1124574be94dea34b))
+- **ui:** improved compiler ([4d61678](https://github.com/rhinobase/raftyui/commit/4d616780a13d52183b5f70b33a8fb54263ab062c))
+- **ui:** improved pagination and added showTotal function ([9e6e33a](https://github.com/rhinobase/raftyui/commit/9e6e33ac4024543ec33c1f5ad1f520acebd3f4d8))
+- **ui:** improved pagination component ([2d3fd0d](https://github.com/rhinobase/raftyui/commit/2d3fd0d3da1a4a07fb15781e6fa5c9e882194c56))
+- **ui:** improved pagination functionality ([0045e77](https://github.com/rhinobase/raftyui/commit/0045e772355d29d6ae05e3e3b2ddff54576031e3))
+- **ui:** improved select sizing and icon placement ([183aaa5](https://github.com/rhinobase/raftyui/commit/183aaa599996cc52239140e9aa7cb2b957f7d2af))
+- **ui:** improvements in tab and textarea components ([d0231d2](https://github.com/rhinobase/raftyui/commit/d0231d2244d8e02caa22d7260b98a6fb04bf0eea))
+- **ui:** minor fixes ([069fd2a](https://github.com/rhinobase/raftyui/commit/069fd2afaba85dbb149312c25c7072cf417589e6))
+- **ui:** minor improvement ([912bf0d](https://github.com/rhinobase/raftyui/commit/912bf0df456ae25568e3952673447d9b562f5f5b))
+- **ui:** removed circular depn in avatar ([029801c](https://github.com/rhinobase/raftyui/commit/029801cb3440a8998a5863dcd9a1fd25ab674974))
+- **ui:** removed has prop from user side props in Card component ([07fc828](https://github.com/rhinobase/raftyui/commit/07fc8289359849d40030e4d47f178e00a97e876b))
+- **ui:** resolved build errors ([c1a87bc](https://github.com/rhinobase/raftyui/commit/c1a87bc13d57c26866310065f9578b1a91cea78a))
+- **ui:** resolved linting error in all files ([7feb513](https://github.com/rhinobase/raftyui/commit/7feb51303a366b564bdbecf4237af1963fd125d3))
+- **web:** improved import ([5e180c8](https://github.com/rhinobase/raftyui/commit/5e180c8d5524515c3c21905f8f5ca900874da135))
+- **web:** improved pagination md file ([402d99b](https://github.com/rhinobase/raftyui/commit/402d99ba50b1b557b700ffa9f1337151ca2b63f7))
+
 ## [1.4.0](https://github.com/rhinobase/raftyui/compare/ui-1.3.1...ui-1.4.0) (2023-12-15)
 
 ### Features
