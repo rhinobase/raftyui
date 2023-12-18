@@ -48,7 +48,7 @@ function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
   return (
     <div
       role="dialog"
-      className="dark:bg-secondary-900 fixed bottom-2 right-2 left-2 z-[100] bg-white shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none md:bottom-3 md:right-3 md:w-[340px] rounded-lg p-4"
+      className="dark:bg-secondary-900 fixed bottom-2 right-2 left-2 z-[100] bg-white shadow-[0_-3px_10px_0px_rgba(0,0,0,0.1)] dark:shadow-none md:left-auto md:bottom-3 md:right-3 md:w-[340px] rounded-lg p-4"
       style={{ pointerEvents: "auto" }}
     >
       <div className="space-y-4">
