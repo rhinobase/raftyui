@@ -51,6 +51,7 @@ export const Default: Story = {
               stroke="currentColor"
               className="h-4 w-4"
             >
+              <title>all feature</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

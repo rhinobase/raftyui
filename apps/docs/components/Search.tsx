@@ -191,12 +191,12 @@ function SearchResult({
           aria-hidden="true"
           className="text-secondary-500 dark:text-secondary-400 mt-0.5 truncate whitespace-nowrap text-xs"
         >
-          {hierarchy.map((item, itemIndex, items) => (
-            <Fragment key={itemIndex}>
+          {hierarchy.map((item, index, items) => (
+            <Fragment key={item}>
               <HighlightQuery text={item} query={query} />
               <span
                 className={
-                  itemIndex === items.length - 1
+                  index === items.length - 1
                     ? "sr-only"
                     : "text-secondary-300 dark:text-secondary-700 mx-2"
                 }

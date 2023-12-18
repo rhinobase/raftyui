@@ -9,6 +9,6 @@ import { Children, ReactElement, ReactNode, isValidElement } from "react";
 export function getValidChildren(children: ReactNode) {
   return Children.toArray(children).filter(
     (child) => isValidElement(child),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   ) as ReactElement<any, any>[];
 }

@@ -61,8 +61,8 @@ export const Default: Story = {
             </Tr>
           </TableHead>
           <TableBody>
-            {people.map((person, index) => (
-              <Tr key={index}>
+            {people.map((person) => (
+              <Tr key={person.email}>
                 <Td>{person.name}</Td>
                 <Td>{person.title}</Td>
                 <Td>{person.email}</Td>

@@ -187,16 +187,19 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
   ) => {
     const fieldControlContext = useFieldControlContext() ?? {};
 
-    const name = props.name || fieldControlContext.name,
-      disabled =
-        isDisabled ||
-        props.disabled ||
-        fieldControlContext.isDisabled ||
-        isLoading ||
-        fieldControlContext.isLoading,
-      invalid = isInvalid || fieldControlContext.isInvalid,
-      readonly = isReadOnly || props.readOnly || fieldControlContext.isReadOnly,
-      required = isRequired || props.required || fieldControlContext.isRequired;
+    const name = props.name || fieldControlContext.name;
+    const disabled =
+      isDisabled ||
+      props.disabled ||
+      fieldControlContext.isDisabled ||
+      isLoading ||
+      fieldControlContext.isLoading;
+
+    const invalid = isInvalid || fieldControlContext.isInvalid;
+    const readonly =
+      isReadOnly || props.readOnly || fieldControlContext.isReadOnly;
+    const required =
+      isRequired || props.required || fieldControlContext.isRequired;
 
     const inputGroupContext = useInputGroupContext() ?? {
       isLeftAddon: false,
