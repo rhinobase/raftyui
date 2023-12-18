@@ -7,9 +7,7 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/ui/**/*.{ts,tsx,js,jsx}",
@@ -19,9 +17,7 @@
     },
     "build": {
       "executor": "@nx/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/ui",
         "tsConfig": "libs/ui/tsconfig.lib.json",
@@ -71,9 +67,7 @@
     },
     "publish": {
       "command": "node tools/scripts/publish.mjs ui {args.ver} {args.tag}",
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "version": {
       "executor": "@jscutlery/semver:version",

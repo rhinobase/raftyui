@@ -24,6 +24,7 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["@rafty/ui"],
   },
+  poweredByHeader: false,
 };
 
 const plugins = [
