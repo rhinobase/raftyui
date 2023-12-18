@@ -98,28 +98,14 @@ Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 {% example %}
 
 ```jsx
-<ToggleGroup
-  type="single"
-  defaultValue="1"
-  isUnstyled
-  className="flex h-9 w-full"
->
-  <ToggleGroupItem
-    value="1"
-    className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-l-md border font-bold "
-  >
+<ToggleGroup type="single" defaultValue="1" isUnstyled className="flex h-9 w-full">
+  <ToggleGroupItem value="1" className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-l-md border font-bold ">
     1
   </ToggleGroupItem>
-  <ToggleGroupItem
-    value="2"
-    className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300 dark:data-[state=on]:bg-primary-300/20 w-full border font-bold"
-  >
+  <ToggleGroupItem value="2" className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300 dark:data-[state=on]:bg-primary-300/20 w-full border font-bold">
     2
   </ToggleGroupItem>
-  <ToggleGroupItem
-    value="3"
-    className="dark:border-secondary-800 data-[state=on]:bg-primary-100 data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-r-md border font-bold"
-  >
+  <ToggleGroupItem value="3" className="dark:border-secondary-800 data-[state=on]:bg-primary-100 data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-r-md border font-bold">
     3
   </ToggleGroupItem>
 </ToggleGroup>
@@ -129,17 +115,13 @@ Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 
 ## Unstyled subcomponent
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+To remove styles from a specific sub component pass `isUnstyled` prop to that particular subcomponent.
 
 {% example %}
 
 ```jsx
 <ToggleGroup type="single" defaultValue="1">
-  <ToggleGroupItem
-    value="1"
-    isUnstyled
-    className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 w-full px-3 py-1  font-semibold"
-  >
+  <ToggleGroupItem value="1" isUnstyled className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 w-full px-3 py-1  font-semibold">
     1
   </ToggleGroupItem>
   <ToggleGroupItem value="2">2</ToggleGroupItem>

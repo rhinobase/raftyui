@@ -14,7 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Switch
 ---
 
-A control that allows the user to toggle between checked and not checked.It is used as an alternative for the checkbox component.
+A control that allows the user to toggle between checked and not checked. It is used as an alternative for the checkbox component.
 
 This component is made on top of [Radix UIs Switch Component](https://www.radix-ui.com/primitives/docs/components/switch) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 

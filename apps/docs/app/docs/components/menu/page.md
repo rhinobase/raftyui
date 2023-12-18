@@ -21,17 +21,7 @@ Displays a menu to the user—such as a set of actions or functions—triggered 
 Import all parts and piece them together.
 
 ```jsx
-import {
-  Menu,
-  MenuTrigger,
-  MenuItem,
-  MenuCheckboxItem,
-  MenuContent,
-  MenuSeparator,
-  MenuRadioGroup,
-  MenuLabel,
-  MenuRadioItem,
-} from "@rafty/ui";
+import { Menu, MenuTrigger, MenuItem, MenuCheckboxItem, MenuContent, MenuSeparator, MenuRadioGroup, MenuLabel, MenuRadioItem } from "@rafty/ui";
 
 <Menu>
   <MenuTrigger />
@@ -53,11 +43,7 @@ import {
 
 ```jsx
 <Menu>
-  <MenuTrigger
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
-    Actions
-  </MenuTrigger>
+  <MenuTrigger rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>Actions</MenuTrigger>
   <MenuContent>
     <MenuItem>New Tab</MenuItem>
     <MenuItem>New Window</MenuItem>
@@ -82,36 +68,21 @@ function MenuExample() {
 
   return (
     <Menu size="sm">
-      <MenuTrigger
-        rightIcon={
-          <ChevronDownIcon width={16} height={16} className="stroke-2" />
-        }
-      >
-        Actions
-      </MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>Actions</MenuTrigger>
       <MenuContent>
         <MenuItem>New Tab</MenuItem>
         <MenuItem>New Window</MenuItem>
         <MenuItem disabled>New Private Window </MenuItem>
         <MenuSeparator />
-        <MenuCheckboxItem
-          checked={isBookmarkChecked}
-          onCheckedChange={setBookmarkChecked}
-        >
+        <MenuCheckboxItem checked={isBookmarkChecked} onCheckedChange={setBookmarkChecked}>
           Show Bookmarks <div className="RightSlot">⌘+B</div>
         </MenuCheckboxItem>
-        <MenuCheckboxItem
-          checked={showFullUrls}
-          onCheckedChange={setShowFullUrls}
-        >
+        <MenuCheckboxItem checked={showFullUrls} onCheckedChange={setShowFullUrls}>
           Show Full URLs
         </MenuCheckboxItem>
         <MenuSeparator />
         <MenuLabel>People</MenuLabel>
-        <MenuRadioGroup
-          value={selectedPerson}
-          onValueChange={setSelectedPerson}
-        >
+        <MenuRadioGroup value={selectedPerson} onValueChange={setSelectedPerson}>
           <MenuRadioItem value="pedro">Pedro Duarte</MenuRadioItem>
           <MenuRadioItem value="colm">Colm Tuite</MenuRadioItem>
         </MenuRadioGroup>
@@ -129,16 +100,10 @@ function MenuExample() {
 
 ```jsx
 <Menu>
-  <MenuTrigger
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
-    Actions
-  </MenuTrigger>
+  <MenuTrigger rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>Actions</MenuTrigger>
   <MenuContent>
     <MenuSub>
-      <MenuSubTrigger style={{ justifyContent: "space-between" }}>
-        More Tools
-      </MenuSubTrigger>
+      <MenuSubTrigger style={{ justifyContent: "space-between" }}>More Tools</MenuSubTrigger>
       <MenuSubContent>
         <MenuItem className="justify-between">
           Save Page As… <div className="RightSlot">⌘+S</div>
@@ -166,24 +131,12 @@ function MenuExample() {
 
   return (
     <Menu>
-      <MenuTrigger
-        rightIcon={
-          <ChevronDownIcon width={16} height={16} className="stroke-2" />
-        }
-      >
-        All Feature
-      </MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>All Feature</MenuTrigger>
       <MenuContent>
-        <MenuCheckboxItem
-          checked={isBookmarkChecked}
-          onCheckedChange={setBookmarkChecked}
-        >
+        <MenuCheckboxItem checked={isBookmarkChecked} onCheckedChange={setBookmarkChecked}>
           Show Bookmarks <div className="RightSlot">⌘+B</div>
         </MenuCheckboxItem>
-        <MenuCheckboxItem
-          checked={showFullUrls}
-          onCheckedChange={setShowFullUrls}
-        >
+        <MenuCheckboxItem checked={showFullUrls} onCheckedChange={setShowFullUrls}>
           Show Full URLs
         </MenuCheckboxItem>
       </MenuContent>
@@ -204,19 +157,10 @@ function MenuExample() {
 
   return (
     <Menu>
-      <MenuTrigger
-        rightIcon={
-          <ChevronDownIcon width={16} height={16} className="stroke-2" />
-        }
-      >
-        Actions
-      </MenuTrigger>
+      <MenuTrigger rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>Actions</MenuTrigger>
       <MenuContent>
         <MenuLabel>People</MenuLabel>
-        <MenuRadioGroup
-          value={selectedPerson}
-          onValueChange={setSelectedPerson}
-        >
+        <MenuRadioGroup value={selectedPerson} onValueChange={setSelectedPerson}>
           <MenuRadioItem value="pedro">Pedro Duarte</MenuRadioItem>
           <MenuRadioItem value="colm">Colm Tuite</MenuRadioItem>
         </MenuRadioGroup>
@@ -236,28 +180,14 @@ Pass `isUnstyled` prop in parent component to remove style in Menu.
 
 ```jsx
 <Menu isUnstyled>
-  <MenuTrigger
-    size="sm"
-    className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
+  <MenuTrigger size="sm" className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white" rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>
     Actions
   </MenuTrigger>
 
-  <MenuContent
-    isArrow={false}
-    sideOffset={5}
-    className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-1 text-black  shadow-md dark:text-white "
-  >
-    <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 text-sm">
-      New Tab
-    </MenuItem>
-    <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700  rounded-md p-1 text-sm ">
-      New Window
-    </MenuItem>
-    <MenuItem className="text-primary dark:text-secondary-400 cursor-context-menu rounded-md p-1 text-sm ">
-      New Private Window
-    </MenuItem>
+  <MenuContent isArrow={false} sideOffset={5} className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-1 text-black  shadow-md dark:text-white ">
+    <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 text-sm">New Tab</MenuItem>
+    <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700  rounded-md p-1 text-sm ">New Window</MenuItem>
+    <MenuItem className="text-primary dark:text-secondary-400 cursor-context-menu rounded-md p-1 text-sm ">New Private Window</MenuItem>
   </MenuContent>
 </Menu>
 ```
@@ -266,22 +196,16 @@ Pass `isUnstyled` prop in parent component to remove style in Menu.
 
 ## UnStyled subcomponent
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+To remove styles from a specific sub component pass `isUnstyled` prop to that particular subcomponent.
 
 {% example %}
 
 ```jsx
 <Menu>
-  <MenuTrigger
-    size="icon"
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
+  <MenuTrigger size="icon" rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>
     Actions
   </MenuTrigger>
-  <MenuContent
-    isUnstyled
-    className="dark:bg-secondary-800 rounded-md bg-white p-2"
-  >
+  <MenuContent isUnstyled className="dark:bg-secondary-800 rounded-md bg-white p-2">
     <MenuItem>New Tab</MenuItem>
     <MenuItem>New Window</MenuItem>
     <MenuItem disabled>New Private Window </MenuItem>
@@ -299,11 +223,7 @@ The `isArrow` prop exists in Menu Content subcomponent and is used to show/hide 
 
 ```jsx
 <Menu>
-  <MenuTrigger
-    rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
-  >
-    Actions
-  </MenuTrigger>
+  <MenuTrigger rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}>Actions</MenuTrigger>
   <MenuContent isArrow>
     <MenuItem>New Tab</MenuItem>
     <MenuItem>New Window</MenuItem>

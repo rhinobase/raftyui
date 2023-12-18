@@ -16,7 +16,7 @@ nextjs:
 
 Select component is a component that allows users to pick a value from predefined options.
 
-This is a custom component made upon native select and its props according to our styling conventions. All native select props can be used here.
+This is a custom component built upon the native select, adhering to our styling conventions. All native select props can be utilized with this component.
 
 ## Anatomy
 

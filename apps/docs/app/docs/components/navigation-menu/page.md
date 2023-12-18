@@ -21,16 +21,7 @@ A collection of links for navigating websites. This component is made on top of 
 Import all parts and piece them together.
 
 ```jsx
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuListItem,
-  NavigationMenuTrigger,
-} from "@rafty/ui";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuListItem, NavigationMenuTrigger } from "@rafty/ui";
 
 <NavigationMenu>
   <NavigationMenuListItem>
@@ -93,9 +84,7 @@ import {
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-      <NavigationMenuLink href="https://github.com/rhinobase/raftyui">
-        Github
-      </NavigationMenuLink>
+      <NavigationMenuLink href="https://github.com/rhinobase/raftyui">Github</NavigationMenuLink>
     </NavigationMenuItem>
   </NavigationMenuList>
 </NavigationMenu>
@@ -114,10 +103,7 @@ Pass the `size` prop if you need to adjust the size of the navigation-menu conte
   <NavigationMenuList>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-      <NavigationMenuContent
-        size="sm"
-        className="grid w-[300px] grid-cols-2 md:w-[600px]"
-      >
+      <NavigationMenuContent size="sm" className="grid w-[300px] grid-cols-2 md:w-[600px]">
         <NavigationMenuListItem href="#" title="Stitches">
           CSS-in-JS with best-in-class developer experience.
         </NavigationMenuListItem>
@@ -155,9 +141,7 @@ Pass the `size` prop if you need to adjust the size of the navigation-menu conte
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-      <NavigationMenuLink href="https://github.com/rhinobase/raftyui">
-        Github
-      </NavigationMenuLink>
+      <NavigationMenuLink href="https://github.com/rhinobase/raftyui">Github</NavigationMenuLink>
     </NavigationMenuItem>
   </NavigationMenuList>
 </NavigationMenu>
@@ -172,15 +156,10 @@ Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
 {% example %}
 
 ```jsx
-<NavigationMenu
-  isUnstyled
-  className="relative z-10 flex max-w-max flex-1 items-center justify-center"
->
+<NavigationMenu isUnstyled className="relative z-10 flex max-w-max flex-1 items-center justify-center">
   <NavigationMenuList className="m-0 flex items-center justify-center rounded-md p-1">
     <NavigationMenuItem>
-      <NavigationMenuTrigger className="data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none">
-        Learn
-      </NavigationMenuTrigger>
+      <NavigationMenuTrigger className="data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none">Learn</NavigationMenuTrigger>
       <NavigationMenuContent className="animate-slide-down-fade dark:bg-secondary-800 absolute top-2.5 grid w-[300px] min-w-[220px] max-w-2xl origin-top grid-cols-2 rounded-md bg-white p-4 text-base drop-shadow-lg duration-200 md:w-[600px]">
         <NavigationMenuListItem href="#" title="Stitches">
           CSS-in-JS with best-in-class developer experience.
@@ -195,9 +174,7 @@ Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-      <NavigationMenuTrigger className="data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none">
-        Overview
-      </NavigationMenuTrigger>
+      <NavigationMenuTrigger className="data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none">Overview</NavigationMenuTrigger>
       <NavigationMenuContent className="animate-slide-down-fade dark:bg-secondary-800 absolute top-2.5 grid w-[300px] min-w-[220px] max-w-2xl origin-top grid-cols-2 rounded-md bg-white p-4 text-base drop-shadow-lg duration-200 md:w-[600px]">
         <NavigationMenuListItem title="Introduction" href="#">
           Build high-quality, accessible design systems and web apps.
@@ -221,10 +198,7 @@ Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-      <NavigationMenuLink
-        href="https://github.com/rhinobase/raftyui"
-        className="hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none"
-      >
+      <NavigationMenuLink href="https://github.com/rhinobase/raftyui" className="hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none">
         Github
       </NavigationMenuLink>
     </NavigationMenuItem>
@@ -236,7 +210,7 @@ Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
 
 ## Unstyled subcomponent
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+To remove styles from a specific sub component pass `isUnstyled` prop to that particular subcomponent.
 
 {% example %}
 
@@ -245,10 +219,7 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
   <NavigationMenuList>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-      <NavigationMenuContent
-        isUnstyled
-        className="animate-slide-down-fade dark:bg-secondary-800 absolute top-2.5 min-w-[220px] max-w-2xl origin-top rounded-md bg-white p-4 text-base drop-shadow-lg duration-200"
-      >
+      <NavigationMenuContent isUnstyled className="animate-slide-down-fade dark:bg-secondary-800 absolute top-2.5 min-w-[220px] max-w-2xl origin-top rounded-md bg-white p-4 text-base drop-shadow-lg duration-200">
         <NavigationMenuListItem href="#" title="Stitches">
           CSS-in-JS with best-in-class developer experience.
         </NavigationMenuListItem>
@@ -286,9 +257,7 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-      <NavigationMenuLink href="https://github.com/rhinobase/raftyui">
-        Github
-      </NavigationMenuLink>
+      <NavigationMenuLink href="https://github.com/rhinobase/raftyui">Github</NavigationMenuLink>
     </NavigationMenuItem>
   </NavigationMenuList>
 </NavigationMenu>
