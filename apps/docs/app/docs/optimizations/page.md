@@ -18,7 +18,7 @@ This guide delves into optimization strategies designed to elevate your applicat
 
 ## Next.js
 
-In Next.js, optimizing the library usage is crucial for enhancing performance. One effective way is through the `optimizePackageImports` feature within the `experimental` configuration. By specifying particular packages like `@rafty/ui` in the optimizePackageImports array, Next.js optimizes these imports during the build process. This optimization involves _tree shaking_ and _code splitting_, ensuring only necessary components are loaded, reducing bundle size, and improving overall page loading times.
+In Next.js, optimizing the library usage is crucial for enhancing performance. One effective way is through the `optimizePackageImports` feature within the `experimental` configuration. By specifying particular packages like `@rafty/ui` in the `optimizePackageImports` array, Next.js optimizes these imports during the build process. This optimization involves **tree shaking** and **code splitting**, ensuring only necessary components are loaded, reducing bundle size, and improving overall page loading times.
 
 ```js
 /** @type {import('next').NextConfig} */
