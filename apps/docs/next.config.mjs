@@ -21,6 +21,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
   },
   reactStrictMode: false,
+  experimental: {
+    optimizePackageImports: ["@rafty/ui"],
+  },
 };
 
 const plugins = [
