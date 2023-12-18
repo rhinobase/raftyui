@@ -1,13 +1,16 @@
 import { HTMLAttributes, forwardRef } from "react";
+import { classNames } from "../utils";
 
 // Text Component
-export type Text = HTMLAttributes<HTMLParagraphElement>;
+export type Text = HTMLAttributes<HTMLParagraphElement> & { isMuted?: boolean };
 
 export const Text = forwardRef<HTMLParagraphElement, Text>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <p {...props} className={className} ref={forwardedRef}>
-      {children}
-    </p>
+  ({ className, isMuted, ...props }, forwardedRef) => (
+    <p
+      {...props}
+      className={classNames(isMuted && "opacity-60", className)}
+      ref={forwardedRef}
+    />
   ),
 );
 
