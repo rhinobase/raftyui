@@ -341,7 +341,7 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
       <DialogOverlay className="!z-[70]" />
       <DialogContent
         showCloseButton={false}
-        className="!top-[15%] max-w-[370px] !-translate-y-0 !p-0 lg:max-w-[40rem] !z-[70]"
+        className="!top-[15%] !z-[70] max-w-[370px] !-translate-y-0 !p-0 lg:max-w-[40rem]"
       >
         <div {...autocomplete.getRootProps({})}>
           <form
@@ -393,6 +393,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         onClick={() => setOpen(true)}
         className="hidden w-[300px] !justify-start !gap-2 md:flex"
         name="Search"
+        aria-label="Search"
       >
         <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
         Search docs
@@ -406,6 +407,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         onClick={() => setOpen(true)}
         className="md:hidden"
         name="Search"
+        aria-label="Search"
       >
         <MagnifyingGlassIcon height={16} width={16} />
       </Button>
