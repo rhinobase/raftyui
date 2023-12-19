@@ -391,13 +391,18 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         type="button"
         variant="outline"
         onClick={() => setOpen(true)}
-        className="hidden w-[300px] !justify-start !gap-2 md:flex"
+        className="hidden gap-2 md:flex"
         aria-label="Search docs"
+        leftIcon={
+          <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
+        }
+        rightIcon={
+          modifierKey ? (
+            <Kbd className="!text-xs">{modifierKey} K</Kbd>
+          ) : undefined
+        }
       >
-        <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
         Search docs
-        <div className="flex-1" />
-        {modifierKey && <Kbd>{modifierKey} K</Kbd>}
       </Button>
       <Button
         type="button"

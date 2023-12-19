@@ -9,202 +9,176 @@ const AppFile = `import {
 } from "@tanstack/react-query";
 import TanstackTable from "./TanstackTable";
 
+const CLIENT = new QueryClient();
+
 export default function App(){
-  const CLIENT = new QueryClient();
-  return (
-  <QueryClientProvider client={CLIENT}>
-    <TanstackTable />
-  </QueryClientProvider>
-  )
+    return (
+      <QueryClientProvider client={CLIENT}>
+        <TanstackTable />
+      </QueryClientProvider>
+    );
 }`;
 
-const TanstackTableFile = `import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
-import { Spinner } from "@rafty/ui";
-import BasicTable from "./BasicTable";
+const TanstackTableFile = `
+import {
+  useQuery,
+} from "@tanstack/react-query";
+import {
+  PaginationState,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import React from "react";
+import { PageJumper, 
+  Pagination, 
+  PaginationButtons,
+  Skeleton,
+  Table,
+  TableBody,
+  TableContainer,
+  TableFooter,
+  TableHead,
+  Td,
+  Th,
+  Tr,
+  classNames } from "@rafty/ui";
 
   export default function TanstackTable() {
-    const { data, isLoading } = useQuery({
-      queryKey: ["demo"],
-      queryFn: async () =>
-        await fetch("https://api.spacexdata.com/v3/launches").then((res) =>
-          res.json(),
-        ),
-    });
-  
-    const columns = useMemo(
-      () => [
-        {
-          header: "Id",
-          accessorKey: "flight_number",
-        },
-        {
-          header: "Mission Name",
-          accessorKey: "mission_name",
-        },
-        {
-          header: "Launch Year",
-          accessorKey: "launch_year",
-        },
-        {
-          header: "Tentative",
-          accessorKey: "is_tentative",
-        },
-        {
-          header: "Launch Window",
-          accessorKey: "launch_window",
-        },
-        {
-          header: "Rocket Name",
-          cell: ({ row }) => row.original.rocket.rocket_name,
-        },
-      ],
-      [],
-    );
-  
-    if (isLoading)
-      return (
-        <div className="item-center flex justify-center">
-          <Spinner className="text-cyan-400 " size="lg" />
-        </div>
-      );
-  
-    if (data) return <BasicTable data={data} columns={columns} />;
-  }
-  `;
-
-const BasicTableFile = `import {
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-  } from "@tanstack/react-table";
-  import { useState } from "react"
-import { Button,
-    InputField,
-    InputGroup,
-    Prefix,
-    Table,
-    TableBody,
-    TableContainer,
-    TableHead,
-    Td,
-    Th,
-    Tr,
-    classNames, } from "@rafty/ui";
-    import {
-        ArrowDownIcon,
-        ArrowLeftIcon,
-        ArrowRightIcon,
-        ArrowUpIcon,
-        MagnifyingGlassIcon,
-      } from "@heroicons/react/24/outline";
-      
-  export default function BasicTable({
-    data,
-    columns,
-  }) {
-    const [sort, setSort] = useState([]);
-    const [filter, setFilter] = useState("");
-  
-    const table = useReactTable({
-      data,
-      columns,
-      getCoreRowModel: getCoreRowModel(),
-      getPaginationRowModel: getPaginationRowModel(),
-      getSortedRowModel: getSortedRowModel(),
-      getFilteredRowModel: getFilteredRowModel(),
-      state: {
-        sorting: sort,
-        globalFilter: filter,
+    const columns = React.useMemo(
+    () => [
+      {
+        header: "Id",
+        accessorKey: "flight_number",
       },
-      onSortingChange: setSort,
-      onGlobalFilterChange: setFilter,
+      {
+        header: "Mission Name",
+        accessorKey: "mission_name",
+      },
+      {
+        header: "Launch Year",
+        accessorKey: "launch_year",
+      },
+      {
+        header: "Tentative",
+        accessorKey: "is_tentative",
+      },
+      {
+        header: "Launch Window",
+        accessorKey: "launch_window",
+      },
+      {
+        header: "Rocket Name",
+        cell: ({ row }) => row.original.rocket.rocket_name,
+      },
+    ],
+    [],
+  );
+
+  const [{ pageIndex, pageSize }, setPagination] =
+    React.useState({
+      pageIndex: 0,
+      pageSize: 10,
     });
-    return (
-      <div className="space-y-4 p-4">
-        <InputGroup>
-          <Prefix>
-            <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
-          </Prefix>
-          <InputField
-            variant="outline"
-            type="text"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            placeholder="Search..."
-          />
-        </InputGroup>
-        <TableContainer>
-          <Table variant="striped" size="sm" className="w-full table-fixed">
-            <TableHead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <Tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header, index) => {
-                    const isLastColumn = headerGroup.headers.length - 1 == index;
-  
-                    return (
-                      <Th
-                        key={header.id}
-                        onClick={header.column.getToggleSortingHandler()}
+
+  const offset = pageSize * pageIndex;
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["launches", pageSize, offset],
+    queryFn: () =>
+      fetch(
+        \`https://api.spacexdata.com/v3/launches?limit=\${pageSize}&&offset=\${offset}\`,
+      ).then((res) => res.json()),
+  });
+
+  const pagination = React.useMemo(
+    () => ({
+      pageIndex,
+      pageSize,
+    }),
+    [pageIndex, pageSize],
+  );
+
+  const table = useReactTable({
+    data: data,
+    columns,
+    pageCount: 110 / pageSize,
+    getCoreRowModel: getCoreRowModel(),
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
+    manualPagination: true,
+    debugTable: true,
+  });
+
+  const noOfColumns = table.getAllColumns().length;
+
+  return (
+    <TableContainer className="m-4">
+      <Table size="sm" className="w-full table-fixed">
+        <TableHead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <Tr key={headerGroup.id}>
+              {headerGroup.headers.map((header, index) => {
+                const isLastColumn = headerGroup.headers.length - 1 === index;
+
+                return (
+                  <Th
+                    key={header.id}
+                    onClick={header.column.getToggleSortingHandler()}
+                    className={classNames(
+                      isLastColumn && "text-center",
+                      index === 0 ? "w-10" : "w-max",
+                    )}
+                  >
+                    <div
+                      className={classNames(
+                        index === 0 && "justify-center",
+                        "flex items-center",
+                      )}
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                    </div>
+                  </Th>
+                );
+              })}
+            </Tr>
+          ))}
+        </TableHead>
+        <TableBody>
+          {isLoading
+            ? Array(pageSize)
+                .fill("")
+                .map((_, index) => (
+                  <Tr key={index}>
+                    <Td colSpan={noOfColumns} className="!p-0">
+                      <Skeleton
                         className={classNames(
-                          isLastColumn && "text-center",
-                          index == 0 ? "w-10" : "w-max",
-                          header.column.getCanSort() == true &&
-                            "cursor-pointer select-none",
+                          index % 2 === 0 &&
+                            "!bg-secondary-300 dark:!bg-secondary-600",
+                          "h-10 w-full",
                         )}
-                      >
-                        {header.isPlaceholder ? null : (
-                          <div
-                            className={classNames(
-                              index == 0 && "justify-center",
-                              "flex items-center",
-                            )}
-                          >
-                            {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext(),
-                            )}
-                            {header.column.getIsSorted() === "asc" ? (
-                              <ArrowUpIcon
-                                width={12}
-                                height={12}
-                                className="stroke-[3]"
-                              />
-                            ) : (
-                              header.column.getIsSorted() === "desc" && (
-                                <ArrowDownIcon
-                                  width={12}
-                                  height={12}
-                                  className="stroke-[3]"
-                                />
-                              )
-                            )}
-                          </div>
-                        )}
-                      </Th>
-                    );
-                  })}
-                </Tr>
-              ))}
-            </TableHead>
-            <TableBody>
-              {table.getRowModel().rows.map((row) => (
+                      />
+                    </Td>
+                  </Tr>
+                ))
+            : table.getRowModel().rows.map((row) => (
                 <Tr key={row.id}>
                   {row.getVisibleCells().map((cell, index) => {
                     const isLastColumn =
-                      row.getVisibleCells().length - 1 == index;
-  
+                      row.getVisibleCells().length - 1 === index;
+
                     return (
                       <Td
                         key={cell.id}
-                        id=""
                         className="truncate whitespace-nowrap"
                         style={{
                           textAlign:
-                            isLastColumn || index == 0 ? "center" : undefined,
+                            isLastColumn || index === 0 ? "center" : undefined,
                         }}
                       >
                         {flexRender(
@@ -216,37 +190,39 @@ import { Button,
                   })}
                 </Tr>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <div className="flex gap-3">
-          <Button
-            size="sm"
-            leftIcon={
-              <ArrowLeftIcon width={12} height={12} className="stroke-[3]" />
-            }
-            isDisabled={!table.getCanPreviousPage()}
-            onClick={() => table.previousPage()}
-          >
-            Prev
-          </Button>
-          <Button
-            size="sm"
-            rightIcon={
-              <ArrowRightIcon width={12} height={12} className="stroke-[3]" />
-            }
-            isDisabled={!table.getCanNextPage()}
-            onClick={() => table.nextPage()}
-          >
-            Next
-          </Button>
-        </div>
-      </div>
-    );
-  }`;
+        </TableBody>
+        <TableFooter>
+          <Tr>
+            <Td colSpan={noOfColumns} className="!p-0">
+              <Pagination
+                size="sm"
+                currentPage={pageIndex + 1}
+                pageLimit={pageSize}
+                pages={table.getPageCount()}
+                onChange={(page, pageSize) =>
+                  setPagination({
+                    pageIndex: page - 1,
+                    pageSize,
+                  })
+                }
+                className="justify-end"
+              >
+                <div className="flex items-center gap-2">
+                  <p>Page</p>
+                  <PageJumper />
+                </div>
+                <PaginationButtons />
+              </Pagination>
+            </Td>
+          </Tr>
+        </TableFooter>
+      </Table>
+    </TableContainer>
+  );
+  }
+  `;
 
 export const files = {
   "App.js": AppFile,
-  "BasicTable.js": BasicTableFile,
   "TanstackTable.js": TanstackTableFile,
 };

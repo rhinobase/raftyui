@@ -17,8 +17,9 @@ export function HighlightBlock({ content, language }: HighlightBlock) {
               <Fragment key={index}>
                 {line
                   .filter((token) => !token.empty)
-                  .map((token) => (
-                    <span key={token.content} {...getTokenProps({ token })} />
+                  .map((token, index) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: space string repeat multiple times
+                    <span key={index} {...getTokenProps({ token })} />
                   ))}
                 {index !== tokens.length - 1 ? "\n" : ""}
               </Fragment>

@@ -59,7 +59,7 @@ export function SandpackEmbed({ name }: SandpackEmbed) {
       }}
       options={{
         externalResources: [
-          "https://storybook.rafty.rhinobase.io/assets/preview-LCCjbVOj.css",
+          "https://storybook.rafty.rhinobase.io/assets/preview-qLl2qDKw.css",
         ],
       }}
       theme={dracula}
