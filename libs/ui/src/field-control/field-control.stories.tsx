@@ -24,7 +24,7 @@ const meta: Meta<typeof FieldControl> = {
 export default meta;
 type Story = StoryObj<typeof FieldControl>;
 
-export const Deafult: Story = {
+export const Default: Story = {
   render: ({ orientation, isRequired, isDisabled, isLoading }) => (
     <FieldControl
       name="field-control"

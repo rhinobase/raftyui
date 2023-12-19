@@ -9,7 +9,7 @@ const meta: Meta<typeof useBreakpointValue> = {
 export default meta;
 type Story = StoryObj<typeof useBreakpointValue>;
 
-export const Deafult: Story = {
+export const Default: Story = {
   render: function Story() {
     const value = useBreakpointValue({
       sm: "SM",
