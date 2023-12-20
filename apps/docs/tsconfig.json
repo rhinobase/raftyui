@@ -24,11 +24,7 @@
     "**/*.jsx",
     "**/*.mjs",
     "next-env.d.ts",
-    "next.config.mjs",
-    "./.next/types/**/*.ts",
-    "../../apps/docs/.next/types/**/*.ts",
-    "../../dist/apps/docs/.next/types/**/*.ts",
-    ".next/types/**/*.ts"
+    "next.config.mjs"
   ],
   "exclude": [
     "jest.config.ts",

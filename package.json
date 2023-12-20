@@ -72,6 +72,7 @@
     "@codesandbox/sandpack-themes": "^2.0.21",
     "@heroicons/react": "2.0.18",
     "@hookform/devtools": "4.3.1",
+    "@hookform/resolvers": "^3.3.2",
     "@markdoc/markdoc": "0.4.0",
     "@markdoc/next.js": "0.3.6",
     "@radix-ui/react-accordion": "1.1.2",
@@ -125,6 +126,7 @@
     "simple-functional-loader": "1.2.1",
     "tailwindcss-animate": "1.0.7",
     "tslib": "^2.3.0",
-    "vite-tsconfig-paths": "4.2.1"
+    "vite-tsconfig-paths": "4.2.1",
+    "zod": "^3.22.4"
   }
 }

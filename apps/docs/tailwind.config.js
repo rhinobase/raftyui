@@ -6,6 +6,7 @@ module.exports = {
   content: [
     "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,md,html}",
     "../../libs/ui/src/**/*!(*.stories|*.spec).{ts,tsx}",
+    "../../libs/corp/src/**/*!(*.stories|*.spec).{ts,tsx}",
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {

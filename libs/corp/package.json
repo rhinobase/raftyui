@@ -28,6 +28,8 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@swc/helpers": "~0.5.2"
+    "@rafty/ui": "*",
+    "@swc/helpers": "~0.5.2",
+    "@heroicons/react": "^2.1.1"
   }
 }
