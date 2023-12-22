@@ -65,7 +65,7 @@ export const metadata: Metadata = {
       default: "rafty/ui Docs",
     },
     description: "React + Accessible + Tailwind CSS Dynamic Component Library",
-    url: "https://rafty.rhinobase.io",
+    url: "/",
     siteName: "@rafty/ui Docs",
     images: {
       width: 1200,
