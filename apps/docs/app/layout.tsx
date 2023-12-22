@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     images: {
       width: 1200,
       height: 630,
-      url: "https://rafty.rhinobase.io/api/og",
+      url: "/api/og",
     },
   },
   openGraph: {
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     images: {
       width: 1200,
       height: 630,
-      url: "https://rafty.rhinobase.io/api/og",
+      url: "/api/og",
     },
     locale: "en_US",
     type: "website",
