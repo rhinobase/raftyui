@@ -2,7 +2,7 @@
 
 ## React + Accessibility + Tailwind CSS
 
-![Bundle Size](https://badgen.net/bundlephobia/minzip/@rafty/ui) ![LICENSE](https://img.shields.io/github/license/rhinobase/raftyui) ![Downloads](https://img.shields.io/npm/dm/@rafty/ui.svg?style=flat) ![Stars](https://badgen.net/github/stars/rhinobase/raftyui)
+![Bundle Size](https://badgen.net/bundlephobia/minzip/@rafty/ui) ![LICENSE](https://img.shields.io/github/license/rhinobase/raftyui) ![Downloads](https://img.shields.io/npm/dm/@rafty/ui.svg?style=flat) ![Github Stars](https://badgen.net/github/stars/rhinobase/raftyui)
 
 Rafty UI is a comprehensive library of accessible, reusable, and composable React components that streamlines the development of modern web applications and websites. The library offers a diverse range of components that can be easily combined to build complex user interfaces while adhering to accessibility best practices.
 
@@ -46,6 +46,10 @@ First, install the `@rafty/plugin` package as devDependencies
 
 ```sh
 npm i -D @rafty/plugin
+# or
+yarn add @rafty/plugin
+# or
+pnpm i @rafty/plugin
 ```
 
 And in your `tailwind.config.js` file
