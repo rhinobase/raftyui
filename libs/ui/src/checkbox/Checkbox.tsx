@@ -38,9 +38,9 @@ export const CheckBoxIndicatorClasses = cva(
 );
 
 const CHECKBOX_LABEL_CLASSES = {
-  sm: "pl-1.5 !text-sm",
-  md: "pl-2 !text-base",
-  lg: "pl-2.5 !text-lg",
+  sm: "pl-1.5 text-sm",
+  md: "pl-2 text-base",
+  lg: "pl-2.5 text-lg",
 } as const;
 
 export type Checkbox = Omit<

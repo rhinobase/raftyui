@@ -24,14 +24,14 @@ export function CreateAnAccountExample() {
           <Button
             variant="outline"
             leftIcon={<BsGithub size={18} />}
-            className="!w-full"
+            className="w-full"
           >
             Github
           </Button>
           <Button
             variant="outline"
             leftIcon={<BsGoogle size={18} />}
-            className="!w-full"
+            className="w-full"
           >
             Google
           </Button>
@@ -56,7 +56,7 @@ export function CreateAnAccountExample() {
         <Button
           variant="solid"
           colorScheme="primary"
-          className="!w-full"
+          className="w-full"
           type="button"
         >
           Create Account

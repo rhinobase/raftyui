@@ -62,7 +62,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
         <Button
           variant="ghost"
           onClick={() => setTag({ action: ACTION.RESET })}
-          className={tag.length < 2 ? "!hidden" : ""}
+          className={tag.length < 2 ? "hidden" : undefined}
         >
           Clear All
         </Button>
@@ -81,7 +81,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
               colorScheme="error"
               variant="ghost"
               size="sm"
-              className="!text-secondary-400 !p-[1px] hover:!text-red-500"
+              className="text-secondary-400 p-[1px] hover:text-red-500"
             >
               <XMarkIcon className="h-3.5 w-3.5 stroke-[2]" />
             </Button>

@@ -338,10 +338,10 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
 
   return (
     <Dialog open={open} onOpenChange={() => close(autocomplete)}>
-      <DialogOverlay className="!z-[70]" />
+      <DialogOverlay className="z-[70]" />
       <DialogContent
         showCloseButton={false}
-        className="!top-[15%] !z-[70] max-w-[370px] !-translate-y-0 !p-0 lg:max-w-[40rem]"
+        className="top-[15%] z-[70] max-w-[370px] -translate-y-0 p-0 lg:max-w-[40rem]"
       >
         <div {...autocomplete.getRootProps({})}>
           <form
@@ -398,7 +398,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         }
         rightIcon={
           modifierKey ? (
-            <Kbd className="!text-xs">{modifierKey} K</Kbd>
+            <Kbd className="text-xs">{modifierKey} K</Kbd>
           ) : undefined
         }
       >

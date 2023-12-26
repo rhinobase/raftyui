@@ -115,7 +115,7 @@ export function PaymentMethodExample() {
             <Label>CVC</Label>
             <InputField
               placeholder="CVC"
-              className="!py-2 placeholder:text-sm"
+              className="py-2 placeholder:text-sm"
             />
           </FieldControl>
         </div>

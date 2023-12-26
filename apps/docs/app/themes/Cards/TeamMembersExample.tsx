@@ -124,7 +124,7 @@ function MemberRoleMenu({ label }: { label: string }) {
                     key={id}
                     value={title}
                     onSelect={dispatch}
-                    className="!rounded !px-3 !py-2"
+                    className="rounded px-3 py-2"
                   >
                     <div>
                       <Text className="capitalize leading-snug">{title}</Text>

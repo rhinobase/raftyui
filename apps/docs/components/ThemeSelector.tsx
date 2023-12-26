@@ -32,15 +32,15 @@ export function ThemeSelector() {
       >
         <TriggerIcon height={18} width={18} className="stroke-2" />
       </MenuTrigger>
-      <MenuContent className="!z-[60] !gap-0.5">
+      <MenuContent className="z-[60] gap-0.5">
         {Object.entries(THEMES).map(([name, Icon]) => (
           <MenuItem
             key={name}
             onClick={() => setTheme(name)}
             className={classNames(
               theme === name &&
-                "!bg-secondary-200/70 !text-primary-500 dark:!bg-secondary-700/60 dark:!text-primary-400",
-              "!capitalize",
+                "bg-secondary-200/70 text-primary-500 dark:bg-secondary-700/60 dark:text-primary-400",
+              "capitalize",
             )}
           >
             <Icon height={18} width={18} className="stroke-2" />
