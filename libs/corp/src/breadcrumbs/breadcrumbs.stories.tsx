@@ -1,30 +1,87 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { BreadcrumbItem } from "./BreadcrumbItem";
+import { classNames } from "../../../ui/src";
 import { Breadcrumbs } from "./Breadcrumbs";
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: "Corp / Breadcrumbs",
-  args: {
-    size: "md",
-  },
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
-  render: ({ size }) => (
-    <Breadcrumbs size={size} seperator="<">
-      <BreadcrumbItem link="/home">Home</BreadcrumbItem>
-      <BreadcrumbItem link="/menu">Menu</BreadcrumbItem>
-      <BreadcrumbItem>Articles</BreadcrumbItem>
+  render: () => (
+    <Breadcrumbs
+      items={[
+        {
+          label: "home",
+        },
+        {
+          label: <a href=" "> Application </a>,
+        },
+        {
+          label: <a href=" "> Menu </a>,
+        },
+        {
+          label: "Article",
+        },
+      ]}
+      seperator="<"
+    />
+  ),
+};
+
+export const WrappeWithDive: Story = {
+  render: () => (
+    <div className="text-2xl">
+      <Breadcrumbs
+        items={[
+          {
+            label: "home",
+          },
+          {
+            label: <a href=" "> Application </a>,
+          },
+          {
+            label: <a href=" "> Menu </a>,
+          },
+          {
+            label: "Article",
+          },
+        ]}
+        seperator="<"
+      />
+    </div>
+  ),
+};
+
+export const WithChildren: Story = {
+  render: () => (
+    <Breadcrumbs
+      items={[
+        {
+          label: "home",
+        },
+        {
+          label: <a href=" "> Application </a>,
+        },
+        {
+          label: <a href=" "> Menu </a>,
+        },
+        {
+          label: "Article",
+        },
+      ]}
+      seperator="<"
+    >
+      {({ label, onClick, isLastElement }) => {
+        return (
+          <span className={classNames(isLastElement && "text-blue-500")}>
+            {label}
+          </span>
+        );
+      }}
     </Breadcrumbs>
   ),
 };
