@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 
 export const stepsClass = cva(
-  "gap-2 pb-6 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
+  "gap-2 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
   {
     variants: {
       size: {
@@ -13,7 +13,7 @@ export const stepsClass = cva(
         lg: "p-3 text-lg",
       },
       direction: {
-        vertical: "flex flex-col",
+        vertical: "flex flex-col w-full",
         horizontal: "flex w-full",
       },
     },
@@ -66,11 +66,11 @@ export type Steps = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> & {
   direction?: "horizontal" | "vertical";
   size?: "sm" | "md" | "lg";
   isDisabled?: boolean;
-  onClick?: (current: number) => void;
+  onClick?: (value: number) => void;
   items: {
-    title?: ReactNode;
-    subTitle?: ReactNode;
-    description?: ReactNode;
+    title?: string;
+    subTitle?: string;
+    description?: string;
     icon?: ReactNode;
   }[];
 };
@@ -89,6 +89,8 @@ export const Steps = forwardRef<HTMLDivElement, Steps>(
     },
     forwardedRef,
   ) => {
+    const isDescription = items.map(({ description }) => description);
+
     return (
       <div
         ref={forwardedRef}
@@ -97,85 +99,85 @@ export const Steps = forwardRef<HTMLDivElement, Steps>(
         className={stepsClass({ size, direction })}
       >
         {items.map(({ description, icon, subTitle, title }, index, arr) => {
+          const value = index + initial;
           const isLast = index === arr.length - 1;
 
           return (
             <div
-              // biome-ignore lint/suspicious/noArrayIndexKey: title is ReactNode
-              key={index}
+              key={title}
               className={classNames(
                 direction === "vertical" && "p-3.5",
                 onClick &&
-                  current !== index &&
+                  current !== value &&
                   "cursor-pointer [&>*]:hover:text-blue-600",
                 "group/item relative flex h-full w-full items-center",
               )}
-              onClick={() => onClick?.(index)}
-              onKeyDown={(e) => e.key === "Enter" && onClick?.(index)}
+              onClick={() => onClick?.(value)}
+              onKeyDown={() => onClick?.(value)}
             >
-              {icon ?? (
-                <div className="dark:bg-secondary-900 bg-white p-1">
+              <div className="dark:bg-secondary-900 bg-white p-1">
+                {icon ?? (
                   <span
                     className={classNames(
                       stepIconClass({ size }),
-                      current === index
+                      current === value
                         ? "bg-blue-500 text-white"
-                        : current > index
+                        : current > value
                           ? "bg-blue-100 text-blue-500"
                           : "bg-secondary-300 text-secondary-500",
                       onClick &&
-                        current !== index &&
+                        current !== value &&
                         "group-hover/item:ring-1 group-hover/item:ring-blue-500",
                     )}
                   >
-                    {current > index ? (
+                    {current > value ? (
                       <CheckIcon height={16} width={16} className="stroke-2" />
                     ) : (
-                      index + 1
+                      value + 1
                     )}
                   </span>
-                </div>
-              )}
+                )}
+              </div>
+
               <div
                 className={classNames(
-                  current < index && "text-secondary-400",
-                  "dark:bg-secondary-900 dark:text-secondary-200 bg-white p-1",
+                  current < value && "text-secondary-400",
+                  "dark:bg-secondary-900 dark:text-secondary-200 bg-white px-1",
                 )}
               >
-                <div className="flex items-center gap-1.5">
-                  {typeof title === "string" ? <h3>{title}</h3> : title}
-                  {typeof subTitle === "string" ? (
-                    <h5 className="text-secondary-400 text-sm">{subTitle}</h5>
-                  ) : (
-                    subTitle
-                  )}
-                </div>
-                {typeof description === "string" ? (
+                {(title || subTitle) && (
+                  <div className="flex items-center gap-1.5">
+                    {title && <h3>{title}</h3>}
+                    {subTitle && (
+                      <h5 className="text-secondary-400 text-sm">{subTitle}</h5>
+                    )}
+                  </div>
+                )}
+                {description && (
                   <p
                     className={classNames(
-                      index < current && "text-secondary-400",
+                      value < current && "text-secondary-400",
                       "absolute text-sm",
                     )}
                   >
                     {description}
                   </p>
-                ) : (
-                  description
                 )}
               </div>
               {!isLast && direction === "horizontal" && (
                 <div
                   className={classNames(
-                    current <= index ? "bg-secondary-300" : "bg-blue-500",
+                    current <= value ? "bg-secondary-300" : "bg-blue-500",
                     "absolute -z-30 h-px w-full flex-1",
                   )}
                 />
               )}
               {!isLast && direction === "vertical" && (
                 <div
-                  className={classNames(
-                    stepVerticalLineClass({ size, active: current > index }),
-                  )}
+                  className={stepVerticalLineClass({
+                    size,
+                    active: current > value,
+                  })}
                 />
               )}
             </div>

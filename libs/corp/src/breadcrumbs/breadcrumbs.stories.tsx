@@ -11,46 +11,27 @@ export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
-  render: () => (
-    <Breadcrumbs
-      items={[
-        {
-          label: "home",
-        },
-        {
-          label: <a href=" "> Application </a>,
-        },
-        {
-          label: <a href=" "> Menu </a>,
-        },
-        {
-          label: "Article",
-        },
-      ]}
-      seperator="<"
-    />
-  ),
+  render: function Render() {
+    const onClick = (current: string) => {
+      console.log(current);
+    };
+
+    return (
+      <Breadcrumbs
+        onClick={onClick}
+        labels={["Home", "Application", "Menu", "Article"]}
+        seperator=">"
+      />
+    );
+  },
 };
 
 export const WrappeWithDive: Story = {
   render: () => (
     <div className="text-2xl">
       <Breadcrumbs
-        items={[
-          {
-            label: "home",
-          },
-          {
-            label: <a href=" "> Application </a>,
-          },
-          {
-            label: <a href=" "> Menu </a>,
-          },
-          {
-            label: "Article",
-          },
-        ]}
-        seperator="<"
+        labels={["Home", "Application", "Menu", "Article"]}
+        seperator=">"
       />
     </div>
   ),
@@ -59,23 +40,10 @@ export const WrappeWithDive: Story = {
 export const WithChildren: Story = {
   render: () => (
     <Breadcrumbs
-      items={[
-        {
-          label: "home",
-        },
-        {
-          label: <a href=" "> Application </a>,
-        },
-        {
-          label: <a href=" "> Menu </a>,
-        },
-        {
-          label: "Article",
-        },
-      ]}
-      seperator="<"
+      labels={["Home", "Application", "Menu", "Article"]}
+      seperator=">"
     >
-      {({ label, onClick, isLastElement }) => {
+      {({ label, isLastElement }) => {
         return (
           <span className={classNames(isLastElement && "text-blue-500")}>
             {label}

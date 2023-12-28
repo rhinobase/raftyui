@@ -1,3 +1,8 @@
+import {
+  Bars3Icon,
+  BellIcon,
+  FaceSmileIcon,
+} from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
 import { Button } from "../../../ui/src";
@@ -34,15 +39,16 @@ export const Default: Story = {
       items={[
         {
           title: "Home",
-          subTitle: "dkddk dkd",
-          description: "hello how r u",
+          subTitle: "Aliquam",
+          description: "Lorem ipsum dolor sit amet",
         },
         {
           title: "Menu",
-          description: "hello how r u",
+          description: "Donec et lectus a risus",
         },
         {
           title: "Article",
+          description: "Donec et lectus a risus",
         },
       ]}
     />
@@ -71,12 +77,12 @@ export const Controled: Story = {
           items={[
             {
               title: "Home",
-              subTitle: "dkddk dkd",
-              description: "hello how r u",
+              subTitle: "Aliquam",
+              // description: "Lorem ipsum dolor sit amet",
             },
             {
               title: "Menu",
-              description: "hello how r u",
+              description: "Donec et lectus a risus",
             },
             {
               title: "Article",
@@ -94,32 +100,72 @@ export const Controled: Story = {
 
 export const Clickable: Story = {
   render: function Render({ size, direction, isDisabled }) {
-    const [current, setCurrent] = useState(0);
-
-    const onClick = (value: number) => {
-      console.log("onChange:", value);
-      setCurrent(value);
-    };
+    const initial = 2;
+    const [current, setCurrent] = useState(initial);
 
     return (
       <Steps
         size={size}
         current={current}
+        initial={initial}
         direction={direction}
         isDisabled={isDisabled}
-        onClick={onClick}
+        onClick={setCurrent}
         items={[
           {
             title: "Home",
-            subTitle: "dkddk dkd",
-            description: "hello how r u",
           },
           {
             title: "Menu",
-            description: "hello how r u",
+            description: "Donec et lectus a risus",
           },
           {
-            title: <span>Article</span>,
+            title: "Article",
+          },
+        ]}
+      />
+    );
+  },
+};
+
+export const WithIcon: Story = {
+  render: function Render({ size, direction, isDisabled }) {
+    return (
+      <Steps
+        size={size}
+        direction="vertical"
+        isDisabled={isDisabled}
+        items={[
+          {
+            title: "Home",
+            icon: (
+              <Bars3Icon
+                height={40}
+                width={40}
+                className="stroke-2 text-blue-500"
+              />
+            ),
+          },
+          {
+            title: "Menu",
+            description: "Donec et lectus a risus",
+            icon: (
+              <FaceSmileIcon
+                height={40}
+                width={40}
+                className="stroke-2 text-blue-500"
+              />
+            ),
+          },
+          {
+            title: "Article",
+            icon: (
+              <BellIcon
+                height={40}
+                width={40}
+                className="stroke-2 text-blue-500"
+              />
+            ),
           },
         ]}
       />
