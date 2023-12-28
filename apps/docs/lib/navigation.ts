@@ -183,6 +183,10 @@ export const navigation = [
     ],
   },
   {
+    title: "Corporate Fields",
+    links: [{ title: "@rafty/corp", href: "/docs/corp" }],
+  },
+  {
     title: "Integrations",
     links: [
       { title: "React Hook Form", href: "/docs/integrations/react-hook-form" },
