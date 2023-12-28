@@ -32,7 +32,19 @@ Text takes tailwind css classes in className and inline css can also be passed u
 {% example %}
 
 ```jsx
-<Text className="text-lg text-black dark:text-white">
+<Text className="text-black dark:text-white">In love with React & Next</Text>
+```
+
+{% /example %}
+
+## IsMuted
+
+`isMuted` prop can be used when you want text to be muted or dull.
+
+{% example %}
+
+```jsx
+<Text className="text-black dark:text-white" isMuted>
   In love with React & Next
 </Text>
 ```
