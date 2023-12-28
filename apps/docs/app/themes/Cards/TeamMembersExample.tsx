@@ -113,7 +113,7 @@ function MemberRoleMenu({ label }: { label: string }) {
       >
         {selected?.title}
       </PopoverTrigger>
-      <PopoverContent className="!p-0 sm:!w-[320px]">
+      <PopoverContent className="p-0 sm:w-[320px]">
         <Command>
           <CommandInput placeholder="Search role" />
           <CommandList>
@@ -124,7 +124,7 @@ function MemberRoleMenu({ label }: { label: string }) {
                     key={id}
                     value={title}
                     onSelect={dispatch}
-                    className="!rounded !px-3 !py-2"
+                    className="rounded px-3 py-2"
                   >
                     <div>
                       <Text className="capitalize leading-snug">{title}</Text>

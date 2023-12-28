@@ -52,7 +52,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
         id="date"
         variant="outline"
         className={classNames(
-          "w-full !justify-start text-left font-normal",
+          "w-full justify-start text-left font-normal",
           !selected && "text-muted-foreground",
         )}
         leftIcon={<CalendarIcon className="h-4 w-4" />}
@@ -78,7 +78,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
           </div>
         )}
       </PopoverTrigger>
-      <PopoverContent className="w-auto !max-w-max border-none !p-0">
+      <PopoverContent className="w-auto max-w-max border-none p-0">
         <Calendar
           {...props}
           initialFocus

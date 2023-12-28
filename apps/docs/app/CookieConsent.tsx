@@ -58,7 +58,7 @@ function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
         <div className="flex w-full gap-4 md:justify-end">
           <Button
             size="sm"
-            className="!w-full md:!w-auto"
+            className="w-full md:w-auto"
             onClick={handleGivenConsent(false)}
           >
             Opt out
@@ -66,7 +66,7 @@ function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
           <Button
             colorScheme="primary"
             size="sm"
-            className="!w-full md:!w-auto"
+            className="w-full md:w-auto"
             onClick={handleGivenConsent(true)}
           >
             Accept

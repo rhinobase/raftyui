@@ -132,7 +132,7 @@ export default function Combobox() {
                 size="icon"
                 colorScheme="error"
                 variant="ghost"
-                className="absolute right-10 z-20 !p-1"
+                className="absolute right-10 z-20 p-1"
                 onClick={() => dispatch("")}
               >
                 <XMarkIcon width={14} height={14} className="stroke-2" />
@@ -140,7 +140,7 @@ export default function Combobox() {
             )}
           </div>
           <PopoverContent
-            className="!p-0"
+            className="p-0"
             style={{ width: contentwidth, maxWidth: "none" }}
           >
             <Command shouldFilter={false}>
@@ -207,7 +207,7 @@ export default function Combobox() {
         </Popover>
       </div>
       {!pages && (
-        <Skeleton className="mx-auto !-mt-[42px] h-[42px] w-full max-w-lg rounded-md" />
+        <Skeleton className="mx-auto -mt-[42px] h-[42px] w-full max-w-lg rounded-md" />
       )}
     </div>
   );

@@ -29,7 +29,7 @@ export const DatePicker = (props: DatePicker) => {
     <Popover open={isOpen} onOpenChange={setOpen}>
       <PopoverTrigger
         variant="outline"
-        className="w-full !justify-start text-left font-normal"
+        className="w-full justify-start text-left font-normal"
         leftIcon={<CalendarIcon className="h-4 w-4" />}
       >
         {selected ? (
@@ -42,7 +42,7 @@ export const DatePicker = (props: DatePicker) => {
           <span>Pick a date</span>
         )}
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-auto !max-w-max border-0 !p-0">
+      <PopoverContent align="start" className="w-auto max-w-max border-0 p-0">
         <Calendar
           {...props}
           mode="single"

@@ -41,9 +41,9 @@ export function Selector({
       >
         {value}
       </PopoverTrigger>
-      <PopoverContent className="!w-[120px] !p-0">
+      <PopoverContent className="w-[120px] p-0">
         <Command shouldFilter={false}>
-          <CommandList className="!max-h-full">
+          <CommandList className="max-h-full">
             <CommandGroup>{children}</CommandGroup>
           </CommandList>
         </Command>

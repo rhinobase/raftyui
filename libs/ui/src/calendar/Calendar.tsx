@@ -35,7 +35,7 @@ export function Calendar({
       )}
       classNames={{
         months: cn(
-          fullScreen && "!w-full",
+          fullScreen && "w-full",
           "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         ),
         month: cn(fullScreen && "w-full", "space-y-4"),
@@ -51,14 +51,13 @@ export function Calendar({
             loading: false,
             active: false,
           }),
-          "h-7 w-7 p-0 opecity-50 hover:opacity-100",
         ),
         nav: "space-x-1 flex items-center",
         nav_button_previous: "absolute left-0",
         nav_button_next: "absolute right-0",
         table: "w-full border-collapse space-y-1",
         head_row: cn(
-          fullScreen ? " py-10" : " mb-2",
+          fullScreen ? "py-10" : "mb-2",
           props.mode === "range" ? "gap-0" : "gap-1",
           "grid grid-cols-7",
         ),
@@ -80,13 +79,13 @@ export function Calendar({
         day_selected: cn(
           props.mode === "single" && !fullScreen && "rounded-md",
           fullScreen
-            ? "border-primary-500 dark:!border-primary-300 bg-secondary-100 dark:bg-secondary-700"
+            ? "border-primary-500 dark:border-primary-300 bg-secondary-100 dark:bg-secondary-700"
             : "bg-primary-500 text-secondary-100 dark:bg-primary-300 dark:text-secondary-900",
         ),
         day_today: cn(
           props.mode === "single" && !fullScreen && "rounded-md",
           fullScreen
-            ? "!border-primary-500 dark:!border-primary-300"
+            ? "border-primary-500 dark:border-primary-300"
             : "ring-1 dark:ring-primary-300 ring-primary-500 relative z-10",
         ),
         day_outside: "opacity-40",
@@ -100,13 +99,13 @@ export function Calendar({
       }}
       components={{
         IconLeft: () => (
-          <ChevronLeftIcon className="dark:text-secondary-100 stroke-2" />
+          <ChevronLeftIcon className="dark:text-secondary-100 h-4 w-4 stroke-2" />
         ),
         IconRight: () => (
-          <ChevronRightIcon className="dark:text-secondary-100 stroke-2" />
+          <ChevronRightIcon className="dark:text-secondary-100 h-4 w-4 stroke-2" />
         ),
         Dropdown: ({ children, ...props }) => (
-          <Select {...props} variant="solid" className="!w-max !pr-6" size="sm">
+          <Select {...props} variant="solid" className="w-max pr-6" size="sm">
             {children}
           </Select>
         ),

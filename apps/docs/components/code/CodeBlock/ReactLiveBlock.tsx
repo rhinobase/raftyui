@@ -24,13 +24,13 @@ export function ReactLiveBlock({ code }: ReactLiveBlock) {
           <LiveEditor
             onChange={onChange}
             theme={themes.dracula}
-            className="!overflow-x-auto !rounded-lg !font-mono [&>*]:!w-max [&>*]:lg:!min-w-[768px]"
+            className="overflow-x-auto rounded-lg font-mono [&>*]:w-max [&>*]:lg:min-w-[768px]"
             data-gramm="false"
           />
         </CodeContainer>
         <CopyButton content={editorCode} />
       </div>
-      <LiveError className="!my-0 !overflow-x-auto !rounded-lg !bg-red-500 !p-4 !font-mono !text-white" />
+      <LiveError className="my-0 overflow-x-auto rounded-lg bg-red-500 p-4 font-mono text-white" />
     </LiveProvider>
   );
 }

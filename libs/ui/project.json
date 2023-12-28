@@ -52,7 +52,8 @@
           "@radix-ui/react-tabs",
           "@radix-ui/react-toggle-group",
           "@radix-ui/react-tooltip",
-          "dateformat"
+          "dateformat",
+          "tailwind-merge"
         ],
         "rollupConfig": "libs/ui/rollup.config.js",
         "compiler": "swc",

@@ -38,7 +38,7 @@ export function CounterExample() {
         </Text>
       </div>
       <Counter />
-      <ResponsiveContainer height={96} className="!-mt-3">
+      <ResponsiveContainer height={96} className="-mt-3">
         <BarChart width={310} height={100} data={data} margin={{ top: 15 }}>
           <Bar dataKey="value" className="fill-primary-500/30" />
         </BarChart>
@@ -47,7 +47,7 @@ export function CounterExample() {
         type="button"
         variant="solid"
         colorScheme="primary"
-        className="!w-full "
+        className="w-full"
       >
         Set Goal
       </Button>
@@ -64,7 +64,7 @@ function Counter() {
         variant="outline"
         size="fab"
         onClick={() => setCount(count - 10)}
-        className="!p-2"
+        className="p-2"
         isDisabled={count <= 200}
         aria-label="Decrement Value"
       >
@@ -79,7 +79,7 @@ function Counter() {
       <Button
         variant="outline"
         size="fab"
-        className="!p-2"
+        className="p-2"
         onClick={() => setCount(count + 10)}
         isDisabled={count >= 400}
         aria-label="Increment Value"

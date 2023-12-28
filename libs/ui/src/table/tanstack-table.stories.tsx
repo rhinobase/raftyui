@@ -157,11 +157,11 @@ function TanstackTable() {
                     // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                     key={index}
                   >
-                    <Td colSpan={noOfColumns} className="!p-0">
+                    <Td colSpan={noOfColumns} className="p-0">
                       <Skeleton
                         className={classNames(
                           index % 2 === 0 &&
-                            "!bg-secondary-300 dark:!bg-secondary-600",
+                            "bg-secondary-300 dark:bg-secondary-600",
                           "h-10 w-full",
                         )}
                       />
@@ -195,7 +195,7 @@ function TanstackTable() {
         </TableBody>
         <TableFooter>
           <Tr>
-            <Td colSpan={noOfColumns} className="!p-0">
+            <Td colSpan={noOfColumns} className="p-0">
               <Pagination
                 size="sm"
                 currentPage={pageIndex + 1}

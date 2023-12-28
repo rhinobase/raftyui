@@ -27,8 +27,8 @@ export function MobileNavigation({ isOpen, setOpen }: MobileNavigation) {
       aria-label="Navigation"
       side="left"
     >
-      <DrawerOverlay className="!z-[70]" />
-      <DrawerContent className="flex !h-[100dvh] !w-full !max-w-[70vw] flex-col !overflow-hidden !p-0 !z-[70]">
+      <DrawerOverlay className="z-[70]" />
+      <DrawerContent className="z-[70] flex h-[100dvh] w-full max-w-[70vw] flex-col overflow-hidden p-0">
         <div className="dark:bg-secondary-800 bg-white p-6">
           <Link href="/" aria-label="Home page">
             <Logomark className="h-9 w-9" />

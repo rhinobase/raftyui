@@ -39,7 +39,7 @@ export const PageJumper = forwardRef<HTMLInputElement, PageJumper>(
             value: Number(e.target.value),
           })
         }
-        className={classNames("!w-[80px]", className)}
+        className={classNames("w-[80px]", className)}
         ref={forwardedRef}
       />
     );
