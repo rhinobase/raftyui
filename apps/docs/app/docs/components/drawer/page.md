@@ -54,8 +54,8 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay className="!z-[70]" />
-        <DrawerContent className="!z-[70]">
+        <DrawerOverlay className="z-[70]" />
+        <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
             This is sample drawer description. :
@@ -84,8 +84,8 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer size="full" open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay className="!z-[70]" />
-        <DrawerContent className="!z-[70]">
+        <DrawerOverlay className="z-[70]" />
+        <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
             This is sample drawer description.
@@ -114,8 +114,8 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer side="left" open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay className="!z-[70]" />
-        <DrawerContent className="!z-[70]">
+        <DrawerOverlay className="z-[70]" />
+        <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
             This is sample drawer description.

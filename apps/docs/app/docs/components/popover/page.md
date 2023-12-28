@@ -45,7 +45,7 @@ import {
 ```jsx
 <Popover>
   <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent className="!w-96 space-y-3">
+  <PopoverContent className="w-96 space-y-3">
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore.
@@ -71,7 +71,7 @@ There are 3 `size` options in popover: `sm`, `md` (default) & `lg`
 ```jsx
 <Popover size="sm">
   <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent className="!w-96 space-y-3">
+  <PopoverContent className="w-96 space-y-3">
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore.
@@ -97,7 +97,7 @@ To manage open state of popover you can use `open` prop and to open popover by d
 ```jsx
 <Popover open>
   <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent className="!w-96 space-y-3">
+  <PopoverContent className="w-96 space-y-3">
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore.
@@ -125,7 +125,7 @@ To make arrow on top of content visible you can use `showArrow` prop. It is a bo
 ```jsx
 <Popover>
   <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent className="!w-96" showArrow>
+  <PopoverContent className="w-96" showArrow>
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore.
@@ -164,10 +164,10 @@ Pass `isUnstyled` prop in parent component to remove all styles in popover.
       tempor incididunt ut labore et dolore.
     </Text>
     <div className="flex justify-end gap-3">
-      <Button className="!bg-green-300 !text-black" size="sm">
+      <Button className="bg-green-300 text-black" size="sm">
         Demo 1
       </Button>
-      <Button className="!bg-blue-300 !text-black" size="sm">
+      <Button className="bg-blue-300 text-black" size="sm">
         Demo 2
       </Button>
     </div>

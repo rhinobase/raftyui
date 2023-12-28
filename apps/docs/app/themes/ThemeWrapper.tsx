@@ -30,19 +30,19 @@ import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import { Fence } from "../../components/code";
 
 const COLOR_THEME = {
-  gray: "!bg-gray-500",
-  red: "!bg-red-500",
-  orange: "!bg-orange-500",
-  yellow: "!bg-orange-500",
-  green: "!bg-green-500",
-  teal: "!bg-teal-500",
-  sky: "!bg-sky-500",
-  blue: "!bg-blue-500",
-  indigo: "!bg-indigo-500",
-  purple: "!bg-purple-500",
-  fuchsia: "!bg-fuchsia-500",
-  pink: "!bg-pink-500",
-  rose: "!bg-rose-500",
+  gray: "bg-gray-500",
+  red: "bg-red-500",
+  orange: "bg-orange-500",
+  yellow: "bg-orange-500",
+  green: "bg-green-500",
+  teal: "bg-teal-500",
+  sky: "bg-sky-500",
+  blue: "bg-blue-500",
+  indigo: "bg-indigo-500",
+  purple: "bg-purple-500",
+  fuchsia: "bg-fuchsia-500",
+  pink: "bg-pink-500",
+  rose: "bg-rose-500",
 } as const;
 
 const defaults: (keyof typeof COLOR_THEME)[] = [
@@ -143,8 +143,8 @@ function CustomizeMenu({
       </PopoverTrigger>
       <PopoverContent
         showArrow
-        className="dark:!bg-secondary-900"
-        arrowClassName="dark:!fill-secondary-900"
+        className="dark:bg-secondary-900"
+        arrowClassName="dark:fill-secondary-900"
       >
         <div className="w-[300px] space-y-3 p-2">
           <div className="space-y-1.5">
@@ -156,7 +156,7 @@ function CustomizeMenu({
                   size="sm"
                   isActive={color === c}
                   variant="outline"
-                  className="!justify-start capitalize"
+                  className="justify-start capitalize"
                   leftIcon={
                     <div
                       className={`h-3 w-3 rounded-full ${value} flex items-center justify-center`}
@@ -210,8 +210,8 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
       <DialogTrigger variant="outline" size="icon" className="md:hidden">
         <DocumentDuplicateIcon height={19} width={19} />
       </DialogTrigger>
-      <DialogOverlay className="!z-[70]" />
-      <DialogContent className="!z-[70] !p-5">
+      <DialogOverlay className="z-[70]" />
+      <DialogContent className="z-[70] p-5">
         <div className="mb-5 space-y-1">
           <DialogTitle>Theme</DialogTitle>
           <Text className="text-sm leading-snug opacity-50">

@@ -113,7 +113,7 @@ function MemberRoleMenu({ label }: { label: string }) {
       >
         {selected?.title}
       </PopoverTrigger>
-      <PopoverContent className="!p-0 sm:!w-[320px]">
+      <PopoverContent className="p-0 sm:w-[320px]">
         <Command>
           <CommandInput placeholder="Search role" />
           <CommandList>

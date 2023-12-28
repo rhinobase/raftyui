@@ -54,8 +54,8 @@ import {
 ```jsx
 <Dialog>
   <DialogTrigger>open</DialogTrigger>
-  <DialogOverlay className="!z-[70]" />
-  <DialogContent className="!z-[70]">
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -78,8 +78,8 @@ There are 4 `size` options in dialog component: `sm`, `md` (default), `lg` & `xl
 ```jsx
 <Dialog size="sm">
   <DialogTrigger>open</DialogTrigger>
-  <DialogOverlay className="!z-[70]" />
-  <DialogContent className="!z-[70]">
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -104,8 +104,8 @@ Our Button component is forwarded within the Dialog Trigger component, enabling 
   <DialogTrigger asChild>
     <Button variant="ghost">Click Me</Button>
   </DialogTrigger>
-  <DialogOverlay className="!z-[70]" />
-  <DialogContent className="!z-[70]">
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -158,8 +158,8 @@ The showCloseButton prop exists in DialogContent subcomponent and it is used to 
 ```jsx
 <Dialog>
   <DialogTrigger>open</DialogTrigger>
-  <DialogOverlay className="!z-[70]" />
-  <DialogContent className="!z-[70]" showCloseButton>
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]" showCloseButton>
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -189,8 +189,8 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
   >
     open
   </DialogTrigger>
-  <DialogOverlay className="!z-[70]" />
-  <DialogContent className="!z-[70]">
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.

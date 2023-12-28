@@ -75,7 +75,7 @@ export function SandpackEmbed({ name }: SandpackEmbed) {
         },
       }}
     >
-      <SandpackLayout className="flex-col !rounded-xl">
+      <SandpackLayout className="flex-col rounded-xl">
         <SandpackPreview className="min-h-[400px]" />
         <SandpackCodeEditor showLineNumbers className="min-h-[400px]" />
       </SandpackLayout>

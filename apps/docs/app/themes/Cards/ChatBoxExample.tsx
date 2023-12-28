@@ -162,7 +162,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
           <DialogTrigger
             size="fab"
             variant="outline"
-            className="!p-2"
+            className="p-2"
             aria-label="add people"
           >
             <PlusIcon height={16} width={16} />

@@ -55,8 +55,8 @@ Based on WAI-ARIA specifications, focus will be trapped to cancel action when th
 ```jsx
 <AlertDialog>
   <AlertDialogTrigger>Open</AlertDialogTrigger>
-  <AlertDialogOverlay className="!z-[70]" />
-  <AlertDialogContent className="!z-[70]">
+  <AlertDialogOverlay className="z-[70]" />
+  <AlertDialogContent className="z-[70]">
     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
     <AlertDialogDescription>
       This action cannot be undone. This will permanently delete your account
@@ -85,8 +85,8 @@ There are 4 `size` options in alert dialog component: `sm`, `md` (default), `lg`
 ```jsx
 <AlertDialog size="sm">
   <AlertDialogTrigger>Open</AlertDialogTrigger>
-  <AlertDialogOverlay className="!z-[70]" />
-  <AlertDialogContent className="!z-[70]">
+  <AlertDialogOverlay className="z-[70]" />
+  <AlertDialogContent className="z-[70]">
     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
     <AlertDialogDescription>
       This action cannot be undone. This will permanently delete your account
@@ -146,8 +146,8 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
   >
     Open
   </AlertDialogTrigger>
-  <AlertDialogOverlay className="!z-[70]" />
-  <AlertDialogContent className="!z-[70]">
+  <AlertDialogOverlay className="z-[70]" />
+  <AlertDialogContent className="z-[70]">
     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
     <AlertDialogDescription>
       This action cannot be undone. This will permanently delete your account
@@ -175,8 +175,8 @@ Our Button component is forwarded within the Alert Dialog Trigger component, ena
   <AlertDialogTrigger asChild>
     <Button>Open</Button>
   </AlertDialogTrigger>
-  <AlertDialogOverlay className="!z-[70]" />
-  <AlertDialogContent className="!z-[70]">
+  <AlertDialogOverlay className="z-[70]" />
+  <AlertDialogContent className="z-[70]">
     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
     <AlertDialogDescription>
       This action cannot be undone. This will permanently delete your account

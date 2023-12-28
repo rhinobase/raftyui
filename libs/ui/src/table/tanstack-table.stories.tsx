@@ -195,7 +195,7 @@ function TanstackTable() {
         </TableBody>
         <TableFooter>
           <Tr>
-            <Td colSpan={noOfColumns} className="!p-0">
+            <Td colSpan={noOfColumns} className="p-0">
               <Pagination
                 size="sm"
                 currentPage={pageIndex + 1}
