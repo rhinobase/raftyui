@@ -51,7 +51,6 @@ export function Calendar({
             loading: false,
             active: false,
           }),
-          "h-7 w-7 p-0 opecity-50 hover:opacity-100",
         ),
         nav: "space-x-1 flex items-center",
         nav_button_previous: "absolute left-0",
@@ -100,10 +99,10 @@ export function Calendar({
       }}
       components={{
         IconLeft: () => (
-          <ChevronLeftIcon className="dark:text-secondary-100 stroke-2" />
+          <ChevronLeftIcon className="dark:text-secondary-100 h-4 w-4 stroke-2" />
         ),
         IconRight: () => (
-          <ChevronRightIcon className="dark:text-secondary-100 stroke-2" />
+          <ChevronRightIcon className="dark:text-secondary-100 h-4 w-4 stroke-2" />
         ),
         Dropdown: ({ children, ...props }) => (
           <Select {...props} variant="solid" className="w-max pr-6" size="sm">
