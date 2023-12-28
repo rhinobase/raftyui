@@ -78,7 +78,7 @@ function CookieConsentBanner({ handleGivenConsent }: CookieConsentBanner) {
 }
 
 function GoogleAnalytics() {
-  const MEASUREMENT_ID = "G-8XZ5Q7H2DG";
+  const MEASUREMENT_ID = "G-K1YEVWQFHZ";
 
   return (
     <>
