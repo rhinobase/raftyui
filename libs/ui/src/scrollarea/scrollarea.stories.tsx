@@ -16,13 +16,14 @@ export const Default: Story = {
     );
     return (
       <ScrollArea
+        itemSize={() => 50}
         itemCount={tags.length}
-        className="h-60 w-[200px] rounded-md border"
+        className="dark:border-secondary-700 h-60 w-[200px] rounded-md border"
       >
         {({ index, style, data, isScrolling }) => (
           <React.Fragment key={index}>
             <div
-              className="dark:text-secondary-100 flex items-center justify-center border-b text-sm"
+              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-center border-b text-sm"
               style={style}
             >
               {index}
