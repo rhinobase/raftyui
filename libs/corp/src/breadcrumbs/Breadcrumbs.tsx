@@ -1,53 +1,124 @@
-import { List, ListItem, classNames } from "@rafty/ui";
-import { Fragment, HTMLAttributes, ReactNode, forwardRef } from "react";
+import { List, ListItem, buttonClasses, classNames } from "@rafty/ui";
+import { cva } from "class-variance-authority";
+import {
+  ElementType,
+  Fragment,
+  HTMLAttributes,
+  ReactNode,
+  forwardRef,
+} from "react";
+
+export const breadCrumbsClasses = cva("flex items-center", {
+  variants: {
+    size: {
+      sm: "gap-1",
+      md: "gap-1.5",
+      lg: "gap-2",
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+});
+
+export const breadCrumbItemClasses = cva("!rounded-base", {
+  variants: {
+    size: {
+      sm: "!px-1.5 !py-0.5",
+      md: "!py-1 !px-2",
+      lg: "!py-1.5 !px-2.5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export const dividerClasses = cva(
+  "select-none font-semibold opacity-50 dark:opacity-40",
+  {
+    variants: {
+      size: {
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
 export type Breadcrumbs = Omit<
   HTMLAttributes<HTMLElement>,
   "children" | "onClick"
 > & {
+  as?: ElementType;
   seperator?: ReactNode;
   size?: "sm" | "md" | "lg";
-  labels: string[];
+  items: { label: string; href?: string }[];
   onClick?: (value: string) => void;
-  children?: (props: { label: string; isLastElement?: boolean }) => JSX.Element;
+  children?: (props: {
+    label: string;
+    href?: string;
+    isLastElement?: boolean;
+  }) => JSX.Element;
 };
 
 export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
   (
-    { seperator = "/", labels, onClick, children: Children, ...props },
+    {
+      seperator = "/",
+      as = "a",
+      items,
+      size = "md",
+      onClick,
+      children: Children,
+      ...props
+    },
     forwardedRef,
   ) => {
-    const numOfLabels = labels.length - 1;
+    const numOfLabels = items.length - 1;
 
     const divider = (
-      <ListItem className="font-medium opacity-50 dark:opacity-40">
-        {seperator}
-      </ListItem>
+      <ListItem className={dividerClasses({ size })}>{seperator}</ListItem>
     );
 
-    const components = labels
-      .flatMap((label, index) => {
+    const components = items
+      .flatMap(({ label, href }, index) => {
         // Is this the last element
         const isLastElement = index === numOfLabels;
+
+        let BreadcrumbItem = as;
+        if (!href) BreadcrumbItem = "span";
 
         return [
           <Fragment key={label}>
             {Children ? (
-              <Children label={label} isLastElement={isLastElement} />
+              <Children
+                label={label}
+                href={href}
+                isLastElement={isLastElement}
+              />
             ) : (
               <ListItem>
-                <span
-                  key={label}
+                <BreadcrumbItem
+                  href={href}
                   className={classNames(
-                    !isLastElement &&
-                      "hover:bg-secondary-100 dark:hover:bg-secondary-800 cursor-pointer opacity-60 transition-all ease-in-out hover:opacity-100 dark:opacity-50 dark:hover:opacity-100",
-                    "rounded px-1.5 py-1 font-medium leading-none",
+                    buttonClasses({
+                      variant: "ghost",
+                      size,
+                      active: isLastElement,
+                      colorScheme: isLastElement ? "primary" : "secondary",
+                    }),
+                    breadCrumbItemClasses({ size }),
                   )}
                   onClick={() => onClick?.(label)}
                   onKeyDown={() => onClick?.(label)}
                 >
                   {label}
-                </span>
+                </BreadcrumbItem>
               </ListItem>
             )}
           </Fragment>,
@@ -58,9 +129,10 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
 
     return (
       <nav ref={forwardedRef} {...props}>
-        <List className="flex items-center gap-1.5">{...components}</List>
+        <List className={breadCrumbsClasses({ size })}>{...components}</List>
       </nav>
     );
   },
 );
+
 Breadcrumbs.displayName = "Breadcrumbs";

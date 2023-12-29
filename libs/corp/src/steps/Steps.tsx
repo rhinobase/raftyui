@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 
 export const stepsClass = cva(
-  "gap-2 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
+  "gap-2 pb-6 aria-disabled:cursor-not-allowed aria-disabled:opacity-60",
   {
     variants: {
       size: {
@@ -89,8 +89,6 @@ export const Steps = forwardRef<HTMLDivElement, Steps>(
     },
     forwardedRef,
   ) => {
-    const isDescription = items.map(({ description }) => description);
-
     return (
       <div
         ref={forwardedRef}
@@ -138,7 +136,6 @@ export const Steps = forwardRef<HTMLDivElement, Steps>(
                   </span>
                 )}
               </div>
-
               <div
                 className={classNames(
                   current < value && "text-secondary-400",
@@ -187,4 +184,5 @@ export const Steps = forwardRef<HTMLDivElement, Steps>(
     );
   },
 );
+
 Steps.displayName = "Steps";

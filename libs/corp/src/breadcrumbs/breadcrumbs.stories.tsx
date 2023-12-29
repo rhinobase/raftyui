@@ -5,13 +5,22 @@ import { Breadcrumbs } from "./Breadcrumbs";
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: "Corp / Breadcrumbs",
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
-  render: function Render() {
+  render: function Render({ size }) {
     const onClick = (current: string) => {
       console.log(current);
     };
@@ -19,18 +28,30 @@ export const Default: Story = {
     return (
       <Breadcrumbs
         onClick={onClick}
-        labels={["Home", "Application", "Menu", "Article"]}
+        size={size}
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Application", href: "/" },
+          { label: "Menu", href: "/" },
+          { label: "Article" },
+        ]}
         seperator=">"
       />
     );
   },
 };
 
-export const WrappeWithDive: Story = {
-  render: () => (
+export const WrapWithDiv: Story = {
+  render: ({ size }) => (
     <div className="text-2xl">
       <Breadcrumbs
-        labels={["Home", "Application", "Menu", "Article"]}
+        size={size}
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Application", href: "/" },
+          { label: "Menu", href: "/" },
+          { label: "Article", href: "/" },
+        ]}
         seperator=">"
       />
     </div>
@@ -38,9 +59,15 @@ export const WrappeWithDive: Story = {
 };
 
 export const WithChildren: Story = {
-  render: () => (
+  render: ({ size }) => (
     <Breadcrumbs
-      labels={["Home", "Application", "Menu", "Article"]}
+      size={size}
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Application", href: "/" },
+        { label: "Menu", href: "/" },
+        { label: "Article", href: "/" },
+      ]}
       seperator=">"
     >
       {({ label, isLastElement }) => {
