@@ -1,6 +1,4 @@
 import { ImageResponse } from "next/og";
-// App router includes @vercel/og.
-// No need to install it.
 
 export const runtime = "edge";
 
@@ -10,7 +8,9 @@ export async function GET(request: Request) {
 
     // ?title=<title>
     const hasTitle = searchParams.has("title");
-    const title = hasTitle ? searchParams.get("title")?.slice(0, 100) : "rafty";
+    const title = hasTitle
+      ? searchParams.get("title")?.slice(0, 100)
+      : "Rafty UI";
 
     const width = 1200;
     const height = 630;
