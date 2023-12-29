@@ -1,65 +1,117 @@
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  forwardRef,
+} from "react";
+import { VariableSizeList, VariableSizeListProps } from "react-window";
 import { classNames } from "../utils";
+import {
+  ScrollAreaContext,
+  ScrollAreaProvider,
+  useScrollAreaContext,
+} from "./context";
 
 // ScrollArea component
-export type ScrollArea = ComponentPropsWithoutRef<
-  typeof ScrollAreaPrimitive.Root
->;
+export type ScrollArea = Omit<
+  ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>,
+  "children"
+> &
+  Partial<ScrollAreaContext> & {
+    itemCount: number;
+  } & Pick<VariableSizeListProps, "children">;
 
 export const ScrollArea = forwardRef<
   ElementRef<typeof ScrollAreaPrimitive.Root>,
   ScrollArea
->(({ className, children, ...props }, forwardedref) => (
-  <ScrollAreaPrimitive.Root
-    ref={forwardedref}
-    className={classNames("relative overflow-hidden", className)}
-    {...props}
-  >
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
-      {children}
-    </ScrollAreaPrimitive.Viewport>
-    <ScrollBar />
-    <ScrollAreaPrimitive.Corner />
-  </ScrollAreaPrimitive.Root>
-));
-ScrollArea.displayName = "ScrollArea";
-
-// ScrollBar component
-export const scrollAreaScrollbarClasses = cva(
-  "flex touch-none select-none transition-colors",
-  {
-    variants: {
-      orientation: {
-        vertical: "h-full w-2.5 p-px",
-        horizontal: "h-2.5 p-px",
-      },
-    },
-    defaultVariants: {
-      orientation: "vertical",
-    },
+>(
+  (
+    { className, children, orientation = "vertical", itemCount, ...props },
+    forwardedref,
+  ) => {
+    return (
+      <ScrollAreaProvider value={{ orientation, itemCount }}>
+        <ScrollAreaPrimitive.Root
+          ref={forwardedref}
+          className={classNames(
+            "dark:bg-secondary-950 overflow-hidden bg-white",
+            className,
+          )}
+          {...props}
+        >
+          <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+            <ScrollAreaList itemSize={() => 50}>{children}</ScrollAreaList>
+            <ScrollAreaScrollBar />
+          </ScrollAreaPrimitive.Viewport>
+          <ScrollAreaPrimitive.Corner />
+        </ScrollAreaPrimitive.Root>
+      </ScrollAreaProvider>
+    );
   },
 );
+ScrollArea.displayName = "ScrollArea";
 
-export type ScrollBar = ComponentPropsWithoutRef<
-  typeof ScrollAreaPrimitive.ScrollAreaScrollbar
->;
+type ScrollAreaList = Omit<
+  VariableSizeListProps,
+  "itemCount" | "layout" | "height" | "width"
+> &
+  Partial<Pick<VariableSizeListProps, "width" | "height">>;
 
-export const ScrollBar = forwardRef<
+const ScrollAreaList = ({
+  height = 300,
+  width = 200,
+  ...props
+}: ScrollAreaList) => {
+  const { itemCount, orientation } = useScrollAreaContext();
+  return (
+    <VariableSizeList
+      height={height}
+      width={width}
+      layout={orientation}
+      itemCount={itemCount}
+      {...props}
+    />
+  );
+};
+ScrollAreaList.displayName = "ScrollAreaList";
+
+type ScrollAreaScrollBar = Omit<
+  ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+  "orientation"
+> & {
+  thumbClassName?: HTMLAttributes<HTMLDivElement>["className"];
+};
+
+const ScrollAreaScrollBar = forwardRef<
   ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
-  ScrollBar
->(({ className, orientation = "vertical", ...props }, forwardedref) => (
-  <ScrollAreaPrimitive.ScrollAreaScrollbar
-    ref={forwardedref}
-    orientation={orientation}
-    className={classNames(
-      scrollAreaScrollbarClasses({ orientation }),
-      className,
-    )}
-    {...props}
-  >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="bg-secondary-200 dark:bg-secondary-800 relative flex-1 rounded-full" />
-  </ScrollAreaPrimitive.ScrollAreaScrollbar>
-));
-ScrollBar.displayName = "ScrollBar";
+  ScrollAreaScrollBar
+>(({ className, thumbClassName, children, ...props }, forwardedref) => {
+  const { orientation } = useScrollAreaContext();
+
+  return (
+    <>
+      <ScrollAreaPrimitive.Scrollbar
+        {...props}
+        orientation={orientation}
+        className={classNames(
+          "flex touch-none select-none bg-black/30 p-0.5 transition-colors duration-200 ease-out hover:bg-black/50",
+          "data-[orientation=vertical]:w-2.5",
+          "data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col",
+          className,
+        )}
+        ref={forwardedref}
+      >
+        <ScrollAreaPrimitive.Thumb
+          className={classNames(
+            "bg-secondary-300 relative flex-1 rounded-[10px]",
+            "before:absolute before:left-1/2 before:top-1/2 before:h-full before:min-h-[44px] before:w-full before:min-w-[44px] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']",
+            thumbClassName,
+          )}
+        />
+      </ScrollAreaPrimitive.Scrollbar>
+      <ScrollAreaPrimitive.Corner className="bg-black/50" />
+    </>
+  );
+});
+ScrollAreaScrollBar.displayName = "ScrollAreaScrollBar";
