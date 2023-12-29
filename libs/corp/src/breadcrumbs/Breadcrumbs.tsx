@@ -6,6 +6,7 @@ import {
   HTMLAttributes,
   ReactNode,
   forwardRef,
+  useId,
 } from "react";
 
 export const breadCrumbsClasses = cva("flex items-center", {
@@ -87,6 +88,8 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
 
     const components = items
       .flatMap(({ label, href }, index) => {
+        const key = useId();
+
         // Is this the last element
         const isLastElement = index === numOfLabels;
 
@@ -94,7 +97,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
         if (!href) BreadcrumbItem = "span";
 
         return [
-          <Fragment key={label}>
+          <Fragment key={key}>
             {Children ? (
               <Children
                 label={label}
@@ -129,7 +132,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
 
     return (
       <nav ref={forwardedRef} {...props}>
-        <List className={breadCrumbsClasses({ size })}>{...components}</List>
+        <List className={breadCrumbsClasses({ size })}>{components}</List>
       </nav>
     );
   },

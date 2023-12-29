@@ -6,10 +6,10 @@ import {
 import { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
 import { Button } from "../../../ui/src";
-import { Steps } from "./Steps";
+import { Stepper } from "./Steps";
 
-const meta: Meta<typeof Steps> = {
-  title: "Corp / Steps",
+const meta: Meta<typeof Stepper> = {
+  title: "Corp / Stepper",
   args: {
     size: "md",
     direction: "horizontal",
@@ -28,15 +28,15 @@ const meta: Meta<typeof Steps> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Steps>;
+type Story = StoryObj<typeof Stepper>;
 
 export const Default: Story = {
   render: ({ size, direction, isDisabled }) => (
-    <Steps
+    <Stepper
       size={size}
       direction={direction}
       isDisabled={isDisabled}
-      items={[
+      steps={[
         {
           title: "Home",
           subTitle: "Aliquam",
@@ -69,16 +69,15 @@ export const Controled: Story = {
 
     return (
       <>
-        <Steps
+        <Stepper
           current={current}
           direction={direction}
           isDisabled={isDisabled}
           size={size}
-          items={[
+          steps={[
             {
               title: "Home",
               subTitle: "Aliquam",
-              // description: "Lorem ipsum dolor sit amet",
             },
             {
               title: "Menu",
@@ -104,16 +103,18 @@ export const Clickable: Story = {
     const [current, setCurrent] = useState(initial);
 
     return (
-      <Steps
+      <Stepper
         size={size}
         current={current}
         initial={initial}
         direction={direction}
         isDisabled={isDisabled}
         onClick={setCurrent}
-        items={[
+        steps={[
           {
             title: "Home",
+            subTitle: "Aliquam",
+            description: "Lorem ipsum dolor sit amet",
           },
           {
             title: "Menu",
@@ -121,6 +122,7 @@ export const Clickable: Story = {
           },
           {
             title: "Article",
+            description: "Donec et lectus a risus",
           },
         ]}
       />
@@ -131,11 +133,11 @@ export const Clickable: Story = {
 export const WithIcon: Story = {
   render: function Render({ size, direction, isDisabled }) {
     return (
-      <Steps
+      <Stepper
         size={size}
         direction="vertical"
         isDisabled={isDisabled}
-        items={[
+        steps={[
           {
             title: "Home",
             icon: (

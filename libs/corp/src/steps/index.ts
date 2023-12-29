@@ -1,1 +1,1 @@
-export { Steps } from "./Steps";
+export { Stepper } from "./Steps";
