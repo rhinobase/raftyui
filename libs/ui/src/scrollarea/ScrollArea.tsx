@@ -5,6 +5,7 @@ import {
   HTMLAttributes,
   forwardRef,
 } from "react";
+import AutoSizer from "react-virtualized-auto-sizer";
 import { VariableSizeList, VariableSizeListProps } from "react-window";
 import { classNames } from "../utils";
 import {
@@ -40,9 +41,11 @@ export const ScrollArea = forwardRef<
           )}
           {...props}
         >
-          <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+          <ScrollAreaPrimitive.Viewport
+            asChild
+            className="h-full w-full rounded-[inherit]"
+          >
             <ScrollAreaList itemSize={() => 50}>{children}</ScrollAreaList>
-            <ScrollAreaScrollBar />
           </ScrollAreaPrimitive.Viewport>
           <ScrollAreaPrimitive.Corner />
         </ScrollAreaPrimitive.Root>
@@ -55,23 +58,22 @@ ScrollArea.displayName = "ScrollArea";
 type ScrollAreaList = Omit<
   VariableSizeListProps,
   "itemCount" | "layout" | "height" | "width"
-> &
-  Partial<Pick<VariableSizeListProps, "width" | "height">>;
+>;
 
-const ScrollAreaList = ({
-  height = 300,
-  width = 200,
-  ...props
-}: ScrollAreaList) => {
+const ScrollAreaList = (props: ScrollAreaList) => {
   const { itemCount, orientation } = useScrollAreaContext();
   return (
-    <VariableSizeList
-      height={height}
-      width={width}
-      layout={orientation}
-      itemCount={itemCount}
-      {...props}
-    />
+    <AutoSizer>
+      {({ height, width }) => (
+        <VariableSizeList
+          height={height}
+          width={width}
+          layout={orientation}
+          itemCount={itemCount}
+          {...props}
+        />
+      )}
+    </AutoSizer>
   );
 };
 ScrollAreaList.displayName = "ScrollAreaList";
