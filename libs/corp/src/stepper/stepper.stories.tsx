@@ -6,7 +6,7 @@ import {
 import { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
 import { Button } from "../../../ui/src";
-import { Stepper } from "./Steps";
+import { Stepper } from "./Stepper";
 
 const meta: Meta<typeof Stepper> = {
   title: "Corp / Stepper",
