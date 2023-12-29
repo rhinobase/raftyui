@@ -14,12 +14,21 @@ dependencies:
   '@codesandbox/sandpack-themes':
     specifier: ^2.0.21
     version: 2.0.21
+  '@fibr/core':
+    specifier: ^0.3.0
+    version: 0.3.0(@swc/helpers@0.5.3)
+  '@fibr/react':
+    specifier: ^0.3.0
+    version: 0.3.0(@fibr/core@0.3.0)(core-js@3.35.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
   '@heroicons/react':
     specifier: 2.0.18
     version: 2.0.18(react@18.2.0)
   '@hookform/devtools':
     specifier: 4.3.1
     version: 4.3.1(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)
+  '@hookform/error-message':
+    specifier: ^2.0.1
+    version: 2.0.1(react-dom@18.2.0)(react-hook-form@7.47.0)(react@18.2.0)
   '@hookform/resolvers':
     specifier: ^3.3.2
     version: 3.3.2(react-hook-form@7.47.0)
@@ -131,6 +140,9 @@ dependencies:
   js-yaml:
     specifier: 4.1.0
     version: 4.1.0
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   next:
     specifier: 14.0.4
     version: 14.0.4(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)
@@ -262,6 +274,9 @@ devDependencies:
   '@types/js-cookie':
     specifier: ^3.0.6
     version: 3.0.6
+  '@types/lodash':
+    specifier: ^4.14.202
+    version: 4.14.202
   '@types/node':
     specifier: ^20.10.1
     version: 20.10.1
@@ -3723,6 +3738,30 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
 
+  /@fibr/core@0.3.0(@swc/helpers@0.5.3):
+    resolution: {integrity: sha512-z1vBujfYtvvstWSx8jTK1gtDZLZeyuRyGO0yrHi3gKFQxQYBMgUiYfVHCIkcLMY0NOej4NGPdoxeMTe0eI3iNw==}
+    peerDependencies:
+      '@swc/helpers': ~0.5.0
+    dependencies:
+      '@swc/helpers': 0.5.3
+    dev: false
+
+  /@fibr/react@0.3.0(@fibr/core@0.3.0)(core-js@3.35.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0):
+    resolution: {integrity: sha512-xmE5TSvrfr/30FvwyzO5uLU2m4E51vBqF+dXvqmfGpykGlQg3nBBVpXxUcZWQa102hUdA2RhIwoFbuhlfyJNvQ==}
+    peerDependencies:
+      '@fibr/core': '*'
+      core-js: ^3.33.0
+      lodash: ^4.17.21
+      react: ^18.2.0
+      react-hook-form: ^7.46.2
+    dependencies:
+      '@fibr/core': 0.3.0(@swc/helpers@0.5.3)
+      core-js: 3.35.0
+      lodash: 4.17.21
+      react: 18.2.0
+      react-hook-form: 7.47.0(react@18.2.0)
+    dev: false
+
   /@floating-ui/core@1.5.0:
     resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==}
     dependencies:
@@ -3763,7 +3802,7 @@ packages:
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.33)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.33)(react@18.2.0)
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.202
       little-state-machine: 4.8.0(react@18.2.0)
       lodash: 4.17.21
       react: 18.2.0
@@ -3773,6 +3812,18 @@ packages:
       uuid: 8.3.2
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@hookform/error-message@2.0.1(react-dom@18.2.0)(react-hook-form@7.47.0)(react@18.2.0):
+    resolution: {integrity: sha512-U410sAr92xgxT1idlu9WWOVjndxLdgPUHEB8Schr27C9eh7/xUnITWpCMF93s+lGiG++D4JnbSnrb5A21AdSNg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      react-hook-form: ^7.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-hook-form: 7.47.0(react@18.2.0)
     dev: false
 
   /@hookform/resolvers@3.3.2(react-hook-form@7.47.0):
@@ -6719,7 +6770,7 @@ packages:
       '@storybook/preview-api': 7.6.1
       '@storybook/theming': 7.6.1(react-dom@18.2.0)(react@18.2.0)
       '@storybook/types': 7.6.1
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.202
       color-convert: 2.0.1
       dequal: 2.0.3
       lodash: 4.17.21
@@ -7941,8 +7992,8 @@ packages:
     dev: false
     optional: true
 
-  /@types/lodash@4.14.200:
-    resolution: {integrity: sha512-YI/M/4HRImtNf3pJgbF+W6FrXovqj+T+/HpENLTooK9PnkacBsDpeP3IpHab40CClUfhNmdM2WTNP2sa2dni5Q==}
+  /@types/lodash@4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
 
   /@types/markdown-it@12.2.3:
     resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
@@ -10093,6 +10144,11 @@ packages:
     resolution: {integrity: sha512-uBJiDmwqsbJCWHAwjrx3cvjbMXP7xD72Dmsn5LOJpiRmE3WbBbN5rCqQ2Qh6Ek6/eOrjlWngEynBWo4VxerQhg==}
     requiresBuild: true
     dev: true
+
+  /core-js@3.35.0:
+    resolution: {integrity: sha512-ntakECeqg81KqMueeGJ79Q5ZgQNR+6eaE8sxGCx62zMbAIj65q+uYvatToew3m6eAGdU4gNZwpZ34NMe4GYswg==}
+    requiresBuild: true
+    dev: false
 
   /core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -17880,7 +17936,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@babel/runtime': 7.23.6
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.202
       lodash: 4.17.21
       lodash-es: 4.17.21
       nanoclone: 0.2.1
