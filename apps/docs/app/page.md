@@ -6,7 +6,7 @@ Re-usable components built using Radix UI and Tailwind CSS. {% .lead %}
 
 {% quick-links %}
 
-{% quick-link title="Installation" icon="installation" href="/" description="Step-by-step guides to setting up your system and installing the library." /%}
+{% quick-link title="Installation" icon="installation" href="/#quick-start" description="Step-by-step guides to setting up your system and installing the library." /%}
 
 {% quick-link title="Theme Builder" icon="presets" href="/themes" description="Check out components across different themes" /%}
 
