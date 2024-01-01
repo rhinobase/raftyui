@@ -52,7 +52,7 @@ And in your `tailwind.config.js` file
 module.exports = {
   content: [
     ...,
-    "./node_modules/@rafty/ui/**/*.{js,cjs}",
+    "./node_modules/@rafty/ui/**/*.js",
   ],
   theme: {
     extend: {
