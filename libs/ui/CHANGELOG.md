@@ -2,6 +2,33 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.2](https://github.com/rhinobase/raftyui/compare/ui-1.4.1...ui-1.4.2) (2024-01-01)
+
+
+### Features
+
+* **storybook:** added tanstack story ([9c0e045](https://github.com/rhinobase/raftyui/commit/9c0e0452bcf928228b7a99c1c5bec9bb7e860a84))
+* **ui:** added isMuted prop to Text component ([7b94f77](https://github.com/rhinobase/raftyui/commit/7b94f77c45a53951bbd548381ab4b4d1101f3bf6))
+* **ui:** added new hook and minor improvements ([64b2663](https://github.com/rhinobase/raftyui/commit/64b266389f18d29c0c5cd4c7f508442020519803))
+* **ui:** added tw-merge in classnames ([382669d](https://github.com/rhinobase/raftyui/commit/382669d3ac282ca1dd51dfe5ace728df1c2f4194))
+
+
+### Bug Fixes
+
+* config corrections ([334aae2](https://github.com/rhinobase/raftyui/commit/334aae2ee74cb60d797ba79831a92fe08a03b04b))
+* **ui:** improved compiler ([4d61678](https://github.com/rhinobase/raftyui/commit/4d616780a13d52183b5f70b33a8fb54263ab062c))
+* **ui:** improved ErrorMessage component rendering ([85de0f0](https://github.com/rhinobase/raftyui/commit/85de0f022f20118ba10ebe7067c7ed28caf73dd8))
+* **ui:** improvements in tab and textarea components ([d0231d2](https://github.com/rhinobase/raftyui/commit/d0231d2244d8e02caa22d7260b98a6fb04bf0eea))
+* **ui:** minor improvement ([912bf0d](https://github.com/rhinobase/raftyui/commit/912bf0df456ae25568e3952673447d9b562f5f5b))
+* **ui:** removed circular depn in avatar ([029801c](https://github.com/rhinobase/raftyui/commit/029801cb3440a8998a5863dcd9a1fd25ab674974))
+* **ui:** removed has prop from user side props in Card component ([07fc828](https://github.com/rhinobase/raftyui/commit/07fc8289359849d40030e4d47f178e00a97e876b))
+* **ui:** resolved linting error in all files ([7feb513](https://github.com/rhinobase/raftyui/commit/7feb51303a366b564bdbecf4237af1963fd125d3))
+
+
+### Performance Improvements
+
+* **ui:** improved cva of button component ([c6eddfb](https://github.com/rhinobase/raftyui/commit/c6eddfbc5be4d6c5cb2d5b43f650127e66912092))
+
 ## [1.4.1](https://github.com/rhinobase/raftyui/compare/ui-1.3.1...ui-1.3.2) (2023-12-18)
 
 ### Features
