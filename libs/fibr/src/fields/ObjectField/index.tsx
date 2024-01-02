@@ -24,8 +24,7 @@ export function ObjectField({ name, field }: FieldProps<FObjectFieldType>) {
   // Fields which are not part of any group or entry for the group doesn't exists
   const remaing_fields: string[] = [];
 
-  // biome-ignore lint/complexity/noForEach: <explanation>
-  Object.entries(field.fields).forEach(([field_name, field_props]) => {
+  for (const [field_name, field_props] of Object.entries(field.fields)) {
     if (!field_props.fieldset || !groupings[field_props.fieldset])
       remaing_fields.push(field_name);
     else {
@@ -34,7 +33,7 @@ export function ObjectField({ name, field }: FieldProps<FObjectFieldType>) {
       if (doesExist) groups[field_props.fieldset].push(field_name);
       else groups[field_props.fieldset] = [field_name];
     }
-  });
+  }
 
   return (
     <FieldWrapper

@@ -91,6 +91,7 @@ export function MultiSelectField(props: FieldProps<FStringFieldType>) {
                 "absolute right-8 rounded p-0.5",
                 "dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900 text-red-500 hover:bg-red-200/40 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-1 dark:text-red-300 dark:hover:bg-red-300/10",
               )}
+              // TODO: need to check
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
