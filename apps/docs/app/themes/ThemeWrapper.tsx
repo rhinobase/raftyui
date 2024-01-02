@@ -74,7 +74,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                 <Button
                   key={c}
                   size="fab"
-                  className={`${COLOR_THEME[c]} min-h-[26px] min-w-[26px] p-1`}
+                  className={`${COLOR_THEME[c]} dark:${COLOR_THEME[c]} min-h-[26px] min-w-[26px] p-1`}
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                   name={`${c} button`}
                 >
