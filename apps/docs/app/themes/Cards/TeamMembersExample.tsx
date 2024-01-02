@@ -108,7 +108,9 @@ function MemberRoleMenu({ label }: { label: string }) {
         role="combobox"
         aria-expanded={isOpen}
         className="justify-between capitalize"
-        rightIcon={<ChevronDownIcon height={15} width={15} />}
+        rightIcon={
+          <ChevronDownIcon height={15} width={15} className="stroke-2" />
+        }
         aria-label={label}
       >
         {selected?.title}
@@ -137,7 +139,7 @@ function MemberRoleMenu({ label }: { label: string }) {
                       <CheckIcon
                         height={16}
                         width={16}
-                        className="opacity-60"
+                        className="stroke-2 opacity-60"
                       />
                     )}
                   </CommandItem>

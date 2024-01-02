@@ -19,7 +19,9 @@ export default function NotFound() {
         </div>
         <Link href="/">
           <Button
-            rightIcon={<ArrowRightIcon height={16} width={16} />}
+            rightIcon={
+              <ArrowRightIcon height={16} width={16} className="stroke-2" />
+            }
             variant="ghost"
           >
             Go back home

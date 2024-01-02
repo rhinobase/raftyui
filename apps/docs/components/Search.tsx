@@ -412,7 +412,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         className="md:hidden"
         aria-label="Search docs"
       >
-        <MagnifyingGlassIcon height={16} width={16} />
+        <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
       </Button>
     </>
   );

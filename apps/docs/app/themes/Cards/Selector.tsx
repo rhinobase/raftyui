@@ -1,3 +1,4 @@
+"use state";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import {
   Command,
@@ -8,16 +9,22 @@ import {
   PopoverTrigger,
   classNames,
 } from "@rafty/ui";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
-export function Selector({
-  value,
-  children,
-}: {
+type Selector = {
   value: string;
   children: ReactNode;
-}) {
+};
+
+export function Selector({ value, children }: Selector) {
+  const triggerRef = useRef(null);
   const [isOpen, setOpen] = useState(false);
+  const [contentWidth, setContentWidth] = useState(0);
+
+  useEffect(() => {
+    // @ts-ignore
+    setContentWidth(triggerRef.current?.offsetWidth);
+  }, []);
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen} modal>
@@ -34,14 +41,18 @@ export function Selector({
               isOpen
                 ? "text-primary-500"
                 : "text-secondary-500 dark:text-secondary-400",
-              "shrink-0 stroke-1",
+              "shrink-0 stroke-2",
             )}
           />
         }
+        ref={triggerRef}
       >
         {value}
       </PopoverTrigger>
-      <PopoverContent className="w-[120px] p-0">
+      <PopoverContent
+        className="p-0"
+        style={{ width: contentWidth, maxWidth: "none" }}
+      >
         <Command shouldFilter={false}>
           <CommandList className="max-h-full">
             <CommandGroup>{children}</CommandGroup>

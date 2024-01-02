@@ -19,7 +19,7 @@ export function ReactLiveBlock({ code }: ReactLiveBlock) {
   return (
     <LiveProvider code={editorCode} scope={ReactLiveScope}>
       <LivePreview className="not-prose dark:bg-secondary-900 dark:border-secondary-800 flex w-full items-center justify-center rounded-lg border bg-transparent p-4" />
-      <div className="relative z-0">
+      <div className="dark relative z-0">
         <CodeContainer>
           <LiveEditor
             onChange={onChange}

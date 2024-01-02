@@ -33,7 +33,7 @@ const COLOR_THEME = {
   gray: "bg-gray-500",
   red: "bg-red-500",
   orange: "bg-orange-500",
-  yellow: "bg-orange-500",
+  yellow: "bg-yellow-500",
   green: "bg-green-500",
   teal: "bg-teal-500",
   sky: "bg-sky-500",
@@ -71,10 +71,10 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
           {defaults.map((c) => (
             <Tooltip key={c}>
               <TooltipTrigger asChild>
-                <Button
+                <button
                   key={c}
-                  size="fab"
-                  className={`${COLOR_THEME[c]} dark:${COLOR_THEME[c]} min-h-[26px] min-w-[26px] p-1`}
+                  type="button"
+                  className={`${COLOR_THEME[c]} flex min-h-[26px] min-w-[26px] items-center justify-center rounded-full outline-none`}
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                   name={`${c} button`}
                 >
@@ -85,7 +85,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                       className="stroke-[3] text-white"
                     />
                   )}
-                </Button>
+                </button>
               </TooltipTrigger>
               <TooltipContent side="top">{c}</TooltipContent>
             </Tooltip>
@@ -125,7 +125,7 @@ function CustomizeMenu({
   const { setTheme, theme, themes } = useTheme();
 
   return (
-    <Popover>
+    <Popover size="lg">
       <PopoverTrigger asChild>
         <div>
           <Button
@@ -146,10 +146,10 @@ function CustomizeMenu({
         className="dark:bg-secondary-900"
         arrowClassName="dark:fill-secondary-900"
       >
-        <div className="w-[300px] space-y-3 p-2">
-          <div className="space-y-1.5">
-            <h5 className="text-xs font-medium">Color</h5>
-            <div className="grid grid-cols-3 gap-2">
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <h5 className="text-xs font-medium leading-none">Color</h5>
+            <div className="grid grid-cols-3 gap-2.5">
               {Object.entries(COLOR_THEME).map(([c, value]) => (
                 <Button
                   key={c}
@@ -169,13 +169,15 @@ function CustomizeMenu({
               ))}
             </div>
           </div>
-          <div className="space-y-1.5">
-            <h5 className="text-xs font-medium">Mode</h5>
-            <div className="flex gap-2">
+          <div className="space-y-3">
+            <h5 className="text-xs font-medium leading-none">Mode</h5>
+            <div className="flex gap-2.5">
               <Button
                 variant="outline"
                 size="sm"
-                leftIcon={<SunIcon height={15} width={15} />}
+                leftIcon={
+                  <SunIcon height={16} width={16} className="stroke-2" />
+                }
                 isActive={theme === themes[0]}
                 onClick={() => setTheme("light")}
               >
@@ -184,7 +186,9 @@ function CustomizeMenu({
               <Button
                 variant="outline"
                 size="sm"
-                leftIcon={<MoonIcon height={15} width={15} />}
+                leftIcon={
+                  <MoonIcon height={16} width={16} className="stroke-2" />
+                }
                 isActive={theme === themes[1]}
                 onClick={() => setTheme("dark")}
               >
@@ -194,7 +198,7 @@ function CustomizeMenu({
           </div>
         </div>
         <PopoverClose className="absolute right-2 top-2 p-1">
-          <XMarkIcon height={16} width={16} className="opacity-60" />
+          <XMarkIcon height={16} width={16} className="stroke-2 opacity-60" />
         </PopoverClose>
       </PopoverContent>
     </Popover>

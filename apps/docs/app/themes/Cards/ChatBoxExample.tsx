@@ -134,7 +134,7 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           onClick={dispatch}
           aria-label="Send"
         >
-          <PaperAirplaneIcon height={18} width={18} />
+          <PaperAirplaneIcon height={18} width={18} className="stroke-2" />
         </Button>
       </div>
     </div>
@@ -165,7 +165,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
             className="p-2"
             aria-label="add people"
           >
-            <PlusIcon height={16} width={16} />
+            <PlusIcon height={16} width={16} className="stroke-2" />
           </DialogTrigger>
         </TooltipTrigger>
         <TooltipContent>New message</TooltipContent>
@@ -207,7 +207,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
                       <CheckIcon
                         height={16}
                         width={16}
-                        className="opacity-60"
+                        className="stroke-[3] opacity-60"
                       />
                     )}
                   </div>

@@ -1,3 +1,4 @@
+"use client";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { Button } from "@rafty/ui";
 import { useCopyToClipboard } from "@uidotdev/usehooks";
@@ -13,18 +14,22 @@ export function CopyButton({ content }: CopyButton) {
   return (
     <Button
       onClick={() => copyToClipboard(content)}
-      className="absolute right-1 top-1 "
-      variant="outline"
+      className="absolute right-1 top-1"
+      variant="ghost"
       size="icon"
       aria-label="Copy"
     >
       {isCopied ? (
-        <CheckIcon height={16} width={16} className="text-green-300" />
+        <CheckIcon
+          height={16}
+          width={16}
+          className="stroke-[3] text-green-400"
+        />
       ) : (
         <DocumentDuplicateIcon
           height={16}
           width={16}
-          className="text-slate-200"
+          className="text-secondary-200 stroke-2"
         />
       )}
     </Button>

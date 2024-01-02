@@ -68,7 +68,7 @@ function Counter() {
         isDisabled={count <= 200}
         aria-label="Decrement Value"
       >
-        <MinusIcon height={18} width={18} />
+        <MinusIcon height={18} width={18} className="stroke-2" />
       </Button>
       <div className="flex w-full flex-col items-center">
         <Text className="text-5xl tabular-nums">{count}</Text>
@@ -84,7 +84,7 @@ function Counter() {
         isDisabled={count >= 400}
         aria-label="Increment Value"
       >
-        <PlusIcon height={18} width={18} />
+        <PlusIcon height={18} width={18} className="stroke-2" />
       </Button>
     </div>
   );

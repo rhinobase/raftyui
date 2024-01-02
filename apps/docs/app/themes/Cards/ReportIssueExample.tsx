@@ -77,7 +77,11 @@ function RoleSelector() {
             <Text className="capitalize">{role}</Text>
             <div className="flex-1" />
             {selected === role && (
-              <CheckIcon height={16} width={16} className="opacity-60" />
+              <CheckIcon
+                height={16}
+                width={16}
+                className="stroke-2 opacity-60"
+              />
             )}
           </div>
         </CommandItem>
@@ -102,7 +106,11 @@ function SecurityLevel() {
             <Text className="capitalize">{severity}</Text>
             <div className="flex-1" />
             {selected === severity && (
-              <CheckIcon height={16} width={16} className="opacity-60" />
+              <CheckIcon
+                height={16}
+                width={16}
+                className="stroke-2 opacity-60"
+              />
             )}
           </div>
         </CommandItem>
