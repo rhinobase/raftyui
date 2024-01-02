@@ -52,26 +52,23 @@ export function ObjectField({ name, field }: FieldProps<FObjectFieldType>) {
           "h-full space-y-2.5",
         )}
       >
-        {Object.entries(groups).map(([value, field_names]) => {
-          const key = useId();
-          return (
-            <Accordion type="single" collapsible key={key} defaultValue={value}>
-              <AccordionItem value={value}>
-                <AccordionTrigger className="w-[400px] rounded-md !bg-transparent !px-0">
-                  {groupings[value]}
-                </AccordionTrigger>
-                <AccordionContent className="border-secondary-200/80 dark:border-secondary-800 border-t !px-0 !pb-0 !pt-2">
-                  <GroupedFieldsRender
-                    name={name}
-                    field={field}
-                    field_names={field_names}
-                  />
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          );
-        })}
-        {remaing_fields.map((field_name) => {
+        {Object.entries(groups).map(([value, field_names]) => (
+          <Accordion type="single" collapsible key={value} defaultValue={value}>
+            <AccordionItem value={value}>
+              <AccordionTrigger className="w-[400px] rounded-md !bg-transparent !px-0">
+                {groupings[value]}
+              </AccordionTrigger>
+              <AccordionContent className="border-secondary-200/80 dark:border-secondary-800 border-t !px-0 !pb-0 !pt-2">
+                <GroupedFieldsRender
+                  name={name}
+                  field={field}
+                  field_names={field_names}
+                />
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        ))}
+        {remaing_fields.map((field_name, index) => {
           const key = useId();
           return (
             <RenderField
