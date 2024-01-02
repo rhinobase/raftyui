@@ -1,5 +1,5 @@
 "use client";
-import { HTMLAttributes, cloneElement, forwardRef } from "react";
+import { HTMLAttributes, cloneElement, forwardRef, useId } from "react";
 import { Avatar } from "../avatar/Avatar";
 import { classNames, getValidChildren } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
@@ -37,7 +37,8 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
 
     // Adding the last Avatar component to show the remaing number of children
     if (excess > 0) {
-      childrenWithinMax.push(<Avatar key="excess" name={`+${excess}`} />);
+      const key = useId();
+      childrenWithinMax.push(<Avatar key={key} name={`+${excess}`} />);
     }
 
     // Childrens with correct left offset in a group

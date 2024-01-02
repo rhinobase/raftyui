@@ -1,1 +1,1 @@
-export { ScrollArea, ScrollAreaScrollBar } from "./ScrollArea";
+export { ScrollArea } from "./ScrollArea";
