@@ -51,37 +51,40 @@ export function MultiSelectField(props: FieldProps<FStringFieldType>) {
               (props.field.placeholder as string) ?? `Select ${field.name}`
             ) : (
               <div className="flex flex-wrap gap-1.5">
-                {field.value.map((value: string | number) => (
-                  <div
-                    key={value}
-                    className="bg-secondary-100 dark:bg-secondary-800 flex items-center gap-1 rounded py-0.5 pl-1.5 pr-0.5"
-                  >
-                    <Text className="text-xs leading-none">
-                      {findLabel(value, props.field.options?.list ?? [])}
-                    </Text>
-                    {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+                {field.value.map((value: string | number) => {
+                  const key = useId();
+                  return (
                     <div
-                      className="dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900 rounded-sm p-0.5 text-red-500 hover:bg-red-200/40 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-1 dark:text-red-300 dark:hover:bg-red-300/10"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        // Removing the value
-                        field.value.splice(
-                          field.value.findIndex(
-                            (item: string | number) => item === value,
-                          ),
-                          1,
-                        );
-
-                        // Saving the new value array
-                        field.onChange(field.value);
-                      }}
+                      key={key}
+                      className="bg-secondary-100 dark:bg-secondary-800 flex items-center gap-1 rounded py-0.5 pl-1.5 pr-0.5"
                     >
-                      <HiXMark size={13} />
+                      <Text className="text-xs leading-none">
+                        {findLabel(value, props.field.options?.list ?? [])}
+                      </Text>
+                      {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+                      <div
+                        className="dark:focus:ring-secondary-100 dark:focus:ring-offset-secondary-900 rounded-sm p-0.5 text-red-500 hover:bg-red-200/40 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-1 dark:text-red-300 dark:hover:bg-red-300/10"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+
+                          // Removing the value
+                          field.value.splice(
+                            field.value.findIndex(
+                              (item: string | number) => item === value,
+                            ),
+                            1,
+                          );
+
+                          // Saving the new value array
+                          field.onChange(field.value);
+                        }}
+                      >
+                        <HiXMark size={13} />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}

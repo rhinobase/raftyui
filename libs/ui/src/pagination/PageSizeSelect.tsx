@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import { Select, SelectItem } from "../select";
 import { usePaginationContext } from "./context";
 
@@ -37,11 +37,14 @@ export const PageSizeSelect = forwardRef<HTMLSelectElement, PageSizeSelect>(
         {...props}
         ref={forwardedRef}
       >
-        {options.map(({ label, value }) => (
-          <SelectItem key={label} value={value}>
-            {label}
-          </SelectItem>
-        ))}
+        {options.map(({ label, value }) => {
+          const key = useId();
+          return (
+            <SelectItem key={key} value={value}>
+              {label}
+            </SelectItem>
+          );
+        })}
       </Select>
     );
   },

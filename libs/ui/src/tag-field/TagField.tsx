@@ -1,6 +1,6 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useReducer } from "react";
+import { useId, useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 
@@ -68,25 +68,28 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
         </Button>
       </div>
       <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
-        {tag.map((value) => (
-          <div
-            key={value}
-            className={
-              "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
-            }
-          >
-            <span className="text-sm leading-[0px]">{value}</span>
-            <Button
-              onClick={() => setTag({ action: ACTION.DELETE, data: value })}
-              colorScheme="error"
-              variant="ghost"
-              size="sm"
-              className="!text-secondary-400 !p-[1px] hover:!text-red-500"
+        {tag.map((value) => {
+          const key = useId();
+          return (
+            <div
+              key={key}
+              className={
+                "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
+              }
             >
-              <XMarkIcon className="h-3.5 w-3.5 stroke-[2]" />
-            </Button>
-          </div>
-        ))}
+              <span className="text-sm leading-[0px]">{value}</span>
+              <Button
+                onClick={() => setTag({ action: ACTION.DELETE, data: value })}
+                colorScheme="error"
+                variant="ghost"
+                size="sm"
+                className="!text-secondary-400 !p-[1px] hover:!text-red-500"
+              >
+                <XMarkIcon className="h-3.5 w-3.5 stroke-[2]" />
+              </Button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

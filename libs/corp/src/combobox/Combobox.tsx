@@ -12,7 +12,7 @@ import {
   PopoverTrigger,
   classNames,
 } from "@rafty/ui";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 export function findLabel(value: string | number, items: ComboboxOption[]) {
   let label: string | undefined;
@@ -119,13 +119,15 @@ function Options(props: Options) {
   const components: JSX.Element[] = [];
 
   for (const { label, value } of props.options) {
+    const key = useId();
+
     if (typeof value === "string" || typeof value === "number") {
       // Is the current value is selected
       const isSelected = props.value === value;
 
       components.push(
         <CommandItem
-          key={label}
+          key={key}
           onSelect={() => {
             // Checking, if the user wanna deselect the value
             const selectedValue = isSelected ? undefined : value;
@@ -141,7 +143,7 @@ function Options(props: Options) {
       );
     } else
       components.push(
-        <CommandGroup key={label} heading={label}>
+        <CommandGroup key={key} heading={label}>
           <Options {...props} options={value} />
         </CommandGroup>,
       );
