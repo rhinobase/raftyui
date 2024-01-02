@@ -9,7 +9,7 @@ import {
   useId,
 } from "react";
 
-export const breadCrumbsClasses = cva("flex items-center", {
+export const breadcrumbsClasses = cva("flex items-center", {
   variants: {
     size: {
       sm: "gap-1",
@@ -22,7 +22,7 @@ export const breadCrumbsClasses = cva("flex items-center", {
   },
 });
 
-export const breadCrumbItemClasses = cva("!rounded-base", {
+export const breadcrumbItemClasses = cva("!rounded-base", {
   variants: {
     size: {
       sm: "!px-1.5 !py-0.5",
@@ -115,7 +115,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
                       active: isLastElement,
                       colorScheme: isLastElement ? "primary" : "secondary",
                     }),
-                    breadCrumbItemClasses({ size }),
+                    breadcrumbItemClasses({ size }),
                   )}
                   onClick={() => onClick?.(label)}
                   onKeyDown={() => onClick?.(label)}
@@ -132,7 +132,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
 
     return (
       <nav ref={forwardedRef} {...props}>
-        <List className={breadCrumbsClasses({ size })}>{components}</List>
+        <List className={breadcrumbsClasses({ size })}>{components}</List>
       </nav>
     );
   },
