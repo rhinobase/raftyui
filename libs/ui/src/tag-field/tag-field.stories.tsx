@@ -12,3 +12,7 @@ type Story = StoryObj<typeof TagField>;
 export const Default: Story = {
   render: () => <TagField />,
 };
+
+export const InitalData: Story = {
+  render: () => <TagField initialData={["rhinobase", "rafty", "ui"]} />,
+};
