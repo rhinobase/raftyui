@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "./Stat";
 
 const meta: Meta<typeof Stat> = {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { PageJumper } from "./PageJumper";
 import { PageSizeSelect } from "./PageSizeSelect";
 import { Pagination } from "./Pagination";

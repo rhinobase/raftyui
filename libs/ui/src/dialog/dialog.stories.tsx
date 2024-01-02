@@ -4,7 +4,6 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Button } from "../button";
 import {
   Dialog,

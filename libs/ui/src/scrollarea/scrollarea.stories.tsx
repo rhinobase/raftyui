@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import { Fragment } from "react";
 import { ScrollArea } from "./ScrollArea";
 
 const meta: Meta<typeof ScrollArea> = {
@@ -21,14 +21,14 @@ export const Default: Story = {
         className="dark:border-secondary-700 h-60 w-[200px] rounded-md border"
       >
         {({ index, style, data, isScrolling }) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             <div
               className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-center border-b text-sm"
               style={style}
             >
               {index}
             </div>
-          </React.Fragment>
+          </Fragment>
         )}
       </ScrollArea>
     );

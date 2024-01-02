@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { ErrorMessage } from "../error-message";
 import { InputField } from "../input-field";
 import { Label } from "../label";

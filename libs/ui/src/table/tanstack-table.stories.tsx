@@ -5,12 +5,13 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import {
+  ColumnDef,
   PaginationState,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import React, { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { PageJumper, Pagination, PaginationButtons } from "../pagination";
 import { Skeleton } from "../skeleton";
 import { classNames } from "../utils";
@@ -44,7 +45,7 @@ export const Default: Story = {
 };
 
 function TanstackTable() {
-  const columns = useMemo(
+  const columns = useMemo<ColumnDef<unknown>[]>(
     () => [
       {
         header: "Id",
@@ -68,17 +69,16 @@ function TanstackTable() {
       },
       {
         header: "Rocket Name",
-        cell: ({ row }) => row.original.rocket.rocket_name,
+        cell: ({ row }) => row.original?.rocket.rocket_name,
       },
     ],
     [],
   );
 
-  const [{ pageIndex, pageSize }, setPagination] =
-    React.useState<PaginationState>({
-      pageIndex: 0,
-      pageSize: 10,
-    });
+  const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  });
 
   const offset = pageSize * pageIndex;
 
@@ -90,7 +90,7 @@ function TanstackTable() {
       ).then((res) => res.json()),
   });
 
-  const pagination = React.useMemo(
+  const pagination = useMemo(
     () => ({
       pageIndex,
       pageSize,

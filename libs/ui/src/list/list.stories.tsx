@@ -1,6 +1,5 @@
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { List } from "./List";
 import { ListItem } from "./ListItem";
 import { OrderedList as OL } from "./OrderedList";

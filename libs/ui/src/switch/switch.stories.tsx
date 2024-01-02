@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Switch } from "./Switch";
 
 const meta: Meta<typeof Switch> = {

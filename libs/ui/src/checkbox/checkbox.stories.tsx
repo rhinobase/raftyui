@@ -1,6 +1,6 @@
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import { useState } from "react";
 import { Checkbox } from "./Checkbox";
 
 const meta: Meta<typeof Checkbox> = {
@@ -46,7 +46,7 @@ export const WithChildren: Story = {
 
 export const Indeterminate: Story = {
   render: function Render({ size, isDisabled, isRequired }) {
-    const [state, setState] = React.useState<CheckedState>("indeterminate");
+    const [state, setState] = useState<CheckedState>("indeterminate");
 
     return (
       <Checkbox

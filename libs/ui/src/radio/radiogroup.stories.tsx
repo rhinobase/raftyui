@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { RadioGroup, RadioGroupItem } from "./Radio";
 
 const meta: Meta<typeof RadioGroup> = {
@@ -14,7 +13,6 @@ const meta: Meta<typeof RadioGroup> = {
       control: "select",
       options: ["sm", "md", "lg"],
     },
-    isDisabled: boolean,
   },
 };
 

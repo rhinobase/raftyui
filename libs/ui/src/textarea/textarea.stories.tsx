@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { FieldControl } from "../field-control";
 import { Label } from "../label";
 import { Textarea } from "./Textarea";

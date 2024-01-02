@@ -1,6 +1,5 @@
+import { classNames } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { classNames } from "../../../ui/src";
 import { Breadcrumbs } from "./Breadcrumbs";
 
 const meta: Meta<typeof Breadcrumbs> = {

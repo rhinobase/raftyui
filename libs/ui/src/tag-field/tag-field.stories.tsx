@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { TagField } from "./TagField";
 
 const meta: Meta<typeof TagField> = {

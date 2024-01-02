@@ -3,9 +3,9 @@ import {
   BellIcon,
   FaceSmileIcon,
 } from "@heroicons/react/24/outline";
+import { Button } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import React, { useState } from "react";
-import { Button } from "../../../ui/src";
+import { useState } from "react";
 import { Stepper } from "./Stepper";
 
 const meta: Meta<typeof Stepper> = {
