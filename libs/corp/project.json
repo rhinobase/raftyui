@@ -20,7 +20,15 @@
         "tsConfig": "libs/corp/tsconfig.lib.json",
         "project": "libs/corp/package.json",
         "entryFile": "libs/corp/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "external": [
+          "react",
+          "react-dom",
+          "react/jsx-runtime",
+          "@rafty/ui",
+          "@swc/helpers",
+          "@heroicons/react",
+          "class-variance-authority"
+        ],
         "rollupConfig": "libs/corp/rollup.config.js",
         "compiler": "swc",
         "assets": [
