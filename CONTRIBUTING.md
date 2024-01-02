@@ -25,6 +25,103 @@ cd raftyui
 
 > If you run into any issues during this step, kindly reach out to the Rafty UI team here: https://discord.gg/YtzxUfCk8c
 
+## Development
+
+To improve our development process, we've set up tooling and systems. Rafty UI
+uses a monorepo structure.
+
+### Tooling
+
+- [PNPM](https://pnpm.io/) to manage packages and dependencies
+- [NX](https://nx.dev/) to manage the monorepo
+- [Rollup](https://rollupjs.org/) to bundle packages
+- [Storybook](https://storybook.js.org/) for rapid UI component development and testing
+- [Changeset](https://github.com/atlassian/changesets) for changes documentation, changelog generation, and release management.
+
+### Commands
+
+**`pnpm install`**: bootstraps the entire project, symlinks all dependencies for
+cross-component development and builds all components.
+
+**`pnpm nx storybook docs`**: starts storybook server and loads stories in files that
+end with `.stories.tsx`.
+
+**`pnpm nx build [package name]`**: run build for a particular package.
+
+**`pnpm nx run-many -t build --all`**: run build for all the packages.
+
+## Think you found a bug?
+
+Please conform to the issue template and provide a clear path to reproduction
+with a code example. The best way to show a bug is by sending a CodeSandbox
+link.
+
+You may wish to use our starters to help you get going:
+
+- JavaScript Starter: https://github.com/rhinobase/raftyui/tree/main/examples/rafty-vite
+- TypeScript Starter: https://github.com/rhinobase/raftyui/tree/main/examples/rafty-vite-ts
+
+## Proposing new or changed API?
+
+Please provide thoughtful comments and some sample API code. Proposals that
+don't line up with our roadmap or don't have a thoughtful explanation will be
+closed.
+
+## Making a Pull Request?
+
+Pull requests need only the :+1: of two or more collaborators to be merged; when
+the PR author is a collaborator, that counts as one.
+
+### Commit Convention
+
+Before you create a Pull Request, please check whether your commits comply with
+the commit conventions used in this repository.
+
+When you create a commit we kindly ask you to follow the convention
+`category(scope or module): message` in your commit message while using one of
+the following categories:
+
+- `feat / feature`: all changes that introduce completely new code or new
+  features
+- `fix`: changes that fix a bug (ideally you will additionally reference an
+  issue if present)
+- `refactor`: any code related change that is not a fix nor a feature
+- `docs`: changing existing or creating new documentation (i.e. README, docs for
+  usage of a lib or cli usage)
+- `build`: all changes regarding the build of the software, changes to
+  dependencies or the addition of new dependencies
+- `test`: all changes regarding tests (adding new tests or changing existing
+  ones)
+- `ci`: all changes regarding the configuration of continuous integration (i.e.
+  github actions, ci system)
+- `chore`: all changes to the repository that do not fit into any of the above
+  categories
+
+You can use `pnpm commit` command to help you with your commits
+
+If you are interested in the detailed specification you can visit
+https://www.conventionalcommits.org/ or check out the
+[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
+
+### Steps to PR
+
+1. Fork of the raftyui repository and clone your fork
+
+2. Create a new branch out of the `main` branch. We follow the convention
+   `[type/scope]`. For example `fix/accordion-hook` or `docs/menu-typo`. `type`
+   can be either `docs`, `fix`, `feat`, `build`, or any other conventional
+   commit type. `scope` is just a short id that describes the scope of work.
+
+3. Make and commit your changes following the
+   [commit convention](https://github.com/rhinobase/raftyui/blob/main/CONTRIBUTING.md#commit-convention).
+   As you develop, you can run `pnpm nx build [package name]` to make sure everything works as expected.
+
+### Tests
+
+All commits that fix bugs or add features need a test.
+
+> **Dear Chakra team:** Please do not merge code without tests
+
 ## Want to write a blog post or tutorial
 
 That would be amazing! Reach out to the core team here:
