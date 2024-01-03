@@ -1,6 +1,7 @@
 "use client";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import {
+  Button,
   Command,
   CommandEmpty,
   CommandGroup,
@@ -10,144 +11,261 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  ScrollArea,
   classNames,
 } from "@rafty/ui";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import {
+  PropsWithChildren,
+  ReactNode,
+  forwardRef,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
+import { ClearButton } from "./ClearButton";
+import { OptionsRender } from "./OptionsRender";
+import { TriggerRender } from "./TriggerRender";
+import {
+  ComboboxContext,
+  ComboboxProvider,
+  useComboboxContext,
+} from "./context";
 
-export function findLabel(value: string | number, items: ComboboxOption[]) {
-  let label: string | undefined;
-  for (const item of items) {
-    if (typeof item.value === "string" || typeof item.value === "number") {
-      if (value === item.value) label = item.label;
-    } else label = findLabel(value, item.value);
+type RequiredProps = "name" | "options";
 
-    if (label) return label;
-  }
-}
+type InternalProps =
+  | "triggerRef"
+  | "contentWidth"
+  | "isOpen"
+  | "setOpen"
+  | "type";
 
 export type ComboboxOption = {
   label: string;
   value: string | number | ComboboxOption[];
 };
 
-export type Combobox = {
-  name?: string;
-  value?: string | number;
-  placeholder?: string;
-  onChange?: (value?: string | number) => void;
-  options?: ComboboxOption[];
-  isDisabled?: boolean;
-  isLoading?: boolean;
-  isReadOnly?: boolean;
-  isInvalid?: boolean;
-  isMulti?: boolean;
-};
+export type Combobox = (
+  | {
+      value?: string | number;
+      onChange?: (value?: string | number) => void;
+      type: "single";
+    }
+  | {
+      value?: (string | number)[];
+      onChange?: (value?: (string | number)[]) => void;
+      type: "multi";
+    }
+) &
+  Pick<ComboboxContext, RequiredProps> &
+  Partial<Omit<ComboboxContext, RequiredProps | InternalProps>>;
 
-export function Combobox({ ...props }: Combobox) {
+export function Combobox({
+  isDisabled = false,
+  isInvalid = false,
+  isLoading = false,
+  isReadonly = false,
+  placeholder,
+  children,
+  ...props
+}: PropsWithChildren<Combobox>) {
   const triggerRef = useRef(null);
-  const [contentwidth, setContentWidth] = useState(0);
+  const [contentWidth, setContentWidth] = useState(0);
   const [isOpen, setOpen] = useState(false);
+
+  const initValue = props.value
+    ? Array.isArray(props.value)
+      ? props.value
+      : [props.value]
+    : [];
+
+  const isMulti = props.type === "multi";
+
+  useEffect(() => {
+    if (isDisabled || isLoading || isReadonly) {
+      setOpen(false);
+    }
+  }, [isDisabled, isLoading, isReadonly]);
+
+  const [value, dispatch] = useReducer(
+    (prev: (string | number)[], cur: string | number | null) => {
+      // Checking, if the user wanna deselect the value
+      const valueIndex = prev.findIndex((val) => val === cur);
+      const isSelected = valueIndex !== -1;
+
+      let value: (string | number)[];
+
+      if (cur === null) value = [];
+      else if (isMulti) {
+        // Removing the value as it already exist
+        if (isSelected) {
+          const tmp = [...prev];
+          tmp.splice(valueIndex, 1);
+          value = tmp;
+        }
+        // Adding the new value
+        else value = [...prev, cur];
+      } else {
+        // Deselecting the value
+        if (isSelected) value = [];
+        // Adding the selected value
+        else value = [cur];
+      }
+
+      if (isMulti) {
+        props.onChange?.(value);
+      } else {
+        props.onChange?.(value.length > 0 ? value[0] : undefined);
+      }
+
+      if (!isMulti) setOpen(false);
+
+      return value;
+    },
+    initValue,
+  );
 
   useEffect(() => {
     // @ts-ignore
     setContentWidth(triggerRef.current?.offsetWidth);
   }, []);
 
-  const onChange = useCallback(
-    (value?: string | number) => {
-      props.onChange?.(value);
-      setOpen(false);
-    },
-    [props.onChange],
+  return (
+    <ComboboxProvider
+      value={{
+        name: props.name,
+        type: props.type,
+        options: props.options,
+        placeholder,
+        triggerRef,
+        contentWidth,
+        isDisabled,
+        isLoading,
+        isInvalid,
+        isReadonly,
+        isOpen,
+        setOpen,
+        value,
+        onChange: dispatch,
+      }}
+    >
+      <Popover open={isOpen} onOpenChange={setOpen}>
+        {children ?? (
+          <>
+            <ComboboxTrigger
+              variant="outline"
+              role="combobox"
+              className="w-full justify-between text-start !font-medium"
+              rightIcon={
+                <ChevronUpDownIcon
+                  className={classNames(
+                    "h-3.5 w-3.5 shrink-0 stroke-2",
+                    isOpen
+                      ? "text-primary-500 dark:text-primary-400"
+                      : "text-secondary-500 dark:text-secondary-400",
+                  )}
+                />
+              }
+            >
+              <span className="flex-1">
+                <TriggerRender />
+              </span>
+            </ComboboxTrigger>
+            <div className="mt-1 flex flex-row-reverse">
+              <ClearButton />
+            </div>
+            <PopoverContent
+              className="!max-w-none !p-0"
+              style={{ width: contentWidth }}
+            >
+              <Command>
+                <CommandInput placeholder={placeholder?.search} />
+                <CommandList className="!p-1">
+                  <OptionsRender
+                    value={value}
+                    options={props.options}
+                    onChange={dispatch}
+                  />
+                  <CommandEmpty>No data found</CommandEmpty>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </>
+        )}
+      </Popover>
+    </ComboboxProvider>
   );
+}
+
+export function ComboboxTrigger({
+  isDisabled,
+  isLoading,
+  className,
+  ...props
+}: PopoverTrigger) {
+  const {
+    triggerRef,
+    isDisabled: isParentDisabled,
+    isLoading: isParentLoading,
+    isReadonly: isParentReadonly,
+  } = useComboboxContext();
+
+  const disabled = isDisabled || isParentDisabled || isParentReadonly;
+  const loading = isLoading || isParentLoading;
 
   return (
-    <Popover open={isOpen} onOpenChange={setOpen}>
-      <PopoverTrigger
-        isDisabled={props.isReadOnly as boolean}
-        variant="outline"
-        role="combobox"
-        aria-expanded={isOpen}
-        className="w-full justify-between"
-        rightIcon={
-          <ChevronUpDownIcon
-            className={classNames(
-              isOpen
-                ? "text-primary-500 dark:text-primary-400"
-                : "text-secondary-500 dark:text-secondary-400",
-              "shrink-0",
-            )}
-          />
-        }
-        ref={triggerRef}
-      >
-        {props.value
-          ? findLabel(props.value, props.options ?? [])
-          : props.placeholder ?? `Select ${props.name}`}
-      </PopoverTrigger>
-      <PopoverContent
-        className="!p-0"
-        style={{ width: contentwidth, maxWidth: "none" }}
-      >
-        <Command>
-          <CommandInput
-            placeholder={props.placeholder ?? `Search ${props.name}`}
-          />
-          <CommandList>
-            {props.options && (
-              <Options
-                value={props.value}
-                options={props.options}
-                onChange={onChange}
-              />
-            )}
-            <CommandEmpty>No data found</CommandEmpty>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <PopoverTrigger
+      {...props}
+      className={classNames("!font-medium", className)}
+      isDisabled={disabled}
+      isLoading={loading}
+      ref={triggerRef}
+    />
   );
 }
 
-type Options = {
-  value?: string | number;
-  options: ComboboxOption[];
-  onChange?: (value?: string | number) => void;
+export type ComboboxContent = Omit<PopoverContent, "children"> & {
+  children?: (data: ComboboxOption, index: number) => ReactNode;
+  showSearch?: boolean;
 };
 
-function Options(props: Options) {
-  const components: JSX.Element[] = [];
+export function ComboboxContent({
+  className,
+  children,
+  showSearch = true,
+  ...props
+}: ComboboxContent) {
+  const { contentWidth, placeholder, options } = useComboboxContext();
 
-  for (const { label, value } of props.options) {
-    const key = useId();
-
-    if (typeof value === "string" || typeof value === "number") {
-      // Is the current value is selected
-      const isSelected = props.value === value;
-
-      components.push(
-        <CommandItem
-          key={key}
-          onSelect={() => {
-            // Checking, if the user wanna deselect the value
-            const selectedValue = isSelected ? undefined : value;
-            props.onChange?.(selectedValue);
-          }}
-          className="justify-between"
-        >
-          {label}{" "}
-          {isSelected && (
-            <CheckIcon className="h-3.5 w-3.5 stroke-2 opacity-70" />
-          )}
-        </CommandItem>,
-      );
-    } else
-      components.push(
-        <CommandGroup key={key} heading={label}>
-          <Options {...props} options={value} />
-        </CommandGroup>,
-      );
-  }
-
-  return components;
+  return (
+    <PopoverContent
+      {...props}
+      className={classNames("!max-w-none !p-0", className)}
+      style={{ width: contentWidth }}
+    >
+      <Command>
+        {showSearch && <CommandInput placeholder={placeholder?.search} />}
+        <CommandList className="!p-1">
+          {options.map((option, index) => children?.(option, index))}
+          <CommandEmpty>No data found</CommandEmpty>
+        </CommandList>
+      </Command>
+    </PopoverContent>
+  );
 }
+
+export type ComboboxItem = CommandItem;
+
+export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItem>(
+  (props, forwardedRef) => <CommandItem {...props} ref={forwardedRef} />,
+);
+ComboboxItem.displayName = "ComboboxItem";
+
+export type ComboboxItemsGroup = CommandGroup;
+
+export const ComboboxItemsGroup = forwardRef<
+  HTMLDivElement,
+  ComboboxItemsGroup
+>((props, forwardedRef) => <CommandGroup {...props} ref={forwardedRef} />);
+ComboboxItemsGroup.displayName = "ComboboxItemsGroup";
