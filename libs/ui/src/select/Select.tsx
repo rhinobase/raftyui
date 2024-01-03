@@ -114,6 +114,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       isRequired = false,
       isUnstyled = false,
       isReadOnly = false,
+      placeholder,
       ...props
     },
     forwardedRef,
@@ -152,6 +153,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
           }
           ref={forwardedRef}
         >
+          {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
           {children}
         </select>
         {!isUnstyled && (
@@ -172,9 +174,7 @@ Select.displayName = "Select";
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  (props, forwardedRef) => {
-    return <option {...props} ref={forwardedRef} />;
-  },
+  (props, forwardedRef) => <option {...props} ref={forwardedRef} />,
 );
 
 SelectItem.displayName = "SelectItem";

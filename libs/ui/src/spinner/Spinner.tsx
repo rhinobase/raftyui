@@ -32,6 +32,7 @@ export const Spinner = forwardRef<SVGSVGElement, Spinner>(
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
         ref={forwardedRef}
+        style={{ minWidth: DIMENSIONS[size], minHeight: DIMENSIONS[size] }}
       >
         <title>spinner</title>
         <path

@@ -50,24 +50,22 @@ export const PopoverTrigger = forwardRef<
     const { isUnstyled: isParentUnstyled } = usePopoverContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
+    const buttonProps = {
+      children,
+      size,
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isDisabled,
+      isActive,
+      isLoading,
+      isUnstyled: unstyle,
+    };
+
     return (
       <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
-        {asChild ? (
-          children
-        ) : (
-          <Button
-            variant={variant}
-            colorScheme={colorScheme}
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isDisabled={isDisabled}
-            isActive={isActive}
-            size={size}
-            isUnstyled={unstyle}
-          >
-            {children}
-          </Button>
-        )}
+        {asChild ? children : <Button {...buttonProps} />}
       </PopoverPrimitive.Trigger>
     );
   },

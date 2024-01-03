@@ -119,7 +119,8 @@ export const CommandGroup = forwardRef<
   <CommandPrimitive.Group
     {...props}
     className={classNames(
-      "text-secondary-800 [&_[cmdk-group-heading]]:text-secondary-500 [&_[cmdk-group-heading]]:dark:text-secondary-400 dark:text-secondary-100 overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+      "text-secondary-800 dark:text-secondary-100 overflow-hidden p-1",
+      "[&_[cmdk-group-heading]]:text-secondary-500 [&_[cmdk-group-heading]]:dark:text-secondary-400 [&_[cmdk-group-heading]]:select-none [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
       className,
     )}
     ref={forwardedRef}

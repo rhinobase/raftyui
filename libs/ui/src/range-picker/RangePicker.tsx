@@ -1,7 +1,12 @@
 "use client";
 import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
-import { useReducer, useState } from "react";
+import {
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useReducer,
+  useState,
+} from "react";
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { Calendar } from "../calendar/Calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
@@ -46,6 +51,13 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
         format(selected.to, "longDate"),
     );
 
+  const clearSelected: MouseEventHandler<HTMLDivElement> &
+    KeyboardEventHandler<HTMLDivElement> = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setSelected();
+  };
+
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
       <PopoverTrigger
@@ -63,16 +75,8 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
           <div
             title="unselect range"
             className="ml-2 rounded p-0.5 text-red-500 transition-all ease-in-out hover:bg-red-200/40 dark:text-red-300 dark:hover:bg-red-300/10"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setSelected();
-            }}
-            onKeyDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setSelected();
-            }}
+            onClick={clearSelected}
+            onKeyDown={(e) => e.key === "Enter" && clearSelected(e)}
           >
             <XMarkIcon className="h-3 w-3 stroke-[2.5]" />
           </div>

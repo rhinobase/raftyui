@@ -1,3 +1,4 @@
+import { Layout } from "react-window";
 import { createContext } from "../utils";
 
 export const [ScrollAreaProvider, useScrollAreaContext] =
@@ -8,6 +9,6 @@ export const [ScrollAreaProvider, useScrollAreaContext] =
   });
 
 export interface ScrollAreaContext {
-  readonly orientation: "horizontal" | "vertical";
+  readonly layout: Layout;
   readonly itemCount: number;
 }
