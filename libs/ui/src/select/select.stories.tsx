@@ -33,6 +33,8 @@ export const Default: Story = {
       isDisabled={isDisabled}
       isRequired={isRequired}
       isReadOnly={isReadOnly}
+      placeholder="Select fruit"
+      onChange={(e) => console.log(e.target.value)}
     >
       <SelectItem value="apple">Apple</SelectItem>
       <SelectItem value="banana">Banana</SelectItem>
