@@ -17,7 +17,6 @@
         "tsConfig": "libs/fibr/tsconfig.lib.json",
         "project": "libs/fibr/package.json",
         "entryFile": "libs/fibr/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "libs/fibr/rollup.config.js",
         "compiler": "swc",
         "assets": [
