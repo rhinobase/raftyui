@@ -30,19 +30,19 @@ import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
 import { Fence } from "../../components/code";
 
 const COLOR_THEME = {
-  gray: "bg-gray-500",
-  red: "bg-red-500",
-  orange: "bg-orange-500",
-  yellow: "bg-yellow-500",
-  green: "bg-green-500",
-  teal: "bg-teal-500",
-  sky: "bg-sky-500",
-  blue: "bg-blue-500",
-  indigo: "bg-indigo-500",
-  purple: "bg-purple-500",
-  fuchsia: "bg-fuchsia-500",
-  pink: "bg-pink-500",
-  rose: "bg-rose-500",
+  gray: "!bg-gray-500 !ring-gray-500",
+  red: "!bg-red-500 !ring-red-500",
+  orange: "!bg-orange-500 !ring-orange-500",
+  yellow: "!bg-yellow-500 !ring-yellow-500",
+  green: "!bg-green-500 !ring-green-500",
+  teal: "!bg-teal-500 !ring-teal-500",
+  sky: "!bg-sky-500 !ring-sky-500",
+  blue: "!bg-blue-500 !ring-blue-500",
+  indigo: "!bg-indigo-500 !ring-indigo-500",
+  purple: "!bg-purple-500 !ring-purple-500",
+  fuchsia: "!bg-fuchsia-500 !ring-fuchsia-500",
+  pink: "!bg-pink-500 !ring-pink-500",
+  rose: "!bg-rose-500 !ring-rose-500",
 } as const;
 
 const defaults: (keyof typeof COLOR_THEME)[] = [
@@ -71,12 +71,11 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
           {defaults.map((c) => (
             <Tooltip key={c}>
               <TooltipTrigger asChild>
-                <button
-                  key={c}
-                  type="button"
-                  className={`${COLOR_THEME[c]} flex min-h-[26px] min-w-[26px] items-center justify-center rounded-full outline-none`}
-                  onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
+                <Button
                   name={`${c} button`}
+                  size="fab"
+                  className={`${COLOR_THEME[c]} min-h-[26px] min-w-[26px] p-1`}
+                  onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                 >
                   {color === c && (
                     <CheckIcon
@@ -85,7 +84,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                       className="stroke-[3] text-white"
                     />
                   )}
-                </button>
+                </Button>
               </TooltipTrigger>
               <TooltipContent side="top">{c}</TooltipContent>
             </Tooltip>
