@@ -14,7 +14,6 @@ import {
 import { useMemo, useState } from "react";
 import { PageJumper, Pagination, PaginationButtons } from "../pagination";
 import { Skeleton } from "../skeleton";
-import { classNames } from "../utils";
 import {
   Table,
   TableBody,
@@ -24,7 +23,8 @@ import {
   Td,
   Th,
   Tr,
-} from "./Table";
+} from "../table";
+import { classNames } from "../utils";
 
 const meta: Meta<typeof Table> = {
   title: "Integration / TanstackTable",

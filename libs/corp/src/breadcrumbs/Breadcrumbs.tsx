@@ -118,7 +118,9 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
                     breadcrumbItemClasses({ size }),
                   )}
                   onClick={() => onClick?.(label)}
-                  onKeyDown={() => onClick?.(label)}
+                  onKeyDown={(e: KeyboardEvent) =>
+                    e.key === "Enter" && onClick?.(label)
+                  }
                 >
                   {label}
                 </BreadcrumbItem>
