@@ -9,5 +9,4 @@ export const [TimelineProvider, useTimelineContext] =
 
 export interface TimelineContext {
   readonly mode: "left" | "right" | undefined;
-  readonly reverse: boolean | undefined;
 }
