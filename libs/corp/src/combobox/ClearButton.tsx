@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@rafty/ui";
+import { Button, classNames } from "@rafty/ui";
 import { KeyboardEventHandler, MouseEventHandler, forwardRef } from "react";
 import { useComboboxContext } from "./context";
 
@@ -10,14 +10,21 @@ export const ClearButton = forwardRef<HTMLButtonElement, Button>(
       size = "sm",
       variant = "ghost",
       colorScheme = "error",
+      className,
       ...props
     },
     forwardedRef,
   ) => {
-    const { type, value, onChange, isDisabled, isLoading, isReadonly } =
-      useComboboxContext();
+    const {
+      type,
+      selected,
+      onSelectionChange,
+      isDisabled,
+      isLoading,
+      isReadonly,
+    } = useComboboxContext();
 
-    const disabled = isDisabled || isReadonly || isLoading;
+    if (selected.length === 0 || isDisabled || isReadonly || isLoading) return;
 
     let buttonText;
     if (type === "single") buttonText = "Clear";
@@ -25,26 +32,29 @@ export const ClearButton = forwardRef<HTMLButtonElement, Button>(
 
     const clearAll: MouseEventHandler<HTMLButtonElement> &
       KeyboardEventHandler<HTMLButtonElement> = (event) => {
+      // On keyboard, work only when enter is pressed
+      if ("key" in event && event.key !== "Enter") return;
+
       event.preventDefault();
       event.stopPropagation();
-      onChange(null);
+      onSelectionChange(null);
     };
 
-    if (value.length > 0)
-      return (
-        <Button
-          {...props}
-          size={size}
-          variant={variant}
-          colorScheme={colorScheme}
-          isDisabled={disabled}
-          onClick={clearAll}
-          onKeyDown={(e) => e.key === "Enter" && clearAll(e)}
-          ref={forwardedRef}
-        >
-          {children ?? buttonText}
-        </Button>
-      );
+    return (
+      <Button
+        {...props}
+        size={size}
+        variant={variant}
+        colorScheme={colorScheme}
+        onClick={clearAll}
+        onKeyDown={clearAll}
+        className={classNames("!font-medium", className)}
+        ref={forwardedRef}
+      >
+        {children ?? buttonText}
+      </Button>
+    );
   },
 );
+
 ClearButton.displayName = "ClearButton";

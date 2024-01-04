@@ -1,0 +1,1 @@
+export { ComboboxOptionType } from "./option";

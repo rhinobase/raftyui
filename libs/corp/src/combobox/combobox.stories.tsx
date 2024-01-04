@@ -1,14 +1,9 @@
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { Avatar, classNames } from "@rafty/ui";
+import { Avatar } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import { useReducer } from "react";
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxItem,
-  ComboboxTrigger,
-} from "./Combobox";
+import { Combobox, ComboboxItem } from "./Combobox";
 import { useComboboxContext } from "./context";
+import { ComboboxOptionType } from "./types";
+import { findLabel } from "./utils";
 
 const meta: Meta<typeof Combobox> = {
   title: "Corp / Combobox",
@@ -41,7 +36,7 @@ export const Default: Story = {
             trigger: "Select languages",
             search: "Search language",
           }}
-          onChange={console.log}
+          onSelectionChange={console.log}
           options={[
             {
               label: "Java",
@@ -109,73 +104,44 @@ export const Custom: Story = {
         <Combobox
           name="products"
           type="single"
-          onChange={console.log}
+          onSelectionChange={console.log}
           options={DATA}
           isDisabled={isDisabled}
           isLoading={isLoading}
           isReadonly={isReadonly}
-        >
-          <ComboboxRender />
-        </Combobox>
+          triggerRender={<TriggerRender />}
+          itemRender={ItemRender}
+        />
       </div>
     );
   },
 };
 
-function ComboboxRender() {
-  const { isOpen, setOpen } = useComboboxContext();
+function TriggerRender() {
+  const { selected, options } = useComboboxContext();
+  const label = findLabel(selected[0], options);
 
-  const [selected, dispatch] = useReducer(
-    (prev: DataItem | undefined, cur: string | undefined) => {
-      // Checking if we have a value or not
-      const value = prev?.value === cur ? undefined : cur;
-      setOpen(false);
+  if (selected.length > 0)
+    return (
+      <div className="flex items-center gap-2">
+        <Avatar size="sm" name={label} />
+        {label}
+      </div>
+    );
+  return "Select Option";
+}
 
-      if (value) return DATA.find((item) => item.value === value);
-
-      return undefined;
-    },
-    undefined,
-  );
+function ItemRender({ label, value }: ComboboxOptionType) {
+  const { onSelectionChange } = useComboboxContext();
 
   return (
-    <>
-      <ComboboxTrigger
-        variant="outline"
-        role="combobox"
-        className="w-full justify-between"
-        rightIcon={
-          <ChevronUpDownIcon
-            className={classNames(
-              "h-3.5 w-3.5 shrink-0 stroke-2",
-              isOpen
-                ? "text-primary-500 dark:text-primary-400"
-                : "text-secondary-500 dark:text-secondary-400",
-            )}
-          />
-        }
-      >
-        {selected ? (
-          <div className="flex items-center gap-2">
-            <Avatar size="sm" name={selected.label} />
-            {selected.label}
-          </div>
-        ) : (
-          "Select Option"
-        )}
-      </ComboboxTrigger>
-      <ComboboxContent>
-        {({ label, value }) => (
-          <ComboboxItem
-            value={String(value)}
-            onSelect={dispatch}
-            className="gap-2"
-          >
-            <Avatar size="sm" name={label} />
-            {label}
-          </ComboboxItem>
-        )}
-      </ComboboxContent>
-    </>
+    <ComboboxItem
+      value={String(value)}
+      onSelect={onSelectionChange}
+      className="gap-2"
+    >
+      <Avatar size="sm" name={label} />
+      {label}
+    </ComboboxItem>
   );
 }

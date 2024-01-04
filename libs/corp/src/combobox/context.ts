@@ -1,6 +1,6 @@
 import { createContext } from "@rafty/ui";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
-import { ComboboxOption } from "./Combobox";
+import { ComboboxOptionType } from "./types";
 
 export const [ComboboxProvider, useComboboxContext] =
   createContext<ComboboxContext>({
@@ -12,19 +12,17 @@ export const [ComboboxProvider, useComboboxContext] =
 export type ComboboxContext = {
   readonly name: string;
   readonly type: "single" | "multi";
-  readonly options: ComboboxOption[];
+  readonly options: ComboboxOptionType[];
   readonly isDisabled: boolean;
   readonly isLoading: boolean;
   readonly isReadonly: boolean;
   readonly isInvalid: boolean;
-  readonly triggerRef: MutableRefObject<null>;
-  readonly contentWidth: number;
   readonly placeholder?: {
     readonly trigger?: string;
     readonly search?: string;
   };
   readonly isOpen: boolean;
   readonly setOpen: Dispatch<SetStateAction<boolean>>;
-  readonly value: (string | number)[];
-  readonly onChange: Dispatch<string | number | null>;
+  readonly selected: (string | number)[];
+  readonly onSelectionChange: Dispatch<string | number | null>;
 };

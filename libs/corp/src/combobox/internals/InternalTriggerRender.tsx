@@ -1,11 +1,10 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Kbd, buttonClasses, classNames } from "@rafty/ui";
 import { KeyboardEventHandler, MouseEventHandler } from "react";
-import { Combobox } from "./Combobox";
-import { useComboboxContext } from "./context";
-import { findLabel } from "./findLabel";
+import { useComboboxContext } from "../context";
+import { findLabel } from "../utils";
 
-export function TriggerRender() {
+export function InternalTriggerRender() {
   const {
     name,
     type,
@@ -13,14 +12,14 @@ export function TriggerRender() {
     isDisabled,
     isLoading,
     isReadonly,
-    value,
-    onChange,
+    selected,
+    onSelectionChange,
     placeholder,
   } = useComboboxContext();
 
   const isMulti = type === "multi";
-  const isSelected = value.length > 0;
-  const disable = isDisabled || isLoading || isReadonly;
+  const isSelected = selected.length > 0;
+  const disabled = isDisabled || isLoading || isReadonly;
 
   if (isSelected) {
     if (isMulti) {
@@ -30,15 +29,18 @@ export function TriggerRender() {
       ): MouseEventHandler<HTMLDivElement> &
         KeyboardEventHandler<HTMLDivElement> => {
         return (event) => {
+          // On keyboard, work only when enter is pressed
+          if ("key" in event && event.key !== "Enter") return;
+
           event.preventDefault();
           event.stopPropagation();
-          onChange(item);
+          onSelectionChange(item);
         };
       };
 
       return (
         <div className="flex w-full flex-wrap gap-1.5">
-          {value.map((item) => (
+          {selected.map((item) => (
             <Kbd
               key={item}
               className="!pr-none flex items-center gap-1.5 !text-xs"
@@ -50,12 +52,12 @@ export function TriggerRender() {
                     variant: "ghost",
                     colorScheme: "error",
                     size: "icon",
-                    disabled: disable,
+                    disabled,
                   }),
                   "!rounded-sm !p-0.5",
                 )}
                 onClick={removeNode(item)}
-                onKeyDown={(e) => e.key === "Enter" && removeNode(item)}
+                onKeyDown={removeNode(item)}
               >
                 <XMarkIcon className="h-3.5 w-3.5 stroke-2" />
               </div>
@@ -66,7 +68,7 @@ export function TriggerRender() {
     }
 
     // For single combobox
-    return findLabel(value[0], options);
+    return findLabel(selected[0], options);
   }
 
   // Rendering the placeholder
