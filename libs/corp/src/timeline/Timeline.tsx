@@ -79,6 +79,7 @@ export function TimelineItem({
   label,
 }: PropsWithChildren<TimelineItem>) {
   const { mode } = useTimelineContext();
+  console.log(children);
 
   return (
     <div
@@ -95,14 +96,17 @@ export function TimelineItem({
           }}
         />
       )}
-      <p
-        className={classNames(
-          "text-secondary-800 dark:text-secondary-300 flex-1",
-          mode === "right" && "flex justify-end",
-        )}
-      >
-        {children}
-      </p>
+      {children !== true && (
+        <p
+          className={classNames(
+            "text-secondary-800 dark:text-secondary-300 flex-1",
+            mode === "right" && "flex justify-end",
+          )}
+        >
+          {children}
+        </p>
+      )}
+
       {label && (
         <p className="dark:text-secondary-400 text-secondary-500 text-sm">
           {label}
