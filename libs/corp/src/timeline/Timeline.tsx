@@ -1,10 +1,10 @@
-import { Spinner, classNames } from "@rafty/ui";
+import { Spinner, classNames, getValidChildren } from "@rafty/ui";
 import {
   HTMLAttributes,
-  PropsWithChildren,
   ReactElement,
   ReactNode,
   forwardRef,
+  useId,
 } from "react";
 import {
   TimelineContext,
@@ -12,14 +12,14 @@ import {
   useTimelineContext,
 } from "./context";
 
-export type Timeline = HTMLAttributes<HTMLDivElement> &
+export type Timeline = HTMLAttributes<HTMLUListElement> &
   Partial<TimelineContext> & {
     loadingDot?: ReactElement;
     loading?: boolean | ReactNode;
     reverse?: boolean;
   };
 
-export const Timeline = forwardRef<HTMLDivElement, Timeline>(
+export const Timeline = forwardRef<HTMLUListElement, Timeline>(
   (
     {
       loading,
@@ -32,89 +32,109 @@ export const Timeline = forwardRef<HTMLDivElement, Timeline>(
     },
     forwardedRef,
   ) => {
+    const validChildren = getValidChildren(children);
+    const Border = () => (
+      <div
+        className={classNames(
+          "flex h-full",
+          mode === "right" ? "mr-2 flex-row-reverse" : "ml-2 flex-row",
+        )}
+      >
+        <span
+          className={classNames(
+            "bg-secondary-300 dark:bg-secondary-500 flex h-full w-px justify-start",
+          )}
+        />
+      </div>
+    );
+
+    const components = validChildren.flatMap((child) => {
+      const key = useId();
+      return [child, <Border key={key} />];
+    });
+
     return (
       <TimelineProvider
         value={{
           mode,
         }}
       >
-        <div
+        <ul
           ref={forwardedRef}
           className={classNames(
-            "relative flex w-full gap-10",
+            "flex h-full w-full",
             reverse ? "flex-col-reverse" : "flex-col",
             className,
           )}
           {...props}
         >
-          {children}
-          {loading && (
-            <TimelineItem dot={loadingDot ?? <TimelineSpinner />}>
-              {loading}
-            </TimelineItem>
+          {loading ? (
+            <>
+              {components}
+              <TimelineItem
+                className="py-1"
+                dot={loadingDot ?? <TimelineSpinner />}
+              >
+                {loading}
+              </TimelineItem>
+            </>
+          ) : (
+            components.slice(0, -1)
           )}
-          <span
-            className={classNames(
-              "bg-secondary-300 dark:bg-secondary-500 absolute z-0 h-full w-px",
-              mode === "right" ? "right-2" : "left-2",
-            )}
-          />
-        </div>
+        </ul>
       </TimelineProvider>
     );
   },
 );
 Timeline.displayName = "Timeline";
 
-export type TimelineItem = {
+export type TimelineItem = Omit<HTMLAttributes<HTMLLIElement>, "color"> & {
   dot?: ReactNode;
   label?: ReactNode;
   color?: string;
 };
 
-export function TimelineItem({
-  children,
-  color,
-  dot,
-  label,
-}: PropsWithChildren<TimelineItem>) {
-  const { mode } = useTimelineContext();
-  console.log(children);
+export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
+  ({ dot, label, color, children, className, ...props }, forwardedRef) => {
+    const { mode } = useTimelineContext();
 
-  return (
-    <div
-      className={classNames(
-        "dark:bg-secondary-900 relative z-[1] flex h-full w-full items-center gap-3 bg-white",
-        mode === "right" && "flex-row-reverse",
-      )}
-    >
-      {dot ?? (
-        <div
-          className="dark:bg-secondary-950 border-primary-500 h-4 w-4 rounded-full border-[4px] bg-white"
-          style={{
-            borderColor: color,
-          }}
-        />
-      )}
-      {children !== true && (
-        <p
-          className={classNames(
-            "text-secondary-800 dark:text-secondary-300 flex-1",
-            mode === "right" && "flex justify-end",
-          )}
-        >
-          {children}
-        </p>
-      )}
-
-      {label && (
-        <p className="dark:text-secondary-400 text-secondary-500 text-sm">
-          {label}
-        </p>
-      )}
-    </div>
-  );
-}
+    return (
+      <li
+        ref={forwardedRef}
+        className={classNames(
+          "flex w-full items-center gap-3",
+          className,
+          mode === "right" && "flex-row-reverse",
+        )}
+        {...props}
+      >
+        {dot ?? (
+          <div
+            className="dark:bg-secondary-950 border-primary-500 h-4 w-4 rounded-full border-[4px] bg-white"
+            style={{
+              borderColor: color,
+            }}
+          />
+        )}
+        {children !== true && (
+          <p
+            className={classNames(
+              "text-secondary-800 dark:text-secondary-300 flex-1",
+              mode === "right" && "flex justify-end",
+            )}
+          >
+            {children}
+          </p>
+        )}
+        {label && (
+          <p className="dark:text-secondary-400 text-secondary-500 text-sm">
+            {label}
+          </p>
+        )}
+      </li>
+    );
+  },
+);
 
 function TimelineSpinner() {
   return (
