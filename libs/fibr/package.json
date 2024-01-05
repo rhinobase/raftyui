@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@rafty/ui": "*",
+    "@swc/helpers": "~0.5.2",
+    "@fibr/core": "^0.3.0",
+    "@fibr/react": "^0.3.0"
+  }
 }

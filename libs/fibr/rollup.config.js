@@ -13,7 +13,7 @@ module.exports = (config) => {
   config.plugins.push(
     preserveDirectives.default(), // For preserving "use client" directives
     visualizer(), // For visualizing bundle size
-    terser(), // For minification
+    terser() // For minification
   );
 
   config.input = [
