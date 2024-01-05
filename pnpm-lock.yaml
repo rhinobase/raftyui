@@ -14,12 +14,9 @@ dependencies:
   '@codesandbox/sandpack-themes':
     specifier: ^2.0.21
     version: 2.0.21
-  '@fibr/core':
-    specifier: ^0.3.0
-    version: 0.3.0(@swc/helpers@0.5.3)
   '@fibr/react':
-    specifier: ^0.3.0
-    version: 0.3.0(@fibr/core@0.3.0)(core-js@3.35.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0)
+    specifier: ^0.4.1
+    version: 0.4.1(lodash@4.17.21)(react@18.2.0)
   '@heroicons/react':
     specifier: 2.0.18
     version: 2.0.18(react@18.2.0)
@@ -3744,28 +3741,15 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
 
-  /@fibr/core@0.3.0(@swc/helpers@0.5.3):
-    resolution: {integrity: sha512-z1vBujfYtvvstWSx8jTK1gtDZLZeyuRyGO0yrHi3gKFQxQYBMgUiYfVHCIkcLMY0NOej4NGPdoxeMTe0eI3iNw==}
+  /@fibr/react@0.4.1(lodash@4.17.21)(react@18.2.0):
+    resolution: {integrity: sha512-m3yAzM7erEwTXnSdX26Bf7EYUDLUGKGt8w2kkXHPvTx5wguzalClZCpV+gub54EHZPpEIHz3U9ZJ/27t04Spsg==}
     peerDependencies:
-      '@swc/helpers': ~0.5.0
-    dependencies:
-      '@swc/helpers': 0.5.3
-    dev: false
-
-  /@fibr/react@0.3.0(@fibr/core@0.3.0)(core-js@3.35.0)(lodash@4.17.21)(react-hook-form@7.47.0)(react@18.2.0):
-    resolution: {integrity: sha512-xmE5TSvrfr/30FvwyzO5uLU2m4E51vBqF+dXvqmfGpykGlQg3nBBVpXxUcZWQa102hUdA2RhIwoFbuhlfyJNvQ==}
-    peerDependencies:
-      '@fibr/core': '*'
-      core-js: ^3.33.0
       lodash: ^4.17.21
       react: ^18.2.0
-      react-hook-form: ^7.46.2
     dependencies:
-      '@fibr/core': 0.3.0(@swc/helpers@0.5.3)
-      core-js: 3.35.0
+      '@swc/helpers': 0.5.3
       lodash: 4.17.21
       react: 18.2.0
-      react-hook-form: 7.47.0(react@18.2.0)
     dev: false
 
   /@floating-ui/core@1.5.0:
@@ -10188,11 +10172,6 @@ packages:
     resolution: {integrity: sha512-uBJiDmwqsbJCWHAwjrx3cvjbMXP7xD72Dmsn5LOJpiRmE3WbBbN5rCqQ2Qh6Ek6/eOrjlWngEynBWo4VxerQhg==}
     requiresBuild: true
     dev: true
-
-  /core-js@3.35.0:
-    resolution: {integrity: sha512-ntakECeqg81KqMueeGJ79Q5ZgQNR+6eaE8sxGCx62zMbAIj65q+uYvatToew3m6eAGdU4gNZwpZ34NMe4GYswg==}
-    requiresBuild: true
-    dev: false
 
   /core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
