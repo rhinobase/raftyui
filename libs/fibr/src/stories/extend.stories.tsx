@@ -5,7 +5,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { FieldValues, Resolver } from "react-hook-form";
 import z from "zod";
 import withRafty from "..";
-import { DevTool, ExtendComponent, OverrideComponent } from "../stories/utils";
+import { DevTool, ExtendComponent, OverrideComponent } from "./utils";
 
 const meta: Meta = {
   title: "fibr / Extend",

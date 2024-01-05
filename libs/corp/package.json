@@ -28,9 +28,9 @@
   },
   "sideEffects": false,
   "dependencies": {
+    "@heroicons/react": "^2.1.1",
     "@rafty/ui": "*",
     "@swc/helpers": "~0.5.2",
-    "@heroicons/react": "^2.1.1",
     "class-variance-authority": "^0.7.0"
   },
   "peerDependencies": {

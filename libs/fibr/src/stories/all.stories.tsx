@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { AllFields } from "../stories/utils";
+import { AllFields } from "./utils";
 
 const meta: Meta = {
   title: "fibr / All Fields",

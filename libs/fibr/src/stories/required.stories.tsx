@@ -5,7 +5,7 @@ import { Button } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldValues, Resolver } from "react-hook-form";
 import z from "zod";
-import { DevTool } from "../stories/utils";
+import { DevTool } from "./utils";
 
 const meta: Meta = {
   title: "fibr / Required Field",
