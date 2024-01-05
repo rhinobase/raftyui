@@ -4,9 +4,6 @@ const { visualizer } = require("rollup-plugin-visualizer");
 
 const getFiles = require("../../scripts/get-files");
 
-const extensions = [".js", ".ts", ".jsx", ".tsx"];
-const excludeExtensions = [".stories.tsx"];
-
 module.exports = (config) => {
   config.preserveModules = true;
 
@@ -16,10 +13,7 @@ module.exports = (config) => {
     terser(), // For minification
   );
 
-  config.input = [
-    config.input.index,
-    ...getFiles("libs/corp/src", extensions, excludeExtensions),
-  ];
+  config.input = [config.input.index, ...getFiles("libs/corp/src")];
 
   return config;
 };

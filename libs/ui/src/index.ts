@@ -49,3 +49,4 @@ export * from "./tooltip";
 export * from "./pagination";
 export * from "./utils";
 export * from "./hooks";
+export * from "./types";

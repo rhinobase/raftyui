@@ -1,6 +1,7 @@
 "use client";
 import { ErrorMessage } from "@hookform/error-message";
 import {
+  type BooleanOrFunction,
   ErrorMessage as RaftyErrorMessage,
   FieldControl,
   Label,
@@ -16,7 +17,7 @@ export type FieldWrapper = {
   name: string;
   label?: string;
   description?: string;
-  required?: boolean;
+  required?: BooleanOrFunction;
 };
 
 export function FieldWrapper({
