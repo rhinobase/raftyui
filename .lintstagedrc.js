@@ -1,8 +1,6 @@
 module.exports = {
-  "{apps,libs,tools}/**/*.{ts,tsx}": (files) => {
-    return `nx affected --target=typecheck --files=${files.join(",")}`;
-  },
-  "{apps,libs,tools}/**/*.{js,ts,jsx,tsx,json}": [
-    () => "pnpm dlx @biomejs/biome check --apply .",
+  "{apps,libs,tools}/**/*.{js,jsx,ts,tsx,json}": [
+    (files) => `nx affected --target=lint --files=${files.join(",")}`,
+    (files) => `pnpm dlx @biomejs/biome check --apply '${files.join(",")}'`,
   ],
 };
