@@ -1,18 +1,29 @@
 const fs = require("fs");
 
-function getFiles(entry, exclude = []) {
-  const paths = [];
+function getFiles(entry, extensions = [], excludeExtensions = []) {
+  let fileNames = [];
 
   const dirs = fs.readdirSync(entry);
 
   for (const dir of dirs) {
-    if (exclude.includes(dir)) continue;
-
     const path = `${entry}/${dir}`;
-    paths.push(path);
+
+    if (fs.lstatSync(path).isDirectory()) {
+      fileNames = [
+        ...fileNames,
+        ...getFiles(path, extensions, excludeExtensions),
+      ];
+    }
+
+    if (
+      !excludeExtensions.some((exclude) => dir.endsWith(exclude)) &&
+      extensions.some((ext) => dir.endsWith(ext))
+    ) {
+      fileNames.push(path);
+    }
   }
 
-  return paths;
+  return fileNames;
 }
 
 module.exports = getFiles;

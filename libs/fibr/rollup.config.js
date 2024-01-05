@@ -3,6 +3,8 @@ const terser = require("@rollup/plugin-terser");
 const { visualizer } = require("rollup-plugin-visualizer");
 
 const getFiles = require("../../scripts/get-files");
+const extensions = [".js", ".ts", ".jsx", ".tsx"];
+const excludeExtensions = [".stories.tsx"];
 
 module.exports = (config) => {
   config.preserveModules = true;
@@ -15,7 +17,7 @@ module.exports = (config) => {
 
   config.input = [
     config.input.index,
-    ...getFiles("libs/fibr/src", ["stories"]),
+    // ...getFiles("libs/fibr/src", extensions, excludeExtensions),
   ];
 
   return config;

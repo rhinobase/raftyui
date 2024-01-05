@@ -1,1 +1,1 @@
-export { ComboboxOptionType } from "./option";
+export type { ComboboxOptionType } from "./option";

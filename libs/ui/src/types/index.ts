@@ -1,1 +1,1 @@
-export { BooleanOrFunction } from "./boolean-or-function";
+export type { BooleanOrFunction } from "./boolean-or-function";
