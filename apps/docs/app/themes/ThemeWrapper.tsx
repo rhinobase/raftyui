@@ -58,7 +58,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
 
   return (
     <div
-      className={`w-full max-w-7xl mx-auto px-4 py-4 md:px-10 md:py-10 lg:px-0 theme-${color}`}
+      className={`mx-auto w-full max-w-7xl px-4 py-4 md:px-10 md:py-10 lg:px-0 theme-${color}`}
     >
       <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
@@ -211,7 +211,7 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
         <DocumentDuplicateIcon height={19} width={19} />
       </DialogTrigger>
       <DialogOverlay className="!z-[70]" />
-      <DialogContent className="!p-5 !z-[70]">
+      <DialogContent className="!z-[70] !p-5">
         <div className="mb-5 space-y-1">
           <DialogTitle>Theme</DialogTitle>
           <Text className="text-sm leading-snug opacity-50">
@@ -222,7 +222,8 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
         <Fence language="js">
           {`const colors = require('tailwindcss/colors')
 
-{
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: "class", // optional
   content: [
     ...
