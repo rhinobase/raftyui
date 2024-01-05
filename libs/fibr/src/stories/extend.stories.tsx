@@ -3,10 +3,10 @@ import { FibrForm, FibrProvider, Fields } from "@fibr/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldValues, Resolver } from "react-hook-form";
-import { z } from "zod";
-import { DevTool, ExtendComponent } from "./utils";
-import { OverrideComponent } from "./utils";
-// import raftyPlugin from "@fibr/rafty";
+import z from "zod";
+import withRafty from "..";
+import { DevTool, ExtendComponent } from "../fields/utils";
+import { OverrideComponent } from "../fields/utils";
 
 const meta: Meta = {
   title: "fibr / Extend",
@@ -24,7 +24,7 @@ export const Extend: Story = {
   render: () => (
     <FibrProvider
       plugins={[
-        // raftyPlugin,
+        withRafty,
         {
           sample_type: ExtendComponent,
         },
@@ -57,7 +57,7 @@ export const Override: Story = {
   render: () => (
     <FibrProvider
       plugins={[
-        // raftyPlugin,
+        withRafty,
         {
           string: OverrideComponent,
         },

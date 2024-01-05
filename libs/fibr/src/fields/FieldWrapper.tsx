@@ -7,11 +7,11 @@ import {
   Text,
   classNames,
 } from "@rafty/ui";
-import React from "react";
+import { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 
 export type FieldWrapper = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   name: string;
   label?: string;

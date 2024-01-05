@@ -1,7 +1,12 @@
 "use client";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  PlusIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import { Button, classNames } from "@rafty/ui";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { HiArrowDown, HiArrowUp, HiPlus, HiTrash } from "react-icons/hi";
 
 type ArrayFieldWrapper = {
   name: string;
@@ -38,7 +43,7 @@ export function ArrayFieldWrapper({
                 onClick={() => move(index, index - 1)}
                 isDisabled={index === 0}
               >
-                <HiArrowUp />
+                <ArrowUpIcon height={16} width={16} />
               </Button>
               <Button
                 variant="ghost"
@@ -46,7 +51,7 @@ export function ArrayFieldWrapper({
                 onClick={() => move(index, index + 1)}
                 isDisabled={index === fields.length - 1}
               >
-                <HiArrowDown />
+                <ArrowDownIcon height={16} width={16} />
               </Button>
             </div>
           )}
@@ -57,10 +62,10 @@ export function ArrayFieldWrapper({
               size="icon"
               onClick={() => insert(index + 1, null)}
             >
-              <HiPlus />
+              <PlusIcon height={16} width={16} />
             </Button>
             <Button variant="ghost" size="icon" onClick={() => remove(index)}>
-              <HiTrash className="text-red-500" />
+              <TrashIcon height={16} width={16} className="text-red-500" />
             </Button>
           </div>
         </div>
@@ -68,7 +73,7 @@ export function ArrayFieldWrapper({
       <Button
         variant="outline"
         onClick={() => append(null)}
-        leftIcon={<HiPlus />}
+        leftIcon={<PlusIcon height={16} width={16} />}
         className="mt-2 w-max"
       >
         Add

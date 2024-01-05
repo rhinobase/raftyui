@@ -2,6 +2,11 @@
 import type { FStringFieldType, FStringListType } from "@fibr/core";
 import type { FieldProps } from "@fibr/react";
 import {
+  CheckIcon,
+  ChevronUpDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -16,8 +21,6 @@ import {
 } from "@rafty/ui";
 import React, { useId } from "react";
 import { Controller, useController, useFormContext } from "react-hook-form";
-import { HiCheck } from "react-icons/hi";
-import { HiChevronUpDown, HiXMark } from "react-icons/hi2";
 import { findLabel } from "./ComboboxField";
 
 export function MultiSelectField(props: FieldProps<FStringFieldType>) {
@@ -37,7 +40,9 @@ export function MultiSelectField(props: FieldProps<FStringFieldType>) {
             aria-expanded={isOpen}
             className="relative w-full justify-between"
             rightIcon={
-              <HiChevronUpDown
+              <ChevronUpDownIcon
+                height={16}
+                width={16}
                 className={classNames(
                   isOpen
                     ? "text-primary-500 dark:text-primary-400"
@@ -78,7 +83,7 @@ export function MultiSelectField(props: FieldProps<FStringFieldType>) {
                         field.onChange(field.value);
                       }}
                     >
-                      <HiXMark size={13} />
+                      <XMarkIcon height={13} width={13} />
                     </div>
                   </div>
                 ))}
@@ -99,7 +104,7 @@ export function MultiSelectField(props: FieldProps<FStringFieldType>) {
                 setOpen(false);
               }}
             >
-              <HiXMark />
+              <XMarkIcon height={13} width={13} />
             </div>
           </PopoverTrigger>
           <PopoverContent className="!w-[380px] !p-0 md:!w-[700px] lg:!w-[770px]">
@@ -160,7 +165,7 @@ function Options(props: {
         >
           {label}
           {field.value?.find((item: string | number) => item === value) && (
-            <HiCheck />
+            <CheckIcon height={16} width={16} />
           )}
         </CommandItem>,
       );

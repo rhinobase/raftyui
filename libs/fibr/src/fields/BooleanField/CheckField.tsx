@@ -2,7 +2,6 @@
 import type { FBooleanFieldType } from "@fibr/core";
 import type { FieldProps } from "@fibr/react";
 import { Checkbox, Label, Text } from "@rafty/ui";
-import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 export function CheckField({ name, field }: FieldProps<FBooleanFieldType>) {

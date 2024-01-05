@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldValues, Resolver } from "react-hook-form";
-import { boolean, z } from "zod";
-import { DevTool } from "./utils";
+import z from "zod";
+import { DevTool } from "../fields/utils";
 
 const meta: Meta = {
   title: "fibr / Required Field",
@@ -26,7 +26,7 @@ const allFieldsSchema = z.object({
   array_field: z.array(
     z.object({
       sample: z.string(),
-      on_off: boolean(),
+      on_off: z.boolean(),
     }),
   ),
 });

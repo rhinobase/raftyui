@@ -1,7 +1,7 @@
 import { FieldProps } from "@fibr/react";
 import { InputField } from "@rafty/ui";
 import { useFormContext } from "react-hook-form";
-import { FieldWrapper } from "../FieldWrapper";
+import { FieldWrapper } from "../../fields/FieldWrapper";
 
 export function OverrideComponent(props: FieldProps) {
   const { name, field } = props;

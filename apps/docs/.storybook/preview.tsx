@@ -1,8 +1,8 @@
+import { FibrProvider } from "@fibr/react";
 import type { Preview } from "@storybook/react";
 import React from "react";
-import "./storybook.css";
-import { FibrProvider } from "@fibr/react";
 import withRafty from "../../../libs/fibr/src";
+import "./storybook.css";
 
 const DEFAULT_THEME = "light";
 

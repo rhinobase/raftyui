@@ -3,8 +3,8 @@ import { FibrForm, Fields } from "@fibr/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Meta, StoryObj } from "@storybook/react";
 import { FieldValues, Resolver } from "react-hook-form";
-import { z } from "zod";
-import { DevTool } from "../utils";
+import z from "zod";
+import { DevTool } from "../../stories/utils";
 
 const meta: Meta = {
   title: "fibr / Number",

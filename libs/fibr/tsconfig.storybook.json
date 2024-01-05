@@ -8,5 +8,5 @@
       "@nx/react/typings/image.d.ts"
     ]
   },
-  "include": ["src/**/*.stories.tsx"]
+  "include": ["src/**/*.stories.tsx", "src/stories/**/*"]
 }

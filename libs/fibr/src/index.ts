@@ -1,16 +1,16 @@
 import { FieldProps } from "@fibr/react";
 import {
+  ArrayFields,
+  BooleanFields,
   CommonField,
-  TextField,
   DateField,
   DatetimeField,
-  BooleanFields,
-  ArrayFields,
   ObjectField,
+  TextField,
 } from "./fields";
 
 export { FieldWrapper } from "./fields";
-export default {
+export default ({
   string: CommonField,
   number: CommonField,
   boolean: BooleanFields,
@@ -19,4 +19,5 @@ export default {
   date: DateField,
   datetime: DatetimeField,
   object: ObjectField,
-} as Record<string, (props: FieldProps<any>) => JSX.Element>;
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+} as Record<string, (props: FieldProps<any>) => JSX.Element>);

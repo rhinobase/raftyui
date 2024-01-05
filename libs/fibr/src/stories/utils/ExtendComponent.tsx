@@ -1,9 +1,9 @@
 import { FieldProps } from "@fibr/react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { classNames } from "@rafty/ui";
-import React from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Controller } from "react-hook-form";
-import { FieldWrapper } from "../FieldWrapper";
+import { FieldWrapper } from "../../fields/FieldWrapper";
 
 export function ExtendComponent(props: FieldProps) {
   const { name, field } = props;
@@ -34,9 +34,9 @@ export function ExtendComponent(props: FieldProps) {
   );
 }
 
-const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+const Slider = forwardRef<
+  ElementRef<typeof SliderPrimitive.Root>,
+  ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <SliderPrimitive.Root
     ref={ref}

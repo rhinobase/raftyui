@@ -1,6 +1,7 @@
 "use client";
 import type { FStringFieldType, FStringListType } from "@fibr/core";
 import type { FieldProps } from "@fibr/react";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import {
   Command,
   CommandEmpty,
@@ -13,10 +14,8 @@ import {
   PopoverTrigger,
   classNames,
 } from "@rafty/ui";
-import React, { useId } from "react";
+import { useId, useState } from "react";
 import { Controller, useController, useFormContext } from "react-hook-form";
-import { HiCheck } from "react-icons/hi";
-import { HiChevronUpDown } from "react-icons/hi2";
 
 export function findLabel(
   value: string | number,
@@ -34,7 +33,7 @@ export function findLabel(
 
 export function ComboboxField(props: FieldProps<FStringFieldType>) {
   const { control } = useFormContext();
-  const [isOpen, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <Controller
@@ -49,7 +48,9 @@ export function ComboboxField(props: FieldProps<FStringFieldType>) {
             aria-expanded={isOpen}
             className="w-full justify-between"
             rightIcon={
-              <HiChevronUpDown
+              <ChevronUpDownIcon
+                height={16}
+                width={16}
                 className={classNames(
                   isOpen
                     ? "text-primary-500 dark:text-primary-400"
@@ -116,7 +117,8 @@ function Options(props: {
           }}
           className="justify-between"
         >
-          {label} {field.value === value && <HiCheck />}
+          {label}{" "}
+          {field.value === value && <CheckIcon height={16} width={16} />}
         </CommandItem>,
       );
     else
