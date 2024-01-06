@@ -5,7 +5,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import { InputField } from "../input-field";
-import { Text } from "../text";
 import { InputGroup } from "./InputGroup";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
@@ -75,8 +74,8 @@ export const Default: Story = {
         Input Group With Left and Right Addon
       </h4>
       <InputGroup size={size}>
-        <LeftAddon>
-          <Text className="text-secondary-500 text-sm font-medium">+234</Text>
+        <LeftAddon className="text-secondary-500 text-sm font-medium">
+          +234
         </LeftAddon>
         <InputField
           isDisabled={isDisabled}
@@ -88,8 +87,8 @@ export const Default: Story = {
         </RightAddon>
       </InputGroup>
       <InputGroup size={size}>
-        <LeftAddon>
-          <Text className="text-secondary-500 text-sm font-medium">+234</Text>
+        <LeftAddon className="text-secondary-500 text-sm font-medium">
+          +234
         </LeftAddon>
         <InputField
           isDisabled={isDisabled}
@@ -108,8 +107,8 @@ export const Default: Story = {
         </RightAddon>
       </InputGroup>
       <InputGroup size={size}>
-        <LeftAddon>
-          <Text className="text-secondary-500 text-sm font-medium">+234</Text>
+        <LeftAddon className="text-secondary-500 text-sm font-medium">
+          +234
         </LeftAddon>
         <Prefix>
           <PhoneIcon className="text-secondary-500 h-4 w-4" />
