@@ -145,62 +145,37 @@ Pass ` isUnstyled` prop to remove style component
 
 {% /example %}
 
-## Left Addon
+## Input Group
 
 {% example %}
 
 ```jsx
-<InputGroup>
-  <LeftAddon>
-    <PhoneIcon width={16} height={16} className="stroke-2" />
-  </LeftAddon>
-  <InputField type="tel" placeholder="Phone number" />
-</InputGroup>
-```
-
-{% /example %}
-
-## Right Addon
-
-{% example %}
-
-```jsx
-<InputGroup>
-  <InputField />
-  <RightAddon>
-    <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
-  </RightAddon>
-</InputGroup>
-```
-
-{% /example %}
-
-## Prefix
-
-{% example %}
-
-```jsx
-<InputGroup>
-  <Prefix>
-    <PhoneIcon width={16} height={16} className="stroke-2" />
-  </Prefix>
-  <InputField />
-</InputGroup>
-```
-
-{% /example %}
-
-## Suffix
-
-{% example %}
-
-```jsx
-<InputGroup>
-  <InputField />
-  <Suffix>
-    <CheckIcon width={16} height={16} className="stroke-2 text-green-500" />
-  </Suffix>
-</InputGroup>
+<div className="space-y-3">
+  <InputGroup>
+    <LeftAddon>
+      <PhoneIcon width={16} height={16} className="stroke-2" />
+    </LeftAddon>
+    <InputField type="tel" placeholder="Phone number" />
+  </InputGroup>
+  <InputGroup>
+    <InputField />
+    <RightAddon>
+      <MagnifyingGlassIcon width={16} height={16} className="stroke-2" />
+    </RightAddon>
+  </InputGroup>
+  <InputGroup>
+    <Prefix>
+      <PhoneIcon width={16} height={16} className="stroke-2" />
+    </Prefix>
+    <InputField />
+  </InputGroup>
+  <InputGroup>
+    <InputField />
+    <Suffix>
+      <CheckIcon width={16} height={16} className="stroke-2 text-green-500" />
+    </Suffix>
+  </InputGroup>
+</div>
 ```
 
 {% /example %}

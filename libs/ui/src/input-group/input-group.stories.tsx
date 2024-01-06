@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import { InputField } from "../input-field";
+import { Text } from "../text";
 import { InputGroup } from "./InputGroup";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
@@ -36,76 +37,89 @@ export const Default: Story = {
       <h4 className="text-center font-bold dark:text-white">
         Input Group With Prefix and Suffix And Size
       </h4>
-      <InputGroup>
+      <InputGroup size={size}>
         <Prefix>
-          <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
+          <PhoneIcon className="text-secondary-500 h-4 w-4 stroke-2" />
         </Prefix>
         <InputField
-          size={size}
           isDisabled={isDisabled}
           isReadOnly={isReadOnly}
           isRequired={isRequired}
         />
         <Suffix>
-          <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
+          <CheckIcon className="h-4 w-4 stroke-2 text-green-500" />
         </Suffix>
       </InputGroup>
-      <InputGroup>
+      <InputGroup size={size}>
         <Prefix>
-          <PhoneIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
+          <PhoneIcon className="text-secondary-500 h-4 w-4 stroke-2" />
         </Prefix>
         <InputField
-          size={size}
           isDisabled={isDisabled}
           isReadOnly={isReadOnly}
           isRequired={isRequired}
         />
       </InputGroup>
-      <InputGroup>
+      <InputGroup size={size}>
         <InputField
-          size={size}
           isDisabled={isDisabled}
           isReadOnly={isReadOnly}
           isRequired={isRequired}
         />
         <Suffix>
-          <CheckIcon className="dark:text-secondary-200 h-4 w-4 text-black" />
+          <CheckIcon className="h-4 w-4 stroke-2 text-green-500" />
         </Suffix>
       </InputGroup>
 
       <h4 className="text-center font-bold dark:text-white">
         Input Group With Left and Right Addon
       </h4>
-      <InputGroup>
-        <LeftAddon>+234</LeftAddon>
+      <InputGroup size={size}>
+        <LeftAddon>
+          <Text className="text-secondary-500 text-sm font-medium">+234</Text>
+        </LeftAddon>
         <InputField
-          size={size}
           isDisabled={isDisabled}
           isReadOnly={isReadOnly}
           isRequired={isRequired}
         />
         <RightAddon>
-          <MagnifyingGlassIcon className="dark:text-secondary-200 h-5 w-5 text-black" />
+          <MagnifyingGlassIcon className="text-secondary-500 h-4 w-4 stroke-2" />
         </RightAddon>
       </InputGroup>
-      <InputGroup>
-        <LeftAddon>+234</LeftAddon>
+      <InputGroup size={size}>
+        <LeftAddon>
+          <Text className="text-secondary-500 text-sm font-medium">+234</Text>
+        </LeftAddon>
         <InputField
-          size={size}
           isDisabled={isDisabled}
           isReadOnly={isReadOnly}
           isRequired={isRequired}
         />
       </InputGroup>
-      <InputGroup>
+      <InputGroup size={size}>
         <InputField
-          size={size}
           isDisabled={isDisabled}
           isReadOnly={isReadOnly}
           isRequired={isRequired}
         />
         <RightAddon>
-          <MagnifyingGlassIcon className="dark:text-secondary-200 h-5 w-5 text-black" />
+          <MagnifyingGlassIcon className="text-secondary-500 h-4 w-4 stroke-2" />
+        </RightAddon>
+      </InputGroup>
+      <InputGroup size={size}>
+        <LeftAddon>
+          <Text className="text-secondary-500 text-sm font-medium">+234</Text>
+        </LeftAddon>
+        <Prefix>
+          <PhoneIcon className="text-secondary-500 h-4 w-4" />
+        </Prefix>
+        <InputField />
+        <Suffix>
+          <CheckIcon className="h-4 w-4 stroke-2 text-green-500" />
+        </Suffix>
+        <RightAddon>
+          <MagnifyingGlassIcon className="text-secondary-500 h-4 w-4 stroke-2" />
         </RightAddon>
       </InputGroup>
     </div>
