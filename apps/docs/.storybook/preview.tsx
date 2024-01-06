@@ -1,7 +1,5 @@
-import { FibrProvider } from "@fibr/react";
 import type { Preview } from "@storybook/react";
 import React from "react";
-import withRafty from "../../../libs/fibr/src";
 import "./storybook.css";
 
 const DEFAULT_THEME = "light";
@@ -49,9 +47,7 @@ const preview: Preview = {
       return (
         <div className="dark:bg-secondary-900">
           <div className="mx-auto flex h-screen w-full max-w-3xl flex-col items-center justify-center gap-2">
-            <FibrProvider plugins={[withRafty]}>
-              <Story />
-            </FibrProvider>
+            <Story />
           </div>
         </div>
       );
