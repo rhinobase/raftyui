@@ -9,7 +9,7 @@ import {
   useId,
 } from "react";
 
-export const breadcrumbsClasses = cva("flex items-center", {
+const breadcrumbsClasses = cva("flex items-center", {
   variants: {
     size: {
       sm: "gap-1",
@@ -22,7 +22,7 @@ export const breadcrumbsClasses = cva("flex items-center", {
   },
 });
 
-export const breadcrumbItemClasses = cva("!rounded-base", {
+const breadcrumbItemClasses = cva("!rounded-base", {
   variants: {
     size: {
       sm: "!px-1.5 !py-0.5",
@@ -35,7 +35,7 @@ export const breadcrumbItemClasses = cva("!rounded-base", {
   },
 });
 
-export const dividerClasses = cva(
+const dividerClasses = cva(
   "select-none font-semibold opacity-50 dark:opacity-40",
   {
     variants: {

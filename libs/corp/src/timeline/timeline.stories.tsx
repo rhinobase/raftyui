@@ -67,7 +67,7 @@ export const WithLabel: Story = {
 
 export const LoadingWithReactNode: Story = {
   render: ({ reverse, mode }) => (
-    <Timeline reverse={reverse} loading="Loading..." mode={mode}>
+    <Timeline reverse={reverse} loading="Loading more..." mode={mode}>
       <TimelineItem color="rgb(0,0,0)" dot={<TvIcon height={20} width={20} />}>
         Create a services site 2015-09-01
       </TimelineItem>

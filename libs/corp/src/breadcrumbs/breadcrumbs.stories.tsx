@@ -19,7 +19,7 @@ export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
-  render: function Render({ size }) {
+  render: ({ size }) => {
     const onClick = (current: string) => {
       console.log(current);
     };
@@ -34,7 +34,6 @@ export const Default: Story = {
           { label: "Menu", href: "/" },
           { label: "Article" },
         ]}
-        seperator=">"
       />
     );
   },
@@ -42,7 +41,7 @@ export const Default: Story = {
 
 export const WrapWithDiv: Story = {
   render: ({ size }) => (
-    <div className="text-2xl">
+    <div className="text-3xl">
       <Breadcrumbs
         size={size}
         items={[

@@ -55,7 +55,7 @@ export const Default: Story = {
   ),
 };
 
-export const Controled: Story = {
+export const Controlled: Story = {
   render: function Render({ size, direction, isDisabled }) {
     const [current, setCurrent] = useState(0);
 
@@ -135,7 +135,7 @@ export const WithIcon: Story = {
     return (
       <Stepper
         size={size}
-        direction="vertical"
+        direction={direction}
         isDisabled={isDisabled}
         steps={[
           {
