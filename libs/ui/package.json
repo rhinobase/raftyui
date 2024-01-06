@@ -1,7 +1,7 @@
 {
   "name": "@rafty/ui",
   "description": "React + A11y + Tailwind CSS Dynamic Component Library",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "license": "MIT",
   "keywords": [
     "react",
@@ -47,9 +47,10 @@
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
     "dateformat": "^5.0.3",
-    "react-day-picker": "^8.8.2",
     "react-virtualized-auto-sizer": "^1.0.20",
-    "react-window": "^1.8.10"
+    "react-window": "^1.8.10",
+    "tailwind-merge": "^2.2.0",
+    "react-day-picker": "^8.8.2"
   },
   "peerDependencies": {
     "react": "^18.2.0"

@@ -115,7 +115,7 @@ export function PaymentMethodExample() {
             <Label>CVC</Label>
             <InputField
               placeholder="CVC"
-              className="!py-2 placeholder:text-sm"
+              className="py-2 placeholder:text-sm"
             />
           </FieldControl>
         </div>
@@ -134,7 +134,11 @@ function ExpireMonthSelect() {
           <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
               {selected === month && (
-                <CheckIcon width={16} height={16} className="opacity-60" />
+                <CheckIcon
+                  width={16}
+                  height={16}
+                  className="stroke-2 opacity-60"
+                />
               )}
             </div>
             <Text className="capitalize">{month}</Text>
@@ -156,7 +160,11 @@ function ExpireYearSelect() {
           <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
               {selected === year && (
-                <CheckIcon width={16} height={16} className="opacity-60" />
+                <CheckIcon
+                  width={16}
+                  height={16}
+                  className="stroke-2 opacity-60"
+                />
               )}
             </div>
             <Text>{year}</Text>

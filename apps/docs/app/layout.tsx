@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     images: {
       width: 1200,
       height: 630,
-      url: "https://rafty.rhinobase.io/api/og",
+      url: "/api/og",
     },
   },
   openGraph: {
@@ -65,12 +65,12 @@ export const metadata: Metadata = {
       default: "rafty/ui Docs",
     },
     description: "React + Accessible + Tailwind CSS Dynamic Component Library",
-    url: "https://rafty.rhinobase.io",
+    url: "/",
     siteName: "@rafty/ui Docs",
     images: {
       width: 1200,
       height: 630,
-      url: "https://rafty.rhinobase.io/api/og",
+      url: "/api/og",
     },
     locale: "en_US",
     type: "website",

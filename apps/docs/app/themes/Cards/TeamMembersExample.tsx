@@ -108,12 +108,14 @@ function MemberRoleMenu({ label }: { label: string }) {
         role="combobox"
         aria-expanded={isOpen}
         className="justify-between capitalize"
-        rightIcon={<ChevronDownIcon height={15} width={15} />}
+        rightIcon={
+          <ChevronDownIcon height={15} width={15} className="stroke-2" />
+        }
         aria-label={label}
       >
         {selected?.title}
       </PopoverTrigger>
-      <PopoverContent className="!p-0 sm:!w-[320px]">
+      <PopoverContent className="p-0 sm:w-[320px]">
         <Command>
           <CommandInput placeholder="Search role" />
           <CommandList>
@@ -124,7 +126,7 @@ function MemberRoleMenu({ label }: { label: string }) {
                     key={id}
                     value={title}
                     onSelect={dispatch}
-                    className="!rounded !px-3 !py-2"
+                    className="rounded px-3 py-2"
                   >
                     <div>
                       <Text className="capitalize leading-snug">{title}</Text>
@@ -137,7 +139,7 @@ function MemberRoleMenu({ label }: { label: string }) {
                       <CheckIcon
                         height={16}
                         width={16}
-                        className="opacity-60"
+                        className="stroke-2 opacity-60"
                       />
                     )}
                   </CommandItem>

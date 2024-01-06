@@ -35,7 +35,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             aria-label="show and hide password"
             variant="ghost"
             onClick={() => setShowPassword((prev) => !prev)}
-            className="!rounded !p-1"
+            className="rounded p-1"
           >
             <Icon className={classNames(ICON_CLASSES[size], "stroke-2")} />
           </Button>

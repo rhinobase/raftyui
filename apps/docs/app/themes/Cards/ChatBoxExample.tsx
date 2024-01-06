@@ -99,7 +99,7 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           Hi, how can I help you today?
         </Message>
         <div className="flex flex-row-reverse">
-          <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
+          <Message className="bg-primary-500 dark:bg-primary-300/90 dark:text-secondary-900 text-white dark:font-semibold">
             Hey, I&apos;m having trouble with my account.
           </Message>
         </div>
@@ -107,13 +107,13 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           What seems to be the problem?
         </Message>
         <div className="flex flex-row-reverse">
-          <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
+          <Message className="bg-primary-500 dark:bg-primary-300/90 dark:text-secondary-900 text-white dark:font-semibold">
             I can&apos;t log in.
           </Message>
         </div>
         {messages?.map((message) => (
           <div key={message} className="flex flex-row-reverse">
-            <Message className="bg-primary-500 dark:bg-primary-300/90 dark:!text-secondary-900 !text-white dark:!font-semibold">
+            <Message className="bg-primary-500 dark:bg-primary-300/90 dark:text-secondary-900 text-white dark:font-semibold">
               {message}
             </Message>
           </div>
@@ -130,11 +130,11 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
         <Button
           size="icon"
           colorScheme="primary"
-          className="!p-2"
+          className="p-2"
           onClick={dispatch}
           aria-label="Send"
         >
-          <PaperAirplaneIcon height={18} width={18} />
+          <PaperAirplaneIcon height={18} width={18} className="stroke-2" />
         </Button>
       </div>
     </div>
@@ -162,23 +162,23 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
           <DialogTrigger
             size="fab"
             variant="outline"
-            className="!p-2"
+            className="p-2"
             aria-label="add people"
           >
-            <PlusIcon height={16} width={16} />
+            <PlusIcon height={16} width={16} className="stroke-2" />
           </DialogTrigger>
         </TooltipTrigger>
         <TooltipContent>New message</TooltipContent>
       </Tooltip>
-      <DialogOverlay className="!z-[70]" />
-      <DialogContent className="dark:!bg-secondary-900 !p-0 !z-[70]">
+      <DialogOverlay className="z-[70]" />
+      <DialogContent className="dark:bg-secondary-900 z-[70] p-0">
         <div className="space-y-2 p-4">
           <DialogTitle>New message</DialogTitle>
           <Text className="text-sm leading-tight opacity-60">
             Invite a user to this thread. This will create a new group message.
           </Text>
         </div>
-        <Command className="dark:border-secondary-700 dark:!bg-secondary-900 !rounded-none border-y">
+        <Command className="dark:border-secondary-700 dark:bg-secondary-900 rounded-none border-y">
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
@@ -186,7 +186,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
               {USERS_DATA.map((user) => (
                 <CommandItem
                   key={user.id}
-                  className="!rounded-lg"
+                  className="rounded-lg"
                   onSelect={() => dispatch(user.id)}
                 >
                   <div className="flex w-full items-center gap-3">
@@ -207,7 +207,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
                       <CheckIcon
                         height={16}
                         width={16}
-                        className="opacity-60"
+                        className="stroke-[3] opacity-60"
                       />
                     )}
                   </div>

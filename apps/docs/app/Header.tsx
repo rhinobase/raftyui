@@ -52,7 +52,7 @@ export function Header({ setDrawerOpen, setSearchOpen }: Header) {
           onClick={() => setDrawerOpen(true)}
           aria-label="Drawer Menu"
         >
-          <Bars3Icon height={20} width={20} />
+          <Bars3Icon height={20} width={20} className="stroke-2" />
         </Button>
       </div>
       <div className="relative flex flex-grow basis-0 items-center">

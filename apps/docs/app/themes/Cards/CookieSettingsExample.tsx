@@ -40,7 +40,7 @@ export function CookieSettingsExample() {
           <Switch defaultChecked={index < 2} aria-label={heading} />
         </div>
       ))}
-      <Button variant="outline" colorScheme="primary" className="!w-full">
+      <Button variant="outline" colorScheme="primary" className="w-full">
         Save preference
       </Button>
     </div>

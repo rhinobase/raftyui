@@ -98,7 +98,7 @@ export default function ThemeComponents() {
         </div>
         <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
           <div className="flex justify-center">
-            <Calendar className="!w-[285px]" />
+            <Calendar className="w-[285px]" />
           </div>
           <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
             <Card>
@@ -149,7 +149,7 @@ export default function ThemeComponents() {
       </div>
       <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
         <div className="hidden gap-1 sm:grid-cols-[280px_1fr] md:grid">
-          <Calendar className="!w-[280px]" />
+          <Calendar className="w-[280px]" />
           <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-3">
             <Card>
               <CardContent>

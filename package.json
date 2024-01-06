@@ -131,6 +131,7 @@
     "react-window": "^1.8.10",
     "recharts": "2.8.0",
     "simple-functional-loader": "1.2.1",
+    "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "1.0.7",
     "tslib": "^2.3.0",
     "vite-tsconfig-paths": "4.2.1",

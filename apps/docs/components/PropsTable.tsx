@@ -6,7 +6,7 @@ export function PropsTable({ children }: PropsWithChildren) {
     <div className="my-[1em] w-full overflow-x-auto">
       <Table
         isUnstyled
-        className="!my-0 w-max table-auto text-left text-[0.875em] leading-[1.7142857] md:w-full"
+        className="my-0 w-max table-auto text-left text-[0.875em] leading-[1.7142857] md:w-full"
       >
         {children}
       </Table>

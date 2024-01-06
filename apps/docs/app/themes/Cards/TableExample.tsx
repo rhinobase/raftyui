@@ -139,11 +139,13 @@ const ColumnsSelectMenu = ({
   <Menu>
     <MenuTrigger
       variant="outline"
-      rightIcon={<ChevronDownIcon height={16} width={16} />}
+      rightIcon={
+        <ChevronDownIcon height={16} width={16} className="stroke-2" />
+      }
     >
       Columns
     </MenuTrigger>
-    <MenuContent className="!min-w-[10rem]" align="end">
+    <MenuContent className="min-w-[10rem]" align="end">
       {COLUMNS.map((value) => (
         <MenuCheckboxItem
           key={value}
@@ -193,7 +195,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
               </Th>
             </Tr>
           </TableHead>
-          <TableBody className="dark:!bg-secondary-950">
+          <TableBody className="dark:bg-secondary-950">
             {data.map((item, index) => (
               <Tr key={item.id}>
                 <Td>
@@ -224,12 +226,12 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                   <Menu size="sm">
                     <MenuTrigger variant="ghost" size="icon">
                       <EllipsisHorizontalIcon
-                        height={16}
-                        width={16}
-                        className="text-secondary-700 dark:text-secondary-200"
+                        height={18}
+                        width={18}
+                        className="stroke-2"
                       />
                     </MenuTrigger>
-                    <MenuContent className="!z-50 !min-w-[9rem]">
+                    <MenuContent className="z-50 min-w-[9rem]">
                       <MenuLabel className="leading-4">Actions</MenuLabel>
                       <MenuItem>Copy payment ID</MenuItem>
                       <MenuSeparator />
@@ -249,18 +251,10 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         </Text>
         <div className="flex gap-2">
           <Button variant="outline" size="icon" isDisabled>
-            <ChevronLeftIcon
-              height={16}
-              width={16}
-              className="text-secondary-700 dark:text-secondary-200"
-            />
+            <ChevronLeftIcon height={16} width={16} className="stroke-2" />
           </Button>
           <Button variant="outline" size="icon" isDisabled>
-            <ChevronRightIcon
-              height={16}
-              width={16}
-              className="text-secondary-700 dark:text-secondary-200"
-            />
+            <ChevronRightIcon height={16} width={16} className="stroke-2" />
           </Button>
         </div>
       </div>
