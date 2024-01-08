@@ -2,35 +2,47 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, ReactNode, forwardRef, useId } from "react";
+import { StepperContext, StepperProvider, useStepperContext } from "./context";
 
-export type StepperItem = {
+const stepperClasses = cva("flex", {
+  variants: {
+    direction: {
+      horizontal: "w-full items-center",
+      vertical: "h-full flex-col",
+    },
+    isDisabled: {
+      true: "aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",
+      false: "",
+    },
+  },
+});
+
+export type Steps = {
   title?: string;
   subTitle?: string;
   description?: string;
   icon?: ReactNode;
 };
 
-export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> & {
-  current?: number;
-  initial?: number;
-  direction?: "horizontal" | "vertical";
-  size?: "sm" | "md" | "lg";
-  isDisabled?: boolean;
-  onClick?: (value: number) => void;
-  connector?: (props: StepConnector) => JSX.Element;
-  steps: StepperItem[];
-};
+export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
+  Partial<StepperContext> & {
+    current?: number;
+    initial?: number;
+    onClick?: (value: number) => void;
+    connector?: (props: StepConnector) => JSX.Element;
+    steps: Steps[];
+  };
 
 export const Stepper = forwardRef<HTMLDivElement, Stepper>(
   (
     {
-      size = "md",
       steps,
-      isDisabled = false,
-      direction = "horizontal",
       current = 0,
       initial = 0,
       onClick,
+      size = "md",
+      isDisabled = false,
+      direction = "horizontal",
       connector: CustomConnector,
       ...props
     },
@@ -48,12 +60,13 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
         return [
           <div
             key={`${stepperKey}-${index}`}
-            onClick={() => onClick?.(value)}
-            onKeyDown={(e) => e.key === "Enter" && onClick?.(value)}
+            onClick={() => !isDisabled && onClick?.(value)}
+            onKeyDown={(e) =>
+              !isDisabled && e.key === "Enter" && onClick?.(value)
+            }
           >
-            <StepCard
+            <StepperItem
               {...step}
-              size={size}
               current={current}
               value={value}
               isClickable={Boolean(onClick !== undefined)}
@@ -61,8 +74,6 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
           </div>,
           <Connector
             key={`${connectorKey}-${index}`}
-            direction={direction}
-            size={size}
             active={current > value}
           />,
         ];
@@ -70,18 +81,22 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
       .slice(0, -1);
 
     return (
-      <div
-        ref={forwardedRef}
-        {...props}
-        aria-disabled={isDisabled}
-        className={classNames(
-          "flex",
-          direction === "horizontal" && "w-full items-center",
-          direction === "vertical" && "h-full flex-col",
-        )}
+      <StepperProvider
+        value={{
+          direction,
+          isDisabled,
+          size,
+        }}
       >
-        {components}
-      </div>
+        <div
+          ref={forwardedRef}
+          {...props}
+          aria-disabled={isDisabled}
+          className={stepperClasses({ direction, isDisabled })}
+        >
+          {components}
+        </div>
+      </StepperProvider>
     );
   },
 );
@@ -89,13 +104,33 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
 Stepper.displayName = "Stepper";
 
 const iconClass = cva(
-  "flex items-center justify-center rounded-full leading-none select-none border border-transparent group-focus/item:ring-2 ring-offset-1 ring-primary-300 dark:ring-secondary-100 dark:ring-offset-secondary-950",
+  "flex items-center justify-center rounded-full leading-none select-none border border-transparent ring-offset-1 ring-primary-300 dark:ring-secondary-100 dark:ring-offset-secondary-950",
   {
     variants: {
       size: {
         sm: "h-8 w-8",
         md: "h-9 w-9 text-lg",
         lg: "h-10 w-10 text-xl",
+      },
+      isOnclick: {
+        true: "group-focus/item:ring-2",
+        false: "",
+      },
+      active: {
+        true: "group-hover/item:text-primary-500 group-hover/item:border-primary-500 transition-all ease-in-out",
+        false: "",
+      },
+      isCurrentStep: {
+        true: "bg-primary-500 dark:bg-primary-600 text-white",
+        false: "",
+      },
+      isCompletedStep: {
+        true: "bg-primary-100 text-primary-500 dark:bg-primary-900/50 dark:text-primary-400",
+        false: "",
+      },
+      notComplete: {
+        true: "bg-secondary-300 text-secondary-500 dark:bg-secondary-700 dark:text-secondary-400",
+        false: "",
       },
     },
     defaultVariants: {
@@ -127,7 +162,7 @@ const helpTextClasses = cva("leading-none", {
   },
 });
 
-const stepCardClasses = cva(
+const StepperItemClasses = cva(
   "group/item flex h-full w-max items-center outline-none",
   {
     variants: {
@@ -139,6 +174,10 @@ const stepCardClasses = cva(
       selectableItem: {
         true: "cursor-pointer",
         false: "cursor-text",
+      },
+      isDisabled: {
+        true: "aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",
+        false: "",
       },
     },
   },
@@ -154,53 +193,45 @@ const itemClasses = cva("flex items-baseline", {
   },
 });
 
-type StepCard = Pick<Stepper, "size" | "current"> &
-  StepperItem & { value: number; isClickable?: boolean };
+type StepperItem = Pick<Stepper, "current"> &
+  Steps & { value: number; isClickable?: boolean };
 
-function StepCard({
+function StepperItem({
   title,
   description,
   subTitle,
   icon,
   value,
   current = 0,
-  size = "md",
   isClickable,
-}: StepCard) {
+}: StepperItem) {
+  const { size, isDisabled } = useStepperContext();
+
   const isNextStep = current < value;
   const isCurrentStep = current === value;
   const isCompletedStep = current > value;
-
-  const titleRender = <h3 className={titleClasses({ size })}>{title}</h3>;
-  const subTitleRender = (
-    <h5 className={helpTextClasses({ size, isSubtitle: true })}>{subTitle}</h5>
-  );
-  const descriptionRender = (
-    <p className={helpTextClasses({ size })}>{description}</p>
-  );
 
   return (
     <div
       role="button"
       tabIndex={0}
-      className={stepCardClasses({
+      className={StepperItemClasses({
         size,
         selectableItem: isClickable && !isCurrentStep,
+        isDisabled,
       })}
+      aria-disabled={isDisabled}
     >
       {icon ?? (
         <span
-          className={classNames(
-            iconClass({ size }),
-            isCurrentStep
-              ? "bg-primary-500 dark:bg-primary-600 text-white"
-              : isCompletedStep
-                ? "bg-primary-100 text-primary-500 dark:bg-primary-900/50 dark:text-primary-400"
-                : "bg-secondary-300 text-secondary-500 dark:bg-secondary-700 dark:text-secondary-400",
-            isClickable &&
-              !isCurrentStep &&
-              "group-hover/item:text-primary-500 group-hover/item:border-primary-500 transition-all ease-in-out",
-          )}
+          className={iconClass({
+            size,
+            isOnclick: onclick ? true : false,
+            active: isClickable && !isCurrentStep,
+            isCurrentStep,
+            isCompletedStep,
+            notComplete: !isCurrentStep && !isCompletedStep,
+          })}
         >
           {isCompletedStep ? (
             <CheckIcon height={16} width={16} className="stroke-2" />
@@ -219,17 +250,11 @@ function StepCard({
           "space-y-1",
         )}
       >
-        {title && subTitle ? (
-          <div className={itemClasses({ size })}>
-            {title && titleRender}
-            {subTitle && subTitleRender}
-          </div>
-        ) : title && !subTitle ? (
-          titleRender
-        ) : subTitle && !title ? (
-          subTitleRender
-        ) : undefined}
-        {description && descriptionRender}
+        <StepContentRender
+          title={title}
+          subTitle={subTitle}
+          description={description}
+        />
       </div>
     </div>
   );
@@ -270,8 +295,41 @@ const connecterClasses = cva("", {
   ],
 });
 
-type StepConnector = Pick<Stepper, "direction" | "size"> & { active?: boolean };
+type StepConnector = { active?: boolean };
 
-const StepConnector = ({ direction, size, active = false }: StepConnector) => (
-  <div className={connecterClasses({ direction, active, size })} />
-);
+const StepConnector = ({ active = false }: StepConnector) => {
+  const { direction, size } = useStepperContext();
+  return <div className={connecterClasses({ direction, active, size })} />;
+};
+
+const StepContentRender = ({
+  title,
+  subTitle,
+  description,
+}: Omit<Steps, "icon">) => {
+  const { size } = useStepperContext();
+
+  const titleRender = <h3 className={titleClasses({ size })}>{title}</h3>;
+  const subTitleRender = (
+    <h5 className={helpTextClasses({ size, isSubtitle: true })}>{subTitle}</h5>
+  );
+  const descriptionRender = (
+    <p className={helpTextClasses({ size })}>{description}</p>
+  );
+
+  return (
+    <>
+      {title && subTitle ? (
+        <div className={itemClasses({ size })}>
+          {title && titleRender}
+          {subTitle && subTitleRender}
+        </div>
+      ) : title && !subTitle ? (
+        titleRender
+      ) : subTitle && !title ? (
+        subTitleRender
+      ) : undefined}
+      {description && descriptionRender}
+    </>
+  );
+};

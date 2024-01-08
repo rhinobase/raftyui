@@ -39,23 +39,6 @@ export const Default: Story = {
   },
 };
 
-export const WrapWithDiv: Story = {
-  render: ({ size }) => (
-    <div className="text-3xl">
-      <Breadcrumbs
-        size={size}
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Application", href: "/" },
-          { label: "Menu", href: "/" },
-          { label: "Article", href: "/" },
-        ]}
-        seperator=">"
-      />
-    </div>
-  ),
-};
-
 export const WithChildren: Story = {
   render: ({ size }) => (
     <Breadcrumbs
@@ -76,5 +59,20 @@ export const WithChildren: Story = {
         );
       }}
     </Breadcrumbs>
+  ),
+};
+
+export const AsProps: Story = {
+  render: ({ size }) => (
+    <Breadcrumbs
+      size={size}
+      as={"button"}
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Application", href: "/" },
+        { label: "Menu", href: "/" },
+        { label: "Article" },
+      ]}
+    />
   ),
 };

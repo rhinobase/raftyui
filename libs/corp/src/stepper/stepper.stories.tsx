@@ -3,10 +3,11 @@ import {
   BellIcon,
   FaceSmileIcon,
 } from "@heroicons/react/24/outline";
-import { Button } from "@rafty/ui";
+import { Button, classNames } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Stepper } from "./Stepper";
+import { useStepperContext } from "./context";
 
 const meta: Meta<typeof Stepper> = {
   title: "Corp / Stepper",
@@ -173,4 +174,37 @@ export const WithIcon: Story = {
       />
     );
   },
+};
+
+export const CustomConnector: Story = {
+  render: ({ size, direction, isDisabled }) => (
+    <Stepper
+      size={size}
+      direction={direction}
+      connector={() => (
+        <div
+          className={classNames(
+            direction === "horizontal" ? "h-px w-full" : "ml-5 h-full w-px",
+            "bg-red-500",
+          )}
+        />
+      )}
+      isDisabled={isDisabled}
+      steps={[
+        {
+          title: "Home",
+          subTitle: "Aliquam",
+          description: "Lorem ipsum dolor sit amet",
+        },
+        {
+          title: "Menu",
+          description: "Donec et lectus a risus",
+        },
+        {
+          title: "Article",
+          description: "Donec et lectus a risus",
+        },
+      ]}
+    />
+  ),
 };

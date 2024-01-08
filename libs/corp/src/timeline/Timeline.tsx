@@ -1,4 +1,5 @@
 import { Spinner, classNames, getValidChildren } from "@rafty/ui";
+import { cva } from "class-variance-authority";
 import {
   HTMLAttributes,
   ReactElement,
@@ -16,6 +17,7 @@ export type Timeline = HTMLAttributes<HTMLUListElement> &
   Partial<TimelineContext> & {
     loadingDot?: ReactElement;
     loading?: boolean | ReactNode;
+    connector?: () => JSX.Element;
     reverse?: boolean;
   };
 
@@ -28,29 +30,18 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       reverse = false,
       children,
       className,
+      connector: CustomConnector,
       ...props
     },
     forwardedRef,
   ) => {
+    const Connector = CustomConnector ?? TimelineConnector;
+
     const validChildren = getValidChildren(children);
-    const Border = () => (
-      <div
-        className={classNames(
-          "flex h-full",
-          mode === "right" ? "mr-2 flex-row-reverse" : "ml-2 flex-row",
-        )}
-      >
-        <span
-          className={classNames(
-            "bg-secondary-300 dark:bg-secondary-500 flex h-full w-px justify-start",
-          )}
-        />
-      </div>
-    );
 
     const key = useId();
     const components = validChildren.flatMap((child, index) => {
-      return [child, <Border key={`${key}-${index}`} />];
+      return [child, <Connector key={`${key}-${index}`} />];
     });
 
     return (
@@ -136,10 +127,24 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
   },
 );
 
-function TimelineSpinner() {
+const timelineConnectorClasses = cva("flex h-full", {
+  variants: {
+    mode: {
+      left: "ml-2 flex-row",
+      right: "mr-2 flex-row-reverse",
+    },
+  },
+});
+
+function TimelineConnector() {
+  const { mode } = useTimelineContext();
   return (
-    <div className="text-primary-500 dark:text-primary-400">
-      <Spinner inheritParent size="sm" />
+    <div className={timelineConnectorClasses({ mode })}>
+      <span className="bg-secondary-300 dark:bg-secondary-500 flex h-full w-px justify-start" />
     </div>
   );
+}
+
+function TimelineSpinner() {
+  return <Spinner size="sm" />;
 }
