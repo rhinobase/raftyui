@@ -48,9 +48,9 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       </div>
     );
 
-    const components = validChildren.flatMap((child) => {
-      const key = useId();
-      return [child, <Border key={key} />];
+    const key = useId();
+    const components = validChildren.flatMap((child, index) => {
+      return [child, <Border key={`${key}-${index}`} />];
     });
 
     return (

@@ -86,10 +86,10 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
       <ListItem className={dividerClasses({ size })}>{seperator}</ListItem>
     );
 
+    const key = useId();
+
     const components = items
       .flatMap(({ label, href }, index) => {
-        const key = useId();
-
         // Is this the last element
         const isLastElement = index === numOfLabels;
 
@@ -97,7 +97,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
         if (!href) BreadcrumbItem = "span";
 
         return [
-          <Fragment key={key}>
+          <Fragment key={`${key}-${index}`}>
             {Children ? (
               <Children
                 label={label}

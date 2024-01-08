@@ -38,15 +38,16 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
   ) => {
     const Connector = CustomConnector ?? StepConnector;
 
+    const stepperKey = useId();
+    const connectorKey = useId();
+
     const components = steps
       .flatMap((step, index) => {
-        const key = useId();
-        const connectorKey = useId();
         const value = initial + index;
 
         return [
           <div
-            key={key}
+            key={`${stepperKey}-${index}`}
             onClick={() => onClick?.(value)}
             onKeyDown={(e) => e.key === "Enter" && onClick?.(value)}
           >
@@ -59,7 +60,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
             />
           </div>,
           <Connector
-            key={connectorKey}
+            key={`${connectorKey}-${index}`}
             direction={direction}
             size={size}
             active={current > value}
