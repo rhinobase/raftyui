@@ -37,10 +37,12 @@ export const Default: Story = {
         <FieldControl name="name" isRequired>
           <Label>Name</Label>
           <InputField placeholder="Enter your Name" {...register("name")} />
-          <ErrorMessage>{errors.name?.message}</ErrorMessage>
+          <ErrorMessage>
+            {errors.name && String(errors.name.message)}
+          </ErrorMessage>
         </FieldControl>
         <div className="flex justify-between">
-          <Button type="button" variant="outline" onClick={() => reset()}>
+          <Button type="button" variant="outline" onClick={reset}>
             Reset
           </Button>
           <Button type="submit" colorScheme="primary" isLoading={isSubmitting}>

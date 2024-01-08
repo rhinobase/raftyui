@@ -1,10 +1,12 @@
+import { AvatarGroupContext } from "./context";
+
 /**
  * Calculate the max width for AvatarGroup
- * @param {"sm" | "md" | "lg"} size - Size of the AvatarGroup component
- * @param {number} length - No of Avatar components in the group
- * @returns {number} The width of the AvatarGroup
  */
-export function calculateWidth(size, length) {
+export function calculateWidth(
+  size: AvatarGroupContext["size"],
+  length: number,
+) {
   switch (size) {
     case "sm":
       return 6 + length * 22;

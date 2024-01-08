@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: function Render() {
+  render: () => {
     const formik = useFormik({
       initialValues: {
         email: "",

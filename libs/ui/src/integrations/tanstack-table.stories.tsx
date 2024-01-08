@@ -69,6 +69,7 @@ function TanstackTable() {
       },
       {
         header: "Rocket Name",
+        // @ts-ignore
         cell: ({ row }) => row.original?.rocket.rocket_name,
       },
     ],
@@ -154,7 +155,7 @@ function TanstackTable() {
                 .fill("")
                 .map((_, index) => (
                   <Tr
-                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                    // biome-ignore lint/suspicious/noArrayIndexKey: It is an empty array
                     key={index}
                   >
                     <Td colSpan={noOfColumns} className="p-0">

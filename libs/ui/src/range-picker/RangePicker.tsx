@@ -53,6 +53,9 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
 
   const clearSelected: MouseEventHandler<HTMLDivElement> &
     KeyboardEventHandler<HTMLDivElement> = (event) => {
+    // On keyboard, work only when enter is pressed
+    if ("key" in event && event.key !== "Enter") return;
+
     event.preventDefault();
     event.stopPropagation();
     setSelected();
@@ -76,7 +79,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
             title="unselect range"
             className="ml-2 rounded p-0.5 text-red-500 transition-all ease-in-out hover:bg-red-200/40 dark:text-red-300 dark:hover:bg-red-300/10"
             onClick={clearSelected}
-            onKeyDown={(e) => e.key === "Enter" && clearSelected(e)}
+            onKeyDown={clearSelected}
           >
             <XMarkIcon className="h-3 w-3 stroke-[2.5]" />
           </div>
