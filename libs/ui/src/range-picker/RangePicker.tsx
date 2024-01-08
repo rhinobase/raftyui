@@ -10,7 +10,7 @@ import {
 import { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { Calendar } from "../calendar/Calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import { classNames } from "../utils";
+import { classNames, eventHandler } from "../utils";
 
 export type RangePicker = {
   onSelect?: (value?: DateRange) => void;
@@ -51,15 +51,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
         format(selected.to, "longDate"),
     );
 
-  const clearSelected: MouseEventHandler<HTMLDivElement> &
-    KeyboardEventHandler<HTMLDivElement> = (event) => {
-    // On keyboard, work only when enter is pressed
-    if ("key" in event && event.key !== "Enter") return;
-
-    event.preventDefault();
-    event.stopPropagation();
-    setSelected();
-  };
+  const clearSelected = eventHandler(() => setSelected());
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>

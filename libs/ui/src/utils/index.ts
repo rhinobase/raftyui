@@ -3,3 +3,4 @@ export { createContext } from "./context";
 export { getValidChildren } from "./get-valid-children";
 export { mergeRefs } from "./merge-refs";
 export { getValue } from "./get-value";
+export { eventHandler } from "./event-handler";

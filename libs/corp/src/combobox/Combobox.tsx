@@ -95,7 +95,7 @@ export function Combobox({
 
       let value: (string | number)[];
 
-      if (cur === null) value = [];
+      if (!cur) value = [];
       else if (isMulti) {
         // Removing the value as it already exist
         if (isSelected) {

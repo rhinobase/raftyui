@@ -1,5 +1,5 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { classNames } from "@rafty/ui";
+import { classNames, eventHandler } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, ReactNode, forwardRef, useId } from "react";
 import { StepperContext, StepperProvider, useStepperContext } from "./context";
@@ -53,6 +53,9 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
     const stepperKey = useId();
     const connectorKey = useId();
 
+    const handleSelect = (value: number) =>
+      eventHandler(() => !isDisabled && onClick?.(value));
+
     const components = steps
       .flatMap((step, index) => {
         const value = initial + index;
@@ -60,10 +63,8 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
         return [
           <div
             key={`${stepperKey}-${index}`}
-            onClick={() => !isDisabled && onClick?.(value)}
-            onKeyDown={(e) =>
-              !isDisabled && e.key === "Enter" && onClick?.(value)
-            }
+            onClick={handleSelect(value)}
+            onKeyDown={handleSelect(value)}
           >
             <StepperItem
               {...step}

@@ -1,5 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Kbd, buttonClasses, classNames } from "@rafty/ui";
+import { Kbd, buttonClasses, classNames, eventHandler } from "@rafty/ui";
 import { KeyboardEventHandler, MouseEventHandler } from "react";
 import { useComboboxContext } from "../context";
 import { findLabel } from "../utils";
@@ -24,19 +24,8 @@ export function InternalTriggerRender() {
   if (isSelected) {
     if (isMulti) {
       // Function to remove the node
-      const removeNode = (
-        item: string | number | null,
-      ): MouseEventHandler<HTMLDivElement> &
-        KeyboardEventHandler<HTMLDivElement> => {
-        return (event) => {
-          // On keyboard, work only when enter is pressed
-          if ("key" in event && event.key !== "Enter") return;
-
-          event.preventDefault();
-          event.stopPropagation();
-          onSelectionChange(item);
-        };
-      };
+      const removeNode = (item: string | number | null) =>
+        eventHandler(() => onSelectionChange(item));
 
       return (
         <div className="flex w-full flex-wrap gap-1.5">

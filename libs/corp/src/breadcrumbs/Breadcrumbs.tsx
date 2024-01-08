@@ -1,4 +1,10 @@
-import { List, ListItem, buttonClasses, classNames } from "@rafty/ui";
+import {
+  List,
+  ListItem,
+  buttonClasses,
+  classNames,
+  eventHandler,
+} from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import {
   ElementType,
@@ -83,10 +89,8 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
   ) => {
     const key = useId();
 
-    const handleClick = (e: KeyboardEvent, label: string) => {
-      if (e.type === "click" || (e.type === "keydown" && e.key === "Enter"))
-        onClick?.(label);
-    };
+    const handleSelect = (label: string) =>
+      eventHandler(() => onClick?.(label));
 
     const components = items
       .flatMap(({ label, href }, index) => {
@@ -117,8 +121,8 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
                     }),
                     breadcrumbItemClasses({ size }),
                   )}
-                  onClick={(e: KeyboardEvent) => handleClick(e, label)}
-                  onKeyDown={(e: KeyboardEvent) => handleClick(e, label)}
+                  onClick={handleSelect(label)}
+                  onKeyDown={handleSelect(label)}
                 >
                   {label}
                 </BreadcrumbItem>
