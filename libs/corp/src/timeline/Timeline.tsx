@@ -30,19 +30,31 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       reverse = false,
       children,
       className,
-      connector: CustomConnector,
+      connector: Connector = TimelineConnector,
       ...props
     },
     forwardedRef,
   ) => {
-    const Connector = CustomConnector ?? TimelineConnector;
-
     const validChildren = getValidChildren(children);
 
     const key = useId();
-    const components = validChildren.flatMap((child, index) => {
-      return [child, <Connector key={`${key}-${index}`} />];
-    });
+
+    const components = validChildren.flatMap((child, index) => [
+      child,
+      <Connector key={`${key}-${index}-connector`} />,
+    ]);
+
+    if (loading)
+      components.push(
+        <TimelineItem
+          key={`${key}-loading`}
+          className="py-1"
+          dot={loadingDot ?? <TimelineSpinner />}
+        >
+          {loading}
+        </TimelineItem>,
+      );
+    else components.pop();
 
     return (
       <TimelineProvider
@@ -59,19 +71,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
           )}
           {...props}
         >
-          {loading ? (
-            <>
-              {components}
-              <TimelineItem
-                className="py-1"
-                dot={loadingDot ?? <TimelineSpinner />}
-              >
-                {loading}
-              </TimelineItem>
-            </>
-          ) : (
-            components.slice(0, -1)
-          )}
+          {components}
         </ul>
       </TimelineProvider>
     );

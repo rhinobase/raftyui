@@ -131,7 +131,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
               </ListItem>
             )}
           </Fragment>,
-          <Divider key={`${key}-${index}-d`} />,
+          <Divider key={`${key}-${index}-divider`} />,
         ];
       })
       .slice(0, -1);

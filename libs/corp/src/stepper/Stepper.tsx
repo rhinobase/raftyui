@@ -1,7 +1,14 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { classNames, eventHandler } from "@rafty/ui";
+import { eventHandler } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import { Fragment, HTMLAttributes, ReactNode, forwardRef, useId } from "react";
+import {
+  Fragment,
+  HTMLAttributes,
+  PropsWithChildren,
+  ReactNode,
+  forwardRef,
+  useId,
+} from "react";
 import { StepperContext, StepperProvider, useStepperContext } from "./context";
 
 const stepperClasses = cva(
@@ -27,7 +34,7 @@ export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
   Partial<StepperContext> & {
     initial?: number;
     onClick?: (value: number) => void;
-    connector?: (props: StepConnector) => JSX.Element;
+    connector?: (props: StepsConnector) => JSX.Element;
     steps: StepType[];
   };
 
@@ -41,38 +48,40 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
       size = "md",
       isDisabled = false,
       direction = "horizontal",
-      connector: CustomConnector,
+      connector: Connector = StepsConnector,
       ...props
     },
     forwardedRef,
   ) => {
-    const Connector = CustomConnector ?? StepConnector;
-
     const key = useId();
 
     const handleSelect = (value: number) =>
       eventHandler(() => !isDisabled && onClick?.(value));
 
-    const components = steps
-      .flatMap((step, index) => {
-        const value = initial + index;
+    const components = steps.flatMap((step, index) => {
+      const value = initial + index;
 
-        return [
-          <div
-            key={`${key}-${index}`}
-            onClick={handleSelect(value)}
-            onKeyDown={handleSelect(value)}
-          >
-            <StepperItem
-              {...step}
-              value={value}
-              isClickable={Boolean(onClick !== undefined)}
-            />
-          </div>,
-          <Connector key={`${key}-${index}-c`} active={current > value} />,
-        ];
-      })
-      .slice(0, -1);
+      return [
+        <div
+          key={`${key}-${index}`}
+          onClick={handleSelect(value)}
+          onKeyDown={handleSelect(value)}
+        >
+          <StepperItem
+            {...step}
+            value={value}
+            isClickable={Boolean(onClick !== undefined)}
+          />
+        </div>,
+        <Connector
+          key={`${key}-${index}-connector`}
+          active={current > value}
+        />,
+      ];
+    });
+
+    // Removing the last element
+    components.pop();
 
     return (
       <StepperProvider
@@ -279,14 +288,14 @@ const connecterClasses = cva("", {
   ],
 });
 
-type StepConnector = { active?: boolean };
+type StepsConnector = { active: boolean };
 
-function StepConnector({ active = false }: StepConnector) {
+function StepsConnector({ active }: StepsConnector) {
   const { direction, size } = useStepperContext();
   return <div className={connecterClasses({ direction, active, size })} />;
 }
 
-const titleAndHelpTextWrapperClasses = cva("flex items-baseline", {
+const titleAndSubTitleWrapperClasses = cva("flex items-baseline", {
   variants: {
     size: {
       sm: "gap-1",
@@ -336,17 +345,18 @@ const StepContentRender = forwardRef<HTMLDivElement, StepContentRender>(
       <p className={helpTextClasses({ size })}>{description}</p>
     );
 
-    const Frag = title && subTitle ? "div" : Fragment;
+    const Frag =
+      title && subTitle
+        ? ({ children }: PropsWithChildren) => (
+            <div className={titleAndSubTitleWrapperClasses({ size })}>
+              {children}
+            </div>
+          )
+        : Fragment;
 
     return (
       <div {...props} ref={forwardedRef}>
-        <Frag
-          className={
-            title && subTitle
-              ? titleAndHelpTextWrapperClasses({ size })
-              : undefined
-          }
-        >
+        <Frag>
           {title && titleRender}
           {subTitle && subTitleRender}
         </Frag>
