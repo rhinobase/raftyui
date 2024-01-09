@@ -1,0 +1,19 @@
+{
+  "extends": ["plugin:@nx/react", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": [
+          "error",
+          {
+            "ignoredFiles": ["libs/ui/rollup.config.js"],
+            "ignoredDependencies": ["@swc/helpers"]
+          }
+        ]
+      }
+    }
+  ]
+}

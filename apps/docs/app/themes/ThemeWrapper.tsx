@@ -225,7 +225,8 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
         <Fence language="js">
           {`const colors = require('tailwindcss/colors')
 
-{
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: "class", // optional
   content: [
     ...

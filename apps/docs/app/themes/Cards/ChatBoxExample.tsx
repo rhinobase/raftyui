@@ -4,6 +4,7 @@ import {
   PaperAirplaneIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import {
   Avatar,
   AvatarGroup,
@@ -76,6 +77,8 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
     return tmp;
   }, []);
 
+  const sendMessage = eventHandler(dispatch);
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between gap-4">
@@ -124,14 +127,14 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           name="chat input"
           ref={ref}
           placeholder="Type your message..."
-          onKeyDown={(e) => e.key === "Enter" && dispatch()}
+          onKeyDown={sendMessage}
           className="placeholder:text-sm"
         />
         <Button
           size="icon"
           colorScheme="primary"
           className="p-2"
-          onClick={dispatch}
+          onClick={sendMessage}
           aria-label="Send"
         >
           <PaperAirplaneIcon height={18} width={18} className="stroke-2" />

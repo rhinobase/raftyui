@@ -7,7 +7,6 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import {
   Command,
   CommandEmpty,

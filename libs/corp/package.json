@@ -28,6 +28,13 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@swc/helpers": "~0.5.2"
+    "@heroicons/react": "^2.1.1",
+    "@rafty/ui": "^1.4.2",
+    "@swc/helpers": "~0.5.2",
+    "class-variance-authority": "^0.7.0",
+    "@rafty/shared": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
   }
 }

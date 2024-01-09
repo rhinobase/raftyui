@@ -1,6 +1,7 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   ComponentPropsWithoutRef,
@@ -147,7 +148,7 @@ export type DialogContent = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > & {
   isUnstyled?: boolean;
-  showCloseButton?: boolean;
+  showCloseButton?: BooleanOrFunction;
 };
 
 export const DialogContent = forwardRef<
@@ -155,17 +156,12 @@ export const DialogContent = forwardRef<
   DialogContent
 >(
   (
-    {
-      children,
-      className,
-      isUnstyled = false,
-      showCloseButton = true,
-      ...props
-    },
+    { children, className, isUnstyled = false, showCloseButton, ...props },
     forwardedRef,
   ) => {
     const { size, isUnstyled: isParentUnstyled } = useDialogContext();
     const unstyle = isParentUnstyled || isUnstyled;
+    const _showCloseButton = getValue(showCloseButton) ?? true;
 
     return (
       <DialogPrimitive.Portal>
@@ -179,7 +175,7 @@ export const DialogContent = forwardRef<
           ref={forwardedRef}
         >
           {children}
-          {showCloseButton && (
+          {_showCloseButton && (
             <DialogPrimitive.Close className="hover:bg-secondary-200/70 dark:hover:bg-secondary-500/70 absolute right-4 top-4 rounded p-1 transition-all focus:outline-none">
               <XMarkIcon className="h-4 w-4 stroke-2" />
             </DialogPrimitive.Close>

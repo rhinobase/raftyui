@@ -1,6 +1,7 @@
 "use client";
+import { getValidChildren } from "@rafty/shared";
 import { HTMLAttributes, forwardRef } from "react";
-import { classNames, getValidChildren } from "../utils";
+import { classNames } from "../utils";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
 import { RightAddon } from "./RightAddon";
@@ -26,23 +27,34 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
     forwardedRef,
   ) => {
     const validChildren = getValidChildren(children);
+    const rightAddons = [];
+    const leftAddons = [];
+    const remaining = [];
 
     for (const child of validChildren) {
       switch (child.type.displayName) {
         case LeftAddon.displayName:
           isLeftAddon = true;
+          leftAddons.push(child);
           break;
 
         case RightAddon.displayName:
           isRightAddon = true;
+          rightAddons.push(child);
           break;
 
         case Prefix.displayName:
           isPrefix = true;
+          remaining.push(child);
           break;
 
         case Suffix.displayName:
           isSuffix = true;
+          remaining.push(child);
+          break;
+
+        default:
+          remaining.push(child);
           break;
       }
     }
@@ -53,10 +65,12 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       >
         <div
           {...props}
+          className={classNames("flex", className)}
           ref={forwardedRef}
-          className={classNames("relative flex", className)}
         >
-          {children}
+          {leftAddons}
+          <div className="relative w-full">{remaining}</div>
+          {rightAddons}
         </div>
       </InputGroupProvider>
     );

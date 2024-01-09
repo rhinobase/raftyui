@@ -1,4 +1,5 @@
 "use client";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { TextareaHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
@@ -72,11 +73,11 @@ export type Textarea = Omit<
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
-  isDisabled?: boolean;
-  isInvalid?: boolean;
-  isLoading?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
+  isDisabled?: BooleanOrFunction;
+  isInvalid?: BooleanOrFunction;
+  isLoading?: BooleanOrFunction;
+  isReadOnly?: BooleanOrFunction;
+  isRequired?: BooleanOrFunction;
 };
 
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
@@ -86,11 +87,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
       variant = "outline",
       size = "md",
       isUnstyled = false,
-      isDisabled = false,
-      isInvalid = false,
-      isLoading = false,
-      isReadOnly = false,
-      isRequired = false,
+      isDisabled,
+      isInvalid,
+      isLoading,
+      isReadOnly,
+      isRequired,
       ...props
     },
     forwardedRef,
@@ -99,14 +100,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
 
     const name = props.name || context.name;
     const disabled =
-      isDisabled ||
+      getValue(isDisabled) ||
       props.disabled ||
       context.isDisabled ||
-      isLoading ||
+      getValue(isLoading) ||
       context.isLoading;
-    const invalid = isInvalid || context.isInvalid;
-    const readonly = isReadOnly || props.readOnly || context.isReadOnly;
-    const required = isRequired || props.required || context.isRequired;
+    const invalid = getValue(isInvalid) || context.isInvalid;
+    const readonly =
+      getValue(isReadOnly) || props.readOnly || context.isReadOnly;
+    const required =
+      getValue(isRequired) || props.required || context.isRequired;
 
     return (
       <textarea

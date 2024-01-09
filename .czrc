@@ -17,12 +17,20 @@
       "name": "corp:                anything Corp specific"
     },
     {
+      "value": "fibr",
+      "name": "fibr:                anything Fibr specific"
+    },
+    {
       "value": "storybook",
       "name": "storybook:           anything Storybook specific"
     },
     {
       "value": "examples",
       "name": "examples:            anything Examples specific"
+    },
+    {
+      "value": "shared",
+      "name": "shared:              anything Shared package specific"
     }
   ],
   "scopesSearchValue": true,

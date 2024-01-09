@@ -47,5 +47,5 @@ export * from "./toast";
 export * from "./toggle-group";
 export * from "./tooltip";
 export * from "./pagination";
-export { classNames, mergeRefs } from "./utils";
+export * from "./utils";
 export * from "./hooks";

@@ -1,4 +1,5 @@
 "use client";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
@@ -162,11 +163,11 @@ export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
-  isDisabled?: boolean;
-  isInvalid?: boolean;
-  isLoading?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
+  isDisabled?: BooleanOrFunction;
+  isInvalid?: BooleanOrFunction;
+  isLoading?: BooleanOrFunction;
+  isReadOnly?: BooleanOrFunction;
+  isRequired?: BooleanOrFunction;
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(
@@ -176,11 +177,11 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       variant = "outline",
       size = "md",
       isUnstyled = false,
-      isDisabled = false,
-      isInvalid = false,
-      isLoading = false,
-      isReadOnly = false,
-      isRequired = false,
+      isDisabled,
+      isInvalid,
+      isLoading,
+      isReadOnly,
+      isRequired,
       ...props
     },
     forwardedRef,
@@ -189,17 +190,17 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
 
     const name = props.name || fieldControlContext.name;
     const disabled =
-      isDisabled ||
+      getValue(isDisabled) ||
       props.disabled ||
       fieldControlContext.isDisabled ||
-      isLoading ||
+      getValue(isLoading) ||
       fieldControlContext.isLoading;
 
-    const invalid = isInvalid || fieldControlContext.isInvalid;
+    const invalid = getValue(isInvalid) || fieldControlContext.isInvalid;
     const readonly =
-      isReadOnly || props.readOnly || fieldControlContext.isReadOnly;
+      getValue(isReadOnly) || props.readOnly || fieldControlContext.isReadOnly;
     const required =
-      isRequired || props.required || fieldControlContext.isRequired;
+      getValue(isRequired) || props.required || fieldControlContext.isRequired;
 
     const inputGroupContext = useInputGroupContext() ?? {
       isLeftAddon: false,

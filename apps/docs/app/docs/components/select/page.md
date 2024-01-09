@@ -36,9 +36,9 @@ import { Select, SelectItem } from "@rafty/ui";
 
 ```jsx
 <Select>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
 </Select>
 ```
 
@@ -52,9 +52,9 @@ There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
 ```jsx
 <Select size="sm">
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
 </Select>
 ```
 
@@ -68,9 +68,9 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 ```jsx
 <Select variant="solid">
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
 </Select>
 ```
 
@@ -84,9 +84,9 @@ IsDisabled prop is used to show select component in disabled state
 
 ```jsx
 <Select isDisabled>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
 </Select>
 ```
 
@@ -100,9 +100,9 @@ IsRequired prop is used to show select in required state.
 
 ```jsx
 <Select isRequired>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
 </Select>
 ```
 
@@ -116,9 +116,9 @@ IsReadOnly prop is used to show select in read only state.
 
 ```jsx
 <Select isReadOnly>
-  <SelectItem key="option1">Option 1</SelectItem>
-  <SelectItem key="option2">Option 2</SelectItem>
-  <SelectItem key="option3">Option 3</SelectItem>
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
 </Select>
 ```
 

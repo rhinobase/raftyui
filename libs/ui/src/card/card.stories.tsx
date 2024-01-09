@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import { Card, CardContent, CardFooter, CardHeader } from "./Card";

@@ -1,5 +1,6 @@
 "use client";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import {
   CommandItem,
   FieldControl,
@@ -58,6 +59,9 @@ const YEARS = [
 export function PaymentMethodExample() {
   const [isSelect, setSelected] = useState(0);
 
+  const choosePaymentMethod = (index: number) =>
+    eventHandler(() => setSelected(index));
+
   return (
     <div className="space-y-4">
       <div>
@@ -73,8 +77,8 @@ export function PaymentMethodExample() {
           {PAYMENT_METHODS.map((item, index) => (
             <div
               key={item.heading}
-              onClick={() => setSelected(index)}
-              onKeyDown={() => setSelected(index)}
+              onClick={choosePaymentMethod(index)}
+              onKeyDown={choosePaymentMethod(index)}
               className={classNames(
                 isSelect === index
                   ? "ring-primary-300 dark:ring-primary-500/50 border-primary-500 dark:border-primary-400 ring-2"

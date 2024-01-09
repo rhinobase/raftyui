@@ -1,7 +1,8 @@
 "use client";
+import { getValidChildren } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, forwardRef } from "react";
-import { classNames, getValidChildren } from "../utils";
+import { classNames } from "../utils";
 import { CardContext, CardProvider, useCardContext } from "./context";
 
 // Card Component

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import { useState } from "react";
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -35,9 +35,9 @@ type Story = StoryObj<typeof ContextMenu>;
 
 export const Default: Story = {
   render: function Render({ size, isUnstyled }) {
-    const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
-    const [urlsChecked, setUrlsChecked] = React.useState(false);
-    const [person, setPerson] = React.useState("1");
+    const [bookmarksChecked, setBookmarksChecked] = useState(true);
+    const [urlsChecked, setUrlsChecked] = useState(false);
+    const [person, setPerson] = useState("1");
 
     return (
       <ContextMenu size={size} isUnstyled={isUnstyled}>

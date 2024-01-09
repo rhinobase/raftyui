@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react";
 import React from "react";
-/* eslint-disable @next/next/no-page-custom-font */
 import "./storybook.css";
 
 const DEFAULT_THEME = "light";

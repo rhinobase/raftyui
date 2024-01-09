@@ -1,65 +1,44 @@
-import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { HTMLAttributes, forwardRef } from "react";
+import AutoSizer from "react-virtualized-auto-sizer";
+import { VariableSizeList, VariableSizeListProps } from "react-window";
 import { classNames } from "../utils";
+import { ScrollAreaProvider, useScrollAreaContext } from "./context";
 
 // ScrollArea component
-export type ScrollArea = ComponentPropsWithoutRef<
-  typeof ScrollAreaPrimitive.Root
->;
+export type ScrollArea = Omit<VariableSizeListProps, "height" | "width"> &
+  Omit<HTMLAttributes<HTMLDivElement>, "children">;
 
-export const ScrollArea = forwardRef<
-  ElementRef<typeof ScrollAreaPrimitive.Root>,
-  ScrollArea
->(({ className, children, ...props }, forwardedref) => (
-  <ScrollAreaPrimitive.Root
-    ref={forwardedref}
-    className={classNames("relative overflow-hidden", className)}
-    {...props}
-  >
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
-      {children}
-    </ScrollAreaPrimitive.Viewport>
-    <ScrollBar />
-    <ScrollAreaPrimitive.Corner />
-  </ScrollAreaPrimitive.Root>
-));
+export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
+  (
+    { layout = "vertical", itemSize, itemCount, children, className, ...props },
+    forwardedref,
+  ) => (
+    <ScrollAreaProvider value={{ layout, itemCount }}>
+      <div
+        {...props}
+        className={classNames(
+          "dark:bg-secondary-950 overflow-hidden bg-white",
+          className,
+        )}
+        ref={forwardedref}
+      >
+        <AutoSizer>
+          {({ height, width }) => (
+            <ScrollAreaList itemSize={itemSize} width={width} height={height}>
+              {children}
+            </ScrollAreaList>
+          )}
+        </AutoSizer>
+      </div>
+    </ScrollAreaProvider>
+  ),
+);
 ScrollArea.displayName = "ScrollArea";
 
-// ScrollBar component
-export const scrollAreaScrollbarClasses = cva(
-  "flex touch-none select-none transition-colors",
-  {
-    variants: {
-      orientation: {
-        vertical: "h-full w-2.5 p-px",
-        horizontal: "h-2.5 p-px",
-      },
-    },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  },
-);
+type ScrollAreaList = Omit<VariableSizeListProps, "itemCount" | "layout">;
 
-export type ScrollBar = ComponentPropsWithoutRef<
-  typeof ScrollAreaPrimitive.ScrollAreaScrollbar
->;
-
-export const ScrollBar = forwardRef<
-  ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
-  ScrollBar
->(({ className, orientation = "vertical", ...props }, forwardedref) => (
-  <ScrollAreaPrimitive.ScrollAreaScrollbar
-    ref={forwardedref}
-    orientation={orientation}
-    className={classNames(
-      scrollAreaScrollbarClasses({ orientation }),
-      className,
-    )}
-    {...props}
-  >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="bg-secondary-200 dark:bg-secondary-800 relative flex-1 rounded-full" />
-  </ScrollAreaPrimitive.ScrollAreaScrollbar>
-));
-ScrollBar.displayName = "ScrollBar";
+const ScrollAreaList = (props: ScrollAreaList) => {
+  const { itemCount, layout } = useScrollAreaContext();
+  return <VariableSizeList {...props} layout={layout} itemCount={itemCount} />;
+};
+ScrollAreaList.displayName = "ScrollAreaList";

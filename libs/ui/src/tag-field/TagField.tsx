@@ -1,5 +1,6 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
@@ -16,72 +17,66 @@ export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
 };
 
 export const TagField = ({ initialData, onChange, ...props }: TagField) => {
-  const [tag, setTag] = useReducer(
-    (prev: string[], cur: { action: ACTION; data?: string }) => {
-      if (cur.action === ACTION.RESET) return [];
+  const [tags, dispatch] = useReducer((prev: string[], cur: string | null) => {
+    if (!cur) return [];
 
-      let tmp = [...prev];
-      const value = cur.data;
+    // Checking, if the user wanna deselect the value
+    const valueIndex = prev.findIndex((val) => val === cur);
+    const isSelected = valueIndex !== -1;
 
-      if (!value)
-        throw new Error(
-          `Tag Field - Data is undefined for ${cur.action} action`,
-        );
+    let value: string[];
 
-      if (cur.action === ACTION.ADD)
-        tmp = Array.from(new Set([...prev, value]));
-      else
-        tmp.splice(
-          tmp.findIndex((item) => item === value),
-          1,
-        );
+    // Removing the value as it already exist
+    if (isSelected) {
+      const tmp = [...prev];
+      tmp.splice(valueIndex, 1);
+      value = tmp;
+    }
+    // Adding the new value
+    else value = [...prev, cur];
 
-      if (onChange) onChange(tag);
+    onChange?.(value);
 
-      return tmp;
-    },
-    initialData ?? [],
-  );
+    return value;
+  }, initialData ?? []);
+
+  const handlePress = eventHandler<HTMLInputElement>((event) => {
+    const data = event.currentTarget.value.trim();
+    if (data.length !== 0 && data !== " ") dispatch(data);
+    event.currentTarget.value = "";
+  });
+
+  const clearAll = eventHandler(() => dispatch(null));
 
   return (
     <div className="w-full">
       <div className="flex w-full items-center gap-2">
-        <InputField
-          {...props}
-          type="text"
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              const data = event.currentTarget.value.trim();
-              if (data.length !== 0 && data !== " ")
-                setTag({ action: ACTION.ADD, data });
-              event.currentTarget.value = "";
-            }
-          }}
-        />
+        <InputField {...props} type="text" onKeyDown={handlePress} />
         <Button
           variant="ghost"
-          onClick={() => setTag({ action: ACTION.RESET })}
-          className={tag.length < 2 ? "hidden" : undefined}
+          onClick={clearAll}
+          onKeyDown={clearAll}
+          className={tags.length < 2 ? "hidden" : undefined}
         >
           Clear All
         </Button>
       </div>
       <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
-        {tag.map((value) => (
+        {tags.map((tag) => (
           <div
-            key={value}
+            key={tag}
             className={
               "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
             }
           >
-            <span className="text-sm leading-[0px]">{value}</span>
+            <span className="text-sm leading-[0px]">{tag}</span>
             <Button
-              onClick={() => setTag({ action: ACTION.DELETE, data: value })}
               colorScheme="error"
               variant="ghost"
               size="sm"
               className="text-secondary-400 p-[1px] hover:text-red-500"
+              onClick={clearAll}
+              onKeyDown={clearAll}
             >
               <XMarkIcon className="h-3.5 w-3.5 stroke-[2]" />
             </Button>

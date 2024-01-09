@@ -1,10 +1,9 @@
 "use client";
+import { getValidChildren } from "@rafty/shared";
 import { HTMLAttributes, cloneElement, forwardRef } from "react";
 import { Avatar } from "../avatar/Avatar";
-import { classNames, getValidChildren } from "../utils";
+import { classNames } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { calculateWidth } from "./utils";
 
 const LEFT_OFFSET = {

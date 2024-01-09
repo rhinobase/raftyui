@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { useBreakpointValue } from "./useBreakpointValue";
 
 const meta: Meta<typeof useBreakpointValue> = {

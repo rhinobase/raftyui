@@ -1,5 +1,6 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
@@ -50,24 +51,22 @@ export const PopoverTrigger = forwardRef<
     const { isUnstyled: isParentUnstyled } = usePopoverContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
+    const buttonProps = {
+      children,
+      size,
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isDisabled,
+      isActive,
+      isLoading,
+      isUnstyled: unstyle,
+    };
+
     return (
       <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
-        {asChild ? (
-          children
-        ) : (
-          <Button
-            variant={variant}
-            colorScheme={colorScheme}
-            leftIcon={leftIcon}
-            rightIcon={rightIcon}
-            isDisabled={isDisabled}
-            isActive={isActive}
-            size={size}
-            isUnstyled={unstyle}
-          >
-            {children}
-          </Button>
-        )}
+        {asChild ? children : <Button {...buttonProps} />}
       </PopoverPrimitive.Trigger>
     );
   },
@@ -83,7 +82,11 @@ const POPOVER_CONTENT_CLASSES = {
 // PopoverContent Component
 export type PopoverContent = ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
-> & { isUnstyled?: boolean; showArrow?: boolean; arrowClassName?: string };
+> & {
+  isUnstyled?: boolean;
+  showArrow?: BooleanOrFunction;
+  arrowClassName?: string;
+};
 
 export const PopoverContent = forwardRef<
   ElementRef<typeof PopoverPrimitive.Content>,
@@ -95,7 +98,7 @@ export const PopoverContent = forwardRef<
       className,
       sideOffset = 10,
       isUnstyled = false,
-      showArrow = false,
+      showArrow,
       arrowClassName,
       ...props
     },
@@ -123,7 +126,7 @@ export const PopoverContent = forwardRef<
           ref={forwardedRef}
         >
           {children}
-          {showArrow && (
+          {getValue(showArrow) && (
             <PopoverPrimitive.Arrow
               className={classNames(
                 "dark:fill-secondary-800 fill-white",

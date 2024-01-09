@@ -1,17 +1,24 @@
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Text Component
-export type Text = HTMLAttributes<HTMLParagraphElement> & { isMuted?: boolean };
+export type Text = HTMLAttributes<HTMLParagraphElement> & {
+  isMuted?: BooleanOrFunction;
+};
 
 export const Text = forwardRef<HTMLParagraphElement, Text>(
-  ({ className, isMuted, ...props }, forwardedRef) => (
-    <p
-      {...props}
-      className={classNames(isMuted && "opacity-60", className)}
-      ref={forwardedRef}
-    />
-  ),
+  ({ className, isMuted, ...props }, forwardedRef) => {
+    const muted = getValue(isMuted);
+
+    return (
+      <p
+        {...props}
+        className={classNames(muted && "opacity-60", className)}
+        ref={forwardedRef}
+      />
+    );
+  },
 );
 
 Text.displayName = "Text";

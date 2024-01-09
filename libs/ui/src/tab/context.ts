@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { createContext } from "@rafty/shared";
 
 export const [TabProvider, useTabContext] = createContext<TabContext>({
   name: "TabContext",

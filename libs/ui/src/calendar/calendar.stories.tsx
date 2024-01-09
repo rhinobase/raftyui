@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import { useState } from "react";
 import { ListItem, UnorderedList } from "../list";
 import { Calendar } from "./Calendar";
 
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Calendar>;
 
 export const Default: Story = {
   render: function Render() {
-    const [date, setDate] = React.useState<Date | undefined>();
+    const [date, setDate] = useState<Date | undefined>();
 
     return (
       <div className="w-full">
@@ -21,6 +21,7 @@ export const Default: Story = {
     );
   },
 };
+
 export const FullScreen: Story = {
   render: function Render() {
     const cellRender: JSX.Element | undefined = (
@@ -44,7 +45,7 @@ export const FullScreen: Story = {
       </div>
     );
 
-    const [date, setDate] = React.useState<Date | undefined>();
+    const [date, setDate] = useState<Date | undefined>();
 
     return (
       <div className="-mx-20 w-full">

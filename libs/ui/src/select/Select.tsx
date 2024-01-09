@@ -1,5 +1,6 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { OptionHTMLAttributes, SelectHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
@@ -97,9 +98,9 @@ export type Select = Omit<
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
   isUnstyled?: boolean;
-  isDisabled?: boolean;
-  isRequired?: boolean;
-  isReadOnly?: boolean;
+  isDisabled?: BooleanOrFunction;
+  isRequired?: BooleanOrFunction;
+  isReadOnly?: BooleanOrFunction;
 };
 
 export const Select = forwardRef<HTMLSelectElement, Select>(
@@ -110,10 +111,11 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       name,
       size = "md",
       variant = "outline",
-      isDisabled = false,
-      isRequired = false,
+      isDisabled,
+      isRequired,
       isUnstyled = false,
-      isReadOnly = false,
+      isReadOnly,
+      placeholder,
       ...props
     },
     forwardedRef,
@@ -126,9 +128,10 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
     };
 
     const field_name = name || context.name;
-    const disabled = isDisabled || context.isDisabled || context.isLoading;
-    const required = isRequired || context.isRequired;
-    const readonly = isReadOnly || context.isReadOnly;
+    const disabled =
+      getValue(isDisabled) || context.isDisabled || context.isLoading;
+    const required = getValue(isRequired) || context.isRequired;
+    const readonly = getValue(isReadOnly) || context.isReadOnly;
 
     return (
       <div className="group relative flex w-max items-center">
@@ -152,6 +155,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
           }
           ref={forwardedRef}
         >
+          {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
           {children}
         </select>
         {!isUnstyled && (
@@ -172,9 +176,7 @@ Select.displayName = "Select";
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  (props, forwardedRef) => {
-    return <option {...props} ref={forwardedRef} />;
-  },
+  (props, forwardedRef) => <option {...props} ref={forwardedRef} />,
 );
 
 SelectItem.displayName = "SelectItem";

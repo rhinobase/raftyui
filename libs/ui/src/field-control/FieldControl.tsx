@@ -1,4 +1,5 @@
 "use client";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
@@ -19,8 +20,13 @@ export const fieldControlClasses = cva("flex w-full", {
 });
 
 export type FieldControl = HTMLAttributes<HTMLDivElement> &
-  Partial<FieldControlContext> & {
-    name: FieldControlContext["name"];
+  Partial<Pick<FieldControlContext, "orientation">> &
+  Pick<FieldControlContext, "name"> & {
+    isRequired?: BooleanOrFunction;
+    isDisabled?: BooleanOrFunction;
+    isReadOnly?: BooleanOrFunction;
+    isInvalid?: BooleanOrFunction;
+    isLoading?: BooleanOrFunction;
   };
 
 export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
@@ -28,37 +34,48 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
     {
       name,
       orientation = "col",
-      isRequired = false,
-      isDisabled = false,
-      isReadOnly = false,
-      isInvalid = false,
-      isLoading = false,
+      isRequired,
+      isDisabled,
+      isReadOnly,
+      isInvalid,
+      isLoading,
       children,
       className,
       ...props
     },
     forwardedRef,
-  ) => (
-    <FieldControlProvider
-      value={{
-        name,
-        orientation,
-        isRequired,
-        isDisabled,
-        isReadOnly,
-        isInvalid,
-        isLoading,
-      }}
-    >
-      <div
-        {...props}
-        className={classNames(fieldControlClasses({ orientation }), className)}
-        ref={forwardedRef}
+  ) => {
+    const required = getValue(isRequired) ?? false;
+    const disabled = getValue(isDisabled) ?? false;
+    const readonly = getValue(isReadOnly) ?? false;
+    const invalid = getValue(isInvalid) ?? false;
+    const loading = getValue(isLoading) ?? false;
+
+    return (
+      <FieldControlProvider
+        value={{
+          name,
+          orientation,
+          isRequired: required,
+          isDisabled: disabled,
+          isReadOnly: readonly,
+          isInvalid: invalid,
+          isLoading: loading,
+        }}
       >
-        {children}
-      </div>
-    </FieldControlProvider>
-  ),
+        <div
+          {...props}
+          className={classNames(
+            fieldControlClasses({ orientation }),
+            className,
+          )}
+          ref={forwardedRef}
+        >
+          {children}
+        </div>
+      </FieldControlProvider>
+    );
+  },
 );
 
 FieldControl.displayName = "FieldControl";

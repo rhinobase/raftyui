@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { TagField } from "./TagField";
 
 const meta: Meta<typeof TagField> = {
@@ -11,4 +10,8 @@ type Story = StoryObj<typeof TagField>;
 
 export const Default: Story = {
   render: () => <TagField />,
+};
+
+export const InitalData: Story = {
+  render: () => <TagField initialData={["rhinobase", "rafty", "ui"]} />,
 };
