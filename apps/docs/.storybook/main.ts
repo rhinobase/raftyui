@@ -21,6 +21,10 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           "@rafty/ui": path.resolve(__dirname, "../../../libs/ui/src/index.ts"),
+          "@rafty/shared": path.resolve(
+            __dirname,
+            "../../../libs/shared/src/index.ts",
+          ),
         },
       },
     });
