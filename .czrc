@@ -27,6 +27,10 @@
     {
       "value": "examples",
       "name": "examples:            anything Examples specific"
+    },
+    {
+      "value": "shared",
+      "name": "shared:              anything Shared package specific"
     }
   ],
   "scopesSearchValue": true,
