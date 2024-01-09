@@ -1,5 +1,6 @@
 "use client";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
@@ -43,9 +44,9 @@ export type Switch = Omit<
   "value" | "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
-  isReadOnly?: boolean;
-  isDisabled?: boolean;
-  isRequired?: boolean;
+  isReadOnly?: BooleanOrFunction;
+  isDisabled?: BooleanOrFunction;
+  isRequired?: BooleanOrFunction;
 };
 
 export const Switch = forwardRef<
@@ -57,9 +58,9 @@ export const Switch = forwardRef<
       className,
       size = "md",
       defaultChecked = false,
-      isReadOnly = false,
-      isDisabled = false,
-      isRequired = false,
+      isReadOnly,
+      isDisabled,
+      isRequired,
       ...props
     },
     forwardedRef,
@@ -68,8 +69,11 @@ export const Switch = forwardRef<
 
     const name = props.name || context.name;
     const disabled =
-      isDisabled || context.isDisabled || isReadOnly || context.isReadOnly;
-    const required = isRequired || context.isRequired;
+      getValue(isDisabled) ||
+      context.isDisabled ||
+      getValue(isReadOnly) ||
+      context.isReadOnly;
+    const required = getValue(isRequired) || context.isRequired;
 
     return (
       <SwitchPrimitives.Root

@@ -1,5 +1,6 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
@@ -81,7 +82,11 @@ const POPOVER_CONTENT_CLASSES = {
 // PopoverContent Component
 export type PopoverContent = ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
-> & { isUnstyled?: boolean; showArrow?: boolean; arrowClassName?: string };
+> & {
+  isUnstyled?: boolean;
+  showArrow?: BooleanOrFunction;
+  arrowClassName?: string;
+};
 
 export const PopoverContent = forwardRef<
   ElementRef<typeof PopoverPrimitive.Content>,
@@ -93,7 +98,7 @@ export const PopoverContent = forwardRef<
       className,
       sideOffset = 10,
       isUnstyled = false,
-      showArrow = false,
+      showArrow,
       arrowClassName,
       ...props
     },
@@ -121,7 +126,7 @@ export const PopoverContent = forwardRef<
           ref={forwardedRef}
         >
           {children}
-          {showArrow && (
+          {getValue(showArrow) && (
             <PopoverPrimitive.Arrow
               className={classNames(
                 "dark:fill-secondary-800 fill-white",

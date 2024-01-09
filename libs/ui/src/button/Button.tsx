@@ -1,3 +1,4 @@
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   ComponentPropsWithoutRef,
@@ -458,17 +459,17 @@ export type Button<T extends ElementType = "button"> =
     colorScheme?: "primary" | "secondary" | "error" | "success";
     variant?: "solid" | "outline" | "ghost";
     size?: "sm" | "md" | "lg" | "icon" | "fab";
-    isLoading?: boolean;
-    isActive?: boolean;
-    isDisabled?: boolean;
+    isLoading?: BooleanOrFunction;
+    isActive?: BooleanOrFunction;
+    isDisabled?: BooleanOrFunction;
   };
 
 export const Button = forwardRef<ElementRef<"button">, Button>(
   (
     {
-      isLoading = false,
-      isActive = false,
-      isDisabled = false,
+      isLoading,
+      isActive,
+      isDisabled,
       colorScheme = "secondary",
       variant = "solid",
       size = "md",
@@ -485,7 +486,8 @@ export const Button = forwardRef<ElementRef<"button">, Button>(
     forwardedRef,
   ) => {
     // Buttons are **always** disabled if we're in a `loading` state
-    const disabled = props.disabled || isDisabled || isLoading;
+    const loading = getValue(isLoading);
+    const disabled = props.disabled || getValue(isDisabled) || loading;
 
     return (
       <Element
@@ -501,8 +503,8 @@ export const Button = forwardRef<ElementRef<"button">, Button>(
                   variant,
                   size,
                   disabled,
-                  loading: isLoading,
-                  active: isActive,
+                  loading,
+                  active: getValue(isActive),
                 }),
                 className,
               )

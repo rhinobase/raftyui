@@ -1,6 +1,7 @@
 "use client";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
@@ -192,7 +193,7 @@ export type MenuContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.Content
 > & {
   isUnstyled?: boolean;
-  isArrow?: boolean;
+  isArrow?: BooleanOrFunction;
   arrowClassNames?: string;
 };
 
@@ -204,7 +205,7 @@ export const MenuContent = forwardRef<
     {
       children,
       className,
-      isArrow = true,
+      isArrow,
       isUnstyled = false,
       arrowClassNames,
       ...props
@@ -213,6 +214,7 @@ export const MenuContent = forwardRef<
   ) => {
     const { isUnstyled: isParentUnstyled } = useMenuContext();
     const unstyle = isParentUnstyled || isUnstyled;
+    const arrow = getValue(isArrow) ?? true;
 
     return (
       <DropdownMenu.Portal>
@@ -231,7 +233,7 @@ export const MenuContent = forwardRef<
           ref={forwardedRef}
         >
           {children}
-          {isArrow && <MenuArrow className={arrowClassNames} />}
+          {arrow && <MenuArrow className={arrowClassNames} />}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     );

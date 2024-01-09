@@ -1,6 +1,7 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
@@ -100,7 +101,7 @@ export type AccordionTrigger = ComponentPropsWithoutRef<
   openIcon?: JSX.Element;
   closeIcon?: JSX.Element;
   isUnstyled?: boolean;
-  showIcon?: boolean;
+  showIcon?: BooleanOrFunction;
 };
 
 export const AccordionTrigger = forwardRef<
@@ -114,7 +115,7 @@ export const AccordionTrigger = forwardRef<
       openIcon,
       closeIcon,
       isUnstyled = false,
-      showIcon = true,
+      showIcon,
       ...props
     },
     forwardedRef,
@@ -124,7 +125,10 @@ export const AccordionTrigger = forwardRef<
       variant,
       isUnstyled: isParentUnstyled,
     } = useAccordionContext();
+
     const unstyle = isParentUnstyled || isUnstyled;
+
+    const _showIcon = getValue(showIcon) ?? true;
 
     return (
       <AccordionPrimitive.Trigger
@@ -145,7 +149,7 @@ export const AccordionTrigger = forwardRef<
             {closeIcon}
           </div>
         )}
-        {!openIcon && !closeIcon && showIcon && (
+        {!openIcon && !closeIcon && _showIcon && (
           <ChevronDownIcon className="h-4 w-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180" />
         )}
       </AccordionPrimitive.Trigger>

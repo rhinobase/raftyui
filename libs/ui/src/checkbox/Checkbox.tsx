@@ -1,6 +1,7 @@
 "use client";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
@@ -48,9 +49,9 @@ export type Checkbox = Omit<
   "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
-  isReadOnly?: boolean;
-  isDisabled?: boolean;
-  isRequired?: boolean;
+  isReadOnly?: BooleanOrFunction;
+  isDisabled?: BooleanOrFunction;
+  isRequired?: BooleanOrFunction;
 };
 
 export const Checkbox = forwardRef<
@@ -62,9 +63,9 @@ export const Checkbox = forwardRef<
       className,
       children,
       size = "md",
-      isReadOnly = false,
-      isDisabled = false,
-      isRequired = false,
+      isReadOnly,
+      isDisabled,
+      isRequired,
       ...props
     },
     forwardedref,
@@ -73,8 +74,11 @@ export const Checkbox = forwardRef<
 
     const name = props.name || context.name;
     const disabled =
-      isDisabled || context.isDisabled || isReadOnly || context.isReadOnly;
-    const required = isRequired || context.isRequired;
+      getValue(isDisabled) ||
+      context.isDisabled ||
+      getValue(isReadOnly) ||
+      context.isReadOnly;
+    const required = getValue(isRequired) || context.isRequired;
 
     const checkbox = (
       <CheckboxPrimitive.Root

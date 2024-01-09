@@ -1,12 +1,13 @@
 "use client";
 import * as LabelPrimitive from "@radix-ui/react-label";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
 // Label Component
 export type Label = ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & {
-  isRequired?: boolean;
+  isRequired?: BooleanOrFunction;
 };
 
 export const Label = forwardRef<ElementRef<typeof LabelPrimitive.Root>, Label>(
@@ -14,7 +15,7 @@ export const Label = forwardRef<ElementRef<typeof LabelPrimitive.Root>, Label>(
     const { name, isRequired: isParentRequired } =
       useFieldControlContext() ?? {};
 
-    const required = isRequired || isParentRequired;
+    const required = getValue(isRequired) || isParentRequired;
 
     return (
       <LabelPrimitive.Root
