@@ -1,4 +1,33 @@
 {
   "name": "@rafty/shared",
-  "version": "0.0.1"
+  "version": "1.0.0",
+  "description": "Shared internal functions for @rafty/ui",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "rafty-ui",
+    "corp",
+    "rafty-corp",
+    "rafty",
+    "design-system",
+    "tailwind",
+    "tailwindcss",
+    "tailwind-css"
+  ],
+  "homepage": "https://rafty.rhinobase.io/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "libs/corp"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
 }

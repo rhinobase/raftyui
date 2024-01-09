@@ -17,7 +17,7 @@
         "tsConfig": "libs/fibr/tsconfig.lib.json",
         "project": "libs/fibr/package.json",
         "entryFile": "libs/fibr/src/index.ts",
-        "rollupConfig": "libs/fibr/rollup.config.js",
+        "rollupConfig": "rollup.config.js",
         "compiler": "swc",
         "assets": [
           {

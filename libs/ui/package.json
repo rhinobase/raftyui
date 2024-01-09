@@ -50,7 +50,8 @@
     "react-virtualized-auto-sizer": "^1.0.20",
     "react-window": "^1.8.10",
     "tailwind-merge": "^2.2.0",
-    "react-day-picker": "^8.8.2"
+    "react-day-picker": "^8.8.2",
+    "@rafty/shared": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^18.2.0"

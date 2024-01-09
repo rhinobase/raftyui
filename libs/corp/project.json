@@ -20,7 +20,7 @@
         "tsConfig": "libs/corp/tsconfig.lib.json",
         "project": "libs/corp/package.json",
         "entryFile": "libs/corp/src/index.ts",
-        "rollupConfig": "libs/corp/rollup.config.js",
+        "rollupConfig": "rollup.config.js",
         "compiler": "swc",
         "assets": [
           {
