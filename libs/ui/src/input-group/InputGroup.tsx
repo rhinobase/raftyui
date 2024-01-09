@@ -1,6 +1,7 @@
 "use client";
+import { getValidChildren } from "@rafty/shared";
 import { HTMLAttributes, forwardRef } from "react";
-import { classNames, getValidChildren } from "../utils";
+import { classNames } from "../utils";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
 import { RightAddon } from "./RightAddon";

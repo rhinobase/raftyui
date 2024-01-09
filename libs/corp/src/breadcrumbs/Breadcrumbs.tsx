@@ -1,10 +1,5 @@
-import {
-  List,
-  ListItem,
-  buttonClasses,
-  classNames,
-  eventHandler,
-} from "@rafty/ui";
+import { eventHandler } from "@rafty/shared";
+import { List, ListItem, buttonClasses, classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import {
   ElementType,

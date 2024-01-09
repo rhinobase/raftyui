@@ -4,6 +4,7 @@ import {
   PaperAirplaneIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import {
   Avatar,
   AvatarGroup,
@@ -26,7 +27,6 @@ import {
   TooltipContent,
   TooltipTrigger,
   classNames,
-  eventHandler,
 } from "@rafty/ui";
 import { ReactNode, useReducer, useRef } from "react";
 

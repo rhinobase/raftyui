@@ -1,5 +1,6 @@
 "use client";
-import { Button, classNames, eventHandler } from "@rafty/ui";
+import { eventHandler } from "@rafty/shared";
+import { Button, classNames } from "@rafty/ui";
 import { forwardRef } from "react";
 import { useComboboxContext } from "./context";
 
@@ -26,9 +27,8 @@ export const ClearButton = forwardRef<HTMLButtonElement, Button>(
 
     if (selected.length === 0 || isDisabled || isReadonly || isLoading) return;
 
-    let buttonText;
-    if (type === "single") buttonText = "Clear";
-    else buttonText = "Clear All";
+    let buttonText = "Clear";
+    if (type === "multi") buttonText = "Clear All";
 
     // Remove all the selected items
     const clearAll = eventHandler(() => onSelectionChange(null));

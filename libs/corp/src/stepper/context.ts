@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/ui";
+import { createContext } from "@rafty/shared";
 
 export const [StepperProvider, useStepperContext] =
   createContext<StepperContext>({

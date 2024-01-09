@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/ui";
+import { createContext } from "@rafty/shared";
 import { Dispatch, SetStateAction } from "react";
 import { ComboboxOptionType } from "./types";
 

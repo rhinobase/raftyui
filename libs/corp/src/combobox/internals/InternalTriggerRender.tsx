@@ -1,6 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Kbd, buttonClasses, classNames, eventHandler } from "@rafty/ui";
-import { KeyboardEventHandler, MouseEventHandler } from "react";
+import { eventHandler } from "@rafty/shared";
+import { Kbd, buttonClasses, classNames } from "@rafty/ui";
 import { useComboboxContext } from "../context";
 import { findLabel } from "../utils";
 

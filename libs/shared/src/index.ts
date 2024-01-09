@@ -1,3 +1,2 @@
-export function hello() {
-  return "hello";
-}
+export * from "./types";
+export * from "./utils";

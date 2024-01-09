@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { createContext } from "@rafty/shared";
 
 export const [AlertProvider, useAlertContext] = createContext<AlertContext>({
   name: "AlertContext",

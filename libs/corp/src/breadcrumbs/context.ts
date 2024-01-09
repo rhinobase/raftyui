@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/ui";
+import { createContext } from "@rafty/shared";
 import { ReactNode } from "react";
 
 export const [BreadcrumbsProvider, useBreadcrumbsContext] =

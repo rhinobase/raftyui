@@ -1,9 +1,9 @@
 "use client";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { TextareaHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
-import { BooleanOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { classNames } from "../utils";
 
 export const textareaClasses = cva(
   "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",

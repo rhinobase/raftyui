@@ -1,9 +1,9 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
-import { eventHandler } from "../utils";
 
 enum ACTION {
   ADD = 0,
@@ -17,31 +17,28 @@ export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
 };
 
 export const TagField = ({ initialData, onChange, ...props }: TagField) => {
-  const [tags, dispatch] = useReducer(
-    (prev: string[], cur: string | null) => {
-      if (!cur) return [];
+  const [tags, dispatch] = useReducer((prev: string[], cur: string | null) => {
+    if (!cur) return [];
 
-      // Checking, if the user wanna deselect the value
-      const valueIndex = prev.findIndex((val) => val === cur);
-      const isSelected = valueIndex !== -1;
+    // Checking, if the user wanna deselect the value
+    const valueIndex = prev.findIndex((val) => val === cur);
+    const isSelected = valueIndex !== -1;
 
-      let value: string[];
+    let value: string[];
 
-      // Removing the value as it already exist
-      if (isSelected) {
-        const tmp = [...prev];
-        tmp.splice(valueIndex, 1);
-        value = tmp;
-      }
-      // Adding the new value
-      else value = [...prev, cur];
+    // Removing the value as it already exist
+    if (isSelected) {
+      const tmp = [...prev];
+      tmp.splice(valueIndex, 1);
+      value = tmp;
+    }
+    // Adding the new value
+    else value = [...prev, cur];
 
-      onChange?.(value);
+    onChange?.(value);
 
-      return value;
-    },
-    initialData ?? [],
-  );
+    return value;
+  }, initialData ?? []);
 
   const handlePress = eventHandler<HTMLInputElement>((event) => {
     const data = event.currentTarget.value.trim();

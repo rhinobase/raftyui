@@ -1,8 +1,8 @@
 "use client";
+import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, forwardRef } from "react";
-import { BooleanOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { classNames } from "../utils";
 import { FieldControlContext, FieldControlProvider } from "./context";
 
 // Field Control Component

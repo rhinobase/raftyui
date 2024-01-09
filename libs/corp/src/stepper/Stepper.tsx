@@ -1,5 +1,5 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { eventHandler } from "@rafty/ui";
+import { eventHandler } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   Fragment,

@@ -1,4 +1,5 @@
-import { Spinner, classNames, getValidChildren } from "@rafty/ui";
+import { getValidChildren } from "@rafty/shared";
+import { Spinner, classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import {
   HTMLAttributes,

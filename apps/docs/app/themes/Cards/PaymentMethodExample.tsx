@@ -1,5 +1,6 @@
 "use client";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import {
   CommandItem,
   FieldControl,
@@ -7,7 +8,6 @@ import {
   Label,
   Text,
   classNames,
-  eventHandler,
 } from "@rafty/ui";
 import { useState } from "react";
 import { BsApple, BsCreditCard, BsPaypal } from "react-icons/bs";
