@@ -7,7 +7,6 @@ import { Button, classNames } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Stepper } from "./Stepper";
-import { useStepperContext } from "./context";
 
 const meta: Meta<typeof Stepper> = {
   title: "Corp / Stepper",
@@ -57,7 +56,7 @@ export const Default: Story = {
 };
 
 export const Controlled: Story = {
-  render: function Render({ size, direction, isDisabled }) {
+  render: ({ size, direction, isDisabled }) => {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
@@ -99,7 +98,7 @@ export const Controlled: Story = {
 };
 
 export const Clickable: Story = {
-  render: function Render({ size, direction, isDisabled }) {
+  render: ({ size, direction, isDisabled }) => {
     const initial = 2;
     const [current, setCurrent] = useState(initial);
 
@@ -132,7 +131,7 @@ export const Clickable: Story = {
 };
 
 export const WithIcon: Story = {
-  render: function Render({ size, direction, isDisabled }) {
+  render: ({ size, direction, isDisabled }) => {
     return (
       <Stepper
         size={size}
@@ -181,11 +180,14 @@ export const CustomConnector: Story = {
     <Stepper
       size={size}
       direction={direction}
-      connector={() => (
+      current={1}
+      connector={({ active }) => (
         <div
           className={classNames(
-            direction === "horizontal" ? "h-px w-full" : "ml-5 h-full w-px",
-            "bg-red-500",
+            direction === "horizontal"
+              ? "h-px w-full border-t-2"
+              : "ml-5 h-full w-px border-r-2",
+            active ? "border-blue-500" : "border-secondary-400 border-dotted",
           )}
         />
       )}

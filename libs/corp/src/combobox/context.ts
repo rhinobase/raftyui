@@ -1,5 +1,5 @@
 import { createContext } from "@rafty/ui";
-import { Dispatch, MutableRefObject, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { ComboboxOptionType } from "./types";
 
 export const [ComboboxProvider, useComboboxContext] =

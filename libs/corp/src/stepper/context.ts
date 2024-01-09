@@ -8,7 +8,8 @@ export const [StepperProvider, useStepperContext] =
   });
 
 export type StepperContext = {
-  readonly direction: "horizontal" | "vertical";
-  readonly isDisabled: boolean;
   readonly size: "sm" | "md" | "lg";
+  readonly direction: "horizontal" | "vertical";
+  readonly current: number;
+  readonly isDisabled: boolean;
 };

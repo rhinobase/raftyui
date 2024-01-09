@@ -1,23 +1,22 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { classNames, eventHandler } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, ReactNode, forwardRef, useId } from "react";
+import { Fragment, HTMLAttributes, ReactNode, forwardRef, useId } from "react";
 import { StepperContext, StepperProvider, useStepperContext } from "./context";
 
-const stepperClasses = cva("flex", {
-  variants: {
-    direction: {
-      horizontal: "w-full items-center",
-      vertical: "h-full flex-col",
-    },
-    isDisabled: {
-      true: "aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",
-      false: "",
+const stepperClasses = cva(
+  "group/stepper flex aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",
+  {
+    variants: {
+      direction: {
+        horizontal: "w-full items-center",
+        vertical: "h-full flex-col",
+      },
     },
   },
-});
+);
 
-export type Steps = {
+export type StepType = {
   title?: string;
   subTitle?: string;
   description?: string;
@@ -26,11 +25,10 @@ export type Steps = {
 
 export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
   Partial<StepperContext> & {
-    current?: number;
     initial?: number;
     onClick?: (value: number) => void;
     connector?: (props: StepConnector) => JSX.Element;
-    steps: Steps[];
+    steps: StepType[];
   };
 
 export const Stepper = forwardRef<HTMLDivElement, Stepper>(
@@ -50,8 +48,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
   ) => {
     const Connector = CustomConnector ?? StepConnector;
 
-    const stepperKey = useId();
-    const connectorKey = useId();
+    const key = useId();
 
     const handleSelect = (value: number) =>
       eventHandler(() => !isDisabled && onClick?.(value));
@@ -62,21 +59,17 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
 
         return [
           <div
-            key={`${stepperKey}-${index}`}
+            key={`${key}-${index}`}
             onClick={handleSelect(value)}
             onKeyDown={handleSelect(value)}
           >
             <StepperItem
               {...step}
-              current={current}
               value={value}
               isClickable={Boolean(onClick !== undefined)}
             />
           </div>,
-          <Connector
-            key={`${connectorKey}-${index}`}
-            active={current > value}
-          />,
+          <Connector key={`${key}-${index}-c`} active={current > value} />,
         ];
       })
       .slice(0, -1);
@@ -87,13 +80,14 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
           direction,
           isDisabled,
           size,
+          current,
         }}
       >
         <div
           ref={forwardedRef}
           {...props}
           aria-disabled={isDisabled}
-          className={stepperClasses({ direction, isDisabled })}
+          className={stepperClasses({ direction })}
         >
           {components}
         </div>
@@ -101,70 +95,10 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
     );
   },
 );
-
 Stepper.displayName = "Stepper";
 
-const iconClass = cva(
-  "flex items-center justify-center rounded-full leading-none select-none border border-transparent ring-offset-1 ring-primary-300 dark:ring-secondary-100 dark:ring-offset-secondary-950",
-  {
-    variants: {
-      size: {
-        sm: "h-8 w-8",
-        md: "h-9 w-9 text-lg",
-        lg: "h-10 w-10 text-xl",
-      },
-      isOnclick: {
-        true: "group-focus/item:ring-2",
-        false: "",
-      },
-      active: {
-        true: "group-hover/item:text-primary-500 group-hover/item:border-primary-500 transition-all ease-in-out",
-        false: "",
-      },
-      isCurrentStep: {
-        true: "bg-primary-500 dark:bg-primary-600 text-white",
-        false: "",
-      },
-      isCompletedStep: {
-        true: "bg-primary-100 text-primary-500 dark:bg-primary-900/50 dark:text-primary-400",
-        false: "",
-      },
-      notComplete: {
-        true: "bg-secondary-300 text-secondary-500 dark:bg-secondary-700 dark:text-secondary-400",
-        false: "",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
-
-const titleClasses = cva("leading-none w-max", {
-  variants: {
-    size: {
-      sm: "text-base",
-      md: "text-lg",
-      lg: "text-xl",
-    },
-  },
-});
-
-const helpTextClasses = cva("leading-none", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
-    },
-    isSubtitle: {
-      true: "text-secondary-400 dark:text-secondary-500",
-    },
-  },
-});
-
-const StepperItemClasses = cva(
-  "group/item flex h-full w-max items-center outline-none",
+const stepperItemClasses = cva(
+  "group/item flex h-full w-max items-center outline-none group-aria-disabled/stepper:opacity-60 group-aria-disabled/stepper:cursor-not-allowed cursor-default",
   {
     variants: {
       size: {
@@ -172,30 +106,88 @@ const StepperItemClasses = cva(
         md: "gap-2 p-2",
         lg: "gap-2.5 p-2.5",
       },
-      selectableItem: {
-        true: "cursor-pointer",
-        false: "cursor-text",
+      isClickable: {
+        true: "",
+        false: "",
       },
-      isDisabled: {
-        true: "aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",
+      isCurrentStep: {
+        true: "",
         false: "",
       },
     },
+    compoundVariants: [
+      {
+        isClickable: true,
+        isCurrentStep: false,
+        className: "cursor-pointer",
+      },
+    ],
   },
 );
 
-const itemClasses = cva("flex items-baseline", {
+const stepperItemIconClasses = cva(
+  "flex items-center justify-center rounded-full leading-none select-none border border-transparent transition-all ease-in-out",
+  {
+    variants: {
+      size: {
+        sm: "h-8 w-8",
+        md: "h-9 w-9 text-lg",
+        lg: "h-10 w-10 text-xl",
+      },
+      isClickable: {
+        true: "group-focus/item:ring-2 ring-offset-1 ring-primary-300 dark:ring-secondary-100 dark:ring-offset-secondary-950",
+        false: "",
+      },
+      isCurrentStep: {
+        true: "bg-primary-500 dark:bg-primary-600 text-white",
+        false: "",
+      },
+      isNotCompletedStep: {
+        true: "bg-secondary-300 text-secondary-500 dark:bg-secondary-700 dark:text-secondary-400",
+        false: "",
+      },
+      isCompletedStep: {
+        true: "bg-primary-100 text-primary-500 dark:bg-primary-900/50 dark:text-primary-400",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      {
+        isClickable: true,
+        isCurrentStep: false,
+        className:
+          "group-hover/item:text-primary-500 group-hover/item:border-primary-500",
+      },
+    ],
+  },
+);
+
+const contentWrapperClasses = cva("space-y-1", {
   variants: {
-    size: {
-      sm: "gap-1",
-      md: "gap-1.5",
-      lg: "gap-2",
+    isCurrentStep: {
+      true: "dark:text-secondary-100",
+      false: "",
+    },
+    isClickable: {
+      true: "",
+      false: "",
+    },
+    isNotCompletedStep: {
+      true: "text-secondary-400 dark:text-secondary-500",
+      false: "",
     },
   },
+  compoundVariants: [
+    {
+      isClickable: true,
+      isCurrentStep: false,
+      className:
+        "group-hover/item:text-primary-600 dark:text-secondary-100 dark:group-hover/item:text-primary-300",
+    },
+  ],
 });
 
-type StepperItem = Pick<Stepper, "current"> &
-  Steps & { value: number; isClickable?: boolean };
+type StepperItem = StepType & { value: number; isClickable: boolean };
 
 function StepperItem({
   title,
@@ -203,35 +195,32 @@ function StepperItem({
   subTitle,
   icon,
   value,
-  current = 0,
   isClickable,
 }: StepperItem) {
-  const { size, isDisabled } = useStepperContext();
+  const { size, current } = useStepperContext();
 
-  const isNextStep = current < value;
   const isCurrentStep = current === value;
   const isCompletedStep = current > value;
+  const isNotCompletedStep = current < value;
 
   return (
     <div
       role="button"
       tabIndex={0}
-      className={StepperItemClasses({
+      className={stepperItemClasses({
         size,
-        selectableItem: isClickable && !isCurrentStep,
-        isDisabled,
+        isClickable,
+        isCurrentStep,
       })}
-      aria-disabled={isDisabled}
     >
       {icon ?? (
         <span
-          className={iconClass({
+          className={stepperItemIconClasses({
             size,
-            isOnclick: onclick ? true : false,
-            active: isClickable && !isCurrentStep,
+            isClickable,
             isCurrentStep,
             isCompletedStep,
-            notComplete: !isCurrentStep && !isCompletedStep,
+            isNotCompletedStep,
           })}
         >
           {isCompletedStep ? (
@@ -241,22 +230,16 @@ function StepperItem({
           )}
         </span>
       )}
-      <div
-        className={classNames(
-          isNextStep && "text-secondary-400 dark:text-secondary-500",
-          isClickable &&
-            !isCurrentStep &&
-            "group-hover/item:text-primary-600 dark:text-secondary-100 dark:group-hover/item:text-primary-300",
-          isCurrentStep && "dark:text-secondary-100",
-          "space-y-1",
-        )}
-      >
-        <StepContentRender
-          title={title}
-          subTitle={subTitle}
-          description={description}
-        />
-      </div>
+      <StepContentRender
+        title={title}
+        subTitle={subTitle}
+        description={description}
+        className={contentWrapperClasses({
+          isClickable,
+          isCurrentStep,
+          isNotCompletedStep,
+        })}
+      />
     </div>
   );
 }
@@ -298,39 +281,77 @@ const connecterClasses = cva("", {
 
 type StepConnector = { active?: boolean };
 
-const StepConnector = ({ active = false }: StepConnector) => {
+function StepConnector({ active = false }: StepConnector) {
   const { direction, size } = useStepperContext();
   return <div className={connecterClasses({ direction, active, size })} />;
-};
+}
 
-const StepContentRender = ({
-  title,
-  subTitle,
-  description,
-}: Omit<Steps, "icon">) => {
-  const { size } = useStepperContext();
+const titleAndHelpTextWrapperClasses = cva("flex items-baseline", {
+  variants: {
+    size: {
+      sm: "gap-1",
+      md: "gap-1.5",
+      lg: "gap-2",
+    },
+  },
+});
 
-  const titleRender = <h3 className={titleClasses({ size })}>{title}</h3>;
-  const subTitleRender = (
-    <h5 className={helpTextClasses({ size, isSubtitle: true })}>{subTitle}</h5>
-  );
-  const descriptionRender = (
-    <p className={helpTextClasses({ size })}>{description}</p>
-  );
+const titleClasses = cva("leading-none w-max", {
+  variants: {
+    size: {
+      sm: "text-base",
+      md: "text-lg",
+      lg: "text-xl",
+    },
+  },
+});
 
-  return (
-    <>
-      {title && subTitle ? (
-        <div className={itemClasses({ size })}>
+const helpTextClasses = cva("leading-none", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+    },
+    isSubtitle: {
+      true: "text-secondary-400 dark:text-secondary-500",
+    },
+  },
+});
+
+type StepContentRender = Omit<HTMLAttributes<HTMLDivElement>, "title"> &
+  Omit<StepType, "icon">;
+
+const StepContentRender = forwardRef<HTMLDivElement, StepContentRender>(
+  ({ title, subTitle, description, ...props }, forwardedRef) => {
+    const { size } = useStepperContext();
+
+    const titleRender = <h3 className={titleClasses({ size })}>{title}</h3>;
+    const subTitleRender = (
+      <h5 className={helpTextClasses({ size, isSubtitle: true })}>
+        {subTitle}
+      </h5>
+    );
+    const descriptionRender = (
+      <p className={helpTextClasses({ size })}>{description}</p>
+    );
+
+    const Frag = title && subTitle ? "div" : Fragment;
+
+    return (
+      <div {...props} ref={forwardedRef}>
+        <Frag
+          className={
+            title && subTitle
+              ? titleAndHelpTextWrapperClasses({ size })
+              : undefined
+          }
+        >
           {title && titleRender}
           {subTitle && subTitleRender}
-        </div>
-      ) : title && !subTitle ? (
-        titleRender
-      ) : subTitle && !title ? (
-        subTitleRender
-      ) : undefined}
-      {description && descriptionRender}
-    </>
-  );
-};
+        </Frag>
+        {description && descriptionRender}
+      </div>
+    );
+  },
+);

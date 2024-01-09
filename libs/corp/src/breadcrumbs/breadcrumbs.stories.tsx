@@ -49,7 +49,7 @@ export const WithChildren: Story = {
         { label: "Menu", href: "/" },
         { label: "Article", href: "/" },
       ]}
-      seperator=">"
+      separator=">"
     >
       {({ label, isLastElement }) => {
         return (
@@ -66,7 +66,7 @@ export const AsProps: Story = {
   render: ({ size }) => (
     <Breadcrumbs
       size={size}
-      as={"button"}
+      as="button"
       items={[
         { label: "Home", href: "/" },
         { label: "Application", href: "/" },

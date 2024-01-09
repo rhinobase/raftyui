@@ -10,10 +10,14 @@ import {
   ElementType,
   Fragment,
   HTMLAttributes,
-  ReactNode,
   forwardRef,
   useId,
 } from "react";
+import {
+  BreadcrumbsContext,
+  BreadcrumbsProvider,
+  useBreadcrumbsContext,
+} from "./context";
 
 const breadcrumbClasses = cva("flex items-center", {
   variants: {
@@ -67,20 +71,18 @@ export type Breadcrumbs = Omit<
   "children" | "onClick"
 > & {
   as?: ElementType;
-  seperator?: ReactNode;
-  size?: "sm" | "md" | "lg";
   items: ItemType[];
   onClick?: (value: string) => void;
   children?: (props: ItemType & { isLastElement?: boolean }) => JSX.Element;
-};
+} & Partial<BreadcrumbsContext>;
 
 export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
   (
     {
-      seperator = "/",
       as = "a",
       items,
       size = "md",
+      separator = "/",
       onClick,
       children: Children,
       ...props
@@ -129,23 +131,23 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
               </ListItem>
             )}
           </Fragment>,
-          <Divider key={key + index} seperator={seperator} size={size} />,
+          <Divider key={`${key}-${index}-d`} />,
         ];
       })
       .slice(0, -1);
 
     return (
-      <nav ref={forwardedRef} {...props}>
-        <List className={breadcrumbClasses({ size })}>{components}</List>
-      </nav>
+      <BreadcrumbsProvider value={{ size, separator }}>
+        <nav {...props} ref={forwardedRef}>
+          <List className={breadcrumbClasses({ size })}>{components}</List>
+        </nav>
+      </BreadcrumbsProvider>
     );
   },
 );
-
 Breadcrumbs.displayName = "Breadcrumbs";
 
-type Divider = Pick<Breadcrumbs, "size" | "seperator">;
-
-function Divider({ size, seperator }: Divider) {
-  return <ListItem className={dividerClasses({ size })}>{seperator}</ListItem>;
+function Divider() {
+  const { separator, size } = useBreadcrumbsContext();
+  return <ListItem className={dividerClasses({ size })}>{separator}</ListItem>;
 }
