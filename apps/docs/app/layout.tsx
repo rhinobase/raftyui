@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
 import "../styles/globals.css";
-import { CookieConsent } from "./CookieConsent";
+import { GoogleAnalytics } from "./GoogleAnalytics";
 import { Wrapper } from "./Wrapper";
 import { Providers } from "./providers";
 
@@ -94,7 +94,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Providers>
           <Wrapper>{children}</Wrapper>
         </Providers>
-        <CookieConsent />
+        <GoogleAnalytics />
       </body>
     </html>
   );
