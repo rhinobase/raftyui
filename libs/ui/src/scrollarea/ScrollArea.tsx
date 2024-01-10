@@ -1,18 +1,24 @@
-import { HTMLAttributes, forwardRef } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  forwardRef,
+} from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { VariableSizeList, VariableSizeListProps } from "react-window";
+import InfiniteLoader from "react-window-infinite-loader";
 import { classNames } from "../utils";
 import { ScrollAreaProvider, useScrollAreaContext } from "./context";
 
-// ScrollArea component
-export type ScrollArea = Omit<VariableSizeListProps, "height" | "width"> &
-  Omit<HTMLAttributes<HTMLDivElement>, "children">;
+// ScrollArea Component
+export type ScrollArea = Omit<
+  VariableSizeListProps,
+  "height" | "width" | "itemSize" | "children"
+> &
+  HTMLAttributes<HTMLDivElement>;
 
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
-  (
-    { layout = "vertical", itemSize, itemCount, children, className, ...props },
-    forwardedref,
-  ) => (
+  ({ layout = "vertical", itemCount, className, ...props }, forwardedref) => (
     <ScrollAreaProvider value={{ layout, itemCount }}>
       <div
         {...props}
@@ -21,24 +27,80 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
           className,
         )}
         ref={forwardedref}
-      >
-        <AutoSizer>
-          {({ height, width }) => (
-            <ScrollAreaList itemSize={itemSize} width={width} height={height}>
-              {children}
-            </ScrollAreaList>
-          )}
-        </AutoSizer>
-      </div>
+      />
     </ScrollAreaProvider>
   ),
 );
 ScrollArea.displayName = "ScrollArea";
 
-type ScrollAreaList = Omit<VariableSizeListProps, "itemCount" | "layout">;
+// ScrollAreaList Component
+export type ScrollAreaList = Omit<
+  VariableSizeListProps,
+  "width" | "height" | "itemCount" | "layout" | "itemSize"
+> & { itemSize: number | ((index: number) => number) };
 
-const ScrollAreaList = (props: ScrollAreaList) => {
+export const ScrollAreaList = forwardRef<
+  ElementRef<typeof VariableSizeList>,
+  ScrollAreaList
+>(({ itemSize, ...props }, forwardedref) => {
   const { itemCount, layout } = useScrollAreaContext();
-  return <VariableSizeList {...props} layout={layout} itemCount={itemCount} />;
-};
+  return (
+    <AutoSizer>
+      {({ height, width }) => (
+        <VariableSizeList
+          {...props}
+          itemSize={(index) =>
+            typeof itemSize === "function" ? itemSize(index) : itemSize
+          }
+          width={width}
+          height={height}
+          layout={layout}
+          itemCount={itemCount}
+          ref={forwardedref}
+        />
+      )}
+    </AutoSizer>
+  );
+});
 ScrollAreaList.displayName = "ScrollAreaList";
+
+export type ScrollAreaInfinityList = Omit<
+  ComponentPropsWithoutRef<typeof InfiniteLoader>,
+  "children"
+> &
+  ScrollAreaList;
+
+export const ScrollAreaInfinityList = forwardRef<
+  ElementRef<typeof InfiniteLoader>,
+  ScrollAreaInfinityList
+>(
+  (
+    {
+      isItemLoaded,
+      itemCount,
+      loadMoreItems,
+      minimumBatchSize,
+      threshold,
+      ...props
+    },
+    forwardedRef,
+  ) => (
+    <InfiniteLoader
+      isItemLoaded={isItemLoaded}
+      itemCount={itemCount}
+      loadMoreItems={loadMoreItems}
+      minimumBatchSize={minimumBatchSize}
+      threshold={threshold}
+      ref={forwardedRef}
+    >
+      {({ onItemsRendered, ref }) => (
+        <ScrollAreaList
+          {...props}
+          onItemsRendered={onItemsRendered}
+          ref={ref}
+        />
+      )}
+    </InfiniteLoader>
+  ),
+);
+ScrollAreaInfinityList.displayName = "ScrollAreaInfinityList";
