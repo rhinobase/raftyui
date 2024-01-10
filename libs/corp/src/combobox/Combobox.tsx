@@ -16,6 +16,7 @@ import {
   ReactNode,
   forwardRef,
   useEffect,
+  useId,
   useReducer,
   useRef,
   useState,
@@ -232,6 +233,7 @@ export function ComboboxContent({
   ...props
 }: ComboboxContent) {
   const { placeholder, options } = useComboboxContext();
+  const key = useId();
 
   return (
     <PopoverContent
@@ -242,8 +244,7 @@ export function ComboboxContent({
         {showSearch && <CommandInput placeholder={placeholder?.search} />}
         <CommandList className="!p-1">
           {options.map((option, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-            <Children key={index} {...option} />
+            <Children key={`${key}-${index}`} {...option} />
           ))}
           <CommandEmpty>No data found</CommandEmpty>
         </CommandList>
