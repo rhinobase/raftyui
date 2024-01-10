@@ -64,8 +64,7 @@ export const Custom: Story = {
       <EmailField
         size={size}
         value={value}
-        defaultValue="world"
-        onChange={(e) => setValue(e.currentTarget.value)}
+        onChange={(e) => setValue(e.target.value)}
       />
     );
   },
