@@ -5,13 +5,13 @@ import { forwardRef, useState } from "react";
 import { InputWrapper } from "../InputWrapper";
 
 export const iconClasses = cva(
-  "stroke-2 text-secondary-400 hover:text-secondary-900 cursor-pointer transition-all ease-in-out dark:text-secondary-500 dark:hover:text-secondary-100",
+  "stroke-2 text-secondary-400 hover:text-secondary-800 cursor-pointer transition-all ease-in-out dark:text-secondary-500 dark:hover:text-secondary-100",
   {
     variants: {
       size: {
-        sm: "h-3.5 w-3.50",
-        md: "h-4 w-4",
-        lg: "h-5 w-5",
+        sm: "h-[18px] w-[18px] p-0.5",
+        md: "h-6 w-6 p-1",
+        lg: "h-[30px] w-[30px] p-1.5",
       },
     },
   },

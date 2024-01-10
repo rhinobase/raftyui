@@ -4,12 +4,6 @@ import { cva } from "class-variance-authority";
 import { forwardRef, useState } from "react";
 import { InputWrapper } from "../InputWrapper";
 
-const CROSS_ICON = {
-  sm: "h-3 w-3",
-  md: "h-4 w-4",
-  lg: "h-5 w-5",
-};
-
 const emailFieldClasses = cva("", {
   variants: {
     size: {
@@ -41,12 +35,12 @@ const emailFieldClasses = cva("", {
   ],
 });
 
-const emptyButtonClasses = cva("absolute z-10 right-2 top-2", {
+const clearButtonClasses = cva("absolute z-10 top-2", {
   variants: {
     size: {
-      sm: "!p-0.5",
-      md: "!p-0.5",
-      lg: "!p-1",
+      sm: "p-0.5 rounded-sm",
+      md: "p-0.5 rounded",
+      lg: "p-1 rounded-md",
     },
     suffixIcon: {
       true: "",
@@ -70,6 +64,16 @@ const emptyButtonClasses = cva("absolute z-10 right-2 top-2", {
       className: "right-9",
     },
   ],
+});
+
+const clearButtonIconClasses = cva("", {
+  variants: {
+    size: {
+      sm: "h-3.5 w-3.5 stroke-2",
+      md: "h-4 w-4 stroke-2",
+      lg: "h-[18px] w-[18px]",
+    },
+  },
 });
 
 export type EmailField = Omit<InputField, "type"> & Omit<InputWrapper, "size">;
@@ -112,7 +116,7 @@ export const EmailField = forwardRef<HTMLInputElement, EmailField>(
           ref={forwardedRef}
           className={emailFieldClasses({
             size,
-            suffixIcon: suffixIcon ? true : false,
+            suffixIcon: Boolean(suffixIcon),
             className,
           })}
           onChange={handleChange}
@@ -122,12 +126,12 @@ export const EmailField = forwardRef<HTMLInputElement, EmailField>(
           size="icon"
           colorScheme="error"
           onClick={() => setVal("")}
-          className={emptyButtonClasses({
+          className={clearButtonClasses({
             size,
-            suffixIcon: suffixIcon ? true : false,
+            suffixIcon: Boolean(suffixIcon),
           })}
         >
-          <XMarkIcon className={CROSS_ICON[size]} />
+          <XMarkIcon className={clearButtonIconClasses({ size })} />
         </Button>
       </InputWrapper>
     );

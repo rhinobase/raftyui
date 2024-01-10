@@ -2,43 +2,47 @@ import { InputGroup, LeftAddon, Prefix, RightAddon, Suffix } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { PropsWithChildren, ReactNode } from "react";
 
-const textClasses = cva("opacity-70", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
+const addonTextClasses = cva(
+  "text-secondary-600 dark:text-secondary-400 font-medium",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
     },
   },
-});
+);
 
-export type InputWrapper = {
+export type InputWrapper = PropsWithChildren<{
   size: "sm" | "md" | "lg";
   prefixText?: string;
   suffixText?: string;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
-};
+}>;
 
-export function InputWrapper({
+export const InputWrapper = ({
   size,
   prefixIcon,
   prefixText,
   suffixIcon,
   suffixText,
   children,
-}: PropsWithChildren<InputWrapper>) {
-  return (
-    <InputGroup size={size}>
-      {prefixText && (
-        <LeftAddon className={textClasses({ size })}>{prefixText}</LeftAddon>
-      )}
-      {prefixIcon && <Prefix className="opacity-70">{prefixIcon}</Prefix>}
-      {children}
-      {suffixIcon && <Suffix className="opacity-70">{suffixIcon}</Suffix>}
-      {suffixText && (
-        <RightAddon className={textClasses({ size })}>{suffixText}</RightAddon>
-      )}
-    </InputGroup>
-  );
-}
+}: InputWrapper) => (
+  <InputGroup size={size}>
+    {prefixText && (
+      <LeftAddon className={addonTextClasses({ size })}>{prefixText}</LeftAddon>
+    )}
+    {prefixIcon && <Prefix>{prefixIcon}</Prefix>}
+    {children}
+    {suffixIcon && <Suffix>{suffixIcon}</Suffix>}
+    {suffixText && (
+      <RightAddon className={addonTextClasses({ size })}>
+        {suffixText}
+      </RightAddon>
+    )}
+  </InputGroup>
+);
+InputWrapper.displayName = "InputWrapper";
