@@ -31,7 +31,7 @@ export const InputWrapper = ({
   suffixText,
   children,
 }: InputWrapper) => (
-  <InputGroup size={size}>
+  <InputGroup size={size} className="w-full">
     {prefixText && (
       <LeftAddon className={addonTextClasses({ size })}>{prefixText}</LeftAddon>
     )}

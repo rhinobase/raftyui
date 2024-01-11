@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { TextField } from "./TextField";
 
 const meta: Meta<typeof TextField> = {
-  title: "Corp / TextField",
+  title: "fibr / TextField",
   args: {
     size: "md",
   },

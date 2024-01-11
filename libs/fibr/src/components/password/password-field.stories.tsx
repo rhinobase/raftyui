@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { PasswordField } from "./PasswordField";
 
 const meta: Meta<typeof PasswordField> = {
-  title: "Corp / PasswordField",
+  title: "fibr / PasswordField",
   args: {
     size: "md",
   },

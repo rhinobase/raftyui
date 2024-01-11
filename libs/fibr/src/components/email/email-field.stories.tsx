@@ -4,7 +4,7 @@ import { useState } from "react";
 import { EmailField } from "./EmailField";
 
 const meta: Meta<typeof EmailField> = {
-  title: "Corp / EmailField",
+  title: "fibr / EmailField",
   args: {
     size: "md",
   },

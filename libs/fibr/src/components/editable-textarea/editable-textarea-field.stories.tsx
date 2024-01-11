@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { EditableTextareaField } from "./EditableTextareaField";
 
 const meta: Meta<typeof EditableTextareaField> = {
-  title: "Corp / EditableTextareaField",
+  title: "fibr / EditableTextareaField",
   args: {
     size: "md",
   },

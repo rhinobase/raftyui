@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { UrlField } from "./UrlField";
 
 const meta: Meta<typeof UrlField> = {
-  title: "Corp / UrlField",
+  title: "fibr / UrlField",
   args: {
     size: "md",
   },
