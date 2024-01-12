@@ -7,7 +7,11 @@ export type RightAddon = HTMLAttributes<HTMLDivElement>;
 
 export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
   ({ className, children, ...props }, forwardedRef) => {
-    const { size } = useInputGroupContext();
+    const { size, inputRef } = useInputGroupContext();
+
+    const onClick = () => {
+      if (inputRef.current) inputRef.current.focus();
+    };
 
     return (
       <div
@@ -21,6 +25,7 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
           addonsCommonClasses[size],
           className,
         )}
+        onClick={onClick}
       >
         {children}
       </div>

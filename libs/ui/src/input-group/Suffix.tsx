@@ -8,7 +8,11 @@ export type Suffix = HTMLAttributes<HTMLDivElement>;
 
 export const Suffix = forwardRef<HTMLDivElement, Suffix>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useInputGroupContext();
+    const { size, inputRef } = useInputGroupContext();
+
+    const onClick = () => {
+      if (inputRef.current) inputRef.current.focus();
+    };
 
     return (
       <div
@@ -20,6 +24,7 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
           prefixAndSuffixCommonClasses[size],
           className,
         )}
+        onClick={onClick}
       >
         {children}
       </div>

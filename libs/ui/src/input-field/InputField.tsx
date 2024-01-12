@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { useInputGroupContext } from "../input-group";
-import { classNames } from "../utils";
+import { classNames, mergeRefs } from "../utils";
 
 export const inputFieldClasses = cva(
   "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
@@ -233,7 +233,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
                 className,
               )
         }
-        ref={forwardedRef}
+        ref={mergeRefs(inputGroupContext.inputRef, forwardedRef)}
       />
     );
   },

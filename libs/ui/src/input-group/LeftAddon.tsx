@@ -7,7 +7,11 @@ export type LeftAddon = HTMLAttributes<HTMLDivElement>;
 
 export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
   ({ children, className, ...props }, forwardedRef) => {
-    const { size } = useInputGroupContext();
+    const { size, inputRef } = useInputGroupContext();
+
+    const onClick = () => {
+      if (inputRef.current) inputRef.current.focus();
+    };
 
     return (
       <div
@@ -22,6 +26,7 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
           addonsCommonClasses[size],
           className,
         )}
+        onClick={onClick}
       >
         {children}
       </div>
