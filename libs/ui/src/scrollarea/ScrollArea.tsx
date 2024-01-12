@@ -11,10 +11,7 @@ import { classNames } from "../utils";
 import { ScrollAreaProvider, useScrollAreaContext } from "./context";
 
 // ScrollArea Component
-export type ScrollArea = Omit<
-  VariableSizeListProps,
-  "height" | "width" | "itemSize" | "children"
-> &
+export type ScrollArea = Pick<VariableSizeListProps, "layout" | "itemCount"> &
   HTMLAttributes<HTMLDivElement>;
 
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
