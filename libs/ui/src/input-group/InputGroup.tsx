@@ -26,8 +26,6 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
     },
     forwardedRef,
   ) => {
-    const inputRef = useRef(null);
-
     const validChildren = getValidChildren(children);
     const rightAddons = [];
     const leftAddons = [];
@@ -69,7 +67,6 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
           isPrefix,
           isSuffix,
           size,
-          inputRef,
         }}
       >
         <div

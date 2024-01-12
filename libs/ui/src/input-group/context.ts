@@ -14,5 +14,4 @@ export interface InputGroupContext {
   readonly isPrefix: boolean;
   readonly isSuffix: boolean;
   readonly size: "sm" | "md" | "lg";
-  readonly inputRef: React.RefObject<HTMLInputElement>;
 }

@@ -7,12 +7,8 @@ import { prefixAndSuffixCommonClasses } from "./utils";
 export type Suffix = HTMLAttributes<HTMLDivElement>;
 
 export const Suffix = forwardRef<HTMLDivElement, Suffix>(
-  ({ children, className, ...props }, forwardedRef) => {
-    const { size, inputRef } = useInputGroupContext();
-
-    const onClick = () => {
-      if (inputRef.current) inputRef.current.focus();
-    };
+  ({ className, ...props }, forwardedRef) => {
+    const { size } = useInputGroupContext();
 
     return (
       <div
@@ -20,14 +16,11 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "absolute right-0 top-0 z-10 flex h-full items-center justify-center",
+          "pointer-events-none absolute right-0 top-0 z-10 flex h-full select-none items-center justify-center",
           prefixAndSuffixCommonClasses[size],
           className,
         )}
-        onClick={onClick}
-      >
-        {children}
-      </div>
+      />
     );
   },
 );
