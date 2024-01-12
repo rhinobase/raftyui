@@ -76,6 +76,22 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
+## Placeholder
+
+Specifies the placeholder text to be displayed when no option is selected.
+
+{% example %}
+
+```jsx
+<Select placeholder="Select Option">
+  <SelectItem value="1">Option 1</SelectItem>
+  <SelectItem value="2">Option 2</SelectItem>
+  <SelectItem value="3">Option 3</SelectItem>
+</Select>
+```
+
+{% /example %}
+
 ## IsDisabled
 
 IsDisabled prop is used to show select component in disabled state
@@ -132,14 +148,15 @@ IsReadOnly prop is used to show select in read only state.
 
 `Select` composes the `<select>` component.
 
-| Property   | Description                                         | Type                                  | Default     |
-| ---------- | --------------------------------------------------- | ------------------------------------- | ----------- |
-| size       | Size of the select component and its subcomponents. | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
-| isDisabled | To manage disabled state.                           | `boolean`                             | `false`     |
-| isUnstyled | Remove style from this component                    | `boolean`                             | `false`     |
-| isRequired | To manage required state.                           | `boolean`                             | `false`     |
-| isReadOnly | To manage read-only state.                          | `boolean`                             | `false`     |
-| variant    | Style variant of the component.                     | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
+| Property    | Description                                         | Type                                  | Default     |
+| ----------- | --------------------------------------------------- | ------------------------------------- | ----------- |
+| size        | Size of the select component and its subcomponents. | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
+| placeholder | Placeholder text to be displayed.                   | `string`                              |             |
+| isDisabled  | To manage disabled state.                           | `boolean`                             | `false`     |
+| isUnstyled  | Remove style from this component                    | `boolean`                             | `false`     |
+| isRequired  | To manage required state.                           | `boolean`                             | `false`     |
+| isReadOnly  | To manage read-only state.                          | `boolean`                             | `false`     |
+| variant     | Style variant of the component.                     | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
 
 ### SelectItem
 
