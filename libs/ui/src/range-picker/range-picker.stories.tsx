@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof RangePicker>;
 
 export const Default: Story = {
-  render: function Render() {
+  render: () => {
     const { control, handleSubmit } = useForm({
       defaultValues: {
         range: {

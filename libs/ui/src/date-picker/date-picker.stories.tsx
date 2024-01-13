@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
 export const Default: Story = {
-  render: function Render() {
+  render: () => {
     const { control, handleSubmit } = useForm({
       defaultValues: {
         date: new Date("2023-10-03"),

@@ -32,7 +32,7 @@ export default meta;
 type Story = StoryObj<typeof Drawer>;
 
 export const Default: Story = {
-  render: function Render({ size, side }) {
+  render: ({ size, side }) => {
     const [isOpen, setOpen] = useState(false);
     return (
       <div className="flex flex-col gap-4">

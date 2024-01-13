@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
 export const Default: Story = {
-  render: function Render() {
+  render: () => {
     const tags = Array.from({ length: 100 }).map((_, i) => i);
 
     return (
@@ -38,7 +38,7 @@ export const Default: Story = {
 };
 
 export const InfinityScroll: Story = {
-  render: function Render() {
+  render: () => {
     const tags = Array.from({ length: 100 }).map((_, i) => i);
 
     return (

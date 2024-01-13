@@ -24,7 +24,7 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
-  render: function Render({ size, isDisabled, isRequired }) {
+  render: ({ size, isDisabled, isRequired }) => {
     return (
       <Checkbox isDisabled={isDisabled} size={size} isRequired={isRequired} />
     );
@@ -45,7 +45,7 @@ export const WithChildren: Story = {
 };
 
 export const Indeterminate: Story = {
-  render: function Render({ size, isDisabled, isRequired }) {
+  render: ({ size, isDisabled, isRequired }) => {
     const [state, setState] = useState<CheckedState>("indeterminate");
 
     return (
