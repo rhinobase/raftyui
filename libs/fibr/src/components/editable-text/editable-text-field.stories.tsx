@@ -1,5 +1,6 @@
 import { PlusIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import { EditableTextField } from "./EditableTextField";
 
 const meta: Meta<typeof EditableTextField> = {
@@ -54,4 +55,19 @@ export const editIcon: Story = {
       editIcon={<PlusIcon height={16} width={16} />}
     />
   ),
+};
+
+export const Custom: Story = {
+  render: ({ size }) => {
+    const [value, setValue] = useState<string>();
+    console.log(value);
+
+    return (
+      <EditableTextField
+        size={size}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
 };

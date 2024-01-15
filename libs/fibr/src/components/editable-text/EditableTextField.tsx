@@ -26,6 +26,7 @@ export const EditableTextField = forwardRef<
       suffixIcon,
       suffixText,
       editIcon,
+      value,
       onChange,
       onBlur,
       onKeyDown,
@@ -34,7 +35,7 @@ export const EditableTextField = forwardRef<
     forwardedRef,
   ) => {
     const [isOpen, setOpen] = useState(false);
-    const [val, setVal] = useState<string>();
+    const [val, setVal] = useState(value);
 
     const change = (event: React.ChangeEvent<HTMLInputElement>) => {
       setVal(event.target.value);
