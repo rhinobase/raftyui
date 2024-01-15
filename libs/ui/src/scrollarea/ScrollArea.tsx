@@ -63,41 +63,38 @@ ScrollAreaList.displayName = "ScrollAreaList";
 
 export type ScrollAreaInfinityList = Omit<
   ComponentPropsWithoutRef<typeof InfiniteLoader>,
-  "children"
+  "children" | "itemCount"
 > &
-  ScrollAreaList;
+  Omit<ScrollAreaList, "onItemsRendered" | "ref">;
 
 export const ScrollAreaInfinityList = forwardRef<
   ElementRef<typeof InfiniteLoader>,
   ScrollAreaInfinityList
 >(
   (
-    {
-      isItemLoaded,
-      itemCount,
-      loadMoreItems,
-      minimumBatchSize,
-      threshold,
-      ...props
-    },
+    { isItemLoaded, loadMoreItems, minimumBatchSize, threshold, ...props },
     forwardedRef,
-  ) => (
-    <InfiniteLoader
-      isItemLoaded={isItemLoaded}
-      itemCount={itemCount}
-      loadMoreItems={loadMoreItems}
-      minimumBatchSize={minimumBatchSize}
-      threshold={threshold}
-      ref={forwardedRef}
-    >
-      {({ onItemsRendered, ref }) => (
-        <ScrollAreaList
-          {...props}
-          onItemsRendered={onItemsRendered}
-          ref={ref}
-        />
-      )}
-    </InfiniteLoader>
-  ),
+  ) => {
+    const { itemCount } = useScrollAreaContext();
+
+    return (
+      <InfiniteLoader
+        isItemLoaded={isItemLoaded}
+        itemCount={itemCount}
+        loadMoreItems={loadMoreItems}
+        minimumBatchSize={minimumBatchSize}
+        threshold={threshold}
+        ref={forwardedRef}
+      >
+        {({ onItemsRendered, ref }) => (
+          <ScrollAreaList
+            {...props}
+            onItemsRendered={onItemsRendered}
+            ref={ref}
+          />
+        )}
+      </InfiniteLoader>
+    );
+  },
 );
 ScrollAreaInfinityList.displayName = "ScrollAreaInfinityList";
