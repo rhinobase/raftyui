@@ -1,1 +1,6 @@
-export { ScrollArea } from "./ScrollArea";
+export {
+  ScrollArea,
+  ScrollAreaList,
+  ScrollAreaInfinityList,
+} from "./ScrollArea";
+export { useScrollAreaContext } from "./context";

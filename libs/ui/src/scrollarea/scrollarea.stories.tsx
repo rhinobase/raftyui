@@ -25,9 +25,10 @@ export const Default: Story = {
     return (
       <ScrollArea
         itemCount={length}
+        itemSize={50}
         className="dark:border-secondary-700 h-60 w-[200px] rounded-md border"
       >
-        <ScrollAreaList itemSize={50}>
+        <ScrollAreaList>
           {({ index, style }) => (
             <div
               key={index}
@@ -60,7 +61,7 @@ function DyanmicScroll() {
     queryKey: ["launches"],
     queryFn: ({ pageParam = 0 }) =>
       fetch(
-        `https://api.spacexdata.com/v3/launches?limit=20&&offset=${
+        `https://api.spacexdata.com/v3/launches?limit=20&offset=${
           pageParam * 20
         }`,
       ).then((res) => res.json()),
@@ -76,10 +77,10 @@ function DyanmicScroll() {
   return (
     <ScrollArea
       itemCount={itemCount}
+      itemSize={50}
       className="dark:border-secondary-700 h-60 w-[400px] rounded-md border"
     >
       <ScrollAreaInfinityList
-        itemSize={50}
         isItemLoaded={(index) => Boolean(items?.[index])}
         loadMoreItems={async () => {
           await fetchNextPage();
