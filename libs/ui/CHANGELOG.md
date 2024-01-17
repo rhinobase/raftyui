@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.4](https://github.com/rhinobase/raftyui/compare/ui-1.4.3...ui-1.4.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* **ui:** resolved placeholder issue in select ([6059156](https://github.com/rhinobase/raftyui/commit/605915637ab1be200a13aacd4aabcb920d7291fb))
+
 ## [1.4.3](https://github.com/rhinobase/raftyui/compare/ui-1.4.2...ui-1.4.3) (2024-01-17)
 
 
