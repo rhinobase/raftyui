@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Select, SelectItem } from "./Select";
+import { Select, SelectItem, SelectItemGroup } from "./Select";
 
 const meta: Meta<typeof Select> = {
   title: "Form / Select",
@@ -36,11 +36,13 @@ export const Default: Story = {
       placeholder="Select fruit"
       onChange={(e) => console.log(e.target.value)}
     >
-      <SelectItem value="apple">Apple</SelectItem>
-      <SelectItem value="banana">Banana</SelectItem>
-      <SelectItem value="blueberry">Blueberry</SelectItem>
-      <SelectItem value="grapes">Grapes</SelectItem>
-      <SelectItem value="pineapple">Pineapple</SelectItem>
+      <SelectItemGroup label="Fruits">
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectItemGroup>
     </Select>
   ),
 };

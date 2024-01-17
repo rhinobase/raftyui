@@ -2,9 +2,15 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { OptionHTMLAttributes, SelectHTMLAttributes, forwardRef } from "react";
+import {
+  OptgroupHTMLAttributes,
+  OptionHTMLAttributes,
+  SelectHTMLAttributes,
+  forwardRef,
+} from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
+import { SelectContext, SelectProvider, useSelectContext } from "./context";
 
 const selectClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",
@@ -95,13 +101,12 @@ export type Select = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
   "size" | "disabled" | "required"
 > & {
-  size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
   isUnstyled?: boolean;
   isDisabled?: BooleanOrFunction;
   isRequired?: BooleanOrFunction;
   isReadOnly?: BooleanOrFunction;
-};
+} & Partial<SelectContext>;
 
 export const Select = forwardRef<HTMLSelectElement, Select>(
   (
@@ -134,49 +139,72 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
     const readonly = getValue(isReadOnly) || context.isReadOnly;
 
     return (
-      <div className="group relative flex w-max items-center">
-        <select
-          {...props}
-          name={field_name}
-          disabled={disabled || readonly}
-          required={required}
-          className={
-            isUnstyled
-              ? className
-              : classNames(
-                  selectClasses({
-                    size,
-                    variant,
-                    disabled,
-                    readonly,
-                  }),
-                  className,
-                )
-          }
-          ref={forwardedRef}
-        >
-          {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
-          {children}
-        </select>
-        {!isUnstyled && (
-          <ChevronDownIcon
-            className={classNames(
-              TRIGGER_ICON_CLASSES[size],
-              "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
-            )}
-          />
-        )}
-      </div>
+      <SelectProvider value={{ size }}>
+        <div className="group relative flex w-max items-center">
+          <select
+            {...props}
+            name={field_name}
+            disabled={disabled || readonly}
+            required={required}
+            className={
+              isUnstyled
+                ? className
+                : classNames(
+                    selectClasses({
+                      size,
+                      variant,
+                      disabled,
+                      readonly,
+                    }),
+                    className,
+                  )
+            }
+            ref={forwardedRef}
+          >
+            {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
+            {children}
+          </select>
+          {!isUnstyled && (
+            <ChevronDownIcon
+              className={classNames(
+                TRIGGER_ICON_CLASSES[size],
+                "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
+              )}
+            />
+          )}
+        </div>
+      </SelectProvider>
     );
   },
 );
 
 Select.displayName = "Select";
 
+const SelectItemClasses = {
+  sm: "text-sm",
+  md: "text-base",
+  lg: "text-lg",
+};
+
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  (props, forwardedRef) => <option {...props} ref={forwardedRef} />,
-);
+  ({ className, ...props }, forwardedRef) => {
+    const { size } = useSelectContext();
 
+    return (
+      <option
+        {...props}
+        className={classNames(SelectItemClasses[size], className)}
+        ref={forwardedRef}
+      />
+    );
+  },
+);
 SelectItem.displayName = "SelectItem";
+
+export type SelectItemGroup = OptgroupHTMLAttributes<HTMLOptGroupElement>;
+
+export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
+  (props, forwardedRef) => <optgroup {...props} ref={forwardedRef} />,
+);
