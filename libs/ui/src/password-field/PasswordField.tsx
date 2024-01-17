@@ -28,7 +28,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
           type={showPassword ? "text" : "password"}
           ref={forwardedRef}
         />
-        <Suffix>
+        <Suffix className="pointer-events-auto">
           <Button
             type="button"
             size="icon"
