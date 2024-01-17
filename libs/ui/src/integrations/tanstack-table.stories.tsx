@@ -87,7 +87,7 @@ function TanstackTable() {
     queryKey: ["launches", pageSize, offset],
     queryFn: () =>
       fetch(
-        `https://api.spacexdata.com/v3/launches?limit=${pageSize}&&offset=${offset}`,
+        `https://api.spacexdata.com/v3/launches?limit=${pageSize}&offset=${offset}`,
       ).then((res) => res.json()),
   });
 

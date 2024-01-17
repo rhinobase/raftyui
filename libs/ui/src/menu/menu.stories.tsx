@@ -34,7 +34,7 @@ export default meta;
 type Story = StoryObj<typeof Menu>;
 
 export const Default: Story = {
-  render: function Render({ size }) {
+  render: ({ size }) => {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
     const [urlsChecked, setUrlsChecked] = useState(false);
     const [person, setPerson] = useState("1");

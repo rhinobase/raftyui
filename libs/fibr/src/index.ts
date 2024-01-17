@@ -1,1 +1,1 @@
-export * from "./Fibr";
+export { Main } from "./main";

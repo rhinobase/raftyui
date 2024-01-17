@@ -1,6 +1,6 @@
 "use client";
 import { getValidChildren } from "@rafty/shared";
-import { HTMLAttributes, cloneElement, forwardRef } from "react";
+import { HTMLAttributes, cloneElement, forwardRef, useId } from "react";
 import { Avatar } from "../avatar/Avatar";
 import { classNames } from "../utils";
 import { AvatarGroupContext, AvatarGroupProvider } from "./context";
@@ -34,9 +34,12 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
     // Get the remaining avatar count
     const excess = validChildren.length - childrenToShow;
 
+    // Key for excess component
+    const excessKey = useId();
+
     // Adding the last Avatar component to show the remaing number of children
     if (excess > 0) {
-      childrenWithinMax.push(<Avatar key="excess" name={`+${excess}`} />);
+      childrenWithinMax.push(<Avatar key={excessKey} name={`+${excess}`} />);
     }
 
     // Childrens with correct left offset in a group

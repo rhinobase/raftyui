@@ -3,6 +3,7 @@ export function mergeRefs<T = unknown>(
 ): React.RefCallback<T> {
   return (value) => {
     for (const ref of refs) {
+      if (ref === null) continue;
       if (typeof ref === "function") {
         ref(value);
       } else if (ref != null) {

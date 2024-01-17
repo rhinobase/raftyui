@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
-  render: function Render({ size, variant, isUnstyled }) {
+  render: ({ size, variant, isUnstyled }) => {
     const people = [
       {
         name: "Lindsay Walton",

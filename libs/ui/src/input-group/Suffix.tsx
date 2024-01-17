@@ -1,13 +1,13 @@
 "use client";
 import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
-import { SHARED_FIX_CLASSES } from "./Perfix";
 import { useInputGroupContext } from "./context";
+import { prefixAndSuffixCommonClasses } from "./utils";
 
 export type Suffix = HTMLAttributes<HTMLDivElement>;
 
 export const Suffix = forwardRef<HTMLDivElement, Suffix>(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     const { size } = useInputGroupContext();
 
     return (
@@ -16,13 +16,11 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "absolute right-0 top-0 z-10 flex h-full items-center justify-center",
-          SHARED_FIX_CLASSES[size],
+          "pointer-events-none absolute right-0 top-0 z-10 flex h-full select-none items-center justify-center",
+          prefixAndSuffixCommonClasses[size],
           className,
         )}
-      >
-        {children}
-      </div>
+      />
     );
   },
 );

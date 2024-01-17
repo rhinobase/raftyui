@@ -10,5 +10,6 @@ export const [ScrollAreaProvider, useScrollAreaContext] =
 
 export interface ScrollAreaContext {
   readonly layout: Layout;
-  readonly itemCount: number;
+  readonly itemCount: number | (() => number);
+  readonly itemSize: number | ((index: number) => number);
 }

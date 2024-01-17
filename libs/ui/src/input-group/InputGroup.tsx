@@ -1,6 +1,6 @@
 "use client";
 import { getValidChildren } from "@rafty/shared";
-import { HTMLAttributes, forwardRef } from "react";
+import { HTMLAttributes, forwardRef, useRef } from "react";
 import { classNames } from "../utils";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
@@ -61,7 +61,13 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
 
     return (
       <InputGroupProvider
-        value={{ isLeftAddon, isRightAddon, isPrefix, isSuffix, size }}
+        value={{
+          isLeftAddon,
+          isRightAddon,
+          isPrefix,
+          isSuffix,
+          size,
+        }}
       >
         <div
           {...props}

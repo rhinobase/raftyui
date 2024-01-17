@@ -10,7 +10,7 @@ export function InternalOptionsRender({ label, value }: InternalOptionsRender) {
 
   if (Array.isArray(value))
     return (
-      <CommandGroup heading={label} className="!p-0">
+      <CommandGroup heading={label} className="p-0">
         {value.map((val, index) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           <InternalOptionsRender key={index} {...val} />

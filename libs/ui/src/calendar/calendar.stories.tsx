@@ -11,7 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Calendar>;
 
 export const Default: Story = {
-  render: function Render() {
+  render: () => {
     const [date, setDate] = useState<Date | undefined>();
 
     return (
@@ -23,7 +23,7 @@ export const Default: Story = {
 };
 
 export const FullScreen: Story = {
-  render: function Render() {
+  render: () => {
     const cellRender: JSX.Element | undefined = (
       <div className="flex h-full flex-col px-1">
         <p className="mb-1 text-right">5</p>

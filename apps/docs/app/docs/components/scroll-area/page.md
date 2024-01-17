@@ -14,62 +14,112 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Scroll%20Area
 ---
 
-Enhances native scroll functionality for custom, cross-browser styling.
+Enhances native scroll functionality for adding virtualization to a list of data.
 
-This component is made on top of [Radix UIs Scroll Area Component](https://www.radix-ui.com/primitives/docs/components/scroll-area) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+This component is made on top of [React Window's Variable Size List Component](https://www.npmjs.com/package/react-window) with our styling conventions, and it uses [Auto Sizer](https://www.npmjs.com/package/react-virtualized-auto-sizer) for managing dynamic width and height. This component has been shared with you, ensuring that all its native properties are accessible.
 
 ## Anatomy
 
-Import the component.
+Import the components for making static data list.
 
 ```jsx
-import { ScrollArea } from "@rafty/ui";
+import { ScrollArea, ScrollAreaList } from "@rafty/ui";
 
-<ScrollArea />;
+<ScrollArea>
+  <ScrollAreaList>
+</ScrollArea>;
 ```
 
-## Usage
+Import the components for making variable/infinity loading data list.
+
+```jsx
+import { ScrollArea, ScrollAreaInfinityList } from "@rafty/ui";
+
+<ScrollArea>
+  <ScrollAreaInfinityList>
+</ScrollArea>;
+```
+
+## ScrollArea List
 
 {% example %}
 
 ```jsx
-<ScrollArea className="h-[225px] w-[200px] p-1">
-  <div className="dark:divide-secondary-700 divide-y">
-    <div className="px-2 py-1">
-      <p className="text-center">Sample 1</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 2</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 3</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 4</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 5</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 6</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 7</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 8</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 9</p>
-    </div>
-    <div className="px-2 py-1 ">
-      <p className="text-center">Sample 10</p>
-    </div>
-  </div>
+<ScrollArea
+  itemCount={1000}
+  itemSize={50}
+  className="dark:border-secondary-700 h-60 w-[200px] rounded-md border"
+>
+  <ScrollAreaList>
+    {({ index, style }) => (
+      <div
+        key={index}
+        className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-center border-b text-sm"
+        style={style}
+      >
+        {index}
+      </div>
+    )}
+  </ScrollAreaList>
 </ScrollArea>
 ```
 
 {% /example %}
+
+## ScrollArea Infinity List
+
+You can check out live example for Infinity List on [Storybook](https://storybook.rafty.rhinobase.io/?path=/story/components-scrollarea--infinity-scroll)
+
+```jsx
+function DyanmicScroll() {
+  const itemCount = 110;
+  const { data, fetchNextPage } = useInfiniteQuery({
+    queryKey: ["launches"],
+    queryFn: ({ pageParam = 0 }) =>
+      fetch(
+        `https://api.spacexdata.com/v3/launches?limit=20&offset=${
+          pageParam * 20
+        }`,
+      ).then((res) => res.json()),
+    getNextPageParam: (_, pages) => {
+      const tmp = pages.flat().length;
+      if (itemCount <= tmp) return undefined;
+      return pages.length;
+    },
+  });
+
+  const items = data?.pages.flat();
+
+  return (
+    <ScrollArea
+      itemCount={itemCount}
+      itemSize={50}
+      className="dark:border-secondary-700 h-60 w-[400px] rounded-md border"
+    >
+      <ScrollAreaInfinityList
+        isItemLoaded={(index) => Boolean(items?.[index])}
+        loadMoreItems={async () => {
+          await fetchNextPage();
+        }}
+      >
+        {({ index, style }) => {
+          const launch = items?.[index];
+
+          return (
+            <div
+              key={index}
+              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center border-b px-4 text-sm"
+              style={style}
+            >
+              {launch?.flight_number}. {launch?.mission_name}
+            </div>
+          );
+        }}
+      </ScrollAreaInfinityList>
+    </ScrollArea>
+  );
+}
+```
 
 ## Props
 

@@ -27,12 +27,12 @@ const breadcrumbClasses = cva("flex items-center", {
   },
 });
 
-const breadcrumbItemClasses = cva("!rounded-base", {
+const breadcrumbItemClasses = cva("rounded-base", {
   variants: {
     size: {
-      sm: "!px-1.5 !py-0.5",
-      md: "!py-1 !px-2",
-      lg: "!py-1.5 !px-2.5",
+      sm: "px-1.5 py-0.5",
+      md: "py-1 px-2",
+      lg: "py-1.5 px-2.5",
     },
   },
   defaultVariants: {

@@ -32,7 +32,7 @@ export default meta;
 type Story = StoryObj<typeof Menubar>;
 
 export const Default: Story = {
-  render: function Render({ size }) {
+  render: ({ size }) => {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
     const [fullUrlChecked, setFullUrlChecked] = useState(true);
     const [person, setPerson] = useState("1");

@@ -23,7 +23,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  render: function Render({ size, isDisabled }) {
+  render: ({ size, isDisabled }) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -69,7 +69,7 @@ export const Default: Story = {
 };
 
 export const JumperAndButtons: Story = {
-  render: function Render({ size, isDisabled }) {
+  render: ({ size, isDisabled }) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -104,7 +104,7 @@ export const JumperAndButtons: Story = {
 };
 
 export const pageSizes: Story = {
-  render: function Render({ size, isDisabled }) {
+  render: ({ size, isDisabled }) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -142,7 +142,7 @@ export const pageSizes: Story = {
 };
 
 export const pageSizesWithNumbersOnly: Story = {
-  render: function Render({ size, isDisabled }) {
+  render: ({ size, isDisabled }) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -173,7 +173,7 @@ export const pageSizesWithNumbersOnly: Story = {
 };
 
 export const pageSizesWithLabelsOnly: Story = {
-  render: function Render({ size, isDisabled }) {
+  render: ({ size, isDisabled }) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
