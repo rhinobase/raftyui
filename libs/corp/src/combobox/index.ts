@@ -1,2 +1,9 @@
-export { Combobox } from "./Combobox";
-export * from "./context";
+export {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxItemsGroup,
+  ComboboxClearButton,
+} from "./Combobox";
+export { useComboboxContext } from "./context";

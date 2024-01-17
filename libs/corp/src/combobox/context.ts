@@ -1,5 +1,5 @@
 import { createContext } from "@rafty/shared";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, RefObject, SetStateAction } from "react";
 import { ComboboxOptionType } from "./types";
 
 export const [ComboboxProvider, useComboboxContext] =
@@ -21,6 +21,7 @@ export type ComboboxContext = {
     readonly trigger?: string;
     readonly search?: string;
   };
+  readonly triggerRef: RefObject<HTMLButtonElement>;
   readonly isOpen: boolean;
   readonly setOpen: Dispatch<SetStateAction<boolean>>;
   readonly selected: (string | number)[];

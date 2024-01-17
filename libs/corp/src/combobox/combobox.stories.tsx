@@ -1,8 +1,21 @@
-import { Avatar } from "@rafty/ui";
+import { CheckIcon } from "@heroicons/react/24/outline";
+import {
+  Avatar,
+  CommandEmpty,
+  CommandList,
+  ScrollArea,
+  ScrollAreaList,
+  Tag,
+} from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import { Combobox, ComboboxItem } from "./Combobox";
+import {
+  Combobox,
+  ComboboxClearButton,
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxTrigger,
+} from "./Combobox";
 import { useComboboxContext } from "./context";
-import { ComboboxOptionType } from "./types";
 import { findLabel } from "./utils";
 
 const meta: Meta<typeof Combobox> = {
@@ -63,7 +76,13 @@ export const Default: Story = {
               ],
             },
           ]}
-        />
+        >
+          <ComboboxTrigger />
+          <div className="mt-2 flex flex-row-reverse">
+            <ComboboxClearButton />
+          </div>
+          <ComboboxContent />
+        </Combobox>
       </div>
     );
   },
@@ -109,15 +128,20 @@ export const Custom: Story = {
           isDisabled={isDisabled}
           isLoading={isLoading}
           isReadonly={isReadonly}
-          triggerRender={<TriggerRender />}
-          itemRender={ItemRender}
-        />
+        >
+          <ComboboxTrigger>
+            <CustomTriggerRender />
+          </ComboboxTrigger>
+          <ComboboxContent>
+            <CustomContentRender />
+          </ComboboxContent>
+        </Combobox>
       </div>
     );
   },
 };
 
-function TriggerRender() {
+function CustomTriggerRender() {
   const { selected, options } = useComboboxContext();
   const label = findLabel(selected[0], options);
 
@@ -131,17 +155,93 @@ function TriggerRender() {
   return "Select Option";
 }
 
-function ItemRender({ label, value }: ComboboxOptionType) {
-  const { onSelectionChange } = useComboboxContext();
+function CustomContentRender() {
+  const { options, onSelectionChange, selected } = useComboboxContext();
 
   return (
-    <ComboboxItem
-      value={String(value)}
-      onSelect={onSelectionChange}
-      className="gap-2"
-    >
-      <Avatar size="sm" name={label} />
-      {label}
-    </ComboboxItem>
+    <CommandList className="p-1">
+      {options.map(({ label, value }) => (
+        <ComboboxItem
+          value={String(value)}
+          onSelect={onSelectionChange}
+          className="gap-2"
+        >
+          <Avatar size="sm" name={label} />
+          {label}
+          <div className="flex-1" />
+          {selected[0] === value && (
+            <CheckIcon
+              width={16}
+              height={16}
+              className="stroke-secondary-600 stroke-2"
+            />
+          )}
+        </ComboboxItem>
+      ))}
+      <CommandEmpty>No data found</CommandEmpty>
+    </CommandList>
+  );
+}
+
+// TODO: Experimental
+export const Virtualized: Story = {
+  render: ({ isDisabled, isLoading, isReadonly }) => {
+    return (
+      <div className="w-[500px] space-y-3">
+        <Tag size="sm" colorScheme="warning">
+          Experimental
+        </Tag>
+        <Combobox
+          name="products"
+          type="single"
+          onSelectionChange={console.log}
+          options={DATA}
+          isDisabled={isDisabled}
+          isLoading={isLoading}
+          isReadonly={isReadonly}
+        >
+          <ComboboxTrigger />
+          <ComboboxContent>
+            <VirtualizedContentRender />
+          </ComboboxContent>
+        </Combobox>
+      </div>
+    );
+  },
+};
+
+function VirtualizedContentRender() {
+  const { options, onSelectionChange, selected } = useComboboxContext();
+
+  return (
+    <ScrollArea itemCount={options.length} itemSize={100}>
+      <CommandList className="p-1">
+        <ScrollAreaList className="dark:border-secondary-700 h-60 w-[200px]">
+          {({ index, style }) => {
+            const { label, value } = options[index];
+            return (
+              <ComboboxItem
+                value={String(value)}
+                onSelect={onSelectionChange}
+                className="gap-2"
+                style={style}
+              >
+                <Avatar size="sm" name={label} />
+                {label}
+                <div className="flex-1" />
+                {selected[0] === value && (
+                  <CheckIcon
+                    width={16}
+                    height={16}
+                    className="stroke-secondary-600 stroke-2"
+                  />
+                )}
+              </ComboboxItem>
+            );
+          }}
+        </ScrollAreaList>
+        <ComboboxItem>ASD</ComboboxItem>
+      </CommandList>
+    </ScrollArea>
   );
 }

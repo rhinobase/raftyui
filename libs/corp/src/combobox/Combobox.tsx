@@ -1,34 +1,33 @@
 "use client";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { eventHandler } from "@rafty/shared";
 import {
+  Button,
   Command,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
   Popover,
   PopoverContent,
   PopoverTrigger,
   classNames,
+  mergeRefs,
 } from "@rafty/ui";
+import _ from "lodash";
 import {
-  ReactNode,
+  PropsWithChildren,
   forwardRef,
   useEffect,
-  useId,
   useReducer,
   useRef,
   useState,
 } from "react";
-import { ClearButton } from "./ClearButton";
 import {
   ComboboxContext,
   ComboboxProvider,
   useComboboxContext,
 } from "./context";
-import { InternalOptionsRender, InternalTriggerRender } from "./internals";
-import { ComboboxOptionType } from "./types";
+import { InternalContentRender, InternalTriggerRender } from "./internals";
 
 type RequiredProps = "name" | "options";
 
@@ -40,23 +39,22 @@ type InternalProps =
   | "onSelectionChange";
 
 // Combobox
-export type Combobox = (
-  | {
-      selected?: string | number;
-      onSelectionChange?: (selected?: string | number) => void;
-      type: "single";
-    }
-  | {
-      selected?: (string | number)[];
-      onSelectionChange?: (selected?: (string | number)[]) => void;
-      type: "multi";
-    }
-) &
-  Pick<ComboboxContext, RequiredProps> &
-  Partial<Omit<ComboboxContext, RequiredProps | InternalProps>> & {
-    triggerRender?: JSX.Element;
-    itemRender?: (props: ComboboxOptionType) => ReactNode;
-  };
+export type Combobox = PropsWithChildren<
+  (
+    | {
+        selected?: string | number;
+        onSelectionChange?: (selected?: string | number) => void;
+        type: "single";
+      }
+    | {
+        selected?: (string | number)[];
+        onSelectionChange?: (selected?: (string | number)[]) => void;
+        type: "multi";
+      }
+  ) &
+    Pick<ComboboxContext, RequiredProps> &
+    Partial<Omit<ComboboxContext, RequiredProps | InternalProps>>
+>;
 
 export function Combobox({
   isDisabled = false,
@@ -64,14 +62,12 @@ export function Combobox({
   isLoading = false,
   isReadonly = false,
   placeholder,
-  triggerRender,
-  itemRender,
   name,
   options,
+  children,
   ...props
 }: Combobox) {
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const [contentWidth, setContentWidth] = useState(0);
   const [isOpen, setOpen] = useState(false);
 
   const initValue = props.selected
@@ -126,10 +122,6 @@ export function Combobox({
     initValue,
   );
 
-  useEffect(() => {
-    setContentWidth(triggerRef.current?.offsetWidth ?? 0);
-  }, []);
-
   return (
     <ComboboxProvider
       value={{
@@ -145,25 +137,11 @@ export function Combobox({
         setOpen,
         selected,
         onSelectionChange: dispatch,
+        triggerRef,
       }}
     >
       <Popover open={isOpen} onOpenChange={setOpen}>
-        <ComboboxTrigger
-          ref={triggerRef}
-          className="w-full justify-between text-start !font-medium"
-        >
-          {triggerRender ?? (
-            <span className="flex-1">
-              <InternalTriggerRender />
-            </span>
-          )}
-        </ComboboxTrigger>
-        <div className="mt-1 flex flex-row-reverse">
-          <ClearButton />
-        </div>
-        <ComboboxContent style={{ width: contentWidth }}>
-          {itemRender ?? InternalOptionsRender}
-        </ComboboxContent>
+        {children}
       </Popover>
     </ComboboxProvider>
   );
@@ -179,6 +157,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
       variant = "outline",
       role = "combobox",
       rightIcon,
+      children = <InternalTriggerRender />,
       ...props
     },
     forwardedRef,
@@ -188,6 +167,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
       isDisabled: isParentDisabled,
       isLoading: isParentLoading,
       isReadonly: isParentReadonly,
+      triggerRef,
     } = useComboboxContext();
 
     const disabled = isDisabled || isParentDisabled || isParentReadonly;
@@ -210,44 +190,50 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
         variant={variant}
         role={role}
         rightIcon={right_icon}
-        className={classNames("!font-medium", className)}
+        className={classNames(
+          "w-full justify-between text-start font-medium",
+          className,
+        )}
         isDisabled={disabled}
         isLoading={loading}
-        ref={forwardedRef}
-      />
+        ref={mergeRefs(forwardedRef, triggerRef)}
+      >
+        <span className="flex-1">{children}</span>
+      </PopoverTrigger>
     );
   },
 );
 ComboboxTrigger.displayName = "ComboboxTrigger";
 
 // Combobox Content
-export type ComboboxContent = Omit<PopoverContent, "children"> & {
-  children: (props: ComboboxOptionType) => ReactNode;
-  showSearch?: boolean;
-};
+export type ComboboxContent = Omit<PopoverContent, "children"> &
+  PropsWithChildren<{
+    showSearch?: boolean;
+  }>;
 
 export function ComboboxContent({
   className,
-  children: Children,
+  style,
+  children = <InternalContentRender />,
   showSearch = true,
   ...props
 }: ComboboxContent) {
-  const { placeholder, options } = useComboboxContext();
-  const key = useId();
+  const { placeholder, triggerRef } = useComboboxContext();
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(triggerRef.current?.offsetWidth ?? 0);
+  }, [triggerRef]);
 
   return (
     <PopoverContent
       {...props}
-      className={classNames("!max-w-none !p-0", className)}
+      className={classNames("max-w-none p-0", className)}
+      style={_.merge({ width }, style)}
     >
       <Command>
         {showSearch && <CommandInput placeholder={placeholder?.search} />}
-        <CommandList className="!p-1">
-          {options.map((option, index) => (
-            <Children key={`${key}-${index}`} {...option} />
-          ))}
-          <CommandEmpty>No data found</CommandEmpty>
-        </CommandList>
+        {children}
       </Command>
     </PopoverContent>
   );
@@ -262,3 +248,51 @@ ComboboxItem.displayName = "ComboboxItem";
 export type ComboboxItemsGroup = CommandGroup;
 export const ComboboxItemsGroup = CommandGroup;
 ComboboxItemsGroup.displayName = "ComboboxItemsGroup";
+
+// Combobox Clear Button
+export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
+  (
+    {
+      children,
+      size = "sm",
+      variant = "ghost",
+      colorScheme = "error",
+      className,
+      ...props
+    },
+    forwardedRef,
+  ) => {
+    const {
+      type,
+      selected,
+      onSelectionChange,
+      isDisabled,
+      isLoading,
+      isReadonly,
+    } = useComboboxContext();
+
+    if (selected.length === 0 || isDisabled || isReadonly || isLoading) return;
+
+    let buttonText = "Clear";
+    if (type === "multi") buttonText = "Clear All";
+
+    // Remove all the selected items
+    const clearAll = eventHandler(() => onSelectionChange(null));
+
+    return (
+      <Button
+        {...props}
+        size={size}
+        variant={variant}
+        colorScheme={colorScheme}
+        onClick={clearAll}
+        onKeyDown={clearAll}
+        className={classNames("font-medium", className)}
+        ref={forwardedRef}
+      >
+        {children ?? buttonText}
+      </Button>
+    );
+  },
+);
+ComboboxClearButton.displayName = "ComboboxClearButton";

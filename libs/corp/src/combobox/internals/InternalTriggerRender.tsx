@@ -32,7 +32,7 @@ export function InternalTriggerRender() {
           {selected.map((item) => (
             <Kbd
               key={item}
-              className="!pr-none flex items-center gap-1.5 !text-xs"
+              className="pr-none flex items-center gap-1.5 text-xs"
             >
               {findLabel(item, options)}
               <div
@@ -43,7 +43,7 @@ export function InternalTriggerRender() {
                     size: "icon",
                     disabled,
                   }),
-                  "!rounded-sm !p-0.5",
+                  "rounded-sm p-0.5",
                 )}
                 onClick={removeNode(item)}
                 onKeyDown={removeNode(item)}
