@@ -26,12 +26,12 @@ export function FieldWrapper({
   return (
     <FieldControl
       name={name}
-      className={classNames("!gap-2", className)}
+      className={classNames("gap-2", className)}
       isRequired={required}
     >
       {label && (
         <Componenet>
-          <Label className="!leading-3">{label}</Label>
+          <Label className="leading-3">{label}</Label>
           {description && (
             <Text className="text-sm leading-[10px] opacity-70">
               {description}

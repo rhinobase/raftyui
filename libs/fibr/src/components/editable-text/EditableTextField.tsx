@@ -129,7 +129,7 @@ export function EditableTextField(props: ThreadWithNameType) {
           />
         ) : (
           <Button
-            className="!w-full !justify-between"
+            className="w-full justify-between"
             onClick={() => setOpen((prev) => !prev)}
             rightIcon={<PencilIcon className="h-4 w-4" />}
           >
