@@ -1,7 +1,9 @@
+import { ThreadWithNameType } from "@fibr/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, InputField } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { forwardRef, useState } from "react";
+import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
 const emailFieldClasses = cva("", {
@@ -35,7 +37,7 @@ const emailFieldClasses = cva("", {
   ],
 });
 
-const clearButtonClasses = cva("absolute z-10 top-2", {
+const clearButtonClasses = cva("absolute z-10 top-2 right-2", {
   variants: {
     size: {
       sm: "p-0.5 rounded-sm",
@@ -76,48 +78,88 @@ const clearButtonIconClasses = cva("", {
   },
 });
 
-export type EmailField = Omit<InputField, "type"> & Omit<InputWrapper, "size">;
+// export type EmailField = Omit<InputField, "type"> &
+//   Omit<InputWrapper, "size"> &
+//   ThreadWithNameType;
 
-export const EmailField = forwardRef<HTMLInputElement, EmailField>(
-  (
-    {
-      size = "md",
-      prefixText,
-      suffixIcon,
-      suffixText,
-      prefixIcon,
-      className,
-      onChange,
-      defaultValue = "",
-      value,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const [val, setVal] = useState(value ?? defaultValue);
+// export const EmailField = forwardRef<HTMLInputElement, EmailField>(
+//   (
+//     {
+//       size = "md",
+//       prefixText,
+//       suffixIcon,
+//       suffixText,
+//       prefixIcon,
+//       className,
+//       onChange,
+//       defaultValue = "",
+//       value,
+//       ...props
+//     },
+//     forwardedRef,
+//   ) => {
+//     const [val, setVal] = useState(value ?? defaultValue);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setVal(event.target.value);
-      onChange?.(event);
-    };
+//     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//       setVal(event.target.value);
+//       onChange?.(event);
+//     };
 
-    return (
-      <InputWrapper
-        size={size}
-        prefixText={prefixText}
-        prefixIcon={prefixIcon}
-        suffixIcon={suffixIcon}
-        suffixText={suffixText}
-      >
+//     return (
+//       <FieldWrapper name={props.name} label={props.label}>
+//         <InputWrapper
+//           size={size}
+//           prefixText={prefixText}
+//           prefixIcon={prefixIcon}
+//           suffixIcon={suffixIcon}
+//           suffixText={suffixText}
+//         >
+//           <InputField
+//             {...props}
+//             type="email"
+//             value={val}
+//             ref={forwardedRef}
+//             className={emailFieldClasses({
+//               size,
+//               suffixIcon: Boolean(suffixIcon),
+//               className,
+//             })}
+//             onChange={handleChange}
+//           />
+//           <Button
+//             variant="ghost"
+//             size="icon"
+//             colorScheme="error"
+//             onClick={() => setVal("")}
+//             className={clearButtonClasses({
+//               size,
+//               suffixIcon: Boolean(suffixIcon),
+//             })}
+//           >
+//             <XMarkIcon className={clearButtonIconClasses({ size })} />
+//           </Button>
+//         </InputWrapper>
+//       </FieldWrapper>
+//     );
+//   },
+// );
+// EmailField.displayName = "EmailField";
+
+export function EmailField(props: ThreadWithNameType) {
+  const [val, setVal] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setVal(event.target.value);
+  };
+
+  return (
+    <FieldWrapper name={props.name} label={props.label}>
+      <InputWrapper size="md">
         <InputField
-          {...props}
           type="email"
           value={val}
-          ref={forwardedRef}
           className={emailFieldClasses({
-            size,
-            suffixIcon: Boolean(suffixIcon),
-            className,
+            size: "md",
           })}
           onChange={handleChange}
         />
@@ -127,14 +169,12 @@ export const EmailField = forwardRef<HTMLInputElement, EmailField>(
           colorScheme="error"
           onClick={() => setVal("")}
           className={clearButtonClasses({
-            size,
-            suffixIcon: Boolean(suffixIcon),
+            size: "md",
           })}
         >
-          <XMarkIcon className={clearButtonIconClasses({ size })} />
+          <XMarkIcon className={clearButtonIconClasses({ size: "md" })} />
         </Button>
       </InputWrapper>
-    );
-  },
-);
-EmailField.displayName = "EmailField";
+    </FieldWrapper>
+  );
+}

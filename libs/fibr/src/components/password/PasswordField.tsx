@@ -1,11 +1,13 @@
+import { ThreadWithNameType } from "@fibr/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { InputField } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { forwardRef, useState } from "react";
+import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
 export const iconClasses = cva(
-  "stroke-2 text-secondary-400 hover:text-secondary-800 cursor-pointer transition-all ease-in-out dark:text-secondary-500 dark:hover:text-secondary-100",
+  "stroke-2 text-secondary-400 hover:text-secondary-800 pointer-events-auto cursor-pointer transition-all ease-in-out dark:text-secondary-500 dark:hover:text-secondary-100",
   {
     variants: {
       size: {
@@ -17,33 +19,57 @@ export const iconClasses = cva(
   },
 );
 
-export type PasswordField = Omit<InputField, "type"> &
-  Pick<InputWrapper, "prefixIcon" | "prefixText">;
+// export type PasswordField = Omit<InputField, "type"> &
+//   Pick<InputWrapper, "prefixIcon" | "prefixText"> &
+//   ThreadWithNameType;
 
-export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
-  ({ size = "md", prefixIcon, prefixText, ...props }, forwardedRef) => {
-    const [show, setShow] = useState(false);
-    const Icon = show ? EyeIcon : EyeSlashIcon;
+// export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
+//   ({ size = "md", prefixIcon, prefixText, ...props }, forwardedRef) => {
+//     const [show, setShow] = useState(false);
+//     const Icon = show ? EyeIcon : EyeSlashIcon;
 
-    return (
+//     return (
+//       <FieldWrapper name={props.name} label={props.label}>
+//         <InputWrapper
+//           size={size}
+//           prefixIcon={prefixIcon}
+//           prefixText={prefixText}
+//           suffixIcon={
+//             <Icon
+//               className={iconClasses({ size })}
+//               onClick={() => setShow((prev) => !prev)}
+//             />
+//           }
+//         >
+//           <InputField
+//             {...props}
+//             type={show ? "text" : "password"}
+//             ref={forwardedRef}
+//           />
+//         </InputWrapper>
+//       </FieldWrapper>
+//     );
+//   },
+// );
+// PasswordField.displayName = "PasswordField";
+
+export function PasswordField(props: ThreadWithNameType) {
+  const [show, setShow] = useState(false);
+  const Icon = show ? EyeIcon : EyeSlashIcon;
+
+  return (
+    <FieldWrapper name={props.name} label={props.label}>
       <InputWrapper
-        size={size}
-        prefixIcon={prefixIcon}
-        prefixText={prefixText}
+        size="md"
         suffixIcon={
           <Icon
-            className={iconClasses({ size })}
+            className={iconClasses({ size: "md" })}
             onClick={() => setShow((prev) => !prev)}
           />
         }
       >
-        <InputField
-          {...props}
-          type={show ? "text" : "password"}
-          ref={forwardedRef}
-        />
+        <InputField type={show ? "text" : "password"} />
       </InputWrapper>
-    );
-  },
-);
-PasswordField.displayName = "PasswordField";
+    </FieldWrapper>
+  );
+}

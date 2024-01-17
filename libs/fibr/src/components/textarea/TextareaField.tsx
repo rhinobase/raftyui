@@ -1,5 +1,11 @@
+import { ThreadWithNameType } from "@fibr/react";
 import { Textarea } from "@rafty/ui";
+import { FieldWrapper } from "../FieldWrapper";
 
-export type TextareaField = HTMLTextAreaElement;
-
-export const TextareaField = Textarea;
+export function TextareaField(props: ThreadWithNameType) {
+  return (
+    <FieldWrapper name={props.name} label={props.label}>
+      <Textarea />
+    </FieldWrapper>
+  );
+}
