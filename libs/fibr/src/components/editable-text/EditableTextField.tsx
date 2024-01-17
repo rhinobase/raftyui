@@ -97,7 +97,7 @@ const ICON = {
 
 export function EditableTextField(props: ThreadWithNameType) {
   const [isOpen, setOpen] = useState(false);
-  const [val, setVal] = useState("");
+  const [val, setVal] = useState<string>();
 
   const change = (event: React.ChangeEvent<HTMLInputElement>) => {
     setVal(event.target.value);

@@ -1,22 +1,41 @@
+import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
+import { FormProvider, useForm } from "react-hook-form";
 import { TextareaField } from "./TextareaField";
 
 const meta: Meta<typeof TextareaField> = {
   title: "fibr / TextareaField",
-  args: {
-    size: "md",
-  },
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof TextareaField>;
 
 export const Default: Story = {
-  render: ({ size }) => <TextareaField size={size} />,
+  render: () => {
+    const methods = useForm();
+    return (
+      <FormProvider {...methods}>
+        <FibrProvider
+          plugins={[
+            {
+              textarea: TextareaField,
+            },
+          ]}
+        >
+          <BlueprintProvider
+            blueprint={{
+              password: {
+                type: "textarea",
+                label: "Textarea",
+              },
+            }}
+          >
+            <div className="w-full space-y-3">
+              <Weaver />
+            </div>
+          </BlueprintProvider>
+        </FibrProvider>
+      </FormProvider>
+    );
+  },
 };

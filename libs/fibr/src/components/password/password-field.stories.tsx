@@ -1,34 +1,41 @@
-import { BellIcon } from "@heroicons/react/24/outline";
+import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
+import { FormProvider, useForm } from "react-hook-form";
 import { PasswordField } from "./PasswordField";
 
 const meta: Meta<typeof PasswordField> = {
   title: "fibr / PasswordField",
-  args: {
-    size: "md",
-  },
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof PasswordField>;
 
 export const Default: Story = {
-  render: ({ size }) => <PasswordField size={size} />,
-};
-export const prefixText: Story = {
-  render: ({ size }) => <PasswordField size={size} prefixText="Password" />,
-};
-export const prefixIcon: Story = {
-  render: ({ size }) => (
-    <PasswordField
-      size={size}
-      prefixIcon={<BellIcon height={16} width={16} />}
-    />
-  ),
+  render: () => {
+    const methods = useForm();
+    return (
+      <FormProvider {...methods}>
+        <FibrProvider
+          plugins={[
+            {
+              password: PasswordField,
+            },
+          ]}
+        >
+          <BlueprintProvider
+            blueprint={{
+              password: {
+                type: "password",
+                label: "Password",
+              },
+            }}
+          >
+            <div className="w-full space-y-3">
+              <Weaver />
+            </div>
+          </BlueprintProvider>
+        </FibrProvider>
+      </FormProvider>
+    );
+  },
 };

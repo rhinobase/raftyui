@@ -1,32 +1,41 @@
-import { PencilSquareIcon, TvIcon } from "@heroicons/react/24/outline";
+import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
+import { FormProvider, useForm } from "react-hook-form";
 import { EditableTextareaField } from "./EditableTextareaField";
 
 const meta: Meta<typeof EditableTextareaField> = {
   title: "fibr / EditableTextareaField",
-  args: {
-    size: "md",
-  },
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg"],
-    },
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof EditableTextareaField>;
 
 export const Default: Story = {
-  render: ({ size }) => <EditableTextareaField size={size} />,
-};
-
-export const editIcon: Story = {
-  render: ({ size }) => (
-    <EditableTextareaField
-      size={size}
-      editIcon={<PencilSquareIcon height={16} width={16} />}
-    />
-  ),
+  render: () => {
+    const methods = useForm();
+    return (
+      <FormProvider {...methods}>
+        <FibrProvider
+          plugins={[
+            {
+              editTextarea: EditableTextareaField,
+            },
+          ]}
+        >
+          <BlueprintProvider
+            blueprint={{
+              password: {
+                type: "editTextarea",
+                label: "EditTextarea",
+              },
+            }}
+          >
+            <div className="w-full space-y-3">
+              <Weaver />
+            </div>
+          </BlueprintProvider>
+        </FibrProvider>
+      </FormProvider>
+    );
+  },
 };

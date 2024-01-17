@@ -1,6 +1,8 @@
+import { ThreadWithNameType } from "@fibr/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { Button, Textarea, classNames } from "@rafty/ui";
 import { ReactElement, forwardRef, useEffect, useState } from "react";
+import { FieldWrapper } from "../FieldWrapper";
 
 // const ICON = {
 //   sm: "h-3.5 w-3.5",
@@ -73,7 +75,7 @@ import { ReactElement, forwardRef, useEffect, useState } from "react";
 // );
 // EditableTextareaField.displayName = "EditableTextareaField";
 
-export function EditableTextareaField() {
+export function EditableTextareaField(props: ThreadWithNameType) {
   const [isOpen, setOpen] = useState(false);
   const [val, setVal] = useState<string>();
 
@@ -95,7 +97,7 @@ export function EditableTextareaField() {
   }, [isOpen]);
 
   return (
-    <>
+    <FieldWrapper name={props.name} label={props.label}>
       {isOpen ? (
         <Textarea
           id="textArea"
@@ -114,6 +116,6 @@ export function EditableTextareaField() {
           {val ?? "Enter Value"}
         </Button>
       )}
-    </>
+    </FieldWrapper>
   );
 }
