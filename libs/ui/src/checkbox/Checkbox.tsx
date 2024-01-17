@@ -99,7 +99,7 @@ export const Checkbox = forwardRef<
     );
 
     return (
-      <div className="flex w-max items-center">
+      <div className="flex items-start">
         {checkbox}
         {children && (
           <Label
@@ -107,6 +107,7 @@ export const Checkbox = forwardRef<
             className={classNames(
               CHECKBOX_LABEL_CLASSES[size],
               disabled && "cursor-not-allowed opacity-50",
+              "leading-6",
             )}
             isRequired={required}
           >
