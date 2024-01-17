@@ -46,7 +46,7 @@
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
     "dateformat": "^5.0.3",
-    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-virtualized-auto-sizer": "^1.0.21",
     "react-window": "^1.8.10",
     "react-window-infinite-loader": "^1.0.9",
     "tailwind-merge": "^2.2.0",

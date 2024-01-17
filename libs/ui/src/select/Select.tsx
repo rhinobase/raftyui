@@ -99,13 +99,14 @@ const TRIGGER_ICON_CLASSES = {
 
 export type Select = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
-  "size" | "disabled" | "required"
+  "size" | "disabled" | "required" | "placeholder"
 > & {
   variant?: "solid" | "outline" | "ghost";
   isUnstyled?: boolean;
   isDisabled?: BooleanOrFunction;
   isRequired?: BooleanOrFunction;
   isReadOnly?: BooleanOrFunction;
+  placeholder?: string;
 } & Partial<SelectContext>;
 
 export const Select = forwardRef<HTMLSelectElement, Select>(
