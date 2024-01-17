@@ -2,6 +2,35 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.3](https://github.com/rhinobase/raftyui/compare/ui-1.4.2...ui-1.4.3) (2024-01-17)
+
+
+### Features
+
+* **corp:** added timeline componenet ([ef53efa](https://github.com/rhinobase/raftyui/commit/ef53efabeb6d326a1e7c3d9ac4d824b4d858fcbf))
+* **corp:** working on adding virtualization in ScrollArea component ([f35b850](https://github.com/rhinobase/raftyui/commit/f35b8506e21188f008f6e2f6c121f63defa23d33))
+* **ui:** created BooleanOrFunction type and implemented it in InputField, FieldControl and Textarea ([78d7cef](https://github.com/rhinobase/raftyui/commit/78d7cef215d7ae1088580c9225d9c0aa7381446b))
+* **ui:** created eventHandler function and applied it in the application where onKeyDown functions are implemented ([5f72282](https://github.com/rhinobase/raftyui/commit/5f7228292e78246ad18f9ee34c0f9fd62b76da2b))
+* **ui:** created ScrollAreaInfinityList subcomponent for infinity scrolling and improvements in scroll area ([0089eb6](https://github.com/rhinobase/raftyui/commit/0089eb618d7170201165b3874567187d857123bc))
+* **ui:** improved styling and made context ([52705c4](https://github.com/rhinobase/raftyui/commit/52705c4979697ce4c1b1d92784c96cdcf4790346))
+* **ui:** removed rediux react-scroll-area from ScrollArea component ([3fa8615](https://github.com/rhinobase/raftyui/commit/3fa8615119df2915fd1bafa344ec2fa0b6df8748))
+* **ui:** resolved focus and hover styling issue on prefix and suffix ([cc300b8](https://github.com/rhinobase/raftyui/commit/cc300b858c2afc629926a7872e1f6c8c4d10d44d))
+
+
+### Bug Fixes
+
+* resolved build errors ([5ab66ac](https://github.com/rhinobase/raftyui/commit/5ab66ac2b8a7005874ce10883c24d1a0fa8c1bff))
+* **storybook:** improving scrollarea stories ([be8ec90](https://github.com/rhinobase/raftyui/commit/be8ec90ca276e332154c8df62abec6fca96d8ae1))
+* **storybook:** resolved build error ([0d30a1a](https://github.com/rhinobase/raftyui/commit/0d30a1a45cd997ab9495af15db074fd875624c93))
+* **ui:** corrected input group ([c3079fe](https://github.com/rhinobase/raftyui/commit/c3079febd24404fcba93ed2ad63a037051b11eb8))
+* **ui:** corrected scrollarea stories and docs ([d71b3ee](https://github.com/rhinobase/raftyui/commit/d71b3ee58f8aae0df8ee3bd7db49baed8ad09545))
+* **ui:** fixed checkbox ([831e0bb](https://github.com/rhinobase/raftyui/commit/831e0bbd488db16ac5cae3664dd7a4308baf07f1))
+* **ui:** improved InputGroup component ([1fe3d9e](https://github.com/rhinobase/raftyui/commit/1fe3d9e8d3693f6d84e8521af50fc4b404551641))
+* **ui:** improvements in components ([9462942](https://github.com/rhinobase/raftyui/commit/946294258d4059e352f1e5dc8867130db9254281))
+* **ui:** improvements in InputGroup subcomponents ([8893ee7](https://github.com/rhinobase/raftyui/commit/8893ee703e13f2a0034d62d4c375fb6f15c74d44))
+* **ui:** migrated label component from radix's label to native one ([3735375](https://github.com/rhinobase/raftyui/commit/37353757c0a6afe36b5b709a945e0b69d4d7cb55))
+* **ui:** resolved key error in TagField component ([ca1e3f0](https://github.com/rhinobase/raftyui/commit/ca1e3f041ac33788484c63bcae36f9b05ec4bd67))
+
 ## [1.4.2](https://github.com/rhinobase/raftyui/compare/ui-1.4.1...ui-1.4.2) (2024-01-01)
 
 
