@@ -1,14 +1,14 @@
 import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { FormProvider, useForm } from "react-hook-form";
-import { EmailField } from "./EmailField";
+import { SwitchGroupField } from "./SwitchGroupField";
 
-const meta: Meta<typeof EmailField> = {
-  title: "fibr / EmailField",
+const meta: Meta<typeof SwitchGroupField> = {
+  title: "fibr / SwitchGroupField",
 };
 
 export default meta;
-type Story = StoryObj<typeof EmailField>;
+type Story = StoryObj<typeof SwitchGroupField>;
 
 export const Default: Story = {
   render: () => {
@@ -18,15 +18,18 @@ export const Default: Story = {
         <FibrProvider
           plugins={[
             {
-              email: EmailField,
+              switchGroup: SwitchGroupField,
             },
           ]}
         >
           <BlueprintProvider
             blueprint={{
-              email: {
-                type: "email",
-                label: "Email",
+              switchGroup: {
+                type: "switchGroup",
+                label: "Switch Group",
+                options: {
+                  label: ["option 1", "option 2", "option 3"],
+                },
               },
             }}
           >

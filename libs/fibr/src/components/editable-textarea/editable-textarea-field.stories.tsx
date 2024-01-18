@@ -24,15 +24,13 @@ export const Default: Story = {
         >
           <BlueprintProvider
             blueprint={{
-              password: {
+              editTextarea: {
                 type: "editTextarea",
                 label: "EditTextarea",
               },
             }}
           >
-            <div className="w-full space-y-3">
-              <Weaver />
-            </div>
+            <Weaver />
           </BlueprintProvider>
         </FibrProvider>
       </FormProvider>

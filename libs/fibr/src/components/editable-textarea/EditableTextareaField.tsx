@@ -1,14 +1,14 @@
-import { ThreadWithNameType } from "@fibr/react";
+import { ThreadType, createThread, useThread } from "@fibr/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import { Button, Textarea, classNames } from "@rafty/ui";
-import { ReactElement, forwardRef, useEffect, useState } from "react";
+import { Button, Textarea } from "@rafty/ui";
+import { ReactElement, useEffect, useState } from "react";
 import { FieldWrapper } from "../FieldWrapper";
 
-// const ICON = {
-//   sm: "h-3.5 w-3.5",
-//   md: "h-4 w-4",
-//   lg: "h-5 w-5",
-// };
+const ICON = {
+  sm: "h-3.5 w-3.5",
+  md: "h-4 w-4",
+  lg: "h-5 w-5",
+};
 
 // export type EditableTextareaField = Textarea & {
 //   editIcon?: ReactElement;
@@ -75,9 +75,20 @@ import { FieldWrapper } from "../FieldWrapper";
 // );
 // EditableTextareaField.displayName = "EditableTextareaField";
 
-export function EditableTextareaField(props: ThreadWithNameType) {
+export type EditableTextareaField = {
+  name: string;
+  label: string;
+  size?: "sm" | "md" | "lg";
+  editIcon?: ReactElement;
+};
+
+export function EditableTextareaField() {
   const [isOpen, setOpen] = useState(false);
   const [val, setVal] = useState<string>();
+
+  // Getting component config
+  const config = useThread<EditableTextareaField>();
+  const { size = "md" } = config;
 
   const change = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setVal(event.target.value);
@@ -87,7 +98,7 @@ export function EditableTextareaField(props: ThreadWithNameType) {
     event.key === "Escape" && setOpen(false);
   };
 
-  const blure = (event: React.FocusEvent<HTMLTextAreaElement, Element>) => {
+  const blure = () => {
     setOpen(false);
   };
 
@@ -97,7 +108,7 @@ export function EditableTextareaField(props: ThreadWithNameType) {
   }, [isOpen]);
 
   return (
-    <FieldWrapper name={props.name} label={props.label}>
+    <FieldWrapper name={config.name} label={config.label}>
       {isOpen ? (
         <Textarea
           id="textArea"
@@ -106,12 +117,13 @@ export function EditableTextareaField(props: ThreadWithNameType) {
           onKeyDown={keyDown}
           onBlur={blure}
           className="pr-10"
+          size={size}
         />
       ) : (
         <Button
           className="w-full justify-between"
           onClick={() => setOpen((prev) => !prev)}
-          rightIcon={<PencilIcon className="h-4 w-4" />}
+          rightIcon={config.editIcon ?? <PencilIcon className={ICON[size]} />}
         >
           {val ?? "Enter Value"}
         </Button>
@@ -119,3 +131,6 @@ export function EditableTextareaField(props: ThreadWithNameType) {
     </FieldWrapper>
   );
 }
+
+export const editableTextarea =
+  createThread<EditableTextareaField>("editable-textarea");

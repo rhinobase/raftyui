@@ -1,7 +1,13 @@
-import { ThreadWithNameType } from "@fibr/react";
+import { ThreadType, createThread, useThread } from "@fibr/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { Button, InputField } from "@rafty/ui";
-import { ReactElement, forwardRef, useEffect, useState } from "react";
+import {
+  ReactElement,
+  ReactNode,
+  forwardRef,
+  useEffect,
+  useState,
+} from "react";
 import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
@@ -95,9 +101,23 @@ const ICON = {
 // );
 // EditableTextField.displayName = "EditableTextField";
 
-export function EditableTextField(props: ThreadWithNameType) {
+export type EditableTextField = {
+  name: string;
+  label: string;
+  size?: "sm" | "md" | "lg";
+  prefixIcon?: ReactNode;
+  prefixText?: string;
+  suffixIcon?: ReactNode;
+  suffixText?: string;
+};
+
+export function EditableTextField() {
   const [isOpen, setOpen] = useState(false);
   const [val, setVal] = useState<string>();
+
+  // Getting component config
+  const config = useThread<EditableTextField>();
+  const { size = "md" } = config;
 
   const change = (event: React.ChangeEvent<HTMLInputElement>) => {
     setVal(event.target.value);
@@ -107,7 +127,7 @@ export function EditableTextField(props: ThreadWithNameType) {
     event.key === "Escape" && setOpen(false);
   };
 
-  const blure = (event: React.FocusEvent<HTMLInputElement, Element>) => {
+  const blure = () => {
     setOpen(false);
   };
 
@@ -116,8 +136,14 @@ export function EditableTextField(props: ThreadWithNameType) {
   }, [isOpen]);
 
   return (
-    <FieldWrapper name={props.name} label={props.label}>
-      <InputWrapper size="md">
+    <FieldWrapper name={config.name} label={config.label}>
+      <InputWrapper
+        size={size}
+        prefixText={config.prefixText}
+        prefixIcon={config.prefixIcon}
+        suffixIcon={config.suffixIcon}
+        suffixText={config.suffixText}
+      >
         {isOpen ? (
           <InputField
             id="editText"
@@ -140,3 +166,5 @@ export function EditableTextField(props: ThreadWithNameType) {
     </FieldWrapper>
   );
 }
+
+export const editableText = createThread<EditableTextField>("editable-text");

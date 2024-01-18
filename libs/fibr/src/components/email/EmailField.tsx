@@ -1,8 +1,8 @@
-import { ThreadWithNameType } from "@fibr/react";
+import { ThreadType, createThread, useThread } from "@fibr/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Button, InputField } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import { forwardRef, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
@@ -145,21 +145,42 @@ const clearButtonIconClasses = cva("", {
 // );
 // EmailField.displayName = "EmailField";
 
-export function EmailField(props: ThreadWithNameType) {
+export type EmailField = {
+  name: string;
+  label: string;
+  size?: "sm" | "md" | "lg";
+  prefixIcon?: ReactNode;
+  prefixText?: string;
+  suffixIcon?: ReactNode;
+  suffixText?: string;
+};
+
+export function EmailField() {
   const [val, setVal] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setVal(event.target.value);
   };
 
+  // Getting component config
+  const config = useThread<EmailField>();
+  const { size = "md" } = config;
+
   return (
-    <FieldWrapper name={props.name} label={props.label}>
-      <InputWrapper size="md">
+    <FieldWrapper name={config.name} label={config.label}>
+      <InputWrapper
+        size={size}
+        prefixText={config.prefixText}
+        prefixIcon={config.prefixIcon}
+        suffixIcon={config.suffixIcon}
+        suffixText={config.suffixText}
+      >
         <InputField
           type="email"
           value={val}
+          size={size}
           className={emailFieldClasses({
-            size: "md",
+            size,
           })}
           onChange={handleChange}
         />
@@ -172,9 +193,11 @@ export function EmailField(props: ThreadWithNameType) {
             size: "md",
           })}
         >
-          <XMarkIcon className={clearButtonIconClasses({ size: "md" })} />
+          <XMarkIcon className={clearButtonIconClasses({ size })} />
         </Button>
       </InputWrapper>
     </FieldWrapper>
   );
 }
+
+export const email = createThread<EmailField>("email");

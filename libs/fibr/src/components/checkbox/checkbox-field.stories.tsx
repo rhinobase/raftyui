@@ -1,14 +1,14 @@
 import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { FormProvider, useForm } from "react-hook-form";
-import { EmailField } from "./EmailField";
+import { CheckboxField } from "./CheckboxField";
 
-const meta: Meta<typeof EmailField> = {
-  title: "fibr / EmailField",
+const meta: Meta<typeof CheckboxField> = {
+  title: "fibr / CheckboxField",
 };
 
 export default meta;
-type Story = StoryObj<typeof EmailField>;
+type Story = StoryObj<typeof CheckboxField>;
 
 export const Default: Story = {
   render: () => {
@@ -18,15 +18,15 @@ export const Default: Story = {
         <FibrProvider
           plugins={[
             {
-              email: EmailField,
+              checkbox: CheckboxField,
             },
           ]}
         >
           <BlueprintProvider
             blueprint={{
-              email: {
-                type: "email",
-                label: "Email",
+              checkbox: {
+                type: "checkbox",
+                label: "Name",
               },
             }}
           >

@@ -1,6 +1,6 @@
-import { ThreadWithNameType } from "@fibr/react";
+import { ThreadType, createThread, useThread } from "@fibr/react";
 import { InputField } from "@rafty/ui";
-import { forwardRef } from "react";
+import { type ReactNode } from "react";
 import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
@@ -26,12 +26,34 @@ import { InputWrapper } from "../InputWrapper";
 // );
 // TextField.displayName = "TextField";
 
-export function TextField(props: ThreadWithNameType) {
+export type TextField = {
+  name: string;
+  label: string;
+  size?: "sm" | "md" | "lg";
+  prefixIcon?: ReactNode;
+  prefixText?: string;
+  suffixIcon?: ReactNode;
+  suffixText?: string;
+};
+
+export function TextField() {
+  // Getting component config
+  const config = useThread<TextField>();
+  const { size = "md" } = config;
+
   return (
-    <FieldWrapper name={props.name} label={props.label}>
-      <InputWrapper size="md">
-        <InputField />
+    <FieldWrapper name={config.name} label={config.label}>
+      <InputWrapper
+        size="md"
+        prefixText={config.prefixText}
+        prefixIcon={config.prefixIcon}
+        suffixIcon={config.suffixIcon}
+        suffixText={config.suffixText}
+      >
+        <InputField size={size} />
       </InputWrapper>
     </FieldWrapper>
   );
 }
+
+export const text = createThread<TextField>("text");

@@ -24,15 +24,13 @@ export const Default: Story = {
         >
           <BlueprintProvider
             blueprint={{
-              password: {
+              textarea: {
                 type: "textarea",
                 label: "Textarea",
               },
             }}
           >
-            <div className="w-full space-y-3">
-              <Weaver />
-            </div>
+            <Weaver />
           </BlueprintProvider>
         </FibrProvider>
       </FormProvider>

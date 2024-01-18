@@ -1,14 +1,6 @@
-import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { FormProvider, useForm } from "react-hook-form";
-import {
-  EditableTextField,
-  EditableTextareaField,
-  EmailField,
-  PasswordField,
-  TextField,
-  TextareaField,
-  UrlField,
-} from "./components";
+import { f, plugin } from "./components";
 
 /**
  * JSON based config
@@ -24,68 +16,36 @@ import {
  *
  */
 
-const blueprint = {
-  name: "contact-form",
-  type: "form",
-  children: {
-    name: {
-      type: "string",
+const blueprint = f.form({
+  onSubmit: console.log,
+  fields: {
+    name: f.text({
+      name: "name",
       label: "Name",
-    },
-    email: {
-      type: "email",
+    }),
+    email: f.text({
+      name: "email",
       label: "Email",
-    },
-    editableText: {
-      type: "editText",
-      label: "EditText",
-    },
-    editableTextarea: {
-      type: "editTextarea",
-      label: "EditTextarea",
-    },
-    url: {
-      type: "url",
-      label: "URL",
-    },
-    password: {
-      type: "password",
-      label: "Password",
-    },
-    phone: {
-      type: "string",
+    }),
+    phone: f.text({
+      name: "phone",
       label: "Phone",
-    },
-    message: {
-      type: "text",
+    }),
+    message: f.textarea({
+      name: "message",
       label: "Message",
-    },
+    }),
   },
-};
+});
 
 export function Main() {
-  const methods = useForm();
   return (
-    <FormProvider {...methods}>
-      <FibrProvider
-        plugins={[
-          {
-            string: TextField,
-            text: TextareaField,
-            url: UrlField,
-            password: PasswordField,
-            email: EmailField,
-            editText: EditableTextField,
-            editTextarea: EditableTextareaField,
-          },
-        ]}
-      >
-        <BlueprintProvider blueprint={blueprint.children}>
-          <div className="w-full space-y-3">
-            <Weaver />
-          </div>
-        </BlueprintProvider>
-      </FibrProvider>
-    </FormProvider>
+    <FibrProvider plugins={plugin}>
+      <WeaverProvider blueprint={blueprint}>
+        <div className="w-full">
+          <Loom />
+        </div>
+      </WeaverProvider>
+    </FibrProvider>
   );
 }

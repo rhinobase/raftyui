@@ -1,1 +1,1 @@
-export { UrlField } from "./UrlField";
+export { UrlField, url } from "./UrlField";

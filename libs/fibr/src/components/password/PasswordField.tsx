@@ -1,13 +1,13 @@
-import { ThreadWithNameType } from "@fibr/react";
+import { createThread, useThread } from "@fibr/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { InputField } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import { forwardRef, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
 export const iconClasses = cva(
-  "stroke-2 text-secondary-400 hover:text-secondary-800 pointer-events-auto cursor-pointer transition-all ease-in-out dark:text-secondary-500 dark:hover:text-secondary-100",
+  "stroke-2 text-secondary-400 hover:text-secondary-800 z-30 pointer-events-auto cursor-pointer transition-all ease-in-out dark:text-secondary-500 dark:hover:text-secondary-100",
   {
     variants: {
       size: {
@@ -53,23 +53,39 @@ export const iconClasses = cva(
 // );
 // PasswordField.displayName = "PasswordField";
 
-export function PasswordField(props: ThreadWithNameType) {
+export type PasswordField = {
+  name: string;
+  label: string;
+  size?: "sm" | "md" | "lg";
+  prefixIcon?: ReactNode;
+  prefixText?: string;
+};
+
+export function PasswordField() {
   const [show, setShow] = useState(false);
   const Icon = show ? EyeIcon : EyeSlashIcon;
 
+  // Getting component config
+  const config = useThread<PasswordField>();
+  const { size = "md" } = config;
+
   return (
-    <FieldWrapper name={props.name} label={props.label}>
+    <FieldWrapper name={config.name} label={config.label}>
       <InputWrapper
-        size="md"
+        size={size}
+        prefixIcon={config.prefixIcon}
+        prefixText={config.prefixText}
         suffixIcon={
           <Icon
-            className={iconClasses({ size: "md" })}
+            className={iconClasses({ size })}
             onClick={() => setShow((prev) => !prev)}
           />
         }
       >
-        <InputField type={show ? "text" : "password"} />
+        <InputField type={show ? "text" : "password"} size={size} />
       </InputWrapper>
     </FieldWrapper>
   );
 }
+
+export const password = createThread<PasswordField>("password");

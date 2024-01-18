@@ -1,1 +1,1 @@
-export { PasswordField } from "./PasswordField";
+export { PasswordField, password } from "./PasswordField";

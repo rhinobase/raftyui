@@ -1,5 +1,4 @@
-import { classNames } from "@rafty/ui";
-import type { HTMLAttributes, PropsWithChildren } from "react";
+import { Thread, ThreadType, createThread, useThread } from "@fibr/react";
 import {
   FieldValues,
   FormProvider,
@@ -15,17 +14,15 @@ export type Form<
 > = {
   onSubmit: SubmitHandler<FieldValues>;
   onError?: SubmitErrorHandler<FieldValues>;
-} & UseFormProps<TFieldValues, TContext> &
-  Pick<HTMLAttributes<HTMLFormElement>, "className" | "style">;
+} & UseFormProps<TFieldValues, TContext> & {
+    fields?: Record<string, ThreadType>;
+  };
 
-export function Form({
-  onSubmit,
-  onError,
-  children,
-  className,
-  style,
-  ...props
-}: PropsWithChildren<Form>) {
+export function Form() {
+  // Getting component config
+  const config = useThread<Form>();
+  const { fields = {}, onSubmit, onError, ...props } = config;
+
   // Adding provider for forms
   const methods = useForm(props);
 
@@ -33,11 +30,14 @@ export function Form({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit, onError)}
-        className={classNames("space-y-3", className)}
-        style={style}
+        className="space-y-3"
       >
-        {children}
+        {Object.entries(fields).map(([id, field]) => (
+          <Thread key={id} {...field} />
+        ))}
       </form>
     </FormProvider>
   );
 }
+
+export const form = createThread<Form>("form");

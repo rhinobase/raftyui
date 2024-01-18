@@ -1,6 +1,6 @@
-import { ThreadWithNameType } from "@fibr/react";
+import { ThreadType, createThread, useThread } from "@fibr/react";
 import { InputField } from "@rafty/ui";
-import { forwardRef } from "react";
+import { type ReactNode } from "react";
 import { FieldWrapper } from "../FieldWrapper";
 import { InputWrapper } from "../InputWrapper";
 
@@ -26,12 +26,34 @@ import { InputWrapper } from "../InputWrapper";
 // );
 // UrlField.displayName = "UrlField";
 
-export function UrlField(props: ThreadWithNameType) {
+export type UrlField = {
+  name: string;
+  label: string;
+  size?: "sm" | "md" | "lg";
+  prefixIcon?: ReactNode;
+  prefixText?: string;
+  suffixIcon?: ReactNode;
+  suffixText?: string;
+};
+
+export function UrlField() {
+  // Getting component config
+  const config = useThread<UrlField>();
+  const { size = "md" } = config;
+
   return (
-    <FieldWrapper name={props.name} label={props.label}>
-      <InputWrapper size="md">
-        <InputField type="url" />
+    <FieldWrapper name={config.name} label={config.label}>
+      <InputWrapper
+        size={size}
+        prefixText={config.prefixText}
+        prefixIcon={config.prefixIcon}
+        suffixIcon={config.suffixIcon}
+        suffixText={config.suffixText}
+      >
+        <InputField type="url" size={size} />
       </InputWrapper>
     </FieldWrapper>
   );
 }
+
+export const url = createThread<UrlField>("url");

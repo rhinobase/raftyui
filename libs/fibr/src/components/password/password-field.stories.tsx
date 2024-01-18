@@ -30,9 +30,7 @@ export const Default: Story = {
               },
             }}
           >
-            <div className="w-full space-y-3">
-              <Weaver />
-            </div>
+            <Weaver />
           </BlueprintProvider>
         </FibrProvider>
       </FormProvider>
