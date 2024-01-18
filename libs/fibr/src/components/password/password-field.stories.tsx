@@ -1,6 +1,6 @@
-import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
+import { f, plugin } from "..";
 import { PasswordField } from "./PasswordField";
 
 const meta: Meta<typeof PasswordField> = {
@@ -11,29 +11,23 @@ export default meta;
 type Story = StoryObj<typeof PasswordField>;
 
 export const Default: Story = {
-  render: () => {
-    const methods = useForm();
-    return (
-      <FormProvider {...methods}>
-        <FibrProvider
-          plugins={[
-            {
-              password: PasswordField,
-            },
-          ]}
-        >
-          <BlueprintProvider
-            blueprint={{
-              password: {
-                type: "password",
-                label: "Password",
-              },
-            }}
-          >
-            <Weaver />
-          </BlueprintProvider>
-        </FibrProvider>
-      </FormProvider>
-    );
-  },
+  render: () => (
+    <FibrProvider plugins={plugin}>
+      <WeaverProvider
+        blueprint={f.form({
+          onSubmit: console.log,
+          fields: {
+            password: f.text({
+              name: "password",
+              label: "Password",
+            }),
+          },
+        })}
+      >
+        <div className="w-full">
+          <Loom />
+        </div>
+      </WeaverProvider>
+    </FibrProvider>
+  ),
 };

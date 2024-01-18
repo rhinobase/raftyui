@@ -1,6 +1,6 @@
-import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
+import { f, plugin } from "..";
 import { SwitchField } from "./SwitchField";
 
 const meta: Meta<typeof SwitchField> = {
@@ -11,29 +11,23 @@ export default meta;
 type Story = StoryObj<typeof SwitchField>;
 
 export const Default: Story = {
-  render: () => {
-    const methods = useForm();
-    return (
-      <FormProvider {...methods}>
-        <FibrProvider
-          plugins={[
-            {
-              switch: SwitchField,
-            },
-          ]}
-        >
-          <BlueprintProvider
-            blueprint={{
-              switch: {
-                type: "switch",
-                label: "Name",
-              },
-            }}
-          >
-            <Weaver />
-          </BlueprintProvider>
-        </FibrProvider>
-      </FormProvider>
-    );
-  },
+  render: () => (
+    <FibrProvider plugins={plugin}>
+      <WeaverProvider
+        blueprint={f.form({
+          onSubmit: console.log,
+          fields: {
+            switch: f.text({
+              name: "switch",
+              label: "Switch",
+            }),
+          },
+        })}
+      >
+        <div className="w-full">
+          <Loom />
+        </div>
+      </WeaverProvider>
+    </FibrProvider>
+  ),
 };

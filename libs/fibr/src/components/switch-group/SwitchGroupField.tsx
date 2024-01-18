@@ -1,4 +1,4 @@
-import { useThread } from "@fibr/react";
+import { createThread, useThread } from "@fibr/react";
 import { Label, Switch } from "@rafty/ui";
 import { useId } from "react";
 import { FieldWrapper } from "../FieldWrapper";
@@ -33,3 +33,5 @@ export function SwitchGroupField() {
 
   return <></>;
 }
+
+export const switchGroup = createThread<SwitchGroupField>("switch-group");

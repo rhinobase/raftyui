@@ -23,7 +23,7 @@ const blueprint = f.form({
       name: "name",
       label: "Name",
     }),
-    email: f.text({
+    email: f.email({
       name: "email",
       label: "Email",
     }),
@@ -34,6 +34,38 @@ const blueprint = f.form({
     message: f.textarea({
       name: "message",
       label: "Message",
+    }),
+    chekbox: f.checkbox({
+      name: "chekbox",
+      label: "Checkbox",
+    }),
+    "editable-text": f.editableText({
+      name: "editableText",
+      label: "Editable Text",
+    }),
+    "editable-textarea": f.editableTextarea({
+      name: "editableTextarea",
+      label: "Editable Textarea",
+    }),
+    url: f.url({
+      name: "url",
+      label: "URL",
+    }),
+    switch: f.switchField({
+      name: "switch",
+      label: "Switch",
+    }),
+    swtchGroup: f.switchGroup({
+      name: "switchGroup",
+      label: "Switch Group",
+    }),
+    radio: f.radioGroup({
+      name: "radioGroup",
+      label: "Radio Group",
+    }),
+    password: f.password({
+      name: "password",
+      label: "Password",
     }),
   },
 });

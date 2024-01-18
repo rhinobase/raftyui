@@ -1,1 +1,1 @@
-export { SwitchGroupField } from "./SwitchGroupField";
+export { SwitchGroupField, switchGroup } from "./SwitchGroupField";

@@ -1,6 +1,6 @@
-import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
+import { f, plugin } from "..";
 import { RadioGroupField } from "./RadioGroupField";
 
 const meta: Meta<typeof RadioGroupField> = {
@@ -11,29 +11,23 @@ export default meta;
 type Story = StoryObj<typeof RadioGroupField>;
 
 export const Default: Story = {
-  render: () => {
-    const methods = useForm();
-    return (
-      <FormProvider {...methods}>
-        <FibrProvider
-          plugins={[
-            {
-              radioGroup: RadioGroupField,
-            },
-          ]}
-        >
-          <BlueprintProvider
-            blueprint={{
-              radioGroup: {
-                type: "radioGroup",
-                label: "Radio",
-              },
-            }}
-          >
-            <Weaver />
-          </BlueprintProvider>
-        </FibrProvider>
-      </FormProvider>
-    );
-  },
+  render: () => (
+    <FibrProvider plugins={plugin}>
+      <WeaverProvider
+        blueprint={f.form({
+          onSubmit: console.log,
+          fields: {
+            radioGroup: f.text({
+              name: "radioGroup",
+              label: "Radio",
+            }),
+          },
+        })}
+      >
+        <div className="w-full">
+          <Loom />
+        </div>
+      </WeaverProvider>
+    </FibrProvider>
+  ),
 };

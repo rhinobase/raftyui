@@ -1,6 +1,6 @@
-import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
+import { f, plugin } from "..";
 import { EmailField } from "./EmailField";
 
 const meta: Meta<typeof EmailField> = {
@@ -11,29 +11,23 @@ export default meta;
 type Story = StoryObj<typeof EmailField>;
 
 export const Default: Story = {
-  render: () => {
-    const methods = useForm();
-    return (
-      <FormProvider {...methods}>
-        <FibrProvider
-          plugins={[
-            {
-              email: EmailField,
-            },
-          ]}
-        >
-          <BlueprintProvider
-            blueprint={{
-              email: {
-                type: "email",
-                label: "Email",
-              },
-            }}
-          >
-            <Weaver />
-          </BlueprintProvider>
-        </FibrProvider>
-      </FormProvider>
-    );
-  },
+  render: () => (
+    <FibrProvider plugins={plugin}>
+      <WeaverProvider
+        blueprint={f.form({
+          onSubmit: console.log,
+          fields: {
+            email: f.text({
+              name: "email",
+              label: "Email",
+            }),
+          },
+        })}
+      >
+        <div className="w-full">
+          <Loom />
+        </div>
+      </WeaverProvider>
+    </FibrProvider>
+  ),
 };

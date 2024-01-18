@@ -1,6 +1,6 @@
-import { BlueprintProvider, FibrProvider, Weaver } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
+import { f, plugin } from "..";
 import { EditableTextareaField } from "./EditableTextareaField";
 
 const meta: Meta<typeof EditableTextareaField> = {
@@ -11,29 +11,23 @@ export default meta;
 type Story = StoryObj<typeof EditableTextareaField>;
 
 export const Default: Story = {
-  render: () => {
-    const methods = useForm();
-    return (
-      <FormProvider {...methods}>
-        <FibrProvider
-          plugins={[
-            {
-              editTextarea: EditableTextareaField,
-            },
-          ]}
-        >
-          <BlueprintProvider
-            blueprint={{
-              editTextarea: {
-                type: "editTextarea",
-                label: "EditTextarea",
-              },
-            }}
-          >
-            <Weaver />
-          </BlueprintProvider>
-        </FibrProvider>
-      </FormProvider>
-    );
-  },
+  render: () => (
+    <FibrProvider plugins={plugin}>
+      <WeaverProvider
+        blueprint={f.form({
+          onSubmit: console.log,
+          fields: {
+            editableTextarea: f.text({
+              name: "editableTextarea",
+              label: "Editable Textarea",
+            }),
+          },
+        })}
+      >
+        <div className="w-full">
+          <Loom />
+        </div>
+      </WeaverProvider>
+    </FibrProvider>
+  ),
 };
