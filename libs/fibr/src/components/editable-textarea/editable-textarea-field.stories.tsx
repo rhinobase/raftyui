@@ -17,7 +17,7 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            editableTextarea: f.text({
+            editableTextarea: f.editableTextarea({
               name: "editableTextarea",
               label: "Editable Textarea",
             }),

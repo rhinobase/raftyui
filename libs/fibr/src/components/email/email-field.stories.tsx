@@ -17,7 +17,7 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            email: f.text({
+            email: f.email({
               name: "email",
               label: "Email",
             }),

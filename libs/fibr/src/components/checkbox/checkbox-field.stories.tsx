@@ -17,7 +17,7 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            checkbox: f.text({
+            checkbox: f.checkbox({
               name: "checkbox",
               label: "Checkbox",
             }),

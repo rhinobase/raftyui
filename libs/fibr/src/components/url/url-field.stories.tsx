@@ -17,8 +17,8 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            url: f.text({
-              name: "editableTextarea",
+            url: f.url({
+              name: "url",
               label: "URL",
             }),
           },

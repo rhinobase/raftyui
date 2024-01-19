@@ -17,9 +17,10 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            switch: f.text({
+            switch: f.switchField({
               name: "switch",
               label: "Switch",
+              value: "switch",
             }),
           },
         })}

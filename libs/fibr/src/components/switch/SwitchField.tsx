@@ -5,6 +5,7 @@ import { FieldWrapper } from "../FieldWrapper";
 export type SwitchField = {
   name: string;
   label: string;
+  value: string;
   size?: "sm" | "md" | "lg";
 };
 

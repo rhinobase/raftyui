@@ -17,9 +17,13 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            switchGroup: f.text({
+            switchGroup: f.switchGroup({
               name: "switchGroup",
               label: "Switch Group",
+              options: [
+                { label: "Python", value: "py" },
+                { label: "JavaScript", value: "js" },
+              ],
             }),
           },
         })}

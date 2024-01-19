@@ -17,7 +17,7 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            password: f.text({
+            password: f.password({
               name: "password",
               label: "Password",
             }),

@@ -17,7 +17,7 @@ export const Default: Story = {
         blueprint={f.form({
           onSubmit: console.log,
           fields: {
-            textarea: f.text({
+            textarea: f.textarea({
               name: "textarea",
               label: "Textarea",
             }),

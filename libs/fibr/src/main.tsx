@@ -1,5 +1,4 @@
 import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
-import { FormProvider, useForm } from "react-hook-form";
 import { f, plugin } from "./components";
 
 /**
@@ -54,14 +53,31 @@ const blueprint = f.form({
     switch: f.switchField({
       name: "switch",
       label: "Switch",
+      value: "switch",
     }),
     swtchGroup: f.switchGroup({
       name: "switchGroup",
       label: "Switch Group",
+      options: [
+        { label: "Python", value: "py" },
+        { label: "JavaScript", value: "js" },
+      ],
     }),
     radio: f.radioGroup({
       name: "radioGroup",
       label: "Radio Group",
+      options: [
+        { label: "Python", value: "py" },
+        { label: "JavaScript", value: "js" },
+      ],
+    }),
+    checkboxGroup: f.checkboxGroup({
+      name: "checkboxGroup",
+      label: "Checkbox Group",
+      options: [
+        { label: "Java", value: "java" },
+        { label: "React", value: "react" },
+      ],
     }),
     password: f.password({
       name: "password",

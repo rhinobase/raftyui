@@ -1,4 +1,5 @@
 import { CheckboxField, checkbox } from "./checkbox";
+import { CheckboxGroupField, checkboxGroup } from "./checkbox-group";
 import { EditableTextField, editableText } from "./editable-text";
 import { EditableTextareaField, editableTextarea } from "./editable-textarea";
 import { EmailField, email } from "./email";
@@ -22,7 +23,8 @@ export const plugin = [
     textarea: TextareaField,
     url: UrlField,
     email: EmailField,
-    switchField: SwitchField,
+    switch: SwitchField,
+    "checkbox-group": CheckboxGroupField,
     "radio-group": RadioGroupField,
     "switch-group": SwitchGroupField,
   },
@@ -41,4 +43,5 @@ export const f = {
   switchGroup,
   radioGroup,
   checkbox,
+  checkboxGroup,
 };
