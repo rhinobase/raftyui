@@ -11,14 +11,7 @@ import { ErrorComponent } from "./ErrorComponent";
 type TableContextProps = ReturnType<typeof useTableProvider>;
 
 // Create a context for the table state
-const TableContext = createContext<TableContextProps>({
-  rowSelection: {},
-  setRowSelection: () => undefined,
-  sort: [],
-  setSort: () => undefined,
-  columnSize: {},
-  setColumnResize: () => undefined,
-});
+const TableContext = createContext<TableContextProps | null>(null);
 
 // TableProvider component to wrap the application with the table context
 export function TableProvider({ children }: PropsWithChildren) {
@@ -54,4 +47,10 @@ function useTableProvider() {
 }
 
 // Custom hook for accessing the table context
-export const useTable = () => useContext(TableContext);
+export function useTable() {
+  const context = useContext(TableContext);
+
+  if (!context) throw new Error("Missing TableContext.Provider in the tree");
+
+  return context;
+}

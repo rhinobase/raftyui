@@ -20,7 +20,6 @@ interface DataTable<T> {
   isLoading?: boolean;
   enableColumnResizing?: boolean; // Indicates if columns are resizable
   size?: "sm" | "md" | "lg";
-  variant?: "striped" | "simple";
 }
 
 /**
@@ -33,7 +32,6 @@ export function DataTable<T>({
   enableRowSelection = false,
   enableColumnResizing = false,
   size,
-  variant,
 }: DataTable<T>) {
   // Destructure values from the useTable hook
   const {
@@ -109,7 +107,7 @@ export function DataTable<T>({
 
   return (
     <TableContainer className="w-full overflow-hidden overflow-x-auto">
-      <Table variant={variant} size={size} className="w-full table-fixed">
+      <Table size={size} className="w-full table-fixed">
         <TableHeader table={table} enableRowSelection={enableRowSelection} />
         <TableContent table={table} isLoading={isLoading} colSpan={col_span} />
       </Table>
