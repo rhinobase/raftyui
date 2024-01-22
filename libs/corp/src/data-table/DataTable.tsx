@@ -1,3 +1,4 @@
+import { FibrProvider, WeaverProvider } from "@fibr/react";
 import { Checkbox, Table, TableContainer } from "@rafty/ui";
 import {
   ColumnDef,
@@ -8,6 +9,7 @@ import {
 import { useEffect, useMemo } from "react";
 import { TableContent } from "./TableContent";
 import { TableHeader } from "./TableHeader";
+import { withCells } from "./cells";
 import { useTable } from "./provider";
 
 /**
@@ -106,11 +108,22 @@ export function DataTable<T>({
   const col_span = header_column.length;
 
   return (
-    <TableContainer className="w-full overflow-hidden overflow-x-auto">
-      <Table size={size} className="w-full table-fixed">
-        <TableHeader table={table} enableRowSelection={enableRowSelection} />
-        <TableContent table={table} isLoading={isLoading} colSpan={col_span} />
-      </Table>
-    </TableContainer>
+    <FibrProvider plugins={withCells}>
+      <WeaverProvider blueprint={{ type: "string" }}>
+        <TableContainer className="w-full overflow-hidden overflow-x-auto">
+          <Table size={size} className="w-full table-fixed">
+            <TableHeader
+              table={table}
+              enableRowSelection={enableRowSelection}
+            />
+            <TableContent
+              table={table}
+              isLoading={isLoading}
+              colSpan={col_span}
+            />
+          </Table>
+        </TableContainer>
+      </WeaverProvider>
+    </FibrProvider>
   );
 }

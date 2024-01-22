@@ -1,3 +1,4 @@
+import { Thread } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
@@ -43,6 +44,9 @@ const COLUMNS: ColumnDef<DataType>[] = [
   {
     header: "Name",
     accessorKey: "mission_name",
+    cell(props) {
+      return <Thread type="string" cell={props} />;
+    },
   },
   {
     header: "Launch Year",
