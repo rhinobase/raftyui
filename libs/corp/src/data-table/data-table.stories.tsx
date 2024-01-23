@@ -4,9 +4,9 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ColumnType, DataTable } from "./DataTable";
-import { TableProvider } from "./providers";
+import { SortingState } from "@tanstack/react-table";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -19,9 +19,7 @@ const client = new QueryClient();
 export const Default: Story = {
   render: () => (
     <QueryClientProvider client={client}>
-      <TableProvider>
-        <TableComponent />
-      </TableProvider>
+      <TableComponent />
     </QueryClientProvider>
   ),
 };
@@ -77,11 +75,15 @@ function TableComponent() {
   const limit = 10;
   const offset = 0;
 
+  const [sorting, setSorting] = useState<SortingState>([]);
+
+  const sort = sorting[0];
+
   const { isLoading, isError, error, data } = useQuery<DataType[]>({
-    queryKey: ["query", limit, offset],
+    queryKey: ["query", limit, offset, sort],
     queryFn: async () =>
       fetch(
-        `https://api.spacexdata.com/v3/launches?limit=${limit}&offset=${offset}&sort=flight_number&order=asc`,
+        `https://api.spacexdata.com/v3/launches?limit=${limit}&offset=${offset}${sort && `&sort=${sort.id}&order=${sort.desc ? "desc" : "asc"}`}`,
       ).then((res) => res.json()),
     retry: false,
   });
@@ -95,8 +97,9 @@ function TableComponent() {
       data={data}
       columns={COLUMNS}
       isLoading={isLoading}
-      enableRowSelection // Prop to enable selectable rows
-      enableColumnResizing // Prop to enable columns resizing
+      enableRowSelection
+      enableColumnResizing
+      onSortingChange={setSorting}
     />
   );
 }

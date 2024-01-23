@@ -18,7 +18,7 @@ export function BooleanCell() {
         width={16}
         className={classNames(
           value ? "text-green-500" : "opacity-40",
-          "stroke-[3]",
+          "stroke-[3] mx-auto",
         )}
       />
     </CellWrapper>

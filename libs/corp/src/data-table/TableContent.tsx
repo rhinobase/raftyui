@@ -7,7 +7,7 @@ import { Loading } from "./utils";
  */
 type TableContent<T> = {
   table: Table<T>;
-  isLoading?: boolean;
+  isLoading: boolean;
   colSpan: number;
 };
 

@@ -6,10 +6,10 @@ type Loading = { colSpan: number };
 // Loading component for rendering a loading state with skeletons in a table
 export function Loading({ colSpan }: Loading) {
   const key = useId();
-  // Generate an array of 10 empty elements to create 10 loading rows
+  
   return Array.from({ length: 10 }).map((_, index) => (
     // Table row with a unique key for each loading row
-    <Tr key={key}>
+    <Tr key={`${key}-${index}-loading`}>
       <Td colSpan={colSpan} className="!p-0">
         {/* Skeleton component for creating a loading animation */}
         <Skeleton

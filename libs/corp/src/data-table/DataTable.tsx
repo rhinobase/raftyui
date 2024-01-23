@@ -2,6 +2,9 @@ import { FibrProvider, Thread } from "@fibr/react";
 import { Checkbox, Table, TableContainer } from "@rafty/ui";
 import {
   ColumnDef,
+  ColumnSizingState,
+  RowSelectionState,
+  SortingState,
   getCoreRowModel,
   getSortedRowModel,
   useReactTable,
@@ -10,7 +13,7 @@ import { useEffect, useMemo } from "react";
 import { TableContent } from "./TableContent";
 import { TableHeader } from "./TableHeader";
 import { withCells } from "./cells";
-import { useTable } from "./providers";
+import { useSync } from "./useSync";
 
 export type ColumnType = {
   name: string;
@@ -24,34 +27,37 @@ export type ColumnType = {
  * Interface for DataTable component
  */
 interface DataTable<T> {
-  data?: T[];
   columns: ColumnType[];
+  data?: T[];
   enableRowSelection?: boolean;
   isLoading?: boolean;
   enableColumnResizing?: boolean; // Indicates if columns are resizable
   size?: "sm" | "md" | "lg";
+  onSortingChange?: (value: SortingState) => void;
+  onColumnSizingChange?: (value: ColumnSizingState) => void;
+  onRowSelectionChange?: (value: RowSelectionState) => void;
 }
 
 /**
  * DataTable component for displaying data in a table.
  */
 export function DataTable<T>({
-  data = [],
   columns,
-  isLoading,
+  data = [],
+  isLoading = false,
   enableRowSelection = false,
   enableColumnResizing = false,
-  size,
+  size = "md",
+  ...props
 }: DataTable<T>) {
-  // Destructure values from the useTable hook
-  const {
-    sort,
-    setSort,
-    columnSize,
-    setColumnResize,
-    rowSelection,
-    setRowSelection,
-  } = useTable();
+  // State for row selection
+  const [rowSelection, onRowSelectionChange] = useSync<RowSelectionState>({}, props.onRowSelectionChange);
+
+  // State for sorting
+  const [sorting, onSortingChange] = useSync<SortingState>([], props.onSortingChange);
+
+  // State for column sizing
+  const [columnSizing, onColumnSizingChange] = useSync<ColumnSizingState>({}, props.onColumnSizingChange);
 
   // Memoized headers including optional checkbox column
   const header_column = useMemo(() => {
@@ -63,7 +69,7 @@ export function DataTable<T>({
         id: "select",
         header: ({ table }) => (
           <Checkbox
-            size="sm"
+            size={size}
             checked={
               table.getIsAllRowsSelected() ||
               (table.getIsSomeRowsSelected() ? "indeterminate" : false)
@@ -73,7 +79,7 @@ export function DataTable<T>({
         ),
         cell: ({ row }) => (
           <Checkbox
-            size="sm"
+            size={size}
             checked={row.getIsSelected()}
             onCheckedChange={() => row.toggleSelected()}
           />
@@ -93,7 +99,7 @@ export function DataTable<T>({
         enableSorting: column.enableSorting,
       })),
     );
-  }, [enableRowSelection, columns]);
+  }, [enableRowSelection, columns, size]);
 
   // React Table instance
   const table = useReactTable({
@@ -105,13 +111,13 @@ export function DataTable<T>({
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     state: {
-      sorting: sort,
+      sorting,
       rowSelection,
-      columnSizing: columnSize,
+      columnSizing,
     },
-    onSortingChange: setSort,
-    onRowSelectionChange: setRowSelection,
-    onColumnSizingChange: setColumnResize,
+    onSortingChange,
+    onRowSelectionChange,
+    onColumnSizingChange,
   });
 
   // Reset row selection on data change

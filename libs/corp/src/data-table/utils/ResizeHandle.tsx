@@ -1,5 +1,3 @@
-import { classNames } from "@rafty/ui";
-
 // Define the props for the ResizeHandle component
 type ResizeHandle = {
   onResize: (event: unknown) => void; // Event handler for resizing
