@@ -1,7 +1,7 @@
 import { TableHead, Th, Tr, classNames } from "@rafty/ui";
 import { Table, flexRender } from "@tanstack/react-table";
 import { RiArrowDownFill, RiArrowUpFill } from "react-icons/ri";
-import { ResizeHandle } from "./ResizeHandle";
+import { ResizeHandle } from "./utils";
 
 interface TableHeader<T> {
   table: Table<T>;
@@ -56,7 +56,9 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                   <span
                     onClick={header.column.getToggleSortingHandler()}
                     onKeyDown={() => header.column.getToggleSortingHandler()}
-                    className="cursor-pointer"
+                    className={classNames(
+                      header.column.getCanSort() && "cursor-pointer",
+                    )}
                   >
                     {!header.isPlaceholder &&
                       // Render the header content using flexRender

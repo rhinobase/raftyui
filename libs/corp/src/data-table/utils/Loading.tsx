@@ -9,7 +9,7 @@ export function Loading({ colSpan }: Loading) {
   // Generate an array of 10 empty elements to create 10 loading rows
   return Array.from({ length: 10 }).map((_, index) => (
     // Table row with a unique key for each loading row
-    <Tr key={`${key}-${index}`}>
+    <Tr key={key}>
       <Td colSpan={colSpan} className="!p-0">
         {/* Skeleton component for creating a loading animation */}
         <Skeleton

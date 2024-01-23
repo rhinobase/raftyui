@@ -1,14 +1,12 @@
-import { Thread } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import { ColumnDef } from "@tanstack/react-table";
 import { useEffect } from "react";
-import { DataTable } from "./DataTable";
-import { TableProvider } from "./provider";
+import { ColumnType, DataTable } from "./DataTable";
+import { TableProvider } from "./providers";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -29,36 +27,49 @@ export const Default: Story = {
 };
 
 type DataType = {
-  launch_date_unix: number;
+  flight_number: number;
   mission_name: string;
   launch_year: string;
-  is_tentative: boolean;
   launch_window: number;
+  launch_success: boolean;
+  launch_date_local: Date;
 };
 
-const COLUMNS: ColumnDef<DataType>[] = [
+const COLUMNS: ColumnType[] = [
   {
-    header: "Id",
-    accessorKey: "flight_number",
+    name: "flight_number",
+    label: "Id",
   },
   {
-    header: "Name",
-    accessorKey: "mission_name",
-    cell(props) {
-      return <Thread type="string" cell={props} />;
-    },
+    name: "mission_name",
+    label: "Name",
   },
   {
-    header: "Launch Year",
-    accessorKey: "launch_year",
+    name: "launch_year",
+    label: "Launch Year",
+    enableSorting: false,
   },
   {
-    header: "Rocket",
-    accessorKey: "rocket.rocket_name",
+    name: "rocket.rocket_name",
+    label: "Rocket",
+    type: "clipboard",
+    enableResizing: false,
   },
   {
-    header: "Site",
-    accessorKey: "launch_site.site_name",
+    name: "launch_site.site_name",
+    label: "Site",
+    enableResizing: false,
+    enableSorting: false,
+  },
+  {
+    name: "launch_success",
+    label: "Launch Success",
+    type: "boolean",
+  },
+  {
+    name: "launch_date_local",
+    label: "Launch Date",
+    type: "date",
   },
 ];
 
@@ -70,7 +81,7 @@ function TableComponent() {
     queryKey: ["query", limit, offset],
     queryFn: async () =>
       fetch(
-        `https://api.spacexdata.com/v3/launches?limit=${limit}&offset=${offset}`,
+        `https://api.spacexdata.com/v3/launches?limit=${limit}&offset=${offset}&sort=flight_number&order=asc`,
       ).then((res) => res.json()),
     retry: false,
   });

@@ -1,2 +1,2 @@
 export { DataTable } from "./DataTable";
-export { TableProvider, useTable } from "./provider";
+export { TableProvider, useTable } from "./providers";

@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-table";
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorComponent } from "./ErrorComponent";
+import { ErrorComponent } from "../utils";
 
 // Define the shape of the context value using ReturnType
 type TableContextProps = ReturnType<typeof useTableProvider>;

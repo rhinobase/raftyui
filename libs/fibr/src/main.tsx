@@ -89,11 +89,9 @@ const blueprint = f.form({
 export function Main() {
   return (
     <FibrProvider plugins={plugin}>
-      <WeaverProvider blueprint={blueprint}>
-        <div className="w-full">
-          <Loom />
-        </div>
-      </WeaverProvider>
+      <div className="w-full">
+        <Loom blueprint={blueprint} />
+      </div>
     </FibrProvider>
   );
 }

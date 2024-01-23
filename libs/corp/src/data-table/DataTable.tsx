@@ -1,4 +1,4 @@
-import { FibrProvider, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Thread } from "@fibr/react";
 import { Checkbox, Table, TableContainer } from "@rafty/ui";
 import {
   ColumnDef,
@@ -10,14 +10,22 @@ import { useEffect, useMemo } from "react";
 import { TableContent } from "./TableContent";
 import { TableHeader } from "./TableHeader";
 import { withCells } from "./cells";
-import { useTable } from "./provider";
+import { useTable } from "./providers";
+
+export type ColumnType = {
+  name: string;
+  label: string;
+  type?: string;
+  enableResizing?: boolean;
+  enableSorting?: boolean;
+};
 
 /**
  * Interface for DataTable component
  */
 interface DataTable<T> {
   data?: T[];
-  columns: ColumnDef<T>[];
+  columns: ColumnType[];
   enableRowSelection?: boolean;
   isLoading?: boolean;
   enableColumnResizing?: boolean; // Indicates if columns are resizable
@@ -74,9 +82,17 @@ export function DataTable<T>({
         size: 40,
       });
 
-    headers.push(...columns);
-
-    return headers;
+    return headers.concat(
+      columns.map<ColumnDef<T>>((column) => ({
+        header: column.label,
+        accessorKey: column.name,
+        cell: (props) => (
+          <Thread type={column.type ?? "default"} cell={props} />
+        ),
+        enableResizing: column.enableResizing,
+        enableSorting: column.enableSorting,
+      })),
+    );
   }, [enableRowSelection, columns]);
 
   // React Table instance
@@ -109,21 +125,16 @@ export function DataTable<T>({
 
   return (
     <FibrProvider plugins={withCells}>
-      <WeaverProvider blueprint={{ type: "string" }}>
-        <TableContainer className="w-full overflow-hidden overflow-x-auto">
-          <Table size={size} className="w-full table-fixed">
-            <TableHeader
-              table={table}
-              enableRowSelection={enableRowSelection}
-            />
-            <TableContent
-              table={table}
-              isLoading={isLoading}
-              colSpan={col_span}
-            />
-          </Table>
-        </TableContainer>
-      </WeaverProvider>
+      <TableContainer className="w-full overflow-hidden overflow-x-auto">
+        <Table size={size} className="w-full table-fixed">
+          <TableHeader table={table} enableRowSelection={enableRowSelection} />
+          <TableContent
+            table={table}
+            isLoading={isLoading}
+            colSpan={col_span}
+          />
+        </Table>
+      </TableContainer>
     </FibrProvider>
   );
 }
