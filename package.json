@@ -57,7 +57,7 @@
     "husky": "8.0.3",
     "is-ci": "3.0.1",
     "lint-staged": "^14.0.1",
-    "ngx-deploy-npm": "^7.1.0",
+    "ngx-deploy-npm": "^8.0.0",
     "nx": "17.2.8",
     "postcss": "^8.4.32",
     "prettier-plugin-tailwindcss": "^0.5.9",
