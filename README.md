@@ -12,11 +12,11 @@ Rafty UI is a comprehensive library of accessible, reusable, and composable Reac
 
 - Works out of the box. Rafty UI contains polished React components that work out of the box.
 
-- Flexible & composable: Rafty UI components are built on top of a Radix UI Primitive and Tailwind CSS for endless composability 🧰.
+- **Flexible & composable** - Rafty UI components are built on top of a Radix UI Primitive and Tailwind CSS for endless composability 🧰.
 
-- SSR: Rafty UI components support React SSR functionality 😍.
+- **SSR** - Rafty UI components support React SSR functionality 😍.
 
-- Dark Mode: All components are dark mode compatible 🌙.
+- **Dark Mode** - All components are dark mode compatible 🌙.
 
 ## Looking for the documentation?
 
@@ -31,11 +31,11 @@ Rafty UI is made up of multiple components and tools that you can import one by 
 To use Rafty UI in your project, run one of the following commands in your terminal:
 
 ```sh
-npm i @rafty/ui
+npm add @rafty/ui
 # or
 yarn add @rafty/ui
 # or
-pnpm i @rafty/ui
+pnpm add @rafty/ui
 ```
 
 ### Setup
@@ -45,11 +45,11 @@ For the styling to work in `@rafty/ui`, you must make a few changes to your `tai
 First, install the `@rafty/plugin` package as devDependencies
 
 ```sh
-npm i -D @rafty/plugin
+npm add -D @rafty/plugin
 # or
-yarn add @rafty/plugin
+yarn add -D @rafty/plugin
 # or
-pnpm i @rafty/plugin
+pnpm add -D @rafty/plugin
 ```
 
 And in your `tailwind.config.js` file
