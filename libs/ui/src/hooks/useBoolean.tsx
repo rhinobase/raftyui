@@ -1,13 +1,16 @@
 import { useCallback, useState } from "react";
 
-export function useBoolean(defaultValue = false) {
-  const [value, setValue] = useState(defaultValue);
+export function useBoolean(initialValue = false) {
+  const [value, setValue] = useState(initialValue);
 
-  const enable = useCallback(() => setValue(true), []);
+  const toggle = useCallback(
+    (value?: boolean) =>
+      setValue((prev) => {
+        if (value) return value;
+        return !prev;
+      }),
+    [],
+  );
 
-  const disable = useCallback(() => setValue(false), []);
-
-  const toggle = useCallback(() => setValue((prev) => !prev), []);
-
-  return [value, { enable, disable, toggle }] as const;
+  return [value, toggle] as const;
 }

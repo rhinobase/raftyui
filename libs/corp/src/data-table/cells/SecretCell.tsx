@@ -9,7 +9,7 @@ export function SecretCell() {
   const { cell } = useThread<{
     cell: CellContext<unknown, unknown>;
   }>();
-  const [isOpen, { toggle }] = useBoolean(false);
+  const [isOpen, toggle] = useBoolean(false);
   const Icon = isOpen ? EyeIcon : EyeSlashIcon;
   const value = cell.getValue();
 
@@ -24,7 +24,7 @@ export function SecretCell() {
           className="text-secondary-400 hover:text-secondary-800 dark:text-secondary-500 dark:hover:text-secondary-100 cursor-pointer stroke-2 transition-all ease-in-out"
           height={16}
           width={16}
-          onClick={toggle}
+          onClick={() => toggle()}
         />
         {isOpen ? (
           <p

@@ -18,7 +18,7 @@ export type PasswordField = InputField;
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
   ({ size = "md", ...props }, forwardedRef) => {
-    const [showPassword, { toggle }] = useBoolean(false);
+    const [showPassword, toggle] = useBoolean(false);
     const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 
     return (
@@ -34,7 +34,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             size="icon"
             aria-label="show and hide password"
             variant="ghost"
-            onClick={toggle}
+            onClick={() => toggle()}
             className="rounded p-1"
           >
             <Icon className={classNames(ICON_CLASSES[size], "stroke-2")} />
