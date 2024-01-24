@@ -1,4 +1,4 @@
-import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Loom } from "@fibr/react";
 import { f, plugin } from "./components";
 
 /**
@@ -17,16 +17,16 @@ import { f, plugin } from "./components";
 
 const blueprint = f.form({
   onSubmit: console.log,
-  fields: {
+  components: {
     name: f.text({
       name: "name",
-      label: "Name",
+      value: "Demo",
     }),
     email: f.email({
       name: "email",
       label: "Email",
     }),
-    phone: f.text({
+    phone: f.string({
       name: "phone",
       label: "Phone",
     }),
@@ -53,31 +53,18 @@ const blueprint = f.form({
     switch: f.switchField({
       name: "switch",
       label: "Switch",
-      value: "switch",
     }),
     swtchGroup: f.switchGroup({
       name: "switchGroup",
       label: "Switch Group",
-      options: [
-        { label: "Python", value: "py" },
-        { label: "JavaScript", value: "js" },
-      ],
     }),
     radio: f.radioGroup({
       name: "radioGroup",
       label: "Radio Group",
-      options: [
-        { label: "Python", value: "py" },
-        { label: "JavaScript", value: "js" },
-      ],
     }),
     checkboxGroup: f.checkboxGroup({
       name: "checkboxGroup",
       label: "Checkbox Group",
-      options: [
-        { label: "Java", value: "java" },
-        { label: "React", value: "react" },
-      ],
     }),
     password: f.password({
       name: "password",

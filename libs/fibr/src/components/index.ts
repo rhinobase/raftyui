@@ -5,6 +5,7 @@ import { EditableTextField, editableText } from "./editable-text";
 import { EditableTextareaField, editableTextarea } from "./editable-textarea";
 import { EmailField, email } from "./email";
 import { Form, form } from "./form";
+import { HeadingField, heading } from "./heading";
 import { ImageField, image } from "./image";
 import { PasswordField, password } from "./password";
 import { PercentField, percent } from "./percent";
@@ -14,33 +15,32 @@ import { SliderField, slider } from "./slider";
 import { StringField, string } from "./string";
 import { SwitchField, switchField } from "./switch";
 import { SwitchGroupField, switchGroup } from "./switch-group";
-import { TextField, text } from "./text";
+import { Text, text } from "./text";
 import { TextareaField, textarea } from "./textarea";
 import { url, UrlField } from "./url";
 
-export const plugin = [
-  {
-    password: PasswordField,
-    "editable-text": EditableTextField,
-    "editable-textarea": EditableTextareaField,
-    checkbox: CheckboxField,
-    form: Form,
-    string: StringField,
-    textarea: TextareaField,
-    url: UrlField,
-    email: EmailField,
-    switch: SwitchField,
-    "checkbox-group": CheckboxGroupField,
-    "radio-group": RadioGroupField,
-    "switch-group": SwitchGroupField,
-    divider: DividerField,
-    image: ImageField,
-    slider: SliderField,
-    "range-slider": RangeSliderField,
-    percent: PercentField,
-    text: TextField,
-  },
-];
+export const plugin = {
+  password: PasswordField,
+  "editable-text": EditableTextField,
+  "editable-textarea": EditableTextareaField,
+  checkbox: CheckboxField,
+  form: Form,
+  string: StringField,
+  textarea: TextareaField,
+  url: UrlField,
+  email: EmailField,
+  switch: SwitchField,
+  "checkbox-group": CheckboxGroupField,
+  "radio-group": RadioGroupField,
+  "switch-group": SwitchGroupField,
+  divider: DividerField,
+  image: ImageField,
+  slider: SliderField,
+  "range-slider": RangeSliderField,
+  percent: PercentField,
+  text: Text,
+  heading: HeadingField,
+};
 
 export const f = {
   password,
@@ -62,4 +62,5 @@ export const f = {
   rangeSlider,
   percent,
   text,
+  heading,
 };

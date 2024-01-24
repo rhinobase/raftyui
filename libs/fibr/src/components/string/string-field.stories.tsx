@@ -1,4 +1,4 @@
-import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
 import { StringField } from "./StringField";
@@ -17,10 +17,10 @@ export const Default: Story = {
         <Loom
           blueprint={f.form({
             onSubmit: console.log,
-            fields: {
-              text: f.string({
-                name: "text",
-                label: "Text",
+            components: {
+              string: f.string({
+                name: "string",
+                label: "String",
               }),
             },
           })}

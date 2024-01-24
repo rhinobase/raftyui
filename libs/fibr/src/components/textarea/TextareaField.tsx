@@ -1,21 +1,21 @@
-import { ThreadType, createThread, useThread } from "@fibr/react";
-import { Textarea } from "@rafty/ui";
+import { createThread, useThread } from "@fibr/react";
+import { InputField } from "@rafty/ui";
+import { useFormContext } from "react-hook-form";
 import { FieldWrapper } from "../FieldWrapper";
 
 export type TextareaField = {
   name: string;
   label: string;
-  size?: "sm" | "md" | "lg";
 };
 
 export function TextareaField() {
   // Getting component config
   const config = useThread<TextareaField>();
-  const { size = "md" } = config;
+  const { register } = useFormContext();
 
   return (
     <FieldWrapper name={config.name} label={config.label}>
-      <Textarea size={size} />
+      <InputField {...register(config.name)} />
     </FieldWrapper>
   );
 }

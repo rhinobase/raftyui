@@ -1,4 +1,4 @@
-import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
 import { SwitchGroupField } from "./SwitchGroupField";
@@ -13,25 +13,19 @@ type Story = StoryObj<typeof SwitchGroupField>;
 export const Default: Story = {
   render: () => (
     <FibrProvider plugins={plugin}>
-      <WeaverProvider
-        blueprint={f.form({
-          onSubmit: console.log,
-          fields: {
-            switchGroup: f.switchGroup({
-              name: "switchGroup",
-              label: "Switch Group",
-              options: [
-                { label: "Python", value: "py" },
-                { label: "JavaScript", value: "js" },
-              ],
-            }),
-          },
-        })}
-      >
-        <div className="w-full">
-          <Loom />
-        </div>
-      </WeaverProvider>
+      <div className="w-full">
+        <Loom
+          blueprint={f.form({
+            onSubmit: console.log,
+            components: {
+              switchGroup: f.switchGroup({
+                name: "switchGroup",
+                label: "Switch Group",
+              }),
+            },
+          })}
+        />
+      </div>
     </FibrProvider>
   ),
 };

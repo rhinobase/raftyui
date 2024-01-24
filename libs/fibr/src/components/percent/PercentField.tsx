@@ -1,29 +1,21 @@
 import { createThread, useThread } from "@fibr/react";
 import { InputField } from "@rafty/ui";
-import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { FieldWrapper } from "../FieldWrapper";
 
 export type PercentField = {
   name: string;
   label: string;
-  size?: "sm" | "md" | "lg";
 };
 
 export function PercentField() {
   // Getting component config
   const config = useThread<PercentField>();
-  const { size = "md" } = config;
-  const [percentage, setPercentage] = useState(0);
+  const { register } = useFormContext();
 
   return (
     <FieldWrapper name={config.name} label={config.label}>
-      <InputField
-        size={size}
-        type="number"
-        value={percentage}
-        min={0}
-        onChange={(e) => setPercentage(Number(e.target.value))}
-      />
+      <InputField {...register(config.name)} />
     </FieldWrapper>
   );
 }

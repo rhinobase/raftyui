@@ -1,21 +1,21 @@
 import { createThread, useThread } from "@fibr/react";
-import { Checkbox } from "@rafty/ui";
+import { InputField } from "@rafty/ui";
+import { useFormContext } from "react-hook-form";
 import { FieldWrapper } from "../FieldWrapper";
 
 export type CheckboxField = {
   name: string;
   label: string;
-  size?: "sm" | "md" | "lg";
 };
 
 export function CheckboxField() {
   // Getting component config
   const config = useThread<CheckboxField>();
-  const { size = "md" } = config;
+  const { register } = useFormContext();
 
   return (
     <FieldWrapper name={config.name} label={config.label}>
-      <Checkbox size={size} />
+      <InputField {...register(config.name)} />
     </FieldWrapper>
   );
 }

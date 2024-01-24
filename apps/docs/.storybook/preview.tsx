@@ -46,7 +46,7 @@ const preview: Preview = {
 
       return (
         <div className="dark:bg-secondary-900">
-          <div className="mx-auto flex h-screen w-full max-w-3xl flex-col items-center justify-center gap-2">
+          <div className="mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-center gap-2">
             <Story />
           </div>
         </div>

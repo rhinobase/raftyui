@@ -1,14 +1,14 @@
-import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { PasswordField } from "./PasswordField";
+import { HeadingField } from "./HeadingField";
 
-const meta: Meta<typeof PasswordField> = {
-  title: "fibr / PasswordField",
+const meta: Meta<typeof HeadingField> = {
+  title: "fibr / HeadingField",
 };
 
 export default meta;
-type Story = StoryObj<typeof PasswordField>;
+type Story = StoryObj<typeof HeadingField>;
 
 export const Default: Story = {
   render: () => (
@@ -18,9 +18,10 @@ export const Default: Story = {
           blueprint={f.form({
             onSubmit: console.log,
             components: {
-              password: f.password({
-                name: "password",
-                label: "Password",
+              heading: f.heading({
+                name: "heading",
+                value: "Sample",
+                level: "3",
               }),
             },
           })}

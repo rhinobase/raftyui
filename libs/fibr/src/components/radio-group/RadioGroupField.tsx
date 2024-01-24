@@ -1,30 +1,21 @@
 import { createThread, useThread } from "@fibr/react";
-import { RadioGroup, RadioGroupItem } from "@rafty/ui";
-import { useId } from "react";
+import { InputField } from "@rafty/ui";
+import { useFormContext } from "react-hook-form";
 import { FieldWrapper } from "../FieldWrapper";
 
 export type RadioGroupField = {
   name: string;
   label: string;
-  size?: "sm" | "md" | "lg";
-  options: { label: string; value: string }[];
 };
 
 export function RadioGroupField() {
-  const id = useId();
   // Getting component config
   const config = useThread<RadioGroupField>();
-  const { size = "md" } = config;
+  const { register } = useFormContext();
 
   return (
     <FieldWrapper name={config.name} label={config.label}>
-      <RadioGroup size={size}>
-        {config.options.map(({ label, value }, index) => (
-          <RadioGroupItem value={value} id={value} key={`${id}-${index}`}>
-            {label}
-          </RadioGroupItem>
-        ))}
-      </RadioGroup>
+      <InputField {...register(config.name)} />
     </FieldWrapper>
   );
 }

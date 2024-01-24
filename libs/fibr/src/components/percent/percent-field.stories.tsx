@@ -17,7 +17,7 @@ export const Default: Story = {
         <Loom
           blueprint={f.form({
             onSubmit: console.log,
-            fields: {
+            components: {
               percent: f.percent({
                 name: "percent",
                 label: "Percent",

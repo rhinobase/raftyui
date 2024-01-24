@@ -1,4 +1,4 @@
-import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
 import { EditableTextareaField } from "./EditableTextareaField";
@@ -13,21 +13,19 @@ type Story = StoryObj<typeof EditableTextareaField>;
 export const Default: Story = {
   render: () => (
     <FibrProvider plugins={plugin}>
-      <WeaverProvider
-        blueprint={f.form({
-          onSubmit: console.log,
-          fields: {
-            editableTextarea: f.editableTextarea({
-              name: "editableTextarea",
-              label: "Editable Textarea",
-            }),
-          },
-        })}
-      >
-        <div className="w-full">
-          <Loom />
-        </div>
-      </WeaverProvider>
+      <div className="w-full">
+        <Loom
+          blueprint={f.form({
+            onSubmit: console.log,
+            components: {
+              editableTextarea: f.editableTextarea({
+                name: "editableTextarea",
+                label: "Editable Textarea",
+              }),
+            },
+          })}
+        />
+      </div>
     </FibrProvider>
   ),
 };

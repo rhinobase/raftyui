@@ -1,22 +1,21 @@
 import { createThread, useThread } from "@fibr/react";
-import { Switch } from "@rafty/ui";
+import { InputField, Switch } from "@rafty/ui";
+import { useFormContext } from "react-hook-form";
 import { FieldWrapper } from "../FieldWrapper";
 
 export type SwitchField = {
   name: string;
   label: string;
-  value: string;
-  size?: "sm" | "md" | "lg";
 };
 
 export function SwitchField() {
   // Getting component config
   const config = useThread<SwitchField>();
-  const { size = "md" } = config;
+  const { register } = useFormContext();
 
   return (
     <FieldWrapper name={config.name} label={config.label}>
-      <Switch size={size} />
+      <InputField {...register(config.name)} />
     </FieldWrapper>
   );
 }

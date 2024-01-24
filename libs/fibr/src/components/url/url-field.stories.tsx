@@ -1,4 +1,4 @@
-import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
+import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
 import { UrlField } from "./UrlField";
@@ -13,21 +13,19 @@ type Story = StoryObj<typeof UrlField>;
 export const Default: Story = {
   render: () => (
     <FibrProvider plugins={plugin}>
-      <WeaverProvider
-        blueprint={f.form({
-          onSubmit: console.log,
-          fields: {
-            url: f.url({
-              name: "url",
-              label: "URL",
-            }),
-          },
-        })}
-      >
-        <div className="w-full">
-          <Loom />
-        </div>
-      </WeaverProvider>
+      <div className="w-full">
+        <Loom
+          blueprint={f.form({
+            onSubmit: console.log,
+            components: {
+              url: f.url({
+                name: "url",
+                label: "URL",
+              }),
+            },
+          })}
+        />
+      </div>
     </FibrProvider>
   ),
 };

@@ -17,11 +17,10 @@ export const Default: Story = {
         <Loom
           blueprint={f.form({
             onSubmit: console.log,
-            fields: {
+            components: {
               slider: f.slider({
                 name: "slider",
                 label: "Slider",
-                description: "caption",
               }),
             },
           })}

@@ -17,7 +17,7 @@ export const Default: Story = {
         <Loom
           blueprint={f.form({
             onSubmit: console.log,
-            fields: {
+            components: {
               divider: f.divider({
                 name: "divider",
               }),
