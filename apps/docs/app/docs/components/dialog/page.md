@@ -130,7 +130,7 @@ Pass `isUnstyled` prop in parent component to remove style in dialog.
   <DialogTrigger className=" dark:hover:bg-secondary-800 hover:bg-secondary-100 rounded-lg p-2 px-6 dark:text-white">
     open
   </DialogTrigger>
-  <DialogOverlay className="fixed inset-0 z-[70] h-full w-full bg-black/30 dark:bg-black/60" />
+  <DialogOverlay className="fixed inset-0 z-[70] size-full bg-black/30 dark:bg-black/60" />
   <DialogContent
     className="dark:bg-secondary-800 dark:text-secondary-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2
                   data-[state=open]:slide-in-from-top-[48%] fixed left-[50%]

@@ -18,7 +18,7 @@ export const Command = forwardRef<ElementRef<typeof CommandPrimitive>, Command>(
     <CommandPrimitive
       {...props}
       className={classNames(
-        "dark:bg-secondary-800 dark:text-secondary-100 flex h-full w-full flex-col overflow-hidden rounded-md bg-white",
+        "dark:bg-secondary-800 dark:text-secondary-100 flex size-full flex-col overflow-hidden rounded-md bg-white",
         className,
       )}
       ref={forwardedRef}

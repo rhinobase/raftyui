@@ -30,7 +30,7 @@ const data = [
 
 export function CounterExample() {
   return (
-    <div className="h-full w-full space-y-2">
+    <div className="size-full space-y-2">
       <div>
         <Text className="text-2xl font-semibold leading-snug">Move goal</Text>
         <Text className="text-sm leading-snug opacity-60">

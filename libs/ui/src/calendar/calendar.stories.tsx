@@ -58,9 +58,7 @@ export const FullScreen: Story = {
               date.getDate() === new Date().getDate() ? (
                 cellRender
               ) : (
-                <div className="h-full w-full p-1 text-right">
-                  {date.getDate()}
-                </div>
+                <div className="size-full p-1 text-right">{date.getDate()}</div>
               ),
           }}
         />

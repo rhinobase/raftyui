@@ -40,9 +40,9 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
 
     const key = useId();
 
-    const components = validChildren.flatMap((child, index) => [
+    const components = validChildren.flatMap((child) => [
       child,
-      <Connector key={`${key}-${index}-connector`} />,
+      <Connector key={`${key}-connector`} />,
     ]);
 
     if (loading)
@@ -66,7 +66,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
         <ul
           ref={forwardedRef}
           className={classNames(
-            "flex h-full w-full",
+            "flex size-full",
             reverse ? "flex-col-reverse" : "flex-col",
             className,
           )}

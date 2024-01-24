@@ -88,7 +88,7 @@ const blueprint = f.form({
 export function Main() {
   return (
     <FibrProvider plugins={plugin}>
-      <div className="h-full w-full">
+      <div className="size-full">
         <Loom blueprint={blueprint} />
       </div>
     </FibrProvider>
