@@ -1,14 +1,14 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { TextField } from "./TextField";
+import { PercentField } from "./PercentField";
 
-const meta: Meta<typeof TextField> = {
-  title: "fibr / TextField",
+const meta: Meta<typeof PercentField> = {
+  title: "fibr / PercentField",
 };
 
 export default meta;
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof PercentField>;
 
 export const Default: Story = {
   render: () => (
@@ -18,8 +18,9 @@ export const Default: Story = {
           blueprint={f.form({
             onSubmit: console.log,
             fields: {
-              text: f.text({
-                value: "👋 Demo",
+              percent: f.percent({
+                name: "percent",
+                label: "Percent",
               }),
             },
           })}

@@ -1,14 +1,15 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { TextField } from "./TextField";
+import { ImageField } from "./ImageField";
+import Logo from "./logo.avif";
 
-const meta: Meta<typeof TextField> = {
-  title: "fibr / TextField",
+const meta: Meta<typeof ImageField> = {
+  title: "fibr / ImageField",
 };
 
 export default meta;
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof ImageField>;
 
 export const Default: Story = {
   render: () => (
@@ -18,8 +19,9 @@ export const Default: Story = {
           blueprint={f.form({
             onSubmit: console.log,
             fields: {
-              text: f.text({
-                value: "👋 Demo",
+              image: f.image({
+                name: "image",
+                src: Logo,
               }),
             },
           })}

@@ -1,14 +1,14 @@
-import { FibrProvider, Loom } from "@fibr/react";
+import { FibrProvider, Loom, WeaverProvider } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { TextField } from "./TextField";
+import { StringField } from "./StringField";
 
-const meta: Meta<typeof TextField> = {
-  title: "fibr / TextField",
+const meta: Meta<typeof StringField> = {
+  title: "fibr / StringField",
 };
 
 export default meta;
-type Story = StoryObj<typeof TextField>;
+type Story = StoryObj<typeof StringField>;
 
 export const Default: Story = {
   render: () => (
@@ -18,8 +18,9 @@ export const Default: Story = {
           blueprint={f.form({
             onSubmit: console.log,
             fields: {
-              text: f.text({
-                value: "👋 Demo",
+              text: f.string({
+                name: "text",
+                label: "Text",
               }),
             },
           })}
