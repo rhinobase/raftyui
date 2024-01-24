@@ -70,13 +70,25 @@ const blueprint = f.form({
       name: "password",
       label: "Password",
     }),
+    identify: f.password({
+      name: "password",
+      label: "Password",
+    }),
+    password1: f.password({
+      name: "password",
+      label: "Password",
+    }),
+    password2: f.password({
+      name: "password",
+      label: "Password",
+    }),
   },
 });
 
 export function Main() {
   return (
     <FibrProvider plugins={plugin}>
-      <div className="w-full">
+      <div className="h-full w-full">
         <Loom blueprint={blueprint} />
       </div>
     </FibrProvider>
