@@ -9,7 +9,6 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "ignoredFiles": ["libs/corp/rollup.config.js"],
             "ignoredDependencies": ["@swc/helpers"]
           }
         ]
