@@ -321,7 +321,7 @@ export const MenubarCheckboxItem = forwardRef<
       <MenubarPrimitive.ItemIndicator
         className={menubarCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="h-3 w-3 stroke-[3]" />
+        <CheckIcon className="size-3 stroke-[3]" />
       </MenubarPrimitive.ItemIndicator>
     </MenubarPrimitive.CheckboxItem>
   );
@@ -367,9 +367,9 @@ export const menubarRadioItemIndicatorChildClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-1.5 w-1.5",
-        md: "h-2 w-2",
-        lg: "h-2 w-2",
+        sm: "size-1.5",
+        md: "size-2",
+        lg: "size-2",
       },
     },
     defaultVariants: {
@@ -457,7 +457,7 @@ export const MenubarSubTrigger = forwardRef<
       }
     >
       {children}
-      <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
+      <ChevronRightIcon className="size-3 stroke-[3]" />
     </MenubarPrimitive.SubTrigger>
   );
 });

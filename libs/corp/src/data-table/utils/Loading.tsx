@@ -6,7 +6,7 @@ type Loading = { colSpan: number };
 // Loading component for rendering a loading state with skeletons in a table
 export function Loading({ colSpan }: Loading) {
   const key = useId();
-  
+
   return Array.from({ length: 10 }).map((_, index) => (
     // Table row with a unique key for each loading row
     <Tr key={`${key}-${index}`}>

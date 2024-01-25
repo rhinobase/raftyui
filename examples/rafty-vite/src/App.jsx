@@ -19,7 +19,7 @@ export default function Home() {
             <SunIcon className="h-5 w-5 stroke-2 dark:hidden" />
             <MoonIcon className="hidden h-5 w-5 stroke-2 dark:block" />
           </Button>
-          <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white lg:static lg:h-auto lg:w-auto lg:bg-none dark:from-black dark:via-black">
+          <div className="fixed bottom-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white lg:static lg:h-auto lg:w-auto lg:bg-none dark:from-black dark:via-black">
             <a
               className=" flex place-items-center gap-2 p-8 lg:p-0"
               href="https://rhinobase.io?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

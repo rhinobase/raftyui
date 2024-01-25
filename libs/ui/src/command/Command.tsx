@@ -34,7 +34,7 @@ export const CommandDialog = ({ children, ...props }: CommandDialog) => {
   return (
     <Dialog {...props}>
       <DialogContent className="overflow-hidden p-0 shadow-lg">
-        <Command className="[&_[cmdk-group-heading]]:text-secondary-500 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
+        <Command className="[&_[cmdk-group-heading]]:text-secondary-500 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5">
           {children}
         </Command>
       </DialogContent>
@@ -53,7 +53,7 @@ export const CommandInput = forwardRef<
   CommandInput
 >(({ className, ...props }, forwardedRef) => (
   <div className="dark:border-secondary-700 flex items-center border-b px-3">
-    <MagnifyingGlassIcon className="text-secondary-500 dark:text-secondary-400 mr-2 h-4 w-4 shrink-0" />
+    <MagnifyingGlassIcon className="text-secondary-500 dark:text-secondary-400 mr-2 size-4 shrink-0" />
     <CommandPrimitive.Input
       {...props}
       className={classNames(

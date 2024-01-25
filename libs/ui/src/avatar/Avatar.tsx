@@ -17,9 +17,9 @@ export const avatarClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-7 w-7 border",
-        md: "h-9 w-9 border-2",
-        lg: "h-12 w-12 border-[2.5px]",
+        sm: "size-7 border",
+        md: "size-9 border-2",
+        lg: "size-12 border-[2.5px]",
       },
     },
     defaultVariants: {

@@ -59,7 +59,7 @@ export const drawerContentClasses = cva(
         full: "w-full",
       },
       side: {
-        left: "animate-slide-right left-0",
+        left: "animate-slide-right",
         right: "animate-slide-left right-0",
       },
     },
@@ -180,7 +180,7 @@ export const DrawerClose = forwardRef<
               className,
             )}
           >
-            <XMarkIcon className="h-5 w-5 stroke-2" />
+            <XMarkIcon className="size-5 stroke-2" />
           </Button>
         )}
       </DialogPrimitive.Close>

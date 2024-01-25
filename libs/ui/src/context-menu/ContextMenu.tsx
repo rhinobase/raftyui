@@ -220,7 +220,7 @@ export const ContextMenuCheckboxItem = forwardRef<
           contextMenuCheckboxItemIndicatorClasses({ size }),
         )}
       >
-        <CheckIcon className="h-3 w-3 stroke-[3]" />
+        <CheckIcon className="size-3 stroke-[3]" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.CheckboxItem>
   );
@@ -261,7 +261,7 @@ export const contextMenuRadioItemIndicatorChildClasses = cva(
   "bg-secondary-600 dark:bg-secondary-200 rounded-full",
   {
     variants: {
-      size: { sm: "h-1.5 w-1.5", md: "h-2 w-2", lg: "h-2 w-2" },
+      size: { sm: "size-1.5", md: "size-2", lg: "size-2" },
     },
     defaultVariants: {
       size: "md",
@@ -352,7 +352,7 @@ export const ContextMenuSubTrigger = forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
+      <ChevronRightIcon className="size-3 stroke-[3]" />
     </ContextMenuPrimitive.SubTrigger>
   );
 });

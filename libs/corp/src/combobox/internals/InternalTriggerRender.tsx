@@ -48,7 +48,7 @@ export function InternalTriggerRender() {
                 onClick={removeNode(item)}
                 onKeyDown={removeNode(item)}
               >
-                <XMarkIcon className="h-3.5 w-3.5 stroke-2" />
+                <XMarkIcon className="size-3.5 stroke-2" />
               </div>
             </Kbd>
           ))}

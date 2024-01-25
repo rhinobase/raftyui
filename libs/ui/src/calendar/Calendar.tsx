@@ -76,7 +76,7 @@ export function Calendar({
         day: cn(
           _fullScreen
             ? "h-28 w-full border-t-2 dark:border-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-700"
-            : "h-9 w-9 p-0 font-normal aria-selected:opacity-100 aria-selected:text-white dark:aria-selected:text-black rounded-md flex items-center justify-center text-center aria-selected:hover:bg-primary-500 dark:aria-selected:hover:bg-primary-300 hover:bg-secondary-200/80 dark:hover:bg-secondary-500 cursor-pointer",
+            : "size-9 p-0 font-normal aria-selected:opacity-100 aria-selected:text-white dark:aria-selected:text-black rounded-md flex items-center justify-center text-center aria-selected:hover:bg-primary-500 dark:aria-selected:hover:bg-primary-300 hover:bg-secondary-200/80 dark:hover:bg-secondary-500 cursor-pointer",
         ),
         day_selected: cn(
           props.mode === "single" && !_fullScreen && "rounded-md",
@@ -101,10 +101,10 @@ export function Calendar({
       }}
       components={{
         IconLeft: () => (
-          <ChevronLeftIcon className="dark:text-secondary-100 h-4 w-4 stroke-2" />
+          <ChevronLeftIcon className="dark:text-secondary-100 size-4 stroke-2" />
         ),
         IconRight: () => (
-          <ChevronRightIcon className="dark:text-secondary-100 h-4 w-4 stroke-2" />
+          <ChevronRightIcon className="dark:text-secondary-100 size-4 stroke-2" />
         ),
         Dropdown: ({ children, ...props }) => (
           <Select {...props} variant="solid" className="w-max pr-6" size="sm">

@@ -30,7 +30,7 @@ export const DatePicker = (props: DatePicker) => {
       <PopoverTrigger
         variant="outline"
         className="w-full justify-start text-left font-normal"
-        leftIcon={<CalendarIcon className="h-4 w-4" />}
+        leftIcon={<CalendarIcon className="size-4" />}
       >
         {selected ? (
           props.formatters?.formatDay ? (

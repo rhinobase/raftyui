@@ -176,7 +176,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
     const right_icon = rightIcon ?? (
       <ChevronUpDownIcon
         className={classNames(
-          "h-3.5 w-3.5 shrink-0 stroke-2",
+          "size-3.5 shrink-0 stroke-2",
           isOpen
             ? "text-primary-500 dark:text-primary-400"
             : "text-secondary-500 dark:text-secondary-400",

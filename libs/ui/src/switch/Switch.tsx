@@ -27,9 +27,9 @@ export const switchThumbClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-3 w-3 data-[state=checked]:translate-x-3",
-        md: "h-5 w-5 data-[state=checked]:translate-x-4",
-        lg: "h-6 w-6 data-[state=checked]:translate-x-5",
+        sm: "size-3 data-[state=checked]:translate-x-3",
+        md: "size-5 data-[state=checked]:translate-x-4",
+        lg: "size-6 data-[state=checked]:translate-x-5",
       },
     },
     defaultVariants: {

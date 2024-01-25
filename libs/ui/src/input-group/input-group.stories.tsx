@@ -38,7 +38,7 @@ export const Default: Story = {
       </h4>
       <InputGroup size={size}>
         <Prefix>
-          <PhoneIcon className="text-secondary-500 h-4 w-4 stroke-2" />
+          <PhoneIcon className="text-secondary-500 size-4 stroke-2" />
         </Prefix>
         <InputField
           isDisabled={isDisabled}
@@ -46,12 +46,12 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <Suffix>
-          <CheckIcon className="h-4 w-4 stroke-2 text-green-500" />
+          <CheckIcon className="size-4 stroke-2 text-green-500" />
         </Suffix>
       </InputGroup>
       <InputGroup size={size}>
         <Prefix>
-          <PhoneIcon className="text-secondary-500 h-4 w-4 stroke-2" />
+          <PhoneIcon className="text-secondary-500 size-4 stroke-2" />
         </Prefix>
         <InputField
           isDisabled={isDisabled}
@@ -66,7 +66,7 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <Suffix>
-          <CheckIcon className="h-4 w-4 stroke-2 text-green-500" />
+          <CheckIcon className="size-4 stroke-2 text-green-500" />
         </Suffix>
       </InputGroup>
 
@@ -83,7 +83,7 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <RightAddon>
-          <MagnifyingGlassIcon className="text-secondary-500 h-4 w-4 stroke-2" />
+          <MagnifyingGlassIcon className="text-secondary-500 size-4 stroke-2" />
         </RightAddon>
       </InputGroup>
       <InputGroup size={size}>
@@ -103,7 +103,7 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <RightAddon>
-          <MagnifyingGlassIcon className="text-secondary-500 h-4 w-4 stroke-2" />
+          <MagnifyingGlassIcon className="text-secondary-500 size-4 stroke-2" />
         </RightAddon>
       </InputGroup>
       <InputGroup size={size}>
@@ -111,14 +111,14 @@ export const Default: Story = {
           +234
         </LeftAddon>
         <Prefix>
-          <PhoneIcon className="text-secondary-500 h-4 w-4" />
+          <PhoneIcon className="text-secondary-500 size-4" />
         </Prefix>
         <InputField />
         <Suffix>
-          <CheckIcon className="h-4 w-4 stroke-2 text-green-500" />
+          <CheckIcon className="size-4 stroke-2 text-green-500" />
         </Suffix>
         <RightAddon>
-          <MagnifyingGlassIcon className="text-secondary-500 h-4 w-4 stroke-2" />
+          <MagnifyingGlassIcon className="text-secondary-500 size-4 stroke-2" />
         </RightAddon>
       </InputGroup>
     </div>

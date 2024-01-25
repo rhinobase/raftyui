@@ -195,9 +195,9 @@ Alert.displayName = "Alert";
 export const alertIconClasses = cva("", {
   variants: {
     size: {
-      sm: "h-4 w-4 stroke-2",
-      md: "h-5 w-5 stroke-2",
-      lg: "h-7 w-7 stroke-[1.5]",
+      sm: "size-4 stroke-2",
+      md: "size-5 stroke-2",
+      lg: "size-7 stroke-[1.5]",
     },
     status: {
       success: "",

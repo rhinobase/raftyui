@@ -51,13 +51,22 @@ export function DataTable<T>({
   ...props
 }: DataTable<T>) {
   // State for row selection
-  const [rowSelection, onRowSelectionChange] = useSync<RowSelectionState>({}, props.onRowSelectionChange);
+  const [rowSelection, onRowSelectionChange] = useSync<RowSelectionState>(
+    {},
+    props.onRowSelectionChange,
+  );
 
   // State for sorting
-  const [sorting, onSortingChange] = useSync<SortingState>([], props.onSortingChange);
+  const [sorting, onSortingChange] = useSync<SortingState>(
+    [],
+    props.onSortingChange,
+  );
 
   // State for column sizing
-  const [columnSizing, onColumnSizingChange] = useSync<ColumnSizingState>({}, props.onColumnSizingChange);
+  const [columnSizing, onColumnSizingChange] = useSync<ColumnSizingState>(
+    {},
+    props.onColumnSizingChange,
+  );
 
   // Memoized headers including optional checkbox column
   const header_column = useMemo(() => {

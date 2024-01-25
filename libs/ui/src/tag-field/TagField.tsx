@@ -78,7 +78,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
               onClick={clearAll}
               onKeyDown={clearAll}
             >
-              <XMarkIcon className="h-3.5 w-3.5 stroke-[2]" />
+              <XMarkIcon className="size-3.5 stroke-[2]" />
             </Button>
           </div>
         ))}

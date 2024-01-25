@@ -65,7 +65,7 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
       )}
     >
       <div className="flex items-center gap-3">
-        <ToastIcon className="h-6 w-6 text-white dark:text-black" />
+        <ToastIcon className="size-6 text-white dark:text-black" />
         <div className="space-y-1">
           {title && (
             <h6 className="font-medium leading-tight text-white dark:text-black">

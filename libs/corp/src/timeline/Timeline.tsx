@@ -102,7 +102,7 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
       >
         {dot ?? (
           <div
-            className="dark:bg-secondary-950 border-primary-500 h-4 w-4 rounded-full border-[4px] bg-white"
+            className="dark:bg-secondary-950 border-primary-500 size-4 rounded-full border-[4px] bg-white"
             style={{
               borderColor: color,
             }}

@@ -5,7 +5,7 @@ export function useSync<T>(defaultValue: T, callback?: (value: T) => void) {
 
   useEffect(() => {
     callback?.(value);
-  }, [value, callback])
+  }, [value, callback]);
 
   return [value, setValue] as const;
 }

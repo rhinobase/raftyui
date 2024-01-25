@@ -8,9 +8,9 @@ import { InputGroup, Suffix } from "../input-group";
 import { classNames } from "../utils";
 
 const ICON_CLASSES = {
-  sm: "h-3.5 w-3.5",
-  md: "h-4 h-4",
-  lg: "h-[18px] h-[18px]",
+  sm: "size-3.5",
+  md: "size-4",
+  lg: "size-[18px]",
 } as const;
 
 // Password Field

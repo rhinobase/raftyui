@@ -150,7 +150,7 @@ export const AccordionTrigger = forwardRef<
           </div>
         )}
         {!openIcon && !closeIcon && _showIcon && (
-          <ChevronDownIcon className="h-4 w-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          <ChevronDownIcon className="size-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180" />
         )}
       </AccordionPrimitive.Trigger>
     );

@@ -4,9 +4,9 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
+import { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
 import { ColumnType, DataTable } from "./DataTable";
-import { SortingState } from "@tanstack/react-table";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -83,7 +83,9 @@ function TableComponent() {
     queryKey: ["query", limit, offset, sort],
     queryFn: async () =>
       fetch(
-        `https://api.spacexdata.com/v3/launches?limit=${limit}&offset=${offset}${sort && `&sort=${sort.id}&order=${sort.desc ? "desc" : "asc"}`}`,
+        `https://api.spacexdata.com/v3/launches?limit=${limit}&offset=${offset}${
+          sort && `&sort=${sort.id}&order=${sort.desc ? "desc" : "asc"}`
+        }`,
       ).then((res) => res.json()),
     retry: false,
   });

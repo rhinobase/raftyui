@@ -177,7 +177,7 @@ export const DialogContent = forwardRef<
           {children}
           {_showCloseButton && (
             <DialogPrimitive.Close className="hover:bg-secondary-200/70 dark:hover:bg-secondary-500/70 absolute right-4 top-4 rounded p-1 transition-all focus:outline-none">
-              <XMarkIcon className="h-4 w-4 stroke-2" />
+              <XMarkIcon className="size-4 stroke-2" />
             </DialogPrimitive.Close>
           )}
         </DialogPrimitive.Content>
