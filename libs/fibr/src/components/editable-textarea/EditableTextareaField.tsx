@@ -1,27 +1,69 @@
-import { createThread, useThread } from "@fibr/react";
-import { InputField } from "@rafty/ui";
-import { ReactElement } from "react";
-import { useFormContext } from "react-hook-form";
-import { FieldWrapper } from "../FieldWrapper";
+import { eventHandler, getValue } from "@rafty/shared";
+import {
+  Button,
+  Textarea,
+  classNames,
+  mergeRefs,
+  useFieldControlContext,
+} from "@rafty/ui";
+import { forwardRef, useEffect, useRef, useState } from "react";
 
-export type EditableTextareaField = {
-  name: string;
-  label: string;
-  size?: "sm" | "md" | "lg";
-  editIcon?: ReactElement;
-};
+export type EditableTextareaField = Omit<Textarea, "Unstyled">;
 
-export function EditableTextareaField() {
-  // Getting component config
-  const config = useThread<EditableTextareaField>();
-  const { register } = useFormContext();
+export const EditableTextareaField = forwardRef<
+  HTMLTextAreaElement,
+  EditableTextareaField
+>(
+  (
+    { size = "md", variant = "outline", isInvalid, className, ...props },
+    forwardedRef,
+  ) => {
+    const inputRef = useRef<HTMLTextAreaElement>(null);
+    const [isEditMode, setEditMode] = useState(false);
+    const [inputValue, setInputValue] = useState<string>();
 
-  return (
-    <FieldWrapper name={config.name} label={config.label}>
-      <InputField {...register(config.name)} />
-    </FieldWrapper>
-  );
-}
+    const fieldControlContext = useFieldControlContext() ?? {};
 
-export const editableTextarea =
-  createThread<EditableTextareaField>("editable-textarea");
+    const invalid = getValue(isInvalid) || fieldControlContext.isInvalid;
+
+    useEffect(() => {
+      if (isEditMode) inputRef.current?.focus();
+    }, [isEditMode]);
+
+    const handleEditField = eventHandler(() => {
+      setEditMode(true);
+    });
+
+    return (
+      <>
+        <Button
+          className={classNames(
+            isEditMode && "hidden",
+            "w-full justify-start font-medium",
+            className,
+          )}
+          onClick={handleEditField}
+          onKeyDown={handleEditField}
+        >
+          {inputValue ?? "Enter value"}
+        </Button>
+        <Textarea
+          {...props}
+          size={size}
+          variant={variant}
+          isInvalid={invalid}
+          className={classNames(!isEditMode && "hidden", className)}
+          ref={mergeRefs(inputRef, forwardedRef)}
+          onKeyDown={(event) => {
+            if (
+              event.key === "Escape" ||
+              (event.shiftKey && event.key === "Enter")
+            )
+              setEditMode(false);
+          }}
+        />
+      </>
+    );
+  },
+);
+EditableTextareaField.displayName = "EditableTextareaField";

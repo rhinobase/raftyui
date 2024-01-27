@@ -1,1 +1,1 @@
-export { EditableTextField, editableText } from "./EditableTextField";
+export { EditableTextField } from "./EditableTextField";
