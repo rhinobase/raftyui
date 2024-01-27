@@ -63,7 +63,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
 
       return [
         <div
-          key={`${key}-${index}`}
+          key={`stepper-${index}-${key}`}
           onClick={handleSelect(value)}
           onKeyDown={handleSelect(value)}
         >
@@ -74,7 +74,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
           />
         </div>,
         <Connector
-          key={`${key}-${index}-connector`}
+          key={`connector-${index}-${key}`}
           active={current > value}
         />,
       ];

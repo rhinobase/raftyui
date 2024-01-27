@@ -98,7 +98,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
         if (!href) BreadcrumbItem = "span";
 
         return [
-          <Fragment key={`${key}-${index}`}>
+          <Fragment key={`breadcrumbs-${index}-${key}`}>
             {Children ? (
               <Children
                 label={label}
@@ -126,7 +126,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
               </ListItem>
             )}
           </Fragment>,
-          <Divider key={`${key}-${index}-divider`} />,
+          <Divider key={`divider-${index}-${key}`} />,
         ];
       })
       .slice(0, -1);
