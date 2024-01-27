@@ -60,10 +60,11 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
 
     const components = steps.flatMap((step, index) => {
       const value = initial + index;
+      const uniqueKey = `${index}-${key}`;
 
       return [
         <div
-          key={`stepper-${index}-${key}`}
+          key={uniqueKey}
           onClick={handleSelect(value)}
           onKeyDown={handleSelect(value)}
         >
@@ -73,10 +74,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
             isClickable={Boolean(onClick !== undefined)}
           />
         </div>,
-        <Connector
-          key={`connector-${index}-${key}`}
-          active={current > value}
-        />,
+        <Connector key={`connector-${uniqueKey}`} active={current > value} />,
       ];
     });
 
