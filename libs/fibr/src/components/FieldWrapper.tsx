@@ -1,6 +1,7 @@
 import { FieldControl, Label, Text, classNames } from "@rafty/ui";
 import { Fragment, PropsWithChildren } from "react";
 import { FieldErrorMessage } from "./FieldErrorMessage";
+import { TooltipWrapper } from "./TooltipWrapper";
 
 export type FieldWrapper = {
   className?: string;
@@ -8,6 +9,9 @@ export type FieldWrapper = {
   label?: string;
   description?: string;
   required?: boolean;
+  disabled?: boolean;
+  tooltip?: string;
+  hidden?: boolean;
 };
 
 export function FieldWrapper({
@@ -16,31 +20,38 @@ export function FieldWrapper({
   description,
   className,
   required,
+  disabled,
   children,
+  tooltip,
+  hidden,
 }: PropsWithChildren<FieldWrapper>) {
-  const Componenet =
+  const LabelAndDescriptionWrapper =
     label && description
       ? ({ children }: PropsWithChildren) => <div>{children}</div>
       : Fragment;
 
-  return (
+  const component = (
     <FieldControl
       name={name}
-      className={classNames("gap-2", className)}
+      className={classNames(hidden && "hidden", "gap-2", className)}
       isRequired={required}
+      isDisabled={disabled}
     >
-      {label && (
-        <Componenet>
-          <Label className="leading-3">{label}</Label>
-          {description && (
-            <Text className="text-sm leading-[10px] opacity-70">
-              {description}
-            </Text>
-          )}
-        </Componenet>
-      )}
+      <LabelAndDescriptionWrapper>
+        {label && <Label className="leading-3">{label}</Label>}
+        {description && (
+          <Text className="text-secondary-600 dark:text-secondary-400 text-xs font-medium leading-[10px]">
+            {description}
+          </Text>
+        )}
+      </LabelAndDescriptionWrapper>
       {children}
       <FieldErrorMessage name={name} />
     </FieldControl>
   );
+
+  if (tooltip)
+    return <TooltipWrapper content={tooltip}>{component}</TooltipWrapper>;
+
+  return component;
 }

@@ -1,16 +1,23 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { Text } from "./Text";
+import { TextInput } from "./TextInput";
 
-const meta: Meta<Text> = {
-  title: "fibr / Text",
+const meta: Meta<TextInput> = {
+  title: "fibr / TextInput",
   args: {
-    value: "This is a sample value",
+    label: "Label",
+    defaultValue: "",
+    description: "This is the field description",
+    disabled: false,
     hidden: false,
-    tooltip: "This is a text field",
+    placeholder: "",
+    tooltip: "This is Text Input Field",
   },
   argTypes: {
+    disabled: {
+      control: "boolean",
+    },
     hidden: {
       control: "boolean",
     },
@@ -18,8 +25,7 @@ const meta: Meta<Text> = {
 };
 
 export default meta;
-
-type Story = StoryObj<Text>;
+type Story = StoryObj<TextInput>;
 
 export const Default: Story = {
   render: (props) => (
@@ -29,7 +35,10 @@ export const Default: Story = {
           blueprint={f.form({
             onSubmit: console.log,
             components: {
-              text: f.text(props),
+              string: f.textInput({
+                ...props,
+                name: "string",
+              }),
             },
           })}
         />

@@ -16,33 +16,36 @@ const addonTextClasses = cva(
 );
 
 export type InputWrapper = PropsWithChildren<{
-  size: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg";
   prefixText?: string;
   suffixText?: string;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
 }>;
 
-export const InputWrapper = ({
-  size,
+export function InputWrapper({
+  size = "md",
   prefixIcon,
   prefixText,
   suffixIcon,
   suffixText,
   children,
-}: InputWrapper) => (
-  <InputGroup size={size} className="w-full">
-    {prefixText && (
-      <LeftAddon className={addonTextClasses({ size })}>{prefixText}</LeftAddon>
-    )}
-    {prefixIcon && <Prefix>{prefixIcon}</Prefix>}
-    {children}
-    {suffixIcon && <Suffix>{suffixIcon}</Suffix>}
-    {suffixText && (
-      <RightAddon className={addonTextClasses({ size })}>
-        {suffixText}
-      </RightAddon>
-    )}
-  </InputGroup>
-);
-InputWrapper.displayName = "InputWrapper";
+}: InputWrapper) {
+  return (
+    <InputGroup size={size} className="w-full">
+      {prefixText && (
+        <LeftAddon className={addonTextClasses({ size })}>
+          {prefixText}
+        </LeftAddon>
+      )}
+      {prefixIcon && <Prefix>{prefixIcon}</Prefix>}
+      {children}
+      {suffixIcon && <Suffix>{suffixIcon}</Suffix>}
+      {suffixText && (
+        <RightAddon className={addonTextClasses({ size })}>
+          {suffixText}
+        </RightAddon>
+      )}
+    </InputGroup>
+  );
+}

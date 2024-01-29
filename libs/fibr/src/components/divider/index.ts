@@ -1,1 +1,1 @@
-export { DividerField, divider } from "./DividerField";
+export { Divider, divider } from "./Divider";

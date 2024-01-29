@@ -2,22 +2,22 @@ import { createThread, useThread } from "@fibr/react";
 import { classNames } from "@rafty/ui";
 import { TooltipWrapper } from "../TooltipWrapper";
 
-export type Text = {
-  value: string;
+export type Image = {
+  src: string;
+  alt: string;
   hidden?: boolean;
   tooltip?: string;
 };
 
-export function Text() {
-  // Getting component config
-  const { value, hidden, tooltip } = useThread<Text>();
+export function Image() {
+  const { src, alt, hidden, tooltip } = useThread<Image>();
 
   const component = (
-    <p
-      className={classNames(hidden && "hidden", "bg-secondary-100 font-medium")}
-    >
-      {value}
-    </p>
+    <img
+      src={src}
+      alt={alt}
+      className={classNames(hidden && "hidden", "w-full object-cover")}
+    />
   );
 
   if (tooltip)
@@ -26,4 +26,4 @@ export function Text() {
   return component;
 }
 
-export const text = createThread<Text>("text");
+export const image = createThread<Image>("image");
