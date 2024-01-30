@@ -1,6 +1,4 @@
 import { Divider, divider } from "./divider";
-import { EditableTextField } from "./editable-text";
-import { EditableTextareaField } from "./editable-textarea";
 import { Form, form } from "./form";
 import { HeadingField, heading } from "./heading";
 import { Image, image } from "./image";
@@ -9,8 +7,6 @@ import { TextInput, textInput } from "./text-input";
 import { TextareaField, textarea } from "./textarea";
 
 export const plugin = {
-  // "editable-text": EditableTextField,
-  // "editable-textarea": EditableTextareaField,
   form: Form,
   "text-input": TextInput,
   textarea: TextareaField,

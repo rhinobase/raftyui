@@ -13,7 +13,6 @@ import {
   classNames,
   mergeRefs,
 } from "@rafty/ui";
-import _ from "lodash";
 import {
   PropsWithChildren,
   forwardRef,
@@ -229,7 +228,7 @@ export function ComboboxContent({
     <PopoverContent
       {...props}
       className={classNames("max-w-none p-0", className)}
-      style={_.merge({ width }, style)}
+      style={{ width, ...style }}
     >
       <Command>
         {showSearch && <CommandInput placeholder={placeholder?.search} />}
