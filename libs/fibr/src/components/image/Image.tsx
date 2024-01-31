@@ -1,16 +1,15 @@
 import { createThread, useThread } from "@fibr/react";
 import { classNames } from "@rafty/ui";
-import { TooltipWrapper } from "../TooltipWrapper";
+import { TooltipWrapper, type TooltipWrapperProps } from "../TooltipWrapper";
 
-export type Image = {
+export type Image = TooltipWrapperProps<{
   src: string;
   alt: string;
   hidden?: boolean;
-  tooltip?: string;
-};
+}>;
 
 export function Image() {
-  const { src, alt, hidden, tooltip } = useThread<Image>();
+  const { src, alt, hidden } = useThread<Image>();
 
   const component = (
     <img
@@ -20,10 +19,7 @@ export function Image() {
     />
   );
 
-  if (tooltip)
-    return <TooltipWrapper content={tooltip}>{component}</TooltipWrapper>;
-
-  return component;
+  return <TooltipWrapper>{component}</TooltipWrapper>;
 }
 
 export const image = createThread<Image>("image");

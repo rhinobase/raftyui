@@ -1,16 +1,15 @@
 import { createThread, useThread } from "@fibr/react";
 import { classNames } from "@rafty/ui";
-import { TooltipWrapper } from "../TooltipWrapper";
+import { TooltipWrapper, type TooltipWrapperProps } from "../TooltipWrapper";
 
-export type Text = {
+export type Text = TooltipWrapperProps<{
   value: string;
   hidden?: boolean;
-  tooltip?: string;
-};
+}>;
 
 export function Text() {
   // Getting component config
-  const { value, hidden, tooltip } = useThread<Text>();
+  const { value, hidden } = useThread<Text>();
 
   const component = (
     <p
@@ -19,11 +18,7 @@ export function Text() {
       {value}
     </p>
   );
-
-  if (tooltip)
-    return <TooltipWrapper content={tooltip}>{component}</TooltipWrapper>;
-
-  return component;
+  return <TooltipWrapper>{component}</TooltipWrapper>;
 }
 
 export const text = createThread<Text>("text");

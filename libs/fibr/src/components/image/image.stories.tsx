@@ -1,7 +1,7 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { Image } from "./Image";
+import type { Image } from "./Image";
 
 const meta: Meta<Image> = {
   title: "fibr / Image",
@@ -19,6 +19,7 @@ const meta: Meta<Image> = {
 };
 
 export default meta;
+
 type Story = StoryObj<Image>;
 
 export const Default: Story = {

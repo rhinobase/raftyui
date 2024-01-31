@@ -1,66 +1,33 @@
 import { createThread, useThread } from "@fibr/react";
 import { InputField } from "@rafty/ui";
-import { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
-import { FieldWrapper } from "../FieldWrapper";
-import { InputWrapper } from "../InputWrapper";
+import { FieldWrapper, type FieldWrapperProps } from "../FieldWrapper";
+import { InputWrapper, type InputWrapperProps } from "../InputWrapper";
+import type { TooltipWrapperProps } from "../TooltipWrapper";
 
-export type TextInput = {
-  name: string;
-  label?: string;
-  description?: string;
-  placeholder?: string;
-  defaultValue?: string;
-  hidden?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  tooltip?: string;
-  preffixIcon?: ReactNode;
-  suffixIcon?: ReactNode;
-  preffixText?: string;
-  suffixText?: string;
-  inputType?: string;
-};
+export type TextInput = TooltipWrapperProps<
+  FieldWrapperProps<
+    InputWrapperProps<{
+      placeholder?: string;
+      defaultValue?: string;
+      inputType?: string;
+    }>
+  >
+>;
 
 export function TextInput() {
   const {
     name,
-    label,
-    description,
     inputType = "text",
-    required,
-    disabled,
     defaultValue,
-    hidden,
     placeholder,
-    tooltip,
-    preffixIcon,
-    suffixIcon,
-    preffixText,
-    suffixText,
   } = useThread<TextInput>();
+
   const { register } = useFormContext();
 
-  const inputWrapperProps = {
-    preffixIcon,
-    suffixIcon,
-    preffixText,
-    suffixText,
-  };
-
-  const fieldWrapperProps = {
-    name,
-    label,
-    description,
-    required,
-    disabled,
-    tooltip,
-    hidden,
-  };
-
   return (
-    <FieldWrapper {...fieldWrapperProps}>
-      <InputWrapper {...inputWrapperProps}>
+    <FieldWrapper>
+      <InputWrapper>
         <InputField
           type={inputType}
           placeholder={placeholder}

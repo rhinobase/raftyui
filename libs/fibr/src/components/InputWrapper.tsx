@@ -1,3 +1,4 @@
+import { useThread } from "@fibr/react";
 import { InputGroup, LeftAddon, Prefix, RightAddon, Suffix } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { PropsWithChildren, ReactNode } from "react";
@@ -15,22 +16,25 @@ const addonTextClasses = cva(
   },
 );
 
-export type InputWrapper = PropsWithChildren<{
+export type InputWrapperProps<
+  T extends Record<string, unknown> = Record<string, unknown>,
+> = {
   size?: "sm" | "md" | "lg";
   prefixText?: string;
   suffixText?: string;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
-}>;
+} & T;
 
-export function InputWrapper({
-  size = "md",
-  prefixIcon,
-  prefixText,
-  suffixIcon,
-  suffixText,
-  children,
-}: InputWrapper) {
+export function InputWrapper({ children }: PropsWithChildren) {
+  const {
+    size = "md",
+    prefixIcon,
+    suffixIcon,
+    prefixText,
+    suffixText,
+  } = useThread<InputWrapperProps>();
+
   return (
     <InputGroup size={size} className="w-full">
       {prefixText && (

@@ -1,15 +1,14 @@
 import { createThread, useThread } from "@fibr/react";
 import { BooleanOrFunction } from "@rafty/shared";
 import { classNames } from "@rafty/ui";
-import { TooltipWrapper } from "../TooltipWrapper";
+import { TooltipWrapper, type TooltipWrapperProps } from "../TooltipWrapper";
 
-export type Divider = {
+export type Divider = TooltipWrapperProps<{
   hidden?: BooleanOrFunction;
-  tooltip?: string;
-};
+}>;
 
 export function Divider() {
-  const { hidden, tooltip } = useThread<Divider>();
+  const { hidden } = useThread<Divider>();
 
   const component = (
     <div
@@ -19,11 +18,7 @@ export function Divider() {
       )}
     />
   );
-
-  if (tooltip)
-    return <TooltipWrapper content={tooltip}>{component}</TooltipWrapper>;
-
-  return component;
+  return <TooltipWrapper>{component}</TooltipWrapper>;
 }
 
 export const divider = createThread<Divider>("divider");

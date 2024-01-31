@@ -1,57 +1,51 @@
+import { useThread } from "@fibr/react";
 import { FieldControl, Label, Text, classNames } from "@rafty/ui";
 import { Fragment, PropsWithChildren } from "react";
 import { FieldErrorMessage } from "./FieldErrorMessage";
 import { TooltipWrapper } from "./TooltipWrapper";
 
-export type FieldWrapper = {
-  className?: string;
+export type FieldWrapperProps<
+  T extends Record<string, unknown> = Record<string, unknown>,
+> = {
   name: string;
   label?: string;
   description?: string;
   required?: boolean;
   disabled?: boolean;
-  tooltip?: string;
   hidden?: boolean;
-};
+} & T;
 
 export function FieldWrapper({
-  name,
-  label,
-  description,
   className,
-  required,
-  disabled,
   children,
-  tooltip,
-  hidden,
-}: PropsWithChildren<FieldWrapper>) {
+}: PropsWithChildren<{ className?: string }>) {
+  const { name, label, description, required, disabled, hidden } =
+    useThread<FieldWrapperProps>();
+
   const LabelAndDescriptionWrapper =
     label && description
       ? ({ children }: PropsWithChildren) => <div>{children}</div>
       : Fragment;
 
-  const component = (
-    <FieldControl
-      name={name}
-      className={classNames(hidden && "hidden", "gap-2", className)}
-      isRequired={required}
-      isDisabled={disabled}
-    >
-      <LabelAndDescriptionWrapper>
-        {label && <Label className="leading-3">{label}</Label>}
-        {description && (
-          <Text className="text-secondary-600 dark:text-secondary-400 text-xs font-medium leading-[10px]">
-            {description}
-          </Text>
-        )}
-      </LabelAndDescriptionWrapper>
-      {children}
-      <FieldErrorMessage name={name} />
-    </FieldControl>
+  return (
+    <TooltipWrapper>
+      <FieldControl
+        name={name}
+        className={classNames(hidden && "hidden", "gap-2", className)}
+        isRequired={required}
+        isDisabled={disabled}
+      >
+        <LabelAndDescriptionWrapper>
+          {label && <Label className="leading-3">{label}</Label>}
+          {description && (
+            <Text className="text-secondary-600 dark:text-secondary-400 text-xs font-medium leading-[10px]">
+              {description}
+            </Text>
+          )}
+        </LabelAndDescriptionWrapper>
+        {children}
+        <FieldErrorMessage name={name} />
+      </FieldControl>
+    </TooltipWrapper>
   );
-
-  if (tooltip)
-    return <TooltipWrapper content={tooltip}>{component}</TooltipWrapper>;
-
-  return component;
 }

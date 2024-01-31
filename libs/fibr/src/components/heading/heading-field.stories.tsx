@@ -1,7 +1,7 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { HeadingField } from "./HeadingField";
+import type { HeadingField } from "./HeadingField";
 
 const meta: Meta<HeadingField> = {
   title: "fibr / HeadingField",

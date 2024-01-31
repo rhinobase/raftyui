@@ -1,7 +1,7 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { Text } from "./Text";
+import type { Text } from "./Text";
 
 const meta: Meta<Text> = {
   title: "fibr / Text",

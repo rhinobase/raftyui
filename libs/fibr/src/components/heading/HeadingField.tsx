@@ -1,15 +1,14 @@
 import { createThread, useThread } from "@fibr/react";
-import { TooltipWrapper } from "../TooltipWrapper";
+import { TooltipWrapper, type TooltipWrapperProps } from "../TooltipWrapper";
 
-export type HeadingField = {
+export type HeadingField = TooltipWrapperProps<{
   level?: "1" | "2" | "3" | "4" | "5" | "6";
   value: string;
   hidden?: boolean;
-  tooltip?: string;
-};
+}>;
 
 export function HeadingField() {
-  const { level = "1", value, hidden, tooltip } = useThread<HeadingField>();
+  const { level = "1", value, hidden } = useThread<HeadingField>();
 
   const Heading = `h${level}` as "h1";
 
@@ -17,10 +16,7 @@ export function HeadingField() {
     <Heading className={hidden ? "hidden" : undefined}>{value}</Heading>
   );
 
-  if (tooltip)
-    return <TooltipWrapper content={tooltip}>{component}</TooltipWrapper>;
-
-  return component;
+  return <TooltipWrapper>{component}</TooltipWrapper>;
 }
 
 export const heading = createThread<HeadingField>("heading");

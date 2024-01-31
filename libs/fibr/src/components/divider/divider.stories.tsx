@@ -1,7 +1,7 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { Divider } from "./Divider";
+import type { Divider } from "./Divider";
 
 const meta: Meta<Divider> = {
   title: "fibr / Divider",

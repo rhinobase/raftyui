@@ -1,7 +1,7 @@
 import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
 import { f, plugin } from "..";
-import { TextareaField } from "./TextareaField";
+import type { TextareaField } from "./TextareaField";
 
 const meta: Meta<TextareaField> = {
   title: "fibr / TextareaField",

@@ -1,46 +1,22 @@
 import { createThread, useThread } from "@fibr/react";
 import { Textarea } from "@rafty/ui";
 import { useFormContext } from "react-hook-form";
-import { FieldWrapper } from "../FieldWrapper";
+import { FieldWrapper, FieldWrapperProps } from "../FieldWrapper";
+import { TooltipWrapperProps } from "../TooltipWrapper";
 
-export type TextareaField = {
-  name: string;
-  label?: string;
-  description?: string;
-  placeholder?: string;
-  defaultValue?: string;
-  hidden?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  tooltip?: string;
-};
+export type TextareaField = TooltipWrapperProps<
+  FieldWrapperProps<{
+    placeholder?: string;
+    defaultValue?: string;
+  }>
+>;
 
 export function TextareaField() {
-  const {
-    name,
-    defaultValue,
-    description,
-    disabled,
-    hidden,
-    label,
-    placeholder,
-    required,
-    tooltip,
-  } = useThread<TextareaField>();
+  const { name, defaultValue, placeholder } = useThread<TextareaField>();
   const { register } = useFormContext();
 
-  const fieldWrapperProps = {
-    name,
-    label,
-    description,
-    required,
-    disabled,
-    tooltip,
-    hidden,
-  };
-
   return (
-    <FieldWrapper {...fieldWrapperProps}>
+    <FieldWrapper>
       <Textarea
         placeholder={placeholder}
         defaultValue={defaultValue}
