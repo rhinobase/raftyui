@@ -1,6 +1,4 @@
-import { FibrProvider, Loom } from "@fibr/react";
 import { Meta, StoryObj } from "@storybook/react";
-import { f, plugin } from "../../../fibr/src/components";
 import { EditableTextareaField } from "./EditableTextareaField";
 
 const meta: Meta<typeof EditableTextareaField> = {

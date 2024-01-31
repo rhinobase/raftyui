@@ -102,7 +102,11 @@ export function DataTable<T>({
         header: column.label,
         accessorKey: column.name,
         cell: (props) => (
-          <Thread type={column.type ?? "default"} cell={props} />
+          <Thread
+            id={props.cell.id}
+            type={column.type ?? "default"}
+            cell={props}
+          />
         ),
         enableResizing: column.enableResizing,
         enableSorting: column.enableSorting,

@@ -17,10 +17,6 @@
       "name": "corp:                anything Corp specific"
     },
     {
-      "value": "fibr",
-      "name": "fibr:                anything Fibr specific"
-    },
-    {
       "value": "storybook",
       "name": "storybook:           anything Storybook specific"
     },

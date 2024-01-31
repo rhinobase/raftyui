@@ -15,17 +15,14 @@ dependencies:
     specifier: ^2.0.21
     version: 2.0.21
   '@fibr/react':
-    specifier: ^0.5.2
-    version: 0.5.2(react@18.2.0)
+    specifier: 0.5.3-rc.0
+    version: 0.5.3-rc.0(react@18.2.0)
   '@heroicons/react':
     specifier: 2.0.18
     version: 2.0.18(react@18.2.0)
   '@hookform/devtools':
     specifier: 4.3.1
     version: 4.3.1(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
-  '@hookform/error-message':
-    specifier: ^2.0.1
-    version: 2.0.1(react-dom@18.2.0)(react-hook-form@7.47.0)(react@18.2.0)
   '@hookform/resolvers':
     specifier: ^3.3.2
     version: 3.3.4(react-hook-form@7.47.0)
@@ -2642,8 +2639,8 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
 
-  /@fibr/react@0.5.2(react@18.2.0):
-    resolution: {integrity: sha512-rIRi0X0y3PfMIpWuwiTNCI50l82S4+pXruafgyzU29Vdjf6fNYQG/Gj0Uceca3wJoN/AaVqEzYFiWlj6pEtByg==}
+  /@fibr/react@0.5.3-rc.0(react@18.2.0):
+    resolution: {integrity: sha512-CurgLhzCfLTJgeXqofk1sjRgQ/SBUSBcxglzZjR8YzITs1kT79DlTtPsL8UdiB7L22rCXWr559lhup9M9B6x4g==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -2701,18 +2698,6 @@ packages:
       uuid: 8.3.2
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
-
-  /@hookform/error-message@2.0.1(react-dom@18.2.0)(react-hook-form@7.47.0)(react@18.2.0):
-    resolution: {integrity: sha512-U410sAr92xgxT1idlu9WWOVjndxLdgPUHEB8Schr27C9eh7/xUnITWpCMF93s+lGiG++D4JnbSnrb5A21AdSNg==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-      react-hook-form: ^7.0.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-hook-form: 7.47.0(react@18.2.0)
     dev: false
 
   /@hookform/resolvers@3.3.4(react-hook-form@7.47.0):

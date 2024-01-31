@@ -1,11 +1,9 @@
-import { FibrProvider, Loom } from "@fibr/react";
 import { InputGroup, LeftAddon, Prefix, RightAddon, Suffix } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import {
   HiOutlineExclamation,
   HiOutlineExclamationCircle,
 } from "react-icons/hi";
-import { f, plugin } from "../../../fibr/src/components";
 import { EditableTextField } from "./EditableTextField";
 
 const meta: Meta<typeof EditableTextField> = {

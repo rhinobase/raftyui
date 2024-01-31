@@ -10,7 +10,7 @@ export function InternalContentRender() {
   return (
     <CommandList className="p-1">
       {options.map((option, index) => (
-        <InternalOptionsRender key={`${key}-${index}`} {...option} />
+        <InternalOptionsRender key={`${index}-${key}`} {...option} />
       ))}
       <CommandEmpty>No data found</CommandEmpty>
     </CommandList>
