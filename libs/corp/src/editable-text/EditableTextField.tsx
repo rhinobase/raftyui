@@ -8,24 +8,48 @@ import {
   useFieldControlContext,
   useInputGroupContext,
 } from "@rafty/ui";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import {
+  ReactNode,
+  forwardRef,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 
-export type EditableTextField = Omit<InputField, "Unstyled">;
+export type EditableTextField = Omit<
+  InputField,
+  "Unstyled" | "onChange" | "onBlur" | "onKeyDown"
+> & {
+  onChange?: (value: string | undefined) => void;
+};
 
 export const EditableTextField = forwardRef<
   HTMLInputElement,
   EditableTextField
 >(
   (
-    { size = "md", variant = "outline", isInvalid, className, ...props },
+    {
+      size = "md",
+      variant = "outline",
+      isInvalid,
+      className,
+      onChange,
+      ...props
+    },
     forwardedRef,
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [isEditMode, setEditMode] = useState(false);
-    const [inputValue, setInputValue] = useState<string>();
+    const [inputValue, setInputValue] = useReducer(
+      (_: string | undefined, cur: string | undefined) => {
+        onChange?.(cur);
+        return cur;
+      },
+      undefined,
+    );
 
     const fieldControlContext = useFieldControlContext() ?? {};
-
     const invalid = getValue(isInvalid) || fieldControlContext.isInvalid;
 
     const inputGroupContext = useInputGroupContext() ?? {
@@ -38,11 +62,18 @@ export const EditableTextField = forwardRef<
 
     useEffect(() => {
       if (isEditMode) inputRef.current?.focus();
+      else setInputValue(inputRef.current?.value);
     }, [isEditMode]);
 
     const handleEditField = eventHandler(() => {
       setEditMode(true);
     });
+
+    let buttonChild: ReactNode;
+
+    if (inputValue) {
+      if (inputValue !== "") buttonChild = inputValue;
+    } else buttonChild = "Enter value";
 
     return (
       <>
@@ -59,14 +90,16 @@ export const EditableTextField = forwardRef<
             }),
             isEditMode && "hidden",
             "w-full justify-start font-medium",
-            inputGroupContext.isLeftAddon && "rounded-l-none",
-            inputGroupContext.isRightAddon && "rounded-r-none",
+            (inputGroupContext.isLeftAddon || inputGroupContext.isRightAddon) &&
+              "rounded-none",
+            !inputGroupContext.isLeftAddon && "rounded-l-md",
+            !inputGroupContext.isRightAddon && "rounded-r-md",
             className,
           )}
           onClick={handleEditField}
           onKeyDown={handleEditField}
         >
-          {inputValue ?? "Enter value"}
+          {buttonChild}
         </Button>
         <InputField
           {...props}
@@ -77,6 +110,9 @@ export const EditableTextField = forwardRef<
           ref={mergeRefs(inputRef, forwardedRef)}
           onKeyDown={(event) => {
             if (["Enter", "Escape"].includes(event.key)) setEditMode(false);
+          }}
+          onBlur={() => {
+            setEditMode(false);
           }}
         />
       </>

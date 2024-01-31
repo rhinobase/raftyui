@@ -3,16 +3,13 @@ import { InputField } from "@rafty/ui";
 import { useFormContext } from "react-hook-form";
 import { FieldWrapper, type FieldWrapperProps } from "../FieldWrapper";
 import { InputWrapper, type InputWrapperProps } from "../InputWrapper";
-import type { TooltipWrapperProps } from "../TooltipWrapper";
 
-export type TextInput = TooltipWrapperProps<
-  FieldWrapperProps<
-    InputWrapperProps<{
-      placeholder?: string;
-      defaultValue?: string;
-      inputType?: string;
-    }>
-  >
+export type TextInput = FieldWrapperProps<
+  InputWrapperProps<{
+    placeholder?: string;
+    defaultValue?: string;
+    inputType?: string;
+  }>
 >;
 
 export function TextInput() {

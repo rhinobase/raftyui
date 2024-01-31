@@ -5,7 +5,7 @@ import {
   HiOutlineExclamation,
   HiOutlineExclamationCircle,
 } from "react-icons/hi";
-import { f, plugin } from "..";
+import { f, plugin } from "../../../fibr/src/components";
 import { EditableTextField } from "./EditableTextField";
 
 const meta: Meta<typeof EditableTextField> = {
@@ -45,6 +45,10 @@ type Story = StoryObj<typeof EditableTextField>;
 // };
 
 export const Default: Story = {
+  render: () => <EditableTextField />,
+};
+
+export const WithInputGroup: Story = {
   render: ({ size }) => (
     <InputGroup size={size} className="w-full">
       <LeftAddon>P</LeftAddon>
