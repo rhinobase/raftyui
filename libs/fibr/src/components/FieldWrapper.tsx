@@ -2,18 +2,20 @@ import { useThread } from "@fibr/react";
 import { FieldControl, Label, Text, classNames } from "@rafty/ui";
 import { Fragment, PropsWithChildren } from "react";
 import { FieldErrorMessage } from "./FieldErrorMessage";
-import { TooltipWrapper } from "./TooltipWrapper";
+import { TooltipWrapper, TooltipWrapperProps } from "./TooltipWrapper";
 
 export type FieldWrapperProps<
   T extends Record<string, unknown> = Record<string, unknown>,
-> = {
-  name: string;
-  label?: string;
-  description?: string;
-  required?: boolean;
-  disabled?: boolean;
-  hidden?: boolean;
-} & T;
+> = TooltipWrapperProps<
+  {
+    name: string;
+    label?: string;
+    description?: string;
+    required?: boolean;
+    disabled?: boolean;
+    hidden?: boolean;
+  } & T
+>;
 
 export function FieldWrapper({
   className,
