@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.1-rc.1](https://github.com/rhinobase/raftyui/compare/fibr-0.0.1-rc.0...fibr-0.0.1-rc.1) (2024-01-31)
+
 ## 0.0.1-rc.0 (2024-01-31)
 
 
