@@ -7,7 +7,10 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/corp/**/*.{ts,tsx,js,jsx}"]
+      }
     },
     "build": {
       "executor": "@nx/rollup:rollup",
@@ -41,8 +44,10 @@
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "access": "public"
-      }
+        "access": "public",
+        "distFolderPath": "dist/packages/corp"
+      },
+      "dependsOn": ["build"]
     }
   }
 }
