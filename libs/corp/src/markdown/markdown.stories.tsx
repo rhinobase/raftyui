@@ -17,9 +17,12 @@ This text is ***really important***.
 > Dorothy followed her through many of the beautiful rooms in her castle.
 
 1. First item
+  1. Nested item
 2. Second item
 3. Third item
 4. Fourth item
+
+---
 
 - First item 
 - Second item
@@ -45,6 +48,14 @@ I need to highlight these ==very important words==.
 - [Indent](#indent)
 - [Center](#center)
 - [Color](#color)
+
+At the command prompt, type \`nano\`
+
+\`\`\`jsx
+import { Button } from "@rafty/ui"
+<Button />
+\`\`\`
+
 `;
 
 const meta: Meta<typeof Markdown> = {
@@ -59,12 +70,4 @@ type Story = StoryObj<typeof Markdown>;
 
 export const Default: Story = {
   render: ({ content }) => <Markdown content={content} />,
-};
-
-export const Code: Story = {
-  render: () => <Markdown content="At the command prompt, type `nano`" />,
-};
-
-export const EscapingBackticks: Story = {
-  render: () => <Markdown content="``Use `code` in your Markdown file.``" />,
 };
