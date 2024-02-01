@@ -1,6 +1,6 @@
 "use client";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import { Button } from "../button";
 import { useBoolean } from "../hooks";
 import { InputField } from "../input-field";
