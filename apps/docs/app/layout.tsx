@@ -1,10 +1,10 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { classNames } from "@rafty/ui";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
 import "../styles/globals.css";
-import { GoogleAnalytics } from "./GoogleAnalytics";
 import { Wrapper } from "./Wrapper";
 import { Providers } from "./providers";
 
@@ -77,6 +77,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Google Analytics ID
+const GMT_ID = "G-K1YEVWQFHZ";
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
@@ -94,7 +97,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Providers>
           <Wrapper>{children}</Wrapper>
         </Providers>
-        <GoogleAnalytics />
+        <GoogleAnalytics gaId={GMT_ID} />
       </body>
     </html>
   );
