@@ -41,7 +41,7 @@ export function Callout({
         STYLES[type].container,
       )}
     >
-      <IconComponent className="h-8 w-8 flex-none" />
+      <IconComponent className="size-8 flex-none" />
       <div className="ml-4 flex-auto">
         <p
           className={classNames("font-display m-0 text-xl", STYLES[type].title)}

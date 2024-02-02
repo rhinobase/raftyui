@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@rafty/corp": ["libs/corp/src/index.ts"],
-      "@rafty/fibr": ["libs/fibr/src/index.ts"],
       "@rafty/plugin": ["libs/plugin/src/index.js"],
       "@rafty/shared": ["libs/shared/src/index.ts"],
       "@rafty/ui": ["libs/ui/src/index.ts"]

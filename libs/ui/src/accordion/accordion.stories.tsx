@@ -150,8 +150,8 @@ export const OpenClose: Story = {
         </AccordionItem>
         <AccordionItem value="3">
           <AccordionTrigger
-            openIcon={<MinusIcon className="h-4 w-4" />}
-            closeIcon={<PlusIcon className="h-4 w-4" />}
+            openIcon={<MinusIcon className="size-4" />}
+            closeIcon={<PlusIcon className="size-4" />}
           >
             <span className="flex-1 text-left">Section 2 title</span>
           </AccordionTrigger>

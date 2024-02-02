@@ -40,9 +40,9 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
 
     const key = useId();
 
-    const components = validChildren.flatMap((child, index) => [
+    const components = validChildren.flatMap((child) => [
       child,
-      <Connector key={`${key}-${index}-connector`} />,
+      <Connector key={`${key}-connector`} />,
     ]);
 
     if (loading)
@@ -66,7 +66,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
         <ul
           ref={forwardedRef}
           className={classNames(
-            "flex h-full w-full",
+            "flex size-full",
             reverse ? "flex-col-reverse" : "flex-col",
             className,
           )}
@@ -102,7 +102,7 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
       >
         {dot ?? (
           <div
-            className="dark:bg-secondary-950 border-primary-500 h-4 w-4 rounded-full border-[4px] bg-white"
+            className="dark:bg-secondary-950 border-primary-500 size-4 rounded-full border-[4px] bg-white"
             style={{
               borderColor: color,
             }}

@@ -17,9 +17,9 @@ export const avatarClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-7 w-7 border",
-        md: "h-9 w-9 border-2",
-        lg: "h-12 w-12 border-[2.5px]",
+        sm: "size-7 border",
+        md: "size-9 border-2",
+        lg: "size-12 border-[2.5px]",
       },
     },
     defaultVariants: {
@@ -39,14 +39,14 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
       style={style}
     >
       {name && src ? (
-        <img alt={name} src={src} className="h-full w-full object-cover" />
+        <img alt={name} src={src} className="size-full object-cover" />
       ) : name ? (
         <img
           alt={name}
           src={`https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
             name,
           )}`}
-          className="h-full w-full object-cover"
+          className="size-full object-cover"
         />
       ) : (
         <svg fill="currentColor" viewBox="0 0 24 24">

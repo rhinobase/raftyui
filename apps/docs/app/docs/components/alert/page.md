@@ -139,7 +139,7 @@ Pass `isUnstyled` prop in parent component to remove style in Alert.
   isUnstyled
   className="flex h-16 w-full items-center gap-1 rounded-md border border-green-500 bg-green-300/40 p-4 dark:text-white"
 >
-  <AlertIcon className="h-7 w-7" />
+  <AlertIcon className="size-7" />
   <AlertTitle>Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>

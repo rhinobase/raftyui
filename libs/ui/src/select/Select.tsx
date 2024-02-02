@@ -92,9 +92,9 @@ const selectClasses = cva(
 );
 
 const TRIGGER_ICON_CLASSES = {
-  sm: "right-[7px] h-3 w-3",
-  md: "right-2.5 h-3.5 w-3.5",
-  lg: "right-[13px] h-4 w-4",
+  sm: "right-[7px] size-3",
+  md: "right-2.5 size-3.5",
+  lg: "right-[13px] size-4",
 } as const;
 
 export type Select = Omit<

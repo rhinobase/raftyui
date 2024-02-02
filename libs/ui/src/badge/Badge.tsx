@@ -5,9 +5,9 @@ import { classNames } from "../utils";
 export const badgeClasses = cva("rounded-full", {
   variants: {
     size: {
-      sm: "w-2 h-2",
-      md: "w-2.5 h-2.5",
-      lg: "w-3 h-3",
+      sm: "size-2",
+      md: "size-2.5",
+      lg: "size-3",
     },
     status: {
       secondary: "bg-secondary-500 dark:bg-secondary-300",

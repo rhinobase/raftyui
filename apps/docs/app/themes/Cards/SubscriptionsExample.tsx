@@ -33,7 +33,7 @@ const data = [
 
 export function SubscriptionsExample() {
   return (
-    <div className="h-full w-full space-y-2">
+    <div className="size-full space-y-2">
       <Text className="text-sm font-medium">Subscriptions</Text>
       <div>
         <Text className="text-2xl font-bold leading-snug">+2350</Text>

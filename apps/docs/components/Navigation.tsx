@@ -28,7 +28,7 @@ export function Navigation({
                     href={link.href}
                     onClick={onLinkClick}
                     className={classNames(
-                      "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full",
+                      "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:size-1.5 before:-translate-y-1/2 before:rounded-full",
                       link.href === pathname
                         ? "text-primary-500 before:bg-primary-500 dark:text-primary-400  dark:before:bg-primary-400 font-semibold"
                         : "text-secondary-500 before:bg-secondary-300 hover:text-secondary-600 dark:text-secondary-400 dark:before:bg-secondary-700 dark:hover:text-secondary-300 before:hidden hover:before:block",

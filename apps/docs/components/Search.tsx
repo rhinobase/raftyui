@@ -285,7 +285,7 @@ const SearchInput = forwardRef<
         />
         {autocompleteState.status === "stalled" && (
           <Suffix>
-            <LoadingIcon className="stroke-secondary-200 text-secondary-400 dark:stroke-secondary-700 dark:text-secondary-500 h-6 w-6 animate-spin" />
+            <LoadingIcon className="stroke-secondary-200 text-secondary-400 dark:stroke-secondary-700 dark:text-secondary-500 size-6 animate-spin" />
           </Suffix>
         )}
       </InputGroup>

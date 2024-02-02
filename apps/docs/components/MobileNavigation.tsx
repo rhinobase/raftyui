@@ -31,7 +31,7 @@ export function MobileNavigation({ isOpen, setOpen }: MobileNavigation) {
       <DrawerContent className="z-[70] flex h-[100dvh] w-full max-w-[70vw] flex-col overflow-hidden p-0">
         <div className="dark:bg-secondary-800 bg-white p-6">
           <Link href="/" aria-label="Home page">
-            <Logomark className="h-9 w-9" />
+            <Logomark className="size-9" />
           </Link>
           <DrawerClose />
         </div>

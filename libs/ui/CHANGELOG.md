@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.5](https://github.com/rhinobase/raftyui/compare/ui-1.4.4...ui-1.4.5) (2024-02-01)
+
+
+### Features
+
+* **corp:** added all cells in data table ([47d3fdf](https://github.com/rhinobase/raftyui/commit/47d3fdf7a7a0d9fb180d885a0c2e1a1e19e446d6))
+* **corp:** added data table ([d515157](https://github.com/rhinobase/raftyui/commit/d515157da162fc9ee9a1cc770b4918a850593f0a))
+* **corp:** working on editable input field component but typescript is not working ([075e4dd](https://github.com/rhinobase/raftyui/commit/075e4ddc51d7d406358db262692c07608542e776))
+
+
+### Bug Fixes
+
+* shifted rafty/fibr package to fibr repo ([2825833](https://github.com/rhinobase/raftyui/commit/2825833ac7f5b4e9e0d977c6d658065f9f61c94f))
+
 ## [1.4.4](https://github.com/rhinobase/raftyui/compare/ui-1.4.3...ui-1.4.4) (2024-01-17)
 
 

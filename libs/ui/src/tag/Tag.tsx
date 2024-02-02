@@ -3,7 +3,7 @@ import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Tag Component
-export const tagClasses = cva("h-max w-max font-medium", {
+export const tagClasses = cva("size-max font-medium", {
   variants: {
     size: {
       sm: "rounded-sm px-2 text-sm",

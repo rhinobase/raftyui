@@ -5,7 +5,7 @@ export function findLabel(
   items: ComboboxOptionType[],
 ): string | undefined {
   for (const item of items) {
-    let label;
+    let label: string | undefined;
 
     if (Array.isArray(item.value)) label = findLabel(value, item.value);
     else if (value === item.value) label = item.label;

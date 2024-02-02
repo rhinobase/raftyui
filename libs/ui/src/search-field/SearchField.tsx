@@ -5,9 +5,9 @@ import { InputGroup, Prefix } from "../input-group";
 import { classNames } from "../utils";
 
 const ICON_CLASSES = {
-  sm: "h-4 w-4",
-  md: "h-[18px] w-[18px]",
-  lg: "h-5 h-5",
+  sm: "size-4",
+  md: "size-[18px]",
+  lg: "size-5",
 };
 
 export type SearchField = Omit<InputField, "value" | "onChange" | "type"> & {

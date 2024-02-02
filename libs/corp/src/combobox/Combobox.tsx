@@ -13,7 +13,6 @@ import {
   classNames,
   mergeRefs,
 } from "@rafty/ui";
-import _ from "lodash";
 import {
   PropsWithChildren,
   forwardRef,
@@ -176,7 +175,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
     const right_icon = rightIcon ?? (
       <ChevronUpDownIcon
         className={classNames(
-          "h-3.5 w-3.5 shrink-0 stroke-2",
+          "size-3.5 shrink-0 stroke-2",
           isOpen
             ? "text-primary-500 dark:text-primary-400"
             : "text-secondary-500 dark:text-secondary-400",
@@ -229,7 +228,7 @@ export function ComboboxContent({
     <PopoverContent
       {...props}
       className={classNames("max-w-none p-0", className)}
-      style={_.merge({ width }, style)}
+      style={{ width, ...style }}
     >
       <Command>
         {showSearch && <CommandInput placeholder={placeholder?.search} />}

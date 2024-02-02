@@ -27,7 +27,7 @@ const breadcrumbClasses = cva("flex items-center", {
   },
 });
 
-const breadcrumbItemClasses = cva("rounded-base", {
+const breadcrumbItemClasses = cva("rounded font-medium leading-tight", {
   variants: {
     size: {
       sm: "px-1.5 py-0.5",
@@ -41,7 +41,7 @@ const breadcrumbItemClasses = cva("rounded-base", {
 });
 
 const dividerClasses = cva(
-  "select-none font-semibold opacity-50 dark:opacity-40",
+  "select-none font-medium opacity-50 dark:opacity-40",
   {
     variants: {
       size: {
@@ -97,8 +97,10 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
         let BreadcrumbItem = as;
         if (!href) BreadcrumbItem = "span";
 
+        const uniqueKey = `${index}-${key}`;
+
         return [
-          <Fragment key={`${key}-${index}`}>
+          <Fragment key={uniqueKey}>
             {Children ? (
               <Children
                 label={label}
@@ -126,7 +128,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
               </ListItem>
             )}
           </Fragment>,
-          <Divider key={`${key}-${index}-divider`} />,
+          <Divider key={`divider-${uniqueKey}`} />,
         ];
       })
       .slice(0, -1);

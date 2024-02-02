@@ -22,9 +22,9 @@ const wrapperClasses = cva("flex items-center", {
 const iconClasses = cva("stroke-[2.5]", {
   variants: {
     size: {
-      sm: "h-3.5 w-3.5",
-      md: "h-5 w-5",
-      lg: "h-6 w-6",
+      sm: "size-3.5",
+      md: "size-5",
+      lg: "size-6",
     },
   },
 });

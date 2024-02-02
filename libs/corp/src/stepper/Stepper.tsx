@@ -60,10 +60,11 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
 
     const components = steps.flatMap((step, index) => {
       const value = initial + index;
+      const uniqueKey = `${index}-${key}`;
 
       return [
         <div
-          key={`${key}-${index}`}
+          key={uniqueKey}
           onClick={handleSelect(value)}
           onKeyDown={handleSelect(value)}
         >
@@ -73,10 +74,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
             isClickable={Boolean(onClick !== undefined)}
           />
         </div>,
-        <Connector
-          key={`${key}-${index}-connector`}
-          active={current > value}
-        />,
+        <Connector key={`connector-${uniqueKey}`} active={current > value} />,
       ];
     });
 
@@ -139,9 +137,9 @@ const stepperItemIconClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-8 w-8",
-        md: "h-9 w-9 text-lg",
-        lg: "h-10 w-10 text-xl",
+        sm: "size-8",
+        md: "size-9 text-lg",
+        lg: "size-10 text-xl",
       },
       isClickable: {
         true: "group-focus/item:ring-2 ring-offset-1 ring-primary-300 dark:ring-secondary-100 dark:ring-offset-secondary-950",

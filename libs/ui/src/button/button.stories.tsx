@@ -90,7 +90,7 @@ export const IconButton: Story = {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="h-6 w-6"
+            className="size-6"
           >
             <title>plus icon</title>
             <path
@@ -118,7 +118,7 @@ export const IconButton: Story = {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="h-6 w-6"
+            className="size-6"
           >
             <title>plus fab</title>
             <path
@@ -163,7 +163,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
+              className="size-6"
             >
               <title>left icon</title>
               <path
@@ -196,7 +196,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
+              className="size-6"
             >
               <title>right icon</title>
 
@@ -230,7 +230,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
+              className="size-6"
             >
               <title>left icon</title>
               <path
@@ -247,7 +247,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
+              className="size-6"
             >
               <title>right icon</title>
               <path

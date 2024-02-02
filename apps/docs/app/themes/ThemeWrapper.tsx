@@ -158,7 +158,7 @@ function CustomizeMenu({
                   className="justify-start capitalize"
                   leftIcon={
                     <div
-                      className={`h-3 w-3 rounded-full ${value} flex items-center justify-center`}
+                      className={`size-3 rounded-full ${value} flex items-center justify-center`}
                     />
                   }
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}

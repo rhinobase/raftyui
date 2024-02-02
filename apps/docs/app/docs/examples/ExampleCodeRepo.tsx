@@ -73,7 +73,7 @@ export function ExampleCodeRepo() {
 function CardElement({ title, examples, icon }: ExampleType) {
   return (
     <div className="border-secondary-200 dark:border-secondary-800 flex w-full items-center gap-4 rounded-xl border px-4 py-5">
-      <Image src={icon} alt={title} className="m-0 h-10 w-10" />
+      <Image src={icon} alt={title} className="m-0 size-10" />
       <div className="space-y-1.5">
         <h5 className="not-prose text-xl font-medium leading-none tracking-tight">
           {title}

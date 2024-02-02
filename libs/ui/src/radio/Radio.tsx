@@ -56,9 +56,9 @@ export const radioGroupItemClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-3.5 w-3.5",
-        md: "h-5 w-5",
-        lg: "h-6 w-6",
+        sm: "size-3.5",
+        md: "size-5",
+        lg: "size-6",
       },
     },
     defaultVariants: {
@@ -72,9 +72,9 @@ export const radioGroupItemIndicatorClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-2 w-2",
-        md: "h-2.5 w-2.5",
-        lg: "h-3.5 w-3.5",
+        sm: "size-2",
+        md: "size-2.5",
+        lg: "size-3.5",
       },
     },
     defaultVariants: {

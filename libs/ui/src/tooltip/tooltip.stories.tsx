@@ -15,7 +15,7 @@ export const Default: Story = {
     <Tooltip>
       <TooltipTrigger>
         <Button size="fab">
-          <PlusIcon className="h-6 w-6" />
+          <PlusIcon className="size-6" />
         </Button>
       </TooltipTrigger>
       <TooltipContent side="top">Tooltip Content</TooltipContent>

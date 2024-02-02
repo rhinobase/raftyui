@@ -384,7 +384,7 @@ export const MenuCheckboxItem = forwardRef<
       <DropdownMenu.ItemIndicator
         className={menuCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="h-3 w-3 stroke-[3]" />
+        <CheckIcon className="size-3 stroke-[3]" />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.CheckboxItem>
   );
@@ -430,9 +430,9 @@ export const menuRadioItemIndicatorChildClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-1.5 w-1.5",
-        md: "h-2 w-2",
-        lg: "h-2 w-2",
+        sm: "size-1.5",
+        md: "size-2",
+        lg: "size-2",
       },
     },
     defaultVariants: {
@@ -524,7 +524,7 @@ export const MenuSubTrigger = forwardRef<
       }
     >
       {children}
-      <ChevronRightIcon className="h-3 w-3 stroke-[3]" />
+      <ChevronRightIcon className="size-3 stroke-[3]" />
     </DropdownMenu.SubTrigger>
   );
 });

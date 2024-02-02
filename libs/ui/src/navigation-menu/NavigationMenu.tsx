@@ -115,7 +115,7 @@ export const NavigationMenuTrigger = forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <ChevronDownIcon className="h-3 w-3 stroke-[3] duration-200 group-data-[state=open]:rotate-180" />
+      <ChevronDownIcon className="size-3 stroke-[3] duration-200 group-data-[state=open]:rotate-180" />
     </NavigationMenuPrimitive.Trigger>
   );
 });
@@ -242,9 +242,7 @@ const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
   return (
     <NavigationMenuPrimitive.Viewport
       {...props}
-      className={classNames(
-        "absolute left-0 top-full flex w-full justify-center",
-      )}
+      className={classNames("absolute bottom-0 flex w-full justify-center")}
     />
   );
 };
@@ -270,12 +268,12 @@ export const NavigationMenuIndicator = ({
         unstyle
           ? className
           : classNames(
-              "z-[1] flex h-[10px] w-[10px] items-end justify-center overflow-hidden",
+              "z-[1] flex size-[10px] items-end justify-center overflow-hidden",
               className,
             )
       }
     >
-      <div className="dark:bg-secondary-800 relative top-[70%] h-[12px] w-[12px] rotate-45 transform rounded-tl bg-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]" />
+      <div className="dark:bg-secondary-800 relative top-[70%] size-[12px] rotate-45 transform rounded-tl bg-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]" />
     </NavigationMenuPrimitive.Indicator>
   );
 };

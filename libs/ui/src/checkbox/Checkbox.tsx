@@ -11,10 +11,10 @@ import { classNames } from "../utils";
 // Checkbox Component
 
 export const CheckBoxClasses = cva(
-  "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 focus:ring-2",
   {
     variants: {
-      size: { sm: "h-4 w-4", md: "h-5 w-5", lg: "h-6 w-6" },
+      size: { sm: "size-4", md: "size-5", lg: "size-6" },
     },
     defaultVariants: {
       size: "md",
@@ -27,9 +27,9 @@ export const CheckBoxIndicatorClasses = cva(
   {
     variants: {
       size: {
-        sm: "h-3 w-3 stroke-[4]",
-        md: "h-4 w-4 stroke-[3.5]",
-        lg: "h-5 w-5 stroke-[3]",
+        sm: "size-3 stroke-[4]",
+        md: "size-4 stroke-[3.5]",
+        lg: "size-5 stroke-[3]",
       },
     },
     defaultVariants: {

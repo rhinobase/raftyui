@@ -16,7 +16,7 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(
         {...props}
         ref={forwardedRef}
         className={classNames(
-          "pointer-events-none absolute left-0 top-0 z-10 flex h-full select-none items-center justify-center",
+          "pointer-events-none absolute z-10 flex h-full select-none items-center justify-center",
           prefixAndSuffixCommonClasses[size],
           className,
         )}

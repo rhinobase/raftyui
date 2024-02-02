@@ -22,7 +22,7 @@ type Story = StoryObj<typeof NavigationMenu>;
 
 export const Default: Story = {
   render: ({ isUnstyled }) => (
-    <div className="h-full w-full">
+    <div className="size-full">
       <NavigationMenu isUnstyled={isUnstyled}>
         <NavigationMenuList>
           <NavigationMenuItem>

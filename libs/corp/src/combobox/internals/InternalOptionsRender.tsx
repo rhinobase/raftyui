@@ -3,9 +3,7 @@ import { CommandGroup, CommandItem } from "@rafty/ui";
 import { useComboboxContext } from "../context";
 import { ComboboxOptionType } from "../types";
 
-export type InternalOptionsRender = ComboboxOptionType;
-
-export function InternalOptionsRender({ label, value }: InternalOptionsRender) {
+export function InternalOptionsRender({ label, value }: ComboboxOptionType) {
   const { selected, onSelectionChange } = useComboboxContext();
 
   if (Array.isArray(value))
@@ -26,7 +24,7 @@ export function InternalOptionsRender({ label, value }: InternalOptionsRender) {
       className="justify-between"
     >
       {label}
-      {isSelected && <CheckIcon className="h-3.5 w-3.5 stroke-2 opacity-70" />}
+      {isSelected && <CheckIcon className="size-3.5 stroke-2 opacity-70" />}
     </CommandItem>
   );
 }
