@@ -5,7 +5,6 @@ module.exports = {
   darkMode: "class",
   content: [
     "apps/docs/{src,.storybook,components,app}/**/*!(*.stories|*.spec).{ts,tsx,md,html}",
-    "libs/corp/src/**/*.{ts,tsx}",
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
