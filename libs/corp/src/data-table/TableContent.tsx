@@ -31,7 +31,6 @@ export function TableContent<T>({
           .rows.map((row) => (
             <Tr
               key={row.id}
-              // className="divide-secondary-300 dark:divide-secondary-700 divide-x"
               className="hover:bg-primary-50 dark:hover:bg-primary-800/30"
             >
               {row.getVisibleCells().map((cell, index) => {
