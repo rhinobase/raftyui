@@ -3,9 +3,7 @@ import { CommandGroup, CommandItem } from "@rafty/ui";
 import { useComboboxContext } from "../context";
 import { ComboboxOptionType } from "../types";
 
-export type InternalOptionsRender = ComboboxOptionType;
-
-export function InternalOptionsRender({ label, value }: InternalOptionsRender) {
+export function InternalOptionsRender({ label, value }: ComboboxOptionType) {
   const { selected, onSelectionChange } = useComboboxContext();
 
   if (Array.isArray(value))

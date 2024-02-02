@@ -27,7 +27,7 @@ const breadcrumbClasses = cva("flex items-center", {
   },
 });
 
-const breadcrumbItemClasses = cva("rounded-base", {
+const breadcrumbItemClasses = cva("rounded font-medium leading-tight", {
   variants: {
     size: {
       sm: "px-1.5 py-0.5",
@@ -41,7 +41,7 @@ const breadcrumbItemClasses = cva("rounded-base", {
 });
 
 const dividerClasses = cva(
-  "select-none font-semibold opacity-50 dark:opacity-40",
+  "select-none font-medium opacity-50 dark:opacity-40",
   {
     variants: {
       size: {
