@@ -40,7 +40,7 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
   render: ({ reverse, loading, mode }) => (
-    <div className="h-[200px] w-full">
+    <div className="h-[400px] w-full">
       <Timeline
         reverse={reverse}
         loading={loading}
@@ -69,12 +69,19 @@ export const WithLabel: Story = {
 
 export const LoadingWithReactNode: Story = {
   render: ({ reverse, mode }) => (
-    <Timeline reverse={reverse} loading="Loading more..." mode={mode}>
-      <TimelineItem color="rgb(0,0,0)" dot={<TvIcon height={20} width={20} />}>
-        Create a services site 2015-09-01
-      </TimelineItem>
-      <TimelineItem color="green">Solve initial network problems</TimelineItem>
-      <TimelineItem>Technical testing 2015-09-01</TimelineItem>
-    </Timeline>
+    <div className="h-[400px] w-full">
+      <Timeline reverse={reverse} loading="Loading more..." mode={mode}>
+        <TimelineItem
+          color="rgb(0,0,0)"
+          dot={<TvIcon height={20} width={20} />}
+        >
+          Create a services site 2015-09-01
+        </TimelineItem>
+        <TimelineItem color="green">
+          Solve initial network problems
+        </TimelineItem>
+        <TimelineItem>Technical testing 2015-09-01</TimelineItem>
+      </Timeline>
+    </div>
   ),
 };
