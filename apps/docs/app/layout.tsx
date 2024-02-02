@@ -3,7 +3,7 @@ import { classNames } from "@rafty/ui";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import "../styles/globals.css";
 import { Wrapper } from "./Wrapper";
 import { Providers } from "./providers";
