@@ -37,7 +37,7 @@ export function Hero() {
             />
             <div className="relative">
               <p className="via-primary-400 font-display inline bg-gradient-to-r from-indigo-200 to-indigo-200 bg-clip-text text-5xl tracking-tight text-transparent">
-                Building Design System Made Easy.
+                Tailwind + React Component Library
               </p>
               <p className="text-secondary-400 mt-3 text-2xl tracking-tight">
                 Explore our library of responsive and accessible UI components,
