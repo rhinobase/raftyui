@@ -82,8 +82,10 @@ export default function ThemeComponents() {
     <div className="flex w-full items-center gap-4">
       <div className="h-full w-[400px]">
         <div className="fixed bottom-0 -ml-0.5 h-[calc(100vh-4.75rem)] w-[400px] space-y-6 overflow-y-auto overflow-x-hidden px-2 py-4">
-          <h1 className="text-xl font-semibold">Theme Editor</h1>
-          <CopyCodeDialog color={color} />
+          <div className="flex justify-between">
+            <h1 className="text-xl font-semibold">Theme Editor</h1>
+            <CopyCodeDialog color={color} />
+          </div>
           <div className="space-y-3">
             <h5 className="text-xs font-medium leading-none">Color</h5>
             <div className="grid grid-cols-3 gap-2.5">
