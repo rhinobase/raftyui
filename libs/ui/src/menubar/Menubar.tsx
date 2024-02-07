@@ -23,13 +23,20 @@ export const Menubar = forwardRef<
   Menubar
 >(
   (
-    { children, className, size = "md", isUnstyled = false, ...props },
+    {
+      children,
+      className,
+      size = "md",
+      isUnstyled = false,
+      isDisabled = false,
+      ...props
+    },
     forwardedRef,
   ) => {
     const unstyle = isUnstyled;
 
     return (
-      <MenuBarProvider value={{ size, isUnstyled }}>
+      <MenuBarProvider value={{ size, isUnstyled, isDisabled }}>
         <MenubarPrimitive.Root
           {...props}
           className={
@@ -80,9 +87,13 @@ export const MenubarTrigger = forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size: parentSize, isUnstyled: isParentUnstyled } =
-      useMenuBarContext();
+    const {
+      size: parentSize,
+      isUnstyled: isParentUnstyled,
+      isDisabled: isParentDisabled,
+    } = useMenuBarContext();
     const unstyle = isParentUnstyled || isUnstyled;
+    const disabled = isParentDisabled || isDisabled;
     const triggerSize = size || parentSize;
     const buttonProps = {
       variant,
@@ -90,7 +101,6 @@ export const MenubarTrigger = forwardRef<
       leftIcon,
       rightIcon,
       isActive,
-      isDisabled,
       isLoading,
     };
 
@@ -107,6 +117,7 @@ export const MenubarTrigger = forwardRef<
           <Button
             size={triggerSize}
             isUnstyled={unstyle}
+            isDisabled={disabled}
             className={
               unstyle
                 ? className
@@ -142,8 +153,10 @@ export const MenubarContent = forwardRef<
     { children, className, sideOffset = 5, isUnstyled = false, ...props },
     forwardedRef,
   ) => {
-    const { isUnstyled: isParentUnstyled } = useMenuBarContext();
+    const { isUnstyled: isParentUnstyled, isDisabled } = useMenuBarContext();
     const unstyle = isParentUnstyled || isUnstyled;
+
+    if (isDisabled) return undefined;
 
     return (
       <MenubarPrimitive.Portal>

@@ -7,13 +7,18 @@ import {
   NavigationMenuListItem,
   NavigationMenuTrigger,
 } from "@rafty/ui";
+import { useThemeEditorContext } from "../Context";
 
 export function NavigationMenuExample() {
+  const { isDisabled } = useThemeEditorContext();
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+          <NavigationMenuTrigger disabled={isDisabled}>
+            Learn
+          </NavigationMenuTrigger>
           <NavigationMenuContent size="sm">
             <NavigationMenuListItem href="#" title="Stitches">
               CSS-in-JS with best-in-class developer experience.
@@ -21,7 +26,9 @@ export function NavigationMenuExample() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
+          <NavigationMenuTrigger disabled={isDisabled}>
+            Overview
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <NavigationMenuListItem title="Styling" href="#">
               Unstyled and compatible with any styling solution.

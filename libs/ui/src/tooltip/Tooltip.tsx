@@ -2,16 +2,26 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
-
-// TooltipProvider Component
-const TooltipProvider = TooltipPrimitive.Provider;
+import { TooltipProvider, useTooltipContext } from "./context";
 
 // Tooltip Component
-export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>;
+export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> & {
+  isDisabled?: boolean;
+};
 
-export const Tooltip = ({ children, ...props }: Tooltip) => (
-  <TooltipProvider>
-    <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+export const Tooltip = ({
+  children,
+  isDisabled = false,
+  ...props
+}: Tooltip) => (
+  <TooltipProvider
+    value={{
+      isDisabled,
+    }}
+  >
+    <TooltipPrimitive.Provider>
+      <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   </TooltipProvider>
 );
 Tooltip.displayName = "Tooltip";
@@ -24,11 +34,20 @@ export type TooltipTrigger = ComponentPropsWithoutRef<
 export const TooltipTrigger = forwardRef<
   ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
->(({ className, children, ...props }, forwardedRef) => (
-  <TooltipPrimitive.Trigger ref={forwardedRef} {...props} asChild>
-    {children}
-  </TooltipPrimitive.Trigger>
-));
+>(({ className, children, disabled = false, ...props }, forwardedRef) => {
+  const { isDisabled: isParentDisabled } = useTooltipContext();
+  const isDisabled = isParentDisabled || disabled;
+
+  return (
+    <TooltipPrimitive.Trigger
+      ref={forwardedRef}
+      {...props}
+      disabled={isDisabled}
+    >
+      {children}
+    </TooltipPrimitive.Trigger>
+  );
+});
 TooltipTrigger.displayName = "TooltipTrigger";
 
 // TooltipContent Component
@@ -46,25 +65,27 @@ export const TooltipContent = forwardRef<
   ) => {
     const _isArrow = getValue(isArrow) ?? true;
     const _hasAnimation = getValue(hasAnimation) ?? true;
+    const { isDisabled } = useTooltipContext();
 
-    return (
-      <TooltipPrimitive.Content
-        ref={forwardedRef}
-        sideOffset={sideOffset}
-        className={classNames(
-          "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md px-2 py-1 text-xs font-medium shadow-md",
-          _hasAnimation &&
-            "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-        {_isArrow && (
-          <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
-        )}
-      </TooltipPrimitive.Content>
-    );
+    if (!isDisabled)
+      return (
+        <TooltipPrimitive.Content
+          ref={forwardedRef}
+          sideOffset={sideOffset}
+          className={classNames(
+            "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md px-2 py-1 text-xs font-medium shadow-md",
+            _hasAnimation &&
+              "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
+            className,
+          )}
+          {...props}
+        >
+          {children}
+          {_isArrow && (
+            <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
+          )}
+        </TooltipPrimitive.Content>
+      );
   },
 );
 TooltipContent.displayName = "TooltipContent";

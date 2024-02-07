@@ -5,7 +5,7 @@ import {
   ChatBoxExample,
   CookieSettingsExample,
   TeamMembersExample,
-} from "../app/themes/Cards";
+} from "./Cards";
 
 export function HeroCard() {
   const [isOpen, setIsOpen] = useState(false);

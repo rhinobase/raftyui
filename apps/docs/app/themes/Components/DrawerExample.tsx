@@ -1,4 +1,3 @@
-"use client";
 import {
   Button,
   Drawer,
@@ -9,13 +8,15 @@ import {
   DrawerTitle,
 } from "@rafty/ui";
 import { useState } from "react";
+import { useThemeEditorContext } from "../Context";
 
 export function DrawerExample() {
   const [isOpen, setOpen] = useState(false);
+  const { isDisabled } = useThemeEditorContext();
 
   return (
     <>
-      <Button variant="ghost" onClick={() => setOpen(true)}>
+      <Button isDisabled={isDisabled} onClick={() => setOpen(true)}>
         Drawer
       </Button>
       <Drawer size="sm" side="left" open={isOpen} onOpenChange={setOpen}>

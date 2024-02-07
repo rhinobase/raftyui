@@ -7,11 +7,16 @@ import {
   DialogOverlay,
   DialogTrigger,
 } from "@rafty/ui";
+import { useThemeEditorContext } from "../Context";
 
 export function DialogExample() {
+  const { isDisabled } = useThemeEditorContext();
+
   return (
     <Dialog>
-      <DialogTrigger>Dialog</DialogTrigger>
+      <DialogTrigger isDisabled={isDisabled} variant="solid">
+        Dialog
+      </DialogTrigger>
       <DialogOverlay className="z-[70]" />
       <DialogContent className="z-[70]">
         <DialogHeader>Dialog Header</DialogHeader>

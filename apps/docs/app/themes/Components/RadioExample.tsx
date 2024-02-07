@@ -1,8 +1,11 @@
 import { RadioGroup, RadioGroupItem } from "@rafty/ui";
+import { useThemeEditorContext } from "../Context";
 
 export function RadioExample() {
+  const { isDisabled } = useThemeEditorContext();
+
   return (
-    <RadioGroup defaultValue="2">
+    <RadioGroup isDisabled={isDisabled} defaultValue="2">
       <RadioGroupItem value="1" id="7">
         Radio 1
       </RadioGroupItem>

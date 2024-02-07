@@ -4,7 +4,7 @@ import { List, ListItem } from "@rafty/ui";
 export function ListExample() {
   return (
     <List>
-      <ListItem isUnstyled className="flex items-center gap-2">
+      <ListItem className="flex items-center gap-2">
         <CheckCircleIcon width={16} height={16} className="stroke-2" />
         Lorem ipsum dolor sit amet,
       </ListItem>
