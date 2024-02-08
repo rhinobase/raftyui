@@ -34,18 +34,16 @@ export type TooltipTrigger = ComponentPropsWithoutRef<
 export const TooltipTrigger = forwardRef<
   ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
->(({ className, children, disabled = false, ...props }, forwardedRef) => {
+>(({ className, disabled = false, ...props }, forwardedRef) => {
   const { isDisabled: isParentDisabled } = useTooltipContext();
   const isDisabled = isParentDisabled || disabled;
 
   return (
     <TooltipPrimitive.Trigger
-      ref={forwardedRef}
       {...props}
       disabled={isDisabled}
-    >
-      {children}
-    </TooltipPrimitive.Trigger>
+      ref={forwardedRef}
+    />
   );
 });
 TooltipTrigger.displayName = "TooltipTrigger";
