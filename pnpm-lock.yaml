@@ -170,6 +170,9 @@ dependencies:
   react-live:
     specifier: ^4.1.5
     version: 4.1.5(react-dom@18.2.0)(react@18.2.0)
+  react-responsive-masonry:
+    specifier: ^2.1.7
+    version: 2.1.7
   react-virtualized-auto-sizer:
     specifier: ^1.0.20
     version: 1.0.21(react-dom@18.2.0)(react@18.2.0)
@@ -289,6 +292,9 @@ devDependencies:
   '@types/react-highlight-words':
     specifier: ^0.16.7
     version: 0.16.7
+  '@types/react-responsive-masonry':
+    specifier: ^2.1.3
+    version: 2.1.3
   '@types/react-window':
     specifier: ^1.8.8
     version: 1.8.8
@@ -6880,6 +6886,12 @@ packages:
 
   /@types/react-highlight-words@0.16.7:
     resolution: {integrity: sha512-+upXTIaRd3rGvh1aDQSs9z5X+sV3UM6Jrmjk03GN2GXl4v/+iOJKQj2LZHo6Vp2IoTvMdtxgME26feqo12xXLg==}
+    dependencies:
+      '@types/react': 18.2.48
+    dev: true
+
+  /@types/react-responsive-masonry@2.1.3:
+    resolution: {integrity: sha512-aOFUtv3QwNMmy0BgpQpvivQ/+vivMTB6ARrzf9eTSXsLzXpVnfEtjpHpSknYDnr8KaQmlgeauAj8E7wo/qMOTg==}
     dependencies:
       '@types/react': 18.2.48
     dev: true
@@ -14015,6 +14027,10 @@ packages:
       lodash: 4.17.21
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-responsive-masonry@2.1.7:
+    resolution: {integrity: sha512-/jOqnTVNtO8zRJMTl6ZXBex7EFYEIFBLVlkIFjiCT7omfm0CgNF2z4ST8RIr0v2ut15NWAQs7Q3kJJPhMoe3Ew==}
     dev: false
 
   /react-simple-animate@3.5.2(react-dom@18.2.0):

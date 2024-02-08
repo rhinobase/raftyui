@@ -4,6 +4,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { BsGithub } from "react-icons/bs";
 import blurCyanImage from "../images/blur-cyan.png";
 import blurIndigoImage from "../images/blur-indigo.png";
 
@@ -53,7 +54,9 @@ export function Hero() {
                     href="https://github.com/rhinobase/raftyui"
                     target="_blank"
                   >
-                    <Button variant="ghost">View on GitHub</Button>
+                    <Button variant="ghost" leftIcon={<BsGithub size={16} />}>
+                      View on GitHub
+                    </Button>
                   </Link>
                 </div>
               </div>

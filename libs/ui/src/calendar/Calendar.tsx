@@ -8,6 +8,7 @@ import { classNames as cn } from "../utils";
 
 export type Calendar = React.ComponentProps<typeof DayPicker> & {
   fullScreen?: BooleanOrFunction;
+  dayClass?: string;
 };
 
 const YEAR_OFFSET = 50;
@@ -17,6 +18,7 @@ export function Calendar({
   classNames,
   fullScreen,
   components,
+  dayClass,
   ...props
 }: Calendar) {
   const year = new Date().getFullYear();
@@ -44,6 +46,7 @@ export function Calendar({
         caption_dropdowns: "flex gap-2",
         vhidden: "hidden",
         caption: "flex justify-center items-center relative",
+        caption_label: "py-[5px] text-se",
         nav_button: cn(
           buttonClasses({
             colorScheme: "secondary",
@@ -72,11 +75,17 @@ export function Calendar({
           props.mode === "range" ? "gap-0" : "gap-1",
           "grid grid-cols-7  ",
         ),
-        cell: "cursor-pointer text-sm p-0 relative first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        cell: "text-sm p-0 relative focus-within:relative focus-within:z-20",
         day: cn(
           _fullScreen
-            ? "h-28 w-full border-t-2 dark:border-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-700"
-            : "size-9 p-0 font-normal aria-selected:opacity-100 aria-selected:text-white dark:aria-selected:text-black rounded-md flex items-center justify-center text-center aria-selected:hover:bg-primary-500 dark:aria-selected:hover:bg-primary-300 hover:bg-secondary-200/80 dark:hover:bg-secondary-500 cursor-pointer",
+            ? "h-28 w-full border-t-2 dark:border-secondary-700 "
+            : "size-9 p-0 font-normal aria-selected:opacity-100 aria-selected:text-white dark:aria-selected:text-black rounded-md flex items-center justify-center text-center",
+          dayClass,
+          !props.disabled &&
+            _fullScreen &&
+            "hover:bg-secondary-100 dark:hover:bg-secondary-700",
+          !props.disabled &&
+            "hover:bg-secondary-200/80 dark:hover:bg-secondary-500 cursor-pointer aria-selected:hover:bg-primary-500 dark:aria-selected:hover:bg-primary-300",
         ),
         day_selected: cn(
           props.mode === "single" && !_fullScreen && "rounded-md",

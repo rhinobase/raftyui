@@ -1,6 +1,5 @@
-import { Metadata } from "next";
-import { PropsWithChildren } from "react";
-import ThemeBuilderWrapper from "./ThemeWrapper";
+import type { Metadata } from "next";
+import type { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
   title: "Theme Generator",
@@ -16,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function ThemeBuilderLayout({ children }: PropsWithChildren) {
-  return <ThemeBuilderWrapper>{children}</ThemeBuilderWrapper>;
+  return children;
 }

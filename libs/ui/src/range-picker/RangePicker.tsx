@@ -78,9 +78,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
           {...props}
           initialFocus
           mode="range"
-          classNames={{
-            day: "size-9 p-0 font-normal aria-selected:opacity-100 aria-selected:text-white dark:aria-selected:text-black rounded-md flex items-center justify-center text-center aria-selected:hover:bg-primary-500 dark:aria-selected:hover:bg-primary-300 hover:bg-secondary-200/80 dark:hover:bg-secondary-500 cursor-pointer aria-selected:rounded-none ",
-          }}
+          dayClass="aria-selected:rounded-none"
           selected={selected}
           onSelect={setSelected}
           defaultMonth={selected?.from}

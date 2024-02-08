@@ -2,16 +2,29 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
-
-// TooltipProvider Component
-const TooltipProvider = TooltipPrimitive.Provider;
+import {
+  type TooltipContext,
+  TooltipProvider,
+  useTooltipContext,
+} from "./context";
 
 // Tooltip Component
-export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>;
+export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> &
+  Partial<TooltipContext>;
 
-export const Tooltip = ({ children, ...props }: Tooltip) => (
-  <TooltipProvider>
-    <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+export const Tooltip = ({
+  children,
+  isDisabled = false,
+  ...props
+}: Tooltip) => (
+  <TooltipProvider
+    value={{
+      isDisabled,
+    }}
+  >
+    <TooltipPrimitive.Provider>
+      <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   </TooltipProvider>
 );
 Tooltip.displayName = "Tooltip";
@@ -24,11 +37,18 @@ export type TooltipTrigger = ComponentPropsWithoutRef<
 export const TooltipTrigger = forwardRef<
   ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
->(({ className, children, ...props }, forwardedRef) => (
-  <TooltipPrimitive.Trigger ref={forwardedRef} {...props} asChild>
-    {children}
-  </TooltipPrimitive.Trigger>
-));
+>(({ className, disabled = false, ...props }, forwardedRef) => {
+  const { isDisabled: isParentDisabled } = useTooltipContext();
+  const isDisabled = isParentDisabled || disabled;
+
+  return (
+    <TooltipPrimitive.Trigger
+      {...props}
+      disabled={isDisabled}
+      ref={forwardedRef}
+    />
+  );
+});
 TooltipTrigger.displayName = "TooltipTrigger";
 
 // TooltipContent Component
@@ -46,6 +66,9 @@ export const TooltipContent = forwardRef<
   ) => {
     const _isArrow = getValue(isArrow) ?? true;
     const _hasAnimation = getValue(hasAnimation) ?? true;
+    const { isDisabled } = useTooltipContext();
+
+    if (isDisabled) return;
 
     return (
       <TooltipPrimitive.Content
