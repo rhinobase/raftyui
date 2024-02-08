@@ -24,10 +24,8 @@ export type TooltipTrigger = ComponentPropsWithoutRef<
 export const TooltipTrigger = forwardRef<
   ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
->(({ className, children, ...props }, forwardedRef) => (
-  <TooltipPrimitive.Trigger ref={forwardedRef} {...props} asChild>
-    {children}
-  </TooltipPrimitive.Trigger>
+>((props, forwardedRef) => (
+  <TooltipPrimitive.Trigger {...props} ref={forwardedRef} />
 ));
 TooltipTrigger.displayName = "TooltipTrigger";
 
