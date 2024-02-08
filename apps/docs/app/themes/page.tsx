@@ -89,9 +89,12 @@ export default function ThemeComponents() {
 
   return (
     <ThemeEditorProvider value={{ isDisabled: checked }}>
-      <div className="flex w-full items-center gap-4">
-        <div className="h-full w-[400px]">
-          <div className="fixed bottom-0 -ml-0.5 h-[calc(100vh-4.75rem)] w-[400px] space-y-6 overflow-y-auto overflow-x-hidden px-2 py-4">
+      <div className="flex w-full flex-col gap-4 p-2 lg:flex-row lg:items-center">
+        <h1 className="block py-3 text-3xl font-semibold leading-none lg:hidden">
+          Theme Editor
+        </h1>
+        <div className="hidden h-full lg:block lg:w-[300px] xl:w-[400px]">
+          <div className="fixed bottom-0 -ml-0.5 h-[calc(100vh-4.75rem)] space-y-6 overflow-y-auto overflow-x-hidden px-2 py-4 lg:w-[300px] xl:w-[400px]">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl font-semibold leading-none">
                 Theme Editor
@@ -106,8 +109,8 @@ export default function ThemeComponents() {
           </div>
         </div>
         <ResponsiveMasonry
-          columnsCountBreakPoints={{ 300: 1, 500: 3, 700: 3, 900: 4 }}
-          className={`flex-1 py-4 theme-${color}`}
+          columnsCountBreakPoints={{ 300: 1, 700: 2, 1025: 3, 1440: 4 }}
+          className={`flex-1 theme-${color}`}
         >
           <Masonry gutter="14px">
             <CardWrapper>
@@ -117,9 +120,7 @@ export default function ThemeComponents() {
             <CardWrapper>
               <SkeletonExample />
             </CardWrapper>
-            <CardWrapper>
-              <TableExample />
-            </CardWrapper>
+            <TableExample />
             <CardWrapper className="flex justify-between">
               <SwitchExample />
               <SelectExample />
@@ -171,7 +172,11 @@ export default function ThemeComponents() {
               <Text>Text</Text>
               <HoverCardExample />
             </CardWrapper>
-            <Calendar disabled={checked} disableNavigation={checked} />
+            <Calendar
+              disabled={checked}
+              disableNavigation={checked}
+              className="mx-auto"
+            />
             <CardWrapper>
               <AccordianExample />
             </CardWrapper>
