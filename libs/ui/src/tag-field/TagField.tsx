@@ -40,7 +40,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
     return value;
   }, initialData ?? []);
 
-  const handlePress = eventHandler<HTMLInputElement>((event) => {
+  const handlePress = eventHandler((event) => {
     const data = event.currentTarget.value.trim();
     if (data.length !== 0 && data !== " ") dispatch(data);
     event.currentTarget.value = "";
