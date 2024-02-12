@@ -41,7 +41,7 @@
       "executor": "ngx-deploy-npm:deploy",
       "options": {
         "access": "public",
-        "distFolderPath": "dist/packages/plugin"
+        "distFolderPath": "dist/libs/plugin"
       },
       "dependsOn": ["build"]
     }
