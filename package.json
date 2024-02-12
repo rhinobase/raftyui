@@ -11,7 +11,7 @@
   "private": true,
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@jscutlery/semver": "4.2.0",
+    "@jscutlery/semver": "5.1.1",
     "@nx/devkit": "17.2.8",
     "@nx/eslint": "17.2.8",
     "@nx/eslint-plugin": "17.2.8",
