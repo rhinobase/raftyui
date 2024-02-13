@@ -4,9 +4,9 @@ import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
-    "../../../libs/ui/src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-    "../../../libs/corp/src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-    "../../../libs/fibr/src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+    "../../../libs/ui/src/**/*.stories.tsx",
+    "../../../libs/corp/src/**/*.stories.tsx",
+    "../../../libs/icons/src/**/*.stories.tsx",
   ],
   addons: ["@storybook/addon-essentials"],
   framework: {

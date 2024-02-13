@@ -27,6 +27,10 @@
     {
       "value": "shared",
       "name": "shared:              anything Shared package specific"
+    },
+    {
+      "value": "icons",
+      "name": "icons:               anything Icons package specific"
     }
   ],
   "scopesSearchValue": true,
