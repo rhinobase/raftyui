@@ -22,6 +22,9 @@
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "sideEffects": false,
+  "dependencies": {
+    "react-icons": "^5.0.1"
+  },
   "peerDependencies": {
     "react": "^18.2.0"
   }

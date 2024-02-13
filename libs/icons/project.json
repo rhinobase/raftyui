@@ -39,7 +39,7 @@
       "executor": "ngx-deploy-npm:deploy",
       "options": {
         "access": "public",
-        "distFolderPath": "dist/libs/ui"
+        "distFolderPath": "dist/libs/icons"
       },
       "dependsOn": ["build"]
     }
