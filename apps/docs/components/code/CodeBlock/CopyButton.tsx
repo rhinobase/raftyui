@@ -1,25 +1,43 @@
 "use client";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
-import { Button } from "@rafty/ui";
+import { Button, useBoolean } from "@rafty/ui";
 import { useCopyToClipboard } from "@uidotdev/usehooks";
+import { useEffect } from "react";
 
 export type CopyButton = {
   content: string;
 };
 
 export function CopyButton({ content }: CopyButton) {
-  const [copiedText, copyToClipboard] = useCopyToClipboard();
-  const isCopied = Boolean(copiedText);
+  const [, copyToClipboard] = useCopyToClipboard();
+  const [copied, toggle] = useBoolean();
+
+  useEffect(() => {
+    if (!copied) return;
+
+    // Use setTimeout to update the message after 1500 milliseconds (1.5 seconds)
+    const timeoutId = setTimeout(() => {
+      toggle(false);
+    }, 1500);
+
+    // Cleanup function to clear the timeout if the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, [copied, toggle]);
+
+  const handleCopy = () => {
+    copyToClipboard(content);
+    toggle(true);
+  };
 
   return (
     <Button
-      onClick={() => copyToClipboard(content)}
+      onClick={handleCopy}
       className="absolute right-1 top-1"
       variant="ghost"
       size="icon"
       aria-label="Copy"
     >
-      {isCopied ? (
+      {copied ? (
         <CheckIcon
           height={16}
           width={16}
