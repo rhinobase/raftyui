@@ -2,7 +2,18 @@
 
 ## React + Accessibility + Tailwind CSS
 
-![npm bundle size](https://img.shields.io/bundlephobia/min/%40rafty%2Fui?style=flat&colorA=111111&colorB=ffffff) ![LICENSE](https://img.shields.io/github/license/rhinobase/raftyui?style=flat&colorA=111111&colorB=ffffff) ![Downloads](https://img.shields.io/npm/dm/@rafty/ui.svg?style=flat&colorA=111111&colorB=ffffff) ![GitHub Repo stars](https://img.shields.io/github/stars/rhinobase/raftyui?style=flat&colorA=111111&colorB=ffffff)
+<a href="https://bundlephobia.com/package/@rafty/ui">
+  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/%40rafty%2Fui?style=flat&colorA=111111&colorB=ffffff">
+</a>
+<a aria-label="LICENSE" href="https://github.com/rhinobase/raftyui/blob/main/LICENSE">
+  <img alt="LICENSE" src="https://img.shields.io/github/license/rhinobase/raftyui?style=flat&colorA=111111&colorB=ffffff">
+</a>
+<a aria-label="Downloads" href="https://www.npmjs.com/package/@rafty/ui">
+  <img alt="Downloads" src="https://img.shields.io/npm/dm/@rafty/ui.svg?style=flat&colorA=111111&colorB=ffffff">
+</a>
+<a aria-label="GitHub Repo stars" href="https://github.com/rhinobase/raftyui">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/rhinobase/raftyui?style=flat&colorA=111111&colorB=ffffff">
+</a>
 
 Rafty UI is a comprehensive library of accessible, reusable, and composable React components that streamlines the development of modern web applications and websites. The library offers a diverse range of components that can be easily combined to build complex user interfaces while adhering to accessibility best practices.
 
