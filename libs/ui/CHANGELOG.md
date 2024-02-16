@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.8](https://github.com/rhinobase/raftyui/compare/ui-1.4.7...ui-1.4.8) (2024-02-16)
+
+
+### Bug Fixes
+
+* **ui:** updated useBoolean ([5760f34](https://github.com/rhinobase/raftyui/commit/5760f34a538aadf46ba49d3a8f83b904e233c1ad))
+
 ## [1.4.7](https://github.com/rhinobase/raftyui/compare/ui-1.4.6...ui-1.4.7) (2024-02-12)
 
 ## [1.4.5](https://github.com/rhinobase/raftyui/compare/ui-1.4.4...ui-1.4.5) (2024-02-01)
