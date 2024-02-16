@@ -6,8 +6,8 @@ export function useBoolean(initialValue = false) {
   const toggle = useCallback(
     (value?: boolean) =>
       setValue((prev) => {
-        if (value) return value;
-        return !prev;
+        if (value == null) return !prev;
+        return value;
       }),
     [],
   );
