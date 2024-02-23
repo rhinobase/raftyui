@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhinobase/raftyui.git",
-    "directory": "libs/icons"
+    "directory": "packages/icons"
   },
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"

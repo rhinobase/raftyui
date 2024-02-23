@@ -19,7 +19,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhinobase/raftyui.git",
-    "directory": "libs/ui"
+    "directory": "packages/ui"
   },
   "bugs": {
     "url": "https://github.com/rhinobase/raftyui/issues"
