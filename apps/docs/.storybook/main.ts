@@ -4,9 +4,9 @@ import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
-    "../../../libs/ui/src/**/*.stories.tsx",
-    "../../../libs/corp/src/**/*.stories.tsx",
-    "../../../libs/icons/src/**/*.stories.tsx",
+    "../../../packages/ui/src/**/*.stories.tsx",
+    "../../../packages/corp/src/**/*.stories.tsx",
+    "../../../packages/icons/src/**/*.stories.tsx",
   ],
   addons: ["@storybook/addon-essentials"],
   framework: {
@@ -21,10 +21,13 @@ const config: StorybookConfig = {
     const mergedConfig = mergeConfig(config, {
       resolve: {
         alias: {
-          "@rafty/ui": path.resolve(__dirname, "../../../libs/ui/src/index.ts"),
+          "@rafty/ui": path.resolve(
+            __dirname,
+            "../../../packages/ui/src/index.ts",
+          ),
           "@rafty/shared": path.resolve(
             __dirname,
-            "../../../libs/shared/src/index.ts",
+            "../../../packages/shared/src/index.ts",
           ),
         },
       },

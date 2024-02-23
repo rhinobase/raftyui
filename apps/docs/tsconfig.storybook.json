@@ -6,6 +6,6 @@
   },
   "include": [
     ".storybook/*.{ts,tsx}",
-    "../../libs/{ui,corp,fibr}/src/**/*.stories.tsx"
+    "../../packages/{ui,corp,fibr}/src/**/*.stories.tsx"
   ]
 }
