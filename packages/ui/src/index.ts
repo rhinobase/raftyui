@@ -35,6 +35,7 @@ export * from "./scrollarea";
 export * from "./search-field";
 export * from "./select";
 export * from "./skeleton";
+export * from "./slider";
 export * from "./spinner";
 export * from "./stat";
 export * from "./switch";
