@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { RaftyIcon } from "./RaftyIcon";
+import { RaftyIcon, RaftyIconProps } from "./RaftyIcon";
 
-const meta: Meta<typeof RaftyIcon> = {
+const meta: Meta<RaftyIconProps> = {
   title: "Icons",
   args: {
     type: "check-circle",
@@ -10,7 +10,7 @@ const meta: Meta<typeof RaftyIcon> = {
 
 export default meta;
 
-type Story = StoryObj<typeof RaftyIcon>;
+type Story = StoryObj<RaftyIconProps>;
 
 export const Default: Story = {
   render: ({ type }) => <RaftyIcon type={type} size={32} />,

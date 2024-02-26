@@ -292,9 +292,8 @@ import {
   HiOutlineXCircle,
   HiOutlineXMark,
 } from "react-icons/hi2";
-import type { IconType } from "react-icons/lib";
 
-export const ICONS: Record<string, { label: string; icon: IconType }> = {
+export const ICONS = {
   "academic-cap": {
     label: "Academic Cap",
     icon: HiOutlineAcademicCap,
@@ -1465,4 +1464,4 @@ export const ICONS: Record<string, { label: string; icon: IconType }> = {
     label: "X Mark",
     icon: HiOutlineXMark,
   },
-};
+} as const;

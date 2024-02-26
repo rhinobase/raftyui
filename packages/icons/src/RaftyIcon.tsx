@@ -1,10 +1,10 @@
 import type { IconBaseProps } from "react-icons/lib";
 import { ICONS } from "./icons";
 
-export type RaftyIcon = { type: string } & IconBaseProps;
+export type RaftyIconProps = { type: keyof typeof ICONS } & IconBaseProps;
 
-export function RaftyIcon({ type, ...props }: RaftyIcon) {
-  const { icon: Icon, label } = ICONS[type] ?? {};
+export function RaftyIcon({ type, ...props }: RaftyIconProps) {
+  const { icon: Icon, label } = ICONS[type];
 
-  if (Icon) return <Icon title={label} {...props} />;
+  return <Icon title={label} {...props} />;
 }

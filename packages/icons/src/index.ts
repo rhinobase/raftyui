@@ -1,2 +1,1 @@
-export { ICONS } from "./icons";
-export { RaftyIcon } from "./RaftyIcon";
+export { RaftyIcon as default, type RaftyIconProps } from "./RaftyIcon";
