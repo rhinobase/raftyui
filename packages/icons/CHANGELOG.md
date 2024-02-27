@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.3](https://github.com/rhinobase/raftyui/compare/icons-0.1.2...icons-0.1.3) (2024-02-27)
+
 ## [0.1.2](https://github.com/rhinobase/raftyui/compare/icons-0.1.1...icons-0.1.2) (2024-02-27)
 
 
