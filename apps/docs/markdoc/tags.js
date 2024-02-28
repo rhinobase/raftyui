@@ -60,7 +60,7 @@ const tags = {
   sandpack: {
     render: Sandpack,
     attributes: {
-      name: { type: String },
+      devbox: { type: String },
     },
   },
 };

@@ -19,5 +19,3 @@ This library is still under construction. You can check out the progress on this
 {% /callout %}
 
 Fibr equips developers to build their forms 10x faster by simplifying form structure, generation, validation, theming, submission, error handling, and more. Check out [Fibr](https://www.npmjs.com/package/@fibr/react).
-
-{% sandpack name="fibr" / %}

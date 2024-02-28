@@ -16,4 +16,4 @@ nextjs:
 
 Rendering lists that can additively "load more" data onto an existing set of data or "infinite scroll" is also a very common UI pattern. Over here we are using [TanStack React Query](https://tanstack.com/query/latest) for fetching the data.
 
-{% sandpack name="combobox" /%}
+{% sandpack devbox="inspiring-beaver-z9zv8w?embed=1&file=%2Fsrc%2FCombobox.jsx" /%}

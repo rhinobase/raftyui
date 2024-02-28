@@ -16,4 +16,4 @@ nextjs:
 
 This example shows how to build a simple form with Rafty UI's form components and the [React Hook Form](https://react-hook-form.com/) form library:
 
-{% sandpack name="react-hook-form" /%}
+{% sandpack devbox="rafty-ui-react-hook-form-mpvd32?embed=1&file=%2Fsrc%2FApp.tsx"" /%}

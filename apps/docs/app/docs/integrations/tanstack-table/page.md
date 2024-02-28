@@ -16,4 +16,4 @@ nextjs:
 
 This example shows how to build a sortable data table with Rafty UI's table components, and the [Tanstack Table](https://tanstack.com/table/v8/).
 
-{% sandpack name="tanstack-table" /%}
+{% sandpack devbox="rafty-ui-tanstack-table-k9k8nd?embed=1&file=%2Fsrc%2FApp.tsx" /%}
