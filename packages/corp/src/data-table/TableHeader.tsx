@@ -36,7 +36,7 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                 <div
                   className={classNames(
                     !isLastColumn &&
-                      index !== 0 &&
+                      !isCheckbox &&
                       "bg-secondary-300 dark:bg-secondary-600 absolute right-0 top-1/3 h-4 w-[2px]",
                   )}
                 />
