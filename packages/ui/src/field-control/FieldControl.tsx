@@ -11,7 +11,7 @@ export const fieldControlClasses = cva("flex w-full", {
     orientation: {
       col: "flex-col gap-1",
       row: "flex-row items-center gap-2",
-      "row-reverse": "flex-row-reverse items-center gap-2",
+      "row-reverse": "flex-row-reverse items-center gap-2 justify-end",
     },
   },
   defaultVariants: {

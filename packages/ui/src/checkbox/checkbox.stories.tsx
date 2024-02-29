@@ -1,6 +1,7 @@
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { FieldControl } from "../field-control";
 import { Checkbox } from "./Checkbox";
 
 const meta: Meta<typeof Checkbox> = {
@@ -33,14 +34,16 @@ export const Default: Story = {
 
 export const WithChildren: Story = {
   render: ({ size, isDisabled, isRequired }) => (
-    <Checkbox
-      id="name"
-      size={size}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-    >
-      Name
-    </Checkbox>
+    <FieldControl name="name" isRequired>
+      <Checkbox
+        id="name"
+        size={size}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+      >
+        Name
+      </Checkbox>
+    </FieldControl>
   ),
 };
 
@@ -50,7 +53,7 @@ export const Indeterminate: Story = {
 
     return (
       <Checkbox
-        id="red1"
+        id="name"
         size={size}
         checked={state}
         isDisabled={isDisabled}

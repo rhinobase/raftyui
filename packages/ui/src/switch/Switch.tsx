@@ -4,6 +4,7 @@ import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
+import { Label } from "../label";
 import { classNames } from "../utils";
 
 export const switchClasses = cva(
@@ -38,6 +39,24 @@ export const switchThumbClasses = cva(
   },
 );
 
+export const switchLabelClasses = cva("", {
+  variants: {
+    size: {
+      sm: "pl-1.5 text-xs",
+      md: "pl-2",
+      lg: "pl-2.5 text-base",
+    },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    disabled: false,
+  },
+});
+
 // Switch component
 export type Switch = Omit<
   ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
@@ -61,6 +80,7 @@ export const Switch = forwardRef<
       isReadOnly,
       isDisabled,
       isRequired,
+      children,
       ...props
     },
     forwardedRef,
@@ -75,7 +95,7 @@ export const Switch = forwardRef<
       context.isReadOnly;
     const required = getValue(isRequired) || context.isRequired;
 
-    return (
+    const switchComponent = (
       <SwitchPrimitives.Root
         {...props}
         defaultChecked={defaultChecked}
@@ -88,6 +108,21 @@ export const Switch = forwardRef<
         <SwitchPrimitives.Thumb className={switchThumbClasses({ size })} />
       </SwitchPrimitives.Root>
     );
+
+    if (children)
+      return (
+        <div className="flex w-max items-center">
+          {switchComponent}
+          <Label
+            htmlFor={props.id}
+            className={switchLabelClasses({ size, disabled })}
+            isRequired={required}
+          >
+            {children}
+          </Label>
+        </div>
+      );
+    return switchComponent;
   },
 );
 Switch.displayName = "Switch";

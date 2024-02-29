@@ -14,7 +14,7 @@ export const Label = forwardRef<HTMLLabelElement, Label>(
     const { name, isRequired: isParentRequired } =
       useFieldControlContext() ?? {};
 
-    const required = getValue(isRequired) || isParentRequired;
+    const required = getValue(isRequired) ?? isParentRequired;
 
     return (
       <label

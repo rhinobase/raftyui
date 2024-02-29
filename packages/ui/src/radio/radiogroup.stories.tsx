@@ -1,4 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { FieldControl } from "../field-control";
+import { Label } from "../label";
 import { RadioGroup, RadioGroupItem } from "./Radio";
 
 const meta: Meta<typeof RadioGroup> = {
@@ -21,21 +23,24 @@ type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
   render: ({ size, isDisabled, required }) => (
-    <RadioGroup
-      defaultValue="comfortable"
-      size={size}
-      isDisabled={isDisabled}
-      required={required}
-    >
-      <RadioGroupItem value="default" id="default">
-        Default
-      </RadioGroupItem>
-      <RadioGroupItem value="comfortable" id="comfortable">
-        Comfortable
-      </RadioGroupItem>
-      <RadioGroupItem value="compact" id="compact">
-        Compact
-      </RadioGroupItem>
-    </RadioGroup>
+    <FieldControl name="radio" isRequired>
+      <Label>Radio Group</Label>
+      <RadioGroup
+        defaultValue="comfortable"
+        size={size}
+        isDisabled={isDisabled}
+        required={required}
+      >
+        <RadioGroupItem value="default" id="default">
+          Default
+        </RadioGroupItem>
+        <RadioGroupItem value="comfortable" id="comfortable">
+          Comfortable
+        </RadioGroupItem>
+        <RadioGroupItem value="compact" id="compact">
+          Compact
+        </RadioGroupItem>
+      </RadioGroup>
+    </FieldControl>
   ),
 };

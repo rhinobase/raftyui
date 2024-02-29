@@ -16,9 +16,9 @@ export const radioGroupClasses = cva(
   {
     variants: {
       size: {
-        sm: "gap-2",
-        md: "gap-3",
-        lg: "gap-3",
+        sm: "gap-1",
+        md: "gap-1.5",
+        lg: "gap-2",
       },
     },
     defaultVariants: {
@@ -83,6 +83,24 @@ export const radioGroupItemIndicatorClasses = cva(
   },
 );
 
+export const radioGroupItemLabelClasses = cva("", {
+  variants: {
+    size: {
+      sm: "pl-1.5 text-xs",
+      md: "pl-2",
+      lg: "pl-2.5 text-base",
+    },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    disabled: false,
+  },
+});
+
 export type RadioGroupItem = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Item
 >;
@@ -113,10 +131,8 @@ export const RadioGroupItem = forwardRef<
         {radioItem}
         <Label
           htmlFor={props.id}
-          className={classNames(
-            disabled && "cursor-not-allowed opacity-50",
-            "pl-2",
-          )}
+          className={radioGroupItemLabelClasses({ size, disabled })}
+          isRequired={false}
         >
           {children}
         </Label>

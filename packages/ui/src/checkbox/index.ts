@@ -1,5 +1,5 @@
 export {
   Checkbox,
-  CheckBoxClasses,
-  CheckBoxIndicatorClasses,
+  checkboxClasses,
+  checkboxIndicatorClasses,
 } from "./Checkbox";

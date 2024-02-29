@@ -10,7 +10,7 @@ import { classNames } from "../utils";
 
 // Checkbox Component
 
-export const CheckBoxClasses = cva(
+export const checkboxClasses = cva(
   "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 focus:ring-2",
   {
     variants: {
@@ -22,7 +22,7 @@ export const CheckBoxClasses = cva(
   },
 );
 
-export const CheckBoxIndicatorClasses = cva(
+export const checkboxIndicatorClasses = cva(
   "dark:text-secondary-700 hidden text-white group-data-[state=checked]:block",
   {
     variants: {
@@ -38,11 +38,19 @@ export const CheckBoxIndicatorClasses = cva(
   },
 );
 
-const CHECKBOX_LABEL_CLASSES = {
-  sm: "pl-1.5 text-sm",
-  md: "pl-2 text-base",
-  lg: "pl-2.5 text-lg",
-} as const;
+const checkboxLabelClasses = cva("", {
+  variants: {
+    size: {
+      sm: "pl-1.5 text-xs",
+      md: "pl-2 leading-snug",
+      lg: "pl-2.5 text-base leading-snug",
+    },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+      false: "",
+    },
+  },
+});
 
 export type Checkbox = Omit<
   ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
@@ -86,12 +94,12 @@ export const Checkbox = forwardRef<
         name={name}
         disabled={disabled}
         required={required}
-        className={classNames(CheckBoxClasses({ size }), className)}
+        className={classNames(checkboxClasses({ size }), className)}
         ref={forwardedref}
       >
         <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
           <CheckIcon
-            className={classNames(CheckBoxIndicatorClasses({ size }))}
+            className={classNames(checkboxIndicatorClasses({ size }))}
           />
           <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
         </CheckboxPrimitive.Indicator>
@@ -104,11 +112,10 @@ export const Checkbox = forwardRef<
         {children && (
           <Label
             htmlFor={props.id}
-            className={classNames(
-              CHECKBOX_LABEL_CLASSES[size],
-              disabled && "cursor-not-allowed opacity-50",
-              "leading-6",
-            )}
+            className={checkboxLabelClasses({
+              size,
+              disabled,
+            })}
             isRequired={required}
           >
             {children}

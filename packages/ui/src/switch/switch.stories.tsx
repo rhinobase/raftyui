@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { FieldControl } from "../field-control";
 import { Switch } from "./Switch";
 
 const meta: Meta<typeof Switch> = {
@@ -23,12 +24,17 @@ type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
   render: ({ size, defaultChecked, isDisabled, isReadOnly, isRequired }) => (
-    <Switch
-      size={size}
-      isDisabled={isDisabled}
-      isReadOnly={isReadOnly}
-      isRequired={isRequired}
-      defaultChecked={defaultChecked}
-    />
+    <FieldControl name="switch" isRequired>
+      <Switch
+        id="switch"
+        size={size}
+        isDisabled={isDisabled}
+        isReadOnly={isReadOnly}
+        isRequired={isRequired}
+        defaultChecked={defaultChecked}
+      >
+        Switch
+      </Switch>
+    </FieldControl>
   ),
 };
