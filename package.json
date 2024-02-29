@@ -24,8 +24,8 @@
     "@nx/workspace": "17.2.8",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-url": "8.0.2",
-    "@storybook/addon-essentials": "7.6.12",
-    "@storybook/core-server": "7.6.12",
+    "@storybook/addon-essentials": "7.6.17",
+    "@storybook/core-server": "7.6.17",
     "@svgr/rollup": "8.1.0",
     "@swc-node/register": "1.6.8",
     "@swc/cli": "~0.1.62",
@@ -67,7 +67,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "verdaccio": "^5.26.3",
-    "vite": "^5.0.8"
+    "vite": "^4.5.2"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "1.15.1",
@@ -106,7 +106,7 @@
     "@tanstack/react-table": "8.11.7",
     "@uidotdev/usehooks": "^2.4.1",
     "class-variance-authority": "0.7.0",
-    "cmdk": "0.2.0",
+    "cmdk": "0.2.1",
     "dateformat": "5.0.3",
     "fast-glob": "3.3.2",
     "flexsearch": "0.7.31",
@@ -114,7 +114,7 @@
     "js-cookie": "^3.0.5",
     "js-yaml": "4.1.0",
     "lodash": "^4.17.21",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "next-themes": "0.2.1",
     "prettier": "^3.1.1",
     "prism-react-renderer": "2.1.0",
