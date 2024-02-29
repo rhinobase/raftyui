@@ -6,7 +6,6 @@ import { findLabel } from "../utils";
 
 export function InternalTriggerRender() {
   const {
-    name,
     type,
     options,
     isDisabled,
@@ -64,5 +63,5 @@ export function InternalTriggerRender() {
   if (placeholder?.trigger) return placeholder?.trigger;
 
   // Default value
-  return `Select ${name}`;
+  return `Select ${type === "single" ? "option" : "options"}`;
 }

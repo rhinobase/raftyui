@@ -4,19 +4,25 @@ import { eventHandler } from "@rafty/shared";
 import {
   Button,
   Command,
+  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
+  CommandLoading,
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Spinner,
   classNames,
   mergeRefs,
 } from "@rafty/ui";
 import {
-  PropsWithChildren,
+  type PropsWithChildren,
+  type ReactNode,
   forwardRef,
   useEffect,
+  useId,
   useReducer,
   useRef,
   useState,
@@ -26,9 +32,10 @@ import {
   ComboboxProvider,
   useComboboxContext,
 } from "./context";
-import { InternalContentRender, InternalTriggerRender } from "./internals";
+import { InternalOptionsRender, InternalTriggerRender } from "./internals";
+import { ComboboxOptionType } from "./types";
 
-type RequiredProps = "name" | "options";
+type UserProps = "id" | "options";
 
 type InternalProps =
   | "isOpen"
@@ -43,7 +50,7 @@ export type Combobox = PropsWithChildren<
     | {
         selected?: string | number;
         onSelectionChange?: (selected?: string | number) => void;
-        type: "single";
+        type?: "single";
       }
     | {
         selected?: (string | number)[];
@@ -51,8 +58,8 @@ export type Combobox = PropsWithChildren<
         type: "multi";
       }
   ) &
-    Pick<ComboboxContext, RequiredProps> &
-    Partial<Omit<ComboboxContext, RequiredProps | InternalProps>>
+    Partial<Pick<ComboboxContext, UserProps>> &
+    Partial<Omit<ComboboxContext, UserProps | InternalProps>>
 >;
 
 export function Combobox({
@@ -61,8 +68,8 @@ export function Combobox({
   isLoading = false,
   isReadonly = false,
   placeholder,
-  name,
-  options,
+  id,
+  options = [],
   children,
   ...props
 }: Combobox) {
@@ -124,7 +131,7 @@ export function Combobox({
   return (
     <ComboboxProvider
       value={{
-        name,
+        id,
         type: props.type,
         options,
         placeholder,
@@ -162,6 +169,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
     forwardedRef,
   ) => {
     const {
+      id,
       isOpen,
       isDisabled: isParentDisabled,
       isLoading: isParentLoading,
@@ -185,6 +193,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
 
     return (
       <PopoverTrigger
+        id={id}
         {...props}
         variant={variant}
         role={role}
@@ -205,19 +214,31 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
 ComboboxTrigger.displayName = "ComboboxTrigger";
 
 // Combobox Content
-export type ComboboxContent = Omit<PopoverContent, "children"> &
-  PropsWithChildren<{
-    showSearch?: boolean;
-  }>;
+export type ComboboxContent = Omit<PopoverContent, "children"> & {
+  showSearch?: boolean;
+  shouldFilter?: boolean;
+  search?: CommandInput["value"];
+  onSearchChange?: CommandInput["onValueChange"];
+  children?: (props: {
+    option: ComboboxOptionType;
+    index: number;
+  }) => ReactNode;
+  isLoading?: boolean;
+};
 
 export function ComboboxContent({
   className,
   style,
-  children = <InternalContentRender />,
+  children: Children = InternalOptionsRender,
   showSearch = true,
+  shouldFilter,
+  search,
+  onSearchChange,
+  isLoading,
   ...props
 }: ComboboxContent) {
-  const { placeholder, triggerRef } = useComboboxContext();
+  const { placeholder, triggerRef, options } = useComboboxContext();
+  const key = useId();
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -230,9 +251,29 @@ export function ComboboxContent({
       className={classNames("max-w-none p-0", className)}
       style={{ width, ...style }}
     >
-      <Command>
-        {showSearch && <CommandInput placeholder={placeholder?.search} />}
-        {children}
+      <Command shouldFilter={shouldFilter}>
+        {showSearch && (
+          <CommandInput
+            placeholder={placeholder?.search}
+            value={search}
+            onValueChange={onSearchChange}
+          />
+        )}
+        <CommandList className="p-1">
+          {options.map((option, index) => (
+            <Children key={`${index}-${key}`} option={option} index={index} />
+          ))}
+          <CommandEmpty className="text-secondary-500 dark:text-secondary-400 flex h-10 select-none items-center justify-center py-0 empty:hidden">
+            {!isLoading && <>No results found {search && `for "${search}".`}</>}
+          </CommandEmpty>
+          {isLoading && (
+            <CommandLoading progress={50}>
+              <span className="text-secondary-500 dark:text-secondary-400 flex h-10 w-full select-none items-center justify-center gap-2 text-sm font-medium">
+                <Spinner size="sm" /> Loading...
+              </span>
+            </CommandLoading>
+          )}
+        </CommandList>
       </Command>
     </PopoverContent>
   );

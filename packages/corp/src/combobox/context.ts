@@ -10,8 +10,8 @@ export const [ComboboxProvider, useComboboxContext] =
   });
 
 export type ComboboxContext = {
-  readonly name: string;
-  readonly type: "single" | "multi";
+  readonly id?: string;
+  readonly type?: "single" | "multi";
   readonly options: ComboboxOptionType[];
   readonly isDisabled: boolean;
   readonly isLoading: boolean;

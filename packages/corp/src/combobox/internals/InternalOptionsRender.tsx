@@ -1,17 +1,27 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { CommandGroup, CommandItem } from "@rafty/ui";
+import { useId } from "react";
 import { useComboboxContext } from "../context";
 import { ComboboxOptionType } from "../types";
 
-export function InternalOptionsRender({ label, value }: ComboboxOptionType) {
+export function InternalOptionsRender({
+  option: { label, value },
+}: {
+  option: ComboboxOptionType;
+  index: number;
+}) {
+  const key = useId();
   const { selected, onSelectionChange } = useComboboxContext();
 
   if (Array.isArray(value))
     return (
       <CommandGroup heading={label} className="p-0">
         {value.map((val, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          <InternalOptionsRender key={index} {...val} />
+          <InternalOptionsRender
+            key={`${index}-${key}`}
+            option={val}
+            index={index}
+          />
         ))}
       </CommandGroup>
     );
