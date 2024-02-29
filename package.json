@@ -114,7 +114,7 @@
     "js-cookie": "^3.0.5",
     "js-yaml": "4.1.0",
     "lodash": "^4.17.21",
-    "next": "14.1.0",
+    "next": "14.0.4",
     "next-themes": "0.2.1",
     "prettier": "^3.1.1",
     "prism-react-renderer": "2.1.0",
