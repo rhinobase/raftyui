@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.11](https://github.com/rhinobase/raftyui/compare/ui-1.4.10...ui-1.4.11) (2024-02-29)
+
+
+### Bug Fixes
+
+* **ui:** improvements in checkbox, field control, label, radio and switch components ([01fddbe](https://github.com/rhinobase/raftyui/commit/01fddbeda78d1809bf5e9a141e205301e3adea75))
+
 ## [1.4.10](https://github.com/rhinobase/raftyui/compare/ui-1.4.9...ui-1.4.10) (2024-02-24)
 
 
