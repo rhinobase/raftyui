@@ -9,7 +9,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useEffect, useMemo } from "react";
+import { type ReactNode, useEffect, useMemo } from "react";
 import { TableContent } from "./TableContent";
 import { TableHeader } from "./TableHeader";
 import { withCells } from "./cells";
@@ -23,10 +23,7 @@ export type ColumnType = {
   enableSorting?: boolean;
 };
 
-/**
- * Interface for DataTable component
- */
-interface DataTable<T> {
+export type DataTable<T> = {
   columns: ColumnType[];
   data?: T[];
   enableRowSelection?: boolean;
@@ -36,7 +33,9 @@ interface DataTable<T> {
   onSortingChange?: (value: SortingState) => void;
   onColumnSizingChange?: (value: ColumnSizingState) => void;
   onRowSelectionChange?: (value: RowSelectionState) => void;
-}
+  // Fibr plugin
+  cloumnType?: Record<string, () => ReactNode>;
+};
 
 /**
  * DataTable component for displaying data in a table.
@@ -48,6 +47,7 @@ export function DataTable<T>({
   enableRowSelection = false,
   enableColumnResizing = false,
   size = "md",
+  cloumnType = {},
   ...props
 }: DataTable<T>) {
   // State for row selection
@@ -143,7 +143,7 @@ export function DataTable<T>({
   const col_span = header_column.length;
 
   return (
-    <FibrProvider plugins={withCells}>
+    <FibrProvider plugins={{ ...withCells, ...cloumnType }}>
       <TableContainer className="w-full overflow-hidden overflow-x-auto">
         <Table size={size} className="w-full table-fixed">
           <TableHeader table={table} enableRowSelection={enableRowSelection} />
