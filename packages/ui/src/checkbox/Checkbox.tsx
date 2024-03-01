@@ -86,7 +86,7 @@ export const Checkbox = forwardRef<
       context.isDisabled ||
       getValue(isReadOnly) ||
       context.isReadOnly;
-    const required = getValue(isRequired) || context.isRequired;
+    const required = getValue(isRequired) ?? context.isRequired;
 
     const checkbox = (
       <CheckboxPrimitive.Root
