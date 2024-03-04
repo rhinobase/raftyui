@@ -24,7 +24,7 @@ export const FieldWrapper = forwardRef<HTMLDivElement, FieldWrapper>(
       <div className="w-full space-y-1">
         <FieldControl {...props} ref={forwardedRef}>
           <LabelAndDescriptionWrapper>
-            {label && <Label className="leading-3">{label}</Label>}
+            {label && <Label className="leading-snug">{label}</Label>}
             {description && (
               <Text className="text-secondary-600 dark:text-secondary-400 text-xs font-medium">
                 {description}
