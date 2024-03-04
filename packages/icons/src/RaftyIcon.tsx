@@ -1,4 +1,4 @@
-import { type SVGProps, forwardRef } from "react";
+import { type SVGProps, Suspense, forwardRef } from "react";
 import { ICONS } from "./icons";
 
 export type RaftyIconProps = {
@@ -9,7 +9,11 @@ export const RaftyIcon = forwardRef<SVGSVGElement, RaftyIconProps>(
   ({ type, ...props }, forwardedRef) => {
     const { icon: Icon, label } = ICONS[type];
 
-    return <Icon title={label} {...props} ref={forwardedRef} />;
+    return (
+      <Suspense>
+        <Icon title={label} {...props} ref={forwardedRef} />
+      </Suspense>
+    );
   },
 );
 
