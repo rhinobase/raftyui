@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.13](https://github.com/rhinobase/raftyui/compare/ui-1.4.12...ui-1.4.13) (2024-03-04)
+
+
+### Bug Fixes
+
+* **icons:** updated all the components to use @rafty/icons ([f17294f](https://github.com/rhinobase/raftyui/commit/f17294fa5796888d123e89837fb042ccee05e3aa))
+
 ## [1.4.12](https://github.com/rhinobase/raftyui/compare/ui-1.4.11...ui-1.4.12) (2024-03-01)
 
 ## [1.4.11](https://github.com/rhinobase/raftyui/compare/ui-1.4.10...ui-1.4.11) (2024-02-29)
