@@ -48,11 +48,11 @@ export const WithInputGroup: Story = {
     <InputGroup size={size} className="w-full">
       <LeftAddon>P</LeftAddon>
       <Prefix>
-        <RaftyIcon type="exclamation-triangle" />
+        <RaftyIcon type="exclamation-triangle" height={17} width={17} />
       </Prefix>
       <EditableTextField />
       <Suffix>
-        <RaftyIcon type="exclamation-circle" />
+        <RaftyIcon type="exclamation-circle" height={17} width={17} />
       </Suffix>
       <RightAddon>S</RightAddon>
     </InputGroup>
