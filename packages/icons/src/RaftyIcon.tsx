@@ -3,6 +3,7 @@ import { ICONS } from "./icons";
 
 export type RaftyIconProps = {
   type: keyof typeof ICONS;
+  title?: string;
 } & Omit<SVGProps<SVGSVGElement>, "ref">;
 
 export const RaftyIcon = forwardRef<SVGSVGElement, RaftyIconProps>(
