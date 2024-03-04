@@ -21,6 +21,8 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
             const headerSize = header.getSize();
             const isCheckbox = enableRowSelection && index === 0;
 
+            const isSorting = header.column.getIsSorted();
+
             return (
               // Table Header Cell
               <Th
@@ -68,12 +70,16 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                       )}
                   </span>
 
-                  {header.column.getIsSorted() === "asc" ? (
-                    <RaftyIcon type="arrow-up" height={16} width={16} />
-                  ) : (
-                    header.column.getIsSorted() === "desc" && (
-                      <RaftyIcon type="arrow-down" height={16} width={16} />
-                    )
+                  {isSorting && (
+                    <RaftyIcon
+                      type={
+                        isSorting === "asc"
+                          ? "arrow-long-up"
+                          : "arrow-long-down"
+                      }
+                      height={16}
+                      width={16}
+                    />
                   )}
                 </div>
               </Th>

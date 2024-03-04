@@ -37,21 +37,14 @@ export function CopyButton({ content }: CopyButton) {
       size="icon"
       aria-label="Copy"
     >
-      {copied ? (
-        <RaftyIcon
-          type="check"
-          height={16}
-          width={16}
-          className="stroke-[3] text-green-400"
-        />
-      ) : (
-        <RaftyIcon
-          type="document-duplicate"
-          height={16}
-          width={16}
-          className="text-secondary-200 stroke-2"
-        />
-      )}
+      <RaftyIcon
+        type={copied ? "check" : "document-duplicate"}
+        height={16}
+        width={16}
+        className={
+          copied ? "stroke-[3] text-green-400" : "text-secondary-200 stroke-2"
+        }
+      />
     </Button>
   );
 }

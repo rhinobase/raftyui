@@ -30,21 +30,12 @@ function PageLink({
           )}
         >
           {title}
-          {dir === "next" ? (
-            <RaftyIcon
-              type="arrow-right"
-              height={15}
-              width={15}
-              className="stroke-[3]"
-            />
-          ) : (
-            <RaftyIcon
-              type="arrow-left"
-              height={15}
-              width={15}
-              className="stroke-[3]"
-            />
-          )}
+          <RaftyIcon
+            type={dir === "next" ? "arrow-right" : "arrow-left"}
+            height={15}
+            width={15}
+            className="stroke-[3]"
+          />
         </Link>
       </dd>
     </dl>
