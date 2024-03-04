@@ -1,5 +1,5 @@
 "use client";
-import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Button, useBoolean } from "@rafty/ui";
 import { useCopyToClipboard } from "@uidotdev/usehooks";
 import { useEffect } from "react";
@@ -38,13 +38,15 @@ export function CopyButton({ content }: CopyButton) {
       aria-label="Copy"
     >
       {copied ? (
-        <CheckIcon
+        <RaftyIcon
+          type="check"
           height={16}
           width={16}
           className="stroke-[3] text-green-400"
         />
       ) : (
-        <DocumentDuplicateIcon
+        <RaftyIcon
+          type="document-duplicate"
           height={16}
           width={16}
           className="text-secondary-200 stroke-2"

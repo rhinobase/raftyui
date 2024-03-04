@@ -5,7 +5,7 @@ import {
   type AutocompleteState,
   createAutocomplete,
 } from "@algolia/autocomplete-core";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import {
   Button,
   Dialog,
@@ -261,7 +261,12 @@ const SearchInput = forwardRef<
     <FieldControl name="search">
       <InputGroup>
         <Prefix>
-          <MagnifyingGlassIcon height={18} width={18} className="stroke-2" />
+          <RaftyIcon
+            type="magnifying-glass"
+            height={18}
+            width={18}
+            className="stroke-2"
+          />
         </Prefix>
         <InputField
           ref={inputRef}
@@ -394,7 +399,12 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         className="hidden gap-2 md:flex"
         aria-label="Search docs"
         leftIcon={
-          <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
+          <RaftyIcon
+            type="magnifying-glass"
+            height={16}
+            width={16}
+            className="stroke-2"
+          />
         }
         rightIcon={
           modifierKey ? (
@@ -412,7 +422,12 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         className="md:hidden"
         aria-label="Search docs"
       >
-        <MagnifyingGlassIcon height={16} width={16} className="stroke-2" />
+        <RaftyIcon
+          type="magnifying-glass"
+          height={16}
+          width={16}
+          className="stroke-2"
+        />
       </Button>
     </>
   );

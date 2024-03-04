@@ -143,7 +143,7 @@ export function DataTable<T>({
   const col_span = header_column.length;
 
   return (
-    <FibrProvider plugins={{ ...withCells, ...cloumnType }}>
+    <FibrProvider plugins={[withCells, cloumnType]}>
       <TableContainer className="w-full overflow-hidden overflow-x-auto">
         <Table size={size} className="w-full table-fixed">
           <TableHeader table={table} enableRowSelection={enableRowSelection} />

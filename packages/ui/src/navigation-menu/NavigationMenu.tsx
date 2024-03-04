@@ -1,6 +1,6 @@
 "use client";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import RaftyIcon from "@rafty/icons";
 import { cva } from "class-variance-authority";
 import {
   ComponentProps,
@@ -115,7 +115,10 @@ export const NavigationMenuTrigger = forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <ChevronDownIcon className="size-3 stroke-[3] duration-200 group-data-[state=open]:rotate-180" />
+      <RaftyIcon
+        type="chevron-down"
+        className="size-3 stroke-[3] duration-200 group-data-[state=open]:rotate-180"
+      />
     </NavigationMenuPrimitive.Trigger>
   );
 });

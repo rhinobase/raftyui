@@ -29,6 +29,10 @@ const config: StorybookConfig = {
             __dirname,
             "../../../packages/shared/src/index.ts",
           ),
+          "@rafty/icons": path.resolve(
+            __dirname,
+            "../../../packages/icons/src/index.ts",
+          ),
         },
       },
     });

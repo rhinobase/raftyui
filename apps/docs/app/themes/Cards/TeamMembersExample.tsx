@@ -1,5 +1,5 @@
 "use client";
-import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import {
   Avatar,
   Command,
@@ -106,7 +106,12 @@ function MemberRoleMenu({ label }: { label: string }) {
         aria-expanded={isOpen}
         className="justify-between capitalize"
         rightIcon={
-          <ChevronDownIcon height={15} width={15} className="stroke-2" />
+          <RaftyIcon
+            type="chevron-down"
+            height={15}
+            width={15}
+            className="stroke-2"
+          />
         }
         aria-label={label}
       >
@@ -133,7 +138,8 @@ function MemberRoleMenu({ label }: { label: string }) {
                     </div>
                     <div className="flex-1" />
                     {selected.id === id && (
-                      <CheckIcon
+                      <RaftyIcon
+                        type="check"
                         height={16}
                         width={16}
                         className="stroke-2 opacity-60"

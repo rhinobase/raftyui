@@ -1,6 +1,6 @@
 "use client";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import RaftyIcon from "@rafty/icons";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
@@ -150,7 +150,10 @@ export const AccordionTrigger = forwardRef<
           </div>
         )}
         {!openIcon && !closeIcon && _showIcon && (
-          <ChevronDownIcon className="size-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          <RaftyIcon
+            type="chevron-down"
+            className="size-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180"
+          />
         )}
       </AccordionPrimitive.Trigger>
     );

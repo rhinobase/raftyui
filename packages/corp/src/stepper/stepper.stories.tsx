@@ -1,8 +1,4 @@
-import {
-  Bars3Icon,
-  BellIcon,
-  FaceSmileIcon,
-} from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Button, classNames } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
@@ -141,7 +137,8 @@ export const WithIcon: Story = {
           {
             title: "Home",
             icon: (
-              <Bars3Icon
+              <RaftyIcon
+                type="bars3"
                 height={40}
                 width={40}
                 className="stroke-2 text-blue-500"
@@ -152,7 +149,8 @@ export const WithIcon: Story = {
             title: "Menu",
             description: "Donec et lectus a risus",
             icon: (
-              <FaceSmileIcon
+              <RaftyIcon
+                type="face-smile"
                 height={40}
                 width={40}
                 className="stroke-2 text-blue-500"
@@ -162,7 +160,8 @@ export const WithIcon: Story = {
           {
             title: "Article",
             icon: (
-              <BellIcon
+              <RaftyIcon
+                type="bell"
                 height={40}
                 width={40}
                 className="stroke-2 text-blue-500"

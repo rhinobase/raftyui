@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Meta, StoryObj } from "@storybook/react";
 import { List } from "./List";
 import { ListItem } from "./ListItem";
@@ -49,19 +49,39 @@ export const ListWithIcon: Story = {
   render: () => (
     <List>
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon className="stroke-2" height={16} width={16} />
+        <RaftyIcon
+          type="check-circle"
+          className="stroke-2"
+          height={16}
+          width={16}
+        />
         Lorem ipsum dolor sit amet, consectetur adipisicing elit
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon className="stroke-2" height={16} width={16} />
+        <RaftyIcon
+          type="check-circle"
+          className="stroke-2"
+          height={16}
+          width={16}
+        />
         Assumenda, quia temporibus eveniet a libero incidunt suscipit
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon className="stroke-2" height={16} width={16} />
+        <RaftyIcon
+          type="check-circle"
+          className="stroke-2"
+          height={16}
+          width={16}
+        />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
       <ListItem className="flex items-center gap-2">
-        <CheckCircleIcon className="stroke-2" height={16} width={16} />
+        <RaftyIcon
+          type="check-circle"
+          className="stroke-2"
+          height={16}
+          width={16}
+        />
         Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
       </ListItem>
     </List>

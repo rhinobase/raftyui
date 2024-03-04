@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./Tooltip";
@@ -15,7 +15,7 @@ export const Default: Story = {
     <Tooltip>
       <TooltipTrigger>
         <Button size="fab">
-          <PlusIcon className="size-6" />
+          <RaftyIcon type="plus" className="size-6" />
         </Button>
       </TooltipTrigger>
       <TooltipContent side="top">Tooltip Content</TooltipContent>

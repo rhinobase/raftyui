@@ -1,4 +1,4 @@
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Meta, StoryObj } from "@storybook/react";
 import {
   Accordion,
@@ -150,8 +150,8 @@ export const OpenClose: Story = {
         </AccordionItem>
         <AccordionItem value="3">
           <AccordionTrigger
-            openIcon={<MinusIcon className="size-4" />}
-            closeIcon={<PlusIcon className="size-4" />}
+            openIcon={<RaftyIcon type="minus" className="size-4" />}
+            closeIcon={<RaftyIcon type="plus" className="size-4" />}
           >
             <span className="flex-1 text-left">Section 2 title</span>
           </AccordionTrigger>

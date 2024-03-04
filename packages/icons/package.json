@@ -23,7 +23,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "react-icons": "^5.0.1"
+    "@heroicons/react": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^18.2.0"

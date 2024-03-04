@@ -1,6 +1,6 @@
+import RaftyIcon from "@rafty/icons";
 import { TableHead, Th, Tr, classNames } from "@rafty/ui";
 import { Table, flexRender } from "@tanstack/react-table";
-import { RiArrowDownFill, RiArrowUpFill } from "react-icons/ri";
 import { ResizeHandle } from "./utils";
 
 interface TableHeader<T> {
@@ -69,10 +69,10 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                   </span>
 
                   {header.column.getIsSorted() === "asc" ? (
-                    <RiArrowUpFill />
+                    <RaftyIcon type="arrow-up" height={16} width={16} />
                   ) : (
                     header.column.getIsSorted() === "desc" && (
-                      <RiArrowDownFill />
+                      <RaftyIcon type="arrow-down" height={16} width={16} />
                     )
                   )}
                 </div>

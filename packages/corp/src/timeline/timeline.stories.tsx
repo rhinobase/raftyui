@@ -1,4 +1,4 @@
-import { ClockIcon, TvIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Meta, StoryObj } from "@storybook/react";
 import { Timeline, TimelineItem } from "./Timeline";
 
@@ -25,7 +25,14 @@ export const Default: Story = {
     <div className="h-[400px] w-full">
       <Timeline reverse={reverse} loading={loading} mode={mode}>
         <TimelineItem
-          dot={<TvIcon height={20} width={20} className="text-red-500" />}
+          dot={
+            <RaftyIcon
+              type="tv"
+              height={20}
+              width={20}
+              className="text-red-500"
+            />
+          }
         >
           Create a services site 2015-09-01
         </TimelineItem>
@@ -46,13 +53,25 @@ export const WithLabel: Story = {
         loading={loading}
         mode={mode}
         loadingDot={
-          <ClockIcon height={20} width={20} className="text-purple-600" />
+          <RaftyIcon
+            type="clock"
+            height={20}
+            width={20}
+            className="text-purple-600"
+          />
         }
       >
         <TimelineItem
           label="2015-09-01 09:12:11"
           color="rgb(0,0,0)"
-          dot={<TvIcon height={20} width={20} className="text-red-500" />}
+          dot={
+            <RaftyIcon
+              type="tv"
+              height={20}
+              width={20}
+              className="text-red-500"
+            />
+          }
         >
           Create a services site 2015-09-01
         </TimelineItem>
@@ -73,7 +92,7 @@ export const LoadingWithReactNode: Story = {
       <Timeline reverse={reverse} loading="Loading more..." mode={mode}>
         <TimelineItem
           color="rgb(0,0,0)"
-          dot={<TvIcon height={20} width={20} />}
+          dot={<RaftyIcon type="tv" height={20} width={20} />}
         >
           Create a services site 2015-09-01
         </TimelineItem>

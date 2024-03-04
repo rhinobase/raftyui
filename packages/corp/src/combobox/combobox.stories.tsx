@@ -1,4 +1,4 @@
-import { CheckIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Avatar } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
 import {
@@ -177,7 +177,8 @@ function CustomContentRender({
       {label}
       <div className="flex-1" />
       {isSelected && (
-        <CheckIcon
+        <RaftyIcon
+          type="check"
           width={16}
           height={16}
           className="stroke-secondary-600 stroke-2"
@@ -364,7 +365,8 @@ const InfinityComboboxOption = forwardRef<
       </div>
       <div className="flex-1" />
       {isSelected && (
-        <CheckIcon
+        <RaftyIcon
+          type="check"
           width={16}
           height={16}
           className="stroke-secondary-600 min-h-4 min-w-4 stroke-2"
