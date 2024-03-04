@@ -1,5 +1,5 @@
 "use client";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { Button, Text } from "@rafty/ui";
 import { useState } from "react";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";
@@ -68,7 +68,7 @@ function Counter() {
         isDisabled={count <= 200}
         aria-label="Decrement Value"
       >
-        <MinusIcon height={18} width={18} className="stroke-2" />
+        <RaftyIcon type="minus" height={18} width={18} className="stroke-2" />
       </Button>
       <div className="flex w-full flex-col items-center">
         <Text className="text-5xl tabular-nums">{count}</Text>
@@ -84,7 +84,7 @@ function Counter() {
         isDisabled={count >= 400}
         aria-label="Increment Value"
       >
-        <PlusIcon height={18} width={18} className="stroke-2" />
+        <RaftyIcon type="plus" height={18} width={18} className="stroke-2" />
       </Button>
     </div>
   );

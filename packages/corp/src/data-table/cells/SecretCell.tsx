@@ -1,5 +1,5 @@
 import { useThread } from "@fibr/react";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { eventHandler } from "@rafty/shared";
 import { useBoolean } from "@rafty/ui";
 import { CellContext } from "@tanstack/react-table";
@@ -10,7 +10,6 @@ export function SecretCell() {
     cell: CellContext<unknown, unknown>;
   }>();
   const [isOpen, toggle] = useBoolean(false);
-  const Icon = isOpen ? EyeIcon : EyeSlashIcon;
   const value = cell.getValue();
 
   const handleClick = eventHandler(() =>
@@ -20,7 +19,8 @@ export function SecretCell() {
   return (
     <CellWrapper>
       <div className="flex items-end gap-2">
-        <Icon
+        <RaftyIcon
+          type={isOpen ? "eye" : "eye-slash"}
           className="text-secondary-400 hover:text-secondary-800 dark:text-secondary-500 dark:hover:text-secondary-100 cursor-pointer stroke-2 transition-all ease-in-out"
           height={16}
           width={16}

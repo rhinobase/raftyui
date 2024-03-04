@@ -1,6 +1,6 @@
 "use client";
-import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import RaftyIcon from "@rafty/icons";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
@@ -384,7 +384,7 @@ export const MenuCheckboxItem = forwardRef<
       <DropdownMenu.ItemIndicator
         className={menuCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="size-3 stroke-[3]" />
+        <RaftyIcon type="check" className="size-3 stroke-[3]" />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.CheckboxItem>
   );
@@ -524,7 +524,7 @@ export const MenuSubTrigger = forwardRef<
       }
     >
       {children}
-      <ChevronRightIcon className="size-3 stroke-[3]" />
+      <RaftyIcon type="chevron-right" className="size-3 stroke-[3]" />
     </DropdownMenu.SubTrigger>
   );
 });

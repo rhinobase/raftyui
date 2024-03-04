@@ -29,14 +29,13 @@
   "sideEffects": false,
   "dependencies": {
     "@fibr/react": "^0.5.3",
-    "@heroicons/react": "^2.1.1",
-    "@hookform/error-message": "",
+    "@hookform/error-message": "^2.0.1",
+    "@rafty/icons": "^0.1.1",
     "@rafty/ui": "^1.4.4",
     "@rafty/shared": "^1.0.0",
     "@swc/helpers": "~0.5.2",
     "@tanstack/react-table": "^8.12.0",
     "class-variance-authority": "^0.7.0",
-    "react-icons": "^5.0.1",
     "react-hook-form": "^7.50.1"
   },
   "peerDependencies": {

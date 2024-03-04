@@ -1,10 +1,20 @@
-import type { IconBaseProps } from "react-icons/lib";
+import { type SVGProps, Suspense, forwardRef } from "react";
 import { ICONS } from "./icons";
 
-export type RaftyIconProps = { type: keyof typeof ICONS } & IconBaseProps;
+export type RaftyIconProps = {
+  type: keyof typeof ICONS;
+} & Omit<SVGProps<SVGSVGElement>, "ref">;
 
-export function RaftyIcon({ type, ...props }: RaftyIconProps) {
-  const { icon: Icon, label } = ICONS[type];
+export const RaftyIcon = forwardRef<SVGSVGElement, RaftyIconProps>(
+  ({ type, ...props }, forwardedRef) => {
+    const { icon: Icon, label } = ICONS[type];
 
-  return <Icon title={label} {...props} />;
-}
+    return (
+      <Suspense>
+        <Icon title={label} {...props} ref={forwardedRef} />
+      </Suspense>
+    );
+  },
+);
+
+RaftyIcon.displayName = "RaftyIcon";

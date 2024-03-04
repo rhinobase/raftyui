@@ -1,5 +1,5 @@
 "use client";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { eventHandler } from "@rafty/shared";
 import {
   CommandItem,
@@ -138,7 +138,8 @@ function ExpireMonthSelect() {
           <div className="flex w-full items-center gap-2">
             <div className="w-3.5">
               {selected === month && (
-                <CheckIcon
+                <RaftyIcon
+                  type="check"
                   width={16}
                   height={16}
                   className="stroke-2 opacity-60"
@@ -164,7 +165,8 @@ function ExpireYearSelect() {
           <div className="flex w-full items-center gap-2 ">
             <div className="w-3.5">
               {selected === year && (
-                <CheckIcon
+                <RaftyIcon
+                  type="check"
                   width={16}
                   height={16}
                   className="stroke-2 opacity-60"

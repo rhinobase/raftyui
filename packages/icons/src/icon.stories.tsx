@@ -13,5 +13,5 @@ export default meta;
 type Story = StoryObj<RaftyIconProps>;
 
 export const Default: Story = {
-  render: ({ type }) => <RaftyIcon type={type} size={32} />,
+  render: ({ type }) => <RaftyIcon type={type} height={32} width={32} />,
 };

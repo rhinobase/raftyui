@@ -1,9 +1,6 @@
+import RaftyIcon from "@rafty/icons";
 import { InputGroup, LeftAddon, Prefix, RightAddon, Suffix } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
-import {
-  HiOutlineExclamation,
-  HiOutlineExclamationCircle,
-} from "react-icons/hi";
 import { EditableTextField } from "./EditableTextField";
 
 const meta: Meta<typeof EditableTextField> = {
@@ -51,11 +48,11 @@ export const WithInputGroup: Story = {
     <InputGroup size={size} className="w-full">
       <LeftAddon>P</LeftAddon>
       <Prefix>
-        <HiOutlineExclamation />
+        <RaftyIcon type="exclamation-triangle" height={17} width={17} />
       </Prefix>
       <EditableTextField />
       <Suffix>
-        <HiOutlineExclamationCircle />
+        <RaftyIcon type="exclamation-circle" height={17} width={17} />
       </Suffix>
       <RightAddon>S</RightAddon>
     </InputGroup>

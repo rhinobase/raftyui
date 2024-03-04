@@ -1,6 +1,6 @@
 "use client";
-import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import RaftyIcon from "@rafty/icons";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
@@ -98,10 +98,14 @@ export const Checkbox = forwardRef<
         ref={forwardedref}
       >
         <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
-          <CheckIcon
+          <RaftyIcon
+            type="check"
             className={classNames(checkboxIndicatorClasses({ size }))}
           />
-          <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
+          <RaftyIcon
+            type="minus"
+            className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block"
+          />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
     );

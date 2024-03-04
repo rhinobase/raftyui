@@ -1,9 +1,5 @@
 "use client";
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  PencilIcon,
-} from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { classNames } from "@rafty/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -34,11 +30,12 @@ function PageLink({
           )}
         >
           {title}
-          {dir === "next" ? (
-            <ArrowRightIcon height={15} width={15} className="stroke-[3]" />
-          ) : (
-            <ArrowLeftIcon height={15} width={15} className="stroke-[3]" />
-          )}
+          <RaftyIcon
+            type={dir === "next" ? "arrow-right" : "arrow-left"}
+            height={15}
+            width={15}
+            className="stroke-[3]"
+          />
         </Link>
       </dd>
     </dl>
@@ -78,11 +75,11 @@ function EditOnGithub({ pathname }: { pathname: string }) {
   return (
     <Link
       href={href}
-      className="text-secondary-500 dark:text-secondary-400 flex w-max items-center gap-2 py-4 transition-all ease-in-out hover:text-blue-500 dark:hover:text-blue-300 md:py-6"
+      className="text-secondary-500 dark:text-secondary-400 flex w-max items-center gap-2 py-4 transition-all ease-in-out hover:text-blue-500 md:py-6 dark:hover:text-blue-300"
       target="_blank"
       referrerPolicy="no-referrer"
     >
-      <PencilIcon height={15} width={15} className="stroke-2" />
+      <RaftyIcon type="pencil" height={15} width={15} className="stroke-2" />
       <p className="text-sm">Edit this page on GitHub</p>
     </Link>
   );

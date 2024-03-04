@@ -1,6 +1,6 @@
+import RaftyIcon from "@rafty/icons";
 import { TableHead, Th, Tr, classNames } from "@rafty/ui";
 import { Table, flexRender } from "@tanstack/react-table";
-import { RiArrowDownFill, RiArrowUpFill } from "react-icons/ri";
 import { ResizeHandle } from "./utils";
 
 interface TableHeader<T> {
@@ -20,6 +20,8 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
             const isLastColumn = headerGroup.headers.length - 1 === index;
             const headerSize = header.getSize();
             const isCheckbox = enableRowSelection && index === 0;
+
+            const isSorting = header.column.getIsSorted();
 
             return (
               // Table Header Cell
@@ -68,12 +70,16 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                       )}
                   </span>
 
-                  {header.column.getIsSorted() === "asc" ? (
-                    <RiArrowUpFill />
-                  ) : (
-                    header.column.getIsSorted() === "desc" && (
-                      <RiArrowDownFill />
-                    )
+                  {isSorting && (
+                    <RaftyIcon
+                      type={
+                        isSorting === "asc"
+                          ? "arrow-long-up"
+                          : "arrow-long-down"
+                      }
+                      height={16}
+                      width={16}
+                    />
                   )}
                 </div>
               </Th>

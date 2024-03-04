@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "@swc/helpers": "~0.5.2",
-    "@heroicons/react": "^2.0.18",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -44,6 +43,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@rafty/icons": "^0.1.1",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
     "dateformat": "^5.0.3",

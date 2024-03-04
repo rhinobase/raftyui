@@ -1,5 +1,5 @@
 "use state";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import {
   Command,
   CommandGroup,
@@ -34,7 +34,8 @@ export function Selector({ value, children }: Selector) {
         aria-expanded={isOpen}
         className="w-full justify-between capitalize"
         rightIcon={
-          <ChevronUpDownIcon
+          <RaftyIcon
+            type="chevron-up-down"
             height={16}
             width={16}
             className={classNames(

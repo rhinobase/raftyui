@@ -1,9 +1,5 @@
 "use client";
-import {
-  CheckIcon,
-  PaperAirplaneIcon,
-  PlusIcon,
-} from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { eventHandler } from "@rafty/shared";
 import {
   Avatar,
@@ -137,7 +133,12 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           onClick={sendMessage}
           aria-label="Send"
         >
-          <PaperAirplaneIcon height={18} width={18} className="stroke-2" />
+          <RaftyIcon
+            type="paper-airplane"
+            height={18}
+            width={18}
+            className="stroke-2"
+          />
         </Button>
       </div>
     </div>
@@ -168,7 +169,12 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
             className="p-2"
             aria-label="add people"
           >
-            <PlusIcon height={16} width={16} className="stroke-2" />
+            <RaftyIcon
+              type="plus"
+              height={16}
+              width={16}
+              className="stroke-2"
+            />
           </DialogTrigger>
         </TooltipTrigger>
         <TooltipContent>New message</TooltipContent>
@@ -207,7 +213,8 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
                     </div>
                     <div className="flex-1" />
                     {selected.includes(user.id) && (
-                      <CheckIcon
+                      <RaftyIcon
+                        type="check"
                         height={16}
                         width={16}
                         className="stroke-[3] opacity-60"

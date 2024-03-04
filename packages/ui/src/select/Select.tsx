@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import RaftyIcon from "@rafty/icons";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
@@ -166,7 +166,8 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
             {children}
           </select>
           {!isUnstyled && (
-            <ChevronDownIcon
+            <RaftyIcon
+              type="chevron-down"
               className={classNames(
                 TRIGGER_ICON_CLASSES[size],
                 "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
