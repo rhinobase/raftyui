@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.5](https://github.com/rhinobase/raftyui/compare/icons-0.1.4...icons-0.1.5) (2024-03-05)
+
+
+### Bug Fixes
+
+* **icons:** added title prop ([c34a7da](https://github.com/rhinobase/raftyui/commit/c34a7da4a2830695738a8df0dbfeee519f469a92))
+
 ## [0.1.4](https://github.com/rhinobase/raftyui/compare/icons-0.1.3...icons-0.1.4) (2024-03-04)
 
 
