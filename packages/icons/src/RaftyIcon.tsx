@@ -8,11 +8,11 @@ export type RaftyIconProps = {
 
 export const RaftyIcon = forwardRef<SVGSVGElement, RaftyIconProps>(
   ({ type, ...props }, forwardedRef) => {
-    const { icon: Icon, label } = ICONS[type];
+    const Icon = ICONS[type];
 
     return (
       <Suspense>
-        <Icon title={label} {...props} ref={forwardedRef} />
+        <Icon {...props} ref={forwardedRef} />
       </Suspense>
     );
   },
