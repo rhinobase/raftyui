@@ -1,7 +1,9 @@
 type Fn = () => unknown;
-export function getValue<T, U = T extends Fn ? ReturnType<T> : T>(
+
+export function getValue<T, U, V = T extends Fn ? ReturnType<T> : T>(
   valueOrFn?: T,
-): U | undefined {
+  params?: U,
+): V | undefined {
   if (valueOrFn === undefined) return undefined;
-  return typeof valueOrFn === "function" ? valueOrFn() : valueOrFn;
+  return typeof valueOrFn === "function" ? valueOrFn(params) : valueOrFn;
 }

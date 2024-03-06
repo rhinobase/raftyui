@@ -1,1 +1,3 @@
-export type BooleanOrFunction = boolean | (() => boolean);
+export type BooleanOrFunction<T = unknown> =
+  | boolean
+  | ((params?: T) => boolean);
