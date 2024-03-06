@@ -1,6 +1,6 @@
 {
   "name": "@rafty/shared",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Shared internal functions for @rafty/ui",
   "license": "MIT",
   "keywords": [

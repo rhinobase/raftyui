@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.3](https://github.com/rhinobase/raftyui/compare/shared-1.0.2...shared-1.0.3) (2024-03-06)
+
+
+### Bug Fixes
+
+* **shared:** added more generic types to accommodate params ([007da3c](https://github.com/rhinobase/raftyui/commit/007da3c60069776f0d5e51f8cf64c5cc804e097f))
+
 ## [1.0.2](https://github.com/rhinobase/raftyui/compare/shared-1.0.1...shared-1.0.2) (2024-02-23)
 
 ## [1.0.1](https://github.com/rhinobase/raftyui/compare/shared-1.0.0...shared-1.0.1) (2024-02-12)
