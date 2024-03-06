@@ -1,10 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { RaftyIcon, RaftyIconProps } from "./RaftyIcon";
+import { ICONS } from "./icons";
 
 const meta: Meta<RaftyIconProps> = {
-  title: "Icons",
+  title: "Components / Icons",
   args: {
     type: "check-circle",
+  },
+  argTypes: {
+    type: {
+      options: Object.keys(ICONS),
+      control: { type: "select" },
+    },
   },
 };
 
