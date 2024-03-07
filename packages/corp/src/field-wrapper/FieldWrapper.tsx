@@ -4,6 +4,7 @@ import {
   FieldControl,
   Label,
   Text,
+  classNames,
 } from "@rafty/ui";
 import { Fragment, PropsWithChildren, forwardRef } from "react";
 import { useFormContext } from "react-hook-form";
@@ -14,14 +15,14 @@ export type FieldWrapper = FieldControl & {
 };
 
 export const FieldWrapper = forwardRef<HTMLDivElement, FieldWrapper>(
-  ({ label, description, children, ...props }, forwardedRef) => {
+  ({ label, description, children, className, ...props }, forwardedRef) => {
     const LabelAndDescriptionWrapper =
       label && description
         ? ({ children }: PropsWithChildren) => <div>{children}</div>
         : Fragment;
 
     return (
-      <div className="w-full space-y-1">
+      <div className={classNames("w-full space-y-1", className)}>
         <FieldControl {...props} ref={forwardedRef}>
           <LabelAndDescriptionWrapper>
             {label && <Label className="leading-snug">{label}</Label>}
