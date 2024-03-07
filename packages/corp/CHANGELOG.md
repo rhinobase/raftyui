@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.6](https://github.com/rhinobase/raftyui/compare/corp-0.1.5...corp-0.1.6) (2024-03-07)
+
+
+### Bug Fixes
+
+* **corp:** improvement in FieldWrapper ([b562e0b](https://github.com/rhinobase/raftyui/commit/b562e0bb35a7af17d54bad7aaf6076b0f0c5da69))
+
 ## [0.1.5](https://github.com/rhinobase/raftyui/compare/corp-0.1.4...corp-0.1.5) (2024-03-04)
 
 
