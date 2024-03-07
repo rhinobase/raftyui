@@ -1,3 +1,4 @@
+"use client";
 import { eventHandler, getValue } from "@rafty/shared";
 import {
   Button,

@@ -1,3 +1,4 @@
+"use client";
 import { FibrProvider, Thread } from "@fibr/react";
 import { Checkbox, Table, TableContainer } from "@rafty/ui";
 import {

@@ -1,3 +1,4 @@
+"use client";
 import { getValidChildren } from "@rafty/shared";
 import { Spinner, classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";

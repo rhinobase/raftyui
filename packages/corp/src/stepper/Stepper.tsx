@@ -1,3 +1,4 @@
+"use client";
 import RaftyIcon from "@rafty/icons";
 import { eventHandler } from "@rafty/shared";
 import { cva } from "class-variance-authority";

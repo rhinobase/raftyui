@@ -1,3 +1,4 @@
+"use client";
 import { eventHandler } from "@rafty/shared";
 import { List, ListItem, buttonClasses, classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";

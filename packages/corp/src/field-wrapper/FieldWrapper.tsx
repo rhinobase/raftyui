@@ -1,3 +1,4 @@
+"use client";
 import { ErrorMessage } from "@hookform/error-message";
 import {
   ErrorMessage as RaftyErrorMessage,
