@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { CalendarIcon } from "@heroicons/react/24/outline";
 import format from "dateformat";
 import { useReducer, useState } from "react";
 import { DayPickerSingleProps } from "react-day-picker";
@@ -30,7 +30,7 @@ export const DatePicker = (props: DatePicker) => {
       <PopoverTrigger
         variant="outline"
         className="w-full justify-start text-left font-normal"
-        leftIcon={<RaftyIcon type="calendar" className="size-4" />}
+        leftIcon={<CalendarIcon className="size-4" />}
       >
         {selected ? (
           props.formatters?.formatDay ? (

@@ -1,5 +1,9 @@
-import RaftyIcon, { RaftyIconProps } from "@rafty/icons";
-
+import {
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/outline";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
@@ -36,20 +40,20 @@ export type Toast = Pick<HTMLAttributes<HTMLDivElement>, "className"> & {
 };
 
 export function Toast({ className, severity, visible, title, message }: Toast) {
-  let toast_icon: RaftyIconProps["type"];
+  let ToastIcon: typeof ExclamationTriangleIcon;
 
   switch (severity) {
     case "error":
-      toast_icon = "exclamation-triangle";
+      ToastIcon = ExclamationTriangleIcon;
       break;
     case "warning":
-      toast_icon = "exclamation-circle";
+      ToastIcon = ExclamationCircleIcon;
       break;
     case "info":
-      toast_icon = "information-circle";
+      ToastIcon = InformationCircleIcon;
       break;
     case "success":
-      toast_icon = "check-circle";
+      ToastIcon = CheckCircleIcon;
       break;
   }
 
@@ -61,10 +65,7 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
       )}
     >
       <div className="flex items-center gap-3">
-        <RaftyIcon
-          type={toast_icon}
-          className="size-6 text-white dark:text-black"
-        />
+        <ToastIcon className="size-6 text-white dark:text-black" />
         <div className="space-y-1">
           {title && (
             <h6 className="font-medium leading-tight text-white dark:text-black">

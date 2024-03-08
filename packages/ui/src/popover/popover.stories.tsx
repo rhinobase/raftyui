@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
@@ -26,11 +26,7 @@ export const Default: Story = {
       <PopoverContent>
         <div className="flex flex-col items-center gap-4">
           <div className="rounded-full bg-green-100 p-3">
-            <RaftyIcon
-              type="check"
-              className="size-6 text-green-600"
-              aria-hidden="true"
-            />
+            <CheckIcon className="size-6 text-green-600" aria-hidden="true" />
           </div>
           <div className="text-center">
             <h3 className="text-lg font-semibold">Payment successful</h3>

@@ -1,5 +1,12 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import {
+  CheckIcon,
+  DocumentDuplicateIcon,
+  MoonIcon,
+  PaintBrushIcon,
+  SunIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   Dialog,
@@ -71,8 +78,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
                   onClick={() => changeColor(c as keyof typeof COLOR_THEME)}
                 >
                   {color === c && (
-                    <RaftyIcon
-                      type="check"
+                    <CheckIcon
                       height={16}
                       width={16}
                       className="stroke-[3] text-white"
@@ -123,14 +129,14 @@ function CustomizeMenu({
         <div>
           <Button
             variant="outline"
-            leftIcon={<RaftyIcon type="paint-brush" height={19} width={19} />}
+            leftIcon={<PaintBrushIcon height={19} width={19} />}
             className="hidden md:flex"
             aria-label="Select Theme Color"
           >
             Customize
           </Button>
           <Button variant="outline" size="icon" className="md:hidden">
-            <RaftyIcon type="paint-brush" height={19} width={19} />
+            <PaintBrushIcon height={19} width={19} />
           </Button>
         </div>
       </PopoverTrigger>
@@ -169,12 +175,7 @@ function CustomizeMenu({
                 variant="outline"
                 size="sm"
                 leftIcon={
-                  <RaftyIcon
-                    type="sun"
-                    height={16}
-                    width={16}
-                    className="stroke-2"
-                  />
+                  <SunIcon height={16} width={16} className="stroke-2" />
                 }
                 isActive={theme === themes[0]}
                 onClick={() => setTheme("light")}
@@ -185,7 +186,7 @@ function CustomizeMenu({
                 variant="outline"
                 size="sm"
                 leftIcon={
-                  <RaftyIcon
+                  <MoonIcon
                     type="moon"
                     height={16}
                     width={16}
@@ -201,7 +202,7 @@ function CustomizeMenu({
           </div>
         </div>
         <PopoverClose className="absolute right-2 top-2 p-1">
-          <RaftyIcon
+          <XMarkIcon
             type="x-mark"
             height={16}
             width={16}
@@ -220,7 +221,7 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
         Copy code
       </DialogTrigger>
       <DialogTrigger variant="outline" size="icon" className="md:hidden">
-        <RaftyIcon type="document-duplicate" height={19} width={19} />
+        <DocumentDuplicateIcon height={19} width={19} />
       </DialogTrigger>
       <DialogOverlay className="z-[70]" />
       <DialogContent className="z-[70] p-5">

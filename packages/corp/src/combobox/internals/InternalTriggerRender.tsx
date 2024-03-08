@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import { Kbd, buttonClasses, classNames } from "@rafty/ui";
 import { useComboboxContext } from "../context";
@@ -47,7 +47,7 @@ export function InternalTriggerRender() {
                 onClick={removeNode(item)}
                 onKeyDown={removeNode(item)}
               >
-                <RaftyIcon type="x-mark" className="size-3.5 stroke-2" />
+                <XMarkIcon className="size-3.5 stroke-2" />
               </div>
             </Kbd>
           ))}

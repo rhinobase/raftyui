@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { MoonIcon, SunIcon, TvIcon } from "@heroicons/react/24/outline";
 import {
   Menu,
   MenuContent,
@@ -10,16 +10,16 @@ import {
 import { useTheme } from "next-themes";
 
 const THEMES = {
-  light: "sun",
-  dark: "moon",
-  system: "tv",
+  light: SunIcon,
+  dark: MoonIcon,
+  system: TvIcon,
 } as const;
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme();
 
   // Current theme icon
-  const triggerIcon = THEMES[theme as keyof typeof THEMES];
+  const TriggerIcon = THEMES[theme as keyof typeof THEMES];
 
   return (
     <Menu>
@@ -30,17 +30,10 @@ export function ThemeSelector() {
         title="Change Theme"
         className="hidden md:block"
       >
-        {triggerIcon && (
-          <RaftyIcon
-            type={triggerIcon}
-            height={18}
-            width={18}
-            className="stroke-2"
-          />
-        )}
+        <TriggerIcon height={18} width={18} className="stroke-2" />
       </MenuTrigger>
       <MenuContent className="z-[60] gap-0.5">
-        {Object.entries(THEMES).map(([name, icon]) => (
+        {Object.entries(THEMES).map(([name, Icon]) => (
           <MenuItem
             key={name}
             onClick={() => setTheme(name)}
@@ -50,12 +43,7 @@ export function ThemeSelector() {
               "capitalize",
             )}
           >
-            <RaftyIcon
-              type={icon}
-              height={18}
-              width={18}
-              className="stroke-2"
-            />
+            <Icon height={18} width={18} className="stroke-2" />
             {name}
           </MenuItem>
         ))}

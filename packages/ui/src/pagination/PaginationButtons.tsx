@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, forwardRef } from "react";
 import { Button } from "../button";
@@ -60,7 +60,7 @@ export const PaginationButtons = forwardRef<HTMLDivElement, PaginationButtons>(
           }
           isDisabled={prevDisabled}
         >
-          <RaftyIcon type="chevron-left" className={iconClasses({ size })} />
+          <ChevronLeftIcon className={iconClasses({ size })} />
         </Button>
         <Button
           variant="ghost"
@@ -75,7 +75,7 @@ export const PaginationButtons = forwardRef<HTMLDivElement, PaginationButtons>(
           }
           isDisabled={nextDisabled}
         >
-          <RaftyIcon type="chevron-right" className={iconClasses({ size })} />
+          <ChevronRightIcon className={iconClasses({ size })} />
         </Button>
       </div>
     );

@@ -1,4 +1,8 @@
-import RaftyIcon from "@rafty/icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import {
@@ -54,7 +58,7 @@ export const ImageDialog: Story = {
       <DialogOverlay>
         <DialogClose asChild>
           <Button size="icon" variant="ghost" className="fixed right-4 top-4">
-            <RaftyIcon type="x-mark" className="size-5 " />
+            <XMarkIcon className="size-5 " />
           </Button>
         </DialogClose>
       </DialogOverlay>
@@ -64,10 +68,10 @@ export const ImageDialog: Story = {
         showCloseButton={false}
       >
         <Button size="icon" className="fixed -right-60 top-1/2 ">
-          <RaftyIcon type="chevron-right" className="size-7" />
+          <ChevronRightIcon className="size-7" />
         </Button>
         <Button size="icon" className="fixed -left-60 top-1/2 ">
-          <RaftyIcon type="chevron-left" className="size-7" />
+          <ChevronLeftIcon className="size-7" />
         </Button>
         <img
           src="https://images.unsplash.com/photo-1682695795798-1b31ea040caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"

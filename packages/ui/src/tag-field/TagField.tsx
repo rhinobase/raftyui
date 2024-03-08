@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import { useReducer } from "react";
 import { Button } from "../button";
@@ -78,7 +78,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
               onClick={clearAll}
               onKeyDown={clearAll}
             >
-              <RaftyIcon type="x-mark" className="size-3.5 stroke-[2]" />
+              <XMarkIcon className="size-3.5 stroke-[2]" />
             </Button>
           </div>
         ))}

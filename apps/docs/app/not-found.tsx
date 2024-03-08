@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@rafty/ui";
 import Link from "next/link";
 
@@ -20,12 +20,7 @@ export default function NotFound() {
         <Link href="/">
           <Button
             rightIcon={
-              <RaftyIcon
-                type="arrow-right"
-                height={16}
-                width={16}
-                className="stroke-2"
-              />
+              <ArrowRightIcon height={16} width={16} className="stroke-2" />
             }
             variant="ghost"
           >

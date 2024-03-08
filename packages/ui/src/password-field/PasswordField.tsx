@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
 import { Button } from "../button";
 import { useBoolean } from "../hooks";
@@ -19,7 +19,7 @@ export type PasswordField = InputField;
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
   ({ size = "md", ...props }, forwardedRef) => {
     const [showPassword, toggle] = useBoolean(false);
-    const icon = showPassword ? "eye-slash" : "eye";
+    const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 
     return (
       <InputGroup className="w-full" size={size}>
@@ -37,10 +37,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             onClick={() => toggle()}
             className="rounded p-1"
           >
-            <RaftyIcon
-              type={icon}
-              className={classNames(ICON_CLASSES[size], "stroke-2")}
-            />
+            <Icon className={classNames(ICON_CLASSES[size], "stroke-2")} />
           </Button>
         </Suffix>
       </InputGroup>

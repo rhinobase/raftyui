@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { Button, classNames } from "@rafty/ui";
 import { useWindowScroll } from "@uidotdev/usehooks";
 import Link from "next/link";
@@ -52,7 +52,7 @@ export function Header({ setDrawerOpen, setSearchOpen }: Header) {
           onClick={() => setDrawerOpen(true)}
           aria-label="Drawer Menu"
         >
-          <RaftyIcon type="bars3" height={20} width={20} className="stroke-2" />
+          <Bars3Icon height={20} width={20} className="stroke-2" />
         </Button>
       </div>
       <div className="relative flex flex-grow basis-0 items-center">

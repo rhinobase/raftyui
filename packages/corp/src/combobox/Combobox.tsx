@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import {
   Button,
@@ -181,8 +181,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
     const loading = isLoading || isParentLoading;
 
     const right_icon = rightIcon ?? (
-      <RaftyIcon
-        type="chevron-up-down"
+      <ChevronUpDownIcon
         className={classNames(
           "size-3.5 shrink-0 stroke-2",
           isOpen

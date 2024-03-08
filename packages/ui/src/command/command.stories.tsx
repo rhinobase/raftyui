@@ -1,4 +1,11 @@
-import RaftyIcon from "@rafty/icons";
+import {
+  CalculatorIcon,
+  CalendarIcon,
+  Cog8ToothIcon,
+  CreditCardIcon,
+  FaceSmileIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import {
   Command,
@@ -27,32 +34,32 @@ export const Default: Story = {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             <CommandItem>
-              <RaftyIcon type="calendar" className="mr-2 size-4" />
+              <CalendarIcon className="mr-2 size-4" />
               <span>Calendar</span>
             </CommandItem>
             <CommandItem>
-              <RaftyIcon type="face-smile" className="mr-2 size-4" />
+              <FaceSmileIcon className="mr-2 size-4" />
               <span>Search Emoji</span>
             </CommandItem>
             <CommandItem>
-              <RaftyIcon type="calculator" className="mr-2 size-4" />
+              <CalculatorIcon className="mr-2 size-4" />
               <span>Calculator</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Settings">
             <CommandItem>
-              <RaftyIcon type="user" className="mr-2 size-4" />
+              <UserIcon className="mr-2 size-4" />
               <span>Profile</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <RaftyIcon type="credit-card" className="mr-2 size-4" />
+              <CreditCardIcon className="mr-2 size-4" />
               <span>Billing</span>
               <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <RaftyIcon type="cog8-tooth" className="mr-2 size-4" />
+              <Cog8ToothIcon className="mr-2 size-4" />
               <span>Settings</span>
               <CommandShortcut>⌘S</CommandShortcut>
             </CommandItem>

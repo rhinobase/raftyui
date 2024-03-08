@@ -1,5 +1,10 @@
 "use client";
-import RaftyIcon, { RaftyIconProps } from "@rafty/icons";
+import {
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
@@ -240,11 +245,11 @@ export const alertIconClasses = cva("", {
   },
 });
 
-const ICONS: Record<string, RaftyIconProps["type"]> = {
-  error: "exclamation-circle",
-  warning: "exclamation-triangle",
-  info: "information-circle",
-  success: "check-circle",
+const ICONS = {
+  error: ExclamationCircleIcon,
+  warning: ExclamationTriangleIcon,
+  info: InformationCircleIcon,
+  success: CheckCircleIcon,
 };
 
 export type AlertIcon = {
@@ -260,11 +265,10 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
     isUnstyled: isParentUnstyled,
   } = useAlertContext();
   const unstyle = isParentUnstyled || isUnstyled;
-  const icon = ICONS[status];
+  const Icon = ICONS[status];
 
   return (
-    <RaftyIcon
-      type={icon}
+    <Icon
       className={
         unstyle
           ? className

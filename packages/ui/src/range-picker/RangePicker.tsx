@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import format from "dateformat";
 import { useReducer, useState } from "react";
@@ -58,7 +58,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
           "w-full justify-start text-left font-normal",
           !selected && "text-muted-foreground",
         )}
-        leftIcon={<RaftyIcon type="calendar" className="size-4" />}
+        leftIcon={<CalendarIcon className="size-4" />}
       >
         {display.length !== 0 ? display : "Pick a range"}
         <div className="flex-1" />
@@ -69,7 +69,7 @@ export const RangePicker = ({ className, ...props }: RangePicker) => {
             onClick={clearSelected}
             onKeyDown={clearSelected}
           >
-            <RaftyIcon type="x-mark" className="size-3 stroke-[2.5]" />
+            <XMarkIcon className="size-3 stroke-[2.5]" />
           </div>
         )}
       </PopoverTrigger>

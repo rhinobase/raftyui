@@ -1,5 +1,5 @@
 import { useThread } from "@fibr/react";
-import RaftyIcon from "@rafty/icons";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/ui";
 import { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
@@ -9,11 +9,11 @@ export function BooleanCell() {
     cell: CellContext<unknown, unknown>;
   }>();
   const value = Boolean(cell.getValue());
+  const Icon = value ? CheckIcon : XMarkIcon;
 
   return (
     <CellWrapper>
-      <RaftyIcon
-        type={value ? "check" : "x-mark"}
+      <Icon
         height={16}
         width={16}
         className={classNames(

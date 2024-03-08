@@ -1,5 +1,11 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  EllipsisHorizontalIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   Checkbox,
@@ -103,8 +109,7 @@ export function TableExample() {
       <div className="flex justify-between">
         <InputGroup>
           <Prefix>
-            <RaftyIcon
-              type="magnifying-glass"
+            <MagnifyingGlassIcon
               height={16}
               width={16}
               className="text-secondary-400 stroke-2"
@@ -135,12 +140,7 @@ const ColumnsSelectMenu = ({
     <MenuTrigger
       variant="outline"
       rightIcon={
-        <RaftyIcon
-          type="chevron-down"
-          height={16}
-          width={16}
-          className="stroke-2"
-        />
+        <ChevronDownIcon height={16} width={16} className="stroke-2" />
       }
     >
       Columns
@@ -225,8 +225,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
                 <Td>
                   <Menu size="sm">
                     <MenuTrigger variant="ghost" size="icon">
-                      <RaftyIcon
-                        type="ellipsis-horizontal"
+                      <EllipsisHorizontalIcon
                         height={18}
                         width={18}
                         className="stroke-2"
@@ -252,20 +251,10 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         </Text>
         <div className="flex gap-2">
           <Button variant="outline" size="icon" isDisabled>
-            <RaftyIcon
-              type="chevron-left"
-              height={16}
-              width={16}
-              className="stroke-2"
-            />
+            <ChevronLeftIcon height={16} width={16} className="stroke-2" />
           </Button>
           <Button variant="outline" size="icon" isDisabled>
-            <RaftyIcon
-              type="chevron-right"
-              height={16}
-              width={16}
-              className="stroke-2"
-            />
+            <ChevronRightIcon height={16} width={16} className="stroke-2" />
           </Button>
         </div>
       </div>

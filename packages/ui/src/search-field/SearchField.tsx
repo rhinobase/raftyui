@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
 import { InputField } from "../input-field";
 import { InputGroup, Prefix } from "../input-group";
@@ -20,8 +20,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchField>(
     return (
       <InputGroup className="w-full" size={size}>
         <Prefix>
-          <RaftyIcon
-            type="magnifying-glass"
+          <MagnifyingGlassIcon
             className={classNames(
               ICON_CLASSES[size],
               "stroke-2 opacity-40 dark:stroke-white",

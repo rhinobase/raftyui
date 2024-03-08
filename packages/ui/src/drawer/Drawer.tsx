@@ -1,6 +1,6 @@
 "use client";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import RaftyIcon from "@rafty/icons";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
@@ -180,7 +180,7 @@ export const DrawerClose = forwardRef<
               className,
             )}
           >
-            <RaftyIcon type="x-mark" className="size-5 stroke-2" />
+            <XMarkIcon className="size-5 stroke-2" />
           </Button>
         )}
       </DialogPrimitive.Close>

@@ -1,4 +1,8 @@
-import RaftyIcon from "@rafty/icons";
+import {
+  CheckIcon,
+  MagnifyingGlassIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/outline";
 import { Meta, StoryObj } from "@storybook/react";
 import { InputField } from "../input-field";
 import { InputGroup } from "./InputGroup";
@@ -34,10 +38,7 @@ export const Default: Story = {
       </h4>
       <InputGroup size={size}>
         <Prefix>
-          <RaftyIcon
-            type="phone"
-            className="text-secondary-500 size-4 stroke-2"
-          />
+          <PhoneIcon className="text-secondary-500 size-4 stroke-2" />
         </Prefix>
         <InputField
           isDisabled={isDisabled}
@@ -45,15 +46,12 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <Suffix>
-          <RaftyIcon type="check" className="size-4 stroke-2 text-green-500" />
+          <CheckIcon className="size-4 stroke-2 text-green-500" />
         </Suffix>
       </InputGroup>
       <InputGroup size={size}>
         <Prefix>
-          <RaftyIcon
-            type="phone"
-            className="text-secondary-500 size-4 stroke-2"
-          />
+          <PhoneIcon className="text-secondary-500 size-4 stroke-2" />
         </Prefix>
         <InputField
           isDisabled={isDisabled}
@@ -68,7 +66,7 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <Suffix>
-          <RaftyIcon type="check" className="size-4 stroke-2 text-green-500" />
+          <CheckIcon className="size-4 stroke-2 text-green-500" />
         </Suffix>
       </InputGroup>
 
@@ -85,10 +83,7 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <RightAddon>
-          <RaftyIcon
-            type="magnifying-glass"
-            className="text-secondary-500 size-4 stroke-2"
-          />
+          <MagnifyingGlassIcon className="text-secondary-500 size-4 stroke-2" />
         </RightAddon>
       </InputGroup>
       <InputGroup size={size}>
@@ -108,10 +103,7 @@ export const Default: Story = {
           isRequired={isRequired}
         />
         <RightAddon>
-          <RaftyIcon
-            type="magnifying-glass"
-            className="text-secondary-500 size-4 stroke-2"
-          />
+          <MagnifyingGlassIcon className="text-secondary-500 size-4 stroke-2" />
         </RightAddon>
       </InputGroup>
       <InputGroup size={size}>
@@ -119,17 +111,14 @@ export const Default: Story = {
           +234
         </LeftAddon>
         <Prefix>
-          <RaftyIcon type="phone" className="text-secondary-500 size-4" />
+          <PhoneIcon className="text-secondary-500 size-4" />
         </Prefix>
         <InputField />
         <Suffix>
-          <RaftyIcon type="check" className="size-4 stroke-2 text-green-500" />
+          <CheckIcon className="size-4 stroke-2 text-green-500" />
         </Suffix>
         <RightAddon>
-          <RaftyIcon
-            type="magnifying-glass"
-            className="text-secondary-500 size-4 stroke-2"
-          />
+          <MagnifyingGlassIcon className="text-secondary-500 size-4 stroke-2" />
         </RightAddon>
       </InputGroup>
     </div>

@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Command as CommandPrimitive } from "cmdk";
 import {
   ComponentPropsWithoutRef,
@@ -53,10 +53,7 @@ export const CommandInput = forwardRef<
   CommandInput
 >(({ className, ...props }, forwardedRef) => (
   <div className="dark:border-secondary-700 flex items-center border-b px-3">
-    <RaftyIcon
-      type="magnifying-glass"
-      className="text-secondary-500 dark:text-secondary-400 mr-2 size-4 shrink-0"
-    />
+    <MagnifyingGlassIcon className="text-secondary-500 dark:text-secondary-400 mr-2 size-4 shrink-0" />
     <CommandPrimitive.Input
       {...props}
       className={classNames(

@@ -1,6 +1,6 @@
 "use client";
+import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
-import RaftyIcon from "@rafty/icons";
 import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import { Button } from "../button";
@@ -321,7 +321,7 @@ export const MenubarCheckboxItem = forwardRef<
       <MenubarPrimitive.ItemIndicator
         className={menubarCheckboxItemIndicatorClasses({ size })}
       >
-        <RaftyIcon type="check" className="size-3 stroke-[3]" />
+        <CheckIcon className="size-3 stroke-[3]" />
       </MenubarPrimitive.ItemIndicator>
     </MenubarPrimitive.CheckboxItem>
   );
@@ -457,7 +457,7 @@ export const MenubarSubTrigger = forwardRef<
       }
     >
       {children}
-      <RaftyIcon type="chevron-right" className="size-3 stroke-[3]" />
+      <ChevronRightIcon className="size-3 stroke-[3]" />
     </MenubarPrimitive.SubTrigger>
   );
 });

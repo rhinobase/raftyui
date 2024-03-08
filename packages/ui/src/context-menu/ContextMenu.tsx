@@ -1,6 +1,6 @@
 "use client";
+import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
-import RaftyIcon from "@rafty/icons";
 import { cva } from "class-variance-authority";
 import {
   ComponentProps,
@@ -220,7 +220,7 @@ export const ContextMenuCheckboxItem = forwardRef<
           contextMenuCheckboxItemIndicatorClasses({ size }),
         )}
       >
-        <RaftyIcon type="check" className="size-3 stroke-[3]" />
+        <CheckIcon className="size-3 stroke-[3]" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.CheckboxItem>
   );
@@ -352,7 +352,7 @@ export const ContextMenuSubTrigger = forwardRef<
       ref={forwardedRef}
     >
       {children}
-      <RaftyIcon type="chevron-right" className="size-3 stroke-[3]" />
+      <ChevronRightIcon className="size-3 stroke-[3]" />
     </ContextMenuPrimitive.SubTrigger>
   );
 });

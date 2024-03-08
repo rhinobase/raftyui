@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
 import { TableHead, Th, Tr, classNames } from "@rafty/ui";
 import { Table, flexRender } from "@tanstack/react-table";
 import { ResizeHandle } from "./utils";
@@ -69,17 +69,12 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                         header.getContext(),
                       )}
                   </span>
-
-                  {isSorting && (
-                    <RaftyIcon
-                      type={
-                        isSorting === "asc"
-                          ? "arrow-long-up"
-                          : "arrow-long-down"
-                      }
-                      height={16}
-                      width={16}
-                    />
+                  {isSorting === "asc" ? (
+                    <ArrowUpIcon height={16} width={16} />
+                  ) : (
+                    isSorting === "desc" && (
+                      <ArrowDownIcon height={16} width={16} />
+                    )
                   )}
                 </div>
               </Th>

@@ -1,3 +1,7 @@
+import {
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
+} from "@heroicons/react/24/outline";
 import RaftyIcon from "@rafty/icons";
 import { InputGroup, LeftAddon, Prefix, RightAddon, Suffix } from "@rafty/ui";
 import { Meta, StoryObj } from "@storybook/react";
@@ -48,11 +52,11 @@ export const WithInputGroup: Story = {
     <InputGroup size={size} className="w-full">
       <LeftAddon>P</LeftAddon>
       <Prefix>
-        <RaftyIcon type="exclamation-triangle" height={17} width={17} />
+        <ExclamationTriangleIcon height={17} width={17} />
       </Prefix>
       <EditableTextField />
       <Suffix>
-        <RaftyIcon type="exclamation-circle" height={17} width={17} />
+        <ExclamationCircleIcon height={17} width={17} />
       </Suffix>
       <RightAddon>S</RightAddon>
     </InputGroup>

@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { BooleanOrFunction, getValue } from "@rafty/shared";
 import { DayPicker } from "react-day-picker";
 import { buttonClasses } from "../button";
@@ -101,16 +101,10 @@ export function Calendar({
       }}
       components={{
         IconLeft: () => (
-          <RaftyIcon
-            type="chevron-left"
-            className="dark:text-secondary-100 size-4 stroke-2"
-          />
+          <ChevronLeftIcon className="dark:text-secondary-100 size-4 stroke-2" />
         ),
         IconRight: () => (
-          <RaftyIcon
-            type="chevron-right"
-            className="dark:text-secondary-100 size-4 stroke-2"
-          />
+          <ChevronRightIcon className="dark:text-secondary-100 size-4 stroke-2" />
         ),
         Dropdown: ({ children, ...props }) => (
           <Select {...props} variant="solid" className="w-max pr-6" size="sm">

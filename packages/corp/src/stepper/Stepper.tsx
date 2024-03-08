@@ -1,5 +1,5 @@
 "use client";
-import RaftyIcon from "@rafty/icons";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
@@ -232,12 +232,7 @@ function StepperItem({
           })}
         >
           {isCompletedStep ? (
-            <RaftyIcon
-              type="check"
-              height={16}
-              width={16}
-              className="stroke-2"
-            />
+            <CheckIcon height={16} width={16} className="stroke-2" />
           ) : (
             value + 1
           )}

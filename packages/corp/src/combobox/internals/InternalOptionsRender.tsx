@@ -1,4 +1,4 @@
-import RaftyIcon from "@rafty/icons";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import { CommandGroup, CommandItem } from "@rafty/ui";
 import { useId } from "react";
 import { useComboboxContext } from "../context";
@@ -34,9 +34,7 @@ export function InternalOptionsRender({
       className="justify-between"
     >
       {label}
-      {isSelected && (
-        <RaftyIcon type="check" className="size-3.5 stroke-2 opacity-70" />
-      )}
+      {isSelected && <CheckIcon className="size-3.5 stroke-2 opacity-70" />}
     </CommandItem>
   );
 }
