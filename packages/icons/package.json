@@ -1,14 +1,9 @@
 {
   "name": "@rafty/icons",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Rafty icons",
   "license": "MIT",
-  "keywords": [
-    "react",
-    "rafty-ui",
-    "icons",
-    "rafty"
-  ],
+  "keywords": ["react", "rafty-ui", "icons", "rafty"],
   "homepage": "https://rafty.rhinobase.io/",
   "publishConfig": {
     "access": "public"
