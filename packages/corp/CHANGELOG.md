@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.7](https://github.com/rhinobase/raftyui/compare/corp-0.1.6...corp-0.1.7) (2024-03-11)
+
+
+### Bug Fixes
+
+* replaced @rafty/icons to heroicons ([fc9e62f](https://github.com/rhinobase/raftyui/commit/fc9e62fbee931a2fd7743a4a1cf76a9ede154529))
+
 ## [0.1.6](https://github.com/rhinobase/raftyui/compare/corp-0.1.5...corp-0.1.6) (2024-03-07)
 
 
