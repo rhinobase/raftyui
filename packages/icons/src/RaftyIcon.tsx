@@ -1,4 +1,5 @@
-import { type SVGProps, Suspense, forwardRef, lazy } from "react";
+import * as Heroicons from "@heroicons/react/24/outline";
+import { type SVGProps, forwardRef } from "react";
 import { ICONS } from "./icons";
 
 export type RaftyIconProps = {
@@ -8,18 +9,9 @@ export type RaftyIconProps = {
 
 export const RaftyIcon = forwardRef<SVGSVGElement, RaftyIconProps>(
   ({ type, ...props }, forwardedRef) => {
-    const Icon = lazy(() =>
-      import("@heroicons/react/24/outline").then((mod) => ({
-        // @ts-ignore
-        default: mod[ICONS[type]],
-      })),
-    );
+    const Icon = Heroicons[ICONS[type]];
 
-    return (
-      <Suspense>
-        <Icon {...props} ref={forwardedRef} />
-      </Suspense>
-    );
+    return <Icon {...props} ref={forwardedRef} />;
   },
 );
 
