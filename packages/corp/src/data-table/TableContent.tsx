@@ -1,6 +1,6 @@
 import { TableBody, Td, Tr, classNames } from "@rafty/ui";
-import { Table, flexRender } from "@tanstack/react-table";
-import { Loading } from "./utils";
+import { type Table, flexRender } from "@tanstack/react-table";
+import { DataNotFound, Loading } from "./utils";
 
 /**
  * Represents the content of a table with error handling and loading states.

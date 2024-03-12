@@ -2,10 +2,10 @@
 import { FibrProvider, Thread } from "@fibr/react";
 import { Checkbox, Table, TableContainer } from "@rafty/ui";
 import {
-  ColumnDef,
-  ColumnSizingState,
-  RowSelectionState,
-  SortingState,
+  type ColumnDef,
+  type ColumnSizingState,
+  type RowSelectionState,
+  type SortingState,
   getCoreRowModel,
   getSortedRowModel,
   useReactTable,
@@ -15,6 +15,7 @@ import { TableContent } from "./TableContent";
 import { TableHeader } from "./TableHeader";
 import { withCells } from "./cells";
 import { useSync } from "./useSync";
+import { DataNotFound } from "./utils";
 
 export type ColumnType = {
   name: string;
@@ -28,6 +29,7 @@ export type DataTable<T> = {
   columns: ColumnType[];
   data?: T[];
   enableRowSelection?: boolean;
+  isFetching?: boolean;
   isLoading?: boolean;
   enableColumnResizing?: boolean; // Indicates if columns are resizable
   size?: "sm" | "md" | "lg";
@@ -36,6 +38,7 @@ export type DataTable<T> = {
   onRowSelectionChange?: (value: RowSelectionState) => void;
   // Fibr plugin
   cloumnType?: Record<string, () => ReactNode>;
+  notFoundMessage?: ReactNode;
 };
 
 /**
@@ -45,10 +48,12 @@ export function DataTable<T>({
   columns,
   data = [],
   isLoading = false,
+  isFetching = false,
   enableRowSelection = false,
   enableColumnResizing = false,
   size = "md",
   cloumnType = {},
+  notFoundMessage = "No data found",
   ...props
 }: DataTable<T>) {
   // State for row selection
@@ -145,16 +150,24 @@ export function DataTable<T>({
 
   return (
     <FibrProvider plugins={[withCells, cloumnType]}>
-      <TableContainer className="w-full overflow-hidden overflow-x-auto">
-        <Table size={size} className="w-full table-fixed">
-          <TableHeader table={table} enableRowSelection={enableRowSelection} />
-          <TableContent
-            table={table}
-            isLoading={isLoading}
-            colSpan={col_span}
-          />
-        </Table>
-      </TableContainer>
+      <div className="w-full">
+        <TableContainer className="w-full overflow-hidden overflow-x-auto">
+          <Table size={size} className="w-full table-fixed">
+            <TableHeader
+              table={table}
+              enableRowSelection={enableRowSelection}
+            />
+            <TableContent
+              table={table}
+              isLoading={isLoading}
+              colSpan={col_span}
+            />
+          </Table>
+        </TableContainer>
+        {!isLoading && !isFetching && data.length === 0 && (
+          <DataNotFound>{notFoundMessage}</DataNotFound>
+        )}
+      </div>
     </FibrProvider>
   );
 }

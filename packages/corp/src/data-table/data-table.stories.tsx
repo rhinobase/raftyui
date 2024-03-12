@@ -1,12 +1,12 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import { SortingState } from "@tanstack/react-table";
+import type { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
-import { ColumnType, DataTable } from "./DataTable";
+import { type ColumnType, DataTable } from "./DataTable";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -79,7 +79,7 @@ function TableComponent() {
 
   const sort = sorting[0];
 
-  const { isLoading, isError, error, data } = useQuery<DataType[]>({
+  const { isLoading, isFetching, isError, error, data } = useQuery<DataType[]>({
     queryKey: ["query", limit, offset, sort],
     queryFn: async () =>
       fetch(
@@ -102,6 +102,7 @@ function TableComponent() {
       enableRowSelection
       enableColumnResizing
       onSortingChange={setSorting}
+      isFetching={isFetching}
     />
   );
 }
