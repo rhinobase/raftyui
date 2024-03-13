@@ -21,7 +21,7 @@ Rafty UI is a comprehensive library of accessible, reusable, and composable Reac
 
 ## Features
 
-- Works out of the box. Rafty UI contains polished React components that work out of the box.
+- **Works out of the box** - Rafty UI contains polished React components that work out of the box.
 
 - **Flexible & composable** - Rafty UI components are built on top of a Radix UI Primitive and Tailwind CSS for endless composability 🧰.
 
@@ -67,24 +67,24 @@ And in your `tailwind.config.js` file
 
 ```js
 module.exports = {
+  darkMode: "class",
   content: [
-    ...,
-    "./node_modules/@rafty/ui/**/*.{js,cjs}",
+    // ...,
+    "./node_modules/@rafty/**/*.js",
   ],
   theme: {
     extend: {
-        ...,
-        // (Optional)
-        // Extend the default configuration
-        colors: {
-            primary: colors.purple,
-            ...,
-        }
+      // (Optional)
+      // Extend the default configuration
+      colors: {
+        primary: colors.purple,
+        // ...,
+      },
     },
   },
   plugins: [
-    ...,
-    require("@rafty/plugin")
+    // ...,
+    require("@rafty/plugin"),
   ],
 };
 ```
