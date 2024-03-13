@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.8](https://github.com/rhinobase/raftyui/compare/corp-0.1.7...corp-0.1.8) (2024-03-13)
+
+
+### Bug Fixes
+
+* **corp:** added data not found component in data table ([152e3be](https://github.com/rhinobase/raftyui/commit/152e3bed76a89e1f262199881682e98ae0237cb8))
+* **icons:** minor corrections ([e3d1ba8](https://github.com/rhinobase/raftyui/commit/e3d1ba8f4277bca8c6384e09806b3b6d36c58bd3))
+
 ## [0.1.7](https://github.com/rhinobase/raftyui/compare/corp-0.1.6...corp-0.1.7) (2024-03-11)
 
 
