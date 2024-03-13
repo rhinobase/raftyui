@@ -1,11 +1,17 @@
 "use client";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
+import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
 import { classNames } from "../utils";
 import {
-  RadioGroupContext,
+  type RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
@@ -27,27 +33,45 @@ export const radioGroupClasses = cva(
   },
 );
 
-export type RadioGroup = Omit<
-  ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
-  "disabled"
+export type RadioGroup = ComponentPropsWithoutRef<
+  typeof RadioGroupPrimitive.Root
 > &
-  Partial<RadioGroupContext>;
+  Partial<RadioGroupContext> & {
+    isRequired?: BooleanOrFunction;
+  };
 
 export const RadioGroup = forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
->(({ className, size = "md", isDisabled = false, ...props }, forwardedRef) => {
-  return (
-    <RadioGroupProvider value={{ size, isDisabled }}>
-      <RadioGroupPrimitive.Root
-        {...props}
-        disabled={isDisabled}
-        className={classNames(radioGroupClasses({ size }), className)}
-        ref={forwardedRef}
-      />
-    </RadioGroupProvider>
-  );
-});
+>(
+  (
+    { className, size = "md", isDisabled, isRequired, ...props },
+    forwardedRef,
+  ) => {
+    const fieldControlContext = useFieldControlContext() ?? {};
+
+    const disabled =
+      getValue(isDisabled) ||
+      props.disabled ||
+      fieldControlContext.isDisabled ||
+      fieldControlContext.isLoading;
+
+    const required =
+      getValue(isRequired) || props.required || fieldControlContext.isRequired;
+
+    return (
+      <RadioGroupProvider value={{ size, isDisabled: disabled }}>
+        <RadioGroupPrimitive.Root
+          {...props}
+          disabled={disabled}
+          required={required}
+          className={classNames(radioGroupClasses({ size }), className)}
+          ref={forwardedRef}
+        />
+      </RadioGroupProvider>
+    );
+  },
+);
 RadioGroup.displayName = "RadioGroup";
 
 // RadioGroupItem Component
@@ -111,7 +135,7 @@ export const RadioGroupItem = forwardRef<
 >(({ className, children, ...props }, forwardedref) => {
   const { size, isDisabled } = useRadioGroupContext();
 
-  const disabled = isDisabled || props.disabled;
+  const disabled = getValue(isDisabled) || props.disabled;
 
   const radioItem = (
     <RadioGroupPrimitive.Item
