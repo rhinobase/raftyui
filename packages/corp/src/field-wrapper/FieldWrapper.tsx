@@ -1,13 +1,13 @@
 "use client";
 import { ErrorMessage } from "@hookform/error-message";
 import {
-  ErrorMessage as RaftyErrorMessage,
   FieldControl,
   Label,
+  ErrorMessage as RaftyErrorMessage,
   Text,
   classNames,
 } from "@rafty/ui";
-import { Fragment, PropsWithChildren, forwardRef } from "react";
+import { Fragment, type PropsWithChildren, forwardRef } from "react";
 import { useFormContext } from "react-hook-form";
 
 export type FieldWrapper = FieldControl & {

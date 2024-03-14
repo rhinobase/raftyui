@@ -1,4 +1,4 @@
-import { ComboboxOptionType } from "../types";
+import type { ComboboxOptionType } from "../types";
 
 export function findLabel(
   value: string | number,

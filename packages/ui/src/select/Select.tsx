@@ -1,16 +1,20 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
-  OptgroupHTMLAttributes,
-  OptionHTMLAttributes,
-  SelectHTMLAttributes,
+  type OptgroupHTMLAttributes,
+  type OptionHTMLAttributes,
+  type SelectHTMLAttributes,
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
-import { SelectContext, SelectProvider, useSelectContext } from "./context";
+import {
+  type SelectContext,
+  SelectProvider,
+  useSelectContext,
+} from "./context";
 
 const selectClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",

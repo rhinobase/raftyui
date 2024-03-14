@@ -2,15 +2,15 @@
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import { cva } from "class-variance-authority";
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  HTMLAttributes,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type HTMLAttributes,
   forwardRef,
 } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import {
-  AlertDialogContext,
+  type AlertDialogContext,
   AlertDialogProvider,
   useAlertDialogContext,
 } from "./context";

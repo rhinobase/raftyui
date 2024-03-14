@@ -6,9 +6,9 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
-import { AlertContext, AlertProvider, useAlertContext } from "./context";
+import { type AlertContext, AlertProvider, useAlertContext } from "./context";
 
 // Alert Component
 export const alertClasses = cva("flex w-full items-center", {

@@ -1,5 +1,5 @@
-import { BooleanOrFunction, getValue } from "@rafty/shared";
-import { SVGAttributes, forwardRef } from "react";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
+import { type SVGAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 const DIMENSIONS = {

@@ -1,8 +1,16 @@
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { cva } from "class-variance-authority";
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import React, {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
-import { SliderContext, SliderProvider, useSliderContext } from "./context";
+import {
+  type SliderContext,
+  SliderProvider,
+  useSliderContext,
+} from "./context";
 
 export type Slider = ComponentPropsWithoutRef<typeof SliderPrimitive.Root> &
   Partial<SliderContext>;

@@ -1,15 +1,15 @@
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  HTMLAttributes,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type HTMLAttributes,
   forwardRef,
 } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { VariableSizeList, VariableSizeListProps } from "react-window";
+import { VariableSizeList, type VariableSizeListProps } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 import { classNames } from "../utils";
 import {
-  ScrollAreaContext,
+  type ScrollAreaContext,
   ScrollAreaProvider,
   useScrollAreaContext,
 } from "./context";

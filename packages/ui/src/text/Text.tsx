@@ -1,5 +1,5 @@
-import { BooleanOrFunction, getValue } from "@rafty/shared";
-import { HTMLAttributes, forwardRef } from "react";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
+import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Text Component

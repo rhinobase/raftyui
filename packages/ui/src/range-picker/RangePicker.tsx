@@ -3,7 +3,7 @@ import { CalendarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import format from "dateformat";
 import { useReducer, useState } from "react";
-import { DateRange, DayPickerRangeProps } from "react-day-picker";
+import type { DateRange, DayPickerRangeProps } from "react-day-picker";
 import { Calendar } from "../calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { classNames } from "../utils";

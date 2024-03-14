@@ -1,4 +1,4 @@
-import { type Node } from "@markdoc/markdoc";
+import type { Node } from "@markdoc/markdoc";
 import { collectSections } from "../lib/sections";
 import { DocsHeader } from "./DocsHeader";
 import { PrevNextLinks } from "./PrevNextLinks";

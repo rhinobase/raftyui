@@ -2,9 +2,9 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Command as CommandPrimitive } from "cmdk";
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  HTMLAttributes,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type HTMLAttributes,
   forwardRef,
 } from "react";
 import { Dialog, DialogContent } from "../dialog";

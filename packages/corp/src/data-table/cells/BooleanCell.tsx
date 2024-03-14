@@ -1,7 +1,7 @@
 import { useThread } from "@fibr/react";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@rafty/ui";
-import { CellContext } from "@tanstack/react-table";
+import type { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
 
 export function BooleanCell() {

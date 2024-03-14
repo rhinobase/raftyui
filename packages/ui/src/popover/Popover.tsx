@@ -1,10 +1,18 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
-import { PopoverContext, PopoverProvider, usePopoverContext } from "./context";
+import {
+  type PopoverContext,
+  PopoverProvider,
+  usePopoverContext,
+} from "./context";
 
 // Popover Component
 export type Popover = ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> &

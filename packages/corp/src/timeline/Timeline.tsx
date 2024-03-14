@@ -3,14 +3,14 @@ import { getValidChildren } from "@rafty/shared";
 import { Spinner, classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import {
-  HTMLAttributes,
-  ReactElement,
-  ReactNode,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
   forwardRef,
   useId,
 } from "react";
 import {
-  TimelineContext,
+  type TimelineContext,
   TimelineProvider,
   useTimelineContext,
 } from "./context";

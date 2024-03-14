@@ -1,6 +1,6 @@
 import { useThread } from "@fibr/react";
 import { eventHandler } from "@rafty/shared";
-import { CellContext } from "@tanstack/react-table";
+import type { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
 
 export function ClipboardCell() {

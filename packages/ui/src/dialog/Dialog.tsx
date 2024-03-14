@@ -1,17 +1,21 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  HTMLAttributes,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type HTMLAttributes,
   forwardRef,
 } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
-import { DialogContext, DialogProvider, useDialogContext } from "./context";
+import {
+  type DialogContext,
+  DialogProvider,
+  useDialogContext,
+} from "./context";
 
 // Dialog Component
 export type Dialog = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &

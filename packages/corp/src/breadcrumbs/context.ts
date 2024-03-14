@@ -1,5 +1,5 @@
 import { createContext } from "@rafty/shared";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export const [BreadcrumbsProvider, useBreadcrumbsContext] =
   createContext<BreadcrumbsContext>({

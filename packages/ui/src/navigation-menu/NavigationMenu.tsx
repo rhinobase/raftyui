@@ -3,14 +3,14 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
 import {
-  ComponentProps,
-  ComponentPropsWithoutRef,
-  PropsWithChildren,
+  type ComponentProps,
+  type ComponentPropsWithoutRef,
+  type PropsWithChildren,
   forwardRef,
 } from "react";
 import { classNames } from "../utils";
 import {
-  NavigationMenuContext,
+  type NavigationMenuContext,
   NavigationMenuProvider,
   useNavigationMenuContext,
 } from "./context";

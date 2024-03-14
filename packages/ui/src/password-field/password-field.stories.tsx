@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { FieldControl } from "../field-control";
 import { Label } from "../label";
 import { PasswordField } from "./PasswordField";

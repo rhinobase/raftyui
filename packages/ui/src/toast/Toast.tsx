@@ -4,9 +4,9 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
 import { classNames } from "../utils";
 
 // Toast Component

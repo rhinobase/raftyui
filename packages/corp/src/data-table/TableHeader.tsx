@@ -1,6 +1,6 @@
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
 import { TableHead, Th, Tr, classNames } from "@rafty/ui";
-import { Table, flexRender } from "@tanstack/react-table";
+import { type Table, flexRender } from "@tanstack/react-table";
 import { ResizeHandle } from "./utils";
 
 interface TableHeader<T> {

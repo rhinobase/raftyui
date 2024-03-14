@@ -1,6 +1,6 @@
 "use client";
 import { usePathname, useSearchParams } from "next/navigation";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { type PropsWithChildren, useEffect, useState } from "react";
 import { Hero } from "../components/Hero";
 import { Layout } from "../components/Layout";
 import { MobileNavigation } from "../components/MobileNavigation";

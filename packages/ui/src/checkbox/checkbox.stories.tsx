@@ -1,5 +1,5 @@
-import { CheckedState } from "@radix-ui/react-checkbox";
-import { Meta, StoryObj } from "@storybook/react";
+import type { CheckedState } from "@radix-ui/react-checkbox";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { FieldControl } from "../field-control";
 import { Checkbox } from "./Checkbox";

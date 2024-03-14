@@ -7,7 +7,7 @@ import {
 import { classNames } from "@rafty/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
 import { navigation } from "../lib/navigation";
 
 function PageLink({

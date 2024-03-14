@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ErrorMessage } from "../error-message";
 import { InputField } from "../input-field";
 import { Label } from "../label";

@@ -1,6 +1,6 @@
 "use client";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
 import { useAvatarGroupContext } from "../avatar-group/context";
 import { classNames } from "../utils";
 

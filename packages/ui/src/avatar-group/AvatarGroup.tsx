@@ -1,9 +1,9 @@
 "use client";
 import { getValidChildren } from "@rafty/shared";
-import { HTMLAttributes, cloneElement, forwardRef, useId } from "react";
+import { type HTMLAttributes, cloneElement, forwardRef, useId } from "react";
 import { Avatar } from "../avatar/Avatar";
 import { classNames } from "../utils";
-import { AvatarGroupContext, AvatarGroupProvider } from "./context";
+import { type AvatarGroupContext, AvatarGroupProvider } from "./context";
 import { calculateWidth } from "./utils";
 
 const LEFT_OFFSET = {

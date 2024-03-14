@@ -10,7 +10,7 @@ import {
   useInputGroupContext,
 } from "@rafty/ui";
 import {
-  ReactNode,
+  type ReactNode,
   forwardRef,
   useEffect,
   useReducer,

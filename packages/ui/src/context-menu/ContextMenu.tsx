@@ -3,14 +3,14 @@ import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { cva } from "class-variance-authority";
 import {
-  ComponentProps,
-  ComponentPropsWithoutRef,
-  ElementRef,
+  type ComponentProps,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
   forwardRef,
 } from "react";
 import { classNames } from "../utils";
 import {
-  ContextMenuContext,
+  type ContextMenuContext,
   ContextMenuProvider,
   useContextMenuContext,
 } from "./context";

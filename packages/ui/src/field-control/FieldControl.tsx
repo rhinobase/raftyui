@@ -1,9 +1,9 @@
 "use client";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
-import { FieldControlContext, FieldControlProvider } from "./context";
+import { type FieldControlContext, FieldControlProvider } from "./context";
 
 // Field Control Component
 export const fieldControlClasses = cva("flex w-full", {

@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("node:fs");
 
 function getFiles(entry, extensions = [], excludeExtensions = []) {
   let fileNames = [];

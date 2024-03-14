@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { ListItem, UnorderedList } from "../list";
 import { Calendar } from "./Calendar";

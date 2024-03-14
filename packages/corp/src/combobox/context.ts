@@ -1,6 +1,6 @@
 import { createContext } from "@rafty/shared";
-import { Dispatch, RefObject, SetStateAction } from "react";
-import { ComboboxOptionType } from "./types";
+import type { Dispatch, RefObject, SetStateAction } from "react";
+import type { ComboboxOptionType } from "./types";
 
 export const [ComboboxProvider, useComboboxContext] =
   createContext<ComboboxContext>({

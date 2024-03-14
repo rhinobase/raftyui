@@ -1,4 +1,4 @@
-import { OlHTMLAttributes, forwardRef } from "react";
+import { type OlHTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // OrderedList Component

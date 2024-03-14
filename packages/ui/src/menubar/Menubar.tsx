@@ -2,11 +2,19 @@
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { Button } from "../button";
 import { menuTriggerClasses } from "../menu/Menu";
 import { classNames } from "../utils";
-import { MenuBarContext, MenuBarProvider, useMenuBarContext } from "./context";
+import {
+  type MenuBarContext,
+  MenuBarProvider,
+  useMenuBarContext,
+} from "./context";
 
 //MenuBar Component
 export const menubarClasses = cva("flex w-max items-center", {

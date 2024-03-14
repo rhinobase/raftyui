@@ -1,6 +1,6 @@
 import { useThread } from "@fibr/react";
-import { CellContext } from "@tanstack/react-table";
-import { PropsWithChildren } from "react";
+import type { CellContext } from "@tanstack/react-table";
+import type { PropsWithChildren } from "react";
 
 type CellWrapper = PropsWithChildren;
 

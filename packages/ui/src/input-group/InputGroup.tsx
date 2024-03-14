@@ -1,12 +1,12 @@
 "use client";
 import { getValidChildren } from "@rafty/shared";
-import { HTMLAttributes, forwardRef, useRef } from "react";
+import { type HTMLAttributes, forwardRef, useRef } from "react";
 import { classNames } from "../utils";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
 import { RightAddon } from "./RightAddon";
 import { Suffix } from "./Suffix";
-import { InputGroupContext, InputGroupProvider } from "./context";
+import { type InputGroupContext, InputGroupProvider } from "./context";
 
 // InputGroup Component
 export type InputGroup = HTMLAttributes<HTMLDivElement> &

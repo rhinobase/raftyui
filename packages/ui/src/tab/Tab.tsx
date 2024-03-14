@@ -1,9 +1,13 @@
 "use client";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
-import { TabContext, TabProvider, useTabContext } from "./context";
+import { type TabContext, TabProvider, useTabContext } from "./context";
 
 // Root Component
 export type Tab = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &

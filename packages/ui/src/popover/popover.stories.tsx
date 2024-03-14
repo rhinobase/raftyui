@@ -1,5 +1,5 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
 

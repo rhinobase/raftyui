@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ToggleGroup, ToggleGroupItem } from "./ToggleGroup";
 
 const meta: Meta<typeof ToggleGroup> = {

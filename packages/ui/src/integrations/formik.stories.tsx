@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useFormik } from "formik";
 import { Button } from "../button";
 import { FieldControl } from "../field-control";

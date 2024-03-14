@@ -3,17 +3,17 @@
     "jsx": "react-jsx",
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": true
   },
   "files": [],
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.lib.json",
+      "path": "./tsconfig.lib.json"
     },
     {
-      "path": "./tsconfig.storybook.json",
-    },
+      "path": "./tsconfig.storybook.json"
+    }
   ],
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.base.json"
 }

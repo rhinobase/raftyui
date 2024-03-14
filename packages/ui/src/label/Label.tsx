@@ -1,6 +1,6 @@
 "use client";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
-import { LabelHTMLAttributes, forwardRef } from "react";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
+import { type LabelHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 
