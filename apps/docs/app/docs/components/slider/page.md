@@ -1,0 +1,111 @@
+---
+title: Slider
+nextjs:
+  metadata:
+    title: Slider
+    description: An input where the user selects a value from within a given range.
+    twitter:
+      title: Slider
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Slider
+    openGraph:
+      title: Slider
+      images:
+        url: https://rafty.rhinobase.io/api/og?title=Slider
+---
+
+An input where the user selects a value from within a given range.
+
+This component is made on top of [Radix UIs Slider Component](https://www.radix-ui.com/primitives/docs/components/slider) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+
+## Anatomy
+
+Import the component.
+
+```jsx
+import { Slider, SliderRange, SliderThumb, SliderTrack } from "@rafty/ui";
+
+<Slider>
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>;
+```
+
+## ColorScheme
+
+There are 5 `colorScheme` options in badge: `primary` (default), `secondary`, `error`, `info`, `success` & `warning`.
+
+{% example %}
+
+```jsx
+<Slider colorScheme="secondary" defaultValue={[20]}>
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
+
+## Size
+
+There are 3 `size` options available: `sm`, `md` (default) & `lg`
+
+{% example %}
+
+```jsx
+<Slider size="sm" defaultValue={[20]}>
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
+
+## Range Slider
+
+{% example %}
+
+```jsx
+<Slider defaultValue={[20, 80]}>
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
+
+## Props
+
+---
+
+### Slider
+
+This component is built on top of [Radix Slider](https://www.radix-ui.com/primitives/docs/components/slider#root).
+
+| Property    | Description                           | Type                                                                                | Default     |
+| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------- | ----------- |
+| size        | Size of the Slider component.         | `"sm"` or `"md"` or `"lg"`                                                          | `"md"`      |
+| colorScheme | Color Scheme of the Slider component. | `"primary"` or `"secondary"` or `"error"` or `"success"` or `"warning"` or `"info"` | `"primary"` |
+| isDisabled  | To manage disabled state.             | `boolean`                                                                           | `false`     |
+| isReadOnly  | To manage readonly state.             | `boolean`                                                                           | `false`     |
+
+### SliderTrack
+
+This component is built on top of [Radix Slider Track](https://www.radix-ui.com/primitives/docs/components/slider#track).
+
+### SliderRange
+
+This component is built on top of [Radix Slider Range](https://www.radix-ui.com/primitives/docs/components/slider#range).
+
+### SliderThumb
+
+This component is built on top of [Radix Slider Thumb](https://www.radix-ui.com/primitives/docs/components/slider#thumb).

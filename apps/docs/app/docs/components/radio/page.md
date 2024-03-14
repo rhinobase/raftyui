@@ -126,6 +126,7 @@ This component is built on top of [Radix Radio Group](https://www.radix-ui.com/p
 | ---------- | -------------------------------------------------------- | -------------------------- | ------- |
 | size       | Size of the radio group component and its subcomponents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
 | isDisabled | To manage disabled state.                                | `boolean`                  | `false` |
+| isReadOnly | To manage readonly state.                                | `boolean`                  | `false` |
 
 ### RadioGroupItem
 
