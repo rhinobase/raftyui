@@ -15,13 +15,18 @@ import { classNames } from "../utils";
 // Checkbox Component
 
 export const checkboxClasses = cva(
-  "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 focus:ring-2",
+  "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus:ring-2",
   {
     variants: {
       size: { sm: "size-4", md: "size-5", lg: "size-6" },
+      disabled: {
+        true: "cursor-not-allowed opacity-70",
+        false: "",
+      },
     },
     defaultVariants: {
       size: "md",
+      disabled: false,
     },
   },
 );
@@ -50,15 +55,18 @@ const checkboxLabelClasses = cva("", {
       lg: "pl-2.5 text-base leading-snug",
     },
     disabled: {
-      true: "cursor-not-allowed opacity-50",
+      true: "cursor-not-allowed opacity-70",
       false: "",
     },
   },
+  defaultVariants: {
+    size: "md",
+    disabled: false,
+  },
 });
 
-export type Checkbox = Omit<
-  ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
-  "disabled" | "required"
+export type Checkbox = ComponentPropsWithoutRef<
+  typeof CheckboxPrimitive.Root
 > & {
   size?: "sm" | "md" | "lg";
   isReadOnly?: BooleanOrFunction;
@@ -82,23 +90,29 @@ export const Checkbox = forwardRef<
     },
     forwardedref,
   ) => {
-    const context = useFieldControlContext() ?? {};
+    const fieldControlContext = useFieldControlContext() ?? {};
 
-    const name = props.name || context.name;
+    const name = props.name || fieldControlContext.name;
+
     const disabled =
       getValue(isDisabled) ||
-      context.isDisabled ||
-      getValue(isReadOnly) ||
-      context.isReadOnly;
-    const required = getValue(isRequired) ?? context.isRequired;
+      fieldControlContext.isDisabled ||
+      props.disabled ||
+      fieldControlContext.isLoading;
+
+    const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+
+    const required =
+      (getValue(isRequired) || props.required) ??
+      fieldControlContext.isRequired;
 
     const checkbox = (
       <CheckboxPrimitive.Root
         {...props}
         name={name}
-        disabled={disabled}
+        disabled={disabled || readonly}
         required={required}
-        className={classNames(checkboxClasses({ size }), className)}
+        className={classNames(checkboxClasses({ size, disabled }), className)}
         ref={forwardedref}
       >
         <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">

@@ -7,7 +7,7 @@ import { useInputGroupContext } from "../input-group";
 import { classNames } from "../utils";
 
 export const inputFieldClasses = cva(
-  "w-full z-[1] appearance-none outline-none dark:text-secondary-200 transition-all disabled:bg-secondary-100 disabled:dark:bg-secondary-800 disabled:cursor-not-allowed",
+  "w-full z-[1] border appearance-none outline-none dark:text-secondary-200 transition-all",
   {
     variants: {
       size: {
@@ -16,10 +16,17 @@ export const inputFieldClasses = cva(
         lg: "py-2 text-lg",
       },
       variant: {
-        solid: "bg-secondary-50 dark:bg-secondary-800/20",
-        outline:
-          "read-only:focus:border-secondary-300 dark:read-only:focus:border-secondary-700 read-only:focus:ring-0",
-        ghost: "border border-transparent",
+        solid: "",
+        outline: "",
+        ghost: "",
+      },
+      disabled: {
+        true: "",
+        false: "",
+      },
+      readonly: {
+        true: "",
+        false: "",
       },
       invalid: {
         true: "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
@@ -39,19 +46,40 @@ export const inputFieldClasses = cva(
     },
     compoundVariants: [
       {
+        variant: "solid",
+        disabled: false,
+        readonly: false,
+        className: "bg-secondary-50 dark:bg-secondary-900",
+      },
+      {
+        disabled: true,
+        readonly: false,
+        className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
+      },
+      {
         variant: ["solid", "outline"],
-        size: ["sm", "md", "lg"],
-        className: classNames(
-          "border border-secondary-300 dark:border-secondary-700 outline-none",
-          "hover:border-primary-500 dark:hover:border-primary-400 disabled:hover:border-secondary-300 dark:disabled:hover:border-secondary-700",
-          "focus:border-primary-500 dark:focus:border-primary-400",
-          "focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-100/20",
-        ),
+        disabled: false,
+        className: "hover:border-primary-500 dark:hover:border-primary-400",
+      },
+      {
+        variant: ["solid", "outline"],
+        className: "border-secondary-300 dark:border-zinc-700",
+      },
+      {
+        disabled: false,
+        readonly: false,
+        className:
+          "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
       },
       {
         variant: ["outline", "ghost"],
-        size: ["sm", "md", "lg"],
+        disabled: false,
+        readonly: false,
         className: "bg-transparent",
+      },
+      {
+        variant: "ghost",
+        className: "border-transparent",
       },
       {
         size: "sm",
@@ -186,7 +214,12 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
     },
     forwardedRef,
   ) => {
-    const fieldControlContext = useFieldControlContext() ?? {};
+    const fieldControlContext = useFieldControlContext() ?? {
+      isDisabled: false,
+      isLoading: false,
+      isReadOnly: false,
+      isRequired: false,
+    };
 
     const name = props.name || fieldControlContext.name;
     const disabled =
@@ -224,6 +257,8 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
                 inputFieldClasses({
                   size: inputGroupContext.size,
                   variant,
+                  disabled,
+                  readonly,
                   invalid,
                   isLeftAddon: inputGroupContext.isLeftAddon,
                   isRightAddon: inputGroupContext.isRightAddon,
