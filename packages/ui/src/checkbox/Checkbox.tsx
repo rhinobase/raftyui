@@ -111,7 +111,7 @@ export const Checkbox = forwardRef<
     );
 
     return (
-      <div className="flex items-start">
+      <span className="flex items-start">
         {checkbox}
         {children && (
           <Label
@@ -125,7 +125,7 @@ export const Checkbox = forwardRef<
             {children}
           </Label>
         )}
-      </div>
+      </span>
     );
   },
 );

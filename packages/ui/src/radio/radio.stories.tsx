@@ -2,13 +2,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
+import { Button } from "../button";
 import { ErrorMessage } from "../error-message";
 import { FieldControl } from "../field-control";
 import { Label } from "../label";
 import { RadioGroup, RadioGroupItem } from "./Radio";
 
 const meta: Meta<typeof RadioGroup> = {
-  title: "Form / RadioGroup",
+  title: "Form / Radio",
   args: {
     size: "md",
     isDisabled: false,
@@ -32,6 +33,7 @@ type Story = StoryObj<typeof RadioGroup>;
 export const Default: Story = {
   render: ({ size, isDisabled, isRequired }) => {
     const {
+      handleSubmit,
       control,
       formState: { errors },
     } = useForm<z.infer<typeof schema>>({
@@ -39,8 +41,11 @@ export const Default: Story = {
     });
 
     return (
-      <form>
-        <FieldControl name="radio" isRequired={isRequired}>
+      <form
+        className="space-y-5"
+        onSubmit={handleSubmit(console.log, console.error)}
+      >
+        <FieldControl name="radio" isRequired>
           <Label>Radio Group</Label>
           <Controller
             name="radio"
@@ -50,7 +55,7 @@ export const Default: Story = {
                 id={name}
                 size={size}
                 isDisabled={isDisabled}
-                value={value ?? undefined}
+                value={value}
                 onValueChange={onChange}
                 ref={ref}
               >
@@ -68,6 +73,9 @@ export const Default: Story = {
           />
           <ErrorMessage>{errors.radio?.message}</ErrorMessage>
         </FieldControl>
+        <Button type="submit" colorScheme="primary">
+          Submit
+        </Button>
       </form>
     );
   },
