@@ -1,10 +1,12 @@
 import * as SliderPrimitive from "@radix-ui/react-slider";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
+import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
 import {
   type SliderContext,
@@ -12,28 +14,63 @@ import {
   useSliderContext,
 } from "./context";
 
+export const sliderClasses = cva(
+  "relative flex w-full touch-none select-none items-center",
+  {
+    variants: {
+      disabled: {
+        true: "cursor-not-allowed opacity-70",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      disabled: false,
+    },
+  },
+);
+
 export type Slider = ComponentPropsWithoutRef<typeof SliderPrimitive.Root> &
-  Partial<SliderContext>;
+  Partial<SliderContext> & {
+    isDisabled?: BooleanOrFunction;
+    isReadOnly?: BooleanOrFunction;
+  };
 
 export const Slider = forwardRef<
   ElementRef<typeof SliderPrimitive.Root>,
   Slider
 >(
   (
-    { className, colorScheme = "primary", size = "md", ...props },
+    {
+      className,
+      colorScheme = "primary",
+      size = "md",
+      isDisabled,
+      isReadOnly,
+      ...props
+    },
     forwardedRef,
-  ) => (
-    <SliderProvider value={{ colorScheme, size }}>
-      <SliderPrimitive.Root
-        {...props}
-        className={classNames(
-          "relative flex w-full touch-none select-none items-center",
-          className,
-        )}
-        ref={forwardedRef}
-      />
-    </SliderProvider>
-  ),
+  ) => {
+    const fieldControlContext = useFieldControlContext() ?? {};
+
+    const disabled =
+      getValue(isDisabled) ||
+      fieldControlContext.isDisabled ||
+      props.disabled ||
+      fieldControlContext.isLoading;
+
+    const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+
+    return (
+      <SliderProvider value={{ colorScheme, size }}>
+        <SliderPrimitive.Root
+          {...props}
+          disabled={disabled || readonly}
+          className={classNames(sliderClasses({ disabled }), className)}
+          ref={forwardedRef}
+        />
+      </SliderProvider>
+    );
+  },
 );
 Slider.displayName = "Slider";
 

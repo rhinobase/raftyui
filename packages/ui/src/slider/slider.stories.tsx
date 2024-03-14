@@ -7,6 +7,8 @@ const meta: Meta<typeof Slider> = {
     size: "md",
     colorScheme: "primary",
     step: 10,
+    isDisabled: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
