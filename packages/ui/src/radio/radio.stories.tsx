@@ -39,34 +39,36 @@ export const Default: Story = {
     });
 
     return (
-      <FieldControl name="radio" isRequired>
-        <Label>Radio Group</Label>
-        <Controller
-          name="radio"
-          control={control}
-          render={({ field: { value, onChange, ref } }) => (
-            <RadioGroup
-              size={size}
-              isDisabled={isDisabled}
-              isRequired={isRequired}
-              value={value}
-              onValueChange={onChange}
-              ref={ref}
-            >
-              <RadioGroupItem value="default" id="radio.default">
-                Default
-              </RadioGroupItem>
-              <RadioGroupItem value="comfortable" id="radio.comfortable">
-                Comfortable
-              </RadioGroupItem>
-              <RadioGroupItem value="compact" id="radio.compact">
-                Compact
-              </RadioGroupItem>
-            </RadioGroup>
-          )}
-        />
-        <ErrorMessage>{errors.radio?.message}</ErrorMessage>
-      </FieldControl>
+      <form>
+        <FieldControl name="radio" isRequired={isRequired}>
+          <Label>Radio Group</Label>
+          <Controller
+            name="radio"
+            control={control}
+            render={({ field: { name, value, onChange, ref } }) => (
+              <RadioGroup
+                id={name}
+                size={size}
+                isDisabled={isDisabled}
+                value={value ?? undefined}
+                onValueChange={onChange}
+                ref={ref}
+              >
+                <RadioGroupItem value="default" id="radio.default">
+                  Default
+                </RadioGroupItem>
+                <RadioGroupItem value="comfortable" id="radio.comfortable">
+                  Comfortable
+                </RadioGroupItem>
+                <RadioGroupItem value="compact" id="radio.compact">
+                  Compact
+                </RadioGroupItem>
+              </RadioGroup>
+            )}
+          />
+          <ErrorMessage>{errors.radio?.message}</ErrorMessage>
+        </FieldControl>
+      </form>
     );
   },
 };
