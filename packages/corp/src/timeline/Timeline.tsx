@@ -132,7 +132,7 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
 const timelineConnectorClasses = cva("flex h-full", {
   variants: {
     mode: {
-      left: "ml-2 flex-row",
+      left: "ml-2",
       right: "mr-2 flex-row-reverse",
     },
   },
