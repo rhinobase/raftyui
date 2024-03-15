@@ -164,7 +164,7 @@ export function DataTable<T>({
             />
           </Table>
         </TableContainer>
-        {!isLoading && !isFetching && data.length === 0 && (
+        {!isLoading && data.length === 0 && (
           <DataNotFound>{notFoundMessage}</DataNotFound>
         )}
       </div>
