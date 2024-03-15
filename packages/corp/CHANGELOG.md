@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.9](https://github.com/rhinobase/raftyui/compare/corp-0.1.8...corp-0.1.9) (2024-03-15)
+
+
+### Bug Fixes
+
+* resolved biome errors ([a7647d3](https://github.com/rhinobase/raftyui/commit/a7647d3e928721f72b39e359f2298ed9e579c36b))
+
 ## [0.1.8](https://github.com/rhinobase/raftyui/compare/corp-0.1.7...corp-0.1.8) (2024-03-13)
 
 
