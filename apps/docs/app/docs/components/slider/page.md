@@ -69,6 +69,8 @@ There are 3 `size` options available: `sm`, `md` (default) & `lg`
 
 ## Range Slider
 
+Slider accepts value in array and returns value in array in `onValueChange` function, so it can be used as `Range Slider`. You just need to pass more than one values in `value` and `defaultValue` props and put the same number of `<SliderThumb />`.
+
 {% example %}
 
 ```jsx
