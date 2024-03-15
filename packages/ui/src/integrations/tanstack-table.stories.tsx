@@ -1,12 +1,12 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
 import {
-  ColumnDef,
-  PaginationState,
+  type ColumnDef,
+  type PaginationState,
   flexRender,
   getCoreRowModel,
   useReactTable,

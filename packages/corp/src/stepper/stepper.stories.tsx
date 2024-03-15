@@ -4,7 +4,7 @@ import {
   FaceSmileIcon,
 } from "@heroicons/react/24/outline";
 import { Button, classNames } from "@rafty/ui";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Stepper } from "./Stepper";
 

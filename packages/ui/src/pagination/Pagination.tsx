@@ -1,8 +1,8 @@
 "use client";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
-import { PaginationContext, PaginationProvider } from "./context";
+import { type PaginationContext, PaginationProvider } from "./context";
 
 // Define CSS classes using class-variance-authority
 export const paginationClasses = cva("flex items-center gap-4", {

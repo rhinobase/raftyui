@@ -4,13 +4,17 @@ import { eventHandler } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   Fragment,
-  HTMLAttributes,
-  PropsWithChildren,
-  ReactNode,
+  type HTMLAttributes,
+  type PropsWithChildren,
+  type ReactNode,
   forwardRef,
   useId,
 } from "react";
-import { StepperContext, StepperProvider, useStepperContext } from "./context";
+import {
+  type StepperContext,
+  StepperProvider,
+  useStepperContext,
+} from "./context";
 
 const stepperClasses = cva(
   "group/stepper flex aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",

@@ -20,9 +20,9 @@ import {
 } from "@rafty/ui";
 import { useRouter } from "next/navigation";
 import {
-  Dispatch,
+  type Dispatch,
   Fragment,
-  SetStateAction,
+  type SetStateAction,
   forwardRef,
   useCallback,
   useEffect,
@@ -32,7 +32,7 @@ import {
 } from "react";
 import Highlighter from "react-highlight-words";
 import { navigation } from "../lib/navigation";
-import { type Result } from "../markdoc/search.mjs";
+import type { Result } from "../markdoc/search.mjs";
 
 type EmptyObject = Record<string, never>;
 

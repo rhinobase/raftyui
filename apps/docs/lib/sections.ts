@@ -1,4 +1,4 @@
-import { type Node } from "@markdoc/markdoc";
+import type { Node } from "@markdoc/markdoc";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 
 interface HeadingNode extends Node {

@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type BooleanOrFunction, createContext } from "@rafty/shared";
 
 export const [RadioGroupProvider, useRadioGroupContext] =
   createContext<RadioGroupContext>({
@@ -9,5 +9,5 @@ export const [RadioGroupProvider, useRadioGroupContext] =
 
 export interface RadioGroupContext {
   readonly size: "sm" | "md" | "lg";
-  readonly isDisabled: boolean;
+  readonly isDisabled: BooleanOrFunction;
 }

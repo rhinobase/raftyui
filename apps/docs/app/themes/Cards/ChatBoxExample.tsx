@@ -28,7 +28,7 @@ import {
   TooltipTrigger,
   classNames,
 } from "@rafty/ui";
-import { ReactNode, useReducer, useRef } from "react";
+import { type ReactNode, useReducer, useRef } from "react";
 
 const USERS_DATA = [
   {

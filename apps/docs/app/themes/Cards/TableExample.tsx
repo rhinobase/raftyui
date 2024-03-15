@@ -29,7 +29,7 @@ import {
   Tr,
   classNames,
 } from "@rafty/ui";
-import { Dispatch, useReducer, useState } from "react";
+import { type Dispatch, useReducer, useState } from "react";
 
 type Header = {
   id: string;

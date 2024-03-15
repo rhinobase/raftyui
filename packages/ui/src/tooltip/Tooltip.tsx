@@ -1,6 +1,10 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
 
 // TooltipProvider Component

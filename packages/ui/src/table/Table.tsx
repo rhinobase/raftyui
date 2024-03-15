@@ -1,8 +1,8 @@
 "use client";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, ThHTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, type ThHTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
-import { TableContext, TableProvider, useTableContext } from "./context";
+import { type TableContext, TableProvider, useTableContext } from "./context";
 
 // TableContainer Component
 export type TableContainer = HTMLAttributes<HTMLDivElement>;

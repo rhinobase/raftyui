@@ -2,7 +2,7 @@ import { useThread } from "@fibr/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { eventHandler } from "@rafty/shared";
 import { useBoolean } from "@rafty/ui";
-import { CellContext } from "@tanstack/react-table";
+import type { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
 
 export function SecretCell() {

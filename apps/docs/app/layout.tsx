@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { classNames } from "@rafty/ui";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import type { PropsWithChildren } from "react";

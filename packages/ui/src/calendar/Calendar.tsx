@@ -1,6 +1,6 @@
 "use client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { DayPicker } from "react-day-picker";
 import { buttonClasses } from "../button";
 import { Select } from "../select";

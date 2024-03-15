@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { DocsLayout } from "../../../components/DocsLayout";
 import { ExampleCodeRepo } from "./ExampleCodeRepo";
 

@@ -1,6 +1,6 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { Avatar } from "@rafty/ui";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
   QueryClientProvider,
@@ -16,7 +16,7 @@ import {
   ComboboxTrigger,
 } from "./Combobox";
 import { useComboboxContext } from "./context";
-import { ComboboxOptionType } from "./types";
+import type { ComboboxOptionType } from "./types";
 import { findLabel } from "./utils";
 
 const meta: Meta<typeof Combobox> = {

@@ -28,12 +28,12 @@ import {
   useState,
 } from "react";
 import {
-  ComboboxContext,
+  type ComboboxContext,
   ComboboxProvider,
   useComboboxContext,
 } from "./context";
 import { InternalOptionsRender, InternalTriggerRender } from "./internals";
-import { ComboboxOptionType } from "./types";
+import type { ComboboxOptionType } from "./types";
 
 type UserProps = "id" | "options";
 

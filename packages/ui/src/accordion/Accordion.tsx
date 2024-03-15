@@ -1,12 +1,16 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
 import {
-  AccordionContext,
+  type AccordionContext,
   AccordionProvider,
   useAccordionContext,
 } from "./context";

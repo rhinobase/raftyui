@@ -26,7 +26,12 @@ import {
 } from "@rafty/ui";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
+import {
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
+  useState,
+} from "react";
 import { Fence } from "../../components/code";
 
 const COLOR_THEME = {

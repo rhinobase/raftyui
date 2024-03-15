@@ -1,8 +1,12 @@
 "use client";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
 import { classNames } from "../utils";

@@ -1,58 +1,90 @@
 "use client";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
+import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
 import { classNames } from "../utils";
 import {
-  RadioGroupContext,
+  type RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
 } from "./context";
 
 // RadioGroup Component
-export const radioGroupClasses = cva(
-  "flex flex-col disabled:cursor-not-allowed disabled:opacity-60",
-  {
-    variants: {
-      size: {
-        sm: "gap-1",
-        md: "gap-1.5",
-        lg: "gap-2",
-      },
+export const radioGroupClasses = cva("flex flex-col", {
+  variants: {
+    size: {
+      sm: "gap-1",
+      md: "gap-1.5",
+      lg: "gap-2",
     },
-    defaultVariants: {
-      size: "md",
+    disabled: {
+      true: "cursor-not-allowed opacity-70",
+      false: "",
     },
   },
-);
+  defaultVariants: {
+    size: "md",
+    disabled: false,
+  },
+});
 
-export type RadioGroup = Omit<
-  ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>,
-  "disabled"
+export type RadioGroup = ComponentPropsWithoutRef<
+  typeof RadioGroupPrimitive.Root
 > &
-  Partial<RadioGroupContext>;
+  Partial<RadioGroupContext> & {
+    isRequired?: BooleanOrFunction;
+    isReadOnly?: BooleanOrFunction;
+  };
 
 export const RadioGroup = forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
->(({ className, size = "md", isDisabled = false, ...props }, forwardedRef) => {
-  return (
-    <RadioGroupProvider value={{ size, isDisabled }}>
-      <RadioGroupPrimitive.Root
-        {...props}
-        disabled={isDisabled}
-        className={classNames(radioGroupClasses({ size }), className)}
-        ref={forwardedRef}
-      />
-    </RadioGroupProvider>
-  );
-});
+>(
+  (
+    { className, size = "md", isDisabled, isRequired, isReadOnly, ...props },
+    forwardedRef,
+  ) => {
+    const fieldControlContext = useFieldControlContext() ?? {};
+
+    const disabled =
+      getValue(isDisabled) ||
+      props.disabled ||
+      fieldControlContext.isDisabled ||
+      fieldControlContext.isLoading;
+
+    const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+
+    const required =
+      getValue(isRequired) || props.required || fieldControlContext.isRequired;
+
+    return (
+      <RadioGroupProvider value={{ size, isDisabled: disabled }}>
+        <RadioGroupPrimitive.Root
+          {...props}
+          disabled={disabled || readonly}
+          required={required}
+          className={classNames(
+            radioGroupClasses({ size, disabled }),
+            className,
+          )}
+          ref={forwardedRef}
+        />
+      </RadioGroupProvider>
+    );
+  },
+);
 RadioGroup.displayName = "RadioGroup";
 
 // RadioGroupItem Component
 export const radioGroupItemClasses = cva(
-  "border-secondary-400  dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus-visible:ring-ring aspect-square rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  "border-secondary-400 dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 ring-offset-background focus-visible:ring-ring aspect-square rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   {
     variants: {
       size: {
@@ -91,7 +123,7 @@ export const radioGroupItemLabelClasses = cva("", {
       lg: "pl-2.5 text-base",
     },
     disabled: {
-      true: "cursor-not-allowed opacity-50",
+      true: "cursor-not-allowed opacity-70",
       false: "",
     },
   },
@@ -111,7 +143,7 @@ export const RadioGroupItem = forwardRef<
 >(({ className, children, ...props }, forwardedref) => {
   const { size, isDisabled } = useRadioGroupContext();
 
-  const disabled = isDisabled || props.disabled;
+  const disabled = getValue(isDisabled) || props.disabled;
 
   const radioItem = (
     <RadioGroupPrimitive.Item

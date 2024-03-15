@@ -2,7 +2,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import { CommandGroup, CommandItem } from "@rafty/ui";
 import { useId } from "react";
 import { useComboboxContext } from "../context";
-import { ComboboxOptionType } from "../types";
+import type { ComboboxOptionType } from "../types";
 
 export function InternalOptionsRender({
   option: { label, value },

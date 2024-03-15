@@ -1,16 +1,20 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
-  OptgroupHTMLAttributes,
-  OptionHTMLAttributes,
-  SelectHTMLAttributes,
+  type OptgroupHTMLAttributes,
+  type OptionHTMLAttributes,
+  type SelectHTMLAttributes,
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control";
 import { classNames } from "../utils";
-import { SelectContext, SelectProvider, useSelectContext } from "./context";
+import {
+  type SelectContext,
+  SelectProvider,
+  useSelectContext,
+} from "./context";
 
 const selectClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",
@@ -43,39 +47,31 @@ const selectClasses = cva(
         className: "bg-secondary-50 dark:bg-secondary-900",
       },
       {
-        variant: ["solid", "outline", "ghost"],
         disabled: true,
         readonly: false,
         className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
       },
       {
-        variant: ["solid", "outline", "ghost"],
-        disabled: false,
-        readonly: true,
-        className: "bg-secondary-100 dark:bg-secondary-800",
-      },
-      {
         variant: ["solid", "outline"],
         disabled: false,
-        readonly: false,
         className:
-          "group-hover:border-primary-500 dark:group-hover:border-primary-400 focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+          "group-hover:border-primary-500 dark:group-hover:border-primary-400",
       },
       {
         variant: ["solid", "outline"],
         className: "border-secondary-300 dark:border-zinc-700",
       },
       {
-        variant: ["solid", "outline", "ghost"],
         disabled: false,
         readonly: false,
-        className: "cursor-pointer",
+        className:
+          "cursor-pointer focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
       },
       {
         variant: ["outline", "ghost"],
         disabled: false,
         readonly: false,
-        className: "bg-transparent dark:bg-secondary-900",
+        className: "bg-transparent",
       },
       {
         variant: "ghost",

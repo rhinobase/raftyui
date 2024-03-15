@@ -3,7 +3,7 @@ import { classNames } from "@rafty/ui";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
-import { type Section, type Subsection } from "../lib/sections";
+import type { Section, Subsection } from "../lib/sections";
 
 export function TableOfContents({
   tableOfContents,
@@ -20,7 +20,7 @@ export function TableOfContents({
         if (!el) return null;
 
         const style = window.getComputedStyle(el);
-        const scrollMt = parseFloat(style.scrollMarginTop);
+        const scrollMt = Number.parseFloat(style.scrollMarginTop);
 
         const top = window.scrollY + el.getBoundingClientRect().top - scrollMt;
         return { id, top };

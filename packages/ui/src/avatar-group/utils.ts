@@ -1,4 +1,4 @@
-import { AvatarGroupContext } from "./context";
+import type { AvatarGroupContext } from "./context";
 
 /**
  * Calculate the max width for AvatarGroup

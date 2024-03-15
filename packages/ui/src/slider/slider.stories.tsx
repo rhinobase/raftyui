@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Slider, SliderRange, SliderThumb, SliderTrack } from "./Slider";
 
 const meta: Meta<typeof Slider> = {
@@ -7,6 +7,8 @@ const meta: Meta<typeof Slider> = {
     size: "md",
     colorScheme: "primary",
     step: 10,
+    isDisabled: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {

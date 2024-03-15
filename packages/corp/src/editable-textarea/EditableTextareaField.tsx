@@ -9,7 +9,7 @@ import {
   useFieldControlContext,
 } from "@rafty/ui";
 import {
-  ReactNode,
+  type ReactNode,
   forwardRef,
   useEffect,
   useReducer,

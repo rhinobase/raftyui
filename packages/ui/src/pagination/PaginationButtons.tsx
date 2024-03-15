@@ -1,7 +1,7 @@
 "use client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

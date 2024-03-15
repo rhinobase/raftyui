@@ -1,6 +1,6 @@
-import path from "path";
+import path from "node:path";
 import glob from "fast-glob";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pagesDir = path.resolve("./app");

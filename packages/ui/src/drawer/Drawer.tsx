@@ -2,10 +2,18 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
-import { DrawerContext, DrawerProvider, useDrawerContext } from "./context";
+import {
+  type DrawerContext,
+  DrawerProvider,
+  useDrawerContext,
+} from "./context";
 
 // Drawer Component
 export type Drawer = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &

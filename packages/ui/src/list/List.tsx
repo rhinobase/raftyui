@@ -1,4 +1,4 @@
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 
 // List Component
 export type List = HTMLAttributes<HTMLUListElement>;

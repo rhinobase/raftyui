@@ -1,5 +1,5 @@
 import { Table } from "@rafty/ui";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export function PropsTable({ children }: PropsWithChildren) {
   return (

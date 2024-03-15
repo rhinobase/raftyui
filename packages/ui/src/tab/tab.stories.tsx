@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Tab, TabContent, TabList, TabTrigger } from "./Tab";
 
 const meta: Meta<typeof Tab> = {

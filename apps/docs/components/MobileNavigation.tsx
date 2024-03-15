@@ -1,6 +1,6 @@
 import { Drawer, DrawerClose, DrawerContent, DrawerOverlay } from "@rafty/ui";
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { Logomark } from "./Logo";
 import { Navigation } from "./Navigation";
 

@@ -1,5 +1,9 @@
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { classNames } from "../utils";
 
 // HoverCard Component

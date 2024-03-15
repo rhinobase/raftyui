@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "./Stat";
 
 const meta: Meta<typeof Stat> = {

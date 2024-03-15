@@ -3,7 +3,7 @@ import {
   MagnifyingGlassIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { InputField } from "../input-field";
 import { InputGroup } from "./InputGroup";
 import { LeftAddon } from "./LeftAddon";

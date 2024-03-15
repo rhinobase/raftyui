@@ -1,5 +1,5 @@
 import { classNames } from "@rafty/ui";
-import { HTMLAttributes, PropsWithChildren } from "react";
+import type { HTMLAttributes, PropsWithChildren } from "react";
 
 export function CodeContainer({
   children,

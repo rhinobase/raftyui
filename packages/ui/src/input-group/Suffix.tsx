@@ -1,5 +1,5 @@
 "use client";
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { useInputGroupContext } from "./context";
 import { prefixAndSuffixCommonClasses } from "./utils";

@@ -1,5 +1,5 @@
 import { createContext } from "@rafty/shared";
-import { Layout } from "react-window";
+import type { Layout } from "react-window";
 
 export const [ScrollAreaProvider, useScrollAreaContext] =
   createContext<ScrollAreaContext>({

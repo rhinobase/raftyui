@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputField, Switch } from "@rafty/ui";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import type { PropsWithChildren } from "react";
 import {
   Controller,

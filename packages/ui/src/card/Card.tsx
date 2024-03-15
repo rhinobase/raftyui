@@ -1,9 +1,9 @@
 "use client";
 import { getValidChildren } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import { HTMLAttributes, forwardRef } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
-import { CardContext, CardProvider, useCardContext } from "./context";
+import { type CardContext, CardProvider, useCardContext } from "./context";
 
 // Card Component
 export const cardClasses = cva("flex flex-col dark:text-white", {

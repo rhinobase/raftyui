@@ -1,9 +1,9 @@
-import { BooleanOrFunction, getValue } from "@rafty/shared";
+import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  ElementType,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type ElementType,
   forwardRef,
 } from "react";
 import { Spinner } from "../spinner";

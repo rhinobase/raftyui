@@ -133,6 +133,10 @@ export const navigation = [
         href: "/docs/components/skeleton",
       },
       {
+        title: "Slider",
+        href: "/docs/components/slider",
+      },
+      {
         title: "Spinner",
         href: "/docs/components/spinner",
       },

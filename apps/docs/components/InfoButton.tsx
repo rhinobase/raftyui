@@ -1,6 +1,6 @@
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { Kbd, Popover, PopoverContent, PopoverTrigger, Text } from "@rafty/ui";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export function InfoButton({
   children,

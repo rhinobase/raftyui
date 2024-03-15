@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { RaftyIcon, RaftyIconProps } from "./RaftyIcon";
+import type { Meta, StoryObj } from "@storybook/react";
+import { RaftyIcon, type RaftyIconProps } from "./RaftyIcon";
 import { ICONS } from "./icons";
 
 const meta: Meta<RaftyIconProps> = {

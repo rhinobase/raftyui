@@ -1,5 +1,5 @@
 import { useThread } from "@fibr/react";
-import { CellContext } from "@tanstack/react-table";
+import type { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
 
 export function Default() {
