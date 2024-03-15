@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.16](https://github.com/rhinobase/raftyui/compare/ui-1.4.15...ui-1.4.16) (2024-03-15)
+
+
+### Bug Fixes
+
+* **ui:** issue in checkbox required prop ([6c8ab07](https://github.com/rhinobase/raftyui/commit/6c8ab07197d31b3b76af2dbe8d8527b25e5c0bd0))
+
 ## [1.4.15](https://github.com/rhinobase/raftyui/compare/ui-1.4.14...ui-1.4.15) (2024-03-15)
 
 
