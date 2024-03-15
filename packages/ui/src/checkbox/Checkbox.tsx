@@ -103,8 +103,7 @@ export const Checkbox = forwardRef<
     const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
 
     const required =
-      (getValue(isRequired) || props.required) ??
-      fieldControlContext.isRequired;
+      getValue(isRequired) ?? props.required ?? fieldControlContext.isRequired;
 
     const checkbox = (
       <CheckboxPrimitive.Root
