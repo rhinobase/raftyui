@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.15](https://github.com/rhinobase/raftyui/compare/ui-1.4.14...ui-1.4.15) (2024-03-15)
+
+
+### Features
+
+* **ui:** added isReadOnly and isDisabled properties ([553d485](https://github.com/rhinobase/raftyui/commit/553d485137b0f3be97b977ffe9ca01f5a4313f21))
+
+
+### Bug Fixes
+
+* resolved biome errors ([a7647d3](https://github.com/rhinobase/raftyui/commit/a7647d3e928721f72b39e359f2298ed9e579c36b))
+* **storybook:** fixed the story ([a760249](https://github.com/rhinobase/raftyui/commit/a760249b2d85520b210a014009d8915822ca502b))
+* **ui:** added required prop usage in radio group ([7ed005d](https://github.com/rhinobase/raftyui/commit/7ed005d00dbef3f005d75510a2c82ba955a18914))
+* **ui:** improved isReadOnly and isDisabled functionality and styling ([d9d293b](https://github.com/rhinobase/raftyui/commit/d9d293bbb4455cb3c4a5154624a1c2f4ce62289d))
+
 ## [1.4.14](https://github.com/rhinobase/raftyui/compare/ui-1.4.13...ui-1.4.14) (2024-03-11)
 
 
