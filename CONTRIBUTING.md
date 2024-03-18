@@ -12,10 +12,10 @@ The following steps will get you up and running to contribute to Rafty UI:
 
 2. Clone your fork locally
 
-```sh
-git clone https://github.com/<your_github_username>/raftyui.git
-cd raftyui
-```
+   ```sh
+   git clone https://github.com/<your_github_username>/raftyui.git
+   cd raftyui
+   ```
 
 3. Set up all the dependencies and packages by running `pnpm install`. This command will install dependencies.
 
@@ -95,8 +95,7 @@ All commits that fix bugs or add features need a test.
 
 ## Want to write a blog post or tutorial
 
-That would be amazing! Reach out to the core team here:
-https://discord.gg/YtzxUfCk8c. We would love to support you in any way we can.
+That would be amazing! Reach out to the core team here: https://discord.gg/YtzxUfCk8c. We would love to support you in any way we can.
 
 ## License
 
