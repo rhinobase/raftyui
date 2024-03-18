@@ -19,7 +19,7 @@ cd raftyui
 
 3. Set up all the dependencies and packages by running `pnpm install`. This command will install dependencies.
 
-> If you run into any issues during this step, kindly reach out to the Rafty UI team here: https://discord.gg/YtzxUfCk8c
+> If you run into any issues during this step, kindly reach out to the Rhinobase team here: https://discord.gg/YtzxUfCk8c
 
 ## Development
 
