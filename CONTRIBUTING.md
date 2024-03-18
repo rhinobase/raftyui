@@ -91,7 +91,7 @@ If you are interested in the detailed specification you can visit https://www.co
 
 All commits that fix bugs or add features need a test.
 
-> **Dear Chakra team:** Please do not merge code without tests
+> **Dear Rhinobase team:** Please do not merge code without tests
 
 ## Want to write a blog post or tutorial
 

@@ -95,7 +95,7 @@ Whether you're a beginner or an advanced Rafty UI user, joining our community is
 
 ### Contributing
 
-Feel like contributing? That's awesome! We have a [contributing guide](https://github.com/rhinobase/raftyui/blob/main/CONTRIBUTING.md) to help guide you.
+Feel like contributing? That's awesome! We have a [Contributing Guide](https://github.com/rhinobase/raftyui/blob/main/CONTRIBUTING.md) to help guide you.
 
 ### Join the community
 
