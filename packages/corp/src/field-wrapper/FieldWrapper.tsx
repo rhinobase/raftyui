@@ -1,4 +1,3 @@
-"use client";
 import { ErrorMessage } from "@hookform/error-message";
 import {
   FieldControl,
@@ -8,7 +7,6 @@ import {
   classNames,
 } from "@rafty/ui";
 import { Fragment, type PropsWithChildren, forwardRef } from "react";
-import { useFormContext } from "react-hook-form";
 
 export type FieldWrapper = FieldControl & {
   label?: string;
@@ -45,13 +43,8 @@ FieldWrapper.displayName = "FieldWrapper";
 type FieldErrorMessage = Pick<FieldWrapper, "name">;
 
 function FieldErrorMessage({ name }: FieldErrorMessage) {
-  const {
-    formState: { errors },
-  } = useFormContext();
-
   return (
     <ErrorMessage
-      errors={errors}
       name={name}
       render={({ message }) => <RaftyErrorMessage>{message}</RaftyErrorMessage>}
     />
