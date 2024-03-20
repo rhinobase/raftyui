@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.10](https://github.com/rhinobase/raftyui/compare/corp-0.1.9...corp-0.1.10) (2024-03-20)
+
+
+### Bug Fixes
+
+* **corp:** removed the unnecessary usage of form context from field wrapper ([208bd1f](https://github.com/rhinobase/raftyui/commit/208bd1fa21dbe7f16be102364580cff62eec0531))
+
 ## [0.1.9](https://github.com/rhinobase/raftyui/compare/corp-0.1.8...corp-0.1.9) (2024-03-15)
 
 
