@@ -7,7 +7,7 @@
       "legacyDecorator": true
     },
     "keepClassNames": true,
-    "externalHelpers": true,
+    "externalHelpers": false,
     "loose": true
   },
   "module": {

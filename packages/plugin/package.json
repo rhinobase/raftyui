@@ -27,7 +27,6 @@
   "type": "commonjs",
   "main": "./src/index.js",
   "dependencies": {
-    "@swc/helpers": "~0.5.2",
     "tailwindcss-animate": "1.0.7"
   },
   "peerDependencies": {
