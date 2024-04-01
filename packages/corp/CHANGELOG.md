@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.11](https://github.com/rhinobase/raftyui/compare/corp-0.1.10...corp-0.1.11) (2024-04-01)
+
+
+### Bug Fixes
+
+* **corp:** resolved unique key issue in timeline component ([c272680](https://github.com/rhinobase/raftyui/commit/c272680821192c5df2a933df0b25aa90246fa9c9))
+
 ## [0.1.10](https://github.com/rhinobase/raftyui/compare/corp-0.1.9...corp-0.1.10) (2024-03-20)
 
 
