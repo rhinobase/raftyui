@@ -41,9 +41,9 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
 
     const key = useId();
 
-    const components = validChildren.flatMap((child) => [
+    const components = validChildren.flatMap((child, index) => [
       child,
-      <Connector key={`${key}-connector`} />,
+      <Connector key={`${index}-${key}-connector`} />,
     ]);
 
     if (loading)
