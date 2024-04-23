@@ -1,6 +1,5 @@
-import { classNames } from "@rafty/ui";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Breadcrumbs } from "./Breadcrumbs";
+import { BreadcrumbDivider, BreadcrumbItem, Breadcrumbs } from "./Breadcrumbs";
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: "Corp / Breadcrumbs",
@@ -19,60 +18,43 @@ export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
-  render: ({ size }) => {
-    const onClick = (current: string) => {
-      console.log(current);
-    };
-
-    return (
-      <Breadcrumbs
-        onClick={onClick}
-        size={size}
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Application", href: "/" },
-          { label: "Menu", href: "/" },
-          { label: "Article" },
-        ]}
-      />
-    );
-  },
-};
-
-export const WithChildren: Story = {
   render: ({ size }) => (
-    <Breadcrumbs
-      size={size}
-      items={[
-        { label: "Home", href: "/" },
-        { label: "Application", href: "/" },
-        { label: "Menu", href: "/" },
-        { label: "Article", href: "/" },
-      ]}
-      separator=">"
-    >
-      {({ label, isLastElement }) => {
-        return (
-          <span className={classNames(isLastElement && "text-blue-500")}>
-            {label}
-          </span>
-        );
-      }}
+    <Breadcrumbs size={size}>
+      <a href="/">
+        <BreadcrumbItem>Home</BreadcrumbItem>
+      </a>
+      <BreadcrumbDivider />
+      <a href="/">
+        <BreadcrumbItem>Application</BreadcrumbItem>
+      </a>
+      <BreadcrumbDivider />
+      <a href="/">
+        <BreadcrumbItem>Menu</BreadcrumbItem>
+      </a>
+      <BreadcrumbDivider />
+      <BreadcrumbItem isActive>Article</BreadcrumbItem>
     </Breadcrumbs>
   ),
 };
 
-export const AsProps: Story = {
+export const WithChildren: Story = {
   render: ({ size }) => (
-    <Breadcrumbs
-      size={size}
-      as="button"
-      items={[
-        { label: "Home", href: "/" },
-        { label: "Application", href: "/" },
-        { label: "Menu", href: "/" },
-        { label: "Article" },
-      ]}
-    />
+    <Breadcrumbs size={size}>
+      <a href="/">
+        <BreadcrumbItem isUnstyled>Home</BreadcrumbItem>
+      </a>
+      <BreadcrumbDivider>{">"}</BreadcrumbDivider>
+      <a href="/">
+        <BreadcrumbItem isUnstyled>Application</BreadcrumbItem>
+      </a>
+      <BreadcrumbDivider>{">"}</BreadcrumbDivider>
+      <a href="/">
+        <BreadcrumbItem isUnstyled>Menu</BreadcrumbItem>
+      </a>
+      <BreadcrumbDivider>{">"}</BreadcrumbDivider>
+      <BreadcrumbItem className="text-blue-500" isUnstyled>
+        Article
+      </BreadcrumbItem>
+    </Breadcrumbs>
   ),
 };

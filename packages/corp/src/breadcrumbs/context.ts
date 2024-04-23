@@ -10,5 +10,4 @@ export const [BreadcrumbsProvider, useBreadcrumbsContext] =
 
 export type BreadcrumbsContext = {
   readonly size: "sm" | "md" | "lg";
-  readonly separator: ReactNode;
 };

@@ -1,14 +1,7 @@
 "use client";
-import { eventHandler } from "@rafty/shared";
 import { List, ListItem, buttonClasses, classNames } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import {
-  type ElementType,
-  Fragment,
-  type HTMLAttributes,
-  forwardRef,
-  useId,
-} from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import {
   type BreadcrumbsContext,
   BreadcrumbsProvider,
@@ -28,20 +21,21 @@ const breadcrumbClasses = cva("flex items-center", {
   },
 });
 
-const breadcrumbItemClasses = cva("rounded font-medium leading-tight", {
-  variants: {
-    size: {
-      sm: "px-1.5 py-0.5",
-      md: "py-1 px-2",
-      lg: "py-1.5 px-2.5",
-    },
-  },
-  defaultVariants: {
-    size: "md",
-  },
-});
+export type Breadcrumbs = HTMLAttributes<HTMLElement> &
+  Partial<BreadcrumbsContext>;
 
-const dividerClasses = cva(
+export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
+  ({ size = "md", children, ...props }, forwardedRef) => (
+    <BreadcrumbsProvider value={{ size }}>
+      <nav {...props} ref={forwardedRef}>
+        <List className={breadcrumbClasses({ size })}>{children}</List>
+      </nav>
+    </BreadcrumbsProvider>
+  ),
+);
+Breadcrumbs.displayName = "Breadcrumbs";
+
+export const dividerClasses = cva(
   "select-none font-medium opacity-50 dark:opacity-40",
   {
     variants: {
@@ -57,95 +51,66 @@ const dividerClasses = cva(
   },
 );
 
-type ItemType = {
-  label: string;
-  href?: string;
-};
+export type BreadcrumbDivider = HTMLAttributes<HTMLLIElement>;
 
-export type Breadcrumbs = Omit<
-  HTMLAttributes<HTMLElement>,
-  "children" | "onClick"
-> & {
-  as?: ElementType;
-  items: ItemType[];
-  onClick?: (value: string) => void;
-  children?: (props: ItemType & { isLastElement?: boolean }) => JSX.Element;
-} & Partial<BreadcrumbsContext>;
-
-export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
-  (
-    {
-      as = "a",
-      items,
-      size = "md",
-      separator = "/",
-      onClick,
-      children: Children,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const key = useId();
-
-    const handleSelect = (label: string) =>
-      eventHandler(() => onClick?.(label));
-
-    const components = items
-      .flatMap(({ label, href }, index) => {
-        // Is this the last element
-        const isLastElement = index === items.length - 1;
-
-        let BreadcrumbItem = as;
-        if (!href) BreadcrumbItem = "span";
-
-        const uniqueKey = `${index}-${key}`;
-
-        return [
-          <Fragment key={uniqueKey}>
-            {Children ? (
-              <Children
-                label={label}
-                href={href}
-                isLastElement={isLastElement}
-              />
-            ) : (
-              <ListItem>
-                <BreadcrumbItem
-                  href={href}
-                  className={classNames(
-                    buttonClasses({
-                      variant: "ghost",
-                      size,
-                      active: isLastElement,
-                      colorScheme: isLastElement ? "primary" : "secondary",
-                    }),
-                    breadcrumbItemClasses({ size }),
-                  )}
-                  onClick={handleSelect(label)}
-                  onKeyDown={handleSelect(label)}
-                >
-                  {label}
-                </BreadcrumbItem>
-              </ListItem>
-            )}
-          </Fragment>,
-          <Divider key={`divider-${uniqueKey}`} />,
-        ];
-      })
-      .slice(0, -1);
-
+export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
+  ({ children = "/", className, ...props }, forwardedRef) => {
+    const { size } = useBreadcrumbsContext();
     return (
-      <BreadcrumbsProvider value={{ size, separator }}>
-        <nav {...props} ref={forwardedRef}>
-          <List className={breadcrumbClasses({ size })}>{components}</List>
-        </nav>
-      </BreadcrumbsProvider>
+      <ListItem
+        {...props}
+        className={classNames(dividerClasses({ size }), className)}
+        ref={forwardedRef}
+      >
+        {children}
+      </ListItem>
     );
   },
 );
-Breadcrumbs.displayName = "Breadcrumbs";
+BreadcrumbDivider.displayName = "BreadcrumbDivider";
 
-function Divider() {
-  const { separator, size } = useBreadcrumbsContext();
-  return <ListItem className={dividerClasses({ size })}>{separator}</ListItem>;
-}
+export const breadcrumbItemClasses = cva("rounded font-medium leading-tight", {
+  variants: {
+    size: {
+      sm: "px-1.5 py-0.5",
+      md: "py-1 px-2",
+      lg: "py-1.5 px-2.5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export type BreadcrumbItem = HTMLAttributes<HTMLLIElement> & {
+  isUnstyled?: boolean;
+  isActive?: boolean;
+};
+
+export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
+  ({ className, isUnstyled, isActive, ...props }, forwardedRef) => {
+    const { size } = useBreadcrumbsContext();
+
+    return (
+      <ListItem
+        {...props}
+        className={
+          isUnstyled
+            ? className
+            : classNames(
+                buttonClasses({
+                  variant: "ghost",
+                  size,
+                  active: isActive,
+                  colorScheme: isActive ? "primary" : "secondary",
+                }),
+                breadcrumbItemClasses({ size }),
+                className,
+              )
+        }
+        ref={forwardedRef}
+      />
+    );
+  },
+);
+BreadcrumbItem.displayName = "BreadcrumbItem";
