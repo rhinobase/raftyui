@@ -1,6 +1,6 @@
 "use client";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { eventHandler } from "@rafty/shared";
+import { eventHandler } from "@rafty/ui";
 import {
   CommandItem,
   FieldControl,

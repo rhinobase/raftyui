@@ -1,9 +1,9 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { type TextareaHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 export const textareaClasses = cva(
   "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all",
@@ -85,11 +85,11 @@ export type Textarea = Omit<
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
-  isDisabled?: BooleanOrFunction;
-  isInvalid?: BooleanOrFunction;
-  isLoading?: BooleanOrFunction;
-  isReadOnly?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(

@@ -1,13 +1,13 @@
 import * as SliderPrimitive from "@radix-ui/react-slider";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import React, {
+import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import {
   type SliderContext,
   SliderProvider,
@@ -31,8 +31,8 @@ export const sliderClasses = cva(
 
 export type Slider = ComponentPropsWithoutRef<typeof SliderPrimitive.Root> &
   Partial<SliderContext> & {
-    isDisabled?: BooleanOrFunction;
-    isReadOnly?: BooleanOrFunction;
+    isDisabled?: ValueOrFunction;
+    isReadOnly?: ValueOrFunction;
   };
 
 export const Slider = forwardRef<

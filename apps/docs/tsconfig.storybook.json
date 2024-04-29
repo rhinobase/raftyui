@@ -4,8 +4,5 @@
     "jsx": "react-jsx",
     "emitDecoratorMetadata": true
   },
-  "include": [
-    ".storybook/*.{ts,tsx}",
-    "../../packages/{ui,corp,fibr}/src/**/*.stories.tsx"
-  ]
+  "include": [".storybook/*.{ts,tsx}", "../../packages/ui/src/**/*.stories.tsx"]
 }

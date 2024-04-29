@@ -1,12 +1,12 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { type LabelHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 // Label Component
 export type Label = LabelHTMLAttributes<HTMLLabelElement> & {
-  isRequired?: BooleanOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const Label = forwardRef<HTMLLabelElement, Label>(

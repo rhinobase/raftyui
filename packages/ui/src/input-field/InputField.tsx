@@ -1,10 +1,10 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { type InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { useInputGroupContext } from "../input-group";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 export const inputFieldClasses = cva(
   "w-full z-[1] border appearance-none outline-none dark:text-secondary-200 transition-all",
@@ -191,11 +191,11 @@ export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isUnstyled?: boolean;
-  isDisabled?: BooleanOrFunction;
-  isInvalid?: BooleanOrFunction;
-  isLoading?: BooleanOrFunction;
-  isReadOnly?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(

@@ -1,7 +1,6 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -10,7 +9,8 @@ import {
   forwardRef,
 } from "react";
 import { Button } from "../button";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import {
   type DialogContext,
   DialogProvider,
@@ -152,7 +152,7 @@ export type DialogContent = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > & {
   isUnstyled?: boolean;
-  showCloseButton?: BooleanOrFunction;
+  showCloseButton?: ValueOrFunction;
 };
 
 export const DialogContent = forwardRef<

@@ -1,6 +1,5 @@
 "use client";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -9,7 +8,8 @@ import {
 } from "react";
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 export const switchClasses = cva(
   "focus-visible:ring-ring focus-visible:ring-offset-background data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600 peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
@@ -67,9 +67,9 @@ export type Switch = Omit<
   "value" | "disabled" | "required"
 > & {
   size?: "sm" | "md" | "lg";
-  isReadOnly?: BooleanOrFunction;
-  isDisabled?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const Switch = forwardRef<

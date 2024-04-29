@@ -1,9 +1,9 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { eventHandler } from "@rafty/shared";
 import { useReducer } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
+import { eventHandler } from "../utils";
 
 enum ACTION {
   ADD = 0,

@@ -1,13 +1,13 @@
 "use client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { DayPicker } from "react-day-picker";
 import { buttonClasses } from "../button";
 import { Select } from "../select";
-import { classNames as cn } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames as cn, getValue } from "../utils";
 
 export type Calendar = React.ComponentProps<typeof DayPicker> & {
-  fullScreen?: BooleanOrFunction;
+  fullScreen?: ValueOrFunction;
 };
 
 const YEAR_OFFSET = 50;

@@ -1,6 +1,6 @@
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { type SVGAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 const DIMENSIONS = {
   sm: "18px",
@@ -11,7 +11,7 @@ const DIMENSIONS = {
 // Spinner Component
 export type Spinner = SVGAttributes<SVGSVGElement> & {
   size?: keyof typeof DIMENSIONS;
-  inheritParent?: BooleanOrFunction;
+  inheritParent?: ValueOrFunction;
 };
 
 export const Spinner = forwardRef<SVGSVGElement, Spinner>(

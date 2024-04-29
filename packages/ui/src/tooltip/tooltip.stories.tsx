@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Tooltip>;
 export const Default: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <Button size="fab">
           <PlusIcon className="size-6" />
         </Button>

@@ -1,6 +1,5 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type OptgroupHTMLAttributes,
@@ -9,7 +8,8 @@ import {
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import {
   type SelectContext,
   SelectProvider,
@@ -99,9 +99,9 @@ export type Select = Omit<
 > & {
   variant?: "solid" | "outline" | "ghost";
   isUnstyled?: boolean;
-  isDisabled?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
-  isReadOnly?: BooleanOrFunction;
+  isDisabled?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
   placeholder?: string;
 } & Partial<SelectContext>;
 

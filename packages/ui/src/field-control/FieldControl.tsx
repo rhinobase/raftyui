@@ -1,8 +1,8 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import { type FieldControlContext, FieldControlProvider } from "./context";
 
 // Field Control Component
@@ -22,11 +22,11 @@ export const fieldControlClasses = cva("flex w-full", {
 export type FieldControl = HTMLAttributes<HTMLDivElement> &
   Partial<Pick<FieldControlContext, "orientation">> &
   Pick<FieldControlContext, "name"> & {
-    isRequired?: BooleanOrFunction;
-    isDisabled?: BooleanOrFunction;
-    isReadOnly?: BooleanOrFunction;
-    isInvalid?: BooleanOrFunction;
-    isLoading?: BooleanOrFunction;
+    isRequired?: ValueOrFunction;
+    isDisabled?: ValueOrFunction;
+    isReadOnly?: ValueOrFunction;
+    isInvalid?: ValueOrFunction;
+    isLoading?: ValueOrFunction;
   };
 
 export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(

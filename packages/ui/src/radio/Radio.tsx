@@ -1,6 +1,5 @@
 "use client";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -9,7 +8,8 @@ import {
 } from "react";
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import {
   type RadioGroupContext,
   RadioGroupProvider,
@@ -39,8 +39,8 @@ export type RadioGroup = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
 > &
   Partial<RadioGroupContext> & {
-    isRequired?: BooleanOrFunction;
-    isReadOnly?: BooleanOrFunction;
+    isRequired?: ValueOrFunction;
+    isReadOnly?: ValueOrFunction;
   };
 
 export const RadioGroup = forwardRef<

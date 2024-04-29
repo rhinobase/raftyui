@@ -1,7 +1,6 @@
 "use client";
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -10,7 +9,8 @@ import {
 } from "react";
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label/Label";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 // Checkbox Component
 
@@ -69,9 +69,9 @@ export type Checkbox = ComponentPropsWithoutRef<
   typeof CheckboxPrimitive.Root
 > & {
   size?: "sm" | "md" | "lg";
-  isReadOnly?: BooleanOrFunction;
-  isDisabled?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const Checkbox = forwardRef<

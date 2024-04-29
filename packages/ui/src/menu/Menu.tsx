@@ -1,7 +1,6 @@
 "use client";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -9,7 +8,8 @@ import {
   forwardRef,
 } from "react";
 import { Button } from "../button";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import { type MenuContext, MenuProvider, useMenuContext } from "./context";
 
 // Menu Component
@@ -197,7 +197,7 @@ export type MenuContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.Content
 > & {
   isUnstyled?: boolean;
-  isArrow?: BooleanOrFunction;
+  isArrow?: ValueOrFunction;
   arrowClassNames?: string;
 };
 

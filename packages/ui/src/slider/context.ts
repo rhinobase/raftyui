@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { createContext } from "../utils";
 
 export const [SliderProvider, useSliderContext] = createContext<SliderContext>({
   name: "SliderContext",

@@ -4,10 +4,10 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import type { HTMLAttributes } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 // Toast Component
 export const toastClasses = cva(
@@ -36,7 +36,7 @@ export type Toast = Pick<HTMLAttributes<HTMLDivElement>, "className"> & {
   title: string;
   message?: string;
   severity: "error" | "warning" | "info" | "success";
-  visible?: BooleanOrFunction;
+  visible?: ValueOrFunction;
 };
 
 export function Toast({ className, severity, visible, title, message }: Toast) {

@@ -1,13 +1,13 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
 import { Button } from "../button";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import {
   type PopoverContext,
   PopoverProvider,
@@ -92,7 +92,7 @@ export type PopoverContent = ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
 > & {
   isUnstyled?: boolean;
-  showArrow?: BooleanOrFunction;
+  showArrow?: ValueOrFunction;
   arrowClassName?: string;
 };
 

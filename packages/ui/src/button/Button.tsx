@@ -1,4 +1,3 @@
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -7,7 +6,8 @@ import {
   forwardRef,
 } from "react";
 import { Spinner } from "../spinner";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 export const buttonClasses = cva(
   "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none outline-none",
@@ -459,9 +459,9 @@ export type Button<T extends ElementType = "button"> =
     colorScheme?: "primary" | "secondary" | "error" | "success";
     variant?: "solid" | "outline" | "ghost";
     size?: "sm" | "md" | "lg" | "icon" | "fab";
-    isLoading?: BooleanOrFunction;
-    isActive?: BooleanOrFunction;
-    isDisabled?: BooleanOrFunction;
+    isLoading?: ValueOrFunction;
+    isActive?: ValueOrFunction;
+    isDisabled?: ValueOrFunction;
   };
 
 export const Button = forwardRef<ElementRef<"button">, Button>(

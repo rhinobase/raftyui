@@ -1,11 +1,11 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 // TooltipProvider Component
 const TooltipProvider = TooltipPrimitive.Provider;
@@ -36,7 +36,7 @@ TooltipTrigger.displayName = "TooltipTrigger";
 // TooltipContent Component
 export type TooltipContent = ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Content
-> & { isArrow?: BooleanOrFunction; hasAnimation?: BooleanOrFunction };
+> & { isArrow?: ValueOrFunction; hasAnimation?: ValueOrFunction };
 
 export const TooltipContent = forwardRef<
   ElementRef<typeof TooltipPrimitive.Content>,

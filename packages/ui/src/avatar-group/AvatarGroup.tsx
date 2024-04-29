@@ -1,8 +1,7 @@
 "use client";
-import { getValidChildren } from "@rafty/shared";
 import { type HTMLAttributes, cloneElement, forwardRef, useId } from "react";
 import { Avatar } from "../avatar/Avatar";
-import { classNames } from "../utils";
+import { classNames, getValidChildren } from "../utils";
 import { type AvatarGroupContext, AvatarGroupProvider } from "./context";
 import { calculateWidth } from "./utils";
 

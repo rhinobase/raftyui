@@ -1,13 +1,14 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
+import type { ValueOrFunction } from "../types";
+import { getValue } from "../utils";
 import { classNames } from "../utils";
 import {
   type AccordionContext,
@@ -105,7 +106,7 @@ export type AccordionTrigger = ComponentPropsWithoutRef<
   openIcon?: JSX.Element;
   closeIcon?: JSX.Element;
   isUnstyled?: boolean;
-  showIcon?: BooleanOrFunction;
+  showIcon?: ValueOrFunction;
 };
 
 export const AccordionTrigger = forwardRef<

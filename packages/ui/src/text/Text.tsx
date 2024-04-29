@@ -1,10 +1,10 @@
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 // Text Component
 export type Text = HTMLAttributes<HTMLParagraphElement> & {
-  isMuted?: BooleanOrFunction;
+  isMuted?: ValueOrFunction;
 };
 
 export const Text = forwardRef<HTMLParagraphElement, Text>(
