@@ -1,10 +1,6 @@
 {
   "scopes": [
     {
-      "value": "web",
-      "name": "web:                 anything Website specific"
-    },
-    {
       "value": "ui",
       "name": "ui:                  anything UI specific"
     },
@@ -13,20 +9,12 @@
       "name": "plugin:              anything Plugin specific"
     },
     {
-      "value": "corp",
-      "name": "corp:                anything Corp specific"
-    },
-    {
       "value": "storybook",
       "name": "storybook:           anything Storybook specific"
     },
     {
       "value": "examples",
       "name": "examples:            anything Examples specific"
-    },
-    {
-      "value": "shared",
-      "name": "shared:              anything Shared package specific"
     },
     {
       "value": "icons",

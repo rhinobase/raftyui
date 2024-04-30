@@ -1,4 +1,0 @@
-User-Agent: *
-Allow: /
-Allow: /api/og/*
-Sitemap: https://rafty.rhinobase.io/sitemap.xml
