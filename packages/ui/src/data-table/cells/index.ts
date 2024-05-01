@@ -1,15 +1,5 @@
-import { BooleanCell } from "./BooleanCell";
-import { ClipboardCell } from "./ClipboardCell";
-import { DateCell } from "./DateCell";
-import { DatetimeCell } from "./DatetimeCell";
-import { Default } from "./Default";
-import { SecretCell } from "./SecretCell";
-
-export const withCells = {
-  default: Default,
-  boolean: BooleanCell,
-  date: DateCell,
-  datetime: DatetimeCell,
-  secret: SecretCell,
-  clipboard: ClipboardCell,
-};
+export { BooleanCell } from "./BooleanCell";
+export { CellWrapper } from "./CellWrapper";
+export { ClipboardCell } from "./ClipboardCell";
+export { DateCell } from "./DateCell";
+export { DatetimeCell } from "./DatetimeCell";

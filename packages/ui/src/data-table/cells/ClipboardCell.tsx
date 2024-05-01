@@ -1,27 +1,22 @@
-import { useThread } from "@fibr/react";
-import type { CellContext } from "@tanstack/react-table";
 import { eventHandler } from "../../utils";
 import { CellWrapper } from "./CellWrapper";
 
-export function ClipboardCell() {
-  const { cell } = useThread<{
-    cell: CellContext<unknown, unknown>;
-  }>();
-  const value = cell.getValue();
+export type ClipboardCell = {
+  value: string;
+};
 
-  const handleClick = eventHandler(() =>
-    navigator.clipboard.writeText(value as string),
-  );
+export function ClipboardCell({ value }: ClipboardCell) {
+  const handleClick = eventHandler(() => navigator.clipboard.writeText(value));
 
   return (
-    <CellWrapper>
+    <CellWrapper value={value}>
       <div
         className="cursor-pointer"
         onClick={handleClick}
         onKeyDown={handleClick}
         title="Copied"
       >
-        {String(value)}
+        {value}
       </div>
     </CellWrapper>
   );

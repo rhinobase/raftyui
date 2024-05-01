@@ -1,18 +1,16 @@
-import { useThread } from "@fibr/react";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import type { CellContext } from "@tanstack/react-table";
 import { classNames } from "../../utils";
 import { CellWrapper } from "./CellWrapper";
 
-export function BooleanCell() {
-  const { cell } = useThread<{
-    cell: CellContext<unknown, unknown>;
-  }>();
-  const value = Boolean(cell.getValue());
+export type BooleanCell = {
+  value?: boolean;
+};
+
+export function BooleanCell({ value }: BooleanCell) {
   const Icon = value ? CheckIcon : XMarkIcon;
 
   return (
-    <CellWrapper>
+    <CellWrapper value={value}>
       <Icon
         height={16}
         width={16}

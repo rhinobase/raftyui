@@ -1,3 +1,4 @@
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
@@ -6,6 +7,7 @@ import {
 } from "@tanstack/react-query";
 import type { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
+import { classNames, eventHandler } from "../utils";
 import { type ColumnType, DataTable } from "./DataTable";
 
 const meta: Meta<typeof DataTable> = {
@@ -33,41 +35,76 @@ type DataType = {
   launch_date_local: Date;
 };
 
-const COLUMNS: ColumnType[] = [
+const COLUMNS: ColumnType<unknown>[] = [
   {
-    name: "flight_number",
-    label: "Id",
+    id: "flight_number",
+    header: "Id",
   },
   {
-    name: "mission_name",
-    label: "Name",
+    id: "mission_name",
+    header: "Name",
   },
   {
-    name: "launch_year",
-    label: "Launch Year",
+    id: "launch_year",
+    header: "Launch Year",
     enableSorting: false,
   },
   {
-    name: "rocket.rocket_name",
-    label: "Rocket",
-    type: "clipboard",
+    id: "rocket.rocket_name",
+    header: "Rocket",
+    cell: ({ cell }) => {
+      const value = cell.getValue();
+
+      const handleClick = eventHandler(() =>
+        navigator.clipboard.writeText(value as string),
+      );
+
+      return (
+        <div
+          className="cursor-pointer"
+          onClick={handleClick}
+          onKeyDown={handleClick}
+          title="Copied"
+        >
+          {String(value)}
+        </div>
+      );
+    },
     enableResizing: false,
   },
   {
-    name: "launch_site.site_name",
-    label: "Site",
+    id: "launch_site.site_name",
+    header: "Site",
     enableResizing: false,
     enableSorting: false,
   },
   {
-    name: "launch_success",
-    label: "Launch Success",
-    type: "boolean",
+    id: "launch_success",
+    header: "Launch Success",
+    cell: ({ cell }) => {
+      const value = Boolean(cell.getValue());
+      const Icon = value ? CheckIcon : XMarkIcon;
+
+      return (
+        <Icon
+          height={16}
+          width={16}
+          className={classNames(
+            value ? "text-green-500" : "opacity-40",
+            "mx-auto stroke-[3]",
+          )}
+        />
+      );
+    },
   },
   {
-    name: "launch_date_local",
-    label: "Launch Date",
-    type: "date",
+    id: "launch_date_local",
+    header: "Launch Date",
+    cell: ({ cell }) => {
+      const value = cell.getValue();
+
+      return <p>{new Date(value as string).toLocaleDateString()}</p>;
+    },
   },
 ];
 

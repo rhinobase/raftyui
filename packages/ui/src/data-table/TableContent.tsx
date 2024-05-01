@@ -3,18 +3,12 @@ import { TableBody, Td, Tr } from "../table";
 import { classNames } from "../utils";
 import { Loading } from "./utils";
 
-/**
- * Represents the content of a table with error handling and loading states.
- */
-type TableContent<T> = {
+export type TableContent<T> = {
   table: Table<T>;
   isLoading: boolean;
   colSpan: number;
 };
 
-/**
- * TableContent component displays the table rows with optional loading or error states.
- */
 export function TableContent<T>({
   table,
   isLoading,
@@ -48,7 +42,6 @@ export function TableContent<T>({
                       width: cell.column.getSize(),
                     }}
                   >
-                    {/* Render cell content using flexRender */}
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </Td>
                 );

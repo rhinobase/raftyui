@@ -1,16 +1,13 @@
-import { useThread } from "@fibr/react";
-import type { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
 
-export function DateCell() {
-  const { cell } = useThread<{
-    cell: CellContext<unknown, unknown>;
-  }>();
-  const value = cell.getValue();
+export type DateCell = {
+  value: string;
+};
 
+export function DateCell({ value }: DateCell) {
   return (
-    <CellWrapper>
-      <p>{new Date(value as string).toLocaleDateString()}</p>
+    <CellWrapper value={value}>
+      <p>{new Date(value).toLocaleDateString()}</p>
     </CellWrapper>
   );
 }
