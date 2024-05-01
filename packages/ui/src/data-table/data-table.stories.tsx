@@ -37,20 +37,20 @@ type DataType = {
 
 const COLUMNS: ColumnType<unknown>[] = [
   {
-    id: "flight_number",
+    accessorKey: "flight_number",
     header: "Id",
   },
   {
-    id: "mission_name",
+    accessorKey: "mission_name",
     header: "Name",
   },
   {
-    id: "launch_year",
+    accessorKey: "launch_year",
     header: "Launch Year",
     enableSorting: false,
   },
   {
-    id: "rocket.rocket_name",
+    accessorKey: "rocket.rocket_name",
     header: "Rocket",
     cell: ({ cell }) => {
       const value = cell.getValue();
@@ -73,13 +73,13 @@ const COLUMNS: ColumnType<unknown>[] = [
     enableResizing: false,
   },
   {
-    id: "launch_site.site_name",
+    accessorKey: "launch_site.site_name",
     header: "Site",
     enableResizing: false,
     enableSorting: false,
   },
   {
-    id: "launch_success",
+    accessorKey: "launch_success",
     header: "Launch Success",
     cell: ({ cell }) => {
       const value = Boolean(cell.getValue());
@@ -98,7 +98,7 @@ const COLUMNS: ColumnType<unknown>[] = [
     },
   },
   {
-    id: "launch_date_local",
+    accessorKey: "launch_date_local",
     header: "Launch Date",
     cell: ({ cell }) => {
       const value = cell.getValue();
