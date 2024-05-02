@@ -1,3 +1,4 @@
+"use client";
 import type { CellContext } from "@tanstack/react-table";
 import { eventHandler } from "../../utils";
 import { CellWrapper } from "./CellWrapper";
