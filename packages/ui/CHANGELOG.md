@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.0](https://github.com/rhinobase/raftyui/compare/ui-1.4.16...ui-1.5.0) (2024-05-02)
+
+
+### Bug Fixes
+
+* **ui:** improved DataTable api ([33432c7](https://github.com/rhinobase/raftyui/commit/33432c7f1fbe3ba34e708b43a8ee0aa9ea540ef8))
+
 ## [1.4.16](https://github.com/rhinobase/raftyui/compare/ui-1.4.15...ui-1.4.16) (2024-03-15)
 
 
