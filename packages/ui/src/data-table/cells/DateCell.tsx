@@ -1,10 +1,11 @@
+import type { CellContext } from "@tanstack/react-table";
 import { CellWrapper } from "./CellWrapper";
 
-export type DateCell = {
-  value: string;
-};
+export function DateCell<T = unknown, U = unknown>({
+  cell,
+}: CellContext<T, U>) {
+  const value = String(cell.getValue());
 
-export function DateCell({ value }: DateCell) {
   return (
     <CellWrapper value={value}>
       <p>{new Date(value).toLocaleDateString()}</p>

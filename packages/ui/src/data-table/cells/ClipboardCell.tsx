@@ -1,11 +1,12 @@
+import type { CellContext } from "@tanstack/react-table";
 import { eventHandler } from "../../utils";
 import { CellWrapper } from "./CellWrapper";
 
-export type ClipboardCell = {
-  value: string;
-};
+export function ClipboardCell<T = unknown, U = unknown>({
+  cell,
+}: CellContext<T, U>) {
+  const value = String(cell.getValue());
 
-export function ClipboardCell({ value }: ClipboardCell) {
   const handleClick = eventHandler(() => navigator.clipboard.writeText(value));
 
   return (

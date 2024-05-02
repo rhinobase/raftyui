@@ -6,9 +6,8 @@ import {
 } from "@tanstack/react-query";
 import type { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
-import { eventHandler } from "../utils";
 import { type ColumnType, DataTable } from "./DataTable";
-import { BooleanCell } from "./cells";
+import { BooleanCell, ClipboardCell, DateCell } from "./cells";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -52,24 +51,7 @@ const COLUMNS: ColumnType<unknown>[] = [
   {
     accessorKey: "rocket.rocket_name",
     header: "Rocket",
-    cell: ({ cell }) => {
-      const value = cell.getValue();
-
-      const handleClick = eventHandler(() =>
-        navigator.clipboard.writeText(value as string),
-      );
-
-      return (
-        <div
-          className="cursor-pointer"
-          onClick={handleClick}
-          onKeyDown={handleClick}
-          title="Copied"
-        >
-          {String(value)}
-        </div>
-      );
-    },
+    cell: ClipboardCell,
     enableResizing: false,
   },
   {
@@ -86,11 +68,7 @@ const COLUMNS: ColumnType<unknown>[] = [
   {
     accessorKey: "launch_date_local",
     header: "Launch Date",
-    cell: ({ cell }) => {
-      const value = cell.getValue();
-
-      return <p>{new Date(value as string).toLocaleDateString()}</p>;
-    },
+    cell: DateCell,
   },
 ];
 
