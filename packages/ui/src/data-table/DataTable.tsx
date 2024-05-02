@@ -2,6 +2,7 @@
 import {
   type ColumnDef,
   type ColumnSizingState,
+  type OnChangeFn,
   type RowSelectionState,
   type SortingState,
   getCoreRowModel,
@@ -28,8 +29,9 @@ export type DataTable<T> = {
   size?: "sm" | "md" | "lg";
   onSortingChange?: (value: SortingState) => void;
   onColumnSizingChange?: (value: ColumnSizingState) => void;
-  onRowSelectionChange?: (value: RowSelectionState) => void;
+  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
   notFoundMessage?: ReactNode;
+  rowSelection: RowSelectionState;
 };
 
 export function DataTable<T>({
@@ -41,6 +43,8 @@ export function DataTable<T>({
   enableColumnResizing = false,
   size = "md",
   notFoundMessage = "No data found",
+  onRowSelectionChange,
+  rowSelection,
   ...props
 }: DataTable<T>) {
   // State for sorting
@@ -64,9 +68,11 @@ export function DataTable<T>({
     columnResizeMode: "onChange",
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    onRowSelectionChange,
     state: {
       sorting,
       columnSizing,
+      rowSelection,
     },
     onSortingChange,
     onColumnSizingChange,

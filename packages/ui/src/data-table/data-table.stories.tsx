@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-query";
 import type { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
+import { Checkbox } from "../checkbox";
 import { type ColumnType, DataTable } from "./DataTable";
 import { BooleanCell, ClipboardCell, DateCell } from "./cells";
 
@@ -35,6 +36,25 @@ type DataType = {
 };
 
 const COLUMNS: ColumnType<unknown>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllRowsSelected() ||
+          (table.getIsSomeRowsSelected() ? "indeterminate" : false)
+        }
+        onCheckedChange={() => table.toggleAllRowsSelected()}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={() => row.toggleSelected()}
+      />
+    ),
+    size: 40,
+  },
   {
     accessorKey: "flight_number",
     header: "Id",
@@ -75,6 +95,7 @@ const COLUMNS: ColumnType<unknown>[] = [
 function TableComponent() {
   const limit = 10;
   const offset = 0;
+  const [rowsSelected, setRowsSelected] = useState<Record<string, boolean>>({});
 
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -95,6 +116,8 @@ function TableComponent() {
     if (isError) throw error;
   }, [isError, error]);
 
+  console.log(rowsSelected);
+
   return (
     <DataTable
       data={data}
@@ -104,6 +127,8 @@ function TableComponent() {
       enableColumnResizing
       onSortingChange={setSorting}
       isFetching={isFetching}
+      onRowSelectionChange={setRowsSelected}
+      rowSelection={rowsSelected}
     />
   );
 }
