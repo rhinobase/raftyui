@@ -116,8 +116,6 @@ function TableComponent() {
     if (isError) throw error;
   }, [isError, error]);
 
-  console.log(rowsSelected);
-
   return (
     <DataTable
       data={data}

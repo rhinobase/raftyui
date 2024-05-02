@@ -31,7 +31,7 @@ export type DataTable<T> = {
   onColumnSizingChange?: (value: ColumnSizingState) => void;
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
   notFoundMessage?: ReactNode;
-  rowSelection: RowSelectionState;
+  rowSelection?: RowSelectionState;
 };
 
 export function DataTable<T>({
@@ -44,7 +44,7 @@ export function DataTable<T>({
   size = "md",
   notFoundMessage = "No data found",
   onRowSelectionChange,
-  rowSelection,
+  rowSelection = {},
   ...props
 }: DataTable<T>) {
   // State for sorting
