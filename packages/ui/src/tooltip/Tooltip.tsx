@@ -6,15 +6,26 @@ import {
 } from "react";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
-
-// TooltipProvider Component
-const TooltipProvider = TooltipPrimitive.Provider;
+import {
+  type TooltipContext,
+  TooltipProvider,
+  useTooltipContext,
+} from "./context";
 
 // Tooltip Component
-export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>;
+export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> &
+  Partial<TooltipContext>;
 
-export const Tooltip = ({ children, ...props }: Tooltip) => (
-  <TooltipProvider>
+export const Tooltip = ({
+  children,
+  isDisabled = false,
+  ...props
+}: Tooltip) => (
+  <TooltipProvider
+    value={{
+      isDisabled,
+    }}
+  >
     <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
   </TooltipProvider>
 );
@@ -28,9 +39,18 @@ export type TooltipTrigger = ComponentPropsWithoutRef<
 export const TooltipTrigger = forwardRef<
   ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
->((props, forwardedRef) => (
-  <TooltipPrimitive.Trigger {...props} ref={forwardedRef} />
-));
+>(({ disabled = false, ...props }, forwardedRef) => {
+  const { isDisabled: isParentDisabled } = useTooltipContext();
+  const isDisabled = isParentDisabled || disabled;
+
+  return (
+    <TooltipPrimitive.Trigger
+      {...props}
+      disabled={isDisabled}
+      ref={forwardedRef}
+    />
+  );
+});
 TooltipTrigger.displayName = "TooltipTrigger";
 
 // TooltipContent Component
@@ -48,6 +68,9 @@ export const TooltipContent = forwardRef<
   ) => {
     const _isArrow = getValue(isArrow) ?? true;
     const _hasAnimation = getValue(hasAnimation) ?? true;
+    const { isDisabled } = useTooltipContext();
+
+    if (isDisabled) return;
 
     return (
       <TooltipPrimitive.Content

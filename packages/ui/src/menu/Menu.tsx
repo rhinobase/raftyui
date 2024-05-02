@@ -20,9 +20,10 @@ export const Menu = ({
   children,
   size = "md",
   isUnstyled = false,
+  isDisabled = false,
   ...props
 }: Menu) => (
-  <MenuProvider value={{ size, isUnstyled }}>
+  <MenuProvider value={{ size, isUnstyled, isDisabled }}>
     <DropdownMenu.Root {...props}>{children}</DropdownMenu.Root>
   </MenuProvider>
 );
@@ -42,78 +43,93 @@ export const menuTriggerClasses = cva("", {
       outline: "",
       ghost: "",
     },
+    disabled: {
+      true: "",
+      false: "",
+    },
   },
   compoundVariants: [
     {
       colorScheme: "primary",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-primary-600 dark:data-[state=open]:bg-primary-400/80",
     },
     {
       colorScheme: "secondary",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-secondary-300 dark:data-[state=open]:bg-secondary-400/80",
     },
     {
       colorScheme: "error",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-error-600/90 dark:data-[state=open]:bg-error-400/80",
     },
     {
       colorScheme: "success",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-success-600/90 dark:data-[state=open]:bg-success-400/80",
     },
-
     {
       colorScheme: "primary",
       variant: "outline",
+      disabled: false,
       className:
         "data-[state=open]:bg-primary-200/70 dark:data-[state=open]:bg-primary-400/20",
     },
     {
       colorScheme: "secondary",
       variant: "outline",
+      disabled: false,
       className:
         "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-700/80",
     },
     {
       colorScheme: "error",
       variant: "outline",
+      disabled: false,
       className:
         "data-[state=open]:bg-error-200/60 dark:data-[state=open]:bg-error-300/30",
     },
     {
       colorScheme: "success",
       variant: "outline",
+      disabled: false,
       className:
         "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
     },
     {
       colorScheme: "primary",
       variant: "ghost",
+      disabled: false,
       className:
         "data-[state=open]:bg-primary-200/70 dark:data-[state=open]:bg-primary-400/20",
     },
     {
       colorScheme: "secondary",
       variant: "ghost",
+      disabled: false,
       className:
         "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-700/80",
     },
     {
       colorScheme: "error",
       variant: "ghost",
+      disabled: false,
       className:
         "data-[state=open]:bg-error-200/60 dark:data-[state=open]:bg-error-300/30",
     },
     {
       colorScheme: "success",
       variant: "ghost",
+      disabled: false,
       className:
         "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
     },
@@ -147,17 +163,25 @@ export const MenuTrigger = forwardRef<
     },
     forwardedRef,
   ) => {
-    const { size: parentSize, isUnstyled: isParentUnstyled } = useMenuContext();
+    const {
+      size: parentSize,
+      isUnstyled: isParentUnstyled,
+      isDisabled: isParentDisabled,
+    } = useMenuContext();
     const unstyle = isParentUnstyled || isUnstyled;
     const triggerSize = size || parentSize;
+    const disabled = isParentDisabled || isDisabled;
+
     const buttonProps = {
       variant,
       colorScheme,
       leftIcon,
       rightIcon,
       isActive,
-      isDisabled,
       isLoading,
+      size: triggerSize,
+      isDisabled: disabled,
+      isUnstyled: unstyle,
     };
 
     return (
@@ -171,13 +195,15 @@ export const MenuTrigger = forwardRef<
           children
         ) : (
           <Button
-            size={triggerSize}
-            isUnstyled={unstyle}
             className={
               unstyle
                 ? className
                 : classNames(
-                    menuTriggerClasses({ colorScheme, variant }),
+                    menuTriggerClasses({
+                      colorScheme,
+                      variant,
+                      disabled: getValue(disabled),
+                    }),
                     className,
                   )
             }
@@ -216,9 +242,11 @@ export const MenuContent = forwardRef<
     },
     forwardedRef,
   ) => {
-    const { isUnstyled: isParentUnstyled } = useMenuContext();
+    const { isUnstyled: isParentUnstyled, isDisabled } = useMenuContext();
     const unstyle = isParentUnstyled || isUnstyled;
     const arrow = getValue(isArrow) ?? true;
+
+    if (isDisabled) return undefined;
 
     return (
       <DropdownMenu.Portal>
