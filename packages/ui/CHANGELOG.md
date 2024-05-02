@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.1](https://github.com/rhinobase/raftyui/compare/ui-1.5.0...ui-1.5.1) (2024-05-02)
+
+
+### Features
+
+* **ui:** added disable prop to menu, menubar and tooltip ([9090723](https://github.com/rhinobase/raftyui/commit/90907236988f55a266cb194caf5a70e7bb9e9247))
+
 ## [1.5.0](https://github.com/rhinobase/raftyui/compare/ui-1.4.16...ui-1.5.0) (2024-05-02)
 
 
