@@ -1,12 +1,12 @@
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import type { CellContext } from "@tanstack/react-table";
 import { classNames } from "../../utils";
 import { CellWrapper } from "./CellWrapper";
 
-export type BooleanCell = {
-  value?: boolean;
-};
-
-export function BooleanCell({ value }: BooleanCell) {
+export function BooleanCell<T = unknown, U = unknown>({
+  cell,
+}: CellContext<T, U>) {
+  const value = Boolean(cell.getValue());
   const Icon = value ? CheckIcon : XMarkIcon;
 
   return (

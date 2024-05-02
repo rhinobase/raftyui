@@ -1,4 +1,3 @@
-import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
@@ -7,8 +6,9 @@ import {
 } from "@tanstack/react-query";
 import type { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
-import { classNames, eventHandler } from "../utils";
+import { eventHandler } from "../utils";
 import { type ColumnType, DataTable } from "./DataTable";
+import { BooleanCell } from "./cells";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -81,21 +81,7 @@ const COLUMNS: ColumnType<unknown>[] = [
   {
     accessorKey: "launch_success",
     header: "Launch Success",
-    cell: ({ cell }) => {
-      const value = Boolean(cell.getValue());
-      const Icon = value ? CheckIcon : XMarkIcon;
-
-      return (
-        <Icon
-          height={16}
-          width={16}
-          className={classNames(
-            value ? "text-green-500" : "opacity-40",
-            "mx-auto stroke-[3]",
-          )}
-        />
-      );
-    },
+    cell: BooleanCell,
   },
   {
     accessorKey: "launch_date_local",
