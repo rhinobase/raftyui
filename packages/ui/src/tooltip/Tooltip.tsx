@@ -12,7 +12,6 @@ import {
   useTooltipContext,
 } from "./context";
 
-// Tooltip Component
 export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> &
   Partial<TooltipContext>;
 
@@ -26,7 +25,9 @@ export const Tooltip = ({
       isDisabled,
     }}
   >
-    <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+    <TooltipPrimitive.Provider>
+      <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   </TooltipProvider>
 );
 Tooltip.displayName = "Tooltip";

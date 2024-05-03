@@ -1,2 +1,2 @@
-export { Stepper } from "./Stepper";
+export { Stepper, type StepType } from "./Stepper";
 export { useStepperContext } from "./context";
