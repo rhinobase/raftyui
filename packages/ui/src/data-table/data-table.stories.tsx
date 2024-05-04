@@ -8,7 +8,6 @@ import type { SortingState } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
 import { Checkbox } from "../checkbox";
 import { type ColumnType, DataTable } from "./DataTable";
-import { BooleanCell, ClipboardCell, DateCell } from "./cells";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
@@ -71,7 +70,6 @@ const COLUMNS: ColumnType<unknown>[] = [
   {
     accessorKey: "rocket.rocket_name",
     header: "Rocket",
-    cell: ClipboardCell,
     enableResizing: false,
   },
   {
@@ -83,12 +81,10 @@ const COLUMNS: ColumnType<unknown>[] = [
   {
     accessorKey: "launch_success",
     header: "Launch Success",
-    cell: BooleanCell,
   },
   {
     accessorKey: "launch_date_local",
     header: "Launch Date",
-    cell: DateCell,
   },
 ];
 
