@@ -28,9 +28,7 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
 
     // Removing the value as it already exist
     if (isSelected) {
-      const tmp = [...prev];
-      tmp.splice(valueIndex, 1);
-      value = tmp;
+      value = [...prev];
     }
     // Adding the new value
     else value = [...prev, cur];
