@@ -5,44 +5,58 @@ import { Button } from "../button";
 import { InputField } from "../input-field";
 import { eventHandler } from "../utils";
 
-enum ACTION {
-  ADD = 0,
-  DELETE = 1,
-  RESET = 2,
-}
-
 export type TagField = Omit<InputField, "onChange" | "ref" | "type"> & {
   initialData?: string[];
   onChange?: (tags: string[]) => void;
+  separator?: string;
 };
 
-export const TagField = ({ initialData, onChange, ...props }: TagField) => {
-  const [tags, dispatch] = useReducer((prev: string[], cur: string | null) => {
-    if (!cur) return [];
+export const TagField = ({
+  initialData,
+  onChange,
+  separator = " ",
+  ...props
+}: TagField) => {
+  const [tags, dispatch] = useReducer(
+    (prev: string[], cur: string | string[] | null) => {
+      if (!cur) return [];
 
-    // Checking, if the user wanna deselect the value
-    const valueIndex = prev.findIndex((val) => val === cur);
-    const isSelected = valueIndex !== -1;
+      let value: string[] = [];
 
-    let value: string[];
+      if (Array.isArray(cur)) {
+        value = Array.from(new Set([...prev, ...cur]));
+      } else {
+        // Checking, if the user wanna deselect the value
+        const valueIndex = prev.findIndex((val) => val === cur);
+        const isSelected = valueIndex !== -1;
 
-    // Removing the value as it already exist
-    if (isSelected) {
-      value = [...prev];
-    }
-    // Adding the new value
-    else value = [...prev, cur];
+        // Removing the value as it already exist
+        if (isSelected) {
+          value = [...prev];
+          value.splice(valueIndex, 1);
+        }
+        // Adding the new value
+        else value = [...prev, cur];
+      }
 
-    onChange?.(value);
+      onChange?.(value);
 
-    return value;
-  }, initialData ?? []);
+      return value;
+    },
+    initialData ?? [],
+  );
 
   const handlePress = eventHandler((event) => {
     const data = event.currentTarget.value.trim();
-    if (data.length !== 0 && data !== " ") dispatch(data);
+    if (typeof data === "string") {
+      const segments = data.split(separator).filter((seg) => seg !== "");
+      console.log(segments);
+      if (segments.length !== 0) dispatch(segments);
+    }
     event.currentTarget.value = "";
   });
+
+  const removeTag = (tag: string) => eventHandler(() => dispatch(tag));
 
   const clearAll = eventHandler(() => dispatch(null));
 
@@ -73,8 +87,8 @@ export const TagField = ({ initialData, onChange, ...props }: TagField) => {
               variant="ghost"
               size="sm"
               className="text-secondary-400 p-[1px] hover:text-red-500"
-              onClick={clearAll}
-              onKeyDown={clearAll}
+              onClick={removeTag(tag)}
+              onKeyDown={removeTag(tag)}
             >
               <XMarkIcon className="size-3.5 stroke-[2]" />
             </Button>
