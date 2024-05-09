@@ -13,5 +13,5 @@ export const Default: Story = {
 };
 
 export const InitalData: Story = {
-  render: () => <TagField initialData={["rhinobase", "rafty", "ui"]} />,
+  render: () => <TagField defaultValue={["rhinobase", "rafty", "ui"]} />,
 };
