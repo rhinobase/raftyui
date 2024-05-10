@@ -6,6 +6,7 @@ const config: StorybookConfig = {
   stories: [
     "../../../packages/ui/src/**/*.stories.tsx",
     "../../../packages/icons/src/**/*.stories.tsx",
+    "../../../packages/blocks/src/**/*.stories.tsx",
   ],
   addons: ["@storybook/addon-essentials"],
   framework: {
@@ -31,6 +32,10 @@ const config: StorybookConfig = {
           "@rafty/icons": path.resolve(
             __dirname,
             "../../../packages/icons/src/index.ts",
+          ),
+          "@rafty/blocks": path.resolve(
+            __dirname,
+            "../../../packages/blocks/src/index.ts",
           ),
         },
       },
