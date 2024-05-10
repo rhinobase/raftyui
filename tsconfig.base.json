@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@rafty/blocks": ["packages/blocks/src/index.ts"],
       "@rafty/icons": ["packages/icons/src/index.ts"],
       "@rafty/plugin": ["packages/plugin/src/index.js"],
       "@rafty/ui": ["packages/ui/src/index.ts"]

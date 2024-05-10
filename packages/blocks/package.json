@@ -1,0 +1,9 @@
+{
+  "name": "@rafty/blocks",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "sideEffects": false,
+  "types": "./index.esm.d.ts"
+}

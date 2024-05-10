@@ -5,6 +5,10 @@
       "name": "ui:                  anything UI specific"
     },
     {
+      "value": "blocks",
+      "name": "blocks:              anything Blocks specific"
+    },
+    {
       "value": "plugin",
       "name": "plugin:              anything Plugin specific"
     },
