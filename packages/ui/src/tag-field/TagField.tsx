@@ -1,138 +1,103 @@
 "use client";
+import {
+  TagsInput,
+  useTagsInputContext,
+  useTagsInputItemContext,
+} from "@ark-ui/react";
+import type { UseTagsInputReturn } from "@ark-ui/react/dist/components/tags-input/use-tags-input";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { forwardRef, useEffect, useReducer } from "react";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 import { Button } from "../button";
-import { InputField } from "../input-field";
-import { eventHandler } from "../utils";
+import { classNames } from "../utils";
 
-export type TagField = Omit<
-  InputField,
-  "onChange" | "type" | "defaultValue" | "value"
-> & {
-  value?: string[];
-  defaultValue?: string[];
-  onChange?: (value: string[]) => void;
-  separator?: string;
-};
+export type TagField = Pick<
+  ComponentPropsWithoutRef<typeof TagsInput.Root>,
+  | "asChild"
+  | "blurBehavior"
+  | "defaultValue"
+  | "delimiter"
+  | "id"
+  | "inputValue"
+  | "max"
+  | "maxLength"
+  | "name"
+  | "onValueChange"
+  | "readOnly"
+  | "value"
+  | "disabled"
+  | "editable"
+> & { placeholder?: string };
 
-export const TagField = forwardRef<HTMLInputElement, TagField>(
-  (
-    {
-      value: controlledValue,
-      defaultValue,
-      onChange,
-      separator = " ",
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    console.log("Rendering");
-    const [tags, dispatch] = useReducer(
-      (
-        prev: string[],
-        cur: string | string[] | { value: string[]; force: true } | null,
-      ) => {
-        if (!cur) return [];
-
-        if (typeof cur === "object" && "force" in cur) return cur.value;
-
-        let value: string[] = [];
-
-        if (Array.isArray(cur)) {
-          value = Array.from(new Set([...prev, ...cur]));
-        } else {
-          // Checking, if the user wanna deselect the value
-          const valueIndex = prev.findIndex((val) => val === cur);
-          const isSelected = valueIndex !== -1;
-
-          // Removing the value as it already exist
-          if (isSelected) {
-            value = [...prev];
-            value.splice(valueIndex, 1);
-          }
-          // Adding the new value
-          else value = [...prev, cur];
-        }
-
-        onChange?.(value);
-
-        return value;
-      },
-      defaultValue ?? [],
-    );
-
-    // Synchronize internal state with controlled value
-    // biome-ignore lint/correctness/useExhaustiveDependencies: tags are getting updated in the dispatch
-    useEffect(() => {
-      if (!controlledValue) return;
-
-      const array2Sorted = tags.slice().sort();
-      const isSame =
-        controlledValue.length === tags.length &&
-        controlledValue
-          .slice()
-          .sort()
-          .every((value, index) => value === array2Sorted[index]);
-
-      if (!isSame) dispatch(controlledValue);
-    }, [controlledValue]);
-
-    const handlePress = eventHandler((event) => {
-      const data = event.currentTarget.value.trim();
-      if (typeof data === "string") {
-        const segments = data.split(separator).filter((seg) => seg !== "");
-        if (segments.length !== 0) dispatch(segments);
-      }
-      event.currentTarget.value = "";
-    });
-
-    const removeTag = (tag: string) => eventHandler(() => dispatch(tag));
-
-    const clearAll = eventHandler(() => dispatch(null));
-
-    return (
-      <div className="w-full">
-        <div className="flex w-full items-center gap-2">
-          <InputField
-            {...props}
-            type="text"
-            onKeyDown={handlePress}
-            ref={forwardedRef}
-          />
-          <Button
-            variant="ghost"
-            onClick={clearAll}
-            onKeyDown={clearAll}
-            className={tags.length < 2 ? "hidden" : undefined}
-          >
-            Clear All
-          </Button>
-        </div>
-        <div className="my-1.5 flex min-h-fit flex-wrap items-center justify-center gap-x-2">
-          {tags.map((tag) => (
-            <div
-              key={tag}
-              className={
-                "bg-secondary-100 dark:bg-secondary-800 my-1 flex items-center justify-center gap-1 rounded-md py-1 pl-3 pr-[2px] font-semibold dark:text-zinc-100"
-              }
-            >
-              <span className="text-sm leading-[0px]">{tag}</span>
-              <Button
-                colorScheme="error"
-                variant="ghost"
-                size="sm"
-                className="text-secondary-400 p-[1px] hover:text-red-500"
-                onClick={removeTag(tag)}
-                onKeyDown={removeTag(tag)}
-              >
-                <XMarkIcon className="size-3.5 stroke-[2]" />
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  },
+export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
+  ({ placeholder, ...props }, forwardedRef) => (
+    <TagsInput.Root {...props} ref={forwardedRef} className="w-full space-y-2">
+      <TagsInput.Context>
+        {(tagsInput) => (
+          <TagFieldItem tagsInput={tagsInput} placeholder={placeholder} />
+        )}
+      </TagsInput.Context>
+    </TagsInput.Root>
+  ),
 );
 
 TagField.displayName = "TagField";
+
+type TagFieldItem = {
+  tagsInput: UseTagsInputReturn;
+  placeholder?: string;
+};
+
+function TagFieldItem({ tagsInput, placeholder }: TagFieldItem) {
+  const { empty } = useTagsInputContext();
+
+  return (
+    <>
+      <TagsInput.Control className="border-secondary-200 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 flex flex-wrap items-center gap-3 rounded-md border px-2 py-1.5 transition-all data-[focus]:ring-2">
+        {tagsInput.value.map((value, index) => (
+          <TagsInput.Item key={`${index}-${1}`} index={index} value={value}>
+            <TagPreviewItem value={value} />
+            <TagsInput.ItemInput className="px-1 py-0.5 outline-none" />
+          </TagsInput.Item>
+        ))}
+        <TagsInput.Input
+          placeholder={placeholder}
+          className="dark:text-secondary-200 flex-1 bg-transparent px-1 py-0.5 text-black outline-none"
+        />
+      </TagsInput.Control>
+      <TagsInput.ClearTrigger asChild>
+        <Button
+          variant="outline"
+          className={classNames(empty && "hidden", "w-full")}
+        >
+          Clear all
+        </Button>
+      </TagsInput.ClearTrigger>
+    </>
+  );
+}
+
+function TagPreviewItem(props: { value: string }) {
+  const { editing, disabled } = useTagsInputItemContext();
+
+  return (
+    <TagsInput.ItemPreview
+      className={classNames(
+        "border-secondary-200 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 data-[disabled]:text-secondary-300 data-[disabled]:dark:text-secondary-500 flex items-center gap-1 rounded border px-1.5 py-0.5 transition-all data-[disabled]:cursor-not-allowed data-[highlighted]:ring-1 data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+        editing && "hidden",
+      )}
+    >
+      <TagsInput.ItemText className="dark:text-secondary-200 text-sm text-black">
+        {props.value}
+      </TagsInput.ItemText>
+      <TagsInput.ItemDeleteTrigger
+        className={disabled ? "cursor-not-allowed" : "cursor-pointer"}
+      >
+        <XMarkIcon className="size-3.5 stroke-black stroke-2 dark:stroke-slate-200" />
+      </TagsInput.ItemDeleteTrigger>
+    </TagsInput.ItemPreview>
+  );
+}

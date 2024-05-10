@@ -9,9 +9,11 @@ export default meta;
 type Story = StoryObj<typeof TagField>;
 
 export const Default: Story = {
-  render: () => <TagField />,
+  render: () => (
+    <TagField defaultValue={["hello", "hmmmm"]} placeholder="Add Framwork" />
+  ),
 };
 
 export const InitalData: Story = {
-  render: () => <TagField defaultValue={["rhinobase", "rafty", "ui"]} />,
+  render: () => <></>,
 };
