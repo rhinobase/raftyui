@@ -4,7 +4,6 @@ import {
   useTagsInputContext,
   useTagsInputItemContext,
 } from "@ark-ui/react";
-import type { UseTagsInputReturn } from "@ark-ui/react/dist/components/tags-input/use-tags-input";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type ComponentPropsWithoutRef,
@@ -36,9 +35,7 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
   ({ placeholder, ...props }, forwardedRef) => (
     <TagsInput.Root {...props} ref={forwardedRef} className="w-full space-y-2">
       <TagsInput.Context>
-        {(tagsInput) => (
-          <TagFieldItem tagsInput={tagsInput} placeholder={placeholder} />
-        )}
+        {() => <TagFieldItem placeholder={placeholder} />}
       </TagsInput.Context>
     </TagsInput.Root>
   ),
@@ -47,25 +44,24 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
 TagField.displayName = "TagField";
 
 type TagFieldItem = {
-  tagsInput: UseTagsInputReturn;
   placeholder?: string;
 };
 
-function TagFieldItem({ tagsInput, placeholder }: TagFieldItem) {
-  const { empty } = useTagsInputContext();
+function TagFieldItem({ placeholder }: TagFieldItem) {
+  const { empty, value } = useTagsInputContext();
 
   return (
     <>
-      <TagsInput.Control className="border-secondary-200 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-200 data-[disabled]:hover:dark:border-secondary-700 flex flex-wrap items-center gap-3 rounded-md border px-2 py-1.5 transition-all data-[focus]:ring-2">
-        {tagsInput.value.map((value, index) => (
+      <TagsInput.Control className="border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 flex flex-wrap items-center gap-2 rounded-md border px-2 py-1.5 transition-all data-[focus]:ring-2">
+        {value.map((value, index) => (
           <TagsInput.Item key={`${index}-${1}`} index={index} value={value}>
             <TagPreviewItem value={value} />
-            <TagsInput.ItemInput className="px-1 py-0.5 outline-none" />
+            <TagsInput.ItemInput className="px-1 py-[3px] text-sm outline-none" />
           </TagsInput.Item>
         ))}
         <TagsInput.Input
           placeholder={placeholder}
-          className="dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent px-1 py-0.5 text-black outline-none"
+          className="dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent text-sm outline-none"
         />
       </TagsInput.Control>
       <TagsInput.ClearTrigger asChild>
@@ -86,7 +82,7 @@ function TagPreviewItem(props: { value: string }) {
   return (
     <TagsInput.ItemPreview
       className={classNames(
-        "border-secondary-200 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 flex items-center gap-1 rounded border px-1.5 py-0.5 transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
+        "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 flex items-center gap-1 rounded border px-1.5 py-0.5 transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
         editing && "hidden",
       )}
     >

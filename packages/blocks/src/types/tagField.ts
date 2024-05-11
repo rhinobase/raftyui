@@ -1,4 +1,4 @@
 export type TagFieldProps = {
-  type: "tag-field";
+  type: "tagField";
   defaultValue?: string[];
 };

@@ -1,23 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { TagField } from "./TagField";
 
-const meta: Meta<typeof TagField> = {
+const meta: Meta<TagField> = {
   title: "Components / TagField",
+  args: {
+    disabled: false,
+    placeholder: "Add Framework",
+    readOnly: false,
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof TagField>;
+type Story = StoryObj<TagField>;
 
 export const Default: Story = {
-  args: {
-    defaultValue: ["hello", "hmmmm"],
-    disabled: false,
-    placeholder: "Add Framwork",
-    readOnly: false,
-  },
   render: (props) => <TagField {...props} />,
 };
 
-export const InitalData: Story = {
-  render: () => <></>,
+export const DefaultValue: Story = {
+  render: (props) => <TagField {...props} defaultValue={["hello", "hmmmm"]} />,
 };
