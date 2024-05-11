@@ -1,11 +1,11 @@
 import { useThread } from "@fibr/react";
-import { TagField as RaftyTagField } from "@rafty/ui";
+import { Pin as RaftyPin } from "@rafty/ui";
 import { Controller, useFormContext } from "react-hook-form";
-import type { TagFieldProps } from "../types";
+import type { PinProps } from "../types";
 import { FieldWrapper, TooltipWrapper } from "../utils";
 
-export function TagField() {
-  const { id } = useThread<TagFieldProps>();
+export function Pin() {
+  const { id, length, placeholder } = useThread<PinProps>();
   const { control } = useFormContext();
 
   return (
@@ -14,12 +14,14 @@ export function TagField() {
         <Controller
           name={id}
           control={control}
-          render={({ field: { name, onChange, value, ref, disabled } }) => (
-            <RaftyTagField
+          render={({ field: { name, onChange, ref, value, disabled } }) => (
+            <RaftyPin
               id={name}
               name={name}
               value={value}
-              onValueChange={onChange}
+              onValueChange={({ value }) => onChange(value)}
+              placeholder={placeholder}
+              length={length}
               disabled={disabled}
               ref={ref}
             />

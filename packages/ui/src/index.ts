@@ -58,3 +58,4 @@ export * from "./toggle-group";
 export * from "./tooltip";
 export * from "./types";
 export * from "./utils";
+export * from "./pin";

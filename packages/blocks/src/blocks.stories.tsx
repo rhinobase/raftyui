@@ -1,4 +1,5 @@
 import { Thread } from "@fibr/react";
+import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { DawnBlockProvider } from "./BlockWrapper";
@@ -10,6 +11,7 @@ import type {
   InputWrapperProps,
   NumberProps,
   PasswordProps,
+  PinProps,
   RadioGroupProps,
   RangeSliderProps,
   SelectProps,
@@ -282,7 +284,7 @@ export const SwitchGroupField: StoryObj<
 
 export const TagField: StoryObj<GeneralWrapperProps<TagFieldProps>> = {
   args: {
-    type: "tag-field",
+    type: "tagField",
     label: "TagField",
     description: "",
     disabled: false,
@@ -291,7 +293,7 @@ export const TagField: StoryObj<GeneralWrapperProps<TagFieldProps>> = {
     tooltip: "TagField Field",
     defaultValue: ["hello", "hmmm"],
   },
-  render: (props) => <Thread id="tag-field" {...props} />,
+  render: (props) => <Thread id="tagField" {...props} />,
 };
 export const TextareaField: StoryObj<
   InputWrapperProps & GeneralWrapperProps<TextareaProps>
@@ -513,4 +515,32 @@ export const ColorField: StoryObj<
     inputType: "color",
   },
   render: (props) => <Thread id="color" {...props} />,
+};
+
+export const PinField: StoryObj<GeneralWrapperProps<PinProps>> = {
+  args: {
+    type: "pin",
+    label: "Sample Label",
+    description: "",
+    tooltip: "Pin Field",
+    required: false,
+    disabled: false,
+    hidden: false,
+    length: 4,
+  },
+  render: (props) => {
+    const methods = useForm();
+    const { control } = methods;
+
+    return (
+      <FormProvider {...methods}>
+        <form>
+          <DawnBlockProvider>
+            <Thread id="pin" {...props} />
+          </DawnBlockProvider>
+          <DevTool control={control} />
+        </form>
+      </FormProvider>
+    );
+  },
 };

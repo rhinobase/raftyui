@@ -6,6 +6,7 @@ import type { NumberProps } from "./number";
 import type { ObjectProps } from "./object";
 import type { PasswordProps } from "./password";
 import type { PermissionFieldProps } from "./permission";
+import type { PinProps } from "./pin";
 import type { RadioGroupProps } from "./radio";
 import type { RangeSliderProps } from "./rangeSlider";
 import type { ReferenceFieldProps } from "./reference";
@@ -36,6 +37,7 @@ export type FieldProps =
   | GeneralWrapperProps<PermissionFieldProps>
   | GeneralWrapperProps<ReferenceFieldProps>
   | GeneralWrapperProps<TagFieldProps>
+  | GeneralWrapperProps<PinProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {

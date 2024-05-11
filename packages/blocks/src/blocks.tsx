@@ -5,6 +5,7 @@ import { NumberField } from "./number";
 import { ObjectField } from "./object";
 import { PasswordField } from "./password";
 import { PermissionField } from "./permission";
+import { Pin } from "./pin";
 import { RadioGroup } from "./radio-group";
 import { RangeSlider } from "./range-slider";
 import { ReferenceField } from "./reference";
@@ -34,5 +35,6 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   textarea: Textarea,
   permission: PermissionField,
   reference: ReferenceField,
-  "tag-field": TagField,
+  tagField: TagField,
+  pin: Pin,
 };
