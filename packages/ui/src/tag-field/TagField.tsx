@@ -56,7 +56,7 @@ function TagFieldItem({ tagsInput, placeholder }: TagFieldItem) {
 
   return (
     <>
-      <TagsInput.Control className="border-secondary-200 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 flex flex-wrap items-center gap-3 rounded-md border px-2 py-1.5 transition-all data-[focus]:ring-2">
+      <TagsInput.Control className="border-secondary-200 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-200 data-[disabled]:hover:dark:border-secondary-700 flex flex-wrap items-center gap-3 rounded-md border px-2 py-1.5 transition-all data-[focus]:ring-2">
         {tagsInput.value.map((value, index) => (
           <TagsInput.Item key={`${index}-${1}`} index={index} value={value}>
             <TagPreviewItem value={value} />
@@ -65,7 +65,7 @@ function TagFieldItem({ tagsInput, placeholder }: TagFieldItem) {
         ))}
         <TagsInput.Input
           placeholder={placeholder}
-          className="dark:text-secondary-200 flex-1 bg-transparent px-1 py-0.5 text-black outline-none"
+          className="dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent px-1 py-0.5 text-black outline-none"
         />
       </TagsInput.Control>
       <TagsInput.ClearTrigger asChild>
@@ -86,7 +86,7 @@ function TagPreviewItem(props: { value: string }) {
   return (
     <TagsInput.ItemPreview
       className={classNames(
-        "border-secondary-200 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 data-[disabled]:text-secondary-300 data-[disabled]:dark:text-secondary-500 flex items-center gap-1 rounded border px-1.5 py-0.5 transition-all data-[disabled]:cursor-not-allowed data-[highlighted]:ring-1 data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
+        "border-secondary-200 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 flex items-center gap-1 rounded border px-1.5 py-0.5 transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
         editing && "hidden",
       )}
     >
@@ -94,7 +94,10 @@ function TagPreviewItem(props: { value: string }) {
         {props.value}
       </TagsInput.ItemText>
       <TagsInput.ItemDeleteTrigger
-        className={disabled ? "cursor-not-allowed" : "cursor-pointer"}
+        className={classNames(
+          "data-[readonly]:cursor-default",
+          disabled ? "cursor-not-allowed" : "cursor-pointer",
+        )}
       >
         <XMarkIcon className="size-3.5 stroke-black stroke-2 dark:stroke-slate-200" />
       </TagsInput.ItemDeleteTrigger>

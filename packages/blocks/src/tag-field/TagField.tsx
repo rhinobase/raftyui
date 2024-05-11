@@ -17,9 +17,10 @@ export function TagField() {
           defaultValue={defaultValue}
           render={({ field: { name, onChange, value, ref } }) => (
             <TagTextField
+              id={name}
               name={name}
               value={value}
-              onChange={onChange}
+              onValueChange={onChange}
               ref={ref}
             />
           )}

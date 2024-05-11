@@ -9,9 +9,13 @@ export default meta;
 type Story = StoryObj<typeof TagField>;
 
 export const Default: Story = {
-  render: () => (
-    <TagField defaultValue={["hello", "hmmmm"]} placeholder="Add Framwork" />
-  ),
+  args: {
+    defaultValue: ["hello", "hmmmm"],
+    disabled: false,
+    placeholder: "Add Framwork",
+    readOnly: false,
+  },
+  render: (props) => <TagField {...props} />,
 };
 
 export const InitalData: Story = {
