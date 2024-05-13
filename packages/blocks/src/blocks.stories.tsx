@@ -14,6 +14,7 @@ import type {
   PinProps,
   RadioGroupProps,
   RangeSliderProps,
+  RatingProps,
   SelectProps,
   SliderProps,
   StringProps,
@@ -543,4 +544,20 @@ export const PinField: StoryObj<GeneralWrapperProps<PinProps>> = {
       </FormProvider>
     );
   },
+};
+
+export const RatingField: StoryObj<GeneralWrapperProps<RatingProps>> = {
+  args: {
+    type: "rating",
+    label: "Sample Label",
+    description: "",
+    tooltip: "String Field",
+    required: false,
+    disabled: false,
+    hidden: false,
+    defaultValue: 3,
+    count: 5,
+  },
+
+  render: (props) => <Thread id="rating" {...props} />,
 };

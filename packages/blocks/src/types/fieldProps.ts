@@ -9,6 +9,7 @@ import type { PermissionFieldProps } from "./permission";
 import type { PinProps } from "./pin";
 import type { RadioGroupProps } from "./radio";
 import type { RangeSliderProps } from "./rangeSlider";
+import type { RatingProps } from "./rating";
 import type { ReferenceFieldProps } from "./reference";
 import type { SelectProps } from "./select";
 import type { SliderProps } from "./slider";
@@ -38,6 +39,7 @@ export type FieldProps =
   | GeneralWrapperProps<ReferenceFieldProps>
   | GeneralWrapperProps<TagFieldProps>
   | GeneralWrapperProps<PinProps>
+  | GeneralWrapperProps<RatingProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {

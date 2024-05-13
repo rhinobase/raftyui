@@ -125,6 +125,9 @@ dependencies:
   react-hook-form:
     specifier: 7.51.0
     version: 7.51.0(react@18.2.0)
+  react-icons:
+    specifier: ^5.2.1
+    version: 5.2.1(react@18.2.0)
   react-virtualized-auto-sizer:
     specifier: ^1.0.24
     version: 1.0.24(react-dom@18.2.0)(react@18.2.0)
@@ -14632,6 +14635,14 @@ packages:
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-icons@5.2.1(react@18.2.0):
+    resolution: {integrity: sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==}
+    peerDependencies:
+      react: '*'
     dependencies:
       react: 18.2.0
     dev: false

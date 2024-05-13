@@ -26,3 +26,4 @@ export type {
 export type { TagFieldProps } from "./tagField";
 export type { Prettify } from "./utils";
 export type { PinProps } from "./pin";
+export type { RatingProps } from "./rating";

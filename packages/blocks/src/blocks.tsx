@@ -8,6 +8,7 @@ import { PermissionField } from "./permission";
 import { Pin } from "./pin";
 import { RadioGroup } from "./radio-group";
 import { RangeSlider } from "./range-slider";
+import { Rating } from "./rating";
 import { ReferenceField } from "./reference";
 import { Select } from "./select";
 import { Slider } from "./slider";
@@ -37,4 +38,5 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   reference: ReferenceField,
   tagField: TagField,
   pin: Pin,
+  rating: Rating,
 };
