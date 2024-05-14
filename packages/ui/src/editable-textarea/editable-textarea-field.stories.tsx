@@ -1,33 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { EditableTextareaField } from "./EditableTextareaField";
+import { EditableTextarea } from "./EditableTextarea";
 
-const meta: Meta<typeof EditableTextareaField> = {
-  title: "fibr / EditableTextareaField",
+const meta: Meta<typeof EditableTextarea> = {
+  title: "Components / EditableTextarea",
 };
 
 export default meta;
-type Story = StoryObj<typeof EditableTextareaField>;
-
-// export const Default: Story = {
-//   render: () => (
-//     <FibrProvider plugins={plugin}>
-//       <div className="w-full">
-//         <Loom
-//           blueprint={f.form({
-//             onSubmit: console.log,
-//             components: {
-//               editableTextarea: f.editableTextarea({
-//                 name: "editableTextarea",
-//                 label: "Editable Textarea",
-//               }),
-//             },
-//           })}
-//         />
-//       </div>
-//     </FibrProvider>
-//   ),
-// };
+type Story = StoryObj<typeof EditableTextarea>;
 
 export const Default: Story = {
-  render: () => <EditableTextareaField />,
+  args: {
+    isDisabled: false,
+    defaultValue: "Sample Text",
+    isReadOnly: false,
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
+  render: (props) => <EditableTextarea {...props} />,
 };
