@@ -6,6 +6,7 @@ import { DawnBlockProvider } from "./BlockWrapper";
 import type {
   CheckboxGroupProps,
   CheckboxProps,
+  ColorPickerProps,
   DateFieldProps,
   GeneralWrapperProps,
   InputWrapperProps,
@@ -561,3 +562,18 @@ export const RatingField: StoryObj<GeneralWrapperProps<RatingProps>> = {
 
   render: (props) => <Thread id="rating" {...props} />,
 };
+
+export const ColorPickerField: StoryObj<GeneralWrapperProps<ColorPickerProps>> =
+  {
+    args: {
+      type: "colorPicker",
+      label: "Sample Label",
+      description: "",
+      tooltip: "Color Picker Field",
+      required: false,
+      disabled: false,
+      defaultValue: "#3170f9",
+    },
+
+    render: (props) => <Thread id="colorPicker" {...props} />,
+  };

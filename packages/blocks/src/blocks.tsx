@@ -1,5 +1,6 @@
 import { Checkbox } from "./checkbox";
 import { CheckboxGroup } from "./checkbox-group";
+import { ColorPicker } from "./color-picker";
 import { DateField } from "./date";
 import { NumberField } from "./number";
 import { ObjectField } from "./object";
@@ -39,4 +40,5 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   tagField: TagField,
   pin: Pin,
   rating: Rating,
+  colorPicker: ColorPicker,
 };

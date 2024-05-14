@@ -1,5 +1,6 @@
 import type { CheckboxProps } from "./checkbox";
 import type { CheckboxGroupProps } from "./checkboxGroup";
+import type { ColorPickerProps } from "./colorPicker";
 import type { CustomFieldProps } from "./custom";
 import type { DateFieldProps } from "./date";
 import type { NumberProps } from "./number";
@@ -40,6 +41,7 @@ export type FieldProps =
   | GeneralWrapperProps<TagFieldProps>
   | GeneralWrapperProps<PinProps>
   | GeneralWrapperProps<RatingProps>
+  | GeneralWrapperProps<ColorPickerProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {
