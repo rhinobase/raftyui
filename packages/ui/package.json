@@ -25,6 +25,7 @@
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "dependencies": {
+    "@ark-ui/react": "^2.2.3",
     "@hookform/error-message": "^2.0.1",
     "@fibr/react": "^0.6.3",
     "@heroicons/react": "^2.1.1",
@@ -49,6 +50,7 @@
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
     "dateformat": "^5.0.3",
+    "react-icons": "^5.2.1",
     "react-virtualized-auto-sizer": "^1.0.21",
     "react-window": "^1.8.10",
     "react-window-infinite-loader": "^1.0.9",

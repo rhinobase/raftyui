@@ -1,11 +1,11 @@
 import { useThread } from "@fibr/react";
-import { Pin as RaftyPin } from "@rafty/ui";
+import { PinInput as RaftyPinInput } from "@rafty/ui";
 import { Controller, useFormContext } from "react-hook-form";
-import type { PinProps } from "../types";
+import type { PinInputProps } from "../types";
 import { FieldWrapper, TooltipWrapper } from "../utils";
 
-export function Pin() {
-  const { id, length, placeholder } = useThread<PinProps>();
+export function PinInput() {
+  const { id, length, placeholder } = useThread<PinInputProps>();
   const { control } = useFormContext();
 
   return (
@@ -15,7 +15,7 @@ export function Pin() {
           name={id}
           control={control}
           render={({ field: { name, onChange, ref, value, disabled } }) => (
-            <RaftyPin
+            <RaftyPinInput
               id={name}
               name={name}
               value={value}

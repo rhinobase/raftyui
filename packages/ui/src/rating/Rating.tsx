@@ -6,7 +6,8 @@ import {
   forwardRef,
 } from "react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
 const iconClass = cva("", {
   variants: {
@@ -42,47 +43,62 @@ const controlClass = cva("flex", {
 
 export type Rating = ComponentPropsWithoutRef<typeof RatingGroup.Root> & {
   size?: "sm" | "md" | "lg";
+  isReadOnly?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction<boolean>;
 };
 
 export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
-  ({ size = "md", ...props }, forwarededRef) => (
-    <RatingGroup.Root {...props} ref={forwarededRef}>
-      <RatingGroup.Control className={controlClass({ size })}>
-        <RatingGroup.Context>
-          {({ items }) =>
-            items.map((item) => (
-              <RatingGroup.Item
-                key={item}
-                index={item}
-                className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-70"
-              >
-                <RatingGroup.ItemContext>
-                  {({ half, highlighted }) =>
-                    half ? (
-                      <div className="relative flex">
-                        <FaStarHalf
-                          className={iconClass({ size, highlighted })}
-                        />
-                        <FaStarHalf
-                          className={classNames(
-                            iconClass({ size }),
-                            "absolute -scale-x-100 transform",
-                          )}
-                        />
-                      </div>
-                    ) : (
-                      <FaStar className={iconClass({ size, highlighted })} />
-                    )
-                  }
-                </RatingGroup.ItemContext>
-              </RatingGroup.Item>
-            ))
-          }
-        </RatingGroup.Context>
-        <RatingGroup.HiddenInput />
-      </RatingGroup.Control>
-    </RatingGroup.Root>
-  ),
+  (
+    { isDisabled = false, isReadOnly = false, size = "md", ...props },
+    forwarededRef,
+  ) => {
+    const disabled = props.disabled || getValue(isDisabled);
+    const readOnly = props.readOnly || getValue(isReadOnly);
+
+    return (
+      <RatingGroup.Root
+        {...props}
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={forwarededRef}
+      >
+        <RatingGroup.Control className={controlClass({ size })}>
+          <RatingGroup.Context>
+            {({ items }) =>
+              items.map((item) => (
+                <RatingGroup.Item
+                  key={item}
+                  index={item}
+                  className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-70"
+                >
+                  <RatingGroup.ItemContext>
+                    {({ half, highlighted }) =>
+                      half ? (
+                        <div className="relative flex">
+                          <FaStarHalf
+                            className={iconClass({ size, highlighted })}
+                          />
+                          <FaStarHalf
+                            className={classNames(
+                              iconClass({ size }),
+                              "absolute -scale-x-100 transform",
+                            )}
+                          />
+                        </div>
+                      ) : (
+                        <FaStar className={iconClass({ size, highlighted })} />
+                      )
+                    }
+                  </RatingGroup.ItemContext>
+                </RatingGroup.Item>
+              ))
+            }
+          </RatingGroup.Context>
+          <RatingGroup.HiddenInput />
+        </RatingGroup.Control>
+      </RatingGroup.Root>
+    );
+  },
 );
 
 Rating.displayName = "Rating";

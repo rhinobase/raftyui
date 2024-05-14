@@ -122,6 +122,5 @@
     "tslib": "^2.3.0",
     "vite-tsconfig-paths": "4.2.1",
     "zod": "^3.22.4"
-  },
-  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5"
+  }
 }

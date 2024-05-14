@@ -16,4 +16,4 @@ export * from "./switch-group";
 export * from "./tag-field";
 export * from "./textarea";
 export * from "./types";
-export * from "./pin";
+export * from "./pin-input";

@@ -11,37 +11,59 @@ import {
   forwardRef,
 } from "react";
 import { Button } from "../button";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
+import {
+  type TagFieldContext,
+  TagFieldProvider,
+  useTagFieldContext,
+} from "./context";
 
-export type TagField = Pick<
-  ComponentPropsWithoutRef<typeof TagsInput.Root>,
-  | "asChild"
-  | "blurBehavior"
-  | "defaultValue"
-  | "delimiter"
-  | "id"
-  | "inputValue"
-  | "max"
-  | "maxLength"
-  | "name"
-  | "onValueChange"
-  | "readOnly"
-  | "value"
-  | "disabled"
-  | "editable"
-> & { placeholder?: string };
+export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
+  isReadOnly?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction<boolean>;
+  inputPlaceholder?: string;
+} & Partial<TagFieldContext>;
 
 export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
-  ({ placeholder, ...props }, forwardedRef) => (
-    <TagsInput.Root {...props} ref={forwardedRef} className="w-full space-y-2">
-      <TagsInput.Context>
-        {() => <TagFieldItem placeholder={placeholder} />}
-      </TagsInput.Context>
-    </TagsInput.Root>
-  ),
+  (
+    { inputPlaceholder, size = "md", isDisabled = false, isReadOnly, ...props },
+    forwardedRef,
+  ) => {
+    const disabled = props.disabled || getValue(isDisabled);
+    const readOnly = props.readOnly || getValue(isReadOnly);
+
+    return (
+      <TagFieldProvider value={{ size }}>
+        <TagsInput.Root
+          {...props}
+          readOnly={readOnly}
+          disabled={disabled}
+          ref={forwardedRef}
+          className="w-full space-y-2"
+        >
+          <TagsInput.Context>
+            {() => <TagFieldItem placeholder={inputPlaceholder} />}
+          </TagsInput.Context>
+        </TagsInput.Root>
+      </TagFieldProvider>
+    );
+  },
 );
 
 TagField.displayName = "TagField";
+
+const CONTROL_Size = {
+  sm: "px-1.5 py-1",
+  md: "px-2 py-1.5",
+  lg: "px-3 py-2",
+};
+
+const TEXT_SIZE = {
+  sm: "text-xs",
+  md: "text-sm",
+  lg: "text-base",
+};
 
 type TagFieldItem = {
   placeholder?: string;
@@ -49,24 +71,36 @@ type TagFieldItem = {
 
 function TagFieldItem({ placeholder }: TagFieldItem) {
   const { empty, value } = useTagsInputContext();
+  const { size } = useTagFieldContext();
 
   return (
     <>
-      <TagsInput.Control className="border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 flex flex-wrap items-center gap-2 rounded-md border px-2 py-1.5 transition-all data-[focus]:ring-2">
+      <TagsInput.Control
+        className={classNames(
+          "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 flex flex-wrap items-center gap-2 rounded-md border transition-all data-[focus]:ring-2",
+          CONTROL_Size[size],
+        )}
+      >
         {value.map((value, index) => (
           <TagsInput.Item key={`${index}-${1}`} index={index} value={value}>
             <TagPreviewItem value={value} />
-            <TagsInput.ItemInput className="px-1 py-[3px] text-sm outline-none" />
+            <TagsInput.ItemInput
+              className={classNames("outline-none", TEXT_SIZE[size])}
+            />
           </TagsInput.Item>
         ))}
         <TagsInput.Input
           placeholder={placeholder}
-          className="dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent text-sm outline-none"
+          className={classNames(
+            "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent outline-none",
+            TEXT_SIZE[size],
+          )}
         />
       </TagsInput.Control>
       <TagsInput.ClearTrigger asChild>
         <Button
           variant="outline"
+          size={size}
           className={classNames(empty && "hidden", "w-full")}
         >
           Clear all
@@ -78,15 +112,21 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
 
 function TagPreviewItem(props: { value: string }) {
   const { editing, disabled } = useTagsInputItemContext();
+  const { size } = useTagFieldContext();
 
   return (
     <TagsInput.ItemPreview
       className={classNames(
-        "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 flex items-center gap-1 rounded border px-1.5 py-0.5 transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
+        "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 flex items-center gap-1 rounded border px-1.5 py-px transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
         editing && "hidden",
       )}
     >
-      <TagsInput.ItemText className="dark:text-secondary-200 text-sm text-black">
+      <TagsInput.ItemText
+        className={classNames(
+          "dark:text-secondary-200 text-black",
+          TEXT_SIZE[size],
+        )}
+      >
         {props.value}
       </TagsInput.ItemText>
       <TagsInput.ItemDeleteTrigger

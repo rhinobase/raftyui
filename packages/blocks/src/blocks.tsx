@@ -6,7 +6,7 @@ import { NumberField } from "./number";
 import { ObjectField } from "./object";
 import { PasswordField } from "./password";
 import { PermissionField } from "./permission";
-import { Pin } from "./pin";
+import { PinInput } from "./pin-input";
 import { RadioGroup } from "./radio-group";
 import { RangeSlider } from "./range-slider";
 import { Rating } from "./rating";
@@ -39,7 +39,7 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   permission: PermissionField,
   reference: ReferenceField,
   tagField: TagField,
-  pin: Pin,
+  pinInput: PinInput,
   rating: Rating,
   colorPicker: ColorPicker,
   segmentedControl: SegmentedControl,

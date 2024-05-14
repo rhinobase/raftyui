@@ -36,15 +36,15 @@ export const SegmentedControl = forwardRef<
     forwaredRef,
   ) => {
     const disabled = props.disabled || getValue(isDisabled);
-    const readonly = props.readOnly || getValue(isReadOnly);
+    const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (
-      <SegmentedControlProvider value={{ isReadOnly: readonly ?? false, size }}>
+      <SegmentedControlProvider value={{ isReadOnly: readOnly ?? false, size }}>
         <SegmentGroup.Root
           {...props}
           orientation={orientation}
           disabled={disabled}
-          readOnly={readonly}
+          readOnly={readOnly}
           className={classNames(
             "border-secondary-300 dark:border-secondary-700 flex gap-4 data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l",
             className,

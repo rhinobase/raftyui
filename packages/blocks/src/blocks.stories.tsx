@@ -12,7 +12,7 @@ import type {
   InputWrapperProps,
   NumberProps,
   PasswordProps,
-  PinProps,
+  PinInputProps,
   RadioGroupProps,
   RangeSliderProps,
   RatingProps,
@@ -520,9 +520,9 @@ export const ColorField: StoryObj<
   render: (props) => <Thread id="color" {...props} />,
 };
 
-export const PinField: StoryObj<GeneralWrapperProps<PinProps>> = {
+export const PinField: StoryObj<GeneralWrapperProps<PinInputProps>> = {
   args: {
-    type: "pin",
+    type: "pinInput",
     label: "Sample Label",
     description: "",
     tooltip: "Pin Field",
@@ -539,7 +539,7 @@ export const PinField: StoryObj<GeneralWrapperProps<PinProps>> = {
       <FormProvider {...methods}>
         <form>
           <DawnBlockProvider>
-            <Thread id="pin" {...props} />
+            <Thread id="pinInput" {...props} />
           </DawnBlockProvider>
           <DevTool control={control} />
         </form>

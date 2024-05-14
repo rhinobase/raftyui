@@ -5,8 +5,15 @@ const meta: Meta<TagField> = {
   title: "Components / TagField",
   args: {
     disabled: false,
-    placeholder: "Add Framework",
+    inputPlaceholder: "Add Framework",
     readOnly: false,
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
   },
 };
 

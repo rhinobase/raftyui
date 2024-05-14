@@ -7,7 +7,7 @@ import type { NumberProps } from "./number";
 import type { ObjectProps } from "./object";
 import type { PasswordProps } from "./password";
 import type { PermissionFieldProps } from "./permission";
-import type { PinProps } from "./pin";
+import type { PinProps } from "./pinInput";
 import type { RadioGroupProps } from "./radio";
 import type { RangeSliderProps } from "./rangeSlider";
 import type { RatingProps } from "./rating";

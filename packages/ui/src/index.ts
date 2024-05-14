@@ -58,7 +58,7 @@ export * from "./toggle-group";
 export * from "./tooltip";
 export * from "./types";
 export * from "./utils";
-export * from "./pin";
+export * from "./pin-input";
 export * from "./rating";
 export * from "./color-picker";
 export * from "./segmented-control";

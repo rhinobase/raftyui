@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Pin } from "./Pin";
+import { PinInput } from "./PinInput";
 
-const meta: Meta<typeof Pin> = {
-  title: "Components / Pin",
+const meta: Meta<typeof PinInput> = {
+  title: "Components / PinInput",
 };
 
 export default meta;
-type Story = StoryObj<typeof Pin>;
+type Story = StoryObj<typeof PinInput>;
 
 export const Default: Story = {
   args: {
@@ -21,5 +21,5 @@ export const Default: Story = {
       options: ["sm", "md", "lg"],
     },
   },
-  render: (props) => <Pin {...props} />,
+  render: (props) => <PinInput {...props} />,
 };
