@@ -1,45 +1,28 @@
-import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Controller, useForm } from "react-hook-form";
-import { FieldControl } from "../field-control";
-import { Label } from "../label";
 import { DatePicker } from "./DatePicker";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Form / DatePicker",
+  args: {
+    startOfWeek: 1,
+    positioning: {
+      placement: "top-start",
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
 export const Default: Story = {
-  render: () => {
-    const { control, handleSubmit } = useForm({
-      defaultValues: {
-        date: new Date("2023-10-03"),
-      },
-    });
+  render: (props) => <DatePicker {...props} />,
+};
 
-    return (
-      <>
-        <form onSubmit={handleSubmit((value) => console.log(value))}>
-          <FieldControl name="date">
-            <Label>Date Picker</Label>
-            <Controller
-              name="date"
-              control={control}
-              render={({ field: { value, onChange, ref, ...register } }) => (
-                <DatePicker
-                  {...register}
-                  onSelect={onChange}
-                  selected={value}
-                />
-              )}
-            />
-          </FieldControl>
-        </form>
-        <DevTool control={control} />
-      </>
-    );
+export const DefaultValue: Story = {
+  render: () => {
+    const date = new Date();
+    // const currentDate = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+
+    return <DatePicker defaultValue={[date.toISOString().split("T")[0]]} />;
   },
 };

@@ -1,60 +1,229 @@
 "use client";
-import { CalendarIcon } from "@heroicons/react/24/outline";
-import format from "dateformat";
-import { useReducer, useState } from "react";
-import type { DayPickerSingleProps } from "react-day-picker";
-import { Calendar } from "../calendar/Calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover";
+import {
+  DatePicker as ArkDatePicker,
+  type DatePickerRootProps,
+  Portal,
+  useDatePickerContext,
+} from "@ark-ui/react";
+import {
+  CalendarIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { Button } from "../button";
+import { InputField } from "../input-field";
+import { InputGroup, Suffix } from "../input-group";
+import { classNames } from "../utils";
 
-export type DatePicker = {
-  onSelect?: (value?: Date) => void;
-} & Omit<DayPickerSingleProps, "mode" | "onSelect">;
+export type DatePicker = DatePickerRootProps;
 
-export const DatePicker = (props: DatePicker) => {
-  const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useReducer((_?: Date, cur?: Date) => {
-    // Converting the value
-    const value = cur ? new Date(format(cur, "yyyy-mm-dd")) : undefined;
+export function DatePicker(props: DatePicker) {
+  return (
+    <ArkDatePicker.Root {...props}>
+      <ArkDatePicker.Control className="flex w-full gap-2">
+        <ControlRender />
+      </ArkDatePicker.Control>
+      <Portal>
+        <ArkDatePicker.Positioner>
+          <ArkDatePicker.Content className="dark:bg-secondary-900 dark:border-secondary-800 rounded-lg border bg-white p-4 shadow-lg dark:text-white">
+            <DayCalender />
+            <MonthCalender />
+            <YearCalender />
+          </ArkDatePicker.Content>
+        </ArkDatePicker.Positioner>
+      </Portal>
+    </ArkDatePicker.Root>
+  );
+}
 
-    // Sending the value
-    props.onSelect?.(value);
-
-    // Cleanup
-    setOpen(false);
-
-    return value;
-  }, props.selected);
+function ControlRender() {
+  const { value } = useDatePickerContext();
 
   return (
-    <Popover open={isOpen} onOpenChange={setOpen}>
-      <PopoverTrigger
-        variant="outline"
-        className="w-full justify-start text-left font-normal"
-        leftIcon={<CalendarIcon className="size-4" />}
-      >
-        {selected ? (
-          props.formatters?.formatDay ? (
-            props.formatters.formatDay(selected)
-          ) : (
-            format(selected, "longDate")
-          )
-        ) : (
-          <span>Pick a date</span>
+    <>
+      <InputGroup className="w-full">
+        <ArkDatePicker.Input asChild>
+          <InputField />
+        </ArkDatePicker.Input>
+        {value.length > 0 && (
+          <Suffix>
+            <ArkDatePicker.ClearTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                colorScheme="error"
+                className="pointer-events-auto rounded p-1"
+              >
+                <XMarkIcon className="size-3.5 stroke-2" />
+              </Button>
+            </ArkDatePicker.ClearTrigger>
+          </Suffix>
         )}
-      </PopoverTrigger>
-      <PopoverContent align="start" className="w-auto max-w-max border-0 p-0">
-        <Calendar
-          {...props}
-          mode="single"
-          showOutsideDays
-          selected={selected}
-          onSelect={setSelected}
-          defaultMonth={selected}
-          initialFocus
-        />
-      </PopoverContent>
-    </Popover>
+      </InputGroup>
+      <ArkDatePicker.Trigger asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="border-secondary-300 text-secondary-500 p-2"
+        >
+          <CalendarIcon className="size-5 stroke-2" />
+        </Button>
+      </ArkDatePicker.Trigger>
+    </>
   );
-};
+}
 
-DatePicker.displayName = "DatePicker";
+function DayCalender() {
+  return (
+    <ArkDatePicker.View view="day">
+      <ArkDatePicker.Context>
+        {(datePicker) => (
+          <>
+            <CalendarHeader />
+            <ArkDatePicker.Table>
+              <ArkDatePicker.TableHead>
+                <ArkDatePicker.TableRow>
+                  {datePicker.weekDays.map((weekDay, index) => (
+                    <ArkDatePicker.TableHeader
+                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      key={index}
+                      className="text-secondary-500 size-10 text-sm font-semibold"
+                    >
+                      {weekDay.narrow}
+                    </ArkDatePicker.TableHeader>
+                  ))}
+                </ArkDatePicker.TableRow>
+              </ArkDatePicker.TableHead>
+              <ArkDatePicker.TableBody>
+                {datePicker.weeks.map((week, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  <ArkDatePicker.TableRow key={index}>
+                    {week.map((day, index) => (
+                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      <ArkDatePicker.TableCell key={index} value={day}>
+                        <ArkDatePicker.TableCellTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            className={classNames(
+                              "size-10 rounded p-0 text-base font-medium text-black dark:text-white",
+                              "data-[today=]:text-primary-500 dark:data-[today=]:text-primary-300 data-[today=]:font-semibold",
+                              "data-[outside-range=]:text-secondary-400/80 dark:data-[outside-range=]:text-secondary-600 data-[outside-range=]:cursor-not-allowed data-[outside-range=]:ring-0 data-[outside-range=]:hover:bg-transparent dark:data-[outside-range=]:ring-0 dark:data-[outside-range=]:ring-offset-0 dark:data-[outside-range=]:hover:bg-transparent",
+                            )}
+                          >
+                            {day.day}
+                          </Button>
+                        </ArkDatePicker.TableCellTrigger>
+                      </ArkDatePicker.TableCell>
+                    ))}
+                  </ArkDatePicker.TableRow>
+                ))}
+              </ArkDatePicker.TableBody>
+            </ArkDatePicker.Table>
+          </>
+        )}
+      </ArkDatePicker.Context>
+    </ArkDatePicker.View>
+  );
+}
+
+function MonthCalender() {
+  return (
+    <ArkDatePicker.View view="month">
+      <ArkDatePicker.Context>
+        {(datePicker) => (
+          <>
+            <CalendarHeader />
+            <ArkDatePicker.Table>
+              <ArkDatePicker.TableBody>
+                {datePicker
+                  .getMonthsGrid({ columns: 4, format: "short" })
+                  .map((months, index) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                    <ArkDatePicker.TableRow key={index}>
+                      {months.map((month, index) => (
+                        <ArkDatePicker.TableCell
+                          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                          key={index}
+                          value={month.value}
+                        >
+                          <ArkDatePicker.TableCellTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="lg"
+                              className="h-12 w-20 rounded-md py-0 font-medium text-black dark:text-white"
+                            >
+                              {month.label}
+                            </Button>
+                          </ArkDatePicker.TableCellTrigger>
+                        </ArkDatePicker.TableCell>
+                      ))}
+                    </ArkDatePicker.TableRow>
+                  ))}
+              </ArkDatePicker.TableBody>
+            </ArkDatePicker.Table>
+          </>
+        )}
+      </ArkDatePicker.Context>
+    </ArkDatePicker.View>
+  );
+}
+
+function YearCalender() {
+  return (
+    <ArkDatePicker.View view="year">
+      <ArkDatePicker.Context>
+        {(datePicker) => (
+          <>
+            <CalendarHeader />
+            <ArkDatePicker.Table>
+              <ArkDatePicker.TableBody>
+                {datePicker.getYearsGrid({ columns: 4 }).map((years, index) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  <ArkDatePicker.TableRow key={index}>
+                    {years.map((year, index) => (
+                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      <ArkDatePicker.TableCell key={index} value={year.value}>
+                        <ArkDatePicker.TableCellTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="lg"
+                            className="h-12 w-20 rounded-md py-0 font-medium text-black dark:text-white"
+                          >
+                            {year.label}
+                          </Button>
+                        </ArkDatePicker.TableCellTrigger>
+                      </ArkDatePicker.TableCell>
+                    ))}
+                  </ArkDatePicker.TableRow>
+                ))}
+              </ArkDatePicker.TableBody>
+            </ArkDatePicker.Table>
+          </>
+        )}
+      </ArkDatePicker.Context>
+    </ArkDatePicker.View>
+  );
+}
+
+function CalendarHeader() {
+  return (
+    <ArkDatePicker.ViewControl className="mb-2 flex items-center justify-between">
+      <ArkDatePicker.PrevTrigger asChild>
+        <Button variant="ghost" size="icon" className="size-8 rounded p-0">
+          <ChevronLeftIcon className="size-4 stroke-[3]" />
+        </Button>
+      </ArkDatePicker.PrevTrigger>
+      <ArkDatePicker.ViewTrigger asChild>
+        <Button variant="ghost" className="h-8 rounded py-0">
+          <ArkDatePicker.RangeText />
+        </Button>
+      </ArkDatePicker.ViewTrigger>
+      <ArkDatePicker.NextTrigger asChild>
+        <Button variant="ghost" size="icon" className="size-8 rounded">
+          <ChevronRightIcon className="size-4 stroke-[3]" />
+        </Button>
+      </ArkDatePicker.NextTrigger>
+    </ArkDatePicker.ViewControl>
+  );
+}
