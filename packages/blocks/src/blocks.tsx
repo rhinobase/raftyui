@@ -11,6 +11,7 @@ import { RadioGroup } from "./radio-group";
 import { RangeSlider } from "./range-slider";
 import { Rating } from "./rating";
 import { ReferenceField } from "./reference";
+import { SegmentedControl } from "./segmented-control";
 import { Select } from "./select";
 import { Slider } from "./slider";
 import { StringField } from "./string";
@@ -41,4 +42,5 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   pin: Pin,
   rating: Rating,
   colorPicker: ColorPicker,
+  segmentedControl: SegmentedControl,
 };

@@ -61,3 +61,4 @@ export * from "./utils";
 export * from "./pin";
 export * from "./rating";
 export * from "./color-picker";
+export * from "./segmented-control";

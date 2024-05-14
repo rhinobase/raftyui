@@ -16,6 +16,7 @@ import type {
   RadioGroupProps,
   RangeSliderProps,
   RatingProps,
+  SegmentedControlProps,
   SelectProps,
   SliderProps,
   StringProps,
@@ -577,3 +578,25 @@ export const ColorPickerField: StoryObj<GeneralWrapperProps<ColorPickerProps>> =
 
     render: (props) => <Thread id="colorPicker" {...props} />,
   };
+
+export const SegmentField: StoryObj<
+  GeneralWrapperProps<SegmentedControlProps>
+> = {
+  args: {
+    type: "segmentedControl",
+    // label: "Sample Label",
+    description: "",
+    tooltip: "Segment Field",
+    required: false,
+    disabled: false,
+    defaultValue: "react",
+    options: [
+      { value: "react", label: "React" },
+      { value: "solid", label: "Solid" },
+      { value: "Svelte", label: "Svelte" },
+      { value: "vue", label: "Vue" },
+    ],
+  },
+
+  render: (props) => <Thread id="segmentedControl" {...props} />,
+};

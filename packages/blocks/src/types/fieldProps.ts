@@ -12,6 +12,7 @@ import type { RadioGroupProps } from "./radio";
 import type { RangeSliderProps } from "./rangeSlider";
 import type { RatingProps } from "./rating";
 import type { ReferenceFieldProps } from "./reference";
+import type { SegmentedControlProps } from "./segmentedControl";
 import type { SelectProps } from "./select";
 import type { SliderProps } from "./slider";
 import type { StringProps } from "./string";
@@ -42,6 +43,7 @@ export type FieldProps =
   | GeneralWrapperProps<PinProps>
   | GeneralWrapperProps<RatingProps>
   | GeneralWrapperProps<ColorPickerProps>
+  | GeneralWrapperProps<SegmentedControlProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {
