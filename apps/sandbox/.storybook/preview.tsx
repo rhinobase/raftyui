@@ -45,7 +45,7 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <div className="dark:bg-secondary-900 h-screen">
+        <div className="dark:bg-secondary-900 h-screen bg-white text-black dark:text-white">
           <div className="mx-auto flex h-full min-h-screen w-full max-w-3xl flex-col items-center justify-center gap-2">
             <Story />
           </div>
