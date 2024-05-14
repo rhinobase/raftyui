@@ -8,6 +8,7 @@ import type {
   CheckboxProps,
   ColorPickerProps,
   DateFieldProps,
+  EditableTextProps,
   GeneralWrapperProps,
   InputWrapperProps,
   NumberProps,
@@ -599,4 +600,20 @@ export const SegmentField: StoryObj<
   },
 
   render: (props) => <Thread id="segmentedControl" {...props} />,
+};
+
+export const EditableTextField: StoryObj<
+  GeneralWrapperProps<EditableTextProps>
+> = {
+  args: {
+    type: "editableText",
+    // label: "Sample Label",
+    description: "",
+    tooltip: "Segment Field",
+    required: false,
+    disabled: false,
+    defaultValue: "react",
+  },
+
+  render: (props) => <Thread id="editableText" {...props} />,
 };

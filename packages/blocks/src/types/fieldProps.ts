@@ -3,11 +3,12 @@ import type { CheckboxGroupProps } from "./checkboxGroup";
 import type { ColorPickerProps } from "./colorPicker";
 import type { CustomFieldProps } from "./custom";
 import type { DateFieldProps } from "./date";
+import type { EditableTextProps } from "./editableText";
 import type { NumberProps } from "./number";
 import type { ObjectProps } from "./object";
 import type { PasswordProps } from "./password";
 import type { PermissionFieldProps } from "./permission";
-import type { PinProps } from "./pinInput";
+import type { PinInputProps } from "./pinInput";
 import type { RadioGroupProps } from "./radio";
 import type { RangeSliderProps } from "./rangeSlider";
 import type { RatingProps } from "./rating";
@@ -40,10 +41,11 @@ export type FieldProps =
   | GeneralWrapperProps<PermissionFieldProps>
   | GeneralWrapperProps<ReferenceFieldProps>
   | GeneralWrapperProps<TagFieldProps>
-  | GeneralWrapperProps<PinProps>
+  | GeneralWrapperProps<PinInputProps>
   | GeneralWrapperProps<RatingProps>
   | GeneralWrapperProps<ColorPickerProps>
   | GeneralWrapperProps<SegmentedControlProps>
+  | GeneralWrapperProps<EditableTextProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {

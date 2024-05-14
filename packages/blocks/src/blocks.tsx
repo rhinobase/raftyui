@@ -2,6 +2,7 @@ import { Checkbox } from "./checkbox";
 import { CheckboxGroup } from "./checkbox-group";
 import { ColorPicker } from "./color-picker";
 import { DateField } from "./date";
+import { EditableText } from "./editable-text";
 import { NumberField } from "./number";
 import { ObjectField } from "./object";
 import { PasswordField } from "./password";
@@ -43,4 +44,5 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   rating: Rating,
   colorPicker: ColorPicker,
   segmentedControl: SegmentedControl,
+  editableText: EditableText,
 };

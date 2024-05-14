@@ -4,6 +4,7 @@ export type { ColorPickerProps } from "./colorPicker";
 export type { CustomFieldProps } from "./custom";
 export type { DateFieldProps } from "./date";
 export type { DefaultValue } from "./defaultValue";
+export type { EditableTextProps } from "./editableText";
 export type { FieldProps, FieldPropsMap } from "./fieldProps";
 export type { NumberProps } from "./number";
 export type { ObjectProps } from "./object";
