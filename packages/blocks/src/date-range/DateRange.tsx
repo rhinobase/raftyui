@@ -1,12 +1,13 @@
 "use client";
 import { useThread } from "@fibr/react";
-import { DatePicker } from "@rafty/ui";
+import { RangePicker } from "@rafty/ui";
+import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import type { DateFieldProps } from "../types";
+import type { DateRangeFieldProps } from "../types";
 import { FieldWrapper, InputWrapper, TooltipWrapper } from "../utils";
 
-export function DateField() {
-  const { id, placeholder } = useThread<DateFieldProps>();
+export function DateRangeField() {
+  const { id, placeholder } = useThread<DateRangeFieldProps>();
 
   const { control } = useFormContext();
 
@@ -18,14 +19,12 @@ export function DateField() {
             name={id}
             control={control}
             render={({ field: { name, disabled, value, onChange, ref } }) => (
-              <DatePicker
+              <RangePicker
                 name={name}
                 placeholder={placeholder}
                 disabled={disabled}
-                value={[value]}
-                onValueChange={({ valueAsString }) =>
-                  onChange(valueAsString[0])
-                }
+                value={value}
+                onValueChange={({ valueAsString }) => onChange(valueAsString)}
                 ref={ref}
               />
             )}

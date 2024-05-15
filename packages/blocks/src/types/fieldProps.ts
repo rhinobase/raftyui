@@ -3,6 +3,7 @@ import type { CheckboxGroupProps } from "./checkboxGroup";
 import type { ColorPickerProps } from "./colorPicker";
 import type { CustomFieldProps } from "./custom";
 import type { DateFieldProps } from "./date";
+import type { DateRangeFieldProps } from "./dateRange";
 import type { EditableTextProps } from "./editableText";
 import type { EditableTextareaProps } from "./editableTextarea";
 import type { NumberProps } from "./number";
@@ -28,6 +29,7 @@ export type FieldProps =
   | GeneralWrapperProps<CheckboxProps>
   | GeneralWrapperProps<CheckboxGroupProps>
   | GeneralWrapperProps<DateFieldProps & InputWrapperProps>
+  | GeneralWrapperProps<DateRangeFieldProps & InputWrapperProps>
   | ObjectProps
   | GeneralWrapperProps<NumberProps & InputWrapperProps>
   | GeneralWrapperProps<PasswordProps & InputWrapperProps>

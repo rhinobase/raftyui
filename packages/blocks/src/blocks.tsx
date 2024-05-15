@@ -2,6 +2,7 @@ import { Checkbox } from "./checkbox";
 import { CheckboxGroup } from "./checkbox-group";
 import { ColorPicker } from "./color-picker";
 import { DateField } from "./date";
+import { DateRangeField } from "./date-range";
 import { EditableText } from "./editable-text";
 import { EditableTextarea } from "./editable-textarea";
 import { NumberField } from "./number";
@@ -28,6 +29,7 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   checkboxGroup: CheckboxGroup,
   object: ObjectField,
   date: DateField,
+  dateRange: DateRangeField,
   number: NumberField,
   password: PasswordField,
   radio: RadioGroup,
