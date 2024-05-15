@@ -1,9 +1,11 @@
+import { CheckIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
   QueryClientProvider,
   useInfiniteQuery,
 } from "@tanstack/react-query";
+import { useState } from "react";
 import {
   ScrollArea,
   ScrollAreaInfinityList,
@@ -19,8 +21,10 @@ type Story = StoryObj<typeof ScrollArea>;
 
 export const Default: Story = {
   render: () => {
+    const [checked, setChecked] = useState<number>();
     const length = 1000;
     const tags = Array.from({ length }).map((_, i) => i);
+    console.log(checked);
 
     return (
       <ScrollArea
@@ -32,10 +36,13 @@ export const Default: Story = {
           {({ index, style }) => (
             <div
               key={index}
-              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-center border-b text-sm"
+              onClick={() => setChecked(index)}
+              onKeyDown={() => setChecked(index)}
+              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-between border-b px-4 text-sm"
               style={style}
             >
               {tags[index]}
+              {index === checked && <CheckIcon className="size-4" />}
             </div>
           )}
         </ScrollAreaList>
