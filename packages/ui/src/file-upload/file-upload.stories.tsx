@@ -9,5 +9,9 @@ export default meta;
 type Story = StoryObj<typeof FileUpload>;
 
 export const Default: Story = {
-  render: (props) => <FileUpload maxFiles={10} />,
+  render: (props) => <FileUpload {...props} />,
+};
+
+export const MultipleFiles: Story = {
+  render: (props) => <FileUpload {...props} maxFiles={10} />,
 };

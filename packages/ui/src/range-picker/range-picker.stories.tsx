@@ -1,8 +1,5 @@
-import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Controller, useForm } from "react-hook-form";
-import { FieldControl } from "../field-control";
-import { Label } from "../label";
+import dateFormat from "dateformat";
 import { RangePicker } from "./RangePicker";
 
 const meta: Meta<typeof RangePicker> = {
@@ -13,36 +10,17 @@ export default meta;
 type Story = StoryObj<typeof RangePicker>;
 
 export const Default: Story = {
-  render: () => {
-    const { control, handleSubmit } = useForm({
-      defaultValues: {
-        range: {
-          from: new Date("2023-10-03"),
-          to: new Date("2023-11-06"),
-        },
-      },
-    });
+  render: (props) => <RangePicker {...props} />,
+};
 
-    return (
-      <>
-        <form onSubmit={handleSubmit((value) => console.log(value))}>
-          <FieldControl name="range">
-            <Label>Range picker</Label>
-            <Controller
-              name="range"
-              control={control}
-              render={({ field: { value, onChange, ...register } }) => (
-                <RangePicker
-                  {...register}
-                  onSelect={onChange}
-                  selected={value}
-                />
-              )}
-            />
-          </FieldControl>
-        </form>
-        <DevTool control={control} />
-      </>
-    );
+export const DefaultValue: Story = {
+  render: () => {
+    const date = new Date();
+    const firstDate = dateFormat(date, "isoDate");
+    const tmp = date;
+    tmp.setDate(tmp.getDate() + 10);
+    const secondDate = dateFormat(tmp, "isoDate");
+
+    return <RangePicker defaultValue={[firstDate, secondDate]} />;
   },
 };

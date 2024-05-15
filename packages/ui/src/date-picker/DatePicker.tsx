@@ -11,39 +11,64 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
-export type DatePicker = DatePickerRootProps;
+export type DatePicker = DatePickerRootProps & {
+  isDisabled?: ValueOrFunction<boolean>;
+  isReadOnly?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
+  placeholder?: string;
+};
 
-export function DatePicker(props: DatePicker) {
-  return (
-    <ArkDatePicker.Root {...props}>
-      <ArkDatePicker.Control className="flex w-full gap-2">
-        <ControlRender />
-      </ArkDatePicker.Control>
-      <Portal>
-        <ArkDatePicker.Positioner>
-          <ArkDatePicker.Content className="dark:bg-secondary-900 dark:border-secondary-800 rounded-lg border bg-white p-4 shadow-lg dark:text-white">
-            <DayCalender />
-            <MonthCalender />
-            <YearCalender />
-          </ArkDatePicker.Content>
-        </ArkDatePicker.Positioner>
-      </Portal>
-    </ArkDatePicker.Root>
-  );
-}
+export const DatePicker = forwardRef<
+  ElementRef<typeof ArkDatePicker.Root>,
+  DatePicker
+>(
+  (
+    { isDisabled, isLoading, isReadOnly, placeholder, ...props },
+    forwardedRef,
+  ) => {
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
+    const readOnly = props.readOnly || getValue(isReadOnly);
 
-function ControlRender() {
+    return (
+      <ArkDatePicker.Root
+        {...props}
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={forwardedRef}
+      >
+        <ArkDatePicker.Control className="flex w-full gap-2">
+          <ControlRender placeholder={placeholder} />
+        </ArkDatePicker.Control>
+        <Portal>
+          <ArkDatePicker.Positioner>
+            <ArkDatePicker.Content className="dark:bg-secondary-900 dark:border-secondary-800 rounded-lg border bg-white p-4 shadow-lg dark:text-white">
+              <DayCalender />
+              <MonthCalender />
+              <YearCalender />
+            </ArkDatePicker.Content>
+          </ArkDatePicker.Positioner>
+        </Portal>
+      </ArkDatePicker.Root>
+    );
+  },
+);
+DatePicker.displayName = "DatePicker";
+
+function ControlRender(props: { placeholder?: string }) {
   const { value } = useDatePickerContext();
 
   return (
     <>
       <InputGroup className="w-full">
-        <ArkDatePicker.Input asChild>
+        <ArkDatePicker.Input placeholder={props.placeholder} asChild>
           <InputField />
         </ArkDatePicker.Input>
         {value.length > 0 && (

@@ -13,7 +13,7 @@ export const Default: Story = {
   render: (props) => (
     <DatePicker
       {...props}
-      format={(date) => `${date.day}/${date.month}/${date.year}`}
+      // format={(date) => `${date.day}/${date.month}/${date.year}`}
     />
   ),
 };

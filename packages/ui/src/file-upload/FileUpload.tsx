@@ -3,13 +3,29 @@ import {
   type FileUploadRootProps,
 } from "@ark-ui/react";
 import { DocumentIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
-export type FileUpload = FileUploadRootProps;
+export type FileUpload = FileUploadRootProps & {
+  isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
+};
 
-export function FileUpload({ className, ...props }: FileUpload) {
+export const FileUpload = forwardRef<
+  ElementRef<typeof ArkFileUpload.Root>,
+  FileUpload
+>(({ className, isDisabled, isLoading, ...props }: FileUpload) => {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
+
   return (
-    <ArkFileUpload.Root {...props} className="w-full">
+    <ArkFileUpload.Root
+      {...props}
+      className={classNames("w-full", className)}
+      disabled={disabled}
+    >
       <div className="relative h-[300px] w-full">
         <ArkFileUpload.Dropzone className="border-secondary-300 dark:border-secondary-700 absolute inset-0 flex h-full w-full cursor-pointer select-none items-center justify-center rounded-lg border border-dashed">
           <p className="text-secondary-500 text-sm font-medium">
@@ -30,18 +46,18 @@ export function FileUpload({ className, ...props }: FileUpload) {
       <ArkFileUpload.HiddenInput />
     </ArkFileUpload.Root>
   );
-}
+});
+FileUpload.displayName = "FileUpload";
 
-function UploadItem({ file }: { file: File }) {
-  console.log(file.type);
+function UploadItem(props: { file: File }) {
   return (
     <ArkFileUpload.Item
-      key={file.name}
-      file={file}
+      key={props.file.name}
+      file={props.file}
       className="border-secondary-300 dark:border-secondary-700 flex w-full items-center gap-2 rounded-md border p-2"
     >
       <ArkFileUpload.ItemPreview type=".*">
-        {file.type.split("/")[0] === "image" ? (
+        {props.file.type.split("/")[0] === "image" ? (
           <ArkFileUpload.ItemPreviewImage className="size-8 object-cover" />
         ) : (
           <div className="flex size-8 items-center justify-center">
