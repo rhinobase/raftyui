@@ -1,6 +1,7 @@
 import { Thread } from "@fibr/react";
 import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
+import dateFormat from "dateformat";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { DawnBlockProvider } from "./BlockWrapper";
@@ -9,6 +10,7 @@ import type {
   CheckboxProps,
   ColorPickerProps,
   DateFieldProps,
+  EditableNumberProps,
   EditableTextProps,
   EditableTextareaProps,
   GeneralWrapperProps,
@@ -122,7 +124,6 @@ export const DateField: StoryObj<
     required: false,
     disabled: false,
     hidden: false,
-    defaultValue: new Date(),
     tooltip: "Date Field",
   },
   render: (props) => <Thread id="date" {...props} />,
@@ -609,12 +610,11 @@ export const EditableTextField: StoryObj<
 > = {
   args: {
     type: "editableText",
-    // label: "Sample Label",
+    label: "Editable Text",
     description: "",
-    tooltip: "Segment Field",
+    tooltip: "",
     required: false,
-    disabled: false,
-    defaultValue: "Sample",
+    disabled: true,
   },
 
   render: (props) => <Thread id="editableText" {...props} />,
@@ -634,4 +634,33 @@ export const EditableTextareaField: StoryObj<
   },
 
   render: (props) => <Thread id="editableTextarea" {...props} />,
+};
+
+export const EditableNumberField: StoryObj<
+  GeneralWrapperProps<EditableNumberProps>
+> = {
+  args: {
+    type: "editableNumber",
+    // label: "Sample Label",
+    description: "",
+    tooltip: "Segment Field",
+    required: false,
+    disabled: false,
+    defaultValue: "Hello",
+  },
+  render: (props) => {
+    const methods = useForm();
+    const { control } = methods;
+
+    return (
+      <FormProvider {...methods}>
+        <form className="w-full">
+          <DawnBlockProvider>
+            <Thread id="editableNumber" {...props} />
+          </DawnBlockProvider>
+          <DevTool control={control} />
+        </form>
+      </FormProvider>
+    );
+  },
 };

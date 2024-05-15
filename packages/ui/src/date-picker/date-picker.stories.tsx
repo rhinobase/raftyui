@@ -4,6 +4,9 @@ import { DatePicker } from "./DatePicker";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Form / DatePicker",
+  args: {
+    disabled: false,
+  },
 };
 
 export default meta;
