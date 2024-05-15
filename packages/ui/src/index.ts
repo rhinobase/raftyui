@@ -17,6 +17,7 @@ export * from "./data-table";
 export * from "./date-picker";
 export * from "./dialog";
 export * from "./drawer";
+export * from "./editable-number";
 export * from "./editable-text";
 export * from "./editable-textarea";
 export * from "./error-message";

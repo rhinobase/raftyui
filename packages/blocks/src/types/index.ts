@@ -5,6 +5,7 @@ export type { CustomFieldProps } from "./custom";
 export type { DateFieldProps } from "./date";
 export type { DateRangeFieldProps } from "./dateRange";
 export type { DefaultValue } from "./defaultValue";
+export type { EditableNumberProps } from "./editableNumber";
 export type { EditableTextProps } from "./editableText";
 export type { EditableTextareaProps } from "./editableTextarea";
 export type { FieldProps, FieldPropsMap } from "./fieldProps";

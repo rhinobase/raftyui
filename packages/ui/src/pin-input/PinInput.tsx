@@ -33,6 +33,7 @@ export type PinInput = ComponentPropsWithoutRef<typeof ArkPinInput.Root> & {
   className?: HTMLDivElement["className"];
   size?: "sm" | "md" | "lg";
   isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
 };
 
 export const PinInput = forwardRef<
@@ -40,10 +41,18 @@ export const PinInput = forwardRef<
   PinInput
 >(
   (
-    { length, className, isDisabled = false, size = "md", ...props },
+    {
+      length,
+      className,
+      isLoading = false,
+      isDisabled = false,
+      size = "md",
+      ...props
+    },
     forwardedRef,
   ) => {
-    const disabled = props.disabled || getValue(isDisabled);
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
 
     return (
       <ArkPinInput.Root {...props} disabled={disabled} ref={forwardedRef}>

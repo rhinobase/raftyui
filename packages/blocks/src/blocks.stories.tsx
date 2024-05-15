@@ -506,24 +506,6 @@ export const TimeField: StoryObj<
   render: (props) => <Thread id="time" {...props} />,
 };
 
-export const ColorField: StoryObj<
-  InputWrapperProps & GeneralWrapperProps<StringProps>
-> = {
-  args: {
-    type: "string",
-    label: "Sample Label",
-    description: "",
-    tooltip: "String Field",
-    required: false,
-    disabled: false,
-    hidden: false,
-    defaultValue: "",
-    placeholder: "Enter a value",
-    inputType: "color",
-  },
-  render: (props) => <Thread id="color" {...props} />,
-};
-
 export const PinField: StoryObj<GeneralWrapperProps<PinInputProps>> = {
   args: {
     type: "pinInput",
@@ -531,6 +513,7 @@ export const PinField: StoryObj<GeneralWrapperProps<PinInputProps>> = {
     description: "",
     tooltip: "Pin Field",
     required: false,
+    readonly: false,
     disabled: false,
     hidden: false,
     length: 4,
@@ -557,8 +540,9 @@ export const RatingField: StoryObj<GeneralWrapperProps<RatingProps>> = {
     type: "rating",
     label: "Sample Label",
     description: "",
-    tooltip: "String Field",
+    tooltip: "Rating Field",
     required: false,
+    readonly: false,
     disabled: false,
     hidden: false,
     defaultValue: 3,
@@ -576,7 +560,9 @@ export const ColorPickerField: StoryObj<GeneralWrapperProps<ColorPickerProps>> =
       description: "",
       tooltip: "Color Picker Field",
       required: false,
+      readonly: false,
       disabled: false,
+      hidden: false,
       defaultValue: "#3170f9",
     },
 
@@ -592,7 +578,9 @@ export const SegmentField: StoryObj<
     description: "",
     tooltip: "Segment Field",
     required: false,
+    readonly: false,
     disabled: false,
+    hidden: false,
     defaultValue: "react",
     options: [
       { value: "react", label: "React" },
@@ -612,9 +600,11 @@ export const EditableTextField: StoryObj<
     type: "editableText",
     label: "Editable Text",
     description: "",
-    tooltip: "",
+    tooltip: "Editable Text Field",
     required: false,
-    disabled: true,
+    readonly: false,
+    disabled: false,
+    hidden: false,
   },
 
   render: (props) => <Thread id="editableText" {...props} />,
@@ -625,11 +615,13 @@ export const EditableTextareaField: StoryObj<
 > = {
   args: {
     type: "editableTextarea",
-    // label: "Sample Label",
+    label: "Sample Label",
     description: "",
-    tooltip: "Segment Field",
+    tooltip: "Editable Textarea Field",
     required: false,
+    readonly: false,
     disabled: false,
+    hidden: false,
     defaultValue: "Hello",
   },
 
@@ -641,11 +633,13 @@ export const EditableNumberField: StoryObj<
 > = {
   args: {
     type: "editableNumber",
-    // label: "Sample Label",
+    label: "Sample Label",
     description: "",
-    tooltip: "Segment Field",
+    tooltip: "Editable Number Field",
     required: false,
+    readonly: false,
     disabled: false,
+    hidden: false,
     defaultValue: "Hello",
   },
   render: (props) => {

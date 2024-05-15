@@ -22,15 +22,24 @@ import {
 export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
   inputPlaceholder?: string;
 } & Partial<TagFieldContext>;
 
 export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
   (
-    { inputPlaceholder, size = "md", isDisabled = false, isReadOnly, ...props },
+    {
+      inputPlaceholder,
+      size = "md",
+      isLoading = false,
+      isDisabled = false,
+      isReadOnly,
+      ...props
+    },
     forwardedRef,
   ) => {
-    const disabled = props.disabled || getValue(isDisabled);
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (

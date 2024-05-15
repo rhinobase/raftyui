@@ -17,6 +17,7 @@ export type SegmentedControl = ComponentPropsWithoutRef<
   typeof SegmentGroup.Root
 > & {
   isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
 } & Partial<SegmentedControlContext>;
 
 export const SegmentedControl = forwardRef<
@@ -29,13 +30,15 @@ export const SegmentedControl = forwardRef<
       children,
       isDisabled = false,
       isReadOnly = false,
+      isLoading = false,
       size = "md",
       orientation = "horizontal",
       ...props
     },
     forwaredRef,
   ) => {
-    const disabled = props.disabled || getValue(isDisabled);
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (
@@ -68,9 +71,9 @@ const itemclasses = cva(
         false: "cursor-pointer",
       },
       size: {
-        sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=vertical]:py-1 data-[orientation=horizontal]:pb-2 w-full data-[orientation=vertical]:pl-2",
-        md: "text-base data-[orientation=horizontal]:px-1.5 data-[orientation=vertical]:py-1.5 data-[orientation=horizontal]:pb-3 w-full data-[orientation=vertical]:pl-3",
-        lg: "text-lg data-[orientation=horizontal]:px-2 data-[orientation=vertical]:py-2 data-[orientation=horizontal]:pb-3.5 w-full data-[orientation=vertical]:pl-3.5",
+        sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=vertical]:py-1 data-[orientation=horizontal]:pb-2 data-[orientation=vertical]:pl-2",
+        md: "text-base data-[orientation=horizontal]:px-1.5 data-[orientation=vertical]:py-1.5 data-[orientation=horizontal]:pb-3 data-[orientation=vertical]:pl-3",
+        lg: "text-lg data-[orientation=horizontal]:px-2 data-[orientation=vertical]:py-2 data-[orientation=horizontal]:pb-3.5 data-[orientation=vertical]:pl-3.5",
       },
       defaultVariants: {
         readonly: false,
@@ -81,7 +84,7 @@ const itemclasses = cva(
 );
 
 const itemTextClasses = cva(
-  "text-secondary-500 dark:text-secondary-400 font-semibold data-[state=checked]:dark:text-white data-[state=checked]:text-black",
+  "text-secondary-500 select-none dark:text-secondary-400 font-semibold data-[state=checked]:dark:text-white data-[state=checked]:text-black",
   {
     variants: {
       readonly: {

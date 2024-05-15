@@ -74,6 +74,7 @@ export type ColorPicker = ComponentPropsWithoutRef<typeof ColorPick.Root> & {
   size?: "sm" | "md" | "lg";
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
 };
 
 export const ColorPicker = forwardRef<
@@ -81,32 +82,35 @@ export const ColorPicker = forwardRef<
   ColorPicker
 >(
   (
-    { size = "md", isReadOnly = false, isDisabled = false, ...props },
+    {
+      size = "md",
+      isReadOnly = false,
+      isLoading = false,
+      isDisabled = false,
+      ...props
+    },
     forwaredRef,
   ) => {
-    const disabled = props.disabled || getValue(isDisabled);
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (
-      <ColorPick.Root {...props} ref={forwaredRef}>
+      <ColorPick.Root
+        {...props}
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={forwaredRef}
+      >
         <ColorPick.Context>
           {(colorPicker) => (
             <>
               <ColorPick.Control className="flex gap-2">
                 <ColorPick.ChannelInput channel="hex" asChild>
-                  <InputField
-                    size={size}
-                    isDisabled={disabled}
-                    readOnly={readOnly}
-                  />
+                  <InputField size={size} />
                 </ColorPick.ChannelInput>
                 <ColorPick.Trigger asChild>
-                  <Button
-                    isDisabled={disabled}
-                    disabled={readOnly}
-                    variant="outline"
-                    className={TRIGGER[size]}
-                  >
+                  <Button variant="outline" className={TRIGGER[size]}>
                     <div
                       style={{ background: colorPicker.valueAsString }}
                       className={TRIGGER_CONTENT[size]}

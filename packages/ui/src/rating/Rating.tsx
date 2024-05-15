@@ -45,14 +45,22 @@ export type Rating = ComponentPropsWithoutRef<typeof RatingGroup.Root> & {
   size?: "sm" | "md" | "lg";
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
 };
 
 export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
   (
-    { isDisabled = false, isReadOnly = false, size = "md", ...props },
+    {
+      isDisabled = false,
+      isLoading = false,
+      isReadOnly = false,
+      size = "md",
+      ...props
+    },
     forwarededRef,
   ) => {
-    const disabled = props.disabled || getValue(isDisabled);
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (

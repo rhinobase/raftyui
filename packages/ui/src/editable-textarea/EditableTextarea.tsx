@@ -16,6 +16,7 @@ export type EditableTextarea = ComponentPropsWithoutRef<
 > & {
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
   size?: "sm" | "md" | "lg";
 };
 
@@ -29,11 +30,13 @@ export const EditableTextarea = forwardRef<
       className,
       isDisabled = false,
       isReadOnly = false,
+      isLoading = false,
       ...props
     },
     forwardedRef,
   ) => {
-    const disabled = props.disabled || getValue(isDisabled);
+    const disabled =
+      props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (
@@ -46,7 +49,9 @@ export const EditableTextarea = forwardRef<
         ref={forwardedRef}
       >
         <Editable.Context>
-          {() => <EditableItem size={size} />}
+          {() => (
+            <EditableItem size={size} readOnly={readOnly} disabled={disabled} />
+          )}
         </Editable.Context>
       </Editable.Root>
     );
@@ -67,7 +72,11 @@ const EDITABLE_TRIGGER = {
   lg: "absolute right-4 top-3 size-5",
 };
 
-function EditableItem({ size = "md" }: Pick<EditableTextarea, "size">) {
+function EditableItem({
+  size = "md",
+  disabled,
+  readOnly,
+}: Pick<EditableTextarea, "size" | "readOnly" | "disabled">) {
   const { editing, previewProps } = useEditableContext();
 
   return (
@@ -79,18 +88,26 @@ function EditableItem({ size = "md" }: Pick<EditableTextarea, "size">) {
         <Editable.Preview asChild>
           <div
             className={classNames(
-              "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 relative min-h-[80px] cursor-pointer text-wrap rounded-md border transition-all ease-in-out",
+              "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 data-[disabled]:bg-secondary-200/60 relative min-h-[80px] cursor-pointer text-wrap rounded-md border transition-all ease-in-out aria-[readonly]:cursor-default data-[disabled]:cursor-not-allowed",
               PREVIEW_CLASS[size],
             )}
           >
             <p>{previewProps.children}</p>
             <Editable.EditTrigger
               className={classNames(
-                "absolute outline-none",
+                "absolute outline-none disabled:cursor-not-allowed",
+                readOnly && "cursor-default",
                 EDITABLE_TRIGGER[size],
               )}
             >
-              <PencilIcon className="stroke-secondary-600 dark:stroke-secondary-400 h-full w-full transition-all ease-in-out hover:stroke-black dark:hover:stroke-white" />
+              <PencilIcon
+                className={classNames(
+                  "stroke-secondary-600 dark:stroke-secondary-400 h-full w-full",
+                  !readOnly &&
+                    !disabled &&
+                    "transition-all ease-in-out hover:stroke-black dark:hover:stroke-white",
+                )}
+              />
             </Editable.EditTrigger>
           </div>
         </Editable.Preview>

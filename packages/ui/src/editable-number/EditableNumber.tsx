@@ -11,16 +11,16 @@ import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-export type EditableText = ComponentPropsWithoutRef<typeof Editable.Root> & {
+export type EditableNumber = ComponentPropsWithoutRef<typeof Editable.Root> & {
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
   size?: "sm" | "md" | "lg";
 };
 
-export const EditableText = forwardRef<
+export const EditableNumber = forwardRef<
   ElementRef<typeof Editable.Root>,
-  EditableText
+  EditableNumber
 >(
   (
     {
@@ -56,7 +56,7 @@ export const EditableText = forwardRef<
   },
 );
 
-EditableText.displayName = "EditableText";
+EditableNumber.displayName = "EditableNumber";
 
 const PREVIEW_CLASS = {
   sm: "text-sm pl-2 pr-6 py-1 h-[30px]",
@@ -74,7 +74,7 @@ function EditableItem({
   size = "md",
   readOnly,
   disabled,
-}: Pick<EditableText, "size" | "readOnly" | "disabled">) {
+}: Pick<EditableNumber, "size" | "readOnly" | "disabled">) {
   const { editing, previewProps } = useEditableContext();
 
   return (
