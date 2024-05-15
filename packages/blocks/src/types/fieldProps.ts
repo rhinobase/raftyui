@@ -4,6 +4,7 @@ import type { ColorPickerProps } from "./colorPicker";
 import type { CustomFieldProps } from "./custom";
 import type { DateFieldProps } from "./date";
 import type { EditableTextProps } from "./editableText";
+import type { EditableTextareaProps } from "./editableTextarea";
 import type { NumberProps } from "./number";
 import type { ObjectProps } from "./object";
 import type { PasswordProps } from "./password";
@@ -46,6 +47,7 @@ export type FieldProps =
   | GeneralWrapperProps<ColorPickerProps>
   | GeneralWrapperProps<SegmentedControlProps>
   | GeneralWrapperProps<EditableTextProps>
+  | GeneralWrapperProps<EditableTextareaProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {

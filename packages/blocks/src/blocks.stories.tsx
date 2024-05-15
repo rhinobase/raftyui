@@ -1,6 +1,7 @@
 import { Thread } from "@fibr/react";
 import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { DawnBlockProvider } from "./BlockWrapper";
 import type {
@@ -9,6 +10,7 @@ import type {
   ColorPickerProps,
   DateFieldProps,
   EditableTextProps,
+  EditableTextareaProps,
   GeneralWrapperProps,
   InputWrapperProps,
   NumberProps,
@@ -612,8 +614,24 @@ export const EditableTextField: StoryObj<
     tooltip: "Segment Field",
     required: false,
     disabled: false,
-    defaultValue: "react",
+    defaultValue: "Sample",
   },
 
   render: (props) => <Thread id="editableText" {...props} />,
+};
+
+export const EditableTextareaField: StoryObj<
+  GeneralWrapperProps<EditableTextareaProps>
+> = {
+  args: {
+    type: "editableTextarea",
+    // label: "Sample Label",
+    description: "",
+    tooltip: "Segment Field",
+    required: false,
+    disabled: false,
+    defaultValue: "Hello",
+  },
+
+  render: (props) => <Thread id="editableTextarea" {...props} />,
 };
