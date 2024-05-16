@@ -13,6 +13,7 @@ export * from "./color-picker";
 export * from "./combobox";
 export * from "./command";
 export * from "./context-menu";
+export * from "./currency-input";
 export * from "./data-table";
 export * from "./date-picker";
 export * from "./dialog";
