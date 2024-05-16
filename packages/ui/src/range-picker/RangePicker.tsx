@@ -13,11 +13,17 @@ import {
 } from "@heroicons/react/24/outline";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
-import { InputField } from "../input-field";
+import { inputFieldClasses } from "../input-field";
+import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-export type RangePicker = DatePickerRootProps & {
+type ValueType = [string] | [string, string] | undefined;
+
+export type RangePicker = Omit<
+  DatePickerRootProps,
+  "value" | "onValueChange" | "defaultValue"
+> & {
   isDisabled?: ValueOrFunction<boolean>;
   isReadOnly?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
@@ -25,6 +31,9 @@ export type RangePicker = DatePickerRootProps & {
     from?: string;
     to?: string;
   };
+  value?: ValueType;
+  onValueChange?: (value?: ValueType) => void;
+  defaultValue?: ValueType;
 };
 
 export const RangePicker = forwardRef<
@@ -32,7 +41,16 @@ export const RangePicker = forwardRef<
   RangePicker
 >(
   (
-    { isDisabled, isLoading, isReadOnly, placeholder, ...props },
+    {
+      isDisabled,
+      isLoading,
+      isReadOnly,
+      placeholder,
+      value,
+      defaultValue,
+      onValueChange,
+      ...props
+    },
     forwardedRef,
   ) => {
     const disabled =
@@ -43,6 +61,11 @@ export const RangePicker = forwardRef<
       <ArkDatePicker.Root
         {...props}
         selectionMode="range"
+        defaultValue={defaultValue}
+        value={value}
+        onValueChange={({ valueAsString }) =>
+          onValueChange?.([valueAsString[0], valueAsString[1]])
+        }
         disabled={disabled}
         readOnly={readOnly}
         ref={forwardedRef}
@@ -75,33 +98,37 @@ function ControlRender(props: {
 
   return (
     <>
-      <ArkDatePicker.Input
-        index={0}
-        placeholder={props.placeholder?.from}
-        asChild
-      >
-        <InputField />
-      </ArkDatePicker.Input>
-      <ArrowRightIcon className="stroke-secondary-500 size-3.5 min-h-3.5 min-w-3.5 stroke-[3]" />
-      <ArkDatePicker.Input
-        index={1}
-        placeholder={props.placeholder?.to}
-        asChild
-      >
-        <InputField />
-      </ArkDatePicker.Input>
-      {value.length > 0 && (
-        <ArkDatePicker.ClearTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            colorScheme="error"
-            className="p-2"
-          >
-            <XMarkIcon className="size-5 stroke-2" />
-          </Button>
-        </ArkDatePicker.ClearTrigger>
-      )}
+      <InputGroup>
+        <div
+          className={inputFieldClasses({ className: "flex items-center pr-9" })}
+        >
+          <ArkDatePicker.Input
+            index={0}
+            placeholder={props.placeholder?.from}
+            className="bg-transparent px-2 text-center outline-none"
+          />
+          <ArrowRightIcon className="stroke-secondary-500 size-3.5 min-h-3.5 min-w-3.5 stroke-[3]" />
+          <ArkDatePicker.Input
+            index={1}
+            placeholder={props.placeholder?.to}
+            className="bg-transparent px-2 text-center outline-none"
+          />
+        </div>
+        {value.length > 0 && (
+          <Suffix>
+            <ArkDatePicker.ClearTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                colorScheme="error"
+                className="pointer-events-auto rounded p-1"
+              >
+                <XMarkIcon className="size-4 stroke-2" />
+              </Button>
+            </ArkDatePicker.ClearTrigger>
+          </Suffix>
+        )}
+      </InputGroup>
       <ArkDatePicker.Trigger asChild>
         <Button
           variant="outline"
@@ -145,16 +172,19 @@ function DayCalender() {
                         // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                         key={index}
                         value={day}
-                        className="aria-selected:bg-secondary-200/80 dark:aria-selected:bg-secondary-700/80 rounded"
+                        className="p-0"
                       >
                         <ArkDatePicker.TableCellTrigger asChild>
                           <Button
                             variant="ghost"
                             className={classNames(
-                              "size-10 rounded p-0 text-base font-medium text-black ring-offset-0 dark:text-white",
-                              "data-[today=]:text-primary-500 dark:data-[today=]:text-primary-300 data-[today=]:font-semibold",
+                              "size-10 rounded p-0 text-base font-medium text-black dark:text-white",
+                              "data-[today=]:border-primary-500 dark:data-[today=]:border-primary-300 data-[today=]:font-semibold",
                               "data-[outside-range=]:text-secondary-400/80 dark:data-[outside-range=]:text-secondary-600 data-[outside-range=]:cursor-not-allowed data-[outside-range=]:ring-0 data-[outside-range=]:hover:bg-transparent dark:data-[outside-range=]:ring-0 dark:data-[outside-range=]:ring-offset-0 dark:data-[outside-range=]:hover:bg-transparent",
-                              "data-[selected=]:text-primary-500 dark:data-[selected=]:text-primary-300 data-[selected=]:bg-primary-200/70 dark:data-[selected=]:bg-primary-400/20",
+                              "data-[in-range=]:bg-primary-200/70 dark:data-[in-range=]:bg-primary-400/20",
+                              "data-[range-start=]:data-[in-range=]:bg-primary-500 dark:data-[range-start=]:data-[in-range=]:bg-primary-300 data-[range-start=]:text-white dark:data-[range-start=]:text-white",
+                              "data-[range-end=]:data-[in-range=]:bg-primary-500 dark:data-[range-end=]:data-[in-range=]:bg-primary-300 data-[range-end=]:text-white dark:data-[range-end=]:text-white",
+                              "data-[in-range=]:rounded-none data-[in-range=]:data-[range-end=]:rounded-r data-[in-range=]:data-[range-start=]:rounded-l",
                             )}
                           >
                             {day.day}

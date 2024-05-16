@@ -18,11 +18,17 @@ import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-export type DatePicker = DatePickerRootProps & {
+export type DatePicker = Omit<
+  DatePickerRootProps,
+  "value" | "onValueChange" | "defaultValue"
+> & {
   isDisabled?: ValueOrFunction<boolean>;
   isReadOnly?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
   placeholder?: string;
+  value?: string;
+  onValueChange?: (value?: string) => void;
+  defaultValue?: string;
 };
 
 export const DatePicker = forwardRef<
@@ -30,7 +36,16 @@ export const DatePicker = forwardRef<
   DatePicker
 >(
   (
-    { isDisabled, isLoading, isReadOnly, placeholder, ...props },
+    {
+      isDisabled,
+      isLoading,
+      isReadOnly,
+      placeholder,
+      value,
+      onValueChange,
+      defaultValue,
+      ...props
+    },
     forwardedRef,
   ) => {
     const disabled =
@@ -40,6 +55,9 @@ export const DatePicker = forwardRef<
     return (
       <ArkDatePicker.Root
         {...props}
+        value={value ? [value] : undefined}
+        onValueChange={({ valueAsString }) => onValueChange?.(valueAsString[0])}
+        defaultValue={defaultValue ? [defaultValue] : undefined}
         disabled={disabled}
         readOnly={readOnly}
         ref={forwardedRef}
@@ -134,6 +152,7 @@ function DayCalender() {
                               "size-10 rounded p-0 text-base font-medium text-black dark:text-white",
                               "data-[today=]:text-primary-500 dark:data-[today=]:text-primary-300 data-[today=]:font-semibold",
                               "data-[outside-range=]:text-secondary-400/80 dark:data-[outside-range=]:text-secondary-600 data-[outside-range=]:cursor-not-allowed data-[outside-range=]:ring-0 data-[outside-range=]:hover:bg-transparent dark:data-[outside-range=]:ring-0 dark:data-[outside-range=]:ring-offset-0 dark:data-[outside-range=]:hover:bg-transparent",
+                              "data-[selected=]:text-primary-500 dark:data-[selected=]:text-primary-300 data-[selected=]:bg-primary-200/70 dark:data-[selected=]:bg-primary-400/20",
                             )}
                           >
                             {day.day}

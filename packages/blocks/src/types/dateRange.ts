@@ -4,5 +4,5 @@ export type DateRangeFieldProps = {
     from?: string;
     to?: string;
   };
-  defaultValue?: string[];
+  defaultValue?: [string] | [string, string];
 };

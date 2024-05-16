@@ -23,7 +23,7 @@ export function DateRangeField() {
               placeholder={placeholder}
               disabled={disabled}
               value={value}
-              onValueChange={({ valueAsString }) => onChange(valueAsString)}
+              onValueChange={onChange}
               ref={ref}
             />
           )}

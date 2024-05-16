@@ -26,6 +26,6 @@ export const DefaultValue: Story = {
     const date = new Date();
     const currentDate = dateFormat(date, "isoDate");
 
-    return <DatePicker defaultValue={[currentDate]} />;
+    return <DatePicker defaultValue={currentDate} />;
   },
 };
