@@ -7,6 +7,8 @@ import type { DateRangeFieldProps } from "./dateRange";
 import type { EditableNumberProps } from "./editableNumber";
 import type { EditableTextProps } from "./editableText";
 import type { EditableTextareaProps } from "./editableTextarea";
+import type { ListboxProps } from "./listbox";
+import type { MultiListboxProps } from "./multiListbox";
 import type { NumberProps } from "./number";
 import type { ObjectProps } from "./object";
 import type { PasswordProps } from "./password";
@@ -51,6 +53,8 @@ export type FieldProps =
   | GeneralWrapperProps<SegmentedControlProps>
   | GeneralWrapperProps<EditableTextProps>
   | GeneralWrapperProps<EditableTextareaProps>
+  | GeneralWrapperProps<MultiListboxProps>
+  | GeneralWrapperProps<ListboxProps>
   | GeneralWrapperProps<EditableNumberProps>
   | CustomFieldProps;
 

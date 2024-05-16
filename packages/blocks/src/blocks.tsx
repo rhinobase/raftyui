@@ -6,6 +6,8 @@ import { DateRangeField } from "./date-range";
 import { EditableNumber } from "./editable-number";
 import { EditableText } from "./editable-text";
 import { EditableTextarea } from "./editable-textarea";
+import { Listbox } from "./listbox";
+import { MultiListbox } from "./multi-listbox";
 import { NumberField } from "./number";
 import { ObjectField } from "./object";
 import { PasswordField } from "./password";
@@ -51,4 +53,6 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   editableText: EditableText,
   editableTextarea: EditableTextarea,
   editableNumber: EditableNumber,
+  multiListbox: MultiListbox,
+  listbox: Listbox,
 };

@@ -10,6 +10,8 @@ export type { EditableTextProps } from "./editableText";
 export type { EditableTextareaProps } from "./editableTextarea";
 export type { FieldProps, FieldPropsMap } from "./fieldProps";
 export type { FileInputFieldProps } from "./fileInput";
+export type { ListboxProps } from "./listbox";
+export type { MultiListboxProps } from "./multiListbox";
 export type { NumberProps } from "./number";
 export type { ObjectProps } from "./object";
 export type { PasswordProps } from "./password";

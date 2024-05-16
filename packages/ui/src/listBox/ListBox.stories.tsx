@@ -1,28 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ListBox } from "./ListBox";
+import { Listbox } from "./Listbox";
 
-const meta: Meta<typeof ListBox> = {
-  title: "Components / ListBox",
+const meta: Meta<typeof Listbox> = {
+  title: "Components / Listbox",
 };
 
 export default meta;
-type Story = StoryObj<typeof ListBox>;
+type Story = StoryObj<typeof Listbox>;
 
 export const Default: Story = {
   args: {
-    // disabled: false,
-    // items: ["React", "Solid", "Vue", "js"],
+    items: [
+      { value: "hello", label: "Hello" },
+      { value: "react", label: "React" },
+      { value: "next", label: "Next" },
+      { value: "php", label: "PHP" },
+      { value: "dotnet", label: "DotNet" },
+    ],
+    defaultValue: ["react"],
+    isDisabled: false,
+    isReadOnly: false,
+    isLoading: false,
+    hidden: false,
   },
-  render: () => (
-    <ListBox
-      items={[
-        { label: "hello", value: "Hello" },
-        { label: "react", value: "React" },
-        { label: "next", value: "Next" },
-        { label: "php", value: "PHP" },
-        { label: "dotnet", value: "DotNet" },
-      ]}
-      defaultValue="react"
-    />
-  ),
+  render: (props) => <Listbox {...props} />,
 };

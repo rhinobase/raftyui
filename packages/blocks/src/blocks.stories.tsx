@@ -14,6 +14,8 @@ import type {
   EditableTextareaProps,
   GeneralWrapperProps,
   InputWrapperProps,
+  ListboxProps,
+  MultiListboxProps,
   NumberProps,
   PasswordProps,
   PinInputProps,
@@ -650,6 +652,80 @@ export const EditableNumberField: StoryObj<
         <form className="w-full">
           <DawnBlockProvider>
             <Thread id="editableNumber" {...props} />
+          </DawnBlockProvider>
+          <DevTool control={control} />
+        </form>
+      </FormProvider>
+    );
+  },
+};
+
+export const MultiListboxField: StoryObj<
+  GeneralWrapperProps<MultiListboxProps>
+> = {
+  args: {
+    type: "multiListbox",
+    label: "Sample Label",
+    description: "",
+    options: [
+      { value: "hello", label: "Hello" },
+      { value: "react", label: "React" },
+      { value: "next", label: "Next" },
+      { value: "php", label: "PHP" },
+      { value: "dotnet", label: "DotNet" },
+    ],
+    tooltip: "Multi Listbox Field",
+    defaultValue: ["react"],
+    required: false,
+    readonly: false,
+    disabled: false,
+    hidden: false,
+  },
+  render: (props) => {
+    const methods = useForm();
+    const { control } = methods;
+
+    return (
+      <FormProvider {...methods}>
+        <form className="w-full">
+          <DawnBlockProvider>
+            <Thread id="multiListbox" {...props} />
+          </DawnBlockProvider>
+          <DevTool control={control} />
+        </form>
+      </FormProvider>
+    );
+  },
+};
+
+export const ListboxField: StoryObj<GeneralWrapperProps<ListboxProps>> = {
+  args: {
+    type: "listbox",
+    label: "Sample Label",
+    description: "",
+    options: [
+      { value: "hello", label: "Hello" },
+      { value: "react", label: "React" },
+      { value: "next", label: "Next" },
+      { value: "php", label: "PHP" },
+      { value: "dotnet", label: "DotNet" },
+    ],
+    tooltip: "Listbox Field",
+    defaultValue: "react",
+    required: false,
+    readonly: false,
+    disabled: false,
+    hidden: false,
+  },
+  render: (props) => {
+    const methods = useForm();
+    const { control } = methods;
+
+    return (
+      <FormProvider {...methods}>
+        <form className="w-full">
+          <DawnBlockProvider>
+            <Thread id="listbox" {...props} />
           </DawnBlockProvider>
           <DevTool control={control} />
         </form>

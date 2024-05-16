@@ -31,6 +31,7 @@ export * from "./input-group";
 export * from "./kbd";
 export * from "./label";
 export * from "./list";
+export * from "./listbox";
 export * from "./menu";
 export * from "./menubar";
 export * from "./navigation-menu";
