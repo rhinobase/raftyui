@@ -2,6 +2,7 @@ import type { CalendarProps } from "./calendar";
 import type { CheckboxProps } from "./checkbox";
 import type { CheckboxGroupProps } from "./checkboxGroup";
 import type { ColorPickerProps } from "./colorPicker";
+import type { CurrencyInputProps } from "./currencyInput";
 import type { CustomFieldProps } from "./custom";
 import type { DateFieldProps } from "./date";
 import type { DateRangeFieldProps } from "./dateRange";
@@ -32,8 +33,10 @@ import type { GeneralWrapperProps, InputWrapperProps } from "./wrappers";
 export type FieldProps =
   | GeneralWrapperProps<CheckboxProps>
   | GeneralWrapperProps<CheckboxGroupProps>
-  | GeneralWrapperProps<DateFieldProps & InputWrapperProps>
-  | GeneralWrapperProps<DateRangeFieldProps & InputWrapperProps>
+  | GeneralWrapperProps<ColorPickerProps>
+  | GeneralWrapperProps<CurrencyInputProps>
+  | GeneralWrapperProps<DateFieldProps>
+  | GeneralWrapperProps<DateRangeFieldProps>
   | ObjectProps
   | GeneralWrapperProps<NumberProps & InputWrapperProps>
   | GeneralWrapperProps<PasswordProps & InputWrapperProps>
@@ -50,7 +53,6 @@ export type FieldProps =
   | GeneralWrapperProps<TagFieldProps>
   | GeneralWrapperProps<PinInputProps>
   | GeneralWrapperProps<RatingProps>
-  | GeneralWrapperProps<ColorPickerProps>
   | GeneralWrapperProps<SegmentedControlProps>
   | GeneralWrapperProps<EditableTextProps>
   | GeneralWrapperProps<EditableTextareaProps>

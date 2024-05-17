@@ -2,6 +2,7 @@ import { Calendar } from "./calendar";
 import { Checkbox } from "./checkbox";
 import { CheckboxGroup } from "./checkbox-group";
 import { ColorPicker } from "./color-picker";
+import { CurrencyInput } from "./currency-input";
 import { DateField } from "./date";
 import { DateRangeField } from "./date-range";
 import { EditableNumber } from "./editable-number";
@@ -31,6 +32,8 @@ import type { FieldProps } from "./types";
 export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   checkbox: Checkbox,
   checkboxGroup: CheckboxGroup,
+  colorPicker: ColorPicker,
+  currencyInput: CurrencyInput,
   object: ObjectField,
   date: DateField,
   dateRange: DateRangeField,
@@ -49,7 +52,6 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   tagField: TagField,
   pinInput: PinInput,
   rating: Rating,
-  colorPicker: ColorPicker,
   segmentedControl: SegmentedControl,
   editableText: EditableText,
   editableTextarea: EditableTextarea,

@@ -2,6 +2,7 @@ export type { CalendarProps } from "./calendar";
 export type { CheckboxProps } from "./checkbox";
 export type { CheckboxGroupProps } from "./checkboxGroup";
 export type { ColorPickerProps } from "./colorPicker";
+export type { CurrencyInputProps } from "./currencyInput";
 export type { CustomFieldProps } from "./custom";
 export type { DateFieldProps } from "./date";
 export type { DateRangeFieldProps } from "./dateRange";
