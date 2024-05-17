@@ -1,8 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { forwardRef, useRef } from "react";
+import { forwardRef } from "react";
 import { InputField } from "../input-field";
 import { InputGroup, LeftAddon, Suffix } from "../input-group";
-import { mergeRefs } from "../utils";
 
 const ID = "currency-input";
 
@@ -61,7 +60,6 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
     },
     forwardedRef,
   ) => {
-    const inputRef = useRef<HTMLInputElement>(null);
     const key = currencyCode.toUpperCase();
     const currencyProps = CURRENCY[key] ?? {
       ...CURRENCY.USD,
@@ -111,7 +109,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
             onChange?.(formattedValue);
             onBlur?.(event);
           }}
-          ref={mergeRefs(inputRef, forwardedRef)}
+          ref={forwardedRef}
         />
         <Suffix className="pointer-events-auto w-max">
           <div className="flex flex-col">
@@ -122,7 +120,6 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               className="text-secondary-500 px-2 py-0.5 hover:text-black dark:hover:text-white"
               aria-controls={ID}
               onClick={() => {
-                inputRef.current?.focus();
                 const valueAsNumber = Number((value ?? "0").replace(/,/g, ""));
                 const formattedValue = formatter(valueAsNumber + 1);
 
@@ -138,7 +135,6 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               className="text-secondary-500 px-2 py-0.5 hover:text-black dark:hover:text-white"
               aria-controls={ID}
               onClick={() => {
-                inputRef.current?.focus();
                 const valueAsNumber = Number((value ?? "0").replace(/,/g, ""));
                 const formattedValue = formatter(valueAsNumber - 1);
 
