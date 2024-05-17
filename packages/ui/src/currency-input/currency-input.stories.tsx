@@ -28,7 +28,7 @@ export const Default: Story = {
     });
 
     return (
-      <form>
+      <form className="w-full">
         <Controller
           name="currency"
           control={control}

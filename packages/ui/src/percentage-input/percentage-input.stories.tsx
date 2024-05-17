@@ -25,7 +25,7 @@ export const Default: Story = {
     });
 
     return (
-      <form>
+      <form className="w-full">
         <Controller
           name="percentage"
           control={control}

@@ -2,6 +2,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
 import { InputField } from "../input-field";
 import { InputGroup, LeftAddon, Suffix } from "../input-group";
+import { classNames } from "../utils";
 
 const ID = "currency-input";
 
@@ -67,6 +68,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
       onChange,
       onKeyDown,
       onBlur,
+      className,
       ...props
     },
     forwardedRef,
@@ -83,7 +85,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
     ).format;
 
     return (
-      <InputGroup size={size}>
+      <InputGroup size={size} className={className}>
         <LeftAddon>{currencyProps.symbol || "¤"}</LeftAddon>
         <InputField
           {...props}

@@ -37,12 +37,13 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
       onChange,
       onKeyDown,
       onBlur,
+      className,
       ...props
     },
     forwardedRef,
   ) => {
     return (
-      <InputGroup size={size}>
+      <InputGroup size={size} className={className}>
         <InputField
           {...props}
           id={ID}
