@@ -14,6 +14,7 @@ import type { MultiListboxProps } from "./multiListbox";
 import type { NumberProps } from "./number";
 import type { ObjectProps } from "./object";
 import type { PasswordProps } from "./password";
+import type { PercentageInputProps } from "./percentageInput";
 import type { PermissionFieldProps } from "./permission";
 import type { PinInputProps } from "./pinInput";
 import type { RadioGroupProps } from "./radio";
@@ -40,6 +41,7 @@ export type FieldProps =
   | ObjectProps
   | GeneralWrapperProps<NumberProps & InputWrapperProps>
   | GeneralWrapperProps<PasswordProps & InputWrapperProps>
+  | GeneralWrapperProps<PercentageInputProps>
   | GeneralWrapperProps<RadioGroupProps>
   | GeneralWrapperProps<RangeSliderProps>
   | GeneralWrapperProps<SelectProps>

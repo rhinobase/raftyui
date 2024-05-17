@@ -13,6 +13,7 @@ import { MultiListbox } from "./multi-listbox";
 import { NumberField } from "./number";
 import { ObjectField } from "./object";
 import { PasswordField } from "./password";
+import { PercentageInput } from "./percentage-input";
 import { PermissionField } from "./permission";
 import { PinInput } from "./pin-input";
 import { RadioGroup } from "./radio-group";
@@ -39,6 +40,7 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   dateRange: DateRangeField,
   number: NumberField,
   password: PasswordField,
+  percentageInput: PercentageInput,
   radio: RadioGroup,
   rangeSlider: RangeSlider,
   select: Select,

@@ -13,6 +13,7 @@ export * from "./multi-listbox";
 export * from "./number";
 export * from "./object";
 export * from "./password";
+export * from "./percentage-input";
 export * from "./permission";
 export * from "./pin-input";
 export * from "./radio-group";

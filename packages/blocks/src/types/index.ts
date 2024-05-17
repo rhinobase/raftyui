@@ -17,6 +17,7 @@ export type { MultiListboxProps } from "./multiListbox";
 export type { NumberProps } from "./number";
 export type { ObjectProps } from "./object";
 export type { PasswordProps } from "./password";
+export type { PercentageInputProps } from "./percentageInput";
 export type { PermissionFieldProps } from "./permission";
 export type { PinInputProps } from "./pinInput";
 export type { RadioGroupProps } from "./radio";
