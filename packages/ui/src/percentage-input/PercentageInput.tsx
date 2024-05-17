@@ -1,9 +1,9 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
 import { InputField } from "../input-field";
-import { InputGroup, LeftAddon, Suffix } from "../input-group";
+import { InputGroup, Suffix } from "../input-group";
 
-const ID = "currency-input";
+const ID = "percentage-input";
 
 const KEY_FACTOR: Record<string, number> = {
   ArrowUp: 1,
@@ -11,37 +11,7 @@ const KEY_FACTOR: Record<string, number> = {
   ArrowDown: -1,
 };
 
-const CURRENCY: Record<
-  string,
-  {
-    symbol: string;
-    locales?: Intl.LocalesArgument;
-    options?: Intl.NumberFormatOptions | undefined;
-  }
-> = {
-  USD: {
-    symbol: "$",
-    locales: "en-US",
-    options: { currency: "USD", minimumFractionDigits: 2 },
-  },
-  INR: {
-    symbol: "₹",
-    locales: "en-IN",
-    options: { currency: "INR", minimumFractionDigits: 2 },
-  },
-  EUR: {
-    symbol: "€",
-    locales: "en-IE",
-    options: { currency: "EUR", minimumFractionDigits: 2 },
-  },
-  GBP: {
-    symbol: "₤",
-    locales: "en-GB",
-    options: { currency: "GBP", minimumFractionDigits: 2 },
-  },
-};
-
-export type CurrencyInput = Omit<
+export type PercentageInput = Omit<
   InputField,
   | "value"
   | "onChange"
@@ -58,7 +28,7 @@ export type CurrencyInput = Omit<
   currencyCode?: string;
 };
 
-export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
+export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
   (
     {
       size,
@@ -71,20 +41,8 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
     },
     forwardedRef,
   ) => {
-    const key = currencyCode.toUpperCase();
-    const currencyProps = CURRENCY[key] ?? {
-      ...CURRENCY.USD,
-      symbol: key.slice(0, 3),
-    };
-
-    const formatter = new Intl.NumberFormat(
-      currencyProps.locales,
-      currencyProps.options,
-    ).format;
-
     return (
       <InputGroup size={size}>
-        <LeftAddon>{currencyProps.symbol || "¤"}</LeftAddon>
         <InputField
           {...props}
           id={ID}
@@ -96,7 +54,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
           value={value}
           onChange={(event) => {
             const valueAsString = event.currentTarget.value.replace(
-              /[^.0-9]/g,
+              /[^%.0-9]/g,
               "",
             );
 
@@ -104,25 +62,26 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
           }}
           onKeyDown={(event) => {
             const valueAsString = event.currentTarget.value;
-            const valueAsNumber = Number(valueAsString.replace(/,/g, ""));
+            const valueAsNumber = Number(valueAsString.replace(/%/g, ""));
 
             if (event.key in KEY_FACTOR) {
               event.preventDefault();
               event.stopPropagation();
 
               const constant = KEY_FACTOR[event.key];
-              const formattedValue = formatter(valueAsNumber + constant);
+              let val: number = valueAsNumber;
+              if (constant === -1) val = Math.max(valueAsNumber + constant, 0);
+              else if (constant === 1)
+                val = Math.min(valueAsNumber + constant, 100);
 
-              onChange?.(formattedValue);
+              onChange?.(`${val}%`);
             } else onKeyDown?.(event);
           }}
           onBlur={(event) => {
             const valueAsString = event.currentTarget.value;
-            const valueAsNumber = Number(valueAsString.replace(/,/g, ""));
+            const value = valueAsString.replace(/%/g, "");
 
-            const formattedValue = formatter(valueAsNumber);
-
-            onChange?.(formattedValue);
+            onChange?.(`${value}%`);
             onBlur?.(event);
           }}
           ref={forwardedRef}
@@ -136,10 +95,10 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               className="text-secondary-500 px-2 py-0.5 hover:text-black dark:hover:text-white"
               aria-controls={ID}
               onClick={() => {
-                const valueAsNumber = Number((value ?? "0").replace(/,/g, ""));
-                const formattedValue = formatter(valueAsNumber + 1);
+                const valueAsNumber = Number((value ?? "0").replace(/%/g, ""));
+                const val = valueAsNumber + 1;
 
-                onChange?.(formattedValue);
+                onChange?.(`${val}%`);
               }}
             >
               <ChevronUpIcon className="size-2.5 stroke-[3]" />
@@ -151,10 +110,10 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               className="text-secondary-500 px-2 py-0.5 hover:text-black dark:hover:text-white"
               aria-controls={ID}
               onClick={() => {
-                const valueAsNumber = Number((value ?? "0").replace(/,/g, ""));
-                const formattedValue = formatter(valueAsNumber - 1);
+                const valueAsNumber = Number((value ?? "0").replace(/%/g, ""));
+                const val = valueAsNumber - 1;
 
-                onChange?.(formattedValue);
+                onChange?.(`${val}%`);
               }}
             >
               <ChevronDownIcon className="size-2.5 stroke-[3]" />
@@ -165,4 +124,4 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
     );
   },
 );
-CurrencyInput.displayName = "CurrencyInput";
+PercentageInput.displayName = "PercentageInput";

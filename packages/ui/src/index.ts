@@ -38,6 +38,7 @@ export * from "./menubar";
 export * from "./navigation-menu";
 export * from "./pagination";
 export * from "./password-field";
+export * from "./percentage-input";
 export * from "./pin-input";
 export * from "./popover";
 export * from "./progress";
