@@ -5,6 +5,7 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { DawnBlockProvider } from "./BlockWrapper";
 import type {
+  CalendarProps,
   CheckboxGroupProps,
   CheckboxProps,
   ColorPickerProps,
@@ -732,4 +733,19 @@ export const ListboxField: StoryObj<GeneralWrapperProps<ListboxProps>> = {
       </FormProvider>
     );
   },
+};
+
+export const Calendar: StoryObj<
+  InputWrapperProps & GeneralWrapperProps<CalendarProps>
+> = {
+  args: {
+    type: "calendar",
+    label: "Calendar",
+    description: "",
+    required: false,
+    disabled: false,
+    hidden: false,
+    tooltip: "Calendar Field",
+  },
+  render: (props) => <Thread id="calendar" {...props} />,
 };

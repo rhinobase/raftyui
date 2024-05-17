@@ -1,3 +1,4 @@
+import type { CalendarProps } from "./calendar";
 import type { CheckboxProps } from "./checkbox";
 import type { CheckboxGroupProps } from "./checkboxGroup";
 import type { ColorPickerProps } from "./colorPicker";
@@ -56,6 +57,7 @@ export type FieldProps =
   | GeneralWrapperProps<MultiListboxProps>
   | GeneralWrapperProps<ListboxProps>
   | GeneralWrapperProps<EditableNumberProps>
+  | GeneralWrapperProps<CalendarProps>
   | CustomFieldProps;
 
 export type FieldPropsMap = {

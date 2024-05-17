@@ -117,7 +117,7 @@ function ControlRender(props: { placeholder?: string }) {
   );
 }
 
-function DayCalender() {
+export function DayCalender() {
   return (
     <ArkDatePicker.View view="day">
       <ArkDatePicker.Context>
@@ -171,7 +171,7 @@ function DayCalender() {
   );
 }
 
-function MonthCalender() {
+export function MonthCalender() {
   return (
     <ArkDatePicker.View view="month">
       <ArkDatePicker.Context>
@@ -213,7 +213,7 @@ function MonthCalender() {
   );
 }
 
-function YearCalender() {
+export function YearCalender() {
   return (
     <ArkDatePicker.View view="year">
       <ArkDatePicker.Context>
@@ -250,7 +250,7 @@ function YearCalender() {
   );
 }
 
-function CalendarHeader() {
+export function CalendarHeader() {
   return (
     <ArkDatePicker.ViewControl className="mb-2 flex items-center justify-between">
       <ArkDatePicker.PrevTrigger asChild>

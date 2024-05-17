@@ -1,3 +1,4 @@
+import { Calendar } from "./calendar";
 import { Checkbox } from "./checkbox";
 import { CheckboxGroup } from "./checkbox-group";
 import { ColorPicker } from "./color-picker";
@@ -55,4 +56,5 @@ export const blocks: Record<FieldProps["type"], () => JSX.Element> = {
   editableNumber: EditableNumber,
   multiListbox: MultiListbox,
   listbox: Listbox,
+  calendar: Calendar,
 };

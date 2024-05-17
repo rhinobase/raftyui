@@ -1,3 +1,4 @@
+export type { CalendarProps } from "./calendar";
 export type { CheckboxProps } from "./checkbox";
 export type { CheckboxGroupProps } from "./checkboxGroup";
 export type { ColorPickerProps } from "./colorPicker";
