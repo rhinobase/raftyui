@@ -1,21 +1,27 @@
 "use client";
-import { Editable, useEditableContext } from "@ark-ui/react";
-import { PencilIcon } from "@heroicons/react/24/outline";
 import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+  Editable,
+  type EditableRootProps,
+  useEditableContext,
+} from "@ark-ui/react";
+import { PencilIcon } from "@heroicons/react/24/outline";
+import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-export type EditableNumber = ComponentPropsWithoutRef<typeof Editable.Root> & {
+export type EditableNumber = Omit<
+  EditableRootProps,
+  "value" | "onValueChange" | "defaultValue" | "activationMode"
+> & {
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
   size?: "sm" | "md" | "lg";
+  value?: number;
+  onValueChange?: (value?: number) => void;
+  defaultValue?: number;
 };
 
 export const EditableNumber = forwardRef<
@@ -26,6 +32,9 @@ export const EditableNumber = forwardRef<
     {
       size = "md",
       className,
+      value,
+      defaultValue,
+      onValueChange,
       isDisabled = false,
       isLoading = false,
       isReadOnly = false,
@@ -40,6 +49,13 @@ export const EditableNumber = forwardRef<
     return (
       <Editable.Root
         {...props}
+        value={value ? String(value) : undefined}
+        defaultValue={defaultValue ? String(defaultValue) : undefined}
+        onValueChange={({ value }) => {
+          const val = value.length !== 0 ? Number(value) : undefined;
+
+          onValueChange?.(val);
+        }}
         activationMode="dblclick"
         readOnly={readOnly}
         disabled={disabled}
@@ -81,7 +97,7 @@ function EditableItem({
     <>
       <Editable.Area className={editing ? "mb-2" : undefined}>
         <Editable.Input asChild>
-          <InputField size={size} />
+          <InputField type="number" size={size} />
         </Editable.Input>
         <Editable.Preview asChild>
           <div
