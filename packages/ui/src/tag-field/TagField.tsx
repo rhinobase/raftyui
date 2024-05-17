@@ -20,9 +20,6 @@ import {
 } from "./context";
 
 export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
-  isReadOnly?: ValueOrFunction<boolean>;
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
   inputPlaceholder?: string;
 } & Partial<TagFieldContext>;
 
@@ -43,7 +40,14 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (
-      <TagFieldProvider value={{ size }}>
+      <TagFieldProvider
+        value={{
+          size,
+          isDisabled: disabled ?? false,
+          isReadOnly: readOnly ?? false,
+          isLoading: disabled ?? false,
+        }}
+      >
         <TagsInput.Root
           {...props}
           readOnly={readOnly}
@@ -54,6 +58,7 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
           <TagsInput.Context>
             {() => <TagFieldItem placeholder={inputPlaceholder} />}
           </TagsInput.Context>
+          <TagsInput.HiddenInput />
         </TagsInput.Root>
       </TagFieldProvider>
     );
@@ -80,7 +85,9 @@ type TagFieldItem = {
 
 function TagFieldItem({ placeholder }: TagFieldItem) {
   const { empty, value } = useTagsInputContext();
-  const { size } = useTagFieldContext();
+  const { size, isReadOnly } = useTagFieldContext();
+
+  const readOnly = getValue(isReadOnly);
 
   return (
     <>
@@ -110,6 +117,7 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
         <Button
           variant="outline"
           size={size}
+          isDisabled={readOnly}
           className={classNames(empty && "hidden", "w-full")}
         >
           Clear all
@@ -121,7 +129,8 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
 
 function TagPreviewItem(props: { value: string }) {
   const { editing, disabled } = useTagsInputItemContext();
-  const { size } = useTagFieldContext();
+  const { size, isReadOnly } = useTagFieldContext();
+  const readOnly = getValue(isReadOnly);
 
   return (
     <TagsInput.ItemPreview
@@ -138,13 +147,17 @@ function TagPreviewItem(props: { value: string }) {
       >
         {props.value}
       </TagsInput.ItemText>
-      <TagsInput.ItemDeleteTrigger
-        className={classNames(
-          "data-[readonly]:cursor-default",
-          disabled ? "cursor-not-allowed" : "cursor-pointer",
-        )}
-      >
-        <XMarkIcon className="size-3.5 stroke-black stroke-2 dark:stroke-slate-200" />
+      <TagsInput.ItemDeleteTrigger asChild>
+        <Button
+          isDisabled={readOnly}
+          className={classNames(
+            "cursor-pointer disabled:cursor-not-allowed data-[readonly]:cursor-default",
+            disabled ? "cursor-not-allowed" : "cursor-pointer",
+          )}
+          isUnstyled
+        >
+          <XMarkIcon className="size-3.5 stroke-black stroke-2 dark:stroke-slate-200" />
+        </Button>
       </TagsInput.ItemDeleteTrigger>
     </TagsInput.ItemPreview>
   );

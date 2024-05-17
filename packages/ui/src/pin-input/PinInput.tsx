@@ -15,7 +15,7 @@ const INPUT_SIZE = {
   lg: "size-[46px]",
 };
 
-const menuLabelClasses = cva("flex", {
+const menuLabelClasses = cva("flex flex-wrap", {
   variants: {
     size: {
       sm: "gap-2",
@@ -30,7 +30,6 @@ const menuLabelClasses = cva("flex", {
 
 export type PinInput = ComponentPropsWithoutRef<typeof ArkPinInput.Root> & {
   length: number;
-  className?: HTMLDivElement["className"];
   size?: "sm" | "md" | "lg";
   isDisabled?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;

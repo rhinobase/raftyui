@@ -63,7 +63,7 @@ export const SegmentedControl = forwardRef<
 );
 
 const itemclasses = cva(
-  " duration-200 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
+  "duration-200 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
   {
     variants: {
       readonly: {

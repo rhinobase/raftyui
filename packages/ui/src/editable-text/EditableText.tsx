@@ -1,17 +1,18 @@
 "use client";
-import { Editable, useEditableContext } from "@ark-ui/react";
-import { PencilIcon } from "@heroicons/react/24/outline";
 import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+  Editable,
+  type EditableRootProps,
+  useEditableContext,
+} from "@ark-ui/react";
+import { PencilIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
+import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-export type EditableText = ComponentPropsWithoutRef<typeof Editable.Root> & {
+export type EditableText = Omit<EditableRootProps, "activationMode"> & {
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
@@ -64,11 +65,22 @@ const PREVIEW_CLASS = {
   lg: "text-lg pl-4 pr-10 py-2 h-[46px]",
 };
 
-const EDITABLE_TRIGGER = {
-  sm: "absolute right-2 top-2 size-3",
-  md: "absolute right-3 top-2.5 size-4",
-  lg: "absolute right-4 top-3 size-5",
-};
+const editTriggerClasses = cva(
+  "absolute outline-none disabled:cursor-not-allowed",
+  {
+    variants: {
+      size: {
+        sm: "absolute right-2 top-2 size-3",
+        md: "absolute right-3 top-2.5 size-4",
+        lg: "absolute right-4 top-3 size-5",
+      },
+      readOnly: {
+        true: "cursor-default",
+        false: "",
+      },
+    },
+  },
+);
 
 function EditableItem({
   size = "md",
@@ -92,11 +104,7 @@ function EditableItem({
           >
             <p className="truncate">{previewProps.children}</p>
             <Editable.EditTrigger
-              className={classNames(
-                "absolute outline-none disabled:cursor-not-allowed",
-                readOnly && "cursor-default",
-                EDITABLE_TRIGGER[size],
-              )}
+              className={editTriggerClasses({ size, readOnly })}
             >
               <PencilIcon
                 className={classNames(

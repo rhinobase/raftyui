@@ -28,7 +28,7 @@ const iconClass = cva("", {
   },
 });
 
-const controlClass = cva("flex", {
+const controlClass = cva("flex flex-wrap", {
   variants: {
     size: {
       sm: "gap-0.5",

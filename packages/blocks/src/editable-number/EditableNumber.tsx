@@ -21,7 +21,7 @@ export function EditableNumber() {
               id={name}
               name={name}
               value={value}
-              onValueChange={(event) => onChange(event.value)}
+              onValueChange={onChange}
               disabled={disabled}
               ref={ref}
             />

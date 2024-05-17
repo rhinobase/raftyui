@@ -6,7 +6,7 @@ const meta: Meta<typeof EditableNumber> = {
   args: {
     isDisabled: false,
     isReadOnly: false,
-    defaultValue: "5",
+    defaultValue: 5,
     size: "md",
   },
   argTypes: {

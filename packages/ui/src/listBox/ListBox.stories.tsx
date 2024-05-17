@@ -17,12 +17,18 @@ export const Default: Story = {
       { value: "php", label: "PHP" },
       { value: "dotnet", label: "DotNet" },
     ],
-    defaultValue: ["react"],
+    defaultValue: "react",
     isDisabled: false,
     isReadOnly: false,
     isLoading: false,
     hidden: false,
-    // type:"multi"
+    type: "single",
+  },
+  argTypes: {
+    type: {
+      control: "select",
+      options: ["single", "multi"],
+    },
   },
   render: (props) => <Listbox {...props} />,
 };

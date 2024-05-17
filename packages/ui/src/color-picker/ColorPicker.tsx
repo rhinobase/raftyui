@@ -156,7 +156,13 @@ export const ColorPicker = forwardRef<
                       </div>
                     </div>
                     <ColorPick.View className="flex gap-3" format="rgba">
-                      <ColorPick.ChannelInput asChild channel="hex">
+                      <ColorPick.ChannelInput asChild channel="red">
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                      <ColorPick.ChannelInput asChild channel="green">
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                      <ColorPick.ChannelInput asChild channel="blue">
                         <InputField size={size} />
                       </ColorPick.ChannelInput>
                       <ColorPick.ChannelInput channel="alpha" asChild>
@@ -171,6 +177,23 @@ export const ColorPicker = forwardRef<
                         <InputField size={size} />
                       </ColorPick.ChannelInput>
                       <ColorPick.ChannelInput channel="lightness" asChild>
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                      <ColorPick.ChannelInput channel="alpha" asChild>
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                    </ColorPick.View>
+                    <ColorPick.View format="hsba" className="flex gap-3">
+                      <ColorPick.ChannelInput channel="hue" asChild>
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                      <ColorPick.ChannelInput channel="saturation" asChild>
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                      <ColorPick.ChannelInput channel="brightness" asChild>
+                        <InputField size={size} />
+                      </ColorPick.ChannelInput>
+                      <ColorPick.ChannelInput channel="alpha" asChild>
                         <InputField size={size} />
                       </ColorPick.ChannelInput>
                     </ColorPick.View>
