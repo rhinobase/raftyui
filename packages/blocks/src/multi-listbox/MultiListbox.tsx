@@ -16,6 +16,7 @@ export function MultiListbox() {
           render={({ field: { name, onChange, ref, value, disabled } }) => (
             <Listbox
               name={name}
+              type="multi"
               items={options}
               onValueChange={onChange}
               value={value}

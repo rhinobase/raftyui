@@ -17,8 +17,8 @@ export function Listbox() {
             <RaftyListbox
               name={name}
               items={options}
-              onValueChange={(values) => onChange(values.pop())}
-              value={[value]}
+              onValueChange={onChange}
+              value={value}
               isDisabled={disabled}
               ref={ref}
             />

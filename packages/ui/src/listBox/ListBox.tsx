@@ -11,16 +11,26 @@ export type Listbox = {
     value: string;
     label?: string;
   }[];
-  value?: string[];
-  defaultValue?: string[];
   className?: HTMLDivElement["className"];
-  onValueChange?: (values: string[]) => void;
   isDisabled?: ValueOrFunction<boolean>;
   isReadOnly?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
   hidden?: ValueOrFunction<boolean>;
   name?: string;
-};
+} & (
+  | {
+      value?: string;
+      defaultValue?: string;
+      onValueChange?: (value?: string) => void;
+      type?: "single";
+    }
+  | {
+      value?: string[];
+      defaultValue?: string[];
+      onValueChange?: (value?: string[]) => void;
+      type: "multi";
+    }
+);
 
 const listboxItemClasses = cva(
   "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 text-sm transition-all ease-in-out",
@@ -106,28 +116,43 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
       name,
       items,
       className,
-      defaultValue = [],
       hidden: isHidden = false,
       isDisabled = false,
       isLoading = false,
       isReadOnly = false,
       itemSize = 40,
-      value,
+      defaultValue,
       onValueChange,
+      type,
+      value,
     },
     forwardedRef,
   ) => {
+    const initValue = value ? (Array.isArray(value) ? value : [value]) : [];
+    const initDefaultValue = defaultValue
+      ? Array.isArray(defaultValue)
+        ? defaultValue
+        : [defaultValue]
+      : [];
+
+    const isMulti = type === "multi";
+
     const [selected, setSelected] = useReducer(
       (prev: string[], cur: string) => {
         let selectedValues = [...prev];
 
-        if (selectedValues.includes(cur))
-          selectedValues = selectedValues.filter((val) => val !== cur);
-        else selectedValues.push(cur);
+        if (isMulti) {
+          if (selectedValues.includes(cur))
+            selectedValues = selectedValues.filter((val) => val !== cur);
+          else selectedValues.push(cur);
+        } else {
+          if (selectedValues.includes(cur)) selectedValues = [];
+          else selectedValues = [cur];
+        }
 
         return selectedValues;
       },
-      value ?? defaultValue,
+      initValue ?? initDefaultValue,
     );
 
     const disabled = getValue(isDisabled);
@@ -137,7 +162,8 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
-      onValueChange?.(selected);
+      if (isMulti) onValueChange?.(selected);
+      else onValueChange?.(selected.length > 0 ? selected[0] : undefined);
     }, [selected]);
 
     const handleSelect = (index: number) => {
@@ -159,9 +185,7 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
       >
         <ScrollAreaList>
           {({ index, style }) => {
-            const isSelected = value
-              ? value.includes(items[index].value)
-              : selected.includes(items[index].value);
+            const isSelected = selected.includes(items[index].value);
 
             return (
               <div
