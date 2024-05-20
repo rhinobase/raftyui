@@ -29,6 +29,19 @@ export type DatePicker = Omit<
   value?: string;
   onValueChange?: (value?: string) => void;
   defaultValue?: string;
+  size?: "sm" | "md" | "lg";
+};
+
+export const CONTENT_CLASSES = {
+  sm: "p-2 rounded-md",
+  md: "p-4 rounded-lg",
+  lg: "p-6 rounded-xl",
+};
+
+export const CONTROL_CLASSES = {
+  sm: "gap-1.5",
+  md: "gap-2",
+  lg: "gap-2.5",
 };
 
 export const DatePicker = forwardRef<
@@ -37,6 +50,7 @@ export const DatePicker = forwardRef<
 >(
   (
     {
+      size = "md",
       isDisabled,
       isLoading,
       isReadOnly,
@@ -62,15 +76,22 @@ export const DatePicker = forwardRef<
         readOnly={readOnly}
         ref={forwardedRef}
       >
-        <ArkDatePicker.Control className="flex w-full gap-2">
-          <ControlRender placeholder={placeholder} />
+        <ArkDatePicker.Control
+          className={classNames("flex w-full", CONTROL_CLASSES[size])}
+        >
+          <ControlRender placeholder={placeholder} size={size} />
         </ArkDatePicker.Control>
         <Portal>
           <ArkDatePicker.Positioner>
-            <ArkDatePicker.Content className="dark:bg-secondary-900 dark:border-secondary-800 rounded-lg border bg-white p-4 shadow-lg dark:text-white">
-              <DayCalender />
-              <MonthCalender />
-              <YearCalender />
+            <ArkDatePicker.Content
+              className={classNames(
+                "dark:bg-secondary-900 dark:border-secondary-800 border bg-white shadow-lg dark:text-white",
+                CONTENT_CLASSES[size],
+              )}
+            >
+              <DayCalender size={size} />
+              <MonthCalender size={size} />
+              <YearCalender size={size} />
             </ArkDatePicker.Content>
           </ArkDatePicker.Positioner>
         </Portal>
@@ -80,13 +101,28 @@ export const DatePicker = forwardRef<
 );
 DatePicker.displayName = "DatePicker";
 
-function ControlRender(props: { placeholder?: string }) {
+export const TRIGGER_CLASSES = {
+  sm: "p-1.5 rounded",
+  md: "p-2 rounded-md",
+  lg: "p-2.5 rounded-md",
+};
+
+export const TRIGGER_ICON_CLASSES = {
+  sm: "size-4",
+  md: "size-5",
+  lg: "size-6",
+};
+
+function ControlRender({
+  placeholder,
+  size = "md",
+}: Pick<DatePicker, "size" | "placeholder">) {
   const { value } = useDatePickerContext();
 
   return (
     <>
-      <InputGroup className="w-full">
-        <ArkDatePicker.Input placeholder={props.placeholder} asChild>
+      <InputGroup size={size} className="w-full">
+        <ArkDatePicker.Input placeholder={placeholder} asChild>
           <InputField />
         </ArkDatePicker.Input>
         {value.length > 0 && (
@@ -108,22 +144,33 @@ function ControlRender(props: { placeholder?: string }) {
         <Button
           variant="outline"
           size="icon"
-          className="border-secondary-300 text-secondary-500 p-2"
+          className={classNames(
+            "border-secondary-300 text-secondary-500",
+            TRIGGER_CLASSES[size],
+          )}
         >
-          <CalendarIcon className="size-5 stroke-2" />
+          <CalendarIcon
+            className={classNames("stroke-2", TRIGGER_ICON_CLASSES[size])}
+          />
         </Button>
       </ArkDatePicker.Trigger>
     </>
   );
 }
 
-export function DayCalender() {
+export const TABLE_CELL_CLASSES = {
+  sm: "text-sm size-9 rounded",
+  md: "text-base size-10 rounded-md",
+  lg: "text-lg size-12 rounded-lg",
+};
+
+export function DayCalender({ size = "md" }: Pick<DatePicker, "size">) {
   return (
     <ArkDatePicker.View view="day">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader />
+            <CalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableHead>
                 <ArkDatePicker.TableRow>
@@ -131,7 +178,10 @@ export function DayCalender() {
                     <ArkDatePicker.TableHeader
                       // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                       key={index}
-                      className="text-secondary-500 size-10 text-sm font-semibold"
+                      className={classNames(
+                        "text-secondary-500 font-semibold",
+                        TABLE_CELL_CLASSES[size],
+                      )}
                     >
                       {weekDay.narrow}
                     </ArkDatePicker.TableHeader>
@@ -149,10 +199,11 @@ export function DayCalender() {
                           <Button
                             variant="ghost"
                             className={classNames(
-                              "size-10 rounded p-0 text-base font-medium text-black dark:text-white",
+                              "p-0 font-medium text-black dark:text-white",
                               "data-[today=]:text-primary-500 dark:data-[today=]:text-primary-300 data-[today=]:font-semibold",
                               "data-[outside-range=]:text-secondary-400/80 dark:data-[outside-range=]:text-secondary-600 data-[outside-range=]:cursor-not-allowed data-[outside-range=]:ring-0 data-[outside-range=]:hover:bg-transparent dark:data-[outside-range=]:ring-0 dark:data-[outside-range=]:ring-offset-0 dark:data-[outside-range=]:hover:bg-transparent",
                               "data-[selected=]:text-primary-500 dark:data-[selected=]:text-primary-300 data-[selected=]:bg-primary-200/70 dark:data-[selected=]:bg-primary-400/20",
+                              TABLE_CELL_CLASSES[size],
                             )}
                           >
                             {day.day}
@@ -171,13 +222,19 @@ export function DayCalender() {
   );
 }
 
-export function MonthCalender() {
+export const TABLE_CELL_TRIGGER_CLASSES = {
+  sm: "h-10 w-[70px] rounded",
+  md: "h-12 w-20 rounded-md",
+  lg: "h-14 w-24 rounded-lg",
+};
+
+export function MonthCalender({ size = "md" }: Pick<DatePicker, "size">) {
   return (
     <ArkDatePicker.View view="month">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader />
+            <CalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableBody>
                 {datePicker
@@ -194,8 +251,11 @@ export function MonthCalender() {
                           <ArkDatePicker.TableCellTrigger asChild>
                             <Button
                               variant="ghost"
-                              size="lg"
-                              className="h-12 w-20 rounded-md py-0 font-medium text-black dark:text-white"
+                              size={size}
+                              className={classNames(
+                                "py-0 font-medium text-black dark:text-white",
+                                TABLE_CELL_TRIGGER_CLASSES[size],
+                              )}
                             >
                               {month.label}
                             </Button>
@@ -213,13 +273,13 @@ export function MonthCalender() {
   );
 }
 
-export function YearCalender() {
+export function YearCalender({ size = "md" }: Pick<DatePicker, "size">) {
   return (
     <ArkDatePicker.View view="year">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader />
+            <CalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableBody>
                 {datePicker.getYearsGrid({ columns: 4 }).map((years, index) => (
@@ -231,8 +291,11 @@ export function YearCalender() {
                         <ArkDatePicker.TableCellTrigger asChild>
                           <Button
                             variant="ghost"
-                            size="lg"
-                            className="h-12 w-20 rounded-md py-0 font-medium text-black dark:text-white"
+                            size={size}
+                            className={classNames(
+                              "py-0 font-medium text-black dark:text-white",
+                              TABLE_CELL_TRIGGER_CLASSES[size],
+                            )}
                           >
                             {year.label}
                           </Button>
@@ -250,22 +313,62 @@ export function YearCalender() {
   );
 }
 
-export function CalendarHeader() {
+export const ICON_CLASSES = {
+  sm: "size-3.5",
+  md: "size-4",
+  lg: "size-5",
+};
+
+export const VIEW_TRIGGER_CLASSES = {
+  sm: "h-8",
+  md: "h-8",
+  lg: "h-10",
+};
+
+export const NEXT_PREV_BUTTON_CLASSES = {
+  sm: "size-8",
+  md: "size-8",
+  lg: "size-10",
+};
+
+export function CalendarHeader({ size = "md" }: Pick<DatePicker, "size">) {
   return (
     <ArkDatePicker.ViewControl className="mb-2 flex items-center justify-between">
       <ArkDatePicker.PrevTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-8 rounded p-0">
-          <ChevronLeftIcon className="size-4 stroke-[3]" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className={classNames(
+            "size-8 rounded",
+            NEXT_PREV_BUTTON_CLASSES[size],
+          )}
+        >
+          <ChevronLeftIcon
+            className={classNames("stroke-[3]", ICON_CLASSES[size])}
+          />
         </Button>
       </ArkDatePicker.PrevTrigger>
       <ArkDatePicker.ViewTrigger asChild>
-        <Button variant="ghost" className="h-8 rounded py-0">
+        <Button
+          variant="ghost"
+          size={size}
+          className={classNames("rounded py-0", VIEW_TRIGGER_CLASSES[size])}
+        >
           <ArkDatePicker.RangeText />
         </Button>
       </ArkDatePicker.ViewTrigger>
       <ArkDatePicker.NextTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-8 rounded">
-          <ChevronRightIcon className="size-4 stroke-[3]" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className={classNames(
+            "size-8 rounded",
+            NEXT_PREV_BUTTON_CLASSES[size],
+          )}
+        >
+          <ChevronRightIcon
+            className={classNames("stroke-[3]", ICON_CLASSES[size])}
+          />
         </Button>
       </ArkDatePicker.NextTrigger>
     </ArkDatePicker.ViewControl>

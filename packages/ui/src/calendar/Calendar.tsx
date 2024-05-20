@@ -5,12 +5,13 @@ import {
 } from "@ark-ui/react";
 import { type ElementRef, forwardRef } from "react";
 import {
+  CONTENT_CLASSES,
   DayCalender,
   MonthCalender,
   YearCalender,
 } from "../date-picker/DatePicker";
 import type { ValueOrFunction } from "../types";
-import { getValue } from "../utils";
+import { classNames, getValue } from "../utils";
 
 export type Calendar = Omit<
   DatePickerRootProps,
@@ -23,6 +24,7 @@ export type Calendar = Omit<
   value?: string;
   onValueChange?: (value?: string) => void;
   defaultValue?: string;
+  size?: "sm" | "md" | "lg";
 };
 
 export const Calendar = forwardRef<
@@ -31,6 +33,7 @@ export const Calendar = forwardRef<
 >(
   (
     {
+      size = "md",
       isDisabled,
       isLoading,
       isReadOnly,
@@ -58,10 +61,15 @@ export const Calendar = forwardRef<
         readOnly={readOnly}
         ref={forwardedRef}
       >
-        <ArkDatePicker.Content className="dark:bg-secondary-900 dark:border-secondary-800 w-max rounded-lg border bg-white p-4 shadow-lg dark:text-white">
-          <DayCalender />
-          <MonthCalender />
-          <YearCalender />
+        <ArkDatePicker.Content
+          className={classNames(
+            "dark:bg-secondary-900 dark:border-secondary-800 w-max rounded-lg border bg-white shadow-lg dark:text-white",
+            CONTENT_CLASSES[size],
+          )}
+        >
+          <DayCalender size={size} />
+          <MonthCalender size={size} />
+          <YearCalender size={size} />
         </ArkDatePicker.Content>
       </ArkDatePicker.Root>
     );

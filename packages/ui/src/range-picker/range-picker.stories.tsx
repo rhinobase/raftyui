@@ -4,6 +4,15 @@ import { RangePicker } from "./RangePicker";
 
 const meta: Meta<typeof RangePicker> = {
   title: "Form / RangePicker",
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;

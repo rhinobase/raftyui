@@ -8,6 +8,13 @@ const meta: Meta<typeof CurrencyInput> = {
   title: "Form / CurrencyInput",
   args: {
     currencyCode: "usd",
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
   },
 };
 

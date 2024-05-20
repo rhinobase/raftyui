@@ -6,6 +6,13 @@ const meta: Meta<typeof DatePicker> = {
   title: "Form / DatePicker",
   args: {
     disabled: false,
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
   },
 };
 

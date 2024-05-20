@@ -6,6 +6,15 @@ import { PercentageInput } from "./PercentageInput";
 
 const meta: Meta<typeof PercentageInput> = {
   title: "Form / PercentageInput",
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
