@@ -1,6 +1,5 @@
 import { useThread } from "@fibr/react";
 import { Listbox as RaftyListbox } from "@rafty/ui";
-import React from "react";
 import { Controller } from "react-hook-form";
 import type { ListboxProps } from "../types";
 import { FieldWrapper, TooltipWrapper } from "../utils";

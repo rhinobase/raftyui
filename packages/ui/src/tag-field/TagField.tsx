@@ -5,6 +5,7 @@ import {
   useTagsInputItemContext,
 } from "@ark-ui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
@@ -21,6 +22,9 @@ import {
 
 export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
   inputPlaceholder?: string;
+  isReadOnly?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction<boolean>;
+  isLoading?: ValueOrFunction<boolean>;
 } & Partial<TagFieldContext>;
 
 export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
@@ -30,7 +34,7 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
       size = "md",
       isLoading = false,
       isDisabled = false,
-      isReadOnly,
+      isReadOnly = false,
       ...props
     },
     forwardedRef,
@@ -43,9 +47,6 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
       <TagFieldProvider
         value={{
           size,
-          isDisabled: disabled ?? false,
-          isReadOnly: readOnly ?? false,
-          isLoading: disabled ?? false,
         }}
       >
         <TagsInput.Root
@@ -67,17 +68,34 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
 
 TagField.displayName = "TagField";
 
-const CONTROL_Size = {
+const CONTROL_CLASSES = {
   sm: "px-1.5 py-1",
   md: "px-2 py-1.5",
   lg: "px-3 py-2",
 };
 
-const TEXT_SIZE = {
+const TEXT_CLASSES = {
   sm: "text-xs",
   md: "text-sm",
   lg: "text-base",
 };
+
+const iconClasses = cva(
+  "stroke-black stroke-2 group-read-only/tag-input:cursor-default dark:stroke-slate-200",
+  {
+    variants: {
+      size: {
+        sm: "size-3",
+        md: "size-3.5",
+        lg: "size-4",
+      },
+      disabled: {
+        true: "cursor-not-allowed",
+        false: "",
+      },
+    },
+  },
+);
 
 type TagFieldItem = {
   placeholder?: string;
@@ -85,23 +103,24 @@ type TagFieldItem = {
 
 function TagFieldItem({ placeholder }: TagFieldItem) {
   const { empty, value } = useTagsInputContext();
-  const { size, isReadOnly } = useTagFieldContext();
-
-  const readOnly = getValue(isReadOnly);
+  const { size } = useTagFieldContext();
 
   return (
     <>
       <TagsInput.Control
         className={classNames(
-          "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 flex flex-wrap items-center gap-2 rounded-md border transition-all data-[focus]:ring-2",
-          CONTROL_Size[size],
+          "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 group/tag-input flex flex-wrap items-center gap-2 rounded-md border outline-none transition-all data-[focus]:ring-2",
+          CONTROL_CLASSES[size],
         )}
       >
         {value.map((value, index) => (
-          <TagsInput.Item key={`${index}-${1}`} index={index} value={value}>
+          <TagsInput.Item key={`${index}-${value}`} index={index} value={value}>
             <TagPreviewItem value={value} />
             <TagsInput.ItemInput
-              className={classNames("outline-none", TEXT_SIZE[size])}
+              className={classNames(
+                "outline-none group-read-only/tag-input:pointer-events-none",
+                TEXT_CLASSES[size],
+              )}
             />
           </TagsInput.Item>
         ))}
@@ -109,7 +128,7 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
           placeholder={placeholder}
           className={classNames(
             "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent outline-none",
-            TEXT_SIZE[size],
+            TEXT_CLASSES[size],
           )}
         />
       </TagsInput.Control>
@@ -117,8 +136,10 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
         <Button
           variant="outline"
           size={size}
-          isDisabled={readOnly}
-          className={classNames(empty && "hidden", "w-full")}
+          className={classNames(
+            empty && "hidden",
+            "data-[readOnly]:border-secondary-300/80 data-[readOnly]:text-secondary-400/90 data-[readOnly]:dark:border-secondary-500/80 data-[readOnly]:dark:text-secondary-400/70 data-[readOnly]:dark:hover:bg-secondary-900 w-full data-[readOnly]:cursor-not-allowed data-[readOnly]:ring-offset-0 data-[readOnly]:hover:bg-white data-[readOnly]:focus:ring-0",
+          )}
         >
           Clear all
         </Button>
@@ -129,8 +150,7 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
 
 function TagPreviewItem(props: { value: string }) {
   const { editing, disabled } = useTagsInputItemContext();
-  const { size, isReadOnly } = useTagFieldContext();
-  const readOnly = getValue(isReadOnly);
+  const { size } = useTagFieldContext();
 
   return (
     <TagsInput.ItemPreview
@@ -142,22 +162,13 @@ function TagPreviewItem(props: { value: string }) {
       <TagsInput.ItemText
         className={classNames(
           "dark:text-secondary-200 text-black",
-          TEXT_SIZE[size],
+          TEXT_CLASSES[size],
         )}
       >
         {props.value}
       </TagsInput.ItemText>
-      <TagsInput.ItemDeleteTrigger asChild>
-        <Button
-          isDisabled={readOnly}
-          className={classNames(
-            "cursor-pointer disabled:cursor-not-allowed data-[readonly]:cursor-default",
-            disabled ? "cursor-not-allowed" : "cursor-pointer",
-          )}
-          isUnstyled
-        >
-          <XMarkIcon className="size-3.5 stroke-black stroke-2 dark:stroke-slate-200" />
-        </Button>
+      <TagsInput.ItemDeleteTrigger>
+        <XMarkIcon className={iconClasses({ size, disabled })} />
       </TagsInput.ItemDeleteTrigger>
     </TagsInput.ItemPreview>
   );

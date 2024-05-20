@@ -128,12 +128,9 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
     },
     forwardedRef,
   ) => {
-    const initValue = value ? (Array.isArray(value) ? value : [value]) : [];
-    const initDefaultValue = defaultValue
-      ? Array.isArray(defaultValue)
-        ? defaultValue
-        : [defaultValue]
-      : [];
+    const val = value ?? defaultValue;
+
+    const initValue = val ? (Array.isArray(val) ? val : [val]) : [];
 
     const isMulti = type === "multi";
 
@@ -152,7 +149,7 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
 
         return selectedValues;
       },
-      initValue ?? initDefaultValue,
+      initValue,
     );
 
     const disabled = getValue(isDisabled);
