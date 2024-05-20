@@ -26,9 +26,11 @@ const COLORS = [
 ];
 
 const colorPickerTriggerClasses = {
-  sm: "size-[30px] min-w-[30px] min-h-[30px] p-1",
-  md: "size-[38px] min-w-[38px] min-h-[38px] p-1.5",
-  lg: "size-[46px] min-w-[46px] min-h-[46px] p-2",
+  size: {
+    sm: "size-[30px] min-w-[30px] min-h-[30px] p-1",
+    md: "size-[38px] min-w-[38px] min-h-[38px] p-1.5",
+    lg: "size-[46px] min-w-[46px] min-h-[46px] p-2",
+  },
 };
 
 const colorPickerContentClasses = cva(
@@ -108,7 +110,7 @@ export const ColorPicker = forwardRef<
                 <ArkColorPicker.Trigger asChild>
                   <Button
                     variant="outline"
-                    className={colorPickerTriggerClasses[size]}
+                    className={colorPickerTriggerClasses.size[size]}
                   >
                     <div
                       style={{ background: colorPicker.valueAsString }}
