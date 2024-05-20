@@ -9,7 +9,20 @@ import { FaStar, FaStarHalf } from "react-icons/fa";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-const iconClass = cva("", {
+const ratingControlClasses = cva("flex flex-wrap", {
+  variants: {
+    size: {
+      sm: "gap-0.5",
+      md: "gap-1",
+      lg: "gap-2",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+const ratingIconClasses = cva("", {
   variants: {
     size: {
       sm: "size-5",
@@ -25,19 +38,6 @@ const iconClass = cva("", {
   defaultVariants: {
     size: "md",
     highlighted: false,
-  },
-});
-
-const controlClass = cva("flex flex-wrap", {
-  variants: {
-    size: {
-      sm: "gap-0.5",
-      md: "gap-1",
-      lg: "gap-2",
-    },
-  },
-  defaultVariants: {
-    size: "md",
   },
 });
 
@@ -70,7 +70,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
         readOnly={readOnly}
         ref={forwarededRef}
       >
-        <RatingGroup.Control className={controlClass({ size })}>
+        <RatingGroup.Control className={ratingControlClasses({ size })}>
           <RatingGroup.Context>
             {({ items }) =>
               items.map((item) => (
@@ -84,17 +84,19 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
                       half ? (
                         <div className="relative flex">
                           <FaStarHalf
-                            className={iconClass({ size, highlighted })}
+                            className={ratingIconClasses({ size, highlighted })}
                           />
                           <FaStarHalf
                             className={classNames(
-                              iconClass({ size }),
+                              ratingIconClasses({ size }),
                               "absolute -scale-x-100 transform",
                             )}
                           />
                         </div>
                       ) : (
-                        <FaStar className={iconClass({ size, highlighted })} />
+                        <FaStar
+                          className={ratingIconClasses({ size, highlighted })}
+                        />
                       )
                     }
                   </RatingGroup.ItemContext>
