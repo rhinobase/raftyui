@@ -1,10 +1,10 @@
-import { SegmentGroup } from "@ark-ui/react";
-import { cva } from "class-variance-authority";
 import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+  SegmentGroup,
+  type SegmentGroupItemProps,
+  type SegmentGroupRootProps,
+} from "@ark-ui/react";
+import { cva } from "class-variance-authority";
+import { type ElementRef, forwardRef } from "react";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 import {
@@ -13,9 +13,7 @@ import {
   useSegmentedControlContext,
 } from "./context";
 
-export type SegmentedControl = ComponentPropsWithoutRef<
-  typeof SegmentGroup.Root
-> & {
+export type SegmentedControl = SegmentGroupRootProps & {
   isDisabled?: ValueOrFunction<boolean>;
   isLoading?: ValueOrFunction<boolean>;
 } & Partial<SegmentedControlContext>;
@@ -62,13 +60,14 @@ export const SegmentedControl = forwardRef<
   },
 );
 
-const itemclasses = cva(
-  "duration-200 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
+const segmentedControlItemClasses = cva(
+  "duration-200 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 transition-all text-secondary-500 select-none dark:text-secondary-400 font-medium data-[state=checked]:dark:text-white data-[state=checked]:text-black",
   {
     variants: {
       readonly: {
         true: "cursor-default",
-        false: "cursor-pointer",
+        false:
+          "cursor-pointer data-[hover]:text-secondary-800 data-[hover]:dark:text-secondary-200",
       },
       size: {
         sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=vertical]:py-1 data-[orientation=horizontal]:pb-2 data-[orientation=vertical]:pl-2",
@@ -83,25 +82,7 @@ const itemclasses = cva(
   },
 );
 
-const itemTextClasses = cva(
-  "text-secondary-500 select-none dark:text-secondary-400 font-semibold data-[state=checked]:dark:text-white data-[state=checked]:text-black",
-  {
-    variants: {
-      readonly: {
-        true: "",
-        false:
-          "data-[hover]:text-secondary-800 data-[hover]:dark:text-secondary-200 transition-all",
-      },
-      defaultVariants: {
-        readonly: false,
-      },
-    },
-  },
-);
-
-export type SegmentedControlItem = ComponentPropsWithoutRef<
-  typeof SegmentGroup.Item
->;
+export type SegmentedControlItem = SegmentGroupItemProps;
 
 export const SegmentedControlItem = forwardRef<
   ElementRef<typeof SegmentGroup.Item>,
@@ -113,16 +94,12 @@ export const SegmentedControlItem = forwardRef<
     <SegmentGroup.Item
       {...props}
       className={classNames(
-        itemclasses({ readonly: isReadOnly, size }),
+        segmentedControlItemClasses({ readonly: isReadOnly, size }),
         className,
       )}
       ref={forwaredRef}
     >
-      <SegmentGroup.ItemText
-        className={itemTextClasses({ readonly: isReadOnly })}
-      >
-        {children}
-      </SegmentGroup.ItemText>
+      <SegmentGroup.ItemText>{children}</SegmentGroup.ItemText>
       <SegmentGroup.ItemControl />
     </SegmentGroup.Item>
   );
