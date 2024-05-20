@@ -34,7 +34,9 @@ export function InternalOptionsRender({
       className="justify-between"
     >
       {label}
-      {isSelected && <CheckIcon className="size-3.5 stroke-2 opacity-70" />}
+      {isSelected && (
+        <CheckIcon className="size-3.5 min-h-3.5 min-w-3.5 stroke-2 opacity-70" />
+      )}
     </CommandItem>
   );
 }

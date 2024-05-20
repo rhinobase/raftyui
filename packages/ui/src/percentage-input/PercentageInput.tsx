@@ -33,7 +33,6 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
     {
       size,
       currencyCode = "USD",
-      value,
       onChange,
       onKeyDown,
       onBlur,
@@ -52,7 +51,6 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
           autoComplete="off"
           autoCorrect="off"
           spellCheck="false"
-          value={value}
           onChange={(event) => {
             const valueAsString = event.currentTarget.value.replace(
               /[^%.0-9]/g,
@@ -96,7 +94,9 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
               className="text-secondary-500 px-2 py-0.5 hover:text-black dark:hover:text-white"
               aria-controls={ID}
               onClick={() => {
-                const valueAsNumber = Number((value ?? "0").replace(/%/g, ""));
+                const valueAsNumber = Number(
+                  (props.value ?? "0").replace(/%/g, ""),
+                );
                 const val = valueAsNumber + 1;
 
                 onChange?.(`${val}%`);
@@ -111,7 +111,9 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
               className="text-secondary-500 px-2 py-0.5 hover:text-black dark:hover:text-white"
               aria-controls={ID}
               onClick={() => {
-                const valueAsNumber = Number((value ?? "0").replace(/%/g, ""));
+                const valueAsNumber = Number(
+                  (props.value ?? "0").replace(/%/g, ""),
+                );
                 const val = valueAsNumber - 1;
 
                 onChange?.(`${val}%`);
