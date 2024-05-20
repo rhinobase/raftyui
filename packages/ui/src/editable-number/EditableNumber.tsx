@@ -111,7 +111,7 @@ function EditableItem({
     <>
       <Editable.Area>
         <Editable.Input asChild>
-          <InputField type="number" size={size} />
+          <InputField type="number" inputMode="numeric" size={size} />
         </Editable.Input>
         <Editable.Preview asChild>
           <div
