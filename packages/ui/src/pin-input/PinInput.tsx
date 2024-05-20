@@ -1,21 +1,21 @@
-import { PinInput as ArkPinInput } from "@ark-ui/react";
+import { PinInput as ArkPinInput, type PinInputRootProps } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
-import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+import { type ElementRef, forwardRef } from "react";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { getValue } from "../utils";
 
-const INPUT_SIZE = {
-  sm: "size-[30px]",
-  md: "size-[38px]",
-  lg: "size-[46px]",
-};
+const inputClasses = cva("p-0 text-center", {
+  variants: {
+    size: {
+      sm: "size-[30px]",
+      md: "size-[38px]",
+      lg: "size-[46px]",
+    },
+  },
+});
 
-const menuLabelClasses = cva("flex flex-wrap", {
+const pinInputControlClasses = cva("flex flex-wrap", {
   variants: {
     size: {
       sm: "gap-2",
@@ -28,7 +28,7 @@ const menuLabelClasses = cva("flex flex-wrap", {
   },
 });
 
-export type PinInput = ComponentPropsWithoutRef<typeof ArkPinInput.Root> & {
+export type PinInput = PinInputRootProps & {
   length: number;
   size?: "sm" | "md" | "lg";
   isDisabled?: ValueOrFunction<boolean>;
@@ -40,14 +40,7 @@ export const PinInput = forwardRef<
   PinInput
 >(
   (
-    {
-      length,
-      className,
-      isLoading = false,
-      isDisabled = false,
-      size = "md",
-      ...props
-    },
+    { length, isLoading = false, isDisabled = false, size = "md", ...props },
     forwardedRef,
   ) => {
     const disabled =
@@ -55,7 +48,7 @@ export const PinInput = forwardRef<
 
     return (
       <ArkPinInput.Root {...props} disabled={disabled} ref={forwardedRef}>
-        <ArkPinInput.Control className={menuLabelClasses({ size })}>
+        <ArkPinInput.Control className={pinInputControlClasses({ size })}>
           {Array.from({ length }).map((_, index) => (
             <ArkPinInput.Input
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -63,14 +56,7 @@ export const PinInput = forwardRef<
               index={index}
               asChild
             >
-              <InputField
-                size={size}
-                className={classNames(
-                  "text-center",
-                  INPUT_SIZE[size],
-                  className,
-                )}
-              />
+              <InputField size={size} className={inputClasses({ size })} />
             </ArkPinInput.Input>
           ))}
         </ArkPinInput.Control>

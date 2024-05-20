@@ -1,11 +1,11 @@
-import { ColorPicker as ArkColorPicker, Portal } from "@ark-ui/react";
+import {
+  ColorPicker as ArkColorPicker,
+  type ColorPickerRootProps,
+  Portal,
+} from "@ark-ui/react";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
@@ -66,9 +66,7 @@ const colorPickerSwatchClasses = cva("rounded-md", {
   },
 });
 
-export type ColorPicker = ComponentPropsWithoutRef<
-  typeof ArkColorPicker.Root
-> & {
+export type ColorPicker = ColorPickerRootProps & {
   size?: "sm" | "md" | "lg";
   isReadOnly?: ValueOrFunction<boolean>;
   isDisabled?: ValueOrFunction<boolean>;
