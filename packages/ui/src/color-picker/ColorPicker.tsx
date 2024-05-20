@@ -25,16 +25,10 @@ const COLORS = [
   "purple",
 ];
 
-const TRIGGER = {
-  sm: "size-[30px] p-1",
-  md: "size-[38px] p-1.5",
-  lg: "size-[46px] p-2",
-};
-
-const TRIGGER_CONTENT = {
-  sm: "size-[18px]",
-  md: "size-6",
-  lg: "size-7",
+const colorPickerTriggerClasses = {
+  sm: "size-[30px] min-w-[30px] min-h-[30px] p-1",
+  md: "size-[38px] min-w-[38px] min-h-[38px] p-1.5",
+  lg: "size-[46px] min-w-[46px] min-h-[46px] p-2",
 };
 
 const colorPickerContentClasses = cva(
@@ -112,10 +106,13 @@ export const ColorPicker = forwardRef<
                   <InputField size={size} />
                 </ArkColorPicker.ChannelInput>
                 <ArkColorPicker.Trigger asChild>
-                  <Button variant="outline" className={TRIGGER[size]}>
+                  <Button
+                    variant="outline"
+                    className={colorPickerTriggerClasses[size]}
+                  >
                     <div
                       style={{ background: colorPicker.valueAsString }}
-                      className={TRIGGER_CONTENT[size]}
+                      className="h-full w-full"
                     />
                   </Button>
                 </ArkColorPicker.Trigger>
@@ -137,7 +134,7 @@ export const ColorPicker = forwardRef<
                           <EyeDropperIcon className="size-5 dark:stroke-white" />
                         </Button>
                       </ArkColorPicker.EyeDropperTrigger>
-                      <div className="flex flex-1 flex-col gap-2">
+                      <div className="flex-1 space-y-1.5">
                         <ArkColorPicker.ChannelSlider
                           orientation="horizontal"
                           className="h-3"
@@ -157,14 +154,14 @@ export const ColorPicker = forwardRef<
                         </ArkColorPicker.ChannelSlider>
                       </div>
                     </div>
-                    <ArkColorPicker.View className="flex gap-3" format="rgba">
-                      <ArkColorPicker.ChannelInput asChild channel="red">
+                    <ArkColorPicker.View format="rgba" className="flex gap-3">
+                      <ArkColorPicker.ChannelInput channel="red" asChild>
                         <InputField size={size} />
                       </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput asChild channel="green">
+                      <ArkColorPicker.ChannelInput channel="green" asChild>
                         <InputField size={size} />
                       </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput asChild channel="blue">
+                      <ArkColorPicker.ChannelInput channel="blue" asChild>
                         <InputField size={size} />
                       </ArkColorPicker.ChannelInput>
                       <ArkColorPicker.ChannelInput channel="alpha" asChild>

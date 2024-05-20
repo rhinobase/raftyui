@@ -15,7 +15,6 @@ export const Default: Story = {
   args: {
     disabled: false,
     readOnly: false,
-    defaultValue: "#eb5e41",
     size: "md",
   },
   argTypes: {
