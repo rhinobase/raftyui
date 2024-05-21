@@ -17,6 +17,7 @@ export type Listbox = {
   isLoading?: ValueOrFunction<boolean>;
   hidden?: ValueOrFunction<boolean>;
   name?: string;
+  size?: "sm" | "md" | "lg";
 } & (
   | {
       value?: string;
@@ -33,9 +34,14 @@ export type Listbox = {
 );
 
 const listboxItemClasses = cva(
-  "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 text-sm transition-all ease-in-out",
+  "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 transition-all ease-in-out",
   {
     variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
       disabled: {
         true: "",
         false: "",
@@ -95,9 +101,14 @@ const listboxItemClasses = cva(
 );
 
 const listboxClasses = cva(
-  "dark:border-secondary-700 border-secondary-300 dark:bg-secondary-900 h-40 w-full overflow-hidden rounded-md border bg-white",
+  "dark:border-secondary-700 border-secondary-300 dark:bg-secondary-900 w-full overflow-hidden rounded-md border bg-white",
   {
     variants: {
+      size: {
+        sm: "h-[135px]",
+        md: "h-[180px]",
+        lg: "h-[225px]",
+      },
       disabled: {
         true: "cursor-not-allowed",
         false: "",
@@ -110,6 +121,39 @@ const listboxClasses = cva(
   },
 );
 
+const checkIconClasses = cva("stroke-2", {
+  variants: {
+    size: {
+      sm: "size-3",
+      md: "size-4",
+      lg: "size-5",
+    },
+    loading: {
+      true: "stroke-secondary-500/70 dark:stroke-secondary-400",
+      false: "",
+    },
+    disabled: {
+      true: "stroke-secondary-500/70 dark:stroke-secondary-400",
+      false: "",
+    },
+  },
+  compoundVariants: [
+    {
+      disabled: false,
+      loading: false,
+      className: "stroke-primary-500 dark:stroke-primary-300",
+    },
+  ],
+});
+
+const listboxItemSizeClasses = {
+  size: {
+    sm: 30,
+    md: 40,
+    lg: 50,
+  },
+};
+
 export const Listbox = forwardRef<HTMLDivElement, Listbox>(
   (
     {
@@ -120,11 +164,12 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
       isDisabled = false,
       isLoading = false,
       isReadOnly = false,
-      itemSize = 40,
+      itemSize,
       defaultValue,
       onValueChange,
       type,
       value,
+      size = "md",
     },
     forwardedRef,
   ) => {
@@ -143,8 +188,7 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
             selectedValues = selectedValues.filter((val) => val !== cur);
           else selectedValues.push(cur);
         } else {
-          if (selectedValues.includes(cur)) selectedValues = [];
-          else selectedValues = [cur];
+          selectedValues = [cur];
         }
 
         return selectedValues;
@@ -176,8 +220,11 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
         id={name}
         hidden={hidden}
         itemCount={items.length}
-        itemSize={itemSize}
-        className={classNames(listboxClasses({ disabled, loading }), className)}
+        itemSize={listboxItemSizeClasses.size[size] ?? itemSize}
+        className={classNames(
+          listboxClasses({ disabled, loading, size }),
+          className,
+        )}
         ref={forwardedRef}
       >
         <ScrollAreaList>
@@ -194,17 +241,14 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
                   selected: isSelected,
                   readOnly,
                   loading,
+                  size,
                 })}
                 style={style}
               >
                 {items[index].label ?? items[index].value}
                 {isSelected && (
                   <CheckIcon
-                    className={classNames(
-                      "stroke-primary-500 dark:stroke-primary-300 size-4 stroke-2",
-                      (disabled || loading) &&
-                        "stroke-secondary-500/70 dark:stroke-secondary-400",
-                    )}
+                    className={checkIconClasses({ size, disabled, loading })}
                   />
                 )}
               </div>

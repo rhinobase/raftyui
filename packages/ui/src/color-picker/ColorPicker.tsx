@@ -8,6 +8,7 @@ import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
+import { Label } from "../label";
 import type { ValueOrFunction } from "../types";
 import { getValue } from "../utils";
 
@@ -34,13 +35,13 @@ const colorPickerTriggerClasses = {
 };
 
 const colorPickerContentClasses = cva(
-  "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 rounded-lg border bg-white drop-shadow-lg w-full",
+  "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600  border bg-white drop-shadow-lg w-full",
   {
     variants: {
       size: {
-        sm: "md:max-w-[280px] max-w-[250px] p-3 space-y-3",
-        md: "md:max-w-[330px] max-w-[290px] p-4 space-y-4",
-        lg: "md:max-w-[380px] max-w-[310px] p-5 space-y-[18px]",
+        sm: "md:max-w-[280px] max-w-[250px] p-3 space-y-3 rounded-md",
+        md: "md:max-w-[330px] max-w-[290px] p-4 space-y-4 rounded-lg",
+        lg: "md:max-w-[380px] max-w-[310px] p-5 space-y-[18px] rounded-xl",
       },
     },
   },
@@ -56,15 +57,23 @@ const colorPickerAreaClasses = cva("overflow-hidden rounded-md", {
   },
 });
 
-const colorPickerSwatchClasses = cva("rounded-md", {
+const colorPickerSwatchClasses = cva("", {
   variants: {
     size: {
-      sm: "md:h-[26px] h-[27px]",
-      md: "md:h-8 h-[33px]",
-      lg: "md:h-[38px] h-[36px]",
+      sm: "md:h-[26px] h-[27px] rounded",
+      md: "md:h-8 h-[33px] rounded-md",
+      lg: "md:h-[38px] h-[36px] rounded-lg",
     },
   },
 });
+
+const colorPickerLabelClasses = {
+  size: {
+    sm: "text-xs",
+    md: "text-sm",
+    lg: "text-base",
+  },
+};
 
 export type ColorPicker = ColorPickerRootProps & {
   size?: "sm" | "md" | "lg";
@@ -111,8 +120,8 @@ export const ColorPicker = forwardRef<
                     className={colorPickerTriggerClasses.size[size]}
                   >
                     <div
-                      style={{ background: colorPicker.valueAsString }}
-                      className="h-full w-full"
+                      style={{ background: colorPicker.value.toString("css") }}
+                      className="size-full"
                     />
                   </Button>
                 </ArkColorPicker.Trigger>
@@ -154,47 +163,74 @@ export const ColorPicker = forwardRef<
                         </ArkColorPicker.ChannelSlider>
                       </div>
                     </div>
-                    <ArkColorPicker.View format="rgba" className="flex gap-3">
-                      <ArkColorPicker.ChannelInput channel="red" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="green" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="blue" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="alpha" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
+                    <ArkColorPicker.View format="rgba" className="space-y-1.5">
+                      <Label className={colorPickerLabelClasses.size[size]}>
+                        rgba
+                      </Label>
+                      <div className="flex gap-3">
+                        <ArkColorPicker.ChannelInput channel="red" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput channel="green" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput channel="blue" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput channel="alpha" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                      </div>
                     </ArkColorPicker.View>
-                    <ArkColorPicker.View format="hsla" className="flex gap-3">
-                      <ArkColorPicker.ChannelInput channel="hue" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="saturation" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="lightness" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="alpha" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
+                    <ArkColorPicker.View format="hsla" className="space-y-1.5">
+                      <Label className={colorPickerLabelClasses.size[size]}>
+                        hsla
+                      </Label>
+                      <div className="flex gap-3">
+                        <ArkColorPicker.ChannelInput channel="hue" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput
+                          channel="saturation"
+                          asChild
+                        >
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput
+                          channel="lightness"
+                          asChild
+                        >
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput channel="alpha" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                      </div>
                     </ArkColorPicker.View>
-                    <ArkColorPicker.View format="hsba" className="flex gap-3">
-                      <ArkColorPicker.ChannelInput channel="hue" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="saturation" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="brightness" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
-                      <ArkColorPicker.ChannelInput channel="alpha" asChild>
-                        <InputField size={size} />
-                      </ArkColorPicker.ChannelInput>
+                    <ArkColorPicker.View format="hsba" className="space-y-1.5">
+                      <Label className={colorPickerLabelClasses.size[size]}>
+                        hsba
+                      </Label>
+                      <div className="flex gap-3">
+                        <ArkColorPicker.ChannelInput channel="hue" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput
+                          channel="saturation"
+                          asChild
+                        >
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput
+                          channel="brightness"
+                          asChild
+                        >
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                        <ArkColorPicker.ChannelInput channel="alpha" asChild>
+                          <InputField size={size} />
+                        </ArkColorPicker.ChannelInput>
+                      </div>
                     </ArkColorPicker.View>
                     <ArkColorPicker.SwatchGroup className="grid grid-cols-6 gap-3 md:grid-cols-7">
                       {COLORS.map((color) => (

@@ -59,28 +59,50 @@ export const EditableTextarea = forwardRef<
 
 EditableTextarea.displayName = "EditableTextarea";
 
-const PREVIEW_CLASS = {
-  sm: "text-sm pl-2 pr-6 py-1",
-  md: "text-md pl-3 pr-8 py-1.5",
-  lg: "text-lg pl-4 pr-10 py-2",
+const editableTextareaPreviewClasses = {
+  size: {
+    sm: "text-sm pl-2 pr-8 py-1",
+    md: "text-md pl-3 pr-10 py-1.5",
+    lg: "text-lg pl-4 pr-12 py-2",
+  },
 };
 
 const editTriggerClasses = cva(
-  "absolute outline-none disabled:cursor-not-allowed",
+  "absolute outline-none disabled:cursor-not-allowed text-secondary-600 dark:text-secondary-400 top-1",
   {
     variants: {
       size: {
-        sm: "absolute right-2 top-2 size-3",
-        md: "absolute right-3 top-2.5 size-4",
-        lg: "absolute right-4 top-3 size-5",
+        sm: "right-1 p-1",
+        md: "right-1.5 p-1.5",
+        lg: "right-2 p-2",
       },
       readOnly: {
         true: "cursor-default",
         false: "",
       },
+      disabled: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        disabled: false,
+        readOnly: false,
+        className:
+          "transition-all ease-in-out hover:text-black dark:hover:text-white",
+      },
+    ],
   },
 );
+
+const editIconClasses = {
+  size: {
+    sm: "size-3 stroke-[3]",
+    md: "size-4 stroke-2",
+    lg: "size-5 stroke-2",
+  },
+};
 
 function EditableItem({
   size = "md",
@@ -91,7 +113,7 @@ function EditableItem({
 
   return (
     <>
-      <Editable.Area className={editing ? "mb-2" : undefined}>
+      <Editable.Area>
         <Editable.Input asChild>
           <Textarea size={size} />
         </Editable.Input>
@@ -99,27 +121,20 @@ function EditableItem({
           <div
             className={classNames(
               "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 data-[disabled]:bg-secondary-200/60 relative min-h-[80px] cursor-pointer text-wrap rounded-md border transition-all ease-in-out aria-[readonly]:cursor-default data-[disabled]:cursor-not-allowed",
-              PREVIEW_CLASS[size],
+              editableTextareaPreviewClasses.size[size],
             )}
           >
             <p>{previewProps.children}</p>
             <Editable.EditTrigger
-              className={editTriggerClasses({ size, readOnly })}
+              className={editTriggerClasses({ size, readOnly, disabled })}
             >
-              <PencilIcon
-                className={classNames(
-                  "stroke-secondary-600 dark:stroke-secondary-400 h-full w-full",
-                  !readOnly &&
-                    !disabled &&
-                    "transition-all ease-in-out hover:stroke-black dark:hover:stroke-white",
-                )}
-              />
+              <PencilIcon className={editIconClasses.size[size]} />
             </Editable.EditTrigger>
           </div>
         </Editable.Preview>
       </Editable.Area>
-      <Editable.Control className="gap flex gap-2 empty:hidden">
-        {editing && (
+      {editing && (
+        <Editable.Control className="mt-2 flex gap-2">
           <>
             <Editable.SubmitTrigger asChild>
               <Button size="sm" title="Enter">
@@ -132,8 +147,8 @@ function EditableItem({
               </Button>
             </Editable.CancelTrigger>
           </>
-        )}
-      </Editable.Control>
+        </Editable.Control>
+      )}
     </>
   );
 }

@@ -77,28 +77,48 @@ EditableNumber.displayName = "EditableNumber";
 
 const editableNumberPreviewClasses = {
   size: {
-    sm: "text-sm pl-2 pr-6 py-1 h-[30px]",
-    md: "text-md pl-3 pr-8 py-1.5 h-[38px]",
-    lg: "text-lg pl-4 pr-10 py-2 h-[46px]",
+    sm: "text-sm pl-2 pr-8 py-1 h-[30px]",
+    md: "text-md pl-3 pr-10 py-1.5 h-[38px]",
+    lg: "text-lg pl-4 pr-12 py-2 h-[46px]",
   },
 };
 
 const editTriggerClasses = cva(
-  "absolute outline-none disabled:cursor-not-allowed",
+  "absolute outline-none disabled:cursor-not-allowed text-secondary-600 dark:text-secondary-400 top-1",
   {
     variants: {
       size: {
-        sm: "right-2 top-2 size-3",
-        md: "right-3 top-2.5 size-4",
-        lg: "right-4 top-3 size-5",
+        sm: "right-1 p-1",
+        md: "right-1.5 p-1.5",
+        lg: "right-2 p-2",
       },
       readOnly: {
         true: "cursor-default",
         false: "",
       },
+      disabled: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        disabled: false,
+        readOnly: false,
+        className:
+          "transition-all ease-in-out hover:text-black dark:hover:text-white",
+      },
+    ],
   },
 );
+
+const editIconClasses = {
+  size: {
+    sm: "size-3 stroke-[3]",
+    md: "size-4 stroke-2",
+    lg: "size-5 stroke-2",
+  },
+};
 
 function EditableItem({
   size = "md",
@@ -122,16 +142,9 @@ function EditableItem({
           >
             <p className="truncate">{previewProps.children}</p>
             <Editable.EditTrigger
-              className={editTriggerClasses({ size, readOnly })}
+              className={editTriggerClasses({ size, readOnly, disabled })}
             >
-              <PencilIcon
-                className={classNames(
-                  "stroke-secondary-600 dark:stroke-secondary-400 h-full w-full stroke-2",
-                  !readOnly &&
-                    !disabled &&
-                    "transition-all ease-in-out hover:stroke-black dark:hover:stroke-white",
-                )}
-              />
+              <PencilIcon className={editIconClasses.size[size]} />
             </Editable.EditTrigger>
           </div>
         </Editable.Preview>

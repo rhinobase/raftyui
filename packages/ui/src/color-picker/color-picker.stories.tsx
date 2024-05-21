@@ -16,11 +16,16 @@ export const Default: Story = {
     disabled: false,
     readOnly: false,
     size: "md",
+    format: "rgba",
   },
   argTypes: {
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
+    },
+    format: {
+      control: "select",
+      options: ["hsba", "rgba", "hsla"],
     },
   },
 

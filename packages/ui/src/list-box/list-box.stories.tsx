@@ -23,11 +23,16 @@ export const Default: Story = {
     isLoading: false,
     hidden: false,
     type: "single",
+    size: "md",
   },
   argTypes: {
     type: {
       control: "select",
       options: ["single", "multi"],
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
   },
   render: (props) => <Listbox {...props} items={OPTIONS} />,
