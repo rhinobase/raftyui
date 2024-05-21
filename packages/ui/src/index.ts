@@ -42,6 +42,7 @@ export * from "./percentage-input";
 export * from "./pin-input";
 export * from "./popover";
 export * from "./progress";
+export * from "./qr-code";
 export * from "./radio";
 export * from "./range-picker";
 export * from "./rating";

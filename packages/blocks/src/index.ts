@@ -7,7 +7,6 @@ export * from "./date-range";
 export * from "./editable-number";
 export * from "./editable-text";
 export * from "./editable-textarea";
-export * from "./file-input";
 export * from "./listbox";
 export * from "./multi-listbox";
 export * from "./number";
