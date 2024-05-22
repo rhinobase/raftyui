@@ -1,3 +1,4 @@
+"use client";
 import {
   FileUpload as ArkFileUpload,
   type FileUploadRootProps,
@@ -16,7 +17,7 @@ export type FileUpload = FileUploadRootProps & {
 export const FileUpload = forwardRef<
   ElementRef<typeof ArkFileUpload.Root>,
   FileUpload
->(({ className, isDisabled, isLoading, ...props }: FileUpload) => {
+>(({ className, isDisabled, isLoading, ...props }, forwardedRef) => {
   const disabled =
     props.disabled || getValue(isDisabled) || getValue(isLoading);
 
@@ -25,6 +26,7 @@ export const FileUpload = forwardRef<
       {...props}
       className={classNames("w-full", className)}
       disabled={disabled}
+      ref={forwardedRef}
     >
       <div className="relative h-[300px] w-full">
         <ArkFileUpload.Dropzone className="border-secondary-300 dark:border-secondary-700 absolute inset-0 flex h-full w-full cursor-pointer select-none items-center justify-center rounded-lg border border-dashed">

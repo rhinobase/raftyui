@@ -39,20 +39,18 @@ export type DrawerOverlay = ComponentPropsWithoutRef<
 export const DrawerOverlay = forwardRef<
   ElementRef<typeof DialogPrimitive.Overlay>,
   DrawerOverlay
->(({ className, ...props }, forwardedRef) => {
-  return (
-    <DialogPrimitive.Overlay
-      {...props}
-      className={classNames(
-        "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 backdrop-blur-sm dark:bg-black/60",
-        "data-[state=open]:animate-in data-[state=open]:fade-in-0",
-        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-        className,
-      )}
-      ref={forwardedRef}
-    />
-  );
-});
+>(({ className, ...props }, forwardedRef) => (
+  <DialogPrimitive.Overlay
+    {...props}
+    className={classNames(
+      "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 backdrop-blur-sm dark:bg-black/60",
+      "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+      className,
+    )}
+    ref={forwardedRef}
+  />
+));
 DrawerOverlay.displayName = "DrawerOverlay";
 
 // Drawer Content Component
@@ -87,6 +85,7 @@ export const DrawerContent = forwardRef<
   DrawerContent
 >(({ children, className, ...props }, forwardedRef) => {
   const { size, side } = useDrawerContext();
+
   return (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Content
@@ -165,11 +164,26 @@ export const DrawerClose = forwardRef<
       asChild,
       isUnstyled = false,
       className,
+      type = "button",
       children,
       ...props
     },
     forwardedRef,
   ) => {
+    const { size: parentSize } = useDrawerContext();
+    const triggerSize = size || parentSize;
+    const buttonProps = {
+      variant,
+      colorScheme,
+      leftIcon,
+      rightIcon,
+      isActive,
+      isDisabled,
+      isLoading,
+      isUnstyled,
+      type,
+    };
+
     return (
       <DialogPrimitive.Close
         {...props}
@@ -181,8 +195,8 @@ export const DrawerClose = forwardRef<
           children
         ) : (
           <Button
-            variant={variant}
-            size={size}
+            {...buttonProps}
+            size={triggerSize}
             className={classNames(
               "absolute right-5 top-5 rounded-full",
               className,

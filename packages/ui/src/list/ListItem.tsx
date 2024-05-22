@@ -7,21 +7,19 @@ export type ListItem = HTMLAttributes<HTMLLIElement> & {
 };
 
 export const ListItem = forwardRef<HTMLLIElement, ListItem>(
-  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
-    return (
-      <li
-        ref={forwardedRef}
-        {...props}
-        className={
-          isUnstyled
-            ? className
-            : classNames(className, "dark:text-secondary-100")
-        }
-      >
-        {children}
-      </li>
-    );
-  },
+  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => (
+    <li
+      ref={forwardedRef}
+      {...props}
+      className={
+        isUnstyled
+          ? className
+          : classNames(className, "dark:text-secondary-100")
+      }
+    >
+      {children}
+    </li>
+  ),
 );
 
 ListItem.displayName = "ListItem";

@@ -321,13 +321,13 @@ export const ICON_CLASSES = {
 
 export const VIEW_TRIGGER_CLASSES = {
   sm: "h-8",
-  md: "h-8",
+  md: "h-9",
   lg: "h-10",
 };
 
 export const NEXT_PREV_BUTTON_CLASSES = {
   sm: "size-8",
-  md: "size-8",
+  md: "size-9",
   lg: "size-10",
 };
 

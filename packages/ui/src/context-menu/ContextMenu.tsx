@@ -193,6 +193,14 @@ export const contextMenuCheckboxItemIndicatorClasses = cva("absolute", {
   },
 });
 
+const iconClasses = {
+  size: {
+    sm: "size-2.5",
+    md: "size-3",
+    lg: "size-3.5",
+  },
+};
+
 export type ContextMenuCheckboxItem = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.CheckboxItem
 > & { isUnstyled?: boolean };
@@ -216,11 +224,11 @@ export const ContextMenuCheckboxItem = forwardRef<
     >
       {children}
       <ContextMenuPrimitive.ItemIndicator
-        className={classNames(
-          contextMenuCheckboxItemIndicatorClasses({ size }),
-        )}
+        className={contextMenuCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="size-3 stroke-[3]" />
+        <CheckIcon
+          className={classNames("stroke-[3]", iconClasses.size[size])}
+        />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.CheckboxItem>
   );
@@ -291,13 +299,9 @@ export const ContextMenuRadioItem = forwardRef<
     >
       {children}
       <ContextMenuPrimitive.ItemIndicator
-        className={classNames(contextMenuRadioItemIndicatorClasses({ size }))}
+        className={contextMenuRadioItemIndicatorClasses({ size })}
       >
-        <div
-          className={classNames(
-            contextMenuRadioItemIndicatorChildClasses({ size }),
-          )}
-        />
+        <div className={contextMenuRadioItemIndicatorChildClasses({ size })} />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.RadioItem>
   );

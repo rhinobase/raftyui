@@ -169,25 +169,21 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
       ...props
     },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <AlertProvider value={{ status, size, variant, isUnstyled }}>
-        <div
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(alertClasses({ size, status, variant }), className)
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </div>
-      </AlertProvider>
-    );
-  },
+  ) => (
+    <AlertProvider value={{ status, size, variant, isUnstyled }}>
+      <div
+        {...props}
+        className={
+          isUnstyled
+            ? className
+            : classNames(alertClasses({ size, status, variant }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </div>
+    </AlertProvider>
+  ),
 );
 Alert.displayName = "Alert";
 

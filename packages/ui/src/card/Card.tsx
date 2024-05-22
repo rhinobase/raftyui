@@ -38,8 +38,6 @@ export const Card = forwardRef<HTMLDivElement, Card>(
     },
     forwardedRef,
   ) => {
-    const unstyle = isUnstyled;
-
     const validChildren = getValidChildren(children);
 
     const [hasHeader, hasFooter] = validChildren.reduce(
@@ -67,7 +65,7 @@ export const Card = forwardRef<HTMLDivElement, Card>(
         <div
           {...props}
           className={
-            unstyle
+            isUnstyled
               ? className
               : classNames(cardClasses({ size, variant }), className)
           }

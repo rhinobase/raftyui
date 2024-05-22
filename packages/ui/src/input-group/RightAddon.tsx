@@ -1,3 +1,4 @@
+"use client";
 import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { useInputGroupContext } from "./context";

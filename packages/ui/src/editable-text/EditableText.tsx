@@ -67,7 +67,7 @@ const editableTextPreviewClasses = {
   },
 };
 
-const editTriggerClasses = cva(
+export const editTriggerClasses = cva(
   "absolute outline-none disabled:cursor-not-allowed text-secondary-600 dark:text-secondary-400 top-1",
   {
     variants: {

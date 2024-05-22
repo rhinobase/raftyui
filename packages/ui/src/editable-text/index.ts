@@ -1,1 +1,1 @@
-export { EditableText } from "./EditableText";
+export { EditableText, editTriggerClasses } from "./EditableText";

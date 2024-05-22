@@ -8,8 +8,6 @@ import {
 import {
   ArrowRightIcon,
   CalendarIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { type ElementRef, forwardRef } from "react";
@@ -17,13 +15,12 @@ import { Button } from "../button";
 import {
   CONTENT_CLASSES,
   CONTROL_CLASSES,
-  ICON_CLASSES,
-  NEXT_PREV_BUTTON_CLASSES,
+  CalendarHeader,
+  MonthCalender,
   TABLE_CELL_CLASSES,
-  TABLE_CELL_TRIGGER_CLASSES,
   TRIGGER_CLASSES,
   TRIGGER_ICON_CLASSES,
-  VIEW_TRIGGER_CLASSES,
+  YearCalender,
 } from "../date-picker/DatePicker";
 import { inputFieldClasses } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
@@ -110,6 +107,7 @@ export const RangePicker = forwardRef<
     );
   },
 );
+
 RangePicker.displayName = "RangePicker";
 
 function ControlRender({
@@ -234,134 +232,5 @@ function DayCalender({ size = "md" }: Pick<RangePicker, "size">) {
         )}
       </ArkDatePicker.Context>
     </ArkDatePicker.View>
-  );
-}
-
-function MonthCalender({ size = "md" }: Pick<RangePicker, "size">) {
-  return (
-    <ArkDatePicker.View view="month">
-      <ArkDatePicker.Context>
-        {(datePicker) => (
-          <>
-            <CalendarHeader size={size} />
-            <ArkDatePicker.Table>
-              <ArkDatePicker.TableBody>
-                {datePicker
-                  .getMonthsGrid({ columns: 4, format: "short" })
-                  .map((months, index) => (
-                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                    <ArkDatePicker.TableRow key={index}>
-                      {months.map((month, index) => (
-                        <ArkDatePicker.TableCell
-                          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                          key={index}
-                          value={month.value}
-                        >
-                          <ArkDatePicker.TableCellTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size={size}
-                              className={classNames(
-                                "py-0 font-medium text-black dark:text-white",
-                                TABLE_CELL_TRIGGER_CLASSES[size],
-                              )}
-                            >
-                              {month.label}
-                            </Button>
-                          </ArkDatePicker.TableCellTrigger>
-                        </ArkDatePicker.TableCell>
-                      ))}
-                    </ArkDatePicker.TableRow>
-                  ))}
-              </ArkDatePicker.TableBody>
-            </ArkDatePicker.Table>
-          </>
-        )}
-      </ArkDatePicker.Context>
-    </ArkDatePicker.View>
-  );
-}
-
-function YearCalender({ size = "md" }: Pick<RangePicker, "size">) {
-  return (
-    <ArkDatePicker.View view="year">
-      <ArkDatePicker.Context>
-        {(datePicker) => (
-          <>
-            <CalendarHeader size={size} />
-            <ArkDatePicker.Table>
-              <ArkDatePicker.TableBody>
-                {datePicker.getYearsGrid({ columns: 4 }).map((years, index) => (
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                  <ArkDatePicker.TableRow key={index}>
-                    {years.map((year, index) => (
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                      <ArkDatePicker.TableCell key={index} value={year.value}>
-                        <ArkDatePicker.TableCellTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size={size}
-                            className={classNames(
-                              "py-0 font-medium text-black dark:text-white",
-                              TABLE_CELL_TRIGGER_CLASSES[size],
-                            )}
-                          >
-                            {year.label}
-                          </Button>
-                        </ArkDatePicker.TableCellTrigger>
-                      </ArkDatePicker.TableCell>
-                    ))}
-                  </ArkDatePicker.TableRow>
-                ))}
-              </ArkDatePicker.TableBody>
-            </ArkDatePicker.Table>
-          </>
-        )}
-      </ArkDatePicker.Context>
-    </ArkDatePicker.View>
-  );
-}
-
-function CalendarHeader({ size = "md" }: Pick<RangePicker, "size">) {
-  return (
-    <ArkDatePicker.ViewControl className="mb-2 flex items-center justify-between">
-      <ArkDatePicker.PrevTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className={classNames(
-            "size-8 rounded",
-            NEXT_PREV_BUTTON_CLASSES[size],
-          )}
-        >
-          <ChevronLeftIcon
-            className={classNames("stroke-[3]", ICON_CLASSES[size])}
-          />
-        </Button>
-      </ArkDatePicker.PrevTrigger>
-      <ArkDatePicker.ViewTrigger asChild>
-        <Button
-          variant="ghost"
-          size={size}
-          className={classNames("rounded py-0", VIEW_TRIGGER_CLASSES[size])}
-        >
-          <ArkDatePicker.RangeText />
-        </Button>
-      </ArkDatePicker.ViewTrigger>
-      <ArkDatePicker.NextTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className={classNames(
-            "size-8 rounded",
-            NEXT_PREV_BUTTON_CLASSES[size],
-          )}
-        >
-          <ChevronRightIcon
-            className={classNames("stroke-[3]", ICON_CLASSES[size])}
-          />
-        </Button>
-      </ArkDatePicker.NextTrigger>
-    </ArkDatePicker.ViewControl>
   );
 }

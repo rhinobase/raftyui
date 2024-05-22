@@ -5,21 +5,17 @@ import { classNames } from "../utils";
 export type ErrorMessage = HTMLAttributes<HTMLParagraphElement>;
 
 export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessage>(
-  ({ children, className, ...props }, forwardedRef) => {
-    if (children)
-      return (
-        <p
-          {...props}
-          className={classNames(
-            "my-0.5 text-sm text-red-600 dark:text-red-400",
-            className,
-          )}
-          ref={forwardedRef}
-        >
-          {children}
-        </p>
-      );
-    return undefined;
-  },
+  ({ children, className, ...props }, forwardedRef) => (
+    <p
+      {...props}
+      className={classNames(
+        "my-0.5 text-sm text-red-600 dark:text-red-400",
+        className,
+      )}
+      ref={forwardedRef}
+    >
+      {children}
+    </p>
+  ),
 );
 ErrorMessage.displayName = "ErrorMessage";

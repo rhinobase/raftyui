@@ -5,7 +5,6 @@ import {
   type ReactNode,
   forwardRef,
   useEffect,
-  useId,
   useReducer,
   useRef,
   useState,
@@ -111,11 +110,8 @@ export function Combobox({
         else value = [cur];
       }
 
-      if (isMulti) {
-        props.onSelectionChange?.(value);
-      } else {
-        props.onSelectionChange?.(value.length > 0 ? value[0] : undefined);
-      }
+      if (isMulti) props.onSelectionChange?.(value);
+      else props.onSelectionChange?.(value.length > 0 ? value[0] : undefined);
 
       if (!isMulti) setOpen(false);
 
@@ -234,7 +230,7 @@ export function ComboboxContent({
   ...props
 }: ComboboxContent) {
   const { placeholder, triggerRef, options } = useComboboxContext();
-  const key = useId();
+
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -257,7 +253,11 @@ export function ComboboxContent({
         )}
         <CommandList className="p-1">
           {options.map((option, index) => (
-            <Children key={`${index}-${key}`} option={option} index={index} />
+            <Children
+              key={`${index}-${option.value}`}
+              option={option}
+              index={index}
+            />
           ))}
           <CommandEmpty className="text-secondary-500 dark:text-secondary-400 flex h-10 select-none items-center justify-center py-0 empty:hidden">
             {!isLoading && <>No results found {search && `for "${search}".`}</>}

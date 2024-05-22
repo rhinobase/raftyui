@@ -59,13 +59,12 @@ export const AccordionItem = forwardRef<
   ElementRef<typeof AccordionPrimitive.Item>,
   AccordionItem
 >(({ className, children, ...props }, forwardedRef) => {
-  const { isUnstyled: isParentUnstyled } = useAccordionContext();
-  const unstyle = isParentUnstyled;
+  const { isUnstyled } = useAccordionContext();
 
   return (
     <AccordionPrimitive.Item
       {...props}
-      className={unstyle ? className : classNames("w-full", className)}
+      className={isUnstyled ? className : classNames("w-full", className)}
       ref={forwardedRef}
     >
       {children}

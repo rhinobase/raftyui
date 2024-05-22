@@ -115,31 +115,32 @@ export const Checkbox = forwardRef<
         ref={forwardedref}
       >
         <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
-          <CheckIcon
-            className={classNames(checkboxIndicatorClasses({ size }))}
-          />
+          <CheckIcon className={checkboxIndicatorClasses({ size })} />
           <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
     );
 
-    return (
-      <span className="flex items-start">
-        {checkbox}
-        {children && (
-          <Label
-            htmlFor={props.id}
-            className={checkboxLabelClasses({
-              size,
-              disabled,
-            })}
-            isRequired={required}
-          >
-            {children}
-          </Label>
-        )}
-      </span>
-    );
+    if (children)
+      return (
+        <span className="flex items-start">
+          {checkbox}
+          {children && (
+            <Label
+              htmlFor={props.id}
+              className={checkboxLabelClasses({
+                size,
+                disabled,
+              })}
+              isRequired={required}
+            >
+              {children}
+            </Label>
+          )}
+        </span>
+      );
+
+    return checkbox;
   },
 );
 Checkbox.displayName = "Checkbox";
