@@ -14,8 +14,8 @@ import {
 } from "./context";
 
 export type SegmentedControl = SegmentGroupRootProps & {
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
 } & Partial<SegmentedControlContext>;
 
 export const SegmentedControl = forwardRef<

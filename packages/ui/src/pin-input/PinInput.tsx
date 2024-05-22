@@ -31,8 +31,8 @@ const pinInputControlClasses = cva("flex flex-wrap", {
 export type PinInput = PinInputRootProps & {
   length: number;
   size?: "sm" | "md" | "lg";
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
 };
 
 export const PinInput = forwardRef<

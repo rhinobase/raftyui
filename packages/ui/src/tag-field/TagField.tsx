@@ -22,9 +22,9 @@ import {
 
 export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
   inputPlaceholder?: string;
-  isReadOnly?: ValueOrFunction<boolean>;
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isReadOnly?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
 } & Partial<TagFieldContext>;
 
 export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(

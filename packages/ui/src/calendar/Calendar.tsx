@@ -17,9 +17,9 @@ export type Calendar = Omit<
   DatePickerRootProps,
   "value" | "onValueChange" | "defaultValue" | "open" | "closeOnSelect"
 > & {
-  isDisabled?: ValueOrFunction<boolean>;
-  isReadOnly?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
   placeholder?: string;
   value?: string;
   onValueChange?: (value?: string) => void;

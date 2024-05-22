@@ -5,9 +5,9 @@ export type FieldWrapperProps = {
   description?: string;
   primary?: boolean;
   unique?: boolean;
-  required?: ValueOrFunction<boolean>;
-  disabled?: ValueOrFunction<boolean>;
-  readonly?: ValueOrFunction<boolean>;
-  hidden?: ValueOrFunction<boolean>;
+  required?: ValueOrFunction;
+  disabled?: ValueOrFunction;
+  readonly?: ValueOrFunction;
+  hidden?: ValueOrFunction;
   orientation?: FieldWrapper["orientation"];
 };

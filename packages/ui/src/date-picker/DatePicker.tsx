@@ -22,9 +22,9 @@ export type DatePicker = Omit<
   DatePickerRootProps,
   "value" | "onValueChange" | "defaultValue"
 > & {
-  isDisabled?: ValueOrFunction<boolean>;
-  isReadOnly?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
   placeholder?: string;
   value?: string;
   onValueChange?: (value?: string) => void;

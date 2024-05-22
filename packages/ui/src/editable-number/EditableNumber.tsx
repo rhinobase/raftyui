@@ -16,9 +16,9 @@ export type EditableNumber = Omit<
   EditableRootProps,
   "value" | "onValueChange" | "defaultValue" | "activationMode"
 > & {
-  isReadOnly?: ValueOrFunction<boolean>;
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isReadOnly?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
   size?: "sm" | "md" | "lg";
   value?: number;
   onValueChange?: (value?: number) => void;

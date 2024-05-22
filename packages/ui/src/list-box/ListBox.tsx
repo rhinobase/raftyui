@@ -12,10 +12,10 @@ export type Listbox = {
     label?: string;
   }[];
   className?: HTMLDivElement["className"];
-  isDisabled?: ValueOrFunction<boolean>;
-  isReadOnly?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
-  hidden?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  hidden?: ValueOrFunction;
   name?: string;
   size?: "sm" | "md" | "lg";
 } & (

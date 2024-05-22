@@ -35,9 +35,9 @@ export type RangePicker = Omit<
   DatePickerRootProps,
   "value" | "onValueChange" | "defaultValue"
 > & {
-  isDisabled?: ValueOrFunction<boolean>;
-  isReadOnly?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
   placeholder?: {
     from?: string;
     to?: string;

@@ -9,8 +9,8 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 export type FileUpload = FileUploadRootProps & {
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
 };
 
 export const FileUpload = forwardRef<

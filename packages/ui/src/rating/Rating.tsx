@@ -43,9 +43,9 @@ const ratingIconClasses = cva("", {
 
 export type Rating = ComponentPropsWithoutRef<typeof RatingGroup.Root> & {
   size?: "sm" | "md" | "lg";
-  isReadOnly?: ValueOrFunction<boolean>;
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isReadOnly?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
 };
 
 export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(

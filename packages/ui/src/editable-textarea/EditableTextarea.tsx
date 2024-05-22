@@ -13,9 +13,9 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 export type EditableTextarea = Omit<EditableRootProps, "activationMode"> & {
-  isReadOnly?: ValueOrFunction<boolean>;
-  isDisabled?: ValueOrFunction<boolean>;
-  isLoading?: ValueOrFunction<boolean>;
+  isReadOnly?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
   size?: "sm" | "md" | "lg";
 };
 
