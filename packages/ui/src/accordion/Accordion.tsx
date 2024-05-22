@@ -36,21 +36,17 @@ export const Accordion = forwardRef<
       ...props
     },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <AccordionProvider value={{ size, variant, isUnstyled }}>
-        <AccordionPrimitive.Root
-          {...props}
-          className={unstyle ? className : classNames("w-full", className)}
-          ref={forwardedRef}
-        >
-          {children}
-        </AccordionPrimitive.Root>
-      </AccordionProvider>
-    );
-  },
+  ) => (
+    <AccordionProvider value={{ size, variant, isUnstyled }}>
+      <AccordionPrimitive.Root
+        {...props}
+        className={isUnstyled ? className : classNames("w-full", className)}
+        ref={forwardedRef}
+      >
+        {children}
+      </AccordionPrimitive.Root>
+    </AccordionProvider>
+  ),
 );
 Accordion.displayName = "Accordion";
 
@@ -85,12 +81,13 @@ export const accordionTriggerClasses = cva(
     variants: {
       size: {
         sm: "px-2.5 py-1 text-sm",
-        md: "px-3 py-2",
-        lg: "px-4 py-2.5 text-lg",
+        md: "px-3 py-1.5 text-base",
+        lg: "px-3.5 py-2 text-lg",
       },
       variant: {
-        solid: "bg-secondary-50/80 dark:bg-secondary-800/20",
-        ghost: "hover:bg-secondary-50/80 dark:hover:bg-secondary-800/20",
+        solid: "bg-secondary-100 dark:bg-secondary-800",
+        ghost:
+          "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 dark:data-[state=open]:bg-secondary-800 dark:hover:bg-secondary-800",
       },
     },
     defaultVariants: {
@@ -155,7 +152,7 @@ export const AccordionTrigger = forwardRef<
           </div>
         )}
         {!openIcon && !closeIcon && _showIcon && (
-          <ChevronDownIcon className="size-4 shrink-0 stroke-2 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          <ChevronDownIcon className="size-4 shrink-0 stroke-[2.5] opacity-60 transition-transform duration-200 group-data-[state=open]:rotate-180" />
         )}
       </AccordionPrimitive.Trigger>
     );
@@ -169,9 +166,9 @@ export const accordionContentClasses = cva(
   {
     variants: {
       size: {
-        sm: "px-3 text-sm",
-        md: "px-4",
-        lg: "px-5",
+        sm: "px-2.5 text-sm",
+        md: "px-3 text-base",
+        lg: "px-3.5 text-lg",
       },
     },
     defaultVariants: {

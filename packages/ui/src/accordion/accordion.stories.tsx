@@ -32,136 +32,118 @@ type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
   render: ({ variant, size, isUnstyled }) => (
-    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
-      <Accordion
-        size={size}
-        variant={variant}
-        isUnstyled={isUnstyled}
-        type="single"
-        defaultValue="1"
-        collapsible
-      >
-        <AccordionItem value="1">
-          <AccordionTrigger>
-            <span className="flex-1 text-left">Section 1 title</span>
-          </AccordionTrigger>
-          <AccordionContent data-cy="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="3">
-          <AccordionTrigger>Section 2 title</AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
+    <Accordion
+      type="single"
+      size={size}
+      variant={variant}
+      isUnstyled={isUnstyled}
+    >
+      <AccordionItem value="1">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent data-cy="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="3">
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   ),
 };
 
 export const SingleType: Story = {
   render: ({ variant, size, isUnstyled }) => (
-    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
-      <Accordion
-        size={size}
-        variant={variant}
-        isUnstyled={isUnstyled}
-        type="single"
-        collapsible
-      >
-        <AccordionItem value="1">
-          <AccordionTrigger>
-            <span className="flex-1 text-left">Section 1 title</span>
-          </AccordionTrigger>
-          <AccordionContent data-cy="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="3">
-          <AccordionTrigger>Section 2 title</AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
+    <Accordion
+      size={size}
+      type="single"
+      collapsible
+      variant={variant}
+      isUnstyled={isUnstyled}
+    >
+      <AccordionItem value="1">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent data-cy="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="3">
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   ),
 };
 
 export const MultipleType: Story = {
   render: ({ variant, size, isUnstyled }) => (
-    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
-      <Accordion
-        size={size}
-        variant={variant}
-        isUnstyled={isUnstyled}
-        type="multiple"
-      >
-        <AccordionItem value="1">
-          <AccordionTrigger>
-            <span className="flex-1 text-left">Section 1 title</span>
-          </AccordionTrigger>
-          <AccordionContent data-cy="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="3">
-          <AccordionTrigger>Section 2 title</AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
+    <Accordion
+      size={size}
+      variant={variant}
+      isUnstyled={isUnstyled}
+      type="multiple"
+    >
+      <AccordionItem value="1">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent data-cy="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="3">
+        <AccordionTrigger>Section 2 title</AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   ),
 };
 
-export const OpenClose: Story = {
+export const CustomIcon: Story = {
   render: ({ variant, size, isUnstyled }) => (
-    <div className="w-[640px] rounded-md border p-4 dark:border-zinc-700">
-      <Accordion
-        size={size}
-        variant={variant}
-        isUnstyled={isUnstyled}
-        type="multiple"
-      >
-        <AccordionItem value="1">
-          <AccordionTrigger>
-            <span className="flex-1 text-left">Section 1 title</span>
-          </AccordionTrigger>
-          <AccordionContent data-cy="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="3">
-          <AccordionTrigger
-            openIcon={<MinusIcon className="size-4" />}
-            closeIcon={<PlusIcon className="size-4" />}
-          >
-            <span className="flex-1 text-left">Section 2 title</span>
-          </AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
+    <Accordion
+      size={size}
+      variant={variant}
+      isUnstyled={isUnstyled}
+      type="multiple"
+    >
+      <AccordionItem value="1">
+        <AccordionTrigger>Section 1 title</AccordionTrigger>
+        <AccordionContent data-cy="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="3">
+        <AccordionTrigger
+          openIcon={<MinusIcon className="size-4 stroke-2" />}
+          closeIcon={<PlusIcon className="size-4 stroke-2" />}
+        >
+          Section 2 title
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   ),
 };
