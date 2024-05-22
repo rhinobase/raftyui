@@ -1,1 +1,1 @@
-export { Rating } from "./Rating";
+export { Rating, ratingControlClasses, ratingIconClasses } from "./Rating";

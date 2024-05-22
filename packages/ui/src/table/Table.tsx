@@ -53,23 +53,19 @@ export const Table = forwardRef<HTMLTableElement, Table>(
       ...props
     },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <TableProvider value={{ size, variant, isUnstyled }}>
-        <table
-          {...props}
-          className={
-            unstyle ? className : classNames(tableClasses({ size }), className)
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </table>
-      </TableProvider>
-    );
-  },
+  ) => (
+    <TableProvider value={{ size, variant, isUnstyled }}>
+      <table
+        {...props}
+        className={
+          isUnstyled ? className : classNames(tableClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </table>
+    </TableProvider>
+  ),
 );
 Table.displayName = "Table";
 

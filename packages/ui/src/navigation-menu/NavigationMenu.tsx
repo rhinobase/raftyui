@@ -21,29 +21,25 @@ export type NavigationMenu = ComponentPropsWithoutRef<
 > &
   Partial<NavigationMenuContext>;
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <NavigationMenuProvider value={{ isUnstyled }}>
-        <NavigationMenuPrimitive.Root
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "relative z-10 flex w-full flex-1 items-center justify-center",
-                  className,
-                )
-          }
-          ref={forwardedRef}
-        >
-          {children}
-          <NavigationMenuViewport />
-        </NavigationMenuPrimitive.Root>
-      </NavigationMenuProvider>
-    );
-  },
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => (
+    <NavigationMenuProvider value={{ isUnstyled }}>
+      <NavigationMenuPrimitive.Root
+        {...props}
+        className={
+          isUnstyled
+            ? className
+            : classNames(
+                "relative z-10 flex w-full flex-1 items-center justify-center",
+                className,
+              )
+        }
+        ref={forwardedRef}
+      >
+        {children}
+        <NavigationMenuViewport />
+      </NavigationMenuPrimitive.Root>
+    </NavigationMenuProvider>
+  ),
 );
 NavigationMenu.displayName = "NavigationMenu";
 

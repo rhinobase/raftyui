@@ -1,3 +1,4 @@
+"use client";
 import { RatingGroup } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import {
@@ -9,7 +10,7 @@ import { FaStar, FaStarHalf } from "react-icons/fa";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-const ratingControlClasses = cva("flex flex-wrap", {
+export const ratingControlClasses = cva("flex flex-wrap", {
   variants: {
     size: {
       sm: "gap-0.5",
@@ -22,7 +23,7 @@ const ratingControlClasses = cva("flex flex-wrap", {
   },
 });
 
-const ratingIconClasses = cva("", {
+export const ratingIconClasses = cva("", {
   variants: {
     size: {
       sm: "size-5",

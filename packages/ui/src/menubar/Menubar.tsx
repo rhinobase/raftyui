@@ -40,25 +40,21 @@ export const Menubar = forwardRef<
       ...props
     },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <MenuBarProvider value={{ size, isUnstyled, isDisabled }}>
-        <MenubarPrimitive.Root
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(menubarClasses({ size }), className)
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </MenubarPrimitive.Root>
-      </MenuBarProvider>
-    );
-  },
+  ) => (
+    <MenuBarProvider value={{ size, isUnstyled, isDisabled }}>
+      <MenubarPrimitive.Root
+        {...props}
+        className={
+          isUnstyled
+            ? className
+            : classNames(menubarClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </MenubarPrimitive.Root>
+    </MenuBarProvider>
+  ),
 );
 Menubar.displayName = "Menubar";
 

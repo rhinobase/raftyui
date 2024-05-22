@@ -33,7 +33,7 @@ export type Listbox = {
     }
 );
 
-const listboxItemClasses = cva(
+export const listboxItemClasses = cva(
   "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 transition-all ease-in-out",
   {
     variants: {
@@ -100,7 +100,7 @@ const listboxItemClasses = cva(
   },
 );
 
-const listboxClasses = cva(
+export const listboxClasses = cva(
   "dark:border-secondary-700 border-secondary-300 dark:bg-secondary-900 w-full overflow-hidden rounded-md border bg-white",
   {
     variants: {
@@ -121,7 +121,7 @@ const listboxClasses = cva(
   },
 );
 
-const checkIconClasses = cva("stroke-2", {
+export const checkIconClasses = cva("stroke-2", {
   variants: {
     size: {
       sm: "size-3",
@@ -187,9 +187,7 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(
           if (selectedValues.includes(cur))
             selectedValues = selectedValues.filter((val) => val !== cur);
           else selectedValues.push(cur);
-        } else {
-          selectedValues = [cur];
-        }
+        } else selectedValues = [cur];
 
         return selectedValues;
       },

@@ -17,28 +17,24 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
   (
     { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <ToggleGroupProvider value={{ size, isUnstyled }}>
-        <ToggleGroupPrimitive.Root
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "dark:divide-secondary-700 dark:border-secondary-700 flex w-full items-center divide-x overflow-hidden rounded-md border",
-                  className,
-                )
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </ToggleGroupPrimitive.Root>
-      </ToggleGroupProvider>
-    );
-  },
+  ) => (
+    <ToggleGroupProvider value={{ size, isUnstyled }}>
+      <ToggleGroupPrimitive.Root
+        {...props}
+        className={
+          isUnstyled
+            ? className
+            : classNames(
+                "dark:divide-secondary-700 dark:border-secondary-700 flex w-full items-center divide-x overflow-hidden rounded-md border",
+                className,
+              )
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </ToggleGroupPrimitive.Root>
+    </ToggleGroupProvider>
+  ),
 );
 ToggleGroup.displayName = "ToggleGroup";
 

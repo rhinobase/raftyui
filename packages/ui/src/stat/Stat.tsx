@@ -8,19 +8,17 @@ import { type StatContext, StatProvider, useStatContext } from "./context";
 export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 
 export const Stat = forwardRef<HTMLDivElement, Stat>(
-  ({ children, className, type = "normal", ...props }, forwardedRef) => {
-    return (
-      <StatProvider value={{ type }}>
-        <div
-          {...props}
-          className={classNames("flex flex-col gap-0.5", className)}
-          ref={forwardedRef}
-        >
-          {children}
-        </div>
-      </StatProvider>
-    );
-  },
+  ({ children, className, type = "normal", ...props }, forwardedRef) => (
+    <StatProvider value={{ type }}>
+      <div
+        {...props}
+        className={classNames("flex flex-col gap-0.5", className)}
+        ref={forwardedRef}
+      >
+        {children}
+      </div>
+    </StatProvider>
+  ),
 );
 Stat.displayName = "Stat";
 

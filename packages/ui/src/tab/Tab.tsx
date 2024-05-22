@@ -25,29 +25,25 @@ export const Tab = forwardRef<ElementRef<typeof TabsPrimitive.Root>, Tab>(
       ...props
     },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
-    return (
-      <TabProvider value={{ size, variant, orientation, isUnstyled }}>
-        <TabsPrimitive.Root
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "w-full items-stretch data-[orientation=vertical]:flex",
-                  className,
-                )
-          }
-          orientation={orientation}
-          ref={forwardedRef}
-        >
-          {children}
-        </TabsPrimitive.Root>
-      </TabProvider>
-    );
-  },
+  ) => (
+    <TabProvider value={{ size, variant, orientation, isUnstyled }}>
+      <TabsPrimitive.Root
+        {...props}
+        className={
+          isUnstyled
+            ? className
+            : classNames(
+                "w-full items-stretch data-[orientation=vertical]:flex",
+                className,
+              )
+        }
+        orientation={orientation}
+        ref={forwardedRef}
+      >
+        {children}
+      </TabsPrimitive.Root>
+    </TabProvider>
+  ),
 );
 Tab.displayName = "Tab";
 

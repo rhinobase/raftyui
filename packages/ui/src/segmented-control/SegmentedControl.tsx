@@ -1,3 +1,4 @@
+"use client";
 import {
   SegmentGroup,
   type SegmentGroupItemProps,
@@ -60,7 +61,7 @@ export const SegmentedControl = forwardRef<
   },
 );
 
-const segmentedControlItemClasses = cva(
+export const segmentedControlItemClasses = cva(
   "duration-200 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 transition-all text-secondary-500 select-none dark:text-secondary-400 font-medium data-[state=checked]:dark:text-white data-[state=checked]:text-black",
   {
     variants: {

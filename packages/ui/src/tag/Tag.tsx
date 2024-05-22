@@ -37,15 +37,13 @@ export const Tag = forwardRef<HTMLDivElement, Tag>(
   (
     { size = "md", colorScheme = "secondary", className, ...props },
     forwardedRef,
-  ) => {
-    return (
-      <div
-        {...props}
-        className={classNames(tagClasses({ size, colorScheme }), className)}
-        ref={forwardedRef}
-      />
-    );
-  },
+  ) => (
+    <div
+      {...props}
+      className={classNames(tagClasses({ size, colorScheme }), className)}
+      ref={forwardedRef}
+    />
+  ),
 );
 
 Tag.displayName = "Tag";

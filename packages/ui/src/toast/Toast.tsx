@@ -5,7 +5,7 @@ import {
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import type { HTMLAttributes } from "react";
+import { Fragment, type HTMLAttributes, type PropsWithChildren } from "react";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
@@ -57,6 +57,12 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
       break;
   }
 
+  const Component = message
+    ? ({ children }: PropsWithChildren) => (
+        <div className="space-y-1">{children}</div>
+      )
+    : Fragment;
+
   return (
     <div
       className={classNames(
@@ -66,18 +72,16 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
     >
       <div className="flex items-center gap-3">
         <ToastIcon className="size-6 text-white dark:text-black" />
-        <div className="space-y-1">
-          {title && (
-            <h6 className="font-medium leading-tight text-white dark:text-black">
-              {title}
-            </h6>
-          )}
+        <Component>
+          <h6 className="font-medium leading-tight text-white dark:text-black">
+            {title}
+          </h6>
           {message && (
             <p className="text-sm leading-tight text-white dark:text-black">
               {message}
             </p>
           )}
-        </div>
+        </Component>
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ export const Default: Story = {
     isReadOnly: false,
     isLoading: false,
     hidden: false,
+    defaultValue: "react",
     type: "single",
     size: "md",
   },

@@ -7,7 +7,6 @@ import {
   type PropsWithChildren,
   type ReactNode,
   forwardRef,
-  useId,
 } from "react";
 import { eventHandler } from "../utils";
 import {
@@ -16,7 +15,7 @@ import {
   useStepperContext,
 } from "./context";
 
-const stepperClasses = cva(
+export const stepperClasses = cva(
   "group/stepper flex aria-disabled:opacity-60 aria-disabled:cursor-not-allowed",
   {
     variants: {
@@ -58,18 +57,15 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
     },
     forwardedRef,
   ) => {
-    const key = useId();
-
     const handleSelect = (value: number) =>
       eventHandler(() => !isDisabled && onClick?.(value));
 
     const components = steps.flatMap((step, index) => {
       const value = initial + index;
-      const uniqueKey = `${index}-${key}`;
 
       return [
         <div
-          key={uniqueKey}
+          key={value}
           onClick={handleSelect(value)}
           onKeyDown={handleSelect(value)}
         >
@@ -79,7 +75,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
             isClickable={Boolean(onClick !== undefined)}
           />
         </div>,
-        <Connector key={`connector-${uniqueKey}`} active={current > value} />,
+        <Connector key={`connector-${value}`} active={current > value} />,
       ];
     });
 
@@ -109,7 +105,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(
 );
 Stepper.displayName = "Stepper";
 
-const stepperItemClasses = cva(
+export const stepperItemClasses = cva(
   "group/item flex h-full w-max items-center outline-none group-aria-disabled/stepper:opacity-60 group-aria-disabled/stepper:cursor-not-allowed cursor-default",
   {
     variants: {
@@ -137,7 +133,7 @@ const stepperItemClasses = cva(
   },
 );
 
-const stepperItemIconClasses = cva(
+export const stepperItemIconClasses = cva(
   "flex items-center justify-center rounded-full leading-none select-none border border-transparent transition-all ease-in-out",
   {
     variants: {
@@ -174,7 +170,7 @@ const stepperItemIconClasses = cva(
   },
 );
 
-const contentWrapperClasses = cva("space-y-1", {
+export const contentWrapperClasses = cva("space-y-1", {
   variants: {
     isCurrentStep: {
       true: "dark:text-secondary-100",
@@ -256,7 +252,7 @@ function StepperItem({
   );
 }
 
-const connecterClasses = cva("", {
+export const connecterClasses = cva("", {
   variants: {
     size: {
       sm: "",
@@ -298,7 +294,7 @@ function StepsConnector({ active }: StepsConnector) {
   return <div className={connecterClasses({ direction, active, size })} />;
 }
 
-const titleAndSubTitleWrapperClasses = cva("flex items-baseline", {
+export const titleAndSubTitleWrapperClasses = cva("flex items-baseline", {
   variants: {
     size: {
       sm: "gap-1",
@@ -308,7 +304,7 @@ const titleAndSubTitleWrapperClasses = cva("flex items-baseline", {
   },
 });
 
-const titleClasses = cva("leading-none w-max", {
+export const titleClasses = cva("leading-none w-max", {
   variants: {
     size: {
       sm: "text-base",
@@ -318,7 +314,7 @@ const titleClasses = cva("leading-none w-max", {
   },
 });
 
-const helpTextClasses = cva("leading-none", {
+export const helpTextClasses = cva("leading-none", {
   variants: {
     size: {
       sm: "text-xs",

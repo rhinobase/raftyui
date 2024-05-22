@@ -6,7 +6,7 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 export const textareaClasses = cva(
-  "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all",
+  "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200",
   {
     variants: {
       size: {
@@ -46,7 +46,8 @@ export const textareaClasses = cva(
       {
         variant: ["solid", "outline"],
         disabled: false,
-        className: "hover:border-primary-500 dark:hover:border-primary-400",
+        className:
+          "hover:border-primary-500 dark:hover:border-primary-400 ease-in-out transition-all",
       },
       {
         variant: ["solid", "outline"],

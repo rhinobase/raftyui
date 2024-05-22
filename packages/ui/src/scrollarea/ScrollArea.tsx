@@ -1,3 +1,4 @@
+"use client";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,

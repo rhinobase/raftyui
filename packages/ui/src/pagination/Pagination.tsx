@@ -38,25 +38,23 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       ...props
     },
     forwardedRef,
-  ) => {
-    return (
-      <PaginationProvider
-        value={{
-          size,
-          pages,
-          currentPage,
-          pageLimit,
-          isDisabled,
-          onChange,
-        }}
-      >
-        <div
-          {...props}
-          className={classNames(paginationClasses({ size }), className)}
-          ref={forwardedRef}
-        />
-      </PaginationProvider>
-    );
-  },
+  ) => (
+    <PaginationProvider
+      value={{
+        size,
+        pages,
+        currentPage,
+        pageLimit,
+        isDisabled,
+        onChange,
+      }}
+    >
+      <div
+        {...props}
+        className={classNames(paginationClasses({ size }), className)}
+        ref={forwardedRef}
+      />
+    </PaginationProvider>
+  ),
 );
 Pagination.displayName = "Pagination";

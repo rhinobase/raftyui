@@ -1,3 +1,4 @@
+"use client";
 import { PinInput as ArkPinInput, type PinInputRootProps } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
@@ -5,7 +6,7 @@ import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
 import { getValue } from "../utils";
 
-const inputClasses = cva("p-0 text-center", {
+export const inputClasses = cva("p-0 text-center", {
   variants: {
     size: {
       sm: "size-[30px]",
@@ -13,9 +14,12 @@ const inputClasses = cva("p-0 text-center", {
       lg: "size-[46px]",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
-const pinInputControlClasses = cva("flex flex-wrap", {
+export const pinInputControlClasses = cva("flex flex-wrap", {
   variants: {
     size: {
       sm: "gap-2",

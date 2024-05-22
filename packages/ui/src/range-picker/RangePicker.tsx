@@ -1,3 +1,4 @@
+"use client";
 import {
   DatePicker as ArkDatePicker,
   type DatePickerRootProps,

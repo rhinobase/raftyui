@@ -9,7 +9,7 @@ import { classNames } from "../utils";
 import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
 
-const wrapperClasses = cva("flex items-center", {
+export const wrapperClasses = cva("flex items-center", {
   variants: {
     size: {
       sm: "gap-2",
@@ -19,7 +19,7 @@ const wrapperClasses = cva("flex items-center", {
   },
 });
 
-const iconClasses = cva("stroke-[2.5]", {
+export const iconClasses = cva("stroke-[2.5]", {
   variants: {
     size: {
       sm: "size-3.5",

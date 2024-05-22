@@ -1,1 +1,1 @@
-export { PinInput } from "./PinInput";
+export { PinInput, inputClasses, pinInputControlClasses } from "./PinInput";

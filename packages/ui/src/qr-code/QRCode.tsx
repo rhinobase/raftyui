@@ -1,3 +1,4 @@
+"use client";
 // @ts-expect-error
 import ErrorCorrectLevel from "qr.js/lib/ErrorCorrectLevel";
 // @ts-expect-error

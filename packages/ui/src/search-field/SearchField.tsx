@@ -17,27 +17,25 @@ export type SearchField = Omit<InputField, "value" | "onChange" | "type"> & {
 };
 
 export const SearchField = forwardRef<HTMLInputElement, SearchField>(
-  ({ search, onSearch, size = "md", ...props }, forwardedRef) => {
-    return (
-      <InputGroup className="w-full" size={size}>
-        <Prefix>
-          <MagnifyingGlassIcon
-            className={classNames(
-              ICON_CLASSES[size],
-              "stroke-2 opacity-40 dark:stroke-white",
-            )}
-          />
-        </Prefix>
-        <InputField
-          {...props}
-          type="search"
-          value={search}
-          onChange={(e) => onSearch?.(e.target.value)}
-          ref={forwardedRef}
+  ({ search, onSearch, size = "md", ...props }, forwardedRef) => (
+    <InputGroup className="w-full" size={size}>
+      <Prefix>
+        <MagnifyingGlassIcon
+          className={classNames(
+            ICON_CLASSES[size],
+            "stroke-2 opacity-40 dark:stroke-white",
+          )}
         />
-      </InputGroup>
-    );
-  },
+      </Prefix>
+      <InputField
+        {...props}
+        type="search"
+        value={search}
+        onChange={(e) => onSearch?.(e.target.value)}
+        ref={forwardedRef}
+      />
+    </InputGroup>
+  ),
 );
 
 SearchField.displayName = "SearchField";

@@ -36,6 +36,26 @@ export const Default: Story = {
       placeholder="Select fruit"
       onChange={(e) => console.log(e.target.value)}
     >
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="blueberry">Blueberry</SelectItem>
+      <SelectItem value="grapes">Grapes</SelectItem>
+      <SelectItem value="pineapple">Pineapple</SelectItem>
+    </Select>
+  ),
+};
+
+export const SelectWithSelectItemGroup: Story = {
+  render: ({ variant, size, isDisabled, isRequired, isReadOnly }) => (
+    <Select
+      variant={variant}
+      size={size}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      isReadOnly={isReadOnly}
+      placeholder="Select fruit"
+      onChange={(e) => console.log(e.target.value)}
+    >
       <SelectItemGroup label="Fruits">
         <SelectItem value="apple">Apple</SelectItem>
         <SelectItem value="banana">Banana</SelectItem>

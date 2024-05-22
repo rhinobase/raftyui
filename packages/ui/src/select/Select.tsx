@@ -16,7 +16,7 @@ import {
   useSelectContext,
 } from "./context";
 
-const selectClasses = cva(
+export const selectClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900 transition-all",
   {
     variants: {
