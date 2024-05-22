@@ -6,7 +6,7 @@ import {
 } from "@ark-ui/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
+import { type ElementRef, type PropsWithChildren, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
@@ -49,7 +49,9 @@ export const EditableText = forwardRef<
       >
         <Editable.Context>
           {() => (
-            <EditableItem size={size} readOnly={readOnly} disabled={disabled} />
+            <EditableItem size={size} readOnly={readOnly} disabled={disabled}>
+              <InputField size={size} />
+            </EditableItem>
           )}
         </Editable.Context>
       </Editable.Root>
@@ -104,24 +106,40 @@ const editIconClasses = {
   },
 };
 
-function EditableItem({
+export type EditableItem = PropsWithChildren<
+  {
+    className?: string;
+    editableTextareaPreviewClasses?: {
+      size: {
+        sm: string;
+        md: string;
+        lg: string;
+      };
+    };
+  } & Pick<EditableText, "size" | "readOnly" | "disabled">
+>;
+
+export function EditableItem({
   size = "md",
   readOnly,
   disabled,
-}: Pick<EditableText, "size" | "readOnly" | "disabled">) {
+  className,
+  editableTextareaPreviewClasses,
+  children,
+}: EditableItem) {
   const { editing, previewProps } = useEditableContext();
 
   return (
     <>
       <Editable.Area>
-        <Editable.Input asChild>
-          <InputField size={size} />
-        </Editable.Input>
+        <Editable.Input asChild>{children}</Editable.Input>
         <Editable.Preview asChild>
           <div
             className={classNames(
               "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 data-[disabled]:bg-secondary-200/60 relative cursor-pointer rounded-md border transition-all ease-in-out aria-[readonly]:cursor-default data-[disabled]:cursor-not-allowed",
-              editableTextPreviewClasses.size[size],
+              className,
+              editableTextareaPreviewClasses?.size[size] ??
+                editableTextPreviewClasses.size[size],
             )}
           >
             <p className="truncate">{previewProps.children}</p>
