@@ -10,7 +10,7 @@ import {
   useBreadcrumbsContext,
 } from "./context";
 
-const breadcrumbClasses = cva("flex items-center", {
+const breadcrumbsClasses = cva("flex items-center", {
   variants: {
     size: {
       sm: "gap-1",
@@ -30,14 +30,14 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
   ({ size = "md", children, ...props }, forwardedRef) => (
     <BreadcrumbsProvider value={{ size }}>
       <nav {...props} ref={forwardedRef}>
-        <List className={breadcrumbClasses({ size })}>{children}</List>
+        <List className={breadcrumbsClasses({ size })}>{children}</List>
       </nav>
     </BreadcrumbsProvider>
   ),
 );
 Breadcrumbs.displayName = "Breadcrumbs";
 
-export const dividerClasses = cva(
+export const breadcrumbsDividerClasses = cva(
   "select-none font-medium opacity-50 dark:opacity-40",
   {
     variants: {
@@ -61,7 +61,7 @@ export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
     return (
       <ListItem
         {...props}
-        className={classNames(dividerClasses({ size }), className)}
+        className={classNames(breadcrumbsDividerClasses({ size }), className)}
         ref={forwardedRef}
       >
         {children}
@@ -71,7 +71,7 @@ export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
 );
 BreadcrumbDivider.displayName = "BreadcrumbDivider";
 
-export const breadcrumbItemClasses = cva("rounded font-medium leading-tight", {
+export const breadcrumbsItemClasses = cva("rounded font-medium leading-tight", {
   variants: {
     size: {
       sm: "px-1.5 py-0.5",
@@ -106,7 +106,7 @@ export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
                   active: isActive,
                   colorScheme: isActive ? "primary" : "secondary",
                 }),
-                breadcrumbItemClasses({ size }),
+                breadcrumbsItemClasses({ size }),
                 className,
               )
         }

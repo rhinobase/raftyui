@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { BreadcrumbDivider, BreadcrumbItem, Breadcrumbs } from "./Breadcrumbs";
 
 const meta: Meta<typeof Breadcrumbs> = {
-  title: "Corp / Breadcrumbs",
+  title: "Components / Breadcrumbs",
   args: {
     size: "md",
   },
