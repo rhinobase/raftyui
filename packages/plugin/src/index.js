@@ -57,12 +57,25 @@ module.exports = require("tailwindcss/plugin")(() => undefined, {
           "0%": { right: "-100%" },
           "100%": { right: "0" },
         },
+        overlayShow: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        contentShow: {
+          from: {
+            opacity: "0",
+            transform: "translate(-50%, -48%) scale(0.96)",
+          },
+          to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-right": "slide-right 0.4s",
         "slide-left": "slide-left 0.4s",
+        overlayShow: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        contentShow: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
     plugins: [require("tailwindcss-animate")],
