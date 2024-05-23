@@ -14,7 +14,7 @@ import { type AlertContext, AlertProvider, useAlertContext } from "./context";
 export const alertClasses = cva("flex w-full items-center", {
   variants: {
     size: {
-      sm: "py-2 px-2.5 gap-1.5",
+      sm: "p-2 gap-2",
       md: "p-3 gap-3",
       lg: "p-4 gap-4",
     },
@@ -26,126 +26,116 @@ export const alertClasses = cva("flex w-full items-center", {
     },
     variant: {
       simple: "border",
-      solid: "",
+      solid: "text-white dark:text-secondary-100",
       "left-accent": "",
       "top-accent": "",
     },
   },
   compoundVariants: [
     {
+      size: "sm",
+      variant: "left-accent",
+      className: "border-l-[3px]",
+    },
+    {
+      size: "md",
+      variant: "left-accent",
+      className: "border-l-4",
+    },
+    {
+      size: "lg",
+      variant: "left-accent",
+      className: "border-l-[5px]",
+    },
+    {
+      size: "sm",
+      variant: "top-accent",
+      className: "border-t-[3px]",
+    },
+    {
+      size: "md",
+      variant: "top-accent",
+      className: "border-t-4",
+    },
+    {
+      size: "lg",
+      variant: "top-accent",
+      className: "border-t-[5px]",
+    },
+    {
+      size: "sm",
+      variant: ["simple", "solid"],
+      className: "rounded",
+    },
+    {
+      size: "md",
+      variant: ["simple", "solid"],
+      className: "rounded-md",
+    },
+    {
+      size: "lg",
       variant: ["simple", "solid"],
       className: "rounded-lg",
     },
     {
-      variant: "simple",
       status: "success",
-      className:
-        "border-green-600 bg-green-300/75 text-secondary-900 dark:bg-green-400/40 dark:text-secondary-100",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-green-500 dark:text-green-300",
     },
     {
-      variant: "simple",
       status: "warning",
-      className:
-        "border-amber-600 bg-amber-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-amber-500 dark:text-amber-300",
     },
     {
-      variant: "simple",
       status: "error",
-      className:
-        "border-red-500 bg-red-300/75 text-secondary-900 dark:bg-red-400/40 dark:text-secondary-100",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-red-500 dark:text-red-300",
     },
     {
-      variant: "simple",
       status: "info",
-      className:
-        "bg-blue-200 dark:bg-blue-400/40 border-blue-500 text-secondary-900 dark:text-secondary-100",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "text-blue-500 dark:text-blue-300",
+    },
+    {
+      status: "success",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "border-green-500 bg-green-300/75 dark:bg-green-400/40",
+    },
+    {
+      status: "warning",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "border-amber-500 bg-amber-300/60 dark:bg-amber-400/40",
+    },
+    {
+      status: "error",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "border-red-500 bg-red-300/75 dark:bg-red-400/40",
+    },
+    {
+      status: "info",
+      variant: ["simple", "left-accent", "top-accent"],
+      className: "border-blue-500 bg-blue-200 dark:bg-blue-400/40",
     },
     {
       variant: "solid",
       status: "success",
-      className:
-        "border-green-500 bg-green-500 text-white dark:bg-green-400 dark:text-secondary-100",
+      className: "bg-green-500 dark:bg-green-400",
     },
     {
       variant: "solid",
       status: "warning",
-      className:
-        "border-amber-500 bg-amber-500 text-white dark:text-secondary-100 dark:bg-amber-400",
+      className: "border-amber-500 bg-amber-500 dark:bg-amber-400",
     },
     {
       variant: "solid",
       status: "error",
-      className:
-        "border-red-500 bg-red-500 text-white dark:bg-red-400 dark:text-secondary-100",
+      className: "border-red-500 bg-red-500 dark:bg-red-400",
     },
     {
       variant: "solid",
       status: "info",
-      className:
-        "bg-blue-500 dark:bg-blue-400 border-blue-500 text-white dark:text-secondary-100",
-    },
-    {
-      variant: "left-accent",
-      status: "success",
-      className:
-        "border-l-4 border-green-500 bg-green-300/75 text-secondary-900 dark:bg-green-400/40 dark:text-secondary-100",
-    },
-    {
-      variant: "left-accent",
-      status: "warning",
-      className:
-        "border-l-4 border-amber-500 bg-amber-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
-    },
-    {
-      variant: "left-accent",
-      status: "error",
-      className:
-        "border-l-4 border-red-500 bg-red-300/75 text-secondary-900 dark:bg-red-400/40 dark:text-secondary-100",
-    },
-    {
-      variant: "left-accent",
-      status: "info",
-      className:
-        "bg-blue-200 dark:bg-blue-400/40 border-l-4 border-blue-500 text-secondary-900 dark:text-secondary-100",
-    },
-    {
-      variant: "top-accent",
-      status: "success",
-      className:
-        "border-t-4 border-green-500 bg-green-300/75 text-secondary-900 dark:bg-green-400/40 dark:text-secondary-100",
-    },
-    {
-      variant: "top-accent",
-      status: "warning",
-      className:
-        "border-t-4 border-amber-500 bg-amber-300/60 text-secondary-900 dark:text-secondary-100 dark:bg-amber-400/40",
-    },
-    {
-      variant: "top-accent",
-      status: "error",
-      className:
-        "border-t-4 border-red-500 bg-red-300/75 text-secondary-900 dark:bg-red-400/40 dark:text-secondary-100",
-    },
-    {
-      variant: "top-accent",
-      status: "info",
-      className:
-        "bg-blue-200 dark:bg-blue-400/40 border-t-4 border-blue-500 text-secondary-900 dark:text-secondary-100",
-    },
-    {
-      variant: "top-accent",
-      size: "sm",
-      className: "pt-1",
-    },
-    {
-      variant: "top-accent",
-      size: "md",
-      className: "pt-2",
-    },
-    {
-      variant: "top-accent",
-      size: "lg",
-      className: "pt-3",
+      className: "bg-blue-500 dark:bg-blue-400 border-blue-500",
     },
   ],
   defaultVariants: {
@@ -160,12 +150,11 @@ export type Alert = HTMLAttributes<HTMLDivElement> & Partial<AlertContext>;
 export const Alert = forwardRef<HTMLDivElement, Alert>(
   (
     {
-      className,
       status = "info",
       size = "md",
       variant = "simple",
       isUnstyled = false,
-      children,
+      className,
       ...props
     },
     forwardedRef,
@@ -179,65 +168,23 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
             : classNames(alertClasses({ size, status, variant }), className)
         }
         ref={forwardedRef}
-      >
-        {children}
-      </div>
+      />
     </AlertProvider>
   ),
 );
 Alert.displayName = "Alert";
 
 // AlertIcon component
-export const alertIconClasses = cva("", {
+export const alertIconClasses = cva("stroke-2", {
   variants: {
     size: {
-      sm: "size-4 stroke-2",
-      md: "size-5 stroke-2",
-      lg: "size-7 stroke-[1.5]",
-    },
-    status: {
-      success: "",
-      warning: "",
-      error: "",
-      info: "",
-    },
-    variant: {
-      simple: "",
-      solid: "",
-      "left-accent": "",
-      "top-accent": "",
+      sm: "size-5",
+      md: "size-6",
+      lg: "size-7",
     },
   },
-  compoundVariants: [
-    {
-      size: ["sm", "md", "lg"],
-      status: "error",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-red-500 dark:text-red-200",
-    },
-    {
-      size: ["sm", "md", "lg"],
-      status: "warning",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-amber-600 dark:text-amber-300",
-    },
-    {
-      size: ["sm", "md", "lg"],
-      status: "info",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-blue-500 dark:text-blue-200",
-    },
-    {
-      size: ["sm", "md", "lg"],
-      status: "success",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-green-500 dark:text-green-300",
-    },
-  ],
   defaultVariants: {
     size: "md",
-    status: "info",
-    variant: "simple",
   },
 });
 
@@ -254,21 +201,14 @@ export type AlertIcon = {
 };
 
 export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
-  const {
-    size,
-    status,
-    variant,
-    isUnstyled: isParentUnstyled,
-  } = useAlertContext();
+  const { size, status, isUnstyled: isParentUnstyled } = useAlertContext();
   const unstyle = isParentUnstyled || isUnstyled;
   const Icon = ICONS[status];
 
   return (
     <Icon
       className={
-        unstyle
-          ? className
-          : classNames(alertIconClasses({ size, status, variant }), className)
+        unstyle ? className : classNames(alertIconClasses({ size }), className)
       }
     />
   );
@@ -276,56 +216,16 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
 AlertIcon.displayName = "AlertIcon";
 
 // AlertTitle component
-export const alertTitleClasses = cva("", {
+export const alertTitleClasses = cva("font-medium", {
   variants: {
     size: {
-      sm: "font-medium",
-      md: "text-lg font-medium",
-      lg: "text-xl font-medium",
-    },
-    status: {
-      success: "",
-      warning: "",
-      error: "",
-      info: "",
-    },
-    variant: {
-      simple: "",
-      solid: "",
-      "left-accent": "",
-      "top-accent": "",
+      sm: "text-base",
+      md: "text-lg",
+      lg: "text-xl",
     },
   },
-  compoundVariants: [
-    {
-      size: ["sm", "md", "lg"],
-      status: "error",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-red-500 dark:text-red-200",
-    },
-    {
-      size: ["sm", "md", "lg"],
-      status: "warning",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-amber-600 dark:text-amber-300",
-    },
-    {
-      size: ["sm", "md", "lg"],
-      status: "info",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-blue-500 dark:text-blue-200",
-    },
-    {
-      size: ["sm", "md", "lg"],
-      status: "success",
-      variant: ["simple", "left-accent", "top-accent"],
-      className: "text-green-500 dark:text-green-300",
-    },
-  ],
   defaultVariants: {
     size: "md",
-    status: "info",
-    variant: "simple",
   },
 });
 
@@ -334,13 +234,8 @@ export type AlertTitle = HTMLAttributes<HTMLHeadingElement> & {
 };
 
 export const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitle>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const {
-      size,
-      isUnstyled: isParentUnstyled,
-      status,
-      variant,
-    } = useAlertContext();
+  ({ className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isUnstyled: isParentUnstyled } = useAlertContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
     return (
@@ -349,15 +244,10 @@ export const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitle>(
         className={
           unstyle
             ? className
-            : classNames(
-                alertTitleClasses({ size, status, variant }),
-                className,
-              )
+            : classNames(alertTitleClasses({ size }), className)
         }
         ref={forwardedRef}
-      >
-        {children}
-      </h5>
+      />
     );
   },
 );
@@ -373,14 +263,13 @@ export const alertDescriptionClasses = cva("", {
     },
     variant: {
       simple: "",
-      solid: "",
+      solid: "text-white dark:text-secondary-100",
       "left-accent": "",
       "top-accent": "",
     },
   },
   compoundVariants: [
     {
-      size: ["sm", "md", "lg"],
       variant: ["simple", "left-accent", "top-accent"],
       className: "text-secondary-500 dark:text-secondary-200",
     },
@@ -398,7 +287,7 @@ export type AlertDescription = HTMLAttributes<HTMLParagraphElement> & {
 export const AlertDescription = forwardRef<
   HTMLParagraphElement,
   AlertDescription
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(({ className, isUnstyled = false, ...props }, forwardedRef) => {
   const { size, isUnstyled: isParentUnstyled, variant } = useAlertContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -411,9 +300,7 @@ export const AlertDescription = forwardRef<
           : classNames(alertDescriptionClasses({ size, variant }), className)
       }
       ref={forwardedRef}
-    >
-      {children}
-    </p>
+    />
   );
 });
 AlertDescription.displayName = "AlertDescription";

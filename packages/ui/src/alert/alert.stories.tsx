@@ -56,7 +56,9 @@ export const WithAction: Story = {
       <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
       <div className="flex-1" />
-      <Button>Action</Button>
+      <div className="dark:bg-secondary-900 rounded-md bg-white">
+        <Button>Button</Button>
+      </div>
     </Alert>
   ),
 };
