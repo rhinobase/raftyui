@@ -66,5 +66,6 @@ export * from "./timeline";
 export * from "./toast";
 export * from "./toggle-group";
 export * from "./tooltip";
+export * from "./tree-view";
 export * from "./types";
 export * from "./utils";

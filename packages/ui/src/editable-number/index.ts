@@ -1,1 +1,1 @@
-export { EditableNumber, editTriggerClasses } from "./EditableNumber";
+export { EditableNumber } from "./EditableNumber";
