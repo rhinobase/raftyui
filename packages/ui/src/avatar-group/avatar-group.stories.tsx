@@ -18,9 +18,9 @@ const meta: Meta<typeof Avatar | AvatarGroup> = {
 
 export default meta;
 
-type Story2 = StoryObj<typeof AvatarGroup>;
+type Story = StoryObj<typeof AvatarGroup>;
 
-export const Group: Story2 = {
+export const Group: Story = {
   render: ({ size, max }) => (
     <AvatarGroup size={size} max={max}>
       <Avatar
@@ -28,15 +28,15 @@ export const Group: Story2 = {
         src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Annie"
       />
       <Avatar
-        name="jack"
+        name="Jack"
         src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Jack"
       />
       <Avatar
-        name="jack"
+        name="Kiki"
         src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Kiki"
       />
       <Avatar
-        name="jack"
+        name="Bandit"
         src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Bandit"
       />
     </AvatarGroup>

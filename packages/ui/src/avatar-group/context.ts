@@ -10,4 +10,5 @@ export const [AvatarGroupProvider, useAvatarGroupContext] =
 
 export interface AvatarGroupContext {
   readonly size: "sm" | "md" | "lg";
+  readonly isUnstyled: boolean;
 }

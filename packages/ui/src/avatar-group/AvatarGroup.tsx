@@ -16,7 +16,15 @@ export type AvatarGroup = HTMLAttributes<HTMLDivElement> &
 
 export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
   (
-    { max, className, children, size = "md", style, ...props },
+    {
+      max,
+      className,
+      children,
+      size = "md",
+      style,
+      isUnstyled = false,
+      ...props
+    },
     forwardedRef,
   ) => {
     const validChildren = getValidChildren(children);
@@ -57,11 +65,11 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
     const groupWidth = calculateWidth(size, childrenWithinMax.length);
 
     return (
-      <AvatarGroupProvider value={{ size }}>
+      <AvatarGroupProvider value={{ size, isUnstyled }}>
         <div
           {...props}
           className={classNames("group relative flex items-center", className)}
-          style={{ width: groupWidth }}
+          style={{ width: groupWidth, ...style }}
           data-group={true}
           ref={forwardedRef}
         >
@@ -71,5 +79,4 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
     );
   },
 );
-
 AvatarGroup.displayName = "AvatarGroup";
