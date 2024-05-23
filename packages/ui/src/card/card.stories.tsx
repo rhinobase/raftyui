@@ -31,9 +31,9 @@ export const Default: Story = {
       <CardHeader>
         <h3
           className={classNames(
-            size === "sm" && "text-xl",
-            size === "md" && "text-2xl",
-            size === "lg" && "text-3xl",
+            size === "sm" && "text-lg",
+            size === "md" && "text-xl",
+            size === "lg" && "text-2xl",
             "font-semibold",
           )}
         >
@@ -43,8 +43,7 @@ export const Default: Story = {
       <CardContent>
         <p
           className={classNames(
-            size === "sm" && "text-sm",
-            size === "lg" && "text-lg",
+            (size === "sm" || size === "md") && "text-sm",
             "font-medium",
           )}
         >
@@ -56,11 +55,13 @@ export const Default: Story = {
         </p>
       </CardContent>
       <CardFooter className="flex">
-        <Button variant="outline" colorScheme="error">
+        <Button size={size} variant="outline" colorScheme="error">
           Delete
         </Button>
         <div className="flex-1" />
-        <Button variant="outline">View here</Button>
+        <Button size={size} variant="outline">
+          View here
+        </Button>
       </CardFooter>
     </Card>
   ),
@@ -76,9 +77,9 @@ export const WithDivide: Story = {
       <CardHeader>
         <h3
           className={classNames(
-            size === "sm" && "text-xl",
-            size === "md" && "text-2xl",
-            size === "lg" && "text-3xl",
+            size === "sm" && "text-lg",
+            size === "md" && "text-xl",
+            size === "lg" && "text-2xl",
             "font-semibold",
           )}
         >
@@ -94,8 +95,7 @@ export const WithDivide: Story = {
       >
         <p
           className={classNames(
-            size === "sm" && "text-sm",
-            size === "lg" && "text-lg",
+            (size === "sm" || size === "md") && "text-sm",
             "font-medium",
           )}
         >
@@ -107,11 +107,13 @@ export const WithDivide: Story = {
         </p>
       </CardContent>
       <CardFooter className="flex">
-        <Button variant="outline" colorScheme="error">
+        <Button size={size} variant="outline" colorScheme="error">
           Delete
         </Button>
         <div className="flex-1" />
-        <Button variant="outline">View here</Button>
+        <Button size={size} variant="outline">
+          View here
+        </Button>
       </CardFooter>
     </Card>
   ),

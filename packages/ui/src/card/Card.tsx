@@ -5,16 +5,17 @@ import { classNames, getValidChildren } from "../utils";
 import { type CardContext, CardProvider, useCardContext } from "./context";
 
 // Card Component
-export const cardClasses = cva("flex flex-col dark:text-white", {
+export const cardClasses = cva("flex flex-col dark:text-white border", {
   variants: {
     size: {
       sm: "rounded-md",
       md: "rounded-lg",
-      lg: "rounded-lg",
+      lg: "rounded-xl",
     },
     variant: {
-      outline: "border dark:border-secondary-700",
-      elevated: "bg-white dark:bg-secondary-800 drop-shadow-lg",
+      outline: "border-secondary-300 dark:border-secondary-700",
+      elevated:
+        "bg-white dark:bg-secondary-800 drop-shadow-lg border-transparent",
     },
   },
   defaultVariants: {

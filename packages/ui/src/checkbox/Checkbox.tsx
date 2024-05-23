@@ -12,9 +12,7 @@ import { Label } from "../label/Label";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
-// Checkbox Component
-
-export const checkboxClasses = cva(
+const checkboxClasses = cva(
   "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus:ring-2",
   {
     variants: {
@@ -31,7 +29,7 @@ export const checkboxClasses = cva(
   },
 );
 
-export const checkboxIndicatorClasses = cva(
+const checkboxIndicatorClasses = cva(
   "dark:text-secondary-700 hidden text-white group-data-[state=checked]:block",
   {
     variants: {
@@ -51,14 +49,15 @@ const checkboxLabelClasses = cva("", {
   variants: {
     size: {
       sm: "pl-1.5 text-xs",
-      md: "pl-2 leading-snug",
-      lg: "pl-2.5 text-base leading-snug",
+      md: "pl-2",
+      lg: "pl-2.5 text-base",
     },
     disabled: {
       true: "cursor-not-allowed opacity-70",
       false: "",
     },
   },
+  compoundVariants: [{ size: ["md", "lg"], className: "leading-snug" }],
   defaultVariants: {
     size: "md",
     disabled: false,

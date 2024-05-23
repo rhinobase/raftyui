@@ -32,7 +32,7 @@ const COLORS = [
 ];
 
 const colorPickerContentClasses = cva(
-  "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 border bg-white drop-shadow-lg w-full",
+  "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 border bg-white drop-shadow-lg",
   {
     variants: {
       size: {
@@ -121,13 +121,18 @@ export const ColorPicker = forwardRef<
 );
 ColorPicker.displayName = "ColorPicker";
 
-const colorPickerInputSuffixClasses = {
-  size: {
-    sm: "p-1",
-    md: "p-1.5",
-    lg: "p-2",
+const colorPickerInputSuffixClasses = cva("", {
+  variants: {
+    size: {
+      sm: "p-1",
+      md: "p-1.5",
+      lg: "p-2",
+    },
   },
-};
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 const colorPickerTriggerClasses = cva(
   "border border-secondary-300 dark:border-secondary-700",
@@ -161,7 +166,7 @@ function ColorPickerControl({ size }: ColorPickerControl) {
         <Suffix
           className={classNames(
             "pointer-events-auto w-max",
-            colorPickerInputSuffixClasses.size[size],
+            colorPickerInputSuffixClasses({ size }),
           )}
         >
           <ArkColorPicker.Trigger
@@ -274,13 +279,18 @@ function CommonChannelInput(props: CommonChannelInput) {
   );
 }
 
-const colorPickerSwatchClasses = {
-  size: {
-    sm: "md:size-[26px] size-[27px] rounded",
-    md: "md:size-8 size-[33px] rounded-md",
-    lg: "md:size-[38px] size-[36px] rounded-lg",
+const colorPickerSwatchClasses = cva("", {
+  variants: {
+    size: {
+      sm: "md:size-[26px] size-[27px] rounded",
+      md: "md:size-8 size-[33px] rounded-md",
+      lg: "md:size-[38px] size-[36px] rounded-lg",
+    },
   },
-};
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 type ColorPickerSwatchGroup = {
   size: Size;
@@ -293,7 +303,7 @@ function ColorPickerSwatchGroup({ size }: ColorPickerSwatchGroup) {
         <ArkColorPicker.SwatchTrigger value={color} key={color}>
           <ArkColorPicker.Swatch
             value={color}
-            className={colorPickerSwatchClasses.size[size]}
+            className={colorPickerSwatchClasses({ size })}
           />
         </ArkColorPicker.SwatchTrigger>
       ))}
