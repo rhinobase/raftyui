@@ -53,7 +53,6 @@ export const inputFieldClasses = cva(
       },
       {
         disabled: true,
-        readonly: false,
         className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
       },
       {
