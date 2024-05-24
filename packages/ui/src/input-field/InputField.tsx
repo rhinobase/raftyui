@@ -48,12 +48,10 @@ export const inputFieldClasses = cva(
       {
         variant: "solid",
         disabled: false,
-        readonly: false,
         className: "bg-secondary-50 dark:bg-secondary-900",
       },
       {
         disabled: true,
-        readonly: false,
         className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
       },
       {
