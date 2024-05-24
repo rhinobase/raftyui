@@ -7,6 +7,7 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
+import { alertDialogOverlayClasses } from "../alert-dialog";
 import { Button } from "../button";
 import { classNames } from "../utils";
 import {
@@ -19,17 +20,18 @@ import {
 export type Drawer = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DrawerContext>;
 
-export const Drawer = ({
+export function Drawer({
   children,
   size = "md",
   side = "right",
   ...props
-}: Drawer) => (
-  <DrawerProvider value={{ size, side }}>
-    <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
-  </DrawerProvider>
-);
-Drawer.displayName = "Drawer";
+}: Drawer) {
+  return (
+    <DrawerProvider value={{ size, side }}>
+      <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
+    </DrawerProvider>
+  );
+}
 
 //Drawer Overlay Component
 export type DrawerOverlay = ComponentPropsWithoutRef<
@@ -42,12 +44,7 @@ export const DrawerOverlay = forwardRef<
 >(({ className, ...props }, forwardedRef) => (
   <DialogPrimitive.Overlay
     {...props}
-    className={classNames(
-      "animate-slide-down-fade fixed inset-0 z-50 bg-white/70 backdrop-blur-sm dark:bg-black/60",
-      "data-[state=open]:animate-in data-[state=open]:fade-in-0",
-      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-      className,
-    )}
+    className={classNames(alertDialogOverlayClasses, className)}
     ref={forwardedRef}
   />
 ));
@@ -65,7 +62,7 @@ export const drawerContentClasses = cva(
         full: "w-full",
       },
       side: {
-        left: "animate-slide-right",
+        left: "animate-slide-right left-0",
         right: "animate-slide-left right-0",
       },
     },
@@ -171,8 +168,11 @@ export const DrawerClose = forwardRef<
     forwardedRef,
   ) => {
     const { size: parentSize } = useDrawerContext();
+
     const triggerSize = size || parentSize;
+
     const buttonProps = {
+      size: triggerSize,
       variant,
       colorScheme,
       leftIcon,
@@ -196,7 +196,6 @@ export const DrawerClose = forwardRef<
         ) : (
           <Button
             {...buttonProps}
-            size={triggerSize}
             className={classNames(
               "absolute right-5 top-5 rounded-full",
               className,

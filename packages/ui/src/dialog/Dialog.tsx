@@ -27,17 +27,18 @@ import {
 export type Dialog = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DialogContext>;
 
-export const Dialog = ({
+export function Dialog({
   children,
   size = "md",
   isUnstyled = false,
   ...props
-}: Dialog) => (
-  <DialogProvider value={{ size, isUnstyled }}>
-    <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
-  </DialogProvider>
-);
-Dialog.displayName = "Dialog";
+}: Dialog) {
+  return (
+    <DialogProvider value={{ size, isUnstyled }}>
+      <DialogPrimitive.Root {...props}>{children}</DialogPrimitive.Root>
+    </DialogProvider>
+  );
+}
 
 // Dialog Button Component
 export type DialogTrigger = ComponentPropsWithoutRef<

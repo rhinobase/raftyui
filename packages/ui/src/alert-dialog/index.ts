@@ -12,6 +12,7 @@ export {
   alertDialogContentClasses,
   alertDialogDescriptionClasses,
   alertDialogHeaderAndFooterClasses,
+  alertDialogOverlayClasses,
   alertDialogTitleClasses,
 } from "./AlertDialog";
 export { useAlertDialogContext } from "./context";

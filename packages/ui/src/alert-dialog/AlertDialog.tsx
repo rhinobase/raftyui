@@ -97,6 +97,9 @@ export const AlertDialogTrigger = forwardRef<
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
 // AlertDialogOverlayComponent
+export const alertDialogOverlayClasses =
+  "fixed inset-0 z-50 bg-white/40 backdrop-blur-sm dark:bg-black/40 data-[state=open]:animate-overlayShow";
+
 export type AlertDialogOverlay = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Overlay
 > & { isUnstyled?: boolean };
@@ -112,13 +115,7 @@ export const AlertDialogOverlay = forwardRef<
     <AlertDialogPrimitive.Overlay
       {...props}
       className={
-        unstyle
-          ? className
-          : classNames(
-              "fixed inset-0 z-50 bg-white/70 backdrop-blur-sm dark:bg-black/60",
-              "data-[state=open]:animate-overlayShow",
-              className,
-            )
+        unstyle ? className : classNames(alertDialogOverlayClasses, className)
       }
       ref={forwardedRef}
     />
@@ -186,56 +183,54 @@ export const alertDialogHeaderAndFooterClasses = cva("flex items-center", {
   },
 });
 
-export type AlertDialogHeader = HTMLAttributes<HTMLDivElement> & {
+export type AlertDialogHeader = HTMLAttributes<HTMLElement> & {
   isUnstyled?: boolean;
 };
 
-export const AlertDialogHeader = ({
-  className,
-  isUnstyled = false,
-  ...props
-}: AlertDialogHeader) => {
-  const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
-  const unstyle = isParentUnstyled || isUnstyled;
+export const AlertDialogHeader = forwardRef<HTMLElement, AlertDialogHeader>(
+  ({ className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
-  return (
-    <div
-      {...props}
-      className={
-        unstyle
-          ? className
-          : classNames(alertDialogHeaderAndFooterClasses({ size }), className)
-      }
-    />
-  );
-};
+    return (
+      <header
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(alertDialogHeaderAndFooterClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      />
+    );
+  },
+);
 AlertDialogHeader.displayName = "AlertDialogHeader";
 
 // AlertDialogFooter
 
-export type AlertDialogFooter = HTMLAttributes<HTMLDivElement> & {
+export type AlertDialogFooter = HTMLAttributes<HTMLElement> & {
   isUnstyled?: boolean;
 };
 
-export const AlertDialogFooter = ({
-  className,
-  isUnstyled,
-  ...props
-}: AlertDialogFooter) => {
-  const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
-  const unstyle = isParentUnstyled || isUnstyled;
+export const AlertDialogFooter = forwardRef<HTMLElement, AlertDialogFooter>(
+  ({ className, isUnstyled, ...props }, forwardedRef) => {
+    const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
+    const unstyle = isParentUnstyled || isUnstyled;
 
-  return (
-    <div
-      {...props}
-      className={
-        unstyle
-          ? className
-          : classNames(alertDialogHeaderAndFooterClasses({ size }), className)
-      }
-    />
-  );
-};
+    return (
+      <footer
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(alertDialogHeaderAndFooterClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      />
+    );
+  },
+);
 AlertDialogFooter.displayName = "AlertDialogFooter";
 
 export const alertDialogTitleClasses = cva(
