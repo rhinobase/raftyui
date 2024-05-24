@@ -12,14 +12,13 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-  contextMenuCheckboxItemClasses,
   contextMenuCheckboxItemIndicatorClasses,
+  contextMenuContentClasses,
   contextMenuItemClasses,
   contextMenuLabelClasses,
-  contextMenuRadioItemClasses,
-  contextMenuRadioItemIndicatorChildClasses,
+  contextMenuRadioAndCheckboxItemClasses,
   contextMenuRadioItemIndicatorClasses,
-  contextMenuSubTriggerClasses,
-  seperatorClasses,
+  contextMenuSubTriggerIconClasses,
+  contextMenuSeperatorClasses,
 } from "./ContextMenu";
 export { useContextMenuContext } from "./context";

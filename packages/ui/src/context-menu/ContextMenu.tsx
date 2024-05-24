@@ -381,7 +381,7 @@ export const ContextMenuSubContent = forwardRef<
 ContextMenuSubContent.displayName = "ContextMenuSubContent";
 
 // ContextMenuDivider Component
-export const seperatorClasses = cva(
+export const contextMenuSeperatorClasses = cva(
   "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
   {
     variants: {
@@ -413,7 +413,9 @@ export const ContextMenuSeparator = forwardRef<
       {...props}
       ref={forwardedRef}
       className={
-        unstyle ? className : classNames(seperatorClasses({ size }), className)
+        unstyle
+          ? className
+          : classNames(contextMenuSeperatorClasses({ size }), className)
       }
     />
   );
