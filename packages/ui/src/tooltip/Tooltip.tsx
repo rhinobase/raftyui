@@ -1,4 +1,5 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
@@ -17,11 +18,13 @@ export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> &
 
 export const Tooltip = ({
   children,
+  size = "md",
   isDisabled = false,
   ...props
 }: Tooltip) => (
   <TooltipProvider
     value={{
+      size,
       isDisabled,
     }}
   >
@@ -55,6 +58,26 @@ export const TooltipTrigger = forwardRef<
 TooltipTrigger.displayName = "TooltipTrigger";
 
 // TooltipContent Component
+export const tooltipContentClasses = cva(
+  "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 font-medium shadow-md",
+  {
+    variants: {
+      size: {
+        sm: "max-w-[220px] rounded-base px-1 py-0.5 text-[11px] leading-tight",
+        md: "max-w-[250px] rounded-md px-1.5 py-1 text-[12px] leading-tight",
+        lg: "max-w-[280px] rounded-lg px-2 py-1.5 text-[13px] leading-tight",
+      },
+      animated: {
+        true: "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
 export type TooltipContent = ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Content
 > & { isArrow?: ValueOrFunction; hasAnimation?: ValueOrFunction };
@@ -69,7 +92,7 @@ export const TooltipContent = forwardRef<
   ) => {
     const _isArrow = getValue(isArrow) ?? true;
     const _hasAnimation = getValue(hasAnimation) ?? true;
-    const { isDisabled } = useTooltipContext();
+    const { isDisabled, size } = useTooltipContext();
 
     if (isDisabled) return;
 
@@ -78,9 +101,7 @@ export const TooltipContent = forwardRef<
         ref={forwardedRef}
         sideOffset={sideOffset}
         className={classNames(
-          "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md px-2 py-1 text-xs font-medium shadow-md",
-          _hasAnimation &&
-            "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
+          tooltipContentClasses({ size, animated: _hasAnimation }),
           className,
         )}
         {...props}

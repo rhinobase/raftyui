@@ -8,5 +8,6 @@ export const [TooltipProvider, useTooltipContext] =
   });
 
 export interface TooltipContext {
+  readonly size: "sm" | "md" | "lg";
   readonly isDisabled: boolean;
 }
