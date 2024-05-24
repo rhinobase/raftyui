@@ -8,6 +8,5 @@ export {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
-  dialogContentClasses,
 } from "./Dialog";
 export { useDialogContext } from "./context";

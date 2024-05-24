@@ -1,4 +1,5 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
@@ -6,6 +7,8 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query";
 import { forwardRef, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import z from "zod";
 import { Avatar } from "../avatar";
 import { useLastElement } from "../hooks";
 import {
@@ -36,6 +39,33 @@ export default meta;
 
 type Story = StoryObj<typeof Combobox>;
 
+const OPTIONS = [
+  {
+    label: "Java",
+    value: "java",
+  },
+  {
+    label: "Javascript",
+    value: "javascript",
+  },
+  {
+    label: "Node JS",
+    value: [
+      { label: "Node 16", value: "node-16" },
+      { label: "Node 18", value: "node-18" },
+      { label: "Node 20", value: "node-20" },
+      { label: "Node 22", value: "node-22" },
+    ],
+  },
+  {
+    label: "Python",
+    value: [
+      { label: "Python 3.10", value: "py-3.10" },
+      { label: "Python 3.9", value: "py-3.9" },
+    ],
+  },
+];
+
 export const Default: Story = {
   render: ({ isDisabled, isLoading, isReadonly, type }) => {
     return (
@@ -51,32 +81,7 @@ export const Default: Story = {
             search: "Search language",
           }}
           onSelectionChange={console.log}
-          options={[
-            {
-              label: "Java",
-              value: "java",
-            },
-            {
-              label: "Javascript",
-              value: "javascript",
-            },
-            {
-              label: "Node JS",
-              value: [
-                { label: "Node 16", value: "node-16" },
-                { label: "Node 18", value: "node-18" },
-                { label: "Node 20", value: "node-20" },
-                { label: "Node 22", value: "node-22" },
-              ],
-            },
-            {
-              label: "Python",
-              value: [
-                { label: "Python 3.10", value: "py-3.10" },
-                { label: "Python 3.9", value: "py-3.9" },
-              ],
-            },
-          ]}
+          options={OPTIONS}
         >
           <ComboboxTrigger />
           <div className="mt-2 flex flex-row-reverse empty:hidden">
@@ -85,6 +90,45 @@ export const Default: Story = {
           <ComboboxContent />
         </Combobox>
       </div>
+    );
+  },
+};
+
+const schema = z.object({
+  language: z.string(),
+});
+
+export const WithController: Story = {
+  render: () => {
+    const { control } = useForm<z.infer<typeof schema>>({
+      resolver: zodResolver(schema),
+    });
+
+    return (
+      <Controller
+        name="language"
+        control={control}
+        render={({ field: { name, value, onChange, disabled } }) => (
+          <Combobox
+            id={name}
+            type="single"
+            placeholder={{
+              trigger: "Select languages",
+              search: "Search language",
+            }}
+            selected={value}
+            onSelectionChange={onChange}
+            isDisabled={disabled}
+            options={OPTIONS}
+          >
+            <ComboboxTrigger />
+            <div className="mt-2 flex flex-row-reverse empty:hidden">
+              <ComboboxClearButton />
+            </div>
+            <ComboboxContent />
+          </Combobox>
+        )}
+      />
     );
   },
 };

@@ -110,15 +110,19 @@ export function Combobox({
         else value = [cur];
       }
 
-      if (isMulti) props.onSelectionChange?.(value);
-      else props.onSelectionChange?.(value.length > 0 ? value[0] : undefined);
-
       if (!isMulti) setOpen(false);
 
       return value;
     },
     initValue,
   );
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isMulti) props.onSelectionChange?.(selected);
+    else
+      props.onSelectionChange?.(selected.length > 0 ? selected[0] : undefined);
+  }, [selected]);
 
   return (
     <ComboboxProvider
