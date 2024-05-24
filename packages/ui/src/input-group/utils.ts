@@ -1,11 +1,15 @@
 export const prefixAndSuffixCommonClasses = {
-  sm: "w-8",
-  md: "w-9",
-  lg: "w-10",
+  size: {
+    sm: "min-w-8",
+    md: "min-w-9",
+    lg: "min-w-10",
+  },
 };
 
 export const addonsCommonClasses = {
-  sm: "px-2",
-  md: "px-3",
-  lg: "px-4",
+  size: {
+    sm: "px-2",
+    md: "px-3",
+    lg: "px-4",
+  },
 };

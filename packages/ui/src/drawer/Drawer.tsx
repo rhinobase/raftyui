@@ -52,7 +52,7 @@ DrawerOverlay.displayName = "DrawerOverlay";
 
 // Drawer Content Component
 export const drawerContentClasses = cva(
-  "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none sm:w-full sm:align-middle",
+  "dark:bg-secondary-800 dark:text-secondary-50 fixed top-0 z-50 h-screen overflow-y-auto overscroll-auto bg-white p-6 text-left shadow-xl focus-visible:outline-none w-full align-middle",
   {
     variants: {
       size: {

@@ -12,6 +12,7 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
 
     return (
       <div
+        id="right-addon"
         {...props}
         ref={forwardedRef}
         className={classNames(
@@ -19,7 +20,7 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
           "bg-secondary-200 dark:bg-secondary-800",
           "border-y border-r",
           "border-secondary-300 dark:border-secondary-700",
-          addonsCommonClasses[size],
+          addonsCommonClasses.size[size],
           className,
         )}
       />

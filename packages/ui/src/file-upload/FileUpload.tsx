@@ -29,7 +29,7 @@ export const FileUpload = forwardRef<
       ref={forwardedRef}
     >
       <div className="relative h-[300px] w-full">
-        <ArkFileUpload.Dropzone className="border-secondary-300 dark:border-secondary-700 absolute inset-0 flex h-full w-full cursor-pointer select-none items-center justify-center rounded-lg border border-dashed">
+        <ArkFileUpload.Dropzone className="border-secondary-300 dark:border-secondary-700 absolute inset-0 flex size-full cursor-pointer select-none items-center justify-center rounded-lg border border-dashed">
           <p className="text-secondary-500 text-sm font-medium">
             Drag your file(s) here
           </p>

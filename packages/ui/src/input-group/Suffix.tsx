@@ -14,12 +14,12 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(
       <div
         id="suffix"
         {...props}
-        ref={forwardedRef}
         className={classNames(
           "pointer-events-none absolute right-0 top-0 z-10 flex h-full select-none items-center justify-center",
-          prefixAndSuffixCommonClasses[size],
+          prefixAndSuffixCommonClasses.size[size],
           className,
         )}
+        ref={forwardedRef}
       />
     );
   },

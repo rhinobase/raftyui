@@ -4,7 +4,7 @@ const { join } = require("node:path");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["apps/docs/.storybook/preview.tsx", "packages/**/*.tsx"],
+  content: ["apps/docs/.storybook/preview.tsx", "packages/**/*.{tsx,ts}"],
   theme: {
     extend: {},
   },

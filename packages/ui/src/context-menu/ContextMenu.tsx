@@ -218,7 +218,7 @@ export const ContextMenuCheckboxItem = forwardRef<
       <ContextMenuPrimitive.ItemIndicator
         className={contextMenuCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="h-full w-full stroke-[3]" />
+        <CheckIcon className="size-full stroke-[3]" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.CheckboxItem>
   );
@@ -285,7 +285,7 @@ export const ContextMenuRadioItem = forwardRef<
       <ContextMenuPrimitive.ItemIndicator
         className={contextMenuRadioItemIndicatorClasses({ size })}
       >
-        <div className="bg-secondary-600 dark:bg-secondary-200 h-full w-full rounded-full" />
+        <div className="bg-secondary-600 dark:bg-secondary-200 size-full rounded-full" />
       </ContextMenuPrimitive.ItemIndicator>
     </ContextMenuPrimitive.RadioItem>
   );
