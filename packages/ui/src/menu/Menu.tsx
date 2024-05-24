@@ -341,7 +341,7 @@ export const MenuCheckboxItem = forwardRef<
       <DropdownMenu.ItemIndicator
         className={contextMenuCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="size-3 stroke-[3]" />
+        <CheckIcon className="size-full stroke-[3]" />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.CheckboxItem>
   );

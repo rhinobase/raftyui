@@ -1,8 +1,8 @@
 export {
   Menubar,
-  MenubarGroup,
   MenubarCheckboxItem,
   MenubarContent,
+  MenubarGroup,
   MenubarItem,
   MenubarLabel,
   MenubarMenu,
@@ -13,15 +13,6 @@ export {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-  menubarCheckboxItemClasses,
-  menubarCheckboxItemIndicatorClasses,
   menubarClasses,
-  menubarItemClasses,
-  menubarLabelClasses,
-  menubarRadioItemClasses,
-  menubarRadioItemIndicatorChildClasses,
-  menubarRadioItemIndicatorClasses,
-  menubarSeperatorClasses,
-  menubarSubTriggerClasses,
 } from "./Menubar";
 export { useMenuBarContext } from "./context";
