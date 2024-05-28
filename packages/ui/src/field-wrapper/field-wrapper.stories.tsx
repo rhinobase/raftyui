@@ -13,7 +13,7 @@ import { Switch } from "../switch";
 import { FieldWrapper } from "./FieldWrapper";
 
 const meta: Meta<FieldWrapper> = {
-  title: "Corp / FieldWrapper",
+  title: "Components / FieldWrapper",
   component: FieldWrapper,
   decorators: [
     (Story) => (

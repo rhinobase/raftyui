@@ -23,7 +23,7 @@ import type { ComboboxOptionType } from "./types";
 import { findLabel } from "./utils";
 
 const meta: Meta<typeof Combobox> = {
-  title: "Corp / Combobox",
+  title: "Components / Combobox",
   args: {
     isDisabled: false,
     isLoading: false,

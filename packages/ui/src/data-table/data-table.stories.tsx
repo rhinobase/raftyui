@@ -10,7 +10,7 @@ import { Checkbox } from "../checkbox";
 import { type ColumnType, DataTable } from "./DataTable";
 
 const meta: Meta<typeof DataTable> = {
-  title: "Corp / DataTable",
+  title: "Components / DataTable",
 };
 
 export default meta;

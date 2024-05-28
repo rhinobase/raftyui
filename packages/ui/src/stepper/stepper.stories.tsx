@@ -10,7 +10,7 @@ import { classNames } from "../utils";
 import { Stepper } from "./Stepper";
 
 const meta: Meta<typeof Stepper> = {
-  title: "Corp / Stepper",
+  title: "Components / Stepper",
   args: {
     size: "md",
     direction: "horizontal",
