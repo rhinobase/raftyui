@@ -38,23 +38,30 @@ export type TreeViewItem = ComponentPropsWithoutRef<typeof ArkTreeView.Branch>;
 export const TreeViewItem = forwardRef<
   ElementRef<typeof ArkTreeView.Branch>,
   TreeViewItem
->(({ children, ...props }, forwardedRef) => {
+>(({ children, className, ...props }, forwardedRef) => {
   const validChildren = getValidChildren(children);
 
   const hasChildren = validChildren.some(
     (child) => child.type.displayName === TreeViewContent.displayName,
   );
 
-  const items = validChildren.map((child) => {
-    if (hasChildren) return cloneElement(child, { type: "branch" });
-    return cloneElement(child, { type: "single" });
-  });
+  const items = validChildren.map((child) =>
+    cloneElement(child, { type: hasChildren ? "branch" : "single" }),
+  );
 
   if (validChildren.length === 1)
-    return <ArkTreeView.Item {...props}>{items}</ArkTreeView.Item>;
+    return (
+      <ArkTreeView.Item
+        {...props}
+        className={classNames("group/single-label", className)}
+        ref={forwardedRef}
+      >
+        {items}
+      </ArkTreeView.Item>
+    );
 
   return (
-    <ArkTreeView.Branch {...props} ref={forwardedRef}>
+    <ArkTreeView.Branch {...props} className={className} ref={forwardedRef}>
       {items}
     </ArkTreeView.Branch>
   );
@@ -62,13 +69,13 @@ export const TreeViewItem = forwardRef<
 TreeViewItem.displayName = "TreeViewItem";
 
 const treeViewLabelClasses = cva(
-  "relative group/control hover:bg-secondary-100 dark:hover:bg-secondary-800/80 w-full flex items-center font-medium cursor-pointer select-none",
+  "hover:bg-secondary-100 dark:hover:bg-secondary-800/80 w-full flex items-center font-medium cursor-pointer select-none",
   {
     variants: {
       size: {
-        sm: "rounded-sm text-xs py-1 pl-[calc(var(--depth)*18px)] pr-1",
-        md: "rounded-base text-sm py-1.5 pl-[calc(var(--depth)*20px)] pr-1.5",
-        lg: "rounded-md text-base py-2 pl-[calc(var(--depth)*22px)] pr-2",
+        sm: "rounded-sm text-xs py-1 pr-1 gap-1",
+        md: "rounded-base text-sm py-1.5 pr-1.5 gap-1.5",
+        lg: "rounded-md text-base py-2 pr-2 gap-2",
       },
     },
     defaultVariants: {
@@ -77,14 +84,30 @@ const treeViewLabelClasses = cva(
   },
 );
 
+const treeViewLabelSingleClasses = {
+  size: {
+    sm: "pl-[calc((var(--depth)*20px))] group-data-[depth='1']/single-label:pl-[20px]",
+    md: "pl-[calc((var(--depth)*22px))] group-data-[depth='1']/single-label:pl-[26px]",
+    lg: "pl-[calc((var(--depth)*24px))] group-data-[depth='1']/single-label:pl-[32px]",
+  },
+};
+
+const treeViewLabelBranchClasses = {
+  size: {
+    sm: "pl-[calc((var(--depth)-1)*20px)] data-[depth='1']:pl-1",
+    md: "pl-[calc((var(--depth)-1)*22px)] data-[depth='1']:pl-1.5",
+    lg: "pl-[calc((var(--depth)-1)*24px)] data-[depth='1']:pl-2",
+  },
+};
+
 const treeViewLabelIndicatorClasses = cva(
-  "group/indicator absolute empty:hidden -translate-x-1/2",
+  "data-[state=open]:rotate-90 transform duration-200 ease-in-out",
   {
     variants: {
       size: {
-        sm: "left-[calc(var(--depth)*15px)] size-3",
-        md: "left-[calc(var(--depth)*17px)] size-3.5",
-        lg: "left-[calc(var(--depth)*19px)] size-4",
+        sm: "size-3",
+        md: "size-3.5",
+        lg: "size-4",
       },
     },
     defaultVariants: {
@@ -122,7 +145,11 @@ export const TreeViewLabel = forwardRef<
       return (
         <ArkTreeView.ItemText
           {...props}
-          className={classNames(treeViewLabelClasses({ size }), className)}
+          className={classNames(
+            treeViewLabelClasses({ size }),
+            treeViewLabelSingleClasses.size[size],
+            className,
+          )}
           ref={forwardedref}
         >
           {children}
@@ -131,7 +158,11 @@ export const TreeViewLabel = forwardRef<
     return (
       <ArkTreeView.BranchControl
         {...props}
-        className={classNames(treeViewLabelClasses({ size }), className)}
+        className={classNames(
+          treeViewLabelClasses({ size }),
+          treeViewLabelBranchClasses.size[size],
+          className,
+        )}
         ref={forwardedref}
       >
         {showIndicator && (
@@ -139,7 +170,7 @@ export const TreeViewLabel = forwardRef<
             className={treeViewLabelIndicatorClasses({ size })}
           >
             {indicatorIcon ?? (
-              <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-400 size-full transform stroke-[3] duration-200 ease-in-out group-data-[state=open]/indicator:rotate-90" />
+              <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-400 size-full stroke-[3]" />
             )}
           </ArkTreeView.BranchIndicator>
         )}
@@ -152,21 +183,23 @@ export const TreeViewLabel = forwardRef<
 );
 TreeViewLabel.displayName = "TreeViewLabel";
 
-const treeViewContentBorderClasses = cva(
-  "bg-secondary-300 dark:bg-secondary-700 absolute top-0 z-[1] h-full w-px -translate-x-1/2",
-  {
-    variants: {
-      size: {
-        sm: "left-[calc(var(--depth)*15px)]",
-        md: "left-[calc(var(--depth)*17px)]",
-        lg: "left-[calc(var(--depth)*19px)]",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
+// TODO: figureout the left props value calculation
+
+// const treeViewContentBorderClasses = cva(
+//   "bg-secondary-300 dark:bg-secondary-700 absolute top-0 z-[1] h-full w-px",
+//   {
+//     variants: {
+//       size: {
+//         sm: "left-[calc(var(--depth)*16px)]",
+//         md: "left-[calc(var(--depth)*15px)]",
+//         lg: "left-[calc(var(--depth)*20px)]",
+//       },
+//     },
+//     defaultVariants: {
+//       size: "md",
+//     },
+//   },
+// );
 
 export type TreeViewContent = ComponentPropsWithoutRef<
   typeof ArkTreeView.BranchContent
@@ -181,10 +214,10 @@ export const TreeViewContent = forwardRef<
   return (
     <ArkTreeView.BranchContent
       {...props}
-      className={classNames("relative", className)}
+      className={classNames("group/content relative", className)}
       ref={forwardedref}
     >
-      <div className={treeViewContentBorderClasses({ size })} />
+      {/* <div className={treeViewContentBorderClasses({ size })} /> */}
       {children}
     </ArkTreeView.BranchContent>
   );
