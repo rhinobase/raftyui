@@ -19,20 +19,68 @@ const meta: Meta<typeof TreeView> = {
   },
 };
 
+const DATA = {
+  "1": {
+    "1.1": {
+      "1.1.1": "1.1.1",
+      "1.1.2": {
+        "1.1.2.1": "1.1.2.1",
+        "1.1.2.2": "1.1.2.2",
+      },
+    },
+    "1.2": "1.2",
+  },
+  "2": {
+    "2.1": {
+      "2.1.1": "2.1.1",
+      "2.1.2": "2.1.2",
+    },
+    "2.2": "2.2",
+  },
+};
+
 export default meta;
 type Story = StoryObj<typeof TreeView>;
+
+// @ts-ignore
+type CreateTreeType = Record<string, string | CreateTreeType>;
+function CreateTree({ tree }: { tree: CreateTreeType }) {
+  return Object.entries(tree).map(([key, value]) => {
+    const isNested = typeof value !== "string";
+
+    return (
+      <TreeViewItem key={key} value={isNested ? key : value}>
+        <TreeViewLabel>Item {key}</TreeViewLabel>
+        {isNested && (
+          <TreeViewContent>
+            <CreateTree tree={value} />
+          </TreeViewContent>
+        )}
+      </TreeViewItem>
+    );
+  });
+}
 
 export const Default: Story = {
   render: (props) => (
     <TreeView {...props}>
-      <TreeViewItem value="1">
+      <CreateTree tree={DATA} />
+      {/* <TreeViewItem value="1">
         <TreeViewLabel>Item 1</TreeViewLabel>
         <TreeViewContent>
           <TreeViewItem value="1.1">
             <TreeViewLabel>Item 1.1</TreeViewLabel>
             <TreeViewContent>
-              <TreeViewItem value="1.2">
-                <TreeViewLabel>Item 1.2</TreeViewLabel>
+              <TreeViewItem value="1.1.2">
+                <TreeViewLabel>Item 1.1.2</TreeViewLabel>
+              </TreeViewItem>
+            </TreeViewContent>
+          </TreeViewItem>
+          <TreeViewItem value="1.2">
+            <TreeViewLabel>Item 1.2</TreeViewLabel>
+            <TreeViewContent>
+              <TreeViewItem value="1.2.1">
+                <TreeViewLabel>Item 1.2.1</TreeViewLabel>
               </TreeViewItem>
             </TreeViewContent>
           </TreeViewItem>
@@ -45,7 +93,7 @@ export const Default: Story = {
             <TreeViewLabel>Item 2.1</TreeViewLabel>
           </TreeViewItem>
         </TreeViewContent>
-      </TreeViewItem>
+      </TreeViewItem> */}
     </TreeView>
   ),
 };
