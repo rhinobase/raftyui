@@ -1,1 +1,8 @@
-export { Toast, toastClasses } from "./Toast";
+export {
+  Toast,
+  toastClasses,
+  toastIconClasses,
+  toastMessageClasses,
+  toastTitleAndMessageWrapperClasses,
+  toastTitleClasses,
+} from "./Toast";
