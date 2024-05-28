@@ -15,6 +15,24 @@ import {
   useTimelineContext,
 } from "./context";
 
+export const timelineClasses = cva("flex size-full", {
+  variants: {
+    size: {
+      sm: "gap-0.5",
+      md: "gap-1",
+      lg: "gap-1.5",
+    },
+    reverse: {
+      true: "flex-col-reverse",
+      false: "flex-col",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    reverse: false,
+  },
+});
+
 export type Timeline = HTMLAttributes<HTMLUListElement> &
   Partial<TimelineContext> & {
     loadingDot?: ReactElement;
@@ -28,8 +46,9 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
     {
       loading,
       loadingDot,
-      mode = "left",
+      align = "left",
       reverse = false,
+      size = "md",
       children,
       className,
       connector: Connector = TimelineConnector,
@@ -50,8 +69,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       components.push(
         <TimelineItem
           key={`${key}-loading`}
-          className="py-1"
-          dot={loadingDot ?? <TimelineSpinner />}
+          icon={loadingDot ?? <Spinner size="sm" />}
         >
           {loading}
         </TimelineItem>,
@@ -61,17 +79,14 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
     return (
       <TimelineProvider
         value={{
-          mode,
+          align,
+          size,
         }}
       >
         <ul
-          ref={forwardedRef}
-          className={classNames(
-            "flex size-full",
-            reverse ? "flex-col-reverse" : "flex-col",
-            className,
-          )}
           {...props}
+          className={classNames(timelineClasses({ size, reverse }), className)}
+          ref={forwardedRef}
         >
           {components}
         </ul>
@@ -81,48 +96,111 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
 );
 Timeline.displayName = "Timeline";
 
-export type TimelineItem = Omit<HTMLAttributes<HTMLLIElement>, "color"> & {
-  dot?: ReactNode;
-  label?: ReactNode;
-  color?: string;
+export const timelineItemClasses = cva("flex w-full items-center", {
+  variants: {
+    size: {
+      sm: "gap-1.5",
+      md: "gap-2",
+      lg: "gap-2.5",
+    },
+    align: {
+      left: "flex-row",
+      right: "flex-row-reverse",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    align: "left",
+  },
+});
+
+export const timelineItemIconClasses = cva(
+  "dark:bg-secondary-950 rounded-full bg-white",
+  {
+    variants: {
+      size: {
+        sm: "size-3 border-[3px]",
+        md: "size-4 border-[4px]",
+        lg: "size-5 border-[5px]",
+      },
+      status: {
+        success: "border-green-500 dark:border-green-300",
+        warning: "border-amber-500 dark:border-amber-300",
+        error: "border-red-500 dark:border-red-300",
+        info: "border-blue-500 dark:border-blue-300",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      status: "info",
+    },
+  },
+);
+
+export const timelineItemTextClasses = cva(
+  "text-secondary-800 dark:text-secondary-300 flex-1 font-medium",
+  {
+    variants: {
+      size: {
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
+      },
+      align: {
+        right: "text-right",
+        left: "text-left",
+      },
+    },
+  },
+);
+
+export const timelineItemDescriptionClasses = cva(
+  "dark:text-secondary-400 text-secondary-500 empty:hidden",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+  },
+);
+
+export type TimelineItem = HTMLAttributes<HTMLLIElement> & {
+  icon?: ReactNode;
+  description?: ReactNode;
+  status?: "success" | "warning" | "error" | "info";
 };
 
 export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
-  ({ dot, label, color, children, className, ...props }, forwardedRef) => {
-    const { mode } = useTimelineContext();
+  (
+    { icon, description, status = "info", children, className, ...props },
+    forwardedRef,
+  ) => {
+    const { align, size } = useTimelineContext();
+
+    const isChildrenString = typeof children === "string";
+    const isDescriptionString = typeof description === "string";
 
     return (
       <li
-        ref={forwardedRef}
-        className={classNames(
-          "flex w-full items-center gap-3",
-          className,
-          mode === "right" && "flex-row-reverse",
-        )}
         {...props}
+        className={classNames(timelineItemClasses({ size, align }), className)}
+        ref={forwardedRef}
       >
-        {dot ?? (
-          <div
-            className="dark:bg-secondary-950 border-primary-500 size-4 rounded-full border-[4px] bg-white"
-            style={{
-              borderColor: color,
-            }}
-          />
+        {icon ?? <div className={timelineItemIconClasses({ size, status })} />}
+        {isChildrenString ? (
+          <p className={timelineItemTextClasses({ align, size })}>{children}</p>
+        ) : (
+          children
         )}
-        {children !== true && (
-          <p
-            className={classNames(
-              "text-secondary-800 dark:text-secondary-300 flex-1",
-              mode === "right" && "flex justify-end",
-            )}
-          >
-            {children}
+        {isDescriptionString ? (
+          <p className={timelineItemDescriptionClasses({ size })}>
+            {description}
           </p>
-        )}
-        {label && (
-          <p className="dark:text-secondary-400 text-secondary-500 text-sm">
-            {label}
-          </p>
+        ) : (
+          description
         )}
       </li>
     );
@@ -131,22 +209,59 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
 
 export const timelineConnectorClasses = cva("flex h-full", {
   variants: {
-    mode: {
-      left: "ml-2",
-      right: "mr-2 flex-row-reverse",
+    size: {
+      sm: "ml-1.5",
+      md: "ml-2",
+      lg: "ml-2.5",
     },
+    align: {
+      left: "",
+      right: "flex-row-reverse",
+    },
+  },
+  compoundVariants: [
+    {
+      size: "sm",
+      align: "left",
+      className: "ml-1.5",
+    },
+    {
+      size: "md",
+      align: "left",
+      className: "ml-2",
+    },
+    {
+      size: "lg",
+      align: "left",
+      className: "ml-2",
+    },
+    {
+      size: "sm",
+      align: "right",
+      className: "mr-1.5",
+    },
+    {
+      size: "md",
+      align: "right",
+      className: "mr-2",
+    },
+    {
+      size: "lg",
+      align: "right",
+      className: "mr-2",
+    },
+  ],
+  defaultVariants: {
+    align: "left",
   },
 });
 
 function TimelineConnector() {
-  const { mode } = useTimelineContext();
+  const { align, size } = useTimelineContext();
+
   return (
-    <div className={timelineConnectorClasses({ mode })}>
+    <div className={timelineConnectorClasses({ align, size })}>
       <span className="bg-secondary-300 dark:bg-secondary-500 flex h-full w-px justify-start" />
     </div>
   );
-}
-
-function TimelineSpinner() {
-  return <Spinner size="sm" />;
 }

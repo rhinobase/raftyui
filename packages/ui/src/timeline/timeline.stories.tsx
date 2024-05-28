@@ -1,4 +1,4 @@
-import { ClockIcon, TvIcon } from "@heroicons/react/24/outline";
+import { TvIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Timeline, TimelineItem } from "./Timeline";
 
@@ -6,13 +6,17 @@ const meta: Meta<typeof Timeline> = {
   title: "Components / Timeline",
   args: {
     reverse: false,
-    loading: false,
-    mode: "left",
+    align: "left",
+    size: "md",
   },
   argTypes: {
-    mode: {
+    align: {
       control: "select",
       options: ["left", "right"],
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
   },
 };
@@ -21,66 +25,86 @@ export default meta;
 type Story = StoryObj<typeof Timeline>;
 
 export const Default: Story = {
-  render: ({ reverse, loading, mode }) => (
+  render: ({ reverse, align, size }) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} loading={loading} mode={mode}>
-        <TimelineItem
-          dot={<TvIcon height={20} width={20} className="text-red-500" />}
-        >
-          Create a services site 2015-09-01
-        </TimelineItem>
-        <TimelineItem color="green">
-          Solve initial network problems
-        </TimelineItem>
-        <TimelineItem>Technical testing 2015-09-01</TimelineItem>
+      <Timeline reverse={reverse} align={align} size={size}>
+        <TimelineItem>Sample Item 1</TimelineItem>
+        <TimelineItem>Sample Item 2</TimelineItem>
+        <TimelineItem>Sample Item 3</TimelineItem>
       </Timeline>
     </div>
   ),
 };
 
-export const WithLabel: Story = {
-  render: ({ reverse, loading, mode }) => (
+export const Status: Story = {
+  render: ({ reverse, align, size }) => (
+    <div className="h-[400px] w-full">
+      <Timeline reverse={reverse} align={align} size={size}>
+        <TimelineItem status="error">Error Status</TimelineItem>
+        <TimelineItem status="info">Info Status</TimelineItem>
+        <TimelineItem status="success">Success Status</TimelineItem>
+        <TimelineItem status="warning">Warning Status</TimelineItem>
+      </Timeline>
+    </div>
+  ),
+};
+
+export const CustomIcon: Story = {
+  render: ({ reverse, align, size }) => (
+    <div className="h-[400px] w-full">
+      <Timeline reverse={reverse} align={align} size={size}>
+        <TimelineItem
+          icon={<TvIcon height={20} width={20} className="text-red-500" />}
+        >
+          Sample Item 1
+        </TimelineItem>
+        <TimelineItem>Sample Item 2</TimelineItem>
+        <TimelineItem>Sample Item 3</TimelineItem>
+      </Timeline>
+    </div>
+  ),
+};
+
+export const WithDescription: Story = {
+  render: ({ reverse, align, size }) => (
+    <div className="h-[400px] w-full">
+      <Timeline reverse={reverse} align={align} size={size}>
+        <TimelineItem description="2015-09-01 09:12:11">
+          Sample Item 1
+        </TimelineItem>
+        <TimelineItem description="2015-09-01">Sample Item 2</TimelineItem>
+        <TimelineItem description="2015-09-01 09:12:11">
+          Sample Item 3
+        </TimelineItem>
+      </Timeline>
+    </div>
+  ),
+};
+
+export const Loading: Story = {
+  render: ({ reverse, align, size }) => (
     <div className="h-[400px] w-full">
       <Timeline
         reverse={reverse}
-        loading={loading}
-        mode={mode}
-        loadingDot={
-          <ClockIcon height={20} width={20} className="text-purple-600" />
-        }
+        loading="Loading more..."
+        align={align}
+        size={size}
       >
-        <TimelineItem
-          label="2015-09-01 09:12:11"
-          color="rgb(0,0,0)"
-          dot={<TvIcon height={20} width={20} className="text-red-500" />}
-        >
-          Create a services site 2015-09-01
-        </TimelineItem>
-        <TimelineItem color="green" label="2015-09-01">
-          Solve initial network problems
-        </TimelineItem>
-        <TimelineItem label="2015-09-01 09:12:11">
-          Technical testing 2015-09-01
-        </TimelineItem>
+        <TimelineItem>Sample Item 1</TimelineItem>
+        <TimelineItem>Sample Item 2</TimelineItem>
+        <TimelineItem>Sample Item 3</TimelineItem>
       </Timeline>
     </div>
   ),
 };
 
-export const LoadingWithReactNode: Story = {
-  render: ({ reverse, mode }) => (
+export const WithoutChildren: Story = {
+  render: ({ reverse, align, size }) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} loading="Loading more..." mode={mode}>
-        <TimelineItem
-          color="rgb(0,0,0)"
-          dot={<TvIcon height={20} width={20} />}
-        >
-          Create a services site 2015-09-01
-        </TimelineItem>
-        <TimelineItem color="green">
-          Solve initial network problems
-        </TimelineItem>
-        <TimelineItem>Technical testing 2015-09-01</TimelineItem>
+      <Timeline reverse={reverse} align={align} size={size}>
+        <TimelineItem />
+        <TimelineItem />
+        <TimelineItem />
       </Timeline>
     </div>
   ),

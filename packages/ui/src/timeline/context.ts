@@ -8,5 +8,6 @@ export const [TimelineProvider, useTimelineContext] =
   });
 
 export interface TimelineContext {
-  readonly mode: "left" | "right";
+  readonly align: "left" | "right";
+  readonly size: "sm" | "md" | "lg";
 }
