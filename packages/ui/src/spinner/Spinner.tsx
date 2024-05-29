@@ -12,11 +12,19 @@ const DIMENSIONS = {
 export type Spinner = SVGAttributes<SVGSVGElement> & {
   size?: keyof typeof DIMENSIONS;
   inheritParent?: ValueOrFunction;
+  title?: string;
 };
 
 export const Spinner = forwardRef<SVGSVGElement, Spinner>(
   (
-    { inheritParent, size = "md", className, children, ...props },
+    {
+      inheritParent,
+      size = "md",
+      className,
+      title = "loading",
+      children,
+      ...props
+    },
     forwardedRef,
   ) => (
     <svg
@@ -35,7 +43,7 @@ export const Spinner = forwardRef<SVGSVGElement, Spinner>(
       ref={forwardedRef}
       style={{ minWidth: DIMENSIONS[size], minHeight: DIMENSIONS[size] }}
     >
-      <title>spinner</title>
+      <title>{title}</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

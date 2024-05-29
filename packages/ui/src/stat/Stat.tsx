@@ -26,20 +26,18 @@ Stat.displayName = "Stat";
 export type StatLabel = HTMLAttributes<HTMLDivElement>;
 
 export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <div
-        {...props}
-        className={classNames(
-          "text-secondary-600 dark:text-secondary-400 text-sm font-semibold",
-          className,
-        )}
-        ref={forwardedRef}
-      >
-        {children}
-      </div>
-    );
-  },
+  ({ children, className, ...props }, forwardedRef) => (
+    <div
+      {...props}
+      className={classNames(
+        "text-secondary-600 dark:text-secondary-400 text-sm font-semibold",
+        className,
+      )}
+      ref={forwardedRef}
+    >
+      {children}
+    </div>
+  ),
 );
 StatLabel.displayName = "StatLabel";
 
@@ -47,20 +45,18 @@ StatLabel.displayName = "StatLabel";
 export type StatValue = HTMLAttributes<HTMLDivElement>;
 
 export const StatValue = forwardRef<HTMLDivElement, StatValue>(
-  ({ className, children, ...props }, forwardedRef) => {
-    return (
-      <div
-        {...props}
-        className={classNames(
-          "text-2xl font-semibold dark:text-white",
-          className,
-        )}
-        ref={forwardedRef}
-      >
-        {children}
-      </div>
-    );
-  },
+  ({ className, children, ...props }, forwardedRef) => (
+    <div
+      {...props}
+      className={classNames(
+        "text-2xl font-semibold dark:text-white",
+        className,
+      )}
+      ref={forwardedRef}
+    >
+      {children}
+    </div>
+  ),
 );
 StatValue.displayName = "StatValue";
 
