@@ -35,6 +35,7 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
       isLoading = false,
       isDisabled = false,
       isReadOnly = false,
+      className,
       ...props
     },
     forwardedRef,
@@ -53,8 +54,8 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
           {...props}
           readOnly={readOnly}
           disabled={disabled}
+          className={classNames("w-full space-y-2", className)}
           ref={forwardedRef}
-          className="w-full space-y-2"
         >
           <TagsInput.Context>
             {() => <TagFieldItem placeholder={inputPlaceholder} />}
@@ -68,41 +69,41 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
 
 TagField.displayName = "TagField";
 
-const CONTROL_CLASSES = {
-  sm: "px-1.5 py-1",
-  md: "px-2 py-1.5",
-  lg: "px-3 py-2",
+export const tagInputControlClasses = {
+  size: {
+    sm: "px-1.5 py-1",
+    md: "px-2 py-1.5",
+    lg: "px-3 py-2",
+  },
 };
 
-const TEXT_CLASSES = {
-  sm: "text-xs",
-  md: "text-sm",
-  lg: "text-base",
+export const tagInputTextClasses = {
+  size: {
+    sm: "text-xs",
+    md: "text-sm",
+    lg: "text-base",
+  },
 };
 
-const iconClasses = cva(
-  "stroke-black stroke-2 group-read-only/tag-input:cursor-default dark:stroke-slate-200",
-  {
-    variants: {
-      size: {
-        sm: "size-3",
-        md: "size-3.5",
-        lg: "size-4",
-      },
-      disabled: {
-        true: "cursor-not-allowed",
-        false: "",
-      },
+export const iconClasses = cva("stroke-black stroke-2 dark:stroke-slate-200", {
+  variants: {
+    size: {
+      sm: "size-3",
+      md: "size-3.5",
+      lg: "size-4",
     },
   },
-);
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 type TagFieldItem = {
   placeholder?: string;
 };
 
 function TagFieldItem({ placeholder }: TagFieldItem) {
-  const { empty, value } = useTagsInputContext();
+  const { value } = useTagsInputContext();
   const { size } = useTagFieldContext();
 
   return (
@@ -110,25 +111,20 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
       <TagsInput.Control
         className={classNames(
           "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 group/tag-input flex flex-wrap items-center gap-2 rounded-md border outline-none transition-all data-[focus]:ring-2",
-          CONTROL_CLASSES[size],
+          tagInputControlClasses.size[size],
         )}
       >
         {value.map((value, index) => (
           <TagsInput.Item key={`${index}-${value}`} index={index} value={value}>
             <TagPreviewItem value={value} />
-            <TagsInput.ItemInput
-              className={classNames(
-                "outline-none group-read-only/tag-input:pointer-events-none",
-                TEXT_CLASSES[size],
-              )}
-            />
+            <TagsInput.ItemInput className={tagInputTextClasses.size[size]} />
           </TagsInput.Item>
         ))}
         <TagsInput.Input
           placeholder={placeholder}
           className={classNames(
             "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent outline-none",
-            TEXT_CLASSES[size],
+            tagInputTextClasses.size[size],
           )}
         />
       </TagsInput.Control>
@@ -137,7 +133,6 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
           variant="outline"
           size={size}
           className={classNames(
-            empty && "hidden",
             "data-[readOnly]:border-secondary-300/80 data-[readOnly]:text-secondary-400/90 data-[readOnly]:dark:border-secondary-500/80 data-[readOnly]:dark:text-secondary-400/70 data-[readOnly]:dark:hover:bg-secondary-900 w-full data-[readOnly]:cursor-not-allowed data-[readOnly]:ring-offset-0 data-[readOnly]:hover:bg-white data-[readOnly]:focus:ring-0",
           )}
         >
@@ -151,6 +146,7 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
 function TagPreviewItem(props: { value: string }) {
   const { editing, disabled } = useTagsInputItemContext();
   const { size } = useTagFieldContext();
+  console.log(disabled);
 
   return (
     <TagsInput.ItemPreview
@@ -162,13 +158,18 @@ function TagPreviewItem(props: { value: string }) {
       <TagsInput.ItemText
         className={classNames(
           "dark:text-secondary-200 text-black",
-          TEXT_CLASSES[size],
+          tagInputTextClasses.size[size],
         )}
       >
         {props.value}
       </TagsInput.ItemText>
-      <TagsInput.ItemDeleteTrigger>
-        <XMarkIcon className={iconClasses({ size, disabled })} />
+      <TagsInput.ItemDeleteTrigger
+        className={classNames(
+          "group-data-[readonly]/tag-input:cursor-default",
+          disabled && "cursor-not-allowed",
+        )}
+      >
+        <XMarkIcon className={iconClasses({ size })} />
       </TagsInput.ItemDeleteTrigger>
     </TagsInput.ItemPreview>
   );
