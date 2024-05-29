@@ -3,12 +3,12 @@ import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
 // Tag Component
-export const tagClasses = cva("size-max font-medium select-none", {
+export const tagClasses = cva("size-max font-medium select-none leading-none", {
   variants: {
     size: {
-      sm: "rounded-sm px-1 py-0.5 text-xs leading-none",
-      md: "rounded-base px-1.5 py-1 text-sm leading-none",
-      lg: "rounded-md px-2 py-1.5 text-base leading-none",
+      sm: "rounded-sm px-1 py-0.5 text-xs",
+      md: "rounded-base px-1.5 py-1 text-sm",
+      lg: "rounded-md px-2 py-1.5 text-base",
     },
     colorScheme: {
       primary:
