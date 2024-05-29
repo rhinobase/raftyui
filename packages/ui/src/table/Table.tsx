@@ -70,7 +70,7 @@ export const Table = forwardRef<HTMLTableElement, Table>(
 Table.displayName = "Table";
 
 // TableHead Component
-export const tableHeadClasses = cva("", {
+export const tableHeaderAndFooterClasses = cva("", {
   variants: {
     variant: {
       simple: "bg-transparent",
@@ -97,7 +97,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
         className={
           unstyle
             ? className
-            : classNames(tableHeadClasses({ variant }), className)
+            : classNames(tableHeaderAndFooterClasses({ variant }), className)
         }
         ref={forwardedRef}
       >
@@ -136,17 +136,6 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
 TableBody.displayName = "TableBody";
 
 // TableFooter Component
-export const tableFooterClasses = cva("", {
-  variants: {
-    variant: {
-      simple: "bg-transparent",
-      striped: "bg-secondary-100 dark:bg-secondary-700/80",
-    },
-  },
-  defaultVariants: {
-    variant: "simple",
-  },
-});
 
 export type TableFooter = HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
@@ -163,7 +152,7 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
         className={
           unstyle
             ? className
-            : classNames(tableFooterClasses({ variant }), className)
+            : classNames(tableHeaderAndFooterClasses({ variant }), className)
         }
         ref={forwardedRef}
       >
@@ -176,13 +165,13 @@ TableFooter.displayName = "TableFooter";
 
 // Td Component
 export const tdClasses = cva(
-  "text-secondary-600 dark:text-secondary-300 whitespace-nowrap text-sm",
+  "text-secondary-600 dark:text-secondary-300 whitespace-nowrap",
   {
     variants: {
       size: {
-        sm: "p-2",
-        md: "px-4 py-3",
-        lg: "px-6 py-5",
+        sm: "p-2 text-xs",
+        md: "px-4 py-3 text-sm",
+        lg: "px-6 py-5 text-base",
       },
     },
     defaultVariants: {
@@ -217,13 +206,13 @@ Td.displayName = "Td";
 
 // Th Component
 export const thClasses = cva(
-  "text-secondary-600 dark:text-secondary-300 text-left text-sm font-semibold",
+  "text-secondary-600 dark:text-secondary-300 text-left font-semibold",
   {
     variants: {
       size: {
-        sm: "p-2",
-        md: "px-4 py-3",
-        lg: "px-6 py-5",
+        sm: "p-2 text-xs",
+        md: "px-4 py-3 text-sm",
+        lg: "px-6 py-5 text-base",
       },
     },
     defaultVariants: {
