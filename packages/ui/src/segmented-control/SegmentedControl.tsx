@@ -48,7 +48,7 @@ export const SegmentedControl = forwardRef<
           disabled={disabled}
           readOnly={readOnly}
           className={classNames(
-            "border-secondary-300 dark:border-secondary-700 flex gap-4 data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l",
+            "border-secondary-300 dark:border-secondary-700 flex gap-4 data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l data-[disabled]:opacity-60",
             className,
           )}
           ref={forwaredRef}
@@ -62,16 +62,16 @@ export const SegmentedControl = forwardRef<
 );
 
 export const segmentedControlItemClasses = cva(
-  "duration-200 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 transition-all text-secondary-500 select-none dark:text-secondary-400 font-medium data-[state=checked]:dark:text-white data-[state=checked]:text-black",
+  "data-[disabled]:cursor-not-allowed text-secondary-500 select-none dark:text-secondary-400 font-medium data-[state=checked]:dark:text-white data-[state=checked]:text-black",
   {
     variants: {
       readonly: {
         true: "cursor-default",
         false:
-          "cursor-pointer data-[hover]:text-secondary-800 data-[hover]:dark:text-secondary-200",
+          "cursor-pointer data-[hover]:text-secondary-800 data-[hover]:dark:text-secondary-200 transition-all duration-200",
       },
       size: {
-        sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=vertical]:py-1 data-[orientation=horizontal]:pb-2 data-[orientation=vertical]:pl-2",
+        sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=vertical]:py-1 data-[orientation=horizontal]:pb-2.5 data-[orientation=vertical]:pl-2.5",
         md: "text-base data-[orientation=horizontal]:px-1.5 data-[orientation=vertical]:py-1.5 data-[orientation=horizontal]:pb-3 data-[orientation=vertical]:pl-3",
         lg: "text-lg data-[orientation=horizontal]:px-2 data-[orientation=vertical]:py-2 data-[orientation=horizontal]:pb-3.5 data-[orientation=vertical]:pl-3.5",
       },
@@ -102,6 +102,7 @@ export const SegmentedControlItem = forwardRef<
     >
       <SegmentGroup.ItemText>{children}</SegmentGroup.ItemText>
       <SegmentGroup.ItemControl />
+      <SegmentGroup.ItemHiddenInput />
     </SegmentGroup.Item>
   );
 });
