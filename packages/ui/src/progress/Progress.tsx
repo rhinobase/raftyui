@@ -1,3 +1,4 @@
+"use client";
 import { Progress as ArkProgress } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import {

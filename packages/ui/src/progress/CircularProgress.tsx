@@ -1,3 +1,4 @@
+"use client";
 import { Progress as ArkProgress } from "@ark-ui/react";
 import { type ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
