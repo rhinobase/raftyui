@@ -16,7 +16,7 @@ import { useBoolean } from "../hooks";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue, mergeRefs } from "../utils";
 
-const signatureClasses = cva(
+export const signatureClasses = cva(
   "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded h-[200px] w-full",
   {
     variants: {
@@ -25,14 +25,17 @@ const signatureClasses = cva(
         false: "",
       },
     },
+    defaultVariants: {
+      isDisabled: false,
+    },
   },
 );
 
 export type Signature = Omit<ReactSignatureCanvasProps, "onEnd" | "onBegin"> & {
-  disabled?: ValueOrFunction<boolean>;
+  disabled?: ValueOrFunction;
   className?: HTMLAttributes<HTMLDivElement>["className"];
   onChange?: (value?: string) => void;
-  hidden?: ValueOrFunction<boolean>;
+  hidden?: ValueOrFunction;
   name?: string;
   value?: string;
   defaultValue?: string;
@@ -49,7 +52,7 @@ export const Signature = forwardRef<
       hidden = false,
       onChange,
       className,
-      instructions,
+      instructions = "Sign here",
       name,
       value,
       defaultValue,
@@ -78,10 +81,6 @@ export const Signature = forwardRef<
       }
     };
 
-    const onBegin = () => {
-      toggleInput(false);
-    };
-
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
       const dataUrl = value ?? defaultValue;
@@ -100,13 +99,12 @@ export const Signature = forwardRef<
       >
         <SignatureCanvas
           {...props}
-          onBegin={onBegin}
+          onBegin={() => toggleInput(false)}
           onEnd={handleChange}
           canvasProps={{
             id: name,
             hidden: isHidden,
-
-            className: `${signatureClasses({ isDisabled, className })}`,
+            className: signatureClasses({ isDisabled, className }),
           }}
           ref={mergeRefs(forwardedRef, ref)}
         />
@@ -114,7 +112,7 @@ export const Signature = forwardRef<
           <span
             hidden={isHidden}
             className={classNames(
-              "dark:text-secondary-300 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer select-none text-xs font-medium",
+              "dark:text-secondary-200 text-secondary-600 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer select-none text-xs font-medium",
               disabled && "hidden",
             )}
           >
@@ -125,8 +123,8 @@ export const Signature = forwardRef<
           aria-hidden={isHidden}
           className="pointer-events-none absolute bottom-2 mx-3 flex w-[calc(100%-24px)] select-none aria-hidden:hidden"
         >
-          <XMarkIcon className="stroke-secondary-400 dark:stroke-secondary-500 size-4 stroke-2" />
-          <div className="border-secondary-300 dark:border-secondary-700 w-full border-b-2" />
+          <XMarkIcon className="stroke-secondary-600 dark:stroke-secondary-200 size-4 stroke-2" />
+          <div className="border-secondary-300 dark:border-secondary-500 ml-1.5 w-full border-b-2" />
         </div>
         <Button
           size="icon"

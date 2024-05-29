@@ -1,1 +1,1 @@
-export { Signature } from "./Signature";
+export { Signature, signatureClasses } from "./Signature";
