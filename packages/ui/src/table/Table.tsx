@@ -4,38 +4,16 @@ import { type HTMLAttributes, type ThHTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { type TableContext, TableProvider, useTableContext } from "./context";
 
-// TableContainer Component
-export type TableContainer = HTMLAttributes<HTMLDivElement>;
-
-export const TableContainer = forwardRef<HTMLDivElement, TableContainer>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      className={classNames(
-        "dark:ring-secondary-700 mx-auto inline-block w-full overflow-hidden rounded-lg align-middle shadow ring-1 ring-black ring-opacity-5",
-        className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </div>
-  ),
-);
-TableContainer.displayName = "TableContainer";
-
 // Table Component
-export const tableClasses = cva(
-  "divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y",
+const tableClasses = cva(
+  "border-secondary-300 dark:border-secondary-700 w-full overflow-x-auto overflow-y-hidden border",
   {
     variants: {
       size: {
-        sm: "p-2",
-        md: "p-4",
-        lg: "p-6",
+        sm: "rounded-md",
+        md: "rounded-lg",
+        lg: "rounded-xl",
       },
-    },
-    defaultVariants: {
-      size: "md",
     },
   },
 );
@@ -55,26 +33,30 @@ export const Table = forwardRef<HTMLTableElement, Table>(
     forwardedRef,
   ) => (
     <TableProvider value={{ size, variant, isUnstyled }}>
-      <table
-        {...props}
+      <div
         className={
           isUnstyled ? className : classNames(tableClasses({ size }), className)
         }
-        ref={forwardedRef}
       >
-        {children}
-      </table>
+        <table
+          {...props}
+          className="divide-secondary-300 dark:divide-secondary-700 w-full divide-y"
+          ref={forwardedRef}
+        >
+          {children}
+        </table>
+      </div>
     </TableProvider>
   ),
 );
 Table.displayName = "Table";
 
-// TableHead Component
+// TableHeader Component
 export const tableHeaderAndFooterClasses = cva("", {
   variants: {
     variant: {
       simple: "bg-transparent",
-      striped: "bg-secondary-100 dark:bg-secondary-700/80",
+      striped: "bg-secondary-100 dark:bg-secondary-800",
     },
   },
   defaultVariants: {
@@ -82,11 +64,11 @@ export const tableHeaderAndFooterClasses = cva("", {
   },
 });
 
-export type TableHead = HTMLAttributes<HTMLTableSectionElement> & {
+export type TableHeader = HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
 };
 
-export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
+export const TableHeader = forwardRef<HTMLTableSectionElement, TableHeader>(
   ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
     const { variant, isUnstyled: isParentUnstyled } = useTableContext();
     const unstyle = isParentUnstyled || isUnstyled;
@@ -106,37 +88,17 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHead>(
     );
   },
 );
-TableHead.displayName = "TableHead";
+TableHeader.displayName = "TableHeader";
 
 // TableBody Component
-export type TableBody = HTMLAttributes<HTMLTableSectionElement> & {
-  isUnstyled?: boolean;
-};
+export type TableBody = HTMLAttributes<HTMLTableSectionElement>;
 
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBody>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { isUnstyled: isParentUnstyled } = useTableContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-
-    return (
-      <tbody
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames("dark:bg-secondary-700/40 bg-white", className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </tbody>
-    );
-  },
+  (props, forwardedRef) => <tbody {...props} ref={forwardedRef} />,
 );
 TableBody.displayName = "TableBody";
 
 // TableFooter Component
-
 export type TableFooter = HTMLAttributes<HTMLTableSectionElement> & {
   isUnstyled?: boolean;
 };
@@ -163,95 +125,12 @@ export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooter>(
 );
 TableFooter.displayName = "TableFooter";
 
-// Td Component
-export const tdClasses = cva(
-  "text-secondary-600 dark:text-secondary-300 whitespace-nowrap",
-  {
-    variants: {
-      size: {
-        sm: "p-2 text-xs",
-        md: "px-4 py-3 text-sm",
-        lg: "px-6 py-5 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
-
-export type Td = ThHTMLAttributes<HTMLTableCellElement> & {
-  isUnstyled?: boolean;
-};
-
-export const Td = forwardRef<HTMLTableCellElement, Td>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isUnstyled: isParentUnstyled } = useTableContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-
-    return (
-      <td
-        {...props}
-        className={
-          unstyle ? className : classNames(tdClasses({ size }), className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </td>
-    );
-  },
-);
-Td.displayName = "Td";
-
-// Th Component
-export const thClasses = cva(
-  "text-secondary-600 dark:text-secondary-300 text-left font-semibold",
-  {
-    variants: {
-      size: {
-        sm: "p-2 text-xs",
-        md: "px-4 py-3 text-sm",
-        lg: "px-6 py-5 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
-
-export type Th = ThHTMLAttributes<HTMLTableCellElement> & {
-  isUnstyled?: boolean;
-};
-
-export const Th = forwardRef<HTMLTableCellElement, Th>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
-    const { size, isUnstyled: isParentUnstyled } = useTableContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-
-    return (
-      <th
-        {...props}
-        className={
-          unstyle ? className : classNames(thClasses({ size }), className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </th>
-    );
-  },
-);
-Th.displayName = "Th";
-
 // Tr Component
-
-export const trClasses = cva("", {
+export const tableTrClasses = cva("", {
   variants: {
     variant: {
       simple: "bg-transparent",
-      striped: "even:bg-secondary-100 dark:even:bg-secondary-700/50",
+      striped: "even:bg-secondary-100 dark:even:bg-secondary-800",
     },
   },
   defaultVariants: {
@@ -272,7 +151,9 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
       <tr
         {...props}
         className={
-          unstyle ? className : classNames(trClasses({ variant }), className)
+          unstyle
+            ? className
+            : classNames(tableTrClasses({ variant }), className)
         }
         ref={forwardedRef}
       >
@@ -282,3 +163,78 @@ export const Tr = forwardRef<HTMLTableRowElement, Tr>(
   },
 );
 Tr.displayName = "Tr";
+
+export const tableThAndTdClasses = cva(
+  "text-secondary-600 dark:text-secondary-300",
+  {
+    variants: {
+      size: {
+        sm: "px-2 py-1.5 text-xs",
+        md: "px-2.5 py-2 text-sm",
+        lg: "px-3 py-2.5 text-base",
+      },
+    },
+  },
+);
+
+// Th Component
+export type Th = ThHTMLAttributes<HTMLTableCellElement> & {
+  isUnstyled?: boolean;
+};
+
+export const Th = forwardRef<HTMLTableCellElement, Th>(
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
+
+    return (
+      <th
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                tableThAndTdClasses({ size }),
+                "text-left font-semibold",
+                className,
+              )
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </th>
+    );
+  },
+);
+Th.displayName = "Th";
+
+// Td Component
+export type Td = ThHTMLAttributes<HTMLTableCellElement> & {
+  isUnstyled?: boolean;
+};
+
+export const Td = forwardRef<HTMLTableCellElement, Td>(
+  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+    const { size, isUnstyled: isParentUnstyled } = useTableContext();
+    const unstyle = isParentUnstyled || isUnstyled;
+
+    return (
+      <td
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(
+                tableThAndTdClasses({ size }),
+                "truncate whitespace-nowrap",
+                className,
+              )
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </td>
+    );
+  },
+);
+Td.displayName = "Td";

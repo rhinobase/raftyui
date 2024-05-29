@@ -1,16 +1,13 @@
 export {
   Table,
   TableBody,
-  TableContainer,
   TableFooter,
-  TableHead,
+  TableHeader,
   Td,
   Th,
   Tr,
-  tableClasses,
   tableHeaderAndFooterClasses,
-  tdClasses,
-  thClasses,
-  trClasses,
+  tableThAndTdClasses,
+  tableTrClasses,
 } from "./Table";
 export { useTableContext } from "./context";

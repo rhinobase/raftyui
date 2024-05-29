@@ -10,7 +10,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import type { ReactNode } from "react";
-import { Table, TableContainer } from "../table";
+import { Table } from "../table";
 import { classNames } from "../utils";
 import { TableContent } from "./TableContent";
 import { TableHeader } from "./TableHeader";
@@ -85,21 +85,16 @@ export function DataTable<T>({
 
   return (
     <div className="w-full">
-      <TableContainer
+      <Table
+        size={size}
         className={classNames(
+          "w-full overflow-hidden overflow-x-auto [&>table]:table-fixed",
           isEmpty && "rounded-b-none",
-          "w-full overflow-hidden overflow-x-auto",
         )}
       >
-        <Table size={size} className="w-full table-fixed">
-          <TableHeader table={table} enableRowSelection={enableRowSelection} />
-          <TableContent
-            table={table}
-            isLoading={isLoading}
-            colSpan={col_span}
-          />
-        </Table>
-      </TableContainer>
+        <TableHeader table={table} enableRowSelection={enableRowSelection} />
+        <TableContent table={table} isLoading={isLoading} colSpan={col_span} />
+      </Table>
       {isEmpty && <DataNotFound>{notFoundMessage}</DataNotFound>}
     </div>
   );
