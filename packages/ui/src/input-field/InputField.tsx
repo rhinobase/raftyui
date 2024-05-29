@@ -12,7 +12,7 @@ export const inputFieldClasses = cva(
     variants: {
       size: {
         sm: "py-1 text-sm",
-        md: "py-1.5",
+        md: "py-1.5 text-base",
         lg: "py-2 text-lg",
       },
       variant: {
