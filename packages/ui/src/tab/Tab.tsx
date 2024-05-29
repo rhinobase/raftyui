@@ -202,13 +202,21 @@ export const TabTrigger = forwardRef<
 TabTrigger.displayName = "TabTrigger";
 
 // Content Component
-const tabContentClasses = {
-  size: {
-    sm: "w-full min-w-[4px] max-w-[4px]",
-    md: "w-full min-w-[6px] max-w-[6px]",
-    lg: "w-full min-w-[8px] max-w-[8px]",
+export const tabContentClasses = cva(
+  "bg-secondary-100 dark:bg-secondary-800 w-full border-b border-r border-t dark:border-black",
+  {
+    variants: {
+      size: {
+        sm: "min-w-[4px] max-w-[4px]",
+        md: "min-w-[6px] max-w-[6px]",
+        lg: "min-w-[8px] max-w-[8px]",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
   },
-};
+);
 
 const tabContentLineVariantClasses = {
   size: {
@@ -251,13 +259,8 @@ export const TabContent = forwardRef<
       ref={forwardedRef}
     >
       {orientation === "vertical" && variant === "enclosed" && !unstyle ? (
-        <div className="flex items-stretch" style={{ height: "100%" }}>
-          <div
-            className={classNames(
-              tabContentClasses.size[size],
-              "bg-secondary-100 dark:bg-secondary-800 border-b border-r border-t dark:border-black",
-            )}
-          />
+        <div className="flex h-full items-stretch gap-1.5">
+          <div className={tabContentClasses({ size })} />
           {children}
         </div>
       ) : (

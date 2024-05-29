@@ -5,5 +5,6 @@ export {
   TabTrigger,
   tabListClasses,
   tabTriggerClasses,
+  tabContentClasses,
 } from "./Tab";
 export { useTabContext } from "./context";
