@@ -21,7 +21,7 @@ export const stepperClasses = cva(
     variants: {
       direction: {
         horizontal: "w-full items-center",
-        vertical: "h-full flex-col",
+        vertical: "size-full flex-col",
       },
     },
   },
@@ -130,6 +130,11 @@ export const stepperItemClasses = cva(
         className: "cursor-pointer",
       },
     ],
+    defaultVariants: {
+      isClickable: false,
+      isCurrentStep: false,
+      size: "md",
+    },
   },
 );
 
@@ -167,6 +172,13 @@ export const stepperItemIconClasses = cva(
           "group-hover/item:text-primary-500 group-hover/item:border-primary-500",
       },
     ],
+    defaultVariants: {
+      isClickable: false,
+      isCompletedStep: false,
+      isCurrentStep: false,
+      isNotCompletedStep: false,
+      size: "md",
+    },
   },
 );
 
@@ -193,6 +205,11 @@ export const contentWrapperClasses = cva("space-y-1", {
         "group-hover/item:text-primary-600 dark:text-secondary-100 dark:group-hover/item:text-primary-300",
     },
   ],
+  defaultVariants: {
+    isClickable: false,
+    isCurrentStep: false,
+    isNotCompletedStep: false,
+  },
 });
 
 type StepperItem = StepType & { value: number; isClickable: boolean };
@@ -285,6 +302,11 @@ export const connecterClasses = cva("", {
       className: "ml-[30px]",
     },
   ],
+  defaultVariants: {
+    active: false,
+    direction: "horizontal",
+    size: "md",
+  },
 });
 
 type StepsConnector = { active: boolean };
@@ -302,6 +324,9 @@ export const titleAndSubTitleWrapperClasses = cva("flex items-baseline", {
       lg: "gap-2",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
 export const titleClasses = cva("leading-none w-max", {
@@ -311,6 +336,9 @@ export const titleClasses = cva("leading-none w-max", {
       md: "text-lg",
       lg: "text-xl",
     },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });
 
@@ -323,7 +351,12 @@ export const helpTextClasses = cva("leading-none", {
     },
     isSubtitle: {
       true: "text-secondary-400 dark:text-secondary-500",
+      false: "",
     },
+  },
+  defaultVariants: {
+    isSubtitle: false,
+    size: "md",
   },
 });
 
