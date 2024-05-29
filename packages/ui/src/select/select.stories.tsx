@@ -9,6 +9,7 @@ const meta: Meta<typeof Select> = {
     isDisabled: false,
     isRequired: false,
     isReadOnly: false,
+    isUnstyled: false,
   },
   argTypes: {
     size: {
@@ -26,10 +27,18 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
-  render: ({ variant, size, isDisabled, isRequired, isReadOnly }) => (
+  render: ({
+    variant,
+    size,
+    isDisabled,
+    isRequired,
+    isReadOnly,
+    isUnstyled,
+  }) => (
     <Select
       variant={variant}
       size={size}
+      isUnstyled={isUnstyled}
       isDisabled={isDisabled}
       isRequired={isRequired}
       isReadOnly={isReadOnly}

@@ -17,7 +17,7 @@ import {
 } from "./context";
 
 export const selectClasses = cva(
-  "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900 transition-all",
+  "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900",
   {
     variants: {
       size: {
@@ -55,11 +55,11 @@ export const selectClasses = cva(
         variant: ["solid", "outline"],
         disabled: false,
         className:
-          "group-hover:border-primary-500 dark:group-hover:border-primary-400",
+          "group-hover:border-primary-500 dark:group-hover:border-primary-400 transition-all",
       },
       {
         variant: ["solid", "outline"],
-        className: "border-secondary-300 dark:border-zinc-700",
+        className: "border-secondary-300 dark:border-secondary-700",
       },
       {
         disabled: false,
@@ -87,15 +87,17 @@ export const selectClasses = cva(
   },
 );
 
-const TRIGGER_ICON_CLASSES = {
-  sm: "right-[7px] size-3",
-  md: "right-2.5 size-3.5",
-  lg: "right-[13px] size-4",
-} as const;
+const triggerIconClasses = {
+  size: {
+    sm: "right-[7px] size-3",
+    md: "right-2.5 size-3.5",
+    lg: "right-[13px] size-4",
+  },
+};
 
 export type Select = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
-  "size" | "disabled" | "required" | "placeholder"
+  "size" | "placeholder"
 > & {
   variant?: "solid" | "outline" | "ghost";
   isUnstyled?: boolean;
@@ -131,8 +133,12 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
     const field_name = name || context.name;
     const disabled =
-      getValue(isDisabled) || context.isDisabled || context.isLoading;
-    const required = getValue(isRequired) || context.isRequired;
+      getValue(isDisabled) ||
+      props.disabled ||
+      context.isDisabled ||
+      context.isLoading;
+    const required =
+      getValue(isRequired) || props.required || context.isRequired;
     const readonly = getValue(isReadOnly) || context.isReadOnly;
 
     return (
@@ -164,7 +170,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
           {!isUnstyled && (
             <ChevronDownIcon
               className={classNames(
-                TRIGGER_ICON_CLASSES[size],
+                triggerIconClasses.size[size],
                 "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
               )}
             />
@@ -177,10 +183,12 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-const SelectItemClasses = {
-  sm: "text-sm",
-  md: "text-base",
-  lg: "text-lg",
+const selectItemClasses = {
+  size: {
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-lg",
+  },
 };
 
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
@@ -192,7 +200,7 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
     return (
       <option
         {...props}
-        className={classNames(SelectItemClasses[size], className)}
+        className={classNames(selectItemClasses.size[size], className)}
         ref={forwardedRef}
       />
     );
@@ -205,3 +213,4 @@ export type SelectItemGroup = OptgroupHTMLAttributes<HTMLOptGroupElement>;
 export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
   (props, forwardedRef) => <optgroup {...props} ref={forwardedRef} />,
 );
+SelectItemGroup.displayName = "SelectItemGroup";
