@@ -1,14 +1,10 @@
 "use client";
-import { RatingGroup } from "@ark-ui/react";
+import { RatingGroup, type RatingGroupRootProps } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
-import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+import { type ElementRef, forwardRef } from "react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { getValue } from "../utils";
 
 export const ratingControlClasses = cva("flex flex-wrap", {
   variants: {
@@ -42,7 +38,7 @@ export const ratingIconClasses = cva("", {
   },
 });
 
-export type Rating = ComponentPropsWithoutRef<typeof RatingGroup.Root> & {
+export type Rating = RatingGroupRootProps & {
   size?: "sm" | "md" | "lg";
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
@@ -78,7 +74,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
                 <RatingGroup.Item
                   key={item}
                   index={item}
-                  className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-70"
+                  className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-60"
                 >
                   <RatingGroup.ItemContext>
                     {({ half, highlighted }) =>
@@ -88,10 +84,10 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
                             className={ratingIconClasses({ size, highlighted })}
                           />
                           <FaStarHalf
-                            className={classNames(
-                              ratingIconClasses({ size }),
-                              "absolute -scale-x-100 transform",
-                            )}
+                            className={ratingIconClasses({
+                              size,
+                              className: "absolute -scale-x-100 transform",
+                            })}
                           />
                         </div>
                       ) : (

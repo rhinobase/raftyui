@@ -17,23 +17,21 @@ import {
 } from "./context";
 
 // RadioGroup Component
-export const radioGroupClasses = cva("flex flex-col", {
-  variants: {
-    size: {
-      sm: "gap-1",
-      md: "gap-1.5",
-      lg: "gap-2",
+export const radioGroupClasses = cva(
+  "flex flex-col data-[disabled]:opacity-70",
+  {
+    variants: {
+      size: {
+        sm: "gap-1",
+        md: "gap-1.5",
+        lg: "gap-2",
+      },
     },
-    disabled: {
-      true: "cursor-not-allowed opacity-70",
-      false: "",
+    defaultVariants: {
+      size: "md",
     },
   },
-  defaultVariants: {
-    size: "md",
-    disabled: false,
-  },
-});
+);
 
 export type RadioGroup = ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
@@ -70,10 +68,7 @@ export const RadioGroup = forwardRef<
           {...props}
           disabled={disabled || readonly}
           required={required}
-          className={classNames(
-            radioGroupClasses({ size, disabled }),
-            className,
-          )}
+          className={classNames(radioGroupClasses({ size }), className)}
           ref={forwardedRef}
         />
       </RadioGroupProvider>
@@ -92,9 +87,14 @@ export const radioGroupItemClasses = cva(
         md: "size-5",
         lg: "size-6",
       },
+      disabled: {
+        true: "cursor-not-allowed",
+        false: "",
+      },
     },
     defaultVariants: {
       size: "md",
+      disabled: false,
     },
   },
 );
@@ -148,7 +148,10 @@ export const RadioGroupItem = forwardRef<
   const radioItem = (
     <RadioGroupPrimitive.Item
       {...props}
-      className={classNames(radioGroupItemClasses({ size }), className)}
+      className={classNames(
+        radioGroupItemClasses({ size, disabled }),
+        className,
+      )}
       ref={forwardedref}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
