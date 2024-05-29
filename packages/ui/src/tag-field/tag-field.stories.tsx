@@ -4,10 +4,10 @@ import { TagField } from "./TagField";
 const meta: Meta<TagField> = {
   title: "Components / TagField",
   args: {
-    disabled: false,
-    inputPlaceholder: "Add Framework",
-    readOnly: false,
     size: "md",
+    placeholder: "Add Framework",
+    disabled: false,
+    readOnly: false,
   },
   argTypes: {
     size: {

@@ -1,7 +1,2 @@
-export {
-  TagField,
-  iconClasses,
-  tagInputControlClasses,
-  tagInputTextClasses,
-} from "./TagField";
+export { TagField } from "./TagField";
 export { useTagFieldContext } from "./context";

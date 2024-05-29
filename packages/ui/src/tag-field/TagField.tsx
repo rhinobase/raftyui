@@ -1,16 +1,13 @@
 "use client";
 import {
   TagsInput,
+  type TagsInputRootProps,
   useTagsInputContext,
   useTagsInputItemContext,
 } from "@ark-ui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
@@ -20,8 +17,8 @@ import {
   useTagFieldContext,
 } from "./context";
 
-export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
-  inputPlaceholder?: string;
+export type TagField = TagsInputRootProps & {
+  placeholder?: string;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
@@ -30,7 +27,7 @@ export type TagField = ComponentPropsWithoutRef<typeof TagsInput.Root> & {
 export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
   (
     {
-      inputPlaceholder,
+      placeholder,
       size = "md",
       isLoading = false,
       isDisabled = false,
@@ -54,11 +51,11 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
           {...props}
           readOnly={readOnly}
           disabled={disabled}
-          className={classNames("w-full space-y-2", className)}
+          className={classNames("relative flex w-full items-center", className)}
           ref={forwardedRef}
         >
           <TagsInput.Context>
-            {() => <TagFieldItem placeholder={inputPlaceholder} />}
+            {() => <TagFieldControl placeholder={placeholder} />}
           </TagsInput.Context>
           <TagsInput.HiddenInput />
         </TagsInput.Root>
@@ -66,54 +63,53 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
     );
   },
 );
-
 TagField.displayName = "TagField";
 
-export const tagInputControlClasses = {
-  size: {
-    sm: "px-1.5 py-1",
-    md: "px-2 py-1.5",
-    lg: "px-3 py-2",
-  },
-};
-
-export const tagInputTextClasses = {
-  size: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
-  },
-};
-
-export const iconClasses = cva("stroke-black stroke-2 dark:stroke-slate-200", {
-  variants: {
-    size: {
-      sm: "size-3",
-      md: "size-3.5",
-      lg: "size-4",
+const tagFieldControlClasses = cva(
+  "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 group/tag-control flex w-full flex-wrap items-center border outline-none transition-all data-[focus]:ring-2",
+  {
+    variants: {
+      size: {
+        sm: "pl-1.5 pr-[34px] py-1.5 gap-1.5 rounded-base",
+        md: "pl-2 pr-[38px] py-2 gap-2 rounded-md",
+        lg: "pl-2.5 pr-[46px] py-2.5 gap-2.5 rounded-lg",
+      },
     },
   },
-  defaultVariants: {
-    size: "md",
-  },
-});
+);
 
-type TagFieldItem = {
+const tagFieldControlClearTriggerClasses = cva(
+  "absolute p-1 data-[readOnly]:hidden",
+  {
+    variants: {
+      size: {
+        sm: "size-[18px] p-0.5 right-2 rounded-sm",
+        md: "size-6 p-1 right-2 rounded",
+        lg: "size-[26px] p-1 right-2.5 rounded-md",
+      },
+    },
+  },
+);
+
+const tagInputTextClasses = {
+  size: {
+    sm: "text-xs leading-tight",
+    md: "text-sm leading-tight",
+    lg: "text-base leading-tight",
+  },
+};
+
+type TagFieldControl = {
   placeholder?: string;
 };
 
-function TagFieldItem({ placeholder }: TagFieldItem) {
+function TagFieldControl({ placeholder }: TagFieldControl) {
   const { value } = useTagsInputContext();
   const { size } = useTagFieldContext();
 
   return (
     <>
-      <TagsInput.Control
-        className={classNames(
-          "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 group/tag-input flex flex-wrap items-center gap-2 rounded-md border outline-none transition-all data-[focus]:ring-2",
-          tagInputControlClasses.size[size],
-        )}
-      >
+      <TagsInput.Control className={tagFieldControlClasses({ size })}>
         {value.map((value, index) => (
           <TagsInput.Item key={`${index}-${value}`} index={index} value={value}>
             <TagPreviewItem value={value} />
@@ -123,53 +119,82 @@ function TagFieldItem({ placeholder }: TagFieldItem) {
         <TagsInput.Input
           placeholder={placeholder}
           className={classNames(
-            "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent outline-none",
+            "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent py-0.5 outline-none",
             tagInputTextClasses.size[size],
           )}
         />
       </TagsInput.Control>
       <TagsInput.ClearTrigger asChild>
         <Button
-          variant="outline"
-          size={size}
-          className={classNames(
-            "data-[readOnly]:border-secondary-300/80 data-[readOnly]:text-secondary-400/90 data-[readOnly]:dark:border-secondary-500/80 data-[readOnly]:dark:text-secondary-400/70 data-[readOnly]:dark:hover:bg-secondary-900 w-full data-[readOnly]:cursor-not-allowed data-[readOnly]:ring-offset-0 data-[readOnly]:hover:bg-white data-[readOnly]:focus:ring-0",
-          )}
+          variant="ghost"
+          size="icon"
+          colorScheme="error"
+          className={tagFieldControlClearTriggerClasses({ size })}
         >
-          Clear all
+          <XMarkIcon className="size-full stroke-[3]" />
         </Button>
       </TagsInput.ClearTrigger>
     </>
   );
 }
 
-function TagPreviewItem(props: { value: string }) {
+const tagFieldPreviewItemClasses = cva(
+  "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 items-center border transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
+  {
+    variants: {
+      size: {
+        sm: "gap-0.5 rounded-sm px-0.5 py-0",
+        md: "gap-1 rounded-base px-1 py-px",
+        lg: "gap-1.5 rounded-md px-1.5 py-0.5",
+      },
+      editing: {
+        true: "hidden",
+        false: "flex",
+      },
+    },
+  },
+);
+
+const tagFieldPreviewItemDeleteTriggerClasses = cva(
+  "text-secondary-500 group-data-[readonly]/tag-control:cursor-default",
+  {
+    variants: {
+      size: {
+        sm: "size-2.5",
+        md: "size-3",
+        lg: "size-3.5",
+      },
+      disabled: {
+        true: "cursor-not-allowed",
+        false:
+          "cursor-pointer hover:text-red-500 dark:hover:text-red-300 group-data-[readonly]/tag-control:hover:text-secondary-500 dark:group-data-[readonly]/tag-control:hover:text-secondary-500",
+      },
+    },
+  },
+);
+
+type TagPreviewItem = { value: string };
+
+function TagPreviewItem(props: TagPreviewItem) {
   const { editing, disabled } = useTagsInputItemContext();
   const { size } = useTagFieldContext();
-  console.log(disabled);
 
   return (
     <TagsInput.ItemPreview
-      className={classNames(
-        "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 dark:ring-primary-100/20 ring-primary-200 data-[highlighted]:border-primary-500 flex items-center gap-1 rounded border px-1.5 py-px transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[highlighted]:ring-1",
-        editing && "hidden",
-      )}
+      className={tagFieldPreviewItemClasses({ size, editing })}
     >
       <TagsInput.ItemText
         className={classNames(
-          "dark:text-secondary-200 text-black",
+          "dark:text-secondary-100 font-light text-black",
           tagInputTextClasses.size[size],
         )}
       >
         {props.value}
       </TagsInput.ItemText>
       <TagsInput.ItemDeleteTrigger
-        className={classNames(
-          "group-data-[readonly]/tag-input:cursor-default",
-          disabled && "cursor-not-allowed",
-        )}
+        className={tagFieldPreviewItemDeleteTriggerClasses({ size, disabled })}
       >
-        <XMarkIcon className={iconClasses({ size })} />
+        <XMarkIcon className="size-full stroke-2" />
       </TagsInput.ItemDeleteTrigger>
     </TagsInput.ItemPreview>
   );
