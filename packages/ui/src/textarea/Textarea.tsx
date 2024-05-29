@@ -51,7 +51,7 @@ export const textareaClasses = cva(
       },
       {
         variant: ["solid", "outline"],
-        className: "border-secondary-300 dark:border-zinc-700",
+        className: "border-secondary-300 dark:border-secondary-700",
       },
       {
         disabled: false,
@@ -74,6 +74,8 @@ export const textareaClasses = cva(
       size: "md",
       variant: "outline",
       invalid: false,
+      disabled: false,
+      readonly: false,
     },
   },
 );
