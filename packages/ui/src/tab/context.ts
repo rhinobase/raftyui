@@ -9,6 +9,5 @@ export const [TabProvider, useTabContext] = createContext<TabContext>({
 export interface TabContext {
   readonly size: "sm" | "md" | "lg";
   readonly variant: "line" | "enclosed";
-  readonly orientation: "horizontal" | "vertical";
   readonly isUnstyled: boolean;
 }
