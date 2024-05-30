@@ -5,7 +5,7 @@ import { classNames, getValue } from "../utils";
 const DIMENSIONS = {
   sm: "18px",
   md: "24px",
-  lg: "36px",
+  lg: "30px",
 };
 
 // Spinner Component
@@ -23,6 +23,7 @@ export const Spinner = forwardRef<SVGSVGElement, Spinner>(
       className,
       title = "loading",
       children,
+      style,
       ...props
     },
     forwardedRef,
@@ -31,17 +32,21 @@ export const Spinner = forwardRef<SVGSVGElement, Spinner>(
       {...props}
       className={classNames(
         !getValue(inheritParent) &&
-          "text-secondary-700 dark:text-secondary-400",
-        "animate-spin",
+          "text-secondary-600 dark:text-secondary-400",
         className,
+        "animate-spin",
       )}
       width={DIMENSIONS[size]}
       height={DIMENSIONS[size]}
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
+      style={{
+        minWidth: DIMENSIONS[size],
+        minHeight: DIMENSIONS[size],
+        ...style,
+      }}
       ref={forwardedRef}
-      style={{ minWidth: DIMENSIONS[size], minHeight: DIMENSIONS[size] }}
     >
       <title>{title}</title>
       <path

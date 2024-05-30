@@ -20,7 +20,7 @@ type Story = StoryObj<typeof Spinner>;
 
 export const Default: Story = {
   render: ({ size, inheritParent }) => (
-    <div className="text-secondary-400 dark:text-secondary-600">
+    <div className="text-black dark:text-white">
       <Spinner size={size} inheritParent={inheritParent} />
     </div>
   ),
