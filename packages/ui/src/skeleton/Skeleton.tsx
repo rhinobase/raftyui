@@ -9,7 +9,7 @@ export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
     <div
       {...props}
       className={classNames(
-        "bg-secondary-200 dark:bg-secondary-700 animate-pulse",
+        "bg-secondary-300 dark:bg-secondary-700 animate-pulse",
         className,
       )}
       ref={forwardedRef}

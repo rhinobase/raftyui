@@ -17,7 +17,7 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue, mergeRefs } from "../utils";
 
 export const signatureClasses = cva(
-  "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded h-[200px] w-full",
+  "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded h-[200px] w-full bg-white dark:bg-secondary-800",
   {
     variants: {
       isDisabled: {
