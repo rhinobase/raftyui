@@ -10,6 +10,6 @@ export const [StepperProvider, useStepperContext] =
 export type StepperContext = {
   readonly size: "sm" | "md" | "lg";
   readonly direction: "horizontal" | "vertical";
-  readonly current: number;
+  readonly value: number;
   readonly isDisabled: boolean;
 };

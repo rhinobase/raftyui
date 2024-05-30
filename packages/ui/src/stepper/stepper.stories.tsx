@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Button } from "../button";
 import { classNames } from "../utils";
-import { Stepper } from "./Stepper";
+import { type StepType, Stepper } from "./Stepper";
 
 const meta: Meta<typeof Stepper> = {
   title: "Components / Stepper",
@@ -31,74 +31,68 @@ const meta: Meta<typeof Stepper> = {
 export default meta;
 type Story = StoryObj<typeof Stepper>;
 
+const STEPS: StepType[] = [
+  {
+    title: "Home",
+    subTitle: "Aliquam",
+    description: "Lorem ipsum dolor sit amet",
+  },
+  {
+    title: "Menu",
+    description: "Donec et lectus a risus",
+  },
+  {
+    title: "Article",
+    description: "Donec et lectus a risus",
+  },
+];
+
 export const Default: Story = {
   render: ({ size, direction, isDisabled }) => (
     <Stepper
       size={size}
       direction={direction}
       isDisabled={isDisabled}
-      steps={[
-        {
-          title: "Home",
-          subTitle: "Aliquam",
-          description: "Lorem ipsum dolor sit amet",
-        },
-        {
-          title: "Menu",
-          description: "Donec et lectus a risus",
-        },
-        {
-          title: "Article",
-          description: "Donec et lectus a risus",
-        },
-      ]}
+      steps={STEPS}
     />
   ),
 };
 
-export const Controlled: Story = {
+export const ValueWithState: Story = {
   render: ({ size, direction, isDisabled }) => {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
-      setCurrent(current + 1);
+      setCurrent((prev) => (prev < 3 ? prev + 1 : prev));
     };
 
     const prev = () => {
-      setCurrent(current - 1);
+      setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
     };
 
     return (
       <>
         <Stepper
-          current={current}
+          value={current}
           direction={direction}
           isDisabled={isDisabled}
           size={size}
-          steps={[
-            {
-              title: "Home",
-              subTitle: "Aliquam",
-            },
-            {
-              title: "Menu",
-              description: "Donec et lectus a risus",
-            },
-            {
-              title: "Article",
-            },
-          ]}
+          steps={STEPS}
         />
-        <div className="flex gap-4">
-          <Button onClick={prev}>prev</Button>
-          <Button onClick={next}>Next</Button>
+        <div className="mt-4 flex w-full justify-between">
+          <Button onClick={prev} isDisabled={current <= 0}>
+            Previous
+          </Button>
+          <Button onClick={next} isDisabled={current >= 3}>
+            Next
+          </Button>
         </div>
       </>
     );
   },
 };
 
-export const Clickable: Story = {
+export const Controlled: Story = {
   render: ({ size, direction, isDisabled }) => {
     const initial = 2;
     const [current, setCurrent] = useState(initial);
@@ -106,30 +100,42 @@ export const Clickable: Story = {
     return (
       <Stepper
         size={size}
-        current={current}
+        value={current}
         initial={initial}
         direction={direction}
         isDisabled={isDisabled}
-        onClick={setCurrent}
-        steps={[
-          {
-            title: "Home",
-            subTitle: "Aliquam",
-            description: "Lorem ipsum dolor sit amet",
-          },
-          {
-            title: "Menu",
-            description: "Donec et lectus a risus",
-          },
-          {
-            title: "Article",
-            description: "Donec et lectus a risus",
-          },
-        ]}
+        onValueChange={setCurrent}
+        steps={STEPS}
       />
     );
   },
 };
+
+const STEPS_WITH_ICONS = [
+  {
+    title: "Home",
+    icon: (
+      <Bars3Icon height={40} width={40} className="stroke-2 text-blue-500" />
+    ),
+  },
+  {
+    title: "Menu",
+    description: "Donec et lectus a risus",
+    icon: (
+      <FaceSmileIcon
+        height={40}
+        width={40}
+        className="stroke-2 text-blue-500"
+      />
+    ),
+  },
+  {
+    title: "Article",
+    icon: (
+      <BellIcon height={40} width={40} className="stroke-2 text-blue-500" />
+    ),
+  },
+];
 
 export const WithIcon: Story = {
   render: ({ size, direction, isDisabled }) => {
@@ -138,39 +144,7 @@ export const WithIcon: Story = {
         size={size}
         direction={direction}
         isDisabled={isDisabled}
-        steps={[
-          {
-            title: "Home",
-            icon: (
-              <Bars3Icon
-                height={40}
-                width={40}
-                className="stroke-2 text-blue-500"
-              />
-            ),
-          },
-          {
-            title: "Menu",
-            description: "Donec et lectus a risus",
-            icon: (
-              <FaceSmileIcon
-                height={40}
-                width={40}
-                className="stroke-2 text-blue-500"
-              />
-            ),
-          },
-          {
-            title: "Article",
-            icon: (
-              <BellIcon
-                height={40}
-                width={40}
-                className="stroke-2 text-blue-500"
-              />
-            ),
-          },
-        ]}
+        steps={STEPS_WITH_ICONS}
       />
     );
   },
@@ -181,7 +155,7 @@ export const CustomConnector: Story = {
     <Stepper
       size={size}
       direction={direction}
-      current={1}
+      value={1}
       connector={({ active }) => (
         <div
           className={classNames(
@@ -193,21 +167,7 @@ export const CustomConnector: Story = {
         />
       )}
       isDisabled={isDisabled}
-      steps={[
-        {
-          title: "Home",
-          subTitle: "Aliquam",
-          description: "Lorem ipsum dolor sit amet",
-        },
-        {
-          title: "Menu",
-          description: "Donec et lectus a risus",
-        },
-        {
-          title: "Article",
-          description: "Donec et lectus a risus",
-        },
-      ]}
+      steps={STEPS}
     />
   ),
 };
