@@ -112,9 +112,9 @@ export const sliderRangeClasses = cva("absolute h-full", {
     colorScheme: {
       primary: "bg-primary-500 dark:bg-primary-300",
       secondary: "bg-secondary-500 dark:bg-secondary-400",
-      error: "bg-red-600 dark:bg-red-300",
-      info: "bg-blue-500 dark:bg-blue-200",
-      success: "bg-green-600 dark:bg-green-200",
+      error: "bg-red-500 dark:bg-red-300",
+      info: "bg-blue-600 dark:bg-blue-300",
+      success: "bg-green-500 dark:bg-green-300",
       warning: "bg-amber-500 dark:bg-amber-300",
     },
   },
@@ -144,21 +144,17 @@ export const SliderRange = forwardRef<
 SliderRange.displayName = "SliderRange";
 
 export const sliderThumbClasses = cva(
-  "block rounded-full border bg-white shadow transition-colors ease-in-out focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50",
+  "block rounded-full border bg-white shadow transition-colors ease-in-out outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       size: { sm: "size-4", md: "size-5", lg: "size-6" },
       colorScheme: {
-        primary:
-          "focus-visible:ring-primary-500 dark:focus-visible:ring-primary-300",
-        secondary:
-          "focus-visible:ring-secondary-500 dark:focus-visible:ring-secondary-400",
-        error: "focus-visible:ring-red-600 dark:focus-visible:ring-red-300",
-        info: "focus-visible:ring-blue-500 dark:focus-visible:ring-blue-200",
-        success:
-          "focus-visible:ring-green-600 dark:focus-visible:ring-green-200",
-        warning:
-          "focus-visible:ring-amber-500 dark:focus-visible:ring-amber-300",
+        primary: "ring-primary-300 dark:ring-primary-100",
+        secondary: "ring-secondary-300 dark:ring-secondary-100",
+        error: "ring-red-300 dark:ring-red-100",
+        info: "ring-blue-300 dark:ring-blue-100",
+        success: "ring-green-300 dark:ring-green-100",
+        warning: "ring-amber-300 dark:ring-amber-100",
       },
     },
     defaultVariants: {

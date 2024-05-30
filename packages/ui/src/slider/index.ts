@@ -3,9 +3,9 @@ export {
   SliderRange,
   SliderThumb,
   SliderTrack,
+  sliderClasses,
   sliderRangeClasses,
   sliderThumbClasses,
   sliderTrackClasses,
-  sliderClasses,
 } from "./Slider";
 export { useSliderContext } from "./context";
