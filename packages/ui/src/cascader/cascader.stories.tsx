@@ -1,15 +1,15 @@
 import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Controller, useForm } from "react-hook-form";
-import { Cascader } from "./Cascader";
+import { Cascader, type Item } from "./Cascader";
 
 const meta: Meta<typeof Cascader> = {
   title: "Components / Cascader ",
   args: {
     size: "md",
-    inputPlaceholder: "Please Select Item",
+    placeholder: "Please Select Item",
     isDisabled: false,
-    separatorIcon: ", ",
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -22,7 +22,7 @@ const meta: Meta<typeof Cascader> = {
 export default meta;
 type Story = StoryObj<typeof Cascader>;
 
-const items = [
+const items: Item[] = [
   {
     label: "pants",
     value: "pants",
@@ -36,6 +36,10 @@ const items = [
             value: "jeans",
           },
         ],
+      },
+      {
+        label: "cargo",
+        value: "cargo",
       },
     ],
   },
@@ -66,24 +70,24 @@ export const Default: Story = {
         <Controller
           name="sample"
           control={control}
-          render={({ field: { name, onChange, ref, value, disabled } }) => {
-            const val = value?.pop();
-
-            return (
-              <Cascader
-                {...props}
-                name={name}
-                items={items}
-                value={val?.value}
-                onSelect={(value, selected) => onChange(selected)}
-                disabled={disabled}
-                ref={ref}
-              />
-            );
-          }}
+          render={({ field: { name, onChange, ref, value } }) => (
+            <Cascader
+              {...props}
+              name={name}
+              // defaultValue="jeans"
+              items={items}
+              value={value}
+              onSelect={(value, selected) => onChange(value)}
+              ref={ref}
+            />
+          )}
         />
         <DevTool control={control} />
       </form>
     );
   },
+};
+
+export const WithDefaultValue: Story = {
+  render: (props) => <Cascader items={items} defaultValue="jeans" />,
 };
