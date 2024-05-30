@@ -61,7 +61,8 @@ export const buttonClasses = cva(
       {
         disabled: false,
         loading: false,
-        className: "focus:ring-2 ring-offset-1 dark:ring-offset-secondary-950",
+        className:
+          "focus-visible:ring-2 ring-offset-1 dark:ring-offset-secondary-950",
       },
       {
         variant: ["solid", "ghost"],

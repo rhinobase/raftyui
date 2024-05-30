@@ -29,7 +29,7 @@ export const inputFieldClasses = cva(
         false: "",
       },
       invalid: {
-        true: "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
+        true: "border-red-500 ring-red-200 dark:border-red-400 dark:ring-red-100/20",
       },
       isLeftAddon: {
         true: "",
@@ -68,7 +68,7 @@ export const inputFieldClasses = cva(
         disabled: false,
         readonly: false,
         className:
-          "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+          "focus:border-primary-500 dark:focus:border-primary-400 focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
       },
       {
         variant: ["outline", "ghost"],

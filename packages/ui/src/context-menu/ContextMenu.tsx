@@ -37,7 +37,7 @@ export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
 ContextMenuTrigger.displayName = "ContextMenuTrigger";
 
 export const contextMenuContentClasses = cva(
-  "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex flex-col bg-white text-sm focus:outline-none shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
+  "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex flex-col bg-white text-sm outline-none shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
   {
     variants: {
       size: {
@@ -127,7 +127,7 @@ ContextMenuLabel.displayName = "ContextMenuLabel";
 
 //ContextMenu Item Component
 export const contextMenuItemClasses = cva(
-  "select-none text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent data-[disabled]:pointer-events-none",
+  "select-none text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent data-[disabled]:pointer-events-none",
   {
     variants: {
       size: {

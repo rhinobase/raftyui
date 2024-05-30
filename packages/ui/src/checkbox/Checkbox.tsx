@@ -13,7 +13,7 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 const checkboxClasses = cva(
-  "border-secondary-400 dark:border-secondary-700 focus-visible:ring-ring data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus:ring-2",
+  "border-secondary-400 dark:border-secondary-700 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border outline-none ring-offset-2 focus-visible:ring-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
   {
     variants: {
       size: { sm: "size-4", md: "size-5", lg: "size-6" },

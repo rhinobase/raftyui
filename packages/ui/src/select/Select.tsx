@@ -65,7 +65,7 @@ export const selectClasses = cva(
         disabled: false,
         readonly: false,
         className:
-          "cursor-pointer focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+          "cursor-pointer focus:border-primary-500 dark:focus:border-primary-400 focus-visible:ring-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
       },
       {
         variant: ["outline", "ghost"],

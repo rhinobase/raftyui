@@ -12,13 +12,13 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 export const switchClasses = cva(
-  "focus-visible:ring-ring focus-visible:ring-offset-background data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600 peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  "cursor-pointer rounded-full border-2 border-transparent data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600 outline-none focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950 disabled:cursor-not-allowed disabled:opacity-50 transition-colors ease-in-out",
   {
     variants: {
       size: {
-        sm: "h-4 w-7",
-        md: "h-6 w-10",
-        lg: "h-7 w-12",
+        sm: "h-[20px] w-[30px]",
+        md: "h-[22px] w-[34px]",
+        lg: "h-[26px] w-[40px]",
       },
     },
     defaultVariants: {
@@ -28,13 +28,13 @@ export const switchClasses = cva(
 );
 
 export const switchThumbClasses = cva(
-  "bg-secondary-100 dark:data-[state=checked]:bg-secondary-900 data-[state=checked]:bg-secondary-100 pointer-events-none block rounded-full shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0",
+  "bg-white pointer-events-none block rounded-full ring-0 transition-transform data-[state=unchecked]:translate-x-0",
   {
     variants: {
       size: {
-        sm: "size-3 data-[state=checked]:translate-x-3",
-        md: "size-5 data-[state=checked]:translate-x-4",
-        lg: "size-6 data-[state=checked]:translate-x-5",
+        sm: "size-[16px] data-[state=checked]:translate-x-2.5",
+        md: "size-[18px] data-[state=checked]:translate-x-3",
+        lg: "size-[22px] data-[state=checked]:translate-x-3.5",
       },
     },
     defaultVariants: {
@@ -43,11 +43,11 @@ export const switchThumbClasses = cva(
   },
 );
 
-export const switchLabelClasses = cva("", {
+export const switchLabelClasses = cva("font-medium", {
   variants: {
     size: {
       sm: "pl-1.5 text-xs",
-      md: "pl-2",
+      md: "pl-2 text-sm",
       lg: "pl-2.5 text-base",
     },
     disabled: {

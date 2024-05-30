@@ -125,7 +125,7 @@ AlertDialogOverlay.displayName = "AlertDialogOverlay";
 
 // AlertDialogContent Component
 export const alertDialogContentClasses = cva(
-  "w-[95%] md:w-full focus:outline-none flex flex-col bg-white dark:bg-secondary-900 border dark:border-secondary-800 text-black dark:text-white shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 data-[state=open]:animate-contentShow",
+  "w-[95%] md:w-full outline-none flex flex-col bg-white dark:bg-secondary-900 border dark:border-secondary-800 text-black dark:text-white shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 data-[state=open]:animate-contentShow",
   {
     variants: {
       size: {
