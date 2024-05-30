@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "./Stat";
+import { Stat, StatHelpText, StatLabel, StatValue } from "./Stat";
 
 const meta: Meta<typeof Stat> = {
   title: "Components / Stat",
@@ -22,9 +22,7 @@ export const Default: Story = {
     <Stat type={type}>
       <StatLabel>Daily Return</StatLabel>
       <StatValue>17,770.90</StatValue>
-      <StatHelpText>
-        <StatIcon /> 0.47%
-      </StatHelpText>
+      <StatHelpText>0.47%</StatHelpText>
     </Stat>
   ),
 };

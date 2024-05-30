@@ -1,9 +1,2 @@
-export {
-  Stat,
-  StatHelpText,
-  StatIcon,
-  StatLabel,
-  StatValue,
-  statHelpTextClasses,
-} from "./Stat";
+export { Stat, StatHelpText, StatLabel, StatValue } from "./Stat";
 export { useStatContext } from "./context";
