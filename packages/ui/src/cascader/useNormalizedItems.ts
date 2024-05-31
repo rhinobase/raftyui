@@ -1,19 +1,19 @@
-import type { FieldNames, Item, NormalizeItem } from "./Cascader";
+import type { FieldNames, ItemType, NormalizeItem } from "./Cascader";
 
 export const useNormalizedItems = (fieldNames: FieldNames) => {
-  const normalizeItem = (item: Item): NormalizeItem => {
+  const normalizeItem = (item: ItemType): NormalizeItem => {
     const { value, label, children } = fieldNames;
     return {
       ...item,
-      value: item[value as keyof Item] as string,
-      label: item[label as keyof Item] as string,
-      children: item[children as keyof Item] as NormalizeItem[],
+      value: item[value as keyof ItemType] as string,
+      label: item[label as keyof ItemType] as string,
+      children: item[children as keyof ItemType] as NormalizeItem[],
     };
   };
 
-  const getSelectedItems = (items: Item[], selectedValue: string) => {
-    let selectedItems: Item[] = [];
-    const search = (items: Item[], ref: Item[] = []) => {
+  const getSelectedItems = (items: ItemType[], selectedValue: string) => {
+    let selectedItems: ItemType[] = [];
+    const search = (items: ItemType[], ref: ItemType[] = []) => {
       for (const item of items) {
         const { children, label, value, disabled, ...restItem } =
           normalizeItem(item);
@@ -22,8 +22,8 @@ export const useNormalizedItems = (fieldNames: FieldNames) => {
             ...ref,
             {
               ...restItem,
-              value: value,
-              label: label,
+              value,
+              label,
             },
           ];
         } else if (Array.isArray(children) && children.length >= 1) {
@@ -31,8 +31,8 @@ export const useNormalizedItems = (fieldNames: FieldNames) => {
             ...ref,
             {
               ...restItem,
-              value: value,
-              label: label,
+              value,
+              label,
             },
           ]);
         }

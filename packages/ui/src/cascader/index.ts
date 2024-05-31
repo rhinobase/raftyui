@@ -1,1 +1,1 @@
-export { Cascader } from "./Cascader";
+export { Cascader, type ItemType } from "./Cascader";

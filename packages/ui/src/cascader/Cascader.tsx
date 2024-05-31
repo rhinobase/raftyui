@@ -5,7 +5,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
@@ -13,7 +13,7 @@ import { classNames, mergeRefs, getValue as raftyGetValue } from "../utils";
 import { useDropdown } from "./useDropdown";
 import { useNormalizedItems } from "./useNormalizedItems";
 
-export const cascaderDropdownMenu = cva(
+const cascaderDropdownMenu = cva(
   "shadow-md dark:bg-secondary-800 dark:border-secondary-700 dark:text-white absolute",
   {
     variants: {
@@ -29,7 +29,7 @@ export const cascaderDropdownMenu = cva(
   },
 );
 
-export const cascaderDropdownMenuItem = cva("", {
+const cascaderDropdownMenuItem = cva("", {
   variants: {
     size: {
       sm: "text-sm py-1 px-4 min-h-9",
@@ -44,16 +44,25 @@ export const cascaderDropdownMenuItem = cva("", {
   },
   defaultVariants: {
     size: "md",
+    disabled: false,
   },
 });
 
-export const cascaderClearButtonClasses = cva("absolute p-1", {
+const cascaderClearButtonClasses = cva("absolute p-1", {
   variants: {
     size: {
       sm: "size-[18px] p-0.5 right-6 top-1.5 rounded-sm",
       md: "size-6 p-1 right-7 rounded top-2",
       lg: "size-[26px] p-1 right-8 rounded-md top-2.5",
     },
+    readOnly: {
+      true: "pointer-events-none cursor-default",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    readOnly: false,
   },
 });
 
@@ -65,7 +74,7 @@ const iconClasses = {
   },
 };
 
-export const cascaderDownButtonClasses = cva(
+const cascaderDownButtonClasses = cva(
   "absolute stroke-secondary-600 dark:stroke-secondary-400 select-none pointer-events-none",
   {
     variants: {
@@ -75,8 +84,39 @@ export const cascaderDownButtonClasses = cva(
         lg: "right-2.5 top-3.5",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
+
+const inputClasses = cva("pr-12", {
+  variants: {
+    disabled: {
+      true: "",
+      false: "",
+    },
+    readOnly: {
+      true: "",
+      false: "",
+    },
+  },
+  compoundVariants: [
+    {
+      disabled: false,
+      readOnly: false,
+      className: "cursor-pointer",
+    },
+    {
+      readOnly: true,
+      className: "cursor-default",
+    },
+  ],
+  defaultVariants: {
+    disabled: false,
+    readOnly: false,
+  },
+});
 
 export type FieldNames = {
   value: string;
@@ -84,14 +124,14 @@ export type FieldNames = {
   children: string;
 };
 
-export interface Item {
+export interface ItemType {
   value: string | number;
   label: string;
   disabled?: boolean;
-  children?: Item[];
+  children?: ItemType[];
 }
 
-export interface NormalizeItem extends Item {
+export interface NormalizeItem extends ItemType {
   value: string;
   label: string;
   children?: NormalizeItem[];
@@ -100,8 +140,11 @@ export interface NormalizeItem extends Item {
 export type Cascader = {
   expandTrigger?: "click" | "hover";
   fieldNames?: FieldNames;
-  items: Item[];
-  onSelect?: (value?: string, selectedItems?: Omit<Item, "children">[]) => void;
+  items: ItemType[];
+  onSelect?: (
+    value?: string,
+    selectedItems?: Omit<ItemType, "children">[],
+  ) => void;
   separator?: string;
   value?: string;
   name?: string;
@@ -136,9 +179,8 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(
     const dropdownRef = useRef<HTMLDivElement>(null);
     const [inputValue, setInputValue] = useState(defaultValue);
 
-    console.log(inputValue);
-
     const disabled = raftyGetValue(isDisabled);
+    const readOnly = raftyGetValue(isReadOnly);
 
     const { visible, showDropdownMenu, hideDropdownMenu } =
       useDropdown(dropdownRef);
@@ -148,27 +190,27 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(
       if (inputValue) {
         const selectedItems = getSelectedItems(items, inputValue);
         return selectedItems
-          .map((item) => item[fieldNames.label as keyof Item])
+          .map((item) => item[fieldNames.label as keyof ItemType])
           .join(separator);
       }
-      return undefined;
+      return "";
     };
 
-    const handleSelect = (item: Item) => {
+    const handleSelect = (item: ItemType) => {
       if (!onSelect || item.disabled) return;
       const selectedItems = getSelectedItems(
         items,
-        item[fieldNames.value as keyof Item] as string,
+        item[fieldNames.value as keyof ItemType] as string,
       );
       onSelect(
-        selectedItems.slice(-1)[0][fieldNames.value as keyof Item] as string,
+        selectedItems.slice(-1)[0][
+          fieldNames.value as keyof ItemType
+        ] as string,
         selectedItems,
       );
-      hideDropdownMenu();
-      setInputValue(item[fieldNames.value as keyof Item] as string);
     };
 
-    const renderItems = (items: Item[]) => (
+    const renderItems = (items: ItemType[]) => (
       <ul className={cascaderDropdownMenu({ size })}>
         {items.map((item, index) => {
           const {
@@ -206,11 +248,13 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(
               className={cascaderDropdownMenuItem({ size, disabled })}
               onClick={() => {
                 handleSelect(item);
-                setInputValue(item.label);
+                setInputValue(String(item.value));
+                hideDropdownMenu();
               }}
               onKeyDown={() => {
                 handleSelect(item);
-                setInputValue(item.label);
+                setInputValue(String(item.value));
+                hideDropdownMenu();
               }}
             >
               {label}
@@ -220,53 +264,45 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(
       </ul>
     );
 
-    const renderInput = () => {
-      const commonProps = {
-        disabled,
-        onClick:
-          expandTrigger === "click" && !isReadOnly
-            ? showDropdownMenu
-            : undefined,
-        readOnly: true,
-        defaultValue: getValue(),
-      };
-
-      return (
-        <>
-          <InputField
-            {...commonProps}
-            size={size}
-            name={props.name}
-            placeholder={props.placeholder}
-            className={classNames(
-              "relative pr-12",
-              !disabled && "cursor-pointer",
-            )}
-          />
-          <ChevronDownIcon
-            className={classNames(
-              cascaderDownButtonClasses({ size }),
-              iconClasses.size[size],
-            )}
-          />
-          {inputValue && (
-            <Button
-              variant="ghost"
-              size="icon"
-              colorScheme="error"
-              isDisabled={disabled}
-              onClick={() => {
-                onSelect?.(undefined, undefined);
-                setInputValue(undefined);
-              }}
-              className={cascaderClearButtonClasses({ size })}
-            >
-              <XMarkIcon className="size-full stroke-[3]" />
-            </Button>
+    const renderInput = () => (
+      <>
+        <InputField
+          disabled={disabled}
+          onClick={
+            expandTrigger === "click" && !readOnly
+              ? showDropdownMenu
+              : undefined
+          }
+          readOnly
+          value={getValue()}
+          size={size}
+          name={props.name}
+          placeholder={props.placeholder}
+          className={inputClasses({ disabled, readOnly })}
+        />
+        <ChevronDownIcon
+          className={classNames(
+            cascaderDownButtonClasses({ size }),
+            iconClasses.size[size],
           )}
-        </>
-      );
-    };
+        />
+        {inputValue && (
+          <Button
+            variant="ghost"
+            size="icon"
+            colorScheme="error"
+            isDisabled={disabled}
+            onClick={() => {
+              onSelect?.(undefined, undefined);
+              setInputValue(undefined);
+            }}
+            className={cascaderClearButtonClasses({ size, readOnly })}
+          >
+            <XMarkIcon className="size-full stroke-[3]" />
+          </Button>
+        )}
+      </>
+    );
 
     return (
       <div
@@ -279,5 +315,4 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(
     );
   },
 );
-
-export default Cascader;
+Cascader.displayName = "Cascader";

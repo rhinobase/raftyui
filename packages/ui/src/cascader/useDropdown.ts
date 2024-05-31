@@ -9,9 +9,8 @@ export const useDropdown = (dropdownRef: React.RefObject<HTMLDivElement>) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
-      ) {
+      )
         setVisible(false);
-      }
     };
 
     document.addEventListener("click", onClickOutside);
