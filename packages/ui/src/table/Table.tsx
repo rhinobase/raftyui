@@ -28,18 +28,21 @@ export const Table = forwardRef<HTMLTableElement, Table>(
       size = "md",
       variant = "simple",
       isUnstyled = false,
+      hidden,
       ...props
     },
     forwardedRef,
   ) => (
     <TableProvider value={{ size, variant, isUnstyled }}>
       <div
+        hidden={hidden}
         className={
           isUnstyled ? className : classNames(tableClasses({ size }), className)
         }
       >
         <table
           {...props}
+          hidden={hidden}
           className="divide-secondary-300 dark:divide-secondary-700 w-full divide-y"
           ref={forwardedRef}
         >
