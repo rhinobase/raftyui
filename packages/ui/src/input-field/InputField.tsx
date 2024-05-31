@@ -7,7 +7,7 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 export const inputFieldClasses = cva(
-  "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",
+  "w-full border appearance-none outline-none dark:text-secondary-100 transition-all placeholder:text-secondary-400 dark:placeholder:text-secondary-500",
   {
     variants: {
       size: {
@@ -68,7 +68,7 @@ export const inputFieldClasses = cva(
         disabled: false,
         readonly: false,
         className:
-          "focus:border-primary-500 dark:focus:border-primary-400 focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
+          "focus:border-primary-500 dark:focus:border-primary-300 focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
       },
       {
         variant: ["outline", "ghost"],

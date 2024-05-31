@@ -29,19 +29,15 @@ type Story = StoryObj<typeof SearchField>;
 
 export const Default: Story = {
   render: ({ size, variant, disabled, readOnly, required }) => (
-    <FieldControl
-      name="search..."
-      isReadOnly={readOnly}
+    <SearchField
+      aria-label="search"
+      variant={variant}
+      size={size}
       isDisabled={disabled}
+      isReadOnly={readOnly}
       isRequired={required}
-    >
-      <Label>Enter Search Value</Label>
-      <SearchField
-        aria-label="search"
-        variant={variant}
-        size={size}
-        placeholder="search..."
-      />
-    </FieldControl>
+      onValueChange={console.log}
+      placeholder="search..."
+    />
   ),
 };
