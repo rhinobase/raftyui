@@ -8,7 +8,6 @@ import {
 import AutoSizer from "react-virtualized-auto-sizer";
 import { VariableSizeList, type VariableSizeListProps } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
-import { classNames } from "../utils";
 import {
   type ScrollAreaContext,
   ScrollAreaProvider,
@@ -23,16 +22,9 @@ export type ScrollArea = HTMLAttributes<HTMLDivElement> &
   Omit<ScrollAreaContext, ScrollAreaOptionalProp>;
 
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
-  (
-    { layout = "vertical", itemCount, itemSize, className, ...props },
-    forwardedRef,
-  ) => (
+  ({ layout = "vertical", itemCount, itemSize, ...props }, forwardedRef) => (
     <ScrollAreaProvider value={{ layout, itemCount, itemSize }}>
-      <div
-        {...props}
-        className={classNames("dark:bg-secondary-950 bg-white", className)}
-        ref={forwardedRef}
-      />
+      <div {...props} ref={forwardedRef} />
     </ScrollAreaProvider>
   ),
 );
@@ -41,8 +33,8 @@ ScrollArea.displayName = "ScrollArea";
 type VariableSizeListExcludedProps =
   | "width"
   | "height"
-  | "itemCount"
   | "layout"
+  | "itemCount"
   | "itemSize";
 
 // ScrollAreaList Component
