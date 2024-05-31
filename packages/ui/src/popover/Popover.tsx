@@ -1,5 +1,6 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
@@ -81,11 +82,18 @@ export const PopoverTrigger = forwardRef<
 );
 PopoverTrigger.displayName = "PopoverTrigger";
 
-const POPOVER_CONTENT_CLASSES = {
-  sm: "max-w-[20rem] p-3",
-  md: "max-w-[30rem] p-4",
-  lg: "max-w-[40rem] p-5",
-} as const;
+const popoverContentClasses = cva(
+  "z-50 w-full rounded-md shadow-[0px_4px_10px_6px_rgba(60,60,60,0.1)] outline-none dark:bg-secondary-800 dark:text-secondary-100 bg-white data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+  {
+    variants: {
+      size: {
+        sm: "max-w-[20rem] p-3",
+        md: "max-w-[30rem] p-4",
+        lg: "max-w-[40rem] p-5",
+      },
+    },
+  },
+);
 
 // PopoverContent Component
 export type PopoverContent = ComponentPropsWithoutRef<
@@ -106,7 +114,7 @@ export const PopoverContent = forwardRef<
       className,
       sideOffset = 10,
       isUnstyled = false,
-      showArrow,
+      showArrow = true,
       arrowClassName,
       ...props
     },
@@ -123,13 +131,7 @@ export const PopoverContent = forwardRef<
           className={
             unstyle
               ? className
-              : classNames(
-                  POPOVER_CONTENT_CLASSES[size],
-                  "z-50 w-full rounded-md shadow-[0px_4px_10px_6px_rgba(60,60,60,0.1)] outline-none",
-                  "dark:bg-secondary-800 dark:text-secondary-100 bg-white",
-                  "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-                  className,
-                )
+              : classNames(popoverContentClasses({ size }), className)
           }
           ref={forwardedRef}
         >

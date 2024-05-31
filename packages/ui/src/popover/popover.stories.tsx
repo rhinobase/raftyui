@@ -1,7 +1,12 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
-import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+} from "./Popover";
 
 const meta: Meta<typeof Popover> = {
   title: "Components / Popover",
@@ -35,9 +40,11 @@ export const Default: Story = {
               Consequatur amet labore.
             </p>
           </div>
-          <Button colorScheme="primary" className="mt-2 w-full">
-            Go back to dashboard
-          </Button>
+          <PopoverClose asChild>
+            <Button colorScheme="primary" className="mt-2 w-full">
+              Go back to dashboard
+            </Button>
+          </PopoverClose>
         </div>
       </PopoverContent>
     </Popover>
