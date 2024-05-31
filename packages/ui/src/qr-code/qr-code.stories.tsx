@@ -4,7 +4,14 @@ import { QRCode } from "./QRCode";
 const meta: Meta<typeof QRCode> = {
   title: "Components / QRCode",
   args: {
-    value: "hello",
+    value: "https://github.com/rhinobase",
+    level: "L",
+  },
+  argTypes: {
+    level: {
+      control: "select",
+      options: ["L", "M", "Q", "H"],
+    },
   },
 };
 

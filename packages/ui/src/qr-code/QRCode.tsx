@@ -8,25 +8,12 @@ import { classNames } from "../utils";
 
 export type QRCode = SVGAttributes<SVGSVGElement> & {
   value: string;
-  bgColor?: string;
-  fgColor?: string;
-  level?: "L" | "M" | "Q" | "H";
   title?: string;
+  level?: "L" | "M" | "Q" | "H";
 };
 
 export const QRCode = forwardRef<SVGSVGElement, QRCode>(
-  (
-    {
-      level = "L",
-      value,
-      title,
-      bgColor = "#FFF",
-      fgColor = "#000",
-      className,
-      ...props
-    },
-    forwardedRef,
-  ) => {
+  ({ level = "L", value, title, className, ...props }, forwardedRef) => {
     const qrcode = new QRCodeImpl(-1, ErrorCorrectLevel[level]);
     qrcode.addData(value);
     qrcode.make();
@@ -54,8 +41,14 @@ export const QRCode = forwardRef<SVGSVGElement, QRCode>(
         ref={forwardedRef}
       >
         {title && <title>{title}</title>}
-        <path d={createPath((cell) => !cell)} fill={bgColor} />
-        <path d={createPath((cell) => cell)} fill={fgColor} />
+        <path
+          d={createPath((cell) => !cell)}
+          className="fill-white dark:fill-black"
+        />
+        <path
+          d={createPath((cell) => cell)}
+          className="fill-black dark:fill-white"
+        />
       </svg>
     );
   },
