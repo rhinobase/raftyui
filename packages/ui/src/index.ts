@@ -31,6 +31,7 @@ export * from "./hover-card";
 export * from "./input-field";
 export * from "./input-group";
 export * from "./kbd";
+export * from "./key-value";
 export * from "./label";
 export * from "./list";
 export * from "./list-box";
