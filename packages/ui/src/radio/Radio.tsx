@@ -18,13 +18,13 @@ import {
 
 // RadioGroup Component
 export const radioGroupClasses = cva(
-  "flex flex-col data-[disabled]:opacity-70",
+  "flex data-[orientation=vertical]:flex-col data-[orientation=horizontal]:flex-row data-[orientaion-horizontal]:flex-wrap data-[disabled]:opacity-70",
   {
     variants: {
       size: {
-        sm: "gap-1",
-        md: "gap-1.5",
-        lg: "gap-2",
+        sm: "data-[orientation=vertical]:gap-1.5 data-[orientation=horizontal]:gap-3",
+        md: "data-[orientation=vertical]:gap-2 data-[orientation=horizontal]:gap-3.5",
+        lg: "data-[orientation=vertical]:gap-2.5 data-[orientation=horizontal]:gap-4",
       },
     },
     defaultVariants: {
@@ -46,7 +46,15 @@ export const RadioGroup = forwardRef<
   RadioGroup
 >(
   (
-    { className, size = "md", isDisabled, isRequired, isReadOnly, ...props },
+    {
+      className,
+      size = "md",
+      isDisabled,
+      isRequired,
+      isReadOnly,
+      orientation = "vertical",
+      ...props
+    },
     forwardedRef,
   ) => {
     const fieldControlContext = useFieldControlContext() ?? {};
@@ -68,6 +76,7 @@ export const RadioGroup = forwardRef<
           {...props}
           disabled={disabled || readonly}
           required={required}
+          orientation={orientation}
           className={classNames(radioGroupClasses({ size }), className)}
           ref={forwardedRef}
         />
@@ -83,9 +92,9 @@ export const radioGroupItemClasses = cva(
   {
     variants: {
       size: {
-        sm: "size-3.5",
-        md: "size-5",
-        lg: "size-6",
+        sm: "size-[14px]",
+        md: "size-[20px]",
+        lg: "size-[24px]",
       },
       disabled: {
         true: "cursor-not-allowed",
@@ -104,9 +113,9 @@ export const radioGroupItemIndicatorClasses = cva(
   {
     variants: {
       size: {
-        sm: "size-2",
-        md: "size-2.5",
-        lg: "size-3.5",
+        sm: "size-[8px]",
+        md: "size-[10px]",
+        lg: "size-[14px]",
       },
     },
     defaultVariants: {
@@ -119,7 +128,7 @@ export const radioGroupItemLabelClasses = cva("", {
   variants: {
     size: {
       sm: "pl-1.5 text-xs",
-      md: "pl-2",
+      md: "pl-2 text-sm",
       lg: "pl-2.5 text-base",
     },
     disabled: {
