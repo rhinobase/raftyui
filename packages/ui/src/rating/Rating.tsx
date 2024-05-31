@@ -55,7 +55,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
       isReadOnly = false,
       ...props
     },
-    forwarededRef,
+    forwardedRef,
   ) => {
     const disabled =
       props.disabled || getValue(isDisabled) || getValue(isLoading);
@@ -67,7 +67,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
         disabled={disabled}
         readOnly={readOnly}
         onValueChange={({ value }) => onValueChange?.(value)}
-        ref={forwarededRef}
+        ref={forwardedRef}
       >
         <RatingGroup.Control className={ratingControlClasses({ size })}>
           <RatingGroup.Context>

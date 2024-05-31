@@ -39,7 +39,7 @@ export const CircularProgress = forwardRef<
 >(
   (
     { className, size = "md", colorScheme = "primary", style, ...props },
-    forwarededRef,
+    forwardedRef,
   ) => (
     <ArkProgress.Root
       {...props}
@@ -50,7 +50,7 @@ export const CircularProgress = forwardRef<
         "--thickness": sizeStyle.thickness[size],
         ...style,
       }}
-      ref={forwarededRef}
+      ref={forwardedRef}
     >
       <ArkProgress.Circle>
         <ArkProgress.CircleTrack className="stroke-secondary-200 dark:stroke-secondary-700" />

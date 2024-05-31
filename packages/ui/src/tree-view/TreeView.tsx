@@ -20,12 +20,12 @@ export type TreeView = TreeViewRootProps & Partial<TreeViewContext>;
 export const TreeView = forwardRef<
   ElementRef<typeof ArkTreeView.Root>,
   TreeView
->(({ children, size = "md", className, ...props }, forwardedref) => (
+>(({ children, size = "md", className, ...props }, forwardedRef) => (
   <TreeViewProvider value={{ size }}>
     <ArkTreeView.Root
       {...props}
       className={classNames("w-full", className)}
-      ref={forwardedref}
+      ref={forwardedRef}
     >
       <ArkTreeView.Tree>{children}</ArkTreeView.Tree>
     </ArkTreeView.Root>
@@ -137,7 +137,7 @@ export const TreeViewLabel = forwardRef<
       type,
       ...props
     },
-    forwardedref,
+    forwardedRef,
   ) => {
     const { size } = useTreeViewContext();
 
@@ -150,7 +150,7 @@ export const TreeViewLabel = forwardRef<
             treeViewLabelSingleClasses.size[size],
             className,
           )}
-          ref={forwardedref}
+          ref={forwardedRef}
         >
           {children}
         </ArkTreeView.ItemText>
@@ -163,7 +163,7 @@ export const TreeViewLabel = forwardRef<
           treeViewLabelBranchClasses.size[size],
           className,
         )}
-        ref={forwardedref}
+        ref={forwardedRef}
       >
         {showIndicator && (
           <ArkTreeView.BranchIndicator
@@ -208,14 +208,14 @@ export type TreeViewContent = ComponentPropsWithoutRef<
 export const TreeViewContent = forwardRef<
   ElementRef<typeof ArkTreeView.BranchContent>,
   TreeViewContent
->(({ children, className, ...props }, forwardedref) => {
+>(({ children, className, ...props }, forwardedRef) => {
   const { size } = useTreeViewContext();
 
   return (
     <ArkTreeView.BranchContent
       {...props}
       className={classNames("group/content relative", className)}
-      ref={forwardedref}
+      ref={forwardedRef}
     >
       {/* <div className={treeViewContentBorderClasses({ size })} /> */}
       {children}

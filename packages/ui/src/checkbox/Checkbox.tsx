@@ -87,7 +87,7 @@ export const Checkbox = forwardRef<
       isRequired,
       ...props
     },
-    forwardedref,
+    forwardedRef,
   ) => {
     const fieldControlContext = useFieldControlContext() ?? {};
 
@@ -111,7 +111,7 @@ export const Checkbox = forwardRef<
         disabled={disabled || readonly}
         required={required}
         className={classNames(checkboxClasses({ size, disabled }), className)}
-        ref={forwardedref}
+        ref={forwardedRef}
       >
         <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
           <CheckIcon className={checkboxIndicatorClasses({ size })} />

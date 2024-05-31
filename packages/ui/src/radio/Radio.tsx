@@ -140,7 +140,7 @@ export type RadioGroupItem = ComponentPropsWithoutRef<
 export const RadioGroupItem = forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
->(({ className, children, ...props }, forwardedref) => {
+>(({ className, children, ...props }, forwardedRef) => {
   const { size, isDisabled } = useRadioGroupContext();
 
   const disabled = getValue(isDisabled) || props.disabled;
@@ -152,7 +152,7 @@ export const RadioGroupItem = forwardRef<
         radioGroupItemClasses({ size, disabled }),
         className,
       )}
-      ref={forwardedref}
+      ref={forwardedRef}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
         <div className={radioGroupItemIndicatorClasses({ size })} />
