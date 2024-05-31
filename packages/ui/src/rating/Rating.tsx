@@ -11,7 +11,7 @@ export const ratingControlClasses = cva("flex flex-wrap", {
     size: {
       sm: "gap-0.5",
       md: "gap-1",
-      lg: "gap-2",
+      lg: "gap-1.5",
     },
   },
   defaultVariants: {
@@ -27,9 +27,8 @@ export const ratingIconClasses = cva("", {
       lg: "size-7",
     },
     highlighted: {
-      true: "fill-yellow-400/80 stroke-yellow-400/80 dark:fill-yellow-500 dark:stroke-yellow-500",
-      false:
-        "fill-secondary-200 stroke-secondary-200 dark:fill-secondary-700 dark:stroke-secondary-700",
+      true: "fill-yellow-400 dark:fill-yellow-300",
+      false: "fill-secondary-300 dark:fill-secondary-700",
     },
   },
   defaultVariants: {
@@ -38,20 +37,22 @@ export const ratingIconClasses = cva("", {
   },
 });
 
-export type Rating = RatingGroupRootProps & {
+export type Rating = Omit<RatingGroupRootProps, "onValueChange"> & {
   size?: "sm" | "md" | "lg";
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
+  onValueChange?: (value: number) => void;
 };
 
 export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
   (
     {
+      size = "md",
+      onValueChange,
       isDisabled = false,
       isLoading = false,
       isReadOnly = false,
-      size = "md",
       ...props
     },
     forwarededRef,
@@ -65,6 +66,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
         {...props}
         disabled={disabled}
         readOnly={readOnly}
+        onValueChange={({ value }) => onValueChange?.(value)}
         ref={forwarededRef}
       >
         <RatingGroup.Control className={ratingControlClasses({ size })}>
@@ -74,7 +76,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
                 <RatingGroup.Item
                   key={item}
                   index={item}
-                  className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-60"
+                  className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-70"
                 >
                   <RatingGroup.ItemContext>
                     {({ half, highlighted }) =>

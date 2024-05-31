@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Rating>;
 
 export const Default: Story = {
   args: {
-    disabled: true,
+    disabled: false,
     size: "md",
     count: 5,
     defaultValue: 3,
