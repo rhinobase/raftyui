@@ -11,6 +11,7 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
@@ -32,17 +33,34 @@ export type DatePicker = Omit<
   size?: "sm" | "md" | "lg";
 };
 
-export const CONTENT_CLASSES = {
-  sm: "p-2 rounded-md",
-  md: "p-4 rounded-lg",
-  lg: "p-6 rounded-xl",
-};
+export const datPickerControlClasses = cva("flex w-full", {
+  variants: {
+    size: {
+      sm: "gap-1.5",
+      md: "gap-2",
+      lg: "gap-2.5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
 
-export const CONTROL_CLASSES = {
-  sm: "gap-1.5",
-  md: "gap-2",
-  lg: "gap-2.5",
-};
+export const datePickerContentClasses = cva(
+  "dark:bg-secondary-900 dark:border-secondary-800 border bg-white dark:text-white",
+  {
+    variants: {
+      size: {
+        sm: "p-2 rounded-md shadow-md",
+        md: "p-4 rounded-lg shadow-lg",
+        lg: "p-6 rounded-xl shadow-xl",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
 export const DatePicker = forwardRef<
   ElementRef<typeof ArkDatePicker.Root>,
@@ -58,6 +76,7 @@ export const DatePicker = forwardRef<
       value,
       onValueChange,
       defaultValue,
+      className,
       ...props
     },
     forwardedRef,
@@ -74,24 +93,20 @@ export const DatePicker = forwardRef<
         defaultValue={defaultValue ? [defaultValue] : undefined}
         disabled={disabled}
         readOnly={readOnly}
+        className={classNames("w-full", className)}
         ref={forwardedRef}
       >
-        <ArkDatePicker.Control
-          className={classNames("flex w-full", CONTROL_CLASSES[size])}
-        >
+        <ArkDatePicker.Control className={datPickerControlClasses({ size })}>
           <ControlRender placeholder={placeholder} size={size} />
         </ArkDatePicker.Control>
         <Portal>
           <ArkDatePicker.Positioner>
             <ArkDatePicker.Content
-              className={classNames(
-                "dark:bg-secondary-900 dark:border-secondary-800 border bg-white shadow-lg dark:text-white",
-                CONTENT_CLASSES[size],
-              )}
+              className={datePickerContentClasses({ size })}
             >
-              <DayCalender size={size} />
-              <MonthCalender size={size} />
-              <YearCalender size={size} />
+              <DatePickerDayCalendar size={size} />
+              <DatePickerMonthCalendar size={size} />
+              <DatePickerYearCalendar size={size} />
             </ArkDatePicker.Content>
           </ArkDatePicker.Positioner>
         </Portal>
@@ -101,17 +116,31 @@ export const DatePicker = forwardRef<
 );
 DatePicker.displayName = "DatePicker";
 
-export const TRIGGER_CLASSES = {
-  sm: "p-1.5 rounded",
-  md: "p-2 rounded-md",
-  lg: "p-2.5 rounded-md",
-};
+export const datePickerCalendarTriggerClasses = cva(
+  "border-secondary-300 text-secondary-500 dark:text-secondary-400 data-[state=open]:text-black dark:data-[state=open]:text-white",
+  {
+    variants: {
+      size: {
+        sm: "p-1.5 min-w-[30px] min-h-[30px] size-[30px] rounded-base",
+        md: "p-2 min-w-[38px] min-h-[38px] size-[38px] rounded-md",
+        lg: "p-2.5 min-w-[46px] min-h-[46px] size-[46px] rounded-md",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
-export const TRIGGER_ICON_CLASSES = {
-  sm: "size-4",
-  md: "size-5",
-  lg: "size-6",
-};
+export const datePickerClearButtonClasses = cva("pointer-events-auto rounded", {
+  variants: {
+    size: {
+      sm: "size-5 p-0.5 rounded-sm",
+      md: "size-6 p-1 rounded-base",
+      lg: "size-7 p-1.5 rounded-base",
+    },
+  },
+});
 
 function ControlRender({
   placeholder,
@@ -132,9 +161,9 @@ function ControlRender({
                 variant="ghost"
                 size="icon"
                 colorScheme="error"
-                className="pointer-events-auto rounded p-1"
+                className={datePickerClearButtonClasses({ size })}
               >
-                <XMarkIcon className="size-3.5 stroke-2" />
+                <XMarkIcon className="size-full stroke-2" />
               </Button>
             </ArkDatePicker.ClearTrigger>
           </Suffix>
@@ -144,43 +173,43 @@ function ControlRender({
         <Button
           variant="outline"
           size="icon"
-          className={classNames(
-            "border-secondary-300 text-secondary-500",
-            TRIGGER_CLASSES[size],
-          )}
+          className={datePickerCalendarTriggerClasses({ size })}
         >
-          <CalendarIcon
-            className={classNames("stroke-2", TRIGGER_ICON_CLASSES[size])}
-          />
+          <CalendarIcon className="size-full stroke-2" />
         </Button>
       </ArkDatePicker.Trigger>
     </>
   );
 }
 
-export const TABLE_CELL_CLASSES = {
-  sm: "text-sm size-9 rounded",
-  md: "text-base size-10 rounded-md",
-  lg: "text-lg size-12 rounded-lg",
+export const datePickerDayCalendarButtonClasses = {
+  size: {
+    sm: "text-sm size-9 rounded",
+    md: "text-base size-10 rounded-md",
+    lg: "text-lg size-12 rounded-lg",
+  },
 };
 
-export function DayCalender({ size = "md" }: Pick<DatePicker, "size">) {
+export type DatePickerDayCalendar = {
+  size: "sm" | "md" | "lg";
+};
+
+export function DatePickerDayCalendar({ size = "md" }: DatePickerDayCalendar) {
   return (
     <ArkDatePicker.View view="day">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader size={size} />
+            <DatePickerCalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableHead>
                 <ArkDatePicker.TableRow>
-                  {datePicker.weekDays.map((weekDay, index) => (
+                  {datePicker.weekDays.map((weekDay) => (
                     <ArkDatePicker.TableHeader
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                      key={index}
+                      key={weekDay.narrow}
                       className={classNames(
                         "text-secondary-500 font-semibold",
-                        TABLE_CELL_CLASSES[size],
+                        datePickerDayCalendarButtonClasses.size[size],
                       )}
                     >
                       {weekDay.narrow}
@@ -198,12 +227,13 @@ export function DayCalender({ size = "md" }: Pick<DatePicker, "size">) {
                         <ArkDatePicker.TableCellTrigger asChild>
                           <Button
                             variant="ghost"
+                            size={size}
                             className={classNames(
                               "p-0 font-medium text-black dark:text-white",
                               "data-[today=]:text-primary-500 dark:data-[today=]:text-primary-300 data-[today=]:font-semibold",
                               "data-[outside-range=]:text-secondary-400/80 dark:data-[outside-range=]:text-secondary-600 data-[outside-range=]:cursor-not-allowed data-[outside-range=]:ring-0 data-[outside-range=]:hover:bg-transparent dark:data-[outside-range=]:ring-0 dark:data-[outside-range=]:ring-offset-0 dark:data-[outside-range=]:hover:bg-transparent",
                               "data-[selected=]:text-primary-500 dark:data-[selected=]:text-primary-300 data-[selected=]:bg-primary-200/70 dark:data-[selected=]:bg-primary-400/20",
-                              TABLE_CELL_CLASSES[size],
+                              datePickerDayCalendarButtonClasses.size[size],
                             )}
                           >
                             {day.day}
@@ -222,19 +252,33 @@ export function DayCalender({ size = "md" }: Pick<DatePicker, "size">) {
   );
 }
 
-export const TABLE_CELL_TRIGGER_CLASSES = {
-  sm: "h-10 w-[70px] rounded",
-  md: "h-12 w-20 rounded-md",
-  lg: "h-14 w-24 rounded-lg",
+export const datePickerMonthAndYearButtonClasses = cva(
+  "py-0 font-medium text-black dark:text-white",
+  {
+    variants: {
+      size: {
+        sm: "h-10 w-[70px] rounded",
+        md: "h-12 w-20 rounded-md",
+        lg: "h-14 w-24 rounded-lg",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
+export type DatePickerMonthCalendar = {
+  size: "sm" | "md" | "lg";
 };
 
-export function MonthCalender({ size = "md" }: Pick<DatePicker, "size">) {
+export function DatePickerMonthCalendar({ size }: DatePickerMonthCalendar) {
   return (
     <ArkDatePicker.View view="month">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader size={size} />
+            <DatePickerCalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableBody>
                 {datePicker
@@ -252,10 +296,9 @@ export function MonthCalender({ size = "md" }: Pick<DatePicker, "size">) {
                             <Button
                               variant="ghost"
                               size={size}
-                              className={classNames(
-                                "py-0 font-medium text-black dark:text-white",
-                                TABLE_CELL_TRIGGER_CLASSES[size],
-                              )}
+                              className={datePickerMonthAndYearButtonClasses({
+                                size,
+                              })}
                             >
                               {month.label}
                             </Button>
@@ -273,13 +316,17 @@ export function MonthCalender({ size = "md" }: Pick<DatePicker, "size">) {
   );
 }
 
-export function YearCalender({ size = "md" }: Pick<DatePicker, "size">) {
+export type DatePickerYearCalendar = {
+  size: "sm" | "md" | "lg";
+};
+
+export function DatePickerYearCalendar({ size }: DatePickerYearCalendar) {
   return (
     <ArkDatePicker.View view="year">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader size={size} />
+            <DatePickerCalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableBody>
                 {datePicker.getYearsGrid({ columns: 4 }).map((years, index) => (
@@ -292,10 +339,9 @@ export function YearCalender({ size = "md" }: Pick<DatePicker, "size">) {
                           <Button
                             variant="ghost"
                             size={size}
-                            className={classNames(
-                              "py-0 font-medium text-black dark:text-white",
-                              TABLE_CELL_TRIGGER_CLASSES[size],
-                            )}
+                            className={datePickerMonthAndYearButtonClasses({
+                              size,
+                            })}
                           >
                             {year.label}
                           </Button>
@@ -313,46 +359,60 @@ export function YearCalender({ size = "md" }: Pick<DatePicker, "size">) {
   );
 }
 
-export const ICON_CLASSES = {
-  sm: "size-3.5",
-  md: "size-4",
-  lg: "size-5",
+export const datePickerCalendarHeaderClasses = cva(
+  "flex items-center justify-between",
+  {
+    variants: {
+      size: {
+        sm: "mb-1.5",
+        md: "mb-2.5",
+        lg: "mb-3.5",
+      },
+    },
+  },
+);
+
+export const datePickerCalendarHeaderNextAndPrevButtonClasses = cva("", {
+  variants: {
+    size: {
+      sm: "p-2 size-8 rounded-base",
+      md: "p-[9px] size-9 rounded-md",
+      lg: "p-2.5 size-10 rounded-lg",
+    },
+  },
+});
+
+export const datePickerCalendarHeaderViewTriggerClasses = cva("py-0", {
+  variants: {
+    size: {
+      sm: "px-2 h-8 rounded-base text-xs",
+      md: "px-2.5 h-9 rounded-md text-sm",
+      lg: "px-3 h-10 rounded-lg text-md",
+    },
+  },
+});
+
+export type DatePickerCalendarHeader = {
+  size: "sm" | "md" | "lg";
 };
 
-export const VIEW_TRIGGER_CLASSES = {
-  sm: "h-8",
-  md: "h-9",
-  lg: "h-10",
-};
-
-export const NEXT_PREV_BUTTON_CLASSES = {
-  sm: "size-8",
-  md: "size-9",
-  lg: "size-10",
-};
-
-export function CalendarHeader({ size = "md" }: Pick<DatePicker, "size">) {
+export function DatePickerCalendarHeader({ size }: DatePickerCalendarHeader) {
   return (
-    <ArkDatePicker.ViewControl className="mb-2 flex items-center justify-between">
+    <ArkDatePicker.ViewControl
+      className={datePickerCalendarHeaderClasses({ size })}
+    >
       <ArkDatePicker.PrevTrigger asChild>
         <Button
           variant="ghost"
-          size="icon"
-          className={classNames(
-            "size-8 rounded",
-            NEXT_PREV_BUTTON_CLASSES[size],
-          )}
+          className={datePickerCalendarHeaderNextAndPrevButtonClasses({ size })}
         >
-          <ChevronLeftIcon
-            className={classNames("stroke-[3]", ICON_CLASSES[size])}
-          />
+          <ChevronLeftIcon className="size-full stroke-[3]" />
         </Button>
       </ArkDatePicker.PrevTrigger>
       <ArkDatePicker.ViewTrigger asChild>
         <Button
           variant="ghost"
-          size={size}
-          className={classNames("rounded py-0", VIEW_TRIGGER_CLASSES[size])}
+          className={datePickerCalendarHeaderViewTriggerClasses({ size })}
         >
           <ArkDatePicker.RangeText />
         </Button>
@@ -360,15 +420,9 @@ export function CalendarHeader({ size = "md" }: Pick<DatePicker, "size">) {
       <ArkDatePicker.NextTrigger asChild>
         <Button
           variant="ghost"
-          size="icon"
-          className={classNames(
-            "size-8 rounded",
-            NEXT_PREV_BUTTON_CLASSES[size],
-          )}
+          className={datePickerCalendarHeaderNextAndPrevButtonClasses({ size })}
         >
-          <ChevronRightIcon
-            className={classNames("stroke-[3]", ICON_CLASSES[size])}
-          />
+          <ChevronRightIcon className="size-full stroke-[3]" />
         </Button>
       </ArkDatePicker.NextTrigger>
     </ArkDatePicker.ViewControl>

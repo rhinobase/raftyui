@@ -13,14 +13,14 @@ import {
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import {
-  CONTENT_CLASSES,
-  CONTROL_CLASSES,
-  CalendarHeader,
-  MonthCalender,
-  TABLE_CELL_CLASSES,
-  TRIGGER_CLASSES,
-  TRIGGER_ICON_CLASSES,
-  YearCalender,
+  DatePickerCalendarHeader,
+  DatePickerMonthCalendar,
+  DatePickerYearCalendar,
+  datPickerControlClasses,
+  datePickerCalendarTriggerClasses,
+  datePickerClearButtonClasses,
+  datePickerContentClasses,
+  datePickerDayCalendarButtonClasses,
 } from "../date-picker/DatePicker";
 import { inputFieldClasses } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
@@ -60,6 +60,7 @@ export const RangePicker = forwardRef<
       value,
       defaultValue,
       onValueChange,
+      className,
       ...props
     },
     forwardedRef,
@@ -79,27 +80,20 @@ export const RangePicker = forwardRef<
         }
         disabled={disabled}
         readOnly={readOnly}
+        className={classNames("w-full", className)}
         ref={forwardedRef}
       >
-        <ArkDatePicker.Control
-          className={classNames(
-            "flex w-full items-center",
-            CONTROL_CLASSES[size],
-          )}
-        >
+        <ArkDatePicker.Control className={datPickerControlClasses({ size })}>
           <ControlRender placeholder={placeholder} size={size} />
         </ArkDatePicker.Control>
         <Portal>
           <ArkDatePicker.Positioner>
             <ArkDatePicker.Content
-              className={classNames(
-                "dark:bg-secondary-900 dark:border-secondary-800 rounded-lg border bg-white shadow-lg dark:text-white",
-                CONTENT_CLASSES[size],
-              )}
+              className={datePickerContentClasses({ size })}
             >
-              <DayCalender size={size} />
-              <MonthCalender size={size} />
-              <YearCalender size={size} />
+              <RangePickerDayCalender size={size} />
+              <DatePickerMonthCalendar size={size} />
+              <DatePickerYearCalendar size={size} />
             </ArkDatePicker.Content>
           </ArkDatePicker.Positioner>
         </Portal>
@@ -118,7 +112,7 @@ function ControlRender({
 
   return (
     <>
-      <InputGroup size={size}>
+      <InputGroup size={size} className="w-full">
         <div
           className={inputFieldClasses({
             className: "flex items-center pr-9",
@@ -128,13 +122,13 @@ function ControlRender({
           <ArkDatePicker.Input
             index={0}
             placeholder={placeholder?.from}
-            className="bg-transparent px-2 text-center outline-none"
+            className="w-full bg-transparent px-2 text-center outline-none"
           />
           <ArrowRightIcon className="stroke-secondary-500 size-3.5 min-h-3.5 min-w-3.5 stroke-[3]" />
           <ArkDatePicker.Input
             index={1}
             placeholder={placeholder?.to}
-            className="bg-transparent px-2 text-center outline-none"
+            className="w-full bg-transparent px-2 text-center outline-none"
           />
         </div>
         {value.length > 0 && (
@@ -144,9 +138,9 @@ function ControlRender({
                 variant="ghost"
                 size="icon"
                 colorScheme="error"
-                className="pointer-events-auto rounded p-1"
+                className={datePickerClearButtonClasses({ size })}
               >
-                <XMarkIcon className="size-4 stroke-2" />
+                <XMarkIcon className="size-full stroke-2" />
               </Button>
             </ArkDatePicker.ClearTrigger>
           </Suffix>
@@ -156,27 +150,26 @@ function ControlRender({
         <Button
           variant="outline"
           size="icon"
-          className={classNames(
-            "border-secondary-300 text-secondary-500",
-            TRIGGER_CLASSES[size],
-          )}
+          className={datePickerCalendarTriggerClasses({ size })}
         >
-          <CalendarIcon
-            className={classNames("stroke-2", TRIGGER_ICON_CLASSES[size])}
-          />
+          <CalendarIcon className="size-full stroke-2" />
         </Button>
       </ArkDatePicker.Trigger>
     </>
   );
 }
 
-function DayCalender({ size = "md" }: Pick<RangePicker, "size">) {
+type RangePickerDayCalender = {
+  size: "sm" | "md" | "lg";
+};
+
+function RangePickerDayCalender({ size }: RangePickerDayCalender) {
   return (
     <ArkDatePicker.View view="day">
       <ArkDatePicker.Context>
         {(datePicker) => (
           <>
-            <CalendarHeader size={size} />
+            <DatePickerCalendarHeader size={size} />
             <ArkDatePicker.Table>
               <ArkDatePicker.TableHead>
                 <ArkDatePicker.TableRow>
@@ -186,7 +179,7 @@ function DayCalender({ size = "md" }: Pick<RangePicker, "size">) {
                       key={index}
                       className={classNames(
                         "text-secondary-500 font-semibold",
-                        TABLE_CELL_CLASSES[size],
+                        datePickerDayCalendarButtonClasses.size[size],
                       )}
                     >
                       {weekDay.narrow}
@@ -216,7 +209,7 @@ function DayCalender({ size = "md" }: Pick<RangePicker, "size">) {
                               "data-[range-start=]:data-[in-range=]:bg-primary-500 dark:data-[range-start=]:data-[in-range=]:bg-primary-300 data-[range-start=]:text-white dark:data-[range-start=]:text-white",
                               "data-[range-end=]:data-[in-range=]:bg-primary-500 dark:data-[range-end=]:data-[in-range=]:bg-primary-300 data-[range-end=]:text-white dark:data-[range-end=]:text-white",
                               "data-[in-range=]:rounded-none data-[in-range=]:data-[range-end=]:rounded-r data-[in-range=]:data-[range-start=]:rounded-l",
-                              TABLE_CELL_CLASSES[size],
+                              datePickerDayCalendarButtonClasses.size[size],
                             )}
                           >
                             {day.day}

@@ -20,12 +20,7 @@ export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
 export const Default: Story = {
-  render: (props) => (
-    <DatePicker
-      {...props}
-      // format={(date) => `${date.day}/${date.month}/${date.year}`}
-    />
-  ),
+  render: (props) => <DatePicker {...props} />,
 };
 
 export const DefaultValue: Story = {

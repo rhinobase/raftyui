@@ -153,7 +153,7 @@ export const PhoneNumberInput = forwardRef<HTMLInputElement, PhoneNumberInput>(
               rightIcon={
                 <ChevronDownIcon className="size-2.5 stroke-[3] group-data-[state=open]:rotate-180" />
               }
-              className="group py-1 ring-offset-0 hover:bg-transparent focus:ring-0 focus-visible:ring-0 dark:hover:bg-transparent [&>span]:text-xs [&>span]:font-semibold [&>span]:leading-5"
+              className="group py-1 hover:bg-transparent focus:ring-0 focus-visible:ring-0 dark:hover:bg-transparent [&>span]:text-xs [&>span]:font-semibold [&>span]:leading-5"
               variant="ghost"
             >
               <CountrySelectTrigger />
