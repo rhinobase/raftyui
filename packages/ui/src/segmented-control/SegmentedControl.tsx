@@ -14,9 +14,26 @@ import {
   useSegmentedControlContext,
 } from "./context";
 
-export type SegmentedControl = SegmentGroupRootProps & {
+export const segmentedControlClasses = cva(
+  "flex data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l border-secondary-300 dark:border-secondary-700 data-[disabled]:opacity-70",
+  {
+    variants: {
+      size: {
+        sm: "data-[orientation=horizontal]:gap-2 data-[orientation=vertical]:gap-1",
+        md: "data-[orientation=horizontal]:gap-3 data-[orientation=vertical]:gap-2",
+        lg: "data-[orientation=horizontal]:gap-4 data-[orientation=vertical]:gap-3",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
+export type SegmentedControl = Omit<SegmentGroupRootProps, "onValueChange"> & {
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
+  onValueChange?: (value: string) => void;
 } & Partial<SegmentedControlContext>;
 
 export const SegmentedControl = forwardRef<
@@ -32,6 +49,7 @@ export const SegmentedControl = forwardRef<
       isLoading = false,
       size = "md",
       orientation = "horizontal",
+      onValueChange,
       ...props
     },
     forwaredRef,
@@ -47,14 +65,12 @@ export const SegmentedControl = forwardRef<
           orientation={orientation}
           disabled={disabled}
           readOnly={readOnly}
-          className={classNames(
-            "border-secondary-300 dark:border-secondary-700 flex gap-4 data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l data-[disabled]:opacity-60",
-            className,
-          )}
+          className={classNames(segmentedControlClasses({ size }), className)}
+          onValueChange={({ value }) => onValueChange?.(value)}
           ref={forwaredRef}
         >
           {children}
-          <SegmentGroup.Indicator className="border-primary-500 dark:border-primary-300/90 transform data-[orientation=horizontal]:bottom-0 data-[orientation=vertical]:left-0 data-[orientation=vertical]:h-[var(--height)] data-[orientation=horizontal]:w-[var(--width)] data-[orientation=horizontal]:translate-y-px data-[orientation=vertical]:-translate-x-px data-[orientation=horizontal]:border-b-2 data-[orientation=vertical]:border-l-2" />
+          <SegmentGroup.Indicator className="border-primary-500 dark:border-primary-300 transform data-[orientation=horizontal]:bottom-0 data-[orientation=vertical]:left-0 data-[orientation=vertical]:h-[var(--height)] data-[orientation=horizontal]:w-[var(--width)] data-[orientation=horizontal]:translate-y-px data-[orientation=vertical]:-translate-x-px data-[orientation=horizontal]:border-b-2 data-[orientation=vertical]:border-l-2" />
         </SegmentGroup.Root>
       </SegmentedControlProvider>
     );
@@ -71,9 +87,9 @@ export const segmentedControlItemClasses = cva(
           "cursor-pointer data-[hover]:text-secondary-800 data-[hover]:dark:text-secondary-200 transition-all duration-200",
       },
       size: {
-        sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=vertical]:py-1 data-[orientation=horizontal]:pb-2.5 data-[orientation=vertical]:pl-2.5",
-        md: "text-base data-[orientation=horizontal]:px-1.5 data-[orientation=vertical]:py-1.5 data-[orientation=horizontal]:pb-3 data-[orientation=vertical]:pl-3",
-        lg: "text-lg data-[orientation=horizontal]:px-2 data-[orientation=vertical]:py-2 data-[orientation=horizontal]:pb-3.5 data-[orientation=vertical]:pl-3.5",
+        sm: "text-sm data-[orientation=horizontal]:px-1 data-[orientation=horizontal]:py-2 data-[orientation=vertical]:px-2 data-[orientation=vertical]:py-1",
+        md: "text-base data-[orientation=horizontal]:px-1.5 data-[orientation=horizontal]:py-2.5 data-[orientation=vertical]:px-2.5 data-[orientation=vertical]:py-1.5",
+        lg: "text-lg data-[orientation=horizontal]:px-2 data-[orientation=horizontal]:py-3 data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-2",
       },
       defaultVariants: {
         readonly: false,

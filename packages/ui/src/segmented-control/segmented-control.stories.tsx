@@ -27,7 +27,7 @@ export const Default: Story = {
     },
   },
   render: (props) => (
-    <SegmentedControl {...props}>
+    <SegmentedControl {...props} onValueChange={console.log}>
       <SegmentedControlItem value="react">React</SegmentedControlItem>
       <SegmentedControlItem value="solid">Solid</SegmentedControlItem>
       <SegmentedControlItem value="svelte">Svelte</SegmentedControlItem>
