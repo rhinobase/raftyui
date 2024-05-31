@@ -30,6 +30,7 @@ export * from "./hooks";
 export * from "./hover-card";
 export * from "./input-field";
 export * from "./input-group";
+export * from "./json-explorer";
 export * from "./kbd";
 export * from "./key-value";
 export * from "./label";

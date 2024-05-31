@@ -170,7 +170,7 @@ export const TreeViewLabel = forwardRef<
             className={treeViewLabelIndicatorClasses({ size })}
           >
             {indicatorIcon ?? (
-              <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-400 size-full stroke-[3]" />
+              <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full stroke-[3]" />
             )}
           </ArkTreeView.BranchIndicator>
         )}

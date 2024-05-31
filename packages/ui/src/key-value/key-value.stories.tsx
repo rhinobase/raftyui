@@ -3,6 +3,15 @@ import { KeyValue } from "./KeyValue";
 
 const meta: Meta<typeof KeyValue> = {
   title: "Components / KeyValue",
+  args: {
+    size: "md",
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
@@ -40,5 +49,7 @@ const data = {
   dkddlele: "ieke",
 };
 export const Default: Story = {
-  render: () => <KeyValue data={data} keyTitle="Key" valueTitle="Value" />,
+  render: (props) => (
+    <KeyValue {...props} data={data} keyTitle="Key" valueTitle="Value" />
+  ),
 };
