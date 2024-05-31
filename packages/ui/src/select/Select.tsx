@@ -65,7 +65,7 @@ export const selectClasses = cva(
         disabled: false,
         readonly: false,
         className:
-          "cursor-pointer focus:border-primary-500 dark:focus:border-primary-400 focus-visible:ring-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
+          "cursor-pointer focus:border-primary-500 dark:focus:border-primary-400 focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
       },
       {
         variant: ["outline", "ghost"],
@@ -87,13 +87,18 @@ export const selectClasses = cva(
   },
 );
 
-const triggerIconClasses = {
-  size: {
-    sm: "right-[7px] size-3",
-    md: "right-2.5 size-3.5",
-    lg: "right-[13px] size-4",
+export const triggerIconClasses = cva(
+  "stroke-secondary-600 dark:stroke-secondary-400 pointer-events-none absolute stroke-[2.5]",
+  {
+    variants: {
+      size: {
+        sm: "right-[7px] size-3",
+        md: "right-2.5 size-3.5",
+        lg: "right-[13px] size-4",
+      },
+    },
   },
-};
+);
 
 export type Select = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
@@ -168,12 +173,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
             {children}
           </select>
           {!isUnstyled && (
-            <ChevronDownIcon
-              className={classNames(
-                triggerIconClasses.size[size],
-                "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
-              )}
-            />
+            <ChevronDownIcon className={triggerIconClasses({ size })} />
           )}
         </div>
       </SelectProvider>
@@ -183,13 +183,15 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
 
 Select.displayName = "Select";
 
-const selectItemClasses = {
-  size: {
-    sm: "text-sm",
-    md: "text-base",
-    lg: "text-lg",
+export const selectItemClasses = cva("text-black dark:text-secondary-100", {
+  variants: {
+    size: {
+      sm: "text-sm",
+      md: "text-base",
+      lg: "text-lg",
+    },
   },
-};
+});
 
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
@@ -200,7 +202,7 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
     return (
       <option
         {...props}
-        className={classNames(selectItemClasses.size[size], className)}
+        className={classNames(selectItemClasses({ size }), className)}
         ref={forwardedRef}
       />
     );
@@ -208,9 +210,29 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
 );
 SelectItem.displayName = "SelectItem";
 
+export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+    },
+  },
+});
+
 export type SelectItemGroup = OptgroupHTMLAttributes<HTMLOptGroupElement>;
 
 export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
-  (props, forwardedRef) => <optgroup {...props} ref={forwardedRef} />,
+  (props, forwardedRef) => {
+    const { size } = useSelectContext();
+
+    return (
+      <optgroup
+        {...props}
+        className={selectItemGroupClasses({ size })}
+        ref={forwardedRef}
+      />
+    );
+  },
 );
 SelectItemGroup.displayName = "SelectItemGroup";
