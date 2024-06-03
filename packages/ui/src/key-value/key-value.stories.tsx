@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { boolean } from "zod";
 import { KeyValue } from "./KeyValue";
 
 const meta: Meta<typeof KeyValue> = {
@@ -17,7 +18,7 @@ const meta: Meta<typeof KeyValue> = {
 export default meta;
 type Story = StoryObj<typeof KeyValue>;
 
-const data = {
+const DATA = {
   a: 1,
   b: 2,
   c: 3,
@@ -46,10 +47,20 @@ const data = {
   address_state: "CA",
   address_zip: "12345",
   company: "Doe Industries",
-  dkddlele: true,
+  boolean1: true,
+  boolean2: false,
 };
+
 export const Default: Story = {
+  render: (props) => <KeyValue {...props} data={DATA} />,
+};
+
+export const CustomHeading: Story = {
   render: (props) => (
-    <KeyValue {...props} data={data} keyTitle="Key" valueTitle="Value" />
+    <KeyValue
+      {...props}
+      data={DATA}
+      heading={{ key: "Data Key", value: "Data Value" }}
+    />
   ),
 };

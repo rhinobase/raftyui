@@ -1,25 +1,36 @@
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { type ElementRef, type ReactNode, forwardRef } from "react";
+import { type ReactNode, forwardRef } from "react";
 import { Table, TableBody, TableHeader, Td, Th, Tr } from "../table";
 import { classNames } from "../utils";
 
-export type KeyValue = Omit<Table, "variant"> & {
-  data: Record<string, string | number | boolean>;
-  keyTitle?: ReactNode;
-  valueTitle?: ReactNode;
-};
-
-const iconClasses = {
+const keyValueBooleanIconClasses = {
   size: {
-    sm: "size-3",
-    md: "size-4",
-    lg: "size-5",
+    sm: "size-3 stroke-[2.5]",
+    md: "size-4 stroke-[2.5]",
+    lg: "size-5 stroke-[2.5]",
   },
 };
 
-export const KeyValue = forwardRef<ElementRef<typeof Table>, KeyValue>(
+export type KeyValue = Omit<Table, "variant"> & {
+  data: Record<string, string | number | boolean>;
+  heading?: {
+    key?: ReactNode;
+    value?: ReactNode;
+  };
+};
+
+export const KeyValue = forwardRef<HTMLTableElement, KeyValue>(
   (
-    { data, keyTitle, size = "md", valueTitle, className, ...props },
+    {
+      data,
+      heading = {
+        key: "Key",
+        value: "Value",
+      },
+      size = "md",
+      className,
+      ...props
+    },
     forwardedRef,
   ) => (
     <Table
@@ -33,8 +44,8 @@ export const KeyValue = forwardRef<ElementRef<typeof Table>, KeyValue>(
     >
       <TableHeader className="bg-secondary-100 dark:bg-secondary-800">
         <Tr>
-          <Th>{keyTitle}</Th>
-          <Th>{valueTitle}</Th>
+          <Th>{heading.key}</Th>
+          <Th>{heading.value}</Th>
         </Tr>
       </TableHeader>
       <TableBody className="dark:divide-secondary-700 divide-y">
@@ -47,9 +58,19 @@ export const KeyValue = forwardRef<ElementRef<typeof Table>, KeyValue>(
               <Td>
                 {isBoolean ? (
                   value ? (
-                    <CheckIcon className={iconClasses.size[size]} />
+                    <CheckIcon
+                      className={classNames(
+                        keyValueBooleanIconClasses.size[size],
+                        "stroke-green-500 dark:stroke-green-300",
+                      )}
+                    />
                   ) : (
-                    <XMarkIcon className={iconClasses.size[size]} />
+                    <XMarkIcon
+                      className={classNames(
+                        keyValueBooleanIconClasses.size[size],
+                        "stroke-red-500 dark:stroke-red-300",
+                      )}
+                    />
                   )
                 ) : (
                   value
