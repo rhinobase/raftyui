@@ -1,0 +1,35 @@
+{
+  "name": "@rafty/corp",
+  "description": "Rafty Corporation Components",
+  "version": "0.1.13",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "rafty-ui",
+    "corp",
+    "rafty-corp",
+    "rafty",
+    "design-system",
+    "tailwind",
+    "tailwindcss",
+    "tailwind-css"
+  ],
+  "homepage": "https://rafty.rhinobase.io/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhinobase/raftyui.git",
+    "directory": "packages/corp"
+  },
+  "bugs": {
+    "url": "https://github.com/rhinobase/raftyui/issues"
+  },
+  "sideEffects": false,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "types": "./index.esm.d.ts"
+}

@@ -5,6 +5,10 @@
       "name": "ui:                  anything ui specific"
     },
     {
+      "value": "corp",
+      "name": "corp:                anything corp specific"
+    },
+    {
       "value": "blocks",
       "name": "blocks:              anything blocks specific"
     },
