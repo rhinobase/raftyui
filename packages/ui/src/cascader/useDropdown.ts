@@ -1,16 +1,18 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useBoolean } from "../hooks";
 
-export const useDropdown = (dropdownRef: React.RefObject<HTMLDivElement>) => {
-  const [visible, setVisible] = useState(false);
+export const useDropdown = (dropdownRef: React.RefObject<HTMLElement>) => {
+  const [isDropdownVisible, toggleDropdownVisible] = useBoolean();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
       )
-        setVisible(false);
+        toggleDropdownVisible(false);
     };
 
     document.addEventListener("click", onClickOutside);
@@ -19,8 +21,5 @@ export const useDropdown = (dropdownRef: React.RefObject<HTMLDivElement>) => {
     };
   }, [dropdownRef]);
 
-  const showDropdownMenu = useCallback(() => setVisible(true), []);
-  const hideDropdownMenu = useCallback(() => setVisible(false), []);
-
-  return { visible, showDropdownMenu, hideDropdownMenu };
+  return { isDropdownVisible, toggleDropdownVisible };
 };

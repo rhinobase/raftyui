@@ -1,17 +1,42 @@
-import type { FieldNames, ItemType, NormalizeItem } from "./Cascader";
+export type ValueType = string | number;
+
+export type FieldNames = {
+  value: ValueType;
+  label: string;
+  children: string;
+};
+
+export interface ItemType {
+  value: ValueType;
+  label: string;
+  disabled?: boolean;
+  children?: ItemType[];
+}
+
+export interface NormalizeItem extends ItemType {
+  value: string;
+  label: string;
+  children?: NormalizeItem[];
+}
 
 export const useNormalizedItems = (fieldNames: FieldNames) => {
   const normalizeItem = (item: ItemType): NormalizeItem => {
-    const { value, label, children } = fieldNames;
+    // @ts-ignore
+    const value = item[fieldNames.value];
+    // @ts-ignore
+    const label = item[fieldNames.label];
+    // @ts-ignore
+    const children = item[fieldNames.children];
+
     return {
       ...item,
-      value: item[value as keyof ItemType] as string,
-      label: item[label as keyof ItemType] as string,
-      children: item[children as keyof ItemType] as NormalizeItem[],
+      value,
+      label,
+      children,
     };
   };
 
-  const getSelectedItems = (items: ItemType[], selectedValue: string) => {
+  const getSelectedItems = (items: ItemType[], selectedValue: ValueType) => {
     let selectedItems: ItemType[] = [];
     const search = (items: ItemType[], ref: ItemType[] = []) => {
       for (const item of items) {
