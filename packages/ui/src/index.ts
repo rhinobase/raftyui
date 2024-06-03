@@ -49,6 +49,7 @@ export * from "./qr-code";
 export * from "./radio";
 export * from "./range-picker";
 export * from "./rating";
+export * from "./reorderable-list";
 export * from "./scrollarea";
 export * from "./search-field";
 export * from "./segmented-control";
