@@ -2,22 +2,18 @@
 import { Progress as ArkProgress } from "@ark-ui/react";
 import { type ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
-import {
-  type Progress,
-  progressClasses,
-  progressTextClasses,
-} from "./Progress";
+import { type Progress, ProgressValue, progressClasses } from "./Progress";
 
 const sizeStyle = {
   size: {
-    sm: 30,
-    md: 40,
-    lg: 50,
+    sm: "30px",
+    md: "40px",
+    lg: "50px",
   },
   thickness: {
-    sm: 3,
-    md: 4,
-    lg: 5,
+    sm: "3px",
+    md: "4px",
+    lg: "5px",
   },
 };
 
@@ -60,7 +56,7 @@ export const CircularProgress = forwardRef<
           }
         />
       </ArkProgress.Circle>
-      <ArkProgress.ValueText className={progressTextClasses({ size })} />
+      <ProgressValue size={size} />
     </ArkProgress.Root>
   ),
 );

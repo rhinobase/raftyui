@@ -1,11 +1,11 @@
 "use client";
-import { Progress as ArkProgress } from "@ark-ui/react";
-import { cva } from "class-variance-authority";
 import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
+  Progress as ArkProgress,
+  type ProgressRootProps,
+  useProgressContext,
+} from "@ark-ui/react";
+import { cva } from "class-variance-authority";
+import { type ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 
 export const progressClasses = cva("flex w-full items-center flex-col", {
@@ -22,7 +22,7 @@ export const progressClasses = cva("flex w-full items-center flex-col", {
 });
 
 export const progressTrackClasses = cva(
-  "bg-secondary-100 dark:bg-secondary-700 rounded-lg w-full",
+  "bg-secondary-200 dark:bg-secondary-700 w-full",
   {
     variants: {
       size: {
@@ -37,7 +37,7 @@ export const progressTrackClasses = cva(
   },
 );
 
-export const progressIndicatorClasses = cva("h-full rounded-lg", {
+export const progressIndicatorClasses = cva("h-full", {
   variants: {
     colorScheme: {
       error: "bg-red-500 dark:bg-red-300",
@@ -52,27 +52,7 @@ export const progressIndicatorClasses = cva("h-full rounded-lg", {
   },
 });
 
-export const progressTextClasses = cva(
-  "text-secondary-500 dark:text-secondary-400",
-  {
-    variants: {
-      size: {
-        sm: "text-xs",
-        md: "text-sm",
-        lg: "text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
-
-// Progress Component
-export type Progress = Omit<
-  ComponentPropsWithoutRef<typeof ArkProgress.Root>,
-  "orientation"
-> & {
+export type Progress = Omit<ProgressRootProps, "orientation"> & {
   size?: "sm" | "md" | "lg";
   colorScheme?: "error" | "warning" | "primary" | "success" | "secondary";
 };
@@ -95,8 +75,35 @@ export const Progress = forwardRef<
           className={progressIndicatorClasses({ colorScheme })}
         />
       </ArkProgress.Track>
-      <ArkProgress.ValueText className={progressTextClasses({ size })} />
+      <ProgressValue size={size} />
     </ArkProgress.Root>
   ),
 );
 Progress.displayName = "Progress";
+
+const progressTextClasses = cva("text-secondary-600 dark:text-secondary-400", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export type ProgressValue = {
+  size: "sm" | "md" | "lg";
+};
+
+export function ProgressValue(props: ProgressValue) {
+  const { value } = useProgressContext();
+
+  return (
+    <ArkProgress.ValueText asChild>
+      <p className={progressTextClasses({ size: props.size })}>{value}%</p>
+    </ArkProgress.ValueText>
+  );
+}
