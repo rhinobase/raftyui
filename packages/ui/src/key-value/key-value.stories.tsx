@@ -46,7 +46,7 @@ const data = {
   address_state: "CA",
   address_zip: "12345",
   company: "Doe Industries",
-  dkddlele: "ieke",
+  dkddlele: true,
 };
 export const Default: Story = {
   render: (props) => (
