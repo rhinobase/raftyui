@@ -17,7 +17,6 @@
         "tsConfig": "packages/corp/tsconfig.lib.json",
         "project": "packages/corp/package.json",
         "entryFile": "packages/corp/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "rollup.config.js",
         "compiler": "swc",
         "assets": [

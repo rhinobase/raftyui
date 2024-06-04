@@ -35,9 +35,14 @@
     "class-variance-authority": "^0.7.0",
     "country-flag-icons": "^1.5.11",
     "country-list": "^2.3.0",
+    "fuse.js": "^7.0.0",
+    "libphonenumber-js": "^1.11.2",
     "qr.js": "^0.0.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-signature-canvas": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/country-list": "^2.1.4"
   },
   "peerDependencies": {
     "react": "^18.2.0"

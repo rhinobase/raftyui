@@ -3,14 +3,13 @@ import { InputField, InputGroup, LeftAddon } from "@rafty/ui";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
 import { getName } from "country-list";
 import Fuse from "fuse.js";
-import {
+import parsePhoneNumber, {
   type CountryCode,
   formatIncompletePhoneNumber,
   getCountries,
   getCountryCallingCode,
   getPhoneCode,
   isSupportedCountry,
-  parsePhoneNumberFromString,
 } from "libphonenumber-js";
 import { forwardRef, useEffect, useMemo, useState } from "react";
 import {
@@ -76,7 +75,7 @@ export const PhoneNumberInput = forwardRef<HTMLInputElement, PhoneNumberInput>(
         phoneNumber?.country,
       );
 
-      const parsed = parsePhoneNumberFromString(
+      const parsed = parsePhoneNumber(
         formattedPhoneNumber,
         phoneNumber?.country,
       );
@@ -176,7 +175,7 @@ export const PhoneNumberInput = forwardRef<HTMLInputElement, PhoneNumberInput>(
               phoneNumber?.country,
             );
 
-            const parsed = parsePhoneNumberFromString(
+            const parsed = parsePhoneNumber(
               formattedPhoneNumber,
               phoneNumber?.country,
             );
