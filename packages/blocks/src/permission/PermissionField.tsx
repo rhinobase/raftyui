@@ -7,15 +7,12 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 import {
-  Button,
   Combobox,
   ComboboxClearButton,
   ComboboxContent,
   ComboboxTrigger,
-  Label,
-  Switch,
-  eventHandler,
-} from "@rafty/ui";
+} from "@rafty/corp";
+import { Button, Label, Switch, eventHandler } from "@rafty/ui";
 import type { RefObject } from "react";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import type { PermissionFieldProps } from "../types";

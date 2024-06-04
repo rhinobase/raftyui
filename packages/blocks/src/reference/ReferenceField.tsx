@@ -5,7 +5,7 @@ import {
   ComboboxClearButton,
   ComboboxContent,
   ComboboxTrigger,
-} from "@rafty/ui";
+} from "@rafty/corp";
 import type { RefObject } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import type { ReferenceFieldProps } from "../types";

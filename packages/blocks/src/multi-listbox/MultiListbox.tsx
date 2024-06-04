@@ -1,5 +1,5 @@
 import { useThread } from "@fibr/react";
-import { Listbox } from "@rafty/ui";
+import { Listbox } from "@rafty/corp";
 import { Controller } from "react-hook-form";
 import type { MultiListboxProps } from "../types";
 import { FieldWrapper, TooltipWrapper } from "../utils";

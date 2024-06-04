@@ -5,7 +5,7 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
 export const buttonClasses = cva(
-  "[!hidden]:flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none outline-none [hidden]:hidden",
+  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none outline-none [hidden]:hidden",
   {
     variants: {
       colorScheme: {

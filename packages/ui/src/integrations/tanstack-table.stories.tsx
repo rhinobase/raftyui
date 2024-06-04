@@ -12,7 +12,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { PageJumper, Pagination, PaginationButtons } from "../pagination";
 import { Skeleton } from "../skeleton";
 import {
   Table,
@@ -192,7 +191,7 @@ function TanstackTable() {
               </Tr>
             ))}
       </TableBody>
-      <TableFooter>
+      {/* <TableFooter>
         <Tr>
           <Td colSpan={noOfColumns} className="p-0">
             <Pagination
@@ -216,7 +215,7 @@ function TanstackTable() {
             </Pagination>
           </Td>
         </Tr>
-      </TableFooter>
+      </TableFooter> */}
     </Table>
   );
 }
