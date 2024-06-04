@@ -5,7 +5,7 @@ const meta: Meta<typeof ReorderableList> = {
   title: "Components / ReorderableList",
   args: {
     size: "md",
-    hidden: false,
+    isHidden: false,
   },
   argTypes: {
     size: {
@@ -18,8 +18,10 @@ const meta: Meta<typeof ReorderableList> = {
 export default meta;
 type Story = StoryObj<typeof ReorderableList>;
 
-const data = ["The first card", "The second card", "And me!"];
+const DATA = ["First item", "Second item", "Third item"];
 
 export const Default: Story = {
-  render: (props) => <ReorderableList {...props} data={data} />,
+  render: (props) => (
+    <ReorderableList {...props} data={DATA} onOrderChange={console.log} />
+  ),
 };

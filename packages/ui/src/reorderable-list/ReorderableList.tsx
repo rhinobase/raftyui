@@ -11,8 +11,17 @@ import { List, ListItem } from "../list";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
+const reorderableListClasses = cva("w-full select-none", {
+  variants: {
+    hidden: {
+      true: "hidden",
+      false: "block",
+    },
+  },
+});
+
 const reorderableListItemClasses = cva(
-  "hover:bg-secondary-50 ring-primary-400 outline-none focus-visible:ring-1 dark:hover:bg-secondary-800",
+  "outline-none focus-visible:ring-2 ring-primary-300 dark:ring-primary-100",
   {
     variants: {
       size: {
@@ -21,87 +30,90 @@ const reorderableListItemClasses = cva(
         lg: "px-2.5 text-lg rounded-md",
       },
       dragging: {
-        true: "bg-secondary-50 dark:bg-secondary-800",
+        true: "bg-white dark:bg-secondary-950",
         false: "",
       },
     },
   },
 );
 
-const reorderableListClasses = cva("w-full select-none", {
-  variants: {
-    hidden: {
-      true: "hidden",
-      false: "",
-    },
-  },
-});
-
 export type ReorderableList = Partial<DragDropContext> & {
   data: string[];
   onOrderChange?: (items: string[]) => void;
   size?: "sm" | "md" | "lg";
-  hidden?: ValueOrFunction;
+  isHidden?: ValueOrFunction;
 } & Pick<List, "className">;
 
 export const ReorderableList = forwardRef<
   ElementRef<typeof DragDropContext>,
   ReorderableList
->(({ data, onOrderChange, size = "md", className, ...props }, forwardedRef) => {
-  const [updatedData, setUpdatedData] = useState(data);
+>(
+  (
+    { data, onOrderChange, size = "md", className, isHidden = false, ...props },
+    forwardedRef,
+  ) => {
+    const [updatedData, setUpdatedData] = useState(data);
 
-  const isHidden = getValue(props.hidden);
+    const hidden = getValue(isHidden);
 
-  const handleOnDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
+    const handleOnDragEnd = (result: DropResult) => {
+      if (!result.destination) return;
 
-    const items = [...updatedData];
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+      const items = updatedData;
+      const [reorderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index, 0, reorderedItem);
 
-    setUpdatedData(items);
-    onOrderChange?.(items);
-  };
+      setUpdatedData(items);
+      onOrderChange?.(items);
+    };
 
-  return (
-    <DragDropContext {...props} onDragEnd={handleOnDragEnd} ref={forwardedRef}>
-      <Droppable droppableId="droppable">
-        {(provided) => (
-          <List
-            {...provided.droppableProps}
-            className={classNames(
-              reorderableListClasses({ hidden: isHidden }),
-              className,
-            )}
-            ref={provided.innerRef}
-          >
-            {updatedData.map((value, index) => (
-              <Draggable
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                key={index}
-                draggableId={String(index)}
-                index={index}
-              >
-                {(provided, snapshot) => (
-                  <ListItem
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    className={reorderableListItemClasses({
-                      size,
-                      dragging: snapshot.isDragging,
-                    })}
-                    ref={provided.innerRef}
-                  >
-                    {value}
-                  </ListItem>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </List>
-        )}
-      </Droppable>
-    </DragDropContext>
-  );
-});
+    return (
+      <DragDropContext
+        {...props}
+        onDragEnd={handleOnDragEnd}
+        ref={forwardedRef}
+      >
+        <Droppable droppableId="droppable" direction="vertical">
+          {({ droppableProps, innerRef, placeholder }) => (
+            <List
+              {...droppableProps}
+              className={classNames(
+                reorderableListClasses({ hidden }),
+                className,
+              )}
+              ref={innerRef}
+            >
+              {updatedData.map((value, index) => (
+                <Draggable
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  key={index}
+                  draggableId={String(index)}
+                  index={index}
+                >
+                  {(
+                    { dragHandleProps, draggableProps, innerRef },
+                    { isDragging },
+                  ) => (
+                    <ListItem
+                      {...draggableProps}
+                      {...dragHandleProps}
+                      className={reorderableListItemClasses({
+                        size,
+                        dragging: isDragging,
+                      })}
+                      ref={innerRef}
+                    >
+                      {value}
+                    </ListItem>
+                  )}
+                </Draggable>
+              ))}
+              {placeholder}
+            </List>
+          )}
+        </Droppable>
+      </DragDropContext>
+    );
+  },
+);
 ReorderableList.displayName = "ReorderableList";
