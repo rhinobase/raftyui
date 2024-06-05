@@ -24,7 +24,7 @@ export const inputFieldClasses = cva(
         true: "",
         false: "",
       },
-      readonly: {
+      readOnly: {
         true: "",
         false: "",
       },
@@ -48,7 +48,7 @@ export const inputFieldClasses = cva(
       {
         variant: "solid",
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className: "bg-secondary-50 dark:bg-secondary-900",
       },
       {
@@ -66,7 +66,7 @@ export const inputFieldClasses = cva(
       },
       {
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className:
           "focus:border-primary-500 dark:focus:border-primary-300 focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
       },
@@ -184,7 +184,6 @@ export const inputFieldClasses = cva(
   },
 );
 
-// Input Field
 export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "solid" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
@@ -197,8 +196,12 @@ export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(
-  (
+  function InputField(
     {
+      name,
+      disabled,
+      readOnly,
+      required,
       className,
       variant = "outline",
       size = "md",
@@ -211,27 +214,13 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
       isLoading: false,
       isReadOnly: false,
       isRequired: false,
     };
-
-    const name = props.name || fieldControlContext.name;
-    const disabled =
-      getValue(isDisabled) ||
-      props.disabled ||
-      fieldControlContext.isDisabled ||
-      getValue(isLoading) ||
-      fieldControlContext.isLoading;
-
-    const invalid = getValue(isInvalid) || fieldControlContext.isInvalid;
-    const readonly =
-      getValue(isReadOnly) || props.readOnly || fieldControlContext.isReadOnly;
-    const required =
-      getValue(isRequired) || props.required || fieldControlContext.isRequired;
 
     const inputGroupContext = useInputGroupContext() ?? {
       isLeftAddon: false,
@@ -241,34 +230,46 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       size,
     };
 
-    return (
-      <input
-        {...props}
-        name={name}
-        disabled={disabled}
-        readOnly={readonly}
-        required={required}
-        className={
-          isUnstyled
-            ? className
-            : classNames(
-                inputFieldClasses({
-                  size: inputGroupContext.size,
-                  variant,
-                  disabled,
-                  readonly,
-                  invalid,
-                  isLeftAddon: inputGroupContext.isLeftAddon,
-                  isRightAddon: inputGroupContext.isRightAddon,
-                  isPrefix: inputGroupContext.isPrefix,
-                  isSuffix: inputGroupContext.isSuffix,
-                }),
-                className,
-              )
-        }
-        ref={forwardedRef}
-      />
-    );
+    const _name = name || fieldControlContext.name;
+    const _disabled =
+      getValue(isDisabled) ||
+      disabled ||
+      fieldControlContext.isDisabled ||
+      getValue(isLoading) ||
+      fieldControlContext.isLoading;
+    const _invalid = getValue(isInvalid) || fieldControlContext.isInvalid;
+    const _readOnly =
+      getValue(isReadOnly) || readOnly || fieldControlContext.isReadOnly;
+    const _required =
+      getValue(isRequired) || required || fieldControlContext.isRequired;
+
+    const _className = isUnstyled
+      ? className
+      : classNames(
+          inputFieldClasses({
+            size: inputGroupContext.size,
+            variant,
+            disabled: _disabled,
+            readOnly: _readOnly,
+            invalid: _invalid,
+            isLeftAddon: inputGroupContext.isLeftAddon,
+            isRightAddon: inputGroupContext.isRightAddon,
+            isPrefix: inputGroupContext.isPrefix,
+            isSuffix: inputGroupContext.isSuffix,
+          }),
+          className,
+        );
+
+    const inputProps = {
+      ...props,
+      name: _name,
+      disabled: _disabled,
+      readOnly: _readOnly,
+      required: _required,
+      className: _className,
+      ref: forwardedRef,
+    };
+
+    return <input {...inputProps} />;
   },
 );
-InputField.displayName = "InputField";
