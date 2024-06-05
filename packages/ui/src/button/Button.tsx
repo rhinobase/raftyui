@@ -1,11 +1,13 @@
 import { cva } from "class-variance-authority";
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import { type ButtonHTMLAttributes, cloneElement, forwardRef } from "react";
 import { Spinner } from "../spinner";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
+type SizeType = "sm" | "md" | "lg" | "icon" | "fab";
+
 export const buttonClasses = cva(
-  "flex whitespace-nowrap items-center justify-center font-semibold h-max transition-all border select-none outline-none [hidden]:hidden",
+  "whitespace-nowrap font-semibold h-max transition-all border select-none outline-none",
   {
     variants: {
       colorScheme: {
@@ -28,12 +30,19 @@ export const buttonClasses = cva(
       },
       loading: {
         true: "cursor-wait",
+        false: "",
       },
       disabled: {
         true: "cursor-not-allowed",
+        false: "",
       },
       active: {
         true: "",
+        false: "",
+      },
+      hidden: {
+        true: "hidden",
+        false: "flex items-center justify-center",
       },
     },
     compoundVariants: [
@@ -44,12 +53,6 @@ export const buttonClasses = cva(
       {
         size: ["md", "lg", "icon"],
         className: "rounded-md",
-      },
-      {
-        colorScheme: "secondary",
-        disabled: false,
-        loading: false,
-        className: "text-secondary-600 dark:text-secondary-200",
       },
       {
         colorScheme: ["primary", "error", "success"],
@@ -73,20 +76,36 @@ export const buttonClasses = cva(
         active: false,
         className: "bg-transparent",
       },
+      {
+        disabled: true,
+        colorScheme: ["primary", "success", "error"],
+        variant: "solid",
+        className: "text-secondary-100 dark:text-secondary-800",
+      },
+      {
+        loading: true,
+        colorScheme: ["primary", "success", "error"],
+        variant: "solid",
+        className: "text-secondary-100 dark:text-secondary-800",
+      },
+      {
+        colorScheme: "secondary",
+        disabled: false,
+        loading: false,
+        className: "text-secondary-600 dark:text-secondary-200",
+      },
       // Primary Solid
       {
         disabled: true,
         colorScheme: "primary",
         variant: "solid",
-        className:
-          "bg-primary-500/75 text-secondary-200 dark:bg-primary-300/80 dark:text-secondary-600",
+        className: "bg-primary-500/75 dark:bg-primary-300/80",
       },
       {
         loading: true,
         colorScheme: "primary",
         variant: "solid",
-        className:
-          "bg-primary-500/75 text-secondary-200 dark:bg-primary-300/80 dark:text-secondary-600",
+        className: "bg-primary-500/75 dark:bg-primary-300/80",
       },
       {
         active: true,
@@ -109,14 +128,14 @@ export const buttonClasses = cva(
         colorScheme: "secondary",
         variant: "solid",
         className:
-          "bg-secondary-300/80 text-secondary-400/90 dark:bg-secondary-500 dark:text-secondary-300/70",
+          "bg-secondary-300/80 dark:bg-secondary-500 text-secondary-500 dark:text-secondary-300",
       },
       {
         loading: true,
         colorScheme: "secondary",
         variant: "solid",
         className:
-          "bg-secondary-300/80 text-secondary-400/90 dark:bg-secondary-500 dark:text-secondary-300/70",
+          "bg-secondary-300/80 dark:bg-secondary-500 text-secondary-500 dark:text-secondary-300",
       },
       {
         active: true,
@@ -138,15 +157,13 @@ export const buttonClasses = cva(
         disabled: true,
         colorScheme: "error",
         variant: "solid",
-        className:
-          "bg-red-500/75 text-secondary-200 dark:bg-red-300/80 dark:text-secondary-600",
+        className: "bg-red-500/75 dark:bg-red-300/80",
       },
       {
         loading: true,
         colorScheme: "error",
         variant: "solid",
-        className:
-          "bg-red-500/75 text-secondary-200 dark:bg-red-300/80 dark:text-secondary-600",
+        className: "bg-red-500/75 dark:bg-red-300/80",
       },
       {
         active: true,
@@ -168,15 +185,13 @@ export const buttonClasses = cva(
         disabled: true,
         colorScheme: "success",
         variant: "solid",
-        className:
-          "bg-green-500/75 text-secondary-200 dark:bg-green-300/80 dark:text-secondary-600",
+        className: "bg-green-500/75 dark:bg-green-300/80",
       },
       {
         loading: true,
         colorScheme: "success",
         variant: "solid",
-        className:
-          "bg-green-500/75 text-secondary-200 dark:bg-green-300/80 dark:text-secondary-600",
+        className: "bg-green-500/75 dark:bg-green-300/80",
       },
       {
         active: true,
@@ -198,22 +213,20 @@ export const buttonClasses = cva(
         disabled: true,
         colorScheme: "primary",
         variant: "outline",
-        className:
-          "border-primary-400/70 text-primary-400/70 dark:border-primary-200/70 dark:text-primary-200/70",
+        className: "border-primary-400/70 dark:border-primary-200/70",
       },
       {
         loading: true,
         colorScheme: "primary",
         variant: "outline",
-        className:
-          "border-primary-400/70 text-primary-400/70 dark:border-primary-200/70 dark:text-primary-200/70",
+        className: "border-primary-400/70 dark:border-primary-200/70",
       },
       {
         active: true,
         colorScheme: "primary",
         variant: "outline",
         className:
-          "border-primary-500 dark:border-primary-300 text-primary-500 dark:text-primary-300 bg-primary-200/70 dark:bg-primary-400/20",
+          "border-primary-500 dark:border-primary-300 bg-primary-200/70 dark:bg-primary-400/20",
       },
       {
         disabled: false,
@@ -222,22 +235,20 @@ export const buttonClasses = cva(
         colorScheme: "primary",
         variant: "outline",
         className:
-          "border-primary-500/90 dark:border-primary-300 text-primary-500 dark:text-primary-300 hover:bg-primary-200/30 dark:hover:bg-primary-400/20",
+          "border-primary-500/90 dark:border-primary-300 hover:bg-primary-200/30 dark:hover:bg-primary-400/20",
       },
       // Secondary Outline
       {
         disabled: true,
         colorScheme: "secondary",
         variant: "outline",
-        className:
-          "border-secondary-300/80 text-secondary-400/90 dark:border-secondary-500/80 dark:text-secondary-400/70",
+        className: "border-secondary-300/80 dark:border-secondary-500/80",
       },
       {
         loading: true,
         colorScheme: "secondary",
         variant: "outline",
-        className:
-          "border-secondary-300/80 text-secondary-400/90 dark:border-secondary-500/80 dark:text-secondary-400/70",
+        className: "border-secondary-300/80 dark:border-secondary-500/80",
       },
       {
         active: true,
@@ -260,22 +271,20 @@ export const buttonClasses = cva(
         disabled: true,
         colorScheme: "error",
         variant: "outline",
-        className:
-          "border-red-300/75 text-red-400/70 dark:border-red-200/50 dark:text-red-200/60",
+        className: "border-red-300/75 dark:border-red-200/50",
       },
       {
         loading: true,
         colorScheme: "error",
         variant: "outline",
-        className:
-          "border-red-300/75 text-red-400/70 dark:border-red-200/50 dark:text-red-200/60",
+        className: "border-red-300/75 dark:border-red-200/50",
       },
       {
         active: true,
         colorScheme: "error",
         variant: "outline",
         className:
-          "border-red-500 dark:border-red-300/80 text-red-500 dark:text-red-300 bg-red-200/60 dark:bg-red-300/30",
+          "border-red-500 dark:border-red-300/80 bg-red-200/60 dark:bg-red-300/30",
       },
       {
         disabled: false,
@@ -284,29 +293,27 @@ export const buttonClasses = cva(
         colorScheme: "error",
         variant: "outline",
         className:
-          "border-red-500 dark:border-red-300/80 text-red-500 dark:text-red-300 hover:bg-red-200/30 dark:hover:bg-red-300/10",
+          "border-red-500 dark:border-red-300/80 hover:bg-red-200/30 dark:hover:bg-red-300/10",
       },
       // Success Outline
       {
         disabled: true,
         colorScheme: "success",
         variant: "outline",
-        className:
-          "border-green-300/75 text-green-400/70 dark:border-green-200/50 dark:text-green-200/60",
+        className: "border-green-300/75 dark:border-green-200/50",
       },
       {
         loading: true,
         colorScheme: "success",
         variant: "outline",
-        className:
-          "border-green-300/75 text-green-400/70 dark:border-green-200/50 dark:text-green-200/60",
+        className: "border-green-300/75 dark:border-green-200/50",
       },
       {
         active: true,
         colorScheme: "success",
         variant: "outline",
         className:
-          "border-green-500 dark:border-green-300/80 text-green-500 dark:text-green-300 bg-green-200/60 dark:bg-green-300/30",
+          "border-green-500 dark:border-green-300/80 bg-green-200/60 dark:bg-green-300/30",
       },
       {
         disabled: false,
@@ -315,27 +322,33 @@ export const buttonClasses = cva(
         colorScheme: "success",
         variant: "outline",
         className:
-          "border-green-500 dark:border-green-300/80 text-green-500 dark:text-green-300 hover:bg-green-200/30 dark:hover:bg-green-300/10",
+          "border-green-500 dark:border-green-300/80 hover:bg-green-200/30 dark:hover:bg-green-300/10",
       },
       // Primary Ghost
       {
         disabled: true,
         colorScheme: "primary",
-        variant: "ghost",
-        className: "text-primary-400/70 dark:text-primary-300/60",
+        variant: ["ghost", "outline"],
+        className: "text-primary-400/80 dark:text-primary-300/60",
       },
       {
         loading: true,
         colorScheme: "primary",
-        variant: "ghost",
-        className: "text-primary-400/70 dark:text-primary-300/60",
+        variant: ["ghost", "outline"],
+        className: "text-primary-400/80 dark:text-primary-300/60",
+      },
+      {
+        colorScheme: "primary",
+        variant: ["ghost", "outline"],
+        disabled: false,
+        loading: false,
+        className: "text-primary-500 dark:text-primary-300",
       },
       {
         active: true,
         colorScheme: "primary",
         variant: "ghost",
-        className:
-          "text-primary-500 dark:text-primary-300 bg-primary-200/70 dark:bg-primary-400/20",
+        className: "bg-primary-200/70 dark:bg-primary-400/20",
       },
       {
         disabled: false,
@@ -343,21 +356,20 @@ export const buttonClasses = cva(
         active: false,
         colorScheme: "primary",
         variant: "ghost",
-        className:
-          "text-primary-500 dark:text-primary-300 hover:bg-primary-200/30 dark:hover:bg-primary-400/10",
+        className: "hover:bg-primary-200/30 dark:hover:bg-primary-400/10",
       },
       // Secondary Ghost
       {
         disabled: true,
         colorScheme: "secondary",
-        variant: "ghost",
-        className: "text-secondary-400/80 dark:text-secondary-500",
+        variant: ["ghost", "outline"],
+        className: "text-secondary-400/80 dark:text-secondary-300/60",
       },
       {
         loading: true,
         colorScheme: "secondary",
-        variant: "ghost",
-        className: "text-secondary-400/80 dark:text-secondary-500",
+        variant: ["ghost", "outline"],
+        className: "text-secondary-400/80 dark:text-secondary-300/60",
       },
       {
         active: true,
@@ -377,21 +389,27 @@ export const buttonClasses = cva(
       {
         disabled: true,
         colorScheme: "error",
-        variant: "ghost",
+        variant: ["ghost", "outline"],
         className: "text-red-400/80 dark:text-red-300/60",
       },
       {
         loading: true,
         colorScheme: "error",
-        variant: "ghost",
+        variant: ["ghost", "outline"],
         className: "text-red-400/80 dark:text-red-300/60",
+      },
+      {
+        colorScheme: "error",
+        variant: ["ghost", "outline"],
+        disabled: false,
+        loading: false,
+        className: "text-red-500 dark:text-red-300",
       },
       {
         active: true,
         colorScheme: "error",
         variant: "ghost",
-        className:
-          "text-red-500 dark:text-red-300 bg-red-200/60 dark:bg-red-300/30",
+        className: "bg-red-200/60 dark:bg-red-300/30",
       },
       {
         disabled: false,
@@ -399,28 +417,33 @@ export const buttonClasses = cva(
         active: false,
         colorScheme: "error",
         variant: "ghost",
-        className:
-          "text-red-500 dark:text-red-300 hover:bg-red-200/40 dark:hover:bg-red-300/10",
+        className: "hover:bg-red-200/40 dark:hover:bg-red-300/10",
       },
       // Success Ghost
       {
         disabled: true,
         colorScheme: "success",
-        variant: "ghost",
+        variant: ["ghost", "outline"],
         className: "text-green-400/80 dark:text-green-300/60",
       },
       {
         loading: true,
         colorScheme: "success",
-        variant: "ghost",
+        variant: ["ghost", "outline"],
         className: "text-green-400/80 dark:text-green-300/60",
+      },
+      {
+        colorScheme: "success",
+        variant: ["ghost", "outline"],
+        disabled: false,
+        loading: false,
+        className: "text-green-500 dark:text-green-300",
       },
       {
         active: true,
         colorScheme: "success",
         variant: "ghost",
-        className:
-          "text-green-500 dark:text-green-300 bg-green-200/60 dark:bg-green-300/30",
+        className: "bg-green-200/60 dark:bg-green-300/30",
       },
       {
         disabled: false,
@@ -428,8 +451,7 @@ export const buttonClasses = cva(
         active: false,
         colorScheme: "success",
         variant: "ghost",
-        className:
-          "text-green-500 dark:text-green-300 hover:bg-green-200/40 dark:hover:bg-green-300/10",
+        className: "hover:bg-green-200/40 dark:hover:bg-green-300/10",
       },
       {
         disabled: false,
@@ -467,7 +489,27 @@ export const buttonClasses = cva(
   },
 );
 
-export type Button = {
+const buttonLoadingIconClasses = {
+  size: {
+    sm: "size-[15px] min-h-[15px] min-w-[15px]",
+    md: "size-[17px] min-h-[17px] min-w-[17px]",
+    lg: "size-[20px] min-h-[20px] min-w-[20px]",
+    icon: "size-[17px] min-h-[17px] min-w-[17px]",
+    fab: "size-[17px] min-h-[17px] min-w-[17px]",
+  },
+};
+
+const buttonLeftAndRightIconStyle = {
+  size: {
+    sm: 4,
+    md: 6,
+    lg: 8,
+    icon: 0,
+    fab: 0,
+  },
+};
+
+export type Button = ButtonHTMLAttributes<HTMLButtonElement> & {
   /* Left aligned icon*/
   leftIcon?: JSX.Element;
   /* Right aligned icon */
@@ -476,80 +518,129 @@ export type Button = {
   isUnstyled?: boolean;
   colorScheme?: "primary" | "secondary" | "error" | "success";
   variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg" | "icon" | "fab";
+  size?: SizeType;
   isLoading?: ValueOrFunction;
   isActive?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  isHidden?: ValueOrFunction;
+};
 
-export const Button = forwardRef<HTMLButtonElement, Button>(
-  (
-    {
-      isLoading,
-      isActive,
-      isDisabled,
-      colorScheme = "secondary",
-      variant = "solid",
-      size = "md",
-      loadingText,
-      isUnstyled = false,
-      className,
-      children,
-      leftIcon,
-      rightIcon,
-      type = "button",
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    // Buttons are **always** disabled if we're in a `loading` state
-    const loading = getValue(isLoading);
-    const disabled = props.disabled || getValue(isDisabled) || loading;
-
-    return (
-      <button
-        {...props}
-        type={type}
-        disabled={disabled}
-        className={
-          isUnstyled
-            ? className
-            : classNames(
-                buttonClasses({
-                  colorScheme,
-                  variant,
-                  size,
-                  disabled,
-                  loading,
-                  active: getValue(isActive),
-                }),
-                className,
-              )
-        }
-        ref={forwardedRef}
-      >
-        {isLoading ? (
-          <>
-            <Spinner inheritParent className="mr-2" size="sm" />
-            {loadingText ?? children}
-          </>
-        ) : (
-          <>
-            {leftIcon && (
-              <div className="mr-1 flex h-[20px] items-center justify-center">
-                {leftIcon}
-              </div>
-            )}
-            {children}
-            {rightIcon && (
-              <div className="ml-1 flex h-[20px] items-center justify-center">
-                {rightIcon}
-              </div>
-            )}
-          </>
-        )}
-      </button>
-    );
+export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
+  {
+    type = "button",
+    disabled,
+    hidden,
+    size = "md",
+    colorScheme = "secondary",
+    variant = "solid",
+    className,
+    children,
+    isLoading,
+    isActive,
+    isDisabled,
+    isHidden,
+    leftIcon,
+    rightIcon,
+    loadingText,
+    isUnstyled = false,
+    ...props
   },
-);
-Button.displayName = "Button";
+  forwardedRef,
+) {
+  // Buttons are **always** disabled if we're in a `loading` state
+  const _loading = getValue(isLoading);
+  const _disabled = disabled || getValue(isDisabled) || _loading;
+  const _hidden = hidden || getValue(isHidden);
+  const _active = getValue(isActive);
+  const _className = isUnstyled
+    ? className
+    : classNames(
+        buttonClasses({
+          colorScheme,
+          variant,
+          size,
+          disabled: _disabled,
+          loading: _loading,
+          active: _active,
+          hidden: _hidden,
+        }),
+        className,
+      );
+
+  const buttonProps = {
+    ...props,
+    type,
+    disabled: _disabled,
+    hidden: _hidden,
+    className: _className,
+    ref: forwardedRef,
+  };
+
+  return (
+    // biome-ignore lint/a11y/useButtonType: type is passes using buttonProps
+    <button {...buttonProps}>
+      <ChildrenRender
+        size={size}
+        loading={_loading}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+      >
+        {children}
+      </ChildrenRender>
+    </button>
+  );
+});
+
+type ChildrenRender = {
+  size: SizeType;
+  loading?: boolean;
+} & Pick<Button, "leftIcon" | "rightIcon" | "children" | "loadingText">;
+
+function ChildrenRender({
+  size,
+  loading,
+  loadingText,
+  leftIcon,
+  rightIcon,
+  children,
+}: ChildrenRender) {
+  const loadingIcon = (
+    <Spinner
+      inheritParent
+      className={buttonLoadingIconClasses.size[size]}
+      style={{ marginRight: buttonLeftAndRightIconStyle.size[size] }}
+    />
+  );
+
+  const _leftIcon =
+    leftIcon &&
+    cloneElement(leftIcon, {
+      style: { marginRight: buttonLeftAndRightIconStyle.size[size] },
+    });
+
+  const _rightIcon =
+    rightIcon &&
+    cloneElement(rightIcon, {
+      style: { marginLeft: buttonLeftAndRightIconStyle.size[size] },
+    });
+
+  if (size === "icon" || size === "fab") {
+    if (loading) return loadingIcon;
+    return children;
+  }
+  if (loading)
+    return (
+      <>
+        {loadingIcon}
+        {loadingText ?? children}
+        {_rightIcon}
+      </>
+    );
+  return (
+    <>
+      {_leftIcon}
+      {children}
+      {_rightIcon}
+    </>
+  );
+}
