@@ -146,35 +146,48 @@ export const Select = forwardRef<HTMLSelectElement, Select>(
       getValue(isRequired) || props.required || context.isRequired;
     const readonly = getValue(isReadOnly) || context.isReadOnly;
 
+    function Component(componentProps: {
+      className: SelectHTMLAttributes<HTMLSelectElement>["className"];
+    }) {
+      return (
+        <select
+          {...props}
+          name={field_name}
+          disabled={disabled || readonly}
+          required={required}
+          className={componentProps.className}
+          ref={forwardedRef}
+        >
+          {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
+          {children}
+        </select>
+      );
+    }
+
+    if (isUnstyled)
+      return (
+        <SelectProvider value={{ size }}>
+          <Component className={className} />
+        </SelectProvider>
+      );
+
     return (
       <SelectProvider value={{ size }}>
-        <div className="group relative flex w-max items-center">
-          <select
-            {...props}
-            name={field_name}
-            disabled={disabled || readonly}
-            required={required}
-            className={
-              isUnstyled
-                ? className
-                : classNames(
-                    selectClasses({
-                      size,
-                      variant,
-                      disabled,
-                      readonly,
-                    }),
-                    className,
-                  )
-            }
-            ref={forwardedRef}
-          >
-            {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
-            {children}
-          </select>
-          {!isUnstyled && (
-            <ChevronDownIcon className={triggerIconClasses({ size })} />
+        <div
+          className={classNames(
+            "group relative flex w-max items-center",
+            className,
           )}
+        >
+          <Component
+            className={selectClasses({
+              size,
+              variant,
+              disabled,
+              readonly,
+            })}
+          />
+          <ChevronDownIcon className={triggerIconClasses({ size })} />
         </div>
       </SelectProvider>
     );
