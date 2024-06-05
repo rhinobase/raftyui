@@ -1,5 +1,6 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import {
   Button,
   type ValueOrFunction,
@@ -16,34 +17,33 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { MdRefresh } from "react-icons/md";
 import type { ReactSignatureCanvasProps } from "react-signature-canvas";
 import SignatureCanvas from "react-signature-canvas";
 
 export const signatureClasses = cva(
-  "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded h-[200px] w-full bg-white dark:bg-secondary-800",
+  "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded-md h-[250px] w-full bg-white dark:bg-secondary-800",
   {
     variants: {
-      isDisabled: {
+      disabled: {
         true: "pointer-events-none bg-secondary-200 dark:bg-secondary-800 opacity-60",
         false: "",
       },
     },
     defaultVariants: {
-      isDisabled: false,
+      disabled: false,
     },
   },
 );
 
 export type Signature = Omit<ReactSignatureCanvasProps, "onEnd" | "onBegin"> & {
-  disabled?: ValueOrFunction;
   className?: HTMLAttributes<HTMLDivElement>["className"];
   onChange?: (value?: string) => void;
-  hidden?: ValueOrFunction;
   name?: string;
   value?: string;
   defaultValue?: string;
   instructions?: string;
+  isDisabled?: ValueOrFunction;
+  isHidden?: ValueOrFunction;
 };
 
 export const Signature = forwardRef<
@@ -52,8 +52,8 @@ export const Signature = forwardRef<
 >(
   (
     {
-      disabled = false,
-      hidden = false,
+      isDisabled = false,
+      isHidden = false,
       onChange,
       className,
       instructions = "Sign here",
@@ -67,8 +67,8 @@ export const Signature = forwardRef<
     const [isInput, toggleInput] = useBoolean(!(value ?? defaultValue));
     const ref = useRef<SignatureCanvas>(null);
 
-    const isDisabled = getValue(disabled);
-    const isHidden = getValue(hidden);
+    const disabled = getValue(isDisabled);
+    const hidden = getValue(isHidden);
 
     const clear = () => {
       if (ref.current) {
@@ -98,7 +98,8 @@ export const Signature = forwardRef<
       <div
         className={classNames(
           "relative w-full",
-          disabled && "cursor-not-allowed",
+          disabled && "pointer-events-none cursor-not-allowed",
+          className,
         )}
       >
         <SignatureCanvas
@@ -107,16 +108,18 @@ export const Signature = forwardRef<
           onEnd={handleChange}
           canvasProps={{
             id: name,
-            hidden: isHidden,
-            className: signatureClasses({ isDisabled, className }),
+            hidden,
+            "aria-disabled": disabled,
+            className:
+              "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded-md h-[250px] w-full bg-white dark:bg-secondary-800 aria-disabled:pointer-events-none aria-disabled:opacity-70",
           }}
           ref={mergeRefs(forwardedRef, ref)}
         />
         {isInput && (
           <span
-            hidden={isHidden}
+            hidden={hidden}
             className={classNames(
-              "dark:text-secondary-200 text-secondary-600 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer select-none text-xs font-medium",
+              "dark:text-secondary-200 text-secondary-600 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-sm font-medium",
               disabled && "hidden",
             )}
           >
@@ -124,23 +127,21 @@ export const Signature = forwardRef<
           </span>
         )}
         <div
-          aria-hidden={isHidden}
-          className="pointer-events-none absolute bottom-2 mx-3 flex w-[calc(100%-24px)] select-none aria-hidden:hidden"
+          aria-hidden={hidden}
+          className="pointer-events-none absolute bottom-3 flex w-full select-none px-3 aria-hidden:hidden"
         >
-          <XMarkIcon className="stroke-secondary-600 dark:stroke-secondary-200 size-4 stroke-2" />
-          <div className="border-secondary-300 dark:border-secondary-500 ml-1.5 w-full border-b-2" />
+          <XMarkIcon className="stroke-secondary-600 dark:stroke-secondary-200 size-4 stroke-[2.5]" />
+          <div className="border-secondary-600 dark:border-secondary-200 ml-1.5 w-full border-b" />
         </div>
         <Button
           size="icon"
           variant="ghost"
-          hidden={isHidden}
-          className={classNames(
-            "absolute right-2 top-2 rounded p-1",
-            disabled && "hidden",
-          )}
+          hidden={disabled || hidden}
+          className="absolute right-3 top-3 rounded p-1"
           onClick={clear}
+          title="Clear"
         >
-          <MdRefresh size={14} />
+          <ArrowPathIcon className="size-3.5 stroke-[2.5]" />
         </Button>
       </div>
     );
