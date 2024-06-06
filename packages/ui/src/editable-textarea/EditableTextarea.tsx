@@ -4,7 +4,7 @@ import { type ElementRef, forwardRef } from "react";
 import { EditableItem } from "../editable-text/EditableText";
 import { Textarea } from "../textarea";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 const editableTextareaPreviewClasses = {
   size: {
@@ -18,53 +18,49 @@ export type EditableTextarea = Omit<EditableRootProps, "activationMode"> & {
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
 };
 
 export const EditableTextarea = forwardRef<
   ElementRef<typeof Editable.Root>,
   EditableTextarea
->(
-  (
-    {
-      size = "md",
-      className,
-      isDisabled = false,
-      isReadOnly = false,
-      isLoading = false,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
-    const readOnly = props.readOnly || getValue(isReadOnly);
-
-    return (
-      <Editable.Root
-        {...props}
-        activationMode="dblclick"
-        readOnly={readOnly}
-        disabled={disabled}
-        className={classNames("w-full", className)}
-        ref={forwardedRef}
-      >
-        <Editable.Context>
-          {() => (
-            <EditableItem
-              size={size}
-              readOnly={readOnly}
-              disabled={disabled}
-              className="min-h-[80px] text-wrap"
-              editableTextareaPreviewClasses={editableTextareaPreviewClasses}
-            >
-              <Textarea size={size} />
-            </EditableItem>
-          )}
-        </Editable.Context>
-      </Editable.Root>
-    );
+>(function EditableTextarea(
+  {
+    size = "md",
+    className,
+    isDisabled = false,
+    isReadOnly = false,
+    isLoading = false,
+    ...props
   },
-);
+  forwardedRef,
+) {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
+  const readOnly = props.readOnly || getValue(isReadOnly);
 
-EditableTextarea.displayName = "EditableTextarea";
+  return (
+    <Editable.Root
+      {...props}
+      activationMode="dblclick"
+      readOnly={readOnly}
+      disabled={disabled}
+      className={classNames("w-full", className)}
+      ref={forwardedRef}
+    >
+      <Editable.Context>
+        {() => (
+          <EditableItem
+            size={size}
+            readOnly={readOnly}
+            disabled={disabled}
+            className="min-h-[80px] text-wrap"
+            editableTextareaPreviewClasses={editableTextareaPreviewClasses}
+          >
+            <Textarea size={size} />
+          </EditableItem>
+        )}
+      </Editable.Context>
+    </Editable.Root>
+  );
+});

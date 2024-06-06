@@ -4,7 +4,7 @@ import { type InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { useInputGroupContext } from "../input-group";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export const inputFieldClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-100 transition-all placeholder:text-secondary-400 dark:placeholder:text-secondary-500",
@@ -186,7 +186,7 @@ export const inputFieldClasses = cva(
 
 export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   isUnstyled?: boolean;
   isDisabled?: ValueOrFunction;
   isInvalid?: ValueOrFunction;

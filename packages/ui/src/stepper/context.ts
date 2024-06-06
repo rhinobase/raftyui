@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [StepperProvider, useStepperContext] =
   createContext<StepperContext>({
@@ -8,7 +8,7 @@ export const [StepperProvider, useStepperContext] =
   });
 
 export type StepperContext = {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly direction: "horizontal" | "vertical";
   readonly value: number;
   readonly isDisabled: boolean;

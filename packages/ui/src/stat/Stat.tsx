@@ -4,11 +4,13 @@ import { type HTMLAttributes, type SVGAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { type StatContext, StatProvider, useStatContext } from "./context";
 
-// Stat Component
 export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 
-export const Stat = forwardRef<HTMLDivElement, Stat>(
-  ({ children, className, type = "normal", ...props }, forwardedRef) => (
+export const Stat = forwardRef<HTMLDivElement, Stat>(function Stat(
+  { children, className, type = "normal", ...props },
+  forwardedRef,
+) {
+  return (
     <StatProvider value={{ type }}>
       <div
         {...props}
@@ -18,49 +20,47 @@ export const Stat = forwardRef<HTMLDivElement, Stat>(
         {children}
       </div>
     </StatProvider>
-  ),
-);
-Stat.displayName = "Stat";
+  );
+});
 
-// StatLabel Component
 export type StatLabel = HTMLAttributes<HTMLDivElement>;
 
 export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      className={classNames(
-        "text-secondary-600 dark:text-secondary-400 text-sm font-medium",
-        className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </div>
-  ),
+  function StatLabel({ children, className, ...props }, forwardedRef) {
+    return (
+      <div
+        {...props}
+        className={classNames(
+          "text-secondary-600 dark:text-secondary-400 text-sm font-medium",
+          className,
+        )}
+        ref={forwardedRef}
+      >
+        {children}
+      </div>
+    );
+  },
 );
-StatLabel.displayName = "StatLabel";
 
-// StatValue Component
 export type StatValue = HTMLAttributes<HTMLDivElement>;
 
 export const StatValue = forwardRef<HTMLDivElement, StatValue>(
-  ({ className, children, ...props }, forwardedRef) => (
-    <div
-      {...props}
-      className={classNames(
-        "text-2xl font-semibold text-black dark:text-white",
-        className,
-      )}
-      ref={forwardedRef}
-    >
-      {children}
-    </div>
-  ),
+  function StatValue({ className, children, ...props }, forwardedRef) {
+    return (
+      <div
+        {...props}
+        className={classNames(
+          "text-2xl font-semibold text-black dark:text-white",
+          className,
+        )}
+        ref={forwardedRef}
+      >
+        {children}
+      </div>
+    );
+  },
 );
-StatValue.displayName = "StatValue";
 
-// StatHelpText Component
 export const statHelpTextClasses = cva("flex items-center gap-1 text-sm", {
   variants: {
     type: {
@@ -79,7 +79,7 @@ export const statHelpTextClasses = cva("flex items-center gap-1 text-sm", {
 export type StatHelpText = HTMLAttributes<HTMLDivElement>;
 
 export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
-  ({ className, children, ...props }, forwardedRef) => {
+  function StatHelpText({ className, children, ...props }, forwardedRef) {
     const { type } = useStatContext();
 
     return (
@@ -94,9 +94,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
     );
   },
 );
-StatHelpText.displayName = "StatHelpText";
 
-// StatIcon Component
 type StatIcon = SVGAttributes<SVGSVGElement>;
 
 function StatIcon({ height = "14", width = "14", ...props }: StatIcon) {

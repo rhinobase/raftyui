@@ -8,15 +8,15 @@ import {
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control";
-import { Label } from "../label/Label";
+import { Label } from "../label";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 const checkboxClasses = cva(
   "border-secondary-400 dark:border-secondary-700 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border outline-none ring-offset-2 focus-visible:ring-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
   {
     variants: {
-      size: { sm: "size-4", md: "size-5", lg: "size-6" },
+      size: { sm: "size-4 p-px", md: "size-5 p-0.5", lg: "size-6 p-0.5" },
       disabled: {
         true: "cursor-not-allowed opacity-70",
         false: "",
@@ -25,22 +25,6 @@ const checkboxClasses = cva(
     defaultVariants: {
       size: "md",
       disabled: false,
-    },
-  },
-);
-
-const checkboxIndicatorClasses = cva(
-  "dark:text-secondary-700 hidden text-white group-data-[state=checked]:block",
-  {
-    variants: {
-      size: {
-        sm: "size-3 stroke-[4]",
-        md: "size-4 stroke-[3.5]",
-        lg: "size-5 stroke-[3]",
-      },
-    },
-    defaultVariants: {
-      size: "md",
     },
   },
 );
@@ -67,7 +51,7 @@ const checkboxLabelClasses = cva("", {
 export type Checkbox = ComponentPropsWithoutRef<
   typeof CheckboxPrimitive.Root
 > & {
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isRequired?: ValueOrFunction;
@@ -76,70 +60,69 @@ export type Checkbox = ComponentPropsWithoutRef<
 export const Checkbox = forwardRef<
   ElementRef<typeof CheckboxPrimitive.Root>,
   Checkbox
->(
-  (
-    {
-      className,
-      children,
-      size = "md",
-      isReadOnly,
-      isDisabled,
-      isRequired,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const fieldControlContext = useFieldControlContext() ?? {};
+>(function Checkbox(
+  {
+    className,
+    children,
+    size = "md",
+    isReadOnly,
+    isDisabled,
+    isRequired,
+    ...props
+  },
+  forwardedRef,
+) {
+  const fieldControlContext = useFieldControlContext() ?? {};
 
-    const name = props.name || fieldControlContext.name;
+  const name = props.name || fieldControlContext.name;
 
-    const disabled =
-      getValue(isDisabled) ||
-      fieldControlContext.isDisabled ||
-      props.disabled ||
-      fieldControlContext.isLoading;
+  const disabled =
+    getValue(isDisabled) ||
+    fieldControlContext.isDisabled ||
+    props.disabled ||
+    fieldControlContext.isLoading;
 
-    const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+  const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
 
-    const required =
-      getValue(isRequired) ?? props.required ?? fieldControlContext.isRequired;
+  const required =
+    getValue(isRequired) ?? props.required ?? fieldControlContext.isRequired;
 
-    const checkbox = (
-      <CheckboxPrimitive.Root
-        {...props}
-        name={name}
-        disabled={disabled || readonly}
-        required={required}
-        className={classNames(checkboxClasses({ size, disabled }), className)}
-        ref={forwardedRef}
-      >
-        <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
-          <CheckIcon className={checkboxIndicatorClasses({ size })} />
-          <MinusIcon className="text-secondary-600 dark:text-secondary-500 hidden group-data-[state=indeterminate]:block" />
-        </CheckboxPrimitive.Indicator>
-      </CheckboxPrimitive.Root>
+  const Component = (componentProps: Pick<Checkbox, "className">) => (
+    <CheckboxPrimitive.Root
+      {...props}
+      name={name}
+      disabled={disabled || readonly}
+      required={required}
+      className={componentProps.className}
+      ref={forwardedRef}
+    >
+      <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
+        <CheckIcon className="dark:text-secondary-700 hidden stroke-[3] text-white group-data-[state=checked]:block" />
+        <MinusIcon className="text-secondary-600 dark:text-secondary-400 hidden stroke-[3] group-data-[state=indeterminate]:block" />
+      </CheckboxPrimitive.Indicator>
+    </CheckboxPrimitive.Root>
+  );
+
+  if (children)
+    return (
+      <span className={classNames("flex items-start", className)}>
+        <Component className={checkboxClasses({ size, disabled })} />
+        <Label
+          htmlFor={props.id}
+          className={checkboxLabelClasses({
+            size,
+            disabled,
+          })}
+          isRequired={required}
+        >
+          {children}
+        </Label>
+      </span>
     );
 
-    if (children)
-      return (
-        <span className="flex items-start">
-          {checkbox}
-          {children && (
-            <Label
-              htmlFor={props.id}
-              className={checkboxLabelClasses({
-                size,
-                disabled,
-              })}
-              isRequired={required}
-            >
-              {children}
-            </Label>
-          )}
-        </span>
-      );
-
-    return checkbox;
-  },
-);
-Checkbox.displayName = "Checkbox";
+  return (
+    <Component
+      className={classNames(checkboxClasses({ size, disabled }), className)}
+    />
+  );
+});

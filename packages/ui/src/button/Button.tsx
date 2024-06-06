@@ -2,9 +2,9 @@ import { cva } from "class-variance-authority";
 import { type ButtonHTMLAttributes, cloneElement, forwardRef } from "react";
 import { Spinner } from "../spinner";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
-type SizeType = "sm" | "md" | "lg" | "icon" | "fab";
+type ButtonSize = SizeType<"icon" | "fab">;
 
 export const buttonClasses = cva(
   "whitespace-nowrap font-semibold h-max transition-all border select-none outline-none",
@@ -518,7 +518,7 @@ export type Button = ButtonHTMLAttributes<HTMLButtonElement> & {
   isUnstyled?: boolean;
   colorScheme?: "primary" | "secondary" | "error" | "success";
   variant?: "solid" | "outline" | "ghost";
-  size?: SizeType;
+  size?: ButtonSize;
   isLoading?: ValueOrFunction;
   isActive?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
@@ -528,8 +528,8 @@ export type Button = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   {
     type = "button",
-    disabled,
-    hidden,
+    disabled = false,
+    hidden = false,
     size = "md",
     colorScheme = "secondary",
     variant = "solid",
@@ -592,7 +592,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
 });
 
 type ChildrenRender = {
-  size: SizeType;
+  size: ButtonSize;
   loading?: boolean;
 } & Pick<Button, "leftIcon" | "rightIcon" | "children" | "loadingText">;
 

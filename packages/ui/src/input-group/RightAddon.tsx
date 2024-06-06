@@ -7,7 +7,7 @@ import { addonsCommonClasses } from "./utils";
 export type RightAddon = HTMLAttributes<HTMLDivElement>;
 
 export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
-  ({ className, ...props }, forwardedRef) => {
+  function RightAddon({ className, ...props }, forwardedRef) {
     const { size } = useInputGroupContext();
 
     return (
@@ -20,6 +20,7 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
           "bg-secondary-200 dark:bg-secondary-800",
           "border-y border-r",
           "border-secondary-300 dark:border-secondary-700",
+          // @ts-ignore
           addonsCommonClasses.size[size],
           className,
         )}
@@ -27,4 +28,3 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
     );
   },
 );
-RightAddon.displayName = "RightAddon";

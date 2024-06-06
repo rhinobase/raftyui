@@ -30,7 +30,7 @@ export type PercentageInput = Omit<
 };
 
 export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
-  (
+  function PercentageInput(
     {
       size,
       currencyCode = "USD",
@@ -41,7 +41,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     return (
       <InputGroup size={size} className={className}>
         <InputField
@@ -128,4 +128,3 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
     );
   },
 );
-PercentageInput.displayName = "PercentageInput";

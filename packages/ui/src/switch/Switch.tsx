@@ -9,7 +9,7 @@ import {
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export const switchClasses = cva(
   "cursor-pointer rounded-full border-2 border-transparent data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600 outline-none focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950 disabled:cursor-not-allowed disabled:opacity-50 transition-colors ease-in-out",
@@ -61,12 +61,11 @@ export const switchLabelClasses = cva("font-medium", {
   },
 });
 
-// Switch component
 export type Switch = Omit<
   ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
   "value" | "disabled" | "required"
 > & {
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isRequired?: ValueOrFunction;
@@ -75,58 +74,57 @@ export type Switch = Omit<
 export const Switch = forwardRef<
   ElementRef<typeof SwitchPrimitives.Root>,
   Switch
->(
-  (
-    {
-      className,
-      size = "md",
-      defaultChecked = false,
-      isReadOnly,
-      isDisabled,
-      isRequired,
-      children,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const context = useFieldControlContext() ?? {};
-
-    const name = props.name || context.name;
-    const disabled =
-      getValue(isDisabled) ||
-      context.isDisabled ||
-      getValue(isReadOnly) ||
-      context.isReadOnly;
-    const required = getValue(isRequired) || context.isRequired;
-
-    const switchComponent = (
-      <SwitchPrimitives.Root
-        {...props}
-        defaultChecked={defaultChecked}
-        name={name}
-        disabled={disabled}
-        required={required}
-        className={classNames(switchClasses({ size }), className)}
-        ref={forwardedRef}
-      >
-        <SwitchPrimitives.Thumb className={switchThumbClasses({ size })} />
-      </SwitchPrimitives.Root>
-    );
-
-    if (children)
-      return (
-        <div className="flex w-max items-center">
-          {switchComponent}
-          <Label
-            htmlFor={props.id}
-            className={switchLabelClasses({ size, disabled })}
-            isRequired={required}
-          >
-            {children}
-          </Label>
-        </div>
-      );
-    return switchComponent;
+>(function Switch(
+  {
+    className,
+    size = "md",
+    defaultChecked = false,
+    isReadOnly,
+    isDisabled,
+    isRequired,
+    children,
+    ...props
   },
-);
-Switch.displayName = "Switch";
+  forwardedRef,
+) {
+  const context = useFieldControlContext() ?? {};
+
+  const name = props.name || context.name;
+  const disabled =
+    getValue(isDisabled) ||
+    context.isDisabled ||
+    getValue(isReadOnly) ||
+    context.isReadOnly;
+  const required = getValue(isRequired) || context.isRequired;
+
+  const Component = (componentProps: Pick<Switch, "className">) => (
+    <SwitchPrimitives.Root
+      {...props}
+      defaultChecked={defaultChecked}
+      name={name}
+      disabled={disabled}
+      required={required}
+      className={componentProps.className}
+      ref={forwardedRef}
+    >
+      <SwitchPrimitives.Thumb className={switchThumbClasses({ size })} />
+    </SwitchPrimitives.Root>
+  );
+
+  if (children)
+    return (
+      <div className={classNames("flex w-max items-center", className)}>
+        <Component className={switchClasses({ size })} />
+        <Label
+          htmlFor={props.id}
+          className={switchLabelClasses({ size, disabled })}
+          isRequired={required}
+        >
+          {children}
+        </Label>
+      </div>
+    );
+  return (
+    <Component className={classNames(switchClasses({ size }), className)} />
+  );
+});

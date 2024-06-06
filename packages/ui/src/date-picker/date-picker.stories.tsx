@@ -7,6 +7,7 @@ const meta: Meta<typeof DatePicker> = {
   args: {
     disabled: false,
     size: "md",
+    placeholder: "Select a date",
   },
   argTypes: {
     size: {
@@ -24,10 +25,10 @@ export const Default: Story = {
 };
 
 export const DefaultValue: Story = {
-  render: () => {
+  render: (props) => {
     const date = new Date();
     const currentDate = dateFormat(date, "isoDate");
 
-    return <DatePicker defaultValue={currentDate} />;
+    return <DatePicker {...props} defaultValue={currentDate} />;
   },
 };

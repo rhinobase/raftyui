@@ -9,31 +9,30 @@ import {
 import { classNames } from "../utils";
 import { type TabContext, TabProvider, useTabContext } from "./context";
 
-// Tab Component
 export type Tab = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
   Partial<TabContext> & { isUnstyled?: boolean };
 
 export const Tab = forwardRef<ElementRef<typeof TabsPrimitive.Root>, Tab>(
-  (
+  function Tab(
     { className, size = "md", variant = "line", isUnstyled = false, ...props },
     forwardedRef,
-  ) => (
-    <TabProvider value={{ size, variant, isUnstyled }}>
-      <TabsPrimitive.Root
-        {...props}
-        className={
-          isUnstyled
-            ? className
-            : classNames("w-full data-[orientation=vertical]:flex", className)
-        }
-        ref={forwardedRef}
-      />
-    </TabProvider>
-  ),
+  ) {
+    return (
+      <TabProvider value={{ size, variant, isUnstyled }}>
+        <TabsPrimitive.Root
+          {...props}
+          className={
+            isUnstyled
+              ? className
+              : classNames("w-full data-[orientation=vertical]:flex", className)
+          }
+          ref={forwardedRef}
+        />
+      </TabProvider>
+    );
+  },
 );
-Tab.displayName = "Tab";
 
-// List Component
 export type TabList = ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
   isUnstyled?: boolean;
 };
@@ -41,7 +40,7 @@ export type TabList = ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
 export const TabList = forwardRef<
   ElementRef<typeof TabsPrimitive.List>,
   TabList
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function TabList({ className, isUnstyled = false, ...props }, forwardedRef) {
   const { isUnstyled: isParentUnstyled } = useTabContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -63,9 +62,7 @@ export const TabList = forwardRef<
     />
   );
 });
-TabList.displayName = "TabList";
 
-// Trigger Component
 export const tabTriggerClasses = cva(
   "font-medium text-secondary-600 dark:text-secondary-400 hover:text-black dark:hover:text-secondary-100 data-[state=active]:text-black dark:data-[state=active]:text-secondary-100 data-[disabled]:text-secondary-400 dark:data-[disabled]:text-secondary-600 data-[disabled]:cursor-not-allowed transition-colors ease-in-out",
   {
@@ -117,7 +114,10 @@ export type TabTrigger = ComponentPropsWithoutRef<
 export const TabTrigger = forwardRef<
   ElementRef<typeof TabsPrimitive.Trigger>,
   TabTrigger
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function TabTrigger(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, variant, isUnstyled: isParentUnstyled } = useTabContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -133,9 +133,7 @@ export const TabTrigger = forwardRef<
     />
   );
 });
-TabTrigger.displayName = "TabTrigger";
 
-// Content Component
 export const tabContentClasses = cva("w-full text-black dark:text-white", {
   variants: {
     size: {
@@ -155,7 +153,10 @@ export type TabContent = ComponentPropsWithoutRef<
 export const TabContent = forwardRef<
   ElementRef<typeof TabsPrimitive.Content>,
   TabContent
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function TabContent(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useTabContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -169,4 +170,3 @@ export const TabContent = forwardRef<
     />
   );
 });
-TabContent.displayName = "TabContent";

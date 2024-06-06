@@ -1,11 +1,13 @@
 import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
-// Skeleton Component
 export type Skeleton = HTMLAttributes<HTMLDivElement>;
 
-export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
-  ({ className, ...props }, forwardedRef) => (
+export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(function Skeleton(
+  { className, ...props },
+  forwardedRef,
+) {
+  return (
     <div
       {...props}
       className={classNames(
@@ -14,6 +16,5 @@ export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(
       )}
       ref={forwardedRef}
     />
-  ),
-);
-Skeleton.displayName = "Skeleton";
+  );
+});

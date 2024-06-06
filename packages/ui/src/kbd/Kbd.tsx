@@ -1,13 +1,15 @@
 import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
-// Kbd Component
 export type Kbd = HTMLAttributes<HTMLElement> & {
   isUnstyled?: boolean;
 };
 
-export const Kbd = forwardRef<HTMLElement, Kbd>(
-  ({ className, isUnstyled = false, ...props }, forwardRef) => (
+export const Kbd = forwardRef<HTMLElement, Kbd>(function Kbd(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
+  return (
     <kbd
       {...props}
       className={
@@ -18,8 +20,7 @@ export const Kbd = forwardRef<HTMLElement, Kbd>(
               className,
             )
       }
-      ref={forwardRef}
+      ref={forwardedRef}
     />
-  ),
-);
-Kbd.displayName = "Kbd";
+  );
+});

@@ -23,42 +23,39 @@ export type Spinner = SVGAttributes<SVGSVGElement> & {
   title?: string;
 };
 
-export const Spinner = forwardRef<SVGSVGElement, Spinner>(
-  (
-    {
-      inheritParent,
-      size = "md",
-      className,
-      title = "loading",
-      children,
-      width,
-      height,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const _inheritParent = getValue(inheritParent);
-
-    return (
-      <svg
-        {...props}
-        className={classNames(
-          spinnerClasses({ size, inherit: _inheritParent }),
-          className,
-        )}
-        viewBox="0 0 16 16"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        ref={forwardedRef}
-      >
-        <title>{title}</title>
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M13.917 7A6.002 6.002 0 0 0 2.083 7H1.071a7.002 7.002 0 0 1 13.858 0h-1.012z"
-        />
-      </svg>
-    );
+export const Spinner = forwardRef<SVGSVGElement, Spinner>(function Spinner(
+  {
+    inheritParent,
+    size = "md",
+    className,
+    title = "loading",
+    children,
+    width,
+    height,
+    ...props
   },
-);
-Spinner.displayName = "Spinner";
+  forwardedRef,
+) {
+  const _inheritParent = getValue(inheritParent);
+
+  return (
+    <svg
+      {...props}
+      className={classNames(
+        spinnerClasses({ size, inherit: _inheritParent }),
+        className,
+      )}
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      ref={forwardedRef}
+    >
+      <title>{title}</title>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13.917 7A6.002 6.002 0 0 0 2.083 7H1.071a7.002 7.002 0 0 1 13.858 0h-1.012z"
+      />
+    </svg>
+  );
+});

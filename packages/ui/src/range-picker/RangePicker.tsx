@@ -25,7 +25,7 @@ import {
 import { inputFieldClasses } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 type ValueType = [string] | [string, string] | undefined;
 
@@ -43,66 +43,60 @@ export type RangePicker = Omit<
   value?: ValueType;
   onValueChange?: (value?: ValueType) => void;
   defaultValue?: ValueType;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
 };
 
 export const RangePicker = forwardRef<
   ElementRef<typeof ArkDatePicker.Root>,
   RangePicker
->(
-  (
-    {
-      size = "md",
-      isDisabled,
-      isLoading,
-      isReadOnly,
-      placeholder,
-      value,
-      defaultValue,
-      onValueChange,
-      className,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
-    const readOnly = props.readOnly || getValue(isReadOnly);
-
-    return (
-      <ArkDatePicker.Root
-        {...props}
-        selectionMode="range"
-        defaultValue={defaultValue}
-        value={value}
-        onValueChange={({ valueAsString }) =>
-          onValueChange?.([valueAsString[0], valueAsString[1]])
-        }
-        disabled={disabled}
-        readOnly={readOnly}
-        className={classNames("w-full", className)}
-        ref={forwardedRef}
-      >
-        <ArkDatePicker.Control className={datPickerControlClasses({ size })}>
-          <ControlRender placeholder={placeholder} size={size} />
-        </ArkDatePicker.Control>
-        <Portal>
-          <ArkDatePicker.Positioner>
-            <ArkDatePicker.Content
-              className={datePickerContentClasses({ size })}
-            >
-              <RangePickerDayCalender size={size} />
-              <DatePickerMonthCalendar size={size} />
-              <DatePickerYearCalendar size={size} />
-            </ArkDatePicker.Content>
-          </ArkDatePicker.Positioner>
-        </Portal>
-      </ArkDatePicker.Root>
-    );
+>(function RangePicker(
+  {
+    size = "md",
+    isDisabled,
+    isLoading,
+    isReadOnly,
+    placeholder,
+    value,
+    defaultValue,
+    onValueChange,
+    className,
+    ...props
   },
-);
+  forwardedRef,
+) {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
+  const readOnly = props.readOnly || getValue(isReadOnly);
 
-RangePicker.displayName = "RangePicker";
+  return (
+    <ArkDatePicker.Root
+      {...props}
+      selectionMode="range"
+      defaultValue={defaultValue}
+      value={value}
+      onValueChange={({ valueAsString }) =>
+        onValueChange?.([valueAsString[0], valueAsString[1]])
+      }
+      disabled={disabled}
+      readOnly={readOnly}
+      className={classNames("w-full", className)}
+      ref={forwardedRef}
+    >
+      <ArkDatePicker.Control className={datPickerControlClasses({ size })}>
+        <ControlRender placeholder={placeholder} size={size} />
+      </ArkDatePicker.Control>
+      <Portal>
+        <ArkDatePicker.Positioner>
+          <ArkDatePicker.Content className={datePickerContentClasses({ size })}>
+            <RangePickerDayCalender size={size} />
+            <DatePickerMonthCalendar size={size} />
+            <DatePickerYearCalendar size={size} />
+          </ArkDatePicker.Content>
+        </ArkDatePicker.Positioner>
+      </Portal>
+    </ArkDatePicker.Root>
+  );
+});
 
 function ControlRender({
   placeholder,

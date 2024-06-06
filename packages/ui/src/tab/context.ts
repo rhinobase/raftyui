@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [TabProvider, useTabContext] = createContext<TabContext>({
   name: "TabContext",
@@ -7,7 +7,7 @@ export const [TabProvider, useTabContext] = createContext<TabContext>({
 });
 
 export interface TabContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly variant: "line" | "enclosed";
   readonly isUnstyled: boolean;
 }

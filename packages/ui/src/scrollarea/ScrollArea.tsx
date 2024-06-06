@@ -46,7 +46,7 @@ export type ScrollAreaList = Omit<
 export const ScrollAreaList = forwardRef<
   ElementRef<typeof VariableSizeList>,
   ScrollAreaList
->((props, forwardedRef) => {
+>(function ScrollAreaList(props, forwardedRef) {
   const { itemCount, layout, itemSize } = useScrollAreaContext();
 
   const _itemSize = (index: number) =>
@@ -69,7 +69,6 @@ export const ScrollAreaList = forwardRef<
     </AutoSizer>
   );
 });
-ScrollAreaList.displayName = "ScrollAreaList";
 
 type InfiniteLoaderType = typeof InfiniteLoader;
 

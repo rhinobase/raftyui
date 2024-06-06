@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [TimelineProvider, useTimelineContext] =
   createContext<TimelineContext>({
@@ -9,5 +9,5 @@ export const [TimelineProvider, useTimelineContext] =
 
 export interface TimelineContext {
   readonly align: "left" | "right";
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
 }

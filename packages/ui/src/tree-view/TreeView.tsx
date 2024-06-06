@@ -20,25 +20,29 @@ export type TreeView = TreeViewRootProps & Partial<TreeViewContext>;
 export const TreeView = forwardRef<
   ElementRef<typeof ArkTreeView.Root>,
   TreeView
->(({ children, size = "md", className, ...props }, forwardedRef) => (
-  <TreeViewProvider value={{ size }}>
-    <ArkTreeView.Root
-      {...props}
-      className={classNames("w-full", className)}
-      ref={forwardedRef}
-    >
-      <ArkTreeView.Tree>{children}</ArkTreeView.Tree>
-    </ArkTreeView.Root>
-  </TreeViewProvider>
-));
-TreeView.displayName = "TreeView";
+>(function TreeView(
+  { children, size = "md", className, ...props },
+  forwardedRef,
+) {
+  return (
+    <TreeViewProvider value={{ size }}>
+      <ArkTreeView.Root
+        {...props}
+        className={classNames("w-full", className)}
+        ref={forwardedRef}
+      >
+        <ArkTreeView.Tree>{children}</ArkTreeView.Tree>
+      </ArkTreeView.Root>
+    </TreeViewProvider>
+  );
+});
 
 export type TreeViewItem = ComponentPropsWithoutRef<typeof ArkTreeView.Branch>;
 
 export const TreeViewItem = forwardRef<
   ElementRef<typeof ArkTreeView.Branch>,
   TreeViewItem
->(({ children, className, ...props }, forwardedRef) => {
+>(function TreeViewItem({ children, className, ...props }, forwardedRef) {
   const validChildren = getValidChildren(children);
 
   const hasChildren = validChildren.some(
@@ -66,7 +70,6 @@ export const TreeViewItem = forwardRef<
     </ArkTreeView.Branch>
   );
 });
-TreeViewItem.displayName = "TreeViewItem";
 
 const treeViewLabelClasses = cva(
   "hover:bg-secondary-100 dark:hover:bg-secondary-800/80 w-full flex items-center font-medium cursor-pointer select-none",
@@ -77,9 +80,6 @@ const treeViewLabelClasses = cva(
         md: "rounded-base text-sm py-1.5 pr-1.5 gap-1.5",
         lg: "rounded-md text-base py-2 pr-2 gap-2",
       },
-    },
-    defaultVariants: {
-      size: "md",
     },
   },
 );
@@ -127,61 +127,53 @@ export type TreeViewLabel = ComponentPropsWithoutRef<
 export const TreeViewLabel = forwardRef<
   ElementRef<typeof ArkTreeView.BranchControl>,
   TreeViewLabel
->(
-  (
-    {
-      children,
-      indicatorIcon,
-      showIndicator = true,
-      className,
-      type,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const { size } = useTreeViewContext();
+>(function TreeViewLabel(
+  { children, indicatorIcon, showIndicator = true, className, type, ...props },
+  forwardedRef,
+) {
+  const { size } = useTreeViewContext();
 
-    if (type === "single")
-      return (
-        <ArkTreeView.ItemText
-          {...props}
-          className={classNames(
-            treeViewLabelClasses({ size }),
-            treeViewLabelSingleClasses.size[size],
-            className,
-          )}
-          ref={forwardedRef}
-        >
-          {children}
-        </ArkTreeView.ItemText>
-      );
+  if (type === "single")
     return (
-      <ArkTreeView.BranchControl
+      <ArkTreeView.ItemText
         {...props}
         className={classNames(
           treeViewLabelClasses({ size }),
-          treeViewLabelBranchClasses.size[size],
+          // @ts-ignore
+          treeViewLabelSingleClasses.size[size],
           className,
         )}
         ref={forwardedRef}
       >
-        {showIndicator && (
-          <ArkTreeView.BranchIndicator
-            className={treeViewLabelIndicatorClasses({ size })}
-          >
-            {indicatorIcon ?? (
-              <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full stroke-[3]" />
-            )}
-          </ArkTreeView.BranchIndicator>
-        )}
-        <ArkTreeView.BranchText className="font-medium">
-          {children}
-        </ArkTreeView.BranchText>
-      </ArkTreeView.BranchControl>
+        {children}
+      </ArkTreeView.ItemText>
     );
-  },
-);
-TreeViewLabel.displayName = "TreeViewLabel";
+  return (
+    <ArkTreeView.BranchControl
+      {...props}
+      className={classNames(
+        treeViewLabelClasses({ size }),
+        // @ts-ignore
+        treeViewLabelBranchClasses.size[size],
+        className,
+      )}
+      ref={forwardedRef}
+    >
+      {showIndicator && (
+        <ArkTreeView.BranchIndicator
+          className={treeViewLabelIndicatorClasses({ size })}
+        >
+          {indicatorIcon ?? (
+            <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full stroke-[3]" />
+          )}
+        </ArkTreeView.BranchIndicator>
+      )}
+      <ArkTreeView.BranchText className="font-medium">
+        {children}
+      </ArkTreeView.BranchText>
+    </ArkTreeView.BranchControl>
+  );
+});
 
 // TODO: figureout the left props value calculation
 
@@ -208,9 +200,7 @@ export type TreeViewContent = ComponentPropsWithoutRef<
 export const TreeViewContent = forwardRef<
   ElementRef<typeof ArkTreeView.BranchContent>,
   TreeViewContent
->(({ children, className, ...props }, forwardedRef) => {
-  const { size } = useTreeViewContext();
-
+>(function TreeViewContent({ children, className, ...props }, forwardedRef) {
   return (
     <ArkTreeView.BranchContent
       {...props}
@@ -222,4 +212,3 @@ export const TreeViewContent = forwardRef<
     </ArkTreeView.BranchContent>
   );
 });
-TreeViewContent.displayName = "TreeViewContent";

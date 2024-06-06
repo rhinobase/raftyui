@@ -13,9 +13,7 @@ import { Button } from "../button";
 import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
-
-type Size = "sm" | "md" | "lg";
+import { type SizeType, classNames, getValue } from "../utils";
 
 const COLORS = [
   "red",
@@ -45,7 +43,7 @@ const colorPickerContentClasses = cva(
 );
 
 export type ColorPicker = ColorPickerRootProps & {
-  size?: Size;
+  size?: SizeType;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
@@ -54,72 +52,69 @@ export type ColorPicker = ColorPickerRootProps & {
 export const ColorPicker = forwardRef<
   ElementRef<typeof ArkColorPicker.Root>,
   ColorPicker
->(
-  (
-    {
-      size = "md",
-      isReadOnly = false,
-      isLoading = false,
-      isDisabled = false,
-      ...props
-    },
-    forwaredRef,
-  ) => {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
-    const readOnly = props.readOnly || getValue(isReadOnly);
-
-    return (
-      <ArkColorPicker.Root
-        {...props}
-        disabled={disabled}
-        readOnly={readOnly}
-        ref={forwaredRef}
-      >
-        <ArkColorPicker.Context>
-          {() => (
-            <>
-              <ColorPickerControl size={size} />
-              <Portal>
-                <ArkColorPicker.Positioner>
-                  <ArkColorPicker.Content
-                    className={colorPickerContentClasses({ size })}
-                  >
-                    <ColorPickerArea size={size} />
-                    <ColorChannelPicker />
-                    <ColorPickerView
-                      size={size}
-                      format="rgba"
-                      channels={["red", "green", "blue", "alpha"]}
-                    />
-                    <ColorPickerView
-                      size={size}
-                      format="hsla"
-                      channels={["hue", "saturation", "lightness", "alpha"]}
-                    />
-                    <ColorPickerView
-                      size={size}
-                      format="hsba"
-                      channels={["hue", "saturation", "brightness", "alpha"]}
-                    />
-                    <div className="space-y-2">
-                      <p className="text-secondary-600 dark:text-secondary-400 text-xs font-medium">
-                        Selected Colors
-                      </p>
-                      <ColorPickerSwatchGroup size={size} />
-                    </div>
-                  </ArkColorPicker.Content>
-                </ArkColorPicker.Positioner>
-                <ArkColorPicker.HiddenInput />
-              </Portal>
-            </>
-          )}
-        </ArkColorPicker.Context>
-      </ArkColorPicker.Root>
-    );
+>(function ColorPicker(
+  {
+    size = "md",
+    isReadOnly = false,
+    isLoading = false,
+    isDisabled = false,
+    ...props
   },
-);
-ColorPicker.displayName = "ColorPicker";
+  forwaredRef,
+) {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
+  const readOnly = props.readOnly || getValue(isReadOnly);
+
+  return (
+    <ArkColorPicker.Root
+      {...props}
+      disabled={disabled}
+      readOnly={readOnly}
+      ref={forwaredRef}
+    >
+      <ArkColorPicker.Context>
+        {() => (
+          <>
+            <ColorPickerControl size={size} />
+            <Portal>
+              <ArkColorPicker.Positioner>
+                <ArkColorPicker.Content
+                  className={colorPickerContentClasses({ size })}
+                >
+                  <ColorPickerArea size={size} />
+                  <ColorChannelPicker />
+                  <ColorPickerView
+                    size={size}
+                    format="rgba"
+                    channels={["red", "green", "blue", "alpha"]}
+                  />
+                  <ColorPickerView
+                    size={size}
+                    format="hsla"
+                    channels={["hue", "saturation", "lightness", "alpha"]}
+                  />
+                  <ColorPickerView
+                    size={size}
+                    format="hsba"
+                    channels={["hue", "saturation", "brightness", "alpha"]}
+                  />
+                  <div className="space-y-2">
+                    <p className="text-secondary-600 dark:text-secondary-400 text-xs font-medium">
+                      Selected Colors
+                    </p>
+                    <ColorPickerSwatchGroup size={size} />
+                  </div>
+                </ArkColorPicker.Content>
+              </ArkColorPicker.Positioner>
+              <ArkColorPicker.HiddenInput />
+            </Portal>
+          </>
+        )}
+      </ArkColorPicker.Context>
+    </ArkColorPicker.Root>
+  );
+});
 
 const colorPickerInputSuffixClasses = cva("", {
   variants: {
@@ -151,7 +146,7 @@ const colorPickerTriggerClasses = cva(
 );
 
 type ColorPickerControl = {
-  size: Size;
+  size: SizeType;
 };
 
 function ColorPickerControl({ size }: ColorPickerControl) {
@@ -192,7 +187,7 @@ const colorPickerAreaClasses = cva("overflow-hidden rounded-md", {
 });
 
 type ColorPickerArea = {
-  size: Size;
+  size: SizeType;
 };
 
 function ColorPickerArea({ size }: ColorPickerArea) {
@@ -249,7 +244,7 @@ const colorPickerLabelClasses = cva(
 );
 
 type ColorPickerView = {
-  size: Size;
+  size: SizeType;
   channels: ColorPickerChannelInputProps["channel"][];
   format: ColorPickerColorFormat;
 };
@@ -293,7 +288,7 @@ const colorPickerSwatchClasses = cva("", {
 });
 
 type ColorPickerSwatchGroup = {
-  size: Size;
+  size: SizeType;
 };
 
 function ColorPickerSwatchGroup({ size }: ColorPickerSwatchGroup) {

@@ -6,7 +6,7 @@ import {
 } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { classNames } from "../utils";
+import { type SizeType, classNames } from "../utils";
 
 export const progressClasses = cva("flex w-full items-center flex-col", {
   variants: {
@@ -53,18 +53,18 @@ export const progressIndicatorClasses = cva("h-full", {
 });
 
 export type Progress = Omit<ProgressRootProps, "orientation"> & {
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   colorScheme?: "error" | "warning" | "primary" | "success" | "secondary";
 };
 
 export const Progress = forwardRef<
   ElementRef<typeof ArkProgress.Root>,
   Progress
->(
-  (
-    { className, size = "md", colorScheme = "primary", ...props },
-    forwardedRef,
-  ) => (
+>(function Progress(
+  { className, size = "md", colorScheme = "primary", ...props },
+  forwardedRef,
+) {
+  return (
     <ArkProgress.Root
       {...props}
       className={classNames(progressClasses({ size }), className)}
@@ -77,9 +77,8 @@ export const Progress = forwardRef<
       </ArkProgress.Track>
       <ProgressValue size={size} />
     </ArkProgress.Root>
-  ),
-);
-Progress.displayName = "Progress";
+  );
+});
 
 const progressTextClasses = cva("text-secondary-600 dark:text-secondary-400", {
   variants: {

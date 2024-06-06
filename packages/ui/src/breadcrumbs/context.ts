@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [BreadcrumbsProvider, useBreadcrumbsContext] =
   createContext<BreadcrumbsContext>({
@@ -8,5 +8,5 @@ export const [BreadcrumbsProvider, useBreadcrumbsContext] =
   });
 
 export type BreadcrumbsContext = {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
 };

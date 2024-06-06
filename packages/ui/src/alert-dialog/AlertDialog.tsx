@@ -15,7 +15,6 @@ import {
   useAlertDialogContext,
 } from "./context";
 
-// AlertDialog Component
 export type AlertDialog = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Root
 > &
@@ -33,7 +32,6 @@ export function AlertDialog({
   );
 }
 
-// AlertDialog Trigger Component
 export type AlertDialogTrigger = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Trigger
 > &
@@ -42,61 +40,57 @@ export type AlertDialogTrigger = ComponentPropsWithoutRef<
 export const AlertDialogTrigger = forwardRef<
   ElementRef<typeof AlertDialogPrimitive.Trigger>,
   AlertDialogTrigger
->(
-  (
-    {
-      children,
-      className,
-      size = "md",
-      variant = "ghost",
-      colorScheme = "secondary",
-      leftIcon = undefined,
-      rightIcon = undefined,
-      isDisabled = false,
-      isActive = false,
-      isLoading = false,
-      isUnstyled = false,
-      asChild = false,
-      type = "button",
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled, size: parentSize } =
-      useAlertDialogContext();
-
-    const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || parentSize;
-
-    const buttonProps = {
-      size: triggerSize,
-      isUnstyled: unstyle,
-      variant,
-      colorScheme,
-      leftIcon,
-      rightIcon,
-      isActive,
-      isDisabled,
-      isLoading,
-      className,
-      type,
-    };
-
-    return (
-      <AlertDialogPrimitive.Trigger
-        {...props}
-        className={asChild ? className : undefined}
-        ref={forwardedRef}
-        asChild
-      >
-        {asChild ? children : <Button {...buttonProps}>{children}</Button>}
-      </AlertDialogPrimitive.Trigger>
-    );
+>(function AlertDialogTrigger(
+  {
+    children,
+    className,
+    size = "md",
+    variant = "ghost",
+    colorScheme = "secondary",
+    leftIcon = undefined,
+    rightIcon = undefined,
+    isDisabled = false,
+    isActive = false,
+    isLoading = false,
+    isUnstyled = false,
+    asChild = false,
+    type = "button",
+    ...props
   },
-);
-AlertDialogTrigger.displayName = "AlertDialogTrigger";
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, size: parentSize } =
+    useAlertDialogContext();
 
-// AlertDialogOverlayComponent
+  const unstyle = isParentUnstyled || isUnstyled;
+  const triggerSize = size || parentSize;
+
+  const buttonProps = {
+    size: triggerSize,
+    isUnstyled: unstyle,
+    variant,
+    colorScheme,
+    leftIcon,
+    rightIcon,
+    isActive,
+    isDisabled,
+    isLoading,
+    className,
+    type,
+  };
+
+  return (
+    <AlertDialogPrimitive.Trigger
+      {...props}
+      className={asChild ? className : undefined}
+      ref={forwardedRef}
+      asChild
+    >
+      {asChild ? children : <Button {...buttonProps}>{children}</Button>}
+    </AlertDialogPrimitive.Trigger>
+  );
+});
+
 export const alertDialogOverlayClasses =
   "fixed inset-0 z-50 bg-white/40 backdrop-blur-sm dark:bg-black/40 data-[state=open]:animate-overlayShow";
 
@@ -107,7 +101,10 @@ export type AlertDialogOverlay = ComponentPropsWithoutRef<
 export const AlertDialogOverlay = forwardRef<
   ElementRef<typeof AlertDialogPrimitive.Overlay>,
   AlertDialogOverlay
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function AlertDialogOverlay(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { isUnstyled: isParentUnstyled } = useAlertDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -121,9 +118,7 @@ export const AlertDialogOverlay = forwardRef<
     />
   );
 });
-AlertDialogOverlay.displayName = "AlertDialogOverlay";
 
-// AlertDialogContent Component
 export const alertDialogContentClasses = cva(
   "w-[95%] md:w-full outline-none flex flex-col bg-white dark:bg-secondary-900 border dark:border-secondary-800 text-black dark:text-white shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 data-[state=open]:animate-contentShow",
   {
@@ -148,7 +143,10 @@ export type AlertDialogContent = ComponentPropsWithoutRef<
 export const AlertDialogContent = forwardRef<
   ElementRef<typeof AlertDialogPrimitive.Content>,
   AlertDialogContent
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function AlertDialogContent(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useAlertDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -166,9 +164,7 @@ export const AlertDialogContent = forwardRef<
     </AlertDialogPrimitive.Portal>
   );
 });
-AlertDialogContent.displayName = "AlertDialogContent";
 
-// AlertDialogHeader
 export const alertDialogHeaderAndFooterClasses = cva("flex items-center", {
   variants: {
     size: {
@@ -188,7 +184,10 @@ export type AlertDialogHeader = HTMLAttributes<HTMLElement> & {
 };
 
 export const AlertDialogHeader = forwardRef<HTMLElement, AlertDialogHeader>(
-  ({ className, isUnstyled = false, ...props }, forwardedRef) => {
+  function AlertDialogHeader(
+    { className, isUnstyled = false, ...props },
+    forwardedRef,
+  ) {
     const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
@@ -205,16 +204,16 @@ export const AlertDialogHeader = forwardRef<HTMLElement, AlertDialogHeader>(
     );
   },
 );
-AlertDialogHeader.displayName = "AlertDialogHeader";
-
-// AlertDialogFooter
 
 export type AlertDialogFooter = HTMLAttributes<HTMLElement> & {
   isUnstyled?: boolean;
 };
 
 export const AlertDialogFooter = forwardRef<HTMLElement, AlertDialogFooter>(
-  ({ className, isUnstyled, ...props }, forwardedRef) => {
+  function AlertDialogFooter(
+    { className, isUnstyled, ...props },
+    forwardedRef,
+  ) {
     const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
@@ -231,7 +230,6 @@ export const AlertDialogFooter = forwardRef<HTMLElement, AlertDialogFooter>(
     );
   },
 );
-AlertDialogFooter.displayName = "AlertDialogFooter";
 
 export const alertDialogTitleClasses = cva(
   "font-semibold leading-none tracking-tight",
@@ -250,7 +248,6 @@ export const alertDialogTitleClasses = cva(
   },
 );
 
-// AlertDialogTitle Component
 export type AlertDialogTitle = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Title
 > & { isUnstyled?: boolean };
@@ -258,7 +255,10 @@ export type AlertDialogTitle = ComponentPropsWithoutRef<
 export const AlertDialogTitle = forwardRef<
   ElementRef<typeof AlertDialogPrimitive.Title>,
   AlertDialogTitle
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function AlertDialogTitle(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -274,9 +274,7 @@ export const AlertDialogTitle = forwardRef<
     />
   );
 });
-AlertDialogTitle.displayName = "AlertDialogTitle";
 
-// AlertDialogBody Component
 export const alertDialogDescriptionClasses = cva(
   "text-secondary-600 dark:text-secondary-400",
   {
@@ -301,7 +299,10 @@ export type AlertDialogDescription = ComponentPropsWithoutRef<
 export const AlertDialogDescription = forwardRef<
   ElementRef<typeof AlertDialogPrimitive.Description>,
   AlertDialogDescription
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function AlertDialogDescription(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { isUnstyled: isParentUnstyled, size } = useAlertDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -317,7 +318,6 @@ export const AlertDialogDescription = forwardRef<
     />
   );
 });
-AlertDialogDescription.displayName = "AlertDialogDescription";
 
 export const AlertDialogAction = AlertDialogPrimitive.Action;
 AlertDialogAction.displayName = "AlertDialogAction";

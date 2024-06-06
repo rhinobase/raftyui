@@ -16,7 +16,6 @@ import {
   useRadioGroupContext,
 } from "./context";
 
-// RadioGroup Component
 export const radioGroupClasses = cva(
   "flex data-[orientation=vertical]:flex-col data-[orientation=horizontal]:flex-row data-[orientaion-horizontal]:flex-wrap data-[disabled]:opacity-70",
   {
@@ -44,49 +43,45 @@ export type RadioGroup = ComponentPropsWithoutRef<
 export const RadioGroup = forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroup
->(
-  (
-    {
-      className,
-      size = "md",
-      isDisabled,
-      isRequired,
-      isReadOnly,
-      orientation = "vertical",
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const fieldControlContext = useFieldControlContext() ?? {};
-
-    const disabled =
-      getValue(isDisabled) ||
-      props.disabled ||
-      fieldControlContext.isDisabled ||
-      fieldControlContext.isLoading;
-
-    const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
-
-    const required =
-      getValue(isRequired) || props.required || fieldControlContext.isRequired;
-
-    return (
-      <RadioGroupProvider value={{ size, isDisabled: disabled }}>
-        <RadioGroupPrimitive.Root
-          {...props}
-          disabled={disabled || readonly}
-          required={required}
-          orientation={orientation}
-          className={classNames(radioGroupClasses({ size }), className)}
-          ref={forwardedRef}
-        />
-      </RadioGroupProvider>
-    );
+>(function RadioGroup(
+  {
+    className,
+    size = "md",
+    isDisabled,
+    isRequired,
+    isReadOnly,
+    orientation = "vertical",
+    ...props
   },
-);
-RadioGroup.displayName = "RadioGroup";
+  forwardedRef,
+) {
+  const fieldControlContext = useFieldControlContext() ?? {};
 
-// RadioGroupItem Component
+  const disabled =
+    getValue(isDisabled) ||
+    props.disabled ||
+    fieldControlContext.isDisabled ||
+    fieldControlContext.isLoading;
+
+  const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+
+  const required =
+    getValue(isRequired) || props.required || fieldControlContext.isRequired;
+
+  return (
+    <RadioGroupProvider value={{ size, isDisabled: disabled }}>
+      <RadioGroupPrimitive.Root
+        {...props}
+        disabled={disabled || readonly}
+        required={required}
+        orientation={orientation}
+        className={classNames(radioGroupClasses({ size }), className)}
+        ref={forwardedRef}
+      />
+    </RadioGroupProvider>
+  );
+});
+
 export const radioGroupItemClasses = cva(
   "border-secondary-400 dark:border-secondary-700 data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300 aspect-square rounded-full border outline-none focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
   {
@@ -149,18 +144,15 @@ export type RadioGroupItem = ComponentPropsWithoutRef<
 export const RadioGroupItem = forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItem
->(({ className, children, ...props }, forwardedRef) => {
+>(function RadioGroupItem({ className, children, ...props }, forwardedRef) {
   const { size, isDisabled } = useRadioGroupContext();
 
   const disabled = getValue(isDisabled) || props.disabled;
 
-  const radioItem = (
+  const Component = (componentProps: Pick<RadioGroupItem, "className">) => (
     <RadioGroupPrimitive.Item
       {...props}
-      className={classNames(
-        radioGroupItemClasses({ size, disabled }),
-        className,
-      )}
+      className={componentProps.className}
       ref={forwardedRef}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
@@ -171,8 +163,8 @@ export const RadioGroupItem = forwardRef<
 
   if (children)
     return (
-      <div className="flex w-max items-center">
-        {radioItem}
+      <div className={classNames("flex w-max items-center", className)}>
+        <Component className={radioGroupItemClasses({ size, disabled })} />
         <Label
           htmlFor={props.id}
           className={radioGroupItemLabelClasses({ size, disabled })}
@@ -182,6 +174,12 @@ export const RadioGroupItem = forwardRef<
         </Label>
       </div>
     );
-  return radioItem;
+  return (
+    <Component
+      className={classNames(
+        radioGroupItemClasses({ size, disabled }),
+        className,
+      )}
+    />
+  );
 });
-RadioGroupItem.displayName = "RadioGroupItem";

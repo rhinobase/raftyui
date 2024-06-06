@@ -59,7 +59,7 @@ export type CurrencyInput = Omit<
 };
 
 export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
-  (
+  function CurrencyInput(
     {
       size,
       currencyCode = "USD",
@@ -70,7 +70,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const key = currencyCode.toUpperCase();
     const currencyProps = CURRENCY[key] ?? {
       ...CURRENCY.USD,
@@ -168,4 +168,3 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
     );
   },
 );
-CurrencyInput.displayName = "CurrencyInput";

@@ -10,7 +10,6 @@ import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { type AlertContext, AlertProvider, useAlertContext } from "./context";
 
-// Alert Component
 export const alertClasses = cva("flex w-full items-center", {
   variants: {
     size: {
@@ -147,18 +146,18 @@ export const alertClasses = cva("flex w-full items-center", {
 
 export type Alert = HTMLAttributes<HTMLDivElement> & Partial<AlertContext>;
 
-export const Alert = forwardRef<HTMLDivElement, Alert>(
-  (
-    {
-      status = "info",
-      size = "md",
-      variant = "simple",
-      isUnstyled = false,
-      className,
-      ...props
-    },
-    forwardedRef,
-  ) => (
+export const Alert = forwardRef<HTMLDivElement, Alert>(function Alert(
+  {
+    status = "info",
+    size = "md",
+    variant = "simple",
+    isUnstyled = false,
+    className,
+    ...props
+  },
+  forwardedRef,
+) {
+  return (
     <AlertProvider value={{ status, size, variant, isUnstyled }}>
       <div
         {...props}
@@ -170,11 +169,9 @@ export const Alert = forwardRef<HTMLDivElement, Alert>(
         ref={forwardedRef}
       />
     </AlertProvider>
-  ),
-);
-Alert.displayName = "Alert";
+  );
+});
 
-// AlertIcon component
 export const alertIconClasses = cva("stroke-2", {
   variants: {
     size: {
@@ -213,9 +210,7 @@ export function AlertIcon({ className, isUnstyled = false }: AlertIcon) {
     />
   );
 }
-AlertIcon.displayName = "AlertIcon";
 
-// AlertTitle component
 export const alertTitleClasses = cva("font-medium", {
   variants: {
     size: {
@@ -234,7 +229,10 @@ export type AlertTitle = HTMLAttributes<HTMLHeadingElement> & {
 };
 
 export const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitle>(
-  ({ className, isUnstyled = false, ...props }, forwardedRef) => {
+  function AlertTitle(
+    { className, isUnstyled = false, ...props },
+    forwardedRef,
+  ) {
     const { size, isUnstyled: isParentUnstyled } = useAlertContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
@@ -251,9 +249,7 @@ export const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitle>(
     );
   },
 );
-AlertTitle.displayName = "AlertTitle";
 
-// AlertDescription component
 export const alertDescriptionClasses = cva("", {
   variants: {
     size: {
@@ -287,7 +283,10 @@ export type AlertDescription = HTMLAttributes<HTMLParagraphElement> & {
 export const AlertDescription = forwardRef<
   HTMLParagraphElement,
   AlertDescription
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function AlertDescription(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled, variant } = useAlertContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -303,4 +302,3 @@ export const AlertDescription = forwardRef<
     />
   );
 });
-AlertDescription.displayName = "AlertDescription";

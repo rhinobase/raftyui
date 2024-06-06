@@ -42,7 +42,7 @@ export type Timeline = HTMLAttributes<HTMLUListElement> &
   };
 
 export const Timeline = forwardRef<HTMLUListElement, Timeline>(
-  (
+  function Timeline(
     {
       loading,
       loadingDot,
@@ -55,7 +55,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const validChildren = getValidChildren(children);
 
     const key = useId();
@@ -94,7 +94,6 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
     );
   },
 );
-Timeline.displayName = "Timeline";
 
 export const timelineItemClasses = cva("flex w-full items-center", {
   variants: {
@@ -174,10 +173,10 @@ export type TimelineItem = HTMLAttributes<HTMLLIElement> & {
 };
 
 export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
-  (
+  function TimelineItem(
     { icon, description, status = "info", children, className, ...props },
     forwardedRef,
-  ) => {
+  ) {
     const { align, size } = useTimelineContext();
 
     const isChildrenString = typeof children === "string";

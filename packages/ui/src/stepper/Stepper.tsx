@@ -36,71 +36,68 @@ export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
     steps: StepType[];
   };
 
-export const Stepper = forwardRef<HTMLDivElement, Stepper>(
-  (
-    {
-      steps,
-      initial = 0,
-      value = 0,
-      onValueChange,
-      size = "md",
-      isDisabled = false,
-      direction = "horizontal",
-      connector: Connector = StepsConnector,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const handleSelect = (value: number) =>
-      eventHandler(() => !isDisabled && onValueChange?.(value));
-
-    const components = steps.flatMap((step, index) => {
-      const currentValue = initial + index;
-
-      return [
-        <div
-          key={currentValue}
-          onClick={handleSelect(currentValue)}
-          onKeyDown={handleSelect(currentValue)}
-        >
-          <StepperItem
-            {...step}
-            value={currentValue}
-            isClickable={Boolean(onValueChange)}
-          />
-        </div>,
-        <Connector
-          key={`connector-${currentValue}`}
-          active={value > currentValue}
-        />,
-      ];
-    });
-
-    // Removing the last element
-    components.pop();
-
-    return (
-      <StepperProvider
-        value={{
-          direction,
-          isDisabled,
-          size,
-          value,
-        }}
-      >
-        <div
-          ref={forwardedRef}
-          {...props}
-          aria-disabled={isDisabled}
-          className={stepperClasses({ direction })}
-        >
-          {components}
-        </div>
-      </StepperProvider>
-    );
+export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
+  {
+    steps,
+    initial = 0,
+    value = 0,
+    onValueChange,
+    size = "md",
+    isDisabled = false,
+    direction = "horizontal",
+    connector: Connector = StepsConnector,
+    ...props
   },
-);
-Stepper.displayName = "Stepper";
+  forwardedRef,
+) {
+  const handleSelect = (value: number) =>
+    eventHandler(() => !isDisabled && onValueChange?.(value));
+
+  const components = steps.flatMap((step, index) => {
+    const currentValue = initial + index;
+
+    return [
+      <div
+        key={currentValue}
+        onClick={handleSelect(currentValue)}
+        onKeyDown={handleSelect(currentValue)}
+      >
+        <StepperItem
+          {...step}
+          value={currentValue}
+          isClickable={Boolean(onValueChange)}
+        />
+      </div>,
+      <Connector
+        key={`connector-${currentValue}`}
+        active={value > currentValue}
+      />,
+    ];
+  });
+
+  // Removing the last element
+  components.pop();
+
+  return (
+    <StepperProvider
+      value={{
+        direction,
+        isDisabled,
+        size,
+        value,
+      }}
+    >
+      <div
+        ref={forwardedRef}
+        {...props}
+        aria-disabled={isDisabled}
+        className={stepperClasses({ direction })}
+      >
+        {components}
+      </div>
+    </StepperProvider>
+  );
+});
 
 const stepperItemClasses = cva(
   "group/item flex h-full w-max items-center outline-none group-aria-disabled/stepper:opacity-80 group-aria-disabled/stepper:cursor-not-allowed cursor-default",

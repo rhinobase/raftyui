@@ -1,5 +1,5 @@
 "use client";
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [SelectProvider, useSelectContext] = createContext<SelectContext>({
   name: "SelectContext",
@@ -8,5 +8,5 @@ export const [SelectProvider, useSelectContext] = createContext<SelectContext>({
 });
 
 export interface SelectContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
 }

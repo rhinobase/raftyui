@@ -27,15 +27,16 @@ export type Breadcrumbs = HTMLAttributes<HTMLElement> &
   Partial<BreadcrumbsContext>;
 
 export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
-  ({ size = "md", children, ...props }, forwardedRef) => (
-    <BreadcrumbsProvider value={{ size }}>
-      <nav {...props} ref={forwardedRef}>
-        <List className={breadcrumbsClasses({ size })}>{children}</List>
-      </nav>
-    </BreadcrumbsProvider>
-  ),
+  function Breadcrumbs({ size = "md", children, ...props }, forwardedRef) {
+    return (
+      <BreadcrumbsProvider value={{ size }}>
+        <nav {...props} ref={forwardedRef}>
+          <List className={breadcrumbsClasses({ size })}>{children}</List>
+        </nav>
+      </BreadcrumbsProvider>
+    );
+  },
 );
-Breadcrumbs.displayName = "Breadcrumbs";
 
 export const breadcrumbsDividerClasses = cva(
   "select-none font-medium opacity-50 dark:opacity-40",
@@ -56,7 +57,10 @@ export const breadcrumbsDividerClasses = cva(
 export type BreadcrumbDivider = HTMLAttributes<HTMLLIElement>;
 
 export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
-  ({ children = "/", className, ...props }, forwardedRef) => {
+  function BreadcrumbDivider(
+    { children = "/", className, ...props },
+    forwardedRef,
+  ) {
     const { size } = useBreadcrumbsContext();
     return (
       <ListItem
@@ -69,7 +73,6 @@ export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
     );
   },
 );
-BreadcrumbDivider.displayName = "BreadcrumbDivider";
 
 export const breadcrumbsItemClasses = cva("rounded font-medium leading-tight", {
   variants: {
@@ -90,7 +93,10 @@ export type BreadcrumbItem = HTMLAttributes<HTMLLIElement> & {
 };
 
 export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
-  ({ className, isUnstyled, isActive, ...props }, forwardedRef) => {
+  function BreadcrumbItem(
+    { className, isUnstyled, isActive, ...props },
+    forwardedRef,
+  ) {
     const { size } = useBreadcrumbsContext();
 
     return (
@@ -115,4 +121,3 @@ export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
     );
   },
 );
-BreadcrumbItem.displayName = "BreadcrumbItem";

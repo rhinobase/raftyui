@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [MenuBarProvider, useMenuBarContext] =
   createContext<MenuBarContext>({
@@ -8,7 +8,7 @@ export const [MenuBarProvider, useMenuBarContext] =
   });
 
 export interface MenuBarContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly isUnstyled: boolean;
   readonly isDisabled: boolean;
 }

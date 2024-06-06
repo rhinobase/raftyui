@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [DialogProvider, useDialogContext] = createContext<DialogContext>({
   name: "DialogContext",
@@ -7,6 +7,6 @@ export const [DialogProvider, useDialogContext] = createContext<DialogContext>({
 });
 
 export interface DialogContext {
-  readonly size: "sm" | "md" | "lg" | "xl";
+  readonly size: SizeType<"xl">;
   readonly isUnstyled: boolean;
 }

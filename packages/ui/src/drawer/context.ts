@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [DrawerProvider, useDrawerContext] = createContext<DrawerContext>({
   name: "DrawerContext",
@@ -7,6 +7,6 @@ export const [DrawerProvider, useDrawerContext] = createContext<DrawerContext>({
 });
 
 export interface DrawerContext {
-  readonly size: "sm" | "md" | "lg" | "full";
+  readonly size: SizeType<"full">;
   readonly side: "right" | "left";
 }

@@ -1,8 +1,7 @@
 "use client";
 import { type TextareaHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
-import { inputFieldClasses } from "../input-field";
-import type { ValueOrFunction } from "../types";
+import { type InputField, inputFieldClasses } from "../input-field";
 import { classNames, getValue } from "../utils";
 
 const textareaClasses = {
@@ -17,16 +16,8 @@ const textareaClasses = {
 export type Textarea = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   "size"
-> & {
-  variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
-  isUnstyled?: boolean;
-  isDisabled?: ValueOrFunction;
-  isInvalid?: ValueOrFunction;
-  isLoading?: ValueOrFunction;
-  isReadOnly?: ValueOrFunction;
-  isRequired?: ValueOrFunction;
-};
+> &
+  InputField;
 
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   (
@@ -59,7 +50,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
       getValue(isLoading) ||
       context.isLoading;
     const invalid = getValue(isInvalid) || context.isInvalid;
-    const readonly =
+    const readOnly =
       getValue(isReadOnly) || props.readOnly || context.isReadOnly;
     const required =
       getValue(isRequired) || props.required || context.isRequired;
@@ -69,7 +60,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
         {...props}
         name={name}
         disabled={disabled}
-        readOnly={readonly}
+        readOnly={readOnly}
         required={required}
         className={
           isUnstyled
@@ -79,7 +70,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
                   size,
                   variant,
                   disabled,
-                  readonly,
+                  readOnly,
                   invalid,
                 }),
                 textareaClasses.size[size],

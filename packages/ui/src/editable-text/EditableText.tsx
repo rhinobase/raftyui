@@ -10,56 +10,52 @@ import { type ElementRef, type PropsWithChildren, forwardRef } from "react";
 import { Button } from "../button";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export type EditableText = Omit<EditableRootProps, "activationMode"> & {
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
 };
 
 export const EditableText = forwardRef<
   ElementRef<typeof Editable.Root>,
   EditableText
->(
-  (
-    {
-      size = "md",
-      className,
-      isDisabled = false,
-      isLoading = false,
-      isReadOnly = false,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
-    const readOnly = props.readOnly || getValue(isReadOnly);
-
-    return (
-      <Editable.Root
-        {...props}
-        activationMode="dblclick"
-        readOnly={readOnly}
-        disabled={disabled}
-        className={classNames("w-full", className)}
-        ref={forwardedRef}
-      >
-        <Editable.Context>
-          {() => (
-            <EditableItem size={size} readOnly={readOnly} disabled={disabled}>
-              <InputField size={size} />
-            </EditableItem>
-          )}
-        </Editable.Context>
-      </Editable.Root>
-    );
+>(function EditableText(
+  {
+    size = "md",
+    className,
+    isDisabled = false,
+    isLoading = false,
+    isReadOnly = false,
+    ...props
   },
-);
+  forwardedRef,
+) {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
+  const readOnly = props.readOnly || getValue(isReadOnly);
 
-EditableText.displayName = "EditableText";
+  return (
+    <Editable.Root
+      {...props}
+      activationMode="dblclick"
+      readOnly={readOnly}
+      disabled={disabled}
+      className={classNames("w-full", className)}
+      ref={forwardedRef}
+    >
+      <Editable.Context>
+        {() => (
+          <EditableItem size={size} readOnly={readOnly} disabled={disabled}>
+            <InputField size={size} />
+          </EditableItem>
+        )}
+      </Editable.Context>
+    </Editable.Root>
+  );
+});
 
 const editableTextPreviewClasses = {
   size: {

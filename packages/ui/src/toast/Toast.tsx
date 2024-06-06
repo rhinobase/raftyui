@@ -12,7 +12,7 @@ import {
   forwardRef,
 } from "react";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export const toastClasses = cva(
   "w-full drop-shadow-lg flex items-center text-white dark:text-black",
@@ -89,55 +89,52 @@ export type Toast = Omit<
   message?: string;
   severity: "error" | "warning" | "info" | "success";
   visible?: ValueOrFunction;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
 };
 
-export const Toast = forwardRef<HTMLDivElement, Toast>(
-  (
-    { className, severity, visible, title, message, size = "md", ...props },
-    forwardedRef,
-  ) => {
-    let ToastIcon: typeof ExclamationTriangleIcon;
+export const Toast = forwardRef<HTMLDivElement, Toast>(function Toast(
+  { className, severity, visible, title, message, size = "md", ...props },
+  forwardedRef,
+) {
+  let ToastIcon: typeof ExclamationTriangleIcon;
 
-    switch (severity) {
-      case "error":
-        ToastIcon = ExclamationTriangleIcon;
-        break;
-      case "warning":
-        ToastIcon = ExclamationCircleIcon;
-        break;
-      case "info":
-        ToastIcon = InformationCircleIcon;
-        break;
-      case "success":
-        ToastIcon = CheckCircleIcon;
-        break;
-    }
+  switch (severity) {
+    case "error":
+      ToastIcon = ExclamationTriangleIcon;
+      break;
+    case "warning":
+      ToastIcon = ExclamationCircleIcon;
+      break;
+    case "info":
+      ToastIcon = InformationCircleIcon;
+      break;
+    case "success":
+      ToastIcon = CheckCircleIcon;
+      break;
+  }
 
-    const Component = message
-      ? ({ children }: PropsWithChildren) => (
-          <div className={toastTitleAndMessageWrapperClasses.size[size]}>
-            {children}
-          </div>
-        )
-      : Fragment;
+  const Component = message
+    ? ({ children }: PropsWithChildren) => (
+        <div className={toastTitleAndMessageWrapperClasses.size[size]}>
+          {children}
+        </div>
+      )
+    : Fragment;
 
-    return (
-      <div
-        {...props}
-        className={classNames(
-          toastClasses({ severity, visible: getValue(visible), size }),
-          className,
-        )}
-        ref={forwardedRef}
-      >
-        <ToastIcon className={toastIconClasses.size[size]} />
-        <Component>
-          <h6 className={toastTitleClasses({ size })}>{title}</h6>
-          <p className={toastMessageClasses({ size })}>{message}</p>
-        </Component>
-      </div>
-    );
-  },
-);
-Toast.displayName = "Toast";
+  return (
+    <div
+      {...props}
+      className={classNames(
+        toastClasses({ severity, visible: getValue(visible), size }),
+        className,
+      )}
+      ref={forwardedRef}
+    >
+      <ToastIcon className={toastIconClasses.size[size]} />
+      <Component>
+        <h6 className={toastTitleClasses({ size })}>{title}</h6>
+        <p className={toastMessageClasses({ size })}>{message}</p>
+      </Component>
+    </div>
+  );
+});

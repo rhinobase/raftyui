@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [CardProvider, useCardContext] = createContext<CardContext>({
   name: "CardContext",
@@ -7,7 +7,7 @@ export const [CardProvider, useCardContext] = createContext<CardContext>({
 });
 
 export interface CardContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly variant: "outline" | "elevated";
   readonly isUnstyled: boolean;
   readonly has: {

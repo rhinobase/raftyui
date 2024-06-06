@@ -12,7 +12,10 @@ export type FieldWrapper = FieldControl & {
 };
 
 export const FieldWrapper = forwardRef<HTMLDivElement, FieldWrapper>(
-  ({ label, description, children, className, ...props }, forwardedRef) => {
+  function FieldWrapper(
+    { label, description, children, className, ...props },
+    forwardedRef,
+  ) {
     const LabelAndDescriptionWrapper =
       label && description
         ? ({ children }: PropsWithChildren) => <div>{children}</div>
@@ -36,7 +39,6 @@ export const FieldWrapper = forwardRef<HTMLDivElement, FieldWrapper>(
     );
   },
 );
-FieldWrapper.displayName = "FieldWrapper";
 
 type FieldErrorMessage = Pick<FieldWrapper, "name">;
 

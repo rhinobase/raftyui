@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
-import { getValue } from "../utils";
+import { type SizeType, getValue } from "../utils";
 
 export const inputClasses = cva("p-0 text-center", {
   variants: {
@@ -34,7 +34,7 @@ export const pinInputControlClasses = cva("flex flex-wrap", {
 
 export type PinInput = PinInputRootProps & {
   length: number;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
 };
@@ -42,32 +42,28 @@ export type PinInput = PinInputRootProps & {
 export const PinInput = forwardRef<
   ElementRef<typeof ArkPinInput.Root>,
   PinInput
->(
-  (
-    { length, isLoading = false, isDisabled = false, size = "md", ...props },
-    forwardedRef,
-  ) => {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
+>(function PinInput(
+  { length, isLoading = false, isDisabled = false, size = "md", ...props },
+  forwardedRef,
+) {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
 
-    return (
-      <ArkPinInput.Root {...props} disabled={disabled} ref={forwardedRef}>
-        <ArkPinInput.Control className={pinInputControlClasses({ size })}>
-          {Array.from({ length }).map((_, index) => (
-            <ArkPinInput.Input
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-              key={index}
-              index={index}
-              asChild
-            >
-              <InputField size={size} className={inputClasses({ size })} />
-            </ArkPinInput.Input>
-          ))}
-        </ArkPinInput.Control>
-        <ArkPinInput.HiddenInput />
-      </ArkPinInput.Root>
-    );
-  },
-);
-
-PinInput.displayName = "PinInput";
+  return (
+    <ArkPinInput.Root {...props} disabled={disabled} ref={forwardedRef}>
+      <ArkPinInput.Control className={pinInputControlClasses({ size })}>
+        {Array.from({ length }).map((_, index) => (
+          <ArkPinInput.Input
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            key={index}
+            index={index}
+            asChild
+          >
+            <InputField size={size} className={inputClasses({ size })} />
+          </ArkPinInput.Input>
+        ))}
+      </ArkPinInput.Control>
+      <ArkPinInput.HiddenInput />
+    </ArkPinInput.Root>
+  );
+});

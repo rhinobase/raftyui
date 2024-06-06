@@ -11,7 +11,7 @@ import {
   datePickerContentClasses,
 } from "../date-picker/DatePicker";
 import type { ValueOrFunction } from "../types";
-import { getValue } from "../utils";
+import { type SizeType, getValue } from "../utils";
 
 export type Calendar = Omit<
   DatePickerRootProps,
@@ -24,50 +24,47 @@ export type Calendar = Omit<
   value?: string;
   onValueChange?: (value?: string) => void;
   defaultValue?: string;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
 };
 
 export const Calendar = forwardRef<
   ElementRef<typeof ArkDatePicker.Root>,
   Calendar
->(
-  (
-    {
-      size = "md",
-      isDisabled,
-      isLoading,
-      isReadOnly,
-      placeholder,
-      value,
-      onValueChange,
-      defaultValue,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
-    const readOnly = props.readOnly || getValue(isReadOnly);
-
-    return (
-      <ArkDatePicker.Root
-        {...props}
-        open
-        closeOnSelect={false}
-        value={value ? [value] : undefined}
-        onValueChange={({ valueAsString }) => onValueChange?.(valueAsString[0])}
-        defaultValue={defaultValue ? [defaultValue] : undefined}
-        disabled={disabled}
-        readOnly={readOnly}
-        ref={forwardedRef}
-      >
-        <ArkDatePicker.Content className={datePickerContentClasses({ size })}>
-          <DatePickerDayCalendar size={size} />
-          <DatePickerMonthCalendar size={size} />
-          <DatePickerYearCalendar size={size} />
-        </ArkDatePicker.Content>
-      </ArkDatePicker.Root>
-    );
+>(function Calendar(
+  {
+    size = "md",
+    isDisabled,
+    isLoading,
+    isReadOnly,
+    placeholder,
+    value,
+    onValueChange,
+    defaultValue,
+    ...props
   },
-);
-Calendar.displayName = "Calendar";
+  forwardedRef,
+) {
+  const disabled =
+    props.disabled || getValue(isDisabled) || getValue(isLoading);
+  const readOnly = props.readOnly || getValue(isReadOnly);
+
+  return (
+    <ArkDatePicker.Root
+      {...props}
+      open
+      closeOnSelect={false}
+      value={value ? [value] : undefined}
+      onValueChange={({ valueAsString }) => onValueChange?.(valueAsString[0])}
+      defaultValue={defaultValue ? [defaultValue] : undefined}
+      disabled={disabled}
+      readOnly={readOnly}
+      ref={forwardedRef}
+    >
+      <ArkDatePicker.Content className={datePickerContentClasses({ size })}>
+        <DatePickerDayCalendar size={size} />
+        <DatePickerMonthCalendar size={size} />
+        <DatePickerYearCalendar size={size} />
+      </ArkDatePicker.Content>
+    </ArkDatePicker.Root>
+  );
+});

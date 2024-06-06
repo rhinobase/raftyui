@@ -32,11 +32,11 @@ export type CircularProgress = Progress;
 export const CircularProgress = forwardRef<
   ElementRef<typeof ArkProgress.Root>,
   CircularProgress
->(
-  (
-    { className, size = "md", colorScheme = "primary", style, ...props },
-    forwardedRef,
-  ) => (
+>(function CircularProgress(
+  { className, size = "md", colorScheme = "primary", style, ...props },
+  forwardedRef,
+) {
+  return (
     <ArkProgress.Root
       {...props}
       className={classNames(progressClasses({ size }), className)}
@@ -58,6 +58,5 @@ export const CircularProgress = forwardRef<
       </ArkProgress.Circle>
       <ProgressValue size={size} />
     </ArkProgress.Root>
-  ),
-);
-CircularProgress.displayName = "CircularProgress";
+  );
+});

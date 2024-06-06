@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import type { ValueOrFunction } from "../types";
-import { getValue } from "../utils";
+import { type SizeType, getValue } from "../utils";
 
 export const ratingControlClasses = cva("flex flex-wrap", {
   variants: {
@@ -38,7 +38,7 @@ export const ratingIconClasses = cva("", {
 });
 
 export type Rating = Omit<RatingGroupRootProps, "onValueChange"> & {
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
@@ -46,7 +46,7 @@ export type Rating = Omit<RatingGroupRootProps, "onValueChange"> & {
 };
 
 export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
-  (
+  function Rating(
     {
       size = "md",
       onValueChange,
@@ -56,7 +56,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const disabled =
       props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
@@ -109,5 +109,3 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
     );
   },
 );
-
-Rating.displayName = "Rating";

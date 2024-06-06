@@ -112,89 +112,84 @@ export type Select = Omit<
   placeholder?: string;
 } & Partial<SelectContext>;
 
-export const Select = forwardRef<HTMLSelectElement, Select>(
-  (
-    {
-      children,
-      className,
-      name,
-      size = "md",
-      variant = "outline",
-      isDisabled,
-      isRequired,
-      isUnstyled = false,
-      isReadOnly,
-      placeholder,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const context = useFieldControlContext() ?? {
-      isDisabled: false,
-      isLoading: false,
-      isReadOnly: false,
-      isRequired: false,
-    };
+export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
+  {
+    children,
+    className,
+    name,
+    size = "md",
+    variant = "outline",
+    isDisabled,
+    isRequired,
+    isUnstyled = false,
+    isReadOnly,
+    placeholder,
+    ...props
+  },
+  forwardedRef,
+) {
+  const context = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+  };
 
-    const field_name = name || context.name;
-    const disabled =
-      getValue(isDisabled) ||
-      props.disabled ||
-      context.isDisabled ||
-      context.isLoading;
-    const required =
-      getValue(isRequired) || props.required || context.isRequired;
-    const readonly = getValue(isReadOnly) || context.isReadOnly;
+  const field_name = name || context.name;
+  const disabled =
+    getValue(isDisabled) ||
+    props.disabled ||
+    context.isDisabled ||
+    context.isLoading;
+  const required = getValue(isRequired) || props.required || context.isRequired;
+  const readonly = getValue(isReadOnly) || context.isReadOnly;
 
-    function Component(componentProps: {
-      className: SelectHTMLAttributes<HTMLSelectElement>["className"];
-    }) {
-      return (
-        <select
-          {...props}
-          name={field_name}
-          disabled={disabled || readonly}
-          required={required}
-          className={componentProps.className}
-          ref={forwardedRef}
-        >
-          {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
-          {children}
-        </select>
-      );
-    }
+  function Component(componentProps: {
+    className: SelectHTMLAttributes<HTMLSelectElement>["className"];
+  }) {
+    return (
+      <select
+        {...props}
+        name={field_name}
+        disabled={disabled || readonly}
+        required={required}
+        className={componentProps.className}
+        ref={forwardedRef}
+      >
+        {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
+        {children}
+      </select>
+    );
+  }
 
-    if (isUnstyled)
-      return (
-        <SelectProvider value={{ size }}>
-          <Component className={className} />
-        </SelectProvider>
-      );
-
+  if (isUnstyled)
     return (
       <SelectProvider value={{ size }}>
-        <div
-          className={classNames(
-            "group relative flex w-max items-center",
-            className,
-          )}
-        >
-          <Component
-            className={selectClasses({
-              size,
-              variant,
-              disabled,
-              readonly,
-            })}
-          />
-          <ChevronDownIcon className={triggerIconClasses({ size })} />
-        </div>
+        <Component className={className} />
       </SelectProvider>
     );
-  },
-);
 
-Select.displayName = "Select";
+  return (
+    <SelectProvider value={{ size }}>
+      <div
+        className={classNames(
+          "group relative flex w-max items-center",
+          className,
+        )}
+      >
+        <Component
+          className={selectClasses({
+            size,
+            variant,
+            disabled,
+            readonly,
+          })}
+        />
+        <ChevronDownIcon className={triggerIconClasses({ size })} />
+      </div>
+    </SelectProvider>
+  );
+});
 
 export const selectItemClasses = cva("text-black dark:text-secondary-100", {
   variants: {
@@ -209,7 +204,7 @@ export const selectItemClasses = cva("text-black dark:text-secondary-100", {
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  ({ className, ...props }, forwardedRef) => {
+  function SelectItem({ className, ...props }, forwardedRef) {
     const { size } = useSelectContext();
 
     return (
@@ -221,7 +216,6 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
     );
   },
 );
-SelectItem.displayName = "SelectItem";
 
 export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
   variants: {
@@ -236,7 +230,7 @@ export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
 export type SelectItemGroup = OptgroupHTMLAttributes<HTMLOptGroupElement>;
 
 export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
-  (props, forwardedRef) => {
+  function SelectItemGroup(props, forwardedRef) {
     const { size } = useSelectContext();
 
     return (
@@ -248,4 +242,3 @@ export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
     );
   },
 );
-SelectItemGroup.displayName = "SelectItemGroup";

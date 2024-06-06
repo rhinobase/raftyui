@@ -10,22 +10,18 @@ import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
-import {
-  type TagFieldContext,
-  TagFieldProvider,
-  useTagFieldContext,
-} from "./context";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export type TagField = TagsInputRootProps & {
+  size?: SizeType;
   placeholder?: string;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
-} & Partial<TagFieldContext>;
+};
 
 export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
-  (
+  function TagField(
     {
       placeholder,
       size = "md",
@@ -36,34 +32,27 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const disabled =
       props.disabled || getValue(isDisabled) || getValue(isLoading);
     const readOnly = props.readOnly || getValue(isReadOnly);
 
     return (
-      <TagFieldProvider
-        value={{
-          size,
-        }}
+      <TagsInput.Root
+        {...props}
+        readOnly={readOnly}
+        disabled={disabled}
+        className={classNames("relative flex w-full items-center", className)}
+        ref={forwardedRef}
       >
-        <TagsInput.Root
-          {...props}
-          readOnly={readOnly}
-          disabled={disabled}
-          className={classNames("relative flex w-full items-center", className)}
-          ref={forwardedRef}
-        >
-          <TagsInput.Context>
-            {() => <TagFieldControl placeholder={placeholder} />}
-          </TagsInput.Context>
-          <TagsInput.HiddenInput />
-        </TagsInput.Root>
-      </TagFieldProvider>
+        <TagsInput.Context>
+          {() => <TagFieldControl size={size} placeholder={placeholder} />}
+        </TagsInput.Context>
+        <TagsInput.HiddenInput />
+      </TagsInput.Root>
     );
   },
 );
-TagField.displayName = "TagField";
 
 const tagFieldControlClasses = cva(
   "border-secondary-300 dark:border-secondary-700 data-[focus]:dark:ring-primary-100/20 data-[focus]:ring-primary-200 data-[focus]:border-primary-500 data-[focus]:dark:border-primary-400 hover:border-primary-500 dark:hover:border-primary-400 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 group/tag-control flex w-full flex-wrap items-center border outline-none transition-all data-[focus]:ring-2",
@@ -101,18 +90,19 @@ const tagInputTextClasses = {
 
 type TagFieldControl = {
   placeholder?: string;
+  size: SizeType;
 };
 
-function TagFieldControl({ placeholder }: TagFieldControl) {
+function TagFieldControl({ placeholder, size }: TagFieldControl) {
   const { value } = useTagsInputContext();
-  const { size } = useTagFieldContext();
 
   return (
     <>
       <TagsInput.Control className={tagFieldControlClasses({ size })}>
         {value.map((value, index) => (
           <TagsInput.Item key={`${index}-${value}`} index={index} value={value}>
-            <TagPreviewItem value={value} />
+            <TagPreviewItem value={value} size={size} />
+            {/* @ts-ignore */}
             <TagsInput.ItemInput className={tagInputTextClasses.size[size]} />
           </TagsInput.Item>
         ))}
@@ -120,6 +110,7 @@ function TagFieldControl({ placeholder }: TagFieldControl) {
           placeholder={placeholder}
           className={classNames(
             "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent py-0.5 outline-none",
+            // @ts-ignore
             tagInputTextClasses.size[size],
           )}
         />
@@ -173,11 +164,10 @@ const tagFieldPreviewItemDeleteTriggerClasses = cva(
   },
 );
 
-type TagPreviewItem = { value: string };
+type TagPreviewItem = { value: string; size: SizeType };
 
-function TagPreviewItem(props: TagPreviewItem) {
+function TagPreviewItem({ size, value }: TagPreviewItem) {
   const { editing, disabled } = useTagsInputItemContext();
-  const { size } = useTagFieldContext();
 
   return (
     <TagsInput.ItemPreview
@@ -186,10 +176,11 @@ function TagPreviewItem(props: TagPreviewItem) {
       <TagsInput.ItemText
         className={classNames(
           "dark:text-secondary-100 font-light text-black",
+          // @ts-ignore
           tagInputTextClasses.size[size],
         )}
       >
-        {props.value}
+        {value}
       </TagsInput.ItemText>
       <TagsInput.ItemDeleteTrigger
         className={tagFieldPreviewItemDeleteTriggerClasses({ size, disabled })}

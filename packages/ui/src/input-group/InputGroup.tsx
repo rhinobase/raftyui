@@ -7,12 +7,11 @@ import { RightAddon } from "./RightAddon";
 import { Suffix } from "./Suffix";
 import { type InputGroupContext, InputGroupProvider } from "./context";
 
-// InputGroup Component
 export type InputGroup = HTMLAttributes<HTMLDivElement> &
   Partial<InputGroupContext>;
 
 export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
-  (
+  function InputGroup(
     {
       children,
       className,
@@ -24,7 +23,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const validChildren = getValidChildren(children);
     const rightAddons = [];
     const leftAddons = [];
@@ -81,4 +80,3 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
     );
   },
 );
-InputGroup.displayName = "InputGroup";

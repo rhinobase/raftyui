@@ -15,7 +15,7 @@ export type AvatarGroup = HTMLAttributes<HTMLDivElement> &
   Partial<AvatarGroupContext> & { max?: number };
 
 export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
-  (
+  function AvatarGroup(
     {
       max,
       className,
@@ -26,30 +26,24 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const validChildren = getValidChildren(children);
 
-    // Max should be one less than number of avatars
     let childrenToShow = validChildren.length;
     if (max && max > 0) {
       childrenToShow = max;
     }
 
-    // Get the avatars within the max
     const childrenWithinMax = validChildren.slice(0, childrenToShow);
 
-    // Get the remaining avatar count
     const excess = validChildren.length - childrenToShow;
 
-    // Key for excess component
     const excessKey = useId();
 
-    // Adding the last Avatar component to show the remaing number of children
     if (excess > 0) {
       childrenWithinMax.push(<Avatar key={excessKey} name={`+${excess}`} />);
     }
 
-    // Childrens with correct left offset in a group
     const clones = childrenWithinMax.map((child, index) => {
       const childProps = {
         style: {
@@ -61,7 +55,6 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
       return cloneElement(child, childProps);
     });
 
-    // Width of the Avatar Group component
     const groupWidth = calculateWidth(size, childrenWithinMax.length);
 
     return (
@@ -79,4 +72,3 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
     );
   },
 );
-AvatarGroup.displayName = "AvatarGroup";

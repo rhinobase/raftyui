@@ -25,7 +25,6 @@ import {
   useMenuBarContext,
 } from "./context";
 
-//MenuBar Component
 export const menubarClasses = cva("flex w-max items-center", {
   variants: { size: { sm: "gap-1", md: "gap-2", lg: "gap-3" } },
   defaultVariants: {
@@ -38,18 +37,18 @@ export type Menubar = ComponentPropsWithoutRef<typeof MenubarPrimitive.Root> &
 export const Menubar = forwardRef<
   ElementRef<typeof MenubarPrimitive.Root>,
   Menubar
->(
-  (
-    {
-      children,
-      className,
-      size = "md",
-      isUnstyled = false,
-      isDisabled = false,
-      ...props
-    },
-    forwardedRef,
-  ) => (
+>(function Menubar(
+  {
+    children,
+    className,
+    size = "md",
+    isUnstyled = false,
+    isDisabled = false,
+    ...props
+  },
+  forwardedRef,
+) {
+  return (
     <MenuBarProvider value={{ size, isUnstyled, isDisabled }}>
       <MenubarPrimitive.Root
         {...props}
@@ -63,16 +62,11 @@ export const Menubar = forwardRef<
         {children}
       </MenubarPrimitive.Root>
     </MenuBarProvider>
-  ),
-);
-Menubar.displayName = "Menubar";
-
-//MenuBar Menu Component
+  );
+});
 
 export const MenubarMenu = MenubarPrimitive.Menu;
 MenubarMenu.displayName = "MenubarMenu";
-
-//MenuBar Button Component
 
 export type MenubarTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Trigger
@@ -81,77 +75,72 @@ export type MenubarTrigger = ComponentPropsWithoutRef<
 export const MenubarTrigger = forwardRef<
   ElementRef<typeof MenubarPrimitive.Trigger>,
   MenubarTrigger
->(
-  (
-    {
-      className,
-      children,
-      size = "md",
-      variant = "solid",
-      colorScheme = "secondary",
-      leftIcon = undefined,
-      rightIcon = undefined,
-      isDisabled = false,
-      isActive = false,
-      isLoading = false,
-      isUnstyled = false,
-      asChild = false,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const {
-      size: parentSize,
-      isUnstyled: isParentUnstyled,
-      isDisabled: isParentDisabled,
-    } = useMenuBarContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-    const disabled = isParentDisabled || isDisabled;
-    const triggerSize = size || parentSize;
-
-    const buttonProps = {
-      variant,
-      colorScheme,
-      leftIcon,
-      rightIcon,
-      isActive,
-      isLoading,
-      size: triggerSize,
-      isDisabled: disabled,
-      isUnstyled: unstyle,
-    };
-
-    return (
-      <MenubarPrimitive.Trigger
-        {...props}
-        className={asChild ? className : undefined}
-        ref={forwardedRef}
-        asChild
-      >
-        {asChild ? (
-          children
-        ) : (
-          <Button
-            {...buttonProps}
-            className={
-              unstyle
-                ? className
-                : classNames(
-                    menuTriggerClasses({ colorScheme, variant }),
-                    className,
-                  )
-            }
-          >
-            {children}
-          </Button>
-        )}
-      </MenubarPrimitive.Trigger>
-    );
+>(function MenubarTrigger(
+  {
+    className,
+    children,
+    size = "md",
+    variant = "solid",
+    colorScheme = "secondary",
+    leftIcon = undefined,
+    rightIcon = undefined,
+    isDisabled = false,
+    isActive = false,
+    isLoading = false,
+    isUnstyled = false,
+    asChild = false,
+    ...props
   },
-);
-MenubarTrigger.displayName = "MenubarTrigger";
+  forwardedRef,
+) {
+  const {
+    size: parentSize,
+    isUnstyled: isParentUnstyled,
+    isDisabled: isParentDisabled,
+  } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
+  const disabled = isParentDisabled || isDisabled;
+  const triggerSize = size || parentSize;
 
-//MenuBarContent Component
+  const buttonProps = {
+    variant,
+    colorScheme,
+    leftIcon,
+    rightIcon,
+    isActive,
+    isLoading,
+    size: triggerSize,
+    isDisabled: disabled,
+    isUnstyled: unstyle,
+  };
+
+  return (
+    <MenubarPrimitive.Trigger
+      {...props}
+      className={asChild ? className : undefined}
+      ref={forwardedRef}
+      asChild
+    >
+      {asChild ? (
+        children
+      ) : (
+        <Button
+          {...buttonProps}
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  menuTriggerClasses({ colorScheme, variant }),
+                  className,
+                )
+          }
+        >
+          {children}
+        </Button>
+      )}
+    </MenubarPrimitive.Trigger>
+  );
+});
 
 export type MenubarContent = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Content
@@ -162,41 +151,37 @@ export type MenubarContent = ComponentPropsWithoutRef<
 export const MenubarContent = forwardRef<
   ElementRef<typeof MenubarPrimitive.Content>,
   MenubarContent
->(
-  (
-    { children, className, sideOffset = 5, isUnstyled = false, ...props },
-    forwardedRef,
-  ) => {
-    const {
-      isUnstyled: isParentUnstyled,
-      isDisabled,
-      size,
-    } = useMenuBarContext();
-    const unstyle = isParentUnstyled || isUnstyled;
+>(function MenubarContent(
+  { children, className, sideOffset = 5, isUnstyled = false, ...props },
+  forwardedRef,
+) {
+  const {
+    isUnstyled: isParentUnstyled,
+    isDisabled,
+    size,
+  } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
-    if (isDisabled) return undefined;
+  if (isDisabled) return undefined;
 
-    return (
-      <MenubarPrimitive.Portal>
-        <MenubarPrimitive.Content
-          {...props}
-          sideOffset={sideOffset}
-          className={
-            unstyle
-              ? className
-              : classNames(contextMenuContentClasses({ size }), className)
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </MenubarPrimitive.Content>
-      </MenubarPrimitive.Portal>
-    );
-  },
-);
-MenubarContent.displayName = "MenubarContent";
+  return (
+    <MenubarPrimitive.Portal>
+      <MenubarPrimitive.Content
+        {...props}
+        sideOffset={sideOffset}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </MenubarPrimitive.Content>
+    </MenubarPrimitive.Portal>
+  );
+});
 
-//MenuBar Label Component
 export type MenubarLabel = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Label
 > & {
@@ -206,7 +191,10 @@ export type MenubarLabel = ComponentPropsWithoutRef<
 export const MenubarLabel = forwardRef<
   ElementRef<typeof MenubarPrimitive.Label>,
   MenubarLabel
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenubarLabel(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -224,9 +212,7 @@ export const MenubarLabel = forwardRef<
     </MenubarPrimitive.Label>
   );
 });
-MenubarLabel.displayName = "MenubarLabel";
 
-//MenuBar Item Component
 export type MenubarItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Item
 > & {
@@ -236,7 +222,10 @@ export type MenubarItem = ComponentPropsWithoutRef<
 export const MenubarItem = forwardRef<
   ElementRef<typeof MenubarPrimitive.Item>,
   MenubarItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenubarItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -254,13 +243,10 @@ export const MenubarItem = forwardRef<
     </MenubarPrimitive.Item>
   );
 });
-MenubarItem.displayName = "MenubarItem";
 
-//MenuBar ChechboxGroup Component
 export const MenubarGroup = MenubarPrimitive.Group;
 MenubarGroup.displayName = "MenubarGroup";
 
-//Menubar CheckboxItem Component
 export type MenubarCheckboxItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.CheckboxItem
 > & {
@@ -270,7 +256,10 @@ export type MenubarCheckboxItem = ComponentPropsWithoutRef<
 export const MenubarCheckboxItem = forwardRef<
   ElementRef<typeof MenubarPrimitive.CheckboxItem>,
   MenubarCheckboxItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenubarCheckboxItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -297,13 +286,10 @@ export const MenubarCheckboxItem = forwardRef<
     </MenubarPrimitive.CheckboxItem>
   );
 });
-MenubarCheckboxItem.displayName = "MenubarCheckboxItem";
 
-//MenuBar RadioGroup Component
 export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
 MenubarRadioGroup.displayName = "MenubarRadioGroup";
 
-//Menubar RadioItem component
 export type MenubarRadioItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.RadioItem
 > & {
@@ -313,7 +299,10 @@ export type MenubarRadioItem = ComponentPropsWithoutRef<
 export const MenubarRadioItem = forwardRef<
   ElementRef<typeof MenubarPrimitive.RadioItem>,
   MenubarRadioItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenubarRadioItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -340,13 +329,10 @@ export const MenubarRadioItem = forwardRef<
     </MenubarPrimitive.RadioItem>
   );
 });
-MenubarRadioItem.displayName = "MenubarRadioItem";
 
-//MenuBar SubMenu Component
 export const MenubarSub = MenubarPrimitive.Sub;
 MenubarSub.displayName = "MenubarSub";
 
-//MenuBar SubMenuButton Component
 export type MenubarSubTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubTrigger
 > & {
@@ -356,7 +342,10 @@ export type MenubarSubTrigger = ComponentPropsWithoutRef<
 export const MenubarSubTrigger = forwardRef<
   ElementRef<typeof MenubarPrimitive.SubTrigger>,
   MenubarSubTrigger
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenubarSubTrigger(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -379,9 +368,6 @@ export const MenubarSubTrigger = forwardRef<
     </MenubarPrimitive.SubTrigger>
   );
 });
-MenubarSubTrigger.displayName = "MenubarSubTrigger";
-
-//MenuBar SubContent Component
 
 export type MenubarSubContent = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubContent
@@ -392,35 +378,31 @@ export type MenubarSubContent = ComponentPropsWithoutRef<
 export const MenubarSubContent = forwardRef<
   ElementRef<typeof MenubarPrimitive.SubContent>,
   MenubarSubContent
->(
-  (
-    { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled, size } = useMenuBarContext();
-    const unstyle = isParentUnstyled || isUnstyled;
+>(function MenubarSubContent(
+  { children, className, isUnstyled = false, sideOffset = 10, ...props },
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, size } = useMenuBarContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
-    return (
-      <MenubarPrimitive.Portal>
-        <MenubarPrimitive.SubContent
-          {...props}
-          sideOffset={sideOffset}
-          className={
-            unstyle
-              ? className
-              : classNames(contextMenuContentClasses({ size }), className)
-          }
-          ref={forwardedRef}
-        >
-          {children}
-        </MenubarPrimitive.SubContent>
-      </MenubarPrimitive.Portal>
-    );
-  },
-);
-MenubarSubContent.displayName = "MenubarSubContent";
+  return (
+    <MenubarPrimitive.Portal>
+      <MenubarPrimitive.SubContent
+        {...props}
+        sideOffset={sideOffset}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+      </MenubarPrimitive.SubContent>
+    </MenubarPrimitive.Portal>
+  );
+});
 
-// MenuBarDivider Component
 export type MenubarSeparator = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Separator
 > & {
@@ -430,7 +412,10 @@ export type MenubarSeparator = ComponentPropsWithoutRef<
 export const MenubarSeparator = forwardRef<
   ElementRef<typeof MenubarPrimitive.Separator>,
   MenubarSeparator
->(({ className, isUnstyled = true, ...props }, forwardedRef) => {
+>(function MenubarSeparator(
+  { className, isUnstyled = true, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -446,4 +431,3 @@ export const MenubarSeparator = forwardRef<
     />
   );
 });
-MenubarSeparator.displayName = "MenubarSeparator";

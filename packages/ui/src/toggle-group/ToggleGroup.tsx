@@ -26,26 +26,27 @@ export type ToggleGroup = ComponentProps<typeof ToggleGroupPrimitive.Root> &
   Partial<ToggleGroupContext>;
 
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
-  (
+  function ToggleGroup(
     { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
-  ) => (
-    <ToggleGroupProvider value={{ size, isUnstyled }}>
-      <ToggleGroupPrimitive.Root
-        {...props}
-        className={
-          isUnstyled
-            ? className
-            : classNames(toggleGroupClasses({ size }), className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </ToggleGroupPrimitive.Root>
-    </ToggleGroupProvider>
-  ),
+  ) {
+    return (
+      <ToggleGroupProvider value={{ size, isUnstyled }}>
+        <ToggleGroupPrimitive.Root
+          {...props}
+          className={
+            isUnstyled
+              ? className
+              : classNames(toggleGroupClasses({ size }), className)
+          }
+          ref={forwardedRef}
+        >
+          {children}
+        </ToggleGroupPrimitive.Root>
+      </ToggleGroupProvider>
+    );
+  },
 );
-ToggleGroup.displayName = "ToggleGroup";
 
 export const toggleGroupItemClasses = cva(
   "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 hover:text-black dark:hover:bg-secondary-800/80 dark:hover:text-secondary-100 data-[state=on]:dark:bg-primary-300/20 font-medium transition-all ease-in-out",
@@ -68,7 +69,10 @@ export type ToggleGroupItem = ComponentProps<
 > & { isUnstyled?: boolean };
 
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  function ToggleGroupItem(
+    { children, className, isUnstyled = false, ...props },
+    forwardedRef,
+  ) {
     const { size, isUnstyled: isParentUnstyled } = useToggleGroupContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
@@ -87,4 +91,3 @@ export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
     );
   },
 );
-ToggleGroupItem.displayName = "ToggleGroupItem";

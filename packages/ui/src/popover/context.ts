@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [PopoverProvider, usePopoverContext] =
   createContext<PopoverContext>({
@@ -8,6 +8,6 @@ export const [PopoverProvider, usePopoverContext] =
   });
 
 export interface PopoverContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly isUnstyled: boolean;
 }

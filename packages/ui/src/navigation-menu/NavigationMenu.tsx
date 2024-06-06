@@ -15,45 +15,48 @@ import {
   useNavigationMenuContext,
 } from "./context";
 
-// NavigationMenu Component
 export type NavigationMenu = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Root
 > &
   Partial<NavigationMenuContext>;
-export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => (
-    <NavigationMenuProvider value={{ isUnstyled }}>
-      <NavigationMenuPrimitive.Root
-        {...props}
-        className={
-          isUnstyled
-            ? className
-            : classNames(
-                "relative z-10 flex w-full flex-1 items-center justify-center",
-                className,
-              )
-        }
-        ref={forwardedRef}
-      >
-        {children}
-        <NavigationMenuViewport />
-      </NavigationMenuPrimitive.Root>
-    </NavigationMenuProvider>
-  ),
-);
-NavigationMenu.displayName = "NavigationMenu";
 
-// NavigationMenuList Component
+export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
+  function NavigationMenu(
+    { children, className, isUnstyled = false, ...props },
+    forwardedRef,
+  ) {
+    return (
+      <NavigationMenuProvider value={{ isUnstyled }}>
+        <NavigationMenuPrimitive.Root
+          {...props}
+          className={
+            isUnstyled
+              ? className
+              : classNames(
+                  "relative z-10 flex w-full flex-1 items-center justify-center",
+                  className,
+                )
+          }
+          ref={forwardedRef}
+        >
+          {children}
+          <NavigationMenuViewport />
+        </NavigationMenuPrimitive.Root>
+      </NavigationMenuProvider>
+    );
+  },
+);
+
 export type NavigationMenuList = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.List
 > & { isUnstyled?: boolean };
 
-export const NavigationMenuList = ({
+export function NavigationMenuList({
   children,
   className,
   isUnstyled = false,
   ...props
-}: NavigationMenuList) => {
+}: NavigationMenuList) {
   const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -72,10 +75,8 @@ export const NavigationMenuList = ({
       {children}
     </NavigationMenuPrimitive.List>
   );
-};
-NavigationMenuList.displayName = "NavigationMenuList";
+}
 
-// NavigationMenuItem Component
 export type NavigationMenuItem = ComponentProps<
   typeof NavigationMenuPrimitive.Item
 >;
@@ -83,7 +84,6 @@ export type NavigationMenuItem = ComponentProps<
 export const NavigationMenuItem = NavigationMenuPrimitive.Item;
 NavigationMenuItem.displayName = "NavigationMenuItem";
 
-// NavigationMenuTrigger Component
 export type NavigationMenuTrigger = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Trigger
 > & {
@@ -93,7 +93,10 @@ export type NavigationMenuTrigger = ComponentPropsWithoutRef<
 export const NavigationMenuTrigger = forwardRef<
   HTMLButtonElement,
   NavigationMenuTrigger
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function NavigationMenuTrigger(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -115,9 +118,7 @@ export const NavigationMenuTrigger = forwardRef<
     </NavigationMenuPrimitive.Trigger>
   );
 });
-NavigationMenuTrigger.displayName = "NavigationMenuTrigger";
 
-// NavigationMenuContent Component
 export const navigationMenuContentClasses = cva(
   "animate-slide-down-fade dark:bg-secondary-800 absolute w-full origin-top bg-white p-4 text-base drop-shadow-lg duration-200",
   {
@@ -148,42 +149,38 @@ export type NavigationMenuContent = ComponentPropsWithoutRef<
 export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
   NavigationMenuContent
->(
-  (
-    { children, className, size = "md", isUnstyled = false, ...props },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
+>(function NavigationMenuContent(
+  { children, className, size = "md", isUnstyled = false, ...props },
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
-    return (
-      <NavigationMenuPrimitive.Content
-        {...props}
-        className={
-          unstyle
-            ? className
-            : classNames(navigationMenuContentClasses({ size }), className)
-        }
-        ref={forwardedRef}
-      >
-        {children}
-      </NavigationMenuPrimitive.Content>
-    );
-  },
-);
-NavigationMenuContent.displayName = "NavigationMenu.Content";
+  return (
+    <NavigationMenuPrimitive.Content
+      {...props}
+      className={
+        unstyle
+          ? className
+          : classNames(navigationMenuContentClasses({ size }), className)
+      }
+      ref={forwardedRef}
+    >
+      {children}
+    </NavigationMenuPrimitive.Content>
+  );
+});
 
-// NavigationMenuLink Component
 export type NavigationMenuLink = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Link
 > & { isUnstyled?: boolean };
 
-export const NavigationMenuLink = ({
+export function NavigationMenuLink({
   children,
   className,
   isUnstyled = false,
   ...props
-}: NavigationMenuLink) => {
+}: NavigationMenuLink) {
   const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -202,58 +199,54 @@ export const NavigationMenuLink = ({
       {children}
     </NavigationMenuPrimitive.Link>
   );
-};
-NavigationMenuLink.displayName = "NavigationMenuLink";
+}
 
-// NavigationMenuListItem Component
 export type NavigationMenuListItem = PropsWithChildren<{
   title: string;
   href: string;
 }>;
 
-export const NavigationMenuListItem = ({
+export function NavigationMenuListItem({
   title,
   href,
   children,
-}: NavigationMenuListItem) => (
-  <NavigationMenuLink href={href}>
-    <div className="p-2">
-      <h5 className="text-base font-semibold text-black dark:text-white">
-        {title}
-      </h5>
-      <p className="text-base font-normal text-black/50 dark:text-white/50">
-        {children}
-      </p>
-    </div>
-  </NavigationMenuLink>
-);
-NavigationMenuListItem.displayName = "NavigationMenuListItem";
+}: NavigationMenuListItem) {
+  return (
+    <NavigationMenuLink href={href}>
+      <div className="p-2">
+        <h5 className="text-base font-semibold text-black dark:text-white">
+          {title}
+        </h5>
+        <p className="text-base font-normal text-black/50 dark:text-white/50">
+          {children}
+        </p>
+      </div>
+    </NavigationMenuLink>
+  );
+}
 
-// NavigationMenuViewport Component
 type NavigationMenuViewport = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Viewport
 >;
 
-const NavigationMenuViewport = ({ ...props }: NavigationMenuViewport) => {
+function NavigationMenuViewport({ ...props }: NavigationMenuViewport) {
   return (
     <NavigationMenuPrimitive.Viewport
       {...props}
-      className={classNames("absolute bottom-0 flex w-full justify-center")}
+      className="absolute bottom-0 flex w-full justify-center"
     />
   );
-};
-NavigationMenuViewport.displayName = "NavigationMenuViewport";
+}
 
-// NavigationMenuIndicator Component
 export type NavigationMenuIndicator = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Indicator
 > & { isUnstyled?: boolean };
 
-export const NavigationMenuIndicator = ({
+export function NavigationMenuIndicator({
   className,
   isUnstyled = false,
   ...props
-}: NavigationMenuIndicator) => {
+}: NavigationMenuIndicator) {
   const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -272,5 +265,4 @@ export const NavigationMenuIndicator = ({
       <div className="dark:bg-secondary-800 relative top-[70%] size-[12px] rotate-45 transform rounded-tl bg-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]" />
     </NavigationMenuPrimitive.Indicator>
   );
-};
-NavigationMenuIndicator.displayName = "NavigationMenuIndicator";
+}

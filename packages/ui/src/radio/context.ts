@@ -1,5 +1,5 @@
 import type { ValueOrFunction } from "../types";
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [RadioGroupProvider, useRadioGroupContext] =
   createContext<RadioGroupContext>({
@@ -9,6 +9,6 @@ export const [RadioGroupProvider, useRadioGroupContext] =
   });
 
 export interface RadioGroupContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly isDisabled: ValueOrFunction;
 }

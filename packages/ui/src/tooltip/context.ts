@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [TooltipProvider, useTooltipContext] =
   createContext<TooltipContext>({
@@ -8,6 +8,6 @@ export const [TooltipProvider, useTooltipContext] =
   });
 
 export interface TooltipContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly isDisabled: boolean;
 }

@@ -1,14 +1,14 @@
 import { type HTMLAttributes, forwardRef } from "react";
 
-// List Component
 export type List = HTMLAttributes<HTMLUListElement>;
 
-export const List = forwardRef<HTMLUListElement, List>(
-  ({ className, ...props }, forwardedRef) => (
+export const List = forwardRef<HTMLUListElement, List>(function List(
+  { className, ...props },
+  forwardedRef,
+) {
+  return (
     <ul ref={forwardedRef} {...props} className={className}>
       {props.children}
     </ul>
-  ),
-);
-
-List.displayName = "List";
+  );
+});

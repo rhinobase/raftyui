@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [TreeViewProvider, useTreeViewContext] =
   createContext<TreeViewContext>({
@@ -8,5 +8,5 @@ export const [TreeViewProvider, useTreeViewContext] =
   });
 
 export interface TreeViewContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
 }

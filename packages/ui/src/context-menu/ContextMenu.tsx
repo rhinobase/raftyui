@@ -59,7 +59,10 @@ export type ContextMenuContent = ComponentPropsWithoutRef<
 export const ContextMenuContent = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Content>,
   ContextMenuContent
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuContent(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { isUnstyled: isParentUnstyled, size } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -79,9 +82,7 @@ export const ContextMenuContent = forwardRef<
     </ContextMenuPrimitive.Portal>
   );
 });
-ContextMenuContent.displayName = "ContextMenuContent";
 
-//ContextMenu Label Component
 export const contextMenuLabelClasses = cva(
   "text-secondary-400 dark:text-secondary-500 select-none font-semibold uppercase tracking-wide",
   {
@@ -105,7 +106,10 @@ export type ContextMenuLabel = ComponentPropsWithoutRef<
 export const ContextMenuLabel = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Label>,
   ContextMenuLabel
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuLabel(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -123,9 +127,7 @@ export const ContextMenuLabel = forwardRef<
     </ContextMenuPrimitive.Label>
   );
 });
-ContextMenuLabel.displayName = "ContextMenuLabel";
 
-//ContextMenu Item Component
 export const contextMenuItemClasses = cva(
   "select-none text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent data-[disabled]:pointer-events-none",
   {
@@ -151,7 +153,10 @@ export type ContextMenuItem = ComponentPropsWithoutRef<
 export const ContextMenuItem = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Item>,
   ContextMenuItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -169,13 +174,10 @@ export const ContextMenuItem = forwardRef<
     </ContextMenuPrimitive.Item>
   );
 });
-ContextMenuItem.displayName = "ContextMenuItem";
 
-//ContextMenu ChechboxGroup Component
 export const ContextMenuCheckBoxGroup = ContextMenuPrimitive.Group;
 ContextMenuCheckBoxGroup.displayName = "ContextMenuCheckBoxGroup";
 
-//ContextMenu CheckboxItem Component
 export const contextMenuCheckboxItemIndicatorClasses = cva("absolute", {
   variants: {
     size: {
@@ -196,7 +198,10 @@ export type ContextMenuCheckboxItem = ComponentPropsWithoutRef<
 export const ContextMenuCheckboxItem = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
   ContextMenuCheckboxItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuCheckboxItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -223,13 +228,10 @@ export const ContextMenuCheckboxItem = forwardRef<
     </ContextMenuPrimitive.CheckboxItem>
   );
 });
-ContextMenuCheckboxItem.displayName = "ContextMenuCheckboxItem";
 
-//ContextMenu RadioGroup Component
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 ContextMenuRadioGroup.displayName = "ContextMenuRadioGroup";
 
-//ContextMenu RadioItem Component
 export const contextMenuRadioAndCheckboxItemClasses = cva("relative", {
   variants: {
     size: {
@@ -263,7 +265,10 @@ export type ContextMenuRadioItem = ComponentPropsWithoutRef<
 export const ContextMenuRadioItem = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.RadioItem>,
   ContextMenuRadioItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuRadioItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -290,13 +295,10 @@ export const ContextMenuRadioItem = forwardRef<
     </ContextMenuPrimitive.RadioItem>
   );
 });
-ContextMenuRadioItem.displayName = "ContextMenuRadioItem";
 
-//ContextMenu SubMenu Component
 export const ContextMenuSub = ContextMenuPrimitive.Sub;
 ContextMenuSub.displayName = "ContextMenuSub";
 
-//ContextMenu SubMenuButton Component
 export const contextMenuSubTriggerIconClasses = cva("stroke-[3]", {
   variants: {
     size: {
@@ -317,7 +319,10 @@ export type ContextMenuSubTrigger = ComponentPropsWithoutRef<
 export const ContextMenuSubTrigger = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
   ContextMenuSubTrigger
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuSubTrigger(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -342,9 +347,7 @@ export const ContextMenuSubTrigger = forwardRef<
     </ContextMenuPrimitive.SubTrigger>
   );
 });
-ContextMenuSubTrigger.displayName = "ContextMenuSubTrigger";
 
-//ContextMenu SubContent Component
 export type ContextMenuSubContent = ComponentPropsWithoutRef<
   typeof ContextMenuPrimitive.SubContent
 > & { isUnstyled?: boolean };
@@ -352,35 +355,31 @@ export type ContextMenuSubContent = ComponentPropsWithoutRef<
 export const ContextMenuSubContent = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.SubContent>,
   ContextMenuSubContent
->(
-  (
-    { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled, size } = useContextMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
+>(function ContextMenuSubContent(
+  { children, className, isUnstyled = false, sideOffset = 10, ...props },
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, size } = useContextMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
-    return (
-      <ContextMenuPrimitive.Portal>
-        <ContextMenuPrimitive.SubContent
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(contextMenuContentClasses({ size }), className)
-          }
-          sideOffset={sideOffset}
-          ref={forwardedRef}
-        >
-          {children}
-        </ContextMenuPrimitive.SubContent>
-      </ContextMenuPrimitive.Portal>
-    );
-  },
-);
-ContextMenuSubContent.displayName = "ContextMenuSubContent";
+  return (
+    <ContextMenuPrimitive.Portal>
+      <ContextMenuPrimitive.SubContent
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        sideOffset={sideOffset}
+        ref={forwardedRef}
+      >
+        {children}
+      </ContextMenuPrimitive.SubContent>
+    </ContextMenuPrimitive.Portal>
+  );
+});
 
-// ContextMenuDivider Component
 export const contextMenuSeperatorClasses = cva(
   "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
   {
@@ -404,7 +403,10 @@ export type ContextMenuSeparator = ComponentPropsWithoutRef<
 export const ContextMenuSeparator = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Separator>,
   ContextMenuSeparator
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function ContextMenuSeparator(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useContextMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -420,4 +422,3 @@ export const ContextMenuSeparator = forwardRef<
     />
   );
 });
-ContextMenuSeparator.displayName = "ContextMenuSeparator";

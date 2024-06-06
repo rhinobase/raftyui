@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [SegmentedControlProvider, useSegmentedControlContext] =
   createContext<SegmentedControlContext>({
@@ -9,5 +9,5 @@ export const [SegmentedControlProvider, useSegmentedControlContext] =
 
 export interface SegmentedControlContext {
   readonly isReadOnly: boolean;
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
 }

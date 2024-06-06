@@ -29,11 +29,10 @@ const passwordFieldButtonIconClasses = cva("", {
   },
 });
 
-// Password Field
 export type PasswordField = InputField;
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
-  ({ size = "md", ...props }, forwardedRef) => {
+  function PasswordField({ size = "md", ...props }, forwardedRef) {
     const [showPassword, toggle] = useBoolean(false);
     const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 
@@ -71,4 +70,3 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
     );
   },
 );
-PasswordField.displayName = "PasswordField";

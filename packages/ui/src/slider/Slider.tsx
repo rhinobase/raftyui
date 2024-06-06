@@ -39,41 +39,38 @@ export type Slider = ComponentPropsWithoutRef<typeof SliderPrimitive.Root> &
 export const Slider = forwardRef<
   ElementRef<typeof SliderPrimitive.Root>,
   Slider
->(
-  (
-    {
-      className,
-      colorScheme = "primary",
-      size = "md",
-      isDisabled,
-      isReadOnly,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const fieldControlContext = useFieldControlContext() ?? {};
-
-    const disabled =
-      getValue(isDisabled) ||
-      fieldControlContext.isDisabled ||
-      props.disabled ||
-      fieldControlContext.isLoading;
-
-    const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
-
-    return (
-      <SliderProvider value={{ colorScheme, size }}>
-        <SliderPrimitive.Root
-          {...props}
-          disabled={disabled || readonly}
-          className={classNames(sliderClasses({ disabled }), className)}
-          ref={forwardedRef}
-        />
-      </SliderProvider>
-    );
+>(function Slider(
+  {
+    className,
+    colorScheme = "primary",
+    size = "md",
+    isDisabled,
+    isReadOnly,
+    ...props
   },
-);
-Slider.displayName = "Slider";
+  forwardedRef,
+) {
+  const fieldControlContext = useFieldControlContext() ?? {};
+
+  const disabled =
+    getValue(isDisabled) ||
+    fieldControlContext.isDisabled ||
+    props.disabled ||
+    fieldControlContext.isLoading;
+
+  const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+
+  return (
+    <SliderProvider value={{ colorScheme, size }}>
+      <SliderPrimitive.Root
+        {...props}
+        disabled={disabled || readonly}
+        className={classNames(sliderClasses({ disabled }), className)}
+        ref={forwardedRef}
+      />
+    </SliderProvider>
+  );
+});
 
 export const sliderTrackClasses = cva(
   "relative w-full grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800",
@@ -94,7 +91,7 @@ export type SliderTrack = ComponentPropsWithoutRef<
 export const SliderTrack = forwardRef<
   ElementRef<typeof SliderPrimitive.Track>,
   SliderTrack
->(({ className, ...props }, forwardedRef) => {
+>(function SliderTrack({ className, ...props }, forwardedRef) {
   const { size } = useSliderContext();
 
   return (
@@ -105,7 +102,6 @@ export const SliderTrack = forwardRef<
     />
   );
 });
-SliderTrack.displayName = "SliderTrack";
 
 export const sliderRangeClasses = cva("absolute h-full", {
   variants: {
@@ -130,7 +126,7 @@ export type SliderRange = ComponentPropsWithoutRef<
 export const SliderRange = forwardRef<
   ElementRef<typeof SliderPrimitive.Range>,
   SliderRange
->(({ className, ...props }, forwardedRef) => {
+>(function SliderRange({ className, ...props }, forwardedRef) {
   const { colorScheme } = useSliderContext();
 
   return (
@@ -141,7 +137,6 @@ export const SliderRange = forwardRef<
     />
   );
 });
-SliderRange.displayName = "SliderRange";
 
 export const sliderThumbClasses = cva(
   "block rounded-full border bg-white shadow transition-colors ease-in-out outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950 disabled:pointer-events-none disabled:opacity-50",
@@ -171,7 +166,7 @@ export type SliderThumb = ComponentPropsWithoutRef<
 export const SliderThumb = forwardRef<
   ElementRef<typeof SliderPrimitive.Thumb>,
   SliderThumb
->(({ className, ...props }, forwardedRef) => {
+>(function SliderThumb({ className, ...props }, forwardedRef) {
   const { size, colorScheme } = useSliderContext();
 
   return (
@@ -185,4 +180,3 @@ export const SliderThumb = forwardRef<
     />
   );
 });
-SliderThumb.displayName = "SliderThumb";

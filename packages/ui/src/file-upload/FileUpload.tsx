@@ -17,7 +17,10 @@ export type FileUpload = FileUploadRootProps & {
 export const FileUpload = forwardRef<
   ElementRef<typeof ArkFileUpload.Root>,
   FileUpload
->(({ className, isDisabled, isLoading, ...props }, forwardedRef) => {
+>(function FileUpload(
+  { className, isDisabled, isLoading, ...props },
+  forwardedRef,
+) {
   const disabled =
     props.disabled || getValue(isDisabled) || getValue(isLoading);
 
@@ -49,7 +52,6 @@ export const FileUpload = forwardRef<
     </ArkFileUpload.Root>
   );
 });
-FileUpload.displayName = "FileUpload";
 
 function UploadItem(props: { file: File }) {
   return (

@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import { type SizeType, classNames } from "../utils";
 
 export const tagClasses = cva("size-max font-medium select-none leading-none", {
   variants: {
@@ -28,21 +28,19 @@ export const tagClasses = cva("size-max font-medium select-none leading-none", {
 });
 
 export type Tag = HTMLAttributes<HTMLDivElement> & {
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
 };
 
-export const Tag = forwardRef<HTMLDivElement, Tag>(
-  (
-    { size = "md", colorScheme = "secondary", className, ...props },
-    forwardedRef,
-  ) => (
+export const Tag = forwardRef<HTMLDivElement, Tag>(function Tag(
+  { size = "md", colorScheme = "secondary", className, ...props },
+  forwardedRef,
+) {
+  return (
     <div
       {...props}
       className={classNames(tagClasses({ size, colorScheme }), className)}
       ref={forwardedRef}
     />
-  ),
-);
-
-Tag.displayName = "Tag";
+  );
+});

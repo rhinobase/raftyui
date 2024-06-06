@@ -22,7 +22,6 @@ import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 import { type MenuContext, MenuProvider, useMenuContext } from "./context";
 
-// Menu Component
 export type Menu = ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
   Partial<MenuContext>;
 
@@ -40,7 +39,6 @@ export function Menu({
   );
 }
 
-// MenuButton Component
 export const menuTriggerClasses = cva("", {
   variants: {
     colorScheme: {
@@ -127,81 +125,77 @@ export type MenuTrigger = ComponentPropsWithoutRef<
 export const MenuTrigger = forwardRef<
   ElementRef<typeof DropdownMenu.Trigger>,
   MenuTrigger
->(
-  (
-    {
-      className,
-      children,
-      size = "md",
-      variant = "solid",
-      colorScheme = "secondary",
-      leftIcon = undefined,
-      rightIcon = undefined,
-      isDisabled = false,
-      isActive = false,
-      isLoading = false,
-      isUnstyled = false,
-      asChild = false,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const {
-      size: parentSize,
-      isUnstyled: isParentUnstyled,
-      isDisabled: isParentDisabled,
-    } = useMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || parentSize;
-    const disabled = isParentDisabled || isDisabled;
-
-    const buttonProps = {
-      variant,
-      colorScheme,
-      leftIcon,
-      rightIcon,
-      isActive,
-      isLoading,
-      size: triggerSize,
-      isDisabled: disabled,
-      isUnstyled: unstyle,
-    };
-
-    return (
-      <DropdownMenu.Trigger
-        {...props}
-        className={asChild ? className : undefined}
-        ref={forwardedRef}
-        asChild
-      >
-        {asChild ? (
-          children
-        ) : (
-          <Button
-            className={
-              unstyle
-                ? className
-                : classNames(
-                    menuTriggerClasses({
-                      colorScheme,
-                      variant,
-                      disabled: getValue(disabled),
-                    }),
-                    className,
-                  )
-            }
-            {...buttonProps}
-          >
-            {children}
-          </Button>
-        )}
-      </DropdownMenu.Trigger>
-    );
+>(function MenuTrigger(
+  {
+    className,
+    children,
+    size = "md",
+    variant = "solid",
+    colorScheme = "secondary",
+    leftIcon = undefined,
+    rightIcon = undefined,
+    isDisabled = false,
+    isActive = false,
+    isLoading = false,
+    isUnstyled = false,
+    asChild = false,
+    ...props
   },
-);
-MenuTrigger.displayName = "MenuTrigger";
+  forwardedRef,
+) {
+  const {
+    size: parentSize,
+    isUnstyled: isParentUnstyled,
+    isDisabled: isParentDisabled,
+  } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
+  const triggerSize = size || parentSize;
+  const disabled = isParentDisabled || isDisabled;
 
-//MenuContent Component
+  const buttonProps = {
+    variant,
+    colorScheme,
+    leftIcon,
+    rightIcon,
+    isActive,
+    isLoading,
+    size: triggerSize,
+    isDisabled: disabled,
+    isUnstyled: unstyle,
+  };
+
+  return (
+    <DropdownMenu.Trigger
+      {...props}
+      className={asChild ? className : undefined}
+      ref={forwardedRef}
+      asChild
+    >
+      {asChild ? (
+        children
+      ) : (
+        <Button
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  menuTriggerClasses({
+                    colorScheme,
+                    variant,
+                    disabled: getValue(disabled),
+                  }),
+                  className,
+                )
+          }
+          {...buttonProps}
+        >
+          {children}
+        </Button>
+      )}
+    </DropdownMenu.Trigger>
+  );
+});
+
 export type MenuContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.Content
 > & {
@@ -213,45 +207,41 @@ export type MenuContent = ComponentPropsWithoutRef<
 export const MenuContent = forwardRef<
   ElementRef<typeof DropdownMenu.Content>,
   MenuContent
->(
-  (
-    {
-      children,
-      className,
-      isArrow,
-      isUnstyled = false,
-      arrowClassNames,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled, isDisabled, size } = useMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-    const arrow = getValue(isArrow) ?? true;
-
-    if (isDisabled) return undefined;
-
-    return (
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(contextMenuContentClasses({ size }), className)
-          }
-          ref={forwardedRef}
-        >
-          {children}
-          {arrow && <MenuArrow className={arrowClassNames} />}
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    );
+>(function MenuContent(
+  {
+    children,
+    className,
+    isArrow,
+    isUnstyled = false,
+    arrowClassNames,
+    ...props
   },
-);
-MenuContent.displayName = "MenuContent";
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, isDisabled, size } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
+  const arrow = getValue(isArrow) ?? true;
 
-// MenuLabel Component
+  if (isDisabled) return undefined;
+
+  return (
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+        {arrow && <MenuArrow className={arrowClassNames} />}
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  );
+});
+
 export type MenuLabel = ComponentPropsWithoutRef<typeof DropdownMenu.Label> & {
   isUnstyled?: boolean;
 };
@@ -259,7 +249,10 @@ export type MenuLabel = ComponentPropsWithoutRef<typeof DropdownMenu.Label> & {
 export const MenuLabel = forwardRef<
   ElementRef<typeof DropdownMenu.Label>,
   MenuLabel
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuLabel(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -277,9 +270,7 @@ export const MenuLabel = forwardRef<
     </DropdownMenu.Label>
   );
 });
-MenuLabel.displayName = "MenuLabel";
 
-// MenuItem Component
 export type MenuItem = ComponentPropsWithoutRef<typeof DropdownMenu.Item> & {
   isUnstyled?: boolean;
 };
@@ -287,7 +278,10 @@ export type MenuItem = ComponentPropsWithoutRef<typeof DropdownMenu.Item> & {
 export const MenuItem = forwardRef<
   ElementRef<typeof DropdownMenu.Item>,
   MenuItem
->(({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuItem(
+  { className, children, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -305,13 +299,10 @@ export const MenuItem = forwardRef<
     </DropdownMenu.Item>
   );
 });
-MenuItem.displayName = "MenuItem";
 
-// MenuCheckboxGroup Component
 export const MenuGroup = DropdownMenu.Group;
 MenuGroup.displayName = "MenuGroup";
 
-// MenuCheckboxItem Component
 export type MenuCheckboxItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.CheckboxItem
 > & { isUnstyled?: boolean };
@@ -319,7 +310,10 @@ export type MenuCheckboxItem = ComponentPropsWithoutRef<
 export const MenuCheckboxItem = forwardRef<
   ElementRef<typeof DropdownMenu.CheckboxItem>,
   MenuCheckboxItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuCheckboxItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -346,13 +340,10 @@ export const MenuCheckboxItem = forwardRef<
     </DropdownMenu.CheckboxItem>
   );
 });
-MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
-// MenuRadioGroup Component
 export const MenuRadioGroup = DropdownMenu.RadioGroup;
 MenuRadioGroup.displayName = "MenuRadioGroup";
 
-// MenuRadioItem Component
 export type MenuRadioItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.RadioItem
 > & {
@@ -362,7 +353,10 @@ export type MenuRadioItem = ComponentPropsWithoutRef<
 export const MenuRadioItem = forwardRef<
   ElementRef<typeof DropdownMenu.RadioItem>,
   MenuRadioItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuRadioItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -389,17 +383,13 @@ export const MenuRadioItem = forwardRef<
     </DropdownMenu.RadioItem>
   );
 });
-MenuRadioItem.displayName = "MenuRadioItem";
 
-// SubMenuComponent
 export type MenuSub = ComponentPropsWithoutRef<typeof DropdownMenu.Sub>;
 
-export const MenuSub = ({ children, ...props }: MenuSub) => (
-  <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>
-);
-MenuSub.displayName = "MenuSub";
+export function MenuSub({ children, ...props }: MenuSub) {
+  return <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>;
+}
 
-// SubMenuButton Component
 export type MenuSubTrigger = ComponentPropsWithoutRef<
   typeof DropdownMenu.SubTrigger
 > & {
@@ -409,7 +399,10 @@ export type MenuSubTrigger = ComponentPropsWithoutRef<
 export const MenuSubTrigger = forwardRef<
   ElementRef<typeof DropdownMenu.SubTrigger>,
   MenuSubTrigger
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuSubTrigger(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -434,9 +427,7 @@ export const MenuSubTrigger = forwardRef<
     </DropdownMenu.SubTrigger>
   );
 });
-MenuSubTrigger.displayName = "MenuSubTrigger";
 
-// SubMenuContent Component
 export type MenuSubContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.SubContent
 > & {
@@ -446,35 +437,31 @@ export type MenuSubContent = ComponentPropsWithoutRef<
 export const MenuSubContent = forwardRef<
   ElementRef<typeof DropdownMenu.SubContent>,
   MenuSubContent
->(
-  (
-    { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled, size } = useMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
+>(function MenuSubContent(
+  { children, className, isUnstyled = false, sideOffset = 10, ...props },
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, size } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
-    return (
-      <DropdownMenu.Portal>
-        <DropdownMenu.SubContent
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(contextMenuContentClasses({ size }), className)
-          }
-          sideOffset={sideOffset}
-          ref={forwardedRef}
-        >
-          {children}
-        </DropdownMenu.SubContent>
-      </DropdownMenu.Portal>
-    );
-  },
-);
-MenuSubContent.displayName = "MenuSubContent";
+  return (
+    <DropdownMenu.Portal>
+      <DropdownMenu.SubContent
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        sideOffset={sideOffset}
+        ref={forwardedRef}
+      >
+        {children}
+      </DropdownMenu.SubContent>
+    </DropdownMenu.Portal>
+  );
+});
 
-// MenuDivider Component
 export type MenuSeparator = ComponentPropsWithoutRef<
   typeof DropdownMenu.Separator
 > & {
@@ -484,7 +471,10 @@ export type MenuSeparator = ComponentPropsWithoutRef<
 export const MenuSeparator = forwardRef<
   ElementRef<typeof DropdownMenu.Separator>,
   MenuSeparator
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuSeparator(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -500,14 +490,12 @@ export const MenuSeparator = forwardRef<
     />
   );
 });
-MenuSeparator.displayName = "MenuSeparator";
 
-// MenuArrow Component
 type MenuArrow = ComponentPropsWithoutRef<typeof DropdownMenu.Arrow> & {
   isUnstyled?: boolean;
 };
 
-const MenuArrow = ({ className, isUnstyled = false, ...props }: MenuArrow) => {
+function MenuArrow({ className, isUnstyled = false, ...props }: MenuArrow) {
   const { isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -521,5 +509,4 @@ const MenuArrow = ({ className, isUnstyled = false, ...props }: MenuArrow) => {
       }
     />
   );
-};
-MenuArrow.displayName = "MenuArrow";
+}

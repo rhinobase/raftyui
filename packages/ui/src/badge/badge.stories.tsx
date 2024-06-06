@@ -10,7 +10,7 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     status: {
       control: "select",
-      options: ["secondary", "error", "warning", "info", "success"],
+      options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     size: {
       control: "select",

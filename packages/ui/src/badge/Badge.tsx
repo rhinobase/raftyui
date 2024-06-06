@@ -1,6 +1,6 @@
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import { type SizeType, classNames } from "../utils";
 
 export const badgeClasses = cva("rounded-full", {
   variants: {
@@ -10,6 +10,7 @@ export const badgeClasses = cva("rounded-full", {
       lg: "size-3",
     },
     status: {
+      primary: "bg-primary-500 dark:bg-primary-300",
       secondary: "bg-secondary-500 dark:bg-secondary-300",
       success: "bg-green-500 dark:bg-green-300",
       warning: "bg-amber-500 dark:bg-amber-300",
@@ -23,11 +24,13 @@ export const badgeClasses = cva("rounded-full", {
   },
 });
 
-export type Badge = Omit<HTMLAttributes<HTMLDivElement>, "children"> &
-  VariantProps<typeof badgeClasses>;
+export type Badge = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
+  size?: SizeType;
+  status?: "primary" | "secondary" | "success" | "warning" | "error" | "info";
+};
 
 export const Badge = forwardRef<HTMLDivElement, Badge>(
-  ({ className, size, status, ...props }, forwardedRef) => {
+  ({ className, size = "md", status = "primary", ...props }, forwardedRef) => {
     return (
       <div
         {...props}

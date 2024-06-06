@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [InputGroupProvider, useInputGroupContext] =
   createContext<InputGroupContext>({
@@ -13,5 +13,5 @@ export interface InputGroupContext {
   readonly isRightAddon: boolean;
   readonly isPrefix: boolean;
   readonly isSuffix: boolean;
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
 }

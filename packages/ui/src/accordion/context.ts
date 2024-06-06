@@ -1,4 +1,4 @@
-import { createContext } from "../utils";
+import { type SizeType, createContext } from "../utils";
 
 export const [AccordionProvider, useAccordionContext] =
   createContext<AccordionContext>({
@@ -8,7 +8,7 @@ export const [AccordionProvider, useAccordionContext] =
   });
 
 export interface AccordionContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly variant: "solid" | "ghost";
   readonly isUnstyled: boolean;
 }

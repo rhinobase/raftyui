@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FieldControl } from "../field-control";
-import { Label } from "../label";
 import { SearchField } from "./SearchField";
 
 const meta: Meta<typeof SearchField> = {

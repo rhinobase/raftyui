@@ -19,7 +19,7 @@ export default meta;
 
 type Story = StoryObj<typeof Avatar>;
 
-export const Default: Story = {
+export const Single: Story = {
   render: ({ size, name }) => (
     <Avatar
       size={size}
