@@ -1,0 +1,39 @@
+.ce-toolbar__settings-btn {
+  @apply dark:text-secondary-300 dark:hover:bg-secondary-700;
+}
+
+.ce-toolbar__plus {
+  @apply dark:text-secondary-300 dark:hover:bg-secondary-700;
+}
+
+.ce-inline-toolbar {
+  @apply dark:bg-white dark:text-black;
+}
+
+.ce-block__content {
+  @apply dark:selection:bg-blue-800;
+}
+
+.ce-block--selected .ce-block__content {
+  @apply dark:bg-secondary-900;
+}
+
+.ce-toolbar--opened {
+  @apply left-6;
+}
+
+.ce-block__content {
+  @apply max-w-full pl-[60px];
+}
+
+.codex-editor__redactor {
+  @apply !pb-0;
+}
+
+.ce-block__content {
+  @apply [&>h1]:text-[2em] [&>h2]:text-[1.5em] [&>h3]:text-[1.3em] [&>h4]:text-[1.25em] [&>h5]:text-[1.15em] [&>h6]:text-[1em];
+}
+
+.cdx-search-field__input {
+  @apply dark:text-black;
+}
