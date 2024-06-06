@@ -94,7 +94,7 @@ const progressTextClasses = cva("text-secondary-600 dark:text-secondary-400", {
 });
 
 export type ProgressValue = {
-  size: "sm" | "md" | "lg";
+  size: SizeType;
 };
 
 export function ProgressValue(props: ProgressValue) {

@@ -4,7 +4,7 @@ import { type ElementRef, forwardRef } from "react";
 import { EditableItem } from "../editable-text/EditableText";
 import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export type EditableNumber = Omit<
   EditableRootProps,
@@ -13,7 +13,7 @@ export type EditableNumber = Omit<
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   value?: number;
   onValueChange?: (value?: number) => void;
   defaultValue?: number;

@@ -85,7 +85,6 @@ export const CommandList = forwardRef<
 });
 
 export const CommandLoading = CommandPrimitive.Loading;
-CommandLoading.displayName = "CommandLoading";
 
 export type CommandEmpty = ComponentPropsWithoutRef<
   typeof CommandPrimitive.Empty

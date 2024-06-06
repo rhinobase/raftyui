@@ -130,7 +130,6 @@ export const DrawerTitle = forwardRef<
 });
 
 export const DrawerDescription = DialogPrimitive.Description;
-DrawerDescription.displayName = "DrawerDescription";
 
 export type DrawerClose = ComponentPropsWithoutRef<
   (typeof DialogPrimitive)["Close"]

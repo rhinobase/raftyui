@@ -34,7 +34,6 @@ export function ContextMenu({
 }
 
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
-ContextMenuTrigger.displayName = "ContextMenuTrigger";
 
 export const contextMenuContentClasses = cva(
   "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex flex-col bg-white text-sm outline-none shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
@@ -176,7 +175,6 @@ export const ContextMenuItem = forwardRef<
 });
 
 export const ContextMenuCheckBoxGroup = ContextMenuPrimitive.Group;
-ContextMenuCheckBoxGroup.displayName = "ContextMenuCheckBoxGroup";
 
 export const contextMenuCheckboxItemIndicatorClasses = cva("absolute", {
   variants: {
@@ -230,7 +228,6 @@ export const ContextMenuCheckboxItem = forwardRef<
 });
 
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
-ContextMenuRadioGroup.displayName = "ContextMenuRadioGroup";
 
 export const contextMenuRadioAndCheckboxItemClasses = cva("relative", {
   variants: {
@@ -297,7 +294,6 @@ export const ContextMenuRadioItem = forwardRef<
 });
 
 export const ContextMenuSub = ContextMenuPrimitive.Sub;
-ContextMenuSub.displayName = "ContextMenuSub";
 
 export const contextMenuSubTriggerIconClasses = cva("stroke-[3]", {
   variants: {

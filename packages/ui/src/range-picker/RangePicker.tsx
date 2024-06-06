@@ -154,7 +154,7 @@ function ControlRender({
 }
 
 type RangePickerDayCalender = {
-  size: "sm" | "md" | "lg";
+  size: SizeType;
 };
 
 function RangePickerDayCalender({ size }: RangePickerDayCalender) {
@@ -173,6 +173,7 @@ function RangePickerDayCalender({ size }: RangePickerDayCalender) {
                       key={index}
                       className={classNames(
                         "text-secondary-500 font-semibold",
+                        // @ts-ignore
                         datePickerDayCalendarButtonClasses.size[size],
                       )}
                     >
@@ -203,6 +204,7 @@ function RangePickerDayCalender({ size }: RangePickerDayCalender) {
                               "data-[range-start=]:data-[in-range=]:bg-primary-500 dark:data-[range-start=]:data-[in-range=]:bg-primary-300 data-[range-start=]:text-white dark:data-[range-start=]:text-white",
                               "data-[range-end=]:data-[in-range=]:bg-primary-500 dark:data-[range-end=]:data-[in-range=]:bg-primary-300 data-[range-end=]:text-white dark:data-[range-end=]:text-white",
                               "data-[in-range=]:rounded-none data-[in-range=]:data-[range-end=]:rounded-r data-[in-range=]:data-[range-start=]:rounded-l",
+                              // @ts-ignore
                               datePickerDayCalendarButtonClasses.size[size],
                             )}
                           >

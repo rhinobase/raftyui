@@ -29,15 +29,15 @@ export type Badge = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   status?: "primary" | "secondary" | "success" | "warning" | "error" | "info";
 };
 
-export const Badge = forwardRef<HTMLDivElement, Badge>(
-  ({ className, size = "md", status = "primary", ...props }, forwardedRef) => {
-    return (
-      <div
-        {...props}
-        className={classNames(badgeClasses({ size, status }), className)}
-        ref={forwardedRef}
-      />
-    );
-  },
-);
-Badge.displayName = "Badge";
+export const Badge = forwardRef<HTMLDivElement, Badge>(function Badge(
+  { className, size = "md", status = "primary", ...props },
+  forwardedRef,
+) {
+  return (
+    <div
+      {...props}
+      className={classNames(badgeClasses({ size, status }), className)}
+      ref={forwardedRef}
+    />
+  );
+});

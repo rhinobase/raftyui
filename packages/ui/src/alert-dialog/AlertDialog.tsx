@@ -320,7 +320,5 @@ export const AlertDialogDescription = forwardRef<
 });
 
 export const AlertDialogAction = AlertDialogPrimitive.Action;
-AlertDialogAction.displayName = "AlertDialogAction";
 
 export const AlertDialogCancel = AlertDialogPrimitive.Cancel;
-AlertDialogCancel.displayName = "AlertDialogCancel";

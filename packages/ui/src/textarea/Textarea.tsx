@@ -20,7 +20,7 @@ export type Textarea = Omit<
   InputField;
 
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
-  (
+  function Textarea(
     {
       className,
       variant = "outline",
@@ -34,7 +34,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const context = useFieldControlContext() ?? {
       isDisabled: false,
       isLoading: false,
@@ -82,5 +82,3 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
     );
   },
 );
-
-Textarea.displayName = "Textarea";

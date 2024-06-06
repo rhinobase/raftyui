@@ -301,7 +301,6 @@ export const MenuItem = forwardRef<
 });
 
 export const MenuGroup = DropdownMenu.Group;
-MenuGroup.displayName = "MenuGroup";
 
 export type MenuCheckboxItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.CheckboxItem
@@ -342,7 +341,6 @@ export const MenuCheckboxItem = forwardRef<
 });
 
 export const MenuRadioGroup = DropdownMenu.RadioGroup;
-MenuRadioGroup.displayName = "MenuRadioGroup";
 
 export type MenuRadioItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.RadioItem

@@ -7,10 +7,8 @@ import {
 import { classNames } from "../utils";
 
 export const HoverCard = HoverCardPrimitive.Root;
-HoverCard.displayName = "HoverCard";
 
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
-HoverCardTrigger.displayName = "HoverCardTrigger";
 
 export type HoverCardContent = ComponentPropsWithoutRef<
   typeof HoverCardPrimitive.Content

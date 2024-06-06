@@ -66,7 +66,6 @@ export const Menubar = forwardRef<
 });
 
 export const MenubarMenu = MenubarPrimitive.Menu;
-MenubarMenu.displayName = "MenubarMenu";
 
 export type MenubarTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Trigger
@@ -245,7 +244,6 @@ export const MenubarItem = forwardRef<
 });
 
 export const MenubarGroup = MenubarPrimitive.Group;
-MenubarGroup.displayName = "MenubarGroup";
 
 export type MenubarCheckboxItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.CheckboxItem
@@ -288,7 +286,6 @@ export const MenubarCheckboxItem = forwardRef<
 });
 
 export const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
-MenubarRadioGroup.displayName = "MenubarRadioGroup";
 
 export type MenubarRadioItem = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.RadioItem
@@ -331,7 +328,6 @@ export const MenubarRadioItem = forwardRef<
 });
 
 export const MenubarSub = MenubarPrimitive.Sub;
-MenubarSub.displayName = "MenubarSub";
 
 export type MenubarSubTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.SubTrigger

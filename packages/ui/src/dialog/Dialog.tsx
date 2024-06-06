@@ -274,4 +274,3 @@ export const DialogDescription = forwardRef<
 });
 
 export const DialogClose = DialogPrimitive.Close;
-DialogClose.displayName = "DialogClose";

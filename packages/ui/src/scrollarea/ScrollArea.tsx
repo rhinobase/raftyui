@@ -22,13 +22,17 @@ export type ScrollArea = HTMLAttributes<HTMLDivElement> &
   Omit<ScrollAreaContext, ScrollAreaOptionalProp>;
 
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
-  ({ layout = "vertical", itemCount, itemSize, ...props }, forwardedRef) => (
-    <ScrollAreaProvider value={{ layout, itemCount, itemSize }}>
-      <div {...props} ref={forwardedRef} />
-    </ScrollAreaProvider>
-  ),
+  function ScrollArea(
+    { layout = "vertical", itemCount, itemSize, ...props },
+    forwardedRef,
+  ) {
+    return (
+      <ScrollAreaProvider value={{ layout, itemCount, itemSize }}>
+        <div {...props} ref={forwardedRef} />
+      </ScrollAreaProvider>
+    );
+  },
 );
-ScrollArea.displayName = "ScrollArea";
 
 type VariableSizeListExcludedProps =
   | "width"

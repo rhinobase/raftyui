@@ -8,7 +8,7 @@ import {
   type PropsWithChildren,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
+import { type SizeType, classNames } from "../utils";
 import {
   type NavigationMenuContext,
   NavigationMenuProvider,
@@ -82,7 +82,6 @@ export type NavigationMenuItem = ComponentProps<
 >;
 
 export const NavigationMenuItem = NavigationMenuPrimitive.Item;
-NavigationMenuItem.displayName = "NavigationMenuItem";
 
 export type NavigationMenuTrigger = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Trigger
@@ -144,7 +143,7 @@ export const navigationMenuContentClasses = cva(
 
 export type NavigationMenuContent = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Content
-> & { size?: "sm" | "md" | "lg" | "full"; isUnstyled?: boolean };
+> & { size?: SizeType<"full">; isUnstyled?: boolean };
 
 export const NavigationMenuContent = forwardRef<
   HTMLDivElement,
