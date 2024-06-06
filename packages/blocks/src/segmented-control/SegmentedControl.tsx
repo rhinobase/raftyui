@@ -22,7 +22,7 @@ export function SegmentedControl() {
               id={name}
               name={name}
               value={value}
-              onValueChange={({ value }) => onChange(value)}
+              onValueChange={onChange}
               disabled={disabled}
               ref={ref}
             >

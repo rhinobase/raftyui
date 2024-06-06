@@ -20,7 +20,7 @@ export function Rating() {
               name={name}
               count={count}
               value={value}
-              onValueChange={({ value }) => onChange(value)}
+              onValueChange={onChange}
               disabled={disabled}
               ref={ref}
             />
