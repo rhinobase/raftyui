@@ -10,6 +10,7 @@ const meta: Meta<typeof Checkbox> = {
     isDisabled: false,
     isRequired: false,
     isReadOnly: false,
+    isInvalid: false,
   },
   argTypes: {
     size: {
@@ -23,44 +24,27 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
-  render: ({ size, isDisabled, isRequired, isReadOnly }) => {
-    return (
-      <Checkbox
-        isDisabled={isDisabled}
-        size={size}
-        isRequired={isRequired}
-        isReadOnly={isReadOnly}
-      />
-    );
+  render: (props) => {
+    return <Checkbox {...props} />;
   },
 };
 
 export const WithChildren: Story = {
-  render: ({ size, isDisabled, isRequired, isReadOnly }) => (
-    <Checkbox
-      id="name"
-      size={size}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-      isReadOnly={isReadOnly}
-    >
+  render: (props) => (
+    <Checkbox {...props} id="name">
       Name
     </Checkbox>
   ),
 };
 
 export const Indeterminate: Story = {
-  render: ({ size, isDisabled, isRequired, isReadOnly }) => {
+  render: (props) => {
     const [state, setState] = useState<CheckedState>("indeterminate");
 
     return (
       <Checkbox
+        {...props}
         id="name"
-        size={size}
-        checked={state}
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        isReadOnly={isReadOnly}
         onCheckedChange={(checked) =>
           checked ? setState(true) : setState("indeterminate")
         }

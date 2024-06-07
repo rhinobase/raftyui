@@ -6,8 +6,10 @@ const meta: Meta<TagField> = {
   args: {
     size: "md",
     placeholder: "Add Framework",
-    disabled: false,
-    readOnly: false,
+    isDisabled: false,
+    isInvalid: false,
+    isLoading: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -25,5 +27,5 @@ export const Default: Story = {
 };
 
 export const DefaultValue: Story = {
-  render: (props) => <TagField {...props} defaultValue={["hello", "hmmmm"]} />,
+  render: (props) => <TagField defaultValue={["hello", "hmmmm"]} {...props} />,
 };

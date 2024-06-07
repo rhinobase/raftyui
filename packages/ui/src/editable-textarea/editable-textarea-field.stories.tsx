@@ -10,10 +10,12 @@ type Story = StoryObj<typeof EditableTextarea>;
 
 export const Default: Story = {
   args: {
-    isDisabled: false,
-    defaultValue: "Sample Text",
-    isReadOnly: false,
     size: "md",
+    defaultValue: "Sample Text",
+    isDisabled: false,
+    isReadOnly: false,
+    isInvalid: false,
+    isLoading: false,
   },
   argTypes: {
     size: {

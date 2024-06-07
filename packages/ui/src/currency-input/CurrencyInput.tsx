@@ -52,6 +52,7 @@ export type CurrencyInput = Omit<
   | "autoComplete"
   | "autoCorrect"
   | "spellCheck"
+  | "isUnstyled"
 > & {
   value?: string;
   onChange?: (value?: string) => void;
@@ -61,7 +62,7 @@ export type CurrencyInput = Omit<
 export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
   function CurrencyInput(
     {
-      size,
+      size = "md",
       currencyCode = "USD",
       onChange,
       onKeyDown,

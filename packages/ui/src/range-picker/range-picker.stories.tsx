@@ -6,6 +6,10 @@ const meta: Meta<typeof RangePicker> = {
   title: "Form / RangePicker",
   args: {
     size: "md",
+    isDisabled: false,
+    isInvalid: false,
+    isLoading: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -23,13 +27,13 @@ export const Default: Story = {
 };
 
 export const DefaultValue: Story = {
-  render: () => {
+  render: (props) => {
     const date = new Date();
     const firstDate = dateFormat(date, "isoDate");
     const tmp = date;
     tmp.setDate(tmp.getDate() + 10);
     const secondDate = dateFormat(tmp, "isoDate");
 
-    return <RangePicker defaultValue={[firstDate, secondDate]} />;
+    return <RangePicker {...props} defaultValue={[firstDate, secondDate]} />;
   },
 };

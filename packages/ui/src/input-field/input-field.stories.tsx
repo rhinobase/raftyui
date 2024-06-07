@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { FieldControl } from "../field-control";
 import { InputField } from "./InputField";
 
 const meta: Meta<typeof InputField> = {
@@ -9,6 +10,9 @@ const meta: Meta<typeof InputField> = {
     isDisabled: false,
     isRequired: false,
     isReadOnly: false,
+    isLoading: false,
+    isInvalid: false,
+    placeholder: "Enter text",
   },
   argTypes: {
     size: {
@@ -26,17 +30,27 @@ export default meta;
 type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
-  render: ({ size, variant, isReadOnly, isDisabled, isRequired }) => (
-    <div className="flex w-[640px] flex-col gap-6 dark:text-white">
-      <h4 className="font-bold">Input Field</h4>
-      <InputField
-        variant={variant}
-        isReadOnly={isReadOnly}
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        size={size}
-        placeholder="Enter Text"
-      />
-    </div>
+  render: (props) => <InputField {...props} />,
+};
+
+export const WithFieldControl: Story = {
+  render: ({
+    isDisabled,
+    isInvalid,
+    isLoading,
+    isReadOnly,
+    isRequired,
+    ...props
+  }) => (
+    <FieldControl
+      name="InputField"
+      isDisabled={isDisabled}
+      isInvalid={isInvalid}
+      isLoading={isLoading}
+      isReadOnly={isReadOnly}
+      isRequired={isRequired}
+    >
+      <InputField {...props} />
+    </FieldControl>
   ),
 };

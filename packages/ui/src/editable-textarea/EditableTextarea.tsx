@@ -2,6 +2,7 @@
 import { Editable, type EditableRootProps } from "@ark-ui/react";
 import { type ElementRef, forwardRef } from "react";
 import { EditableItem } from "../editable-text/EditableText";
+import { useFieldControlContext } from "../field-control";
 import { Textarea } from "../textarea";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
@@ -15,10 +16,11 @@ const editableTextareaPreviewClasses = {
 };
 
 export type EditableTextarea = Omit<EditableRootProps, "activationMode"> & {
-  isReadOnly?: ValueOrFunction;
-  isDisabled?: ValueOrFunction;
-  isLoading?: ValueOrFunction;
   size?: SizeType;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
 };
 
 export const EditableTextarea = forwardRef<
@@ -27,27 +29,45 @@ export const EditableTextarea = forwardRef<
 >(function EditableTextarea(
   {
     size = "md",
+    name,
+    disabled,
+    readOnly,
     className,
-    isDisabled = false,
-    isReadOnly = false,
-    isLoading = false,
+    isDisabled,
+    isLoading,
+    isReadOnly,
+    isInvalid,
     ...props
   },
   forwardedRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
-  const readOnly = props.readOnly || getValue(isReadOnly);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _readOnly =
+    readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+  const editableTextareaProps: EditableRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    readOnly: _readOnly,
+    className: classNames("w-full", className),
+    activationMode: "dblclick",
+  };
 
   return (
-    <Editable.Root
-      {...props}
-      activationMode="dblclick"
-      readOnly={readOnly}
-      disabled={disabled}
-      className={classNames("w-full", className)}
-      ref={forwardedRef}
-    >
+    <Editable.Root {...editableTextareaProps} ref={forwardedRef}>
       <Editable.Context>
         {() => (
           <EditableItem
@@ -57,7 +77,7 @@ export const EditableTextarea = forwardRef<
             className="min-h-[80px] text-wrap"
             editableTextareaPreviewClasses={editableTextareaPreviewClasses}
           >
-            <Textarea size={size} />
+            <Textarea size={size} isInvalid={_invalid} />
           </EditableItem>
         )}
       </Editable.Context>

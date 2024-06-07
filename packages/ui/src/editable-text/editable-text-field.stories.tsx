@@ -4,10 +4,12 @@ import { EditableText } from "./EditableText";
 const meta: Meta<typeof EditableText> = {
   title: "Components / EditableText",
   args: {
+    size: "md",
+    defaultValue: "hello",
     isDisabled: false,
     isReadOnly: false,
-    defaultValue: "hello",
-    size: "md",
+    isInvalid: false,
+    isLoading: false,
   },
   argTypes: {
     size: {

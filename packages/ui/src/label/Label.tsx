@@ -12,7 +12,13 @@ export const Label = forwardRef<HTMLLabelElement, Label>(function Label(
   { children, className, isRequired, htmlFor, ...props },
   forwardedRef,
 ) {
-  const { name, isRequired: isParentRequired } = useFieldControlContext() ?? {};
+  const { name, isRequired: isParentRequired } = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
 
   const required = getValue(isRequired) ?? isParentRequired;
 

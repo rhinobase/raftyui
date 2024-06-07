@@ -23,6 +23,7 @@ export type PercentageInput = Omit<
   | "autoComplete"
   | "autoCorrect"
   | "spellCheck"
+  | "isUnstyled"
 > & {
   value?: string;
   onChange?: (value?: string) => void;
@@ -32,7 +33,7 @@ export type PercentageInput = Omit<
 export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
   function PercentageInput(
     {
-      size,
+      size = "md",
       currencyCode = "USD",
       onChange,
       onKeyDown,

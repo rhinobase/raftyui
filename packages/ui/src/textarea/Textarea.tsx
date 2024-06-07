@@ -1,5 +1,9 @@
 "use client";
-import { type TextareaHTMLAttributes, forwardRef } from "react";
+import {
+  type DetailedHTMLProps,
+  type TextareaHTMLAttributes,
+  forwardRef,
+} from "react";
 import { useFieldControlContext } from "../field-control";
 import { type InputField, inputFieldClasses } from "../input-field";
 import { classNames, getValue } from "../utils";
@@ -12,7 +16,11 @@ const textareaClasses = {
   },
 };
 
-// TextArea Component (With ErrorMessage)
+type TextareaProps = DetailedHTMLProps<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+>;
+
 export type Textarea = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   "size"
@@ -22,6 +30,10 @@ export type Textarea = Omit<
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
   function Textarea(
     {
+      name,
+      disabled,
+      readOnly,
+      required,
       className,
       variant = "outline",
       size = "md",
@@ -35,50 +47,46 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
     },
     forwardedRef,
   ) {
-    const context = useFieldControlContext() ?? {
+    const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
       isLoading: false,
       isReadOnly: false,
       isRequired: false,
+      isInvalid: false,
     };
 
-    const name = props.name || context.name;
-    const disabled =
-      getValue(isDisabled) ||
-      props.disabled ||
-      context.isDisabled ||
-      getValue(isLoading) ||
-      context.isLoading;
-    const invalid = getValue(isInvalid) || context.isInvalid;
-    const readOnly =
-      getValue(isReadOnly) || props.readOnly || context.isReadOnly;
-    const required =
-      getValue(isRequired) || props.required || context.isRequired;
+    const _name = name ?? fieldControlContext.name;
+    const _disabled =
+      (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+      (getValue(isLoading) ?? fieldControlContext.isLoading);
+    const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+    const _readOnly =
+      readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+    const _required =
+      required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
 
-    return (
-      <textarea
-        {...props}
-        name={name}
-        disabled={disabled}
-        readOnly={readOnly}
-        required={required}
-        className={
-          isUnstyled
-            ? className
-            : classNames(
-                inputFieldClasses({
-                  size,
-                  variant,
-                  disabled,
-                  readOnly,
-                  invalid,
-                }),
-                textareaClasses.size[size],
-                className,
-              )
-        }
-        ref={forwardedRef}
-      />
-    );
+    const textareaProps: TextareaProps = {
+      ...props,
+      name: _name,
+      disabled: _disabled,
+      readOnly: _readOnly,
+      required: _required,
+      className: isUnstyled
+        ? className
+        : classNames(
+            inputFieldClasses({
+              size,
+              variant,
+              disabled: _disabled,
+              readOnly: _readOnly,
+              invalid: _invalid,
+            }),
+            textareaClasses.size[size],
+            className,
+          ),
+      ref: forwardedRef,
+    };
+
+    return <textarea {...textareaProps} />;
   },
 );

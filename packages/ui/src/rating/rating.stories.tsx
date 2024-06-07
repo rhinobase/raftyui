@@ -3,19 +3,14 @@ import { Rating } from "./Rating";
 
 const meta: Meta<typeof Rating> = {
   title: "Components / Rating",
-};
-
-export default meta;
-type Story = StoryObj<typeof Rating>;
-
-export const Default: Story = {
   args: {
-    disabled: false,
     size: "md",
     count: 5,
     defaultValue: 3,
     allowHalf: true,
-    readOnly: false,
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -23,5 +18,11 @@ export const Default: Story = {
       options: ["sm", "md", "lg"],
     },
   },
+};
+
+export default meta;
+type Story = StoryObj<typeof Rating>;
+
+export const Default: Story = {
   render: (props) => <Rating {...props} />,
 };

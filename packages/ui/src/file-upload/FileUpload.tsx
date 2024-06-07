@@ -6,6 +6,7 @@ import {
 import { DocumentIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
+import { useFieldControlContext } from "../field-control";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
@@ -18,19 +19,31 @@ export const FileUpload = forwardRef<
   ElementRef<typeof ArkFileUpload.Root>,
   FileUpload
 >(function FileUpload(
-  { className, isDisabled, isLoading, ...props },
+  { name, disabled, className, isDisabled, isLoading, ...props },
   forwardedRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+
+  const fileUploadProps: FileUploadRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    className: classNames("w-full", className),
+  };
 
   return (
-    <ArkFileUpload.Root
-      {...props}
-      className={classNames("w-full", className)}
-      disabled={disabled}
-      ref={forwardedRef}
-    >
+    <ArkFileUpload.Root {...fileUploadProps} ref={forwardedRef}>
       <div className="relative h-[300px] w-full">
         <ArkFileUpload.Dropzone className="border-secondary-300 dark:border-secondary-700 absolute inset-0 flex size-full cursor-pointer select-none items-center justify-center rounded-lg border border-dashed">
           <p className="text-secondary-500 text-sm font-medium">

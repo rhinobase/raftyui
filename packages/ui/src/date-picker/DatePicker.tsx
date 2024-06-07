@@ -14,24 +14,11 @@ import {
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
+import { useFieldControlContext } from "../field-control";
 import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
-
-export type DatePicker = Omit<
-  DatePickerRootProps,
-  "value" | "onValueChange" | "defaultValue"
-> & {
-  isDisabled?: ValueOrFunction;
-  isReadOnly?: ValueOrFunction;
-  isLoading?: ValueOrFunction;
-  placeholder?: string;
-  value?: string;
-  onValueChange?: (value?: string) => void;
-  defaultValue?: string;
-  size?: SizeType;
-};
 
 export const datPickerControlClasses = cva("flex w-full", {
   variants: {
@@ -62,15 +49,34 @@ export const datePickerContentClasses = cva(
   },
 );
 
+export type DatePicker = Omit<
+  DatePickerRootProps,
+  "value" | "onValueChange" | "defaultValue"
+> & {
+  size?: SizeType;
+  value?: string;
+  onValueChange?: (value?: string) => void;
+  defaultValue?: string;
+  placeholder?: string;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+};
+
 export const DatePicker = forwardRef<
   ElementRef<typeof ArkDatePicker.Root>,
   DatePicker
 >(function DatePicker(
   {
     size = "md",
+    name,
+    disabled,
+    readOnly,
     isDisabled,
     isLoading,
     isReadOnly,
+    isInvalid,
     placeholder,
     value,
     onValueChange,
@@ -80,26 +86,41 @@ export const DatePicker = forwardRef<
   },
   forwardedRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
-  const readOnly = props.readOnly || getValue(isReadOnly);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _readOnly =
+    readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+  const datepickerProps: DatePickerRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    readOnly: _readOnly,
+    value: value ? [value] : undefined,
+    defaultValue: defaultValue ? [defaultValue] : undefined,
+    onValueChange: ({ valueAsString }) => onValueChange?.(valueAsString[0]),
+    className: classNames("w-full", className),
+  };
 
   return (
-    <ArkDatePicker.Root
-      {...props}
-      value={value ? [value] : undefined}
-      onValueChange={({ valueAsString }) => onValueChange?.(valueAsString[0])}
-      defaultValue={defaultValue ? [defaultValue] : undefined}
-      disabled={disabled}
-      readOnly={readOnly}
-      className={classNames("w-full", className)}
-      ref={forwardedRef}
-    >
+    <ArkDatePicker.Root {...datepickerProps} ref={forwardedRef}>
       <ArkDatePicker.Control className={datPickerControlClasses({ size })}>
         <DatePickerControl
           placeholder={placeholder}
           size={size}
-          disabled={disabled}
+          disabled={_disabled}
+          invalid={_invalid}
         />
       </ArkDatePicker.Control>
       <Portal>
@@ -144,7 +165,8 @@ export const datePickerClearButtonClasses = cva("pointer-events-auto rounded", {
 type DatePickerControl = {
   size: SizeType;
   placeholder?: string;
-  disabled?: boolean;
+  disabled: boolean;
+  invalid: boolean;
 };
 
 function DatePickerControl(props: DatePickerControl) {
@@ -154,7 +176,10 @@ function DatePickerControl(props: DatePickerControl) {
     <>
       <InputGroup size={props.size} className="w-full">
         <ArkDatePicker.Input asChild>
-          <InputField placeholder={props.placeholder} />
+          <InputField
+            placeholder={props.placeholder}
+            isInvalid={props.invalid}
+          />
         </ArkDatePicker.Input>
         {value.length > 0 && (
           <Suffix>

@@ -37,8 +37,11 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
     const Icon = showPassword ? EyeSlashIcon : EyeIcon;
 
     const fieldControlContext = useFieldControlContext() ?? {
-      isDisabled: props.isDisabled,
-      isReadOnly: props.isReadOnly,
+      isDisabled: false,
+      isLoading: false,
+      isReadOnly: false,
+      isRequired: false,
+      isInvalid: false,
     };
 
     return (
@@ -56,10 +59,8 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
             variant="ghost"
             onClick={() => toggle()}
             disabled={
-              props.disabled ||
-              getValue(fieldControlContext.isDisabled) ||
-              props.readOnly ||
-              getValue(fieldControlContext.isReadOnly)
+              (props.disabled ?? getValue(fieldControlContext.isDisabled)) ||
+              (props.readOnly ?? getValue(fieldControlContext.isReadOnly))
             }
             className={passwordFieldButtonClasses({ size })}
           >

@@ -4,10 +4,12 @@ import { EditableNumber } from "./EditableNumber";
 const meta: Meta<typeof EditableNumber> = {
   title: "Components / EditableNumber",
   args: {
-    isDisabled: false,
-    isReadOnly: false,
-    defaultValue: 5,
     size: "md",
+    defaultValue: 5,
+    isDisabled: false,
+    isInvalid: false,
+    isLoading: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {

@@ -10,10 +10,12 @@ type Story = StoryObj<typeof PinInput>;
 
 export const Default: Story = {
   args: {
-    disabled: false,
-    length: 4,
     size: "md",
+    length: 4,
     autoFocus: true,
+    isDisabled: false,
+    isInvalid: false,
+    isLoading: false,
   },
   argTypes: {
     size: {

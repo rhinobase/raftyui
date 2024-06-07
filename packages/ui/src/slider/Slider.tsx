@@ -15,24 +15,10 @@ import {
   useSliderContext,
 } from "./context";
 
-export const sliderClasses = cva(
-  "relative flex w-full touch-none select-none items-center",
-  {
-    variants: {
-      disabled: {
-        true: "cursor-not-allowed opacity-70",
-        false: "",
-      },
-    },
-    defaultVariants: {
-      disabled: false,
-    },
-  },
-);
-
 export type Slider = ComponentPropsWithoutRef<typeof SliderPrimitive.Root> &
   Partial<SliderContext> & {
     isDisabled?: ValueOrFunction;
+    isLoading?: ValueOrFunction;
     isReadOnly?: ValueOrFunction;
   };
 
@@ -41,45 +27,54 @@ export const Slider = forwardRef<
   Slider
 >(function Slider(
   {
+    name,
+    disabled,
     className,
     colorScheme = "primary",
     size = "md",
     isDisabled,
     isReadOnly,
+    isLoading,
     ...props
   },
   forwardedRef,
 ) {
-  const fieldControlContext = useFieldControlContext() ?? {};
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
 
-  const disabled =
-    getValue(isDisabled) ||
-    fieldControlContext.isDisabled ||
-    props.disabled ||
-    fieldControlContext.isLoading;
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading) ||
+    (getValue(isReadOnly) ?? fieldControlContext.isReadOnly);
 
-  const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
+  const sliderProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    className: classNames(
+      "relative flex w-full touch-none select-none items-center data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
+      className,
+    ),
+  };
 
   return (
     <SliderProvider value={{ colorScheme, size }}>
-      <SliderPrimitive.Root
-        {...props}
-        disabled={disabled || readonly}
-        className={classNames(sliderClasses({ disabled }), className)}
-        ref={forwardedRef}
-      />
+      <SliderPrimitive.Root {...sliderProps} ref={forwardedRef} />
     </SliderProvider>
   );
 });
 
-export const sliderTrackClasses = cva(
+const sliderTrackClasses = cva(
   "relative w-full grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800",
   {
     variants: {
       size: { sm: "h-1", md: "h-1.5", lg: "h-2" },
-    },
-    defaultVariants: {
-      size: "md",
     },
   },
 );
@@ -103,7 +98,7 @@ export const SliderTrack = forwardRef<
   );
 });
 
-export const sliderRangeClasses = cva("absolute h-full", {
+const sliderRangeClasses = cva("absolute h-full", {
   variants: {
     colorScheme: {
       primary: "bg-primary-500 dark:bg-primary-300",
@@ -113,9 +108,6 @@ export const sliderRangeClasses = cva("absolute h-full", {
       success: "bg-green-500 dark:bg-green-300",
       warning: "bg-amber-500 dark:bg-amber-300",
     },
-  },
-  defaultVariants: {
-    colorScheme: "primary",
   },
 });
 
@@ -138,11 +130,15 @@ export const SliderRange = forwardRef<
   );
 });
 
-export const sliderThumbClasses = cva(
-  "block rounded-full border bg-white shadow transition-colors ease-in-out outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950 disabled:pointer-events-none disabled:opacity-50",
+const sliderThumbClasses = cva(
+  "block rounded-full border border-secondary-300 dark:border-secondary-700 bg-white outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
   {
     variants: {
-      size: { sm: "size-4", md: "size-5", lg: "size-6" },
+      size: {
+        sm: "size-4 shadow-sm",
+        md: "size-5 shadow",
+        lg: "size-6 shadow-md",
+      },
       colorScheme: {
         primary: "ring-primary-300 dark:ring-primary-100",
         secondary: "ring-secondary-300 dark:ring-secondary-100",
@@ -151,10 +147,6 @@ export const sliderThumbClasses = cva(
         success: "ring-green-300 dark:ring-green-100",
         warning: "ring-amber-300 dark:ring-amber-100",
       },
-    },
-    defaultVariants: {
-      size: "md",
-      colorScheme: "primary",
     },
   },
 );

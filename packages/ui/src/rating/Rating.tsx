@@ -3,23 +3,52 @@ import { RatingGroup, type RatingGroupRootProps } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
+import { useFieldControlContext } from "../field-control";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, getValue } from "../utils";
 
-export const ratingControlClasses = cva("flex flex-wrap", {
-  variants: {
-    size: {
-      sm: "gap-0.5",
-      md: "gap-1",
-      lg: "gap-1.5",
+const ratingControlClasses = cva(
+  "flex flex-wrap outline-none data-[readonly]:cursor-default data-[disabled]:opacity-70",
+  {
+    variants: {
+      size: {
+        sm: "gap-0.5",
+        md: "gap-1",
+        lg: "gap-1.5",
+      },
+      disabled: {
+        true: "cursor-not-allowed",
+        false: "",
+      },
+      loading: {
+        true: "cursor-progress",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      {
+        disabled: false,
+        loading: false,
+        className: "cursor-pointer",
+      },
+    ],
+  },
+);
+
+const ratingItemClasses = cva(
+  "dark:ring-offset-secondary-950 ring-primary-300 dark:ring-primary-100 outline-none ring-offset-2 ring-offset-white focus-visible:ring-2",
+  {
+    variants: {
+      size: {
+        sm: "rounded-sm",
+        md: "rounded-base",
+        lg: "rounded-md",
+      },
     },
   },
-  defaultVariants: {
-    size: "md",
-  },
-});
+);
 
-export const ratingIconClasses = cva("", {
+export const ratingItemIconClasses = cva("", {
   variants: {
     size: {
       sm: "size-5",
@@ -31,70 +60,95 @@ export const ratingIconClasses = cva("", {
       false: "fill-secondary-300 dark:fill-secondary-700",
     },
   },
-  defaultVariants: {
-    size: "md",
-    highlighted: false,
-  },
 });
 
 export type Rating = Omit<RatingGroupRootProps, "onValueChange"> & {
   size?: SizeType;
-  isReadOnly?: ValueOrFunction;
+  onValueChange?: (value: number) => void;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
-  onValueChange?: (value: number) => void;
+  isReadOnly?: ValueOrFunction;
 };
 
 export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
   function Rating(
     {
+      name,
+      disabled,
+      readOnly,
       size = "md",
       onValueChange,
-      isDisabled = false,
-      isLoading = false,
-      isReadOnly = false,
+      isDisabled,
+      isLoading,
+      isReadOnly,
       ...props
     },
     forwardedRef,
   ) {
-    const disabled =
-      props.disabled || getValue(isDisabled) || getValue(isLoading);
-    const readOnly = props.readOnly || getValue(isReadOnly);
+    const fieldControlContext = useFieldControlContext() ?? {
+      isDisabled: false,
+      isLoading: false,
+      isReadOnly: false,
+      isRequired: false,
+      isInvalid: false,
+    };
+
+    const _name = name ?? fieldControlContext.name;
+    const _disabled =
+      disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled;
+    const _loading = getValue(isLoading) ?? fieldControlContext.isLoading;
+    const _readOnly =
+      readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+    const ratingProps: RatingGroupRootProps = {
+      ...props,
+      name: _name,
+      disabled: _disabled || _loading,
+      readOnly: _readOnly,
+      onValueChange: ({ value }) => onValueChange?.(value),
+    };
 
     return (
-      <RatingGroup.Root
-        {...props}
-        disabled={disabled}
-        readOnly={readOnly}
-        onValueChange={({ value }) => onValueChange?.(value)}
-        ref={forwardedRef}
-      >
-        <RatingGroup.Control className={ratingControlClasses({ size })}>
+      <RatingGroup.Root {...ratingProps} ref={forwardedRef}>
+        <RatingGroup.Control
+          className={ratingControlClasses({
+            size,
+            disabled: _disabled,
+            loading: _loading,
+          })}
+        >
           <RatingGroup.Context>
             {({ items }) =>
               items.map((item) => (
                 <RatingGroup.Item
                   key={item}
                   index={item}
-                  className="cursor-pointer outline-none data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default data-[disabled]:opacity-70"
+                  className={ratingItemClasses({ size })}
                 >
                   <RatingGroup.ItemContext>
                     {({ half, highlighted }) =>
                       half ? (
                         <div className="relative flex">
                           <FaStarHalf
-                            className={ratingIconClasses({ size, highlighted })}
+                            className={ratingItemIconClasses({
+                              size,
+                              highlighted,
+                            })}
                           />
                           <FaStarHalf
-                            className={ratingIconClasses({
+                            className={ratingItemIconClasses({
                               size,
+                              highlighted: false,
                               className: "absolute -scale-x-100 transform",
                             })}
                           />
                         </div>
                       ) : (
                         <FaStar
-                          className={ratingIconClasses({ size, highlighted })}
+                          className={ratingItemIconClasses({
+                            size,
+                            highlighted,
+                          })}
                         />
                       )
                     }

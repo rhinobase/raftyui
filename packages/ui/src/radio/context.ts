@@ -10,5 +10,6 @@ export const [RadioGroupProvider, useRadioGroupContext] =
 
 export interface RadioGroupContext {
   readonly size: SizeType;
-  readonly isDisabled: ValueOrFunction;
+  readonly disabled: boolean;
+  readonly invalid: boolean;
 }

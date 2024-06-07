@@ -5,10 +5,12 @@ const meta: Meta<typeof Switch> = {
   title: "Form / Switch",
   args: {
     size: "md",
+    defaultChecked: false,
     isReadOnly: false,
     isDisabled: false,
     isRequired: false,
-    defaultChecked: false,
+    isInvalid: false,
+    isLoading: false,
   },
   argTypes: {
     size: {
@@ -22,15 +24,8 @@ export default meta;
 type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
-  render: ({ size, defaultChecked, isDisabled, isReadOnly, isRequired }) => (
-    <Switch
-      id="switch"
-      size={size}
-      isDisabled={isDisabled}
-      isReadOnly={isReadOnly}
-      isRequired={isRequired}
-      defaultChecked={defaultChecked}
-    >
+  render: (props) => (
+    <Switch {...props} id="switch">
       Switch
     </Switch>
   ),

@@ -9,6 +9,8 @@ const meta: Meta<typeof Select> = {
     isDisabled: false,
     isRequired: false,
     isReadOnly: false,
+    isInvalid: false,
+    isLoading: false,
     isUnstyled: false,
   },
   argTypes: {
@@ -27,21 +29,9 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
-  render: ({
-    variant,
-    size,
-    isDisabled,
-    isRequired,
-    isReadOnly,
-    isUnstyled,
-  }) => (
+  render: (props) => (
     <Select
-      variant={variant}
-      size={size}
-      isUnstyled={isUnstyled}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-      isReadOnly={isReadOnly}
+      {...props}
       placeholder="Select fruit"
       onChange={(e) => console.log(e.target.value)}
     >
@@ -55,13 +45,9 @@ export const Default: Story = {
 };
 
 export const SelectWithSelectItemGroup: Story = {
-  render: ({ variant, size, isDisabled, isRequired, isReadOnly }) => (
+  render: (props) => (
     <Select
-      variant={variant}
-      size={size}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-      isReadOnly={isReadOnly}
+      {...props}
       placeholder="Select fruit"
       onChange={(e) => console.log(e.target.value)}
     >

@@ -22,6 +22,7 @@ import {
   datePickerContentClasses,
   datePickerDayCalendarButtonClasses,
 } from "../date-picker/DatePicker";
+import { useFieldControlContext } from "../field-control";
 import { inputFieldClasses } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
@@ -33,9 +34,6 @@ export type RangePicker = Omit<
   DatePickerRootProps,
   "value" | "onValueChange" | "defaultValue"
 > & {
-  isDisabled?: ValueOrFunction;
-  isReadOnly?: ValueOrFunction;
-  isLoading?: ValueOrFunction;
   placeholder?: {
     from?: string;
     to?: string;
@@ -44,6 +42,10 @@ export type RangePicker = Omit<
   onValueChange?: (value?: ValueType) => void;
   defaultValue?: ValueType;
   size?: SizeType;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
 };
 
 export const RangePicker = forwardRef<
@@ -51,39 +53,57 @@ export const RangePicker = forwardRef<
   RangePicker
 >(function RangePicker(
   {
+    name,
     size = "md",
+    disabled,
+    readOnly,
     isDisabled,
     isLoading,
     isReadOnly,
+    isInvalid,
     placeholder,
-    value,
-    defaultValue,
     onValueChange,
     className,
     ...props
   },
   forwardedRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
-  const readOnly = props.readOnly || getValue(isReadOnly);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _readOnly =
+    readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+  const rangePickerProps: DatePickerRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    readOnly: _readOnly,
+    selectionMode: "range",
+    onValueChange: ({ valueAsString }) =>
+      onValueChange?.([valueAsString[0], valueAsString[1]]),
+    className: classNames("w-full", className),
+  };
 
   return (
-    <ArkDatePicker.Root
-      {...props}
-      selectionMode="range"
-      defaultValue={defaultValue}
-      value={value}
-      onValueChange={({ valueAsString }) =>
-        onValueChange?.([valueAsString[0], valueAsString[1]])
-      }
-      disabled={disabled}
-      readOnly={readOnly}
-      className={classNames("w-full", className)}
-      ref={forwardedRef}
-    >
+    <ArkDatePicker.Root {...rangePickerProps} ref={forwardedRef}>
       <ArkDatePicker.Control className={datPickerControlClasses({ size })}>
-        <ControlRender placeholder={placeholder} size={size} />
+        <ControlRender
+          placeholder={placeholder}
+          size={size}
+          invalid={_invalid}
+          disabled={_disabled}
+        />
       </ArkDatePicker.Control>
       <Portal>
         <ArkDatePicker.Positioner>
@@ -98,10 +118,18 @@ export const RangePicker = forwardRef<
   );
 });
 
+type ControlRender = {
+  size: SizeType;
+  invalid: boolean;
+  disabled: boolean;
+} & Pick<RangePicker, "placeholder">;
+
 function ControlRender({
   placeholder,
-  size = "md",
-}: Pick<RangePicker, "size" | "placeholder">) {
+  size,
+  invalid,
+  disabled,
+}: ControlRender) {
   const { value } = useDatePickerContext();
 
   return (
@@ -111,6 +139,8 @@ function ControlRender({
           className={inputFieldClasses({
             className: "flex items-center pr-9",
             size,
+            invalid,
+            disabled,
           })}
         >
           <ArkDatePicker.Input

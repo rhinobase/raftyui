@@ -17,7 +17,7 @@ import {
 } from "./context";
 
 export const selectClasses = cva(
-  "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900",
+  "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900 focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
   {
     variants: {
       size: {
@@ -29,9 +29,13 @@ export const selectClasses = cva(
         true: "",
         false: "",
       },
-      readonly: {
+      readOnly: {
         true: "",
         false: "",
+      },
+      invalid: {
+        true: "ring-red-300 dark:ring-red-100 border-red-500 dark:border-red-300",
+        false: "ring-primary-300 dark:ring-primary-100",
       },
       variant: {
         solid: "",
@@ -43,34 +47,39 @@ export const selectClasses = cva(
       {
         variant: "solid",
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className: "bg-secondary-50 dark:bg-secondary-900",
       },
       {
         disabled: true,
-        readonly: false,
+        readOnly: false,
         className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
       },
       {
         variant: ["solid", "outline"],
         disabled: false,
+        invalid: false,
         className:
-          "group-hover:border-primary-500 dark:group-hover:border-primary-400 transition-all",
+          "group-hover/select:border-primary-500 dark:group-hover/select:border-primary-400 transition-all",
       },
       {
+        invalid: false,
         variant: ["solid", "outline"],
         className: "border-secondary-300 dark:border-secondary-700",
       },
       {
         disabled: false,
-        readonly: false,
-        className:
-          "cursor-pointer focus:border-primary-500 dark:focus:border-primary-400 focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
+        readOnly: false,
+        className: "cursor-pointer",
+      },
+      {
+        invalid: false,
+        className: "focus:border-primary-500 dark:focus:border-primary-400",
       },
       {
         variant: ["outline", "ghost"],
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className: "bg-transparent",
       },
       {
@@ -82,7 +91,7 @@ export const selectClasses = cva(
       size: "md",
       variant: "outline",
       disabled: false,
-      readonly: false,
+      readOnly: false,
     },
   },
 );
@@ -105,11 +114,13 @@ export type Select = Omit<
   "size" | "placeholder"
 > & {
   variant?: "solid" | "outline" | "ghost";
+  placeholder?: string;
   isUnstyled?: boolean;
   isDisabled?: ValueOrFunction;
-  isRequired?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
   isReadOnly?: ValueOrFunction;
-  placeholder?: string;
+  isRequired?: ValueOrFunction;
 } & Partial<SelectContext>;
 
 export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
@@ -117,42 +128,51 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
     children,
     className,
     name,
+    disabled,
+    required,
     size = "md",
     variant = "outline",
-    isDisabled,
-    isRequired,
     isUnstyled = false,
     isReadOnly,
+    isDisabled,
+    isInvalid,
+    isLoading,
+    isRequired,
     placeholder,
     ...props
   },
   forwardedRef,
 ) {
-  const context = useFieldControlContext() ?? {
+  const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
     isLoading: false,
     isReadOnly: false,
     isRequired: false,
+    isInvalid: false,
   };
 
-  const field_name = name || context.name;
-  const disabled =
-    getValue(isDisabled) ||
-    props.disabled ||
-    context.isDisabled ||
-    context.isLoading;
-  const required = getValue(isRequired) || props.required || context.isRequired;
-  const readonly = getValue(isReadOnly) || context.isReadOnly;
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _required =
+    required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
+  const _readOnly = getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+  const selectProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled || _readOnly,
+    required: _required,
+  };
 
   function Component(componentProps: {
     className: SelectHTMLAttributes<HTMLSelectElement>["className"];
   }) {
     return (
       <select
-        {...props}
-        name={field_name}
-        disabled={disabled || readonly}
-        required={required}
+        {...selectProps}
         className={componentProps.className}
         ref={forwardedRef}
       >
@@ -173,7 +193,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
     <SelectProvider value={{ size }}>
       <div
         className={classNames(
-          "group relative flex w-max items-center",
+          "group/select relative flex w-max items-center",
           className,
         )}
       >
@@ -181,8 +201,9 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
           className={selectClasses({
             size,
             variant,
-            disabled,
-            readonly,
+            disabled: _disabled,
+            readOnly: _readOnly,
+            invalid: _invalid,
           })}
         />
         <ChevronDownIcon className={triggerIconClasses({ size })} />

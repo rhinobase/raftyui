@@ -13,48 +13,62 @@ import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
 const checkboxClasses = cva(
-  "border-secondary-400 dark:border-secondary-700 data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300 relative shrink-0 rounded-sm border outline-none ring-offset-2 focus-visible:ring-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
+  classNames(
+    "peer/checkbox relative shrink-0 border",
+    "data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300",
+    "outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
+    "transition-all ease-in-out",
+  ),
   {
     variants: {
-      size: { sm: "size-4 p-px", md: "size-5 p-0.5", lg: "size-6 p-0.5" },
+      size: {
+        sm: "size-4 p-px rounded-sm",
+        md: "size-5 p-0.5 rounded-sm",
+        lg: "size-6 p-0.5 rounded",
+      },
       disabled: {
         true: "cursor-not-allowed opacity-70",
         false: "",
       },
+      invalid: {
+        true: "border-red-500 dark:border-red-300 ring-red-300 dark:ring-red-100",
+        false:
+          "border-secondary-300 dark:border-secondary-700 ring-primary-300 dark:ring-primary-100",
+      },
     },
-    defaultVariants: {
-      size: "md",
-      disabled: false,
-    },
+    compoundVariants: [
+      {
+        disabled: false,
+        invalid: false,
+        className: "hover:border-primary-500 dark:hover:border-primary-300",
+      },
+    ],
   },
 );
 
-const checkboxLabelClasses = cva("", {
-  variants: {
-    size: {
-      sm: "pl-1.5 text-xs",
-      md: "pl-2",
-      lg: "pl-2.5 text-base",
+const checkboxLabelClasses = cva(
+  "font-medium peer-data-[disabled]/checkbox:cursor-not-allowed peer-data-[disabled]/checkbox:opacity-70",
+  {
+    variants: {
+      size: {
+        sm: "pl-1 text-xs",
+        md: "pl-1.5 text-sm",
+        lg: "pl-2 text-base",
+      },
     },
-    disabled: {
-      true: "cursor-not-allowed opacity-70",
-      false: "",
-    },
+    compoundVariants: [{ size: ["md", "lg"], className: "leading-snug" }],
   },
-  compoundVariants: [{ size: ["md", "lg"], className: "leading-snug" }],
-  defaultVariants: {
-    size: "md",
-    disabled: false,
-  },
-});
+);
 
-export type Checkbox = ComponentPropsWithoutRef<
-  typeof CheckboxPrimitive.Root
-> & {
+type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
+
+export type Checkbox = CheckboxProps & {
   size?: SizeType;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isRequired?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
 };
 
 export const Checkbox = forwardRef<
@@ -62,41 +76,52 @@ export const Checkbox = forwardRef<
   Checkbox
 >(function Checkbox(
   {
+    name,
+    disabled,
+    required,
     className,
     children,
     size = "md",
     isReadOnly,
     isDisabled,
     isRequired,
+    isInvalid,
+    isLoading,
     ...props
   },
   forwardedRef,
 ) {
-  const fieldControlContext = useFieldControlContext() ?? {};
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
 
-  const name = props.name || fieldControlContext.name;
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _readOnly = getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _required =
+    required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
 
-  const disabled =
-    getValue(isDisabled) ||
-    fieldControlContext.isDisabled ||
-    props.disabled ||
-    fieldControlContext.isLoading;
-
-  const readonly = getValue(isReadOnly) || fieldControlContext.isReadOnly;
-
-  const required =
-    getValue(isRequired) ?? props.required ?? fieldControlContext.isRequired;
+  const checkboxProps: CheckboxProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled || _readOnly,
+    required: _required,
+  };
 
   const Component = (componentProps: Pick<Checkbox, "className">) => (
     <CheckboxPrimitive.Root
-      {...props}
-      name={name}
-      disabled={disabled || readonly}
-      required={required}
+      {...checkboxProps}
       className={componentProps.className}
       ref={forwardedRef}
     >
-      <CheckboxPrimitive.Indicator className="group flex h-full items-center justify-center">
+      <CheckboxPrimitive.Indicator className="group">
         <CheckIcon className="dark:text-secondary-700 hidden stroke-[3] text-white group-data-[state=checked]:block" />
         <MinusIcon className="text-secondary-600 dark:text-secondary-400 hidden stroke-[3] group-data-[state=indeterminate]:block" />
       </CheckboxPrimitive.Indicator>
@@ -106,12 +131,17 @@ export const Checkbox = forwardRef<
   if (children)
     return (
       <span className={classNames("flex items-start", className)}>
-        <Component className={checkboxClasses({ size, disabled })} />
+        <Component
+          className={checkboxClasses({
+            size,
+            invalid: _invalid,
+            disabled: _disabled,
+          })}
+        />
         <Label
           htmlFor={props.id}
           className={checkboxLabelClasses({
             size,
-            disabled,
           })}
           isRequired={required}
         >
@@ -122,7 +152,10 @@ export const Checkbox = forwardRef<
 
   return (
     <Component
-      className={classNames(checkboxClasses({ size, disabled }), className)}
+      className={classNames(
+        checkboxClasses({ size, invalid: _invalid, disabled: _disabled }),
+        className,
+      )}
     />
   );
 });

@@ -10,6 +10,7 @@ import { EyeDropperIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
+import { useFieldControlContext } from "../field-control";
 import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
@@ -47,6 +48,7 @@ export type ColorPicker = ColorPickerRootProps & {
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
 };
 
 export const ColorPicker = forwardRef<
@@ -55,28 +57,46 @@ export const ColorPicker = forwardRef<
 >(function ColorPicker(
   {
     size = "md",
-    isReadOnly = false,
-    isLoading = false,
-    isDisabled = false,
+    name,
+    disabled,
+    readOnly,
+    isReadOnly,
+    isLoading,
+    isDisabled,
+    isInvalid,
     ...props
   },
   forwaredRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
-  const readOnly = props.readOnly || getValue(isReadOnly);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _readOnly =
+    readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+  const colorPickerProps: ColorPickerRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    readOnly: _readOnly,
+  };
 
   return (
-    <ArkColorPicker.Root
-      {...props}
-      disabled={disabled}
-      readOnly={readOnly}
-      ref={forwaredRef}
-    >
+    <ArkColorPicker.Root {...colorPickerProps} ref={forwaredRef}>
       <ArkColorPicker.Context>
         {() => (
           <>
-            <ColorPickerControl size={size} />
+            <ColorPickerControl size={size} invalid={_invalid} />
             <Portal>
               <ArkColorPicker.Positioner>
                 <ArkColorPicker.Content
@@ -147,16 +167,17 @@ const colorPickerTriggerClasses = cva(
 
 type ColorPickerControl = {
   size: SizeType;
+  invalid: boolean;
 };
 
-function ColorPickerControl({ size }: ColorPickerControl) {
+function ColorPickerControl({ size, invalid }: ColorPickerControl) {
   const { value } = useColorPickerContext();
 
   return (
     <ArkColorPicker.Control>
       <InputGroup size={size}>
         <ArkColorPicker.ChannelInput channel="hex" asChild>
-          <InputField />
+          <InputField isInvalid={invalid} />
         </ArkColorPicker.ChannelInput>
         <Suffix
           className={classNames(

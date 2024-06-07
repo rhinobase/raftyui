@@ -10,6 +10,7 @@ import {
   DatePickerYearCalendar,
   datePickerContentClasses,
 } from "../date-picker/DatePicker";
+import { useFieldControlContext } from "../field-control";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, getValue } from "../utils";
 
@@ -32,6 +33,9 @@ export const Calendar = forwardRef<
   Calendar
 >(function Calendar(
   {
+    name,
+    disabled,
+    readOnly,
     size = "md",
     isDisabled,
     isLoading,
@@ -44,22 +48,35 @@ export const Calendar = forwardRef<
   },
   forwardedRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
-  const readOnly = props.readOnly || getValue(isReadOnly);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _readOnly =
+    readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+
+  const calendarProps: DatePickerRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    readOnly: _readOnly,
+    open: true,
+    closeOnSelect: false,
+    value: value ? [value] : undefined,
+    onValueChange: ({ valueAsString }) => onValueChange?.(valueAsString[0]),
+    defaultValue: defaultValue ? [defaultValue] : undefined,
+  };
 
   return (
-    <ArkDatePicker.Root
-      {...props}
-      open
-      closeOnSelect={false}
-      value={value ? [value] : undefined}
-      onValueChange={({ valueAsString }) => onValueChange?.(valueAsString[0])}
-      defaultValue={defaultValue ? [defaultValue] : undefined}
-      disabled={disabled}
-      readOnly={readOnly}
-      ref={forwardedRef}
-    >
+    <ArkDatePicker.Root {...calendarProps} ref={forwardedRef}>
       <ArkDatePicker.Content className={datePickerContentClasses({ size })}>
         <DatePickerDayCalendar size={size} />
         <DatePickerMonthCalendar size={size} />

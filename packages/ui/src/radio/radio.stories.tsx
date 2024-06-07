@@ -9,6 +9,8 @@ const meta: Meta<typeof RadioGroup> = {
     isDisabled: false,
     isRequired: false,
     isReadOnly: false,
+    isInvalid: false,
+    isLoading: false,
   },
   argTypes: {
     orientation: {
@@ -26,14 +28,8 @@ export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
-  render: ({ size, orientation, isDisabled, isRequired, isReadOnly }) => (
-    <RadioGroup
-      size={size}
-      orientation={orientation}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-      isReadOnly={isReadOnly}
-    >
+  render: (props) => (
+    <RadioGroup {...props}>
       <RadioGroupItem value="default" id="radio.default">
         Default
       </RadioGroupItem>
