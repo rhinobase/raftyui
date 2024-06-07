@@ -6,6 +6,7 @@ export * from "./key-value";
 export * from "./list-box";
 export * from "./pagination";
 // export * from "./phone-number-input";
+export * from "./checkbox-tree";
 export * from "./qr-code";
 export * from "./reorderable-list";
 export * from "./signature";
