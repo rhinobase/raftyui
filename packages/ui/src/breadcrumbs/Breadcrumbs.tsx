@@ -10,7 +10,7 @@ import {
   useBreadcrumbsContext,
 } from "./context";
 
-const breadcrumbsClasses = cva("flex items-center", {
+export const breadcrumbsClasses = cva("flex items-center", {
   variants: {
     size: {
       sm: "gap-1",
@@ -39,7 +39,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
 );
 
 export const breadcrumbsDividerClasses = cva(
-  "select-none font-medium opacity-50 dark:opacity-40",
+  "select-none font-medium text-secondary-400 dark:text-secondary-600",
   {
     variants: {
       size: {
@@ -81,9 +81,14 @@ export const breadcrumbsItemClasses = cva("rounded font-medium leading-tight", {
       md: "py-1 px-2",
       lg: "py-1.5 px-2.5",
     },
+    active: {
+      true: "text-primary-500 dark:text-primary-300",
+      false: "text-black dark:text-white",
+    },
   },
   defaultVariants: {
     size: "md",
+    active: false,
   },
 });
 
@@ -112,7 +117,7 @@ export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
                   active: isActive,
                   colorScheme: isActive ? "primary" : "secondary",
                 }),
-                breadcrumbsItemClasses({ size }),
+                breadcrumbsItemClasses({ size, active: isActive }),
                 className,
               )
         }

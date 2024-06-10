@@ -17,7 +17,7 @@ const meta: Meta<typeof Accordion> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["ghost", "solid"],
+      options: ["ghost", "outline", "solid"],
     },
     size: {
       control: "select",
@@ -31,13 +31,9 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
-  render: ({ variant, size, isUnstyled }) => (
-    <Accordion
-      type="single"
-      size={size}
-      variant={variant}
-      isUnstyled={isUnstyled}
-    >
+  render: (props) => (
+    // @ts-ignore
+    <Accordion {...props} type="single">
       <AccordionItem value="1">
         <AccordionTrigger>Section 1 title</AccordionTrigger>
         <AccordionContent data-cy="content">
@@ -59,14 +55,9 @@ export const Default: Story = {
 };
 
 export const SingleType: Story = {
-  render: ({ variant, size, isUnstyled }) => (
-    <Accordion
-      size={size}
-      type="single"
-      collapsible
-      variant={variant}
-      isUnstyled={isUnstyled}
-    >
+  render: (props) => (
+    // @ts-ignore
+    <Accordion {...props} type="single" collapsible>
       <AccordionItem value="1">
         <AccordionTrigger>Section 1 title</AccordionTrigger>
         <AccordionContent data-cy="content">
@@ -88,13 +79,9 @@ export const SingleType: Story = {
 };
 
 export const MultipleType: Story = {
-  render: ({ variant, size, isUnstyled }) => (
-    <Accordion
-      size={size}
-      variant={variant}
-      isUnstyled={isUnstyled}
-      type="multiple"
-    >
+  render: (props) => (
+    // @ts-ignore
+    <Accordion {...props} type="multiple">
       <AccordionItem value="1">
         <AccordionTrigger>Section 1 title</AccordionTrigger>
         <AccordionContent data-cy="content">
@@ -116,13 +103,9 @@ export const MultipleType: Story = {
 };
 
 export const CustomIcon: Story = {
-  render: ({ variant, size, isUnstyled }) => (
-    <Accordion
-      size={size}
-      variant={variant}
-      isUnstyled={isUnstyled}
-      type="multiple"
-    >
+  render: (props) => (
+    // @ts-ignore
+    <Accordion {...props} type="multiple">
       <AccordionItem value="1">
         <AccordionTrigger>Section 1 title</AccordionTrigger>
         <AccordionContent data-cy="content">

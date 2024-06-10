@@ -3,17 +3,13 @@ import { ColorPicker } from "./ColorPicker";
 
 const meta: Meta<typeof ColorPicker> = {
   title: "Form / ColorPicker",
-};
-
-export default meta;
-type Story = StoryObj<typeof ColorPicker>;
-
-export const Default: Story = {
   args: {
-    disabled: false,
-    readOnly: false,
     size: "md",
     format: "rgba",
+    isDisabled: false,
+    isInvalid: false,
+    isLoading: false,
+    isReadOnly: false,
   },
   argTypes: {
     size: {
@@ -25,6 +21,11 @@ export const Default: Story = {
       options: ["hsba", "rgba", "hsla"],
     },
   },
+};
 
-  render: (props) => <ColorPicker {...props} />,
+export default meta;
+type Story = StoryObj<typeof ColorPicker>;
+
+export const Default: Story = {
+  render: (props) => <ColorPicker {...props} onValueChange={console.log} />,
 };

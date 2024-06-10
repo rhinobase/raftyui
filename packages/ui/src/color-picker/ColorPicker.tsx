@@ -16,21 +16,7 @@ import { InputGroup, Suffix } from "../input-group";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
-const COLORS = [
-  "red",
-  "blue",
-  "green",
-  "yellow",
-  "pink",
-  "black",
-  "brown",
-  "orange",
-  "indigo",
-  "maroon",
-  "purple",
-];
-
-const colorPickerContentClasses = cva(
+export const colorPickerContentClasses = cva(
   "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 border bg-white drop-shadow-lg",
   {
     variants: {
@@ -40,16 +26,54 @@ const colorPickerContentClasses = cva(
         lg: "p-3.5 space-y-3.5 rounded-xl",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 
-export type ColorPicker = ColorPickerRootProps & {
+export type ColorPicker = Omit<
+  ColorPickerRootProps,
+  "format" | "onValueChange"
+> & {
   size?: SizeType;
   isReadOnly?: ValueOrFunction;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
   isInvalid?: ValueOrFunction;
-};
+} & (
+    | {
+        format: "rgba";
+        onValueChange?: (props: {
+          value: { red: number; green: number; blue: number; alpha: number };
+          valueAsString: string;
+        }) => void;
+      }
+    | {
+        format?: "hsba";
+        onValueChange?: (props: {
+          value: {
+            hue: number;
+            saturation: number;
+            brightness: number;
+            alpha: number;
+          };
+          valueAsString: string;
+        }) => void;
+      }
+    | {
+        format?: "hsla";
+        onValueChange?: (props: {
+          value: {
+            hue: number;
+            saturation: number;
+            lightness: number;
+            number: number;
+          };
+          valueAsString: string;
+        }) => void;
+      }
+  );
 
 export const ColorPicker = forwardRef<
   ElementRef<typeof ArkColorPicker.Root>,
@@ -64,6 +88,8 @@ export const ColorPicker = forwardRef<
     isLoading,
     isDisabled,
     isInvalid,
+    format = "rgba",
+    onValueChange,
     ...props
   },
   forwaredRef,
@@ -89,10 +115,46 @@ export const ColorPicker = forwardRef<
     name: _name,
     disabled: _disabled,
     readOnly: _readOnly,
+    format,
   };
 
   return (
-    <ArkColorPicker.Root {...colorPickerProps} ref={forwaredRef}>
+    <ArkColorPicker.Root
+      {...colorPickerProps}
+      onValueChange={({ value, valueAsString }) => {
+        if (format === "rgba") {
+          // @ts-ignore
+          onValueChange?.({ value, valueAsString });
+        } else if (format === "hsba") {
+          const _value = value.toJSON();
+
+          onValueChange?.({
+            // @ts-ignore
+            value: {
+              hue: _value.h,
+              saturation: _value.s,
+              brightness: _value.b,
+              alpha: _value.a,
+            },
+            valueAsString,
+          });
+        } else if (format === "hsla") {
+          const _value = value.toJSON();
+
+          onValueChange?.({
+            // @ts-ignore
+            value: {
+              hue: _value.h,
+              saturation: _value.s,
+              lightness: _value.l,
+              alpha: _value.a,
+            },
+            valueAsString,
+          });
+        }
+      }}
+      ref={forwaredRef}
+    >
       <ArkColorPicker.Context>
         {() => (
           <>
@@ -136,7 +198,7 @@ export const ColorPicker = forwardRef<
   );
 });
 
-const colorPickerInputSuffixClasses = cva("", {
+export const colorPickerInputSuffixClasses = cva("", {
   variants: {
     size: {
       sm: "p-1",
@@ -149,7 +211,7 @@ const colorPickerInputSuffixClasses = cva("", {
   },
 });
 
-const colorPickerTriggerClasses = cva(
+export const colorPickerTriggerClasses = cva(
   "border border-secondary-300 dark:border-secondary-700",
   {
     variants: {
@@ -197,13 +259,16 @@ function ColorPickerControl({ size, invalid }: ColorPickerControl) {
   );
 }
 
-const colorPickerAreaClasses = cva("overflow-hidden rounded-md", {
+export const colorPickerAreaClasses = cva("overflow-hidden rounded-md", {
   variants: {
     size: {
       sm: "h-[120px]",
       md: "h-[140px]",
       lg: "h-[160px]",
     },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });
 
@@ -251,7 +316,7 @@ function ColorChannelPicker() {
   );
 }
 
-const colorPickerLabelClasses = cva(
+export const colorPickerLabelClasses = cva(
   "text-center font-medium select-none text-secondary-600 dark:text-secondary-400",
   {
     variants: {
@@ -260,6 +325,9 @@ const colorPickerLabelClasses = cva(
         md: "text-sm",
         lg: "text-base",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -295,7 +363,21 @@ function CommonChannelInput(props: CommonChannelInput) {
   );
 }
 
-const colorPickerSwatchClasses = cva("", {
+const COLORS = [
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "pink",
+  "black",
+  "brown",
+  "orange",
+  "indigo",
+  "maroon",
+  "purple",
+];
+
+export const colorPickerSwatchClasses = cva("", {
   variants: {
     size: {
       sm: "md:size-[26px] size-[27px] rounded",

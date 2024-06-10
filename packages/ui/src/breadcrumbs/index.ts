@@ -1,7 +1,8 @@
 export {
-  Breadcrumbs,
-  BreadcrumbItem,
   BreadcrumbDivider,
+  BreadcrumbItem,
+  Breadcrumbs,
+  breadcrumbsClasses,
   breadcrumbsDividerClasses,
   breadcrumbsItemClasses,
 } from "./Breadcrumbs";

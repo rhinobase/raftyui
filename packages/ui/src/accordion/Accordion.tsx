@@ -16,6 +16,19 @@ import {
   useAccordionContext,
 } from "./context";
 
+export const accordionClasses = cva("w-full", {
+  variants: {
+    size: {
+      sm: "space-y-1",
+      md: "space-y-2",
+      lg: "space-y-3",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
 export type Accordion = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Root
 > &
@@ -39,7 +52,11 @@ export const Accordion = forwardRef<
     <AccordionProvider value={{ size, variant, isUnstyled }}>
       <AccordionPrimitive.Root
         {...props}
-        className={isUnstyled ? className : classNames("w-full", className)}
+        className={
+          isUnstyled
+            ? className
+            : classNames(accordionClasses({ size }), className)
+        }
         ref={forwardedRef}
       >
         {children}
@@ -69,21 +86,72 @@ export const AccordionItem = forwardRef<
   );
 });
 
+export const accordionTriggerAndContentClasses = cva("", {
+  variants: {
+    size: {
+      sm: "px-2 text-sm",
+      md: "px-2.5 text-base",
+      lg: "px-3 text-lg",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
 export const accordionTriggerClasses = cva(
-  "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all",
+  "text-secondary-700 dark:text-secondary-300 group flex w-full flex-1 items-center justify-between font-medium transition-all border",
   {
     variants: {
       size: {
-        sm: "px-2.5 py-1 text-sm",
-        md: "px-3 py-1.5 text-base",
-        lg: "px-3.5 py-2 text-lg",
+        sm: "py-1",
+        md: "py-1.5",
+        lg: "py-2",
       },
       variant: {
         solid: "bg-secondary-100 dark:bg-secondary-800",
+        outline:
+          "border-secondary-300 data-[state=open]:border-b-transparent dark:border-secondary-700 dark:data-[state=open]:border-b-transparent",
         ghost:
           "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 dark:data-[state=open]:bg-secondary-800 dark:hover:bg-secondary-800",
       },
     },
+    compoundVariants: [
+      {
+        variant: ["solid", "ghost"],
+        className: "border-transparent dark:border-transparent",
+      },
+      {
+        variant: ["solid", "ghost"],
+        size: "sm",
+        className: "rounded-sm",
+      },
+      {
+        variant: ["solid", "ghost"],
+        size: "md",
+        className: "rounded-base",
+      },
+      {
+        variant: ["solid", "ghost"],
+        size: "lg",
+        className: "rounded-md",
+      },
+      {
+        variant: "outline",
+        size: "sm",
+        className: "rounded-t-sm data-[state=closed]:rounded-b-sm",
+      },
+      {
+        variant: "outline",
+        size: "md",
+        className: "rounded-t-base data-[state=closed]:rounded-b-base",
+      },
+      {
+        variant: "outline",
+        size: "lg",
+        className: "rounded-t-md data-[state=closed]:rounded-b-md",
+      },
+    ],
     defaultVariants: {
       size: "md",
       variant: "solid",
@@ -127,38 +195,57 @@ export const AccordionTrigger = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(accordionTriggerClasses({ size, variant }), className)
+          : classNames(
+              accordionTriggerClasses({ size, variant }),
+              accordionTriggerAndContentClasses({ size }),
+              className,
+            )
       }
       ref={forwardedRef}
     >
       {children}
       {openIcon && (
-        <div className="hidden group-data-[state=open]:block">{openIcon}</div>
+        <div className="group-data-[state=open]:block group-data-[state=closed]:hidden">
+          {openIcon}
+        </div>
       )}
       {closeIcon && (
-        <div className="group-data-[state=close]:block group-data-[state=open]:hidden">
+        <div className="group-data-[state=closed]:block group-data-[state=open]:hidden">
           {closeIcon}
         </div>
       )}
       {!openIcon && !closeIcon && _showIcon && (
-        <ChevronDownIcon className="size-4 shrink-0 stroke-[2.5] opacity-60 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+        <ChevronDownIcon className="stroke-secondary-600 dark:stroke-secondary-400 size-4 shrink-0 -rotate-90 stroke-[2.5] transition-transform duration-200 group-data-[state=open]:rotate-0" />
       )}
     </AccordionPrimitive.Trigger>
   );
 });
 
 export const accordionContentClasses = cva(
-  "dark:text-secondary-100 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down w-full overflow-hidden transition-all",
+  "w-full overflow-hidden border-x border-b dark:text-secondary-100 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all",
   {
     variants: {
       size: {
-        sm: "px-2.5 text-sm",
-        md: "px-3 text-base",
-        lg: "px-3.5 text-lg",
+        sm: "rounded-b-sm",
+        md: "rounded-b-base",
+        lg: "rounded-b-md",
+      },
+      variant: {
+        solid: "",
+        outline:
+          "data-[state=closed]:border-transparent data-[state=open]:border-secondary-300 dark:data-[state=closed]:border-transparent dark:data-[state=open]:border-secondary-700",
+        ghost: "",
       },
     },
+    compoundVariants: [
+      {
+        variant: ["ghost", "solid"],
+        className: "border-transparent dark:border-transparent",
+      },
+    ],
     defaultVariants: {
       size: "md",
+      variant: "solid",
     },
   },
 );
@@ -174,7 +261,7 @@ export const AccordionContent = forwardRef<
   { children, className, isUnstyled = false, ...props },
   forwardedRef,
 ) {
-  const { size, isUnstyled: isParentUnstyled } = useAccordionContext();
+  const { size, isUnstyled: isParentUnstyled, variant } = useAccordionContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
   return (
@@ -183,7 +270,11 @@ export const AccordionContent = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(accordionContentClasses({ size }), className)
+          : classNames(
+              accordionContentClasses({ size, variant }),
+              accordionTriggerAndContentClasses({ size }),
+              className,
+            )
       }
       ref={forwardedRef}
     >

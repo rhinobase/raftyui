@@ -20,11 +20,10 @@ export default meta;
 type Story = StoryObj<typeof Avatar>;
 
 export const Single: Story = {
-  render: ({ size, name }) => (
+  render: (props) => (
     <Avatar
-      size={size}
-      name={name}
-      src={`https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=${name}`}
+      {...props}
+      src={`https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=${props.name}`}
     />
   ),
 };

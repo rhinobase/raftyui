@@ -1,1 +1,9 @@
-export { ColorPicker } from "./ColorPicker";
+export {
+  ColorPicker,
+  colorPickerAreaClasses,
+  colorPickerContentClasses,
+  colorPickerInputSuffixClasses,
+  colorPickerLabelClasses,
+  colorPickerSwatchClasses,
+  colorPickerTriggerClasses,
+} from "./ColorPicker";

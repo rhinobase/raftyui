@@ -9,6 +9,6 @@ export const [AccordionProvider, useAccordionContext] =
 
 export interface AccordionContext {
   readonly size: SizeType;
-  readonly variant: "solid" | "ghost";
+  readonly variant: "solid" | "outline" | "ghost";
   readonly isUnstyled: boolean;
 }

@@ -46,6 +46,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
 
     const clones = childrenWithinMax.map((child, index) => {
       const childProps = {
+        "data-child": true,
         style: {
           left: index * LEFT_OFFSET[size],
           zIndex: 10 - index,
@@ -61,9 +62,8 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
       <AvatarGroupProvider value={{ size, isUnstyled }}>
         <div
           {...props}
-          className={classNames("group relative flex items-center", className)}
+          className={classNames("relative flex items-center", className)}
           style={{ width: groupWidth, ...style }}
-          data-group={true}
           ref={forwardedRef}
         >
           {clones}

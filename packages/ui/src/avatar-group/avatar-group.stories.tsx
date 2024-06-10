@@ -20,25 +20,19 @@ export default meta;
 
 type Story = StoryObj<typeof AvatarGroup>;
 
+const DATA = ["Annie", "Jack", "Kiki", "Bandit"];
+
 export const Group: Story = {
-  render: ({ size, max }) => (
-    <AvatarGroup size={size} max={max}>
-      <Avatar
-        name="Annie"
-        src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Annie"
-      />
-      <Avatar
-        name="Jack"
-        src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Jack"
-      />
-      <Avatar
-        name="Kiki"
-        src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Kiki"
-      />
-      <Avatar
-        name="Bandit"
-        src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Bandit"
-      />
+  render: (props) => (
+    <AvatarGroup {...props}>
+      {DATA.map((name, index) => (
+        <Avatar
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          key={index}
+          name={name}
+          src={`https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=${name}`}
+        />
+      ))}
     </AvatarGroup>
   ),
 };

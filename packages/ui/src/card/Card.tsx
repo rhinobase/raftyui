@@ -14,9 +14,14 @@ export const cardClasses = cva("flex flex-col dark:text-white border", {
     variant: {
       outline: "border-secondary-300 dark:border-secondary-700",
       elevated:
-        "bg-white dark:bg-secondary-800 drop-shadow-lg border-transparent",
+        "bg-white dark:bg-secondary-800 border-transparent dark:border-transparent ring-1 ring-black/10 dark:ring-white/10",
     },
   },
+  compoundVariants: [
+    { size: "sm", variant: "elevated", className: "shadow-md" },
+    { size: "md", variant: "elevated", className: "shadow-lg" },
+    { size: "lg", variant: "elevated", className: "shadow-xl" },
+  ],
   defaultVariants: {
     size: "md",
     variant: "outline",

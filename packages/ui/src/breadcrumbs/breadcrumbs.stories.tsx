@@ -18,8 +18,8 @@ export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Default: Story = {
-  render: ({ size }) => (
-    <Breadcrumbs size={size}>
+  render: (props) => (
+    <Breadcrumbs {...props}>
       <a href="/">
         <BreadcrumbItem>Home</BreadcrumbItem>
       </a>
@@ -38,8 +38,8 @@ export const Default: Story = {
 };
 
 export const WithChildren: Story = {
-  render: ({ size }) => (
-    <Breadcrumbs size={size}>
+  render: (props) => (
+    <Breadcrumbs {...props}>
       <a href="/">
         <BreadcrumbItem isUnstyled>Home</BreadcrumbItem>
       </a>

@@ -33,8 +33,8 @@ export default meta;
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  render: ({ size, isUnstyled }) => (
-    <AlertDialog size={size} isUnstyled={isUnstyled}>
+  render: (props) => (
+    <AlertDialog {...props}>
       <AlertDialogTrigger variant="solid" colorScheme="error">
         Delete
       </AlertDialogTrigger>

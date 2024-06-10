@@ -12,7 +12,7 @@ import { Label } from "../label";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
-const checkboxClasses = cva(
+export const checkboxClasses = cva(
   classNames(
     "peer/checkbox relative shrink-0 border",
     "data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300",
@@ -43,10 +43,15 @@ const checkboxClasses = cva(
         className: "hover:border-primary-500 dark:hover:border-primary-300",
       },
     ],
+    defaultVariants: {
+      size: "md",
+      disabled: false,
+      invalid: false,
+    },
   },
 );
 
-const checkboxLabelClasses = cva(
+export const checkboxLabelClasses = cva(
   "font-medium peer-data-[disabled]/checkbox:cursor-not-allowed peer-data-[disabled]/checkbox:opacity-70",
   {
     variants: {
@@ -57,6 +62,9 @@ const checkboxLabelClasses = cva(
       },
     },
     compoundVariants: [{ size: ["md", "lg"], className: "leading-snug" }],
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 

@@ -5,13 +5,13 @@ import { useAvatarGroupContext } from "../avatar-group/context";
 import { type SizeType, classNames } from "../utils";
 
 export const avatarClasses = cva(
-  "dark:border-secondary-900 relative overflow-hidden rounded-full border-white group-data-[group=true]:absolute",
+  "dark:border-secondary-900 relative overflow-hidden rounded-full border-white data-[child]:absolute",
   {
     variants: {
       size: {
-        sm: "size-7 border",
-        md: "size-9 border-2",
-        lg: "size-12 border-[2.5px]",
+        sm: "size-7 data-[child]:border",
+        md: "size-9 data-[child]:border-2",
+        lg: "size-12 data-[child]:border-[3px]",
       },
     },
     defaultVariants: {
