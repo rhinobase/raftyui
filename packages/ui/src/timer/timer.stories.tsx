@@ -4,7 +4,9 @@ import { Timer } from "./Timer";
 const meta: Meta<typeof Timer> = {
   title: "Components / Timer",
   args: {
-    hidden: false,
+    isHidden: false,
+    isDisabled: false,
+    isReadOnly: false,
   },
 };
 

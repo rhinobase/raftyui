@@ -1,20 +1,46 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { cva } from "class-variance-authority";
+import { type HTMLAttributes, useEffect, useRef, useState } from "react";
 import { Button } from "../button";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 
+const timerClasses = cva(
+  "flex w-full flex-col items-center justify-center gap-3 select-none",
+  {
+    variants: {
+      disabled: {
+        true: "cursor-not-allowed opacity-60",
+        false: "",
+      },
+      hidden: {
+        true: "hidden",
+        false: "",
+      },
+    },
+  },
+);
+
 export type Timer = {
-  hidden?: ValueOrFunction;
+  isHidden?: ValueOrFunction;
+  isDisabled?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  className?: HTMLAttributes<HTMLDivElement>["className"];
 };
 
-export function Timer({ hidden }: Timer) {
+export function Timer({
+  isHidden = false,
+  isDisabled = false,
+  isReadOnly = false,
+  className,
+}: Timer) {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
   const ref = useRef<NodeJS.Timeout | null>(null);
-
-  const isHidden = getValue(hidden);
+  const disabled = getValue(isDisabled);
+  const hidden = getValue(isHidden);
+  const readOnly = getValue(isReadOnly);
 
   useEffect(() => {
     if (isRunning) {
@@ -48,7 +74,7 @@ export function Timer({ hidden }: Timer) {
     setIsStopped(false);
   };
 
-  const formatTime = (time: number) => {
+  const formatTime = () => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -57,17 +83,11 @@ export function Timer({ hidden }: Timer) {
       .toString()
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
-  console.log(isHidden);
 
   return (
-    <div
-      className={classNames(
-        "flex w-full flex-col items-center justify-center gap-3",
-        isHidden && "hidden",
-      )}
-    >
+    <div className={classNames(timerClasses({ disabled, hidden }), className)}>
       <p className="w-full max-w-[300px] text-center text-2xl font-semibold">
-        {formatTime(time)}
+        {formatTime()}
       </p>
       {isRunning ? (
         <Button
@@ -75,6 +95,7 @@ export function Timer({ hidden }: Timer) {
           colorScheme="primary"
           variant="outline"
           onClick={handleStop}
+          isDisabled={disabled || readOnly}
         >
           Stop
         </Button>
@@ -85,6 +106,7 @@ export function Timer({ hidden }: Timer) {
             colorScheme="primary"
             variant="outline"
             onClick={handleResume}
+            isDisabled={disabled || readOnly}
           >
             Resume
           </Button>
@@ -93,6 +115,7 @@ export function Timer({ hidden }: Timer) {
             colorScheme="primary"
             variant="outline"
             onClick={handleReset}
+            isDisabled={disabled || readOnly}
           >
             Reset
           </Button>
@@ -103,6 +126,7 @@ export function Timer({ hidden }: Timer) {
           colorScheme="primary"
           variant="outline"
           onClick={handleStart}
+          isDisabled={disabled || readOnly}
         >
           Start
         </Button>
