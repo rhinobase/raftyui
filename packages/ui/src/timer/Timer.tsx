@@ -1,32 +1,41 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../button";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 
-export const Timer = () => {
+export type Timer = {
+  hidden?: ValueOrFunction;
+};
+
+export function Timer({ hidden }: Timer) {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [isStopped, setIsStopped] = useState(false);
+  const ref = useRef<NodeJS.Timeout | null>(null);
 
-  const intervalRef = useRef(null);
+  const isHidden = getValue(hidden);
 
   useEffect(() => {
     if (isRunning) {
-      intervalRef.current = setInterval(
-        () => setTime((prev) => prev + 1),
-        1000,
-      );
-    } else {
-      clearInterval(intervalRef.current);
+      ref.current = setInterval(() => setTime((prev) => prev + 1), 1000);
     }
 
-    return () => clearInterval(intervalRef.current);
+    return () => {
+      if (ref.current) {
+        clearInterval(ref.current);
+      }
+    };
   }, [isRunning]);
 
   const handleStart = () => {
     setIsRunning(true);
+    setIsStopped(false);
   };
 
   const handleStop = () => {
     setIsRunning(false);
+    setIsStopped(true);
   };
 
   const handleResume = () => {
@@ -36,11 +45,11 @@ export const Timer = () => {
   const handleReset = () => {
     setIsRunning(false);
     setTime(0);
+    setIsStopped(false);
   };
 
   const formatTime = (time: number) => {
     const hours = Math.floor(time / 3600);
-
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
 
@@ -48,34 +57,56 @@ export const Timer = () => {
       .toString()
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
+  console.log(isHidden);
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4">
+    <div
+      className={classNames(
+        "flex w-full flex-col items-center justify-center gap-3",
+        isHidden && "hidden",
+      )}
+    >
       <p className="w-full max-w-[300px] text-center text-2xl font-semibold">
         {formatTime(time)}
       </p>
       {isRunning ? (
-        <Button size="sm" variant="outline" onClick={handleStop}>
+        <Button
+          size="sm"
+          colorScheme="primary"
+          variant="outline"
+          onClick={handleStop}
+        >
           Stop
         </Button>
-      ) : (
+      ) : isStopped ? (
         <div className="flex items-center gap-2">
-          <Button size="sm" variant="outline" onClick={handleStart}>
-            Start
-          </Button>
           <Button
             size="sm"
+            colorScheme="primary"
             variant="outline"
             onClick={handleResume}
-            disabled={isRunning}
           >
             Resume
           </Button>
-          <Button size="sm" variant="outline" onClick={handleReset}>
+          <Button
+            size="sm"
+            colorScheme="primary"
+            variant="outline"
+            onClick={handleReset}
+          >
             Reset
           </Button>
         </div>
+      ) : (
+        <Button
+          size="sm"
+          colorScheme="primary"
+          variant="outline"
+          onClick={handleStart}
+        >
+          Start
+        </Button>
       )}
     </div>
   );
-};
+}
