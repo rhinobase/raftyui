@@ -7,6 +7,7 @@ const meta: Meta<typeof Tab> = {
     size: "md",
     orientation: "horizontal",
     variant: "line",
+    defaultValue: "tab1",
   },
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
@@ -22,13 +23,8 @@ export default meta;
 type Story = StoryObj<typeof Tab>;
 
 export const Variants: Story = {
-  render: ({ size, orientation, variant }) => (
-    <Tab
-      defaultValue="tab1"
-      size={size}
-      orientation={orientation}
-      variant={variant}
-    >
+  render: (props) => (
+    <Tab {...props}>
       <TabList>
         <TabTrigger value="tab1">Tab1</TabTrigger>
         <TabTrigger value="tab2">Tab2</TabTrigger>

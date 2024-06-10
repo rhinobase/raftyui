@@ -4,7 +4,7 @@ import { type HTMLAttributes, type ThHTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 import { type TableContext, TableProvider, useTableContext } from "./context";
 
-const tableClasses = cva(
+export const tableClasses = cva(
   "border-secondary-300 dark:border-secondary-700 w-full overflow-x-auto overflow-y-hidden border",
   {
     variants: {
@@ -13,6 +13,9 @@ const tableClasses = cva(
         md: "rounded-lg",
         lg: "rounded-xl",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -156,6 +159,9 @@ export const tableThAndTdClasses = cva(
         md: "px-2.5 py-2 text-sm",
         lg: "px-3 py-2.5 text-base",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );

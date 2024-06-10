@@ -1,1 +1,5 @@
-export { PasswordField } from "./PasswordField";
+export {
+  PasswordField,
+  passwordFieldButtonClasses,
+  passwordFieldButtonIconClasses,
+} from "./PasswordField";

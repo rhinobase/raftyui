@@ -27,20 +27,11 @@ export type PercentageInput = Omit<
 > & {
   value?: string;
   onChange?: (value?: string) => void;
-  currencyCode?: string;
 };
 
 export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
   function PercentageInput(
-    {
-      size = "md",
-      currencyCode = "USD",
-      onChange,
-      onKeyDown,
-      onBlur,
-      className,
-      ...props
-    },
+    { size = "md", onChange, onKeyDown, onBlur, className, ...props },
     forwardedRef,
   ) {
     return (

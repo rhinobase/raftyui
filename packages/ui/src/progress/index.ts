@@ -1,2 +1,12 @@
-export { Progress } from "./Progress";
-export { CircularProgress } from "./CircularProgress";
+export {
+  Progress,
+  progressClasses,
+  progressIndicatorClasses,
+  progressTextClasses,
+  progressTrackClasses,
+} from "./Progress";
+export {
+  CircularProgress,
+  circularProgressCircleRangeClasses,
+  sizeStyle,
+} from "./CircularProgress";

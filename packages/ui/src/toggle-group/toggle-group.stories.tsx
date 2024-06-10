@@ -6,6 +6,7 @@ const meta: Meta<typeof ToggleGroup> = {
   args: {
     size: "md",
     orientation: "horizontal",
+    isUnstyled: false,
   },
   argTypes: {
     size: {
@@ -23,13 +24,9 @@ export default meta;
 type Story = StoryObj<typeof ToggleGroup>;
 
 export const SingleType: Story = {
-  render: ({ size, orientation }) => (
-    <ToggleGroup
-      type="single"
-      defaultValue="1"
-      size={size}
-      orientation={orientation}
-    >
+  render: (props) => (
+    // @ts-ignore
+    <ToggleGroup {...props} type="single" defaultValue="1">
       <ToggleGroupItem value="1">1</ToggleGroupItem>
       <ToggleGroupItem value="2">2</ToggleGroupItem>
       <ToggleGroupItem value="3">3</ToggleGroupItem>
@@ -38,13 +35,9 @@ export const SingleType: Story = {
 };
 
 export const MultipleType: Story = {
-  render: ({ size, orientation }) => (
-    <ToggleGroup
-      type="multiple"
-      defaultValue={["1", "2"]}
-      size={size}
-      orientation={orientation}
-    >
+  render: (props) => (
+    // @ts-ignore
+    <ToggleGroup {...props} type="multiple" defaultValue={["1", "2"]}>
       <ToggleGroupItem value="1">1</ToggleGroupItem>
       <ToggleGroupItem value="2">2</ToggleGroupItem>
       <ToggleGroupItem value="3">3</ToggleGroupItem>

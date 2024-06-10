@@ -9,5 +9,6 @@ export {
   tableHeaderAndFooterClasses,
   tableThAndTdClasses,
   tableTrClasses,
+  tableClasses,
 } from "./Table";
 export { useTableContext } from "./context";

@@ -69,35 +69,6 @@ export const Default: Story = {
   render: (props) => (
     <TreeView {...props}>
       <CreateTree tree={DATA} />
-      {/* <TreeViewItem value="1">
-        <TreeViewLabel>Item 1</TreeViewLabel>
-        <TreeViewContent>
-          <TreeViewItem value="1.1">
-            <TreeViewLabel>Item 1.1</TreeViewLabel>
-            <TreeViewContent>
-              <TreeViewItem value="1.1.2">
-                <TreeViewLabel>Item 1.1.2</TreeViewLabel>
-              </TreeViewItem>
-            </TreeViewContent>
-          </TreeViewItem>
-          <TreeViewItem value="1.2">
-            <TreeViewLabel>Item 1.2</TreeViewLabel>
-            <TreeViewContent>
-              <TreeViewItem value="1.2.1">
-                <TreeViewLabel>Item 1.2.1</TreeViewLabel>
-              </TreeViewItem>
-            </TreeViewContent>
-          </TreeViewItem>
-        </TreeViewContent>
-      </TreeViewItem>
-      <TreeViewItem value="2">
-        <TreeViewLabel>Item 2</TreeViewLabel>
-        <TreeViewContent>
-          <TreeViewItem value="2.1">
-            <TreeViewLabel>Item 2.1</TreeViewLabel>
-          </TreeViewItem>
-        </TreeViewContent>
-      </TreeViewItem> */}
     </TreeView>
   ),
 };

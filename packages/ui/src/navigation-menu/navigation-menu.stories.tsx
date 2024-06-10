@@ -21,9 +21,9 @@ export default meta;
 type Story = StoryObj<typeof NavigationMenu>;
 
 export const Default: Story = {
-  render: ({ isUnstyled }) => (
+  render: (props) => (
     <div className="size-full">
-      <NavigationMenu isUnstyled={isUnstyled}>
+      <NavigationMenu {...props}>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Learn</NavigationMenuTrigger>

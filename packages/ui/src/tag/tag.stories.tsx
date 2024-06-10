@@ -23,9 +23,5 @@ export default meta;
 type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
-  render: ({ size, colorScheme }) => (
-    <Tag colorScheme={colorScheme} size={size}>
-      Tag text
-    </Tag>
-  ),
+  render: (props) => <Tag {...props}>Tag text</Tag>,
 };

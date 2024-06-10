@@ -12,6 +12,7 @@ const meta: Meta<typeof Select> = {
     isInvalid: false,
     isLoading: false,
     isUnstyled: false,
+    placeholder: "Select fruit",
   },
   argTypes: {
     size: {
@@ -30,11 +31,7 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   render: (props) => (
-    <Select
-      {...props}
-      placeholder="Select fruit"
-      onChange={(e) => console.log(e.target.value)}
-    >
+    <Select {...props} onChange={(e) => console.log(e.target.value)}>
       <SelectItem value="apple">Apple</SelectItem>
       <SelectItem value="banana">Banana</SelectItem>
       <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -46,11 +43,7 @@ export const Default: Story = {
 
 export const SelectWithSelectItemGroup: Story = {
   render: (props) => (
-    <Select
-      {...props}
-      placeholder="Select fruit"
-      onChange={(e) => console.log(e.target.value)}
-    >
+    <Select {...props} onChange={(e) => console.log(e.target.value)}>
       <SelectItemGroup label="Fruits">
         <SelectItem value="apple">Apple</SelectItem>
         <SelectItem value="banana">Banana</SelectItem>

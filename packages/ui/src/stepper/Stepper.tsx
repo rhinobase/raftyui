@@ -9,7 +9,7 @@ import {
   useStepperContext,
 } from "./context";
 
-const stepperClasses = cva(
+export const stepperClasses = cva(
   "group/stepper flex aria-disabled:opacity-80 aria-disabled:cursor-not-allowed",
   {
     variants: {
@@ -17,6 +17,9 @@ const stepperClasses = cva(
         horizontal: "w-full items-center",
         vertical: "size-full flex-col",
       },
+    },
+    defaultVariants: {
+      direction: "horizontal",
     },
   },
 );
@@ -99,7 +102,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
   );
 });
 
-const stepperItemClasses = cva(
+export const stepperItemClasses = cva(
   "group/item flex h-full w-max items-center outline-none group-aria-disabled/stepper:opacity-80 group-aria-disabled/stepper:cursor-not-allowed cursor-default",
   {
     variants: {
@@ -132,7 +135,7 @@ const stepperItemClasses = cva(
   },
 );
 
-const stepperItemIconClasses = cva(
+export const stepperItemIconClasses = cva(
   "flex items-center justify-center rounded-full leading-none select-none border border-transparent transition-all ease-in-out",
   {
     variants: {
@@ -176,7 +179,7 @@ const stepperItemIconClasses = cva(
   },
 );
 
-const contentWrapperClasses = cva("", {
+export const contentWrapperClasses = cva("", {
   variants: {
     size: {
       sm: "space-y-0",
@@ -208,6 +211,7 @@ const contentWrapperClasses = cva("", {
     clickable: false,
     current: false,
     incomplete: false,
+    size: "md",
   },
 });
 
@@ -262,7 +266,7 @@ function StepperItem(props: StepperItem) {
   );
 }
 
-const connecterClasses = cva("", {
+export const connecterClasses = cva("", {
   variants: {
     size: {
       sm: "",
@@ -314,20 +318,23 @@ function StepsConnector(props: StepsConnector) {
   );
 }
 
-const titleAndSubTitleWrapperClasses = cva("flex items-baseline empty:hidden", {
-  variants: {
-    size: {
-      sm: "gap-1",
-      md: "gap-1.5",
-      lg: "gap-2",
+export const titleAndSubTitleWrapperClasses = cva(
+  "flex items-baseline empty:hidden",
+  {
+    variants: {
+      size: {
+        sm: "gap-1",
+        md: "gap-1.5",
+        lg: "gap-2",
+      },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
-  defaultVariants: {
-    size: "md",
-  },
-});
+);
 
-const titleClasses = cva("leading-none w-max empty:hidden", {
+export const titleClasses = cva("leading-none w-max empty:hidden", {
   variants: {
     size: {
       sm: "text-base",
@@ -340,7 +347,7 @@ const titleClasses = cva("leading-none w-max empty:hidden", {
   },
 });
 
-const helpTextClasses = cva("leading-none empty:hidden", {
+export const helpTextClasses = cva("leading-none empty:hidden", {
   variants: {
     size: {
       sm: "text-xs",

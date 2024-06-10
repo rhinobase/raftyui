@@ -80,18 +80,21 @@ export const Progress = forwardRef<
   );
 });
 
-const progressTextClasses = cva("text-secondary-600 dark:text-secondary-400", {
-  variants: {
-    size: {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
+export const progressTextClasses = cva(
+  "text-secondary-600 dark:text-secondary-400",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
-  defaultVariants: {
-    size: "md",
-  },
-});
+);
 
 export type ProgressValue = {
   size: SizeType;

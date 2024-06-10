@@ -1,1 +1,6 @@
-export { Switch } from "./Switch";
+export {
+  Switch,
+  switchClasses,
+  switchLabelClasses,
+  switchThumbClasses,
+} from "./Switch";

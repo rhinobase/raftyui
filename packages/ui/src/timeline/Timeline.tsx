@@ -150,6 +150,10 @@ export const timelineItemTextClasses = cva(
         left: "text-left",
       },
     },
+    defaultVariants: {
+      align: "left",
+      size: "md",
+    },
   },
 );
 
@@ -162,6 +166,9 @@ export const timelineItemDescriptionClasses = cva(
         md: "text-sm",
         lg: "text-base",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -252,6 +259,7 @@ export const timelineConnectorClasses = cva("flex h-full", {
   ],
   defaultVariants: {
     align: "left",
+    size: "md",
   },
 });
 

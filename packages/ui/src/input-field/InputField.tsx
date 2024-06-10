@@ -194,6 +194,8 @@ export const inputFieldClasses = cva(
       isPrefix: false,
       isRightAddon: false,
       isSuffix: false,
+      disabled: false,
+      readOnly: false,
     },
   },
 );

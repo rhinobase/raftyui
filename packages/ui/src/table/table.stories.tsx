@@ -47,8 +47,8 @@ const DATA = [
 ];
 
 export const Default: Story = {
-  render: ({ size, variant, isUnstyled }) => (
-    <Table size={size} variant={variant} isUnstyled={isUnstyled}>
+  render: (props) => (
+    <Table {...props}>
       <TableHeader>
         <Tr>
           <Th>Name</Th>

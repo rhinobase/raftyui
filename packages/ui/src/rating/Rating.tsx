@@ -7,7 +7,7 @@ import { useFieldControlContext } from "../field-control";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, getValue } from "../utils";
 
-const ratingControlClasses = cva(
+export const ratingControlClasses = cva(
   "flex flex-wrap outline-none data-[readonly]:cursor-default data-[disabled]:opacity-70",
   {
     variants: {
@@ -32,10 +32,15 @@ const ratingControlClasses = cva(
         className: "cursor-pointer",
       },
     ],
+    defaultVariants: {
+      disabled: false,
+      loading: false,
+      size: "md",
+    },
   },
 );
 
-const ratingItemClasses = cva(
+export const ratingItemClasses = cva(
   "dark:ring-offset-secondary-950 ring-primary-300 dark:ring-primary-100 outline-none ring-offset-2 ring-offset-white focus-visible:ring-2",
   {
     variants: {
@@ -44,6 +49,9 @@ const ratingItemClasses = cva(
         md: "rounded-base",
         lg: "rounded-md",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -59,6 +67,10 @@ export const ratingItemIconClasses = cva("", {
       true: "fill-yellow-400 dark:fill-yellow-300",
       false: "fill-secondary-300 dark:fill-secondary-700",
     },
+  },
+  defaultVariants: {
+    highlighted: false,
+    size: "md",
   },
 });
 

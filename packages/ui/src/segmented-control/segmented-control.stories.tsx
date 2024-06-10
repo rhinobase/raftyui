@@ -13,6 +13,7 @@ export const Default: Story = {
     orientation: "horizontal",
     disabled: false,
     readOnly: false,
+    isLoading: false,
     defaultValue: "react",
     size: "md",
   },

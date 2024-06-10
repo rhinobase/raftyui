@@ -9,6 +9,7 @@ const meta: Meta<typeof SearchField> = {
     disabled: false,
     required: false,
     readOnly: false,
+    placeholder: "search...",
   },
   argTypes: {
     variant: {
@@ -26,16 +27,7 @@ export default meta;
 type Story = StoryObj<typeof SearchField>;
 
 export const Default: Story = {
-  render: ({ size, variant, disabled, readOnly, required }) => (
-    <SearchField
-      aria-label="search"
-      variant={variant}
-      size={size}
-      isDisabled={disabled}
-      isReadOnly={readOnly}
-      isRequired={required}
-      onValueChange={console.log}
-      placeholder="search..."
-    />
+  render: (props) => (
+    <SearchField {...props} aria-label="search" onValueChange={console.log} />
   ),
 };

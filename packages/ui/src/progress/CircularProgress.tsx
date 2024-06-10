@@ -4,7 +4,7 @@ import { type ElementRef, forwardRef } from "react";
 import { classNames } from "../utils";
 import { type Progress, ProgressValue, progressClasses } from "./Progress";
 
-const sizeStyle = {
+export const sizeStyle = {
   size: {
     sm: "30px",
     md: "40px",
@@ -17,7 +17,7 @@ const sizeStyle = {
   },
 };
 
-const circularProgressCircleRangeClasses = {
+export const circularProgressCircleRangeClasses = {
   colorScheme: {
     error: "stroke-red-500 dark:stroke-red-300",
     warning: "stroke-amber-500 dark:stroke-amber-300",

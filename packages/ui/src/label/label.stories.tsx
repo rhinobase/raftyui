@@ -13,11 +13,11 @@ export default meta;
 type Story = StoryObj<typeof Label>;
 
 export const Default: Story = {
-  render: ({ isRequired }) => (
+  render: (props) => (
     <div>
       <div className="dark:text-secondary-100 flex items-center space-x-2">
         <Checkbox id="terms" />
-        <Label isRequired={isRequired} htmlFor="terms">
+        <Label {...props} htmlFor="terms">
           Accept terms and conditions
         </Label>
       </div>

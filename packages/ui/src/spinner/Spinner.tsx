@@ -3,7 +3,7 @@ import { type SVGAttributes, forwardRef } from "react";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
-const spinnerClasses = cva("animate-spin", {
+export const spinnerClasses = cva("animate-spin", {
   variants: {
     size: {
       sm: "size-[18px] min-w-[18px] min-h-[18px]",
@@ -14,6 +14,10 @@ const spinnerClasses = cva("animate-spin", {
       true: "",
       false: "text-secondary-600 dark:text-secondary-400",
     },
+  },
+  defaultVariants: {
+    inherit: false,
+    size: "md",
   },
 });
 

@@ -12,21 +12,31 @@ import {
 
 const meta: Meta<typeof ScrollArea> = {
   title: "Components / ScrollArea",
+  args: {
+    layout: "vertical",
+    itemSize: 37,
+  },
+  argTypes: {
+    layout: {
+      control: "select",
+      options: ["vertical", "horizontal"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
 export const Default: Story = {
-  render: () => {
+  render: (props) => {
     const length = 1000;
     const tags = Array.from({ length }).map((_, i) => i + 1);
 
     return (
       <ScrollArea
+        {...props}
         itemCount={length}
-        itemSize={37}
-        className="dark:border-secondary-700 border-secondary-300 h-60 w-[200px] rounded-md border"
+        className="dark:border-secondary-700 border-secondary-300 h-60 w-full rounded-md border"
       >
         <ScrollAreaList className="dark:[&>div]:divide-secondary-700 [&>div]:divide-secondary-200 [&>div]:divide-y">
           {({ index, style, isScrolling }) => (

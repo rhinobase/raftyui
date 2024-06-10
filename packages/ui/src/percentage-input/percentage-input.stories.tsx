@@ -7,6 +7,9 @@ import { PercentageInput } from "./PercentageInput";
 const meta: Meta<typeof PercentageInput> = {
   title: "Form / PercentageInput",
   args: {
+    isDisabled: false,
+    isReadOnly: false,
+    isLoading: false,
     size: "md",
   },
   argTypes: {

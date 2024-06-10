@@ -24,6 +24,10 @@ export default meta;
 type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
+  render: (props) => <Switch {...props} />,
+};
+
+export const WithChildren: Story = {
   render: (props) => (
     <Switch {...props} id="switch">
       Switch

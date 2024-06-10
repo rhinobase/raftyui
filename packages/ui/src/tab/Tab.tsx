@@ -142,6 +142,9 @@ export const tabContentClasses = cva("w-full text-black dark:text-white", {
       lg: "data-[orientation=vertical]:px-4 data-[orientation=horizontal]:py-2.5 text-lg",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
 export type TabContent = ComponentPropsWithoutRef<

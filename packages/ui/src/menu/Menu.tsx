@@ -115,6 +115,11 @@ export const menuTriggerClasses = cva("", {
         "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
     },
   ],
+  defaultVariants: {
+    colorScheme: "secondary",
+    disabled: false,
+    variant: "solid",
+  },
 });
 
 export type MenuTrigger = ComponentPropsWithoutRef<

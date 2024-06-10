@@ -48,18 +48,11 @@ const STEPS: StepType[] = [
 ];
 
 export const Default: Story = {
-  render: ({ size, direction, isDisabled }) => (
-    <Stepper
-      size={size}
-      direction={direction}
-      isDisabled={isDisabled}
-      steps={STEPS}
-    />
-  ),
+  render: (props) => <Stepper {...props} steps={STEPS} />,
 };
 
 export const ValueWithState: Story = {
-  render: ({ size, direction, isDisabled }) => {
+  render: (props) => {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
@@ -72,13 +65,7 @@ export const ValueWithState: Story = {
 
     return (
       <>
-        <Stepper
-          value={current}
-          direction={direction}
-          isDisabled={isDisabled}
-          size={size}
-          steps={STEPS}
-        />
+        <Stepper {...props} value={current} steps={STEPS} />
         <div className="mt-4 flex w-full justify-between">
           <Button onClick={prev} isDisabled={current <= 0}>
             Previous
@@ -93,17 +80,15 @@ export const ValueWithState: Story = {
 };
 
 export const Controlled: Story = {
-  render: ({ size, direction, isDisabled }) => {
+  render: (props) => {
     const initial = 2;
     const [current, setCurrent] = useState(initial);
 
     return (
       <Stepper
-        size={size}
+        {...props}
         value={current}
         initial={initial}
-        direction={direction}
-        isDisabled={isDisabled}
         onValueChange={setCurrent}
         steps={STEPS}
       />
@@ -138,35 +123,26 @@ const STEPS_WITH_ICONS = [
 ];
 
 export const WithIcon: Story = {
-  render: ({ size, direction, isDisabled }) => {
-    return (
-      <Stepper
-        size={size}
-        direction={direction}
-        isDisabled={isDisabled}
-        steps={STEPS_WITH_ICONS}
-      />
-    );
+  render: (props) => {
+    return <Stepper {...props} steps={STEPS_WITH_ICONS} />;
   },
 };
 
 export const CustomConnector: Story = {
-  render: ({ size, direction, isDisabled }) => (
+  render: (props) => (
     <Stepper
-      size={size}
-      direction={direction}
+      {...props}
       value={1}
       connector={({ active }) => (
         <div
           className={classNames(
-            direction === "horizontal"
+            props.direction === "horizontal"
               ? "h-px w-full border-t-2"
               : "ml-5 h-full w-px border-r-2",
             active ? "border-blue-500" : "border-secondary-400 border-dotted",
           )}
         />
       )}
-      isDisabled={isDisabled}
       steps={STEPS}
     />
   ),

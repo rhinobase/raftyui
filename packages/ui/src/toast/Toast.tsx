@@ -79,6 +79,7 @@ export const toastMessageClasses = cva("empty:hidden", {
       lg: "text-base leading-tight",
     },
   },
+  defaultVariants: { size: "md" },
 });
 
 export type Toast = Omit<

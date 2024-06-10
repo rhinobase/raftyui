@@ -89,10 +89,10 @@ export const segmentedControlItemClasses = cva(
         md: "text-base data-[orientation=horizontal]:px-1.5 data-[orientation=horizontal]:py-2.5 data-[orientation=vertical]:px-2.5 data-[orientation=vertical]:py-1.5",
         lg: "text-lg data-[orientation=horizontal]:px-2 data-[orientation=horizontal]:py-3 data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-2",
       },
-      defaultVariants: {
-        readonly: false,
-        size: "md",
-      },
+    },
+    defaultVariants: {
+      readonly: false,
+      size: "md",
     },
   },
 );

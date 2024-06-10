@@ -80,7 +80,7 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
   },
 );
 
-const tagFieldControlClasses = cva(
+export const tagFieldControlClasses = cva(
   classNames(
     "group/tag-control flex w-full flex-wrap items-center border transition-all",
     "outline-none data-[focus]:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
@@ -99,10 +99,14 @@ const tagFieldControlClasses = cva(
           "border-secondary-300 dark:border-secondary-700 hover:border-primary-500 dark:hover:border-primary-300 data-[focus]:border-primary-500 dark:data-[focus]:border-primary-300 data-[disabled]:hover:border-secondary-300 data-[disabled]:hover:dark:border-secondary-700 ring-primary-300 dark:ring-primary-100",
       },
     },
+    defaultVariants: {
+      invalid: false,
+      size: "md",
+    },
   },
 );
 
-const tagFieldControlClearTriggerClasses = cva(
+export const tagFieldControlClearTriggerClasses = cva(
   "absolute p-1 data-[readOnly]:hidden",
   {
     variants: {
@@ -112,10 +116,13 @@ const tagFieldControlClearTriggerClasses = cva(
         lg: "size-[26px] p-1 right-2.5 rounded-md",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 
-const tagInputTextClasses = {
+export const tagInputTextClasses = {
   size: {
     sm: "text-xs leading-tight",
     md: "text-sm leading-tight",
@@ -171,7 +178,7 @@ function TagFieldControl({ placeholder, size, invalid }: TagFieldControl) {
   );
 }
 
-const tagFieldPreviewItemClasses = cva(
+export const tagFieldPreviewItemClasses = cva(
   classNames(
     "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 data-[highlighted]:border-primary-500 items-center border transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
     "data-[highlighted]:ring-1 ring-offset-1 ring-primary-300 dark:ring-primary-100",
@@ -188,10 +195,14 @@ const tagFieldPreviewItemClasses = cva(
         false: "flex",
       },
     },
+    defaultVariants: {
+      editing: false,
+      size: "md",
+    },
   },
 );
 
-const tagFieldPreviewItemDeleteTriggerClasses = cva(
+export const tagFieldPreviewItemDeleteTriggerClasses = cva(
   "text-secondary-500 group-data-[readonly]/tag-control:cursor-default",
   {
     variants: {
@@ -205,6 +216,10 @@ const tagFieldPreviewItemDeleteTriggerClasses = cva(
         false:
           "cursor-pointer hover:text-red-500 dark:hover:text-red-300 group-data-[readonly]/tag-control:hover:text-secondary-500 dark:group-data-[readonly]/tag-control:hover:text-secondary-500",
       },
+    },
+    defaultVariants: {
+      disabled: false,
+      size: "md",
     },
   },
 );

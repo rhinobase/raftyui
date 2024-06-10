@@ -18,8 +18,8 @@ export default meta;
 type Story = StoryObj<typeof Stat>;
 
 export const Default: Story = {
-  render: ({ type }) => (
-    <Stat type={type}>
+  render: (props) => (
+    <Stat {...props}>
       <StatLabel>Daily Return</StatLabel>
       <StatValue>17,770.90</StatValue>
       <StatHelpText>0.47%</StatHelpText>

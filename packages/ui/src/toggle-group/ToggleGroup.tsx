@@ -19,6 +19,9 @@ export const toggleGroupClasses = cva(
         lg: "rounded-lg",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 

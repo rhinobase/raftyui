@@ -92,6 +92,7 @@ export const selectClasses = cva(
       variant: "outline",
       disabled: false,
       readOnly: false,
+      invalid: false,
     },
   },
 );
@@ -105,6 +106,9 @@ export const triggerIconClasses = cva(
         md: "right-2.5 size-3.5",
         lg: "right-[13px] size-4",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -220,6 +224,9 @@ export const selectItemClasses = cva("text-black dark:text-secondary-100", {
       lg: "text-lg",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
@@ -245,6 +252,9 @@ export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
       md: "text-sm",
       lg: "text-base",
     },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });
 

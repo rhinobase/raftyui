@@ -1,4 +1,3 @@
-import type { ValueOrFunction } from "../types";
 import { type SizeType, createContext } from "../utils";
 
 export const [RadioGroupProvider, useRadioGroupContext] =

@@ -11,7 +11,7 @@ import { Label } from "../label";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
-const switchClasses = cva(
+export const switchClasses = cva(
   classNames(
     "peer/switch cursor-pointer rounded-full p-0.5 transition-colors ease-in-out",
     "data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300",
@@ -31,10 +31,14 @@ const switchClasses = cva(
         false: "ring-primary-300 dark:ring-primary-100",
       },
     },
+    defaultVariants: {
+      invalid: false,
+      size: "md",
+    },
   },
 );
 
-const switchThumbClasses = cva(
+export const switchThumbClasses = cva(
   "bg-white pointer-events-none block rounded-full ring-0 transition-transform data-[state=unchecked]:translate-x-0 ease-in-out",
   {
     variants: {
@@ -44,10 +48,13 @@ const switchThumbClasses = cva(
         lg: "size-[22px] data-[state=checked]:translate-x-3.5",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 
-const switchLabelClasses = cva(
+export const switchLabelClasses = cva(
   "font-medium peer-data-[disabled]/switch:cursor-not-allowed peer-data-[disabled]/switch:opacity-70",
   {
     variants: {
@@ -56,6 +63,9 @@ const switchLabelClasses = cva(
         md: "pl-1.5 text-sm",
         lg: "pl-2 text-base",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -141,6 +151,7 @@ export const Switch = forwardRef<
         </Label>
       </div>
     );
+
   return (
     <Component
       className={classNames(

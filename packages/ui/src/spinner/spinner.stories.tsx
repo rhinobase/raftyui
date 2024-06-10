@@ -19,9 +19,9 @@ export default meta;
 type Story = StoryObj<typeof Spinner>;
 
 export const Default: Story = {
-  render: ({ size, inheritParent }) => (
+  render: (props) => (
     <div className="text-black dark:text-white">
-      <Spinner size={size} inheritParent={inheritParent} />
+      <Spinner {...props} />
     </div>
   ),
 };

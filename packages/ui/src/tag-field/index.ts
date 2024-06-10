@@ -1,1 +1,8 @@
-export { TagField } from "./TagField";
+export {
+  TagField,
+  tagFieldControlClasses,
+  tagFieldControlClearTriggerClasses,
+  tagFieldPreviewItemClasses,
+  tagFieldPreviewItemDeleteTriggerClasses,
+  tagInputTextClasses,
+} from "./TagField";

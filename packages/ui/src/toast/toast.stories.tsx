@@ -6,6 +6,9 @@ const meta: Meta<typeof Toast> = {
   args: {
     severity: "warning",
     size: "md",
+    visible: false,
+    title: "Toast Title",
+    message: "Sample toast message!",
   },
   argTypes: {
     size: {
@@ -23,12 +26,5 @@ export default meta;
 type Story = StoryObj<typeof Toast>;
 
 export const Default: Story = {
-  render: ({ severity, size }) => (
-    <Toast
-      title="Toast Title"
-      message="Sample toast message!"
-      severity={severity}
-      size={size}
-    />
-  ),
+  render: (props) => <Toast {...props} />,
 };

@@ -70,11 +70,14 @@ export const Slider = forwardRef<
   );
 });
 
-const sliderTrackClasses = cva(
+export const sliderTrackClasses = cva(
   "relative w-full grow overflow-hidden rounded-full bg-secondary-200 dark:bg-secondary-800",
   {
     variants: {
       size: { sm: "h-1", md: "h-1.5", lg: "h-2" },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -98,7 +101,7 @@ export const SliderTrack = forwardRef<
   );
 });
 
-const sliderRangeClasses = cva("absolute h-full", {
+export const sliderRangeClasses = cva("absolute h-full", {
   variants: {
     colorScheme: {
       primary: "bg-primary-500 dark:bg-primary-300",
@@ -108,6 +111,9 @@ const sliderRangeClasses = cva("absolute h-full", {
       success: "bg-green-500 dark:bg-green-300",
       warning: "bg-amber-500 dark:bg-amber-300",
     },
+  },
+  defaultVariants: {
+    colorScheme: "primary",
   },
 });
 
@@ -130,7 +136,7 @@ export const SliderRange = forwardRef<
   );
 });
 
-const sliderThumbClasses = cva(
+export const sliderThumbClasses = cva(
   "block rounded-full border border-secondary-300 dark:border-secondary-700 bg-white outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
   {
     variants: {
@@ -147,6 +153,10 @@ const sliderThumbClasses = cva(
         success: "ring-green-300 dark:ring-green-100",
         warning: "ring-amber-300 dark:ring-amber-100",
       },
+    },
+    defaultVariants: {
+      colorScheme: "primary",
+      size: "md",
     },
   },
 );

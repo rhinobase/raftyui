@@ -16,7 +16,7 @@ import {
   useRadioGroupContext,
 } from "./context";
 
-const radioGroupClasses = cva(
+export const radioGroupClasses = cva(
   "flex data-[orientation=vertical]:flex-col data-[orientation=horizontal]:flex-row data-[orientaion-horizontal]:flex-wrap",
   {
     variants: {
@@ -25,6 +25,9 @@ const radioGroupClasses = cva(
         md: "data-[orientation=vertical]:gap-2 data-[orientation=horizontal]:gap-3.5",
         lg: "data-[orientation=vertical]:gap-2.5 data-[orientation=horizontal]:gap-4",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );
@@ -95,7 +98,7 @@ export const RadioGroup = forwardRef<
   );
 });
 
-const radioGroupItemClasses = cva(
+export const radioGroupItemClasses = cva(
   classNames(
     "peer/radio-item aspect-square rounded-full border transition-all ease-in-out",
     "data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300",
@@ -126,10 +129,15 @@ const radioGroupItemClasses = cva(
         className: "hover:border-primary-500 dark:hover:border-primary-300",
       },
     ],
+    defaultVariants: {
+      disabled: false,
+      invalid: false,
+      size: "md",
+    },
   },
 );
 
-const radioGroupItemIndicatorClasses = cva(
+export const radioGroupItemIndicatorClasses = cva(
   "bg-primary-500 dark:bg-primary-300 rounded-full",
   {
     variants: {
@@ -139,10 +147,13 @@ const radioGroupItemIndicatorClasses = cva(
         lg: "size-[14px]",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 
-const radioGroupItemLabelClasses = cva(
+export const radioGroupItemLabelClasses = cva(
   "peer-data-[disabled]/radio-item:cursor-not-allowed peer-data-[disabled]/radio-item:opacity-70",
   {
     variants: {
@@ -151,6 +162,9 @@ const radioGroupItemLabelClasses = cva(
         md: "pl-1.5 text-sm",
         lg: "pl-2 text-base",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );

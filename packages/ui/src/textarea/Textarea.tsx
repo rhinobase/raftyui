@@ -8,7 +8,7 @@ import { useFieldControlContext } from "../field-control";
 import { type InputField, inputFieldClasses } from "../input-field";
 import { classNames, getValue } from "../utils";
 
-const textareaClasses = {
+export const textareaClasses = {
   size: {
     sm: "min-h-16",
     md: "min-h-20",

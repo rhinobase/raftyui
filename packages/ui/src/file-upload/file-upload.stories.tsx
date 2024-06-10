@@ -3,6 +3,10 @@ import { FileUpload } from "./FileUpload";
 
 const meta: Meta<typeof FileUpload> = {
   title: "Form / FileUpload",
+  args: {
+    isDisabled: false,
+    isLoading: false,
+  },
 };
 
 export default meta;

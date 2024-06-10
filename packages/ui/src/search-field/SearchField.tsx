@@ -6,7 +6,7 @@ import { InputField } from "../input-field";
 import { InputGroup, Prefix } from "../input-group";
 import { classNames } from "../utils";
 
-const searchFieldIconClasses = cva(
+export const searchFieldIconClasses = cva(
   "stroke-secondary-400 dark:stroke-secondary-500 stroke-2",
   {
     variants: {
@@ -15,6 +15,9 @@ const searchFieldIconClasses = cva(
         md: "size-[18px]",
         lg: "size-5",
       },
+    },
+    defaultVariants: {
+      size: "md",
     },
   },
 );

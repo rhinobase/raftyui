@@ -9,7 +9,7 @@ import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
 import { getValue } from "../utils";
 
-const passwordFieldButtonClasses = cva("", {
+export const passwordFieldButtonClasses = cva("", {
   variants: {
     size: {
       sm: "rounded-sm p-0.5",
@@ -17,15 +17,21 @@ const passwordFieldButtonClasses = cva("", {
       lg: "rounded p-1.5",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
-const passwordFieldButtonIconClasses = cva("", {
+export const passwordFieldButtonIconClasses = cva("", {
   variants: {
     size: {
       sm: "size-3 stroke-[2.5]",
       md: "size-3.5 stroke-2",
       lg: "size-4 stroke-2",
     },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });
 

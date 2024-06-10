@@ -28,7 +28,11 @@ export default meta;
 type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
-  render: ({ size, variant, disabled, required, readOnly }) => (
+  render: (props) => <Textarea {...props} placeholder="Placeholder" />,
+};
+
+export const WithFieldControl: Story = {
+  render: ({ disabled, readOnly, required, ...props }) => (
     <FieldControl
       name="textarea"
       isDisabled={disabled}
@@ -36,7 +40,7 @@ export const Default: Story = {
       isRequired={required}
     >
       <Label>Label</Label>
-      <Textarea placeholder="Placeholder" size={size} variant={variant} />
+      <Textarea {...props} placeholder="Placeholder" />
     </FieldControl>
   ),
 };

@@ -71,7 +71,7 @@ export const TreeViewItem = forwardRef<
   );
 });
 
-const treeViewLabelClasses = cva(
+export const treeViewLabelClasses = cva(
   "hover:bg-secondary-100 dark:hover:bg-secondary-800/80 w-full flex items-center font-medium cursor-pointer select-none",
   {
     variants: {
@@ -81,10 +81,13 @@ const treeViewLabelClasses = cva(
         lg: "rounded-md text-base py-2 pr-2 gap-2",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 
-const treeViewLabelSingleClasses = {
+export const treeViewLabelSingleClasses = {
   size: {
     sm: "pl-[calc((var(--depth)*20px))] group-data-[depth='1']/single-label:pl-[20px]",
     md: "pl-[calc((var(--depth)*22px))] group-data-[depth='1']/single-label:pl-[26px]",
@@ -92,7 +95,7 @@ const treeViewLabelSingleClasses = {
   },
 };
 
-const treeViewLabelBranchClasses = {
+export const treeViewLabelBranchClasses = {
   size: {
     sm: "pl-[calc((var(--depth)-1)*20px)] data-[depth='1']:pl-1",
     md: "pl-[calc((var(--depth)-1)*22px)] data-[depth='1']:pl-1.5",
@@ -100,7 +103,7 @@ const treeViewLabelBranchClasses = {
   },
 };
 
-const treeViewLabelIndicatorClasses = cva(
+export const treeViewLabelIndicatorClasses = cva(
   "data-[state=open]:rotate-90 transform duration-200 ease-in-out",
   {
     variants: {
