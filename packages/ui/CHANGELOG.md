@@ -2,6 +2,50 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.6.0-rc.0](https://github.com/rhinobase/raftyui/compare/ui-1.5.2...ui-1.6.0-rc.0) (2024-06-11)
+
+
+### Features
+
+* **blocks:** created listbox and multi listbox block ([499faea](https://github.com/rhinobase/raftyui/commit/499faeaa197ede071913176102f06976b928982b))
+* created pin field and and pin block ([f2b4931](https://github.com/rhinobase/raftyui/commit/f2b4931349c9c4f1bbe6586abdec80b627f4c7bc))
+* shifted some components from ui to corp ([62c8e66](https://github.com/rhinobase/raftyui/commit/62c8e66e59beebc905d54aa36c74f1220c3552a8))
+* **ui:** added functionality to inherit props form field control to field components and also corrected their stories ([f94ca2b](https://github.com/rhinobase/raftyui/commit/f94ca2b520d8db86c75f663900995a7af1463956))
+* **ui:** added json explorer component in ui ([f26e8c4](https://github.com/rhinobase/raftyui/commit/f26e8c4616dd4223b92e70b0a4552b4b5056ed32))
+* **ui:** added phone number input ([58fe2e3](https://github.com/rhinobase/raftyui/commit/58fe2e31c3722135ef396bd56a9846f085f4cb25))
+* **ui:** added size prop in date picker and range picker ([8e73b66](https://github.com/rhinobase/raftyui/commit/8e73b6647509309c8ea92ff4f15319f190737660))
+* **ui:** added size prop in tooltip and improved overall sizing of tag ([c7f26fa](https://github.com/rhinobase/raftyui/commit/c7f26fa64b273c63d3a42eba3a5a91f4a450b999))
+* **ui:** created calendar component and block ([a44c28f](https://github.com/rhinobase/raftyui/commit/a44c28f0c7715d9ca2d5d83104897f8ed3591496))
+* **ui:** created cascader component in ui ([1c9350a](https://github.com/rhinobase/raftyui/commit/1c9350a3689e4a5293cb4d74dfb77f7bc0e536d0))
+* **ui:** created circular progress component ([69cf2b0](https://github.com/rhinobase/raftyui/commit/69cf2b05e19824a9c4a798998cc6dcc4cc67837c))
+* **ui:** created color picker component ([593cada](https://github.com/rhinobase/raftyui/commit/593cada5b3fce1e7fc961af4e1833444bce56c63))
+* **ui:** created editable number field and added isLoading prop in component ([cb02cf9](https://github.com/rhinobase/raftyui/commit/cb02cf9858028ce6e5fe3109c7038e279955d219))
+* **ui:** created editable text and textarea component ([070537a](https://github.com/rhinobase/raftyui/commit/070537ab8713fc2319d0f02c7290262099771cb1))
+* **ui:** created key value component ([ca4f581](https://github.com/rhinobase/raftyui/commit/ca4f581a613c9b09f86dd17a9f0b0af0351416ea))
+* **ui:** created list box component ([3b39b55](https://github.com/rhinobase/raftyui/commit/3b39b5520a2f37c2ff6bec2f191deeacd8959fb0))
+* **ui:** created qr code component ([85eb992](https://github.com/rhinobase/raftyui/commit/85eb9920a06cd7662be41ea90d4f3664a1516668))
+* **ui:** created rating component ([49d479b](https://github.com/rhinobase/raftyui/commit/49d479b77ab7e25648daf53acd910979bc8089db))
+* **ui:** created reorderable list component ([a406e05](https://github.com/rhinobase/raftyui/commit/a406e05397181b79bc5c4600a20df4c1ee83ded7))
+* **ui:** created segmented control field ([db356a0](https://github.com/rhinobase/raftyui/commit/db356a07b6ce69981e641c793a9d261cfb765a21))
+* **ui:** created signature component and exported cascade from index file ([c2dc59b](https://github.com/rhinobase/raftyui/commit/c2dc59b4a72c82de7d363bcc4dc1b20fc211d287))
+* **ui:** created Size Type and implemented it in all components and also some code improvements ([6daf185](https://github.com/rhinobase/raftyui/commit/6daf185bee00ebfc403c80d9da46d4dcd17dac87))
+* **ui:** created tree view component ([732f227](https://github.com/rhinobase/raftyui/commit/732f227bc80b804987f3f74f08c85d6c109154c5))
+* **ui:** implemented ark-ui in date picker ([82db346](https://github.com/rhinobase/raftyui/commit/82db3466d65affafd1735c2137dab39eb2f27adf))
+* **ui:** made CurrencyInput component ([d6e86c5](https://github.com/rhinobase/raftyui/commit/d6e86c57e5571714153d803d0c9fbc4fd89196b0))
+* **ui:** made file-upload component ([e793c3f](https://github.com/rhinobase/raftyui/commit/e793c3f8a95f683b9c66a59d6595ab2481aea4ad))
+* **ui:** made percentage input and improved currency input ([76af265](https://github.com/rhinobase/raftyui/commit/76af265cc8e9e0f2f75ae4db062aa30e59ec4fbe))
+
+
+### Bug Fixes
+
+* **storybook:** removed cells from datatable imports ([84544c9](https://github.com/rhinobase/raftyui/commit/84544c9898909d843b03e065880d65b39cbab066))
+* **ui:** fixed background issue in select ([dc3dd30](https://github.com/rhinobase/raftyui/commit/dc3dd30d7c1d8ee54408c72da39d2286cc7ffc88))
+* **ui:** improved date and date range components ([4273473](https://github.com/rhinobase/raftyui/commit/4273473da53bc1d7e8bdf6c7db9adada3260aa3f))
+* **ui:** improved tag field ([310da5a](https://github.com/rhinobase/raftyui/commit/310da5ab41fee8953bdc17a8f9f1eb691b6c93ab))
+* **ui:** major improvements in cascader and its custom hooks ([d584df2](https://github.com/rhinobase/raftyui/commit/d584df24a546e00e849d872146abfb0a37a9aa39))
+* **ui:** resolved uncontrolled error in combobox and other improvements ([886ce0b](https://github.com/rhinobase/raftyui/commit/886ce0bb1e41343fe109ac47942683880a0795fb))
+* **ui:** tag field ([a6fe839](https://github.com/rhinobase/raftyui/commit/a6fe839005d0ae275100fe4dc2f2cbe9b7cc29ec))
+
 ## [1.5.2](https://github.com/rhinobase/raftyui/compare/ui-1.5.1...ui-1.5.2) (2024-05-03)
 
 ## [1.5.1](https://github.com/rhinobase/raftyui/compare/ui-1.5.0...ui-1.5.1) (2024-05-03)
