@@ -1,7 +1,7 @@
 {
   "name": "@rafty/corp",
   "description": "Rafty Corporation Components",
-  "version": "0.1.13",
+  "version": "1.0.0-rc.0",
   "license": "MIT",
   "keywords": [
     "react",
