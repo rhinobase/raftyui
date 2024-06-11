@@ -77,7 +77,7 @@ export const EditableText = forwardRef<
   );
 });
 
-const editableTextPreviewClasses = {
+export const editableTextPreviewClasses = {
   size: {
     sm: "text-sm pl-2 pr-8 py-1 h-[30px]",
     md: "text-md pl-3 pr-10 py-1.5 h-[38px]",
@@ -111,10 +111,15 @@ export const editTriggerClasses = cva(
           "transition-all ease-in-out hover:text-black dark:hover:text-white",
       },
     ],
+    defaultVariants: {
+      disabled: false,
+      readOnly: false,
+      size: "md",
+    },
   },
 );
 
-const editIconClasses = {
+export const editIconClasses = {
   size: {
     sm: "size-3 stroke-[3]",
     md: "size-4 stroke-2",

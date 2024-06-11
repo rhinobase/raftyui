@@ -160,6 +160,9 @@ export const datePickerClearButtonClasses = cva("pointer-events-auto rounded", {
       lg: "size-7 p-1.5 rounded-base",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
 type DatePickerControl = {
@@ -402,6 +405,9 @@ export const datePickerCalendarHeaderClasses = cva(
         lg: "mb-3.5",
       },
     },
+    defaultVariants: {
+      size: "md",
+    },
   },
 );
 
@@ -413,6 +419,9 @@ export const datePickerCalendarHeaderNextAndPrevButtonClasses = cva("", {
       lg: "p-2.5 size-10 rounded-lg",
     },
   },
+  defaultVariants: {
+    size: "md",
+  },
 });
 
 export const datePickerCalendarHeaderViewTriggerClasses = cva("py-0", {
@@ -422,6 +431,9 @@ export const datePickerCalendarHeaderViewTriggerClasses = cva("py-0", {
       md: "px-2.5 h-9 rounded-md text-sm",
       lg: "px-3 h-10 rounded-lg text-md",
     },
+  },
+  defaultVariants: {
+    size: "md",
   },
 });
 

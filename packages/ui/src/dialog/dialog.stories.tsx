@@ -34,8 +34,8 @@ export default meta;
 type Story = StoryObj<typeof Dialog>;
 
 export const Default: Story = {
-  render: ({ size }) => (
-    <Dialog size={size}>
+  render: (props) => (
+    <Dialog {...props}>
       <DialogTrigger>open</DialogTrigger>
       <DialogOverlay />
       <DialogContent>

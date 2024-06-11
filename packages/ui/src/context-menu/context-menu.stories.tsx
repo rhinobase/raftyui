@@ -34,13 +34,13 @@ export default meta;
 type Story = StoryObj<typeof ContextMenu>;
 
 export const Default: Story = {
-  render: ({ size, isUnstyled }) => {
+  render: (props) => {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
     const [urlsChecked, setUrlsChecked] = useState(false);
     const [person, setPerson] = useState("1");
 
     return (
-      <ContextMenu size={size} isUnstyled={isUnstyled}>
+      <ContextMenu {...props}>
         <ContextMenuTrigger>
           <div className="flex size-[300px] items-center justify-center rounded-lg border-2 border-dashed dark:border-zinc-700 dark:text-zinc-100">
             Context

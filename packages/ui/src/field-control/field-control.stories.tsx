@@ -24,14 +24,8 @@ export default meta;
 type Story = StoryObj<typeof FieldControl>;
 
 export const Default: Story = {
-  render: ({ orientation, isRequired, isDisabled, isLoading }) => (
-    <FieldControl
-      name="field-control"
-      orientation={orientation}
-      isRequired={isRequired}
-      isDisabled={isDisabled}
-      isLoading={isLoading}
-    >
+  render: (props) => (
+    <FieldControl {...props} name="field-control">
       <Label>String Field</Label>
       <InputField />
       <ErrorMessage>This is where error message will appear</ErrorMessage>

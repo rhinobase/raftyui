@@ -7,7 +7,7 @@ import { Textarea } from "../textarea";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
-const editableTextareaPreviewClasses = {
+export const editableTextareaPreviewClasses = {
   size: {
     sm: "text-sm pl-2 pr-8 py-1",
     md: "text-md pl-3 pr-10 py-1.5",

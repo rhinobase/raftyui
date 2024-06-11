@@ -1,1 +1,4 @@
-export { EditableTextarea } from "./EditableTextarea";
+export {
+  EditableTextarea,
+  editableTextareaPreviewClasses,
+} from "./EditableTextarea";

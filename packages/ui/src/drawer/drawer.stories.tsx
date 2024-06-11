@@ -32,12 +32,12 @@ export default meta;
 type Story = StoryObj<typeof Drawer>;
 
 export const Default: Story = {
-  render: ({ size, side }) => {
+  render: (props) => {
     const [isOpen, setOpen] = useState(false);
     return (
       <div className="flex flex-col gap-4">
         <Button onClick={() => setOpen(true)}>Open</Button>
-        <Drawer size={size} side={side} open={isOpen} onOpenChange={setOpen}>
+        <Drawer {...props} open={isOpen} onOpenChange={setOpen}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerTitle>Drawer Header</DrawerTitle>
