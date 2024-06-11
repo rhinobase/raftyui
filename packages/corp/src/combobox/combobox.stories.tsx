@@ -24,10 +24,15 @@ import { findLabel } from "./utils";
 const meta: Meta<typeof Combobox> = {
   title: "Corp / Combobox",
   args: {
+    type: "single",
+    placeholder: {
+      trigger: "Select language",
+      search: "Search language",
+    },
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
-    type: "single",
+    isInvalid: false,
   },
   argTypes: {
     type: { control: "select", options: ["single", "multi"] },
@@ -38,7 +43,7 @@ export default meta;
 
 type Story = StoryObj<typeof Combobox>;
 
-const OPTIONS = [
+const OPTIONS: ComboboxOptionType[] = [
   {
     label: "Java",
     value: "java",
@@ -66,19 +71,12 @@ const OPTIONS = [
 ];
 
 export const Default: Story = {
-  render: ({ isDisabled, isLoading, isReadonly, type }) => {
+  render: (props) => {
     return (
       <div className="w-[500px]">
         <Combobox
+          {...props}
           id="lang"
-          type={type}
-          isDisabled={isDisabled}
-          isLoading={isLoading}
-          isReadonly={isReadonly}
-          placeholder={{
-            trigger: "Select languages",
-            search: "Search language",
-          }}
           onSelectionChange={console.log}
           options={OPTIONS}
         >
@@ -98,7 +96,7 @@ const schema = z.object({
 });
 
 export const WithController: Story = {
-  render: () => {
+  render: (props) => {
     const { control } = useForm<z.infer<typeof schema>>({
       resolver: zodResolver(schema),
     });
@@ -108,13 +106,10 @@ export const WithController: Story = {
         name="language"
         control={control}
         render={({ field: { name, value, onChange, disabled } }) => (
+          // @ts-ignore
           <Combobox
+            {...props}
             id={name}
-            type="single"
-            placeholder={{
-              trigger: "Select languages",
-              search: "Search language",
-            }}
             selected={value}
             onSelectionChange={onChange}
             isDisabled={disabled}
@@ -161,17 +156,16 @@ const DATA: DataItem[] = [
 ];
 
 export const Custom: Story = {
-  render: ({ isDisabled, isLoading, isReadonly }) => {
+  render: (props) => {
     return (
       <div className="w-[500px]">
+        {/* @ts-ignore */}
         <Combobox
+          {...props}
           id="products"
           type="single"
           onSelectionChange={console.log}
           options={DATA}
-          isDisabled={isDisabled}
-          isLoading={isLoading}
-          isReadonly={isReadonly}
         >
           <ComboboxTrigger>
             <CustomTriggerRender />

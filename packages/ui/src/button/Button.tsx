@@ -485,6 +485,7 @@ export const buttonClasses = cva(
       active: false,
       disabled: false,
       loading: false,
+      hidden: false,
     },
   },
 );

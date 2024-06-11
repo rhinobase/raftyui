@@ -19,7 +19,7 @@ import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef, useRef, useState } from "react";
 import { useDropdown } from "./useDropdown";
 import {
-  type ItemType,
+  type CascaderItemType,
   type NormalizeItem,
   type ValueType,
   useNormalizedItems,
@@ -28,10 +28,10 @@ import {
 type SizeType = "sm" | "md" | "lg";
 
 export type Cascader = {
-  items: ItemType[];
+  items: CascaderItemType[];
   onValueChange?: (
     value?: ValueType,
-    selectedItems?: Omit<ItemType, "children">[],
+    selectedItems?: Omit<CascaderItemType, "children">[],
   ) => void;
   separator?: string;
   value?: string;
@@ -82,7 +82,7 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(
       inputValue = selectedItems.map(({ label }) => label).join(separator);
     }
 
-    const handleSelect = (item: ItemType) =>
+    const handleSelect = (item: CascaderItemType) =>
       eventHandler(() => {
         if (!onValueChange || item.disabled) return;
 
@@ -254,13 +254,13 @@ const cascaderContentItemIconClasses = cva(
 );
 
 type CascadeContent = {
-  items: ItemType[];
+  items: CascaderItemType[];
   size: SizeType;
   onSelect: (
-    item: ItemType,
+    item: CascaderItemType,
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   ) => (event: React.BaseSyntheticEvent<object, any, any>) => void;
-  normalizeItem: (item: ItemType) => NormalizeItem;
+  normalizeItem: (item: CascaderItemType) => NormalizeItem;
 };
 
 function CascadeContent({
@@ -269,7 +269,7 @@ function CascadeContent({
   normalizeItem,
   onSelect,
 }: CascadeContent) {
-  const contentRender = (items: ItemType[]) => (
+  const contentRender = (items: CascaderItemType[]) => (
     <ul className={cascaderContentClasses({ size })}>
       {items.map((item, index) => {
         const {

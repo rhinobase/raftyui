@@ -8,7 +8,7 @@ const meta: Meta<typeof Listbox> = {
 export default meta;
 type Story = StoryObj<typeof Listbox>;
 
-const OPTIONS = [
+const ITEMS = [
   { value: "hello", label: "Hello" },
   { value: "react", label: "React" },
   { value: "next", label: "Next" },
@@ -36,5 +36,5 @@ export const Default: Story = {
       options: ["sm", "md", "lg"],
     },
   },
-  render: (props) => <Listbox {...props} items={OPTIONS} />,
+  render: (props) => <Listbox {...props} items={ITEMS} />,
 };

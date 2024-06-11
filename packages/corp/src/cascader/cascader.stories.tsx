@@ -2,7 +2,7 @@ import { DevTool } from "@hookform/devtools";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Controller, useForm } from "react-hook-form";
 import { Cascader } from "./Cascader";
-import type { ItemType } from "./useNormalizedItems";
+import type { CascaderItemType } from "./useNormalizedItems";
 
 const meta: Meta<typeof Cascader> = {
   title: "Corp / Cascader ",
@@ -23,7 +23,7 @@ const meta: Meta<typeof Cascader> = {
 export default meta;
 type Story = StoryObj<typeof Cascader>;
 
-const items: ItemType[] = [
+const ITEMS: CascaderItemType[] = [
   {
     label: "Pants",
     value: "pants",
@@ -75,7 +75,7 @@ export const Default: Story = {
             <Cascader
               {...props}
               name={name}
-              items={items}
+              items={ITEMS}
               value={value}
               onValueChange={(value, selectedItems) => onChange(value)}
               ref={ref}
@@ -93,7 +93,7 @@ export const WithDefaultValue: Story = {
     <Cascader
       defaultValue="jeans"
       {...props}
-      items={items}
+      items={ITEMS}
       onValueChange={console.log}
     />
   ),

@@ -23,7 +23,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  render: ({ size, isDisabled }) => {
+  render: (props) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -33,8 +33,7 @@ export const Default: Story = {
 
     return (
       <Pagination
-        isDisabled={isDisabled}
-        size={size}
+        {...props}
         pages={pages}
         pageLimit={pagination.limit}
         currentPage={pagination.current}
@@ -69,7 +68,7 @@ export const Default: Story = {
 };
 
 export const JumperAndButtons: Story = {
-  render: ({ size, isDisabled }) => {
+  render: (props) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -77,8 +76,7 @@ export const JumperAndButtons: Story = {
 
     return (
       <Pagination
-        isDisabled={isDisabled}
-        size={size}
+        {...props}
         pages={10}
         pageLimit={pagination.limit}
         currentPage={pagination.current}
@@ -104,7 +102,7 @@ export const JumperAndButtons: Story = {
 };
 
 export const pageSizes: Story = {
-  render: ({ size, isDisabled }) => {
+  render: (props) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -112,8 +110,7 @@ export const pageSizes: Story = {
 
     return (
       <Pagination
-        isDisabled={isDisabled}
-        size={size}
+        {...props}
         pages={10}
         pageLimit={pagination.limit}
         currentPage={pagination.current}
@@ -142,7 +139,7 @@ export const pageSizes: Story = {
 };
 
 export const pageSizesWithNumbersOnly: Story = {
-  render: ({ size, isDisabled }) => {
+  render: (props) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -150,8 +147,7 @@ export const pageSizesWithNumbersOnly: Story = {
 
     return (
       <Pagination
-        isDisabled={isDisabled}
-        size={size}
+        {...props}
         pages={10}
         pageLimit={pagination.limit}
         currentPage={pagination.current}
@@ -173,7 +169,7 @@ export const pageSizesWithNumbersOnly: Story = {
 };
 
 export const pageSizesWithLabelsOnly: Story = {
-  render: ({ size, isDisabled }) => {
+  render: (props) => {
     const [pagination, setPagination] = useState({
       current: 1,
       limit: 10,
@@ -196,8 +192,7 @@ export const pageSizesWithLabelsOnly: Story = {
 
     return (
       <Pagination
-        isDisabled={isDisabled}
-        size={size}
+        {...props}
         pages={10}
         pageLimit={pagination.limit}
         currentPage={pagination.current}

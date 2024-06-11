@@ -6,21 +6,21 @@ export type FieldNames = {
   children: string;
 };
 
-export interface ItemType {
+export type CascaderItemType = {
   value: ValueType;
   label: string;
   disabled?: boolean;
-  children?: ItemType[];
-}
+  children?: CascaderItemType[];
+};
 
-export interface NormalizeItem extends ItemType {
+export type NormalizeItem = CascaderItemType & {
   value: string;
   label: string;
   children?: NormalizeItem[];
-}
+};
 
 export const useNormalizedItems = (fieldNames: FieldNames) => {
-  const normalizeItem = (item: ItemType): NormalizeItem => {
+  const normalizeItem = (item: CascaderItemType): NormalizeItem => {
     // @ts-ignore
     const value = item[fieldNames.value];
     // @ts-ignore
@@ -36,9 +36,15 @@ export const useNormalizedItems = (fieldNames: FieldNames) => {
     };
   };
 
-  const getSelectedItems = (items: ItemType[], selectedValue: ValueType) => {
-    let selectedItems: ItemType[] = [];
-    const search = (items: ItemType[], ref: ItemType[] = []) => {
+  const getSelectedItems = (
+    items: CascaderItemType[],
+    selectedValue: ValueType,
+  ) => {
+    let selectedItems: CascaderItemType[] = [];
+    const search = (
+      items: CascaderItemType[],
+      ref: CascaderItemType[] = [],
+    ) => {
       for (const item of items) {
         const { children, label, value, disabled, ...restItem } =
           normalizeItem(item);
