@@ -1,7 +1,6 @@
 "use client";
 import { useThread } from "@fibr/react";
 import { RangePicker } from "@rafty/ui";
-import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import type { DateRangeFieldProps } from "../types";
 import { FieldWrapper, TooltipWrapper } from "../utils";

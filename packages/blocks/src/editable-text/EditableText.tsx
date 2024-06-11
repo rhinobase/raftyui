@@ -1,6 +1,5 @@
 import { useThread } from "@fibr/react";
 import { EditableText as RaftyEditableText } from "@rafty/ui";
-import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import type { EditableTextProps } from "../types";
 import { FieldWrapper, TooltipWrapper } from "../utils";
