@@ -1,7 +1,6 @@
 "use client";
 import { useThread } from "@fibr/react";
 import { FileUpload } from "@rafty/ui";
-import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import type { FileInputFieldProps } from "../types";
 import { FieldWrapper, InputWrapper, TooltipWrapper } from "../utils";
