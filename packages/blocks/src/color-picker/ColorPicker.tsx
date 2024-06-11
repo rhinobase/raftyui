@@ -21,7 +21,9 @@ export function ColorPicker() {
               id={name}
               name={name}
               value={value}
-              onValueChange={({ valueAsString }) => onChange(valueAsString)}
+              onValueChange={({ valueAsString }: { valueAsString: string }) =>
+                onChange(valueAsString)
+              }
               disabled={disabled}
               ref={ref}
             />
