@@ -13,12 +13,16 @@ import { InputField } from "../input-field";
 import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
-export type EditableText = Omit<EditableRootProps, "activationMode"> & {
+export type EditableText = Omit<
+  EditableRootProps,
+  "activationMode" | "onValueChange"
+> & {
   size?: SizeType;
   isDisabled?: ValueOrFunction;
   isInvalid?: ValueOrFunction;
   isLoading?: ValueOrFunction;
   isReadOnly?: ValueOrFunction;
+  onValueChange?: (value?: string) => void;
 };
 
 export const EditableText = forwardRef<
@@ -35,6 +39,7 @@ export const EditableText = forwardRef<
     isLoading,
     isReadOnly,
     isInvalid,
+    onValueChange,
     ...props
   },
   forwardedRef,
@@ -62,6 +67,7 @@ export const EditableText = forwardRef<
     readOnly: _readOnly,
     className: classNames("w-full", className),
     activationMode: "dblclick",
+    onValueChange: ({ value }) => onValueChange?.(value),
   };
 
   return (

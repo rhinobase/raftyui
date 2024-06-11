@@ -15,12 +15,16 @@ export const editableTextareaPreviewClasses = {
   },
 };
 
-export type EditableTextarea = Omit<EditableRootProps, "activationMode"> & {
+export type EditableTextarea = Omit<
+  EditableRootProps,
+  "activationMode" | "onValueChange"
+> & {
   size?: SizeType;
   isDisabled?: ValueOrFunction;
   isInvalid?: ValueOrFunction;
   isLoading?: ValueOrFunction;
   isReadOnly?: ValueOrFunction;
+  onValueChange?: (value?: string) => void;
 };
 
 export const EditableTextarea = forwardRef<
@@ -37,6 +41,7 @@ export const EditableTextarea = forwardRef<
     isLoading,
     isReadOnly,
     isInvalid,
+    onValueChange,
     ...props
   },
   forwardedRef,
@@ -64,6 +69,7 @@ export const EditableTextarea = forwardRef<
     readOnly: _readOnly,
     className: classNames("w-full", className),
     activationMode: "dblclick",
+    onValueChange: ({ value }) => onValueChange?.(value),
   };
 
   return (

@@ -8,6 +8,7 @@ import {
   Button,
   InputField,
   InputGroup,
+  type SizeType,
   Suffix,
   type ValueOrFunction,
   classNames,
@@ -25,8 +26,6 @@ import {
   useNormalizedItems,
 } from "./useNormalizedItems";
 
-type SizeType = "sm" | "md" | "lg";
-
 export type Cascader = {
   items: CascaderItemType[];
   onValueChange?: (
@@ -34,99 +33,94 @@ export type Cascader = {
     selectedItems?: Omit<CascaderItemType, "children">[],
   ) => void;
   separator?: string;
-  value?: string;
+  value?: ValueType;
   name?: string;
   size?: SizeType;
   placeholder?: string;
   isDisabled?: ValueOrFunction;
   isReadOnly?: ValueOrFunction;
-  defaultValue?: string;
+  defaultValue?: ValueType;
   className?: HTMLAttributes<HTMLDivElement>["className"];
 };
 
-export const Cascader = forwardRef<HTMLDivElement, Cascader>(
-  (
-    {
-      items = [],
-      onValueChange,
-      separator = " / ",
-      value,
-      defaultValue,
-      size = "md",
-      isDisabled = false,
-      isReadOnly = false,
-      className,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const [selected, setSelected] = useState<ValueType | undefined>(
-      defaultValue,
-    );
+export const Cascader = forwardRef<HTMLDivElement, Cascader>(function Cascader(
+  {
+    items = [],
+    onValueChange,
+    separator = " / ",
+    value,
+    defaultValue,
+    size = "md",
+    isDisabled = false,
+    isReadOnly = false,
+    className,
+    ...props
+  },
+  forwardedRef,
+) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState<ValueType | undefined>(defaultValue);
 
-    const disabled = raftyGetValue(isDisabled);
-    const readOnly = raftyGetValue(isReadOnly);
+  const disabled = raftyGetValue(isDisabled);
+  const readOnly = raftyGetValue(isReadOnly);
 
-    const { isDropdownVisible, toggleDropdownVisible } = useDropdown(ref);
+  const { isDropdownVisible, toggleDropdownVisible } = useDropdown(ref);
 
-    const { normalizeItem, getSelectedItems } = useNormalizedItems({
-      value: "value",
-      label: "label",
-      children: "children",
+  const { normalizeItem, getSelectedItems } = useNormalizedItems({
+    value: "value",
+    label: "label",
+    children: "children",
+  });
+
+  let inputValue = "";
+  if (selected) {
+    const selectedItems = getSelectedItems(items, selected);
+    inputValue = selectedItems.map(({ label }) => label).join(separator);
+  }
+
+  const handleSelect = (item: CascaderItemType) =>
+    eventHandler(() => {
+      if (!onValueChange || item.disabled) return;
+
+      const selectedItems = getSelectedItems(items, item.value);
+
+      onValueChange(selectedItems.slice(-1)[0].value, selectedItems);
+      setSelected(item.value);
+      toggleDropdownVisible(false);
     });
 
-    let inputValue = "";
-    if (selected) {
-      const selectedItems = getSelectedItems(items, selected);
-      inputValue = selectedItems.map(({ label }) => label).join(separator);
-    }
-
-    const handleSelect = (item: CascaderItemType) =>
-      eventHandler(() => {
-        if (!onValueChange || item.disabled) return;
-
-        const selectedItems = getSelectedItems(items, item.value);
-
-        onValueChange(selectedItems.slice(-1)[0].value, selectedItems);
-        setSelected(item.value);
-        toggleDropdownVisible(false);
-      });
-
-    return (
-      <div
-        className={classNames("relative w-full cursor-pointer", className)}
-        ref={mergeRefs(forwardedRef, ref)}
-      >
-        <CascaderInput
-          name={props.name}
+  return (
+    <div
+      className={classNames("relative w-full cursor-pointer", className)}
+      ref={mergeRefs(forwardedRef, ref)}
+    >
+      <CascaderInput
+        name={props.name}
+        size={size}
+        placeholder={props.placeholder}
+        disabled={disabled}
+        readOnly={readOnly}
+        inputValue={inputValue}
+        selected={selected}
+        openMenu={() => {
+          if (!readOnly) toggleDropdownVisible();
+        }}
+        onClear={() => {
+          onValueChange?.(undefined, undefined);
+          setSelected(undefined);
+        }}
+      />
+      {isDropdownVisible && (
+        <CascadeContent
+          items={items}
           size={size}
-          placeholder={props.placeholder}
-          disabled={disabled}
-          readOnly={readOnly}
-          inputValue={inputValue}
-          selected={selected}
-          openMenu={() => {
-            if (!readOnly) toggleDropdownVisible();
-          }}
-          onClear={() => {
-            onValueChange?.(undefined, undefined);
-            setSelected(undefined);
-          }}
+          onSelect={handleSelect}
+          normalizeItem={normalizeItem}
         />
-        {isDropdownVisible && (
-          <CascadeContent
-            items={items}
-            size={size}
-            onSelect={handleSelect}
-            normalizeItem={normalizeItem}
-          />
-        )}
-      </div>
-    );
-  },
-);
-Cascader.displayName = "Cascader";
+      )}
+    </div>
+  );
+});
 
 const cascaderDownButtonClasses = cva(
   "stroke-secondary-400 dark:stroke-secondary-600 stroke-[3]",

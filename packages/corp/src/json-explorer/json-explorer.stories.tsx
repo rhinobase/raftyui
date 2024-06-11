@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { JSONExplorer } from "./JSONExplorer";
+import { JSONExplorer, type JSONExplorerData } from "./JSONExplorer";
 
 const meta: Meta<typeof JSONExplorer> = {
   title: "Corp / JSONExplorer",
@@ -14,7 +14,7 @@ const meta: Meta<typeof JSONExplorer> = {
   },
 };
 
-const DATA = {
+const DATA: JSONExplorerData = {
   a: {
     b: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     c: {

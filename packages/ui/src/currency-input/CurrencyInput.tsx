@@ -43,6 +43,7 @@ const CURRENCY: Record<
 
 export type CurrencyInput = Omit<
   InputField,
+  | "defaultValue"
   | "value"
   | "onChange"
   | "min"
@@ -54,6 +55,7 @@ export type CurrencyInput = Omit<
   | "spellCheck"
   | "isUnstyled"
 > & {
+  defaultValue?: string;
   value?: string;
   onChange?: (value?: string) => void;
   currencyCode?: string;

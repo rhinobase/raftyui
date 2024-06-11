@@ -1,1 +1,1 @@
-export { JSONExplorer } from "./JSONExplorer";
+export { JSONExplorer, type JSONExplorerData } from "./JSONExplorer";

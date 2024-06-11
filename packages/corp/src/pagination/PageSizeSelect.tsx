@@ -8,7 +8,10 @@ export type PageSizeSelect = Omit<Select, "value" | "onChange"> & {
 };
 
 export const PageSizeSelect = forwardRef<HTMLSelectElement, PageSizeSelect>(
-  ({ pageSizes = [10, 20, 50], size, isDisabled, ...props }, forwardedRef) => {
+  function PageSizeSelect(
+    { pageSizes = [10, 20, 50], size, isDisabled, ...props },
+    forwardedRef,
+  ) {
     const {
       size: parentSize,
       isDisabled: isParentDisabled,
@@ -46,4 +49,3 @@ export const PageSizeSelect = forwardRef<HTMLSelectElement, PageSizeSelect>(
     );
   },
 );
-PageSizeSelect.displayName = "PageSizeSelect";

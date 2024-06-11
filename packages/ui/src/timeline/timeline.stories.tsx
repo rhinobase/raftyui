@@ -5,9 +5,9 @@ import { Timeline, TimelineItem } from "./Timeline";
 const meta: Meta<typeof Timeline> = {
   title: "Components / Timeline",
   args: {
-    reverse: false,
-    align: "left",
     size: "md",
+    align: "left",
+    isReverse: false,
   },
   argTypes: {
     align: {
@@ -25,9 +25,9 @@ export default meta;
 type Story = StoryObj<typeof Timeline>;
 
 export const Default: Story = {
-  render: ({ reverse, align, size }) => (
+  render: (props) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} align={align} size={size}>
+      <Timeline {...props}>
         <TimelineItem>Sample Item 1</TimelineItem>
         <TimelineItem>Sample Item 2</TimelineItem>
         <TimelineItem>Sample Item 3</TimelineItem>
@@ -37,9 +37,9 @@ export const Default: Story = {
 };
 
 export const Status: Story = {
-  render: ({ reverse, align, size }) => (
+  render: (props) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} align={align} size={size}>
+      <Timeline {...props}>
         <TimelineItem status="error">Error Status</TimelineItem>
         <TimelineItem status="info">Info Status</TimelineItem>
         <TimelineItem status="success">Success Status</TimelineItem>
@@ -50,9 +50,9 @@ export const Status: Story = {
 };
 
 export const CustomIcon: Story = {
-  render: ({ reverse, align, size }) => (
+  render: (props) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} align={align} size={size}>
+      <Timeline {...props}>
         <TimelineItem
           icon={<TvIcon height={20} width={20} className="text-red-500" />}
         >
@@ -66,9 +66,9 @@ export const CustomIcon: Story = {
 };
 
 export const WithDescription: Story = {
-  render: ({ reverse, align, size }) => (
+  render: (props) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} align={align} size={size}>
+      <Timeline {...props}>
         <TimelineItem description="2015-09-01 09:12:11">
           Sample Item 1
         </TimelineItem>
@@ -82,14 +82,9 @@ export const WithDescription: Story = {
 };
 
 export const Loading: Story = {
-  render: ({ reverse, align, size }) => (
+  render: (props) => (
     <div className="h-[400px] w-full">
-      <Timeline
-        reverse={reverse}
-        loading="Loading more..."
-        align={align}
-        size={size}
-      >
+      <Timeline {...props} isLoading loadingText="Loading more...">
         <TimelineItem>Sample Item 1</TimelineItem>
         <TimelineItem>Sample Item 2</TimelineItem>
         <TimelineItem>Sample Item 3</TimelineItem>
@@ -99,9 +94,9 @@ export const Loading: Story = {
 };
 
 export const WithoutChildren: Story = {
-  render: ({ reverse, align, size }) => (
+  render: (props) => (
     <div className="h-[400px] w-full">
-      <Timeline reverse={reverse} align={align} size={size}>
+      <Timeline {...props}>
         <TimelineItem />
         <TimelineItem />
         <TimelineItem />

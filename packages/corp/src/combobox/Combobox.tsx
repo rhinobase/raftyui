@@ -155,7 +155,7 @@ export function Combobox({
 
 // Combobox Trigger
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
-  (
+  function ComboboxTrigger(
     {
       isDisabled,
       isLoading,
@@ -167,7 +167,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const {
       id,
       isOpen,
@@ -211,7 +211,6 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
     );
   },
 );
-ComboboxTrigger.displayName = "ComboboxTrigger";
 
 // Combobox Content
 export type ComboboxContent = Omit<PopoverContent, "children"> & {
@@ -286,16 +285,14 @@ export function ComboboxContent({
 // Combobox Item
 export type ComboboxItem = CommandItem;
 export const ComboboxItem = CommandItem;
-ComboboxItem.displayName = "ComboboxItem";
 
 // Combobox Items Group
 export type ComboboxItemsGroup = CommandGroup;
 export const ComboboxItemsGroup = CommandGroup;
-ComboboxItemsGroup.displayName = "ComboboxItemsGroup";
 
 // Combobox Clear Button
 export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
-  (
+  function ComboboxClearButton(
     {
       children,
       size = "sm",
@@ -305,7 +302,7 @@ export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const {
       type,
       selected,
@@ -339,4 +336,3 @@ export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
     );
   },
 );
-ComboboxClearButton.displayName = "ComboboxClearButton";

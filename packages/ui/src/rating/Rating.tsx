@@ -76,7 +76,7 @@ export const ratingItemIconClasses = cva("", {
 
 export type Rating = Omit<RatingGroupRootProps, "onValueChange"> & {
   size?: SizeType;
-  onValueChange?: (value: number) => void;
+  onValueChange?: (value?: number) => void;
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
   isReadOnly?: ValueOrFunction;

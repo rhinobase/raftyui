@@ -14,6 +14,7 @@ const KEY_FACTOR: Record<string, number> = {
 
 export type PercentageInput = Omit<
   InputField,
+  | "defaultValue"
   | "value"
   | "onChange"
   | "min"
@@ -25,6 +26,7 @@ export type PercentageInput = Omit<
   | "spellCheck"
   | "isUnstyled"
 > & {
+  defaultValue?: string;
   value?: string;
   onChange?: (value?: string) => void;
 };

@@ -6,6 +6,7 @@ import { Signature } from "./Signature";
 const meta: Meta<typeof Signature> = {
   title: "Corp / Signature",
   args: {
+    placeholder: "Signature",
     isDisabled: false,
     isHidden: false,
   },
@@ -37,7 +38,6 @@ export const WithForm: Story = {
               <Signature
                 {...props}
                 name={name}
-                instructions="Sign here"
                 value={value}
                 onChange={onChange}
                 ref={ref}

@@ -1,5 +1,5 @@
 "use client";
-import { Table, classNames } from "@rafty/ui";
+import { type SizeType, Table, classNames } from "@rafty/ui";
 import {
   type ColumnDef,
   type ColumnSizingState,
@@ -25,7 +25,7 @@ export type DataTable<T> = {
   isFetching?: boolean;
   isLoading?: boolean;
   enableColumnResizing?: boolean; // Indicates if columns are resizable
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   onSortingChange?: (value: SortingState) => void;
   onColumnSizingChange?: (value: ColumnSizingState) => void;
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;

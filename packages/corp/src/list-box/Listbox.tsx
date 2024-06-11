@@ -2,6 +2,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import {
   ScrollArea,
   ScrollAreaList,
+  type SizeType,
   type ValueOrFunction,
   classNames,
   eventHandler,
@@ -9,34 +10,6 @@ import {
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { forwardRef, useEffect, useReducer } from "react";
-
-export type Listbox = {
-  itemSize?: number;
-  items: {
-    value: string;
-    label?: string;
-  }[];
-  className?: HTMLDivElement["className"];
-  isDisabled?: ValueOrFunction;
-  isReadOnly?: ValueOrFunction;
-  isLoading?: ValueOrFunction;
-  hidden?: ValueOrFunction;
-  name?: string;
-  size?: "sm" | "md" | "lg";
-} & (
-  | {
-      value?: string;
-      defaultValue?: string;
-      onValueChange?: (value?: string) => void;
-      type?: "single";
-    }
-  | {
-      value?: string[];
-      defaultValue?: string[];
-      onValueChange?: (value?: string[]) => void;
-      type: "multi";
-    }
-);
 
 export const listboxItemClasses = cva(
   "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 transition-all ease-in-out",
@@ -159,106 +132,129 @@ const listboxItemSizeClasses = {
   },
 };
 
-export const Listbox = forwardRef<HTMLDivElement, Listbox>(
-  (
-    {
-      name,
-      items,
-      className,
-      hidden: isHidden = false,
-      isDisabled = false,
-      isLoading = false,
-      isReadOnly = false,
-      itemSize,
-      defaultValue,
-      onValueChange,
-      type,
-      value,
-      size = "md",
-    },
-    forwardedRef,
-  ) => {
-    const val = value ?? defaultValue;
-
-    const initValue = val ? (Array.isArray(val) ? val : [val]) : [];
-
-    const isMulti = type === "multi";
-
-    const [selected, setSelected] = useReducer(
-      (prev: string[], cur: string) => {
-        let selectedValues = [...prev];
-
-        if (isMulti) {
-          if (selectedValues.includes(cur))
-            selectedValues = selectedValues.filter((val) => val !== cur);
-          else selectedValues.push(cur);
-        } else selectedValues = [cur];
-
-        return selectedValues;
-      },
-      initValue,
-    );
-
-    const disabled = getValue(isDisabled);
-    const loading = getValue(isLoading);
-    const readOnly = getValue(isReadOnly);
-    const hidden = getValue(isHidden);
-
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    useEffect(() => {
-      if (isMulti) onValueChange?.(selected);
-      else onValueChange?.(selected.length > 0 ? selected[0] : undefined);
-    }, [selected]);
-
-    const handleSelect = (index: number) => {
-      if (readOnly || disabled || loading) return;
-
-      const value = items[index].value;
-
-      return eventHandler(() => setSelected(value));
-    };
-
-    return (
-      <ScrollArea
-        id={name}
-        hidden={hidden}
-        itemCount={items.length}
-        itemSize={listboxItemSizeClasses.size[size] ?? itemSize}
-        className={classNames(
-          listboxClasses({ disabled, loading, size }),
-          className,
-        )}
-        ref={forwardedRef}
-      >
-        <ScrollAreaList>
-          {({ index, style }) => {
-            const isSelected = selected.includes(items[index].value);
-
-            return (
-              <div
-                key={index}
-                onClick={handleSelect(index)}
-                onKeyDown={handleSelect(index)}
-                className={listboxItemClasses({
-                  disabled,
-                  selected: isSelected,
-                  readOnly,
-                  loading,
-                  size,
-                })}
-                style={style}
-              >
-                {items[index].label ?? items[index].value}
-                {isSelected && (
-                  <CheckIcon
-                    className={checkIconClasses({ size, disabled, loading })}
-                  />
-                )}
-              </div>
-            );
-          }}
-        </ScrollAreaList>
-      </ScrollArea>
-    );
-  },
+export type Listbox = {
+  itemSize?: number;
+  items: {
+    value: string;
+    label?: string;
+  }[];
+  className?: HTMLDivElement["className"];
+  isDisabled?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isHidden?: ValueOrFunction;
+  name?: string;
+  size?: SizeType;
+} & (
+  | {
+      value?: string;
+      defaultValue?: string;
+      onValueChange?: (value?: string) => void;
+      type?: "single";
+    }
+  | {
+      value?: string[];
+      defaultValue?: string[];
+      onValueChange?: (value?: string[]) => void;
+      type: "multi";
+    }
 );
+
+export const Listbox = forwardRef<HTMLDivElement, Listbox>(function Listbox(
+  {
+    name,
+    items,
+    className,
+    isHidden,
+    isDisabled,
+    isLoading,
+    isReadOnly,
+    itemSize,
+    defaultValue,
+    onValueChange,
+    type,
+    value,
+    size = "md",
+  },
+  forwardedRef,
+) {
+  const val = value ?? defaultValue;
+
+  const initValue = val ? (Array.isArray(val) ? val : [val]) : [];
+
+  const isMulti = type === "multi";
+
+  const [selected, setSelected] = useReducer((prev: string[], cur: string) => {
+    let selectedValues = [...prev];
+
+    if (isMulti) {
+      if (selectedValues.includes(cur))
+        selectedValues = selectedValues.filter((val) => val !== cur);
+      else selectedValues.push(cur);
+    } else selectedValues = [cur];
+
+    return selectedValues;
+  }, initValue);
+
+  const disabled = getValue(isDisabled);
+  const loading = getValue(isLoading);
+  const readOnly = getValue(isReadOnly);
+  const hidden = getValue(isHidden);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isMulti) onValueChange?.(selected);
+    else onValueChange?.(selected.length > 0 ? selected[0] : undefined);
+  }, [selected]);
+
+  const handleSelect = (index: number) => {
+    if (readOnly || disabled || loading) return;
+
+    const value = items[index].value;
+
+    return eventHandler(() => setSelected(value));
+  };
+
+  return (
+    <ScrollArea
+      id={name}
+      hidden={hidden}
+      itemCount={items.length}
+      itemSize={listboxItemSizeClasses.size[size] ?? itemSize}
+      className={classNames(
+        listboxClasses({ disabled, loading, size }),
+        className,
+      )}
+      ref={forwardedRef}
+    >
+      <ScrollAreaList>
+        {({ index, style }) => {
+          const isSelected = selected.includes(items[index].value);
+
+          return (
+            <div
+              key={index}
+              onClick={handleSelect(index)}
+              onKeyDown={handleSelect(index)}
+              className={listboxItemClasses({
+                disabled,
+                selected: isSelected,
+                readOnly,
+                loading,
+                size,
+              })}
+              style={style}
+            >
+              {items[index].label ?? items[index].value}
+              {isSelected && (
+                <CheckIcon
+                  className={checkIconClasses({ size, disabled, loading })}
+                />
+              )}
+            </div>
+          );
+        }}
+      </ScrollAreaList>
+    </ScrollArea>
+  );
+});

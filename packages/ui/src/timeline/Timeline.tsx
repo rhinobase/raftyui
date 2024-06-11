@@ -1,14 +1,9 @@
 "use client";
 import { cva } from "class-variance-authority";
-import {
-  type HTMLAttributes,
-  type ReactElement,
-  type ReactNode,
-  forwardRef,
-  useId,
-} from "react";
+import { type HTMLAttributes, type ReactNode, forwardRef, useId } from "react";
 import { Spinner } from "../spinner";
-import { classNames, getValidChildren } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValidChildren, getValue } from "../utils";
 import {
   type TimelineContext,
   TimelineProvider,
@@ -35,19 +30,21 @@ export const timelineClasses = cva("flex size-full", {
 
 export type Timeline = HTMLAttributes<HTMLUListElement> &
   Partial<TimelineContext> & {
-    loadingDot?: ReactElement;
-    loading?: boolean | ReactNode;
+    isLoading?: ValueOrFunction;
+    loadingDot?: ReactNode;
+    loadingText?: ReactNode;
+    isReverse?: ValueOrFunction;
     connector?: () => JSX.Element;
-    reverse?: boolean;
   };
 
 export const Timeline = forwardRef<HTMLUListElement, Timeline>(
   function Timeline(
     {
-      loading,
+      isLoading,
       loadingDot,
+      loadingText,
       align = "left",
-      reverse = false,
+      isReverse,
       size = "md",
       children,
       className,
@@ -65,13 +62,13 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       <Connector key={`${index}-${key}-connector`} />,
     ]);
 
-    if (loading)
+    if (isLoading)
       components.push(
         <TimelineItem
           key={`${key}-loading`}
           icon={loadingDot ?? <Spinner size="sm" />}
         >
-          {loading}
+          {loadingText}
         </TimelineItem>,
       );
     else components.pop();
@@ -85,7 +82,10 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       >
         <ul
           {...props}
-          className={classNames(timelineClasses({ size, reverse }), className)}
+          className={classNames(
+            timelineClasses({ size, reverse: getValue(isReverse) }),
+            className,
+          )}
           ref={forwardedRef}
         >
           {components}

@@ -51,73 +51,66 @@ export type ReorderableList = Partial<DragDropContext> & {
 export const ReorderableList = forwardRef<
   ElementRef<typeof DragDropContext>,
   ReorderableList
->(
-  (
-    { data, onOrderChange, size = "md", className, isHidden = false, ...props },
-    forwardedRef,
-  ) => {
-    const [updatedData, setUpdatedData] = useState(data);
+>(function ReorderableList(
+  { data, onOrderChange, size = "md", className, isHidden = false, ...props },
+  forwardedRef,
+) {
+  const [updatedData, setUpdatedData] = useState(data);
 
-    const hidden = getValue(isHidden);
+  const hidden = getValue(isHidden);
 
-    const handleOnDragEnd = (result: DropResult) => {
-      if (!result.destination) return;
+  const handleOnDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
 
-      const items = updatedData;
-      const [reorderedItem] = items.splice(result.source.index, 1);
-      items.splice(result.destination.index, 0, reorderedItem);
+    const items = updatedData;
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
 
-      setUpdatedData(items);
-      onOrderChange?.(items);
-    };
+    setUpdatedData(items);
+    onOrderChange?.(items);
+  };
 
-    return (
-      <DragDropContext
-        {...props}
-        onDragEnd={handleOnDragEnd}
-        ref={forwardedRef}
-      >
-        <Droppable droppableId="droppable" direction="vertical">
-          {({ droppableProps, innerRef, placeholder }) => (
-            <List
-              {...droppableProps}
-              className={classNames(
-                reorderableListClasses({ hidden }),
-                className,
-              )}
-              ref={innerRef}
-            >
-              {updatedData.map((value, index) => (
-                <Draggable
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                  key={index}
-                  draggableId={String(index)}
-                  index={index}
-                >
-                  {(
-                    { dragHandleProps, draggableProps, innerRef },
-                    { isDragging },
-                  ) => (
-                    <ListItem
-                      {...draggableProps}
-                      {...dragHandleProps}
-                      className={reorderableListItemClasses({
-                        size,
-                        dragging: isDragging,
-                      })}
-                      ref={innerRef}
-                    >
-                      {value}
-                    </ListItem>
-                  )}
-                </Draggable>
-              ))}
-              {placeholder}
-            </List>
-          )}
-        </Droppable>
-      </DragDropContext>
-    );
-  },
-);
-ReorderableList.displayName = "ReorderableList";
+  return (
+    <DragDropContext {...props} onDragEnd={handleOnDragEnd} ref={forwardedRef}>
+      <Droppable droppableId="droppable" direction="vertical">
+        {({ droppableProps, innerRef, placeholder }) => (
+          <List
+            {...droppableProps}
+            className={classNames(
+              reorderableListClasses({ hidden }),
+              className,
+            )}
+            ref={innerRef}
+          >
+            {updatedData.map((value, index) => (
+              <Draggable
+                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                key={index}
+                draggableId={String(index)}
+                index={index}
+              >
+                {(
+                  { dragHandleProps, draggableProps, innerRef },
+                  { isDragging },
+                ) => (
+                  <ListItem
+                    {...draggableProps}
+                    {...dragHandleProps}
+                    className={reorderableListItemClasses({
+                      size,
+                      dragging: isDragging,
+                    })}
+                    ref={innerRef}
+                  >
+                    {value}
+                  </ListItem>
+                )}
+              </Draggable>
+            ))}
+            {placeholder}
+          </List>
+        )}
+      </Droppable>
+    </DragDropContext>
+  );
+});

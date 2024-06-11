@@ -33,7 +33,7 @@ export const segmentedControlClasses = cva(
 export type SegmentedControl = Omit<SegmentGroupRootProps, "onValueChange"> & {
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
-  onValueChange?: (value: string) => void;
+  onValueChange?: (value?: string) => void;
 } & Partial<SegmentedControlContext>;
 
 export const SegmentedControl = forwardRef<

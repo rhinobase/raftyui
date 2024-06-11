@@ -26,7 +26,7 @@ export type Pagination = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> &
   Pick<PaginationContext, RequiredProps>;
 
 export const Pagination = forwardRef<HTMLDivElement, Pagination>(
-  (
+  function Pagination(
     {
       pages,
       currentPage,
@@ -38,23 +38,24 @@ export const Pagination = forwardRef<HTMLDivElement, Pagination>(
       ...props
     },
     forwardedRef,
-  ) => (
-    <PaginationProvider
-      value={{
-        size,
-        pages,
-        currentPage,
-        pageLimit,
-        isDisabled,
-        onChange,
-      }}
-    >
-      <div
-        {...props}
-        className={classNames(paginationClasses({ size }), className)}
-        ref={forwardedRef}
-      />
-    </PaginationProvider>
-  ),
+  ) {
+    return (
+      <PaginationProvider
+        value={{
+          size,
+          pages,
+          currentPage,
+          pageLimit,
+          isDisabled,
+          onChange,
+        }}
+      >
+        <div
+          {...props}
+          className={classNames(paginationClasses({ size }), className)}
+          ref={forwardedRef}
+        />
+      </PaginationProvider>
+    );
+  },
 );
-Pagination.displayName = "Pagination";

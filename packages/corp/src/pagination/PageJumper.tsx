@@ -9,7 +9,7 @@ import { usePaginationContext } from "./context";
 export type PageJumper = Omit<InputField, "onChange" | "value">;
 
 export const PageJumper = forwardRef<HTMLInputElement, PageJumper>(
-  ({ size, isDisabled, className, ...props }, forwardedRef) => {
+  function PageJumper({ size, isDisabled, className, ...props }, forwardedRef) {
     const {
       size: parentSize,
       isDisabled: isParentDisabled,
@@ -44,4 +44,3 @@ export const PageJumper = forwardRef<HTMLInputElement, PageJumper>(
     );
   },
 );
-PageJumper.displayName = "PageJumper";

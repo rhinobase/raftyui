@@ -56,7 +56,10 @@ export type PhoneNumberInput = Omit<
 };
 
 export const PhoneNumberInput = forwardRef<HTMLInputElement, PhoneNumberInput>(
-  ({ size, value, onChange, className, ...props }, forwardedRef) => {
+  function PhoneNumberInput(
+    { size, value, onChange, className, ...props },
+    forwardedRef,
+  ) {
     const [phoneNumber, setPhoneNumber] = useState<{
       number: string;
       country?: CountryCode;
@@ -191,7 +194,6 @@ export const PhoneNumberInput = forwardRef<HTMLInputElement, PhoneNumberInput>(
     );
   },
 );
-PhoneNumberInput.displayName = "PhoneNumberInput";
 
 function CountrySelectTrigger() {
   const { selected } = useComboboxContext();

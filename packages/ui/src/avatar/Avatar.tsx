@@ -21,7 +21,7 @@ export const avatarClasses = cva(
 );
 
 export type Avatar = {
-  name?: string | null;
+  name?: string;
   src?: string;
   size?: SizeType;
   isUnstyled?: boolean;

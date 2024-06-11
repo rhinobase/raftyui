@@ -68,7 +68,7 @@ export type ColorPicker = Omit<
             hue: number;
             saturation: number;
             lightness: number;
-            number: number;
+            alpha: number;
           };
           valueAsString: string;
         }) => void;

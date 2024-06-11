@@ -13,7 +13,7 @@ type JSONValue =
   | { [x: string]: JSONValue }
   | Array<JSONValue>;
 
-type JSONExplorerData = Record<string, JSONValue>;
+export type JSONExplorerData = Record<string, JSONValue>;
 
 export type JSONExplorer = TreeView & {
   data: JSONExplorerData;
@@ -22,14 +22,13 @@ export type JSONExplorer = TreeView & {
 export const JSONExplorer = forwardRef<
   ElementRef<typeof TreeView>,
   JSONExplorer
->(({ data, ...props }, forwardRef) => {
+>(function JSONExplorer({ data, ...props }, forwardRef) {
   return (
     <TreeView {...props} ref={forwardRef}>
       <CreateTree tree={data} />
     </TreeView>
   );
 });
-JSONExplorer.displayName = "JSONExplorer";
 
 function CreateTree({ tree }: { tree: JSONExplorerData }) {
   return Object.entries(tree).map(([key, value]) => {
