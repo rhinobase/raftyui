@@ -10,7 +10,7 @@ import {
 } from "./context";
 
 export const stepperClasses = cva(
-  "group/stepper flex aria-disabled:opacity-80 aria-disabled:cursor-not-allowed",
+  "flex data-[disabled=true]:opacity-70 data-[disabled=true]:cursor-not-allowed data-[disabled=true]:pointer-events-none",
   {
     variants: {
       direction: {
@@ -34,6 +34,7 @@ export type StepType = {
 export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
   Partial<StepperContext> & {
     initial?: number;
+    value?: number;
     onValueChange?: (value: number) => void;
     connector?: (props: StepsConnector) => JSX.Element;
     steps: StepType[];
@@ -42,8 +43,8 @@ export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
 export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
   {
     steps,
-    initial = 0,
-    value = 0,
+    initial = 1,
+    value = initial,
     onValueChange,
     size = "md",
     isDisabled = false,
@@ -54,27 +55,25 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
   forwardedRef,
 ) {
   const handleSelect = (value: number) =>
-    eventHandler(() => !isDisabled && onValueChange?.(value));
+    eventHandler(() => onValueChange?.(value));
 
   const components = steps.flatMap((step, index) => {
-    const currentValue = initial + index;
+    const stepValue = initial + index;
 
     return [
       <div
-        key={currentValue}
-        onClick={handleSelect(currentValue)}
-        onKeyDown={handleSelect(currentValue)}
+        key={stepValue}
+        onClick={handleSelect(stepValue)}
+        onKeyDown={handleSelect(stepValue)}
       >
         <StepperItem
           {...step}
-          value={currentValue}
+          value={stepValue}
+          currentValue={value}
           isClickable={Boolean(onValueChange)}
         />
       </div>,
-      <Connector
-        key={`connector-${currentValue}`}
-        active={value > currentValue}
-      />,
+      <Connector key={`connector-${stepValue}`} active={value > stepValue} />,
     ];
   });
 
@@ -87,14 +86,13 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
         direction,
         isDisabled,
         size,
-        value,
       }}
     >
       <div
-        ref={forwardedRef}
         {...props}
-        aria-disabled={isDisabled}
+        data-disabled={isDisabled}
         className={stepperClasses({ direction })}
+        ref={forwardedRef}
       >
         {components}
       </div>
@@ -103,7 +101,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
 });
 
 export const stepperItemClasses = cva(
-  "group/item flex h-full w-max items-center outline-none group-aria-disabled/stepper:opacity-80 group-aria-disabled/stepper:cursor-not-allowed cursor-default",
+  "group/stepper-item flex h-full w-max items-center outline-none cursor-default",
   {
     variants: {
       size: {
@@ -145,7 +143,7 @@ export const stepperItemIconClasses = cva(
         lg: "size-10 text-xl",
       },
       clickable: {
-        true: "group-focus-visible/item:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
+        true: "group-focus-visible/stepper-item:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
         false: "",
       },
       current: {
@@ -166,7 +164,7 @@ export const stepperItemIconClasses = cva(
         clickable: true,
         current: false,
         className:
-          "group-hover/item:text-primary-500 group-hover/item:border-primary-500",
+          "group-hover/stepper-item:text-primary-500 group-hover/stepper-item:border-primary-500",
       },
     ],
     defaultVariants: {
@@ -204,7 +202,7 @@ export const contentWrapperClasses = cva("", {
       clickable: true,
       current: false,
       className:
-        "group-hover/item:text-primary-600 dark:text-secondary-100 dark:group-hover/item:text-primary-300",
+        "text-black group-hover/stepper-item:text-primary-600 dark:text-secondary-100 dark:group-hover/stepper-item:text-primary-300",
     },
   ],
   defaultVariants: {
@@ -215,14 +213,18 @@ export const contentWrapperClasses = cva("", {
   },
 });
 
-type StepperItem = StepType & { value: number; isClickable: boolean };
+type StepperItem = StepType & {
+  value: number;
+  currentValue: number;
+  isClickable: boolean;
+};
 
 function StepperItem(props: StepperItem) {
-  const { size, value } = useStepperContext();
+  const { size } = useStepperContext();
 
-  const isCurrentStep = value === props.value;
-  const isCompletedStep = value > props.value;
-  const isNotCompletedStep = value < props.value;
+  const isCurrentStep = props.currentValue === props.value;
+  const isCompletedStep = props.currentValue > props.value;
+  const isNotCompletedStep = props.currentValue < props.value;
 
   return (
     <div
@@ -233,6 +235,7 @@ function StepperItem(props: StepperItem) {
         clickable: props.isClickable,
         current: isCurrentStep,
       })}
+      data-active={isCurrentStep}
     >
       {props.icon ?? (
         <span
@@ -245,9 +248,13 @@ function StepperItem(props: StepperItem) {
           })}
         >
           {isCompletedStep ? (
-            <CheckIcon height={16} width={16} className="stroke-2" />
+            <CheckIcon
+              height={16}
+              width={16}
+              className="cursor-not-allowed stroke-2"
+            />
           ) : (
-            props.value + 1
+            props.value
           )}
         </span>
       )}

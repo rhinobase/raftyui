@@ -30,9 +30,14 @@ export const segmentedControlClasses = cva(
   },
 );
 
-export type SegmentedControl = Omit<SegmentGroupRootProps, "onValueChange"> & {
+export type SegmentedControl = Omit<
+  SegmentGroupRootProps,
+  "value" | "defaultValue" | "onValueChange"
+> & {
   isDisabled?: ValueOrFunction;
   isLoading?: ValueOrFunction;
+  value?: string;
+  defaultValue?: string;
   onValueChange?: (value?: string) => void;
 } & Partial<SegmentedControlContext>;
 

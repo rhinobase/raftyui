@@ -53,21 +53,21 @@ export const Default: Story = {
 
 export const ValueWithState: Story = {
   render: (props) => {
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(1);
 
     const next = () => {
       setCurrent((prev) => (prev < 3 ? prev + 1 : prev));
     };
 
     const prev = () => {
-      setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
+      setCurrent((prev) => (prev > 1 ? prev - 1 : prev));
     };
 
     return (
       <>
         <Stepper {...props} value={current} steps={STEPS} />
         <div className="mt-4 flex w-full justify-between">
-          <Button onClick={prev} isDisabled={current <= 0}>
+          <Button onClick={prev} isDisabled={current <= 1}>
             Previous
           </Button>
           <Button onClick={next} isDisabled={current >= 3}>
@@ -81,14 +81,12 @@ export const ValueWithState: Story = {
 
 export const Controlled: Story = {
   render: (props) => {
-    const initial = 2;
-    const [current, setCurrent] = useState(initial);
+    const [current, setCurrent] = useState(1);
 
     return (
       <Stepper
         {...props}
         value={current}
-        initial={initial}
         onValueChange={setCurrent}
         steps={STEPS}
       />
@@ -96,29 +94,22 @@ export const Controlled: Story = {
   },
 };
 
+const iconClasses =
+  "group-data-[active=true]/stepper-item:stroke-primary-500 dark:group-data-[active=true]/stepper-item:stroke-primary-300 stroke-secondary-500 stroke-2";
+
 const STEPS_WITH_ICONS = [
   {
     title: "Home",
-    icon: (
-      <Bars3Icon height={40} width={40} className="stroke-2 text-blue-500" />
-    ),
+    icon: <Bars3Icon height={40} width={40} className={iconClasses} />,
   },
   {
     title: "Menu",
     description: "Donec et lectus a risus",
-    icon: (
-      <FaceSmileIcon
-        height={40}
-        width={40}
-        className="stroke-2 text-blue-500"
-      />
-    ),
+    icon: <FaceSmileIcon height={40} width={40} className={iconClasses} />,
   },
   {
     title: "Article",
-    icon: (
-      <BellIcon height={40} width={40} className="stroke-2 text-blue-500" />
-    ),
+    icon: <BellIcon height={40} width={40} className={iconClasses} />,
   },
 ];
 

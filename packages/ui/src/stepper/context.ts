@@ -10,6 +10,5 @@ export const [StepperProvider, useStepperContext] =
 export type StepperContext = {
   readonly size: SizeType;
   readonly direction: "horizontal" | "vertical";
-  readonly value: number;
   readonly isDisabled: boolean;
 };
