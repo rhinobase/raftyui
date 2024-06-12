@@ -21,23 +21,14 @@ export const spinnerClasses = cva("animate-spin", {
   },
 });
 
-export type Spinner = SVGAttributes<SVGSVGElement> & {
+export type Spinner = Omit<SVGAttributes<SVGSVGElement>, "children"> & {
   size?: SizeType;
   inheritParent?: ValueOrFunction;
   title?: string;
 };
 
 export const Spinner = forwardRef<SVGSVGElement, Spinner>(function Spinner(
-  {
-    inheritParent,
-    size = "md",
-    className,
-    title = "loading",
-    children,
-    width,
-    height,
-    ...props
-  },
+  { inheritParent, size = "md", className, title = "loading", ...props },
   forwardedRef,
 ) {
   const _inheritParent = getValue(inheritParent);
