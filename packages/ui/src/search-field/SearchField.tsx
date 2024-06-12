@@ -22,7 +22,8 @@ export const searchFieldIconClasses = cva(
   },
 );
 
-export type SearchField = Omit<InputField, "onChange" | "type"> & {
+export type SearchField = Omit<InputField, "type" | "onChange" | "type"> & {
+  value?: string;
   onValueChange?: (value: string) => void;
 };
 
