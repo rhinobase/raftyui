@@ -5,6 +5,7 @@ import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
+  cloneElement,
   forwardRef,
 } from "react";
 import type { ValueOrFunction } from "../types";
@@ -159,6 +160,22 @@ export const accordionTriggerClasses = cva(
   },
 );
 
+export const accordionTriggerIconClasses = cva(
+  "stroke-secondary-600 dark:stroke-secondary-400 shrink-0 -rotate-90 stroke-[2.5] transition-transform duration-200 group-data-[state=open]:rotate-0",
+  {
+    variants: {
+      size: {
+        sm: "size-3.5",
+        md: "size-4",
+        lg: "size-[18px]",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
 export type AccordionTrigger = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Trigger
 > & {
@@ -215,7 +232,7 @@ export const AccordionTrigger = forwardRef<
         </div>
       )}
       {!openIcon && !closeIcon && _showIcon && (
-        <ChevronDownIcon className="stroke-secondary-600 dark:stroke-secondary-400 size-4 shrink-0 -rotate-90 stroke-[2.5] transition-transform duration-200 group-data-[state=open]:rotate-0" />
+        <ChevronDownIcon className={accordionTriggerIconClasses({ size })} />
       )}
     </AccordionPrimitive.Trigger>
   );
@@ -250,6 +267,14 @@ export const accordionContentClasses = cva(
   },
 );
 
+const accordionContentOutlineVariantChildClasses = {
+  size: {
+    sm: "pb-1",
+    md: "pb-1.5",
+    lg: "pb-2",
+  },
+};
+
 export type AccordionContent = ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Content
 > & { isUnstyled?: boolean };
@@ -263,6 +288,16 @@ export const AccordionContent = forwardRef<
 ) {
   const { size, isUnstyled: isParentUnstyled, variant } = useAccordionContext();
   const unstyle = isParentUnstyled || isUnstyled;
+
+  const childRender =
+    variant === "outline" ? (
+      // @ts-ignore
+      <div className={accordionContentOutlineVariantChildClasses.size[size]}>
+        {children}
+      </div>
+    ) : (
+      children
+    );
 
   return (
     <AccordionPrimitive.Content
@@ -278,7 +313,7 @@ export const AccordionContent = forwardRef<
       }
       ref={forwardedRef}
     >
-      {children}
+      {childRender}
     </AccordionPrimitive.Content>
   );
 });

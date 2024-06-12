@@ -7,5 +7,6 @@ export {
   accordionContentClasses,
   accordionTriggerAndContentClasses,
   accordionTriggerClasses,
+  accordionTriggerIconClasses,
 } from "./Accordion";
 export { useAccordionContext } from "./context";
