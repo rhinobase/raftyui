@@ -72,3 +72,21 @@ export const Default: Story = {
     </TreeView>
   ),
 };
+
+export const Hierarchy: Story = {
+  render: (props) => (
+    <TreeView {...props}>
+      <TreeViewItem value="A">
+        <TreeViewLabel>A</TreeViewLabel>
+        <TreeViewContent>
+          <TreeViewItem value="a">
+            <TreeViewLabel>Aa</TreeViewLabel>
+          </TreeViewItem>
+        </TreeViewContent>
+      </TreeViewItem>
+      <TreeViewItem value="B">
+        <TreeViewLabel>B</TreeViewLabel>
+      </TreeViewItem>
+    </TreeView>
+  ),
+};

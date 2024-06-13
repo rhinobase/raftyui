@@ -37,12 +37,27 @@ export const TreeView = forwardRef<
   );
 });
 
+export const treeViewItemClasses = cva(
+  "group/single-label ring-primary-300 dark:ring-primary-100 outline-none focus-visible:ring-2",
+  {
+    variants: {
+      size: {
+        sm: "rounded-sm",
+        md: "rounded-base",
+        lg: "rounded-md",
+      },
+    },
+  },
+);
+
 export type TreeViewItem = ComponentPropsWithoutRef<typeof ArkTreeView.Branch>;
 
 export const TreeViewItem = forwardRef<
   ElementRef<typeof ArkTreeView.Branch>,
   TreeViewItem
 >(function TreeViewItem({ children, className, ...props }, forwardedRef) {
+  const { size } = useTreeViewContext();
+
   const validChildren = getValidChildren(children);
 
   const hasChildren = validChildren.some(
@@ -57,7 +72,7 @@ export const TreeViewItem = forwardRef<
     return (
       <ArkTreeView.Item
         {...props}
-        className={classNames("group/single-label", className)}
+        className={classNames(treeViewItemClasses({ size }), className)}
         ref={forwardedRef}
       >
         {items}
@@ -72,7 +87,7 @@ export const TreeViewItem = forwardRef<
 });
 
 export const treeViewLabelClasses = cva(
-  "hover:bg-secondary-100 dark:hover:bg-secondary-800/80 w-full flex items-center font-medium cursor-pointer select-none",
+  "hover:bg-secondary-100 dark:hover:bg-secondary-800/80 w-full flex items-center font-medium cursor-pointer select-none outline-none focus-visible:ring-2 ring-primary-300 dark:ring-primary-100",
   {
     variants: {
       size: {

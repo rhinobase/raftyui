@@ -69,7 +69,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       >
         <div
           {...props}
-          className={classNames("flex", className)}
+          className={classNames("flex w-full", className)}
           ref={forwardedRef}
         >
           {leftAddons}
