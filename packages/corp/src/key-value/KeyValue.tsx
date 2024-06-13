@@ -8,7 +8,18 @@ import {
   Tr,
   classNames,
 } from "@rafty/ui";
+import { cva } from "class-variance-authority";
 import { type ReactNode, forwardRef } from "react";
+
+const keyValueClasses = cva("w-full overflow-y-auto", {
+  variants: {
+    size: {
+      sm: "max-h-[300px]",
+      md: "max-h-[400px]",
+      lg: "max-h-[500px]",
+    },
+  },
+});
 
 const keyValueBooleanIconClasses = {
   size: {
@@ -44,10 +55,7 @@ export const KeyValue = forwardRef<HTMLTableElement, KeyValue>(
       <Table
         {...props}
         size={size}
-        className={classNames(
-          "h-[400px] w-full overflow-hidden overflow-y-auto",
-          className,
-        )}
+        className={classNames(keyValueClasses({ size }), className)}
         ref={forwardedRef}
       >
         <TableHeader className="bg-secondary-100 dark:bg-secondary-800">

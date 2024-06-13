@@ -15,20 +15,20 @@ const meta: Meta<typeof JSONExplorer> = {
 };
 
 const DATA: JSONExplorerData = {
-  a: {
-    b: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    c: {
-      d: false,
-      hm: {
-        h: {
-          a: {
-            b: [2, 2, 3, { c: "c" }],
+  json: {
+    A: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    B: {
+      1: false,
+      2: {
+        a: {
+          a1: {
+            "a1.1": [2, 2, 3, { c: "c" }],
           },
-          b: "b",
+          a2: "b",
         },
       },
     },
-    e: false,
+    C: false,
   },
 };
 

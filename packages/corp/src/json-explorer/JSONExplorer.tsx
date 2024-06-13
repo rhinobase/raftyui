@@ -3,7 +3,9 @@ import {
   TreeViewContent,
   TreeViewItem,
   TreeViewLabel,
+  useTreeViewContext,
 } from "@rafty/ui";
+import { cva } from "class-variance-authority";
 import { type ElementRef, type PropsWithChildren, forwardRef } from "react";
 
 type JSONValue =
@@ -59,8 +61,21 @@ function CreateTree({ tree }: { tree: JSONExplorerData }) {
   });
 }
 
-const LabelRender = ({ children }: PropsWithChildren) => (
-  <span className="text-secondary-500 dark:text-secondary-400 ml-2 text-xs group-data-[state=closed]:text-green-600 dark:group-data-[state=closed]:text-green-300">
-    {children}
-  </span>
+const jsonExplorerLabelClasses = cva(
+  "text-secondary-500 dark:text-secondary-400 group-data-[state=closed]:text-green-600 dark:group-data-[state=closed]:text-green-300",
+  {
+    variants: {
+      size: {
+        sm: "ml-1 text-[10px]",
+        md: "ml-2 text-xs",
+        lg: "ml-3 text-sm",
+      },
+    },
+  },
 );
+
+function LabelRender({ children }: PropsWithChildren) {
+  const { size } = useTreeViewContext();
+
+  return <span className={jsonExplorerLabelClasses({ size })}>{children}</span>;
+}
