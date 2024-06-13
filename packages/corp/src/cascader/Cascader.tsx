@@ -174,7 +174,13 @@ function CascaderInput(props: CascaderInput) {
         }}
         disabled={props.disabled}
         readOnly
-        className="cursor-pointer"
+        className={
+          props.disabled
+            ? "cursor-not-allowed"
+            : props.readOnly
+              ? "cursor-default"
+              : "cursor-pointer"
+        }
       />
       <Suffix>
         <ChevronDownIcon
