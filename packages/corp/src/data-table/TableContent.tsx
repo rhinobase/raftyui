@@ -25,7 +25,7 @@ export function TableContent<T>({
           .rows.map((row) => (
             <Tr
               key={row.id}
-              className="hover:bg-primary-50 dark:hover:bg-primary-800/30"
+              className="hover:bg-primary-50/50 dark:hover:bg-primary-900/50"
             >
               {row.getVisibleCells().map((cell, index) => {
                 const isLastColumn = row.getVisibleCells().length - 1 === index;

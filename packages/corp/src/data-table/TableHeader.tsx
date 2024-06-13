@@ -10,7 +10,7 @@ export type TableHeader<T> = {
 
 export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
   return (
-    <RaftyTableHeader className="bg-secondary-100 dark:bg-secondary-700/80">
+    <RaftyTableHeader className="bg-secondary-100 dark:bg-secondary-800">
       {table.getHeaderGroups().map((headerGroup) => (
         <Tr key={headerGroup.id}>
           {headerGroup.headers.map((header, index) => {
