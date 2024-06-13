@@ -10,6 +10,7 @@ import {
   CalendarIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { Button } from "../button";
 import {
@@ -118,6 +119,22 @@ export const RangePicker = forwardRef<
   );
 });
 
+const rangePickerControlInputClasses =
+  "w-full bg-transparent px-2 text-center outline-none";
+
+const rangePickerControlArrowIconClasses = cva(
+  "stroke-secondary-500 stroke-[2.5]",
+  {
+    variants: {
+      size: {
+        sm: "size-3 min-h-3 min-w-3",
+        md: "size-3.5 min-h-3.5 min-w-3.5",
+        lg: "size-4 min-h-4 min-w-4",
+      },
+    },
+  },
+);
+
 type ControlRender = {
   size: SizeType;
   invalid: boolean;
@@ -146,13 +163,15 @@ function ControlRender({
           <ArkDatePicker.Input
             index={0}
             placeholder={placeholder?.from}
-            className="w-full bg-transparent px-2 text-center outline-none"
+            className={rangePickerControlInputClasses}
           />
-          <ArrowRightIcon className="stroke-secondary-500 size-3.5 min-h-3.5 min-w-3.5 stroke-[3]" />
+          <ArrowRightIcon
+            className={rangePickerControlArrowIconClasses({ size })}
+          />
           <ArkDatePicker.Input
             index={1}
             placeholder={placeholder?.to}
-            className="w-full bg-transparent px-2 text-center outline-none"
+            className={rangePickerControlInputClasses}
           />
         </div>
         {value.length > 0 && (
