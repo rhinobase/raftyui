@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.6.0-rc.3](https://github.com/rhinobase/raftyui/compare/ui-1.6.0-rc.2...ui-1.6.0-rc.3) (2024-06-14)
+
+
+### Features
+
+* **ui:** added disabled prop styling to file upload ([6ece637](https://github.com/rhinobase/raftyui/commit/6ece6376e636483b55cf861d894e3b4cd592f1b5))
+
+
+### Bug Fixes
+
+* **ui:** stepper props ([3eadc0c](https://github.com/rhinobase/raftyui/commit/3eadc0ccf4304f521441e778af2ec08e940fb471))
+
 ## [1.6.0-rc.2](https://github.com/rhinobase/raftyui/compare/ui-1.6.0-rc.1...ui-1.6.0-rc.2) (2024-06-12)
 
 ## [1.6.0-rc.1](https://github.com/rhinobase/raftyui/compare/ui-1.6.0-rc.0...ui-1.6.0-rc.1) (2024-06-11)
