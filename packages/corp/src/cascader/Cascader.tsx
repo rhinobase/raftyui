@@ -210,7 +210,7 @@ function CascaderInput(props: CascaderInput) {
 }
 
 const cascaderContentClasses = cva(
-  "dark:bg-secondary-800 dark:text-white absolute bg-white",
+  "dark:bg-secondary-800 dark:text-white absolute z-50 bg-white",
   {
     variants: {
       size: {

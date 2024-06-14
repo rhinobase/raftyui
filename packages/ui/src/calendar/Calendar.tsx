@@ -16,7 +16,12 @@ import { type SizeType, getValue } from "../utils";
 
 export type Calendar = Omit<
   DatePickerRootProps,
-  "value" | "onValueChange" | "defaultValue" | "open" | "closeOnSelect"
+  | "value"
+  | "onValueChange"
+  | "defaultValue"
+  | "open"
+  | "closeOnSelect"
+  | "placeholder"
 > & {
   isDisabled?: ValueOrFunction;
   isReadOnly?: ValueOrFunction;
@@ -40,7 +45,6 @@ export const Calendar = forwardRef<
     isDisabled,
     isLoading,
     isReadOnly,
-    placeholder,
     value,
     onValueChange,
     defaultValue,
