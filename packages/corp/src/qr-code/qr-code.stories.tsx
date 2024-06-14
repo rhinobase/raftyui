@@ -5,13 +5,6 @@ const meta: Meta<typeof QRCode> = {
   title: "Corp / QRCode",
   args: {
     value: "https://github.com/rhinobase",
-    level: "L",
-  },
-  argTypes: {
-    level: {
-      control: "select",
-      options: ["L", "M", "Q", "H"],
-    },
   },
 };
 

@@ -73,7 +73,7 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "@ark-ui/react": "3.0.1",
+    "@ark-ui/react": "3.3.0",
     "@fibr/react": "0.6.3",
     "@heroicons/react": "2.1.1",
     "@hookform/devtools": "4.3.1",
@@ -113,7 +113,6 @@
     "fuse.js": "^7.0.0",
     "libphonenumber-js": "^1.11.2",
     "prettier": "^3.1.1",
-    "qr.js": "^0.0.0",
     "react": "18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-day-picker": "8.8.2",
