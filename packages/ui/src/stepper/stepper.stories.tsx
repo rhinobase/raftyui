@@ -48,7 +48,15 @@ const STEPS: StepType[] = [
 ];
 
 export const Default: Story = {
-  render: (props) => <Stepper {...props} steps={STEPS} />,
+  render: (props) => (
+    <div
+      className={classNames(
+        props.direction === "vertical" ? "h-[500px]" : "h-max",
+      )}
+    >
+      <Stepper {...props} steps={STEPS} />
+    </div>
+  ),
 };
 
 export const ValueWithState: Story = {
@@ -64,7 +72,11 @@ export const ValueWithState: Story = {
     };
 
     return (
-      <>
+      <div
+        className={classNames(
+          props.direction === "vertical" ? "h-[500px]" : "h-max",
+        )}
+      >
         <Stepper {...props} value={current} steps={STEPS} />
         <div className="mt-4 flex w-full justify-between">
           <Button onClick={prev} isDisabled={current <= 1}>
@@ -74,7 +86,7 @@ export const ValueWithState: Story = {
             Next
           </Button>
         </div>
-      </>
+      </div>
     );
   },
 };
@@ -84,12 +96,18 @@ export const Controlled: Story = {
     const [current, setCurrent] = useState(1);
 
     return (
-      <Stepper
-        {...props}
-        value={current}
-        onValueChange={setCurrent}
-        steps={STEPS}
-      />
+      <div
+        className={classNames(
+          props.direction === "vertical" ? "h-[500px]" : "h-max",
+        )}
+      >
+        <Stepper
+          {...props}
+          value={current}
+          onValueChange={setCurrent}
+          steps={STEPS}
+        />
+      </div>
     );
   },
 };
@@ -115,26 +133,40 @@ const STEPS_WITH_ICONS = [
 
 export const WithIcon: Story = {
   render: (props) => {
-    return <Stepper {...props} steps={STEPS_WITH_ICONS} />;
+    return (
+      <div
+        className={classNames(
+          props.direction === "vertical" ? "h-[500px]" : "h-max",
+        )}
+      >
+        <Stepper {...props} steps={STEPS_WITH_ICONS} />
+      </div>
+    );
   },
 };
 
 export const CustomConnector: Story = {
   render: (props) => (
-    <Stepper
-      {...props}
-      value={1}
-      connector={({ active }) => (
-        <div
-          className={classNames(
-            props.direction === "horizontal"
-              ? "h-px w-full border-t-2"
-              : "ml-5 h-full w-px border-r-2",
-            active ? "border-blue-500" : "border-secondary-400 border-dotted",
-          )}
-        />
+    <div
+      className={classNames(
+        props.direction === "vertical" ? "h-[500px]" : "h-max",
       )}
-      steps={STEPS}
-    />
+    >
+      <Stepper
+        {...props}
+        value={1}
+        connector={({ active }) => (
+          <hr
+            className={classNames(
+              props.direction === "horizontal"
+                ? "h-px w-full border-t-2"
+                : "ml-5 h-full w-px border-r-2",
+              active ? "border-blue-500" : "border-secondary-400 border-dotted",
+            )}
+          />
+        )}
+        steps={STEPS}
+      />
+    </div>
   ),
 };

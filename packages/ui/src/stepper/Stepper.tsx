@@ -31,7 +31,10 @@ export type StepType = {
   icon?: ReactNode;
 };
 
-export type Stepper = Omit<HTMLAttributes<HTMLDivElement>, "onClick"> &
+export type Stepper = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onClick" | "defaultValue"
+> &
   Partial<StepperContext> & {
     initial?: number;
     value?: number;
@@ -50,6 +53,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
     isDisabled = false,
     direction = "horizontal",
     connector: Connector = StepsConnector,
+    className,
     ...props
   },
   forwardedRef,
@@ -91,7 +95,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
       <div
         {...props}
         data-disabled={isDisabled}
-        className={stepperClasses({ direction })}
+        className={classNames(stepperClasses({ direction }), className)}
         ref={forwardedRef}
       >
         {components}
