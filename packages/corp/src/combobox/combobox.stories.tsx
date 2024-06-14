@@ -31,7 +31,7 @@ const meta: Meta<typeof Combobox> = {
     },
     isDisabled: false,
     isLoading: false,
-    isReadonly: false,
+    isReadOnly: false,
     isInvalid: false,
   },
   argTypes: {
@@ -73,20 +73,18 @@ const OPTIONS: ComboboxOptionType[] = [
 export const Default: Story = {
   render: (props) => {
     return (
-      <div className="w-[500px]">
-        <Combobox
-          {...props}
-          id="lang"
-          onSelectionChange={console.log}
-          options={OPTIONS}
-        >
-          <ComboboxTrigger />
-          <div className="mt-2 flex flex-row-reverse empty:hidden">
-            <ComboboxClearButton />
-          </div>
-          <ComboboxContent />
-        </Combobox>
-      </div>
+      <Combobox
+        {...props}
+        id="lang"
+        onSelectionChange={console.log}
+        options={OPTIONS}
+      >
+        <ComboboxTrigger />
+        <div className="mt-2 flex flex-row-reverse empty:hidden">
+          <ComboboxClearButton />
+        </div>
+        <ComboboxContent />
+      </Combobox>
     );
   },
 };
@@ -158,24 +156,22 @@ const DATA: DataItem[] = [
 export const Custom: Story = {
   render: (props) => {
     return (
-      <div className="w-[500px]">
-        {/* @ts-ignore */}
-        <Combobox
-          {...props}
-          id="products"
-          type="single"
-          onSelectionChange={console.log}
-          options={DATA}
-        >
-          <ComboboxTrigger>
-            <CustomTriggerRender />
-          </ComboboxTrigger>
-          <div className="mt-2 flex flex-row-reverse empty:hidden">
-            <ComboboxClearButton />
-          </div>
-          <ComboboxContent>{CustomContentRender}</ComboboxContent>
-        </Combobox>
-      </div>
+      // @ts-ignore
+      <Combobox
+        {...props}
+        id="products"
+        type="single"
+        onSelectionChange={console.log}
+        options={DATA}
+      >
+        <ComboboxTrigger>
+          <CustomTriggerRender />
+        </ComboboxTrigger>
+        <div className="mt-2 flex flex-row-reverse empty:hidden">
+          <ComboboxClearButton />
+        </div>
+        <ComboboxContent>{CustomContentRender}</ComboboxContent>
+      </Combobox>
     );
   },
 };
@@ -222,11 +218,9 @@ function CustomContentRender({
       )}
     </ComboboxItem>
   );
-}
-
-// TODO: Experimental
+} // TODO: Experimental
 // export const Virtualized: Story = {
-//   render: ({ isDisabled, isLoading, isReadonly }) => {
+//   render: (props) => {
 //     return (
 //       <div className="w-[500px] space-y-3">
 //         <Tag size="sm" colorScheme="warning">
@@ -237,9 +231,7 @@ function CustomContentRender({
 //           type="single"
 //           onSelectionChange={console.log}
 //           options={DATA}
-//           isDisabled={isDisabled}
-//           isLoading={isLoading}
-//           isReadonly={isReadonly}
+//           {...props}
 //         >
 //           <ComboboxTrigger />
 //           <ComboboxContent>
@@ -292,11 +284,9 @@ export const InfinityScroll: Story = {
     const CLIENT = new QueryClient();
 
     return (
-      <div className="w-[500px]">
-        <QueryClientProvider client={CLIENT}>
-          <InfinityCombobox {...props} />
-        </QueryClientProvider>
-      </div>
+      <QueryClientProvider client={CLIENT}>
+        <InfinityCombobox {...props} />
+      </QueryClientProvider>
     );
   },
 };

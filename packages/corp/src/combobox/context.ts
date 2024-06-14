@@ -15,7 +15,7 @@ export type ComboboxContext = {
   readonly options: ComboboxOptionType[];
   readonly isDisabled: boolean;
   readonly isLoading: boolean;
-  readonly isReadonly: boolean;
+  readonly isReadOnly: boolean;
   readonly isInvalid: boolean;
   readonly placeholder?: {
     readonly trigger?: string;

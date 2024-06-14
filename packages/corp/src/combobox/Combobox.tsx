@@ -65,7 +65,7 @@ export function Combobox({
   isDisabled = false,
   isInvalid = false,
   isLoading = false,
-  isReadonly = false,
+  isReadOnly = false,
   placeholder,
   id,
   options = [],
@@ -84,10 +84,10 @@ export function Combobox({
   const isMulti = props.type === "multi";
 
   useEffect(() => {
-    if (isDisabled || isLoading || isReadonly) {
+    if (isDisabled || isLoading || isReadOnly) {
       setOpen(false);
     }
-  }, [isDisabled, isLoading, isReadonly]);
+  }, [isDisabled, isLoading, isReadOnly]);
 
   const [selected, dispatch] = useReducer(
     (prev: (string | number)[], cur: string | number | null) => {
@@ -138,7 +138,7 @@ export function Combobox({
         isDisabled,
         isLoading,
         isInvalid,
-        isReadonly,
+        isReadOnly,
         isOpen,
         setOpen,
         selected,
@@ -173,7 +173,7 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
       isOpen,
       isDisabled: isParentDisabled,
       isLoading: isParentLoading,
-      isReadonly: isParentReadonly,
+      isReadOnly: isParentReadonly,
       triggerRef,
     } = useComboboxContext();
 
@@ -309,10 +309,10 @@ export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
       onSelectionChange,
       isDisabled,
       isLoading,
-      isReadonly,
+      isReadOnly,
     } = useComboboxContext();
 
-    if (selected.length === 0 || isDisabled || isReadonly || isLoading) return;
+    if (selected.length === 0 || isDisabled || isReadOnly || isLoading) return;
 
     let buttonText = "Clear";
     if (type === "multi") buttonText = "Clear All";
