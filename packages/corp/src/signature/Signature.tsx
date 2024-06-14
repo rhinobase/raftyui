@@ -1,147 +1,94 @@
 "use client";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { SignaturePad, type SignaturePadRootProps } from "@ark-ui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import {
   Button,
+  type SizeType,
   type ValueOrFunction,
   classNames,
   getValue,
-  mergeRefs,
-  useBoolean,
+  useFieldControlContext,
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import {
-  type ElementRef,
-  type HTMLAttributes,
-  forwardRef,
-  useEffect,
-  useRef,
-} from "react";
-import type { ReactSignatureCanvasProps } from "react-signature-canvas";
-import SignatureCanvas from "react-signature-canvas";
+import { type ElementRef, forwardRef } from "react";
 
-export const signatureClasses = cva(
-  "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded-md h-[250px] w-full bg-white dark:bg-secondary-800",
+const signatureClasses = cva(
+  "group/signature w-full h-60 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
   {
     variants: {
-      disabled: {
-        true: "pointer-events-none bg-secondary-200 dark:bg-secondary-800 opacity-60",
-        false: "",
+      readonly: {
+        true: "cursor-default",
+        false: "cursor-pointer",
       },
-    },
-    defaultVariants: {
-      disabled: false,
     },
   },
 );
 
-export type Signature = Omit<ReactSignatureCanvasProps, "onEnd" | "onBegin"> & {
-  className?: HTMLAttributes<HTMLDivElement>["className"];
-  onChange?: (value?: string) => void;
-  name?: string;
-  value?: string;
-  defaultValue?: string;
-  placeholder?: string;
+export type Signature = SignaturePadRootProps & {
   isDisabled?: ValueOrFunction;
-  isHidden?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
 };
 
 export const Signature = forwardRef<
-  ElementRef<typeof SignatureCanvas>,
+  ElementRef<typeof SignaturePad.Root>,
   Signature
 >(function Signature(
   {
-    isDisabled = false,
-    isHidden = false,
-    onChange,
-    className,
-    placeholder = "Sign here",
     name,
-    value,
-    defaultValue,
+    disabled,
+    readOnly,
+    isDisabled,
+    isLoading,
+    isInvalid,
+    isReadOnly,
+    className,
     ...props
   },
   forwardedRef,
 ) {
-  const [isInput, toggleInput] = useBoolean(!(value ?? defaultValue));
-  const ref = useRef<SignatureCanvas>(null);
-
-  const disabled = getValue(isDisabled);
-  const hidden = getValue(isHidden);
-
-  const clear = () => {
-    if (ref.current) {
-      ref.current.clear();
-      onChange?.(undefined);
-      toggleInput(true);
-    }
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
   };
 
-  const handleChange = () => {
-    if (ref.current) {
-      const value = ref.current.toDataURL();
-      onChange?.(value);
-    }
-  };
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _readOnly =
+    readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    const dataUrl = value ?? defaultValue;
-    if (ref.current && dataUrl) {
-      ref.current.fromDataURL(dataUrl);
-      toggleInput(false);
-    }
-  }, [value, defaultValue]);
+  const signatureProps: SignaturePadRootProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    readOnly: _readOnly,
+    className: classNames(signatureClasses({ readonly: _readOnly }), className),
+    // @ts-ignore
+    "data-invalid": _invalid,
+  };
 
   return (
-    <div
-      className={classNames(
-        "relative w-full",
-        disabled && "pointer-events-none cursor-not-allowed",
-        className,
-      )}
-    >
-      <SignatureCanvas
-        {...props}
-        onBegin={() => toggleInput(false)}
-        onEnd={handleChange}
-        canvasProps={{
-          id: name,
-          hidden,
-          "aria-disabled": disabled,
-          className:
-            "border cursor-pointer border-secondary-300 dark:border-secondary-700 rounded-md h-[250px] w-full bg-white dark:bg-secondary-800 aria-disabled:pointer-events-none aria-disabled:opacity-70",
-        }}
-        ref={mergeRefs(forwardedRef, ref)}
-      />
-      {isInput && (
-        <span
-          hidden={hidden}
-          className={classNames(
-            "dark:text-secondary-200 text-secondary-600 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-sm font-medium",
-            disabled && "hidden",
-          )}
+    <SignaturePad.Root {...signatureProps} ref={forwardedRef}>
+      <SignaturePad.Control className="border-secondary-300 dark:bg-secondary-900 dark:border-secondary-700 ring-primary-300 dark:ring-primary-100 dark:ring-offset-secondary-950 h-full w-full rounded-lg border bg-white outline-none ring-offset-2 ring-offset-white focus-visible:ring-2 group-data-[invalid=false]/signature:ring-red-100 group-data-[invalid=true]/signature:ring-red-300">
+        <SignaturePad.Segment className="fill-black dark:fill-white" />
+        <SignaturePad.ClearTrigger
+          title="Clear"
+          className="absolute right-3 top-3"
+          asChild
         >
-          {placeholder}
-        </span>
-      )}
-      <div
-        aria-hidden={hidden}
-        className="pointer-events-none absolute bottom-3 flex w-full select-none px-3 aria-hidden:hidden"
-      >
-        <XMarkIcon className="stroke-secondary-600 dark:stroke-secondary-200 size-4 stroke-[2.5]" />
-        <div className="border-secondary-600 dark:border-secondary-200 ml-1.5 w-full border-b" />
-      </div>
-      <Button
-        size="icon"
-        variant="ghost"
-        hidden={disabled || hidden}
-        className="absolute right-3 top-3 rounded p-1"
-        onClick={clear}
-        title="Clear"
-      >
-        <ArrowPathIcon className="size-3.5 stroke-[2.5]" />
-      </Button>
-    </div>
+          <Button size="icon" variant="ghost" isDisabled={_readOnly}>
+            <ArrowPathIcon className="size-4 stroke-2" />
+          </Button>
+        </SignaturePad.ClearTrigger>
+        <SignaturePad.Guide className="border-secondary-300 dark:border-secondary-700 absolute bottom-4 left-4 right-4 border-t-2 border-dotted" />
+      </SignaturePad.Control>
+    </SignaturePad.Root>
   );
 });
