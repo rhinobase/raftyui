@@ -154,7 +154,9 @@ export function EditableItem({
   editableTextareaPreviewClasses,
   children,
 }: EditableItem) {
-  const { editing, previewProps } = useEditableContext();
+  const { editing, getPreviewProps } = useEditableContext();
+
+  const previewProps = getPreviewProps();
 
   return (
     <>
