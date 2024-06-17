@@ -230,3 +230,4 @@ export const TreeViewContent = forwardRef<
     </ArkTreeView.BranchContent>
   );
 });
+TreeViewContent.displayName = "TreeViewContent";

@@ -26,3 +26,4 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(function Prefix(
     />
   );
 });
+Prefix.displayName = "Prefix";

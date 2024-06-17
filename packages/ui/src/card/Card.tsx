@@ -121,6 +121,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
     );
   },
 );
+CardHeader.displayName = "CardHeader";
 
 export const cardContentClasses = cva("", {
   variants: {
@@ -235,6 +236,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContent>(
     );
   },
 );
+CardContent.displayName = "CardContent";
 
 export const cardFooterClasses = cva("", {
   variants: {
@@ -276,3 +278,4 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
     );
   },
 );
+CardFooter.displayName = "CardFooter";

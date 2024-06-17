@@ -26,3 +26,4 @@ export const Suffix = forwardRef<HTMLDivElement, Suffix>(function Suffix(
     />
   );
 });
+Suffix.displayName = "Suffix";

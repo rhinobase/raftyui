@@ -28,3 +28,4 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
     );
   },
 );
+RightAddon.displayName = "RightAddon";
