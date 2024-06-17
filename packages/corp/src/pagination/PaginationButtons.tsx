@@ -8,7 +8,7 @@ import { type HTMLAttributes, forwardRef } from "react";
 import { changePage } from "./change-page";
 import { usePaginationContext } from "./context";
 
-export const wrapperClasses = cva("flex items-center", {
+const paginationButtonsWrapperClasses = cva("flex items-center", {
   variants: {
     size: {
       sm: "gap-2",
@@ -18,12 +18,22 @@ export const wrapperClasses = cva("flex items-center", {
   },
 });
 
-export const iconClasses = cva("stroke-[2.5]", {
+const paginationButtonsClasses = cva("", {
+  variants: {
+    size: {
+      sm: "rounded p-1",
+      md: "rounded-md p-1.5",
+      lg: "rounded-md p-2",
+    },
+  },
+});
+
+const paginationButtonIconClasses = cva("stroke-[2.5]", {
   variants: {
     size: {
       sm: "size-3.5",
-      md: "size-5",
-      lg: "size-6",
+      md: "size-4",
+      lg: "size-[18px]",
     },
   },
 });
@@ -42,7 +52,10 @@ export const PaginationButtons = forwardRef<HTMLDivElement, PaginationButtons>(
 
     return (
       <div
-        className={classNames(wrapperClasses({ size }), className)}
+        className={classNames(
+          paginationButtonsWrapperClasses({ size }),
+          className,
+        )}
         {...props}
         ref={forwardedRef}
       >
@@ -58,8 +71,9 @@ export const PaginationButtons = forwardRef<HTMLDivElement, PaginationButtons>(
             })
           }
           isDisabled={prevDisabled}
+          className={paginationButtonsClasses({ size })}
         >
-          <ChevronLeftIcon className={iconClasses({ size })} />
+          <ChevronLeftIcon className={paginationButtonIconClasses({ size })} />
         </Button>
         <Button
           variant="ghost"
@@ -73,8 +87,9 @@ export const PaginationButtons = forwardRef<HTMLDivElement, PaginationButtons>(
             })
           }
           isDisabled={nextDisabled}
+          className={paginationButtonsClasses({ size })}
         >
-          <ChevronRightIcon className={iconClasses({ size })} />
+          <ChevronRightIcon className={paginationButtonIconClasses({ size })} />
         </Button>
       </div>
     );
