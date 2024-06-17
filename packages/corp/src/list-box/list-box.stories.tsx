@@ -3,20 +3,6 @@ import { Listbox } from "./Listbox";
 
 const meta: Meta<typeof Listbox> = {
   title: "Corp / Listbox",
-};
-
-export default meta;
-type Story = StoryObj<typeof Listbox>;
-
-const ITEMS = [
-  { value: "hello", label: "Hello" },
-  { value: "react", label: "React" },
-  { value: "next", label: "Next" },
-  { value: "php", label: "PHP" },
-  { value: "dotnet", label: "DotNet" },
-];
-
-export const Default: Story = {
   args: {
     isDisabled: false,
     isReadOnly: false,
@@ -36,5 +22,19 @@ export const Default: Story = {
       options: ["sm", "md", "lg"],
     },
   },
+};
+
+export default meta;
+type Story = StoryObj<typeof Listbox>;
+
+const ITEMS = [
+  { value: "hello", label: "Hello" },
+  { value: "react", label: "React" },
+  { value: "next", label: "Next" },
+  { value: "php", label: "PHP" },
+  { value: "dotnet", label: "DotNet" },
+];
+
+export const Default: Story = {
   render: (props) => <Listbox {...props} items={ITEMS} />,
 };

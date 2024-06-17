@@ -11,7 +11,7 @@ import {
 import { cva } from "class-variance-authority";
 import { forwardRef, useEffect, useReducer } from "react";
 
-export const listboxItemClasses = cva(
+const listboxItemClasses = cva(
   "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 transition-all ease-in-out",
   {
     variants: {
@@ -39,20 +39,18 @@ export const listboxItemClasses = cva(
     },
     compoundVariants: [
       {
-        disabled: false,
         selected: true,
-        readOnly: [true, false],
-        loading: false,
-        className:
-          "bg-primary-50/60 hover:bg-primary-50 dark:bg-primary-800 dark:hover:bg-primary-700",
+        className: "bg-primary-50/60 dark:bg-primary-900",
       },
       {
-        disabled: true,
-        className: "bg-secondary-200/40 dark:bg-secondary-800 opacity-60",
+        selected: true,
+        disabled: false,
+        loading: false,
+        className: "hover:bg-primary-50 dark:hover:bg-primary-800",
       },
       {
         loading: true,
-        className: "bg-secondary-200/40 dark:bg-secondary-800 opacity-60",
+        className: "",
       },
       {
         disabled: false,
@@ -69,16 +67,10 @@ export const listboxItemClasses = cva(
         className: "hover:bg-secondary-100/60 dark:hover:bg-secondary-800",
       },
     ],
-    defaultVariants: {
-      disabled: false,
-      selected: false,
-      readOnly: false,
-      loading: false,
-    },
   },
 );
 
-export const listboxClasses = cva(
+const listboxClasses = cva(
   "dark:border-secondary-700 border-secondary-300 dark:bg-secondary-900 w-full overflow-hidden rounded-md border bg-white",
   {
     variants: {
@@ -88,40 +80,33 @@ export const listboxClasses = cva(
         lg: "h-[225px]",
       },
       disabled: {
-        true: "cursor-not-allowed",
+        true: "cursor-not-allowed opacity-70",
         false: "",
       },
       loading: {
-        true: "cursor-progress",
+        true: "cursor-progress opacity-70",
         false: "",
       },
     },
   },
 );
 
-export const checkIconClasses = cva("stroke-2", {
+const checkIconClasses = cva("stroke-2", {
   variants: {
     size: {
-      sm: "size-3",
+      sm: "size-3.5",
       md: "size-4",
-      lg: "size-5",
+      lg: "size-[18px]",
     },
     loading: {
       true: "stroke-secondary-500/70 dark:stroke-secondary-400",
-      false: "",
+      false: "stroke-primary-500 dark:stroke-primary-300",
     },
     disabled: {
       true: "stroke-secondary-500/70 dark:stroke-secondary-400",
-      false: "",
+      false: "stroke-primary-500 dark:stroke-primary-300",
     },
   },
-  compoundVariants: [
-    {
-      disabled: false,
-      loading: false,
-      className: "stroke-primary-500 dark:stroke-primary-300",
-    },
-  ],
 });
 
 const listboxItemSizeClasses = {
