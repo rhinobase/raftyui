@@ -22,6 +22,7 @@ export type DataTable<T> = {
   columns: ColumnDef<T>[];
   data?: T[];
   enableRowSelection?: boolean;
+  enableColumnsSorting?: boolean;
   isFetching?: boolean;
   isLoading?: boolean;
   enableColumnResizing?: boolean; // Indicates if columns are resizable
@@ -40,30 +41,29 @@ export function DataTable<T>({
   isFetching = false,
   enableRowSelection = false,
   enableColumnResizing = false,
+  enableColumnsSorting = false,
   size = "md",
   notFoundMessage = "No data found",
   onRowsSelectedChange,
   rowsSelected = {},
   ...props
 }: DataTable<T>) {
-  // State for sorting
   const [sorting, onSortingChange] = useSync<SortingState>(
     [],
     props.onSortingChange,
   );
 
-  // State for column sizing
   const [columnSizing, onColumnSizingChange] = useSync<ColumnSizingState>(
     {},
     props.onColumnSizingChange,
   );
 
-  // React Table instance
   const table = useReactTable({
     data,
     columns,
     enableRowSelection,
     enableColumnResizing,
+    enableSorting: enableColumnsSorting,
     columnResizeMode: "onChange",
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),

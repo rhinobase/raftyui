@@ -11,6 +11,11 @@ import { type ColumnType, DataTable } from "./DataTable";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
+  args: {
+    enableRowSelection: true,
+    enableColumnResizing: true,
+    enableColumnsSorting: true,
+  },
 };
 
 export default meta;
@@ -18,9 +23,9 @@ type Story = StoryObj<typeof DataTable>;
 
 const client = new QueryClient();
 export const Default: Story = {
-  render: () => (
+  render: (props) => (
     <QueryClientProvider client={client}>
-      <TableComponent />
+      <TableComponent {...props} />
     </QueryClientProvider>
   ),
 };
@@ -88,7 +93,12 @@ const COLUMNS: ColumnType<unknown>[] = [
   },
 ];
 
-function TableComponent() {
+function TableComponent({
+  enableColumnResizing,
+  enableColumnsSorting,
+  enableRowSelection,
+  ...props
+}: DataTable<unknown>) {
   const limit = 10;
   const offset = 0;
   const [rowsSelected, setRowsSelected] = useState<Record<string, boolean>>({});
@@ -117,12 +127,13 @@ function TableComponent() {
       data={data}
       columns={COLUMNS}
       isLoading={isLoading}
-      enableRowSelection
-      enableColumnResizing
+      enableRowSelection={enableRowSelection}
+      enableColumnResizing={enableColumnResizing}
+      enableColumnsSorting={enableColumnsSorting}
       onSortingChange={setSorting}
       isFetching={isFetching}
-      onRowSelectionChange={setRowsSelected}
-      rowSelection={rowsSelected}
+      onRowsSelectedChange={setRowsSelected}
+      rowsSelected={rowsSelected}
     />
   );
 }
