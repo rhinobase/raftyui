@@ -78,8 +78,8 @@ export const EditableTextarea = forwardRef<
         {() => (
           <EditableItem
             size={size}
-            readOnly={readOnly}
-            disabled={disabled}
+            readOnly={_readOnly}
+            disabled={_disabled}
             className="min-h-[80px] text-wrap"
             editableTextareaPreviewClasses={editableTextareaPreviewClasses}
           >

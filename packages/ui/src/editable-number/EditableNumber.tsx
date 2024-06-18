@@ -78,7 +78,7 @@ export const EditableNumber = forwardRef<
     <Editable.Root {...editableNumberProps} ref={forwardedRef}>
       <Editable.Context>
         {() => (
-          <EditableItem size={size} readOnly={readOnly} disabled={disabled}>
+          <EditableItem size={size} readOnly={_readOnly} disabled={_disabled}>
             <InputField
               type="number"
               inputMode="numeric"

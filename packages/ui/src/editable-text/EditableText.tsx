@@ -74,7 +74,7 @@ export const EditableText = forwardRef<
     <Editable.Root {...editableTextProps} ref={forwardedRef}>
       <Editable.Context>
         {() => (
-          <EditableItem size={size} readOnly={readOnly} disabled={disabled}>
+          <EditableItem size={size} readOnly={_readOnly} disabled={_disabled}>
             <InputField size={size} isInvalid={_invalid} />
           </EditableItem>
         )}
@@ -165,7 +165,7 @@ export function EditableItem({
         <Editable.Preview asChild>
           <div
             className={classNames(
-              "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 data-[disabled]:bg-secondary-200/60 relative cursor-pointer rounded-md border transition-all ease-in-out aria-[readonly]:cursor-default data-[disabled]:cursor-not-allowed",
+              "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 data-[disabled]:bg-secondary-100 dark:data-[disabled]:bg-secondary-800 relative cursor-pointer rounded-md border transition-all ease-in-out aria-[readonly]:cursor-default data-[disabled]:cursor-not-allowed",
               className,
               editableTextareaPreviewClasses?.size[size] ??
                 editableTextPreviewClasses.size[size],
