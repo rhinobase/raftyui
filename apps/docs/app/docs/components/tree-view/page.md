@@ -1,16 +1,17 @@
 ---
+title: TreeView
 nextjs:
   metadata:
-    title: "TreeView"
-    description: "A component that is used to show a tree hierarchy."
+    title: TreeView
+    description: A component that is used to show a tree hierarchy.
     twitter:
-      title: "TreeView"
+      title: TreeView
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Tree%20View"
+        url: https://rafty.rhinobase.io/api/og?title=Tree%20View
     openGraph:
-      title: "TreeView"
+      title: TreeView
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Tree%20View"
+        url: https://rafty.rhinobase.io/api/og?title=Tree%20View
 ---
 
 A component that is used to show a tree hierarchy.

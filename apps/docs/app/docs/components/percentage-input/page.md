@@ -1,17 +1,17 @@
 ---
-title: "Percentage Input"
+title: Percentage Input
 nextjs:
   metadata:
-    title: "Percentage Input"
-    description: "A component specifically designed to take percentage input."
+    title: Percentage Input
+    description: A component specifically designed to take percentage input.
     twitter:
-      title: "Percentage Input"
+      title: Percentage Input
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Percentage%20Input"
+        url: https://rafty.rhinobase.io/api/og?title=Percentage%20Input
     openGraph:
-      title: "Percentage Input"
+      title: Percentage Input
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Percentage%20Input"
+        url: https://rafty.rhinobase.io/api/og?title=Percentage%20Input
 ---
 
 A component to take only percentage input.

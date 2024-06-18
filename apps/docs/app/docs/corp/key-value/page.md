@@ -1,17 +1,17 @@
 ---
-title: "Key Value"
+title: Key Value
 nextjs:
   metadata:
-    title: "Key Value"
-    description: "A component displaying keys and their corresponding values in a tabular format."
+    title: Key Value
+    description: A component displaying keys and their corresponding values in a tabular format.
     twitter:
-      title: "Key Value"
+      title: Key Value
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Key%20Value"
+        url: https://rafty.rhinobase.io/api/og?title=Key%20Value
     openGraph:
-      title: "Key Value"
+      title: Key Value
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Key%20Value"
+        url: https://rafty.rhinobase.io/api/og?title=Key%20Value
 ---
 
 A component displaying keys and their corresponding values in a tabular format.

@@ -1,17 +1,17 @@
 ---
-title: "File Upload"
+title: File Upload
 nextjs:
   metadata:
-    title: "File Upload"
-    description: "A component that is used to upload one or more files."
+    title: File Upload
+    description: A component that is used to upload one or more files.
     twitter:
-      title: "File Upload"
+      title: File Upload
       images:
-      url: "https://rafty.rhinobase.io/api/og?title=File%20Upload"
+      url: https://rafty.rhinobase.io/api/og?title=File%20Upload
     openGraph:
-      title: "File Upload"
+      title: File Upload
       images:
-      url: "https://rafty.rhinobase.io/api/og?title=File%20Upload"
+      url: https://rafty.rhinobase.io/api/og?title=File%20Upload
 ---
 
 A component that is used to upload one or more files.

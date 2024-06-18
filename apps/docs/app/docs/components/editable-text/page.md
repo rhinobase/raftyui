@@ -1,17 +1,17 @@
 ---
-title: "Editable Text"
+title: Editable Text
 nextjs:
   metadata:
-    title: "Editable Text"
-    description: "A component that allows users to edit text in place."
+    title: Editable Text
+    description: A component that allows users to edit text in place.
     twitter:
-      title: "Editable Text"
+      title: Editable Text
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Editable%20Text"
+        url: https://rafty.rhinobase.io/api/og?title=Editable%20Text
     openGraph:
-      title: "Editable Text"
+      title: Editable Text
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Editable%20Text"
+        url: https://rafty.rhinobase.io/api/og?title=Editable%20Text
 ---
 
 A component that allows users to edit text in place.

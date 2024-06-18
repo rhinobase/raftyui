@@ -1,17 +1,17 @@
 ---
-title: "Cascader"
+title: Cascader
 nextjs:
   metadata:
-    title: "Cascader"
-    description: ""
+    title: Cascader
+    description: It is selection box which helps you select a set of associate data set when selecting from a large data set, with multi-stage classification separated for easy selection.
     twitter:
-      title: "Cascader"
+      title: Cascader
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Cascader"
+        url: https://rafty.rhinobase.io/api/og?title=Cascader
     openGraph:
-      title: "Cascader"
+      title: Cascader
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Cascader"
+        url: https://rafty.rhinobase.io/api/og?title=Cascader
 ---
 
 It is selection box which helps you select a set of associate data set when selecting from a large data set, with multi-stage classification separated for easy selection.

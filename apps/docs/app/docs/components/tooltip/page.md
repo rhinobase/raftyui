@@ -1,16 +1,17 @@
 ---
+title: Tooltip
 nextjs:
   metadata:
-    title: "Tooltip"
-    description: "A label that provides information on hover or focus."
+    title: Tooltip
+    description: A label that provides information on hover or focus.
     twitter:
-      title: "Tooltip"
+      title: Tooltip
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Tooltip"
+        url: https://rafty.rhinobase.io/api/og?title=Tooltip
     openGraph:
-      title: "Tooltip"
+      title: Tooltip
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Tooltip"
+        url: https://rafty.rhinobase.io/api/og?title=Tooltip
 ---
 
 A label that provides information on hover or focus.

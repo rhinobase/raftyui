@@ -1,17 +1,17 @@
 ---
-title: "Reorderable List"
+title: Reorderable List
 nextjs:
   metadata:
-    title: "Reorderable List"
-    description: "A Reorderable List is a component that allows users to reorder or replace the position of an item in a given list of items."
+    title: Reorderable List
+    description: A Reorderable List is a component that allows users to reorder or replace the position of an item in a given list of items.
     twitter:
-      title: "Reorderable List"
+      title: Reorderable List
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Reorderable%20List"
+        url: https://rafty.rhinobase.io/api/og?title=Reorderable%20List
     openGraph:
-      title: "Reorderable List"
+      title: Reorderable List
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Reorderable%20List"
+        url: https://rafty.rhinobase.io/api/og?title=Reorderable%20List
 ---
 
 A Reorderable List is a component that allows users to reorder or replace the position of an item in a given list of items.

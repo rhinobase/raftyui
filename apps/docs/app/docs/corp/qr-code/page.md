@@ -1,17 +1,17 @@
 ---
-title: "QR Code"
+title: QR Code
 nextjs:
   metadata:
-    title: "QR Code"
-    description: "A component that generates a QR code based on the provided data."
+    title: QR Code
+    description: A component that generates a QR code based on the provided data.
     twitter:
-      title: "QR Code"
+      title: QR Code
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=QR%20Code"
+        url: https://rafty.rhinobase.io/api/og?title=QR%20Code
     openGraph:
-      title: "QR Code"
+      title: QR Code
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=QR%20Code"
+        url: https://rafty.rhinobase.io/api/og?title=QR%20Code
 ---
 
 A component that generates a QR code based on the provided data.

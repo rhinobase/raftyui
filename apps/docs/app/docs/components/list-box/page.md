@@ -1,20 +1,20 @@
 ---
-title: "List Box"
+title: Listbox
 nextjs:
   metadata:
-    title: "List Box"
-    description: "A component that displays a scrollable list of selectable items where user can interact with the list box to select one or more items from the list."
+    title: Listbox
+    description: A component that displays a scrollable list of selectable items where user can interact with the listbox to select one or more items from the list.
     twitter:
-      title: "List Box"
+      title: Listbox
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=List%20Box"
+        url: https://rafty.rhinobase.io/api/og?title=Listbox
     openGraph:
-      title: "List Box"
+      title: Listbox
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=List%20Box"
+        url: https://rafty.rhinobase.io/api/og?title=Listbox
 ---
 
-A component that displays a scrollable list of selectable items where user can interact with the list box to select one or more items from the list.
+A component that displays a scrollable list of selectable items where user can interact with the Listbox to select one or more items from the list.
 
 This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props.
 

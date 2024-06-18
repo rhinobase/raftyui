@@ -1,17 +1,17 @@
 ---
-title: "Pin Input"
+title: Pin Input
 nextjs:
   metadata:
-    title: "Pin Input"
-    description: "A component to input pin or verification codes with auto-focus transfer and masking options."
+    title: Pin Input
+    description: A component to input pin or verification codes with auto-focus transfer and masking options.
     twitter:
-      title: "Pin Input"
+      title: Pin Input
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Pin%20Input"
+        url: https://rafty.rhinobase.io/api/og?title=Pin%20Input
     openGraph:
-      title: "Pin Input"
+      title: Pin Input
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Pin%20Input"
+        url: https://rafty.rhinobase.io/api/og?title=Pin%20Input
 ---
 
 A component to input pin or verification codes with auto-focus transfer and masking options.

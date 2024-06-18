@@ -1,17 +1,17 @@
 ---
-title: "Signature"
+title: Signature
 nextjs:
   metadata:
-    title: "Signature"
-    description: "A component that allows users to draw a signature using a signature pad."
+    title: Signature
+    description: A component that allows users to draw a signature using a signature pad.
     twitter:
-      title: "Signature"
+      title: Signature
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Signature"
+        url: https://rafty.rhinobase.io/api/og?title=Signature
     openGraph:
-      title: "Signature"
+      title: Signature
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Signature"
+        url: https://rafty.rhinobase.io/api/og?title=Signature
 ---
 
 A component that allows users to draw a signature using a signature pad.

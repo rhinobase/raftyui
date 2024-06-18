@@ -1,15 +1,15 @@
 ---
-title: "Pagination"
+title: Pagination
 nextjs:
   metadata:
-    title: "Pagination"
+    title: Pagination
     description: Simplify navigation with our Pagination component for efficient content browsing.
     twitter:
-      title: "Pagination"
+      title: Pagination
       images:
         url: https://rafty.rhinobase.io/api/og?title=Pagination
     openGraph:
-      title: "Pagination"
+      title: Pagination
       images:
         url: https://rafty.rhinobase.io/api/og?title=Pagination
 ---

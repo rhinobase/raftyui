@@ -1,17 +1,17 @@
 ---
-title: "Editable Number"
+title: Editable Number
 nextjs:
   metadata:
-    title: "Editable Number"
-    description: "A component that allows users to edit number in place."
+    title: Editable Number
+    description: A component that allows users to edit number in place.
     twitter:
-      title: "Editable Number"
+      title: Editable Number
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Editable%20Number"
+        url: https://rafty.rhinobase.io/api/og?title=Editable%20Number
     openGraph:
-      title: "Editable Number"
+      title: Editable Number
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Editable%20Number"
+        url: https://rafty.rhinobase.io/api/og?title=Editable%20Number
 ---
 
 A component that allows users to edit number in place.

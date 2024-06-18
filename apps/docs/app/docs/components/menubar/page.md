@@ -7,11 +7,11 @@ nextjs:
     twitter:
       title: Menubar
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
+        url: https://rafty.rhinobase.io/api/og?title=Menubar
     openGraph:
       title: Menubar
       images:
-        url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
+        url: https://rafty.rhinobase.io/api/og?title=Menubar
 ---
 
 A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.

@@ -1,17 +1,17 @@
 ---
-title: "JSON Explorer"
+title: JSON Explorer
 nextjs:
   metadata:
-    title: "JSON Explorer"
-    description: ""
+    title: JSON Explorer
+    description: A component that displays JSON data in a hierarchical, tree-like structure where users can expand and collapse nested objects and arrays, making it easier for them to navigate through the structure. It is particularly useful for developers and data analysts, enabling them to inspect, explore, and manipulate JSON data efficiently.
     twitter:
-      title: "JSON Explorer"
+      title: JSON Explorer
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=JSON%20Explorer"
+        url: https://rafty.rhinobase.io/api/og?title=JSON%20Explorer
     openGraph:
-      title: "JSON Explorer"
+      title: JSON Explorer
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=JSON%20Explorer"
+        url: https://rafty.rhinobase.io/api/og?title=JSON%20Explorer
 ---
 
 A component that displays JSON data in a hierarchical, tree-like structure where users can expand and collapse nested objects and arrays, making it easier for them to navigate through the structure. It is particularly useful for developers and data analysts, enabling them to inspect, explore, and manipulate JSON data efficiently.

@@ -1,17 +1,17 @@
 ---
-title: "Field Wrapper"
+title: Field Wrapper
 nextjs:
   metadata:
-    title: "Field Wrapper"
-    description: "A wrapper component for field to be used in form."
+    title: Field Wrapper
+    description: A wrapper component for field to be used in form.
     twitter:
-      title: "Field Wrapper"
+      title: Field Wrapper
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Field%20Wrapper"
+        url: https://rafty.rhinobase.io/api/og?title=Field%20Wrapper
     openGraph:
-      title: "Field Wrapper"
+      title: Field Wrapper
       images:
-        url: "https://rafty.rhinobase.io/api/og?title=Field%20Wrapper"
+        url: https://rafty.rhinobase.io/api/og?title=Field%20Wrapper
 ---
 
 A wrapper component for field to be used in form.

@@ -1,17 +1,17 @@
 ---
-title: "Combobox"
+title: Combobox
 nextjs:
   metadata:
-  title: "Combobox"
-  description: "A custom select component with search functionality, as well as the ability to add custom trigger and option elements."
+  title: Combobox
+  description: A custom select component with search functionality, as well as the ability to add custom trigger and option elements.
   twitter:
-    title: "Combobox"
+    title: Combobox
     images:
-      url: "https://rafty.rhinobase.io/api/og?title=Combobox"
+      url: https://rafty.rhinobase.io/api/og?title=Combobox
   openGraph:
-    title: "Combobox"
+    title: Combobox
     images:
-      url: "https://rafty.rhinobase.io/api/og?title=Combobox"
+      url: https://rafty.rhinobase.io/api/og?title=Combobox
 ---
 
 A custom select component with search functionality, as well as the ability to add custom trigger and option elements.
