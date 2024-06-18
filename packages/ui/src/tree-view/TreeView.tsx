@@ -118,26 +118,24 @@ export const treeViewLabelBranchClasses = {
   },
 };
 
-export const treeViewLabelIndicatorClasses = cva(
-  "data-[state=open]:rotate-90 transform duration-200 ease-in-out",
-  {
-    variants: {
-      size: {
-        sm: "size-3",
-        md: "size-3.5",
-        lg: "size-4",
-      },
-    },
-    defaultVariants: {
-      size: "md",
+export const treeViewLabelIndicatorClasses = cva("group/indicator", {
+  variants: {
+    size: {
+      sm: "size-3",
+      md: "size-3.5",
+      lg: "size-4",
     },
   },
-);
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 export type TreeViewLabel = ComponentPropsWithoutRef<
   typeof ArkTreeView.BranchControl
 > & {
-  indicatorIcon?: ReactNode;
+  openIndicator?: ReactNode;
+  closeIndicator?: ReactNode;
   showIndicator?: boolean;
   type?: "single" | "branch";
 };
@@ -146,7 +144,15 @@ export const TreeViewLabel = forwardRef<
   ElementRef<typeof ArkTreeView.BranchControl>,
   TreeViewLabel
 >(function TreeViewLabel(
-  { children, indicatorIcon, showIndicator = true, className, type, ...props },
+  {
+    children,
+    openIndicator,
+    closeIndicator,
+    showIndicator = true,
+    className,
+    type,
+    ...props
+  },
   forwardedRef,
 ) {
   const { size } = useTreeViewContext();
@@ -166,6 +172,7 @@ export const TreeViewLabel = forwardRef<
         {children}
       </ArkTreeView.ItemText>
     );
+
   return (
     <ArkTreeView.BranchControl
       {...props}
@@ -181,8 +188,18 @@ export const TreeViewLabel = forwardRef<
         <ArkTreeView.BranchIndicator
           className={treeViewLabelIndicatorClasses({ size })}
         >
-          {indicatorIcon ?? (
-            <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full stroke-[3]" />
+          {openIndicator && (
+            <div className="group-data-[state=open]/indicator:block group-data-[state=closed]/indicator:hidden">
+              {openIndicator}
+            </div>
+          )}
+          {closeIndicator && (
+            <div className="group-data-[state=closed]/indicator:block group-data-[state=open]/indicator:hidden">
+              {closeIndicator}
+            </div>
+          )}
+          {!openIndicator && !closeIndicator && (
+            <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full stroke-[3] group-data-[state=open]/indicator:rotate-90 transform duration-200 ease-in-out" />
           )}
         </ArkTreeView.BranchIndicator>
       )}
