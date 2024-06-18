@@ -14,11 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Input%20Field
 ---
 
-# Input Field
-
 It is a component that is used to get user input in a text field.
 
-This is a custom component made upon native html input component and its props. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
+This component is built using native `<input>` html tag and its props, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 

@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Spinner
 ---
 
-# Spinner
-
 Spinner provide a visual cue that an action is processing awaiting a course of change or a result.
 
 ## Anatomy

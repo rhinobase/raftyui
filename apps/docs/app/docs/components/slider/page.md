@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Slider
 ---
 
-# Slider
-
 An input where the user selects a value from within a given range.
 
 This component is made on top of [Radix UIs Slider Component](https://www.radix-ui.com/primitives/docs/components/slider) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.

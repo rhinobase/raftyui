@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Text
 ---
 
-# Text
-
 Text is used to render Text and paragraphs within an interface. It renders a `<p>` element by default.
 
 ## Anatomy
@@ -29,8 +27,6 @@ import { Text } from "@rafty/ui";
 ```
 
 ## Usage
-
-Text takes tailwind css classes in className and inline css can also be passed using style prop.
 
 {% example %}
 

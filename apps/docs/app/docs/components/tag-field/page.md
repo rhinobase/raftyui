@@ -3,7 +3,7 @@ title: Tag Field
 nextjs:
   metadata:
     title: Tag Field
-    description: Tag component is utilized to label, categorize, or organize items using descriptive keywords.
+    description: A component that allows users to add tags to an input field.
     twitter:
       title: Tag Field
       images:
@@ -14,18 +14,18 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Tag%20Field
 ---
 
-# Tag
+A component that allows users to add tags to an input field.
 
-Tag component is utilized to label, categorize, or organize items using descriptive keywords.
+This component is made on top of [Ark Tags Input Component](https://ark-ui.com/react/docs/components/tags-input) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 
 ## Anatomy
 
 Import the component.
 
 ```jsx
-import { Tag } from "@rafty/ui";
+import { TagField } from "@rafty/ui";
 
-<Tag />;
+<TagField />;
 ```
 
 ## Usage
@@ -33,41 +33,91 @@ import { Tag } from "@rafty/ui";
 {% example %}
 
 ```jsx
-<Tag>Tag text</Tag>
+<TagField />
 ```
 
 {% /example %}
 
-## Sizes
+## Default Value
+
+`defaultValue` prop is used to pass default tags to input.
+
+{% example %}
+
+```jsx
+<TagField defaultValue={["sample1", "sample2"]} />
+```
+
+{% /example %}
+
+## Size
 
 There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
 ```jsx
-<div className="flex flex-col items-center gap-2">
-  <Tag size="sm">Tag text</Tag>
-  <Tag size="md">Tag text</Tag>
-  <Tag size="lg">Tag text</Tag>
-</div>
+<TagField size="lg" />
 ```
 
 {% /example %}
 
-## ColorScheme
+## Placeholder
 
-There are 5 `colorScheme` options available: `"primary"`, `"secondary"` (default), `"error"`, `"success"` & `"warning"`.
+`placeholder` prop is used to pass placeholder text to display when no tags available.
 
 {% example %}
 
 ```jsx
-<div className="flex flex-col gap-2">
-  <Tag colorScheme="primary">Tag text</Tag>
-  <Tag colorScheme="secondary">Tag text</Tag>
-  <Tag colorScheme="success">Tag text</Tag>
-  <Tag colorScheme="warning">Tag text</Tag>
-  <Tag colorScheme="error">Tag text</Tag>
-</div>
+<TagField placeholder="Add Framework" />
+```
+
+{% /example %}
+
+## Disabled
+
+`isDisabled` prop is used to manage disable state of field.
+
+{% example %}
+
+```jsx
+<TagField isDisabled />
+```
+
+{% /example %}
+
+## ReadOnly
+
+`isReadOnly` prop is used to manage readonly state of field.
+
+{% example %}
+
+```jsx
+<TagField isReadOnly />
+```
+
+{% /example %}
+
+## Invalid
+
+`isInvalid` prop is used to manage invalid state of field.
+
+{% example %}
+
+```jsx
+<TagField isInvalid />
+```
+
+{% /example %}
+
+## Loading
+
+`isLoading` prop is used to manage loading state of field.
+
+{% example %}
+
+```jsx
+<TagField isLoading />
 ```
 
 {% /example %}
@@ -76,11 +126,15 @@ There are 5 `colorScheme` options available: `"primary"`, `"secondary"` (default
 
 ## Props
 
-### Tag
+### TagField
 
-`Tag` composes the `<div>` component.
+This component is built on top of [Ark Tags Input](https://ark-ui.com/react/docs/components/tags-input#api-reference).
 
-| Property    | Description                    | Type                                                                                   | Default       |
-| ----------- | ------------------------------ | -------------------------------------------------------------------------------------- | ------------- |
-| size        | Size of the tag component.     | `"sm"` or `"md"` or `"lg"` or `undefined`                                              | `"md"`        |
-| colorScheme | Color scheme of the component. | `"primary"` or `"secondary"` or `"error"` or `"success"` or `"warning"` or `undefined` | `"secondary"` |
+| Property    | Description                                   | Type                                                   | Default |
+| ----------- | --------------------------------------------- | ------------------------------------------------------ | ------- |
+| size        | Size of the tag field component.              | `"sm"` or `"md"` or `"lg"` or `undefined`              | `"md"`  |
+| placeholder | Placeholder text to show when input is empty. | `string` or `undefined`                                | -       |
+| isDisabled  | To manage the disable state.                  | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isInvalid   | To manage the invalid state.                  | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isLoading   | To manage the loading state.                  | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isReadOnly  | To manage the readonly state.                 | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |

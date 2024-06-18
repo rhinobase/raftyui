@@ -13,8 +13,6 @@ nextjs:
         url: "https://rafty.rhinobase.io/api/og?title=Tooltip"
 ---
 
-# Tooltip
-
 A label that provides information on hover or focus.
 
 This component is made on top of [Radix UIs Tooltip Component](https://www.radix-ui.com/primitives/docs/components/tooltip) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.

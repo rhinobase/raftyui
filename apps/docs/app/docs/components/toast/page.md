@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Toast
 ---
 
-# Toast
-
 The Toast component is used to give feedback to users after an action has taken place.
 
 This is a custom-made component according to our styling conventions, limiting the available props and styling options.
@@ -32,9 +30,7 @@ import { Toast } from "@rafty/ui";
 
 ## Usage
 
-The Toast will close itself after a timeout.
-
-Toasts by default appears at the top of an application window, and it is possible to have more than one Toast onscreen at a time.
+`title` and `severity` are required props in Toast.
 
 {% example %}
 
@@ -73,6 +69,8 @@ The `message` prop is used to display description below title in Toast.
 {% /example %}
 
 ## Size
+
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 

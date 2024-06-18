@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Popover
 ---
 
-# Popover
-
 Displays rich content in a portal, triggered by a button.
 
 This component is made on top of [Radix UIs Popover Component](https://www.radix-ui.com/primitives/docs/components/popover) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from a particular sub-component).
@@ -53,9 +51,9 @@ import {
       tempor incididunt ut labore et dolore.
     </Text>
     <div className="flex justify-end gap-3">
-      <Button size="sm">Button</Button>
+      <Button size="sm">Cancel</Button>
       <Button size="sm" colorScheme="primary">
-        Button
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -79,9 +77,9 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
       tempor incididunt ut labore et dolore.
     </Text>
     <div className="flex justify-end gap-3">
-      <Button size="sm">Button</Button>
+      <Button size="sm">Cancel</Button>
       <Button size="sm" colorScheme="primary">
-        Button
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -106,10 +104,10 @@ To manage open state of Popover you can use `open` prop and to open Popover by d
     </Text>
     <div className="flex justify-end gap-3 py-1">
       <Button size="sm" colorScheme="success">
-        Demo 1
+        Cancel
       </Button>
       <Button size="sm" colorScheme="error">
-        Demo 2
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -134,10 +132,10 @@ To make arrow on top of content visible you can use `showArrow` prop. It is a bo
     </Text>
     <div className="mt-3 flex justify-end gap-3 py-1">
       <Button size="sm" colorScheme="success">
-        Demo 1
+        Cancel
       </Button>
       <Button size="sm" colorScheme="error">
-        Demo 2
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -167,10 +165,10 @@ Pass `isUnstyled` prop in parent component to remove all styles in Popover.
     </Text>
     <div className="flex justify-end gap-3">
       <Button className="bg-green-300 text-black" size="sm">
-        Demo 1
+        Cancel
       </Button>
       <Button className="bg-blue-300 text-black" size="sm">
-        Demo 2
+        Save
       </Button>
     </div>
   </PopoverContent>

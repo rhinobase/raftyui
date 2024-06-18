@@ -1,19 +1,20 @@
 ---
+title: "Timeline"
 nextjs:
   metadata:
-    title: "Timeline",
-    description: "",
-    twitter: 
-      title: "Timeline",
-      images:  
-        url: "https://rafty.rhinobase.io/api/og?title=Timeline" 
-    openGraph: 
-      title: "Timeline",
-      images:  
-        url: "https://rafty.rhinobase.io/api/og?title=Timeline" 
+    title: "Timeline"
+    description: "This component is used when a series of information needs to be ordered by time (ascending or descending) or when you need a timeline to make a visual connection."
+    twitter:
+      title: "Timeline"
+      images:
+        url: "https://rafty.rhinobase.io/api/og?title=Timeline"
+    openGraph:
+      title: "Timeline"
+      images:
+        url: "https://rafty.rhinobase.io/api/og?title=Timeline"
 ---
 
-# Timeline
+This component is used when a series of information needs to be ordered by time (ascending or descending) or when you need a timeline to make a visual connection.
 
 ## Anatomy
 
@@ -92,7 +93,8 @@ There are 4 `status` options available in TimelineItem: `"error"`, `"info"` (def
 
 ## Loading
 
-`isLoading` prop is used to manage loading state of Timeline and its sub-components.
+- `isLoading` prop is used to manage loading state of Timeline and its sub-components.
+- `loadingText` prop can be used to pass custom string to display when Timeline is in loading state.
 
 {% example %}
 
@@ -179,7 +181,7 @@ You can pass custom icon in TimelineItem using `icon` prop which is of `ReactNod
 `TimelineItem` composes the `<li>` component.
 
 | Property    | Description                                    | Type                                                               | Default  |
-| ----------- | ---------------------------------------------- | ------------------------------------------------------------------ | -------- | ------------------------------ |
+| ----------- | ---------------------------------------------- | ------------------------------------------------------------------ | -------- |
 | status      | Status of the timeline item.                   | `"success"` or `"error"` or `"info"` or `"warning"` or `undefined` | `"info"` |
 | icon        | Custom icon for the timeline item.             | `ReactNode` or `undefined`                                         | -        |
-| description | Descriptive text content of the timeline item. | `ReactNode` or `undefined`                                         | -        | import { reverse } from "dns"; |
+| description | Descriptive text content of the timeline item. | `ReactNode` or `undefined`                                         | -        |

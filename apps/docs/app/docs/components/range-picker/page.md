@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Range%20Picker
 ---
 
-# Range Picker
-
 A component that allows users to select a range of dates from a calendar.
 
 This component is made on top of [Ark Date Picker Component](https://ark-ui.com/react/docs/components/date-picker) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
@@ -58,6 +56,8 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 ## Default Value
 
+`defaultValue` prop is used to pass default selected value of RangePicker.
+
 {% example %}
 
 ```jsx
@@ -68,10 +68,12 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 ## Placeholder
 
+`placeholder` prop is used to pass placeholder text to display when no value is selected.
+
 {% example %}
 
 ```jsx
-<RangePicker placeholder={{ from: "Sample", to: "Placeholder" }} />
+<RangePicker placeholder={{ from: "From", to: "To" }} />
 ```
 
 {% /example %}

@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Scroll%20Area
 ---
 
-# Scroll Area
-
 Enhances native scroll functionality for adding virtualization to a list of data.
 
 This component is made on top of [React Window's Variable Size List Component](https://www.npmjs.com/package/react-window) with our styling conventions, and it uses [Auto Sizer](https://www.npmjs.com/package/react-virtualized-auto-sizer) for managing dynamic width and height. This component has been shared with you, ensuring that all its native properties are accessible.

@@ -14,11 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=List
 ---
 
-# List
+List is used to display list items. It renders a `<ul>` element.
 
-List is used to display list items. It renders a `<ul>` element by default.
-
-This is made using native ol, ul & li html tags, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
+This is made using native `ol`, `ul` & `li` html tags, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 

@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Drawer
 ---
 
-# Drawer
-
 The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
 
 This component is made using [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog), but it has been modified to make it look like a Drawer by adding animations and other styling.
@@ -56,8 +54,8 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay className="z-[70]" />
+        <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>This is sampleD description. :</DrawerDescription>
           <DrawerClose />
@@ -84,8 +82,8 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer size="full" open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay className="z-[70]" />
+        <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
             This is sample drawer description.
@@ -114,8 +112,8 @@ function DrawerExample() {
     <>
       <Button onClick={() => setOpen(true)}>Open Drawer</Button>
       <Drawer side="left" open={isOpen} onOpenChange={setOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay className="z-[70]" />
+        <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
           <DrawerDescription>
             This is sample drawer description.
@@ -158,7 +156,3 @@ This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/
 ### DrawerClose
 
 This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close) and using [Button](https://rafty.rhinobase.io/docs/components/button)
-
-```
-
-```

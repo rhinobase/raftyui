@@ -7,9 +7,10 @@ import { ReactLiveScope } from "./ReactLiveScope";
 
 export type ReactLiveBlock = {
   code: string;
+  noInline?: boolean;
 };
 
-export function ReactLiveBlock({ code }: ReactLiveBlock) {
+export function ReactLiveBlock({ code, noInline }: ReactLiveBlock) {
   // Editor code
   const [editorCode, setEditorCode] = useState(code.trim());
 
@@ -17,7 +18,7 @@ export function ReactLiveBlock({ code }: ReactLiveBlock) {
   const onChange = (value: string) => setEditorCode(value.trim());
 
   return (
-    <LiveProvider code={editorCode} scope={ReactLiveScope}>
+    <LiveProvider code={editorCode} scope={ReactLiveScope} noInline={noInline}>
       <LivePreview className="not-prose dark:bg-secondary-900 dark:border-secondary-800 flex w-full items-center justify-center rounded-lg border bg-transparent p-4" />
       <div className="dark relative z-0">
         <CodeContainer>

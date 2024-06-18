@@ -3,7 +3,7 @@ title: Menu
 nextjs:
   metadata:
     title: Menu
-    description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+    description: A list of options that appears when a user interacts with a button.
     twitter:
       title: Menu
       images:
@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Menu
 ---
 
-# Menu
+A list of options that appears when a user interacts with a button.
 
-Displays a Menu to the user—such as a set of actions or functions—triggered by a button. This component is made on top of [Radix UIs Dropdown Menu Component](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
+This component is made on top of [Radix UIs Dropdown Menu Component](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -127,6 +127,8 @@ function MenuExample() {
 
 ## SubMenu
 
+`<MenuSub>` element can be used to make a sub-menu component.
+
 {% example %}
 
 ```jsx
@@ -157,7 +159,9 @@ function MenuExample() {
 
 {% /example %}
 
-## MenuCheckboxItem
+## Checkbox Item
+
+`<MenuCheckboxItem>` element can be used to make a checkbox component.
 
 {% example %}
 
@@ -196,7 +200,9 @@ function MenuExample() {
 
 {% /example %}
 
-## MenuRadioGroup
+## Radio Group
+
+`<MenuRadioGroup>` & `<MenuRadioItem>` elements can be used to make radio group component.
 
 {% example %}
 

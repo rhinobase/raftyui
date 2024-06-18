@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Skeleton
 ---
 
-# Skeleton
-
 Skeleton is used to display the loading state of some component.
 
 This is custom made component with our understanding and usage limiting the props available.

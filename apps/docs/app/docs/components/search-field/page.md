@@ -3,7 +3,7 @@ title: Search Field
 nextjs:
   metadata:
     title: Search Field
-    description: Just like Input Field, Search Field is used for Search inputs but gives an extra functionality of show and hide Search.
+    description: Just like Input Field used to text input, SearchField is used for Search inputs with a little different styling and props.
     twitter:
       title: Search Field
       images:
@@ -14,9 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Search%20Field
 ---
 
-# Search Field
-
-Just like Input Field, SearchField is used for Search inputs but gives an extra functionality of show and hide Search.
+Just like Input Field used to text input, SearchField is used for Search inputs with a little different styling and props.
 
 This component is made using InputField and InputGroup, making all native field props available for use.
 

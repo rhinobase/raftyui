@@ -14,11 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Progress
 ---
 
-# Progress
-
 Displays an indicator showing the completion Progress of a task, typically displayed as a Progress bar.
 
-This component is made on top of [Ark Progress Linear](https://ark-ui.com/react/docs/components/progress-linear#api-reference) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+This component is made on top of [Ark Progress Linear](https://ark-ui.com/react/docs/components/progress-linear) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 
 ## Anatomy
 

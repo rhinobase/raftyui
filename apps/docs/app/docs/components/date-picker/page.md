@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Date%20Picker
 ---
 
-# Date Picker
-
 A component that allows users to select a date from a calendar.
 
 This component is made on top of [Ark Date Picker Component](https://ark-ui.com/react/docs/components/date-picker) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
@@ -40,7 +38,7 @@ import { DatePicker } from "@rafty/ui";
 
 {% /example %}
 
-## size
+## Size
 
 There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
@@ -54,6 +52,8 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 ## Default Value
 
+`defaultValue` prop can be used to pass default value of field.
+
 {% example %}
 
 ```jsx
@@ -63,6 +63,8 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 {% /example %}
 
 ## Placeholder
+
+`placeholder` prop can be used to pass placeholder text to display when no value is selected.
 
 {% example %}
 

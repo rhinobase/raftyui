@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Command
 ---
 
-# Command
-
 The Command component in React can function as both a menu and an accessible combobox.
 
 When you render items with it, it automatically filters and sorts them. It offers a fully composable API, allowing you to wrap items in other components or even use static JSX. This component is made on top of [CMDKs Command Component](https://cmdk.paco.me/) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.

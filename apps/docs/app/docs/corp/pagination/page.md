@@ -1,22 +1,22 @@
 ---
-title: Pagination
+title: "Pagination"
 nextjs:
   metadata:
-    title: Pagination
+    title: "Pagination"
     description: Simplify navigation with our Pagination component for efficient content browsing.
     twitter:
-      title: Pagination
+      title: "Pagination"
       images:
         url: https://rafty.rhinobase.io/api/og?title=Pagination
     openGraph:
-      title: Pagination
+      title: "Pagination"
       images:
         url: https://rafty.rhinobase.io/api/og?title=Pagination
 ---
 
-# Pagination
+The Pagination Component is a customizable and user-friendly pagination solution designed to enhance navigation through large sets of data.
 
-The Pagination Component is a customizable and user-friendly Pagination solution designed to enhance navigation through large sets of data.
+This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props.
 
 ## Anatomy
 
@@ -298,10 +298,10 @@ function PaginationField() {
 | ----------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------- |
 | pages       | Total number of pages.                                                                                               | `number` or `undefined`                                              | -       |
 | currentPage | Current page number.                                                                                                 | `number` or `undefined`                                              | -       |
-| onChange    | Callback function when page or pageSize changes.                                                                     | <Info>(page: number, pageSize: number) => void</Info> or `undefined` | -       |
+| onChange    | The callback invoke when page or page size is changed.                                                               | <Info>(page: number, pageSize: number) => void</Info> or `undefined` | -       |
 | size        | Size of the pagination and its sub-components.                                                                       | `"sm"` or `"md"` or `"lg"` or `undefined`                            | `"md"`  |
 | pageLimit   | Maximum number of entries to be shown per page by default and you further control it using PageSizeSelect component. | `number` or `undefined`                                              | -       |
-| isDisabled  | To manage the disabled state.                                                                                        | `boolean` or `undefined`                                             | `false` |
+| isDisabled  | To manage the disable state.                                                                                         | `boolean` or `undefined`                                             | `false` |
 
 ### PageSizeSelect
 
@@ -318,7 +318,3 @@ function PaginationField() {
 ### PaginationButtons
 
 `PaginationButtons` composes the `<div>` component.
-
-```
-
-```

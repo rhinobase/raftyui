@@ -14,11 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Label
 ---
 
-# Label
-
 Renders an accessible Label associated with controls.
 
-This component is made on top of [Radix UIs Label Component](https://www.radix-ui.com/primitives/docs/components/label) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop (to remove styling from a particular sub-component).
+This is made using native `<label>` html tag, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -41,6 +39,8 @@ import { Label } from "@rafty/ui";
 {% /example %}
 
 ## Required
+
+`isRequired` prop is used to add red asterisk sign after label to show the field is required.
 
 {% example %}
 

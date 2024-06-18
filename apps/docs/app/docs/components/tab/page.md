@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Tab
 ---
 
-# Tab
-
 A set of layered sections of content—known as Tab panels—that are displayed one at a time.
 
 This component is made on top of [Radix UIs Tabs Component](https://www.radix-ui.com/primitives/docs/components/tabs) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
@@ -189,12 +187,8 @@ Pass `isUnstyled` prop in root element to remove style from Tab and all its sub-
 {% example %}
 
 ```jsx
-<Tab
-  defaultValue="tab1"
-  isUnstyled
-  className="flex w-full items-stretch md:flex-col"
->
-  <TabList className="dark:border-secondary-700 border-b">
+<Tab defaultValue="tab1" isUnstyled>
+  <TabList className="dark:border-secondary-700 flex w-full items-stretch border-b">
     <TabTrigger
       value="tab1"
       className="text-secondary-500 data-[disabled]:text-secondary-400 dark:text-secondary-400

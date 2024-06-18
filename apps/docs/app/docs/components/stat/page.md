@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Stat
 ---
 
-# Stat
-
 Stat component is used to display statistics/numbers.
 
 This is a custom component made according to our styling conventions limiting the props available.

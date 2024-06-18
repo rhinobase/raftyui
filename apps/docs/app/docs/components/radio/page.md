@@ -14,9 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Radio
 ---
 
-# Radio Group
-
-A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.
+A set of checkable buttons known as radio buttons where only one button can be checked at a time.
 
 This component is made on top of [Radix UIs Radio Group Component](https://www.radix-ui.com/primitives/docs/components/radio-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 

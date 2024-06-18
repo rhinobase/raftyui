@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Menu%20Bar
 ---
 
-# Menubar
-
 A visually persistent menu, commonly found in desktop applications, offers rapid access to a consistent set of commands.
 
 This component is made on top of [Radix UIs Menu Component](https://www.radix-ui.com/primitives/docs/components/menubar) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
@@ -592,7 +590,3 @@ This component is built on top of [Radix Menubar Sub Content](https://www.radix-
 | Property   | Description                      | Type                     | Default |
 | ---------- | -------------------------------- | ------------------------ | ------- |
 | isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
-
-```
-
-```

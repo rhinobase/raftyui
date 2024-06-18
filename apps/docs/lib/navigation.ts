@@ -244,47 +244,47 @@ export const navigation = [
     links: [
       {
         title: "Cascader",
-        href: "/docs/components/cascader",
+        href: "/docs/corp/cascader",
       },
       {
         title: "Combobox",
-        href: "/docs/components/combobox",
+        href: "/docs/corp/combobox",
       },
       {
         title: "Data Table",
-        href: "/docs/components/data-table",
+        href: "/docs/corp/data-table",
       },
       {
         title: "Json Explorer",
-        href: "/docs/components/json-explorer",
+        href: "/docs/corp/json-explorer",
       },
       {
         title: "Key Value",
-        href: "/docs/components/key-value",
+        href: "/docs/corp/key-value",
       },
       {
         title: "List Box",
-        href: "/docs/components/list-box",
+        href: "/docs/corp/list-box",
       },
       {
         title: "Pagination",
-        href: "/docs/components/pagination",
+        href: "/docs/corp/pagination",
       },
       // {
       //   title:"Phone Number Input",
-      //   href:"/docs/components/phone-number-input"
+      //   href:"/docs/corp/phone-number-input"
       // },
       {
         title: "QR Code",
-        href: "/docs/components/qr-code",
+        href: "/docs/corp/qr-code",
       },
       {
         title: "Reorderable List",
-        href: "/docs/components/reorderable-list",
+        href: "/docs/corp/reorderable-list",
       },
       {
         title: "Signature",
-        href: "/docs/components/signature",
+        href: "/docs/corp/signature",
       },
     ],
   },

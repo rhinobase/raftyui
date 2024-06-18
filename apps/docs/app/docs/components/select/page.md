@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Select
 ---
 
-# Select
-
 Select component is a component that allows users to pick a value from predefined options.
 
 This is a custom component built upon the native select, adhering to our styling conventions. All native select props can be utilized with this component. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).

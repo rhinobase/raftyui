@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Table
 ---
 
-# Table
-
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default.
 
 Table and its sub-components are made upon native table components. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).

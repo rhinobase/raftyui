@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Password%20Field
 ---
 
-# Password Field
-
 Just like Input Field, Password Field is used for Password inputs but gives an extra functionality of show and hide Password.
 
 This component is made using Input Field and Input Group, making all native field props available for use.

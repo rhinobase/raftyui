@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Dialog
 ---
 
-# Dialog
-
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
 
 This component is made on top of [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
@@ -56,8 +54,8 @@ import {
 ```jsx
 <Dialog>
   <DialogTrigger>open</DialogTrigger>
-  <DialogOverlay />
-  <DialogContent>
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -80,8 +78,8 @@ There are 4 `size` options available: `"sm"`, `"md"` (default), `"lg"` & `"xl"`.
 ```jsx
 <Dialog size="sm">
   <DialogTrigger>open</DialogTrigger>
-  <DialogOverlay />
-  <DialogContent>
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -106,8 +104,8 @@ Our Button component is forwarded within the Dialog Trigger component, enabling 
   <DialogTrigger asChild>
     <Button variant="ghost">Click Me</Button>
   </DialogTrigger>
-  <DialogOverlay />
-  <DialogContent>
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -160,8 +158,8 @@ The showCloseButton prop exists in DialogContent sub-component and it is used to
 ```jsx
 <Dialog>
   <DialogTrigger>open</DialogTrigger>
-  <DialogOverlay />
-  <DialogContent showCloseButton>
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]" showCloseButton>
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.
@@ -191,8 +189,8 @@ Pass `isUnstyled` prop in a particular sub-component to remove style from that s
   >
     open
   </DialogTrigger>
-  <DialogOverlay />
-  <DialogContent>
+  <DialogOverlay className="z-[70]" />
+  <DialogContent className="z-[70]">
     <DialogHeader>Dialog Header</DialogHeader>
     <DialogDescription>
       Make changes to your profile here. Click save when you&apos;re done.

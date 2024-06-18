@@ -14,8 +14,6 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Field%20Control
 ---
 
-# Field Control
-
 FieldControl is used in forms to provide context to children fields. Along with FieldControl it is recommended to use Label and Error Message components.
 
 This is a custom-made component, you can pass name and different states like isRequired, isDisabled, isReadonly, isInvalid & isLoading in it and it will pass it all accordingly to its sub-components.

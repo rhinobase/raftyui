@@ -12,8 +12,6 @@ openGraph:
     url: https://rafty.rhinobase.io/api/og?title=Text%20Area
 ---
 
-# Textarea
-
 The Textarea component allows you to easily create multi-line text inputs. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
@@ -38,6 +36,8 @@ import { Textarea } from "@rafty/ui";
 
 ## Size
 
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
+
 {% example %}
 
 ```jsx
@@ -48,7 +48,7 @@ import { Textarea } from "@rafty/ui";
 
 ## Variants
 
-Pass the `variant` prop if you need to adjust visual style of the Textarea. Values can be `"solid"`, `"outline"`, `"ghost"`.
+Pass the `variant` prop if you need to adjust visual style of the Textarea. Values can be `"solid"`, `"outline"` (default) & `"ghost"`.
 
 {% example %}
 
@@ -58,7 +58,7 @@ Pass the `variant` prop if you need to adjust visual style of the Textarea. Valu
 
 {% /example %}
 
-## UnStyled
+## Unstyled
 
 Pass `isUnstyled` prop to remove all style.
 
