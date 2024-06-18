@@ -30,6 +30,8 @@ import { Calendar } from "@rafty/ui";
 
 ## Usage
 
+Today's date is higlighted in primary color with semi-bold font.
+
 {% example %}
 
 ```jsx

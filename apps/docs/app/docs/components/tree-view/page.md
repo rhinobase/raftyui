@@ -90,9 +90,10 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 {% example %}
 
 ```jsx
-<TreeView indicatorIcon={<PlusIcon className="size-4" />}>
+<TreeView>
   <TreeViewItem value="A">
-    <TreeViewLabel>A</TreeViewLabel>
+    <TreeViewLabel openIndicator={<MinusIcon className="size-4 stroke-2" />}
+   closeIndicator={<PlusIcon className="size-4 stroke-2"/>}>A</TreeViewLabel>
     <TreeViewContent>
       <TreeViewItem value="a">
         <TreeViewLabel>Aa</TreeViewLabel>
@@ -114,9 +115,9 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 {% example %}
 
 ```jsx
-<TreeView showIndicator={false}>
+<TreeView>
   <TreeViewItem value="A">
-    <TreeViewLabel>A</TreeViewLabel>
+    <TreeViewLabel showIndicator={false}>A</TreeViewLabel>
     <TreeViewContent>
       <TreeViewItem value="a">
         <TreeViewLabel>Aa</TreeViewLabel>
@@ -151,10 +152,11 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 `TreeViewLabel` component is built on top of [Ark Tree View BranchControl](https://ark-ui.com/react/docs/components/tree-view#api-reference)
 
-| Property      | Description                              | Type                       | Default |
-| ------------- | ---------------------------------------- | -------------------------- | ------- |
-| indicatorIcon | Custom icon for the tree view label.     | `ReactNode` or `undefined` | -       |
-| showIndicator | To manage the hidden state of indicator. | `boolean` or `undefined`   | `true`  |
+| Property       | Description                              | Type                       | Default |
+| -------------- | ---------------------------------------- | -------------------------- | ------- |
+| openIndicator  | Custom indicator for the open state.     | `ReactNode` or `undefined` | -       |
+| closeIndicator | Custom indicator for the close state.    | `ReactNode` or `undefined` | -       |
+| showIndicator  | To manage the hidden state of indicator. | `boolean` or `undefined`   | `true`  |
 
 ### TreeViewContent
 

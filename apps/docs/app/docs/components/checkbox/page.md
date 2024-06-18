@@ -14,6 +14,8 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Checkbox
 ---
 
+# Checkbox
+
 Checkboxes give users binary choices when presented with multiple options in a series.
 
 This component is made on top of [Radix UIs Checkbox Component](https://www.radix-ui.com/primitives/docs/components/checkbox.) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
@@ -35,21 +37,21 @@ Checkbox component is used in forms when a user needs to select multiple values 
 {% example %}
 
 ```jsx
-<Checkbox name="checkbox" id="1">
+<Checkbox id="usage-checkbox">
   Checkbox
 </Checkbox>
 ```
 
 {% /example %}
 
-## Default Selected
+## Default Checked
 
-Pass `defaultSelected` prop to set default check the Checkbox.
+Pass `defaultChecked` prop to set default check state of the Checkbox.
 
 {% example %}
 
 ```jsx
-<Checkbox defaultChecked id="2">
+<Checkbox defaultChecked id="default-checked-checkbox">
   Checkbox
 </Checkbox>
 ```
@@ -64,13 +66,13 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 ```jsx
 <div className="w-full space-y-3">
-  <Checkbox size="sm" id="6">
+  <Checkbox size="sm" id="size-sm-checkbox">
     Checkbox
   </Checkbox>
-  <Checkbox size="md" id="7">
+  <Checkbox size="md" id="size-md-checkbox">
     Checkbox
   </Checkbox>
-  <Checkbox size="lg" id="8">
+  <Checkbox size="lg" id="size-lg-checkbox">
     Checkbox
   </Checkbox>
 </div>
@@ -80,14 +82,12 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 ## Disabled
 
-Pass `isDisabled` prop to disable Checkbox.
-
-This property can also be passed in child/ sub-component.
+`isDisabled` prop is used to manage disable state of Checkbox.
 
 {% example %}
 
 ```jsx
-<Checkbox isDisabled id="3">
+<Checkbox isDisabled id="disabled-checkbox">
   Checkbox
 </Checkbox>
 ```
@@ -96,10 +96,12 @@ This property can also be passed in child/ sub-component.
 
 ## Checked
 
+`checked` prop is used to manage check state of Checkbox.
+
 {% example %}
 
 ```jsx
-<Checkbox checked id="4">
+<Checkbox checked id="checked-checkbox">
   Checkbox
 </Checkbox>
 ```
@@ -108,12 +110,12 @@ This property can also be passed in child/ sub-component.
 
 ## Required
 
-This property can also be passed in child/ sub-component.
+`isRequired` prop is used to manage required state of Checkbox
 
 {% example %}
 
 ```jsx
-<Checkbox isRequired id="5">
+<Checkbox isRequired id="required-checkbox">
   Checkbox
 </Checkbox>
 ```
@@ -122,12 +124,12 @@ This property can also be passed in child/ sub-component.
 
 ## Invalid
 
-This property can also be passed in child/ sub-component.
+`isInvalid` prop is used to manage invalid state of Checkbox
 
 {% example %}
 
 ```jsx
-<Checkbox isInvalid id="6">
+<Checkbox isInvalid id="invalid-checkbox">
   Checkbox
 </Checkbox>
 ```

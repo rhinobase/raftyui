@@ -33,6 +33,21 @@ import { Slider, SliderRange, SliderThumb, SliderTrack } from "@rafty/ui";
 </Slider>;
 ```
 
+## Usage
+
+{% example %}
+
+```jsx
+<Slider >
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
+
 ## ColorScheme
 
 There are 5 `colorScheme` options available: `"primary"` (default), `"secondary"`, `"error"`, `"info"`, `"success"` & `"warning"`.

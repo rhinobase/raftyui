@@ -194,8 +194,7 @@ Pass `isUnstyled` prop in root element to remove style from Tab and all its sub-
       className="text-secondary-500 data-[disabled]:text-secondary-400 dark:text-secondary-400
         data-[disabled]:dark:text-secondary-600 data-[state=active]:dark:text-secondary-100
         p-4 transition-colors data-[disabled]:cursor-not-allowed
-        data-[state=active]:border-b-2 data-[state=active]:border-blue-500
-        data-[state=active]:text-black dark:data-[state=active]:border-blue-400"
+        data-[state=active]:text-black"
     >
       Tab1
     </TabTrigger>
@@ -204,8 +203,7 @@ Pass `isUnstyled` prop in root element to remove style from Tab and all its sub-
       className="text-secondary-500 data-[disabled]:text-secondary-400 dark:text-secondary-400
         data-[disabled]:dark:text-secondary-600 data-[state=active]:dark:text-secondary-100
         p-4 transition-colors data-[disabled]:cursor-not-allowed
-        data-[state=active]:border-b-2 data-[state=active]:border-blue-500
-        data-[state=active]:text-black dark:data-[state=active]:border-blue-400"
+        data-[state=active]:text-black"
     >
       Tab2
     </TabTrigger>

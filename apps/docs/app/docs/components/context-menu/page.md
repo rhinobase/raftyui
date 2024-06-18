@@ -62,7 +62,7 @@ import {
 
 ## Usage
 
-Unlike other similar components like Dialog, Menu, etc., it is not made of a button component. You can use any element as its trigger.
+Unlike other similar components like Dialog, Menu, etc., it's trigger is not made using button component. You can use any element as its trigger because it is supposed to cover a area where you need to add context menu and use can use `asChild` prop to pass on the trigger props to its child element.
 
 {% example %}
 
@@ -72,47 +72,50 @@ function ContextMenuExample() {
   const [showFullUrls, setShowFullUrls] = useState(true);
   const [selectedPerson, setSelectedPerson] = useState("Denial");
 
-  return (
-    <ContextMenu>
-      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
-        Right Click here
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuItem>Back</ContextMenuItem>
-        <ContextMenuSub>
-          <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
-          <ContextMenuSubContent>
-            <ContextMenuItem>Save Page As...</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Developer Tools</ContextMenuItem>
-          </ContextMenuSubContent>
-        </ContextMenuSub>
+return (
+
+<ContextMenu>
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
+    Right Click here
+    </div>
+  </ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Back</ContextMenuItem>
+    <ContextMenuSub>
+      <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+      <ContextMenuSubContent>
+        <ContextMenuItem>Save Page As...</ContextMenuItem>
         <ContextMenuSeparator />
-        <ContextMenuCheckboxItem
-          checked={isBookmarkChecked}
-          onCheckedChange={setBookmarkChecked}
-        >
-          Show Bookmarks
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={showFullUrls}
-          onCheckedChange={setShowFullUrls}
-        >
-          Show Full URLs
-        </ContextMenuCheckboxItem>
-        <ContextMenuSeparator />
-        <ContextMenuLabel>People</ContextMenuLabel>
-        <ContextMenuRadioGroup
-          value={selectedPerson}
-          onValueChange={setSelectedPerson}
-        >
-          <ContextMenuRadioItem value="Jack">Jack</ContextMenuRadioItem>
-          <ContextMenuRadioItem value="Denial">Denial</ContextMenuRadioItem>
-        </ContextMenuRadioGroup>
-      </ContextMenuContent>
-    </ContextMenu>
-  );
-}
+        <ContextMenuItem>Developer Tools</ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuCheckboxItem
+      checked={isBookmarkChecked}
+      onCheckedChange={setBookmarkChecked}
+    >
+      Show Bookmarks
+    </ContextMenuCheckboxItem>
+    <ContextMenuCheckboxItem
+      checked={showFullUrls}
+      onCheckedChange={setShowFullUrls}
+    >
+      Show Full URLs
+    </ContextMenuCheckboxItem>
+    <ContextMenuSeparator />
+    <ContextMenuLabel>People</ContextMenuLabel>
+    <ContextMenuRadioGroup
+      value={selectedPerson}
+      onValueChange={setSelectedPerson}
+    >
+      <ContextMenuRadioItem value="Jack">Jack</ContextMenuRadioItem>
+      <ContextMenuRadioItem value="Denial">Denial</ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+); }
+
 ```
 
 {% /example %}
@@ -125,8 +128,10 @@ There are 3 `size` options available: `"sm"`, `"md"` (default), & `"lg"`.
 
 ```jsx
 <ContextMenu size="sm">
-  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
     Right Click here
+    </div>
   </ContextMenuTrigger>
   <ContextMenuContent>
     <ContextMenuItem>Back</ContextMenuItem>
@@ -161,51 +166,53 @@ Pass `isUnstyled` prop in root element to remove style from Context Menu and all
 
 ```jsx
 <ContextMenu isUnstyled>
-  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
     Right Click here
+    </div>
   </ContextMenuTrigger>
-  <ContextMenuContent className="dark:bg-secondary-800 w-[200px] space-y-1.5  rounded-md bg-white p-1 text-sm focus:outline-none">
-    <ContextMenuItem className="py-1focus:outline-none hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer  rounded-md px-6 py-1 ">
+  <ContextMenuContent className="w-[200px] space-y-1.5 rounded-md  bg-white p-1 text-sm focus:outline-none dark:bg-secondary-800">
+    <ContextMenuItem className="py-1focus:outline-none cursor-pointer rounded-md px-6  py-1 hover:bg-secondary-200 dark:hover:bg-secondary-700 ">
       Back
     </ContextMenuItem>
     <ContextMenuSub>
-      <ContextMenuSubTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex w-full cursor-pointer items-center justify-between rounded-md px-6 py-1 hover:border-none focus:outline-none">
+      <ContextMenuSubTrigger className="flex w-full cursor-pointer items-center justify-between rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
         More Tools
       </ContextMenuSubTrigger>
-      <ContextMenuSubContent className="dark:bg-secondary-800 w-[180px]  cursor-pointer space-y-2 rounded-md bg-white p-1 text-sm focus:outline-none">
-        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+      <ContextMenuSubContent className="w-[180px] cursor-pointer  space-y-2 rounded-md bg-white p-1 text-sm focus:outline-none dark:bg-secondary-800">
+        <ContextMenuItem className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
           Save Page As...
         </ContextMenuItem>
-        <ContextMenuSeparator className="border-secondary-200 dark:border-secondary-700 border" />
-        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+        <ContextMenuSeparator className="border border-secondary-200 dark:border-secondary-700" />
+        <ContextMenuItem className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
           Developer Tools
         </ContextMenuItem>
       </ContextMenuSubContent>
     </ContextMenuSub>
-    <ContextMenuSeparator className="border-secondary-200 dark:border-secondary-700 border" />
+    <ContextMenuSeparator className="border border-secondary-200 dark:border-secondary-700" />
     <ContextMenuCheckboxItem
       checked
-      className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none focus:outline-none"
+      className="flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700"
     >
       Show Bookmarks
     </ContextMenuCheckboxItem>
-    <ContextMenuCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+    <ContextMenuCheckboxItem className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
       Show Full URLs
     </ContextMenuCheckboxItem>
-    <ContextMenuSeparator className="border-secondary-200  dark:border-secondary-700 border" />
-    <ContextMenuLabel className="dark:text-secondary-400 cursor-context-menu rounded-md px-6  text-xs hover:border-none focus:outline-none">
+    <ContextMenuSeparator className="border  border-secondary-200 dark:border-secondary-700" />
+    <ContextMenuLabel className="cursor-context-menu rounded-md px-6 text-xs  hover:border-none focus:outline-none dark:text-secondary-400">
       People
     </ContextMenuLabel>
     <ContextMenuRadioGroup value="2">
       <ContextMenuRadioItem
         value="1"
-        className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none "
+        className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700 "
       >
         Jack
       </ContextMenuRadioItem>
       <ContextMenuRadioItem
         value="2"
-        className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none focus:outline-none"
+        className="flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700"
       >
         Denial
       </ContextMenuRadioItem>
@@ -224,12 +231,14 @@ Pass `isUnstyled` prop in a particular sub-component to remove style from that s
 
 ```jsx
 <ContextMenu>
-  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
     Right Click here
+    </div>
   </ContextMenuTrigger>
   <ContextMenuContent
     isUnstyled
-    className="dark:bg-secondary-800 w-[200px] rounded-md bg-white p-1 text-sm "
+    className="w-[200px] rounded-md bg-white p-1 text-sm dark:bg-secondary-800 "
   >
     <ContextMenuItem>Back</ContextMenuItem>
     <ContextMenuSub>

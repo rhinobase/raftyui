@@ -136,7 +136,7 @@ Pass `isUnstyled` prop to remove all style.
 ```jsx
 <Button
   isUnstyled
-  className="hover:bg-secondary-200 dark:bg-secondary-500 dark:hover:bg-secondary-700 rounded-lg bg-white p-2 px-5 dark:text-white"
+  className="rounded-lg bg-white p-2 px-5 hover:bg-secondary-200 dark:bg-secondary-500 dark:text-white dark:hover:bg-secondary-700"
 >
   Button
 </Button>
@@ -146,7 +146,7 @@ Pass `isUnstyled` prop to remove all style.
 
 ## Active
 
-You can manage the active state of Button using `isActive` prop.
+`isActive` prop is used to manage active state of Button.
 
 {% example %}
 
@@ -158,7 +158,7 @@ You can manage the active state of Button using `isActive` prop.
 
 ## Loading
 
-- You can manage the loading state of the Button using this prop.
+- `isLoading` prop is used to manage loading state of Button.
 - You can also change the Button text when the Button is in loading state using `loadingText` prop.
 
 {% example %}
@@ -171,7 +171,7 @@ You can manage the active state of Button using `isActive` prop.
 
 ## Disabled
 
-You can manage disabled Button state using `isDisabled` prop.
+`isDisabled` prop is used to manage disable state of Button.
 
 {% example %}
 

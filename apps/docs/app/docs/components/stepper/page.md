@@ -62,14 +62,14 @@ import { Stepper } from "@rafty/ui";
 
 ```jsx
 function StepperUsage() {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
 
   const next = () => {
-    setCurrent((prev) => (prev < 2 ? prev + 1 : prev));
+    setCurrent((prev) => (prev < 3 ? prev + 1 : prev));
   };
 
   const prev = () => {
-    setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
+    setCurrent((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
   const STEPS: StepType[] = [
@@ -92,10 +92,10 @@ function StepperUsage() {
     <div className="flex-col w-full" >
       <Stepper value={current} steps={STEPS} />
       <div className="mt-4 flex w-full justify-between">
-        <Button size="sm" onClick={prev} isDisabled={current <= 0}>
+        <Button size="sm" onClick={prev} isDisabled={current <= 1}>
           Previous
         </Button>
-        <Button size="sm" onClick={next} isDisabled={current >= 2}>
+        <Button size="sm" onClick={next} isDisabled={current >= 3}>
           Next
         </Button>
       </div>
@@ -115,9 +115,7 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 {% example %}
 
 ```jsx
-<Stepper
-  size="sm"
-  steps={[
+<Stepper size="sm" steps={[
     {
       title: "Home",
       subTitle: "Aliquam",
@@ -131,8 +129,7 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
       title: "Article",
       description: "Donec et lectus a risus",
     },
-  ]}
-/>
+  ]} />
 ```
 
 {% /example %}
@@ -175,7 +172,7 @@ There are 2 `direction` options available: `"horizontal"` (default) & `"vertical
 ```jsx
 <Stepper
   direction="vertical"
-  className="h-[500px]"
+  className="h-[300px]"
   steps={[
     {
       title: "Home",
@@ -233,6 +230,7 @@ There are 2 `direction` options available: `"horizontal"` (default) & `"vertical
 
 ```jsx
 <Stepper
+value={2}
   steps={[
     {
       title: "Home",
@@ -252,7 +250,7 @@ There are 2 `direction` options available: `"horizontal"` (default) & `"vertical
     <hr
       className={classNames(
         "h-px w-full border-t-2",
-        active ? "border-blue-500" : "border-secondary-400 border-dotted",
+        active ? "border-primary-500 dark:border-primary-300" : "border-dotted border-secondary-300 dark:border-secondary-700",
       )}
     />
   )}
