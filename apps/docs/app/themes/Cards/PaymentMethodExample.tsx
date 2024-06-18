@@ -65,10 +65,10 @@ export function PaymentMethodExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="text-2xl font-semibold leading-snug">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
           Payment Method
         </Text>
-        <Text className="text-sm opacity-60">
+        <Text className="text-[0.875rem] leading-[1.5rem] opacity-60">
           Add a new payment method to your account.
         </Text>
       </div>
@@ -90,7 +90,9 @@ export function PaymentMethodExample() {
                 size={30}
                 className="text-secondary-600 dark:text-secondary-400"
               />
-              <Text className="text-sm">{item.heading}</Text>
+              <Text className="text-[0.875rem] leading-[1.5rem]">
+                {item.heading}
+              </Text>
             </div>
           ))}
         </div>
@@ -119,7 +121,7 @@ export function PaymentMethodExample() {
             <Label>CVC</Label>
             <InputField
               placeholder="CVC"
-              className="py-2 placeholder:text-sm"
+              className="py-2 leading-[1.5rem] placeholder:text-[0.875rem]"
             />
           </FieldControl>
         </div>

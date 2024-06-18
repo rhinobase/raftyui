@@ -100,8 +100,10 @@ export function TableExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="text-2xl font-semibold leading-snug">Payments</Text>
-        <Text className="text-sm leading-snug opacity-60">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
+          Payments
+        </Text>
+        <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-60">
           Manage your payments.
         </Text>
       </div>
@@ -243,7 +245,7 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
         </TableBody>
       </Table>
       <div className="flex items-center justify-between">
-        <Text className="dark:text-secondary-500 text-secondary-400 text-sm">
+        <Text className="dark:text-secondary-500 text-secondary-400 text-[0.875rem] leading-[1.5rem]">
           {checkLength} of {data.length} row(s) selected.
         </Text>
         <div className="flex gap-2">

@@ -14,7 +14,12 @@ export function Navigation({
   const pathname = usePathname();
 
   return (
-    <nav className={classNames("text-base lg:text-sm", className)}>
+    <nav
+      className={classNames(
+        "text-[1rem] leading-[1.5rem] leading-[2rem] lg:text-[0.875rem]",
+        className,
+      )}
+    >
       <ul className="space-y-9">
         {navigation.map((section) => (
           <li key={section.title}>

@@ -14,7 +14,9 @@ export function InfoButton({
           <InformationCircleIcon width={18} height={18} className="stroke-2" />
         </PopoverTrigger>
         <PopoverContent showArrow sideOffset={0}>
-          <Text className="text-sm leading-none">{children}</Text>
+          <Text className="text-[0.875rem] leading-[1.5rem] leading-none">
+            {children}
+          </Text>
         </PopoverContent>
       </Popover>
     </div>

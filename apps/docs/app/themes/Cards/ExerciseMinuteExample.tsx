@@ -36,10 +36,10 @@ export function ExerciseMinuteExample() {
   return (
     <div className="space-y-1">
       <div>
-        <Text className="text-xl font-semibold leading-snug">
+        <Text className="text-[1.25rem] font-semibold leading-[2rem] leading-snug">
           Exercise Minutes
         </Text>
-        <Text className="text-sm opacity-60">
+        <Text className="text-[0.875rem] leading-[1.5rem] opacity-60">
           Your exercise minutes are ahead of where you normally are.
         </Text>
       </div>

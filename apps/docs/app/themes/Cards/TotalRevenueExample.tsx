@@ -28,10 +28,16 @@ const data = [
 export function TotalRevenueExample() {
   return (
     <div className="space-y-1">
-      <Text className="text-sm font-medium">Total Revenue</Text>
+      <Text className="text-[0.875rem] font-medium leading-[1.5rem]">
+        Total Revenue
+      </Text>
       <div>
-        <Text className="text-2xl font-bold leading-snug">$15,231.89</Text>
-        <Text className="text-xs opacity-60">+20.1% from last month</Text>
+        <Text className="text-[1.5rem] font-bold leading-[2.5rem] leading-snug">
+          $15,231.89
+        </Text>
+        <Text className="text-[0.75rem] leading-[1rem] opacity-60">
+          +20.1% from last month
+        </Text>
         <ResponsiveContainer width="100%" height={100}>
           <LineChart data={data} margin={{ top: 30, left: 10, right: 7 }}>
             <Line

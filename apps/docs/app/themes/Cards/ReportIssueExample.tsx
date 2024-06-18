@@ -26,10 +26,10 @@ export function ReportIssueExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="text-2xl font-semibold leading-snug">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
           Report an issue
         </Text>
-        <Text className="text-sm opacity-60">
+        <Text className="text-[0.875rem] leading-[1.5rem] opacity-60">
           What area are you having problems with?
         </Text>
       </div>

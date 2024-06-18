@@ -44,7 +44,10 @@ export function Callout({
       <IconComponent className="size-8 flex-none" />
       <div className="ml-4 flex-auto">
         <p
-          className={classNames("font-display m-0 text-xl", STYLES[type].title)}
+          className={classNames(
+            "font-display m-0 text-[1.25rem] leading-[2rem]",
+            STYLES[type].title,
+          )}
         >
           {title}
         </p>

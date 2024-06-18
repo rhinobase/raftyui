@@ -75,14 +75,16 @@ function CardElement({ title, examples, icon }: ExampleType) {
     <div className="border-secondary-200 dark:border-secondary-800 flex w-full items-center gap-4 rounded-xl border px-4 py-5">
       <Image src={icon} alt={title} className="m-0 size-10" />
       <div className="space-y-1.5">
-        <h5 className="not-prose text-xl font-medium leading-none tracking-tight">
+        <h5 className="not-prose text-[1.25rem] font-medium leading-[2rem] leading-none tracking-tight">
           {title}
         </h5>
         <div className="flex flex-wrap items-center gap-1">
           {examples.map((example, index) => (
             <Fragment key={example.href}>
               {index !== 0 && (
-                <span className="text-sm font-medium opacity-40">/</span>
+                <span className="text-[0.875rem] font-medium leading-[1.5rem] opacity-40">
+                  /
+                </span>
               )}
               <LinkComponent {...example} />
             </Fragment>
@@ -102,7 +104,7 @@ function LinkComponent({ href, language }: LinkComponent) {
   return (
     <Link
       href={href}
-      className="not-prose text-xs font-medium leading-none text-blue-600/90 transition-all ease-in-out hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+      className="not-prose text-[0.75rem] font-medium leading-[1rem] leading-none text-blue-600/90 transition-all ease-in-out hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
       target="_blank"
     >
       View {language.toUpperCase()} example

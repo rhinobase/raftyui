@@ -12,10 +12,10 @@ export function CreateAnAccountExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="text-2xl font-semibold leading-snug">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
           Create an account
         </Text>
-        <Text className="text-sm leading-snug opacity-60">
+        <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-60">
           Enter your email below to create your account
         </Text>
       </div>
@@ -38,7 +38,7 @@ export function CreateAnAccountExample() {
         </div>
         <div className="relative flex w-full items-center justify-center">
           <div className="bg-secondary-300 dark:bg-secondary-700 absolute -z-[1] h-px w-full" />
-          <Text className="dark:text-secondary-500 text-secondary-400 dark:bg-secondary-950 bg-white px-2 text-center text-xs">
+          <Text className="dark:text-secondary-500 text-secondary-400 dark:bg-secondary-950 bg-white px-2 text-center text-[0.75rem] leading-[1rem]">
             OR CONTINUE WITH
           </Text>
         </div>
