@@ -27,6 +27,10 @@
     {
       "value": "icons",
       "name": "icons:               anything icons specific"
+    },
+    {
+      "value": "docs",
+      "name": "docs:               anything docs specific"
     }
   ],
   "scopesSearchValue": true,
