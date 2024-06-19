@@ -1,3 +1,4 @@
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   TreeView,
@@ -78,6 +79,47 @@ export const Hierarchy: Story = {
     <TreeView {...props}>
       <TreeViewItem value="A">
         <TreeViewLabel>A</TreeViewLabel>
+        <TreeViewContent>
+          <TreeViewItem value="a">
+            <TreeViewLabel>Aa</TreeViewLabel>
+          </TreeViewItem>
+        </TreeViewContent>
+      </TreeViewItem>
+      <TreeViewItem value="B">
+        <TreeViewLabel>B</TreeViewLabel>
+      </TreeViewItem>
+    </TreeView>
+  ),
+};
+
+export const ShowIndicator: Story = {
+  render: (props) => (
+    <TreeView {...props}>
+      <TreeViewItem value="A">
+        <TreeViewLabel showIndicator={false}>A</TreeViewLabel>
+        <TreeViewContent>
+          <TreeViewItem value="a">
+            <TreeViewLabel>Aa</TreeViewLabel>
+          </TreeViewItem>
+        </TreeViewContent>
+      </TreeViewItem>
+      <TreeViewItem value="B">
+        <TreeViewLabel>B</TreeViewLabel>
+      </TreeViewItem>
+    </TreeView>
+  ),
+};
+
+export const CustomIndicator: Story = {
+  render: (props) => (
+    <TreeView {...props}>
+      <TreeViewItem value="A">
+        <TreeViewLabel
+          openIndicator={<MinusIcon className="size-full" />}
+          closeIndicator={<PlusIcon className="size-full" />}
+        >
+          A
+        </TreeViewLabel>
         <TreeViewContent>
           <TreeViewItem value="a">
             <TreeViewLabel>Aa</TreeViewLabel>

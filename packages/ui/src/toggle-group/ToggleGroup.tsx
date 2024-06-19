@@ -10,7 +10,7 @@ import {
 } from "./context";
 
 export const toggleGroupClasses = cva(
-  "dark:divide-secondary-700 dark:border-secondary-700 border-secondary-300 divide-secondary-300 flex data-[orientation='vertical']:flex-col data-[orientation='horizontal']:flex-row data-[orientation='vertical']:divide-y data-[orientation='horizontal']:divide-x overflow-hidden border",
+  "dark:divide-secondary-700 dark:border-secondary-700 border-secondary-300 divide-secondary-300 w-max flex data-[orientation='vertical']:flex-col data-[orientation='horizontal']:flex-row data-[orientation='vertical']:divide-y data-[orientation='horizontal']:divide-x overflow-hidden border",
   {
     variants: {
       size: {
