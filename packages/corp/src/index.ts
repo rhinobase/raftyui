@@ -9,3 +9,4 @@ export * from "./pagination";
 export * from "./qr-code";
 export * from "./reorderable-list";
 export * from "./signature";
+export * from "./chat-box";
