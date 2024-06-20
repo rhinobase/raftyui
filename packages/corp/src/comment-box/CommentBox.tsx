@@ -75,7 +75,9 @@ function CommentItem(props: CommentItem) {
         </div>
       </div>
       <div className="space-y-1 pl-[46px]">
-        {isReplyVisible && <div className="mt-2 w-full">{props.children}</div>}
+        {isReplyVisible && (
+          <div className="mt-2 w-full space-y-2">{props.children}</div>
+        )}
         {props.children && (
           <Button
             isUnstyled
