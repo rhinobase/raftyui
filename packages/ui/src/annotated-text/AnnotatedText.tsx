@@ -30,12 +30,15 @@ export const AnnotatedText = forwardRef<HTMLDivElement, AnnotatedText>(
 
     const handleMouseUp = () => {
       const selection = window.getSelection();
-
       if (selection) {
         const selected = selection.toString();
-
         setSelectedText(selected);
       }
+    };
+
+    const handleTextClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+      const text = event.currentTarget.innerText;
+      setSelectedText(text);
     };
 
     useEffect(() => {
@@ -47,7 +50,7 @@ export const AnnotatedText = forwardRef<HTMLDivElement, AnnotatedText>(
           const before = newContent.slice(0, startIndex);
           const after = newContent.slice(startIndex + text.length);
 
-          newContent = `${before}<span style="background-color: ${color}; border: solid; padding: 1px 1px; cursor: pointer" onClick={}>${text}</span>${after}`;
+          newContent = `${before}<span style="background-color: ${color}; border: solid; padding: 1px 1px; cursor: pointer" onclick="handleTextClick(event)">${text}</span>${after}`;
         }
       }
 
@@ -56,9 +59,30 @@ export const AnnotatedText = forwardRef<HTMLDivElement, AnnotatedText>(
 
     const addHighlight = (color: string) => {
       if (selectedText) {
-        const value = [...highlights, { text: selectedText, color }];
-        setHighlights(value);
-        onChange?.(value);
+        const existingHighlightIndex = highlights.findIndex(
+          (highlight) => highlight.text === selectedText,
+        );
+        const updatedHighlights = [...highlights];
+
+        if (existingHighlightIndex !== -1) {
+          updatedHighlights[existingHighlightIndex].color = color;
+        } else {
+          updatedHighlights.push({ text: selectedText, color });
+        }
+
+        setHighlights(updatedHighlights);
+        onChange?.(updatedHighlights);
+        setSelectedText("");
+      }
+    };
+
+    const removeHighlight = () => {
+      if (selectedText) {
+        const newHighlights = highlights.filter(
+          (highlight) => highlight.text !== selectedText,
+        );
+        setHighlights(newHighlights);
+        onChange?.(newHighlights);
         setSelectedText("");
       }
     };
@@ -69,7 +93,7 @@ export const AnnotatedText = forwardRef<HTMLDivElement, AnnotatedText>(
         className={classNames("space-y-4", className)}
         ref={forwardedRef}
       >
-        <p
+        <div
           onMouseUp={handleMouseUp}
           // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
           dangerouslySetInnerHTML={{ __html: highlightedContent }}
@@ -89,6 +113,7 @@ export const AnnotatedText = forwardRef<HTMLDivElement, AnnotatedText>(
                 {color}
               </Button>
             ))}
+            <Button onClick={removeHighlight}>Remove</Button>
           </div>
         )}
       </div>
