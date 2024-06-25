@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.6.0](https://github.com/rhinobase/raftyui/compare/ui-1.6.0-rc.3...ui-1.6.0) (2024-06-25)
+
+
+### Features
+
+* **corp:** made qrcode using ark-ui/react and updated ark-ui/react to its latest version ([517a47b](https://github.com/rhinobase/raftyui/commit/517a47bc3b792fc9e0410e5c8cec6b5aeefffbbe))
+* setup rafty docs ([b13268a](https://github.com/rhinobase/raftyui/commit/b13268aee74879b5ea138e59332f773930ec585e))
+
+
+### Bug Fixes
+
+* resolved build errors ([8d63035](https://github.com/rhinobase/raftyui/commit/8d630351f6c1f6c5d1ae373d18684f07330012f6))
+* **ui:** added back the displayName prop to components where we are using it for styling and rendering purpose ([5c09ae9](https://github.com/rhinobase/raftyui/commit/5c09ae9c162b66181eba8238542d7a498c80ec23))
+
 ## [1.6.0-rc.3](https://github.com/rhinobase/raftyui/compare/ui-1.6.0-rc.2...ui-1.6.0-rc.3) (2024-06-14)
 
 
