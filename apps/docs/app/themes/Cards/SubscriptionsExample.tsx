@@ -34,10 +34,16 @@ const data = [
 export function SubscriptionsExample() {
   return (
     <div className="size-full space-y-2">
-      <Text className="text-sm font-medium">Subscriptions</Text>
+      <Text className="text-[0.875rem] font-medium leading-[1.5rem]">
+        Subscriptions
+      </Text>
       <div>
-        <Text className="text-2xl font-bold leading-snug">+2350</Text>
-        <Text className="text-xs opacity-60">+180.1% from last month</Text>
+        <Text className="text-[1.5rem] font-bold leading-[2.5rem] leading-snug">
+          +2350
+        </Text>
+        <Text className="text-[0.75rem] leading-[1rem] opacity-60">
+          +180.1% from last month
+        </Text>
       </div>
       <ResponsiveContainer width="100%" height="50%">
         <BarChart width={310} height={100} data={data} margin={{ top: 15 }}>

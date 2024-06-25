@@ -24,14 +24,14 @@ function PageLink({
 
   return (
     <dl {...props}>
-      <dt className="font-display text-secondary-900 text-sm font-medium dark:text-white">
+      <dt className="font-display text-secondary-900 text-[0.875rem] font-medium leading-[1.5rem] dark:text-white">
         {dir === "next" ? "Next" : "Previous"}
       </dt>
       <dd className="mt-1">
         <Link
           href={href}
           className={classNames(
-            "text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300 flex items-center gap-1.5 text-base font-semibold",
+            "text-secondary-500 hover:text-secondary-600 dark:text-secondary-400 dark:hover:text-secondary-300 flex items-center gap-1.5 text-[1rem] font-semibold leading-[2rem]",
             dir === "previous" && "flex-row-reverse",
           )}
         >
@@ -81,7 +81,9 @@ function EditOnGithub({ pathname }: { pathname: string }) {
       referrerPolicy="no-referrer"
     >
       <PencilIcon height={15} width={15} className="stroke-2" />
-      <p className="text-sm">Edit this page on GitHub</p>
+      <p className="text-[0.875rem] leading-[1.5rem]">
+        Edit this page on GitHub
+      </p>
     </Link>
   );
 }

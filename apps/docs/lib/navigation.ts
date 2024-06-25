@@ -13,10 +13,7 @@ export const navigation = [
     title: "Components",
     links: [
       { title: "Accordion", href: "/docs/components/accordion" },
-      {
-        title: "Alert",
-        href: "/docs/components/alert",
-      },
+      { title: "Alert", href: "/docs/components/alert" },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
         title: "Avatar",
@@ -27,9 +24,14 @@ export const navigation = [
         href: "/docs/components/badge",
       },
       {
+        title: "Breadcrumbs",
+        href: "/docs/components/breadcrumbs",
+      },
+      {
         title: "Button",
         href: "/docs/components/button",
       },
+      { title: "Calendar", href: "/docs/components/calendar" },
       {
         title: "Card",
         href: "/docs/components/card",
@@ -39,11 +41,18 @@ export const navigation = [
         href: "/docs/components/checkbox",
       },
       {
+        title: "Color Picker",
+        href: "/docs/components/color-picker",
+      },
+      { title: "Command", href: "/docs/components/command" },
+      {
         title: "Context Menu",
         href: "/docs/components/context-menu",
       },
-      { title: "Calendar", href: "/docs/components/calendar" },
-      { title: "Command", href: "/docs/components/command" },
+      {
+        title: "Currency Input",
+        href: "/docs/components/currency-input",
+      },
       {
         title: "Date Picker",
         href: "/docs/components/date-picker",
@@ -57,8 +66,28 @@ export const navigation = [
         href: "/docs/components/drawer",
       },
       {
+        title: "Editable Number",
+        href: "/docs/components/editable-number",
+      },
+      {
+        title: "Editable Text",
+        href: "/docs/components/editable-text",
+      },
+      {
+        title: "Editable Textarea",
+        href: "/docs/components/editable-textarea",
+      },
+      {
         title: "Field Control",
         href: "/docs/components/field-control",
+      },
+      {
+        title: "Field Wrapper",
+        href: "/docs/components/field-wrapper",
+      },
+      {
+        title: "File Upload",
+        href: "/docs/components/file-upload",
       },
       {
         title: "Hover Card",
@@ -73,12 +102,12 @@ export const navigation = [
         href: "/docs/components/kbd",
       },
       {
-        title: "List",
-        href: "/docs/components/list",
-      },
-      {
         title: "Label",
         href: "/docs/components/label",
+      },
+      {
+        title: "List",
+        href: "/docs/components/list",
       },
       {
         title: "Menu",
@@ -93,12 +122,16 @@ export const navigation = [
         href: "/docs/components/navigation-menu",
       },
       {
-        title: "Pagination",
-        href: "/docs/components/pagination",
-      },
-      {
         title: "Password Field",
         href: "/docs/components/password-field",
+      },
+      {
+        title: "Percentage Input",
+        href: "/docs/components/percentage-input",
+      },
+      {
+        title: "Pin Input",
+        href: "/docs/components/pin-input",
       },
       {
         title: "Popover",
@@ -117,12 +150,20 @@ export const navigation = [
         href: "/docs/components/range-picker",
       },
       {
+        title: "Rating",
+        href: "/docs/components/rating",
+      },
+      {
         title: "Scroll Area",
         href: "/docs/components/scroll-area",
       },
       {
         title: "Search Field",
         href: "/docs/components/search-field",
+      },
+      {
+        title: "Segmented control",
+        href: "/docs/components/segmented-control",
       },
       {
         title: "Select",
@@ -149,6 +190,10 @@ export const navigation = [
         href: "/docs/components/switch",
       },
       {
+        title: "Stepper",
+        href: "/docs/components/stepper",
+      },
+      {
         title: "Tab",
         href: "/docs/components/tab",
       },
@@ -157,12 +202,12 @@ export const navigation = [
         href: "/docs/components/table",
       },
       {
-        title: "Tag Field",
-        href: "/docs/components/tag-field",
-      },
-      {
         title: "Tag",
         href: "/docs/components/tag",
+      },
+      {
+        title: "Tag Field",
+        href: "/docs/components/tag-field",
       },
       {
         title: "Text",
@@ -171,6 +216,10 @@ export const navigation = [
       {
         title: "Textarea",
         href: "/docs/components/textarea",
+      },
+      {
+        title: "Timeline",
+        href: "/docs/components/timeline",
       },
       {
         title: "Toast",
@@ -184,11 +233,60 @@ export const navigation = [
         title: "Tooltip",
         href: "/docs/components/tooltip",
       },
+      {
+        title: "Tree View",
+        href: "/docs/components/tree-view",
+      },
     ],
   },
   {
-    title: "Corporate Fields",
-    links: [{ title: "@rafty/corp", href: "/docs/corp" }],
+    title: "Corp Fields",
+    links: [
+      {
+        title: "Cascader",
+        href: "/docs/corp/cascader",
+      },
+      {
+        title: "Combobox",
+        href: "/docs/corp/combobox",
+      },
+      {
+        title: "Data Table",
+        href: "/docs/corp/data-table",
+      },
+      {
+        title: "Json Explorer",
+        href: "/docs/corp/json-explorer",
+      },
+      {
+        title: "Key Value",
+        href: "/docs/corp/key-value",
+      },
+      {
+        title: "List Box",
+        href: "/docs/corp/list-box",
+      },
+      {
+        title: "Pagination",
+        href: "/docs/corp/pagination",
+      },
+      // {
+      //   title:"Phone Number Input",
+      //   href:"/docs/corp/phone-number-input"
+      // },
+      {
+        title: "QR Code",
+        href: "/docs/corp/qr-code",
+      },
+      {
+        title: "Reorderable List",
+        href: "/docs/corp/reorderable-list",
+      },
+      {
+        title: "Signature",
+        href: "/docs/corp/signature",
+      },
+    ],
   },
   {
     title: "Integrations",

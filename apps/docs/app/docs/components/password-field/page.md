@@ -14,7 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Password%20Field
 ---
 
-Just like Input Field, Password Field is used for password inputs but gives an extra functionality of show and hide password.
+Just like Input Field, Password Field is used for Password inputs but gives an extra functionality of show and hide Password.
 
 This component is made using Input Field and Input Group, making all native field props available for use.
 
@@ -40,12 +40,12 @@ import { PasswordField } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-2">
+<div className="w-full space-y-2">
   <PasswordField size="sm" />
   <PasswordField size="md" />
   <PasswordField size="lg" />
@@ -56,12 +56,12 @@ There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
 ## Variant
 
-There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`
+There are 3 `variant` options available: `"solid"`, `"outline"` (default) & `"ghost"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-2">
+<div className="w-full space-y-2">
   <PasswordField variant="outline" />
   <PasswordField variant="ghost" />
   <PasswordField variant="solid" />
@@ -70,14 +70,14 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### PasswordField
 
-`PasswordField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
+`PasswordField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field) and [InputGroup](https://rafty.rhinobase.io/docs/components/input-field#input-group).
 
-| Property | Description                           | Type                       | Default |
-| -------- | ------------------------------------- | -------------------------- | ------- |
-| size     | Size of the password field component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| Property | Description                           | Type                                      | Default |
+| -------- | ------------------------------------- | ----------------------------------------- | ------- |
+| size     | Size of the password field component. | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`  |

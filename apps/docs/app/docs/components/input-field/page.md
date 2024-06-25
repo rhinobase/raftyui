@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Input%20Field
 ---
 
-Input field is a component that is used to get user input in a text field.
+It is a component that is used to get user input in a text field.
 
-This is a custom component made upon native html label component and its props.
+This component is built using native `<input>` html tag and its props, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -40,12 +40,12 @@ import { InputField } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-4">
+<div className="w-full space-y-4">
   <InputField size="sm" />
   <InputField size="md" />
   <InputField size="lg" />
@@ -56,12 +56,12 @@ There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
 ## Variant
 
-There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`.
+There are 3 `variant` options available: `"solid"`, `"outline"` (default) & `"ghost"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-4">
+<div className="w-full space-y-4">
   <InputField variant="solid" />
   <InputField variant="ghost" />
   <InputField variant="outline" />
@@ -70,9 +70,9 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## IsRequired
+## Required
 
-`isRequired` prop is used to show required field. It adds red star (\*) after label.
+`isRequired` prop is used to manage required state of field.
 
 {% example %}
 
@@ -82,9 +82,9 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## IsDisabled
+## Disabled
 
-`isDisabled` prop is used to disable subcomponent or children field.
+`isDisabled` prop is used to manage disable state of field.
 
 {% example %}
 
@@ -94,9 +94,9 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## IsReadOnly
+## ReadOnly
 
-`isReadOnly` prop is used to change field state to read-only.
+`isReadOnly` prop is used to manage readonly state of field.
 
 {% example %}
 
@@ -106,9 +106,9 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## IsInvalid
+## Invalid
 
-`isInvalid` prop is used to show invalid field on certain condition.
+`isInvalid` prop is used to manage invalid state of field.
 
 {% example %}
 
@@ -118,9 +118,9 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## IsLoading
+## Loading
 
-`isLoading` prop is used to show a field in a loading state.
+`isLoading` prop is used to manage loading state of field.
 
 {% example %}
 
@@ -132,7 +132,7 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 ## Unstyled
 
-Pass ` isUnstyled` prop to remove style component
+Pass `isUnstyled` prop to remove style component.
 
 {% example %}
 
@@ -150,7 +150,7 @@ Pass ` isUnstyled` prop to remove style component
 {% example %}
 
 ```jsx
-<div className="space-y-3">
+<div className="w-full space-y-3">
   <InputGroup>
     <LeftAddon>
       <PhoneIcon width={16} height={16} className="stroke-2" />
@@ -180,21 +180,21 @@ Pass ` isUnstyled` prop to remove style component
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### InputField
 
 `InputField` composes the `input` component.
 
-| Property   | Description                        | Type                                  | Default     |
-| ---------- | ---------------------------------- | ------------------------------------- | ----------- |
-| size       | Size of the input field component. | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
-| variant    | Style variant of the component.    | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
-| isDisabled | To manage disabled state.          | `boolean`                             | `false`     |
-| isRequired | To manage required state.          | `boolean`                             | `false`     |
-| isLoading  | To manage loading state.           | `boolean`                             | `false`     |
-| isReadOnly | To manage read-only state.         | `boolean`                             | `false`     |
-| isUnstyled | Remove style from this component   | `boolean`                             | `false`     |
-| isInvalid  | To manage invalid state.           | `boolean`                             | `false`     |
+| Property   | Description                        | Type                                                   | Default     |
+| ---------- | ---------------------------------- | ------------------------------------------------------ | ----------- |
+| size       | Size of the input field component. | `"sm"` or `"md"` or `"lg"` or `undefined`              | `"md"`      |
+| variant    | Style variant of the component.    | `"solid"` or `"outline"` or `"ghost"` or `undefined`   | `"outline"` |
+| isDisabled | To manage the disable state.       | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isRequired | To manage the required state.      | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isLoading  | To manage the loading state.       | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isReadOnly | To manage the readonly state.      | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isInvalid  | To manage the invalid state.       | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isUnstyled | Remove style from this component   | `boolean`                                              | `false`     |

@@ -1,18 +1,18 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { type InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control";
 import { useInputGroupContext } from "../input-group";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export const inputFieldClasses = cva(
-  "w-full z-[1] border appearance-none outline-none dark:text-secondary-200 transition-all",
+  "w-full border appearance-none outline-none dark:text-secondary-100 transition-all placeholder:text-secondary-400 dark:placeholder:text-secondary-500",
   {
     variants: {
       size: {
         sm: "py-1 text-sm",
-        md: "py-1.5",
+        md: "py-1.5 text-base",
         lg: "py-2 text-lg",
       },
       variant: {
@@ -24,72 +24,84 @@ export const inputFieldClasses = cva(
         true: "",
         false: "",
       },
-      readonly: {
+      readOnly: {
         true: "",
         false: "",
       },
       invalid: {
-        true: "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
+        true: "border-red-500 dark:border-red-300 ring-red-300 dark:ring-red-100",
+        false: "",
       },
       isLeftAddon: {
         true: "",
+        false: "",
       },
       isRightAddon: {
         true: "",
+        false: "",
       },
       isPrefix: {
         true: "",
+        false: "",
       },
       isSuffix: {
         true: "",
+        false: "",
       },
     },
     compoundVariants: [
       {
         variant: "solid",
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className: "bg-secondary-50 dark:bg-secondary-900",
       },
       {
         disabled: true,
-        readonly: false,
         className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
       },
       {
         variant: ["solid", "outline"],
         disabled: false,
-        className: "hover:border-primary-500 dark:hover:border-primary-400",
+        invalid: false,
+        className: "hover:border-primary-500 dark:hover:border-primary-300",
       },
       {
         variant: ["solid", "outline"],
-        className: "border-secondary-300 dark:border-zinc-700",
+        invalid: false,
+        className: "border-secondary-300 dark:border-secondary-700",
       },
       {
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className:
-          "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+          "focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
+      },
+      {
+        disabled: false,
+        readOnly: false,
+        invalid: false,
+        className:
+          "focus:border-primary-500 dark:focus:border-primary-300 ring-primary-300 dark:ring-primary-100",
       },
       {
         variant: ["outline", "ghost"],
         disabled: false,
-        readonly: false,
         className: "bg-transparent",
       },
       {
         variant: "ghost",
-        className: "border-transparent",
+        className: "border-transparent dark:border-transparent",
       },
       {
         size: "sm",
         isLeftAddon: false,
-        className: "rounded-l",
+        className: "rounded-l-base",
       },
       {
         size: "sm",
         isRightAddon: false,
-        className: "rounded-r",
+        className: "rounded-r-base",
       },
       {
         size: "sm",
@@ -182,25 +194,30 @@ export const inputFieldClasses = cva(
       isPrefix: false,
       isRightAddon: false,
       isSuffix: false,
+      disabled: false,
+      readOnly: false,
     },
   },
 );
 
-// Input Field
 export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   isUnstyled?: boolean;
-  isDisabled?: BooleanOrFunction;
-  isInvalid?: BooleanOrFunction;
-  isLoading?: BooleanOrFunction;
-  isReadOnly?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const InputField = forwardRef<HTMLInputElement, InputField>(
-  (
+  function InputField(
     {
+      name,
+      disabled,
+      readOnly,
+      required,
       className,
       variant = "outline",
       size = "md",
@@ -213,27 +230,14 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
       isLoading: false,
       isReadOnly: false,
       isRequired: false,
+      isInvalid: false,
     };
-
-    const name = props.name || fieldControlContext.name;
-    const disabled =
-      getValue(isDisabled) ||
-      props.disabled ||
-      fieldControlContext.isDisabled ||
-      getValue(isLoading) ||
-      fieldControlContext.isLoading;
-
-    const invalid = getValue(isInvalid) || fieldControlContext.isInvalid;
-    const readonly =
-      getValue(isReadOnly) || props.readOnly || fieldControlContext.isReadOnly;
-    const required =
-      getValue(isRequired) || props.required || fieldControlContext.isRequired;
 
     const inputGroupContext = useInputGroupContext() ?? {
       isLeftAddon: false,
@@ -243,34 +247,43 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       size,
     };
 
-    return (
-      <input
-        {...props}
-        name={name}
-        disabled={disabled}
-        readOnly={readonly}
-        required={required}
-        className={
-          isUnstyled
-            ? className
-            : classNames(
-                inputFieldClasses({
-                  size: inputGroupContext.size,
-                  variant,
-                  disabled,
-                  readonly,
-                  invalid,
-                  isLeftAddon: inputGroupContext.isLeftAddon,
-                  isRightAddon: inputGroupContext.isRightAddon,
-                  isPrefix: inputGroupContext.isPrefix,
-                  isSuffix: inputGroupContext.isSuffix,
-                }),
-                className,
-              )
-        }
-        ref={forwardedRef}
-      />
-    );
+    const _name = name ?? fieldControlContext.name;
+    const _disabled =
+      (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+      (getValue(isLoading) ?? fieldControlContext.isLoading);
+    const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+    const _readOnly =
+      readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+    const _required =
+      required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
+
+    const _className = isUnstyled
+      ? className
+      : classNames(
+          inputFieldClasses({
+            size: inputGroupContext.size,
+            variant,
+            disabled: _disabled,
+            readOnly: _readOnly,
+            invalid: _invalid,
+            isLeftAddon: inputGroupContext.isLeftAddon,
+            isRightAddon: inputGroupContext.isRightAddon,
+            isPrefix: inputGroupContext.isPrefix,
+            isSuffix: inputGroupContext.isSuffix,
+          }),
+          className,
+        );
+
+    const inputProps = {
+      ...props,
+      name: _name,
+      disabled: _disabled,
+      readOnly: _readOnly,
+      required: _required,
+      className: _className,
+      ref: forwardedRef,
+    };
+
+    return <input {...inputProps} />;
   },
 );
-InputField.displayName = "InputField";

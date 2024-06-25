@@ -16,21 +16,19 @@ nextjs:
 
 Stat component is used to display statistics/numbers.
 
-This is a custom component made according to our styling conventions limiting the props available
+This is a custom component made according to our styling conventions limiting the props available.
 
 ## Anatomy
 
 Import all parts and piece them together.
 
 ```jsx
-import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
+import { Stat, StatHelpText, StatLabel, StatValue } from "@rafty/ui";
 
 <Stat>
   <StatLabel />
   <StatValue />
-  <StatHelpText>
-    <StatIcon />
-  </StatHelpText>
+  <StatHelpText />
 </Stat>;
 ```
 
@@ -42,9 +40,7 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 <Stat type="normal">
   <StatLabel>Daily Return</StatLabel>
   <StatValue>17,770.90</StatValue>
-  <StatHelpText>
-    <StatIcon /> 0.47%
-  </StatHelpText>
+  <StatHelpText>0.47%</StatHelpText>
 </Stat>
 ```
 
@@ -52,7 +48,7 @@ import { Stat, StatHelpText, StatIcon, StatLabel, StatValue } from "@rafty/ui";
 
 ## Type
 
-The type prop is used to define type of stat, it has 3 options: `increase`, `decrease` & `normal` (default).
+The type prop is used to define type of Stat, it has 3 options available: `"increase"`, `"decrease"` & `"normal"` (default).
 
 {% example %}
 
@@ -60,17 +56,15 @@ The type prop is used to define type of stat, it has 3 options: `increase`, `dec
 <Stat type="increase">
   <StatLabel>Daily Return</StatLabel>
   <StatValue>17,770.90</StatValue>
-  <StatHelpText>
-    <StatIcon /> 0.47%
-  </StatHelpText>
+  <StatHelpText>0.47%</StatHelpText>
 </Stat>
 ```
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Stat
 
@@ -91,12 +85,3 @@ The type prop is used to define type of stat, it has 3 options: `increase`, `dec
 ### StatHelpText
 
 `StatHelpText` composes the `<div>` component.
-
-### StatIcon
-
-`StatIcon` composes the `<svg>` component.
-
-| Property | Description        | Type     | Default |
-| -------- | ------------------ | -------- | ------- |
-| height   | Height of the icon | `number` | `14`    |
-| width    | Width of the icon  | `number` | `14`    |

@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Field%20Control
 ---
 
-Field Control is used in forms to provide context to children fields. Along with Field control it is recommended to use Label and Error Message components.
+FieldControl is used in forms to provide context to children fields. Along with FieldControl it is recommended to use Label and Error Message components.
 
-This is a custom-made component, you can pass name and different states like isRequired, isDisabled, isReadonly, isInvalid & isLoading in it and it will pass it all accordingly to its subcomponents
+This is a custom-made component, you can pass name and different states like isRequired, isDisabled, isReadonly, isInvalid & isLoading in it and it will pass it all accordingly to its sub-components.
 
 ## Anatomy
 
@@ -48,7 +48,7 @@ import { FieldControl, Label, InputField, ErrorMessage } from "@rafty/ui";
 
 ## Orientation
 
-There are 3 `orientation` options in field control: `row` (default), `col` & `row-reverse`
+There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-reverse"`.
 
 {% example %}
 
@@ -61,7 +61,7 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 {% /example %}
 
-## IsRequired
+## Required
 
 `isRequired` prop is used to show required field. It adds red star (\*) after Lable.
 
@@ -76,9 +76,9 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 {% /example %}
 
-## IsDisabled
+## Disabled
 
-`isDisabled` prop is used to disable subcomponent or children field.
+`isDisabled` prop is used to disable sub-component or children field.
 
 {% example %}
 
@@ -91,7 +91,7 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 {% /example %}
 
-## IsReadOnly
+## ReadOnly
 
 `isReadOnly` prop is used to change field state to read only.
 
@@ -106,7 +106,7 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 {% /example %}
 
-## IsInvalid
+## Invalid
 
 `isInvalid` prop is used to show invalid field on certain condition.
 
@@ -121,7 +121,7 @@ There are 3 `orientation` options in field control: `row` (default), `col` & `ro
 
 {% /example %}
 
-## IsLoading
+## Loading
 
 `isLoading` prop is used to show a field in a loading state.
 
@@ -152,23 +152,23 @@ ErrorMessage component will display an error message when there is an error duri
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### FieldControl
 
 `FieldControl` composes the `div` component.
 
-| Property    | Description                   | Type                                  | Default |
-| ----------- | ----------------------------- | ------------------------------------- | ------- |
-| isDisabled  | To manage disabled state.     | `boolean`                             | `false` |
-| isLoading   | To manage loading state.      | `boolean`                             | `false` |
-| isReadOnly  | To manage read-only state.    | `boolean`                             | `false` |
-| isInvalid   | To manage invalid state.      | `boolean`                             | `false` |
-| isRequired  | To manage required state.     | `boolean`                             | `false` |
-| orientation | Orientation of the component. | `"col" `or `"row"` or `"row-reverse"` | `col`   |
-| name        | Name of the field.            | `string`                              | -       |
+| Property    | Description                   | Type                                                   | Default |
+| ----------- | ----------------------------- | ------------------------------------------------------ | ------- |
+| isDisabled  | To manage the disabled state. | `boolean` or <Info>() => boolean</Info> or `undefined` | `false` |
+| isLoading   | To manage the loading state.  | `boolean` or <Info>() => boolean</Info> or `undefined` | `false` |
+| isReadOnly  | To manage the readonly state. | `boolean` or <Info>() => boolean</Info> or `undefined` | `false` |
+| isInvalid   | To manage the invalid state.  | `boolean` or <Info>() => boolean</Info> or `undefined` | `false` |
+| isRequired  | To manage the required state. | `boolean` or <Info>() => boolean</Info> or `undefined` | `false` |
+| orientation | Orientation of the component. | `"col" `or `"row"` or `"row-reverse"` or `undefined`   | `col`   |
+| name        | Name of the field.            | `string`                                               | -       |
 
 ### ErrorMessage
 

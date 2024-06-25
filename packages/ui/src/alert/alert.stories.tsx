@@ -30,33 +30,25 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
-  render: ({ status, size, variant, isUnstyled }) => (
-    <Alert
-      size={size}
-      status={status}
-      variant={variant}
-      isUnstyled={isUnstyled}
-    >
+  render: (props) => (
+    <Alert {...props}>
       <AlertIcon />
-      <AlertTitle id="title">Title</AlertTitle>
+      <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
     </Alert>
   ),
 };
 
 export const WithAction: Story = {
-  render: ({ status, size, variant, isUnstyled }) => (
-    <Alert
-      variant={variant}
-      size={size}
-      status={status}
-      isUnstyled={isUnstyled}
-    >
+  render: (props) => (
+    <Alert {...props}>
       <AlertIcon />
       <AlertTitle>Title</AlertTitle>
       <AlertDescription>Description</AlertDescription>
       <div className="flex-1" />
-      <Button>Action</Button>
+      <div className="dark:bg-secondary-900 rounded-md bg-white">
+        <Button>Button</Button>
+      </div>
     </Alert>
   ),
 };

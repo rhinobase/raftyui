@@ -1,6 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { eventHandler } from "@rafty/shared";
-import { Kbd, buttonClasses, classNames } from "@rafty/ui";
+import { Kbd, buttonClasses, classNames, eventHandler } from "@rafty/ui";
 import { useComboboxContext } from "../context";
 import { findLabel } from "../utils";
 
@@ -10,7 +9,7 @@ export function InternalTriggerRender() {
     options,
     isDisabled,
     isLoading,
-    isReadonly,
+    isReadOnly,
     selected,
     onSelectionChange,
     placeholder,
@@ -18,7 +17,7 @@ export function InternalTriggerRender() {
 
   const isMulti = type === "multi";
   const isSelected = selected.length > 0;
-  const disabled = isDisabled || isLoading || isReadonly;
+  const disabled = isDisabled || isLoading || isReadOnly;
 
   if (isSelected) {
     if (isMulti) {

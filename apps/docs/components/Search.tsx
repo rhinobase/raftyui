@@ -181,7 +181,7 @@ function SearchResult({
       <div
         id={`${id}-title`}
         aria-hidden="true"
-        className="text-secondary-700 group-aria-selected:text-primary-600 dark:text-secondary-300 dark:group-aria-selected:text-primary-400 text-sm"
+        className="text-secondary-700 group-aria-selected:text-primary-600 dark:text-secondary-300 dark:group-aria-selected:text-primary-400 text-[0.875rem] leading-[1.5rem]"
       >
         <HighlightQuery text={result.title} query={query} />
       </div>
@@ -189,7 +189,7 @@ function SearchResult({
         <div
           id={`${id}-hierarchy`}
           aria-hidden="true"
-          className="text-secondary-500 dark:text-secondary-400 mt-0.5 truncate whitespace-nowrap text-xs"
+          className="text-secondary-500 dark:text-secondary-400 mt-0.5 truncate whitespace-nowrap text-[0.75rem] leading-[1rem]"
         >
           {hierarchy.map((item, index, items) => (
             <Fragment key={item}>
@@ -222,7 +222,7 @@ function SearchResults({
 }) {
   if (collection.items.length === 0) {
     return (
-      <p className="text-secondary-700 dark:text-secondary-400 px-4 py-8 text-center text-sm">
+      <p className="text-secondary-700 dark:text-secondary-400 px-4 py-8 text-center text-[0.875rem] leading-[1.5rem]">
         No results for &ldquo;
         <span className="text-secondary-900 break-words dark:text-white">
           {query}
@@ -398,7 +398,7 @@ export function SearchButton({ setOpen }: Pick<SearchDialog, "setOpen">) {
         }
         rightIcon={
           modifierKey ? (
-            <Kbd className="text-xs">{modifierKey} K</Kbd>
+            <Kbd className="text-[0.75rem] leading-[1rem]">{modifierKey} K</Kbd>
           ) : undefined
         }
       >

@@ -21,8 +21,7 @@ import {
   Prefix,
   Table,
   TableBody,
-  TableContainer,
-  TableHead,
+  TableHeader,
   Td,
   Text,
   Th,
@@ -101,8 +100,10 @@ export function TableExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="text-2xl font-semibold leading-snug">Payments</Text>
-        <Text className="text-sm leading-snug opacity-60">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
+          Payments
+        </Text>
+        <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-60">
           Manage your payments.
         </Text>
       </div>
@@ -166,87 +167,85 @@ function TableComponent({ data, show }: { show: string[]; data: Header[] }) {
 
   return (
     <>
-      <TableContainer>
-        <Table className="table-fixed" size="sm">
-          <TableHead>
-            <Tr>
-              <Th style={{ width: 30 }}>
+      <Table className="table-fixed" size="sm">
+        <TableHeader>
+          <Tr>
+            <Th style={{ width: 30 }}>
+              <Checkbox
+                size="sm"
+                checked={checkLength === 6}
+                onCheckedChange={(check: boolean) =>
+                  setChecked([check, check, check, check, check, check])
+                }
+              />
+            </Th>
+            {show.map((value, index) => (
+              <Th
+                key={value}
+                className={classNames(
+                  index === 2 && "text-center",
+                  "w-max capitalize",
+                )}
+              >
+                {value}
+              </Th>
+            ))}
+            <Th style={{ width: 45 }}>
+              <span className="sr-only">action</span>
+            </Th>
+          </Tr>
+        </TableHeader>
+        <TableBody className="dark:bg-secondary-950">
+          {data.map((item, index) => (
+            <Tr key={item.id}>
+              <Td>
                 <Checkbox
                   size="sm"
-                  checked={checkLength === 6}
+                  checked={checked[index]}
                   onCheckedChange={(check: boolean) =>
-                    setChecked([check, check, check, check, check, check])
+                    setChecked((prev) => {
+                      const updatedChecked = [...prev];
+                      updatedChecked[index] = check;
+                      return updatedChecked;
+                    })
                   }
                 />
-              </Th>
+              </Td>
               {show.map((value, index) => (
-                <Th
-                  key={value}
+                <Td
+                  key={index + value}
                   className={classNames(
                     index === 2 && "text-center",
-                    "w-max capitalize",
+                    "truncate",
                   )}
                 >
-                  {value}
-                </Th>
+                  {item[value as keyof Header]}
+                </Td>
               ))}
-              <Th style={{ width: 45 }}>
-                <span className="sr-only">action</span>
-              </Th>
+              <Td>
+                <Menu size="sm">
+                  <MenuTrigger variant="ghost" size="icon">
+                    <EllipsisHorizontalIcon
+                      height={18}
+                      width={18}
+                      className="stroke-2"
+                    />
+                  </MenuTrigger>
+                  <MenuContent className="z-50 min-w-[9rem]">
+                    <MenuLabel className="leading-4">Actions</MenuLabel>
+                    <MenuItem>Copy payment ID</MenuItem>
+                    <MenuSeparator />
+                    <MenuItem>View customer</MenuItem>
+                    <MenuItem>View payment details</MenuItem>
+                  </MenuContent>
+                </Menu>
+              </Td>
             </Tr>
-          </TableHead>
-          <TableBody className="dark:bg-secondary-950">
-            {data.map((item, index) => (
-              <Tr key={item.id}>
-                <Td>
-                  <Checkbox
-                    size="sm"
-                    checked={checked[index]}
-                    onCheckedChange={(check: boolean) =>
-                      setChecked((prev) => {
-                        const updatedChecked = [...prev];
-                        updatedChecked[index] = check;
-                        return updatedChecked;
-                      })
-                    }
-                  />
-                </Td>
-                {show.map((value, index) => (
-                  <Td
-                    key={index + value}
-                    className={classNames(
-                      index === 2 && "text-center",
-                      "truncate",
-                    )}
-                  >
-                    {item[value as keyof Header]}
-                  </Td>
-                ))}
-                <Td>
-                  <Menu size="sm">
-                    <MenuTrigger variant="ghost" size="icon">
-                      <EllipsisHorizontalIcon
-                        height={18}
-                        width={18}
-                        className="stroke-2"
-                      />
-                    </MenuTrigger>
-                    <MenuContent className="z-50 min-w-[9rem]">
-                      <MenuLabel className="leading-4">Actions</MenuLabel>
-                      <MenuItem>Copy payment ID</MenuItem>
-                      <MenuSeparator />
-                      <MenuItem>View customer</MenuItem>
-                      <MenuItem>View payment details</MenuItem>
-                    </MenuContent>
-                  </Menu>
-                </Td>
-              </Tr>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          ))}
+        </TableBody>
+      </Table>
       <div className="flex items-center justify-between">
-        <Text className="dark:text-secondary-500 text-secondary-400 text-sm">
+        <Text className="dark:text-secondary-500 text-secondary-400 text-[0.875rem] leading-[1.5rem]">
           {checkLength} of {data.length} row(s) selected.
         </Text>
         <div className="flex gap-2">

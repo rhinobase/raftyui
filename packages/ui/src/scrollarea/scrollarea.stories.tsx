@@ -12,30 +12,40 @@ import {
 
 const meta: Meta<typeof ScrollArea> = {
   title: "Components / ScrollArea",
+  args: {
+    layout: "vertical",
+    itemSize: 37,
+  },
+  argTypes: {
+    layout: {
+      control: "select",
+      options: ["vertical", "horizontal"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
 export const Default: Story = {
-  render: () => {
+  render: (props) => {
     const length = 1000;
-    const tags = Array.from({ length }).map((_, i) => i);
+    const tags = Array.from({ length }).map((_, i) => i + 1);
 
     return (
       <ScrollArea
+        {...props}
         itemCount={length}
-        itemSize={50}
-        className="dark:border-secondary-700 h-60 w-[200px] rounded-md border"
+        className="dark:border-secondary-700 border-secondary-300 h-60 w-full rounded-md border"
       >
-        <ScrollAreaList>
-          {({ index, style }) => (
+        <ScrollAreaList className="dark:[&>div]:divide-secondary-700 [&>div]:divide-secondary-200 [&>div]:divide-y">
+          {({ index, style, isScrolling }) => (
             <div
               key={index}
-              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-center border-b text-sm"
+              className="dark:text-secondary-100 flex items-center justify-between px-4 text-sm"
               style={style}
             >
-              {tags[index]}
+              {isScrolling ? "Loading.." : tags[index]}
             </div>
           )}
         </ScrollAreaList>
@@ -49,13 +59,13 @@ export const InfinityScroll: Story = {
     const CLIENT = new QueryClient();
     return (
       <QueryClientProvider client={CLIENT}>
-        <DyanmicScroll />
+        <DynamicDataScroll />
       </QueryClientProvider>
     );
   },
 };
 
-function DyanmicScroll() {
+function DynamicDataScroll() {
   const itemCount = 110;
   const { data, fetchNextPage } = useInfiniteQuery({
     queryKey: ["launches"],
@@ -77,7 +87,7 @@ function DyanmicScroll() {
   return (
     <ScrollArea
       itemCount={itemCount}
-      itemSize={50}
+      itemSize={37}
       className="dark:border-secondary-700 h-60 w-[400px] rounded-md border"
     >
       <ScrollAreaInfinityList
@@ -85,17 +95,20 @@ function DyanmicScroll() {
         loadMoreItems={async () => {
           await fetchNextPage();
         }}
+        className="dark:[&>div]:divide-secondary-700 [&>div]:divide-secondary-200 [&>div]:divide-y"
       >
-        {({ index, style }) => {
+        {({ index, style, isScrolling }) => {
           const launch = items?.[index];
 
           return (
             <div
               key={index}
-              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center border-b px-4 text-sm"
+              className="dark:text-secondary-100 flex items-center px-4 text-sm"
               style={style}
             >
-              {launch?.flight_number}. {launch?.mission_name}
+              {isScrolling || !launch
+                ? "Loading..."
+                : `${launch?.flight_number}. ${launch?.mission_name}`}
             </div>
           );
         }}

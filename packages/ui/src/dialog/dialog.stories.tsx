@@ -24,7 +24,7 @@ const meta: Meta<typeof Dialog> = {
   argTypes: {
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "xl"],
     },
   },
 };
@@ -34,17 +34,22 @@ export default meta;
 type Story = StoryObj<typeof Dialog>;
 
 export const Default: Story = {
-  render: ({ size }) => (
-    <Dialog size={size}>
+  render: (props) => (
+    <Dialog {...props}>
       <DialogTrigger>open</DialogTrigger>
       <DialogOverlay />
       <DialogContent>
         <DialogTitle>Dialog Title</DialogTitle>
         <DialogDescription>
-          Make changes to your profile here. Click save when you&apos;re done.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ex
+          pariatur veritatis, officia quos commodi facilis, labore sed omnis,
+          voluptate ipsa inventore vel sunt maxime eveniet ipsam nulla iure
+          accusamus?
         </DialogDescription>
         <DialogFooter>
-          <Button>Save Change</Button>
+          <DialogClose asChild>
+            <Button>Close</Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

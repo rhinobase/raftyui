@@ -28,7 +28,7 @@ export default meta;
 type Story = StoryObj<typeof PasswordField>;
 
 export const Default: Story = {
-  render: ({ size, variant, disabled, readOnly, required }) => (
+  render: ({ disabled, readOnly, required, ...props }) => (
     <FieldControl
       name="password"
       isReadOnly={readOnly}
@@ -36,12 +36,7 @@ export const Default: Story = {
       isRequired={required}
     >
       <Label>Enter Password</Label>
-      <PasswordField
-        aria-label="password"
-        variant={variant}
-        size={size}
-        name="password"
-      />
+      <PasswordField {...props} aria-label="password" name="password" />
     </FieldControl>
   ),
 };

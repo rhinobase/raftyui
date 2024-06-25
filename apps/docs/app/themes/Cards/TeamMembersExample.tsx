@@ -33,8 +33,10 @@ export function TeamMembersExample() {
   return (
     <div className="space-y-4">
       <div>
-        <Text className="text-xl font-semibold leading-snug">Team Members</Text>
-        <Text className="text-sm opacity-60">
+        <Text className="text-[1.25rem] font-semibold leading-[2rem] leading-snug">
+          Team Members
+        </Text>
+        <Text className="text-[0.875rem] leading-[1.5rem] opacity-60">
           Invite your team members to collaborate.
         </Text>
       </div>
@@ -47,7 +49,9 @@ export function TeamMembersExample() {
           />
           <div>
             <Text className="font-semibold leading-snug">{name}</Text>
-            <Text className="text-sm leading-snug opacity-80">{email}</Text>
+            <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-80">
+              {email}
+            </Text>
           </div>
           <div className="flex-1" />
           <MemberRoleMenu label={name} />

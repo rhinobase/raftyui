@@ -20,7 +20,7 @@ This component is made on top of [Radix UIs Slider Component](https://www.radix-
 
 ## Anatomy
 
-Import the component.
+Import all parts and piece them together.
 
 ```jsx
 import { Slider, SliderRange, SliderThumb, SliderTrack } from "@rafty/ui";
@@ -33,9 +33,24 @@ import { Slider, SliderRange, SliderThumb, SliderTrack } from "@rafty/ui";
 </Slider>;
 ```
 
+## Usage
+
+{% example %}
+
+```jsx
+<Slider >
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
+
 ## ColorScheme
 
-There are 5 `colorScheme` options in badge: `primary` (default), `secondary`, `error`, `info`, `success` & `warning`.
+There are 5 `colorScheme` options available: `"primary"` (default), `"secondary"`, `"error"`, `"info"`, `"success"` & `"warning"`.
 
 {% example %}
 
@@ -52,7 +67,7 @@ There are 5 `colorScheme` options in badge: `primary` (default), `secondary`, `e
 
 ## Size
 
-There are 3 `size` options available: `sm`, `md` (default) & `lg`
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -85,20 +100,54 @@ Slider accepts value in array and returns value in array in `onValueChange` func
 
 {% /example %}
 
-## Props
+## Disabled
+
+`isDisabled` prop is used to manage disable state of field.
+
+{% example %}
+
+```jsx
+<Slider isDisabled defaultValue={[20]}>
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
+
+## ReadOnly
+
+`isReadOnly` prop is used to manage readonly state of field.
+
+{% example %}
+
+```jsx
+<Slider isReadOnly defaultValue={[20]}>
+  <SliderTrack>
+    <SliderRange />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+```
+
+{% /example %}
 
 ---
+
+## Props
 
 ### Slider
 
 This component is built on top of [Radix Slider](https://www.radix-ui.com/primitives/docs/components/slider#root).
 
-| Property    | Description                           | Type                                                                                | Default     |
-| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------- | ----------- |
-| size        | Size of the Slider component.         | `"sm"` or `"md"` or `"lg"`                                                          | `"md"`      |
-| colorScheme | Color Scheme of the Slider component. | `"primary"` or `"secondary"` or `"error"` or `"success"` or `"warning"` or `"info"` | `"primary"` |
-| isDisabled  | To manage disabled state.             | `boolean`                                                                           | `false`     |
-| isReadOnly  | To manage readonly state.             | `boolean`                                                                           | `false`     |
+| Property    | Description                           | Type                                                                                               | Default     |
+| ----------- | ------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| size        | Size of the slider component.         | `"sm"` or `"md"` or `"lg"` or `undefined`                                                          | `"md"`      |
+| colorScheme | Color scheme of the slider component. | `"primary"` or `"secondary"` or `"error"` or `"success"` or `"warning"` or `"info"` or `undefined` | `"primary"` |
+| isDisabled  | To manage the disable state.          | `boolean` or <Info>() => boolean</Info> or `undefined`                                             | -           |
+| isReadOnly  | To manage the readonly state.         | `boolean` or <Info>() => boolean</Info> or `undefined`                                             | -           |
 
 ### SliderTrack
 

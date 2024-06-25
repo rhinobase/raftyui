@@ -3,7 +3,7 @@ title: Search Field
 nextjs:
   metadata:
     title: Search Field
-    description: Just like Input Field, Search Field is used for Search inputs but gives an extra functionality of show and hide Search.
+    description: Just like Input Field used to text input, SearchField is used for Search inputs with a little different styling and props.
     twitter:
       title: Search Field
       images:
@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Search%20Field
 ---
 
-Just like Input Field, Search Field is used for Search inputs but gives an extra functionality of show and hide Search.
+Just like Input Field used to text input, SearchField is used for Search inputs with a little different styling and props.
 
-This component is made using Input Field and Input Group, making all native field props available for use.
+This component is made using InputField and InputGroup, making all native field props available for use.
 
 ## Anatomy
 
@@ -40,12 +40,12 @@ import { SearchField } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-2">
+<div className="w-full space-y-2">
   <SearchField size="sm" />
   <SearchField size="md" />
   <SearchField size="lg" />
@@ -56,12 +56,12 @@ There are 3 `size` options in input field: `sm`, `md` (default) & `lg`.
 
 ## Variant
 
-There are 3 `variant` options in input field: `solid`, `outline` (default) & `ghost`
+There are 3 `variant` options available: `"solid"`, `"outline"` (default) & `"ghost"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-2">
+<div className="w-full space-y-2">
   <SearchField variant="outline" />
   <SearchField variant="ghost" />
   <SearchField variant="solid" />
@@ -70,16 +70,16 @@ There are 3 `variant` options in input field: `solid`, `outline` (default) & `gh
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### SearchField
 
 `SearchField` is made using [InputField](https://rafty.rhinobase.io/docs/components/input-field).
 
-| Property | Description                                  | Type                                         | Default |
-| -------- | -------------------------------------------- | -------------------------------------------- | ------- |
-| size     | Size of the search field component.          | `"sm"` or `"md"` or `"lg"`                   | `"md"`  |
-| search   | Value of the search field.                   | `string` or `number`                         | -       |
-| onSearch | Callback function invoked on search changes. | {% info %}(value: string) => void{% /info %} | -       |
+| Property      | Description                                | Type                                 | Default |
+| ------------- | ------------------------------------------ | ------------------------------------ | ------- |
+| defaultValue  | Default input value.                       | `string` or `undefined`              | -       |
+| value         | To manage the selected value.              | `string` or `undefined`              | -       |
+| onValueChange | The callback invoke when value is changed. | <Info>(value: string) => void</Info> | -       |

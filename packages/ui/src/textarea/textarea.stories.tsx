@@ -6,12 +6,17 @@ import { Textarea } from "./Textarea";
 const meta: Meta<typeof Textarea> = {
   title: "Form / Textarea",
   args: {
+    size: "md",
     variant: "outline",
     disabled: false,
     required: false,
     readOnly: false,
   },
   argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
     variant: {
       control: "select",
       options: ["solid", "outline", "ghost"],
@@ -23,7 +28,11 @@ export default meta;
 type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
-  render: ({ variant, disabled, required, readOnly }) => (
+  render: (props) => <Textarea {...props} placeholder="Placeholder" />,
+};
+
+export const WithFieldControl: Story = {
+  render: ({ disabled, readOnly, required, ...props }) => (
     <FieldControl
       name="textarea"
       isDisabled={disabled}
@@ -31,7 +40,7 @@ export const Default: Story = {
       isRequired={required}
     >
       <Label>Label</Label>
-      <Textarea placeholder="Placeholder" variant={variant} />
+      <Textarea {...props} placeholder="Placeholder" />
     </FieldControl>
   ),
 };

@@ -16,22 +16,20 @@ nextjs:
 
 Table component is used to organize and display data efficiently. It renders a `<table>` element by default.
 
-Table and its subcomponents are made upon native table components
+Table and its sub-components are made upon native table components. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
 Import all parts and piece them together.
 
 ```jsx
-import {TableContainer,Table,TableHead,TableBody,TableFooter,Tr,Th,Td} from "@rafty/ui";
-
-  <TableContainer>
+import {Table,TableHeader,TableBody,TableFooter,Tr,Th,Td} from "@rafty/ui";
   <Table>
-    <TableHead>
+    <TableHeader>
       <Tr>
         <Th/>
       </Tr>
-    </TableHead>
+    </TableHeader>
     <TableBody>
       <Tr>
         <Td/>
@@ -39,7 +37,6 @@ import {TableContainer,Table,TableHead,TableBody,TableFooter,Tr,Th,Td} from "@ra
     <TableBody>
     <TableFooter/>
   </Table>
-  </TableContainer>
 ```
 
 ## Usage
@@ -48,13 +45,13 @@ import {TableContainer,Table,TableHead,TableBody,TableFooter,Tr,Th,Td} from "@ra
 
 ```jsx
 <Table>
-  <TableHead>
+  <TableHeader>
     <Tr>
       <Th>To Convert</Th>
       <Th>Into</Th>
       <Th>Multiply By</Th>
     </Tr>
-  </TableHead>
+  </TableHeader>
   <TableBody>
     <Tr>
       <Td>inches</Td>
@@ -84,331 +81,269 @@ import {TableContainer,Table,TableHead,TableBody,TableFooter,Tr,Th,Td} from "@ra
 
 {% /example %}
 
-## TableContainer
-
-It is a custom additional component used to enclose Table in a container.
-
-{% example %}
-
-```jsx
-<TableContainer>
-  <Table>
-    <TableHead>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableHead>
-    <TableBody>
-      <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-        <Td>25.4</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-        <Td>30.48</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-        <Td>0.91444</Td>
-      </Tr>
-    </TableBody>
-    <TableFooter>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableFooter>
-  </Table>
-</TableContainer>
-```
-
-{% /example %}
-
 ## Size
 
-There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
 ```jsx
-<TableContainer>
-  <Table size="sm">
-    <TableHead>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableHead>
-    <TableBody>
-      <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-        <Td>25.4</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-        <Td>30.48</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-        <Td>0.91444</Td>
-      </Tr>
-    </TableBody>
-    <TableFooter>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableFooter>
-  </Table>
-</TableContainer>
+<Table size="sm">
+  <TableHeader>
+    <Tr>
+      <Th>To Convert</Th>
+      <Th>Into</Th>
+      <Th>Multiply By</Th>
+    </Tr>
+  </TableHeader>
+  <TableBody>
+    <Tr>
+      <Td>inches</Td>
+      <Td>millimetres (mm)</Td>
+      <Td>25.4</Td>
+    </Tr>
+    <Tr>
+      <Td>feet</Td>
+      <Td>centimetres (cm)</Td>
+      <Td>30.48</Td>
+    </Tr>
+    <Tr>
+      <Td>yards</Td>
+      <Td>metres (m)</Td>
+      <Td>0.91444</Td>
+    </Tr>
+  </TableBody>
+  <TableFooter>
+    <Tr>
+      <Th>To Convert</Th>
+      <Th>Into</Th>
+      <Th>Multiply By</Th>
+    </Tr>
+  </TableFooter>
+</Table>
 ```
 
 {% /example %}
 
 ## Variant
 
-There are 2 `variants` in the table: `simple` (default) & `striped`.
+There are 2 `variant` options available: `"simple"` (default) & `"striped"`.
 
 {% example %}
 
 ```jsx
-<TableContainer>
-  <Table variant="striped">
-    <TableHead>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableHead>
-    <TableBody>
-      <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-        <Td>25.4</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-        <Td>30.48</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-        <Td>0.91444</Td>
-      </Tr>
-    </TableBody>
-    <TableFooter>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableFooter>
-  </Table>
-</TableContainer>
+<Table variant="striped">
+  <TableHeader>
+    <Tr>
+      <Th>To Convert</Th>
+      <Th>Into</Th>
+      <Th>Multiply By</Th>
+    </Tr>
+  </TableHeader>
+  <TableBody>
+    <Tr>
+      <Td>inches</Td>
+      <Td>millimetres (mm)</Td>
+      <Td>25.4</Td>
+    </Tr>
+    <Tr>
+      <Td>feet</Td>
+      <Td>centimetres (cm)</Td>
+      <Td>30.48</Td>
+    </Tr>
+    <Tr>
+      <Td>yards</Td>
+      <Td>metres (m)</Td>
+      <Td>0.91444</Td>
+    </Tr>
+  </TableBody>
+  <TableFooter>
+    <Tr>
+      <Th>To Convert</Th>
+      <Th>Into</Th>
+      <Th>Multiply By</Th>
+    </Tr>
+  </TableFooter>
+</Table>
 ```
 
 {% /example %}
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in table.
+Pass `isUnstyled` prop in root element to remove style from Table and all its sub-components.
 
 {% example %}
 
 ```jsx
-<TableContainer>
-  <Table
-    isUnstyled
-    className="divide-secondary-300 dark:divide-secondary-700 min-w-full divide-y"
-  >
-    <TableHead>
-      <Tr>
-        <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
-          To Convert
-        </Th>
-        <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
-          Into
-        </Th>
-        <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
-          Multiply By
-        </Th>
-      </Tr>
-    </TableHead>
-    <TableBody>
-      <Tr>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          inches
-        </Td>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          millimetres (mm)
-        </Td>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          25.4
-        </Td>
-      </Tr>
-      <Tr>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          feet
-        </Td>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          centimetres (cm)
-        </Td>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          30.48
-        </Td>
-      </Tr>
-      <Tr>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          yards
-        </Td>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          metres (m)
-        </Td>
-        <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
-          0.91444
-        </Td>
-      </Tr>
-    </TableBody>
-    <TableFooter>
-      <Tr>
-        <Th className="py-3text-secondary-600 dark:text-secondary-300 px-4 text-left text-sm font-semibold">
-          To Convert
-        </Th>
-        <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
-          Into
-        </Th>
-        <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
-          Multiply By
-        </Th>
-      </Tr>
-    </TableFooter>
-  </Table>
-</TableContainer>
+<Table
+  isUnstyled
+  className="divide-secondary-300 dark:divide-secondary-700 w-full min-w-full divide-y"
+>
+  <TableHeader>
+    <Tr>
+      <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
+        To Convert
+      </Th>
+      <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
+        Into
+      </Th>
+      <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
+        Multiply By
+      </Th>
+    </Tr>
+  </TableHeader>
+  <TableBody>
+    <Tr>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        inches
+      </Td>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        millimetres (mm)
+      </Td>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        25.4
+      </Td>
+    </Tr>
+    <Tr>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        feet
+      </Td>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        centimetres (cm)
+      </Td>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        30.48
+      </Td>
+    </Tr>
+    <Tr>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        yards
+      </Td>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        metres (m)
+      </Td>
+      <Td className="text-secondary-600 dark:text-secondary-300 whitespace-nowrap px-4 py-3 text-sm">
+        0.91444
+      </Td>
+    </Tr>
+  </TableBody>
+  <TableFooter>
+    <Tr>
+      <Th className="py-3text-secondary-600 dark:text-secondary-300 px-4 text-left text-sm font-semibold">
+        To Convert
+      </Th>
+      <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
+        Into
+      </Th>
+      <Th className="text-secondary-600 dark:text-secondary-300 px-4 py-3 text-left text-sm font-semibold">
+        Multiply By
+      </Th>
+    </Tr>
+  </TableFooter>
+</Table>
 ```
 
 {% /example %}
 
-## Unstyled subcomponent
+## Unstyled Sub-Component
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
 ```jsx
-<TableContainer>
-  <Table variant="striped">
-    <TableHead isUnstyled>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableHead>
-    <TableBody>
-      <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-        <Td>25.4</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-        <Td>30.48</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-        <Td>0.91444</Td>
-      </Tr>
-    </TableBody>
-    <TableFooter>
-      <Tr>
-        <Th>To Convert</Th>
-        <Th>Into</Th>
-        <Th>Multiply By</Th>
-      </Tr>
-    </TableFooter>
-  </Table>
-</TableContainer>
+<Table>
+  <TableHeader isUnstyled>
+    <Tr>
+      <Th>To Convert</Th>
+      <Th>Into</Th>
+      <Th>Multiply By</Th>
+    </Tr>
+  </TableHeader>
+  <TableBody>
+    <Tr>
+      <Td>inches</Td>
+      <Td>millimetres (mm)</Td>
+      <Td>25.4</Td>
+    </Tr>
+    <Tr>
+      <Td>feet</Td>
+      <Td>centimetres (cm)</Td>
+      <Td>30.48</Td>
+    </Tr>
+    <Tr>
+      <Td>yards</Td>
+      <Td>metres (m)</Td>
+      <Td>0.91444</Td>
+    </Tr>
+  </TableBody>
+  <TableFooter>
+    <Tr>
+      <Th>To Convert</Th>
+      <Th>Into</Th>
+      <Th>Multiply By</Th>
+    </Tr>
+  </TableFooter>
+</Table>
 ```
 
 {% /example %}
-
-## Props
 
 ---
 
-### TableContainer
-
-`TableContainer` composes the `<div>` component.
+## Props
 
 ### Table
 
 `Table` composes the `<table>` component.
 
-| Property   | Description                                            | Type                       | Default    |
-| ---------- | ------------------------------------------------------ | -------------------------- | ---------- |
-| size       | Size of the table component and its subcomponents.     | `"sm"` or `"md"` or `"lg"` | `"md"`     |
-| variant    | Style variant of the component.                        | `"simple"` or `"striped"`  | `"simple"` |
-| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false`    |
+| Property   | Description                                             | Type                                      | Default    |
+| ---------- | ------------------------------------------------------- | ----------------------------------------- | ---------- |
+| size       | Size of the table and its sub-components.               | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`     |
+| variant    | Style variant of the component.                         | `"simple"` or `"striped"` or `undefined`  | `"simple"` |
+| isUnstyled | Remove style from this component and its sub-components | `boolean` or `undefined`                  | `false`    |
 
-### TableHead
+### TableHeader
 
-`TableHead` composes the `<thead>` component.
+`TableHeader` composes the `<thead>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### TableBody
 
-`TableHead` composes the `<tbody>` component.
-
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+`TableBody` composes the `<tbody>` component.
 
 ### Td
 
 `Td` composes the `<td>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### Th
 
 `Th` composes the `<th>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### Tr
 
 `Tr` composes the `<tr>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### TableFooter
 
 `TableFooter` composes the `<tfoot>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |

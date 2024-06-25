@@ -1,5 +1,6 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { Avatar } from "@rafty/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Avatar, useLastElement } from "@rafty/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
@@ -7,7 +8,8 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query";
 import { forwardRef, useState } from "react";
-import { useLastElement } from "../hooks";
+import { Controller, useForm } from "react-hook-form";
+import z from "zod";
 import {
   Combobox,
   ComboboxClearButton,
@@ -22,10 +24,15 @@ import { findLabel } from "./utils";
 const meta: Meta<typeof Combobox> = {
   title: "Corp / Combobox",
   args: {
+    type: "single",
+    placeholder: {
+      trigger: "Select language",
+      search: "Search language",
+    },
     isDisabled: false,
     isLoading: false,
-    isReadonly: false,
-    type: "single",
+    isReadOnly: false,
+    isInvalid: false,
   },
   argTypes: {
     type: { control: "select", options: ["single", "multi"] },
@@ -36,55 +43,84 @@ export default meta;
 
 type Story = StoryObj<typeof Combobox>;
 
+const OPTIONS: ComboboxOptionType[] = [
+  {
+    label: "Java",
+    value: "java",
+  },
+  {
+    label: "Javascript",
+    value: "javascript",
+  },
+  {
+    label: "Node JS",
+    value: [
+      { label: "Node 16", value: "node-16" },
+      { label: "Node 18", value: "node-18" },
+      { label: "Node 20", value: "node-20" },
+      { label: "Node 22", value: "node-22" },
+    ],
+  },
+  {
+    label: "Python",
+    value: [
+      { label: "Python 3.10", value: "py-3.10" },
+      { label: "Python 3.9", value: "py-3.9" },
+    ],
+  },
+];
+
 export const Default: Story = {
-  render: ({ isDisabled, isLoading, isReadonly, type }) => {
+  render: (props) => {
     return (
-      <div className="w-[500px]">
-        <Combobox
-          id="lang"
-          type={type}
-          isDisabled={isDisabled}
-          isLoading={isLoading}
-          isReadonly={isReadonly}
-          placeholder={{
-            trigger: "Select languages",
-            search: "Search language",
-          }}
-          onSelectionChange={console.log}
-          options={[
-            {
-              label: "Java",
-              value: "java",
-            },
-            {
-              label: "Javascript",
-              value: "javascript",
-            },
-            {
-              label: "Node JS",
-              value: [
-                { label: "Node 16", value: "node-16" },
-                { label: "Node 18", value: "node-18" },
-                { label: "Node 20", value: "node-20" },
-                { label: "Node 22", value: "node-22" },
-              ],
-            },
-            {
-              label: "Python",
-              value: [
-                { label: "Python 3.10", value: "py-3.10" },
-                { label: "Python 3.9", value: "py-3.9" },
-              ],
-            },
-          ]}
-        >
-          <ComboboxTrigger />
-          <div className="mt-2 flex flex-row-reverse empty:hidden">
-            <ComboboxClearButton />
-          </div>
-          <ComboboxContent />
-        </Combobox>
-      </div>
+      <Combobox
+        {...props}
+        id="lang"
+        onSelectionChange={console.log}
+        options={OPTIONS}
+      >
+        <ComboboxTrigger />
+        <div className="mt-2 flex flex-row-reverse empty:hidden">
+          <ComboboxClearButton />
+        </div>
+        <ComboboxContent />
+      </Combobox>
+    );
+  },
+};
+
+const schema = z.object({
+  language: z.string(),
+});
+
+export const WithController: Story = {
+  render: (props) => {
+    const { control } = useForm<z.infer<typeof schema>>({
+      resolver: zodResolver(schema),
+    });
+
+    return (
+      <Controller
+        name="language"
+        control={control}
+        render={({ field: { name, value, onChange, disabled } }) => (
+          // @ts-ignore
+          <Combobox
+            {...props}
+            id={name}
+            selected={value}
+            onSelectionChange={onChange}
+            isDisabled={disabled}
+            options={OPTIONS}
+          >
+            <ComboboxTrigger />
+            <div className="mt-1 flex w-full flex-row-reverse empty:hidden">
+              <ComboboxClearButton />
+            </div>
+            <ComboboxContent />
+          </Combobox>
+        )}
+      />
     );
   },
 };
@@ -118,27 +154,24 @@ const DATA: DataItem[] = [
 ];
 
 export const Custom: Story = {
-  render: ({ isDisabled, isLoading, isReadonly }) => {
+  render: (props) => {
     return (
-      <div className="w-[500px]">
-        <Combobox
-          id="products"
-          type="single"
-          onSelectionChange={console.log}
-          options={DATA}
-          isDisabled={isDisabled}
-          isLoading={isLoading}
-          isReadonly={isReadonly}
-        >
-          <ComboboxTrigger>
-            <CustomTriggerRender />
-          </ComboboxTrigger>
-          <div className="mt-2 flex flex-row-reverse empty:hidden">
-            <ComboboxClearButton />
-          </div>
-          <ComboboxContent>{CustomContentRender}</ComboboxContent>
-        </Combobox>
-      </div>
+      // @ts-ignore
+      <Combobox
+        {...props}
+        id="products"
+        type="single"
+        onSelectionChange={console.log}
+        options={DATA}
+      >
+        <ComboboxTrigger>
+          <CustomTriggerRender />
+        </ComboboxTrigger>
+        <div className="mt-2 flex flex-row-reverse empty:hidden">
+          <ComboboxClearButton />
+        </div>
+        <ComboboxContent>{CustomContentRender}</ComboboxContent>
+      </Combobox>
     );
   },
 };
@@ -180,16 +213,14 @@ function CustomContentRender({
         <CheckIcon
           width={16}
           height={16}
-          className="stroke-secondary-600 stroke-2"
+          className="stroke-primary-500 dark:stroke-primary-300 stroke-2"
         />
       )}
     </ComboboxItem>
   );
-}
-
-// TODO: Experimental
+} // TODO: Experimental
 // export const Virtualized: Story = {
-//   render: ({ isDisabled, isLoading, isReadonly }) => {
+//   render: (props) => {
 //     return (
 //       <div className="w-[500px] space-y-3">
 //         <Tag size="sm" colorScheme="warning">
@@ -200,9 +231,7 @@ function CustomContentRender({
 //           type="single"
 //           onSelectionChange={console.log}
 //           options={DATA}
-//           isDisabled={isDisabled}
-//           isLoading={isLoading}
-//           isReadonly={isReadonly}
+//           {...props}
 //         >
 //           <ComboboxTrigger />
 //           <ComboboxContent>
@@ -255,11 +284,9 @@ export const InfinityScroll: Story = {
     const CLIENT = new QueryClient();
 
     return (
-      <div className="w-[500px]">
-        <QueryClientProvider client={CLIENT}>
-          <InfinityCombobox {...props} />
-        </QueryClientProvider>
-      </div>
+      <QueryClientProvider client={CLIENT}>
+        <InfinityCombobox {...props} />
+      </QueryClientProvider>
     );
   },
 };
@@ -367,7 +394,7 @@ const InfinityComboboxOption = forwardRef<
         <CheckIcon
           width={16}
           height={16}
-          className="stroke-secondary-600 min-h-4 min-w-4 stroke-2"
+          className="stroke-primary-500 dark:stroke-primary-300 min-h-4 min-w-4 stroke-2"
         />
       )}
     </ComboboxItem>

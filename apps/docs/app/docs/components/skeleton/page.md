@@ -29,19 +29,24 @@ import { Skeleton } from "@rafty/ui";
 
 ## Usage
 
-You can set height and width of a skeleton by passing values in className prop.
+You can set height and width of a Skeleton by passing values in `className` prop.
 
 {% example %}
 
 ```jsx
-<Skeleton className="h-8 w-full" />
+<div className="w-full space-y-3">
+  <Skeleton className="h-8 w-1/4" />
+  <Skeleton className="h-8 w-full" />
+  <Skeleton className="h-8 w-3/4" />
+  <Skeleton className="h-8 w-1/2" />
+</div>
 ```
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Skeleton
 

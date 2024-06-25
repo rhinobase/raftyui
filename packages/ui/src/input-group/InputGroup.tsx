@@ -1,19 +1,17 @@
 "use client";
-import { getValidChildren } from "@rafty/shared";
-import { type HTMLAttributes, forwardRef, useRef } from "react";
-import { classNames } from "../utils";
+import { type HTMLAttributes, forwardRef } from "react";
+import { classNames, getValidChildren } from "../utils";
 import { LeftAddon } from "./LeftAddon";
 import { Prefix } from "./Perfix";
 import { RightAddon } from "./RightAddon";
 import { Suffix } from "./Suffix";
 import { type InputGroupContext, InputGroupProvider } from "./context";
 
-// InputGroup Component
 export type InputGroup = HTMLAttributes<HTMLDivElement> &
   Partial<InputGroupContext>;
 
 export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
-  (
+  function InputGroup(
     {
       children,
       className,
@@ -25,7 +23,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const validChildren = getValidChildren(children);
     const rightAddons = [];
     const leftAddons = [];
@@ -71,7 +69,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       >
         <div
           {...props}
-          className={classNames("flex", className)}
+          className={classNames("flex w-full", className)}
           ref={forwardedRef}
         >
           {leftAddons}
@@ -82,4 +80,3 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
     );
   },
 );
-InputGroup.displayName = "InputGroup";

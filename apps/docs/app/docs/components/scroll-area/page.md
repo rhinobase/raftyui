@@ -54,7 +54,7 @@ import { ScrollArea, ScrollAreaInfinityList } from "@rafty/ui";
     {({ index, style }) => (
       <div
         key={index}
-        className="dark:text-secondary-100 dark:border-secondary-700 flex items-center justify-center border-b text-sm"
+        className="dark:border-secondary-700 dark:text-secondary-100 flex items-center justify-center border-b text-sm"
         style={style}
       >
         {index}
@@ -68,7 +68,7 @@ import { ScrollArea, ScrollAreaInfinityList } from "@rafty/ui";
 
 ## ScrollArea Infinity List
 
-You can check out live example for Infinity List on [Storybook](https://storybook.rafty.rhinobase.io/?path=/story/components-scrollarea--infinity-scroll)
+You can check out live example for Infinity List on [Storybook](https://storybook.rafty.rhinobase.io/?path=/story/components-scrollarea--infinity-scroll).
 
 ```jsx
 function DyanmicScroll() {
@@ -108,7 +108,7 @@ function DyanmicScroll() {
           return (
             <div
               key={index}
-              className="dark:text-secondary-100 dark:border-secondary-700 flex items-center border-b px-4 text-sm"
+              className="dark:border-secondary-700 dark:text-secondary-100 flex items-center border-b px-4 text-sm"
               style={style}
             >
               {launch?.flight_number}. {launch?.mission_name}
@@ -121,18 +121,31 @@ function DyanmicScroll() {
 }
 ```
 
-## Props
-
 ---
+
+## Props
 
 ### ScrollArea
 
-This component is built on top of [Radix Scroll Area](https://www.radix-ui.com/primitives/docs/components/scroll-area#root)
+`ScrollArea` composes the `<div>` component.
 
-### ScrollBar
+| Property  | Description                                   | Type                                               | Default      |
+| --------- | --------------------------------------------- | -------------------------------------------------- | ------------ |
+| layout    | The scrolling layout direction.               | `"horizontal"` or `"vertical"`                     | `"vertical"` |
+| itemCount | The total number of items in the scroll area. | `number` or <Info>() => number</Info>              | -            |
+| itemSize  | The size of each item of the scroll area.     | `number` or <Info>(index: number) => number</Info> | -            |
 
-This component is built on top of [Radix Scroll Area Scrollbar](https://www.radix-ui.com/primitives/docs/components/scroll-area#scrollbar)
+### ScrollAreaList
 
-| Property    | Description                   | Type                       | Default    |
-| ----------- | ----------------------------- | -------------------------- | ---------- |
-| orientation | Orientation of the component. | `horizontal` or `vertical` | `vertical` |
+This component is built on top of [react-virtualized-auto-sizer](https://github.com/bvaughn/react-virtualized-auto-sizer#readme) and [react-window](https://react-window.vercel.app/#/examples/list/fixed-size)
+
+### ScrollAreaInfinityList
+
+This component is built on top of [react-window-infinite-loader](https://github.com/bvaughn/react-window-infinite-loader/#readme)
+
+| Property         | Description                                                          | Type                                                 | Default |
+| ---------------- | -------------------------------------------------------------------- | ---------------------------------------------------- | ------- |
+| minimumBatchSize | Minimum number of items to load per batch.                           | `number` or `undefined`                              | -       |
+| threshold        | Number of rows or columns to buffer in addition to the visible area. | `number` or `undefined`                              | -       |
+| isItemLoaded     | The callback invoke when item at a specific index is loaded.         | `boolean` or <Info>(index: number) => boolean</Info> | -       |
+| loadMoreItems    | The callback to load more items when nearing the end of the list.    | <Info>() => void</Info> or `undefined`               | -       |

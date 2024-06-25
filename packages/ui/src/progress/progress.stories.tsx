@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { CircularProgress } from "./CircularProgress";
 import { Progress } from "./Progress";
 
 const meta: Meta<typeof Progress> = {
@@ -6,7 +7,7 @@ const meta: Meta<typeof Progress> = {
   args: {
     size: "md",
     colorScheme: "primary",
-    value: 20,
+    value: 50,
   },
   argTypes: {
     size: {
@@ -15,7 +16,7 @@ const meta: Meta<typeof Progress> = {
     },
     colorScheme: {
       control: "select",
-      options: ["primary", "warning", "success", "error"],
+      options: ["primary", "warning", "success", "error", "secondary"],
     },
   },
 };
@@ -24,7 +25,9 @@ export default meta;
 type Story = StoryObj<typeof Progress>;
 
 export const Default: Story = {
-  render: ({ size, colorScheme, value }) => (
-    <Progress colorScheme={colorScheme} size={size} value={value} />
-  ),
+  render: (props) => <Progress {...props} />,
+};
+
+export const Circular: Story = {
+  render: (props) => <CircularProgress {...props} />,
 };

@@ -15,10 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@rafty/blocks": ["packages/blocks/src/index.ts"],
       "@rafty/corp": ["packages/corp/src/index.ts"],
       "@rafty/icons": ["packages/icons/src/index.ts"],
       "@rafty/plugin": ["packages/plugin/src/index.js"],
-      "@rafty/shared": ["packages/shared/src/index.ts"],
       "@rafty/ui": ["packages/ui/src/index.ts"]
     }
   },

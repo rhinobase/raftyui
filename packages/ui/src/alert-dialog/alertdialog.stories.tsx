@@ -1,3 +1,4 @@
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import {
@@ -6,6 +7,8 @@ import {
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
   AlertDialogOverlay,
   AlertDialogTitle,
   AlertDialogTrigger,
@@ -30,26 +33,29 @@ export default meta;
 type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  render: ({ size, isUnstyled }) => (
-    <AlertDialog size={size} isUnstyled={isUnstyled}>
+  render: (props) => (
+    <AlertDialog {...props}>
       <AlertDialogTrigger variant="solid" colorScheme="error">
         Delete
       </AlertDialogTrigger>
       <AlertDialogOverlay />
       <AlertDialogContent>
-        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogHeader>
+          <ExclamationTriangleIcon className="size-5 stroke-red-500 stroke-2 dark:stroke-red-300" />
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        </AlertDialogHeader>
         <AlertDialogDescription>
           This action cannot be undone. This will permanently delete your
           account and remove your data from our servers.
         </AlertDialogDescription>
-        <div className="mt-4 flex justify-end gap-6">
+        <AlertDialogFooter className="justify-end">
           <AlertDialogCancel asChild>
             <Button variant="outline">Cancel</Button>
           </AlertDialogCancel>
           <AlertDialogAction asChild>
             <Button colorScheme="error">Yes, delete account</Button>
           </AlertDialogAction>
-        </div>
+        </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   ),

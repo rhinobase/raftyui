@@ -4,13 +4,14 @@ import { Button } from "./Button";
 const meta: Meta<typeof Button> = {
   title: "Components / Button",
   args: {
-    colorScheme: "secondary",
-    isUnstyled: false,
     size: "md",
+    colorScheme: "secondary",
     variant: "solid",
+    isUnstyled: false,
     isDisabled: false,
     isActive: false,
     isLoading: false,
+    isHidden: false,
   },
   argTypes: {
     colorScheme: {
@@ -25,10 +26,6 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: ["ghost", "solid", "outline"],
     },
-    isUnstyled: {},
-    isDisabled: {},
-    isActive: {},
-    isLoading: {},
   },
 };
 
@@ -36,61 +33,24 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: ({
-    colorScheme,
-    variant,
-    size,
-    isUnstyled,
-    isDisabled,
-    isActive,
-    isLoading,
-  }) => (
-    <Button
-      size={size}
-      variant={variant}
-      isUnstyled={isUnstyled}
-      colorScheme={colorScheme}
-      isDisabled={isDisabled}
-      isActive={isActive}
-      isLoading={isLoading}
-    >
-      Button text
-    </Button>
-  ),
+  render: (props) => <Button {...props}>Button text</Button>,
 };
 
 export const IconButton: Story = {
-  render: ({
-    colorScheme,
-    variant,
-    size,
-    isUnstyled,
-    isDisabled,
-    isActive,
-    isLoading,
-  }) => (
+  render: (props) => (
     <>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">
           icon
         </div>
-        <Button
-          data-cy="iconbtn"
-          size="icon"
-          variant={variant}
-          isUnstyled={isUnstyled}
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
-        >
+        <Button {...props} data-cy="iconbtn" size="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-6"
+            className="size-[18px]"
           >
             <title>plus icon</title>
             <path
@@ -103,22 +63,14 @@ export const IconButton: Story = {
       </div>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">fab</div>
-        <Button
-          size="fab"
-          variant={variant}
-          isUnstyled={isUnstyled}
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
-        >
+        <Button {...props} size="fab">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-6"
+            className="size-[18px]"
           >
             <title>plus fab</title>
             <path
@@ -134,28 +86,14 @@ export const IconButton: Story = {
 };
 
 export const ButtonWithIcons: Story = {
-  render: ({
-    colorScheme,
-    variant,
-    size,
-    isUnstyled,
-    isDisabled,
-    isActive,
-    isLoading,
-  }) => (
+  render: (props) => (
     <>
       <div className="flex flex-col gap-1">
         <div className="text-secondary-500 mb-2 text-sm font-semibold">
           left icon
         </div>
         <Button
-          size={size}
-          variant={variant}
-          isUnstyled={isUnstyled}
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
+          {...props}
           leftIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +101,9 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="size-6"
+              width={18}
+              height={18}
+              className="size-[18px]"
             >
               <title>left icon</title>
               <path
@@ -182,13 +122,7 @@ export const ButtonWithIcons: Story = {
           icon right
         </div>
         <Button
-          size={size}
-          variant={variant}
-          isUnstyled={isUnstyled}
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
+          {...props}
           rightIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +130,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="size-6"
+              className="size-[18px]"
             >
               <title>right icon</title>
 
@@ -216,13 +150,7 @@ export const ButtonWithIcons: Story = {
           icon left & right
         </div>
         <Button
-          size={size}
-          variant={variant}
-          isUnstyled={isUnstyled}
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          isActive={isActive}
-          isLoading={isLoading}
+          {...props}
           leftIcon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +158,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="size-6"
+              className="size-[18px]"
             >
               <title>left icon</title>
               <path
@@ -247,7 +175,7 @@ export const ButtonWithIcons: Story = {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="size-6"
+              className="size-[18px]"
             >
               <title>right icon</title>
               <path
@@ -264,16 +192,3 @@ export const ButtonWithIcons: Story = {
     </>
   ),
 };
-
-// export const AsButton: Story = {
-//   render: ({ colorScheme }) => (
-//     <Button
-//       as="a"
-//       colorScheme={colorScheme}
-//       href="https://rafty.rhinobase.io"
-//       target="_blank"
-//     >
-//       Docs Link
-//     </Button>
-//   ),
-// };

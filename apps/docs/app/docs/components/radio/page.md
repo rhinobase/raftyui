@@ -14,7 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Radio
 ---
 
-A set of checkable buttons—known as radio buttons—where only one button can be checked at a time.
+A set of checkable buttons known as radio buttons where only one button can be checked at a time.
 
 This component is made on top of [Radix UIs Radio Group Component](https://www.radix-ui.com/primitives/docs/components/radio-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 
@@ -52,7 +52,7 @@ import { RadioGroup, RadioGroupItem } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -94,7 +94,7 @@ There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 
 ## Disabled
 
-Pass the `isDisabled` prop if you need to disable the radio-group and its sub components.
+`isDisabled` prop is used to manage disable state of field.
 
 {% example %}
 
@@ -114,19 +114,89 @@ Pass the `isDisabled` prop if you need to disable the radio-group and its sub co
 
 {% /example %}
 
-## Props
+## ReadOnly
+
+`isReadOnly` prop is used to manage readonly state of field.
+
+{% example %}
+
+```jsx
+<RadioGroup defaultValue="1" isReadOnly>
+  <RadioGroupItem value="1" id="13">
+    Radio 1
+  </RadioGroupItem>
+  <RadioGroupItem value="2" id="14">
+    Radio 2
+  </RadioGroupItem>
+  <RadioGroupItem value="3" id="15">
+    Radio 3
+  </RadioGroupItem>
+</RadioGroup>
+```
+
+{% /example %}
+
+## Loading
+
+`isLoading` prop is used to manage loading state of field.
+
+{% example %}
+
+```jsx
+<RadioGroup defaultValue="1" isLoading>
+  <RadioGroupItem value="1" id="16">
+    Radio 1
+  </RadioGroupItem>
+  <RadioGroupItem value="2" id="17">
+    Radio 2
+  </RadioGroupItem>
+  <RadioGroupItem value="3" id="18">
+    Radio 3
+  </RadioGroupItem>
+</RadioGroup>
+```
+
+{% /example %}
+
+## Invalid
+
+`isInvalid` prop is used to manage invalid state of field.
+
+{% example %}
+
+```jsx
+<RadioGroup defaultValue="1" isInvalid>
+  <RadioGroupItem value="1" id="19">
+    Radio 1
+  </RadioGroupItem>
+  <RadioGroupItem value="2" id="20">
+    Radio 2
+  </RadioGroupItem>
+  <RadioGroupItem value="3" id="21">
+    Radio 3
+  </RadioGroupItem>
+</RadioGroup>
+```
+
+{% /example %}
 
 ---
+
+## Props
 
 ### RadioGroup
 
 This component is built on top of [Radix Radio Group](https://www.radix-ui.com/primitives/docs/components/radio-group#root)
 
-| Property   | Description                                              | Type                       | Default |
-| ---------- | -------------------------------------------------------- | -------------------------- | ------- |
-| size       | Size of the radio group component and its subcomponents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isDisabled | To manage disabled state.                                | `boolean`                  | `false` |
-| isReadOnly | To manage readonly state.                                | `boolean`                  | `false` |
+| Property    | Description                                     | Type                                                   | Default      |
+| ----------- | ----------------------------------------------- | ------------------------------------------------------ | ------------ |
+| size        | Size of the radio group and its sub-components. | `"sm"` or `"md"` or `"lg"` or `undefined`              | `"md"`       |
+| orientation | Orientation of the radio components.            | `"horizontal"` or `"vertical"` or `undefined`          | `"vertical"` |
+| isRequired  | To manage the required state.                   | `boolean` or <Info>() => boolean</Info> or `undefined` | -            |
+| isDisabled  | To manage the disable state.                    | `boolean` or <Info>() => boolean</Info> or `undefined` | -            |
+| isInvalid   | To manage the invalid state.                    | `boolean` or <Info>() => boolean</Info> or `undefined` | -            |
+| isLoading   | To manage the loading state.                    | `boolean` or <Info>() => boolean</Info> or `undefined` | -            |
+| isReadOnly  | To manage the readonly state.                   | `boolean` or <Info>() => boolean</Info> or `undefined` | -            |
 
 ### RadioGroupItem
 

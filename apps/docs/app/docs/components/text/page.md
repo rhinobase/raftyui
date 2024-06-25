@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Text
 ---
 
-Text is used to render text and paragraphs within an interface. It renders a <p> element by default.
+Text is used to render Text and paragraphs within an interface. It renders a `<p>` element by default.
 
-# Anatomy
+## Anatomy
 
 Import the component.
 
@@ -28,7 +28,6 @@ import { Text } from "@rafty/ui";
 
 ## Usage
 
-Text takes tailwind css classes in className and inline css can also be passed using style prop.
 {% example %}
 
 ```jsx
@@ -37,9 +36,9 @@ Text takes tailwind css classes in className and inline css can also be passed u
 
 {% /example %}
 
-## IsMuted
+## Muted
 
-`isMuted` prop can be used when you want text to be muted or dull.
+`isMuted` prop can be used when you want Text to be muted or dull.
 
 {% example %}
 
@@ -51,9 +50,9 @@ Text takes tailwind css classes in className and inline css can also be passed u
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Text
 

@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Alert
 ---
 
-An alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
+An Alert displays a short, important message in a way that captures the user's attention without disrupting the ongoing task.
 
-This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props.
+This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -48,7 +48,7 @@ import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options available: `sm`, `md` (default) & `lg`
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -64,7 +64,7 @@ There are 3 `size` options available: `sm`, `md` (default) & `lg`
 
 ## Status
 
-There are 4 `status` options in alert: `success`, `warning`, `error` & `info` (default).
+There are 4 `status` options available: `"success"`, `"warning"`, `"error"` & `"info"` (default).
 
 {% example %}
 
@@ -97,7 +97,7 @@ There are 4 `status` options in alert: `success`, `warning`, `error` & `info` (d
 
 ## Variant
 
-There are 4 `variant` options in alert: `simple` (default), `solid`, `left-accent` & `top-accent`.
+There are 4 `variant` options available: `"simple"` (default), `"solid"`, `"left-accent"` & `"top-accent"`.
 
 {% example %}
 
@@ -130,7 +130,7 @@ There are 4 `variant` options in alert: `simple` (default), `solid`, `left-accen
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in Alert.
+Pass `isUnstyled` prop in root element to remove style from Alert and all its sub-components.
 
 {% example %}
 
@@ -147,9 +147,9 @@ Pass `isUnstyled` prop in parent component to remove style in Alert.
 
 {% /example %}
 
-## Unstyled subcomponent
+## Unstyled Sub-Component
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
@@ -163,41 +163,41 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Alert
 
 `Alert` composes the `<div>` component.
 
-| Property   | Description                           | Type                                                         | Default    |
-| ---------- | ------------------------------------- | ------------------------------------------------------------ | ---------- |
-| status     | Status of the alert component.        | `"success"` or `"warning"` or `"error"` or `"info"`          | `"info"`   |
-| size       | Size of the alert component.          | `"sm"` or `"md"` or `"lg"`                                   | `"md"`     |
-| variant    | Style variant of the alert component. | `"simple"` or `"solid"` or `"left-accent"` or `"top-accent"` | `"simple"` |
-| isUnstyled | Removes style from whole component    | `boolean`                                                    | `false`    |
+| Property   | Description                                 | Type                                                                        | Default    |
+| ---------- | ------------------------------------------- | --------------------------------------------------------------------------- | ---------- |
+| status     | Status of the alert and its sub-components. | `"success"` or `"warning"` or `"error"` or `"info"` or `undefined`          | `"info"`   |
+| size       | Size of the alert and its sub-components.   | `"sm"` or `"md"` or `"lg"` or `undefined`                                   | `"md"`     |
+| variant    | Style variant of the alert component.       | `"simple"` or `"solid"` or `"left-accent"` or `"top-accent"` or `undefined` | `"simple"` |
+| isUnstyled | Removes style from whole component          | `boolean` or `undefined`                                                    | `false`    |
 
 ### AlertIcon
 
 `AlertIcon` composes the `<svg>` component.
 
-| Property   | Description                       | Type      | Default |
-| ---------- | --------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component. | `boolean` | `false` |
+| Property   | Description                       | Type                     | Default |
+| ---------- | --------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component. | `boolean` or `undefined` | `false` |
 
 ### AlertTitle
 
 `AlertTitle` composes the `<h5>` component.
 
-| Property   | Description                       | Type      | Default |
-| ---------- | --------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component. | `boolean` | `false` |
+| Property   | Description                       | Type                     | Default |
+| ---------- | --------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component. | `boolean` or `undefined` | `false` |
 
 ### AlertDescription
 
 `AlertDescription` composes the `<p>` component.
 
-| Property   | Description                       | Type      | Default |
-| ---------- | --------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component. | `boolean` | `false` |
+| Property   | Description                       | Type                     | Default |
+| ---------- | --------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component. | `boolean` or `undefined` | `false` |

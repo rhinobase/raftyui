@@ -1,20 +1,34 @@
-import * as ProgressPrimitive from "@radix-ui/react-progress";
-import { cva } from "class-variance-authority";
+"use client";
 import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from "react";
-import { classNames } from "../utils";
+  Progress as ArkProgress,
+  type ProgressRootProps,
+  useProgressContext,
+} from "@ark-ui/react";
+import { cva } from "class-variance-authority";
+import { type ElementRef, forwardRef } from "react";
+import { type SizeType, classNames } from "../utils";
 
-export const progressClasses = cva(
-  "bg-secondary-100 dark:bg-secondary-700 w-full overflow-hidden",
+export const progressClasses = cva("flex w-full items-center flex-col", {
+  variants: {
+    size: {
+      sm: "gap-1.5",
+      md: "gap-2",
+      lg: "gap-2.5",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export const progressTrackClasses = cva(
+  "bg-secondary-200 dark:bg-secondary-700 w-full",
   {
     variants: {
       size: {
-        sm: "h-2",
-        md: "h-3",
-        lg: "h-4",
+        sm: "h-1",
+        md: "h-2",
+        lg: "h-3",
       },
     },
     defaultVariants: {
@@ -23,17 +37,14 @@ export const progressClasses = cva(
   },
 );
 
-export const progressIndicatorClasses = cva("h-full flex-1 transition-all", {
+export const progressIndicatorClasses = cva("h-full", {
   variants: {
     colorScheme: {
-      error:
-        "bg-red-500 dark:bg-red-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-red-300 group-data-[indeterminate=true]:via-red-500 group-data-[indeterminate=true]:to-red-300",
-      warning:
-        "bg-amber-500 dark:bg-amber-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-amber-300 group-data-[indeterminate=true]:via-amber-500 group-data-[indeterminate=true]:to-amber-300",
-      primary:
-        "bg-primary-500 dark:bg-primary-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-primary-300 group-data-[indeterminate=true]:via-primary-500 group-data-[indeterminate=true]:to-primary-300",
-      success:
-        "bg-green-500 dark:bg-green-300 group-data-[indeterminate=true]:bg-gradient-to-r group-data-[indeterminate=true]:from-green-300 group-data-[indeterminate=true]:via-green-500 group-data-[indeterminate=true]:to-green-300",
+      error: "bg-red-500 dark:bg-red-300",
+      warning: "bg-amber-500 dark:bg-amber-300",
+      primary: "bg-primary-500 dark:bg-primary-300",
+      success: "bg-green-500 dark:bg-green-300",
+      secondary: "bg-secondary-500 dark:bg-secondary-300",
     },
   },
   defaultVariants: {
@@ -41,43 +52,60 @@ export const progressIndicatorClasses = cva("h-full flex-1 transition-all", {
   },
 });
 
-// Progress Component
-export type Progress = ComponentPropsWithoutRef<
-  typeof ProgressPrimitive.Root
-> & {
-  size?: "sm" | "md" | "lg";
-  colorScheme?: "error" | "warning" | "primary" | "success";
-  indicatorClassName?: string;
+export type Progress = Omit<ProgressRootProps, "orientation"> & {
+  size?: SizeType;
+  colorScheme?: "error" | "warning" | "primary" | "success" | "secondary";
 };
 
 export const Progress = forwardRef<
-  ElementRef<typeof ProgressPrimitive.Root>,
+  ElementRef<typeof ArkProgress.Root>,
   Progress
->(
-  (
-    {
-      className,
-      indicatorClassName,
-      value,
-      size = "md",
-      colorScheme = "primary",
-      ...props
-    },
-    forwardedRef,
-  ) => (
-    <ProgressPrimitive.Root
+>(function Progress(
+  { className, size = "md", colorScheme = "primary", ...props },
+  forwardedRef,
+) {
+  return (
+    <ArkProgress.Root
       {...props}
       className={classNames(progressClasses({ size }), className)}
       ref={forwardedRef}
     >
-      <ProgressPrimitive.Indicator
-        className={classNames(
-          progressIndicatorClasses({ colorScheme }),
-          indicatorClassName,
-        )}
-        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
-      />
-    </ProgressPrimitive.Root>
-  ),
+      <ArkProgress.Track className={progressTrackClasses({ size })}>
+        <ArkProgress.Range
+          className={progressIndicatorClasses({ colorScheme })}
+        />
+      </ArkProgress.Track>
+      <ProgressValue size={size} />
+    </ArkProgress.Root>
+  );
+});
+
+export const progressTextClasses = cva(
+  "text-secondary-600 dark:text-secondary-400",
+  {
+    variants: {
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
 );
-Progress.displayName = "Progress";
+
+export type ProgressValue = {
+  size: SizeType;
+};
+
+export function ProgressValue(props: ProgressValue) {
+  const { value } = useProgressContext();
+
+  return (
+    <ArkProgress.ValueText asChild>
+      <p className={progressTextClasses({ size: props.size })}>{value}%</p>
+    </ArkProgress.ValueText>
+  );
+}

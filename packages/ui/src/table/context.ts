@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [TableProvider, useTableContext] = createContext<TableContext>({
   name: "TableContext",
@@ -7,7 +7,7 @@ export const [TableProvider, useTableContext] = createContext<TableContext>({
 });
 
 export interface TableContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly variant: "simple" | "striped";
   readonly isUnstyled: boolean;
 }

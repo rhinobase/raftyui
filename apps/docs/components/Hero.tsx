@@ -36,10 +36,10 @@ export function Hero() {
               priority
             />
             <div className="relative">
-              <p className="via-primary-400 font-display inline bg-gradient-to-r from-indigo-200 to-indigo-200 bg-clip-text text-5xl tracking-tight text-transparent">
+              <p className="via-primary-400 font-display inline bg-gradient-to-r from-indigo-200 to-indigo-200 bg-clip-text text-[3rem] leading-[3.5rem] tracking-tight text-transparent">
                 Tailwind + React Component Library
               </p>
-              <p className="text-secondary-400 mt-3 text-2xl tracking-tight">
+              <p className="text-secondary-400 mt-3 text-[1.5rem] leading-[2.5rem] tracking-tight">
                 Explore our library of responsive and accessible UI components,
                 meticulously crafted to align seamlessly with your app&apos;s
                 design system.

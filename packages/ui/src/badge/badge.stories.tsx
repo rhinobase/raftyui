@@ -10,7 +10,7 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     status: {
       control: "select",
-      options: ["secondary", "error", "warning", "info", "success"],
+      options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     size: {
       control: "select",
@@ -23,5 +23,5 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
-  render: ({ status, size }) => <Badge size={size} status={status} />,
+  render: (props) => <Badge {...props} />,
 };

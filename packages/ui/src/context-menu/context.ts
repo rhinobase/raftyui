@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [ContextMenuProvider, useContextMenuContext] =
   createContext<ContextMenuContext>({
@@ -8,6 +8,6 @@ export const [ContextMenuProvider, useContextMenuContext] =
   });
 
 export interface ContextMenuContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly isUnstyled: boolean;
 }

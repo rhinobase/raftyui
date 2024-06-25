@@ -1,25 +1,17 @@
 "use client";
 import { cva } from "class-variance-authority";
-import type { HTMLAttributes } from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { useAvatarGroupContext } from "../avatar-group/context";
-import { classNames } from "../utils";
-
-export type Avatar = {
-  name?: string | null;
-  src?: string;
-  className?: HTMLAttributes<HTMLDivElement>["className"];
-  style?: HTMLAttributes<HTMLDivElement>["style"];
-  size?: "sm" | "md" | "lg";
-};
+import { type SizeType, classNames } from "../utils";
 
 export const avatarClasses = cva(
-  "dark:border-secondary-900 relative overflow-hidden rounded-full border-white group-data-[group=true]:absolute",
+  "dark:border-secondary-900 relative overflow-hidden rounded-full border-white data-[child]:absolute",
   {
     variants: {
       size: {
-        sm: "size-7 border",
-        md: "size-9 border-2",
-        lg: "size-12 border-[2.5px]",
+        sm: "size-7 data-[child]:border",
+        md: "size-9 data-[child]:border-2",
+        lg: "size-12 data-[child]:border-[3px]",
       },
     },
     defaultVariants: {
@@ -28,15 +20,31 @@ export const avatarClasses = cva(
   },
 );
 
-export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
+export type Avatar = {
+  name?: string;
+  src?: string;
+  size?: SizeType;
+  isUnstyled?: boolean;
+} & HTMLAttributes<HTMLDivElement>;
+
+export const Avatar = forwardRef<HTMLDivElement, Avatar>(function Avatar(
+  { name, src, size = "md", className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const context = useAvatarGroupContext() ?? {
     size,
+    isUnstyled,
   };
 
   return (
     <div
-      className={classNames(avatarClasses({ size: context.size }), className)}
-      style={style}
+      {...props}
+      className={
+        context.isUnstyled
+          ? className
+          : classNames(avatarClasses({ size: context.size }), className)
+      }
+      ref={forwardedRef}
     >
       {name && src ? (
         <img alt={name} src={src} className="size-full object-cover" />
@@ -56,5 +64,4 @@ export function Avatar({ name, src, className, style, size = "md" }: Avatar) {
       )}
     </div>
   );
-}
-Avatar.displayName = "Avatar";
+});

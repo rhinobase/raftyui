@@ -40,7 +40,7 @@ import { Switch } from "@rafty/ui";
 
 ## Size
 
-There are 3 size options in spinner: `sm`, `md` (default) & `lg
+There are 3 size options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -54,9 +54,9 @@ There are 3 size options in spinner: `sm`, `md` (default) & `lg
 
 {% /example %}
 
-## IsDisabled
+## Disabled
 
-isDisabled prop is used to show select component in disabled state.
+`isDisabled` prop is used to show select component in disabled state.
 
 {% example %}
 
@@ -78,9 +78,9 @@ Pass the `checked` prop is used to manage checked state.
 
 {% /example %}
 
-## IsRequired
+## Required
 
-IsRequired prop is used to show select in required state.
+`isRequired` prop is used to show select in required state.
 
 {% example %}
 
@@ -90,9 +90,9 @@ IsRequired prop is used to show select in required state.
 
 {% /example %}
 
-## IsReadOnly
+## ReadOnly
 
-IsReadOnly prop is used to show select in read-only state
+`isReadOnly` prop is used to show select in readonly state.
 
 {% example %}
 
@@ -102,18 +102,32 @@ IsReadOnly prop is used to show select in read-only state
 
 {% /example %}
 
-## Props
+## Invalid
+
+`isInvalid` prop is used to show select in invalid state.
+
+{% example %}
+
+```jsx
+<Switch isInvalid />
+```
+
+{% /example %}
 
 ---
+
+## Props
 
 ### Switch
 
 This component is built on top of [Radix Switch](https://www.radix-ui.com/primitives/docs/components/switch#root)
 
-| Property       | Description                        | Type                       | Default |
-| -------------- | ---------------------------------- | -------------------------- | ------- |
-| size           | Size of the switch component.      | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isDisabled     | To manage disabled state.          | `boolean`                  | `false` |
-| defaultChecked | To manage default state of switch. | `boolean`                  | `false` |
-| isRequired     | To manage required state.          | `boolean`                  | `false` |
-| isReadOnly     | To manage read-only state.         | `boolean`                  | `false` |
+| Property       | Description                            | Type                                                   | Default |
+| -------------- | -------------------------------------- | ------------------------------------------------------ | ------- |
+| size           | Size of the switch component.          | `"sm"` or `"md"` or `"lg"`                             | `"md"`  |
+| defaultChecked | To manage the default state of switch. | `boolean` or `undefined`                               | `false` |
+| isDisabled     | To manage the disabled state.          | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isRequired     | To manage the required state.          | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isReadOnly     | To manage the readonly state.          | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isInvalid      | To manage the invalid state.           | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isLoading      | To manage the loading state.           | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |

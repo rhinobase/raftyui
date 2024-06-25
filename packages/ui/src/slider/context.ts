@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [SliderProvider, useSliderContext] = createContext<SliderContext>({
   name: "SliderContext",
@@ -7,7 +7,7 @@ export const [SliderProvider, useSliderContext] = createContext<SliderContext>({
 });
 
 export interface SliderContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly colorScheme:
     | "primary"
     | "secondary"

@@ -1,26 +1,42 @@
+"use client";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
+import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
+import {
+  type TooltipContext,
+  TooltipProvider,
+  useTooltipContext,
+} from "./context";
 
-// TooltipProvider Component
-const TooltipProvider = TooltipPrimitive.Provider;
+export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> &
+  Partial<TooltipContext>;
 
-// Tooltip Component
-export type Tooltip = ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>;
+export function Tooltip({
+  children,
+  size = "md",
+  isDisabled = false,
+  ...props
+}: Tooltip) {
+  return (
+    <TooltipProvider
+      value={{
+        size,
+        isDisabled,
+      }}
+    >
+      <TooltipPrimitive.Provider>
+        <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+      </TooltipPrimitive.Provider>
+    </TooltipProvider>
+  );
+}
 
-export const Tooltip = ({ children, ...props }: Tooltip) => (
-  <TooltipProvider>
-    <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
-  </TooltipProvider>
-);
-Tooltip.displayName = "Tooltip";
-
-// TooltipTrigger Component
 export type TooltipTrigger = ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Trigger
 >;
@@ -28,45 +44,70 @@ export type TooltipTrigger = ComponentPropsWithoutRef<
 export const TooltipTrigger = forwardRef<
   ElementRef<typeof TooltipPrimitive.Trigger>,
   TooltipTrigger
->((props, forwardedRef) => (
-  <TooltipPrimitive.Trigger {...props} ref={forwardedRef} />
-));
-TooltipTrigger.displayName = "TooltipTrigger";
+>(function TooltipTrigger({ disabled = false, ...props }, forwardedRef) {
+  const { isDisabled: isParentDisabled } = useTooltipContext();
+  const isDisabled = isParentDisabled || disabled;
 
-// TooltipContent Component
+  return (
+    <TooltipPrimitive.Trigger
+      {...props}
+      disabled={isDisabled}
+      ref={forwardedRef}
+    />
+  );
+});
+
+export const tooltipContentClasses = cva(
+  "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 font-medium shadow-md",
+  {
+    variants: {
+      size: {
+        sm: "max-w-[220px] rounded-base px-1 py-0.5 text-[11px] leading-tight",
+        md: "max-w-[250px] rounded-md px-1.5 py-1 text-[12px] leading-tight",
+        lg: "max-w-[280px] rounded-lg px-2 py-1.5 text-[13px] leading-tight",
+      },
+      animated: {
+        true: "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
 export type TooltipContent = ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Content
-> & { isArrow?: BooleanOrFunction; hasAnimation?: BooleanOrFunction };
+> & { isArrow?: ValueOrFunction; hasAnimation?: ValueOrFunction };
 
 export const TooltipContent = forwardRef<
   ElementRef<typeof TooltipPrimitive.Content>,
   TooltipContent
->(
-  (
-    { children, className, hasAnimation, sideOffset = 4, isArrow, ...props },
-    forwardedRef,
-  ) => {
-    const _isArrow = getValue(isArrow) ?? true;
-    const _hasAnimation = getValue(hasAnimation) ?? true;
+>(function TooltipContent(
+  { children, className, hasAnimation, sideOffset = 4, isArrow, ...props },
+  forwardedRef,
+) {
+  const _isArrow = getValue(isArrow) ?? true;
+  const _hasAnimation = getValue(hasAnimation) ?? true;
+  const { isDisabled, size } = useTooltipContext();
 
-    return (
-      <TooltipPrimitive.Content
-        ref={forwardedRef}
-        sideOffset={sideOffset}
-        className={classNames(
-          "bg-secondary-800 text-secondary-100 dark:bg-secondary-100 dark:text-secondary-700 relative z-40 max-w-[250px] rounded-md px-2 py-1 text-xs font-medium shadow-md",
-          _hasAnimation &&
-            "data-[side=top]:animate-slide-down-fade data-[side=right]:animate-slide-left-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-        {_isArrow && (
-          <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
-        )}
-      </TooltipPrimitive.Content>
-    );
-  },
-);
-TooltipContent.displayName = "TooltipContent";
+  if (isDisabled) return;
+
+  return (
+    <TooltipPrimitive.Content
+      ref={forwardedRef}
+      sideOffset={sideOffset}
+      className={classNames(
+        tooltipContentClasses({ size, animated: _hasAnimation }),
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      {_isArrow && (
+        <TooltipPrimitive.Arrow className="fill-secondary-800 dark:fill-secondary-50" />
+      )}
+    </TooltipPrimitive.Content>
+  );
+});

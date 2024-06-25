@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [ToggleGroupProvider, useToggleGroupContext] =
   createContext<ToggleGroupContext>({
@@ -8,6 +8,6 @@ export const [ToggleGroupProvider, useToggleGroupContext] =
   });
 
 export interface ToggleGroupContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly isUnstyled: boolean;
 }

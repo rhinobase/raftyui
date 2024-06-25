@@ -16,7 +16,7 @@ nextjs:
 
 Displays rich content in a portal, triggered by a button.
 
-This component is made on top of [Radix UIs Popover Component](https://www.radix-ui.com/primitives/docs/components/popover) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Popover Component](https://www.radix-ui.com/primitives/docs/components/popover) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from a particular sub-component).
 
 ## Anatomy
 
@@ -51,9 +51,9 @@ import {
       tempor incididunt ut labore et dolore.
     </Text>
     <div className="flex justify-end gap-3">
-      <Button size="sm">Button</Button>
+      <Button size="sm">Cancel</Button>
       <Button size="sm" colorScheme="primary">
-        Button
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -64,7 +64,7 @@ import {
 
 ## Size
 
-There are 3 `size` options in popover: `sm`, `md` (default) & `lg`
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -77,9 +77,9 @@ There are 3 `size` options in popover: `sm`, `md` (default) & `lg`
       tempor incididunt ut labore et dolore.
     </Text>
     <div className="flex justify-end gap-3">
-      <Button size="sm">Button</Button>
+      <Button size="sm">Cancel</Button>
       <Button size="sm" colorScheme="primary">
-        Button
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -90,7 +90,7 @@ There are 3 `size` options in popover: `sm`, `md` (default) & `lg`
 
 ## Open
 
-To manage open state of popover you can use `open` prop and to open popover by default pass `defaultOpen` prop.
+To manage open state of Popover you can use `open` prop and to open Popover by default pass `defaultOpen` prop.
 
 {% example %}
 
@@ -104,10 +104,10 @@ To manage open state of popover you can use `open` prop and to open popover by d
     </Text>
     <div className="flex justify-end gap-3 py-1">
       <Button size="sm" colorScheme="success">
-        Demo 1
+        Cancel
       </Button>
       <Button size="sm" colorScheme="error">
-        Demo 2
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -120,7 +120,7 @@ To manage open state of popover you can use `open` prop and to open popover by d
 
 To make arrow on top of content visible you can use `showArrow` prop. It is a boolean type prop whose default value is `false`.
 
-{%example %}
+{% example %}
 
 ```jsx
 <Popover>
@@ -132,10 +132,10 @@ To make arrow on top of content visible you can use `showArrow` prop. It is a bo
     </Text>
     <div className="mt-3 flex justify-end gap-3 py-1">
       <Button size="sm" colorScheme="success">
-        Demo 1
+        Cancel
       </Button>
       <Button size="sm" colorScheme="error">
-        Demo 2
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -146,7 +146,7 @@ To make arrow on top of content visible you can use `showArrow` prop. It is a bo
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove all styles in popover.
+Pass `isUnstyled` prop in parent component to remove all styles in Popover.
 
 {% example %}
 
@@ -165,10 +165,10 @@ Pass `isUnstyled` prop in parent component to remove all styles in popover.
     </Text>
     <div className="flex justify-end gap-3">
       <Button className="bg-green-300 text-black" size="sm">
-        Demo 1
+        Cancel
       </Button>
       <Button className="bg-blue-300 text-black" size="sm">
-        Demo 2
+        Save
       </Button>
     </div>
   </PopoverContent>
@@ -177,46 +177,33 @@ Pass `isUnstyled` prop in parent component to remove all styles in popover.
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Popover
 
 This component is built on top of [Radix Popover](https://www.radix-ui.com/primitives/docs/components/popover#root)
 
-| Property   | Description                                            | Type                       | Default |
-| ---------- | ------------------------------------------------------ | -------------------------- | ------- |
-| size       | Size of the popover component and its subcomponents.   | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false` |
+| Property   | Description                                             | Type                                      | Default |
+| ---------- | ------------------------------------------------------- | ----------------------------------------- | ------- |
+| size       | Size of the popover and its sub-components.             | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`  |
+| isUnstyled | Remove style from this component and its sub-components | `boolean` or `undefined`                  | `false` |
 
 ### PopoverTrigger
 
-This component is built on top of [Radix Popover Trigger](https://www.radix-ui.com/primitives/docs/components/popover#trigger)
-
-| Property    | Description                              | Type                                                     | Default       |
-| ----------- | ---------------------------------------- | -------------------------------------------------------- | ------------- |
-| size        | Size of the popover trigger component.   | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
-| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"solid"`     |
-| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
-| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -             |
-| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -             |
-| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`       |
-| isActive    | To manage active state.                  | `boolean`                                                | `false`       |
-| isLoading   | To manage loading state.                 | `boolean`                                                | `false`       |
-| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`       |
-| asChild     | Treats the component as a child element. | `boolean`                                                | `false`       |
+This component is built on top of [Radix Popover Trigger](https://www.radix-ui.com/primitives/docs/components/popover#trigger) and using [Button](https://rafty.rhinobase.io/docs/components/button)
 
 ### PopoverContent
 
 This component is built on top of [Radix Popover Content](https://www.radix-ui.com/primitives/docs/components/popover#content)
 
-| Property        | Description                                   | Type      | Default |
-| --------------- | --------------------------------------------- | --------- | ------- |
-| sideOffset      | Side offset of the content from trigger.      | `number`  | `10`    |
-| isUnstyled      | Remove style from this component              | `boolean` | `false` |
-| arrowClassNames | Additional class names for the arrow element. | `string`  | -       |
-| showArrow       | Set Arrow visibility                          | `boolean` | `false` |
+| Property        | Description                                   | Type                     | Default |
+| --------------- | --------------------------------------------- | ------------------------ | ------- |
+| sideOffset      | Side offset of the content from trigger.      | `number`                 | `10`    |
+| isUnstyled      | Remove style from this component              | `boolean` or `undefined` | `false` |
+| arrowClassNames | Additional class names for the arrow element. | `string` or `undefined`  | -       |
+| showArrow       | Set Arrow visibility                          | `boolean` or `undefined` | `false` |
 
 ### PopoverClose
 

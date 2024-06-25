@@ -16,7 +16,7 @@ nextjs:
 
 The Avatar component is used to represent a user and can display the profile picture, initials or fallback icon.
 
-This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props.
+This is a custom component crafted to adhere to our styling conventions, resulting in limited styling options and available props. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -42,7 +42,7 @@ By default, the Avatar component displays a generic Person Icon. You can replace
 
 ## Size
 
-There are 3 `size` options in Avatar Component: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -87,25 +87,26 @@ There are 3 `size` options in Avatar Component: `sm`, `md` (default) & `lg`.
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Avatar
 
 `Avatar` composes the `<div>` component.
 
-| Property | Description                           | Type                       | Default |
-| -------- | ------------------------------------- | -------------------------- | ------- |
-| name     | User name or initials for the avatar. | `string`                   | -       |
-| src      | URL of the image for the avatar.      | `string`                   | -       |
-| size     | Size of the avatar component.         | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| Property   | Description                           | Type                                      | Default |
+| ---------- | ------------------------------------- | ----------------------------------------- | ------- |
+| name       | User name or initials for the avatar. | `string` or `undefined`                   | -       |
+| src        | URL of the image for the avatar.      | `string` or `undefined`                   | -       |
+| size       | Size of the avatar component.         | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`  |
+| isUnstyled | Remove style from this component      | `boolean` or `undefined`                  | `false` |
 
-### Avatar Group
+### AvatarGroup
 
-`Avatar Group` composes the `<div>` component.
+`AvatarGroup` composes the `<div>` component.
 
-| Property | Description                                          | Type                       | Default |
-| -------- | ---------------------------------------------------- | -------------------------- | ------- |
-| max      | Maximum number of avatars to display                 | `number`                   | -       |
-| size     | Size of avatar group component and its subcomponents | `"sm"` or `"md"` or `"lg"` | `"md"`  |
+| Property | Description                                 | Type                                      | Default |
+| -------- | ------------------------------------------- | ----------------------------------------- | ------- |
+| max      | Maximum number of avatars to display        | `number` or `undefined`                   | -       |
+| size     | Size of avatar group and its sub-components | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`  |

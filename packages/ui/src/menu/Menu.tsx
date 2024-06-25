@@ -1,7 +1,6 @@
 "use client";
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -9,26 +8,37 @@ import {
   forwardRef,
 } from "react";
 import { Button } from "../button";
-import { classNames } from "../utils";
+import {
+  contextMenuCheckboxItemIndicatorClasses,
+  contextMenuContentClasses,
+  contextMenuItemClasses,
+  contextMenuLabelClasses,
+  contextMenuRadioAndCheckboxItemClasses,
+  contextMenuRadioItemIndicatorClasses,
+  contextMenuSeperatorClasses,
+  contextMenuSubTriggerIconClasses,
+} from "../context-menu";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import { type MenuContext, MenuProvider, useMenuContext } from "./context";
 
-// Menu Component
 export type Menu = ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
   Partial<MenuContext>;
 
-export const Menu = ({
+export function Menu({
   children,
   size = "md",
   isUnstyled = false,
+  isDisabled = false,
   ...props
-}: Menu) => (
-  <MenuProvider value={{ size, isUnstyled }}>
-    <DropdownMenu.Root {...props}>{children}</DropdownMenu.Root>
-  </MenuProvider>
-);
-Menu.displayName = "Menu";
+}: Menu) {
+  return (
+    <MenuProvider value={{ size, isUnstyled, isDisabled }}>
+      <DropdownMenu.Root {...props}>{children}</DropdownMenu.Root>
+    </MenuProvider>
+  );
+}
 
-// MenuButton Component
 export const menuTriggerClasses = cva("", {
   variants: {
     colorScheme: {
@@ -42,82 +52,74 @@ export const menuTriggerClasses = cva("", {
       outline: "",
       ghost: "",
     },
+    disabled: {
+      true: "",
+      false: "",
+    },
   },
   compoundVariants: [
     {
       colorScheme: "primary",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-primary-600 dark:data-[state=open]:bg-primary-400/80",
     },
     {
       colorScheme: "secondary",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-secondary-300 dark:data-[state=open]:bg-secondary-400/80",
     },
     {
       colorScheme: "error",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-error-600/90 dark:data-[state=open]:bg-error-400/80",
     },
     {
       colorScheme: "success",
       variant: "solid",
+      disabled: false,
       className:
         "data-[state=open]:bg-success-600/90 dark:data-[state=open]:bg-success-400/80",
     },
-
     {
       colorScheme: "primary",
-      variant: "outline",
+      variant: ["outline", "ghost"],
+      disabled: false,
       className:
         "data-[state=open]:bg-primary-200/70 dark:data-[state=open]:bg-primary-400/20",
     },
     {
       colorScheme: "secondary",
-      variant: "outline",
+      variant: ["outline", "ghost"],
+      disabled: false,
       className:
         "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-700/80",
     },
     {
       colorScheme: "error",
-      variant: "outline",
+      variant: ["outline", "ghost"],
+      disabled: false,
       className:
         "data-[state=open]:bg-error-200/60 dark:data-[state=open]:bg-error-300/30",
     },
     {
       colorScheme: "success",
-      variant: "outline",
-      className:
-        "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
-    },
-    {
-      colorScheme: "primary",
-      variant: "ghost",
-      className:
-        "data-[state=open]:bg-primary-200/70 dark:data-[state=open]:bg-primary-400/20",
-    },
-    {
-      colorScheme: "secondary",
-      variant: "ghost",
-      className:
-        "data-[state=open]:bg-secondary-200/80 dark:data-[state=open]:bg-secondary-700/80",
-    },
-    {
-      colorScheme: "error",
-      variant: "ghost",
-      className:
-        "data-[state=open]:bg-error-200/60 dark:data-[state=open]:bg-error-300/30",
-    },
-    {
-      colorScheme: "success",
-      variant: "ghost",
+      variant: ["outline", "ghost"],
+      disabled: false,
       className:
         "data-[state=open]:bg-success-200/60 dark:data-[state=open]:bg-success-300/30",
     },
   ],
+  defaultVariants: {
+    colorScheme: "secondary",
+    disabled: false,
+    variant: "solid",
+  },
 });
 
 export type MenuTrigger = ComponentPropsWithoutRef<
@@ -128,139 +130,122 @@ export type MenuTrigger = ComponentPropsWithoutRef<
 export const MenuTrigger = forwardRef<
   ElementRef<typeof DropdownMenu.Trigger>,
   MenuTrigger
->(
-  (
-    {
-      className,
-      children,
-      size = "md",
-      variant = "solid",
-      colorScheme = "secondary",
-      leftIcon = undefined,
-      rightIcon = undefined,
-      isDisabled = false,
-      isActive = false,
-      isLoading = false,
-      isUnstyled = false,
-      asChild = false,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const { size: parentSize, isUnstyled: isParentUnstyled } = useMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-    const triggerSize = size || parentSize;
-    const buttonProps = {
-      variant,
-      colorScheme,
-      leftIcon,
-      rightIcon,
-      isActive,
-      isDisabled,
-      isLoading,
-    };
-
-    return (
-      <DropdownMenu.Trigger
-        {...props}
-        className={asChild ? className : undefined}
-        ref={forwardedRef}
-        asChild
-      >
-        {asChild ? (
-          children
-        ) : (
-          <Button
-            size={triggerSize}
-            isUnstyled={unstyle}
-            className={
-              unstyle
-                ? className
-                : classNames(
-                    menuTriggerClasses({ colorScheme, variant }),
-                    className,
-                  )
-            }
-            {...buttonProps}
-          >
-            {children}
-          </Button>
-        )}
-      </DropdownMenu.Trigger>
-    );
+>(function MenuTrigger(
+  {
+    className,
+    children,
+    size = "md",
+    variant = "solid",
+    colorScheme = "secondary",
+    leftIcon = undefined,
+    rightIcon = undefined,
+    isDisabled = false,
+    isActive = false,
+    isLoading = false,
+    isUnstyled = false,
+    asChild = false,
+    ...props
   },
-);
-MenuTrigger.displayName = "MenuTrigger";
+  forwardedRef,
+) {
+  const {
+    size: parentSize,
+    isUnstyled: isParentUnstyled,
+    isDisabled: isParentDisabled,
+  } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
+  const triggerSize = size || parentSize;
+  const disabled = isParentDisabled || isDisabled;
 
-//MenuContent Component
+  const buttonProps = {
+    variant,
+    colorScheme,
+    leftIcon,
+    rightIcon,
+    isActive,
+    isLoading,
+    size: triggerSize,
+    isDisabled: disabled,
+    isUnstyled: unstyle,
+  };
+
+  return (
+    <DropdownMenu.Trigger
+      {...props}
+      className={asChild ? className : undefined}
+      ref={forwardedRef}
+      asChild
+    >
+      {asChild ? (
+        children
+      ) : (
+        <Button
+          className={
+            unstyle
+              ? className
+              : classNames(
+                  menuTriggerClasses({
+                    colorScheme,
+                    variant,
+                    disabled: getValue(disabled),
+                  }),
+                  className,
+                )
+          }
+          {...buttonProps}
+        >
+          {children}
+        </Button>
+      )}
+    </DropdownMenu.Trigger>
+  );
+});
+
 export type MenuContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.Content
 > & {
   isUnstyled?: boolean;
-  isArrow?: BooleanOrFunction;
+  isArrow?: ValueOrFunction;
   arrowClassNames?: string;
 };
 
 export const MenuContent = forwardRef<
   ElementRef<typeof DropdownMenu.Content>,
   MenuContent
->(
-  (
-    {
-      children,
-      className,
-      isArrow,
-      isUnstyled = false,
-      arrowClassNames,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled } = useMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
-    const arrow = getValue(isArrow) ?? true;
-
-    return (
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
-                  "data-[side=top]:animate-slide-up data-[side=bottom]:animate-slide-down",
-                  "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-sm focus:outline-none",
-                  className,
-                )
-          }
-          ref={forwardedRef}
-        >
-          {children}
-          {arrow && <MenuArrow className={arrowClassNames} />}
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    );
-  },
-);
-MenuContent.displayName = "MenuContent";
-
-// MenuLabel Component
-export const menuLabelClasses = cva(
-  "text-secondary-400 dark:text-secondary-400 select-none font-semibold uppercase tracking-wide",
+>(function MenuContent(
   {
-    variants: {
-      size: {
-        sm: "px-1.5 text-[10px]",
-        md: "px-2 text-[11px]",
-        lg: "px-2.5 text-xs",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
+    children,
+    className,
+    isArrow,
+    isUnstyled = false,
+    arrowClassNames,
+    ...props
   },
-);
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, isDisabled, size } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
+  const arrow = getValue(isArrow) ?? true;
+
+  if (isDisabled) return undefined;
+
+  return (
+    <DropdownMenu.Portal>
+      <DropdownMenu.Content
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        ref={forwardedRef}
+      >
+        {children}
+        {arrow && <MenuArrow className={arrowClassNames} />}
+      </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+  );
+});
 
 export type MenuLabel = ComponentPropsWithoutRef<typeof DropdownMenu.Label> & {
   isUnstyled?: boolean;
@@ -269,7 +254,10 @@ export type MenuLabel = ComponentPropsWithoutRef<typeof DropdownMenu.Label> & {
 export const MenuLabel = forwardRef<
   ElementRef<typeof DropdownMenu.Label>,
   MenuLabel
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuLabel(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -277,7 +265,9 @@ export const MenuLabel = forwardRef<
     <DropdownMenu.Label
       {...props}
       className={
-        unstyle ? className : classNames(menuLabelClasses({ size }), className)
+        unstyle
+          ? className
+          : classNames(contextMenuLabelClasses({ size }), className)
       }
       ref={forwardedRef}
     >
@@ -285,24 +275,6 @@ export const MenuLabel = forwardRef<
     </DropdownMenu.Label>
   );
 });
-MenuLabel.displayName = "MenuLabel";
-
-// MenuItem Component
-export const menuItemClasses = cva(
-  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[disabled]:text-secondary-300 dark:text-secondary-200 dark:focus:bg-secondary-700/60 data-[disabled]:dark:text-secondary-500 flex w-full cursor-pointer items-center gap-2 font-medium focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent data-[disabled]:dark:hover:bg-transparent",
-  {
-    variants: {
-      size: {
-        sm: "px-2.5 py-1.5 text-xs",
-        md: "px-3.5 py-1.5 text-sm",
-        lg: "px-4 py-2 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
 
 export type MenuItem = ComponentPropsWithoutRef<typeof DropdownMenu.Item> & {
   isUnstyled?: boolean;
@@ -311,7 +283,10 @@ export type MenuItem = ComponentPropsWithoutRef<typeof DropdownMenu.Item> & {
 export const MenuItem = forwardRef<
   ElementRef<typeof DropdownMenu.Item>,
   MenuItem
->(({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuItem(
+  { className, children, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -319,7 +294,9 @@ export const MenuItem = forwardRef<
     <DropdownMenu.Item
       {...props}
       className={
-        unstyle ? className : classNames(menuItemClasses({ size }), className)
+        unstyle
+          ? className
+          : classNames(contextMenuItemClasses({ size }), className)
       }
       ref={forwardedRef}
     >
@@ -327,41 +304,8 @@ export const MenuItem = forwardRef<
     </DropdownMenu.Item>
   );
 });
-MenuItem.displayName = "MenuItem";
 
-// MenuCheckboxGroup Component
 export const MenuGroup = DropdownMenu.Group;
-MenuGroup.displayName = "MenuGroup";
-
-// MenuCheckboxItem Component
-export const menuCheckboxItemClasses = cva(
-  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
-  {
-    variants: {
-      size: {
-        sm: "pl-6 pr-2.5 py-1.5 text-xs",
-        md: "pl-7 pr-3.5 py-1.5 text-sm",
-        lg: "pl-8 pr-4 py-2 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
-
-export const menuCheckboxItemIndicatorClasses = cva("absolute", {
-  variants: {
-    size: {
-      sm: "left-1",
-      md: "left-2",
-      lg: "left-2.5",
-    },
-  },
-  defaultVariants: {
-    size: "md",
-  },
-});
 
 export type MenuCheckboxItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.CheckboxItem
@@ -370,7 +314,10 @@ export type MenuCheckboxItem = ComponentPropsWithoutRef<
 export const MenuCheckboxItem = forwardRef<
   ElementRef<typeof DropdownMenu.CheckboxItem>,
   MenuCheckboxItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuCheckboxItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -380,70 +327,25 @@ export const MenuCheckboxItem = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(menuCheckboxItemClasses({ size }), className)
+          : classNames(
+              contextMenuItemClasses({ size }),
+              contextMenuRadioAndCheckboxItemClasses({ size }),
+              className,
+            )
       }
       ref={forwardedRef}
     >
       {children}
       <DropdownMenu.ItemIndicator
-        className={menuCheckboxItemIndicatorClasses({ size })}
+        className={contextMenuCheckboxItemIndicatorClasses({ size })}
       >
-        <CheckIcon className="size-3 stroke-[3]" />
+        <CheckIcon className="size-full stroke-[3]" />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.CheckboxItem>
   );
 });
-MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
-// MenuRadioGroup Component
 export const MenuRadioGroup = DropdownMenu.RadioGroup;
-MenuRadioGroup.displayName = "MenuRadioGroup";
-
-// MenuRadioItem Component
-export const menuRadioItemClasses = cva(
-  "rounded-base text-secondary-600 hover:bg-secondary-200/50 focus:bg-secondary-200 dark:text-secondary-200 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700/50 relative flex w-full cursor-pointer items-center gap-1 font-medium focus:outline-none",
-  {
-    variants: {
-      size: {
-        sm: "pl-6 pr-2.5 py-1.5 text-xs",
-        md: "pl-7 pr-3.5 py-1.5 text-sm",
-        lg: "pl-8 pr-4 py-2 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
-
-export const menuRadioItemIndicatorClasses = cva("absolute", {
-  variants: {
-    size: {
-      sm: "left-2",
-      md: "left-2.5",
-      lg: "left-2.5",
-    },
-  },
-  defaultVariants: {
-    size: "md",
-  },
-});
-
-export const menuRadioItemIndicatorChildClasses = cva(
-  "bg-secondary-600 dark:bg-secondary-200 rounded-full",
-  {
-    variants: {
-      size: {
-        sm: "size-1.5",
-        md: "size-2",
-        lg: "size-2",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
 
 export type MenuRadioItem = ComponentPropsWithoutRef<
   typeof DropdownMenu.RadioItem
@@ -454,7 +356,10 @@ export type MenuRadioItem = ComponentPropsWithoutRef<
 export const MenuRadioItem = forwardRef<
   ElementRef<typeof DropdownMenu.RadioItem>,
   MenuRadioItem
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuRadioItem(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -464,45 +369,29 @@ export const MenuRadioItem = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(menuRadioItemClasses({ size }), className)
+          : classNames(
+              contextMenuItemClasses({ size }),
+              contextMenuRadioAndCheckboxItemClasses({ size }),
+              className,
+            )
       }
       ref={forwardedRef}
     >
       {children}
       <DropdownMenu.ItemIndicator
-        className={menuRadioItemIndicatorClasses({ size })}
+        className={contextMenuRadioItemIndicatorClasses({ size })}
       >
-        <div className={menuRadioItemIndicatorChildClasses({ size })} />
+        <div className="bg-secondary-600 dark:bg-secondary-200 size-full rounded-full" />
       </DropdownMenu.ItemIndicator>
     </DropdownMenu.RadioItem>
   );
 });
-MenuRadioItem.displayName = "MenuRadioItem";
 
-// SubMenuComponent
 export type MenuSub = ComponentPropsWithoutRef<typeof DropdownMenu.Sub>;
 
-export const MenuSub = ({ children, ...props }: MenuSub) => (
-  <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>
-);
-MenuSub.displayName = "MenuSub";
-
-// SubMenuButton Component
-export const menuSubTriggerClasses = cva(
-  "rounded-base text-secondary-600 focus:bg-secondary-200/70 data-[state=open]:bg-secondary-200/70 dark:text-secondary-200 dark:focus:bg-secondary-700/60 dark:data-[state=open]:bg-secondary-700/60 flex w-full cursor-pointer items-center justify-between gap-2 font-medium focus:outline-none",
-  {
-    variants: {
-      size: {
-        sm: "px-2.5 py-1.5 text-xs",
-        md: "px-3.5 py-1.5 text-sm",
-        lg: "px-4 py-2 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
+export function MenuSub({ children, ...props }: MenuSub) {
+  return <DropdownMenu.Sub {...props}>{children}</DropdownMenu.Sub>;
+}
 
 export type MenuSubTrigger = ComponentPropsWithoutRef<
   typeof DropdownMenu.SubTrigger
@@ -513,7 +402,10 @@ export type MenuSubTrigger = ComponentPropsWithoutRef<
 export const MenuSubTrigger = forwardRef<
   ElementRef<typeof DropdownMenu.SubTrigger>,
   MenuSubTrigger
->(({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuSubTrigger(
+  { children, className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -524,17 +416,21 @@ export const MenuSubTrigger = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(menuSubTriggerClasses({ size }), className)
+          : classNames(
+              contextMenuItemClasses({ size }),
+              "justify-between",
+              className,
+            )
       }
     >
       {children}
-      <ChevronRightIcon className="size-3 stroke-[3]" />
+      <ChevronRightIcon
+        className={contextMenuSubTriggerIconClasses({ size })}
+      />
     </DropdownMenu.SubTrigger>
   );
 });
-MenuSubTrigger.displayName = "MenuSubTrigger";
 
-// SubMenuContent Component
 export type MenuSubContent = ComponentPropsWithoutRef<
   typeof DropdownMenu.SubContent
 > & {
@@ -544,55 +440,30 @@ export type MenuSubContent = ComponentPropsWithoutRef<
 export const MenuSubContent = forwardRef<
   ElementRef<typeof DropdownMenu.SubContent>,
   MenuSubContent
->(
-  (
-    { children, className, isUnstyled = false, sideOffset = 10, ...props },
-    forwardedRef,
-  ) => {
-    const { isUnstyled: isParentUnstyled } = useMenuContext();
-    const unstyle = isParentUnstyled || isUnstyled;
+>(function MenuSubContent(
+  { children, className, isUnstyled = false, sideOffset = 10, ...props },
+  forwardedRef,
+) {
+  const { isUnstyled: isParentUnstyled, size } = useMenuContext();
+  const unstyle = isParentUnstyled || isUnstyled;
 
-    return (
-      <DropdownMenu.Portal>
-        <DropdownMenu.SubContent
-          {...props}
-          className={
-            unstyle
-              ? className
-              : classNames(
-                  "shadow-[0px_3px_15px_0px_rgba(22,45,60,0.11)]",
-                  "data-[side=right]:animate-scale-in origin-top-left",
-                  "dark:bg-secondary-800 dark:text-secondary-200 text-secondary-900 flex min-w-[12rem] flex-col rounded-md bg-white p-1 text-[13px] focus:outline-none",
-                  className,
-                )
-          }
-          sideOffset={sideOffset}
-          ref={forwardedRef}
-        >
-          {children}
-        </DropdownMenu.SubContent>
-      </DropdownMenu.Portal>
-    );
-  },
-);
-MenuSubContent.displayName = "MenuSubContent";
-
-// MenuDivider Component
-export const menuSeparatorClasses = cva(
-  "bg-secondary-200 dark:bg-secondary-700 h-[1px]",
-  {
-    variants: {
-      size: {
-        sm: "my-1",
-        md: "my-[5px]",
-        lg: "my-1.5",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-    },
-  },
-);
+  return (
+    <DropdownMenu.Portal>
+      <DropdownMenu.SubContent
+        {...props}
+        className={
+          unstyle
+            ? className
+            : classNames(contextMenuContentClasses({ size }), className)
+        }
+        sideOffset={sideOffset}
+        ref={forwardedRef}
+      >
+        {children}
+      </DropdownMenu.SubContent>
+    </DropdownMenu.Portal>
+  );
+});
 
 export type MenuSeparator = ComponentPropsWithoutRef<
   typeof DropdownMenu.Separator
@@ -603,7 +474,10 @@ export type MenuSeparator = ComponentPropsWithoutRef<
 export const MenuSeparator = forwardRef<
   ElementRef<typeof DropdownMenu.Separator>,
   MenuSeparator
->(({ className, isUnstyled = false, ...props }, forwardedRef) => {
+>(function MenuSeparator(
+  { className, isUnstyled = false, ...props },
+  forwardedRef,
+) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -613,20 +487,18 @@ export const MenuSeparator = forwardRef<
       className={
         unstyle
           ? className
-          : classNames(menuSeparatorClasses({ size }), className)
+          : classNames(contextMenuSeperatorClasses({ size }), className)
       }
       ref={forwardedRef}
     />
   );
 });
-MenuSeparator.displayName = "MenuSeparator";
 
-// MenuArrow Component
 type MenuArrow = ComponentPropsWithoutRef<typeof DropdownMenu.Arrow> & {
   isUnstyled?: boolean;
 };
 
-const MenuArrow = ({ className, isUnstyled = false, ...props }: MenuArrow) => {
+function MenuArrow({ className, isUnstyled = false, ...props }: MenuArrow) {
   const { isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
 
@@ -640,5 +512,4 @@ const MenuArrow = ({ className, isUnstyled = false, ...props }: MenuArrow) => {
       }
     />
   );
-};
-MenuArrow.displayName = "MenuArrow";
+}

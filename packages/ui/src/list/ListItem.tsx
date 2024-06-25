@@ -1,27 +1,10 @@
 import { type HTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
-// ListItem Component
-export type ListItem = HTMLAttributes<HTMLLIElement> & {
-  isUnstyled?: boolean;
-};
+export type ListItem = HTMLAttributes<HTMLLIElement>;
 
 export const ListItem = forwardRef<HTMLLIElement, ListItem>(
-  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
-    return (
-      <li
-        ref={forwardedRef}
-        {...props}
-        className={
-          isUnstyled
-            ? className
-            : classNames(className, "dark:text-secondary-100")
-        }
-      >
-        {children}
-      </li>
-    );
+  function ListItem(props, forwardedRef) {
+    return <li {...props} ref={forwardedRef} />;
   },
 );
-
-ListItem.displayName = "ListItem";

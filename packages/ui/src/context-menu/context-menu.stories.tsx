@@ -34,21 +34,21 @@ export default meta;
 type Story = StoryObj<typeof ContextMenu>;
 
 export const Default: Story = {
-  render: ({ size, isUnstyled }) => {
+  render: (props) => {
     const [bookmarksChecked, setBookmarksChecked] = useState(true);
     const [urlsChecked, setUrlsChecked] = useState(false);
     const [person, setPerson] = useState("1");
 
     return (
-      <ContextMenu size={size} isUnstyled={isUnstyled}>
+      <ContextMenu {...props}>
         <ContextMenuTrigger>
-          <div className="border border-dashed p-5 text-center dark:border-zinc-700 dark:text-zinc-100">
+          <div className="flex size-[300px] items-center justify-center rounded-lg border-2 border-dashed dark:border-zinc-700 dark:text-zinc-100">
             Context
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuItem>Back</ContextMenuItem>
-          <ContextMenuItem disabled>Forward</ContextMenuItem>
+          <ContextMenuItem>Forward</ContextMenuItem>
           <ContextMenuItem>Reload</ContextMenuItem>
           <ContextMenuSub>
             <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
@@ -77,7 +77,9 @@ export const Default: Story = {
           <ContextMenuLabel>People</ContextMenuLabel>
           <ContextMenuRadioGroup value={person} onValueChange={setPerson}>
             <ContextMenuRadioItem value="1">Jack</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="2">Denial</ContextMenuRadioItem>
+            <ContextMenuRadioItem value="2" disabled>
+              Denial
+            </ContextMenuRadioItem>
           </ContextMenuRadioGroup>
         </ContextMenuContent>
       </ContextMenu>

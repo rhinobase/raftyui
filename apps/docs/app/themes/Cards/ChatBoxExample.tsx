@@ -4,7 +4,7 @@ import {
   PaperAirplaneIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
-import { eventHandler } from "@rafty/shared";
+import { eventHandler } from "@rafty/ui";
 import {
   Avatar,
   AvatarGroup,
@@ -87,10 +87,10 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           src={`https://api.dicebear.com/7.x/notionists/svg?seed=${USERS_DATA[3].name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
         />
         <div>
-          <Text className="text-sm font-semibold leading-tight">
+          <Text className="text-[0.875rem] font-semibold leading-[1.5rem] leading-tight">
             Jackson Lee
           </Text>
-          <Text className="text-secondary-500 text-sm leading-tight">
+          <Text className="text-secondary-500 text-[0.875rem] leading-[1.5rem] leading-tight">
             p@example.com
           </Text>
         </div>
@@ -128,7 +128,7 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
           ref={ref}
           placeholder="Type your message..."
           onKeyDown={sendMessage}
-          className="placeholder:text-sm"
+          className="leading-[1.5rem] placeholder:text-[0.875rem]"
         />
         <Button
           size="icon"
@@ -177,7 +177,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
       <DialogContent className="dark:bg-secondary-900 z-[70] p-0">
         <div className="space-y-2 p-4">
           <DialogTitle>New message</DialogTitle>
-          <Text className="text-sm leading-tight opacity-60">
+          <Text className="text-[0.875rem] leading-[1.5rem] leading-tight opacity-60">
             Invite a user to this thread. This will create a new group message.
           </Text>
         </div>
@@ -198,10 +198,10 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
                       src={`https://api.dicebear.com/7.x/notionists/svg?seed=${user.name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
                     />
                     <div>
-                      <Text className="text-sm font-semibold leading-tight">
+                      <Text className="text-[0.875rem] font-semibold leading-[1.5rem] leading-tight">
                         {user.name}
                       </Text>
-                      <Text className="text-secondary-500 text-sm leading-tight">
+                      <Text className="text-secondary-500 text-[0.875rem] leading-[1.5rem] leading-tight">
                         {user.email}
                       </Text>
                     </div>
@@ -234,7 +234,7 @@ function NewMessageDialog({ onClick }: NewMessageDialog) {
               })}
             </AvatarGroup>
           ) : (
-            <Text className="dark:text-secondary-500 text-secondary-400 text-sm">
+            <Text className="dark:text-secondary-500 text-secondary-400 text-[0.875rem] leading-[1.5rem]">
               Select users to add to this thread.
             </Text>
           )}
@@ -263,7 +263,7 @@ function Message({
   return (
     <Text
       className={classNames(
-        "text-secondary-800 dark:text-secondary-100 max-w-[75%] rounded-md px-3 py-1.5 text-sm font-medium leading-snug",
+        "text-secondary-800 dark:text-secondary-100 max-w-[75%] rounded-md px-3 py-1.5 text-[0.875rem] font-medium leading-[1.5rem] leading-snug",
         className,
       )}
     >

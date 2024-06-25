@@ -3,7 +3,7 @@ import { RaftyIcon, type RaftyIconProps } from "./RaftyIcon";
 import { ICONS } from "./icons";
 
 const meta: Meta<RaftyIconProps> = {
-  title: "Components / Icons",
+  title: "Icons / Icon",
   args: {
     type: "check-circle",
   },

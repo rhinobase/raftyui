@@ -12,11 +12,17 @@ export type CodeBlock = {
   content: string;
   language: string;
   live?: boolean;
+  noInline?: boolean;
 };
 
-export function CodeBlock({ language, content, live = false }: CodeBlock) {
+export function CodeBlock({
+  language,
+  content,
+  live = false,
+  noInline = false,
+}: CodeBlock) {
   if (language === "jsx" && live) {
-    return <ReactLiveBlock code={content} />;
+    return <ReactLiveBlock code={content} noInline={noInline} />;
   }
 
   return (

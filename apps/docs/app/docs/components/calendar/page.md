@@ -3,7 +3,7 @@ title: Calendar
 nextjs:
   metadata:
     title: Calendar
-    description: The Calendar component allows the user to select a date without the need for input fields or pop-up modals.
+    description: A component that allows users to select a date from a calendar.
     twitter:
       title: Calendar
       images:
@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Calendar
 ---
 
-The Calendar component allows the user to select a date without the need for input fields or pop-up modals.
+A component that allows users to select a date from a calendar.
 
-This component is made on top of [React Day Picker’s DayPicker Component](https://react-day-picker.js.org/start) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+This component is made on top of [Ark Date Picker Component](https://ark-ui.com/react/docs/components/date-picker) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 
 # Anatomy
 
@@ -30,6 +30,8 @@ import { Calendar } from "@rafty/ui";
 
 ## Usage
 
+Today's date is higlighted in primary color with semi-bold font.
+
 {% example %}
 
 ```jsx
@@ -38,10 +40,32 @@ import { Calendar } from "@rafty/ui";
 
 {% /example %}
 
-## Props
+## size
+
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
+
+{% example %}
+
+```jsx
+<Calendar size="sm" />
+```
+
+{% /example %}
 
 ---
 
+## Props
+
 ### Calendar
 
-`Calendar` component is built on top of [React Day Picker](https://react-day-picker.js.org/)
+`Calendar` component is built on top of [Ark Date Picker View](https://ark-ui.com/react/docs/components/date-picker#api-reference)
+
+| Property      | Description                                | Type                                                   | Default |
+| ------------- | ------------------------------------------ | ------------------------------------------------------ | ------- |
+| size          | Size of the calendar component.            | `"sm"` or `"md"` or `"lg"` or `undefined`              | `"md"`  |
+| defaultValue  | Default selected value.                    | `string` or `undefined`                                | -       |
+| value         | To manage the selected value.              | `string` or `undefined`                                | -       |
+| onValueChange | The callback invoke when value is changed. | <Info>(value?: string)=>void</Info> or `undefined`     | -       |
+| isDisabled    | To manage the disabled state.              | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isLoading     | To manage the loading state.               | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isReadOnly    | To manage the readonly state.              | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |

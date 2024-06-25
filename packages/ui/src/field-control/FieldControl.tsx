@@ -1,11 +1,10 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import { type FieldControlContext, FieldControlProvider } from "./context";
 
-// Field Control Component
 export const fieldControlClasses = cva("flex w-full", {
   variants: {
     orientation: {
@@ -22,15 +21,15 @@ export const fieldControlClasses = cva("flex w-full", {
 export type FieldControl = HTMLAttributes<HTMLDivElement> &
   Partial<Pick<FieldControlContext, "orientation">> &
   Pick<FieldControlContext, "name"> & {
-    isRequired?: BooleanOrFunction;
-    isDisabled?: BooleanOrFunction;
-    isReadOnly?: BooleanOrFunction;
-    isInvalid?: BooleanOrFunction;
-    isLoading?: BooleanOrFunction;
+    isRequired?: ValueOrFunction;
+    isDisabled?: ValueOrFunction;
+    isReadOnly?: ValueOrFunction;
+    isInvalid?: ValueOrFunction;
+    isLoading?: ValueOrFunction;
   };
 
 export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
-  (
+  function FieldControl(
     {
       name,
       orientation = "col",
@@ -44,7 +43,7 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const required = getValue(isRequired) ?? false;
     const disabled = getValue(isDisabled) ?? false;
     const readonly = getValue(isReadOnly) ?? false;
@@ -77,5 +76,3 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
     );
   },
 );
-
-FieldControl.displayName = "FieldControl";

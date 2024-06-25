@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Progress
 ---
 
-Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+Displays an indicator showing the completion Progress of a task, typically displayed as a Progress bar.
 
-This component is made on top of [Radix UIs Progress Component](https://www.radix-ui.com/primitives/docs/components/progress) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
+This component is made on top of [Ark Progress Linear](https://ark-ui.com/react/docs/components/progress-linear) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
 
 ## Anatomy
 
@@ -28,19 +28,25 @@ import { Progress } from "@rafty/ui";
 <Progress />;
 ```
 
-## Usage
+```jsx
+import { CircularProgress } from "@rafty/ui";
+
+<CircularProgress />;
+```
+
+## Linear Usage
 
 {% example %}
 
 ```jsx
-<Progress size="lg" value={80} colorScheme="primary" className="w-full" />
+<Progress />
 ```
 
 {% /example %}
 
-## Size
+## Linear Size
 
-There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -54,9 +60,9 @@ There are 3 `size` options in progress: `sm`, `md` (default) & `lg`.
 
 {% /example %}
 
-## ColorScheme
+## Linear ColorScheme
 
-There are 4 `colorScheme` options in progress: `primary` (default), `error`, `warning` & `success`.
+There are 5 `colorScheme` options available: `"primary"` (default), `"error"`, `"warning"`, `"secondary"` & `"success"`.
 
 {% example %}
 
@@ -66,22 +72,74 @@ There are 4 `colorScheme` options in progress: `primary` (default), `error`, `wa
   <Progress value={40} colorScheme="error" />
   <Progress value={60} colorScheme="success" />
   <Progress value={50} colorScheme="warning" />
+  <Progress value={50} colorScheme="secondary" />
 </div>
 ```
 
 {% /example %}
 
-## Props
+## Circular Progress
+
+{% example %}
+
+```jsx
+<CircularProgress />
+```
+
+{% /example %}
+
+## Circular Size
+
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
+
+{% example %}
+
+```jsx
+<div className="flex w-full items-center gap-3">
+  <CircularProgress value={70} size="sm" />
+  <CircularProgress value={40} size="md" />
+  <CircularProgress value={50} size="lg" />
+</div>
+```
+
+{% /example %}
+
+## Circular ColorScheme
+
+There are 5 `colorScheme` options available: `"primary"` (default), `"error"`, `"warning"`, `"secondary"` & `"success"`.
+
+{% example %}
+
+```jsx
+<div className="flex w-full items-center gap-3">
+  <CircularProgress value={70} colorScheme="primary" />
+  <CircularProgress value={40} colorScheme="error" />
+  <CircularProgress value={60} colorScheme="success" />
+  <CircularProgress value={50} colorScheme="warning" />
+  <CircularProgress value={50} colorScheme="secondary" />
+</div>
+```
+
+{% /example %}
 
 ---
 
+## Props
+
 ### Progress
 
-This component is built on top of [Radix Progress](https://www.radix-ui.com/primitives/docs/components/progress#root)
+This component is built on top of [Ark Progress Linear](https://ark-ui.com/react/docs/components/progress-linear#api-reference)
 
-| Property           | Description                                       | Type                                                   | Default     |
-| ------------------ | ------------------------------------------------- | ------------------------------------------------------ | ----------- |
-| size               | Size of the progress component.                   | `"sm"` or `"md"` or `"lg"`                             | `"md"`      |
-| colorScheme        | Color scheme of the component.                    | `"primary"` or `"warning"` or `"error"` or `"success"` | `"primary"` |
-| value              | Value associated with the component.              | `number`                                               | -           |
-| indicatorClassName | Additional class names for the indicator element. | `string`                                               | -           |
+| Property    | Description                     | Type                                                                                   | Default     |
+| ----------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------- |
+| size        | Size of the progress component. | `"sm"` or `"md"` or `"lg"` or `undefined`                                              | `"md"`      |
+| colorScheme | Color scheme of the component.  | `"primary"` or `"warning"` or `"error"` or `"success"` or `"secondary"` or `undefined` | `"primary"` |
+
+### CircularProgress
+
+This component is built on top of [Ark Progress Circular](https://ark-ui.com/react/docs/components/progress-circular#api-reference)
+
+| Property    | Description                              | Type                                                                                   | Default     |
+| ----------- | ---------------------------------------- | -------------------------------------------------------------------------------------- | ----------- |
+| size        | Size of the circular progress component. | `"sm"` or `"md"` or `"lg"` or `undefined`                                              | `"md"`      |
+| colorScheme | Color scheme of the component.           | `"primary"` or `"warning"` or `"error"` or `"success"` or `"secondary"` or `undefined` | `"primary"` |

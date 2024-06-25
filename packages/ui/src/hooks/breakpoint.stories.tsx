@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useBreakpointValue } from "./useBreakpointValue";
 
 const meta: Meta<typeof useBreakpointValue> = {
-  title: "Form / useBreakpointValue",
+  title: "Hooks / useBreakpointValue",
 };
 
 export default meta;

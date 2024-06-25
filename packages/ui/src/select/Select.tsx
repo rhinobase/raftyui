@@ -1,6 +1,5 @@
 "use client";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type OptgroupHTMLAttributes,
@@ -9,15 +8,16 @@ import {
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { classNames, getValue } from "../utils";
 import {
   type SelectContext,
   SelectProvider,
   useSelectContext,
 } from "./context";
 
-const selectClasses = cva(
-  "w-full border appearance-none outline-none dark:text-secondary-200 transition-all",
+export const selectClasses = cva(
+  "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900 focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
   {
     variants: {
       size: {
@@ -29,9 +29,13 @@ const selectClasses = cva(
         true: "",
         false: "",
       },
-      readonly: {
+      readOnly: {
         true: "",
         false: "",
+      },
+      invalid: {
+        true: "ring-red-300 dark:ring-red-100 border-red-500 dark:border-red-300",
+        false: "ring-primary-300 dark:ring-primary-100",
       },
       variant: {
         solid: "",
@@ -43,34 +47,39 @@ const selectClasses = cva(
       {
         variant: "solid",
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className: "bg-secondary-50 dark:bg-secondary-900",
       },
       {
         disabled: true,
-        readonly: false,
+        readOnly: false,
         className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
       },
       {
         variant: ["solid", "outline"],
         disabled: false,
+        invalid: false,
         className:
-          "group-hover:border-primary-500 dark:group-hover:border-primary-400",
+          "group-hover/select:border-primary-500 dark:group-hover/select:border-primary-400 transition-all",
       },
       {
+        invalid: false,
         variant: ["solid", "outline"],
-        className: "border-secondary-300 dark:border-zinc-700",
+        className: "border-secondary-300 dark:border-secondary-700",
       },
       {
         disabled: false,
-        readonly: false,
-        className:
-          "cursor-pointer focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
+        readOnly: false,
+        className: "cursor-pointer",
+      },
+      {
+        invalid: false,
+        className: "focus:border-primary-500 dark:focus:border-primary-400",
       },
       {
         variant: ["outline", "ghost"],
         disabled: false,
-        readonly: false,
+        readOnly: false,
         className: "bg-transparent",
       },
       {
@@ -82,126 +91,185 @@ const selectClasses = cva(
       size: "md",
       variant: "outline",
       disabled: false,
-      readonly: false,
+      readOnly: false,
+      invalid: false,
     },
   },
 );
 
-const TRIGGER_ICON_CLASSES = {
-  sm: "right-[7px] size-3",
-  md: "right-2.5 size-3.5",
-  lg: "right-[13px] size-4",
-} as const;
+export const triggerIconClasses = cva(
+  "stroke-secondary-600 dark:stroke-secondary-400 pointer-events-none absolute stroke-[2.5]",
+  {
+    variants: {
+      size: {
+        sm: "right-[7px] size-3",
+        md: "right-2.5 size-3.5",
+        lg: "right-[13px] size-4",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
 export type Select = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
-  "size" | "disabled" | "required" | "placeholder"
+  "size" | "placeholder"
 > & {
   variant?: "solid" | "outline" | "ghost";
-  isUnstyled?: boolean;
-  isDisabled?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
-  isReadOnly?: BooleanOrFunction;
   placeholder?: string;
+  isUnstyled?: boolean;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 } & Partial<SelectContext>;
 
-export const Select = forwardRef<HTMLSelectElement, Select>(
-  (
-    {
-      children,
-      className,
-      name,
-      size = "md",
-      variant = "outline",
-      isDisabled,
-      isRequired,
-      isUnstyled = false,
-      isReadOnly,
-      placeholder,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const context = useFieldControlContext() ?? {
-      isDisabled: false,
-      isLoading: false,
-      isReadOnly: false,
-      isRequired: false,
-    };
+export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
+  {
+    children,
+    className,
+    name,
+    disabled,
+    required,
+    size = "md",
+    variant = "outline",
+    isUnstyled = false,
+    isReadOnly,
+    isDisabled,
+    isInvalid,
+    isLoading,
+    isRequired,
+    placeholder,
+    ...props
+  },
+  forwardedRef,
+) {
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
 
-    const field_name = name || context.name;
-    const disabled =
-      getValue(isDisabled) || context.isDisabled || context.isLoading;
-    const required = getValue(isRequired) || context.isRequired;
-    const readonly = getValue(isReadOnly) || context.isReadOnly;
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _required =
+    required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
+  const _readOnly = getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
 
+  const selectProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled || _readOnly,
+    required: _required,
+  };
+
+  function Component(componentProps: {
+    className: SelectHTMLAttributes<HTMLSelectElement>["className"];
+  }) {
+    return (
+      <select
+        {...selectProps}
+        className={componentProps.className}
+        ref={forwardedRef}
+      >
+        {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
+        {children}
+      </select>
+    );
+  }
+
+  if (isUnstyled)
     return (
       <SelectProvider value={{ size }}>
-        <div className="group relative flex w-max items-center">
-          <select
-            {...props}
-            name={field_name}
-            disabled={disabled || readonly}
-            required={required}
-            className={
-              isUnstyled
-                ? className
-                : classNames(
-                    selectClasses({
-                      size,
-                      variant,
-                      disabled,
-                      readonly,
-                    }),
-                    className,
-                  )
-            }
-            ref={forwardedRef}
-          >
-            {placeholder && <SelectItem value="">{placeholder}</SelectItem>}
-            {children}
-          </select>
-          {!isUnstyled && (
-            <ChevronDownIcon
-              className={classNames(
-                TRIGGER_ICON_CLASSES[size],
-                "dark:stroke-secondary-300 pointer-events-none absolute cursor-pointer stroke-[2.5] opacity-60",
-              )}
-            />
-          )}
-        </div>
+        <Component className={className} />
       </SelectProvider>
     );
+
+  return (
+    <SelectProvider value={{ size }}>
+      <div
+        className={classNames(
+          "group/select relative flex w-max items-center",
+          className,
+        )}
+      >
+        <Component
+          className={selectClasses({
+            size,
+            variant,
+            disabled: _disabled,
+            readOnly: _readOnly,
+            invalid: _invalid,
+          })}
+        />
+        <ChevronDownIcon className={triggerIconClasses({ size })} />
+      </div>
+    </SelectProvider>
+  );
+});
+
+export const selectItemClasses = cva("text-black dark:text-secondary-100", {
+  variants: {
+    size: {
+      sm: "text-sm",
+      md: "text-base",
+      lg: "text-lg",
+    },
   },
-);
-
-Select.displayName = "Select";
-
-const SelectItemClasses = {
-  sm: "text-sm",
-  md: "text-base",
-  lg: "text-lg",
-};
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 export type SelectItem = OptionHTMLAttributes<HTMLOptionElement>;
 
 export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
-  ({ className, ...props }, forwardedRef) => {
+  function SelectItem({ className, ...props }, forwardedRef) {
     const { size } = useSelectContext();
 
     return (
       <option
         {...props}
-        className={classNames(SelectItemClasses[size], className)}
+        className={classNames(selectItemClasses({ size }), className)}
         ref={forwardedRef}
       />
     );
   },
 );
-SelectItem.displayName = "SelectItem";
+
+export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
+  variants: {
+    size: {
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 export type SelectItemGroup = OptgroupHTMLAttributes<HTMLOptGroupElement>;
 
 export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
-  (props, forwardedRef) => <optgroup {...props} ref={forwardedRef} />,
+  function SelectItemGroup(props, forwardedRef) {
+    const { size } = useSelectContext();
+
+    return (
+      <optgroup
+        {...props}
+        className={selectItemGroupClasses({ size })}
+        ref={forwardedRef}
+      />
+    );
+  },
 );

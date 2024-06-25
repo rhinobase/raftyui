@@ -16,7 +16,7 @@ nextjs:
 
 Buttons enable users to take action and make choices with a single click.
 
-It is built over native html button component, enhanced with our styling conventions and additional props to manage various states, sizes, colors, and inclusion of icons
+It is built over native html Button component, enhanced with our styling conventions and additional props to manage various states, sizes, colors, and inclusion of icons. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -30,7 +30,7 @@ import { Button } from "@rafty/ui";
 
 ## Usage
 
-By default, it is a medium sized secondary solid button with hover effects and focus ring..
+By default, it is a medium sized secondary solid Button with hover effects and focus ring.
 
 {% example %}
 
@@ -42,9 +42,9 @@ By default, it is a medium sized secondary solid button with hover effects and f
 
 ## Size
 
-- There are 5 `size` options in button: `sm`, `md` (default), `lg`, `icon` & `fab`.
+- There are 5 `size` options available: `"sm"`, `"md"` (default), `"lg"`, `"icon"` & `"fab"`.
 - `icon` size is used when you want only icon.
-- `fab` size is used for circular button.
+- `fab` size is used for circular Button.
 
 {% example %}
 
@@ -66,7 +66,7 @@ By default, it is a medium sized secondary solid button with hover effects and f
 
 ## ColorScheme
 
-There are 4 `colorScheme` options in button: `primary` (default), `secondary`, `error` & `success`.
+There are 4 `colorScheme` options available: `"primary"` (default), `"secondary"`, `"error"` & `"success"`.
 
 {% example %}
 
@@ -83,7 +83,7 @@ There are 4 `colorScheme` options in button: `primary` (default), `secondary`, `
 
 ## Variant
 
-There are 3 `variant` in button: `solid` (default), `outline` & `ghost`.
+There are 3 `variant` options available: `"solid"` (default), `"outline"` & `"ghost"`.
 
 {% example %}
 
@@ -99,8 +99,8 @@ There are 3 `variant` in button: `solid` (default), `outline` & `ghost`.
 
 ## LeftIcon & RightIcon
 
-- You can pass JSX Element in `leftIcon` to add icon on left side of button.
-- You can pass JSX Element in `rightIcon` to add icon on right side of button.
+- You can pass JSX Element in `leftIcon` to add icon on left side of Button.
+- You can pass JSX Element in `rightIcon` to add icon on right side of Button.
 
 {% example %}
 
@@ -129,14 +129,14 @@ There are 3 `variant` in button: `solid` (default), `outline` & `ghost`.
 
 ## UnStyled
 
-Pass ` isUnstyled` prop to remove style component.
+Pass `isUnstyled` prop to remove all style.
 
 {% example %}
 
 ```jsx
 <Button
   isUnstyled
-  className="hover:bg-secondary-200 dark:bg-secondary-500 dark:hover:bg-secondary-700 rounded-lg bg-white p-2 px-5 dark:text-white"
+  className="rounded-lg bg-white p-2 px-5 hover:bg-secondary-200 dark:bg-secondary-500 dark:text-white dark:hover:bg-secondary-700"
 >
   Button
 </Button>
@@ -146,7 +146,7 @@ Pass ` isUnstyled` prop to remove style component.
 
 ## Active
 
-You can manage the active state of button using `isActive` prop.
+`isActive` prop is used to manage active state of Button.
 
 {% example %}
 
@@ -158,8 +158,8 @@ You can manage the active state of button using `isActive` prop.
 
 ## Loading
 
-- You can manage the loading state of the button using this prop.
-- You can also change the button text when the button is in loading state using `loadingText` prop.
+- `isLoading` prop is used to manage loading state of Button.
+- You can also change the Button text when the Button is in loading state using `loadingText` prop.
 
 {% example %}
 
@@ -171,7 +171,7 @@ You can manage the active state of button using `isActive` prop.
 
 ## Disabled
 
-You can manage disabled button state using `isDisabled` prop.
+`isDisabled` prop is used to manage disable state of Button.
 
 {% example %}
 
@@ -181,24 +181,24 @@ You can manage disabled button state using `isDisabled` prop.
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Button
 
 `Button` composes the `<button>` component.
 
-| Property    | Description                                            | Type                                                     | Default       |
-| ----------- | ------------------------------------------------------ | -------------------------------------------------------- | ------------- |
-| size        | Size of the button component.                          | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
-| variant     | Style variant of the component.                        | `"solid"` or `"outline"` or `"ghost"`                    | `"solid"`     |
-| colorScheme | Color scheme of the component.                         | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
-| leftIcon    | Custom JSX element for the left icon.                  | `JSX.Element`                                            | -             |
-| rightIcon   | Custom JSX element for the right icon.                 | `JSX.Element`                                            | -             |
-| isDisabled  | To manage disabled state.                              | `boolean`                                                | `false`       |
-| isActive    | To manage active state.                                | `boolean`                                                | `false`       |
-| loadingText | Text to be displayed during component's loading state. | `string`                                                 | -             |
-| isLoading   | To manage loading state.                               | `boolean`                                                | `false`       |
-| isUnstyled  | Remove style from this component                       | `boolean`                                                | `false`       |
-| type        | Type of the component.                                 | `"button"` or `"submit"` or `"reset"`                    | `"button"`    |
+| Property    | Description                                            | Type                                                                    | Default       |
+| ----------- | ------------------------------------------------------ | ----------------------------------------------------------------------- | ------------- |
+| size        | Size of the button component.                          | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"` or `undefined`        | `"md"`        |
+| variant     | Style variant of the component.                        | `"solid"` or `"outline"` or `"ghost"` or `undefined`                    | `"solid"`     |
+| colorScheme | Color scheme of the component.                         | `"primary"` or `"secondary"` or `"error"` or `"success"` or `undefined` | `"secondary"` |
+| leftIcon    | Custom JSX element for the left icon.                  | `JSX.Element` or `undefined`                                            | -             |
+| rightIcon   | Custom JSX element for the right icon.                 | `JSX.Element` or `undefined`                                            | -             |
+| isDisabled  | To manage the disabled state.                          | `boolean` or <Info>() => boolean</Info> or `undefined`                  | -             |
+| isActive    | To manage the active state.                            | `boolean` or <Info>() => boolean</Info> or `undefined`                  | -             |
+| loadingText | Text to be displayed during component's loading state. | `string` or `undefined`                                                 | -             |
+| isLoading   | To manage the loading state.                           | `boolean` or <Info>() => boolean</Info> or `undefined`                  | -             |
+| isUnstyled  | Remove style from this component                       | `boolean` or `undefined`                                                | `false`       |
+| type        | Type of the component.                                 | `"button"` or `"submit"` or `"reset"`                                   | `"button"`    |

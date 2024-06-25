@@ -14,7 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Spinner
 ---
 
-Spinners provide a visual cue that an action is processing awaiting a course of change or a result.
+Spinner provide a visual cue that an action is processing awaiting a course of change or a result.
 
 ## Anatomy
 
@@ -38,7 +38,7 @@ import { Spinner } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options in spinner: `sm`, `md` (default) & `lg
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -54,7 +54,7 @@ There are 3 `size` options in spinner: `sm`, `md` (default) & `lg
 
 ## InheritParent
 
-InheritParent prop lets spinner inherit color props from its parent element when true
+`inheritParent` prop lets spinner inherit color props from its parent element when true.
 
 {% example %}
 
@@ -66,15 +66,16 @@ InheritParent prop lets spinner inherit color props from its parent element when
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Spinner
 
 `Spinner` composes the `<svg>` component.
 
-| Property      | Description                               | Type                       | Default |
-| ------------- | ----------------------------------------- | -------------------------- | ------- |
-| size          | Size of the spinner component.            | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| inheritParent | Inherits style from the parent component. | `boolean`                  | `false` |
+| Property      | Description                                  | Type                                                   | Default     |
+| ------------- | -------------------------------------------- | ------------------------------------------------------ | ----------- |
+| size          | Size of the spinner component.               | `"sm"` or `"md"` or `"lg"`                             | `"md"`      |
+| inheritParent | To inherit styles from the parent component. | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| title         | Title attribute for the spinner SVG.         | `string`                                               | `"loading"` |

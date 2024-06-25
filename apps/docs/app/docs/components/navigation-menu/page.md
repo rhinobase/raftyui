@@ -14,7 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Navigation%20Menu
 ---
 
-A collection of links for navigating websites. This component is made on top of [Radix UIs Navigation Menu Component](https://www.radix-ui.com/primitives/docs/components/navigation-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
+A collection of links for navigating websites.
+
+This component is made on top of [Radix UIs Navigation Menu Component](https://www.radix-ui.com/primitives/docs/components/navigation-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -105,7 +107,7 @@ import {
 
 ## Content Size
 
-Pass the `size` prop if you need to adjust the size of the navigation-menu content. Values can be `sm`, `md` (default), `lg` & `full`.
+Pass the `size` prop if you need to adjust the size of the NavigationMenuContent. Values can be `"sm"`, `"md"` (default), `"lg"` & `"full"`.
 
 {% example %}
 
@@ -167,7 +169,7 @@ Pass the `size` prop if you need to adjust the size of the navigation-menu conte
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
+Pass `isUnstyled` prop in root element to remove style from Navigation Menu and all its sub-components.
 
 {% example %}
 
@@ -234,9 +236,9 @@ Pass `isUnstyled` prop in parent component to remove style in Navigation Menu.
 
 {% /example %}
 
-## Unstyled subcomponent
+## Unstyled Sub-Component
 
-To remove styles from a specific sub component pass `isUnstyled` prop to that particular subcomponent.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
@@ -296,25 +298,25 @@ To remove styles from a specific sub component pass `isUnstyled` prop to that pa
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### NavigationMenu
 
 This component is built on top of [Radix Navigation Menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu#root)
 
-| Property   | Description                                            | Type      | Default |
-| ---------- | ------------------------------------------------------ | --------- | ------- |
-| isUnstyled | Remove style from this component and its subcomponents | `boolean` | `false` |
+| Property   | Description                                             | Type                     | Default |
+| ---------- | ------------------------------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component and its sub-components | `boolean` or `undefined` | `false` |
 
 ### NavigationMenuList
 
 This component is built on top of [Radix Navigation Menu List](https://www.radix-ui.com/primitives/docs/components/navigation-menu#list)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### NavigationMenuItem
 
@@ -324,26 +326,26 @@ This component is built on top of [Radix Navigation Menu Item](https://www.radix
 
 This component is built on top of [Radix Navigation Menu Trigger](https://www.radix-ui.com/primitives/docs/components/navigation-menu#trigger)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### NavigationMenuContent
 
 This component is built on top of [Radix Navigation Menu Content](https://www.radix-ui.com/primitives/docs/components/navigation-menu#content)
 
-| Property   | Description                                    | Type                                   | Default |
-| ---------- | ---------------------------------------------- | -------------------------------------- | ------- |
-| size       | Size of the navigation menu content component. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`  |
-| isUnstyled | Remove style from this component               | `boolean`                              | `false` |
+| Property   | Description                                    | Type                                                  | Default |
+| ---------- | ---------------------------------------------- | ----------------------------------------------------- | ------- |
+| size       | Size of the navigation menu content component. | `"sm"` or `"md"` or `"lg"` or `"full"` or `undefined` | `"md"`  |
+| isUnstyled | Remove style from this component               | `boolean` or `undefined`                              | `false` |
 
 ### NavigationMenuLink
 
 This component is built on top of [Radix Navigation Menu Link](https://www.radix-ui.com/primitives/docs/components/navigation-menu#link)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### NavigationMenuListItem
 
@@ -358,6 +360,6 @@ This component is built on top of [Radix Navigation Menu Link](https://www.radix
 
 This component is built on top of [Radix Navigation Menu Indicator](https://www.radix-ui.com/primitives/docs/components/navigation-menu#indicator)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |

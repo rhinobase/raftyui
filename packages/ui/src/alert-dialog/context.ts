@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [AlertDialogProvider, useAlertDialogContext] =
   createContext<AlertDialogContext>({
@@ -8,6 +8,6 @@ export const [AlertDialogProvider, useAlertDialogContext] =
   });
 
 export interface AlertDialogContext {
-  readonly size: "sm" | "md" | "lg" | "xl";
+  readonly size: SizeType<"xl">;
   readonly isUnstyled: boolean;
 }

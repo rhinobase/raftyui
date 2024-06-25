@@ -35,6 +35,7 @@ const tags = {
     render: Example,
     attributes: {
       children: { type: String },
+      noInline: { type: Boolean },
     },
   },
   "quick-links": {

@@ -3,7 +3,7 @@ title: Menu
 nextjs:
   metadata:
     title: Menu
-    description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+    description: A list of options that appears when a user interacts with a button.
     twitter:
       title: Menu
       images:
@@ -14,7 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Menu
 ---
 
-Displays a menu to the user—such as a set of actions or functions—triggered by a button. This component is made on top of [Radix UIs Dropdown Menu Component](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
+A list of options that appears when a user interacts with a button.
+
+This component is made on top of [Radix UIs Dropdown Menu Component](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -70,7 +72,7 @@ import {
 
 ## Size
 
-There are 3 `size` options in Menu: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -125,6 +127,8 @@ function MenuExample() {
 
 ## SubMenu
 
+`<MenuSub>` element can be used to make a sub-menu component.
+
 {% example %}
 
 ```jsx
@@ -155,7 +159,9 @@ function MenuExample() {
 
 {% /example %}
 
-## MenuCheckboxItem
+## Checkbox Item
+
+`<MenuCheckboxItem>` element can be used to make a checkbox component.
 
 {% example %}
 
@@ -194,7 +200,9 @@ function MenuExample() {
 
 {% /example %}
 
-## MenuRadioGroup
+## Radio Group
+
+`<MenuRadioGroup>` & `<MenuRadioItem>` elements can be used to make radio group component.
 
 {% example %}
 
@@ -230,14 +238,13 @@ function MenuExample() {
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in Menu.
+Pass `isUnstyled` prop in root element to remove style from Menu and all its sub-components.
 
 {% example %}
 
 ```jsx
 <Menu isUnstyled>
   <MenuTrigger
-    size="sm"
     className="bg-secondary-200 dark:bg-secondary-600 dark:bg-secondar-500 hover:bg-primary-dark dark:hover:bg-secondary-dark  flex items-center space-x-2 rounded-md border-none px-3 py-2 text-black dark:text-white"
     rightIcon={<ChevronDownIcon width={16} height={16} className="stroke-2" />}
   >
@@ -247,7 +254,7 @@ Pass `isUnstyled` prop in parent component to remove style in Menu.
   <MenuContent
     isArrow={false}
     sideOffset={5}
-    className="bg-secondary-100 dark:bg-secondary-800  dark:text-primary space-y-1 rounded-md p-1 text-black  shadow-md dark:text-white "
+    className="bg-secondary-100 dark:bg-secondary-800 dark:text-primary space-y-1 rounded-md p-1 text-black shadow-md dark:text-white "
   >
     <MenuItem className="hover:bg-primary-dark hover:bg-secondary-300 dark:hover:bg-secondary-700 rounded-md p-1 text-sm">
       New Tab
@@ -264,9 +271,9 @@ Pass `isUnstyled` prop in parent component to remove style in Menu.
 
 {% /example %}
 
-## UnStyled subcomponent
+## UnStyled Sub-Component
 
-To remove styles from a specific sub component pass `isUnstyled` prop to that particular subcomponent.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
@@ -291,9 +298,9 @@ To remove styles from a specific sub component pass `isUnstyled` prop to that pa
 
 {% /example %}
 
-## IsArrow
+## Arrow
 
-The `isArrow` prop exists in Menu Content subcomponent and is used to show/hide arrow on content. By default, its value is true.
+The `isArrow` prop exists in Menu Content sub-component and is used to show/hide arrow on content. By default, its value is true.
 
 {% example %}
 
@@ -319,45 +326,32 @@ The `isArrow` prop exists in Menu Content subcomponent and is used to show/hide 
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Menu
 
 This component is built on top of [Radix Dropdown Menu](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#root)
 
-| Property   | Description                                            | Type                       | Default |
-| ---------- | ------------------------------------------------------ | -------------------------- | ------- |
-| size       | Size of the menu component and its subcomponents.      | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isUnstyled | Remove style from this component and its subcomponents | `boolean`                  | `false` |
+| Property   | Description                                             | Type                                      | Default |
+| ---------- | ------------------------------------------------------- | ----------------------------------------- | ------- |
+| size       | Size of the menu and its sub-components.                | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`  |
+| isUnstyled | Remove style from this component and its sub-components | `boolean` or `undefined`                  | `false` |
 
 ### MenuTrigger
 
-This component is built on top of [Radix Dropdown Menu Trigger](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#trigger)
-
-| Property    | Description                              | Type                                                     | Default       |
-| ----------- | ---------------------------------------- | -------------------------------------------------------- | ------------- |
-| size        | Size of the menu trigger component.      | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"md"`        |
-| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"`     |
-| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | `"secondary"` |
-| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -             |
-| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -             |
-| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`       |
-| isActive    | To manage active state.                  | `boolean`                                                | `false`       |
-| isLoading   | To manage loading state.                 | `boolean`                                                | `false`       |
-| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`       |
-| asChild     | Treats the component as a child element. | `boolean`                                                | `false`       |
+This component is built on top of [Radix Dropdown Menu Trigger](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#trigger) and using [Button](https://rafty.rhinobase.io/docs/components/button)
 
 ### MenuContent
 
 This component is built on top of [Radix Dropdown Menu Content](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#content)
 
-| Property        | Description                                   | Type      | Default |
-| --------------- | --------------------------------------------- | --------- | ------- |
-| isArrow         | Show arrow in content                         | `boolean` | `true`  |
-| isUnstyled      | Remove style from this component              | `boolean` | `false` |
-| arrowClassNames | Additional class names for the arrow element. | `string`  | -       |
+| Property        | Description                                   | Type                                                   | Default |
+| --------------- | --------------------------------------------- | ------------------------------------------------------ | ------- |
+| isArrow         | Show arrow in content                         | `boolean` or <Info>() => boolean</Info> or `undefined` | `true`  |
+| isUnstyled      | Remove style from this component              | `boolean` or `undefined`                               | `false` |
+| arrowClassNames | Additional class names for the arrow element. | `string` or `undefined`                                | -       |
 
 ### MenuGroup
 
@@ -367,25 +361,25 @@ This component is built on top of [Radix Dropdown Menu Group](https://www.radix-
 
 This component is built on top of [Radix Dropdown Menu Item](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### MenuLabel
 
 This component is built on top of [Radix Dropdown Menu Label](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#label)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### MenuCheckboxItem
 
 This component is built on top of [Radix Dropdown Menu Item](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### MenuRadioGroup
 
@@ -395,9 +389,9 @@ This component is built on top of [Radix Dropdown Menu Radio Group](https://www.
 
 This component is built on top of [Radix Dropdown Menu Radio Item](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#radioitem)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### MenuSub
 
@@ -407,23 +401,23 @@ This component is built on top of [Radix Dropdown Menu Sub](https://www.radix-ui
 
 This component is built on top of [Radix Dropdown Menu Separator](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#separator)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### MenuSubTrigger
 
 This component is built on top of [Radix Dropdown Menu Sub Trigger](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subtrigger)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### MenuSubContent
 
 This component is built on top of [Radix Dropdown Menu Sub Content](https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subcontent)
 
-| Property   | Description                              | Type      | Default |
-| ---------- | ---------------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component         | `boolean` | `false` |
-| sideOffset | Side offset of the content from trigger. | `number`  | `10`    |
+| Property   | Description                              | Type                     | Default |
+| ---------- | ---------------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component         | `boolean` or `undefined` | `false` |
+| sideOffset | Side offset of the content from trigger. | `number`                 | `10`    |

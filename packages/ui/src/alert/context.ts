@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [AlertProvider, useAlertContext] = createContext<AlertContext>({
   name: "AlertContext",
@@ -7,7 +7,7 @@ export const [AlertProvider, useAlertContext] = createContext<AlertContext>({
 });
 
 export interface AlertContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
   readonly status: "success" | "warning" | "error" | "info";
   readonly variant: "simple" | "solid" | "left-accent" | "top-accent";
   readonly isUnstyled: boolean;

@@ -12,7 +12,7 @@ openGraph:
     url: https://rafty.rhinobase.io/api/og?title=Text%20Area
 ---
 
-The Text area component allows you to easily create multi-line text inputs.
+The Textarea component allows you to easily create multi-line text inputs. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -34,9 +34,21 @@ import { Textarea } from "@rafty/ui";
 
 {% /example %}
 
+## Size
+
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
+
+{% example %}
+
+```jsx
+<Textarea placeholder="This is a sample placeholder" size="lg" />
+```
+
+{% /example %}
+
 ## Variants
 
-Pass the `variant` prop if you need to adjust visual style of the textarea. Values can be `solid`, `outline`, `ghost`.
+Pass the `variant` prop if you need to adjust visual style of the Textarea. Values can be `"solid"`, `"outline"` (default) & `"ghost"`.
 
 {% example %}
 
@@ -46,9 +58,9 @@ Pass the `variant` prop if you need to adjust visual style of the textarea. Valu
 
 {% /example %}
 
-## UnStyled
+## Unstyled
 
-Pass `isUnstyled` prop to remove style from textarea.
+Pass `isUnstyled` prop to remove all style.
 
 {% example %}
 
@@ -64,7 +76,7 @@ Pass `isUnstyled` prop to remove style from textarea.
 
 ## Disabled
 
-Pass `isDisabled` prop to put textarea in disabled state.
+Pass `isDisabled` prop to put Textarea in disabled state.
 
 {% example %}
 
@@ -74,21 +86,45 @@ Pass `isDisabled` prop to put textarea in disabled state.
 
 {% /example %}
 
-## Props
+## Invalid
+
+Pass `isInvalid` prop to put Textarea in invalid state.
+
+{% example %}
+
+```jsx
+<Textarea placeholder="this is sample placeholder" isInvalid />
+```
+
+{% /example %}
+
+## ReadOnly
+
+Pass `isReadOnly` prop to put Textarea in readOnly state.
+
+{% example %}
+
+```jsx
+<Textarea placeholder="this is sample placeholder" isReadOnly />
+```
+
+{% /example %}
 
 ---
+
+## Props
 
 ### Textarea
 
 `Textarea` composes the `<textarea>` component.
 
-| Property   | Description                      | Type                                  | Default     |
-| ---------- | -------------------------------- | ------------------------------------- | ----------- |
-| size       | Size of the textarea component.  | `"sm"` or `"md"` or `"lg"`            | `"md"`      |
-| variant    | Style variant of the component.  | `"solid"` or `"outline"` or `"ghost"` | `"outline"` |
-| isDisabled | To manage disabled state.        | `boolean`                             | `false`     |
-| isLoading  | To manage loading state.         | `boolean`                             | `false`     |
-| isRequired | To manage required state.        | `boolean`                             | `false`     |
-| isReadOnly | To manage read-only state.       | `boolean`                             | `false`     |
-| isInvalid  | To manage invalid state.         | `boolean`                             | `false`     |
-| isUnstyled | Remove style from this component | `boolean`                             | `false`     |
+| Property   | Description                      | Type                                                   | Default     |
+| ---------- | -------------------------------- | ------------------------------------------------------ | ----------- |
+| size       | Size of the textarea component.  | `"sm"` or `"md"` or `"lg"` or `undefined`              | `"md"`      |
+| variant    | Style variant of the component.  | `"solid"` or `"outline"` or `"ghost"` or `undefined`   | `"outline"` |
+| isDisabled | To manage the disabled state.    | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isLoading  | To manage the loading state.     | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isRequired | To manage the required state.    | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isReadOnly | To manage the readonly state.    | `boolean` or <Info>() => boolean</Info> or `undefined` | -           |
+| isInvalid  | To manage the invalid state.     | `boolean` or <Info>() => boolean</Info> or `undefined` | `false`     |
+| isUnstyled | Remove style from this component | `boolean`                                              | `false`     |

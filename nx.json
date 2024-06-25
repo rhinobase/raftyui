@@ -30,6 +30,10 @@
     "test": {
       "inputs": ["default", "^production"],
       "cache": true
+    },
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {

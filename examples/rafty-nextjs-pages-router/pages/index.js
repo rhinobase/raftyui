@@ -1,6 +1,5 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { Card, CardContent, CardHeader } from "@rafty/ui";
-import { Button } from "@rafty/ui";
+import { Card, CardContent, CardHeader,Button } from "@rafty/ui";
 import Image from "next/image";
 import { useState } from "react";
 import Logo from "../public/rhinobase.png";
@@ -28,7 +27,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{" "}
+              By" "
               <Image
                 className="rounded-md "
                 src={Logo}
@@ -69,14 +68,16 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
-              <CardHeader className="text-xl">
-                Docs{" "}
-                <p className="inline-block transition-transform group-hover:translate-x-1">
+              <CardHeader>
+                <h4 className="text-xl">
+                Docs" "
+                <span className="inline-block transition-transform group-hover:translate-x-1">
                   &gt;
-                </p>
+                </span></h4>
               </CardHeader>
-              <CardContent className="text-secondary-400">
-                Find in-depth information about @rafty/ui features and API.
+              <CardContent>
+                <p className="text-secondary-400">
+                Find in-depth information about @rafty/ui features and API.</p>
               </CardContent>
             </Card>
           </a>
@@ -87,11 +88,12 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
-              <CardHeader className="text-xl">
-                Themes{" "}
-                <p className="inline-block transition-transform group-hover:translate-x-1">
+              <CardHeader>
+                <h4  className="text-xl">
+                Themes 
+                <span className="inline-block transition-transform group-hover:translate-x-1">
                   &gt;
-                </p>
+                </span></h4>
               </CardHeader>
               <CardContent className="text-secondary-400">
                 Check out components across different themes.
@@ -106,14 +108,16 @@ export default function Home() {
             className="md:mb-20 lg:mb-0"
           >
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
-              <CardHeader className="text-xl">
-                Templates{" "}
-                <p className="inline-block transition-transform group-hover:translate-x-1">
+              <CardHeader>
+                <h4 className="text-xl">
+                Templates 
+                <span className="inline-block transition-transform group-hover:translate-x-1">
                   &gt;
-                </p>
+                </span></h4>
               </CardHeader>
-              <CardContent className="text-secondary-400">
-                A collection of example, boilerplates, and scaffolds.
+              <CardContent>
+                <p className="text-secondary-400">
+                A collection of example, boilerplates, and scaffolds.</p>
               </CardContent>
             </Card>
           </a>
@@ -125,11 +129,12 @@ export default function Home() {
             className="mb-40 md:mb-20 lg:mb-0"
           >
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white ">
-              <CardHeader className="text-xl">
-                Components{" "}
-                <p className="inline-block transition-transform group-hover:translate-x-1">
+              <CardHeader>
+                <h4 className="text-xl">
+                Components
+                <span className="inline-block transition-transform group-hover:translate-x-1">
                   &gt;
-                </p>
+                </span></h4>
               </CardHeader>
               <CardContent className="text-secondary-400">
                 Prebuilt components to help you build your projects faster.

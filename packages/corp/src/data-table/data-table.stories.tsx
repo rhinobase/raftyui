@@ -1,3 +1,4 @@
+import { Checkbox } from "@rafty/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   QueryClient,
@@ -10,6 +11,11 @@ import { type ColumnType, DataTable } from "./DataTable";
 
 const meta: Meta<typeof DataTable> = {
   title: "Corp / DataTable",
+  args: {
+    enableRowSelection: true,
+    enableColumnResizing: true,
+    enableColumnsSorting: true,
+  },
 };
 
 export default meta;
@@ -17,9 +23,9 @@ type Story = StoryObj<typeof DataTable>;
 
 const client = new QueryClient();
 export const Default: Story = {
-  render: () => (
+  render: (props) => (
     <QueryClientProvider client={client}>
-      <TableComponent />
+      <TableComponent {...props} />
     </QueryClientProvider>
   ),
 };
@@ -33,47 +39,69 @@ type DataType = {
   launch_date_local: Date;
 };
 
-const COLUMNS: ColumnType[] = [
+const COLUMNS: ColumnType<unknown>[] = [
   {
-    name: "flight_number",
-    label: "Id",
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllRowsSelected() ||
+          (table.getIsSomeRowsSelected() ? "indeterminate" : false)
+        }
+        onCheckedChange={() => table.toggleAllRowsSelected()}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={() => row.toggleSelected()}
+      />
+    ),
+    size: 40,
   },
   {
-    name: "mission_name",
-    label: "Name",
+    accessorKey: "flight_number",
+    header: "Id",
   },
   {
-    name: "launch_year",
-    label: "Launch Year",
+    accessorKey: "mission_name",
+    header: "Name",
+  },
+  {
+    accessorKey: "launch_year",
+    header: "Launch Year",
     enableSorting: false,
   },
   {
-    name: "rocket.rocket_name",
-    label: "Rocket",
-    type: "clipboard",
+    accessorKey: "rocket.rocket_name",
+    header: "Rocket",
     enableResizing: false,
   },
   {
-    name: "launch_site.site_name",
-    label: "Site",
+    accessorKey: "launch_site.site_name",
+    header: "Site",
     enableResizing: false,
     enableSorting: false,
   },
   {
-    name: "launch_success",
-    label: "Launch Success",
-    type: "boolean",
+    accessorKey: "launch_success",
+    header: "Launch Success",
   },
   {
-    name: "launch_date_local",
-    label: "Launch Date",
-    type: "date",
+    accessorKey: "launch_date_local",
+    header: "Launch Date",
   },
 ];
 
-function TableComponent() {
+function TableComponent({
+  enableColumnResizing,
+  enableColumnsSorting,
+  enableRowSelection,
+  ...props
+}: DataTable<unknown>) {
   const limit = 10;
   const offset = 0;
+  const [rowsSelected, setRowsSelected] = useState<Record<string, boolean>>({});
 
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -99,10 +127,13 @@ function TableComponent() {
       data={data}
       columns={COLUMNS}
       isLoading={isLoading}
-      enableRowSelection
-      enableColumnResizing
+      enableRowSelection={enableRowSelection}
+      enableColumnResizing={enableColumnResizing}
+      enableColumnsSorting={enableColumnsSorting}
       onSortingChange={setSorting}
       isFetching={isFetching}
+      onRowsSelectedChange={setRowsSelected}
+      rowsSelected={rowsSelected}
     />
   );
 }

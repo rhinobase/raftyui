@@ -16,7 +16,7 @@ nextjs:
 
 The Drawer component is a panel that slides out from the edge of the screen. It proves useful when you want users to perform a task or view specific details without navigating away from the current page.
 
-This component is made using [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog), but it has been modified to make it look like a drawer by adding animations and other styling.
+This component is made using [Radix UIs Dialog Component](https://www.radix-ui.com/primitives/docs/components/dialog), but it has been modified to make it look like a Drawer by adding animations and other styling.
 
 ## Anatomy
 
@@ -57,9 +57,7 @@ function DrawerExample() {
         <DrawerOverlay className="z-[70]" />
         <DrawerContent className="z-[70]">
           <DrawerTitle>Drawer Header</DrawerTitle>
-          <DrawerDescription>
-            This is sample drawer description. :
-          </DrawerDescription>
+          <DrawerDescription>This is sampleD description. :</DrawerDescription>
           <DrawerClose />
         </DrawerContent>
       </Drawer>
@@ -72,9 +70,9 @@ function DrawerExample() {
 
 ## Size
 
-There are 4 `size` options available in the drawer: `sm`, `md` (default), `lg` & `full`.
+There are 4 `size` options available: `"sm"`, `"md"` (default), `"lg"` & `"full"`.
 
-{% example  %}
+{% example %}
 
 ```jsx
 function DrawerExample() {
@@ -102,9 +100,9 @@ function DrawerExample() {
 
 ## Side
 
-You can decide from which side you want to open the drawer and you can choose between `left` or `right` (default).
+You can decide from which side you want to open the Drawer and you can choose between `"left"` or `"right"` (default).
 
-{% example  %}
+{% example %}
 
 ```jsx
 function DrawerExample() {
@@ -130,18 +128,18 @@ function DrawerExample() {
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Drawer
 
 This component is built on top of [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog#root)
 
-| Property | Description                                         | Type                                   | Default   |
-| -------- | --------------------------------------------------- | -------------------------------------- | --------- |
-| size     | Size of the drawer component and its subcomponents. | `"sm"` or `"md"` or `"lg"` or `"full"` | `"md"`    |
-| side     | Side from which drawer enters in screen.            | `"right"` or `"left"`                  | `"right"` |
+| Property | Description                                | Type                                                  | Default   |
+| -------- | ------------------------------------------ | ----------------------------------------------------- | --------- |
+| size     | Size of the drawer and its sub-components. | `"sm"` or `"md"` or `"lg"` or `"full"` or `undefined` | `"md"`    |
+| side     | Side from which drawer enters in screen.   | `"right"` or `"left"` or `undefined`                  | `"right"` |
 
 ### DrawerOverlay
 
@@ -157,17 +155,4 @@ This component is built on top of [Radix Dialog Title](https://www.radix-ui.com/
 
 ### DrawerClose
 
-This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close)
-
-| Property    | Description                              | Type                                                     | Default   |
-| ----------- | ---------------------------------------- | -------------------------------------------------------- | --------- |
-| size        | Size of the drawer close component.      | `"sm"` or `"md"` or `"lg"` or `"icon"` or `"fab"`        | `"icon"`  |
-| variant     | Style variant of the component.          | `"solid"` or `"outline"` or `"ghost"`                    | `"ghost"` |
-| colorScheme | Color scheme of the component.           | `"primary"` or `"secondary"` or `"error"` or `"success"` | -         |
-| leftIcon    | Custom JSX element for the left icon.    | `JSX.Element`                                            | -         |
-| rightIcon   | Custom JSX element for the right icon.   | `JSX.Element`                                            | -         |
-| isDisabled  | To manage disabled state.                | `boolean`                                                | `false`   |
-| isActive    | To manage active state.                  | `boolean`                                                | `false`   |
-| isLoading   | To manage loading state.                 | `boolean`                                                | `false`   |
-| isUnstyled  | Remove style from this component         | `boolean`                                                | `false`   |
-| asChild     | Treats the component as a child element. | `boolean`                                                | -         |
+This component is built on top of [Radix Dialog Close](https://www.radix-ui.com/primitives/docs/components/dialog#close) and using [Button](https://rafty.rhinobase.io/docs/components/button)

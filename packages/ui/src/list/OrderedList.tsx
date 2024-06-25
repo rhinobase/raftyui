@@ -1,13 +1,15 @@
 import { type OlHTMLAttributes, forwardRef } from "react";
 import { classNames } from "../utils";
 
-// OrderedList Component
 export type OrderedList = OlHTMLAttributes<HTMLOListElement> & {
   isUnstyled?: boolean;
 };
 
 export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
-  ({ className, children, isUnstyled = false, ...props }, forwardedRef) => {
+  function OrderedList(
+    { className, children, isUnstyled = false, ...props },
+    forwardedRef,
+  ) {
     return (
       <ol
         ref={forwardedRef}
@@ -23,5 +25,3 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
     );
   },
 );
-
-OrderedList.displayName = "OrderedList";

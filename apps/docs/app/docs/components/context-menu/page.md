@@ -16,9 +16,9 @@ nextjs:
 
 It displays a menu located at the pointer, triggered by a right-click or a long-press.
 
-This component is made on top of [Radix UIs Context Menu Component](https://www.radix-ui.com/primitives/docs/components/context-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Context Menu Component](https://www.radix-ui.com/primitives/docs/components/context-menu) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
-# Anatomy
+## Anatomy
 
 Import all parts and piece them together.
 
@@ -62,7 +62,7 @@ import {
 
 ## Usage
 
-Unlike other similar components like Dialog, Menu, etc., it is not made of a button component. You can use any element as its trigger.
+Unlike other similar components like Dialog, Menu, etc., it's trigger is not made using button component. You can use any element as its trigger because it is supposed to cover a area where you need to add context menu and use can use `asChild` prop to pass on the trigger props to its child element.
 
 {% example %}
 
@@ -72,61 +72,66 @@ function ContextMenuExample() {
   const [showFullUrls, setShowFullUrls] = useState(true);
   const [selectedPerson, setSelectedPerson] = useState("Denial");
 
-  return (
-    <ContextMenu>
-      <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
-        Right Click here
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuItem>Back</ContextMenuItem>
-        <ContextMenuSub>
-          <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
-          <ContextMenuSubContent>
-            <ContextMenuItem>Save Page As...</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Developer Tools</ContextMenuItem>
-          </ContextMenuSubContent>
-        </ContextMenuSub>
+return (
+
+<ContextMenu>
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
+    Right Click here
+    </div>
+  </ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Back</ContextMenuItem>
+    <ContextMenuSub>
+      <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+      <ContextMenuSubContent>
+        <ContextMenuItem>Save Page As...</ContextMenuItem>
         <ContextMenuSeparator />
-        <ContextMenuCheckboxItem
-          checked={isBookmarkChecked}
-          onCheckedChange={setBookmarkChecked}
-        >
-          Show Bookmarks
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          checked={showFullUrls}
-          onCheckedChange={setShowFullUrls}
-        >
-          Show Full URLs
-        </ContextMenuCheckboxItem>
-        <ContextMenuSeparator />
-        <ContextMenuLabel>People</ContextMenuLabel>
-        <ContextMenuRadioGroup
-          value={selectedPerson}
-          onValueChange={setSelectedPerson}
-        >
-          <ContextMenuRadioItem value="Jack">Jack</ContextMenuRadioItem>
-          <ContextMenuRadioItem value="Denial">Denial</ContextMenuRadioItem>
-        </ContextMenuRadioGroup>
-      </ContextMenuContent>
-    </ContextMenu>
-  );
-}
+        <ContextMenuItem>Developer Tools</ContextMenuItem>
+      </ContextMenuSubContent>
+    </ContextMenuSub>
+    <ContextMenuSeparator />
+    <ContextMenuCheckboxItem
+      checked={isBookmarkChecked}
+      onCheckedChange={setBookmarkChecked}
+    >
+      Show Bookmarks
+    </ContextMenuCheckboxItem>
+    <ContextMenuCheckboxItem
+      checked={showFullUrls}
+      onCheckedChange={setShowFullUrls}
+    >
+      Show Full URLs
+    </ContextMenuCheckboxItem>
+    <ContextMenuSeparator />
+    <ContextMenuLabel>People</ContextMenuLabel>
+    <ContextMenuRadioGroup
+      value={selectedPerson}
+      onValueChange={setSelectedPerson}
+    >
+      <ContextMenuRadioItem value="Jack">Jack</ContextMenuRadioItem>
+      <ContextMenuRadioItem value="Denial">Denial</ContextMenuRadioItem>
+    </ContextMenuRadioGroup>
+  </ContextMenuContent>
+</ContextMenu>
+); }
+
 ```
 
 {% /example %}
 
 ## Size
 
-There are 3 `size` options in Context Menu: `sm`, `md` (default), & `lg`.s
+There are 3 `size` options available: `"sm"`, `"md"` (default), & `"lg"`.
 
 {% example %}
 
 ```jsx
 <ContextMenu size="sm">
-  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
     Right Click here
+    </div>
   </ContextMenuTrigger>
   <ContextMenuContent>
     <ContextMenuItem>Back</ContextMenuItem>
@@ -155,57 +160,59 @@ There are 3 `size` options in Context Menu: `sm`, `md` (default), & `lg`.s
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in context-menu.
+Pass `isUnstyled` prop in root element to remove style from Context Menu and all its sub-components.
 
 {% example %}
 
 ```jsx
 <ContextMenu isUnstyled>
-  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
     Right Click here
+    </div>
   </ContextMenuTrigger>
-  <ContextMenuContent className="dark:bg-secondary-800 w-[200px] space-y-1.5  rounded-md bg-white p-1 text-sm focus:outline-none">
-    <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 py-1focus:outline-none cursor-pointer  rounded-md px-6 py-1 ">
+  <ContextMenuContent className="w-[200px] space-y-1.5 rounded-md  bg-white p-1 text-sm focus:outline-none dark:bg-secondary-800">
+    <ContextMenuItem className="py-1focus:outline-none cursor-pointer rounded-md px-6  py-1 hover:bg-secondary-200 dark:hover:bg-secondary-700 ">
       Back
     </ContextMenuItem>
     <ContextMenuSub>
-      <ContextMenuSubTrigger className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex w-full cursor-pointer items-center justify-between rounded-md px-6 py-1 hover:border-none focus:outline-none">
+      <ContextMenuSubTrigger className="flex w-full cursor-pointer items-center justify-between rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
         More Tools
       </ContextMenuSubTrigger>
-      <ContextMenuSubContent className="dark:bg-secondary-800 w-[180px]  cursor-pointer space-y-2 rounded-md bg-white p-1 text-sm focus:outline-none">
-        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+      <ContextMenuSubContent className="w-[180px] cursor-pointer  space-y-2 rounded-md bg-white p-1 text-sm focus:outline-none dark:bg-secondary-800">
+        <ContextMenuItem className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
           Save Page As...
         </ContextMenuItem>
-        <ContextMenuSeparator className="dark:border-secondary-700 border-secondary-200 border" />
-        <ContextMenuItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+        <ContextMenuSeparator className="border border-secondary-200 dark:border-secondary-700" />
+        <ContextMenuItem className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
           Developer Tools
         </ContextMenuItem>
       </ContextMenuSubContent>
     </ContextMenuSub>
-    <ContextMenuSeparator className="dark:border-secondary-700 border-secondary-200 border" />
+    <ContextMenuSeparator className="border border-secondary-200 dark:border-secondary-700" />
     <ContextMenuCheckboxItem
       checked
-      className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none focus:outline-none"
+      className="flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700"
     >
       Show Bookmarks
     </ContextMenuCheckboxItem>
-    <ContextMenuCheckboxItem className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none">
+    <ContextMenuCheckboxItem className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700">
       Show Full URLs
     </ContextMenuCheckboxItem>
-    <ContextMenuSeparator className="dark:border-secondary-700  border-secondary-200 border" />
-    <ContextMenuLabel className="dark:text-secondary-400 cursor-context-menu rounded-md px-6  text-xs hover:border-none focus:outline-none">
+    <ContextMenuSeparator className="border  border-secondary-200 dark:border-secondary-700" />
+    <ContextMenuLabel className="cursor-context-menu rounded-md px-6 text-xs  hover:border-none focus:outline-none dark:text-secondary-400">
       People
     </ContextMenuLabel>
     <ContextMenuRadioGroup value="2">
       <ContextMenuRadioItem
         value="1"
-        className="hover:bg-secondary-200 dark:hover:bg-secondary-700 cursor-pointer rounded-md px-6 py-1 hover:border-none focus:outline-none "
+        className="cursor-pointer rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700 "
       >
         Jack
       </ContextMenuRadioItem>
       <ContextMenuRadioItem
         value="2"
-        className="hover:bg-secondary-200 dark:hover:bg-secondary-700 flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none focus:outline-none"
+        className="flex cursor-pointer items-center rounded-md px-6 py-1 hover:border-none hover:bg-secondary-200 focus:outline-none dark:hover:bg-secondary-700"
       >
         Denial
       </ContextMenuRadioItem>
@@ -216,20 +223,22 @@ Pass `isUnstyled` prop in parent component to remove style in context-menu.
 
 {% /example %}
 
-## Unstyled subcomponent
+## Unstyled Sub-Component
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
 ```jsx
 <ContextMenu>
-  <ContextMenuTrigger className="dark:border-secondary-700 flex h-[200px] w-full items-center justify-center border-2 border-dotted">
+  <ContextMenuTrigger asChild>
+  <div className="flex h-[200px] w-full items-center justify-center select-none border-2 border-dotted data-[state='open']:border-primary-500 dark:data-[state='open']:border-primary-300 data-[state='closed']:border-secondary-300 dark:data-[state='closed']:border-secondary-700">
     Right Click here
+    </div>
   </ContextMenuTrigger>
   <ContextMenuContent
     isUnstyled
-    className="dark:bg-secondary-800 w-[200px] rounded-md bg-white p-1 text-sm "
+    className="w-[200px] rounded-md bg-white p-1 text-sm dark:bg-secondary-800 "
   >
     <ContextMenuItem>Back</ContextMenuItem>
     <ContextMenuSub>
@@ -255,18 +264,18 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### ContextMenu
 
 This component is built on top of [Radix Context Menu](https://www.radix-ui.com/primitives/docs/components/context-menu#root)
 
-| Property   | Description                                              | Type                       | Default |
-| ---------- | -------------------------------------------------------- | -------------------------- | ------- |
-| size       | Size of the context menu component and its subcomonents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isUnstyled | Removes style from this component and its subcomponents  | `boolean`                  | `false` |
+| Property   | Description                                              | Type                                     | Default |
+| ---------- | -------------------------------------------------------- | ---------------------------------------- | ------- |
+| size       | Size of the context menu and its subcomonents.           | `"sm"` or `"md"` or `"lg"`or `undefined` | `"md"`  |
+| isUnstyled | Removes style from this component and its sub-components | `boolean`or `undefined`                  | `false` |
 
 ### ContextMenuTrigger
 
@@ -276,41 +285,41 @@ This component is built on top of [Radix Context Menu Trigger](https://www.radix
 
 This component is built on top of [Radix Context Menu Content](https://www.radix-ui.com/primitives/docs/components/context-menu#content)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuItem
 
 This component is built on top of [Radix Context Menu Item](https://www.radix-ui.com/primitives/docs/components/context-menu#item)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuCheckBoxGroup
 
 This component is built on top of [Radix Context Menu Group](https://www.radix-ui.com/primitives/docs/components/context-menu#group)
 
-| Property | Description                              | Type      | Default |
-| -------- | ---------------------------------------- | --------- | ------- |
-| asChild  | Treats the component as a child element. | `boolean` | `false` |
+| Property | Description                              | Type                     | Default |
+| -------- | ---------------------------------------- | ------------------------ | ------- |
+| asChild  | Treats the component as a child element. | `boolean` or `undefined` | `false` |
 
 ### ContextMenuLabel
 
 This component is built on top of [Radix Context Menu Label](https://www.radix-ui.com/primitives/docs/components/context-menu#label)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuCheckboxItem
 
 This component is built on top of [Radix Context Menu Checkbox Item](https://www.radix-ui.com/primitives/docs/components/context-menu#checkboxitem)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuSub
 
@@ -324,31 +333,31 @@ This component is built on top of [Radix Context Menu Radio Group](https://www.r
 
 This component is built on top of [Radix Context Menu Radio Item](https://www.radix-ui.com/primitives/docs/components/context-menu#radioitem)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuSeparator
 
 This component is built on top of [Radix Context Menu Separator](https://www.radix-ui.com/primitives/docs/components/context-menu#separator)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuSubTrigger
 
 This component is built on top of [Radix Context Menu Sub Trigger](https://www.radix-ui.com/primitives/docs/components/context-menu#subtrigger)
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### ContextMenuSubContent
 
 This component is built on top of [Radix Context Menu Sub Content](https://www.radix-ui.com/primitives/docs/components/context-menu#subcontent)
 
-| Property   | Description                              | Type      | Default |
-| ---------- | ---------------------------------------- | --------- | ------- |
-| sideOffset | Side offset of the content from trigger. | `number`  | `10`    |
-| isUnstyled | Remove style from this component         | `boolean` | `false` |
+| Property   | Description                              | Type                     | Default |
+| ---------- | ---------------------------------------- | ------------------------ | ------- |
+| sideOffset | Side offset of the content from trigger. | `number`                 | `10`    |
+| isUnstyled | Remove style from this component         | `boolean` or `undefined` | `false` |

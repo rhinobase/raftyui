@@ -1,19 +1,16 @@
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
-import { TableHead, Th, Tr, classNames } from "@rafty/ui";
+import { TableHeader as RaftyTableHeader, Th, Tr, classNames } from "@rafty/ui";
 import { type Table, flexRender } from "@tanstack/react-table";
 import { ResizeHandle } from "./utils";
 
-interface TableHeader<T> {
+export type TableHeader<T> = {
   table: Table<T>;
   enableRowSelection: boolean;
-}
+};
 
-/**
- * TableHeader component for rendering the table header with sorting and resizing capabilities.
- */
 export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
   return (
-    <TableHead className="bg-secondary-100 dark:bg-secondary-700/80">
+    <RaftyTableHeader className="bg-secondary-100 dark:bg-secondary-800">
       {table.getHeaderGroups().map((headerGroup) => (
         <Tr key={headerGroup.id}>
           {headerGroup.headers.map((header, index) => {
@@ -82,6 +79,6 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
           })}
         </Tr>
       ))}
-    </TableHead>
+    </RaftyTableHeader>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
@@ -9,32 +8,44 @@ import {
 } from "react";
 import { useFieldControlContext } from "../field-control";
 import { Label } from "../label";
-import { classNames } from "../utils";
+import type { ValueOrFunction } from "../types";
+import { type SizeType, classNames, getValue } from "../utils";
 
 export const switchClasses = cva(
-  "focus-visible:ring-ring focus-visible:ring-offset-background data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300 data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600 peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+  classNames(
+    "peer/switch cursor-pointer rounded-full p-0.5 transition-colors ease-in-out",
+    "data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300",
+    "data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600",
+    "outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
+    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
+  ),
   {
     variants: {
       size: {
-        sm: "h-4 w-7",
-        md: "h-6 w-10",
-        lg: "h-7 w-12",
+        sm: "w-[30px]",
+        md: "w-[34px]",
+        lg: "w-[40px]",
+      },
+      invalid: {
+        true: "ring-red-300 dark:ring-red-100",
+        false: "ring-primary-300 dark:ring-primary-100",
       },
     },
     defaultVariants: {
+      invalid: false,
       size: "md",
     },
   },
 );
 
 export const switchThumbClasses = cva(
-  "bg-secondary-100 dark:data-[state=checked]:bg-secondary-900 data-[state=checked]:bg-secondary-100 pointer-events-none block rounded-full shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0",
+  "bg-white pointer-events-none block rounded-full ring-0 transition-transform data-[state=unchecked]:translate-x-0 ease-in-out",
   {
     variants: {
       size: {
-        sm: "size-3 data-[state=checked]:translate-x-3",
-        md: "size-5 data-[state=checked]:translate-x-4",
-        lg: "size-6 data-[state=checked]:translate-x-5",
+        sm: "size-[16px] data-[state=checked]:translate-x-2.5",
+        md: "size-[18px] data-[state=checked]:translate-x-3",
+        lg: "size-[22px] data-[state=checked]:translate-x-3.5",
       },
     },
     defaultVariants: {
@@ -43,90 +54,110 @@ export const switchThumbClasses = cva(
   },
 );
 
-export const switchLabelClasses = cva("", {
-  variants: {
-    size: {
-      sm: "pl-1.5 text-xs",
-      md: "pl-2",
-      lg: "pl-2.5 text-base",
+export const switchLabelClasses = cva(
+  "font-medium peer-data-[disabled]/switch:cursor-not-allowed peer-data-[disabled]/switch:opacity-70",
+  {
+    variants: {
+      size: {
+        sm: "pl-1 text-xs",
+        md: "pl-1.5 text-sm",
+        lg: "pl-2 text-base",
+      },
     },
-    disabled: {
-      true: "cursor-not-allowed opacity-50",
-      false: "",
+    defaultVariants: {
+      size: "md",
     },
   },
-  defaultVariants: {
-    size: "md",
-    disabled: false,
-  },
-});
+);
 
-// Switch component
 export type Switch = Omit<
   ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
-  "value" | "disabled" | "required"
+  "value"
 > & {
-  size?: "sm" | "md" | "lg";
-  isReadOnly?: BooleanOrFunction;
-  isDisabled?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
+  size?: SizeType;
+  isDisabled?: ValueOrFunction;
+  isInvalid?: ValueOrFunction;
+  isLoading?: ValueOrFunction;
+  isReadOnly?: ValueOrFunction;
+  isRequired?: ValueOrFunction;
 };
 
 export const Switch = forwardRef<
   ElementRef<typeof SwitchPrimitives.Root>,
   Switch
->(
-  (
-    {
-      className,
-      size = "md",
-      defaultChecked = false,
-      isReadOnly,
-      isDisabled,
-      isRequired,
-      children,
-      ...props
-    },
-    forwardedRef,
-  ) => {
-    const context = useFieldControlContext() ?? {};
+>(function Switch(
+  {
+    name,
+    disabled,
+    required,
+    className,
+    size = "md",
+    defaultChecked = false,
+    isReadOnly,
+    isDisabled,
+    isRequired,
+    isInvalid,
+    isLoading,
+    children,
+    ...props
+  },
+  forwardedRef,
+) {
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
 
-    const name = props.name || context.name;
-    const disabled =
-      getValue(isDisabled) ||
-      context.isDisabled ||
-      getValue(isReadOnly) ||
-      context.isReadOnly;
-    const required = getValue(isRequired) || context.isRequired;
+  const _name = name ?? fieldControlContext.name;
+  const _disabled =
+    (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading) ||
+    (getValue(isReadOnly) ?? fieldControlContext.isReadOnly);
+  const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+  const _required =
+    required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
 
-    const switchComponent = (
-      <SwitchPrimitives.Root
-        {...props}
-        defaultChecked={defaultChecked}
-        name={name}
-        disabled={disabled}
-        required={required}
-        className={classNames(switchClasses({ size }), className)}
-        ref={forwardedRef}
-      >
-        <SwitchPrimitives.Thumb className={switchThumbClasses({ size })} />
-      </SwitchPrimitives.Root>
+  const switchProps = {
+    ...props,
+    name: _name,
+    disabled: _disabled,
+    required: _required,
+    defaultChecked,
+  };
+
+  const Component = (componentProps: Pick<Switch, "className">) => (
+    <SwitchPrimitives.Root
+      {...switchProps}
+      className={componentProps.className}
+      ref={forwardedRef}
+    >
+      <SwitchPrimitives.Thumb className={switchThumbClasses({ size })} />
+    </SwitchPrimitives.Root>
+  );
+
+  if (children)
+    return (
+      <div className={classNames("flex w-max items-center", className)}>
+        <Component className={switchClasses({ size, invalid: _invalid })} />
+        <Label
+          htmlFor={props.id}
+          className={switchLabelClasses({ size })}
+          isRequired={required}
+        >
+          {children}
+        </Label>
+      </div>
     );
 
-    if (children)
-      return (
-        <div className="flex w-max items-center">
-          {switchComponent}
-          <Label
-            htmlFor={props.id}
-            className={switchLabelClasses({ size, disabled })}
-            isRequired={required}
-          >
-            {children}
-          </Label>
-        </div>
-      );
-    return switchComponent;
-  },
-);
-Switch.displayName = "Switch";
+  return (
+    <Component
+      className={classNames(
+        switchClasses({ size, invalid: _invalid }),
+        className,
+      )}
+    />
+  );
+});

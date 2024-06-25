@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FieldControl } from "../field-control";
-import { Label } from "../label";
 import { SearchField } from "./SearchField";
 
 const meta: Meta<typeof SearchField> = {
@@ -11,6 +9,7 @@ const meta: Meta<typeof SearchField> = {
     disabled: false,
     required: false,
     readOnly: false,
+    placeholder: "search...",
   },
   argTypes: {
     variant: {
@@ -28,20 +27,7 @@ export default meta;
 type Story = StoryObj<typeof SearchField>;
 
 export const Default: Story = {
-  render: ({ size, variant, disabled, readOnly, required }) => (
-    <FieldControl
-      name="search..."
-      isReadOnly={readOnly}
-      isDisabled={disabled}
-      isRequired={required}
-    >
-      <Label>Enter Search Value</Label>
-      <SearchField
-        aria-label="search"
-        variant={variant}
-        size={size}
-        placeholder="search..."
-      />
-    </FieldControl>
+  render: (props) => (
+    <SearchField {...props} aria-label="search" onValueChange={console.log} />
   ),
 };

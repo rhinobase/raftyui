@@ -16,7 +16,7 @@ nextjs:
 
 A set of two-state buttons that can be toggled on or off.
 
-This component is made on top of [Radix UIs Toggle Group Component](https://www.radix-ui.com/primitives/docs/components/toggle-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Toggle Group Component](https://www.radix-ui.com/primitives/docs/components/toggle-group) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -46,7 +46,7 @@ import { ToggleGroup, ToggleGroupItem } from "@rafty/ui";
 
 ## Size
 
-There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -62,7 +62,8 @@ There are 3 `size` options in spinner: `sm`, `md` (default) & `lg`.
 
 ## Type
 
-Using the `type` prop you can set the type of toggle-group. Values can be `single`, `multiple`;
+Using the `type` prop you can set the type of ToggleGroup. Values can be `"single"`, `"multiple"`.
+
 {% example %}
 
 ```jsx
@@ -77,7 +78,7 @@ Using the `type` prop you can set the type of toggle-group. Values can be `singl
 
 ## Default Value
 
-Using the `defaultValue` prop you can set the default value of toggle-group.
+Using the `defaultValue` prop you can set the default value of ToggleGroup.
 
 {% example %}
 
@@ -93,7 +94,7 @@ Using the `defaultValue` prop you can set the default value of toggle-group.
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
+Pass `isUnstyled` prop in root element to remove style from ToggleGroup and all its sub-components.
 
 {% example %}
 
@@ -106,19 +107,19 @@ Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 >
   <ToggleGroupItem
     value="1"
-    className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-l-md border font-bold "
+    className="data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:border-secondary-800 data-[state=on]:dark:bg-primary-300/20 data-[state=on]:dark:text-primary-300 w-full rounded-l-md border font-bold"
   >
     1
   </ToggleGroupItem>
   <ToggleGroupItem
     value="2"
-    className="dark:border-secondary-800 data-[state=on]:bg-primary-100   data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300 dark:data-[state=on]:bg-primary-300/20 w-full border font-bold"
+    className="data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:border-secondary-800 data-[state=on]:dark:bg-primary-300/20 data-[state=on]:dark:text-primary-300 w-full rounded-l-md border font-bold"
   >
     2
   </ToggleGroupItem>
   <ToggleGroupItem
     value="3"
-    className="dark:border-secondary-800 data-[state=on]:bg-primary-100 data-[state=on]:text-primary-500  dark:data-[state=on]:text-primary-300  dark:data-[state=on]:bg-primary-300/20 w-full rounded-r-md border font-bold"
+    className="data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:border-secondary-800 data-[state=on]:dark:bg-primary-300/20 data-[state=on]:dark:text-primary-300 w-full rounded-l-md border font-bold"
   >
     3
   </ToggleGroupItem>
@@ -127,9 +128,9 @@ Pass `isUnstyled` prop in parent component to remove style in Toggle Group.
 
 {% /example %}
 
-## Unstyled subcomponent
+## Unstyled Sub-Component
 
-To remove styles from a specific sub component pass `isUnstyled` prop to that particular subcomponent.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
@@ -138,7 +139,7 @@ To remove styles from a specific sub component pass `isUnstyled` prop to that pa
   <ToggleGroupItem
     value="1"
     isUnstyled
-    className="data-[state=on]:bg-primary-300/20 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 w-full px-3 py-1  font-semibold"
+    className="data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 data-[state=on]:dark:bg-primary-300/20 dark:data-[state=on]:text-primary-300 w-full px-3 py-1 font-semibold"
   >
     1
   </ToggleGroupItem>
@@ -149,23 +150,23 @@ To remove styles from a specific sub component pass `isUnstyled` prop to that pa
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### ToggleGroup
 
 This component is built on top of [Radix Toggle Group](https://www.radix-ui.com/primitives/docs/components/toggle-group#root)
 
-| Property   | Description                                               | Type                       | Default |
-| ---------- | --------------------------------------------------------- | -------------------------- | ------- |
-| size       | Size of the toggle group component and its subcomponents. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isUnstyled | Remove style from this component and its subcomponents.   | `boolean`                  | `false` |
+| Property   | Description                                              | Type                                      | Default |
+| ---------- | -------------------------------------------------------- | ----------------------------------------- | ------- |
+| size       | Size of the toggle group and its sub-components.         | `"sm"` or `"md"` or `"lg"` or `undefined` | `"md"`  |
+| isUnstyled | Remove style from this component and its sub-components. | `boolean` or `undefined`                  | `false` |
 
 ### ToggleGroupItem
 
 This component is built on top of [Radix Toggle Group Item](https://www.radix-ui.com/primitives/docs/components/toggle-group#item)
 
-| Property   | Description                       | Type      | Default |
-| ---------- | --------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component. | `boolean` | `false` |
+| Property   | Description                       | Type                     | Default |
+| ---------- | --------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component. | `boolean` or `undefined` | `false` |

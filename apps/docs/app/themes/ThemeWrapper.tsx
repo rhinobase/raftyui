@@ -67,8 +67,10 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
     >
       <div className="flex flex-col justify-start lg:flex-row lg:justify-between">
         <div>
-          <h1 className="text-3xl font-bold md:text-3xl">Make it yours.</h1>
-          <h2 className="text-secondary-400 text-sm lg:text-lg">
+          <h1 className="text-[2rem] font-bold leading-[2.5rem] leading-[2.5rem] md:text-[2rem]">
+            Make it yours.
+          </h1>
+          <h2 className="text-secondary-400 text-[0.875rem] leading-[1.5rem] leading-[1.75rem] lg:text-[1.125rem]">
             Hand-picked themes that you can copy and paste into your apps.
           </h2>
         </div>
@@ -101,7 +103,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
       </div>
       {children}
       <div className="mt-4 flex flex-col items-center gap-2 md:mt-10 md:flex-row md:justify-between">
-        <p className="text-secondary-600 text-xs leading-none">
+        <p className="text-secondary-600 text-[0.75rem] leading-[1rem] leading-none">
           This page is inspired by{" "}
           <Link
             href="https://x.com/shadcn?t=2gBGi1FW3vmW37m13hN-TA&s=33"
@@ -111,7 +113,7 @@ export default function ThemeBuilderWrapper({ children }: PropsWithChildren) {
             @shadcn
           </Link>
         </p>
-        <p className="text-secondary-500 text-xs leading-none">
+        <p className="text-secondary-500 text-[0.75rem] leading-[1rem] leading-none">
           &copy; {new Date().getFullYear()} rhinobase, Inc. All rights reserved.
         </p>
       </div>
@@ -152,7 +154,9 @@ function CustomizeMenu({
       >
         <div className="space-y-6">
           <div className="space-y-3">
-            <h5 className="text-xs font-medium leading-none">Color</h5>
+            <h5 className="text-[0.75rem] font-medium leading-[1rem] leading-none">
+              Color
+            </h5>
             <div className="grid grid-cols-3 gap-2.5">
               {Object.entries(COLOR_THEME).map(([c, value]) => (
                 <Button
@@ -174,7 +178,9 @@ function CustomizeMenu({
             </div>
           </div>
           <div className="space-y-3">
-            <h5 className="text-xs font-medium leading-none">Mode</h5>
+            <h5 className="text-[0.75rem] font-medium leading-[1rem] leading-none">
+              Mode
+            </h5>
             <div className="flex gap-2.5">
               <Button
                 variant="outline"
@@ -232,7 +238,7 @@ function CopyCodeDialog({ color }: { color: keyof typeof COLOR_THEME }) {
       <DialogContent className="z-[70] p-5">
         <div className="mb-5 space-y-1">
           <DialogTitle>Theme</DialogTitle>
-          <Text className="text-sm leading-snug opacity-50">
+          <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-50">
             Copy and paste the following code into your{" "}
             <Kbd>tailwind.config.js</Kbd> file.
           </Text>

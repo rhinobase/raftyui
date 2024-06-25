@@ -7,13 +7,7 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "packages/corp/**/*.{ts,tsx,js,jsx}",
-          "packages/corp/package.json"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "build": {
       "executor": "@nx/rollup:rollup",
@@ -35,7 +29,7 @@
       }
     },
     "publish": {
-      "command": "node tools/scripts/publish.mjs corp {args.ver} {args.tag}",
+      "command": "node tools/scripts/publish.mjs ui {args.ver} {args.tag}",
       "dependsOn": ["build"]
     },
     "version": {

@@ -64,11 +64,11 @@ export function TableOfContents({
           <>
             <h2
               id="on-this-page-title"
-              className="font-display text-secondary-900 text-sm font-medium dark:text-white"
+              className="font-display text-secondary-900 text-[0.875rem] font-medium leading-[1.5rem] dark:text-white"
             >
               On this page
             </h2>
-            <ol className="mt-4 space-y-3 text-sm">
+            <ol className="mt-4 space-y-3 text-[0.875rem] leading-[1.5rem]">
               {tableOfContents.map((section) => (
                 <li key={section.id}>
                   <h3>

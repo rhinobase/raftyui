@@ -14,7 +14,7 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Toast
 ---
 
-The toast component is used to give feedback to users after an action has taken place.
+The Toast component is used to give feedback to users after an action has taken place.
 
 This is a custom-made component according to our styling conventions, limiting the available props and styling options.
 
@@ -30,9 +30,7 @@ import { Toast } from "@rafty/ui";
 
 ## Usage
 
-The toast will close itself after a timeout.
-
-Toasts by default appears at the top of an application window, and it is possible to have more than one toast onscreen at a time.
+`title` and `severity` are required props in Toast.
 
 {% example %}
 
@@ -44,7 +42,7 @@ Toasts by default appears at the top of an application window, and it is possibl
 
 ## Title
 
-The title is another required prop for in toast.
+The `title` is a required prop for in Toast.
 
 {% example %}
 
@@ -56,7 +54,7 @@ The title is another required prop for in toast.
 
 ## Message
 
-The message prop is used to display description below title in toast
+The `message` prop is used to display description below title in Toast.
 
 {% example %}
 
@@ -70,9 +68,25 @@ The message prop is used to display description below title in toast
 
 {% /example %}
 
+## Size
+
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
+
+{% example %}
+
+```jsx
+<div className="flex w-full flex-col items-center gap-4">
+  <Toast title="Success Banner" severity="success" size="sm" />
+  <Toast title="Success Banner" severity="warning" size="md" />
+  <Toast title="Success Banner" severity="info" size="lg" />
+</div>
+```
+
+{% /example %}
+
 ## Severity
 
-There are 4 `severity` options in toast: `error`, `warning`, `info` & `success`. It is a required prop.
+There are 4 `severity` options available: `"error"`, `"warning"`, `"info"` & `"success"`. It is a required prop.
 
 {% example %}
 
@@ -89,7 +103,7 @@ There are 4 `severity` options in toast: `error`, `warning`, `info` & `success`.
 
 ## Visible
 
-The visible prop is used to manage the visibility of toast.
+The `visible` prop is used to manage the visibility of Toast.
 
 {% example %}
 
@@ -99,9 +113,9 @@ The visible prop is used to manage the visibility of toast.
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Toast
 
@@ -109,6 +123,7 @@ The visible prop is used to manage the visibility of toast.
 
 | Property | Description                    | Type                                                | Default |
 | -------- | ------------------------------ | --------------------------------------------------- | ------- |
+| size     | Size of the toast component.   | `"sm"` or `"md"` or `"lg"` or `undefined`           | `"md"`  |
 | severity | Severity level of the toast.   | `"error"` or `"success"` or `"warning"` or `"info"` | -       |
 | visible  | Visibility state of the toast. | `boolean`                                           | `false` |
 | title    | Title of the toast.            | `string`                                            | -       |

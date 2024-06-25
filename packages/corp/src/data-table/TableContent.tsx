@@ -2,18 +2,12 @@ import { TableBody, Td, Tr, classNames } from "@rafty/ui";
 import { type Table, flexRender } from "@tanstack/react-table";
 import { Loading } from "./utils";
 
-/**
- * Represents the content of a table with error handling and loading states.
- */
-type TableContent<T> = {
+export type TableContent<T> = {
   table: Table<T>;
   isLoading: boolean;
   colSpan: number;
 };
 
-/**
- * TableContent component displays the table rows with optional loading or error states.
- */
 export function TableContent<T>({
   table,
   isLoading,
@@ -31,7 +25,7 @@ export function TableContent<T>({
           .rows.map((row) => (
             <Tr
               key={row.id}
-              className="hover:bg-primary-50 dark:hover:bg-primary-800/30"
+              className="hover:bg-primary-50/50 dark:hover:bg-primary-900/50"
             >
               {row.getVisibleCells().map((cell, index) => {
                 const isLastColumn = row.getVisibleCells().length - 1 === index;
@@ -47,7 +41,6 @@ export function TableContent<T>({
                       width: cell.column.getSize(),
                     }}
                   >
-                    {/* Render cell content using flexRender */}
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </Td>
                 );

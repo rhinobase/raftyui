@@ -1,16 +1,26 @@
 "use client";
 import { usePathname, useSearchParams } from "next/navigation";
-import { type PropsWithChildren, useEffect, useState } from "react";
+import { type PropsWithChildren, Suspense, useEffect, useState } from "react";
 import { Hero } from "../components/Hero";
 import { Layout } from "../components/Layout";
 import { MobileNavigation } from "../components/MobileNavigation";
 import { SearchDialog } from "../components/Search";
 import { Header } from "./Header";
 
-export function Wrapper({ children }: PropsWithChildren) {
+export function Wrapper(props: PropsWithChildren) {
+  return (
+    <Suspense>
+      <LayoutRender>{props.children}</LayoutRender>
+    </Suspense>
+  );
+}
+
+function LayoutRender({ children }: PropsWithChildren) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
   const isHomePage = pathname === "/";
+
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
 

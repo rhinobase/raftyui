@@ -1,6 +1,5 @@
 "use client";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { eventHandler } from "@rafty/shared";
 import {
   Button,
   Command,
@@ -15,6 +14,7 @@ import {
   PopoverTrigger,
   Spinner,
   classNames,
+  eventHandler,
   mergeRefs,
 } from "@rafty/ui";
 import {
@@ -22,7 +22,6 @@ import {
   type ReactNode,
   forwardRef,
   useEffect,
-  useId,
   useReducer,
   useRef,
   useState,
@@ -66,7 +65,7 @@ export function Combobox({
   isDisabled = false,
   isInvalid = false,
   isLoading = false,
-  isReadonly = false,
+  isReadOnly = false,
   placeholder,
   id,
   options = [],
@@ -85,10 +84,10 @@ export function Combobox({
   const isMulti = props.type === "multi";
 
   useEffect(() => {
-    if (isDisabled || isLoading || isReadonly) {
+    if (isDisabled || isLoading || isReadOnly) {
       setOpen(false);
     }
-  }, [isDisabled, isLoading, isReadonly]);
+  }, [isDisabled, isLoading, isReadOnly]);
 
   const [selected, dispatch] = useReducer(
     (prev: (string | number)[], cur: string | number | null) => {
@@ -115,18 +114,19 @@ export function Combobox({
         else value = [cur];
       }
 
-      if (isMulti) {
-        props.onSelectionChange?.(value);
-      } else {
-        props.onSelectionChange?.(value.length > 0 ? value[0] : undefined);
-      }
-
       if (!isMulti) setOpen(false);
 
       return value;
     },
     initValue,
   );
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isMulti) props.onSelectionChange?.(selected);
+    else
+      props.onSelectionChange?.(selected.length > 0 ? selected[0] : undefined);
+  }, [selected]);
 
   return (
     <ComboboxProvider
@@ -138,7 +138,7 @@ export function Combobox({
         isDisabled,
         isLoading,
         isInvalid,
-        isReadonly,
+        isReadOnly,
         isOpen,
         setOpen,
         selected,
@@ -155,7 +155,7 @@ export function Combobox({
 
 // Combobox Trigger
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
-  (
+  function ComboboxTrigger(
     {
       isDisabled,
       isLoading,
@@ -167,13 +167,13 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const {
       id,
       isOpen,
       isDisabled: isParentDisabled,
       isLoading: isParentLoading,
-      isReadonly: isParentReadonly,
+      isReadOnly: isParentReadonly,
       triggerRef,
     } = useComboboxContext();
 
@@ -211,7 +211,6 @@ export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
     );
   },
 );
-ComboboxTrigger.displayName = "ComboboxTrigger";
 
 // Combobox Content
 export type ComboboxContent = Omit<PopoverContent, "children"> & {
@@ -238,7 +237,7 @@ export function ComboboxContent({
   ...props
 }: ComboboxContent) {
   const { placeholder, triggerRef, options } = useComboboxContext();
-  const key = useId();
+
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -261,7 +260,11 @@ export function ComboboxContent({
         )}
         <CommandList className="p-1">
           {options.map((option, index) => (
-            <Children key={`${index}-${key}`} option={option} index={index} />
+            <Children
+              key={`${index}-${option.value}`}
+              option={option}
+              index={index}
+            />
           ))}
           <CommandEmpty className="text-secondary-500 dark:text-secondary-400 flex h-10 select-none items-center justify-center py-0 empty:hidden">
             {!isLoading && <>No results found {search && `for "${search}".`}</>}
@@ -282,16 +285,14 @@ export function ComboboxContent({
 // Combobox Item
 export type ComboboxItem = CommandItem;
 export const ComboboxItem = CommandItem;
-ComboboxItem.displayName = "ComboboxItem";
 
 // Combobox Items Group
 export type ComboboxItemsGroup = CommandGroup;
 export const ComboboxItemsGroup = CommandGroup;
-ComboboxItemsGroup.displayName = "ComboboxItemsGroup";
 
 // Combobox Clear Button
 export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
-  (
+  function ComboboxClearButton(
     {
       children,
       size = "sm",
@@ -301,17 +302,17 @@ export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
       ...props
     },
     forwardedRef,
-  ) => {
+  ) {
     const {
       type,
       selected,
       onSelectionChange,
       isDisabled,
       isLoading,
-      isReadonly,
+      isReadOnly,
     } = useComboboxContext();
 
-    if (selected.length === 0 || isDisabled || isReadonly || isLoading) return;
+    if (selected.length === 0 || isDisabled || isReadOnly || isLoading) return;
 
     let buttonText = "Clear";
     if (type === "multi") buttonText = "Clear All";
@@ -335,4 +336,3 @@ export const ComboboxClearButton = forwardRef<HTMLButtonElement, Button>(
     );
   },
 );
-ComboboxClearButton.displayName = "ComboboxClearButton";

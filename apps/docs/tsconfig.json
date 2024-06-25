@@ -22,22 +22,16 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "**/*.mjs",
-    "next-env.d.ts",
-    "next.config.mjs",
+    "../../apps/docs/.next/types/**/*.ts",
     "../../dist/apps/docs/.next/types/**/*.ts",
-    ".next/types/**/*.ts"
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "next.config.mjs"
   ],
   "exclude": [
+    "node_modules",
     "jest.config.ts",
     "src/**/*.spec.ts",
-    "src/**/*.test.ts",
-    "**/*.stories.ts",
-    "**/*.stories.js"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.storybook.json"
-    }
+    "src/**/*.test.ts"
   ]
 }

@@ -1,100 +1,39 @@
 "use client";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
-import { cva } from "class-variance-authority";
-import { type TextareaHTMLAttributes, forwardRef } from "react";
+import {
+  type DetailedHTMLProps,
+  type TextareaHTMLAttributes,
+  forwardRef,
+} from "react";
 import { useFieldControlContext } from "../field-control";
-import { classNames } from "../utils";
+import { type InputField, inputFieldClasses } from "../input-field";
+import { classNames, getValue } from "../utils";
 
-export const textareaClasses = cva(
-  "w-full border appearance-none min-h-[80px] outline-none dark:text-secondary-200 transition-all",
-  {
-    variants: {
-      size: {
-        sm: "rounded px-2 py-1 text-sm",
-        md: "rounded-md px-3 py-1.5",
-        lg: "rounded-md px-4 py-2 text-lg",
-      },
-      variant: {
-        solid: "",
-        outline: "",
-        ghost: "",
-      },
-      disabled: {
-        true: "",
-        false: "",
-      },
-      readonly: {
-        true: "",
-        false: "",
-      },
-      invalid: {
-        true: "border-red-500 focus:ring-red-200 dark:border-red-400 dark:focus:ring-red-100/20",
-      },
-    },
-    compoundVariants: [
-      {
-        variant: "solid",
-        disabled: false,
-        readonly: false,
-        className: "bg-secondary-50 dark:bg-secondary-900",
-      },
-      {
-        disabled: true,
-        readonly: false,
-        className: "bg-secondary-100 dark:bg-secondary-800 cursor-not-allowed",
-      },
-      {
-        variant: ["solid", "outline"],
-        disabled: false,
-        className: "hover:border-primary-500 dark:hover:border-primary-400",
-      },
-      {
-        variant: ["solid", "outline"],
-        className: "border-secondary-300 dark:border-zinc-700",
-      },
-      {
-        disabled: false,
-        readonly: false,
-        className:
-          "focus:ring-primary-200 focus:border-primary-500 dark:focus:ring-primary-100/20 dark:focus:border-primary-400 focus:ring-2",
-      },
-      {
-        variant: ["outline", "ghost"],
-        disabled: false,
-        readonly: false,
-        className: "bg-transparent",
-      },
-      {
-        variant: "ghost",
-        className: "border-transparent",
-      },
-    ],
-    defaultVariants: {
-      size: "md",
-      variant: "outline",
-      invalid: false,
-    },
+export const textareaClasses = {
+  size: {
+    sm: "min-h-16",
+    md: "min-h-20",
+    lg: "min-h-24",
   },
-);
+};
 
-// TextArea Component (With ErrorMessage)
+type TextareaProps = DetailedHTMLProps<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+>;
+
 export type Textarea = Omit<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   "size"
-> & {
-  variant?: "solid" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
-  isUnstyled?: boolean;
-  isDisabled?: BooleanOrFunction;
-  isInvalid?: BooleanOrFunction;
-  isLoading?: BooleanOrFunction;
-  isReadOnly?: BooleanOrFunction;
-  isRequired?: BooleanOrFunction;
-};
+> &
+  InputField;
 
 export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
-  (
+  function Textarea(
     {
+      name,
+      disabled,
+      readOnly,
+      required,
       className,
       variant = "outline",
       size = "md",
@@ -107,52 +46,47 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
       ...props
     },
     forwardedRef,
-  ) => {
-    const context = useFieldControlContext() ?? {
+  ) {
+    const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
       isLoading: false,
       isReadOnly: false,
       isRequired: false,
+      isInvalid: false,
     };
 
-    const name = props.name || context.name;
-    const disabled =
-      getValue(isDisabled) ||
-      props.disabled ||
-      context.isDisabled ||
-      getValue(isLoading) ||
-      context.isLoading;
-    const invalid = getValue(isInvalid) || context.isInvalid;
-    const readonly =
-      getValue(isReadOnly) || props.readOnly || context.isReadOnly;
-    const required =
-      getValue(isRequired) || props.required || context.isRequired;
+    const _name = name ?? fieldControlContext.name;
+    const _disabled =
+      (disabled ?? getValue(isDisabled) ?? fieldControlContext.isDisabled) ||
+      (getValue(isLoading) ?? fieldControlContext.isLoading);
+    const _invalid = getValue(isInvalid) ?? fieldControlContext.isInvalid;
+    const _readOnly =
+      readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+    const _required =
+      required ?? getValue(isRequired) ?? fieldControlContext.isRequired;
 
-    return (
-      <textarea
-        {...props}
-        name={name}
-        disabled={disabled}
-        readOnly={readonly}
-        required={required}
-        className={
-          isUnstyled
-            ? className
-            : classNames(
-                textareaClasses({
-                  size,
-                  variant,
-                  disabled,
-                  readonly,
-                  invalid,
-                }),
-                className,
-              )
-        }
-        ref={forwardedRef}
-      />
-    );
+    const textareaProps: TextareaProps = {
+      ...props,
+      name: _name,
+      disabled: _disabled,
+      readOnly: _readOnly,
+      required: _required,
+      className: isUnstyled
+        ? className
+        : classNames(
+            inputFieldClasses({
+              size,
+              variant,
+              disabled: _disabled,
+              readOnly: _readOnly,
+              invalid: _invalid,
+            }),
+            textareaClasses.size[size],
+            className,
+          ),
+      ref: forwardedRef,
+    };
+
+    return <textarea {...textareaProps} />;
   },
 );
-
-Textarea.displayName = "Textarea";

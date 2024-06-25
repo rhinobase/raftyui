@@ -1,17 +1,31 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { TagField } from "./TagField";
 
-const meta: Meta<typeof TagField> = {
+const meta: Meta<TagField> = {
   title: "Components / TagField",
+  args: {
+    size: "md",
+    placeholder: "Add Framework",
+    isDisabled: false,
+    isInvalid: false,
+    isLoading: false,
+    isReadOnly: false,
+  },
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof TagField>;
+type Story = StoryObj<TagField>;
 
 export const Default: Story = {
-  render: () => <TagField />,
+  render: (props) => <TagField {...props} />,
 };
 
-export const InitalData: Story = {
-  render: () => <TagField initialData={["rhinobase", "rafty", "ui"]} />,
+export const DefaultValue: Story = {
+  render: (props) => <TagField defaultValue={["hello", "hmmmm"]} {...props} />,
 };

@@ -2,9 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import {
   Table,
   TableBody,
-  TableContainer,
   TableFooter,
-  TableHead,
+  TableHeader,
   Td,
   Th,
   Tr,
@@ -26,56 +25,55 @@ const meta: Meta<typeof Table> = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-export const Default: Story = {
-  render: ({ size, variant, isUnstyled }) => {
-    const people = [
-      {
-        name: "Lindsay Walton",
-        title: "Front-end Developer",
-        email: "lindsay.walton@example.com",
-        role: "Member",
-      },
-      {
-        name: "Lindsay Walton",
-        title: "Front-end Developer",
-        email: "lindsay.walton@example.com",
-        role: "Member",
-      },
-      {
-        name: "Lindsay Walton",
-        title: "Front-end Developer",
-        email: "lindsay.walton@example.com",
-        role: "Member",
-      },
-    ];
-    return (
-      <TableContainer>
-        <Table size={size} variant={variant} isUnstyled={isUnstyled}>
-          <TableHead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Title</Th>
-              <Th>Email</Th>
-              <Th>Role</Th>
-            </Tr>
-          </TableHead>
-          <TableBody>
-            {people.map((person) => (
-              <Tr key={person.email}>
-                <Td>{person.name}</Td>
-                <Td>{person.title}</Td>
-                <Td>{person.email}</Td>
-                <Td>{person.role}</Td>
-              </Tr>
-            ))}
-          </TableBody>
-          <TableFooter>
-            <Tr>
-              <Td colSpan={4}>3 rows of data available</Td>
-            </Tr>
-          </TableFooter>
-        </Table>
-      </TableContainer>
-    );
+const DATA = [
+  {
+    name: "Lindsay Walton",
+    title: "Front-end Developer",
+    email: "lindsay.walton@example.com",
+    role: "Member",
   },
+  {
+    name: "Lindsay Walton",
+    title: "Front-end Developer",
+    email: "lindsay.walton@example.com",
+    role: "Member",
+  },
+  {
+    name: "Lindsay Walton",
+    title: "Front-end Developer",
+    email: "lindsay.walton@example.com",
+    role: "Member",
+  },
+];
+
+export const Default: Story = {
+  render: (props) => (
+    <Table {...props}>
+      <TableHeader>
+        <Tr>
+          <Th>Name</Th>
+          <Th>Title</Th>
+          <Th>Email</Th>
+          <Th>Role</Th>
+        </Tr>
+      </TableHeader>
+      <TableBody>
+        {DATA.map((person, index) => (
+          <Tr key={`${index}-${person.name}`}>
+            <Td>{person.name}</Td>
+            <Td>{person.title}</Td>
+            <Td>{person.email}</Td>
+            <Td>{person.role}</Td>
+          </Tr>
+        ))}
+      </TableBody>
+      <TableFooter>
+        <Tr>
+          <Td colSpan={4}>
+            {DATA.length} {DATA.length > 1 ? "rows" : "row"} of data available
+          </Td>
+        </Tr>
+      </TableFooter>
+    </Table>
+  ),
 };

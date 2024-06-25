@@ -5,6 +5,7 @@ const meta: Meta<typeof Avatar> = {
   title: "Components / Avatar",
   args: {
     size: "md",
+    name: "Jack",
   },
   argTypes: {
     size: {
@@ -16,14 +17,13 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta;
 
-type Story1 = StoryObj<typeof Avatar>;
+type Story = StoryObj<typeof Avatar>;
 
-export const Default: Story1 = {
-  render: ({ size }) => (
+export const Single: Story = {
+  render: (props) => (
     <Avatar
-      size={size}
-      name="Deepanshu"
-      src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Jack"
+      {...props}
+      src={`https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=${props.name}`}
     />
   ),
 };

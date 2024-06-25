@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Keyboard%20Key
 ---
 
-The keyboard key component exists to show which key or combination of keys performs a given action.
+It shows which key or combination of keys performs a given action.
 
-This component is built using native html kbd tag and its props, making all native props available for use.
+This component is built using native `<kbd>` html tag and its props, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -38,14 +38,14 @@ import { Kbd } from "@rafty/ui";
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Kbd
 
 `Kbd` composes the `<kbd>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |

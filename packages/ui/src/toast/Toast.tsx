@@ -4,16 +4,25 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/24/outline";
-import { type BooleanOrFunction, getValue } from "@rafty/shared";
 import { cva } from "class-variance-authority";
-import type { HTMLAttributes } from "react";
-import { classNames } from "../utils";
+import {
+  Fragment,
+  type HTMLAttributes,
+  type PropsWithChildren,
+  forwardRef,
+} from "react";
+import type { ValueOrFunction } from "../types";
+import { type SizeType, classNames, getValue } from "../utils";
 
-// Toast Component
 export const toastClasses = cva(
-  "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg p-4 drop-shadow-lg",
+  "w-full drop-shadow-lg flex items-center text-white dark:text-black",
   {
     variants: {
+      size: {
+        sm: "gap-2.5 p-2.5 rounded-md max-w-xs",
+        md: "gap-3 p-3 rounded-lg max-w-sm",
+        lg: "gap-3.5 p-3.5 rounded-xl max-w-md",
+      },
       severity: {
         error: "bg-red-600 dark:bg-red-300",
         warning: "bg-amber-500 dark:bg-amber-300",
@@ -26,20 +35,68 @@ export const toastClasses = cva(
       },
     },
     defaultVariants: {
+      size: "md",
       severity: "info",
       visible: false,
     },
   },
 );
 
-export type Toast = Pick<HTMLAttributes<HTMLDivElement>, "className"> & {
+export const toastTitleAndMessageWrapperClasses = {
+  size: {
+    sm: "space-y-1",
+    md: "space-y-1",
+    lg: "space-y-1",
+  },
+};
+
+export const toastIconClasses = {
+  size: {
+    sm: "size-5 stroke-2",
+    md: "size-6",
+    lg: "size-7",
+  },
+};
+
+export const toastTitleClasses = cva("font-medium", {
+  variants: {
+    size: {
+      sm: "text-sm leading-tight",
+      md: "text-base leading-tight",
+      lg: "text-lg leading-tight",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+export const toastMessageClasses = cva("empty:hidden", {
+  variants: {
+    size: {
+      sm: "text-xs leading-tight",
+      md: "text-sm leading-tight",
+      lg: "text-base leading-tight",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+export type Toast = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "children" | "title"
+> & {
   title: string;
   message?: string;
   severity: "error" | "warning" | "info" | "success";
-  visible?: BooleanOrFunction;
+  visible?: ValueOrFunction;
+  size?: SizeType;
 };
 
-export function Toast({ className, severity, visible, title, message }: Toast) {
+export const Toast = forwardRef<HTMLDivElement, Toast>(function Toast(
+  { className, severity, visible, title, message, size = "md", ...props },
+  forwardedRef,
+) {
   let ToastIcon: typeof ExclamationTriangleIcon;
 
   switch (severity) {
@@ -57,29 +114,28 @@ export function Toast({ className, severity, visible, title, message }: Toast) {
       break;
   }
 
+  const Component = message
+    ? ({ children }: PropsWithChildren) => (
+        <div className={toastTitleAndMessageWrapperClasses.size[size]}>
+          {children}
+        </div>
+      )
+    : Fragment;
+
   return (
     <div
+      {...props}
       className={classNames(
-        toastClasses({ severity, visible: getValue(visible) }),
+        toastClasses({ severity, visible: getValue(visible), size }),
         className,
       )}
+      ref={forwardedRef}
     >
-      <div className="flex items-center gap-3">
-        <ToastIcon className="size-6 text-white dark:text-black" />
-        <div className="space-y-1">
-          {title && (
-            <h6 className="font-medium leading-tight text-white dark:text-black">
-              {title}
-            </h6>
-          )}
-          {message && (
-            <p className="text-sm leading-tight text-white dark:text-black">
-              {message}
-            </p>
-          )}
-        </div>
-      </div>
+      <ToastIcon className={toastIconClasses.size[size]} />
+      <Component>
+        <h6 className={toastTitleClasses({ size })}>{title}</h6>
+        <p className={toastMessageClasses({ size })}>{message}</p>
+      </Component>
     </div>
   );
-}
-Toast.displayName = "Toast";
+});

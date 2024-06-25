@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Label
 ---
 
-Renders an accessible label associated with controls.
+Renders an accessible Label associated with controls.
 
-This component is made on top of [Radix UIs Label Component](https://www.radix-ui.com/primitives/docs/components/label) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop (to remove styling from a particular subcomponent).
+This is made using native `<label>` html tag, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.
 
 ## Anatomy
 
@@ -38,15 +38,26 @@ import { Label } from "@rafty/ui";
 
 {% /example %}
 
-## Props
+## Required
+
+`isRequired` prop is used to add red asterisk sign after label to show the field is required.
+
+{% example %}
+
+```jsx
+<Label isRequired>Sample</Label>
+```
+
+{% /example %}
 
 ---
+
+## Props
 
 ### Label
 
 This component is built on top of [Radix Label](https://www.radix-ui.com/primitives/docs/components/label#root)
 
-| Property   | Description                        | Type      | Default |
-| ---------- | ---------------------------------- | --------- | ------- |
-| isRequired | To manage required state.          | `boolean` | -       |
-| htmlFor    | ID of the associated form element. | `string`  | -       |
+| Property   | Description                   | Type                                                   | Default |
+| ---------- | ----------------------------- | ------------------------------------------------------ | ------- |
+| isRequired | To manage the required state. | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |

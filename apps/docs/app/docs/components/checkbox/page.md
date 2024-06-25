@@ -14,6 +14,8 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Checkbox
 ---
 
+# Checkbox
+
 Checkboxes give users binary choices when presented with multiple options in a series.
 
 This component is made on top of [Radix UIs Checkbox Component](https://www.radix-ui.com/primitives/docs/components/checkbox.) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible.
@@ -35,63 +37,21 @@ Checkbox component is used in forms when a user needs to select multiple values 
 {% example %}
 
 ```jsx
-<Checkbox name="checkbox" id="1">
+<Checkbox id="usage-checkbox">
   Checkbox
 </Checkbox>
 ```
 
 {% /example %}
 
-## Default Selected
+## Default Checked
 
-Pass `defaultSelected` prop to set default check the checkbox.
-
-{% example %}
-
-```jsx
-<Checkbox defaultChecked id="2">
-  Checkbox
-</Checkbox>
-```
-
-{% /example %}
-
-## Disabled
-
-Pass `isDisabled` prop to disable checkbox.
-
-This property can also be passed in child/ sub component
+Pass `defaultChecked` prop to set default check state of the Checkbox.
 
 {% example %}
 
 ```jsx
-<Checkbox isDisabled id="3">
-  Checkbox
-</Checkbox>
-```
-
-{% /example %}
-
-## Checked
-
-{% example %}
-
-```jsx
-<Checkbox checked id="4">
-  Checkbox
-</Checkbox>
-```
-
-{% /example %}
-
-## Required
-
-This property can also be passed in child/ sub component
-
-{% example %}
-
-```jsx
-<Checkbox isRequired id="5">
+<Checkbox defaultChecked id="default-checked-checkbox">
   Checkbox
 </Checkbox>
 ```
@@ -100,19 +60,19 @@ This property can also be passed in child/ sub component
 
 ## size
 
-There are 3 `size` options in checkbox: `sm`, `md` (default) & `lg`.
+There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
 ```jsx
-<div className="space-y-3">
-  <Checkbox size="sm" id="6">
+<div className="w-full space-y-3">
+  <Checkbox size="sm" id="size-sm-checkbox">
     Checkbox
   </Checkbox>
-  <Checkbox size="md" id="7">
+  <Checkbox size="md" id="size-md-checkbox">
     Checkbox
   </Checkbox>
-  <Checkbox size="lg" id="8">
+  <Checkbox size="lg" id="size-lg-checkbox">
     Checkbox
   </Checkbox>
 </div>
@@ -120,17 +80,75 @@ There are 3 `size` options in checkbox: `sm`, `md` (default) & `lg`.
 
 {% /example %}
 
-## Props
+## Disabled
+
+`isDisabled` prop is used to manage disable state of Checkbox.
+
+{% example %}
+
+```jsx
+<Checkbox isDisabled id="disabled-checkbox">
+  Checkbox
+</Checkbox>
+```
+
+{% /example %}
+
+## Checked
+
+`checked` prop is used to manage check state of Checkbox.
+
+{% example %}
+
+```jsx
+<Checkbox checked id="checked-checkbox">
+  Checkbox
+</Checkbox>
+```
+
+{% /example %}
+
+## Required
+
+`isRequired` prop is used to manage required state of Checkbox
+
+{% example %}
+
+```jsx
+<Checkbox isRequired id="required-checkbox">
+  Checkbox
+</Checkbox>
+```
+
+{% /example %}
+
+## Invalid
+
+`isInvalid` prop is used to manage invalid state of Checkbox
+
+{% example %}
+
+```jsx
+<Checkbox isInvalid id="invalid-checkbox">
+  Checkbox
+</Checkbox>
+```
+
+{% /example %}
 
 ---
+
+## Props
 
 ### Checkbox
 
 This component is built on top of [Radix Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox#root)
 
-| Property   | Description                     | Type                       | Default |
-| ---------- | ------------------------------- | -------------------------- | ------- |
-| size       | Size of the checkbox component. | `"sm"` or `"md"` or `"lg"` | `"md"`  |
-| isReadOnly | To manage read-only state.      | `boolean`                  | `false` |
-| isDisabled | To manage disabled state.       | `boolean`                  | `false` |
-| isRequired | To manage required state.       | `boolean`                  | `false` |
+| Property   | Description                     | Type                                                   | Default |
+| ---------- | ------------------------------- | ------------------------------------------------------ | ------- |
+| size       | Size of the checkbox component. | `"sm"` or `"md"` or `"lg"` or `undefined`              | `"md"`  |
+| isReadOnly | To manage the readonly state.   | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isDisabled | To manage the disabled state.   | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isRequired | To manage the required state.   | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isInvalid  | To manage the invalid state.    | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |
+| isLoading  | To manage the loading state.    | `boolean` or <Info>() => boolean</Info> or `undefined` | -       |

@@ -12,14 +12,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { PageJumper, Pagination, PaginationButtons } from "../pagination";
 import { Skeleton } from "../skeleton";
 import {
   Table,
   TableBody,
-  TableContainer,
   TableFooter,
-  TableHead,
+  TableHeader,
   Td,
   Th,
   Tr,
@@ -115,111 +113,109 @@ function TanstackTable() {
   const noOfColumns = table.getAllColumns().length;
 
   return (
-    <TableContainer className="m-4">
-      <Table size="sm" className="w-full table-fixed">
-        <TableHead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <Tr key={headerGroup.id}>
-              {headerGroup.headers.map((header, index) => {
-                const isLastColumn = headerGroup.headers.length - 1 === index;
+    <Table size="sm" className="m-4 w-full [&>table]:table-fixed">
+      <TableHeader>
+        {table.getHeaderGroups().map((headerGroup) => (
+          <Tr key={headerGroup.id}>
+            {headerGroup.headers.map((header, index) => {
+              const isLastColumn = headerGroup.headers.length - 1 === index;
 
-                return (
-                  <Th
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
+              return (
+                <Th
+                  key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
+                  className={classNames(
+                    isLastColumn && "text-center",
+                    index === 0 ? "w-10" : "w-max",
+                  )}
+                >
+                  <div
                     className={classNames(
-                      isLastColumn && "text-center",
-                      index === 0 ? "w-10" : "w-max",
+                      index === 0 && "justify-center",
+                      "flex items-center",
                     )}
                   >
-                    <div
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
+                  </div>
+                </Th>
+              );
+            })}
+          </Tr>
+        ))}
+      </TableHeader>
+      <TableBody>
+        {isLoading
+          ? Array(pageSize)
+              .fill("")
+              .map((_, index) => (
+                <Tr
+                  // biome-ignore lint/suspicious/noArrayIndexKey: It is an empty array
+                  key={index}
+                >
+                  <Td colSpan={noOfColumns} className="p-0">
+                    <Skeleton
                       className={classNames(
-                        index === 0 && "justify-center",
-                        "flex items-center",
+                        index % 2 === 0 &&
+                          "bg-secondary-300 dark:bg-secondary-600",
+                        "h-10 w-full",
                       )}
+                    />
+                  </Td>
+                </Tr>
+              ))
+          : table.getRowModel().rows.map((row) => (
+              <Tr key={row.id}>
+                {row.getVisibleCells().map((cell, index) => {
+                  const isLastColumn =
+                    row.getVisibleCells().length - 1 === index;
+
+                  return (
+                    <Td
+                      key={cell.id}
+                      className="truncate whitespace-nowrap"
+                      style={{
+                        textAlign:
+                          isLastColumn || index === 0 ? "center" : undefined,
+                      }}
                     >
                       {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
                       )}
-                    </div>
-                  </Th>
-                );
-              })}
-            </Tr>
-          ))}
-        </TableHead>
-        <TableBody>
-          {isLoading
-            ? Array(pageSize)
-                .fill("")
-                .map((_, index) => (
-                  <Tr
-                    // biome-ignore lint/suspicious/noArrayIndexKey: It is an empty array
-                    key={index}
-                  >
-                    <Td colSpan={noOfColumns} className="p-0">
-                      <Skeleton
-                        className={classNames(
-                          index % 2 === 0 &&
-                            "bg-secondary-300 dark:bg-secondary-600",
-                          "h-10 w-full",
-                        )}
-                      />
                     </Td>
-                  </Tr>
-                ))
-            : table.getRowModel().rows.map((row) => (
-                <Tr key={row.id}>
-                  {row.getVisibleCells().map((cell, index) => {
-                    const isLastColumn =
-                      row.getVisibleCells().length - 1 === index;
-
-                    return (
-                      <Td
-                        key={cell.id}
-                        className="truncate whitespace-nowrap"
-                        style={{
-                          textAlign:
-                            isLastColumn || index === 0 ? "center" : undefined,
-                        }}
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </Td>
-                    );
-                  })}
-                </Tr>
-              ))}
-        </TableBody>
-        <TableFooter>
-          <Tr>
-            <Td colSpan={noOfColumns} className="p-0">
-              <Pagination
-                size="sm"
-                currentPage={pageIndex + 1}
-                pageLimit={pageSize}
-                pages={table.getPageCount()}
-                onChange={(page, pageSize) =>
-                  setPagination({
-                    pageIndex: page - 1,
-                    pageSize,
-                  })
-                }
-                className="justify-end"
-              >
-                <div className="flex items-center gap-2">
-                  <p>Page</p>
-                  <PageJumper />
-                </div>
-                <PaginationButtons />
-              </Pagination>
-            </Td>
-          </Tr>
-        </TableFooter>
-      </Table>
-    </TableContainer>
+                  );
+                })}
+              </Tr>
+            ))}
+      </TableBody>
+      {/* <TableFooter>
+        <Tr>
+          <Td colSpan={noOfColumns} className="p-0">
+            <Pagination
+              size="sm"
+              currentPage={pageIndex + 1}
+              pageLimit={pageSize}
+              pages={table.getPageCount()}
+              onChange={(page, pageSize) =>
+                setPagination({
+                  pageIndex: page - 1,
+                  pageSize,
+                })
+              }
+              className="justify-end"
+            >
+              <div className="flex items-center gap-2">
+                <p>Page</p>
+                <PageJumper />
+              </div>
+              <PaginationButtons />
+            </Pagination>
+          </Td>
+        </Tr>
+      </TableFooter> */}
+    </Table>
   );
 }

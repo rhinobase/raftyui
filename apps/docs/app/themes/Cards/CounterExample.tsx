@@ -32,8 +32,10 @@ export function CounterExample() {
   return (
     <div className="size-full space-y-2">
       <div>
-        <Text className="text-2xl font-semibold leading-snug">Move goal</Text>
-        <Text className="text-sm leading-snug opacity-60">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
+          Move goal
+        </Text>
+        <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-60">
           Set your daily activity goal
         </Text>
       </div>
@@ -71,8 +73,10 @@ function Counter() {
         <MinusIcon height={18} width={18} className="stroke-2" />
       </Button>
       <div className="flex w-full flex-col items-center">
-        <Text className="text-5xl tabular-nums">{count}</Text>
-        <Text className="text-sm font-medium leading-none opacity-50">
+        <Text className="text-[3rem] tabular-nums leading-[3.5rem]">
+          {count}
+        </Text>
+        <Text className="text-[0.875rem] font-medium leading-[1.5rem] leading-none opacity-50">
           CALORIES/DAY
         </Text>
       </div>

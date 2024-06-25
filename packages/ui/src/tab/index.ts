@@ -3,7 +3,7 @@ export {
   TabContent,
   TabList,
   TabTrigger,
-  tabListClasses,
+  tabContentClasses,
   tabTriggerClasses,
 } from "./Tab";
 export { useTabContext } from "./context";

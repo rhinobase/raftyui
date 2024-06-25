@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { createContext } from "@rafty/ui";
 import type { Dispatch, RefObject, SetStateAction } from "react";
 import type { ComboboxOptionType } from "./types";
 
@@ -15,7 +15,7 @@ export type ComboboxContext = {
   readonly options: ComboboxOptionType[];
   readonly isDisabled: boolean;
   readonly isLoading: boolean;
-  readonly isReadonly: boolean;
+  readonly isReadOnly: boolean;
   readonly isInvalid: boolean;
   readonly placeholder?: {
     readonly trigger?: string;

@@ -13,8 +13,16 @@ export type Fence = {
   children: string;
   language: string;
   live?: boolean;
+  noInline?: boolean;
 };
 
-export function Fence({ language, children, live }: Fence) {
-  return <CodeBlock language={language} content={children} live={live} />;
+export function Fence({ language, children, live, noInline }: Fence) {
+  return (
+    <CodeBlock
+      language={language}
+      content={children}
+      live={live}
+      noInline={noInline}
+    />
+  );
 }

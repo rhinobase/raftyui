@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=List
 ---
 
-List is used to display list items. It renders a <ul> element by default.
+List is used to display list items. It renders a `<ul>` element.
 
-This is made using native ol, ul & li html tags, making all native props available for use.
+This is made using native `ol`, `ul` & `li` html tags, making all native props available for use. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -83,37 +83,24 @@ import { List, ListItem, OrderedList, UnorderedList } from "@rafty/ui";
 
 ## Unstyled
 
-Pass `isUnstyled` to remove style in list.
+Pass `isUnstyled` prop in root element to remove style from OrderedList or UnorderedList and all its sub-components.
 
 {% example %}
 
 ```jsx
-<List>
-  <ListItem isUnstyled className="flex items-center gap-2 text-xl font-bold ">
-    <CheckCircleIcon width={16} height={16} className="stroke-2" />
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit
-  </ListItem>
-  <ListItem className="flex items-center gap-2">
-    <CheckCircleIcon width={16} height={16} className="stroke-2" />
-    Assumenda, quia temporibus eveniet a libero incidunt suscipit
-  </ListItem>
-
-  <ListItem className="flex items-center gap-2">
-    <CheckCircleIcon width={16} height={16} className="stroke-2" />
-    Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-  </ListItem>
-  <ListItem className="flex items-center gap-2">
-    <CheckCircleIcon width={16} height={16} className="stroke-2" />
-    Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-  </ListItem>
-</List>
+<UnorderedList isUnstyled>
+  <ListItem>Lorem ipsum dolor sit amet</ListItem>
+  <ListItem>Consectetur adipiscing elit</ListItem>
+  <ListItem>Integer molestie lorem at massa</ListItem>
+  <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+</UnorderedList>
 ```
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### List
 
@@ -123,22 +110,18 @@ Pass `isUnstyled` to remove style in list.
 
 `ListItem` composes the `<li>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
-
 ### OrderedList
 
 `OrderedList` composes the `<ol>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |
 
 ### UnorderedList
 
 `UnorderedList` composes the `<ul>` component.
 
-| Property   | Description                      | Type      | Default |
-| ---------- | -------------------------------- | --------- | ------- |
-| isUnstyled | Remove style from this component | `boolean` | `false` |
+| Property   | Description                      | Type                     | Default |
+| ---------- | -------------------------------- | ------------------------ | ------- |
+| isUnstyled | Remove style from this component | `boolean` or `undefined` | `false` |

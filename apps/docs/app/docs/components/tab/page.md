@@ -14,9 +14,9 @@ nextjs:
         url: https://rafty.rhinobase.io/api/og?title=Tab
 ---
 
-A set of layered sections of content—known as tab panels—that are displayed one at a time.
+A set of layered sections of content—known as Tab panels—that are displayed one at a time.
 
-This component is made on top of [Radix UIs Tabs Component](https://www.radix-ui.com/primitives/docs/components/tabs) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you need to apply your own styling you can use the `isUnstyled` prop on parent element (to remove styling from entire component and its subcomponents) or `isUnstyled` prop on a subcomponent (to remove styling from a particular subcomponent).
+This component is made on top of [Radix UIs Tabs Component](https://www.radix-ui.com/primitives/docs/components/tabs) with our styling conventions. This component has been shared with you, ensuring that all its native properties are accessible. If you wish to apply your own styling you can use the `isUnstyled` prop on root element (to remove styling from root component as well as from all its sub-components) or `isUnstyled` prop on a sub-component (to remove styling from that particular sub-component).
 
 ## Anatomy
 
@@ -62,7 +62,7 @@ import { Tab, TabTrigger, TabList, TabContent } from "@rafty/ui";
 
 ## Size
 
-There are 3 size options in spinner: `sm`, `md` (default) & `lg`.
+There are 3 size options available: `"sm"`, `"md"` (default) & `"lg"`.
 
 {% example %}
 
@@ -91,7 +91,7 @@ There are 3 size options in spinner: `sm`, `md` (default) & `lg`.
 
 ## Variant
 
-There are 2 `variant` options in tab: `line` (default) & `enclosed`.
+There are 2 `variant` options available: `"line"` (default) & `"enclosed"`.
 
 {% example %}
 
@@ -119,8 +119,7 @@ There are 2 `variant` options in tab: `line` (default) & `enclosed`.
 
 ## Orientation
 
-There are 2 `orientation` options in tab: `horizontal` (default) & `vertical`.
-Both `orientation` supports all `variant`.
+There are 2 `orientation` options available: `"horizontal"` (default) & `"vertical"`. Both `orientation` supports all `variant`.
 
 ### Vertical Line Variant
 
@@ -183,34 +182,28 @@ Both `orientation` supports all `variant`.
 
 ## Unstyled
 
-Pass `isUnstyled` prop in parent component to remove style in Tab.
+Pass `isUnstyled` prop in root element to remove style from Tab and all its sub-components.
 
 {% example %}
 
 ```jsx
-<Tab
-  defaultValue="tab1"
-  isUnstyled
-  className="flex w-full items-stretch md:flex-col"
->
-  <TabList className="dark:border-secondary-700 border-b dark:border-black">
+<Tab defaultValue="tab1" isUnstyled>
+  <TabList className="dark:border-secondary-700 flex w-full items-stretch border-b">
     <TabTrigger
       value="tab1"
-      className="text-secondary-500 dark:text-secondary-400 data-[state=active]:dark:text-secondary-100
-          data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
-          p-4 transition-colors data-[disabled]:cursor-not-allowed
-          data-[state=active]:border-b-2 data-[state=active]:border-blue-500
-          data-[state=active]:text-black dark:data-[state=active]:border-blue-400"
+      className="text-secondary-500 data-[disabled]:text-secondary-400 dark:text-secondary-400
+        data-[disabled]:dark:text-secondary-600 data-[state=active]:dark:text-secondary-100
+        p-4 transition-colors data-[disabled]:cursor-not-allowed
+        data-[state=active]:text-black"
     >
       Tab1
     </TabTrigger>
     <TabTrigger
       value="tab2"
-      className="text-secondary-500 dark:text-secondary-400 data-[state=active]:dark:text-secondary-100
-          data-[disabled]:text-secondary-400 data-[disabled]:dark:text-secondary-600
-          p-4 transition-colors data-[disabled]:cursor-not-allowed
-          data-[state=active]:border-b-2 data-[state=active]:border-blue-500
-          data-[state=active]:text-black dark:data-[state=active]:border-blue-400"
+      className="text-secondary-500 data-[disabled]:text-secondary-400 dark:text-secondary-400
+        data-[disabled]:dark:text-secondary-600 data-[state=active]:dark:text-secondary-100
+        p-4 transition-colors data-[disabled]:cursor-not-allowed
+        data-[state=active]:text-black"
     >
       Tab2
     </TabTrigger>
@@ -231,9 +224,9 @@ Pass `isUnstyled` prop in parent component to remove style in Tab.
 
 {% /example %}
 
-## Unstyled subcomponent
+## Unstyled Sub-Component
 
-Pass `isUnstyled` prop in a particular subcomponent to remove style from that sub component.
+Pass `isUnstyled` prop in a particular sub-component to remove style from that sub-component.
 
 {% example %}
 
@@ -261,20 +254,20 @@ Pass `isUnstyled` prop in a particular subcomponent to remove style from that su
 
 {% /example %}
 
-## Props
-
 ---
+
+## Props
 
 ### Tab
 
 This component is built on top of [Radix Tabs](https://www.radix-ui.com/primitives/docs/components/tabs#root)
 
-| Properties  | Description                                            | Type                           | Default        |
-| ----------- | ------------------------------------------------------ | ------------------------------ | -------------- |
-| size        | Size of the tab component and its subcomonents.        | `"sm"` or `"md"` or `"lg"`     | `"md"`         |
-| isUnstyled  | Remove style from this component and its subcomponents | `boolean`                      | `false`        |
-| orientation | Tab orientation.                                       | `"horizontal"` or `"vertical"` | `"horizontal"` |
-| variant     | Tab style variant.                                     | `"line"` or `"enclosed"`       | `"line"`       |
+| Properties  | Description                                             | Type                                          | Default        |
+| ----------- | ------------------------------------------------------- | --------------------------------------------- | -------------- |
+| size        | Size of the tab and its sub-components.                 | `"sm"` or `"md"` or `"lg"` or `undefined`     | `"md"`         |
+| isUnstyled  | Remove style from this component and its sub-components | `boolean` or `undefined`                      | `false`        |
+| orientation | Tab orientation.                                        | `"horizontal"` or `"vertical"` or `undefined` | `"horizontal"` |
+| variant     | Tab style variant.                                      | `"line"` or `"enclosed"` or `undefined`       | `"line"`       |
 
 ### TabList
 

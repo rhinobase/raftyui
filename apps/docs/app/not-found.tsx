@@ -10,10 +10,10 @@ export default function NotFound() {
           404
         </p>
         <div>
-          <h1 className="text-primary-600 font-display dark:text-primary-300 text-3xl tracking-tight">
+          <h1 className="text-primary-600 font-display dark:text-primary-300 text-[2rem] leading-[2.5rem] tracking-tight">
             Page not found
           </h1>
-          <p className="text-secondary-500 dark:text-secondary-400 text-sm">
+          <p className="text-secondary-500 dark:text-secondary-400 text-[0.875rem] leading-[1.5rem]">
             Sorry, we couldn&apos;t find the page you&apos;re looking for.
           </p>
         </div>

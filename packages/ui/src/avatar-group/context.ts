@@ -1,4 +1,4 @@
-import { createContext } from "@rafty/shared";
+import { type SizeType, createContext } from "../utils";
 
 export const [AvatarGroupProvider, useAvatarGroupContext] =
   createContext<AvatarGroupContext>({
@@ -9,5 +9,6 @@ export const [AvatarGroupProvider, useAvatarGroupContext] =
   });
 
 export interface AvatarGroupContext {
-  readonly size: "sm" | "md" | "lg";
+  readonly size: SizeType;
+  readonly isUnstyled: boolean;
 }

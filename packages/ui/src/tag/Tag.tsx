@@ -1,14 +1,13 @@
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import { type SizeType, classNames } from "../utils";
 
-// Tag Component
-export const tagClasses = cva("size-max font-medium", {
+export const tagClasses = cva("size-max font-medium select-none leading-none", {
   variants: {
     size: {
-      sm: "rounded-sm px-2 text-sm",
-      md: "rounded-base px-2.5",
-      lg: "rounded-md px-3 py-0.5 text-lg",
+      sm: "rounded-sm px-1 py-0.5 text-xs",
+      md: "rounded-base px-1.5 py-1 text-sm",
+      lg: "rounded-md px-2 py-1.5 text-base",
     },
     colorScheme: {
       primary:
@@ -29,23 +28,19 @@ export const tagClasses = cva("size-max font-medium", {
 });
 
 export type Tag = HTMLAttributes<HTMLDivElement> & {
-  size?: "sm" | "md" | "lg";
+  size?: SizeType;
   colorScheme?: "primary" | "secondary" | "error" | "success" | "warning";
 };
 
-export const Tag = forwardRef<HTMLDivElement, Tag>(
-  (
-    { size = "md", colorScheme = "secondary", className, ...props },
-    forwardedRef,
-  ) => {
-    return (
-      <div
-        {...props}
-        className={classNames(tagClasses({ size, colorScheme }), className)}
-        ref={forwardedRef}
-      />
-    );
-  },
-);
-
-Tag.displayName = "Tag";
+export const Tag = forwardRef<HTMLDivElement, Tag>(function Tag(
+  { size = "md", colorScheme = "secondary", className, ...props },
+  forwardedRef,
+) {
+  return (
+    <div
+      {...props}
+      className={classNames(tagClasses({ size, colorScheme }), className)}
+      ref={forwardedRef}
+    />
+  );
+});

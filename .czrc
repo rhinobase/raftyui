@@ -1,36 +1,36 @@
 {
   "scopes": [
     {
-      "value": "web",
-      "name": "web:                 anything Website specific"
-    },
-    {
       "value": "ui",
-      "name": "ui:                  anything UI specific"
-    },
-    {
-      "value": "plugin",
-      "name": "plugin:              anything Plugin specific"
+      "name": "ui:                  anything ui specific"
     },
     {
       "value": "corp",
-      "name": "corp:                anything Corp specific"
+      "name": "corp:                anything corp specific"
+    },
+    {
+      "value": "blocks",
+      "name": "blocks:              anything blocks specific"
+    },
+    {
+      "value": "plugin",
+      "name": "plugin:              anything plugin specific"
     },
     {
       "value": "storybook",
-      "name": "storybook:           anything Storybook specific"
+      "name": "storybook:           anything storybook specific"
     },
     {
       "value": "examples",
-      "name": "examples:            anything Examples specific"
-    },
-    {
-      "value": "shared",
-      "name": "shared:              anything Shared package specific"
+      "name": "examples:            anything examples specific"
     },
     {
       "value": "icons",
-      "name": "icons:               anything Icons package specific"
+      "name": "icons:               anything icons specific"
+    },
+    {
+      "value": "docs",
+      "name": "docs:               anything docs specific"
     }
   ],
   "scopesSearchValue": true,

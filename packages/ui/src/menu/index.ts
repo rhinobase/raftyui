@@ -12,15 +12,6 @@ export {
   MenuSubContent,
   MenuSubTrigger,
   MenuTrigger,
-  menuCheckboxItemClasses,
-  menuCheckboxItemIndicatorClasses,
-  menuItemClasses,
-  menuLabelClasses,
-  menuRadioItemClasses,
-  menuRadioItemIndicatorChildClasses,
-  menuRadioItemIndicatorClasses,
-  menuSeparatorClasses,
-  menuSubTriggerClasses,
   menuTriggerClasses,
 } from "./Menu";
 export { useMenuContext } from "./context";

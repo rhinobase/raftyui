@@ -9,28 +9,38 @@ import {
   useToggleGroupContext,
 } from "./context";
 
-// ToggleGroup Component
+export const toggleGroupClasses = cva(
+  "dark:divide-secondary-700 dark:border-secondary-700 border-secondary-300 divide-secondary-300 w-max flex data-[orientation='vertical']:flex-col data-[orientation='horizontal']:flex-row data-[orientation='vertical']:divide-y data-[orientation='horizontal']:divide-x overflow-hidden border",
+  {
+    variants: {
+      size: {
+        sm: "rounded-base",
+        md: "rounded-md",
+        lg: "rounded-lg",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
 export type ToggleGroup = ComponentProps<typeof ToggleGroupPrimitive.Root> &
   Partial<ToggleGroupContext>;
 
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
-  (
+  function ToggleGroup(
     { children, className, size = "md", isUnstyled = false, ...props },
     forwardedRef,
-  ) => {
-    const unstyle = isUnstyled;
-
+  ) {
     return (
       <ToggleGroupProvider value={{ size, isUnstyled }}>
         <ToggleGroupPrimitive.Root
           {...props}
           className={
-            unstyle
+            isUnstyled
               ? className
-              : classNames(
-                  "dark:divide-secondary-700 dark:border-secondary-700 flex w-full items-center divide-x overflow-hidden rounded-md border",
-                  className,
-                )
+              : classNames(toggleGroupClasses({ size }), className)
           }
           ref={forwardedRef}
         >
@@ -40,17 +50,15 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
     );
   },
 );
-ToggleGroup.displayName = "ToggleGroup";
 
-// ToggleItem Component
 export const toggleGroupItemClasses = cva(
-  "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 dark:text-secondary-200 data-[state=on]:dark:bg-primary-300/20 flex w-full items-center justify-center font-semibold transition-all",
+  "data-[state=on]:bg-primary-50 data-[state=on]:text-primary-500 dark:data-[state=on]:text-primary-300 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 hover:text-black dark:hover:bg-secondary-800/80 dark:hover:text-secondary-100 data-[state=on]:dark:bg-primary-300/20 font-medium transition-all ease-in-out",
   {
     variants: {
       size: {
-        sm: "px-3 py-[2px] text-sm",
-        md: "px-3 py-1",
-        lg: "px-3 py-2 text-lg",
+        sm: "px-3 py-1 text-sm",
+        md: "px-4 py-1.5 text-base",
+        lg: "px-5 py-2 text-lg",
       },
     },
     defaultVariants: {
@@ -64,7 +72,10 @@ export type ToggleGroupItem = ComponentProps<
 > & { isUnstyled?: boolean };
 
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
-  ({ children, className, isUnstyled = false, ...props }, forwardedRef) => {
+  function ToggleGroupItem(
+    { children, className, isUnstyled = false, ...props },
+    forwardedRef,
+  ) {
     const { size, isUnstyled: isParentUnstyled } = useToggleGroupContext();
     const unstyle = isParentUnstyled || isUnstyled;
 
@@ -83,4 +94,3 @@ export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
     );
   },
 );
-ToggleGroupItem.displayName = "ToggleGroupItem";
