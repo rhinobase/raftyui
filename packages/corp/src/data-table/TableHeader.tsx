@@ -20,6 +20,11 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
 
             const isSorting = header.column.getIsSorted();
 
+            const headerCellRender =
+              !header.isPlaceholder &&
+              // Render the header content using flexRender
+              flexRender(header.column.columnDef.header, header.getContext());
+
             return (
               // Table Header Cell
               <Th
@@ -52,26 +57,27 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                   )}
                 >
                   {/* Clickable area for sorting */}
-                  <span
-                    onClick={header.column.getToggleSortingHandler()}
-                    onKeyDown={() => header.column.getToggleSortingHandler()}
-                    className={classNames(
-                      header.column.getCanSort() && "cursor-pointer",
-                    )}
-                  >
-                    {!header.isPlaceholder &&
-                      // Render the header content using flexRender
-                      flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
+                  {header.column.getCanSort() ? (
+                    <>
+                      <span
+                        onClick={header.column.getToggleSortingHandler()}
+                        onKeyDown={() =>
+                          header.column.getToggleSortingHandler()
+                        }
+                        className="cursor-pointer"
+                      >
+                        {headerCellRender}
+                      </span>
+                      {isSorting === "asc" ? (
+                        <ArrowUpIcon height={16} width={16} />
+                      ) : (
+                        isSorting === "desc" && (
+                          <ArrowDownIcon height={16} width={16} />
+                        )
                       )}
-                  </span>
-                  {isSorting === "asc" ? (
-                    <ArrowUpIcon height={16} width={16} />
+                    </>
                   ) : (
-                    isSorting === "desc" && (
-                      <ArrowDownIcon height={16} width={16} />
-                    )
+                    headerCellRender
                   )}
                 </div>
               </Th>
