@@ -44,7 +44,7 @@ export function useBreakpointValue<T = unknown>(
   if (values)
     for (let i = BREAKPOINTS[breakpoint]; i >= 0; i--) {
       const value = values[KEYS[i] as BreakpointType];
-      if (value) return value;
+      if (value !== undefined) return value;
     }
 
   return undefined;
