@@ -24,7 +24,7 @@ export function TableContent<T>({
           .getRowModel()
           .rows.map((row) => (
             <Tr
-              key={row.id}
+              key={row.index}
               className="hover:bg-primary-50/50 dark:hover:bg-primary-900/50"
             >
               {row.getVisibleCells().map((cell, index) => {
