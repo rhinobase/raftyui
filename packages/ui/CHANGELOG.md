@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.1](https://github.com/rhinobase/raftyui/compare/ui-1.7.0...ui-1.7.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* **ui:** resolved useBreakpointValue issue ([e6d540a](https://github.com/rhinobase/raftyui/commit/e6d540a21aaf234026f43e5cb9b913f35fac0dbc))
+
 ## [1.7.0](https://github.com/rhinobase/raftyui/compare/ui-1.6.0...ui-1.7.0) (2024-06-25)
 
 ## [1.6.0](https://github.com/rhinobase/raftyui/compare/ui-1.6.0-rc.3...ui-1.6.0) (2024-06-25)
