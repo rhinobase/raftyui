@@ -46,7 +46,7 @@ export const ratingItemClasses = cva(
     variants: {
       size: {
         sm: "rounded-sm",
-        md: "rounded-base",
+        md: "rounded",
         lg: "rounded-md",
       },
     },

@@ -141,7 +141,7 @@ export const datePickerCalendarTriggerClasses = cva(
   {
     variants: {
       size: {
-        sm: "p-1.5 min-w-[30px] min-h-[30px] size-[30px] rounded-base",
+        sm: "p-1.5 min-w-[30px] min-h-[30px] size-[30px] rounded",
         md: "p-2 min-w-[38px] min-h-[38px] size-[38px] rounded-md",
         lg: "p-2.5 min-w-[46px] min-h-[46px] size-[46px] rounded-md",
       },
@@ -156,8 +156,8 @@ export const datePickerClearButtonClasses = cva("pointer-events-auto rounded", {
   variants: {
     size: {
       sm: "size-5 p-0.5 rounded-sm",
-      md: "size-6 p-1 rounded-base",
-      lg: "size-7 p-1.5 rounded-base",
+      md: "size-6 p-1 rounded",
+      lg: "size-7 p-1.5 rounded",
     },
   },
   defaultVariants: {
@@ -414,7 +414,7 @@ export const datePickerCalendarHeaderClasses = cva(
 export const datePickerCalendarHeaderNextAndPrevButtonClasses = cva("", {
   variants: {
     size: {
-      sm: "p-2 size-8 rounded-base",
+      sm: "p-2 size-8 rounded",
       md: "p-[9px] size-9 rounded-md",
       lg: "p-2.5 size-10 rounded-lg",
     },
@@ -427,7 +427,7 @@ export const datePickerCalendarHeaderNextAndPrevButtonClasses = cva("", {
 export const datePickerCalendarHeaderViewTriggerClasses = cva("py-0", {
   variants: {
     size: {
-      sm: "px-2 h-8 rounded-base text-xs",
+      sm: "px-2 h-8 rounded text-xs",
       md: "px-2.5 h-9 rounded-md text-sm",
       lg: "px-3 h-10 rounded-lg text-md",
     },

@@ -43,7 +43,7 @@ export const treeViewItemClasses = cva(
     variants: {
       size: {
         sm: "rounded-sm",
-        md: "rounded-base",
+        md: "rounded",
         lg: "rounded-md",
       },
     },
@@ -92,7 +92,7 @@ export const treeViewLabelClasses = cva(
     variants: {
       size: {
         sm: "rounded-sm text-xs py-1 pr-1 gap-1",
-        md: "rounded-base text-sm py-1.5 pr-1.5 gap-1.5",
+        md: "rounded text-sm py-1.5 pr-1.5 gap-1.5",
         lg: "rounded-md text-base py-2 pr-2 gap-2",
       },
     },
@@ -199,7 +199,7 @@ export const TreeViewLabel = forwardRef<
             </div>
           )}
           {!openIndicator && !closeIndicator && (
-            <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full stroke-[3] group-data-[state=open]/indicator:rotate-90 transform duration-200 ease-in-out" />
+            <ChevronRightIcon className="stroke-primary-500 dark:stroke-primary-300 size-full transform stroke-[3] duration-200 ease-in-out group-data-[state=open]/indicator:rotate-90" />
           )}
         </ArkTreeView.BranchIndicator>
       )}

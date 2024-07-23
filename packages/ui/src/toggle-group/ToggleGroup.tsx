@@ -14,7 +14,7 @@ export const toggleGroupClasses = cva(
   {
     variants: {
       size: {
-        sm: "rounded-base",
+        sm: "rounded",
         md: "rounded-md",
         lg: "rounded-lg",
       },

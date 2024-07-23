@@ -22,7 +22,7 @@ export const buttonClasses = cva(
         ghost: "",
       },
       size: {
-        sm: "px-2 py-1 leading-5 rounded-base text-xs" /* For backwards compatibility */,
+        sm: "px-2 py-1 leading-5 rounded text-xs" /* For backwards compatibility */,
         md: "px-3 py-2 text-sm",
         lg: "px-4 py-3 text-base leading-5",
         icon: "",

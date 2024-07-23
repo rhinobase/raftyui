@@ -130,7 +130,7 @@ export const accordionTriggerClasses = cva(
       {
         variant: ["solid", "ghost"],
         size: "md",
-        className: "rounded-base",
+        className: "rounded",
       },
       {
         variant: ["solid", "ghost"],
