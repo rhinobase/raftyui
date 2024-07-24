@@ -145,7 +145,7 @@ export const accordionTriggerClasses = cva(
       {
         variant: "outline",
         size: "md",
-        className: "rounded-t-base data-[state=closed]:rounded-b-base",
+        className: "rounded-t data-[state=closed]:rounded-b",
       },
       {
         variant: "outline",
@@ -244,7 +244,7 @@ export const accordionContentClasses = cva(
     variants: {
       size: {
         sm: "rounded-b-sm",
-        md: "rounded-b-base",
+        md: "rounded-b",
         lg: "rounded-b-md",
       },
       variant: {
