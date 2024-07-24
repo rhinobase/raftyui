@@ -40,7 +40,7 @@ export const contextMenuContentClasses = cva(
   {
     variants: {
       size: {
-        sm: "rounded-base p-0.5 min-w-[11rem]",
+        sm: "rounded p-0.5 min-w-[11rem]",
         md: "rounded-md p-1 min-w-[12rem]",
         lg: "rounded-lg p-1.5 min-w-[13rem]",
       },
@@ -133,7 +133,7 @@ export const contextMenuItemClasses = cva(
     variants: {
       size: {
         sm: "px-2.5 py-1.5 text-xs rounded-sm",
-        md: "px-3.5 py-1.5 text-sm rounded-base",
+        md: "px-3.5 py-1.5 text-sm rounded",
         lg: "px-4 py-2 text-base rounded-md",
       },
     },

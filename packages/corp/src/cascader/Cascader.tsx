@@ -139,8 +139,8 @@ const cascaderClearButtonClasses = cva("absolute p-1", {
   variants: {
     size: {
       sm: "size-[18px] p-0.5 right-7 rounded-sm",
-      md: "size-6 p-1 right-8 rounded-base",
-      lg: "size-[26px] p-1 right-9 rounded-base",
+      md: "size-6 p-1 right-8 rounded",
+      lg: "size-[26px] p-1 right-9 rounded",
     },
     readOnly: {
       true: "pointer-events-none cursor-default",

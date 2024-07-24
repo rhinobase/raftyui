@@ -23,7 +23,7 @@ If you want to make changes to the default styling, update the `tailwind.config.
 Customize the default color palette for your project. Rafty UI includes an expertly-crafted default color palette out-of-the-box, making it a great starting point if you don’t have your own specific branding in mind.
 
 {% callout title="Global Constants" %}
-Few colors are globally constants like -
+Few colors are globally constant in components like -
 
 - Green for Success
 - Amber for Warning
@@ -68,82 +68,6 @@ module.exports = {
     },
   },
   plugins: [
-    ...,
-    require("@rafty/plugin")
-  ],
-};
-```
-
-## Padding
-
-We have separated our padding classes from Tailwind’s default padding classes. You can input your custom values into our padding classes to make changes to the entire theme and sizing of Rafty components. However, if you need to modify an individual component, you should do that at the component level.
-
-```jsx
-const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
-const { join } = require("path");
-
-/** @type {import('tailwindcss').Config} */
-
-module.exports = {
-  darkMode: "class",
-  content: [
-    ...,
-    "./node_modules/@rafty/ui/**/*.{js,cjs}",
-  ],
-  theme: {
-    extend: {
-      padding: {
-        none: "0px",
-        xs: "1px",
-        sm: "2px",
-        base: "4px",
-        md: "8px",
-        lg: "12px",
-        xl: "16px",
-        "2xl": "20px",
-        "3xl": "24px",
-        "4xl": "28px",
-        "5xl": "32px",
-      },
-    },
-  },
-  plugins: [
-    ...,
-    require("@rafty/plugin")
-  ],
-};
-```
-
-## Border Radius
-
-For border radius, we’ve utilized the default classes of TailwindCSS. Feel free to use values different from those shown in the example (which are TailwindCSS’s default values) to customize the overall theme and Rafty components.
-
-```jsx
-const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
-const { join } = require("path");
-
-/** @type {import('tailwindcss').Config} */
-
-module.exports = {
-  darkMode: "class",
-  content: [
-    ...,
-    "./node_modules/@rafty/ui/**/*.{js,cjs}",
-  ],
-  theme: {
-    extend: {
-      borderRadius: {
-        none: "0px",
-        sm: "2px",
-        base: "4px",
-        md: "6px",
-        lg: "8px",
-        xl: "12px",
-        full: "9999px",
-      },
-    },
-  },
- plugins: [
     ...,
     require("@rafty/plugin")
   ],

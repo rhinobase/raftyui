@@ -89,7 +89,7 @@ export const tagFieldControlClasses = cva(
   {
     variants: {
       size: {
-        sm: "pl-1.5 pr-[34px] py-1.5 gap-1.5 rounded-base",
+        sm: "pl-1.5 pr-[34px] py-1.5 gap-1.5 rounded",
         md: "pl-2 pr-[38px] py-2 gap-2 rounded-md",
         lg: "pl-2.5 pr-[46px] py-2.5 gap-2.5 rounded-lg",
       },
@@ -187,7 +187,7 @@ export const tagFieldPreviewItemClasses = cva(
     variants: {
       size: {
         sm: "gap-1 rounded-sm pl-1 pr-0.5 py-0",
-        md: "gap-1.5 rounded-base pl-1.5 pr-1 py-px",
+        md: "gap-1.5 rounded pl-1.5 pr-1 py-px",
         lg: "gap-2 rounded-md pl-2 pr-1.5 py-0.5",
       },
       editing: {

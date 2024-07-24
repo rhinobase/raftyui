@@ -18,28 +18,6 @@ module.exports = require("tailwindcss/plugin")(() => undefined, {
         },
         secondary: colors.zinc,
       },
-      padding: {
-        none: "0px",
-        xs: "1px",
-        sm: "2px",
-        base: "4px",
-        md: "8px",
-        lg: "12px",
-        xl: "16px",
-        "2xl": "20px",
-        "3xl": "24px",
-        "4xl": "28px",
-        "5xl": "32px",
-      },
-      borderRadius: {
-        none: "0px",
-        sm: "2px",
-        base: "4px",
-        md: "6px",
-        lg: "8px",
-        xl: "12px",
-        full: "9999px",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

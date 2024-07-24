@@ -191,31 +191,6 @@ function TanstackTable() {
               </Tr>
             ))}
       </TableBody>
-      {/* <TableFooter>
-        <Tr>
-          <Td colSpan={noOfColumns} className="p-0">
-            <Pagination
-              size="sm"
-              currentPage={pageIndex + 1}
-              pageLimit={pageSize}
-              pages={table.getPageCount()}
-              onChange={(page, pageSize) =>
-                setPagination({
-                  pageIndex: page - 1,
-                  pageSize,
-                })
-              }
-              className="justify-end"
-            >
-              <div className="flex items-center gap-2">
-                <p>Page</p>
-                <PageJumper />
-              </div>
-              <PaginationButtons />
-            </Pagination>
-          </Td>
-        </Tr>
-      </TableFooter> */}
     </Table>
   );
 }

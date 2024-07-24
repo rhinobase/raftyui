@@ -6,7 +6,7 @@ export const tagClasses = cva("size-max font-medium select-none leading-none", {
   variants: {
     size: {
       sm: "rounded-sm px-1 py-0.5 text-xs",
-      md: "rounded-base px-1.5 py-1 text-sm",
+      md: "rounded px-1.5 py-1 text-sm",
       lg: "rounded-md px-2 py-1.5 text-base",
     },
     colorScheme: {

@@ -96,12 +96,12 @@ export const inputFieldClasses = cva(
       {
         size: "sm",
         isLeftAddon: false,
-        className: "rounded-l-base",
+        className: "rounded-l",
       },
       {
         size: "sm",
         isRightAddon: false,
-        className: "rounded-r-base",
+        className: "rounded-r",
       },
       {
         size: "sm",
