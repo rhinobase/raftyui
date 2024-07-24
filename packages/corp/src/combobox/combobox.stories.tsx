@@ -218,7 +218,9 @@ function CustomContentRender({
       )}
     </ComboboxItem>
   );
-} // TODO: Experimental
+}
+
+// TODO: Experimental
 // export const Virtualized: Story = {
 //   render: (props) => {
 //     return (

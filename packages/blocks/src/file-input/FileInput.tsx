@@ -21,7 +21,6 @@ export function FileInputField() {
               <FileUpload
                 name={name}
                 disabled={disabled}
-                // value={value}
                 onFileChange={({ acceptedFiles }) => onChange(acceptedFiles)}
                 ref={ref}
               />

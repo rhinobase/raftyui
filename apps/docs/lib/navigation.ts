@@ -270,10 +270,6 @@ export const navigation = [
         title: "Pagination",
         href: "/docs/corp/pagination",
       },
-      // {
-      //   title:"Phone Number Input",
-      //   href:"/docs/corp/phone-number-input"
-      // },
       {
         title: "QR Code",
         href: "/docs/corp/qr-code",
