@@ -30,12 +30,12 @@ const data = [
 
 export function CounterExample() {
   return (
-    <div className="size-full space-y-2">
+    <div className="size-full space-y-4">
       <div>
-        <Text className="text-[1.5rem] font-semibold leading-[2.5rem] leading-snug">
+        <Text className="text-[1.5rem] font-semibold leading-[2.5rem]">
           Move goal
         </Text>
-        <Text className="text-[0.875rem] leading-[1.5rem] leading-snug opacity-60">
+        <Text className="text-[0.875rem] leading-[1.5rem] opacity-60">
           Set your daily activity goal
         </Text>
       </div>
