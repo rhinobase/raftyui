@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.2](https://github.com/rhinobase/raftyui/compare/ui-1.7.1...ui-1.7.2) (2024-07-29)
+
+
+### Bug Fixes
+
+* **ui:** toast message issue ([719b809](https://github.com/rhinobase/raftyui/commit/719b8095e75688048c7c1cef78319d5b30fc3941))
+
 ## [1.7.1](https://github.com/rhinobase/raftyui/compare/ui-1.7.0...ui-1.7.1) (2024-07-22)
 
 
