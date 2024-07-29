@@ -42,21 +42,25 @@ export const toastClasses = cva(
   },
 );
 
-export const toastTitleAndMessageWrapperClasses = {
-  size: {
-    sm: "space-y-1",
-    md: "space-y-1",
-    lg: "space-y-1",
+export const toastTitleAndMessageWrapperClasses = cva("", {
+  variants: {
+    size: {
+      sm: "space-y-1",
+      md: "space-y-1",
+      lg: "space-y-1",
+    },
   },
-};
+});
 
-export const toastIconClasses = {
-  size: {
-    sm: "size-5 stroke-2",
-    md: "size-6",
-    lg: "size-7",
+export const toastIconClasses = cva("", {
+  variants: {
+    size: {
+      sm: "size-5 stroke-2",
+      md: "size-6",
+      lg: "size-7",
+    },
   },
-};
+});
 
 export const toastTitleClasses = cva("font-medium", {
   variants: {
@@ -71,7 +75,7 @@ export const toastTitleClasses = cva("font-medium", {
   },
 });
 
-export const toastMessageClasses = cva("empty:hidden", {
+export const toastMessageClasses = cva("", {
   variants: {
     size: {
       sm: "text-xs leading-tight",
@@ -116,7 +120,7 @@ export const Toast = forwardRef<HTMLDivElement, Toast>(function Toast(
 
   const Component = message
     ? ({ children }: PropsWithChildren) => (
-        <div className={toastTitleAndMessageWrapperClasses.size[size]}>
+        <div className={toastTitleAndMessageWrapperClasses({ size })}>
           {children}
         </div>
       )
@@ -131,10 +135,10 @@ export const Toast = forwardRef<HTMLDivElement, Toast>(function Toast(
       )}
       ref={forwardedRef}
     >
-      <ToastIcon className={toastIconClasses.size[size]} />
+      <ToastIcon className={toastIconClasses({ size })} />
       <Component>
         <h6 className={toastTitleClasses({ size })}>{title}</h6>
-        <p className={toastMessageClasses({ size })}>{message}</p>
+        {message && <p className={toastMessageClasses({ size })}>{message}</p>}
       </Component>
     </div>
   );
