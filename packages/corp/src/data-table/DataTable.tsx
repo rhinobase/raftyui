@@ -83,7 +83,7 @@ export function DataTable<T>({
   const isEmpty = !isLoading && data.length === 0;
 
   return (
-    <div className="w-full">
+    <>
       <Table
         size={size}
         className={classNames(
@@ -95,6 +95,6 @@ export function DataTable<T>({
         <TableContent table={table} isLoading={isLoading} colSpan={col_span} />
       </Table>
       {isEmpty && <DataNotFound>{notFoundMessage}</DataNotFound>}
-    </div>
+    </>
   );
 }
