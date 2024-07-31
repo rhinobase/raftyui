@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.2](https://github.com/rhinobase/raftyui/compare/corp-1.0.1...corp-1.0.2) (2024-07-31)
+
+
+### Bug Fixes
+
+* **corp:** resolved tr key error in datatable ([66073a7](https://github.com/rhinobase/raftyui/commit/66073a70af91f2b577de86fec57dcccff5462c7e))
+* **corp:** reverted back last commit ([b7e6bbc](https://github.com/rhinobase/raftyui/commit/b7e6bbc53854cd759304a0036336755c2f16c6fb))
+
 ## [1.0.1](https://github.com/rhinobase/raftyui/compare/corp-1.0.0...corp-1.0.1) (2024-06-25)
 
 ## [1.0.0](https://github.com/rhinobase/raftyui/compare/corp-1.0.0-rc.3...corp-1.0.0) (2024-06-25)
