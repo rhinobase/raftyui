@@ -232,25 +232,23 @@ age:"32"
 {% example %}
 
 ```jsx
-<div className="w-full">
-  <DataTable
-    notFoundMessage="Empty Data"
-    columns={[
-      {
-        accessorKey: "id",
-        header: "Id",
-      },
-      {
-        accessorKey: "name",
-        header: "Name",
-      },
-      {
-        accessorKey: "age",
-        header: "Age",
-      },
-    ]}
-  />
-</div>
+<DataTable
+  notFoundMessage="Empty Data"
+  columns={[
+    {
+      accessorKey: "id",
+      header: "Id",
+    },
+    {
+      accessorKey: "name",
+      header: "Name",
+    },
+    {
+      accessorKey: "age",
+      header: "Age",
+    },
+  ]}
+/>
 ```
 
 {% /example %}
