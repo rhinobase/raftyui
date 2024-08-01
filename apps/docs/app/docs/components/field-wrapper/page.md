@@ -33,9 +33,18 @@ import { FieldWrapper } from "@rafty/ui";
 {% example %}
 
 ```jsx
-<FieldWrapper name="name">
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name">
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -47,9 +56,18 @@ import { FieldWrapper } from "@rafty/ui";
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name">
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" label="Name">
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -61,12 +79,22 @@ import { FieldWrapper } from "@rafty/ui";
 {% example %}
 
 ```jsx
-<FieldWrapper
-  name="name"
-  description="Lorem Ipsum is simply dummy text of the printing"
->
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper
+        name="name"
+        label="Name"
+        description="Lorem Ipsum is simply dummy text of the printing"
+      >
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -78,9 +106,18 @@ There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name" orientation="row">
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" label="Name" orientation="row">
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -92,9 +129,18 @@ There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name" isRequired>
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" label="Name" isRequired>
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -106,9 +152,18 @@ There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name" isDisabled>
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" label="Name" isDisabled>
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -120,9 +175,18 @@ There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name" isReadOnly>
-  <InputField defaultValue="This is a sample default text" />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" label="Name" isReadOnly>
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -134,9 +198,18 @@ There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name" isInvalid>
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" name="Name" isInvalid>
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}
@@ -148,9 +221,18 @@ There are 3 `orientation` options available: `"row"` (default), `"col"` & `"row-
 {% example %}
 
 ```jsx
-<FieldWrapper name="name" label="Name" isLoading>
-  <InputField />
-</FieldWrapper>
+function FieldWrapperExample() {
+  const methods = useForm();
+  const { register } = methods;
+
+  return (
+    <FormProvider {...methods}>
+      <FieldWrapper name="name" label="Name" isLoading>
+        <InputField {...register("name")} />
+      </FieldWrapper>
+    </FormProvider>
+  );
+}
 ```
 
 {% /example %}

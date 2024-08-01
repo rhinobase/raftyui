@@ -20,6 +20,7 @@ import * as RaftyCorp from "@rafty/corp";
 import * as Rafty from "@rafty/ui";
 import Image from "next/image";
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
 export const ReactLiveScope = {
   React,
@@ -27,6 +28,8 @@ export const ReactLiveScope = {
   ...React,
   ...Rafty,
   ...RaftyCorp,
+  useForm,
+  FormProvider,
   // Icons
   ArchiveBoxIcon,
   BackspaceIcon,
