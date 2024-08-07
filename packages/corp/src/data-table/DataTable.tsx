@@ -83,11 +83,12 @@ export function DataTable<T>({
   const isEmpty = !isLoading && data.length === 0;
 
   return (
-    <div className="w-full overflow-x-auto">
+    <>
       <Table
         size={size}
         className={classNames(
-          "w-full overflow-hidden overflow-x-auto [&>table]:table-fixed",
+          "overflow-y-auto [&>table]:table-fixed",
+          "[&>table>thead>tr>th]:bg-secondary-100 dark:[&>table>thead>tr>th]:bg-secondary-800 [&>table>thead>tr>th]:sticky [&>table>thead>tr>th]:top-0 [&>table>thead>tr>th]:z-10",
           isEmpty && "rounded-b-none",
         )}
       >
@@ -95,6 +96,6 @@ export function DataTable<T>({
         <TableContent table={table} isLoading={isLoading} colSpan={col_span} />
       </Table>
       {isEmpty && <DataNotFound>{notFoundMessage}</DataNotFound>}
-    </div>
+    </>
   );
 }
