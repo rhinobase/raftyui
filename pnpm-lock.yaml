@@ -122,12 +122,6 @@ dependencies:
   cmdk:
     specifier: 0.2.1
     version: 0.2.1(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
-  country-flag-icons:
-    specifier: ^1.5.11
-    version: 1.5.12
-  country-list:
-    specifier: ^2.3.0
-    version: 2.3.0
   dateformat:
     specifier: 5.0.3
     version: 5.0.3
@@ -143,9 +137,6 @@ dependencies:
   fuse.js:
     specifier: ^7.0.0
     version: 7.0.0
-  libphonenumber-js:
-    specifier: ^1.11.2
-    version: 1.11.3
   next:
     specifier: 14.2.4
     version: 14.2.4(@babel/core@7.24.7)(react-dom@18.2.0)(react@18.2.0)
@@ -9755,14 +9746,6 @@ packages:
       typescript: 5.4.5
     dev: true
 
-  /country-flag-icons@1.5.12:
-    resolution: {integrity: sha512-ksBaQqQEFSvSFg1NV8tlAk4IjgDRNMu5ImjnCac0C409CiN6ObTI0vCFaNfaPusxLrr5O9pueT1R3G4XMMwErg==}
-    dev: false
-
-  /country-list@2.3.0:
-    resolution: {integrity: sha512-qZk66RlmQm7fQjMYWku1AyjlKPogjPEorAZJG88owPExoPV8EsyCcuFLvO2afTXHEhi9liVOoyd+5A6ZS5QwaA==}
-    dev: false
-
   /create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
@@ -12859,10 +12842,6 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
-
-  /libphonenumber-js@1.11.3:
-    resolution: {integrity: sha512-RU0CTsLCu2v6VEzdP+W6UU2n5+jEpMDRkGxUeBgsAJgre3vKgm17eApISH9OQY4G0jZYJVIc8qXmz6CJFueAFg==}
-    dev: false
 
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
