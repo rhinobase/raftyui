@@ -35,7 +35,7 @@ export function TableContent<T>({
                     key={cell.id}
                     className={classNames(
                       "relative truncate",
-                      isLastColumn && "flex !w-full justify-end text-right",
+                      isLastColumn && "text-right",
                     )}
                     style={{
                       width: cell.column.getSize(),
