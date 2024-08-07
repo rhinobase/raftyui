@@ -34,7 +34,10 @@
     "@swc/helpers": "~0.5.11",
     "@tanstack/react-table": "^8.17.3",
     "class-variance-authority": "^0.7.0",
+    "country-flag-icons": "^1.5.13",
+    "country-list": "^2.3.0",
     "fuse.js": "^7.0.0",
+    "libphonenumber-js": "^1.11.5",
     "qr.js": "^0.0.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-signature-canvas": "^1.0.6"
@@ -77,6 +80,10 @@
     "./pagination": {
       "types": "./pagination/pagination.esm.d.ts",
       "import": "./pagination.esm.js"
+    },
+    "./phone-number-input": {
+      "types": "./phone-number-input/phone-number-input.esm.d.ts",
+      "import": "./phone-number-input.esm.js"
     },
     "./qr-code": {
       "types": "./qr-code/qr-code.esm.d.ts",
