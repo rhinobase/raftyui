@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.4](https://github.com/rhinobase/raftyui/compare/corp-1.0.3...corp-1.0.4) (2024-08-07)
+
+
+### Features
+
+* **corp:** made header sticky in data table ([1b82b22](https://github.com/rhinobase/raftyui/commit/1b82b226671c8e93c400addb7ce7b87e57e4f553))
+
 ## [1.0.3](https://github.com/rhinobase/raftyui/compare/corp-1.0.2...corp-1.0.3) (2024-08-07)
 
 
