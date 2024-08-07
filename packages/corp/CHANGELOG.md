@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.3](https://github.com/rhinobase/raftyui/compare/corp-1.0.2...corp-1.0.3) (2024-08-07)
+
+
+### Bug Fixes
+
+* **corp:** removed flex from td in data table ([8d4910b](https://github.com/rhinobase/raftyui/commit/8d4910b66d1a9dc8984ee49f2ac061c986ec3d32))
+* **corp:** resolved build error ([f2e409d](https://github.com/rhinobase/raftyui/commit/f2e409d826a5de5e5e84a12c9dc6438109965bfb))
+* **corp:** updated package.json exports ([12a2ebc](https://github.com/rhinobase/raftyui/commit/12a2ebcdd76c57e1c97520eded53fe80b1139a98))
+
 ## [1.0.2](https://github.com/rhinobase/raftyui/compare/corp-1.0.1...corp-1.0.2) (2024-07-31)
 
 
