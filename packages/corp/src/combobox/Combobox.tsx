@@ -259,16 +259,24 @@ export function ComboboxContent({
           />
         )}
         <CommandList className="p-1">
-          {options.map((option, index) => (
-            <Children
-              key={`${index}-${option.value}`}
-              option={option}
-              index={index}
-            />
-          ))}
-          <CommandEmpty className="text-secondary-500 dark:text-secondary-400 flex h-10 select-none items-center justify-center py-0 empty:hidden">
-            {!isLoading && <>No results found {search && `for "${search}".`}</>}
-          </CommandEmpty>
+          {options.length === 0 ? (
+            <div className="text-secondary-500 dark:text-secondary-400 flex h-10 select-none items-center justify-center py-0 empty:hidden">
+              No data available
+            </div>
+          ) : (
+            options.map((option, index) => (
+              <Children
+                key={`${index}-${option.value}`}
+                option={option}
+                index={index}
+              />
+            ))
+          )}
+          {!isLoading && (
+            <CommandEmpty className="text-secondary-500 dark:text-secondary-400 flex h-10 select-none items-center justify-center py-0 empty:hidden">
+              No results found {search && `for "${search}".`}
+            </CommandEmpty>
+          )}
           {isLoading && (
             <CommandLoading progress={50}>
               <span className="text-secondary-500 dark:text-secondary-400 flex h-10 w-full select-none items-center justify-center gap-2 text-sm font-medium">
