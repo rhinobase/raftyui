@@ -585,6 +585,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
         loading={_loading}
         leftIcon={leftIcon}
         rightIcon={rightIcon}
+        loadingText={loadingText}
       >
         {children}
       </ChildrenRender>
