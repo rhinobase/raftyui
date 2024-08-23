@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.5](https://github.com/rhinobase/raftyui/compare/ui-1.7.4...ui-1.7.5) (2024-08-23)
+
+
+### Bug Fixes
+
+* **ui:** loading text not working in button ([0487f7e](https://github.com/rhinobase/raftyui/commit/0487f7eaf35f1df85ac2ab3298a739f33e569941))
+
 ## [1.7.4](https://github.com/rhinobase/raftyui/compare/ui-1.7.3...ui-1.7.4) (2024-08-03)
 
 
