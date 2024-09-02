@@ -41,7 +41,8 @@ type InternalProps =
   | "setOpen"
   | "type"
   | "selected"
-  | "onSelectionChange";
+  | "onSelectionChange"
+  | "triggerRef";
 
 // Combobox
 export type Combobox = PropsWithChildren<
