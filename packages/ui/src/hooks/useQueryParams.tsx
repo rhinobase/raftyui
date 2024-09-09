@@ -17,7 +17,7 @@ export function useQueryParams<T>({
       const urlSearchParams = new URLSearchParams(searchParams);
 
       for (const [key, value] of Object.entries(params)) {
-        if (value === undefined || value === null) urlSearchParams.delete(key);
+        if (value == null) urlSearchParams.delete(key);
         else urlSearchParams.set(key, String(value));
       }
 
