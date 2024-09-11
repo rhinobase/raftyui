@@ -73,7 +73,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
           }}
           onBlur={(event) => {
             const valueAsString = event.currentTarget.value;
-            const value = valueAsString.replace(/%/g, "");
+            const value = Number(valueAsString.replace(/%/g, ""));
 
             onChange?.(`${value}%`);
             onBlur?.(event);

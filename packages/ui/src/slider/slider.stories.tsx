@@ -38,7 +38,7 @@ export const Single: Story = {
 
 export const Double: Story = {
   render: (props) => (
-    <Slider {...props} defaultValue={[20, 40]}>
+    <Slider {...props} defaultValue={[0, 10]}>
       <SliderTrack>
         <SliderRange />
       </SliderTrack>
