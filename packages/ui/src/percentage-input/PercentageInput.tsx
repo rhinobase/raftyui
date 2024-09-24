@@ -1,8 +1,10 @@
 "use client";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
+import { useFieldControlContext } from "../field-control";
 import { InputField } from "../input-field";
 import { InputGroup, Suffix } from "../input-group";
+import { getValue } from "../utils";
 
 const ID = "percentage-input";
 
@@ -36,6 +38,24 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
     { size = "md", onChange, onKeyDown, onBlur, className, ...props },
     forwardedRef,
   ) {
+    const fieldControlContext = useFieldControlContext() ?? {
+      isDisabled: false,
+      isLoading: false,
+      isReadOnly: false,
+      isRequired: false,
+      isInvalid: false,
+    };
+
+    const _disabled =
+      (props.disabled ??
+        getValue(props.isDisabled) ??
+        fieldControlContext.isDisabled) ||
+      (getValue(props.isLoading) ?? fieldControlContext.isLoading);
+    const _readOnly =
+      props.readOnly ??
+      getValue(props.isReadOnly) ??
+      fieldControlContext.isReadOnly;
+
     return (
       <InputGroup size={size} className={className}>
         <InputField
@@ -96,6 +116,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
 
                 onChange?.(`${val}%`);
               }}
+              disabled={_disabled || _readOnly}
             >
               <ChevronUpIcon className="size-2.5 stroke-[3]" />
             </button>
@@ -113,6 +134,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
 
                 onChange?.(`${val}%`);
               }}
+              disabled={_disabled || _readOnly}
             >
               <ChevronDownIcon className="size-2.5 stroke-[3]" />
             </button>
