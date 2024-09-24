@@ -1,7 +1,9 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
+import { useFieldControlContext } from "../field-control";
 import { InputField } from "../input-field";
 import { InputGroup, LeftAddon, Suffix } from "../input-group";
+import { getValue } from "../utils";
 
 const ID = "currency-input";
 
@@ -74,6 +76,14 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
     },
     forwardedRef,
   ) {
+    const fieldControlContext = useFieldControlContext() ?? {
+      isDisabled: false,
+      isLoading: false,
+      isReadOnly: false,
+      isRequired: false,
+      isInvalid: false,
+    };
+
     const key = currencyCode.toUpperCase();
     const currencyProps = CURRENCY[key] ?? {
       ...CURRENCY.USD,
@@ -84,6 +94,16 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
       currencyProps.locales,
       currencyProps.options,
     ).format;
+
+    const _disabled =
+      (props.disabled ??
+        getValue(props.isDisabled) ??
+        fieldControlContext.isDisabled) ||
+      (getValue(props.isLoading) ?? fieldControlContext.isLoading);
+    const _readOnly =
+      props.readOnly ??
+      getValue(props.isReadOnly) ??
+      fieldControlContext.isReadOnly;
 
     return (
       <InputGroup size={size} className={className}>
@@ -145,6 +165,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
 
                 onChange?.(formattedValue);
               }}
+              disabled={_disabled || _readOnly}
             >
               <ChevronUpIcon className="size-2.5 stroke-[3]" />
             </button>
@@ -162,6 +183,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
 
                 onChange?.(formattedValue);
               }}
+              disabled={_disabled || _readOnly}
             >
               <ChevronDownIcon className="size-2.5 stroke-[3]" />
             </button>

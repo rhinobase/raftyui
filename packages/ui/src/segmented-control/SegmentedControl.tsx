@@ -6,6 +6,7 @@ import {
 } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
+import { useFieldControlContext } from "../field-control";
 import type { ValueOrFunction } from "../types";
 import { classNames, getValue } from "../utils";
 import {
@@ -58,17 +59,29 @@ export const SegmentedControl = forwardRef<
   },
   forwaredRef,
 ) {
-  const disabled =
-    props.disabled || getValue(isDisabled) || getValue(isLoading);
-  const readOnly = props.readOnly || getValue(isReadOnly);
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
+  const _disabled =
+    (props.disabled ??
+      getValue(isDisabled) ??
+      fieldControlContext.isDisabled) ||
+    (getValue(isLoading) ?? fieldControlContext.isLoading);
+  const _readOnly =
+    props.readOnly ?? getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
 
   return (
-    <SegmentedControlProvider value={{ isReadOnly: readOnly ?? false, size }}>
+    <SegmentedControlProvider value={{ isReadOnly: _readOnly ?? false, size }}>
       <SegmentGroup.Root
         {...props}
         orientation={orientation}
-        disabled={disabled}
-        readOnly={readOnly}
+        disabled={_disabled}
+        readOnly={_readOnly}
         className={classNames(segmentedControlClasses({ size }), className)}
         onValueChange={({ value }) => onValueChange?.(value)}
         ref={forwaredRef}

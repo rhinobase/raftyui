@@ -7,6 +7,7 @@ import {
   classNames,
   eventHandler,
   getValue,
+  useFieldControlContext,
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
 import { forwardRef, useEffect, useReducer } from "react";
@@ -163,6 +164,14 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(function Listbox(
   },
   forwardedRef,
 ) {
+  const fieldControlContext = useFieldControlContext() ?? {
+    isDisabled: false,
+    isLoading: false,
+    isReadOnly: false,
+    isRequired: false,
+    isInvalid: false,
+  };
+
   const val = value ?? defaultValue;
 
   const initValue = val ? (Array.isArray(val) ? val : [val]) : [];
@@ -181,9 +190,10 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(function Listbox(
     return selectedValues;
   }, initValue);
 
-  const disabled = getValue(isDisabled);
-  const loading = getValue(isLoading);
-  const readOnly = getValue(isReadOnly);
+  const disabled = getValue(isDisabled) ?? fieldControlContext.isDisabled;
+  const loading = getValue(isLoading) ?? fieldControlContext.isLoading;
+  const readOnly = getValue(isReadOnly) ?? fieldControlContext.isReadOnly;
+  // TODO: no isHidden prop in field control, so should we add it or not?
   const hidden = getValue(isHidden);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
