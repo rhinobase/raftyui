@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.7](https://github.com/rhinobase/raftyui/compare/ui-1.7.6...ui-1.7.7) (2024-09-24)
+
+
+### Features
+
+* **ui:** added field control context props to currency-input, percentage-input and segmented-control components ([73828c8](https://github.com/rhinobase/raftyui/commit/73828c8890a2f93c38f01863bc6989a3ee443db4))
+
+
+### Bug Fixes
+
+* **ui:** empty value on blur in percentage input ([65556a3](https://github.com/rhinobase/raftyui/commit/65556a35c11f2dc57a5a990b0d99878a2160e7ed))
+
 ## [1.7.6](https://github.com/rhinobase/raftyui/compare/ui-1.7.5...ui-1.7.6) (2024-09-11)
 
 ## [1.7.5](https://github.com/rhinobase/raftyui/compare/ui-1.7.4...ui-1.7.5) (2024-08-23)
