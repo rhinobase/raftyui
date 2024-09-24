@@ -49,9 +49,9 @@ export const SegmentedControl = forwardRef<
   {
     className,
     children,
-    isDisabled = false,
-    isReadOnly = false,
-    isLoading = false,
+    isDisabled,
+    isReadOnly,
+    isLoading,
     size = "md",
     orientation = "horizontal",
     onValueChange,
