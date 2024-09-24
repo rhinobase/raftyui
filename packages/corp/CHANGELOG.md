@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.5](https://github.com/rhinobase/raftyui/compare/corp-1.0.4...corp-1.0.5) (2024-09-24)
+
+
+### Features
+
+* **corp:** added field control props in listbox component ([391e824](https://github.com/rhinobase/raftyui/commit/391e824260c63bf57a47423f209b30ed2ee5f68c))
+
 ## [1.0.4](https://github.com/rhinobase/raftyui/compare/corp-1.0.3...corp-1.0.4) (2024-08-07)
 
 
