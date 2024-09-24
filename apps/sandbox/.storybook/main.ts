@@ -33,10 +33,6 @@ const config: StorybookConfig = {
             __dirname,
             "../../../packages/icons/src/index.ts",
           ),
-          "@rafty/blocks": path.resolve(
-            __dirname,
-            "../../../packages/blocks/src/index.ts",
-          ),
         },
       },
     });

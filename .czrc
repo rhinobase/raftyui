@@ -9,10 +9,6 @@
       "name": "corp:                anything corp specific"
     },
     {
-      "value": "blocks",
-      "name": "blocks:              anything blocks specific"
-    },
-    {
       "value": "plugin",
       "name": "plugin:              anything plugin specific"
     },
