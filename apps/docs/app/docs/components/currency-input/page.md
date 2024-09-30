@@ -1,17 +1,17 @@
 ---
-title: CurrencyInput
+title: Currency Input
 nextjs:
   metadata:
-    title: CurrencyInput
+    title: Currency Input
     description: A component specifically designed to take currency input.
     twitter:
-      title: CurrencyInput
+      title: Currency Input
       images:
-        url: https://rafty.rhinobase.io/api/og?title=CurrencyInput
+        url: https://rafty.rhinobase.io/api/og?title=Currency%20Input
     openGraph:
-      title: "CurrencyInput"
+      title: "Currency Input"
       images:
-        url: https://rafty.rhinobase.io/api/og?title=CurrencyInput
+        url: https://rafty.rhinobase.io/api/og?title=Currency%20Input
 ---
 
 A component specifically designed to take currency input.

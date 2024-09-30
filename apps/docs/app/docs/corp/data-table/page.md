@@ -1,17 +1,17 @@
 ---
-title: DataTable
+title: Data Table
 nextjs:
   metadata:
-    title: DataTable
+    title: Data Table
     description: A component used to display a collection of structured data where you can also perform several operation like sorting, fitering and different custom options on particular rows using row selection.
     twitter:
-      title: DataTable
+      title: Data Table
       images:
-        url: https://rafty.rhinobase.io/api/og?title=DataTable
+        url: https://rafty.rhinobase.io/api/og?title=Data%20Table
     openGraph:
-      title: DataTable
+      title: Data Table
       images:
-        url: https://rafty.rhinobase.io/api/og?title=DataTable
+        url: https://rafty.rhinobase.io/api/og?title=Data%20Table
 ---
 
 A component used to display a collection of structured data where you can also perform several operation like sorting, fitering and different custom options on particular rows using row selection.

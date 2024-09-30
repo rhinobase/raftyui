@@ -1,15 +1,15 @@
 ---
-title: Text Area
-pageTitle: Text Area
-description: The Text area component allows you to easily create multi-line text inputs.
+title: Textarea
+pageTitle: Textarea
+description: The Textarea component allows you to easily create multi-line text inputs.
 twitter:
-  title: Text Area
+  title: Textarea
   images:
-    url: https://rafty.rhinobase.io/api/og?title=Text%20Area
+    url: https://rafty.rhinobase.io/api/og?title=Textarea
 openGraph:
-  title: Text Area
+  title: Textarea
   images:
-    url: https://rafty.rhinobase.io/api/og?title=Text%20Area
+    url: https://rafty.rhinobase.io/api/og?title=Textarea
 ---
 
 The Textarea component allows you to easily create multi-line text inputs. If you wish to apply your own styling you can use the `isUnstyled` prop to remove all styling.

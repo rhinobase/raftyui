@@ -1,15 +1,15 @@
 ---
-title: TreeView
+title: Tree View
 nextjs:
   metadata:
-    title: TreeView
+    title: Tree View
     description: A component that is used to show a tree hierarchy.
     twitter:
-      title: TreeView
+      title: Tree View
       images:
         url: https://rafty.rhinobase.io/api/og?title=Tree%20View
     openGraph:
-      title: TreeView
+      title: Tree View
       images:
         url: https://rafty.rhinobase.io/api/og?title=Tree%20View
 ---
@@ -93,8 +93,12 @@ There are 3 `size` options available: `"sm"`, `"md"` (default) & `"lg"`.
 ```jsx
 <TreeView>
   <TreeViewItem value="A">
-    <TreeViewLabel openIndicator={<MinusIcon className="size-4 stroke-2" />}
-   closeIndicator={<PlusIcon className="size-4 stroke-2"/>}>A</TreeViewLabel>
+    <TreeViewLabel
+      openIndicator={<MinusIcon className="size-4 stroke-2" />}
+      closeIndicator={<PlusIcon className="size-4 stroke-2" />}
+    >
+      A
+    </TreeViewLabel>
     <TreeViewContent>
       <TreeViewItem value="a">
         <TreeViewLabel>Aa</TreeViewLabel>
