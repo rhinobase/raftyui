@@ -13,12 +13,7 @@ import type { ValueOrFunction } from "../types";
 import { type SizeType, classNames, getValue } from "../utils";
 
 export const checkboxClasses = cva(
-  classNames(
-    "peer/checkbox relative shrink-0 border",
-    "data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300",
-    "outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
-    "transition-all ease-in-out",
-  ),
+  "peer/checkbox relative shrink-0 border outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950 transition-all ease-in-out",
   {
     variants: {
       size: {
@@ -27,8 +22,9 @@ export const checkboxClasses = cva(
         lg: "size-6 p-0.5 rounded",
       },
       disabled: {
-        true: "cursor-not-allowed opacity-70",
-        false: "",
+        true: "cursor-not-allowed data-[state=checked]:bg-secondary-500 data-[state=checked]:border-secondary-500 dark:data-[state=checked]:bg-secondary-300 dark:data-[state=checked]:border-secondary-300",
+        false:
+          "data-[state=checked]:bg-primary-500 data-[state=checked]:border-primary-500 dark:data-[state=checked]:bg-primary-300 dark:data-[state=checked]:border-primary-300",
       },
       invalid: {
         true: "border-red-500 dark:border-red-300 ring-red-300 dark:ring-red-100",
@@ -52,7 +48,7 @@ export const checkboxClasses = cva(
 );
 
 export const checkboxLabelClasses = cva(
-  "font-medium peer-data-[disabled]/checkbox:cursor-not-allowed peer-data-[disabled]/checkbox:opacity-70",
+  "font-medium peer-data-[disabled]/checkbox:cursor-not-allowed peer-data-[disabled]/checkbox:opacity-80",
   {
     variants: {
       size: {
@@ -143,7 +139,7 @@ export const Checkbox = forwardRef<
           className={checkboxClasses({
             size,
             invalid: _invalid,
-            disabled: _disabled,
+            disabled: _disabled || _readOnly,
           })}
         />
         <Label
