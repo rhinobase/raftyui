@@ -6,14 +6,12 @@ export type TableContent<T> = {
   table: Table<T>;
   colSpan: number;
   isLoading: boolean;
-  isFetching: boolean;
 };
 
 export function TableContent<T>({
   table,
   colSpan,
   isLoading,
-  isFetching,
 }: TableContent<T>) {
   return (
     <TableBody className="divide-secondary-300 dark:divide-secondary-700 divide-y">
@@ -46,13 +44,6 @@ export function TableContent<T>({
               })}
             </Tr>
           ))}
-          {isFetching && (
-            <Tr>
-              <Td colSpan={colSpan} className="p-0">
-                <Skeleton className="h-[42px] w-full" />
-              </Td>
-            </Tr>
-          )}
         </>
       )}
     </TableBody>

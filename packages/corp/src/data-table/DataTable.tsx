@@ -24,7 +24,6 @@ export type DataTable<T> = {
   enableRowSelection?: boolean;
   enableColumnsSorting?: boolean;
   isLoading?: boolean;
-  isFetching?: boolean;
   isError?: boolean;
   enableColumnResizing?: boolean;
   size?: SizeType;
@@ -41,7 +40,6 @@ export function DataTable<T>({
   columns,
   data,
   isLoading = false,
-  isFetching = false,
   isError = false,
   enableRowSelection = false,
   enableColumnResizing = false,
@@ -98,40 +96,51 @@ export function DataTable<T>({
         )}
       >
         <TableHeader table={table} enableRowSelection={enableRowSelection} />
-        <TableContent
-          table={table}
-          colSpan={col_span}
-          isLoading={isLoading}
-          isFetching={isFetching}
-        />
+        <TableContent table={table} colSpan={col_span} isLoading={isLoading} />
       </Table>
-      {isEmpty && !isFetching && (
-        <EmptyWrapper>
-          {typeof notFoundMessage === "string" ? (
-            <p className="text-secondary-600 dark:text-secondary-400 text-sm font-medium lg:text-base">
-              {notFoundMessage}
-            </p>
-          ) : (
-            notFoundMessage
-          )}
-        </EmptyWrapper>
-      )}
-      {isError && (
-        <EmptyWrapper>
-          {typeof errorMessage === "string" ? (
-            <>
-              <ExclamationCircleIcon className="mr-1 size-4 stroke-2 text-red-500 lg:mr-1.5 lg:size-5 dark:text-red-300" />
-              <p className="text-sm font-medium text-red-500 lg:text-base dark:text-red-300">
-                {errorMessage}
-              </p>
-            </>
-          ) : (
-            errorMessage
-          )}
-        </EmptyWrapper>
-      )}
+      {isEmpty && <EmptyRender message={notFoundMessage} />}
+      {isError && <ErrorRender message={errorMessage} />}
     </div>
   );
+}
+
+type EmptyRender = {
+  message: ReactNode;
+};
+
+function EmptyRender(props: EmptyRender) {
+  let component: ReactNode;
+
+  if (typeof props.message === "string")
+    component = (
+      <p className="text-secondary-600 dark:text-secondary-400 text-sm font-medium lg:text-base">
+        {props.message}
+      </p>
+    );
+  else component = props.message;
+
+  return <EmptyWrapper>{component}</EmptyWrapper>;
+}
+
+type ErrorRender = {
+  message: ReactNode;
+};
+
+function ErrorRender(props: ErrorRender) {
+  let component: ReactNode;
+
+  if (typeof props.message === "string")
+    component = (
+      <>
+        <ExclamationCircleIcon className="mr-1 size-4 stroke-2 text-red-500 lg:mr-1.5 lg:size-5 dark:text-red-300" />
+        <p className="text-sm font-medium text-red-500 lg:text-base dark:text-red-300">
+          {props.message}
+        </p>
+      </>
+    );
+  else component = props.message;
+
+  return <EmptyWrapper>{component}</EmptyWrapper>;
 }
 
 type EmptyWrapper = PropsWithChildren<{
