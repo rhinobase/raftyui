@@ -1,28 +1,25 @@
-import { TableBody, Td, Tr, classNames } from "@rafty/ui";
+import { Skeleton, TableBody, Td, Tr, classNames } from "@rafty/ui";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { Loading } from "./utils";
+import { useId } from "react";
 
 export type TableContent<T> = {
   table: Table<T>;
-  isLoading: boolean;
   colSpan: number;
+  isLoading: boolean;
 };
 
 export function TableContent<T>({
   table,
-  isLoading,
   colSpan,
+  isLoading,
 }: TableContent<T>) {
   return (
     <TableBody className="divide-secondary-300 dark:divide-secondary-700 divide-y">
       {isLoading ? (
-        // Display loading component when data is still loading.
-        <Loading colSpan={colSpan} />
+        <LoadingComponent colSpan={colSpan} />
       ) : (
-        // Render table rows when there is no error and data is not loading.
-        table
-          .getRowModel()
-          .rows.map((row) => (
+        <>
+          {table.getRowModel().rows.map((row) => (
             <Tr
               key={row.id}
               className="hover:bg-primary-50/50 dark:hover:bg-primary-900/50"
@@ -46,8 +43,28 @@ export function TableContent<T>({
                 );
               })}
             </Tr>
-          ))
+          ))}
+        </>
       )}
     </TableBody>
   );
+}
+
+type LoadingComponent = { colSpan: number };
+
+function LoadingComponent({ colSpan }: LoadingComponent) {
+  const key = useId();
+
+  return Array.from({ length: 10 }).map((_, index) => (
+    <Tr key={`${index}-${key}`}>
+      <Td colSpan={colSpan} className="p-0">
+        <Skeleton
+          className={classNames(
+            index % 2 === 0 && "bg-secondary-100 dark:bg-secondary-800",
+            "h-[42px] w-full",
+          )}
+        />
+      </Td>
+    </Tr>
+  ));
 }

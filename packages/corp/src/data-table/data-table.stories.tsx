@@ -123,17 +123,20 @@ function TableComponent({
   }, [isError, error]);
 
   return (
-    <DataTable
-      data={data}
-      columns={COLUMNS}
-      isLoading={isLoading}
-      enableRowSelection={enableRowSelection}
-      enableColumnResizing={enableColumnResizing}
-      enableColumnsSorting={enableColumnsSorting}
-      onSortingChange={setSorting}
-      isFetching={isFetching}
-      onRowsSelectedChange={setRowsSelected}
-      rowsSelected={rowsSelected}
-    />
+    <div className="flex flex-col gap-3">
+      <DataTable
+        data={data}
+        columns={COLUMNS}
+        isLoading={isLoading}
+        isFetching={isFetching}
+        isError={isError}
+        enableRowSelection={enableRowSelection}
+        enableColumnResizing={enableColumnResizing}
+        enableColumnsSorting={enableColumnsSorting}
+        onSortingChange={setSorting}
+        onRowsSelectedChange={setRowsSelected}
+        rowsSelected={rowsSelected}
+      />
+    </div>
   );
 }

@@ -1,7 +1,12 @@
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
-import { TableHeader as RaftyTableHeader, Th, Tr, classNames } from "@rafty/ui";
+import {
+  TableHeader as RaftyTableHeader,
+  Th,
+  Tr,
+  classNames,
+  type eventHandler,
+} from "@rafty/ui";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { ResizeHandle } from "./utils";
 
 export type TableHeader<T> = {
   table: Table<T>;
@@ -22,16 +27,13 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
 
             const headerCellRender =
               !header.isPlaceholder &&
-              // Render the header content using flexRender
               flexRender(header.column.columnDef.header, header.getContext());
 
             return (
-              // Table Header Cell
               <Th
                 key={header.id}
                 className="relative truncate"
                 style={{
-                  // Set the maximum, minimum, and actual width for each header cell
                   minWidth: !isCheckbox ? 80 : undefined,
                   width: headerSize,
                   userSelect: "none",
@@ -44,19 +46,15 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
                       "bg-secondary-300 dark:bg-secondary-600 absolute right-0 top-1/3 h-4 w-[2px]",
                   )}
                 />
-                {/* Resize Handle for resizable columns */}
                 {!isLastColumn && header.column.getCanResize() && (
                   <ResizeHandle onResize={header.getResizeHandler()} />
                 )}
-
-                {/* Content of the header cell */}
                 <div
                   className={classNames(
                     "flex w-full items-center",
                     isLastColumn && "justify-end",
                   )}
                 >
-                  {/* Clickable area for sorting */}
                   {header.column.getCanSort() ? (
                     <>
                       <span
@@ -86,5 +84,19 @@ export function TableHeader<T>({ table, enableRowSelection }: TableHeader<T>) {
         </Tr>
       ))}
     </RaftyTableHeader>
+  );
+}
+
+type ResizeHandle = {
+  onResize: ReturnType<typeof eventHandler>;
+};
+
+function ResizeHandle({ onResize }: ResizeHandle) {
+  return (
+    <div
+      onMouseDown={onResize}
+      onTouchStart={onResize}
+      className="absolute -right-0.5 top-0 h-full w-2 cursor-ew-resize touch-auto select-none transition-all ease-in-out"
+    />
   );
 }
