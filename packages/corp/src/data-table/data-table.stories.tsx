@@ -107,7 +107,7 @@ function TableComponent({
 
   const sort = sorting[0];
 
-  const { isLoading, isFetching, isError, error, data } = useQuery<DataType[]>({
+  const { isLoading, isError, error, data } = useQuery<DataType[]>({
     queryKey: ["query", limit, offset, sort],
     queryFn: async () =>
       fetch(
@@ -125,10 +125,10 @@ function TableComponent({
   return (
     <div className="flex flex-col gap-3">
       <DataTable
+        {...props}
         data={data}
         columns={COLUMNS}
         isLoading={isLoading}
-        isFetching={isFetching}
         isError={isError}
         enableRowSelection={enableRowSelection}
         enableColumnResizing={enableColumnResizing}
