@@ -48,13 +48,13 @@ type InternalProps =
 export type Combobox = PropsWithChildren<
   (
     | {
-        selected?: string | number;
-        onSelectionChange?: (selected?: string | number) => void;
+        selected?: string | number | null;
+        onSelectionChange?: (selected?: string | number | null) => void;
         type?: "single";
       }
     | {
-        selected?: (string | number)[];
-        onSelectionChange?: (selected?: (string | number)[]) => void;
+        selected?: (string | number)[] | null;
+        onSelectionChange?: (selected?: (string | number)[] | null) => void;
         type: "multi";
       }
   ) &
@@ -76,13 +76,16 @@ export function Combobox({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setOpen] = useState(false);
 
-  const initValue = props.selected
-    ? Array.isArray(props.selected)
-      ? props.selected
-      : [props.selected]
-    : [];
-
   const isMulti = props.type === "multi";
+
+  const controlledSelected =
+    props.selected && props.selected != null
+      ? isMulti
+        ? props.selected
+        : [props.selected]
+      : undefined;
+
+  console.log(props.selected, controlledSelected);
 
   useEffect(() => {
     if (isDisabled || isLoading || isReadOnly) {
@@ -119,15 +122,8 @@ export function Combobox({
 
       return value;
     },
-    initValue,
+    [],
   );
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    if (isMulti) props.onSelectionChange?.(selected);
-    else
-      props.onSelectionChange?.(selected.length > 0 ? selected[0] : undefined);
-  }, [selected]);
 
   return (
     <ComboboxProvider
@@ -142,8 +138,17 @@ export function Combobox({
         isReadOnly,
         isOpen,
         setOpen,
-        selected,
-        onSelectionChange: dispatch,
+        selected: controlledSelected ?? selected,
+        onSelectionChange: (val) => {
+          if (props.selected) {
+            const value: (string | number) | (string | number)[] | null =
+              val !== null ? (isMulti ? [val] : val) : null;
+
+            // @ts-expect-error
+            return props.onSelectionChange?.(value);
+          }
+          return dispatch(val);
+        },
         triggerRef,
       }}
     >
