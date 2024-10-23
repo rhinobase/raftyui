@@ -47,7 +47,11 @@ function CreateTree({ tree }: { tree: JSONExplorerData }) {
           <span className="text-primary-500 dark:text-primary-300 font-medium">
             {key} :
           </span>
-          {isSingleton && <span className="flex-1">{String(value)}</span>}
+          {isSingleton && (
+            <span className="flex-1 overflow-hidden text-ellipsis">
+              {String(value)}
+            </span>
+          )}
           {isArray && <LabelRender>{`[ ] ${value.length} items`}</LabelRender>}
           {isObject && (
             <LabelRender>{`{ } ${Object.keys(value).length} key`}</LabelRender>
