@@ -39,15 +39,18 @@ function CreateTree({ tree }: { tree: JSONExplorerData }) {
     const isArray = Array.isArray(value);
     const Singleton = !isObject && !isArray;
 
+    let displayValue = String(value);
+    if (Number.isNaN(value)) displayValue = "NaN";
+
     return (
       <TreeViewItem key={key} value={!Singleton ? key : String(value)}>
         <TreeViewLabel className="group">
           <span className="text-primary-500 dark:text-primary-300 font-medium">
             {key} :
           </span>
-          {Singleton && <span>{String(value)}</span>}
+          {Singleton && <span>{displayValue}</span>}
           {isArray && <LabelRender>{`[ ] ${value.length} items`}</LabelRender>}
-          {isObject && (
+          {!!isObject && (
             <LabelRender>{`{ } ${Object.keys(value).length} key`}</LabelRender>
           )}
         </TreeViewLabel>
