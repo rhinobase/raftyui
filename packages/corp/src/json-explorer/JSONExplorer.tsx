@@ -12,6 +12,8 @@ type JSONValue =
   | string
   | number
   | boolean
+  | null
+  | undefined
   | { [x: string]: JSONValue }
   | Array<JSONValue>;
 
@@ -35,26 +37,23 @@ export const JSONExplorer = forwardRef<
 function CreateTree({ tree }: { tree: JSONExplorerData }) {
   return Object.entries(tree).map(([key, value]) => {
     const isObject =
-      value && typeof value === "object" && !Array.isArray(value);
+      value != null && typeof value === "object" && !Array.isArray(value);
     const isArray = Array.isArray(value);
-    const Singleton = !isObject && !isArray;
-
-    let displayValue = String(value);
-    if (Number.isNaN(value)) displayValue = "NaN";
+    const isSingleton = !isObject && !isArray;
 
     return (
-      <TreeViewItem key={key} value={!Singleton ? key : String(value)}>
+      <TreeViewItem key={key} value={!isSingleton ? key : String(value)}>
         <TreeViewLabel className="group">
           <span className="text-primary-500 dark:text-primary-300 font-medium">
             {key} :
           </span>
-          {Singleton && <span>{displayValue}</span>}
+          {isSingleton && <span>{String(value)}</span>}
           {isArray && <LabelRender>{`[ ] ${value.length} items`}</LabelRender>}
-          {!!isObject && (
+          {isObject && (
             <LabelRender>{`{ } ${Object.keys(value).length} key`}</LabelRender>
           )}
         </TreeViewLabel>
-        {!Singleton && (
+        {!isSingleton && (
           <TreeViewContent>
             <CreateTree tree={value as JSONExplorerData} />
           </TreeViewContent>
