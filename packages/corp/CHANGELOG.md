@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.6](https://github.com/rhinobase/raftyui/compare/corp-1.0.5...corp-1.0.6) (2024-10-23)
+
+
+### Features
+
+* **corp:** added error handling functionality, implemented fetching functionality and other improvements in datatable ([bf51b85](https://github.com/rhinobase/raftyui/commit/bf51b85454d6b6924481beda64301dd694e41f79))
+
 ## [1.0.5](https://github.com/rhinobase/raftyui/compare/corp-1.0.4...corp-1.0.5) (2024-09-24)
 
 
