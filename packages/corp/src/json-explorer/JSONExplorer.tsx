@@ -3,6 +3,7 @@ import {
   TreeViewContent,
   TreeViewItem,
   TreeViewLabel,
+  classNames,
   useTreeViewContext,
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
@@ -43,7 +44,9 @@ function CreateTree({ tree }: { tree: JSONExplorerData }) {
 
     return (
       <TreeViewItem key={key} value={!isSingleton ? key : String(value)}>
-        <TreeViewLabel className="group items-start">
+        <TreeViewLabel
+          className={classNames("group", isSingleton && "items-start")}
+        >
           <span className="text-primary-500 dark:text-primary-300 font-medium">
             {key} :
           </span>
