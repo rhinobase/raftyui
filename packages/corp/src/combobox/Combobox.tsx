@@ -85,8 +85,6 @@ export function Combobox({
         : [props.selected]
       : undefined;
 
-  console.log(props.selected, controlledSelected);
-
   useEffect(() => {
     if (isDisabled || isLoading || isReadOnly) {
       setOpen(false);
