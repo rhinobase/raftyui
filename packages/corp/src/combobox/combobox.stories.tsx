@@ -293,35 +293,38 @@ export const InfinityScroll: Story = {
   },
 };
 
-const DATA_LIMIT = 20;
+const DATA_LIMIT = 10;
 
 const requestHeaders = new Headers();
 requestHeaders.append("Content-Type", "application/json");
 
 function InfinityCombobox(props: Combobox) {
+  // const [selected, setSelected] = useState<string | null>(
+  //   "5eb87cd9ffd86e000604b32a",
+  // );
+
   const [search, setSearch] = useState<string>("");
-  const { data, error, fetchNextPage, hasNextPage, isFetching } =
-    useInfiniteQuery({
-      queryKey: ["launches", search],
-      queryFn: ({ pageParam = 0 }) =>
-        fetch("https://api.spacexdata.com/v4/launches/query", {
-          method: "POST",
-          headers: requestHeaders,
-          body: JSON.stringify({
-            query: search
-              ? {
-                  name: { $regex: search, $options: "ig" },
-                }
-              : {},
-            options: {
-              limit: DATA_LIMIT,
-              offset: DATA_LIMIT * pageParam,
-            },
-          }),
-          redirect: "follow",
-        }).then((res) => res.json()),
-      getNextPageParam: (lastPage) => lastPage.nextPage,
-    });
+  const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
+    queryKey: ["launches", search],
+    queryFn: ({ pageParam = 0 }) =>
+      fetch("https://api.spacexdata.com/v4/launches/query", {
+        method: "POST",
+        headers: requestHeaders,
+        body: JSON.stringify({
+          query: search
+            ? {
+                name: { $regex: search, $options: "ig" },
+              }
+            : {},
+          options: {
+            limit: DATA_LIMIT,
+            offset: pageParam * DATA_LIMIT,
+          },
+        }),
+        redirect: "follow",
+      }).then((res) => res.json()),
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  });
 
   const lastElementRef = useLastElement({
     isFetching,
@@ -335,7 +338,16 @@ function InfinityCombobox(props: Combobox) {
   const options = pages.map(({ id, name }) => ({ label: name, value: id }));
 
   return (
-    <Combobox {...props} id="infinity" options={options}>
+    <Combobox
+      type="single"
+      // selected={selected}
+      // onSelectionChange={(val) =>
+      //   setSelected((prev) =>
+      //     val !== null && prev !== val ? String(val) : null,
+      //   )
+      // }
+      options={options}
+    >
       <ComboboxTrigger />
       <div className="mt-2 flex flex-row-reverse empty:hidden">
         <ComboboxClearButton />
