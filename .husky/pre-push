@@ -1,0 +1,5 @@
+@ -1,4 +0,0 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+pnpm check-lock-files
