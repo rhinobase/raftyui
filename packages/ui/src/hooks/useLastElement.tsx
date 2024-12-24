@@ -13,15 +13,15 @@ export type useLastElementProps<T, U = unknown> = {
   ) => Promise<InfiniteQueryObserverResult<T, U>>;
 };
 
-export function useLastElement<T, U = unknown>({
+export function useLastElement<T = unknown, U = unknown>({
   isFetching = false,
   hasNextPage = false,
   fetchNextPage,
 }: useLastElementProps<T, U>) {
   const observer = useRef<IntersectionObserver>();
 
-  const lastElement = useCallback(
-    (node: HTMLDivElement) => {
+  return useCallback(
+    <E extends HTMLElement = HTMLDivElement>(node: E | null) => {
       if (isFetching) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
@@ -31,6 +31,4 @@ export function useLastElement<T, U = unknown>({
     },
     [isFetching, hasNextPage, fetchNextPage],
   );
-
-  return lastElement;
 }
