@@ -76,13 +76,19 @@ importers:
         version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: ^1.6.0-rc.3
-        version: 1.7.7(date-fns@3.6.0)(react-dom@18.3.1)(react-hook-form@7.54.2)(react@18.3.1)
+        version: 1.7.7(@types/react-dom@18.3.5)(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1)(react-hook-form@7.54.2)(react@18.3.1)
       '@swc/helpers':
         specifier: ~0.5.11
         version: 0.5.15
       '@tanstack/react-table':
         specifier: ^8.17.3
         version: 8.20.6(react-dom@18.3.1)(react@18.3.1)
+      '@types/react':
+        specifier: ^18
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.3.5(@types/react@18.3.18)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -1917,7 +1923,7 @@ packages:
     resolution: {integrity: sha512-A9+lCBZoaMJlVKcRBz2YByCG+Cp2t6nAnMnNba+XiWxnj6r4JUFqfsgwocMBZU9LPtdxC6wB56ySYpc7LQIoJg==}
     dev: false
 
-  /@rafty/ui@1.7.7(date-fns@3.6.0)(react-dom@18.3.1)(react-hook-form@7.54.2)(react@18.3.1):
+  /@rafty/ui@1.7.7(@types/react-dom@18.3.5)(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1)(react-hook-form@7.54.2)(react@18.3.1):
     resolution: {integrity: sha512-DBPWth9E2fhzLAPlQ5tzT0odSeldRYn+1B7pKczfD3kO8Jua4Grn14QiWrIn4cvOpLvkUav99v0g62jCQF/D1A==}
     peerDependencies:
       react: ^18.2.0

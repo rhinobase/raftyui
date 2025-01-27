@@ -17,7 +17,7 @@ import {
   eventHandler,
   mergeRefs,
 } from "@rafty/ui";
-import {
+import React, {
   type PropsWithChildren,
   type ReactNode,
   forwardRef,

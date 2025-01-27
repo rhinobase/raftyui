@@ -3,6 +3,12 @@
   "description": "Rafty Corporation Components",
   "version": "1.0.6",
   "license": "MIT",
+  "type": "module",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "build": "rollup -c=./rollup.config.js"
+  },
   "keywords": [
     "react",
     "rafty-ui",
@@ -43,53 +49,20 @@
     "@types/country-list": "^2.1.4"
   },
   "peerDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "react": "^18.2.0"
   },
   "exports": {
     ".": {
-      "types": "./index.esm.d.ts",
-      "import": "./index.esm.js"
-    },
-    "./cascader": {
-      "types": "./cascader/cascader.esm.d.ts",
-      "import": "./cascader.esm.js"
-    },
-    "./combobox": {
-      "types": "./combobox/combobox.esm.d.ts",
-      "import": "./combobox.esm.js"
-    },
-    "./data-table": {
-      "types": "./data-table/data-table.esm.d.ts",
-      "import": "./data-table.esm.js"
-    },
-    "./json-explorer": {
-      "types": "./json-explorer/json-explorer.esm.d.ts",
-      "import": "./json-explorer.esm.js"
-    },
-    "./key-value": {
-      "types": "./key-value/key-value.esm.d.ts",
-      "import": "./key-value.esm.js"
-    },
-    "./list-box": {
-      "types": "./list-box/list-box.esm.d.ts",
-      "import": "./list-box.esm.js"
-    },
-    "./pagination": {
-      "types": "./pagination/pagination.esm.d.ts",
-      "import": "./pagination.esm.js"
-    },
-    "./qr-code": {
-      "types": "./qr-code/qr-code.esm.d.ts",
-      "import": "./qr-code.esm.js"
-    },
-    "./reorderable-list": {
-      "types": "./reorderable-list/reorderable-list.esm.d.ts",
-      "import": "./reorderable-list.esm.js"
-    },
-    "./signature": {
-      "types": "./signature/signature.esm.d.ts",
-      "import": "./signature.esm.js"
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./index.js"
+      },
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      }
     }
-  },
-  "types": "./index.esm.d.ts"
+  }
 }
