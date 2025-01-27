@@ -11,7 +11,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
+import React, { type ElementRef, forwardRef } from "react";
 import { Button } from "../button/index.js";
 import {
   DatePickerCalendarHeader,
@@ -67,7 +67,7 @@ export const RangePicker = forwardRef<
     className,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -92,7 +92,7 @@ export const RangePicker = forwardRef<
     readOnly: _readOnly,
     selectionMode: "range",
     onValueChange: ({ valueAsString }) =>
-      onValueChange?.([valueAsString[0], valueAsString[1]]),
+      onValueChange?.([valueAsString[0] ?? "", valueAsString[1] ?? ""]),
     className: classNames("w-full", className),
   };
 
@@ -132,7 +132,7 @@ const rangePickerControlArrowIconClasses = cva(
         lg: "size-4 min-h-4 min-w-4",
       },
     },
-  }
+  },
 );
 
 type ControlRender = {
@@ -223,7 +223,7 @@ function RangePickerDayCalender({ size }: RangePickerDayCalender) {
                       className={classNames(
                         "text-secondary-500 font-semibold",
                         // @ts-ignore
-                        datePickerDayCalendarButtonClasses.size[size]
+                        datePickerDayCalendarButtonClasses.size[size],
                       )}
                     >
                       {weekDay.narrow}
@@ -254,7 +254,7 @@ function RangePickerDayCalender({ size }: RangePickerDayCalender) {
                               "data-[range-end=]:data-[in-range=]:bg-primary-500 dark:data-[range-end=]:data-[in-range=]:bg-primary-300 data-[range-end=]:text-white dark:data-[range-end=]:text-white",
                               "data-[in-range=]:rounded-none data-[in-range=]:data-[range-end=]:rounded-r data-[in-range=]:data-[range-start=]:rounded-l",
                               // @ts-ignore
-                              datePickerDayCalendarButtonClasses.size[size]
+                              datePickerDayCalendarButtonClasses.size[size],
                             )}
                           >
                             {day.day}

@@ -1,5 +1,5 @@
 "use client";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   type HTMLAttributes,
@@ -24,14 +24,14 @@ export type ScrollArea = HTMLAttributes<HTMLDivElement> &
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
   function ScrollArea(
     { layout = "vertical", itemCount, itemSize, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     return (
       <ScrollAreaProvider value={{ layout, itemCount, itemSize }}>
         <div {...props} ref={forwardedRef} />
       </ScrollAreaProvider>
     );
-  }
+  },
 );
 
 type VariableSizeListExcludedProps =
