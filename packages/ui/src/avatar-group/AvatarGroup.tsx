@@ -1,9 +1,9 @@
 "use client";
 import { type HTMLAttributes, cloneElement, forwardRef, useId } from "react";
-import { Avatar } from "../avatar/Avatar";
-import { classNames, getValidChildren } from "../utils";
-import { type AvatarGroupContext, AvatarGroupProvider } from "./context";
-import { calculateWidth } from "./utils";
+import { Avatar } from "../avatar/Avatar.js";
+import { classNames, getValidChildren } from "../utils/index.js";
+import { type AvatarGroupContext, AvatarGroupProvider } from "./context.js";
+import { calculateWidth } from "./utils.js";
 
 const LEFT_OFFSET = {
   sm: 22,
@@ -25,7 +25,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
       isUnstyled = false,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const validChildren = getValidChildren(children);
 
@@ -70,5 +70,5 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
         </div>
       </AvatarGroupProvider>
     );
-  },
+  }
 );

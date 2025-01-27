@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { type SVGAttributes, forwardRef } from "react";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 export const spinnerClasses = cva("animate-spin", {
   variants: {
@@ -29,7 +29,7 @@ export type Spinner = Omit<SVGAttributes<SVGSVGElement>, "children"> & {
 
 export const Spinner = forwardRef<SVGSVGElement, Spinner>(function Spinner(
   { inheritParent, size = "md", className, title = "loading", ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const _inheritParent = getValue(inheritParent);
 
@@ -38,7 +38,7 @@ export const Spinner = forwardRef<SVGSVGElement, Spinner>(function Spinner(
       {...props}
       className={classNames(
         spinnerClasses({ size, inherit: _inheritParent }),
-        className,
+        className
       )}
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"

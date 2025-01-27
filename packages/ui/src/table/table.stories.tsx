@@ -7,7 +7,7 @@ import {
   Td,
   Th,
   Tr,
-} from "./Table";
+} from "./Table.js";
 
 const meta: Meta<typeof Table> = {
   title: "Components / Table",

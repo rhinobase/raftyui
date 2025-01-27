@@ -1,2 +1,2 @@
-export { FieldControl, fieldControlClasses } from "./FieldControl";
-export { useFieldControlContext } from "./context";
+export { FieldControl, fieldControlClasses } from "./FieldControl.js";
+export { useFieldControlContext } from "./context.js";

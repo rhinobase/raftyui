@@ -7,5 +7,5 @@ export {
   cardHeaderClasses,
   cardContentClasses,
   cardFooterClasses,
-} from "./Card";
-export { useCardContext } from "./context";
+} from "./Card.js";
+export { useCardContext } from "./context.js";

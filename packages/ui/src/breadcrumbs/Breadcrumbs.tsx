@@ -1,14 +1,14 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { buttonClasses } from "../button";
-import { List, ListItem } from "../list";
-import { classNames } from "../utils";
+import { buttonClasses } from "../button/index.js";
+import { List, ListItem } from "../list/index.js";
+import { classNames } from "../utils/index.js";
 import {
   type BreadcrumbsContext,
   BreadcrumbsProvider,
   useBreadcrumbsContext,
-} from "./context";
+} from "./context.js";
 
 export const breadcrumbsClasses = cva("flex items-center", {
   variants: {
@@ -35,7 +35,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
         </nav>
       </BreadcrumbsProvider>
     );
-  },
+  }
 );
 
 export const breadcrumbsDividerClasses = cva(
@@ -51,7 +51,7 @@ export const breadcrumbsDividerClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type BreadcrumbDivider = HTMLAttributes<HTMLLIElement>;
@@ -59,7 +59,7 @@ export type BreadcrumbDivider = HTMLAttributes<HTMLLIElement>;
 export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
   function BreadcrumbDivider(
     { children = "/", className, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     const { size } = useBreadcrumbsContext();
     return (
@@ -71,7 +71,7 @@ export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
         {children}
       </ListItem>
     );
-  },
+  }
 );
 
 export const breadcrumbsItemClasses = cva("rounded font-medium leading-tight", {
@@ -100,7 +100,7 @@ export type BreadcrumbItem = HTMLAttributes<HTMLLIElement> & {
 export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
   function BreadcrumbItem(
     { className, isUnstyled, isActive, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     const { size } = useBreadcrumbsContext();
 
@@ -118,11 +118,11 @@ export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
                   colorScheme: isActive ? "primary" : "secondary",
                 }),
                 breadcrumbsItemClasses({ size, active: isActive }),
-                className,
+                className
               )
         }
         ref={forwardedRef}
       />
     );
-  },
+  }
 );

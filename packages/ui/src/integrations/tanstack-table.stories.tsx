@@ -12,7 +12,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { Skeleton } from "../skeleton";
+import { Skeleton } from "../skeleton/index.js";
 import {
   Table,
   TableBody,
@@ -21,8 +21,8 @@ import {
   Td,
   Th,
   Tr,
-} from "../table";
-import { classNames } from "../utils";
+} from "../table/index.js";
+import { classNames } from "../utils/index.js";
 
 const meta: Meta<typeof Table> = {
   title: "Integration / TanstackTable",
@@ -71,7 +71,7 @@ function TanstackTable() {
         cell: ({ row }) => row.original?.rocket.rocket_name,
       },
     ],
-    [],
+    []
   );
 
   const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
@@ -85,7 +85,7 @@ function TanstackTable() {
     queryKey: ["launches", pageSize, offset],
     queryFn: () =>
       fetch(
-        `https://api.spacexdata.com/v3/launches?limit=${pageSize}&offset=${offset}`,
+        `https://api.spacexdata.com/v3/launches?limit=${pageSize}&offset=${offset}`
       ).then((res) => res.json()),
   });
 
@@ -94,7 +94,7 @@ function TanstackTable() {
       pageIndex,
       pageSize,
     }),
-    [pageIndex, pageSize],
+    [pageIndex, pageSize]
   );
 
   const table = useReactTable({
@@ -126,18 +126,18 @@ function TanstackTable() {
                   onClick={header.column.getToggleSortingHandler()}
                   className={classNames(
                     isLastColumn && "text-center",
-                    index === 0 ? "w-10" : "w-max",
+                    index === 0 ? "w-10" : "w-max"
                   )}
                 >
                   <div
                     className={classNames(
                       index === 0 && "justify-center",
-                      "flex items-center",
+                      "flex items-center"
                     )}
                   >
                     {flexRender(
                       header.column.columnDef.header,
-                      header.getContext(),
+                      header.getContext()
                     )}
                   </div>
                 </Th>
@@ -160,7 +160,7 @@ function TanstackTable() {
                       className={classNames(
                         index % 2 === 0 &&
                           "bg-secondary-300 dark:bg-secondary-600",
-                        "h-10 w-full",
+                        "h-10 w-full"
                       )}
                     />
                   </Td>
@@ -183,7 +183,7 @@ function TanstackTable() {
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </Td>
                   );

@@ -12,7 +12,7 @@ import {
   type ScrollAreaContext,
   ScrollAreaProvider,
   useScrollAreaContext,
-} from "./context";
+} from "./context.js";
 
 type ScrollAreaOptionalProp = "layout";
 
@@ -24,14 +24,14 @@ export type ScrollArea = HTMLAttributes<HTMLDivElement> &
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollArea>(
   function ScrollArea(
     { layout = "vertical", itemCount, itemSize, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     return (
       <ScrollAreaProvider value={{ layout, itemCount, itemSize }}>
         <div {...props} ref={forwardedRef} />
       </ScrollAreaProvider>
     );
-  },
+  }
 );
 
 type VariableSizeListExcludedProps =

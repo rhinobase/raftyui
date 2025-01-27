@@ -2,12 +2,12 @@
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import { useBoolean } from "../hooks";
-import { InputField } from "../input-field";
-import { InputGroup, Suffix } from "../input-group";
-import { getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { useBoolean } from "../hooks/index.js";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, Suffix } from "../input-group/index.js";
+import { getValue } from "../utils/index.js";
 
 export const passwordFieldButtonClasses = cva("", {
   variants: {
@@ -75,5 +75,5 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
         </Suffix>
       </InputGroup>
     );
-  },
+  }
 );

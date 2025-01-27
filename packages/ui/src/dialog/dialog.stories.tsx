@@ -4,7 +4,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   Dialog,
   DialogClose,
@@ -14,7 +14,7 @@ import {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
-} from "./Dialog";
+} from "./Dialog.js";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components / Dialog",

@@ -1,8 +1,8 @@
 import { cva } from "class-variance-authority";
 import { type ButtonHTMLAttributes, cloneElement, forwardRef } from "react";
-import { Spinner } from "../spinner";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { Spinner } from "../spinner/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 type ButtonSize = SizeType<"icon" | "fab">;
 
@@ -487,7 +487,7 @@ export const buttonClasses = cva(
       loading: false,
       hidden: false,
     },
-  },
+  }
 );
 
 const buttonLoadingIconClasses = {
@@ -546,7 +546,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
     isUnstyled = false,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   // Buttons are **always** disabled if we're in a `loading` state
   const _loading = getValue(isLoading);
@@ -565,7 +565,7 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
           active: _active,
           hidden: _hidden,
         }),
-        className,
+        className
       );
 
   const buttonProps = {

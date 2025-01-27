@@ -1,1 +1,1 @@
-export { Checkbox, checkboxClasses, checkboxLabelClasses } from "./Checkbox";
+export { Checkbox, checkboxClasses, checkboxLabelClasses } from "./Checkbox.js";

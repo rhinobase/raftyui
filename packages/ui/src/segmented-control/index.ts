@@ -3,5 +3,5 @@ export {
   SegmentedControlItem,
   segmentedControlItemClasses,
   segmentedControlClasses,
-} from "./SegmentedControl";
-export { useSegmentedControlContext } from "./context";
+} from "./SegmentedControl.js";
+export { useSegmentedControlContext } from "./context.js";

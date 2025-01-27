@@ -1,4 +1,4 @@
-export { List } from "./List";
-export { ListItem } from "./ListItem";
-export { OrderedList } from "./OrderedList";
-export { UnorderedList } from "./UnorderedList";
+export { List } from "./List.js";
+export { ListItem } from "./ListItem.js";
+export { OrderedList } from "./OrderedList.js";
+export { UnorderedList } from "./UnorderedList.js";

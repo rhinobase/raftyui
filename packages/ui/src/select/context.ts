@@ -1,5 +1,5 @@
 "use client";
-import { type SizeType, createContext } from "../utils";
+import { type SizeType, createContext } from "../utils/index.js";
 
 export const [SelectProvider, useSelectContext] = createContext<SelectContext>({
   name: "SelectContext",

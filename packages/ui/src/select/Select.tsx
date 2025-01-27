@@ -7,14 +7,14 @@ import {
   type SelectHTMLAttributes,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { classNames, getValue } from "../utils/index.js";
 import {
   type SelectContext,
   SelectProvider,
   useSelectContext,
-} from "./context";
+} from "./context.js";
 
 export const selectClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900 focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
@@ -94,7 +94,7 @@ export const selectClasses = cva(
       readOnly: false,
       invalid: false,
     },
-  },
+  }
 );
 
 export const triggerIconClasses = cva(
@@ -110,7 +110,7 @@ export const triggerIconClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type Select = Omit<
@@ -145,7 +145,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
     placeholder,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -198,7 +198,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
       <div
         className={classNames(
           "group/select relative flex w-max items-center",
-          className,
+          className
         )}
       >
         <Component
@@ -242,7 +242,7 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
         ref={forwardedRef}
       />
     );
-  },
+  }
 );
 
 export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
@@ -271,5 +271,5 @@ export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
         ref={forwardedRef}
       />
     );
-  },
+  }
 );

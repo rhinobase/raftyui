@@ -4,9 +4,9 @@ export {
   progressIndicatorClasses,
   progressTextClasses,
   progressTrackClasses,
-} from "./Progress";
+} from "./Progress.js";
 export {
   CircularProgress,
   circularProgressCircleRangeClasses,
   sizeStyle,
-} from "./CircularProgress";
+} from "./CircularProgress.js";

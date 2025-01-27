@@ -1,1 +1,1 @@
-export { CurrencyInput } from "./CurrencyInput";
+export { CurrencyInput } from "./CurrencyInput.js";

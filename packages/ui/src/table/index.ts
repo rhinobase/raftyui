@@ -10,5 +10,5 @@ export {
   tableThAndTdClasses,
   tableTrClasses,
   tableClasses,
-} from "./Table";
-export { useTableContext } from "./context";
+} from "./Table.js";
+export { useTableContext } from "./context.js";

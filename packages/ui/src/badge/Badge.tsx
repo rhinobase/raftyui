@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { type SizeType, classNames } from "../utils";
+import { type SizeType, classNames } from "../utils/index.js";
 
 export const badgeClasses = cva("rounded-full", {
   variants: {
@@ -31,7 +31,7 @@ export type Badge = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
 
 export const Badge = forwardRef<HTMLDivElement, Badge>(function Badge(
   { className, size = "md", status = "primary", ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   return (
     <div

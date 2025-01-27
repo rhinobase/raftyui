@@ -1,14 +1,14 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, type SVGAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { type StatContext, StatProvider, useStatContext } from "./context";
+import { classNames } from "../utils/index.js";
+import { type StatContext, StatProvider, useStatContext } from "./context.js";
 
 export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 
 export const Stat = forwardRef<HTMLDivElement, Stat>(function Stat(
   { children, className, type = "normal", ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   return (
     <StatProvider value={{ type }}>
@@ -32,14 +32,14 @@ export const StatLabel = forwardRef<HTMLDivElement, StatLabel>(
         {...props}
         className={classNames(
           "text-secondary-600 dark:text-secondary-400 text-sm font-medium",
-          className,
+          className
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 
 export type StatValue = HTMLAttributes<HTMLDivElement>;
@@ -51,14 +51,14 @@ export const StatValue = forwardRef<HTMLDivElement, StatValue>(
         {...props}
         className={classNames(
           "text-2xl font-semibold text-black dark:text-white",
-          className,
+          className
         )}
         ref={forwardedRef}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 
 export const statHelpTextClasses = cva("flex items-center gap-1 text-sm", {
@@ -92,7 +92,7 @@ export const StatHelpText = forwardRef<HTMLDivElement, StatHelpText>(
         {children}
       </div>
     );
-  },
+  }
 );
 
 type StatIcon = SVGAttributes<SVGSVGElement>;

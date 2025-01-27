@@ -4,9 +4,9 @@ import {
   type TextareaHTMLAttributes,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import { type InputField, inputFieldClasses } from "../input-field";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { type InputField, inputFieldClasses } from "../input-field/index.js";
+import { classNames, getValue } from "../utils/index.js";
 
 export const textareaClasses = {
   size: {
@@ -45,7 +45,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
       isRequired,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -82,11 +82,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Textarea>(
               invalid: _invalid,
             }),
             textareaClasses.size[size],
-            className,
+            className
           ),
       ref: forwardedRef,
     };
 
     return <textarea {...textareaProps} />;
-  },
+  }
 );

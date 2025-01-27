@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   DatePickerCalendarHeader,
   DatePickerMonthCalendar,
@@ -22,12 +22,12 @@ import {
   datePickerClearButtonClasses,
   datePickerContentClasses,
   datePickerDayCalendarButtonClasses,
-} from "../date-picker/DatePicker";
-import { useFieldControlContext } from "../field-control";
-import { inputFieldClasses } from "../input-field";
-import { InputGroup, Suffix } from "../input-group";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+} from "../date-picker/DatePicker.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { inputFieldClasses } from "../input-field/index.js";
+import { InputGroup, Suffix } from "../input-group/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 type ValueType = [string] | [string, string] | undefined;
 
@@ -67,7 +67,7 @@ export const RangePicker = forwardRef<
     className,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -132,7 +132,7 @@ const rangePickerControlArrowIconClasses = cva(
         lg: "size-4 min-h-4 min-w-4",
       },
     },
-  },
+  }
 );
 
 type ControlRender = {
@@ -223,7 +223,7 @@ function RangePickerDayCalender({ size }: RangePickerDayCalender) {
                       className={classNames(
                         "text-secondary-500 font-semibold",
                         // @ts-ignore
-                        datePickerDayCalendarButtonClasses.size[size],
+                        datePickerDayCalendarButtonClasses.size[size]
                       )}
                     >
                       {weekDay.narrow}
@@ -254,7 +254,7 @@ function RangePickerDayCalender({ size }: RangePickerDayCalender) {
                               "data-[range-end=]:data-[in-range=]:bg-primary-500 dark:data-[range-end=]:data-[in-range=]:bg-primary-300 data-[range-end=]:text-white dark:data-[range-end=]:text-white",
                               "data-[in-range=]:rounded-none data-[in-range=]:data-[range-end=]:rounded-r data-[in-range=]:data-[range-start=]:rounded-l",
                               // @ts-ignore
-                              datePickerDayCalendarButtonClasses.size[size],
+                              datePickerDayCalendarButtonClasses.size[size]
                             )}
                           >
                             {day.day}

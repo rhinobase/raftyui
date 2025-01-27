@@ -1,1 +1,1 @@
-export { Button, buttonClasses } from "./Button";
+export { Button, buttonClasses } from "./Button.js";

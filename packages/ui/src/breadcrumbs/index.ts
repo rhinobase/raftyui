@@ -5,5 +5,5 @@ export {
   breadcrumbsClasses,
   breadcrumbsDividerClasses,
   breadcrumbsItemClasses,
-} from "./Breadcrumbs";
-export { useBreadcrumbsContext } from "./context";
+} from "./Breadcrumbs.js";
+export { useBreadcrumbsContext } from "./context.js";

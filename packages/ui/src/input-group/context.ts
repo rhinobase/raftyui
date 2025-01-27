@@ -1,4 +1,4 @@
-import { type SizeType, createContext } from "../utils";
+import { type SizeType, createContext } from "../utils/index.js";
 
 export const [InputGroupProvider, useInputGroupContext] =
   createContext<InputGroupContext>({

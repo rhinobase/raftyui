@@ -13,7 +13,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "./ContextMenu";
+} from "./ContextMenu.js";
 
 const meta: Meta<typeof ContextMenu> = {
   title: "Components / ContextMenu",

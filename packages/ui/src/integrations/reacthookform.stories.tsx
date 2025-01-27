@@ -2,11 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import { Button } from "../button";
-import { ErrorMessage } from "../error-message";
-import { FieldControl } from "../field-control";
-import { InputField } from "../input-field";
-import { Label } from "../label";
+import { Button } from "../button/index.js";
+import { ErrorMessage } from "../error-message/index.js";
+import { FieldControl } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { Label } from "../label/index.js";
 
 const schema = z.object({
   name: z.string().min(4).max(50),

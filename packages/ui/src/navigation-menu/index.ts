@@ -8,5 +8,5 @@ export {
   NavigationMenuListItem,
   NavigationMenuTrigger,
   navigationMenuContentClasses,
-} from "./NavigationMenu";
-export { useNavigationMenuContext } from "./context";
+} from "./NavigationMenu.js";
+export { useNavigationMenuContext } from "./context.js";

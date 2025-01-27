@@ -1,4 +1,4 @@
-import { type SizeType, createContext } from "../utils";
+import { type SizeType, createContext } from "../utils/index.js";
 
 export const [MenuProvider, useMenuContext] = createContext<MenuContext>({
   name: "MenuContext",

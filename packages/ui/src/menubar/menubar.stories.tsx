@@ -13,7 +13,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "./Menubar";
+} from "./Menubar.js";
 
 const meta: Meta<typeof Menubar> = {
   title: "Components / Menubar",

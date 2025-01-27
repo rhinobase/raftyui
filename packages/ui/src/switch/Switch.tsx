@@ -6,10 +6,10 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import { Label } from "../label";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 export const switchClasses = cva(
   classNames(
@@ -17,7 +17,7 @@ export const switchClasses = cva(
     "data-[state=checked]:bg-primary-500 dark:data-[state=checked]:bg-primary-300",
     "data-[state=unchecked]:bg-secondary-400 dark:data-[state=unchecked]:bg-secondary-600",
     "outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
-    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
+    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70"
   ),
   {
     variants: {
@@ -35,7 +35,7 @@ export const switchClasses = cva(
       invalid: false,
       size: "md",
     },
-  },
+  }
 );
 
 export const switchThumbClasses = cva(
@@ -51,7 +51,7 @@ export const switchThumbClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export const switchLabelClasses = cva(
@@ -67,7 +67,7 @@ export const switchLabelClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type Switch = Omit<
@@ -101,7 +101,7 @@ export const Switch = forwardRef<
     children,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -156,7 +156,7 @@ export const Switch = forwardRef<
     <Component
       className={classNames(
         switchClasses({ size, invalid: _invalid }),
-        className,
+        className
       )}
     />
   );

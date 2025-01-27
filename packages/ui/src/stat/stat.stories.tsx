@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Stat, StatHelpText, StatLabel, StatValue } from "./Stat";
+import { Stat, StatHelpText, StatLabel, StatValue } from "./Stat.js";
 
 const meta: Meta<typeof Stat> = {
   title: "Components / Stat",

@@ -6,15 +6,15 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import { Label } from "../label";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { classNames, getValue } from "../utils/index.js";
 import {
   type RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
-} from "./context";
+} from "./context.js";
 
 export const radioGroupClasses = cva(
   "flex data-[orientation=vertical]:flex-col data-[orientation=horizontal]:flex-row data-[orientaion-horizontal]:flex-wrap",
@@ -29,7 +29,7 @@ export const radioGroupClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 type RadioProps = ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>;
@@ -61,7 +61,7 @@ export const RadioGroup = forwardRef<
     orientation = "vertical",
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -103,7 +103,7 @@ export const radioGroupItemClasses = cva(
     "peer/radio-item aspect-square rounded-full border transition-all ease-in-out",
     "data-[state=checked]:border-primary-500 dark:data-[state=checked]:border-primary-300",
     "outline-none focus-visible:ring-2 ring-offset-2 ring-primary-300 dark:ring-primary-100 ring-offset-white dark:ring-offset-secondary-950",
-    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
+    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70"
   ),
   {
     variants: {
@@ -134,7 +134,7 @@ export const radioGroupItemClasses = cva(
       invalid: false,
       size: "md",
     },
-  },
+  }
 );
 
 export const radioGroupItemIndicatorClasses = cva(
@@ -150,7 +150,7 @@ export const radioGroupItemIndicatorClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export const radioGroupItemLabelClasses = cva(
@@ -166,7 +166,7 @@ export const radioGroupItemLabelClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type RadioGroupItem = ComponentPropsWithoutRef<
@@ -210,7 +210,7 @@ export const RadioGroupItem = forwardRef<
     <Component
       className={classNames(
         radioGroupItemClasses({ size, invalid, disabled }),
-        className,
+        className
       )}
     />
   );

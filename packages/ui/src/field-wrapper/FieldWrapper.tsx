@@ -1,10 +1,10 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { Fragment, type PropsWithChildren, forwardRef } from "react";
-import { ErrorMessage as RaftyErrorMessage } from "../error-message";
-import { FieldControl } from "../field-control";
-import { Label } from "../label";
-import { Text } from "../text";
-import { classNames } from "../utils";
+import { ErrorMessage as RaftyErrorMessage } from "../error-message/index.js";
+import { FieldControl } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import { Text } from "../text/index.js";
+import { classNames } from "../utils/index.js";
 
 export type FieldWrapper = FieldControl & {
   label?: string;
@@ -14,7 +14,7 @@ export type FieldWrapper = FieldControl & {
 export const FieldWrapper = forwardRef<HTMLDivElement, FieldWrapper>(
   function FieldWrapper(
     { label, description, children, className, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     const LabelAndDescriptionWrapper =
       label && description
@@ -37,7 +37,7 @@ export const FieldWrapper = forwardRef<HTMLDivElement, FieldWrapper>(
         <FieldErrorMessage name={props.name} />
       </div>
     );
-  },
+  }
 );
 
 type FieldErrorMessage = Pick<FieldWrapper, "name">;

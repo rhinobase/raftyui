@@ -1,9 +1,9 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import { InputGroup, LeftAddon, Suffix } from "../input-group";
-import { getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, LeftAddon, Suffix } from "../input-group/index.js";
+import { getValue } from "../utils/index.js";
 
 const ID = "currency-input";
 
@@ -74,7 +74,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
       className,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -92,7 +92,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
 
     const formatter = new Intl.NumberFormat(
       currencyProps.locales,
-      currencyProps.options,
+      currencyProps.options
     ).format;
 
     const _disabled =
@@ -119,7 +119,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
           onChange={(event) => {
             const valueAsString = event.currentTarget.value.replace(
               /[^.0-9]/g,
-              "",
+              ""
             );
 
             onChange?.(valueAsString);
@@ -159,7 +159,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               aria-controls={ID}
               onClick={() => {
                 const valueAsNumber = Number(
-                  (props.value ?? "0").replace(/,/g, ""),
+                  (props.value ?? "0").replace(/,/g, "")
                 );
                 const formattedValue = formatter(valueAsNumber + 1);
 
@@ -177,7 +177,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               aria-controls={ID}
               onClick={() => {
                 const valueAsNumber = Number(
-                  (props.value ?? "0").replace(/,/g, ""),
+                  (props.value ?? "0").replace(/,/g, "")
                 );
                 const formattedValue = formatter(valueAsNumber - 1);
 
@@ -191,5 +191,5 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
         </Suffix>
       </InputGroup>
     );
-  },
+  }
 );

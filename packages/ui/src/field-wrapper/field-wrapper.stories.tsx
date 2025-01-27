@@ -8,9 +8,9 @@ import {
   useFormContext,
 } from "react-hook-form";
 import z from "zod";
-import { InputField } from "../input-field";
-import { Switch } from "../switch";
-import { FieldWrapper } from "./FieldWrapper";
+import { InputField } from "../input-field/index.js";
+import { Switch } from "../switch/index.js";
+import { FieldWrapper } from "./FieldWrapper.js";
 
 const meta: Meta<FieldWrapper> = {
   title: "Components / FieldWrapper",

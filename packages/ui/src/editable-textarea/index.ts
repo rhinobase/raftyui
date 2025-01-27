@@ -1,4 +1,4 @@
 export {
   EditableTextarea,
   editableTextareaPreviewClasses,
-} from "./EditableTextarea";
+} from "./EditableTextarea.js";

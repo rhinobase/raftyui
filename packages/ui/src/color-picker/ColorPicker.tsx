@@ -9,12 +9,12 @@ import {
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import { InputGroup, Suffix } from "../input-group";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, Suffix } from "../input-group/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 export const colorPickerContentClasses = cva(
   "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 border bg-white drop-shadow-lg",
@@ -29,7 +29,7 @@ export const colorPickerContentClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type ColorPicker = Omit<
@@ -92,7 +92,7 @@ export const ColorPicker = forwardRef<
     onValueChange,
     ...props
   },
-  forwaredRef,
+  forwaredRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -224,7 +224,7 @@ export const colorPickerTriggerClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 type ColorPickerControl = {
@@ -244,7 +244,7 @@ function ColorPickerControl({ size, invalid }: ColorPickerControl) {
         <Suffix
           className={classNames(
             "pointer-events-auto w-max",
-            colorPickerInputSuffixClasses({ size }),
+            colorPickerInputSuffixClasses({ size })
           )}
         >
           <ArkColorPicker.Trigger
@@ -329,7 +329,7 @@ export const colorPickerLabelClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 type ColorPickerView = {

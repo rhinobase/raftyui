@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { EditableNumber } from "./EditableNumber";
+import { EditableNumber } from "./EditableNumber.js";
 
 const meta: Meta<typeof EditableNumber> = {
   title: "Components / EditableNumber",

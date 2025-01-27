@@ -1,8 +1,8 @@
 "use client";
 import { Progress as ArkProgress } from "@ark-ui/react";
 import { type ElementRef, forwardRef } from "react";
-import { classNames } from "../utils";
-import { type Progress, ProgressValue, progressClasses } from "./Progress";
+import { classNames } from "../utils/index.js";
+import { type Progress, ProgressValue, progressClasses } from "./Progress.js";
 
 export const sizeStyle = {
   size: {
@@ -34,7 +34,7 @@ export const CircularProgress = forwardRef<
   CircularProgress
 >(function CircularProgress(
   { className, size = "md", colorScheme = "primary", style, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   return (
     <ArkProgress.Root

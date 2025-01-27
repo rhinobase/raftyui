@@ -9,4 +9,4 @@ export {
   CommandShortcut,
   CommandSeparator,
   CommandLoading,
-} from "./Command";
+} from "./Command.js";

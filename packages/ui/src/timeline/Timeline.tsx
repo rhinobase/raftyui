@@ -1,14 +1,14 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, type ReactNode, forwardRef, useId } from "react";
-import { Spinner } from "../spinner";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValidChildren, getValue } from "../utils";
+import { Spinner } from "../spinner/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { classNames, getValidChildren, getValue } from "../utils/index.js";
 import {
   type TimelineContext,
   TimelineProvider,
   useTimelineContext,
-} from "./context";
+} from "./context.js";
 
 export const timelineClasses = cva("flex size-full", {
   variants: {
@@ -51,7 +51,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
       connector: Connector = TimelineConnector,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const validChildren = getValidChildren(children);
 
@@ -69,7 +69,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
           icon={loadingDot ?? <Spinner size="sm" />}
         >
           {loadingText}
-        </TimelineItem>,
+        </TimelineItem>
       );
     else components.pop();
 
@@ -84,7 +84,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
           {...props}
           className={classNames(
             timelineClasses({ size, reverse: getValue(isReverse) }),
-            className,
+            className
           )}
           ref={forwardedRef}
         >
@@ -92,7 +92,7 @@ export const Timeline = forwardRef<HTMLUListElement, Timeline>(
         </ul>
       </TimelineProvider>
     );
-  },
+  }
 );
 
 export const timelineItemClasses = cva("flex w-full items-center", {
@@ -133,7 +133,7 @@ export const timelineItemIconClasses = cva(
       size: "md",
       status: "info",
     },
-  },
+  }
 );
 
 export const timelineItemTextClasses = cva(
@@ -154,7 +154,7 @@ export const timelineItemTextClasses = cva(
       align: "left",
       size: "md",
     },
-  },
+  }
 );
 
 export const timelineItemDescriptionClasses = cva(
@@ -170,7 +170,7 @@ export const timelineItemDescriptionClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type TimelineItem = HTMLAttributes<HTMLLIElement> & {
@@ -182,7 +182,7 @@ export type TimelineItem = HTMLAttributes<HTMLLIElement> & {
 export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
   function TimelineItem(
     { icon, description, status = "info", children, className, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     const { align, size } = useTimelineContext();
 
@@ -210,7 +210,7 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItem>(
         )}
       </li>
     );
-  },
+  }
 );
 
 export const timelineConnectorClasses = cva("flex h-full", {

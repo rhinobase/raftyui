@@ -1,8 +1,8 @@
 "use client";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { useInputGroupContext } from "./context";
-import { addonsCommonClasses } from "./utils";
+import { classNames } from "../utils/index.js";
+import { useInputGroupContext } from "./context.js";
+import { addonsCommonClasses } from "./utils.js";
 
 export type LeftAddon = HTMLAttributes<HTMLDivElement>;
 
@@ -22,10 +22,10 @@ export const LeftAddon = forwardRef<HTMLDivElement, LeftAddon>(
           "border-secondary-300 dark:border-secondary-700",
           // @ts-ignore
           addonsCommonClasses.size[size],
-          className,
+          className
         )}
       />
     );
-  },
+  }
 );
 LeftAddon.displayName = "LeftAddon";

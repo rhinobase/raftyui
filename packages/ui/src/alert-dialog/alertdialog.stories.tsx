@@ -1,6 +1,6 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,7 +12,7 @@ import {
   AlertDialogOverlay,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "./AlertDialog";
+} from "./AlertDialog.js";
 
 const meta: Meta<typeof AlertDialog> = {
   title: "Components / Alert Dialog",

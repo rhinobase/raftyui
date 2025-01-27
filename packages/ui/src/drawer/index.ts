@@ -7,5 +7,5 @@ export {
   DrawerTitle,
   drawerContentClasses,
   drawerTitleClasses,
-} from "./Drawer";
-export { useDrawerContext } from "./context";
+} from "./Drawer.js";
+export { useDrawerContext } from "./context.js";

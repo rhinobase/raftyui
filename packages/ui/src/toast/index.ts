@@ -5,4 +5,4 @@ export {
   toastMessageClasses,
   toastTitleAndMessageWrapperClasses,
   toastTitleClasses,
-} from "./Toast";
+} from "./Toast.js";

@@ -1,11 +1,11 @@
 "use client";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames, getValidChildren } from "../utils";
-import { LeftAddon } from "./LeftAddon";
-import { Prefix } from "./Perfix";
-import { RightAddon } from "./RightAddon";
-import { Suffix } from "./Suffix";
-import { type InputGroupContext, InputGroupProvider } from "./context";
+import { classNames, getValidChildren } from "../utils/index.js";
+import { LeftAddon } from "./LeftAddon.js";
+import { Prefix } from "./Perfix.js";
+import { RightAddon } from "./RightAddon.js";
+import { Suffix } from "./Suffix.js";
+import { type InputGroupContext, InputGroupProvider } from "./context.js";
 
 export type InputGroup = HTMLAttributes<HTMLDivElement> &
   Partial<InputGroupContext>;
@@ -22,7 +22,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       size = "md",
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const validChildren = getValidChildren(children);
     const rightAddons = [];
@@ -78,5 +78,5 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
         </div>
       </InputGroupProvider>
     );
-  },
+  }
 );

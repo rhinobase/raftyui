@@ -3,9 +3,9 @@ import { RatingGroup, type RatingGroupRootProps } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, getValue } from "../utils/index.js";
 
 export const ratingControlClasses = cva(
   "flex flex-wrap outline-none data-[readonly]:cursor-default data-[disabled]:opacity-70",
@@ -37,7 +37,7 @@ export const ratingControlClasses = cva(
       loading: false,
       size: "md",
     },
-  },
+  }
 );
 
 export const ratingItemClasses = cva(
@@ -53,7 +53,7 @@ export const ratingItemClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export const ratingItemIconClasses = cva("", {
@@ -95,7 +95,7 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
       isReadOnly,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -173,5 +173,5 @@ export const Rating = forwardRef<ElementRef<typeof RatingGroup.Root>, Rating>(
         </RatingGroup.Control>
       </RatingGroup.Root>
     );
-  },
+  }
 );

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../button";
-import { classNames } from "../utils";
-import { Card, CardContent, CardFooter, CardHeader } from "./Card";
+import { Button } from "../button/index.js";
+import { classNames } from "../utils/index.js";
+import { Card, CardContent, CardFooter, CardHeader } from "./Card.js";
 
 const meta: Meta<typeof Card> = {
   title: "Components / Card",
@@ -64,7 +64,7 @@ export const WithDivide: Story = {
         className={classNames(
           props.size === "sm" && "py-3",
           props.size === "md" && "py-4",
-          props.size === "lg" && "py-5",
+          props.size === "lg" && "py-5"
         )}
       >
         <CardParagraph size={props.size}>
@@ -95,7 +95,7 @@ function CardTitle(props: Pick<Card, "size" | "children">) {
         props.size === "sm" && "text-lg",
         props.size === "md" && "text-xl",
         props.size === "lg" && "text-2xl",
-        "font-semibold",
+        "font-semibold"
       )}
     >
       {props.children}
@@ -110,7 +110,7 @@ function CardParagraph(props: Pick<Card, "size" | "children">) {
         props.size === "sm" && "text-sm",
         props.size === "md" && "text-base",
         props.size === "lg" && "text-lg",
-        "font-medium",
+        "font-medium"
       )}
     >
       {props.children}

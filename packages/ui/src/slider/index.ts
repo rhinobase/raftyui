@@ -6,5 +6,5 @@ export {
   sliderRangeClasses,
   sliderThumbClasses,
   sliderTrackClasses,
-} from "./Slider";
-export { useSliderContext } from "./context";
+} from "./Slider.js";
+export { useSliderContext } from "./context.js";

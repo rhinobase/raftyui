@@ -9,4 +9,4 @@ export {
   datePickerContentClasses,
   datePickerDayCalendarButtonClasses,
   datePickerMonthAndYearButtonClasses,
-} from "./DatePicker";
+} from "./DatePicker.js";

@@ -1,1 +1,1 @@
-export { FileUpload } from "./FileUpload";
+export { FileUpload } from "./FileUpload.js";

@@ -1,11 +1,11 @@
-import type { AvatarGroupContext } from "./context";
+import type { AvatarGroupContext } from "./context.js";
 
 /**
  * Calculate the max width for AvatarGroup
  */
 export function calculateWidth(
   size: AvatarGroupContext["size"],
-  length: number,
+  length: number
 ) {
   switch (size) {
     case "sm":

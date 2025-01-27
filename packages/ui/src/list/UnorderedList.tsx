@@ -1,5 +1,5 @@
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../utils/index.js";
 
 export type UnorderedList = HTMLAttributes<HTMLUListElement> & {
   isUnstyled?: boolean;
@@ -8,7 +8,7 @@ export type UnorderedList = HTMLAttributes<HTMLUListElement> & {
 export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
   function UnorderedList(
     { className, children, isUnstyled = false, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     return (
       <ul
@@ -23,5 +23,5 @@ export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
         {children}
       </ul>
     );
-  },
+  }
 );

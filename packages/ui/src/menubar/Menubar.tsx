@@ -7,7 +7,7 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   contextMenuCheckboxItemIndicatorClasses,
   contextMenuContentClasses,
@@ -16,14 +16,14 @@ import {
   contextMenuRadioAndCheckboxItemClasses,
   contextMenuRadioItemIndicatorClasses,
   contextMenuSeperatorClasses,
-} from "../context-menu";
-import { menuTriggerClasses } from "../menu/Menu";
-import { classNames } from "../utils";
+} from "../context-menu/index.js";
+import { menuTriggerClasses } from "../menu/Menu.js";
+import { classNames } from "../utils/index.js";
 import {
   type MenuBarContext,
   MenuBarProvider,
   useMenuBarContext,
-} from "./context";
+} from "./context.js";
 
 export const menubarClasses = cva("flex w-max items-center", {
   variants: { size: { sm: "gap-1", md: "gap-2", lg: "gap-3" } },
@@ -46,7 +46,7 @@ export const Menubar = forwardRef<
     isDisabled = false,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   return (
     <MenuBarProvider value={{ size, isUnstyled, isDisabled }}>
@@ -90,7 +90,7 @@ export const MenubarTrigger = forwardRef<
     asChild = false,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const {
     size: parentSize,
@@ -130,7 +130,7 @@ export const MenubarTrigger = forwardRef<
               ? className
               : classNames(
                   menuTriggerClasses({ colorScheme, variant }),
-                  className,
+                  className
                 )
           }
         >
@@ -152,7 +152,7 @@ export const MenubarContent = forwardRef<
   MenubarContent
 >(function MenubarContent(
   { children, className, sideOffset = 5, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const {
     isUnstyled: isParentUnstyled,
@@ -192,7 +192,7 @@ export const MenubarLabel = forwardRef<
   MenubarLabel
 >(function MenubarLabel(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -223,7 +223,7 @@ export const MenubarItem = forwardRef<
   MenubarItem
 >(function MenubarItem(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -256,7 +256,7 @@ export const MenubarCheckboxItem = forwardRef<
   MenubarCheckboxItem
 >(function MenubarCheckboxItem(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -271,7 +271,7 @@ export const MenubarCheckboxItem = forwardRef<
           : classNames(
               contextMenuItemClasses({ size }),
               contextMenuRadioAndCheckboxItemClasses({ size }),
-              className,
+              className
             )
       }
     >
@@ -298,7 +298,7 @@ export const MenubarRadioItem = forwardRef<
   MenubarRadioItem
 >(function MenubarRadioItem(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -313,7 +313,7 @@ export const MenubarRadioItem = forwardRef<
           : classNames(
               contextMenuItemClasses({ size }),
               contextMenuRadioAndCheckboxItemClasses({ size }),
-              className,
+              className
             )
       }
     >
@@ -340,7 +340,7 @@ export const MenubarSubTrigger = forwardRef<
   MenubarSubTrigger
 >(function MenubarSubTrigger(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -355,7 +355,7 @@ export const MenubarSubTrigger = forwardRef<
           : classNames(
               contextMenuItemClasses({ size }),
               "justify-between",
-              className,
+              className
             )
       }
     >
@@ -376,7 +376,7 @@ export const MenubarSubContent = forwardRef<
   MenubarSubContent
 >(function MenubarSubContent(
   { children, className, isUnstyled = false, sideOffset = 10, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled, size } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -410,7 +410,7 @@ export const MenubarSeparator = forwardRef<
   MenubarSeparator
 >(function MenubarSeparator(
   { className, isUnstyled = true, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuBarContext();
   const unstyle = isParentUnstyled || isUnstyled;

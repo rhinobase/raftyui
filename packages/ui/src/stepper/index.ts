@@ -9,5 +9,5 @@ export {
   stepperItemIconClasses,
   titleAndSubTitleWrapperClasses,
   titleClasses,
-} from "./Stepper";
-export { useStepperContext } from "./context";
+} from "./Stepper.js";
+export { useStepperContext } from "./context.js";

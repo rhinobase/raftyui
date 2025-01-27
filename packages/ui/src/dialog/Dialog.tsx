@@ -13,15 +13,15 @@ import {
   alertDialogHeaderAndFooterClasses,
   alertDialogOverlayClasses,
   alertDialogTitleClasses,
-} from "../alert-dialog";
-import { Button } from "../button";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+} from "../alert-dialog/index.js";
+import { Button } from "../button/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { classNames, getValue } from "../utils/index.js";
 import {
   type DialogContext,
   DialogProvider,
   useDialogContext,
-} from "./context";
+} from "./context.js";
 
 export type Dialog = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DialogContext>;
@@ -64,7 +64,7 @@ export const DialogTrigger = forwardRef<
     type = "button",
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled, size: parentSize } = useDialogContext();
 
@@ -108,7 +108,7 @@ export const DialogOverlay = forwardRef<
   DialogOverlay
 >(function DialogOverlay(
   { className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled } = useDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -136,7 +136,7 @@ export const DialogContent = forwardRef<
   DialogContent
 >(function DialogContent(
   { children, className, isUnstyled = false, showCloseButton, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -190,7 +190,7 @@ export const DialogHeader = forwardRef<HTMLElement, DialogHeader>(
         ref={forwardedRef}
       />
     );
-  },
+  }
 );
 
 export type DialogFooter = HTMLAttributes<HTMLDivElement> & {
@@ -200,7 +200,7 @@ export type DialogFooter = HTMLAttributes<HTMLDivElement> & {
 export const DialogFooter = forwardRef<HTMLDivElement, DialogFooter>(
   function DialogFooter(
     { className, isUnstyled = false, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     const { isUnstyled: isParentUnstyled, size } = useDialogContext();
     const unstyle = isParentUnstyled || isUnstyled;
@@ -216,7 +216,7 @@ export const DialogFooter = forwardRef<HTMLDivElement, DialogFooter>(
         ref={forwardedRef}
       />
     );
-  },
+  }
 );
 
 export type DialogTitle = ComponentPropsWithoutRef<
@@ -228,7 +228,7 @@ export const DialogTitle = forwardRef<
   DialogTitle
 >(function DialogTitle(
   { className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled, size } = useDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -255,7 +255,7 @@ export const DialogDescription = forwardRef<
   DialogDescription
 >(function DialogDescription(
   { className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled, size } = useDialogContext();
   const unstyle = isParentUnstyled || isUnstyled;

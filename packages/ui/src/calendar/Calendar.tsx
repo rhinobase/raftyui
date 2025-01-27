@@ -9,10 +9,10 @@ import {
   DatePickerMonthCalendar,
   DatePickerYearCalendar,
   datePickerContentClasses,
-} from "../date-picker/DatePicker";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, getValue } from "../utils";
+} from "../date-picker/DatePicker.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, getValue } from "../utils/index.js";
 
 export type Calendar = Omit<
   DatePickerRootProps,
@@ -50,7 +50,7 @@ export const Calendar = forwardRef<
     defaultValue,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,

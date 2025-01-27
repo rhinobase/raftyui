@@ -6,8 +6,8 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
-import { type TabContext, TabProvider, useTabContext } from "./context";
+import { classNames } from "../utils/index.js";
+import { type TabContext, TabProvider, useTabContext } from "./context.js";
 
 export type Tab = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
   Partial<TabContext> & { isUnstyled?: boolean };
@@ -15,7 +15,7 @@ export type Tab = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
 export const Tab = forwardRef<ElementRef<typeof TabsPrimitive.Root>, Tab>(
   function Tab(
     { className, size = "md", variant = "line", isUnstyled = false, ...props },
-    forwardedRef,
+    forwardedRef
   ) {
     return (
       <TabProvider value={{ size, variant, isUnstyled }}>
@@ -30,7 +30,7 @@ export const Tab = forwardRef<ElementRef<typeof TabsPrimitive.Root>, Tab>(
         />
       </TabProvider>
     );
-  },
+  }
 );
 
 export type TabList = ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
@@ -55,7 +55,7 @@ export const TabList = forwardRef<
               "data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:border-b",
               "data-[orientation=vertical]:flex-col data-[orientation=vertical]:border-r",
               "border-secondary-300 dark:border-secondary-700",
-              className,
+              className
             )
       }
       ref={forwardedRef}
@@ -102,7 +102,7 @@ export const tabTriggerClasses = cva(
       size: "md",
       variant: "line",
     },
-  },
+  }
 );
 
 export type TabTrigger = ComponentPropsWithoutRef<
@@ -116,7 +116,7 @@ export const TabTrigger = forwardRef<
   TabTrigger
 >(function TabTrigger(
   { className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, variant, isUnstyled: isParentUnstyled } = useTabContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -158,7 +158,7 @@ export const TabContent = forwardRef<
   TabContent
 >(function TabContent(
   { className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useTabContext();
   const unstyle = isParentUnstyled || isUnstyled;

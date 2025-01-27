@@ -20,5 +20,5 @@ export {
   contextMenuRadioItemIndicatorClasses,
   contextMenuSubTriggerIconClasses,
   contextMenuSeperatorClasses,
-} from "./ContextMenu";
-export { useContextMenuContext } from "./context";
+} from "./ContextMenu.js";
+export { useContextMenuContext } from "./context.js";

@@ -1,9 +1,9 @@
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { List } from "./List";
-import { ListItem } from "./ListItem";
-import { OrderedList as OL } from "./OrderedList";
-import { UnorderedList as UL } from "./UnorderedList";
+import { List } from "./List.js";
+import { ListItem } from "./ListItem.js";
+import { OrderedList as OL } from "./OrderedList.js";
+import { UnorderedList as UL } from "./UnorderedList.js";
 
 const meta: Meta<typeof List> = {
   title: "Components / List",

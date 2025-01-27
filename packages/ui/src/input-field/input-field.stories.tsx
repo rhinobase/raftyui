@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FieldControl } from "../field-control";
-import { InputField } from "./InputField";
+import { FieldControl } from "../field-control/index.js";
+import { InputField } from "./InputField.js";
 
 const meta: Meta<typeof InputField> = {
   title: "Form / InputField",

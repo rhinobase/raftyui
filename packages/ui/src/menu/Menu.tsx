@@ -7,7 +7,7 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   contextMenuCheckboxItemIndicatorClasses,
   contextMenuContentClasses,
@@ -17,10 +17,10 @@ import {
   contextMenuRadioItemIndicatorClasses,
   contextMenuSeperatorClasses,
   contextMenuSubTriggerIconClasses,
-} from "../context-menu";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
-import { type MenuContext, MenuProvider, useMenuContext } from "./context";
+} from "../context-menu/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { classNames, getValue } from "../utils/index.js";
+import { type MenuContext, MenuProvider, useMenuContext } from "./context.js";
 
 export type Menu = ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
   Partial<MenuContext>;
@@ -146,7 +146,7 @@ export const MenuTrigger = forwardRef<
     asChild = false,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const {
     size: parentSize,
@@ -189,7 +189,7 @@ export const MenuTrigger = forwardRef<
                     variant,
                     disabled: getValue(disabled),
                   }),
-                  className,
+                  className
                 )
           }
           {...buttonProps}
@@ -221,7 +221,7 @@ export const MenuContent = forwardRef<
     arrowClassNames,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled, isDisabled, size } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -256,7 +256,7 @@ export const MenuLabel = forwardRef<
   MenuLabel
 >(function MenuLabel(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -285,7 +285,7 @@ export const MenuItem = forwardRef<
   MenuItem
 >(function MenuItem(
   { className, children, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -316,7 +316,7 @@ export const MenuCheckboxItem = forwardRef<
   MenuCheckboxItem
 >(function MenuCheckboxItem(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -330,7 +330,7 @@ export const MenuCheckboxItem = forwardRef<
           : classNames(
               contextMenuItemClasses({ size }),
               contextMenuRadioAndCheckboxItemClasses({ size }),
-              className,
+              className
             )
       }
       ref={forwardedRef}
@@ -358,7 +358,7 @@ export const MenuRadioItem = forwardRef<
   MenuRadioItem
 >(function MenuRadioItem(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -372,7 +372,7 @@ export const MenuRadioItem = forwardRef<
           : classNames(
               contextMenuItemClasses({ size }),
               contextMenuRadioAndCheckboxItemClasses({ size }),
-              className,
+              className
             )
       }
       ref={forwardedRef}
@@ -404,7 +404,7 @@ export const MenuSubTrigger = forwardRef<
   MenuSubTrigger
 >(function MenuSubTrigger(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -419,7 +419,7 @@ export const MenuSubTrigger = forwardRef<
           : classNames(
               contextMenuItemClasses({ size }),
               "justify-between",
-              className,
+              className
             )
       }
     >
@@ -442,7 +442,7 @@ export const MenuSubContent = forwardRef<
   MenuSubContent
 >(function MenuSubContent(
   { children, className, isUnstyled = false, sideOffset = 10, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { isUnstyled: isParentUnstyled, size } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -476,7 +476,7 @@ export const MenuSeparator = forwardRef<
   MenuSeparator
 >(function MenuSeparator(
   { className, isUnstyled = false, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size, isUnstyled: isParentUnstyled } = useMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;

@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Controller, useForm } from "react-hook-form";
 import z from "zod";
-import { PercentageInput } from "./PercentageInput";
+import { PercentageInput } from "./PercentageInput.js";
 
 const meta: Meta<typeof PercentageInput> = {
   title: "Form / PercentageInput",

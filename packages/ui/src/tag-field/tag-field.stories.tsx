@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TagField } from "./TagField";
+import { TagField } from "./TagField.js";
 
 const meta: Meta<TagField> = {
   title: "Components / TagField",

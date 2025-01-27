@@ -8,10 +8,10 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 export type TagField = TagsInputRootProps & {
   size?: SizeType;
@@ -37,7 +37,7 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
       className,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -77,14 +77,14 @@ export const TagField = forwardRef<ElementRef<typeof TagsInput.Root>, TagField>(
         <TagsInput.HiddenInput />
       </TagsInput.Root>
     );
-  },
+  }
 );
 
 export const tagFieldControlClasses = cva(
   classNames(
     "group/tag-control flex w-full flex-wrap items-center border transition-all",
     "outline-none data-[focus]:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",
-    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 data-[readOnly]:cursor-default",
+    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 data-[readOnly]:cursor-default"
   ),
   {
     variants: {
@@ -103,7 +103,7 @@ export const tagFieldControlClasses = cva(
       invalid: false,
       size: "md",
     },
-  },
+  }
 );
 
 export const tagFieldControlClearTriggerClasses = cva(
@@ -119,7 +119,7 @@ export const tagFieldControlClearTriggerClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export const tagInputTextClasses = {
@@ -150,7 +150,7 @@ function TagFieldControl({ placeholder, size, invalid }: TagFieldControl) {
               className={classNames(
                 "outline-none",
                 // @ts-ignore
-                tagInputTextClasses.size[size],
+                tagInputTextClasses.size[size]
               )}
             />
           </TagsInput.Item>
@@ -160,7 +160,7 @@ function TagFieldControl({ placeholder, size, invalid }: TagFieldControl) {
           className={classNames(
             "dark:text-secondary-200 data-[disabled]:bg-secondary-300 flex-1 bg-transparent py-0.5 outline-none disabled:cursor-not-allowed data-[readonly]:cursor-default",
             // @ts-ignore
-            tagInputTextClasses.size[size],
+            tagInputTextClasses.size[size]
           )}
         />
       </TagsInput.Control>
@@ -181,7 +181,7 @@ function TagFieldControl({ placeholder, size, invalid }: TagFieldControl) {
 export const tagFieldPreviewItemClasses = cva(
   classNames(
     "border-secondary-300 dark:border-secondary-700 data-[highlighted]:dark:border-primary-400 data-[highlighted]:border-primary-500 items-center border transition-all data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
-    "data-[highlighted]:ring-1 ring-offset-1 ring-primary-300 dark:ring-primary-100",
+    "data-[highlighted]:ring-1 ring-offset-1 ring-primary-300 dark:ring-primary-100"
   ),
   {
     variants: {
@@ -199,7 +199,7 @@ export const tagFieldPreviewItemClasses = cva(
       editing: false,
       size: "md",
     },
-  },
+  }
 );
 
 export const tagFieldPreviewItemDeleteTriggerClasses = cva(
@@ -221,7 +221,7 @@ export const tagFieldPreviewItemDeleteTriggerClasses = cva(
       disabled: false,
       size: "md",
     },
-  },
+  }
 );
 
 type TagPreviewItem = { value: string; size: SizeType };
@@ -237,7 +237,7 @@ function TagPreviewItem({ size, value }: TagPreviewItem) {
         className={classNames(
           "dark:text-secondary-100 font-light text-black",
           // @ts-ignore
-          tagInputTextClasses.size[size],
+          tagInputTextClasses.size[size]
         )}
       >
         {value}

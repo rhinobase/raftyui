@@ -3,5 +3,5 @@ export {
   TooltipTrigger,
   TooltipContent,
   tooltipContentClasses,
-} from "./Tooltip";
-export { useTooltipContext } from "./context";
+} from "./Tooltip.js";
+export { useTooltipContext } from "./context.js";

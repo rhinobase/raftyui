@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useFormik } from "formik";
-import { Button } from "../button";
-import { FieldControl } from "../field-control";
-import { InputField } from "../input-field";
-import { Label } from "../label";
+import { Button } from "../button/index.js";
+import { FieldControl } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { Label } from "../label/index.js";
 
 const meta: Meta = {
   title: "Integration / Formik",

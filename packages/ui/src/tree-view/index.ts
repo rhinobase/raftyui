@@ -7,5 +7,5 @@ export {
   treeViewLabelIndicatorClasses,
   treeViewLabelBranchClasses,
   treeViewLabelSingleClasses,
-} from "./TreeView";
-export { useTreeViewContext } from "./context";
+} from "./TreeView.js";
+export { useTreeViewContext } from "./context.js";

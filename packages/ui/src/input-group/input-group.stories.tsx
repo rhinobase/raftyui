@@ -4,12 +4,12 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { InputField } from "../input-field";
-import { InputGroup } from "./InputGroup";
-import { LeftAddon } from "./LeftAddon";
-import { Prefix } from "./Perfix";
-import { RightAddon } from "./RightAddon";
-import { Suffix } from "./Suffix";
+import { InputField } from "../input-field/index.js";
+import { InputGroup } from "./InputGroup.js";
+import { LeftAddon } from "./LeftAddon.js";
+import { Prefix } from "./Perfix.js";
+import { RightAddon } from "./RightAddon.js";
+import { Suffix } from "./Suffix.js";
 
 const meta: Meta<typeof InputField> = {
   title: "Form / InputGroup",

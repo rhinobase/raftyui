@@ -6,14 +6,14 @@ import {
 } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { classNames, getValue } from "../utils/index.js";
 import {
   type SegmentedControlContext,
   SegmentedControlProvider,
   useSegmentedControlContext,
-} from "./context";
+} from "./context.js";
 
 export const segmentedControlClasses = cva(
   "flex data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l border-secondary-300 dark:border-secondary-700 data-[disabled]:opacity-70",
@@ -28,7 +28,7 @@ export const segmentedControlClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 export type SegmentedControl = Omit<
@@ -57,7 +57,7 @@ export const SegmentedControl = forwardRef<
     onValueChange,
     ...props
   },
-  forwaredRef,
+  forwaredRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -112,7 +112,7 @@ export const segmentedControlItemClasses = cva(
       readonly: false,
       size: "md",
     },
-  },
+  }
 );
 
 export type SegmentedControlItem = SegmentGroupItemProps;
@@ -122,7 +122,7 @@ export const SegmentedControlItem = forwardRef<
   SegmentedControlItem
 >(function SegmentedControlItem(
   { className, children, ...props },
-  forwaredRef,
+  forwaredRef
 ) {
   const { isReadOnly, size } = useSegmentedControlContext();
 
@@ -131,7 +131,7 @@ export const SegmentedControlItem = forwardRef<
       {...props}
       className={classNames(
         segmentedControlItemClasses({ readonly: isReadOnly, size }),
-        className,
+        className
       )}
       ref={forwaredRef}
     >

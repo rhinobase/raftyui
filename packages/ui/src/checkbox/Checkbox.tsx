@@ -7,10 +7,10 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import { Label } from "../label";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import type { ValueOrFunction } from "../types/index.js";
+import { type SizeType, classNames, getValue } from "../utils/index.js";
 
 export const checkboxClasses = cva(
   "peer/checkbox relative shrink-0 border outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950 transition-all ease-in-out",
@@ -44,7 +44,7 @@ export const checkboxClasses = cva(
       disabled: false,
       invalid: false,
     },
-  },
+  }
 );
 
 export const checkboxLabelClasses = cva(
@@ -61,7 +61,7 @@ export const checkboxLabelClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
@@ -93,7 +93,7 @@ export const Checkbox = forwardRef<
     isLoading,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -158,7 +158,7 @@ export const Checkbox = forwardRef<
     <Component
       className={classNames(
         checkboxClasses({ size, invalid: _invalid, disabled: _disabled }),
-        className,
+        className
       )}
     />
   );

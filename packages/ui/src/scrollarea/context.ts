@@ -1,5 +1,5 @@
 import type { Layout } from "react-window";
-import { createContext } from "../utils";
+import { createContext } from "../utils/index.js";
 
 export const [ScrollAreaProvider, useScrollAreaContext] =
   createContext<ScrollAreaContext>({

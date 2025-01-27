@@ -7,14 +7,14 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { alertDialogOverlayClasses } from "../alert-dialog";
-import { Button } from "../button";
-import { classNames } from "../utils";
+import { alertDialogOverlayClasses } from "../alert-dialog/index.js";
+import { Button } from "../button/index.js";
+import { classNames } from "../utils/index.js";
 import {
   type DrawerContext,
   DrawerProvider,
   useDrawerContext,
-} from "./context";
+} from "./context.js";
 
 export type Drawer = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DrawerContext>;
@@ -68,7 +68,7 @@ export const drawerContentClasses = cva(
       side: "right",
       size: "md",
     },
-  },
+  }
 );
 
 export type DrawerContent = ComponentPropsWithoutRef<
@@ -156,7 +156,7 @@ export const DrawerClose = forwardRef<
     children,
     ...props
   },
-  forwardedRef,
+  forwardedRef
 ) {
   const { size: parentSize } = useDrawerContext();
 
@@ -189,7 +189,7 @@ export const DrawerClose = forwardRef<
           {...buttonProps}
           className={classNames(
             "absolute right-5 top-5 rounded-full",
-            className,
+            className
           )}
         >
           <XMarkIcon className="size-5 stroke-2" />

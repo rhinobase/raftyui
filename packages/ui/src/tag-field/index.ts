@@ -5,4 +5,4 @@ export {
   tagFieldPreviewItemClasses,
   tagFieldPreviewItemDeleteTriggerClasses,
   tagInputTextClasses,
-} from "./TagField";
+} from "./TagField.js";

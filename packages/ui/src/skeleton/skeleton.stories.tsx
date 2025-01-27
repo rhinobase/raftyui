@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from "./Skeleton.js";
 
 const meta: Meta<typeof Skeleton> = {
   title: "Components / Skeleton",

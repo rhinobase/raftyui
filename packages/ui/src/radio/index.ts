@@ -5,5 +5,5 @@ export {
   radioGroupItemClasses,
   radioGroupItemIndicatorClasses,
   radioGroupItemLabelClasses,
-} from "./Radio";
-export { useRadioGroupContext } from "./context";
+} from "./Radio.js";
+export { useRadioGroupContext } from "./context.js";

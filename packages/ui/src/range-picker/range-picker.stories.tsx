@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import dateFormat from "dateformat";
-import { RangePicker } from "./RangePicker";
+import { RangePicker } from "./RangePicker.js";
 
 const meta: Meta<typeof RangePicker> = {
   title: "Form / RangePicker",

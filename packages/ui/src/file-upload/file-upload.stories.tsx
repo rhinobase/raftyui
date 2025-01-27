@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FileUpload } from "./FileUpload";
+import { FileUpload } from "./FileUpload.js";
 
 const meta: Meta<typeof FileUpload> = {
   title: "Form / FileUpload",
