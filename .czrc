@@ -5,6 +5,10 @@
       "name": "ui:                  anything ui specific"
     },
     {
+      "value": "cp",
+      "name": "cp:                  anything cp specific"
+    },
+    {
       "value": "pg",
       "name": "plugin:              anything plugin specific"
     },

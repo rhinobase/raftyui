@@ -22,6 +22,16 @@ const regexesOfPackages = externalPackages.map(
 export default defineConfig({
   input: {
     index: "./src/index.ts",
+    cascader: "./src/cascader/index.ts",
+    combobox: "./src/combobox/index.ts",
+    "data-table": "./src/data-table/index.ts",
+    "json-explorer": "./src/json-explorer/index.ts",
+    "key-value": "./src/key-value/index.ts",
+    "list-box": "./src/list-box/index.ts",
+    pagination: "./src/pagination/index.ts",
+    "qr-code": "./src/qr-code/index.ts",
+    "reorderable-list": "./src/reorderable-list/index.ts",
+    signature: "./src/signature/index.ts",
   },
   output: [
     {
