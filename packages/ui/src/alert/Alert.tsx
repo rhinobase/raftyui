@@ -7,8 +7,12 @@ import {
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { type AlertContext, AlertProvider, useAlertContext } from "./context";
+import { classNames } from "../utils/index.js";
+import {
+  type AlertContext,
+  AlertProvider,
+  useAlertContext,
+} from "./context.js";
 
 export const alertClasses = cva("flex w-full items-center", {
   variants: {

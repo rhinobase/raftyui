@@ -7,13 +7,13 @@ import {
   type HTMLAttributes,
   forwardRef,
 } from "react";
-import { Button } from "../button";
-import { classNames } from "../utils";
+import { Button } from "../button/index.js";
+import { classNames } from "../utils/index.js";
 import {
   type AlertDialogContext,
   AlertDialogProvider,
   useAlertDialogContext,
-} from "./context";
+} from "./context.js";
 
 export type AlertDialog = ComponentPropsWithoutRef<
   typeof AlertDialogPrimitive.Root

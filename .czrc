@@ -5,24 +5,16 @@
       "name": "ui:                  anything ui specific"
     },
     {
-      "value": "corp",
-      "name": "corp:                anything corp specific"
-    },
-    {
-      "value": "plugin",
+      "value": "pg",
       "name": "plugin:              anything plugin specific"
     },
     {
-      "value": "storybook",
+      "value": "sb",
       "name": "storybook:           anything storybook specific"
     },
     {
       "value": "examples",
       "name": "examples:            anything examples specific"
-    },
-    {
-      "value": "icons",
-      "name": "icons:               anything icons specific"
     },
     {
       "value": "docs",

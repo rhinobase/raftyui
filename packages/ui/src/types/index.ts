@@ -1,1 +1,1 @@
-export type { ValueOrFunction } from "./valueOrFunction";
+export type { ValueOrFunction } from "./valueOrFunction.js";

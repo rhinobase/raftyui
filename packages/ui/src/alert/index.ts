@@ -7,5 +7,5 @@ export {
   alertDescriptionClasses,
   alertIconClasses,
   alertTitleClasses,
-} from "./Alert";
-export { useAlertContext } from "./context";
+} from "./Alert.js";
+export { useAlertContext } from "./context.js";

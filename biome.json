@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -11,7 +11,8 @@
   },
   "formatter": {
     "indentStyle": "space",
-    "lineEnding": "crlf"
+    "lineWidth": 80,
+    "lineEnding": "lf"
   },
   "vcs": {
     "enabled": true,
