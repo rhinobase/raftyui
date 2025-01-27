@@ -1,0 +1,29 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "storybook build",
+    "serve": "storybook dev -p 4400"
+  },
+  "devDependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@storybook/addon-essentials": "^8.5.2",
+    "@storybook/manager-api": "^8.5.2",
+    "@storybook/react-vite": "^8.5.2",
+    "@storybook/theming": "^8.5.2",
+    "@tanstack/react-query": "^5.32.0",
+    "@tanstack/react-table": "^8.17.3",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "@vitejs/plugin-react-swc": "^3.7.2",
+    "autoprefixer": "^10.4.20",
+    "formik": "^2.4.6",
+    "postcss": "^8.5.1",
+    "react": "^18.0.0",
+    "react-hook-form": "^7.54.2",
+    "storybook": "^8.5.2",
+    "tailwindcss": "^3",
+    "vite": "^5",
+    "zod": "^3.24.1"
+  }
+}

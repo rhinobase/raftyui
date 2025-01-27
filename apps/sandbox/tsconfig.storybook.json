@@ -4,10 +4,5 @@
     "emitDecoratorMetadata": true,
     "outDir": ""
   },
-  "files": [
-    "../../node_modules/@nx/react/typings/styled-jsx.d.ts",
-    "../../node_modules/@nx/react/typings/cssmodule.d.ts",
-    "../../node_modules/@nx/react/typings/image.d.ts"
-  ],
   "include": [".storybook/*.{ts,tsx}", "../../packages/**/*.stories.tsx"]
 }

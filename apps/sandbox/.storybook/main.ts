@@ -9,7 +9,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {
       builder: {
-        viteConfigPath: "apps/sandbox/vite.config.ts",
+        viteConfigPath: "./vite.config.ts",
       },
     },
   },
@@ -28,10 +28,6 @@ const config: StorybookConfig = {
           "@rafty/corp": path.resolve(
             __dirname,
             "../../../packages/corp/src/index.ts",
-          ),
-          "@rafty/icons": path.resolve(
-            __dirname,
-            "../../../packages/icons/src/index.ts",
           ),
         },
       },
