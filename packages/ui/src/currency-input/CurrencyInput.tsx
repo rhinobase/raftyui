@@ -74,7 +74,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
       className,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -92,7 +92,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
 
     const formatter = new Intl.NumberFormat(
       currencyProps.locales,
-      currencyProps.options
+      currencyProps.options,
     ).format;
 
     const _disabled =
@@ -119,7 +119,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
           onChange={(event) => {
             const valueAsString = event.currentTarget.value.replace(
               /[^.0-9]/g,
-              ""
+              "",
             );
 
             onChange?.(valueAsString);
@@ -132,7 +132,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               event.preventDefault();
               event.stopPropagation();
 
-              const constant = KEY_FACTOR[event.key];
+              const constant = KEY_FACTOR[event.key] ?? 0;
               const formattedValue = formatter(valueAsNumber + constant);
 
               onChange?.(formattedValue);
@@ -159,7 +159,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               aria-controls={ID}
               onClick={() => {
                 const valueAsNumber = Number(
-                  (props.value ?? "0").replace(/,/g, "")
+                  (props.value ?? "0").replace(/,/g, ""),
                 );
                 const formattedValue = formatter(valueAsNumber + 1);
 
@@ -177,7 +177,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               aria-controls={ID}
               onClick={() => {
                 const valueAsNumber = Number(
-                  (props.value ?? "0").replace(/,/g, "")
+                  (props.value ?? "0").replace(/,/g, ""),
                 );
                 const formattedValue = formatter(valueAsNumber - 1);
 
@@ -191,5 +191,5 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
         </Suffix>
       </InputGroup>
     );
-  }
+  },
 );

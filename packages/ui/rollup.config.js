@@ -149,8 +149,8 @@ export default defineConfig({
       hook: "writeBundle",
       targets: [
         {
-          src: ["./README.md", "./packages/core/package.json"],
-          dest: "./packages/core/dist",
+          src: ["../../README.md", "./package.json"],
+          dest: "./dist",
         },
         {
           src: ["./dist/**/*index.d.ts"],
@@ -161,8 +161,8 @@ export default defineConfig({
         },
       ],
     }),
-    terser(),
     preserveDirectives(),
+    terser(),
   ],
 });
 

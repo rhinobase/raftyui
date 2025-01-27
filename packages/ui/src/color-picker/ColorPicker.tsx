@@ -8,7 +8,7 @@ import {
 } from "@ark-ui/react";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
+import React, { type ElementRef, forwardRef } from "react";
 import { Button } from "../button/index.js";
 import { useFieldControlContext } from "../field-control/index.js";
 import { InputField } from "../input-field/index.js";
@@ -29,7 +29,7 @@ export const colorPickerContentClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type ColorPicker = Omit<
@@ -92,7 +92,7 @@ export const ColorPicker = forwardRef<
     onValueChange,
     ...props
   },
-  forwaredRef
+  forwaredRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -122,36 +122,11 @@ export const ColorPicker = forwardRef<
     <ArkColorPicker.Root
       {...colorPickerProps}
       onValueChange={({ value, valueAsString }) => {
-        if (format === "rgba") {
-          // @ts-ignore
-          onValueChange?.({ value, valueAsString });
-        } else if (format === "hsba") {
-          const _value = value.toJSON();
-
-          onValueChange?.({
-            // @ts-ignore
-            value: {
-              hue: _value.h,
-              saturation: _value.s,
-              brightness: _value.b,
-              alpha: _value.a,
-            },
-            valueAsString,
-          });
-        } else if (format === "hsla") {
-          const _value = value.toJSON();
-
-          onValueChange?.({
-            // @ts-ignore
-            value: {
-              hue: _value.h,
-              saturation: _value.s,
-              lightness: _value.l,
-              alpha: _value.a,
-            },
-            valueAsString,
-          });
-        }
+        onValueChange?.({
+          // @ts-expect-error
+          value: value.toFormat(format).toJSON(),
+          valueAsString,
+        });
       }}
       ref={forwaredRef}
     >
@@ -224,7 +199,7 @@ export const colorPickerTriggerClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 type ColorPickerControl = {
@@ -244,7 +219,7 @@ function ColorPickerControl({ size, invalid }: ColorPickerControl) {
         <Suffix
           className={classNames(
             "pointer-events-auto w-max",
-            colorPickerInputSuffixClasses({ size })
+            colorPickerInputSuffixClasses({ size }),
           )}
         >
           <ArkColorPicker.Trigger
@@ -329,7 +304,7 @@ export const colorPickerLabelClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 type ColorPickerView = {
