@@ -1,5 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Kbd, buttonClasses, classNames, eventHandler } from "@rafty/ui";
+import React from "react";
 import { useComboboxContext } from "../context";
 import { findLabel } from "../utils";
 
@@ -55,7 +56,7 @@ export function InternalTriggerRender() {
     }
 
     // For single combobox
-    return findLabel(selected[0], options);
+    return findLabel(selected[0] ?? "", options);
   }
 
   // Rendering the placeholder

@@ -46,7 +46,8 @@
     "react-signature-canvas": "^1.0.6"
   },
   "devDependencies": {
-    "@types/country-list": "^2.1.4"
+    "@types/country-list": "^2.1.4",
+    "@types/react-beautiful-dnd": "^13.1.8"
   },
   "peerDependencies": {
     "@types/react": "^18",
@@ -62,106 +63,6 @@
       "require": {
         "types": "./index.d.cts",
         "default": "./index.cjs"
-      }
-    },
-    "./cascader": {
-      "import": {
-        "types": "./cascader/index.d.ts",
-        "default": "./cascader/index.js"
-      },
-      "require": {
-        "types": "./cascader/index.d.cts",
-        "default": "./cascader/index.cjs"
-      }
-    },
-    "./combobox": {
-      "import": {
-        "types": "./combobox/index.d.ts",
-        "default": "./combobox/index.js"
-      },
-      "require": {
-        "types": "./combobox/index.d.cts",
-        "default": "./combobox/index.cjs"
-      }
-    },
-    "./data-table": {
-      "import": {
-        "types": "./data-table/index.d.ts",
-        "default": "./data-table/index.js"
-      },
-      "require": {
-        "types": "./data-table/index.d.cts",
-        "default": "./data-table/index.cjs"
-      }
-    },
-    "./json-explorer": {
-      "import": {
-        "types": "./json-explorer/index.d.ts",
-        "default": "./json-explorer/index.js"
-      },
-      "require": {
-        "types": "./json-explorer/index.d.cts",
-        "default": "./json-explorer/index.cjs"
-      }
-    },
-    "./key-value": {
-      "import": {
-        "types": "./key-value/index.d.ts",
-        "default": "./key-value/index.js"
-      },
-      "require": {
-        "types": "./key-value/index.d.cts",
-        "default": "./key-value/index.cjs"
-      }
-    },
-    "./list-box": {
-      "import": {
-        "types": "./list-box/index.d.ts",
-        "default": "./list-box/index.js"
-      },
-      "require": {
-        "types": "./list-box/index.d.cts",
-        "default": "./list-box/index.cjs"
-      }
-    },
-    "./pagination": {
-      "import": {
-        "types": "./pagination/index.d.ts",
-        "default": "./pagination/index.js"
-      },
-      "require": {
-        "types": "./pagination/index.d.cts",
-        "default": "./pagination/index.cjs"
-      }
-    },
-    "./qr-code": {
-      "import": {
-        "types": "./qr-code/index.d.ts",
-        "default": "./qr-code/index.js"
-      },
-      "require": {
-        "types": "./qr-code/index.d.cts",
-        "default": "./qr-code/index.cjs"
-      }
-    },
-    "./reorderable-list": {
-      "import": {
-        "types": "./reorderable-list/index.d.ts",
-        "default": "./reorderable-list/index.js"
-      },
-      "require": {
-        "types": "./reorderable-list/index.d.cts",
-        "default": "./reorderable-list/index.cjs"
-      }
-    },
-    "./signature": {
-      "import": {
-        "types": "./signature/index.d.ts",
-        "default": "./signature/index.js"
-      },
-      "require": {
-        "types": "./signature/index.d.cts",
-        "default": "./signature/index.cjs"
       }
     }
   }
