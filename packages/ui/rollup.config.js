@@ -149,10 +149,6 @@ export default defineConfig({
       hook: "writeBundle",
       targets: [
         {
-          src: ["../../README.md", "./package.json"],
-          dest: "./dist",
-        },
-        {
           src: ["./dist/**/*index.d.ts"],
           dest: ".",
           rename: (_name, _extension, fullPath) =>

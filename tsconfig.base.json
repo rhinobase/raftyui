@@ -13,12 +13,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2022",
-    "baseUrl": ".",
-    "paths": {
-      "@rafty/ui": ["./packages/ui/src/index.ts"],
-      "@rafty/corp": ["./packages/corp/src/index.ts"],
-      "@rafty/plugin": ["./packages/plugin/src/index.ts"]
-    }
+    "target": "ES2022"
   }
 }

@@ -13,8 +13,8 @@ export default withSearch(
     },
     reactStrictMode: false,
     experimental: {
-      optimizePackageImports: ["@rafty/ui"],
+      optimizePackageImports: ["@rafty/ui", "@rafty/corp"],
     },
     poweredByHeader: false,
-  })
+  }),
 );

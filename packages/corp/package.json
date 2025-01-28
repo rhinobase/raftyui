@@ -4,8 +4,9 @@
   "version": "1.0.6",
   "license": "MIT",
   "type": "module",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "build": "rollup -c=./rollup.config.js"
   },
@@ -55,112 +56,112 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./index.d.ts",
-        "default": "./index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
-        "types": "./index.d.cts",
-        "default": "./index.cjs"
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       }
     },
     "./cascader": {
       "import": {
-        "types": "./cascader/index.d.ts",
-        "default": "./cascader.js"
+        "types": "./dist/cascader/index.d.ts",
+        "default": "./dist/cascader.js"
       },
       "require": {
-        "types": "./cascader/index.d.cts",
-        "default": "./cascader.cjs"
+        "types": "./dist/cascader/index.d.cts",
+        "default": "./dist/cascader.cjs"
       }
     },
     "./combobox": {
       "import": {
-        "types": "./combobox/index.d.ts",
-        "default": "./combobox.js"
+        "types": "./dist/combobox/index.d.ts",
+        "default": "./dist/combobox.js"
       },
       "require": {
-        "types": "./combobox/index.d.cts",
-        "default": "./combobox.cjs"
+        "types": "./dist/combobox/index.d.cts",
+        "default": "./dist/combobox.cjs"
       }
     },
     "./data-table": {
       "import": {
-        "types": "./data-table/index.d.ts",
-        "default": "./data-table.js"
+        "types": "./dist/data-table/index.d.ts",
+        "default": "./dist/data-table.js"
       },
       "require": {
-        "types": "./data-table/index.d.cts",
-        "default": "./data-table.cjs"
+        "types": "./dist/data-table/index.d.cts",
+        "default": "./dist/data-table.cjs"
       }
     },
     "./json-explorer": {
       "import": {
-        "types": "./json-explorer/index.d.ts",
-        "default": "./json-explorer.js"
+        "types": "./dist/json-explorer/index.d.ts",
+        "default": "./dist/json-explorer.js"
       },
       "require": {
-        "types": "./json-explorer/index.d.cts",
-        "default": "./json-explorer.cjs"
+        "types": "./dist/json-explorer/index.d.cts",
+        "default": "./dist/json-explorer.cjs"
       }
     },
     "./key-value": {
       "import": {
-        "types": "./key-value/index.d.ts",
-        "default": "./key-value.js"
+        "types": "./dist/key-value/index.d.ts",
+        "default": "./dist/key-value.js"
       },
       "require": {
-        "types": "./key-value/index.d.cts",
-        "default": "./key-value.cjs"
+        "types": "./dist/key-value/index.d.cts",
+        "default": "./dist/key-value.cjs"
       }
     },
     "./list-box": {
       "import": {
-        "types": "./list-box/index.d.ts",
-        "default": "./list-box.js"
+        "types": "./dist/list-box/index.d.ts",
+        "default": "./dist/list-box.js"
       },
       "require": {
-        "types": "./list-box/index.d.cts",
-        "default": "./list-box.cjs"
+        "types": "./dist/list-box/index.d.cts",
+        "default": "./dist/list-box.cjs"
       }
     },
     "./pagination": {
       "import": {
-        "types": "./pagination/index.d.ts",
-        "default": "./pagination.js"
+        "types": "./dist/pagination/index.d.ts",
+        "default": "./dist/pagination.js"
       },
       "require": {
-        "types": "./pagination/index.d.cts",
-        "default": "./pagination.cjs"
+        "types": "./dist/pagination/index.d.cts",
+        "default": "./dist/pagination.cjs"
       }
     },
     "./qr-code": {
       "import": {
-        "types": "./qr-code/index.d.ts",
-        "default": "./qr-code.js"
+        "types": "./dist/qr-code/index.d.ts",
+        "default": "./dist/qr-code.js"
       },
       "require": {
-        "types": "./qr-code/index.d.cts",
-        "default": "./qr-code.cjs"
+        "types": "./dist/qr-code/index.d.cts",
+        "default": "./dist/qr-code.cjs"
       }
     },
     "./reorderable-list": {
       "import": {
-        "types": "./reorderable-list/index.d.ts",
-        "default": "./reorderable-list.js"
+        "types": "./dist/reorderable-list/index.d.ts",
+        "default": "./dist/reorderable-list.js"
       },
       "require": {
-        "types": "./reorderable-list/index.d.cts",
-        "default": "./reorderable-list.cjs"
+        "types": "./dist/reorderable-list/index.d.cts",
+        "default": "./dist/reorderable-list.cjs"
       }
     },
     "./signature": {
       "import": {
-        "types": "./signature/index.d.ts",
-        "default": "./signature.js"
+        "types": "./dist/signature/index.d.ts",
+        "default": "./dist/signature.js"
       },
       "require": {
-        "types": "./signature/index.d.cts",
-        "default": "./signature.cjs"
+        "types": "./dist/signature/index.d.cts",
+        "default": "./dist/signature.cjs"
       }
     }
   }

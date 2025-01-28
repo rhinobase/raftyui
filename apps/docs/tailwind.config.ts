@@ -1,10 +1,13 @@
 import tailwindTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
-import raftyPlugin from "../../packages/plugin/src/index";
+import raftyPlugin from "@rafty/plugin";
 
 export default {
   darkMode: "class",
-  content: ["{components,app}/**/*.{ts,tsx}"],
+  content: [
+    "{components,app}/**/*.{ts,tsx}",
+    "../../packages/{ui,corp}/src/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {

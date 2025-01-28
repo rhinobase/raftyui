@@ -2,14 +2,17 @@
   "name": "docs",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "sharp": "^0.33.5",
+    "flexsearch": "^0.7.43",
     "@algolia/autocomplete-core": "^1.15.1",
+    "@rafty/ui": "workspace:*",
+    "@rafty/corp": "workspace:*",
     "react-highlight-words": "^0.20.0",
     "@heroicons/react": "^2.2.0",
     "@markdoc/markdoc": "^0.4.0",
@@ -31,6 +34,7 @@
     "simple-functional-loader": "^1.2.1"
   },
   "devDependencies": {
+    "@rafty/plugin": "workspace:*",
     "@types/react-highlight-words": "^0.16.7",
     "@tailwindcss/typography": "0.5.16",
     "@types/react": "^18",
