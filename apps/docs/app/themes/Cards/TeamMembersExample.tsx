@@ -99,13 +99,14 @@ function MemberRoleMenu({ label }: { label: string }) {
     if (!role) throw new Error("ID doesn't exist!");
 
     return role;
-  }, ROLES[0]);
+  }, ROLES[0] as Role);
 
   return (
     <Popover open={isOpen} onOpenChange={setOpen}>
       <PopoverTrigger
         variant="outline"
         size="md"
+        // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="combobox"
         aria-expanded={isOpen}
         className="justify-between capitalize"

@@ -11,6 +11,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "plugins": [
       {
         "name": "next"

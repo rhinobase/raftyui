@@ -83,8 +83,8 @@ export function ChatBoxExample({ onClick }: ChatBoxExample) {
     <div className="space-y-6">
       <div className="flex items-center justify-between gap-4">
         <Avatar
-          name={USERS_DATA[3].name}
-          src={`https://api.dicebear.com/7.x/notionists/svg?seed=${USERS_DATA[3].name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
+          name={USERS_DATA[3]?.name}
+          src={`https://api.dicebear.com/7.x/notionists/svg?seed=${USERS_DATA[3]?.name}&backgroundColor=ffdfbf,ffd5dc,c0aede,d1d4f9,b6e3f4`}
         />
         <div>
           <Text className="text-[0.875rem] font-semibold leading-[1.5rem] leading-tight">
