@@ -10,8 +10,12 @@ import { type ElementRef, type PropsWithChildren, forwardRef } from "react";
 import { Button } from "../button/index.js";
 import { useFieldControlContext } from "../field-control/index.js";
 import { InputField } from "../input-field/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export type EditableText = Omit<
   EditableRootProps,
@@ -42,7 +46,7 @@ export const EditableText = forwardRef<
     onValueChange,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -122,7 +126,7 @@ export const editTriggerClasses = cva(
       readOnly: false,
       size: "md",
     },
-  }
+  },
 );
 
 export const editIconClasses = {
@@ -168,7 +172,7 @@ export function EditableItem({
               "hover:bg-secondary-100 border-secondary-300 dark:hover:bg-secondary-700/60 dark:border-secondary-700 data-[disabled]:bg-secondary-100 dark:data-[disabled]:bg-secondary-800 relative cursor-pointer rounded-md border transition-all ease-in-out aria-[readonly]:cursor-default data-[disabled]:cursor-not-allowed",
               className,
               editableTextareaPreviewClasses?.size[size] ??
-                editableTextPreviewClasses.size[size]
+                editableTextPreviewClasses.size[size],
             )}
           >
             <p className="truncate">{previewProps.children}</p>

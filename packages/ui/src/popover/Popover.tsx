@@ -1,14 +1,13 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
 import { Button } from "../button/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type PopoverContext,
   PopoverProvider,
@@ -53,7 +52,7 @@ export const PopoverTrigger = forwardRef<
     size = "md",
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const { isUnstyled: isParentUnstyled } = usePopoverContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -91,7 +90,7 @@ export const popoverContentClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type PopoverContent = ComponentPropsWithoutRef<
@@ -115,7 +114,7 @@ export const PopoverContent = forwardRef<
     arrowClassName,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const { isUnstyled: isParentUnstyled, size } = usePopoverContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -137,7 +136,7 @@ export const PopoverContent = forwardRef<
           <PopoverPrimitive.Arrow
             className={classNames(
               "dark:fill-secondary-800 fill-white",
-              arrowClassName
+              arrowClassName,
             )}
           />
         )}

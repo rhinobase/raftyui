@@ -1,4 +1,5 @@
-import { type SizeType, createContext } from "../utils/index.js";
+import { createContext } from "../utils/client/index.js";
+import type { SizeType } from "../utils/index.js";
 
 export const [StepperProvider, useStepperContext] =
   createContext<StepperContext>({

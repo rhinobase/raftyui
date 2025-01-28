@@ -1,11 +1,15 @@
 "use client";
 import { Editable, type EditableRootProps } from "@ark-ui/react";
-import { type ElementRef, forwardRef } from "react";
+import React, { type ElementRef, forwardRef } from "react";
 import { EditableItem } from "../editable-text/EditableText.js";
 import { useFieldControlContext } from "../field-control/index.js";
 import { InputField } from "../input-field/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export type EditableNumber = Omit<
   EditableRootProps,
@@ -40,7 +44,7 @@ export const EditableNumber = forwardRef<
     isInvalid,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,

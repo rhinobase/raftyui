@@ -7,8 +7,7 @@ import {
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type SegmentedControlContext,
   SegmentedControlProvider,
@@ -28,7 +27,7 @@ export const segmentedControlClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type SegmentedControl = Omit<
@@ -57,7 +56,7 @@ export const SegmentedControl = forwardRef<
     onValueChange,
     ...props
   },
-  forwaredRef
+  forwaredRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -112,7 +111,7 @@ export const segmentedControlItemClasses = cva(
       readonly: false,
       size: "md",
     },
-  }
+  },
 );
 
 export type SegmentedControlItem = SegmentGroupItemProps;
@@ -122,7 +121,7 @@ export const SegmentedControlItem = forwardRef<
   SegmentedControlItem
 >(function SegmentedControlItem(
   { className, children, ...props },
-  forwaredRef
+  forwaredRef,
 ) {
   const { isReadOnly, size } = useSegmentedControlContext();
 
@@ -131,7 +130,7 @@ export const SegmentedControlItem = forwardRef<
       {...props}
       className={classNames(
         segmentedControlItemClasses({ readonly: isReadOnly, size }),
-        className
+        className,
       )}
       ref={forwaredRef}
     >

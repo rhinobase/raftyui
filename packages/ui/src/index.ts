@@ -62,5 +62,5 @@ export * from "./toast/index.js";
 export * from "./toggle-group/index.js";
 export * from "./tooltip/index.js";
 export * from "./tree-view/index.js";
-export * from "./types/index.js";
+export * from "./utils/client/index.js";
 export * from "./utils/index.js";

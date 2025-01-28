@@ -1,13 +1,12 @@
 "use client";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type TooltipContext,
   TooltipProvider,
@@ -74,7 +73,7 @@ export const tooltipContentClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type TooltipContent = ComponentPropsWithoutRef<
@@ -86,7 +85,7 @@ export const TooltipContent = forwardRef<
   TooltipContent
 >(function TooltipContent(
   { children, className, hasAnimation, sideOffset = 4, isArrow, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const _isArrow = getValue(isArrow) ?? true;
   const _hasAnimation = getValue(hasAnimation) ?? true;
@@ -100,7 +99,7 @@ export const TooltipContent = forwardRef<
       sideOffset={sideOffset}
       className={classNames(
         tooltipContentClasses({ size, animated: _hasAnimation }),
-        className
+        className,
       )}
       {...props}
     >

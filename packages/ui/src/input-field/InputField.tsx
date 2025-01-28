@@ -3,8 +3,12 @@ import { cva } from "class-variance-authority";
 import { type InputHTMLAttributes, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control/index.js";
 import { useInputGroupContext } from "../input-group/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const inputFieldClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-100 transition-all placeholder:text-secondary-400 dark:placeholder:text-secondary-500",
@@ -197,7 +201,7 @@ export const inputFieldClasses = cva(
       disabled: false,
       readOnly: false,
     },
-  }
+  },
 );
 
 export type InputField = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
@@ -229,7 +233,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
       isRequired,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -271,7 +275,7 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
             isPrefix: inputGroupContext.isPrefix,
             isSuffix: inputGroupContext.isSuffix,
           }),
-          className
+          className,
         );
 
     const inputProps = {
@@ -285,5 +289,5 @@ export const InputField = forwardRef<HTMLInputElement, InputField>(
     };
 
     return <input {...inputProps} />;
-  }
+  },
 );

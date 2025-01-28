@@ -11,8 +11,12 @@ import {
   type PropsWithChildren,
   forwardRef,
 } from "react";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const toastClasses = cva(
   "w-full drop-shadow-lg flex items-center text-white dark:text-black",
@@ -39,7 +43,7 @@ export const toastClasses = cva(
       severity: "info",
       visible: false,
     },
-  }
+  },
 );
 
 export const toastTitleAndMessageWrapperClasses = cva("", {
@@ -99,7 +103,7 @@ export type Toast = Omit<
 
 export const Toast = forwardRef<HTMLDivElement, Toast>(function Toast(
   { className, severity, visible, title, message, size = "md", ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   let ToastIcon: typeof ExclamationTriangleIcon;
 
@@ -131,7 +135,7 @@ export const Toast = forwardRef<HTMLDivElement, Toast>(function Toast(
       {...props}
       className={classNames(
         toastClasses({ severity, visible: getValue(visible), size }),
-        className
+        className,
       )}
       ref={forwardedRef}
     >

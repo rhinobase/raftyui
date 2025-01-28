@@ -8,8 +8,7 @@ import {
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type SelectContext,
   SelectProvider,
@@ -94,7 +93,7 @@ export const selectClasses = cva(
       readOnly: false,
       invalid: false,
     },
-  }
+  },
 );
 
 export const triggerIconClasses = cva(
@@ -110,7 +109,7 @@ export const triggerIconClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type Select = Omit<
@@ -145,7 +144,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
     placeholder,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -198,7 +197,7 @@ export const Select = forwardRef<HTMLSelectElement, Select>(function Select(
       <div
         className={classNames(
           "group/select relative flex w-max items-center",
-          className
+          className,
         )}
       >
         <Component
@@ -242,7 +241,7 @@ export const SelectItem = forwardRef<HTMLOptionElement, SelectItem>(
         ref={forwardedRef}
       />
     );
-  }
+  },
 );
 
 export const selectItemGroupClasses = cva("not-italic bg-[inherit]", {
@@ -271,5 +270,5 @@ export const SelectItemGroup = forwardRef<HTMLOptGroupElement, SelectItemGroup>(
         ref={forwardedRef}
       />
     );
-  }
+  },
 );

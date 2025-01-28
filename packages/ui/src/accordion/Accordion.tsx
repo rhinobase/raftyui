@@ -7,8 +7,7 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type AccordionContext,
   AccordionProvider,

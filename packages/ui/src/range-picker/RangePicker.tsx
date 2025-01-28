@@ -26,8 +26,12 @@ import {
 import { useFieldControlContext } from "../field-control/index.js";
 import { inputFieldClasses } from "../input-field/index.js";
 import { InputGroup, Suffix } from "../input-group/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 type ValueType = [string] | [string, string] | undefined;
 

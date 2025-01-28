@@ -13,8 +13,12 @@ import { Button } from "../button/index.js";
 import { useFieldControlContext } from "../field-control/index.js";
 import { InputField } from "../input-field/index.js";
 import { InputGroup, Suffix } from "../input-group/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const colorPickerContentClasses = cva(
   "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 border bg-white drop-shadow-lg",

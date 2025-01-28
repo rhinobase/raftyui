@@ -7,8 +7,7 @@ import {
   forwardRef,
 } from "react";
 import { useFieldControlContext } from "../field-control/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type SliderContext,
   SliderProvider,
@@ -37,7 +36,7 @@ export const Slider = forwardRef<
     isLoading,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,
@@ -59,7 +58,7 @@ export const Slider = forwardRef<
     disabled: _disabled,
     className: classNames(
       "relative flex w-full touch-none select-none items-center data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
-      className
+      className,
     ),
   };
 
@@ -79,7 +78,7 @@ export const sliderTrackClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type SliderTrack = ComponentPropsWithoutRef<
@@ -158,7 +157,7 @@ export const sliderThumbClasses = cva(
       colorScheme: "primary",
       size: "md",
     },
-  }
+  },
 );
 
 export type SliderThumb = ComponentPropsWithoutRef<
@@ -176,7 +175,7 @@ export const SliderThumb = forwardRef<
       {...props}
       className={classNames(
         sliderThumbClasses({ size, colorScheme }),
-        className
+        className,
       )}
       ref={forwardedRef}
     />

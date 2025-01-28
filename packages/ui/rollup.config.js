@@ -86,7 +86,7 @@ export default defineConfig({
     "toggle-group": "./src/toggle-group/index.ts",
     tooltip: "./src/tooltip/index.ts",
     "tree-view": "./src/tree-view/index.ts",
-    types: "./src/types/index.ts",
+    helper: "./src/utils/client/index.ts",
     utils: "./src/utils/index.ts",
   },
   output: [

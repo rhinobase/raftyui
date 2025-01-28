@@ -728,6 +728,16 @@
         "types": "./utils/index.d.cts",
         "default": "./utils.cjs"
       }
+    },
+    "./helper": {
+      "import": {
+        "types": "./utils/client/index.d.ts",
+        "default": "./helper.js"
+      },
+      "require": {
+        "types": "./utils/client/index.d.cts",
+        "default": "./helper.cjs"
+      }
     }
   },
   "devDependencies": {

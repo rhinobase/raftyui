@@ -4,8 +4,11 @@ import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
 import { useFieldControlContext } from "../field-control/index.js";
 import { InputField } from "../input-field/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  getValue,
+} from "../utils/index.js";
 
 export const inputClasses = cva("p-0 text-center", {
   variants: {
@@ -56,7 +59,7 @@ export const PinInput = forwardRef<
     isInvalid,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,

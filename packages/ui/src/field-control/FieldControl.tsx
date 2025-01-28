@@ -1,8 +1,7 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import type { ValueOrFunction } from "../types/index.js";
-import { classNames, getValue } from "../utils/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import { type FieldControlContext, FieldControlProvider } from "./context.js";
 
 export const fieldControlClasses = cva("flex w-full", {
@@ -42,7 +41,7 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
       className,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) {
     const required = getValue(isRequired) ?? false;
     const disabled = getValue(isDisabled) ?? false;
@@ -66,7 +65,7 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
           {...props}
           className={classNames(
             fieldControlClasses({ orientation }),
-            className
+            className,
           )}
           ref={forwardedRef}
         >
@@ -74,5 +73,5 @@ export const FieldControl = forwardRef<HTMLDivElement, FieldControl>(
         </div>
       </FieldControlProvider>
     );
-  }
+  },
 );

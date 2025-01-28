@@ -4,8 +4,12 @@ import { type ElementRef, forwardRef } from "react";
 import { EditableItem } from "../editable-text/EditableText.js";
 import { useFieldControlContext } from "../field-control/index.js";
 import { Textarea } from "../textarea/index.js";
-import type { ValueOrFunction } from "../types/index.js";
-import { type SizeType, classNames, getValue } from "../utils/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const editableTextareaPreviewClasses = {
   size: {
@@ -44,7 +48,7 @@ export const EditableTextarea = forwardRef<
     onValueChange,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const fieldControlContext = useFieldControlContext() ?? {
     isDisabled: false,

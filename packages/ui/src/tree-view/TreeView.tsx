@@ -1,7 +1,7 @@
 import { TreeView as ArkTreeView, type TreeViewRootProps } from "@ark-ui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   type ReactNode,
@@ -22,7 +22,7 @@ export const TreeView = forwardRef<
   TreeView
 >(function TreeView(
   { children, size = "md", className, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   return (
     <TreeViewProvider value={{ size }}>
@@ -47,7 +47,7 @@ export const treeViewItemClasses = cva(
         lg: "rounded-md",
       },
     },
-  }
+  },
 );
 
 export type TreeViewItem = ComponentPropsWithoutRef<typeof ArkTreeView.Branch>;
@@ -61,11 +61,11 @@ export const TreeViewItem = forwardRef<
   const validChildren = getValidChildren(children);
 
   const hasChildren = validChildren.some(
-    (child) => child.type.displayName === TreeViewContent.displayName
+    (child) => child.type.displayName === TreeViewContent.displayName,
   );
 
   const items = validChildren.map((child) =>
-    cloneElement(child, { type: hasChildren ? "branch" : "single" })
+    cloneElement(child, { type: hasChildren ? "branch" : "single" }),
   );
 
   if (validChildren.length === 1)
@@ -99,7 +99,7 @@ export const treeViewLabelClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export const treeViewLabelSingleClasses = {
@@ -153,7 +153,7 @@ export const TreeViewLabel = forwardRef<
     type,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const { size } = useTreeViewContext();
 
@@ -165,7 +165,7 @@ export const TreeViewLabel = forwardRef<
           treeViewLabelClasses({ size }),
           // @ts-ignore
           treeViewLabelSingleClasses.size[size],
-          className
+          className,
         )}
         ref={forwardedRef}
       >
@@ -180,7 +180,7 @@ export const TreeViewLabel = forwardRef<
         treeViewLabelClasses({ size }),
         // @ts-ignore
         treeViewLabelBranchClasses.size[size],
-        className
+        className,
       )}
       ref={forwardedRef}
     >
