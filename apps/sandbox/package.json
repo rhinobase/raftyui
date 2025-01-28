@@ -2,8 +2,8 @@
   "name": "sandbox",
   "version": "1.0.0",
   "scripts": {
-    "build": "storybook build",
-    "serve": "storybook dev -p 4400"
+    "dev": "storybook dev -p 4400",
+    "build": "storybook build"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.3",
