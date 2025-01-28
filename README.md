@@ -1,1 +1,1 @@
-[View the README](./packages/ui/README.md)
+docs/README.md
