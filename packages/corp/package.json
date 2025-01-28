@@ -64,6 +64,106 @@
         "types": "./index.d.cts",
         "default": "./index.cjs"
       }
+    },
+    "./cascader": {
+      "import": {
+        "types": "./cascader/index.d.ts",
+        "default": "./cascader.js"
+      },
+      "require": {
+        "types": "./cascader/index.d.cts",
+        "default": "./cascader.cjs"
+      }
+    },
+    "./combobox": {
+      "import": {
+        "types": "./combobox/index.d.ts",
+        "default": "./combobox.js"
+      },
+      "require": {
+        "types": "./combobox/index.d.cts",
+        "default": "./combobox.cjs"
+      }
+    },
+    "./data-table": {
+      "import": {
+        "types": "./data-table/index.d.ts",
+        "default": "./data-table.js"
+      },
+      "require": {
+        "types": "./data-table/index.d.cts",
+        "default": "./data-table.cjs"
+      }
+    },
+    "./json-explorer": {
+      "import": {
+        "types": "./json-explorer/index.d.ts",
+        "default": "./json-explorer.js"
+      },
+      "require": {
+        "types": "./json-explorer/index.d.cts",
+        "default": "./json-explorer.cjs"
+      }
+    },
+    "./key-value": {
+      "import": {
+        "types": "./key-value/index.d.ts",
+        "default": "./key-value.js"
+      },
+      "require": {
+        "types": "./key-value/index.d.cts",
+        "default": "./key-value.cjs"
+      }
+    },
+    "./list-box": {
+      "import": {
+        "types": "./list-box/index.d.ts",
+        "default": "./list-box.js"
+      },
+      "require": {
+        "types": "./list-box/index.d.cts",
+        "default": "./list-box.cjs"
+      }
+    },
+    "./pagination": {
+      "import": {
+        "types": "./pagination/index.d.ts",
+        "default": "./pagination.js"
+      },
+      "require": {
+        "types": "./pagination/index.d.cts",
+        "default": "./pagination.cjs"
+      }
+    },
+    "./qr-code": {
+      "import": {
+        "types": "./qr-code/index.d.ts",
+        "default": "./qr-code.js"
+      },
+      "require": {
+        "types": "./qr-code/index.d.cts",
+        "default": "./qr-code.cjs"
+      }
+    },
+    "./reorderable-list": {
+      "import": {
+        "types": "./reorderable-list/index.d.ts",
+        "default": "./reorderable-list.js"
+      },
+      "require": {
+        "types": "./reorderable-list/index.d.cts",
+        "default": "./reorderable-list.cjs"
+      }
+    },
+    "./signature": {
+      "import": {
+        "types": "./signature/index.d.ts",
+        "default": "./signature.js"
+      },
+      "require": {
+        "types": "./signature/index.d.cts",
+        "default": "./signature.cjs"
+      }
     }
   }
 }
