@@ -1,5 +1,5 @@
+import raftyPlugin from "@rafty/plugin";
 import type { Config } from "tailwindcss";
-import raftyPlugin from "../../packages/plugin/src/index";
 
 export default {
   darkMode: "class",
