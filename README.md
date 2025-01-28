@@ -1,1 +1,1 @@
-docs/README.md
+./packages/ui/README.md

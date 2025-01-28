@@ -7,8 +7,10 @@
   "module": "./dist/index.js",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
-    "build": "rollup -c=./rollup.config.js"
+    "build": "rollup -c=./rollup.config.js",
+    "publish": "pnpm publish"
   },
   "keywords": [
     "plugin",
