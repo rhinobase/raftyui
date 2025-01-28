@@ -12,5 +12,10 @@
     "types": ["node"]
   },
   "exclude": ["src/**/*.stories.tsx"],
-  "include": ["src/**/*.{js,jsx,ts,tsx}"]
+  "include": ["src/**/*.{js,jsx,ts,tsx}"],
+  "references": [
+    {
+      "path": "./tsconfig.build.json"
+    }
+  ]
 }
