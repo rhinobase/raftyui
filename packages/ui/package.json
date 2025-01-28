@@ -66,7 +66,7 @@
   "peerDependencies": {
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "react": "^18.2.0"
+    "react": "^18"
   },
   "exports": {
     ".": {
@@ -82,651 +82,651 @@
     "./accordion": {
       "import": {
         "types": "./accordion/index.d.ts",
-        "default": "./accordion/index.js"
+        "default": "./accordion.js"
       },
       "require": {
         "types": "./accordion/index.d.cts",
-        "default": "./accordion/index.cjs"
+        "default": "./accordion.cjs"
       }
     },
     "./alert": {
       "import": {
         "types": "./alert/index.d.ts",
-        "default": "./alert/index.js"
+        "default": "./alert.js"
       },
       "require": {
         "types": "./alert/index.d.cts",
-        "default": "./alert/index.cjs"
+        "default": "./alert.cjs"
       }
     },
     "./alert-dialog": {
       "import": {
         "types": "./alert-dialog/index.d.ts",
-        "default": "./alert-dialog/index.js"
+        "default": "./alert-dialog.js"
       },
       "require": {
         "types": "./alert-dialog/index.d.cts",
-        "default": "./alert-dialog/index.cjs"
+        "default": "./alert-dialog.cjs"
       }
     },
     "./avatar": {
       "import": {
         "types": "./avatar/index.d.ts",
-        "default": "./avatar/index.js"
+        "default": "./avatar.js"
       },
       "require": {
         "types": "./avatar/index.d.cts",
-        "default": "./avatar/index.cjs"
+        "default": "./avatar.cjs"
       }
     },
     "./avatar-group": {
       "import": {
         "types": "./avatar-group/index.d.ts",
-        "default": "./avatar-group/index.js"
+        "default": "./avatar-group.js"
       },
       "require": {
         "types": "./avatar-group/index.d.cts",
-        "default": "./avatar-group/index.cjs"
+        "default": "./avatar-group.cjs"
       }
     },
     "./badge": {
       "import": {
         "types": "./badge/index.d.ts",
-        "default": "./badge/index.js"
+        "default": "./badge.js"
       },
       "require": {
         "types": "./badge/index.d.cts",
-        "default": "./badge/index.cjs"
+        "default": "./badge.cjs"
       }
     },
     "./breadcrumbs": {
       "import": {
         "types": "./breadcrumbs/index.d.ts",
-        "default": "./breadcrumbs/index.js"
+        "default": "./breadcrumbs.js"
       },
       "require": {
         "types": "./breadcrumbs/index.d.cts",
-        "default": "./breadcrumbs/index.cjs"
+        "default": "./breadcrumbs.cjs"
       }
     },
     "./button": {
       "import": {
         "types": "./button/index.d.ts",
-        "default": "./button/index.js"
+        "default": "./button.js"
       },
       "require": {
         "types": "./button/index.d.cts",
-        "default": "./button/index.cjs"
+        "default": "./button.cjs"
       }
     },
     "./calendar": {
       "import": {
         "types": "./calendar/index.d.ts",
-        "default": "./calendar/index.js"
+        "default": "./calendar.js"
       },
       "require": {
         "types": "./calendar/index.d.cts",
-        "default": "./calendar/index.cjs"
+        "default": "./calendar.cjs"
       }
     },
     "./card": {
       "import": {
         "types": "./card/index.d.ts",
-        "default": "./card/index.js"
+        "default": "./card.js"
       },
       "require": {
         "types": "./card/index.d.cts",
-        "default": "./card/index.cjs"
+        "default": "./card.cjs"
       }
     },
     "./checkbox": {
       "import": {
         "types": "./checkbox/index.d.ts",
-        "default": "./checkbox/index.js"
+        "default": "./checkbox.js"
       },
       "require": {
         "types": "./checkbox/index.d.cts",
-        "default": "./checkbox/index.cjs"
+        "default": "./checkbox.cjs"
       }
     },
     "./color-picker": {
       "import": {
         "types": "./color-picker/index.d.ts",
-        "default": "./color-picker/index.js"
+        "default": "./color-picker.js"
       },
       "require": {
         "types": "./color-picker/index.d.cts",
-        "default": "./color-picker/index.cjs"
+        "default": "./color-picker.cjs"
       }
     },
     "./command": {
       "import": {
         "types": "./command/index.d.ts",
-        "default": "./command/index.js"
+        "default": "./command.js"
       },
       "require": {
         "types": "./command/index.d.cts",
-        "default": "./command/index.cjs"
+        "default": "./command.cjs"
       }
     },
     "./context-menu": {
       "import": {
         "types": "./context-menu/index.d.ts",
-        "default": "./context-menu/index.js"
+        "default": "./context-menu.js"
       },
       "require": {
         "types": "./context-menu/index.d.cts",
-        "default": "./context-menu/index.cjs"
+        "default": "./context-menu.cjs"
       }
     },
     "./currency-input": {
       "import": {
         "types": "./currency-input/index.d.ts",
-        "default": "./currency-input/index.js"
+        "default": "./currency-input.js"
       },
       "require": {
         "types": "./currency-input/index.d.cts",
-        "default": "./currency-input/index.cjs"
+        "default": "./currency-input.cjs"
       }
     },
     "./date-picker": {
       "import": {
         "types": "./date-picker/index.d.ts",
-        "default": "./date-picker/index.js"
+        "default": "./date-picker.js"
       },
       "require": {
         "types": "./date-picker/index.d.cts",
-        "default": "./date-picker/index.cjs"
+        "default": "./date-picker.cjs"
       }
     },
     "./dialog": {
       "import": {
         "types": "./dialog/index.d.ts",
-        "default": "./dialog/index.js"
+        "default": "./dialog.js"
       },
       "require": {
         "types": "./dialog/index.d.cts",
-        "default": "./dialog/index.cjs"
+        "default": "./dialog.cjs"
       }
     },
     "./drawer": {
       "import": {
         "types": "./drawer/index.d.ts",
-        "default": "./drawer/index.js"
+        "default": "./drawer.js"
       },
       "require": {
         "types": "./drawer/index.d.cts",
-        "default": "./drawer/index.cjs"
+        "default": "./drawer.cjs"
       }
     },
     "./editable-number": {
       "import": {
         "types": "./editable-number/index.d.ts",
-        "default": "./editable-number/index.js"
+        "default": "./editable-number.js"
       },
       "require": {
         "types": "./editable-number/index.d.cts",
-        "default": "./editable-number/index.cjs"
+        "default": "./editable-number.cjs"
       }
     },
     "./editable-text": {
       "import": {
         "types": "./editable-text/index.d.ts",
-        "default": "./editable-text/index.js"
+        "default": "./editable-text.js"
       },
       "require": {
         "types": "./editable-text/index.d.cts",
-        "default": "./editable-text/index.cjs"
+        "default": "./editable-text.cjs"
       }
     },
     "./editable-textarea": {
       "import": {
         "types": "./editable-textarea/index.d.ts",
-        "default": "./editable-textarea/index.js"
+        "default": "./editable-textarea.js"
       },
       "require": {
         "types": "./editable-textarea/index.d.cts",
-        "default": "./editable-textarea/index.cjs"
+        "default": "./editable-textarea.cjs"
       }
     },
     "./error-message": {
       "import": {
         "types": "./error-message/index.d.ts",
-        "default": "./error-message/index.js"
+        "default": "./error-message.js"
       },
       "require": {
         "types": "./error-message/index.d.cts",
-        "default": "./error-message/index.cjs"
+        "default": "./error-message.cjs"
       }
     },
     "./field-control": {
       "import": {
         "types": "./field-control/index.d.ts",
-        "default": "./field-control/index.js"
+        "default": "./field-control.js"
       },
       "require": {
         "types": "./field-control/index.d.cts",
-        "default": "./field-control/index.cjs"
+        "default": "./field-control.cjs"
       }
     },
     "./field-wrapper": {
       "import": {
         "types": "./field-wrapper/index.d.ts",
-        "default": "./field-wrapper/index.js"
+        "default": "./field-wrapper.js"
       },
       "require": {
         "types": "./field-wrapper/index.d.cts",
-        "default": "./field-wrapper/index.cjs"
+        "default": "./field-wrapper.cjs"
       }
     },
     "./file-upload": {
       "import": {
         "types": "./file-upload/index.d.ts",
-        "default": "./file-upload/index.js"
+        "default": "./file-upload.js"
       },
       "require": {
         "types": "./file-upload/index.d.cts",
-        "default": "./file-upload/index.cjs"
+        "default": "./file-upload.cjs"
       }
     },
     "./hooks": {
       "import": {
         "types": "./hooks/index.d.ts",
-        "default": "./hooks/index.js"
+        "default": "./hooks.js"
       },
       "require": {
         "types": "./hooks/index.d.cts",
-        "default": "./hooks/index.cjs"
+        "default": "./hooks.cjs"
       }
     },
     "./hover-card": {
       "import": {
         "types": "./hover-card/index.d.ts",
-        "default": "./hover-card/index.js"
+        "default": "./hover-card.js"
       },
       "require": {
         "types": "./hover-card/index.d.cts",
-        "default": "./hover-card/index.cjs"
+        "default": "./hover-card.cjs"
       }
     },
     "./input-field": {
       "import": {
         "types": "./input-field/index.d.ts",
-        "default": "./input-field/index.js"
+        "default": "./input-field.js"
       },
       "require": {
         "types": "./input-field/index.d.cts",
-        "default": "./input-field/index.cjs"
+        "default": "./input-field.cjs"
       }
     },
     "./input-group": {
       "import": {
         "types": "./input-group/index.d.ts",
-        "default": "./input-group/index.js"
+        "default": "./input-group.js"
       },
       "require": {
         "types": "./input-group/index.d.cts",
-        "default": "./input-group/index.cjs"
+        "default": "./input-group.cjs"
       }
     },
     "./kbd": {
       "import": {
         "types": "./kbd/index.d.ts",
-        "default": "./kbd/index.js"
+        "default": "./kbd.js"
       },
       "require": {
         "types": "./kbd/index.d.cts",
-        "default": "./kbd/index.cjs"
+        "default": "./kbd.cjs"
       }
     },
     "./label": {
       "import": {
         "types": "./label/index.d.ts",
-        "default": "./label/index.js"
+        "default": "./label.js"
       },
       "require": {
         "types": "./label/index.d.cts",
-        "default": "./label/index.cjs"
+        "default": "./label.cjs"
       }
     },
     "./list": {
       "import": {
         "types": "./list/index.d.ts",
-        "default": "./list/index.js"
+        "default": "./list.js"
       },
       "require": {
         "types": "./list/index.d.cts",
-        "default": "./list/index.cjs"
+        "default": "./list.cjs"
       }
     },
     "./menu": {
       "import": {
         "types": "./menu/index.d.ts",
-        "default": "./menu/index.js"
+        "default": "./menu.js"
       },
       "require": {
         "types": "./menu/index.d.cts",
-        "default": "./menu/index.cjs"
+        "default": "./menu.cjs"
       }
     },
     "./menubar": {
       "import": {
         "types": "./menubar/index.d.ts",
-        "default": "./menubar/index.js"
+        "default": "./menubar.js"
       },
       "require": {
         "types": "./menubar/index.d.cts",
-        "default": "./menubar/index.cjs"
+        "default": "./menubar.cjs"
       }
     },
     "./navigation-menu": {
       "import": {
         "types": "./navigation-menu/index.d.ts",
-        "default": "./navigation-menu/index.js"
+        "default": "./navigation-menu.js"
       },
       "require": {
         "types": "./navigation-menu/index.d.cts",
-        "default": "./navigation-menu/index.cjs"
+        "default": "./navigation-menu.cjs"
       }
     },
     "./password-field": {
       "import": {
         "types": "./password-field/index.d.ts",
-        "default": "./password-field/index.js"
+        "default": "./password-field.js"
       },
       "require": {
         "types": "./password-field/index.d.cts",
-        "default": "./password-field/index.cjs"
+        "default": "./password-field.cjs"
       }
     },
     "./percentage-input": {
       "import": {
         "types": "./percentage-input/index.d.ts",
-        "default": "./percentage-input/index.js"
+        "default": "./percentage-input.js"
       },
       "require": {
         "types": "./percentage-input/index.d.cts",
-        "default": "./percentage-input/index.cjs"
+        "default": "./percentage-input.cjs"
       }
     },
     "./pin-input": {
       "import": {
         "types": "./pin-input/index.d.ts",
-        "default": "./pin-input/index.js"
+        "default": "./pin-input.js"
       },
       "require": {
         "types": "./pin-input/index.d.cts",
-        "default": "./pin-input/index.cjs"
+        "default": "./pin-input.cjs"
       }
     },
     "./popover": {
       "import": {
         "types": "./popover/index.d.ts",
-        "default": "./popover/index.js"
+        "default": "./popover.js"
       },
       "require": {
         "types": "./popover/index.d.cts",
-        "default": "./popover/index.cjs"
+        "default": "./popover.cjs"
       }
     },
     "./progress": {
       "import": {
         "types": "./progress/index.d.ts",
-        "default": "./progress/index.js"
+        "default": "./progress.js"
       },
       "require": {
         "types": "./progress/index.d.cts",
-        "default": "./progress/index.cjs"
+        "default": "./progress.cjs"
       }
     },
     "./radio": {
       "import": {
         "types": "./radio/index.d.ts",
-        "default": "./radio/index.js"
+        "default": "./radio.js"
       },
       "require": {
         "types": "./radio/index.d.cts",
-        "default": "./radio/index.cjs"
+        "default": "./radio.cjs"
       }
     },
     "./range-picker": {
       "import": {
         "types": "./range-picker/index.d.ts",
-        "default": "./range-picker/index.js"
+        "default": "./range-picker.js"
       },
       "require": {
         "types": "./range-picker/index.d.cts",
-        "default": "./range-picker/index.cjs"
+        "default": "./range-picker.cjs"
       }
     },
     "./rating": {
       "import": {
         "types": "./rating/index.d.ts",
-        "default": "./rating/index.js"
+        "default": "./rating.js"
       },
       "require": {
         "types": "./rating/index.d.cts",
-        "default": "./rating/index.cjs"
+        "default": "./rating.cjs"
       }
     },
     "./scrollarea": {
       "import": {
         "types": "./scrollarea/index.d.ts",
-        "default": "./scrollarea/index.js"
+        "default": "./scrollarea.js"
       },
       "require": {
         "types": "./scrollarea/index.d.cts",
-        "default": "./scrollarea/index.cjs"
+        "default": "./scrollarea.cjs"
       }
     },
     "./search-field": {
       "import": {
         "types": "./search-field/index.d.ts",
-        "default": "./search-field/index.js"
+        "default": "./search-field.js"
       },
       "require": {
         "types": "./search-field/index.d.cts",
-        "default": "./search-field/index.cjs"
+        "default": "./search-field.cjs"
       }
     },
     "./segmented-control": {
       "import": {
         "types": "./segmented-control/index.d.ts",
-        "default": "./segmented-control/index.js"
+        "default": "./segmented-control.js"
       },
       "require": {
         "types": "./segmented-control/index.d.cts",
-        "default": "./segmented-control/index.cjs"
+        "default": "./segmented-control.cjs"
       }
     },
     "./select": {
       "import": {
         "types": "./select/index.d.ts",
-        "default": "./select/index.js"
+        "default": "./select.js"
       },
       "require": {
         "types": "./select/index.d.cts",
-        "default": "./select/index.cjs"
+        "default": "./select.cjs"
       }
     },
     "./skeleton": {
       "import": {
         "types": "./skeleton/index.d.ts",
-        "default": "./skeleton/index.js"
+        "default": "./skeleton.js"
       },
       "require": {
         "types": "./skeleton/index.d.cts",
-        "default": "./skeleton/index.cjs"
+        "default": "./skeleton.cjs"
       }
     },
     "./slider": {
       "import": {
         "types": "./slider/index.d.ts",
-        "default": "./slider/index.js"
+        "default": "./slider.js"
       },
       "require": {
         "types": "./slider/index.d.cts",
-        "default": "./slider/index.cjs"
+        "default": "./slider.cjs"
       }
     },
     "./spinner": {
       "import": {
         "types": "./spinner/index.d.ts",
-        "default": "./spinner/index.js"
+        "default": "./spinner.js"
       },
       "require": {
         "types": "./spinner/index.d.cts",
-        "default": "./spinner/index.cjs"
+        "default": "./spinner.cjs"
       }
     },
     "./stat": {
       "import": {
         "types": "./stat/index.d.ts",
-        "default": "./stat/index.js"
+        "default": "./stat.js"
       },
       "require": {
         "types": "./stat/index.d.cts",
-        "default": "./stat/index.cjs"
+        "default": "./stat.cjs"
       }
     },
     "./stepper": {
       "import": {
         "types": "./stepper/index.d.ts",
-        "default": "./stepper/index.js"
+        "default": "./stepper.js"
       },
       "require": {
         "types": "./stepper/index.d.cts",
-        "default": "./stepper/index.cjs"
+        "default": "./stepper.cjs"
       }
     },
     "./switch": {
       "import": {
         "types": "./switch/index.d.ts",
-        "default": "./switch/index.js"
+        "default": "./switch.js"
       },
       "require": {
         "types": "./switch/index.d.cts",
-        "default": "./switch/index.cjs"
+        "default": "./switch.cjs"
       }
     },
     "./tab": {
       "import": {
         "types": "./tab/index.d.ts",
-        "default": "./tab/index.js"
+        "default": "./tab.js"
       },
       "require": {
         "types": "./tab/index.d.cts",
-        "default": "./tab/index.cjs"
+        "default": "./tab.cjs"
       }
     },
     "./table": {
       "import": {
         "types": "./table/index.d.ts",
-        "default": "./table/index.js"
+        "default": "./table.js"
       },
       "require": {
         "types": "./table/index.d.cts",
-        "default": "./table/index.cjs"
+        "default": "./table.cjs"
       }
     },
     "./tag": {
       "import": {
         "types": "./tag/index.d.ts",
-        "default": "./tag/index.js"
+        "default": "./tag.js"
       },
       "require": {
         "types": "./tag/index.d.cts",
-        "default": "./tag/index.cjs"
+        "default": "./tag.cjs"
       }
     },
     "./tag-field": {
       "import": {
         "types": "./tag-field/index.d.ts",
-        "default": "./tag-field/index.js"
+        "default": "./tag-field.js"
       },
       "require": {
         "types": "./tag-field/index.d.cts",
-        "default": "./tag-field/index.cjs"
+        "default": "./tag-field.cjs"
       }
     },
     "./text": {
       "import": {
         "types": "./text/index.d.ts",
-        "default": "./text/index.js"
+        "default": "./text.js"
       },
       "require": {
         "types": "./text/index.d.cts",
-        "default": "./text/index.cjs"
+        "default": "./text.cjs"
       }
     },
     "./textarea": {
       "import": {
         "types": "./textarea/index.d.ts",
-        "default": "./textarea/index.js"
+        "default": "./textarea.js"
       },
       "require": {
         "types": "./textarea/index.d.cts",
-        "default": "./textarea/index.cjs"
+        "default": "./textarea.cjs"
       }
     },
     "./timeline": {
       "import": {
         "types": "./timeline/index.d.ts",
-        "default": "./timeline/index.js"
+        "default": "./timeline.js"
       },
       "require": {
         "types": "./timeline/index.d.cts",
-        "default": "./timeline/index.cjs"
+        "default": "./timeline.cjs"
       }
     },
     "./toast": {
       "import": {
         "types": "./toast/index.d.ts",
-        "default": "./toast/index.js"
+        "default": "./toast.js"
       },
       "require": {
         "types": "./toast/index.d.cts",
-        "default": "./toast/index.cjs"
+        "default": "./toast.cjs"
       }
     },
     "./toggle-group": {
       "import": {
         "types": "./toggle-group/index.d.ts",
-        "default": "./toggle-group/index.js"
+        "default": "./toggle-group.js"
       },
       "require": {
         "types": "./toggle-group/index.d.cts",
-        "default": "./toggle-group/index.cjs"
+        "default": "./toggle-group.cjs"
       }
     },
     "./tooltip": {
       "import": {
         "types": "./tooltip/index.d.ts",
-        "default": "./tooltip/index.js"
+        "default": "./tooltip.js"
       },
       "require": {
         "types": "./tooltip/index.d.cts",
-        "default": "./tooltip/index.cjs"
+        "default": "./tooltip.cjs"
       }
     },
     "./tree-view": {
       "import": {
         "types": "./tree-view/index.d.ts",
-        "default": "./tree-view/index.js"
+        "default": "./tree-view.js"
       },
       "require": {
         "types": "./tree-view/index.d.cts",
-        "default": "./tree-view/index.cjs"
+        "default": "./tree-view.cjs"
       }
     },
     "./utils": {
       "import": {
         "types": "./utils/index.d.ts",
-        "default": "./utils/index.js"
+        "default": "./utils.js"
       },
       "require": {
         "types": "./utils/index.d.cts",
-        "default": "./utils/index.cjs"
+        "default": "./utils.cjs"
       }
     }
   },
