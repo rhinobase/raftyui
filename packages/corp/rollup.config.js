@@ -82,7 +82,7 @@ export default defineConfig({
     }),
     commonjs(),
     {
-      name: "rollup-plugin-nx-analyzer",
+      name: "rollup-plugin-analyzer",
       renderChunk(source, chunk) {
         const sourceBytes = formatBytes(source.length);
         const fileName = chunk.fileName;
