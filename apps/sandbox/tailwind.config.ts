@@ -5,7 +5,7 @@ export default {
   darkMode: "class",
   content: [
     "./.storybook/preview.tsx",
-    "../../packages/{ui,corp}/**/*.{tsx,ts}",
+    "../../packages/{ui,corp}/src/**/*.{ts,tsx}",
   ],
   plugins: [raftyPlugin],
 } satisfies Config;

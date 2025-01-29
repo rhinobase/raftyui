@@ -6,9 +6,9 @@
     "build": "storybook build"
   },
   "devDependencies": {
-    "@hookform/devtools": "^4.3.3",
     "@hookform/resolvers": "^3.10.0",
     "@rafty/plugin": "workspace:*",
+    "@rafty/ui": "workspace:*",
     "@storybook/addon-essentials": "^8.5.2",
     "@storybook/manager-api": "^8.5.2",
     "@storybook/react-vite": "^8.5.2",

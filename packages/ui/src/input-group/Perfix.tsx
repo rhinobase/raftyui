@@ -8,7 +8,7 @@ export type Prefix = HTMLAttributes<HTMLDivElement>;
 
 export const Prefix = forwardRef<HTMLDivElement, Prefix>(function Prefix(
   { className, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const { size } = useInputGroupContext();
 
@@ -20,7 +20,7 @@ export const Prefix = forwardRef<HTMLDivElement, Prefix>(function Prefix(
         "pointer-events-none absolute left-0 top-0 z-10 flex h-full select-none items-center justify-center",
         // @ts-ignore
         prefixAndSuffixCommonClasses.size[size],
-        className
+        className,
       )}
       ref={forwardedRef}
     />

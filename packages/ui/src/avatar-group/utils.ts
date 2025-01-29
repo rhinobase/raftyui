@@ -5,7 +5,7 @@ import type { AvatarGroupContext } from "./context.js";
  */
 export function calculateWidth(
   size: AvatarGroupContext["size"],
-  length: number
+  length: number,
 ) {
   switch (size) {
     case "sm":

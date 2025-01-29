@@ -35,7 +35,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, Breadcrumbs>(
         </nav>
       </BreadcrumbsProvider>
     );
-  }
+  },
 );
 
 export const breadcrumbsDividerClasses = cva(
@@ -51,7 +51,7 @@ export const breadcrumbsDividerClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type BreadcrumbDivider = HTMLAttributes<HTMLLIElement>;
@@ -59,7 +59,7 @@ export type BreadcrumbDivider = HTMLAttributes<HTMLLIElement>;
 export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
   function BreadcrumbDivider(
     { children = "/", className, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const { size } = useBreadcrumbsContext();
     return (
@@ -71,7 +71,7 @@ export const BreadcrumbDivider = forwardRef<HTMLLIElement, BreadcrumbDivider>(
         {children}
       </ListItem>
     );
-  }
+  },
 );
 
 export const breadcrumbsItemClasses = cva("rounded font-medium leading-tight", {
@@ -100,7 +100,7 @@ export type BreadcrumbItem = HTMLAttributes<HTMLLIElement> & {
 export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
   function BreadcrumbItem(
     { className, isUnstyled, isActive, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const { size } = useBreadcrumbsContext();
 
@@ -118,11 +118,11 @@ export const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItem>(
                   colorScheme: isActive ? "primary" : "secondary",
                 }),
                 breadcrumbsItemClasses({ size, active: isActive }),
-                className
+                className,
               )
         }
         ref={forwardedRef}
       />
     );
-  }
+  },
 );

@@ -17,7 +17,7 @@ export const avatarClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type Avatar = {
@@ -29,7 +29,7 @@ export type Avatar = {
 
 export const Avatar = forwardRef<HTMLDivElement, Avatar>(function Avatar(
   { name, src, size = "md", className, isUnstyled = false, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const context = useAvatarGroupContext() ?? {
     size,
@@ -52,7 +52,7 @@ export const Avatar = forwardRef<HTMLDivElement, Avatar>(function Avatar(
         <img
           alt={name}
           src={`https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(
-            name
+            name,
           )}`}
           className="size-full object-cover"
         />

@@ -36,7 +36,7 @@ export type PercentageInput = Omit<
 export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
   function PercentageInput(
     { size = "md", onChange, onKeyDown, onBlur, className, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const fieldControlContext = useFieldControlContext() ?? {
       isDisabled: false,
@@ -69,7 +69,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
           onChange={(event) => {
             const valueAsString = event.currentTarget.value.replace(
               /[^%.0-9]/g,
-              ""
+              "",
             );
 
             onChange?.(valueAsString);
@@ -110,7 +110,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
               aria-controls={ID}
               onClick={() => {
                 const valueAsNumber = Number(
-                  (props.value ?? "0").replace(/%/g, "")
+                  (props.value ?? "0").replace(/%/g, ""),
                 );
                 const val = valueAsNumber + 1;
 
@@ -128,7 +128,7 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
               aria-controls={ID}
               onClick={() => {
                 const valueAsNumber = Number(
-                  (props.value ?? "0").replace(/%/g, "")
+                  (props.value ?? "0").replace(/%/g, ""),
                 );
                 const val = valueAsNumber - 1;
 
@@ -142,5 +142,5 @@ export const PercentageInput = forwardRef<HTMLInputElement, PercentageInput>(
         </Suffix>
       </InputGroup>
     );
-  }
+  },
 );

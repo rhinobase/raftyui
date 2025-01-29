@@ -8,7 +8,7 @@ export type OrderedList = OlHTMLAttributes<HTMLOListElement> & {
 export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
   function OrderedList(
     { className, children, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     return (
       <ol
@@ -23,5 +23,5 @@ export const OrderedList = forwardRef<HTMLOListElement, OrderedList>(
         {children}
       </ol>
     );
-  }
+  },
 );

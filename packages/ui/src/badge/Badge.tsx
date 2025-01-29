@@ -31,7 +31,7 @@ export type Badge = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
 
 export const Badge = forwardRef<HTMLDivElement, Badge>(function Badge(
   { className, size = "md", status = "primary", ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   return (
     <div

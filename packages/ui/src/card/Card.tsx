@@ -40,7 +40,7 @@ export const Card = forwardRef<HTMLDivElement, Card>(function Card(
     children,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const validChildren = getValidChildren(children);
 
@@ -54,7 +54,7 @@ export const Card = forwardRef<HTMLDivElement, Card>(function Card(
 
       return prev;
     },
-    [false, false]
+    [false, false],
   );
 
   return (
@@ -101,7 +101,7 @@ export type CardHeader = HTMLAttributes<HTMLDivElement> & {
 export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
   function CardHeader(
     { children, className, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const { isUnstyled: isParentUnstyled, size } = useCardContext();
     const unstyle = isParentUnstyled || isUnstyled;
@@ -119,7 +119,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeader>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardHeader.displayName = "CardHeader";
 
@@ -209,7 +209,7 @@ export type CardContent = HTMLAttributes<HTMLDivElement> & {
 export const CardContent = forwardRef<HTMLDivElement, CardContent>(
   function CardContent(
     { children, className, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const { isUnstyled: isParentUnstyled, size, has } = useCardContext();
     const unstyle = isParentUnstyled || isUnstyled;
@@ -226,7 +226,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContent>(
                   hasHeader: has.header,
                   hasFooter: has.footer,
                 }),
-                className
+                className,
               )
         }
         ref={forwardedRef}
@@ -234,7 +234,7 @@ export const CardContent = forwardRef<HTMLDivElement, CardContent>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardContent.displayName = "CardContent";
 
@@ -258,7 +258,7 @@ export type CardFooter = HTMLAttributes<HTMLDivElement> & {
 export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
   function CardFooter(
     { children, className, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const { isUnstyled: isParentUnstyled, size } = useCardContext();
     const unstyle = isParentUnstyled || isUnstyled;
@@ -276,6 +276,6 @@ export const CardFooter = forwardRef<HTMLDivElement, CardFooter>(
         {children}
       </div>
     );
-  }
+  },
 );
 CardFooter.displayName = "CardFooter";

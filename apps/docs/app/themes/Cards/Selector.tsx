@@ -30,6 +30,7 @@ export function Selector({ value, children }: Selector) {
     <Popover open={isOpen} onOpenChange={setOpen} modal>
       <PopoverTrigger
         variant="outline"
+        // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="combobox"
         aria-expanded={isOpen}
         className="w-full justify-between capitalize"

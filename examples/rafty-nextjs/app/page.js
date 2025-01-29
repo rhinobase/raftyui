@@ -71,14 +71,16 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                Docs" "
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  &gt;
-                </span></h4>
+                  Docs" "
+                  <span className="inline-block transition-transform group-hover:translate-x-1">
+                    &gt;
+                  </span>
+                </h4>
               </CardHeader>
               <CardContent>
                 <p className="text-secondary-400">
-                Find in-depth information about @rafty/ui features and API.</p>
+                  Find in-depth information about @rafty/ui features and API.
+                </p>
               </CardContent>
             </Card>
           </a>
@@ -91,14 +93,16 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                Themes" "
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  &gt;
-                </span></h4>
+                  Themes" "
+                  <span className="inline-block transition-transform group-hover:translate-x-1">
+                    &gt;
+                  </span>
+                </h4>
               </CardHeader>
               <CardContent>
                 <p className="text-secondary-400">
-                Check out components across different themes.</p>
+                  Check out components across different themes.
+                </p>
               </CardContent>
             </Card>
           </a>
@@ -112,14 +116,16 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                Templates" "
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  &gt;
-                </span></h4>
+                  Templates" "
+                  <span className="inline-block transition-transform group-hover:translate-x-1">
+                    &gt;
+                  </span>
+                </h4>
               </CardHeader>
               <CardContent>
                 <p className="text-secondary-400">
-                A collection of example, boilerplates, and scaffolds.</p>
+                  A collection of example, boilerplates, and scaffolds.
+                </p>
               </CardContent>
             </Card>
           </a>
@@ -133,14 +139,16 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                Components" "
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  &gt;
-                </span></h4>
+                  Components" "
+                  <span className="inline-block transition-transform group-hover:translate-x-1">
+                    &gt;
+                  </span>
+                </h4>
               </CardHeader>
               <CardContent>
                 <p className="text-secondary-400">
-                Prebuilt components to help you build your projects faster.</p>
+                  Prebuilt components to help you build your projects faster.
+                </p>
               </CardContent>
             </Card>
           </a>

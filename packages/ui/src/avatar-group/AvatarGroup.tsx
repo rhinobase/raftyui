@@ -25,7 +25,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
       isUnstyled = false,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) {
     const validChildren = getValidChildren(children);
 
@@ -70,5 +70,5 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroup>(
         </div>
       </AvatarGroupProvider>
     );
-  }
+  },
 );

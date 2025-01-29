@@ -1,6 +1,6 @@
+import raftyPlugin from "@rafty/plugin";
 import tailwindTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
-import raftyPlugin from "@rafty/plugin";
 
 export default {
   darkMode: "class",

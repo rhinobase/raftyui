@@ -1,7 +1,7 @@
 "use client";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type HTMLAttributes, type ReactNode, forwardRef } from "react";
+import React, { type HTMLAttributes, type ReactNode, forwardRef } from "react";
 import { classNames, eventHandler } from "../utils/index.js";
 import {
   type StepperContext,
@@ -21,7 +21,7 @@ export const stepperClasses = cva(
     defaultVariants: {
       direction: "horizontal",
     },
-  }
+  },
 );
 
 export type StepType = {
@@ -56,7 +56,7 @@ export const Stepper = forwardRef<HTMLDivElement, Stepper>(function Stepper(
     className,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const handleSelect = (value: number) =>
     eventHandler(() => onValueChange?.(value));
@@ -134,7 +134,7 @@ export const stepperItemClasses = cva(
       current: false,
       size: "md",
     },
-  }
+  },
 );
 
 export const stepperItemIconClasses = cva(
@@ -178,7 +178,7 @@ export const stepperItemIconClasses = cva(
       incomplete: false,
       size: "md",
     },
-  }
+  },
 );
 
 export const contentWrapperClasses = cva("", {
@@ -232,6 +232,7 @@ function StepperItem(props: StepperItem) {
 
   return (
     <div
+      // biome-ignore lint/a11y/useSemanticElements: <explanation>
       role="button"
       tabIndex={0}
       className={stepperItemClasses({
@@ -342,7 +343,7 @@ export const titleAndSubTitleWrapperClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export const titleClasses = cva("leading-none w-max empty:hidden", {
@@ -389,7 +390,7 @@ function StepContentRender({
         <h5
           className={classNames(
             helpTextClasses({ size }),
-            "text-secondary-500"
+            "text-secondary-500",
           )}
         >
           {subTitle}

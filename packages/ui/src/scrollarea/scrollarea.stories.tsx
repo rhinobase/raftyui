@@ -73,7 +73,7 @@ function DynamicDataScroll() {
       fetch(
         `https://api.spacexdata.com/v3/launches?limit=20&offset=${
           pageParam * 20
-        }`
+        }`,
       ).then((res) => res.json()),
     getNextPageParam: (_, pages) => {
       const tmp = pages.flat().length;

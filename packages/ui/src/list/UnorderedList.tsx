@@ -8,7 +8,7 @@ export type UnorderedList = HTMLAttributes<HTMLUListElement> & {
 export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
   function UnorderedList(
     { className, children, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     return (
       <ul
@@ -23,5 +23,5 @@ export const UnorderedList = forwardRef<HTMLUListElement, UnorderedList>(
         {children}
       </ul>
     );
-  }
+  },
 );

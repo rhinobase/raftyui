@@ -75,5 +75,5 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordField>(
         </Suffix>
       </InputGroup>
     );
-  }
+  },
 );

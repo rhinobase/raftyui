@@ -22,10 +22,10 @@ export const RightAddon = forwardRef<HTMLDivElement, RightAddon>(
           "border-secondary-300 dark:border-secondary-700",
           // @ts-ignore
           addonsCommonClasses.size[size],
-          className
+          className,
         )}
       />
     );
-  }
+  },
 );
 RightAddon.displayName = "RightAddon";

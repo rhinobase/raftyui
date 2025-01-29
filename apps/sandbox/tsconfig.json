@@ -6,13 +6,13 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "types": ["vite/client"],
-    "emitDecoratorMetadata": true,
     "module": "esnext",
     "moduleResolution": "bundler"
   },
   "files": [],
   "include": [
     ".storybook/*.{ts,tsx}",
+    "./stories/*.{ts,tsx}",
     "../../packages/{ui,corp}/src/**/*.stories.tsx"
   ],
   "extends": "../../tsconfig.base.json"

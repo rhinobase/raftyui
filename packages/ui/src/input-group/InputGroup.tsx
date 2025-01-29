@@ -22,7 +22,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
       size = "md",
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) {
     const validChildren = getValidChildren(children);
     const rightAddons = [];
@@ -78,5 +78,5 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroup>(
         </div>
       </InputGroupProvider>
     );
-  }
+  },
 );

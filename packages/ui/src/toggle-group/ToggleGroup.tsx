@@ -22,7 +22,7 @@ export const toggleGroupClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type ToggleGroup = ComponentProps<typeof ToggleGroupPrimitive.Root> &
@@ -31,7 +31,7 @@ export type ToggleGroup = ComponentProps<typeof ToggleGroupPrimitive.Root> &
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
   function ToggleGroup(
     { children, className, size = "md", isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     return (
       <ToggleGroupProvider value={{ size, isUnstyled }}>
@@ -48,7 +48,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroup>(
         </ToggleGroupPrimitive.Root>
       </ToggleGroupProvider>
     );
-  }
+  },
 );
 
 export const toggleGroupItemClasses = cva(
@@ -64,7 +64,7 @@ export const toggleGroupItemClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type ToggleGroupItem = ComponentProps<
@@ -74,7 +74,7 @@ export type ToggleGroupItem = ComponentProps<
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
   function ToggleGroupItem(
     { children, className, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     const { size, isUnstyled: isParentUnstyled } = useToggleGroupContext();
     const unstyle = isParentUnstyled || isUnstyled;
@@ -92,5 +92,5 @@ export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItem>(
         {children}
       </ToggleGroupPrimitive.Item>
     );
-  }
+  },
 );

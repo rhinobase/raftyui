@@ -68,6 +68,11 @@
     "react-window-infinite-loader": "^1.0.9",
     "tailwind-merge": "^2.2.0"
   },
+  "peerDependenciesMeta": {
+    "@tanstack/react-query": {
+      "optional": true
+    }
+  },
   "exports": {
     ".": {
       "import": {

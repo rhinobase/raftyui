@@ -19,7 +19,7 @@ export const searchFieldIconClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type SearchField = Omit<
@@ -34,7 +34,7 @@ export type SearchField = Omit<
 export const SearchField = forwardRef<HTMLInputElement, SearchField>(
   function SearchField(
     { onValueChange, size = "md", className, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     return (
       <InputGroup className={classNames("w-full", className)} size={size}>
@@ -49,5 +49,5 @@ export const SearchField = forwardRef<HTMLInputElement, SearchField>(
         />
       </InputGroup>
     );
-  }
+  },
 );

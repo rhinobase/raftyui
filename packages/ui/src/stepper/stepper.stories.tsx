@@ -145,7 +145,7 @@ export const CustomConnector: Story = {
                 : props.size === "md"
                   ? "ml-[26px]"
                   : "ml-[30px]"),
-            active ? "border-blue-500" : "border-secondary-400 border-dotted"
+            active ? "border-blue-500" : "border-secondary-400 border-dotted",
           )}
         />
       )}

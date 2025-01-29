@@ -34,7 +34,7 @@ export const progressTrackClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export const progressIndicatorClasses = cva("h-full", {
@@ -62,7 +62,7 @@ export const Progress = forwardRef<
   Progress
 >(function Progress(
   { className, size = "md", colorScheme = "primary", ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   return (
     <ArkProgress.Root
@@ -93,7 +93,7 @@ export const progressTextClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type ProgressValue = {

@@ -10,12 +10,12 @@ export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessage>(
         {...props}
         className={classNames(
           "my-0.5 text-sm text-red-600 dark:text-red-400",
-          className
+          className,
         )}
         ref={forwardedRef}
       >
         {children}
       </p>
     );
-  }
+  },
 );

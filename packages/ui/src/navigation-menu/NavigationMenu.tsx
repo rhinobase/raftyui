@@ -23,7 +23,7 @@ export type NavigationMenu = ComponentPropsWithoutRef<
 export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
   function NavigationMenu(
     { children, className, isUnstyled = false, ...props },
-    forwardedRef
+    forwardedRef,
   ) {
     return (
       <NavigationMenuProvider value={{ isUnstyled }}>
@@ -34,7 +34,7 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
               ? className
               : classNames(
                   "relative z-10 flex w-full flex-1 items-center justify-center",
-                  className
+                  className,
                 )
           }
           ref={forwardedRef}
@@ -44,7 +44,7 @@ export const NavigationMenu = forwardRef<HTMLDivElement, NavigationMenu>(
         </NavigationMenuPrimitive.Root>
       </NavigationMenuProvider>
     );
-  }
+  },
 );
 
 export type NavigationMenuList = ComponentPropsWithoutRef<
@@ -68,7 +68,7 @@ export function NavigationMenuList({
           ? className
           : classNames(
               "flex items-center justify-center rounded-md p-1",
-              className
+              className,
             )
       }
     >
@@ -94,7 +94,7 @@ export const NavigationMenuTrigger = forwardRef<
   NavigationMenuTrigger
 >(function NavigationMenuTrigger(
   { children, className, isUnstyled = false, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -107,7 +107,7 @@ export const NavigationMenuTrigger = forwardRef<
           ? className
           : classNames(
               "data-[state=open]:bg-secondary-100 hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:data-[state=open]:bg-secondary-700/20 dark:hover:bg-secondary-700/20 group flex select-none items-center justify-between gap-1.5 rounded-md px-3 py-2 text-base font-semibold outline-none transition-all ease-in-out",
-              className
+              className,
             )
       }
       ref={forwardedRef}
@@ -138,7 +138,7 @@ export const navigationMenuContentClasses = cva(
     defaultVariants: {
       size: "md",
     },
-  }
+  },
 );
 
 export type NavigationMenuContent = ComponentPropsWithoutRef<
@@ -150,7 +150,7 @@ export const NavigationMenuContent = forwardRef<
   NavigationMenuContent
 >(function NavigationMenuContent(
   { children, className, size = "md", isUnstyled = false, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const { isUnstyled: isParentUnstyled } = useNavigationMenuContext();
   const unstyle = isParentUnstyled || isUnstyled;
@@ -191,7 +191,7 @@ export function NavigationMenuLink({
           ? className
           : classNames(
               "hover:bg-secondary-100 text-secondary-600 dark:text-secondary-300 dark:hover:bg-secondary-700/20 flex select-none rounded-md px-3 py-2 font-semibold outline-none transition-all ease-in-out",
-              className
+              className,
             )
       }
     >
@@ -257,7 +257,7 @@ export function NavigationMenuIndicator({
           ? className
           : classNames(
               "z-[1] flex size-[10px] items-end justify-center overflow-hidden",
-              className
+              className,
             )
       }
     >

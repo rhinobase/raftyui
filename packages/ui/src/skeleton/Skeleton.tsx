@@ -5,14 +5,14 @@ export type Skeleton = HTMLAttributes<HTMLDivElement>;
 
 export const Skeleton = forwardRef<HTMLDivElement, Skeleton>(function Skeleton(
   { className, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   return (
     <div
       {...props}
       className={classNames(
         "bg-secondary-300 dark:bg-secondary-700 animate-pulse",
-        className
+        className,
       )}
       ref={forwardedRef}
     />

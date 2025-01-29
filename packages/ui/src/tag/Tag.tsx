@@ -34,7 +34,7 @@ export type Tag = HTMLAttributes<HTMLDivElement> & {
 
 export const Tag = forwardRef<HTMLDivElement, Tag>(function Tag(
   { size = "md", colorScheme = "secondary", className, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   return (
     <div

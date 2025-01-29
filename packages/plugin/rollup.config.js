@@ -4,7 +4,6 @@ import swc from "@rollup/plugin-swc";
 import terser from "@rollup/plugin-terser";
 import pc from "picocolors";
 import { defineConfig } from "rollup";
-import copy from "rollup-plugin-copy";
 import typescript from "rollup-plugin-typescript2";
 import pkg from "./package.json" with { type: "json" };
 
@@ -72,15 +71,6 @@ export default defineConfig({
         console.info(`  ${pc.bold(fileName)} ${pc.cyan(sourceBytes)}`);
       },
     },
-    copy({
-      hook: "writeBundle",
-      targets: [
-        {
-          src: ["./README.md", "./package.json"],
-          dest: "./dist",
-        },
-      ],
-    }),
     terser(),
   ],
 });

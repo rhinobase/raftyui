@@ -68,7 +68,7 @@ export const drawerContentClasses = cva(
       side: "right",
       size: "md",
     },
-  }
+  },
 );
 
 export type DrawerContent = ComponentPropsWithoutRef<
@@ -156,7 +156,7 @@ export const DrawerClose = forwardRef<
     children,
     ...props
   },
-  forwardedRef
+  forwardedRef,
 ) {
   const { size: parentSize } = useDrawerContext();
 
@@ -189,7 +189,7 @@ export const DrawerClose = forwardRef<
           {...buttonProps}
           className={classNames(
             "absolute right-5 top-5 rounded-full",
-            className
+            className,
           )}
         >
           <XMarkIcon className="size-5 stroke-2" />

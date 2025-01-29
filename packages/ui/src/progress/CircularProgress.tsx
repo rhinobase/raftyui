@@ -34,7 +34,7 @@ export const CircularProgress = forwardRef<
   CircularProgress
 >(function CircularProgress(
   { className, size = "md", colorScheme = "primary", style, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   return (
     <ArkProgress.Root
