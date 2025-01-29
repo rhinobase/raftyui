@@ -1,7 +1,7 @@
 "use client";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { Button, Card, CardContent, CardHeader } from "@rafty/ui";
 import Image from "next/image";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Logo from "../public/rhinobase.png";
 
@@ -28,7 +28,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By" "
+              By{" "}
               <Image
                 className="rounded-md "
                 src={Logo}
@@ -71,7 +71,7 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                  Docs" "
+                  Docs{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-1">
                     &gt;
                   </span>
@@ -93,7 +93,7 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                  Themes" "
+                  Themes{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-1">
                     &gt;
                   </span>
@@ -116,7 +116,7 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                  Templates" "
+                  Templates{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-1">
                     &gt;
                   </span>
@@ -139,7 +139,7 @@ export default function Home() {
             <Card className="dark:hover:bg-secondary-950 group h-full transition-all ease-in-out hover:bg-white">
               <CardHeader>
                 <h4 className="text-xl">
-                  Components" "
+                  Components{" "}
                   <span className="inline-block transition-transform group-hover:translate-x-1">
                     &gt;
                   </span>

@@ -240,6 +240,9 @@ importers:
 
   examples/rafty-nextjs:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: latest
         version: 1.7.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.54.2(react@18.3.1))(react@18.3.1)
@@ -274,6 +277,9 @@ importers:
 
   examples/rafty-nextjs-pages-router:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: latest
         version: 1.7.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.54.2(react@18.3.1))(react@18.3.1)
@@ -311,6 +317,9 @@ importers:
 
   examples/rafty-nextjs-pages-router-ts:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: latest
         version: 1.7.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.54.2(react@18.3.1))(react@18.3.1)
@@ -357,6 +366,9 @@ importers:
 
   examples/rafty-nextjs-ts:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: latest
         version: 1.7.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.54.2(react@18.3.1))(react@18.3.1)
@@ -403,6 +415,9 @@ importers:
 
   examples/rafty-vite:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: latest
         version: 1.7.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.54.2(react@18.3.1))(react@18.3.1)
@@ -452,6 +467,9 @@ importers:
 
   examples/rafty-vite-ts:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@18.3.1)
       '@rafty/ui':
         specifier: latest
         version: 1.7.7(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(date-fns@3.6.0)(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.54.2(react@18.3.1))(react@18.3.1)

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@rafty/ui": "latest",
     "next": "13.5.4",
     "react": "^18",
