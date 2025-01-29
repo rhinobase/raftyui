@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "storybook dev -p 4400",
-    "build": "storybook build"
+    "build": "storybook build -o ./dist"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
