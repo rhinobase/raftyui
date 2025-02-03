@@ -1,5 +1,5 @@
 import { ErrorMessage } from "@hookform/error-message";
-import { Fragment, type PropsWithChildren, forwardRef } from "react";
+import React, { Fragment, type PropsWithChildren, forwardRef } from "react";
 import { ErrorMessage as RaftyErrorMessage } from "../error-message/index.js";
 import { FieldControl } from "../field-control/index.js";
 import { Label } from "../label/index.js";

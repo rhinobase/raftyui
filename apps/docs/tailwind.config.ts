@@ -5,8 +5,8 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: "class",
   content: [
-    "{components,app}/**/*.{ts,tsx}",
-    "../../packages/{ui,corp}/src/**/*.{ts,tsx}",
+    "{components,app}/**/*.{ts,tsx,md}",
+    "./node_modules/@rafty/{ui,corp}/dist/**/*.{js,cjs}",
   ],
   theme: {
     extend: {
