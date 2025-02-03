@@ -6,5 +6,5 @@ export {
   selectItemClasses,
   selectItemGroupClasses,
   triggerIconClasses,
-} from "./Select";
-export { useSelectContext } from "./context";
+} from "./Select.js";
+export { useSelectContext } from "./context.js";

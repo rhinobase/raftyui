@@ -5,7 +5,7 @@ import {
   TreeViewContent,
   TreeViewItem,
   TreeViewLabel,
-} from "./TreeView";
+} from "./TreeView.js";
 
 const meta: Meta<typeof TreeView> = {
   title: "Components / TreeView",

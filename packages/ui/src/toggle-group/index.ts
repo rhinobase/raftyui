@@ -3,5 +3,5 @@ export {
   ToggleGroupItem,
   toggleGroupClasses,
   toggleGroupItemClasses,
-} from "./ToggleGroup";
-export { useToggleGroupContext } from "./context";
+} from "./ToggleGroup.js";
+export { useToggleGroupContext } from "./context.js";

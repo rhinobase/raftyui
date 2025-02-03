@@ -8,12 +8,12 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../utils/index.js";
 import {
   type ContextMenuContext,
   ContextMenuProvider,
   useContextMenuContext,
-} from "./context";
+} from "./context.js";
 
 export type ContextMenu = ComponentProps<typeof ContextMenuPrimitive.Root> &
   Partial<ContextMenuContext>;

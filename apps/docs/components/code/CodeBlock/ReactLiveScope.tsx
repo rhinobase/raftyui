@@ -22,7 +22,8 @@ import Image from "next/image";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-export const ReactLiveScope = {
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export const ReactLiveScope: any = {
   React,
   Image,
   ...React,

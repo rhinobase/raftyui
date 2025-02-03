@@ -1,1 +1,1 @@
-export { PercentageInput } from "./PercentageInput";
+export { PercentageInput } from "./PercentageInput.js";

@@ -2,4 +2,4 @@ export {
   PasswordField,
   passwordFieldButtonClasses,
   passwordFieldButtonIconClasses,
-} from "./PasswordField";
+} from "./PasswordField.js";

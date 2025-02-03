@@ -1,14 +1,14 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { buttonClasses } from "../button";
-import { List, ListItem } from "../list";
-import { classNames } from "../utils";
+import { buttonClasses } from "../button/index.js";
+import { List, ListItem } from "../list/index.js";
+import { classNames } from "../utils/index.js";
 import {
   type BreadcrumbsContext,
   BreadcrumbsProvider,
   useBreadcrumbsContext,
-} from "./context";
+} from "./context.js";
 
 export const breadcrumbsClasses = cva("flex items-center", {
   variants: {

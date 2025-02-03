@@ -1,5 +1,5 @@
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../utils/index.js";
 
 export type ErrorMessage = HTMLAttributes<HTMLParagraphElement>;
 

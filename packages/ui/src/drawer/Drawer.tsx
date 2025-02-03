@@ -7,14 +7,14 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { alertDialogOverlayClasses } from "../alert-dialog";
-import { Button } from "../button";
-import { classNames } from "../utils";
+import { alertDialogOverlayClasses } from "../alert-dialog/index.js";
+import { Button } from "../button/index.js";
+import { classNames } from "../utils/index.js";
 import {
   type DrawerContext,
   DrawerProvider,
   useDrawerContext,
-} from "./context";
+} from "./context.js";
 
 export type Drawer = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DrawerContext>;

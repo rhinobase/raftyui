@@ -2,12 +2,12 @@
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   contextMenuCheckboxItemIndicatorClasses,
   contextMenuContentClasses,
@@ -17,10 +17,9 @@ import {
   contextMenuRadioItemIndicatorClasses,
   contextMenuSeperatorClasses,
   contextMenuSubTriggerIconClasses,
-} from "../context-menu";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
-import { type MenuContext, MenuProvider, useMenuContext } from "./context";
+} from "../context-menu/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
+import { type MenuContext, MenuProvider, useMenuContext } from "./context.js";
 
 export type Menu = ComponentPropsWithoutRef<typeof DropdownMenu.Root> &
   Partial<MenuContext>;

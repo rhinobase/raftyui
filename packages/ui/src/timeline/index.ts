@@ -7,5 +7,5 @@ export {
   timelineItemIconClasses,
   timelineItemTextClasses,
   timelineConnectorClasses,
-} from "./Timeline";
-export { useTimelineContext } from "./context";
+} from "./Timeline.js";
+export { useTimelineContext } from "./context.js";

@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { type SizeType, classNames } from "../utils";
+import { type SizeType, classNames } from "../utils/index.js";
 
 export const tagClasses = cva("size-max font-medium select-none leading-none", {
   variants: {

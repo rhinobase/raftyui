@@ -1,1 +1,1 @@
-export { Tag, tagClasses } from "./Tag";
+export { Tag, tagClasses } from "./Tag.js";

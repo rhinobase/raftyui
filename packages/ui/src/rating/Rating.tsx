@@ -1,11 +1,14 @@
 "use client";
 import { RatingGroup, type RatingGroupRootProps } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
+import React, { type ElementRef, forwardRef } from "react";
 import { FaStar, FaStarHalf } from "react-icons/fa";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  getValue,
+} from "../utils/index.js";
 
 export const ratingControlClasses = cva(
   "flex flex-wrap outline-none data-[readonly]:cursor-default data-[disabled]:opacity-70",

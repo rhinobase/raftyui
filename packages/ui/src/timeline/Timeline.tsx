@@ -1,14 +1,18 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, type ReactNode, forwardRef, useId } from "react";
-import { Spinner } from "../spinner";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValidChildren, getValue } from "../utils";
+import { Spinner } from "../spinner/index.js";
+import {
+  type ValueOrFunction,
+  classNames,
+  getValidChildren,
+  getValue,
+} from "../utils/index.js";
 import {
   type TimelineContext,
   TimelineProvider,
   useTimelineContext,
-} from "./context";
+} from "./context.js";
 
 export const timelineClasses = cva("flex size-full", {
   variants: {

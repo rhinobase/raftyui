@@ -25,7 +25,7 @@ export function useLastElement<T = unknown, U = unknown>({
       if (isFetching) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasNextPage) fetchNextPage();
+        if (entries[0]?.isIntersecting && hasNextPage) fetchNextPage();
       });
       if (node) observer.current?.observe(node);
     },

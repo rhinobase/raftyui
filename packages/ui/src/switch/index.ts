@@ -3,4 +3,4 @@ export {
   switchClasses,
   switchLabelClasses,
   switchThumbClasses,
-} from "./Switch";
+} from "./Switch.js";

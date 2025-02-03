@@ -1,2 +1,2 @@
-export { AvatarGroup } from "./AvatarGroup";
-export { useAvatarGroupContext } from "./context";
+export { AvatarGroup } from "./AvatarGroup.js";
+export { useAvatarGroupContext } from "./context.js";

@@ -1,6 +1,5 @@
 import { type HTMLAttributes, forwardRef } from "react";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 
 export type Text = HTMLAttributes<HTMLParagraphElement> & {
   isMuted?: ValueOrFunction;

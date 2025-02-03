@@ -1,8 +1,8 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, type SVGAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { type StatContext, StatProvider, useStatContext } from "./context";
+import { classNames } from "../utils/index.js";
+import { type StatContext, StatProvider, useStatContext } from "./context.js";
 
 export type Stat = HTMLAttributes<HTMLDivElement> & StatContext;
 

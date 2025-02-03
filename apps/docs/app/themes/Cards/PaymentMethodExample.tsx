@@ -134,7 +134,7 @@ function ExpireMonthSelect() {
   const [selected, setSelected] = useState(MONTHS[0]);
 
   return (
-    <Selector value={selected}>
+    <Selector value={selected ?? ""}>
       {MONTHS.map((month) => (
         <CommandItem key={month} value={month} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2">
@@ -160,7 +160,7 @@ function ExpireYearSelect() {
   const [selected, setSelected] = useState(YEARS[0]);
 
   return (
-    <Selector value={selected}>
+    <Selector value={selected ?? ""}>
       {YEARS.map((year) => (
         <CommandItem key={year} value={year} onSelect={setSelected}>
           <div className="flex w-full items-center gap-2 ">

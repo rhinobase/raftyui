@@ -7,11 +7,15 @@ import {
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type ElementRef, type PropsWithChildren, forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export type EditableText = Omit<
   EditableRootProps,

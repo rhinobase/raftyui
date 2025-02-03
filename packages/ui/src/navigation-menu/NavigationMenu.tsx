@@ -8,12 +8,12 @@ import {
   type PropsWithChildren,
   forwardRef,
 } from "react";
-import { type SizeType, classNames } from "../utils";
+import { type SizeType, classNames } from "../utils/index.js";
 import {
   type NavigationMenuContext,
   NavigationMenuProvider,
   useNavigationMenuContext,
-} from "./context";
+} from "./context.js";
 
 export type NavigationMenu = ComponentPropsWithoutRef<
   typeof NavigationMenuPrimitive.Root

@@ -1,11 +1,15 @@
 "use client";
 import { Editable, type EditableRootProps } from "@ark-ui/react";
-import { type ElementRef, forwardRef } from "react";
-import { EditableItem } from "../editable-text/EditableText";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import React, { type ElementRef, forwardRef } from "react";
+import { EditableItem } from "../editable-text/EditableText.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export type EditableNumber = Omit<
   EditableRootProps,

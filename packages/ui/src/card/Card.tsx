@@ -1,8 +1,8 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames, getValidChildren } from "../utils";
-import { type CardContext, CardProvider, useCardContext } from "./context";
+import { classNames, getValidChildren } from "../utils/index.js";
+import { type CardContext, CardProvider, useCardContext } from "./context.js";
 
 export const cardClasses = cva("flex flex-col dark:text-white border", {
   variants: {

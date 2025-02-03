@@ -1,8 +1,8 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, forwardRef } from "react";
-import { useAvatarGroupContext } from "../avatar-group/context";
-import { type SizeType, classNames } from "../utils";
+import { useAvatarGroupContext } from "../avatar-group/context.js";
+import { type SizeType, classNames } from "../utils/index.js";
 
 export const avatarClasses = cva(
   "dark:border-secondary-900 relative overflow-hidden rounded-full border-white data-[child]:absolute",

@@ -5,7 +5,7 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../utils/index.js";
 
 export const HoverCard = HoverCardPrimitive.Root;
 

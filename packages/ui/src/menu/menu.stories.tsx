@@ -14,7 +14,7 @@ import {
   MenuSubContent,
   MenuSubTrigger,
   MenuTrigger,
-} from "./Menu";
+} from "./Menu.js";
 
 const meta: Meta<typeof Menu> = {
   title: "Components / Menu",

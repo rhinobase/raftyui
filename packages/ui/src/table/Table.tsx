@@ -1,8 +1,12 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type HTMLAttributes, type ThHTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { type TableContext, TableProvider, useTableContext } from "./context";
+import { classNames } from "../utils/index.js";
+import {
+  type TableContext,
+  TableProvider,
+  useTableContext,
+} from "./context.js";
 
 export const tableClasses = cva(
   "border-secondary-300 dark:border-secondary-700 w-full overflow-x-auto overflow-y-hidden border",

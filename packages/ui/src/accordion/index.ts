@@ -8,5 +8,5 @@ export {
   accordionTriggerAndContentClasses,
   accordionTriggerClasses,
   accordionTriggerIconClasses,
-} from "./Accordion";
-export { useAccordionContext } from "./context";
+} from "./Accordion.js";
+export { useAccordionContext } from "./context.js";

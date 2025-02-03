@@ -1,1 +1,1 @@
-export { Spinner, spinnerClasses } from "./Spinner";
+export { Spinner, spinnerClasses } from "./Spinner.js";

@@ -1,20 +1,19 @@
 "use client";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import { Label } from "../label";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type RadioGroupContext,
   RadioGroupProvider,
   useRadioGroupContext,
-} from "./context";
+} from "./context.js";
 
 export const radioGroupClasses = cva(
   "flex data-[orientation=vertical]:flex-col data-[orientation=horizontal]:flex-row data-[orientaion-horizontal]:flex-wrap",

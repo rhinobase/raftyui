@@ -1,1 +1,1 @@
-export { Label } from "./Label";
+export { Label } from "./Label.js";

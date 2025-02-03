@@ -1,5 +1,4 @@
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
 
 export type ListItem = HTMLAttributes<HTMLLIElement>;
 

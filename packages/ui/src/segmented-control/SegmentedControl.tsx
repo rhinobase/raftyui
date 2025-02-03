@@ -6,14 +6,13 @@ import {
 } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type SegmentedControlContext,
   SegmentedControlProvider,
   useSegmentedControlContext,
-} from "./context";
+} from "./context.js";
 
 export const segmentedControlClasses = cva(
   "flex data-[orientation=horizontal]:flex-row data-[orientation=vertical]:flex-col data-[orientation=horizontal]:border-b data-[orientation=vertical]:border-l border-secondary-300 dark:border-secondary-700 data-[disabled]:opacity-70",

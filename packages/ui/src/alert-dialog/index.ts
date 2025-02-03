@@ -14,5 +14,5 @@ export {
   alertDialogHeaderAndFooterClasses,
   alertDialogOverlayClasses,
   alertDialogTitleClasses,
-} from "./AlertDialog";
-export { useAlertDialogContext } from "./context";
+} from "./AlertDialog.js";
+export { useAlertDialogContext } from "./context.js";

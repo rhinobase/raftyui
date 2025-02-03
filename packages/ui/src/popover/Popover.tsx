@@ -1,19 +1,18 @@
 "use client";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { Button } from "../button";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type PopoverContext,
   PopoverProvider,
   usePopoverContext,
-} from "./context";
+} from "./context.js";
 
 export type Popover = ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> &
   Partial<PopoverContext>;

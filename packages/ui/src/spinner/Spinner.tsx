@@ -1,7 +1,11 @@
 import { cva } from "class-variance-authority";
 import { type SVGAttributes, forwardRef } from "react";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const spinnerClasses = cva("animate-spin", {
   variants: {

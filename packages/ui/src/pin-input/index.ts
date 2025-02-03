@@ -1,1 +1,1 @@
-export { PinInput, inputClasses, pinInputControlClasses } from "./PinInput";
+export { PinInput, inputClasses, pinInputControlClasses } from "./PinInput.js";

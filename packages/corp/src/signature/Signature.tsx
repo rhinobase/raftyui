@@ -3,14 +3,13 @@ import { SignaturePad, type SignaturePadRootProps } from "@ark-ui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import {
   Button,
-  type SizeType,
   type ValueOrFunction,
   classNames,
   getValue,
   useFieldControlContext,
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
+import React, { type ElementRef, forwardRef } from "react";
 
 const signatureClasses = cva(
   "group/signature w-full h-60 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",

@@ -1,13 +1,13 @@
 "use client";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type HTMLAttributes, type ReactNode, forwardRef } from "react";
-import { classNames, eventHandler } from "../utils";
+import React, { type HTMLAttributes, type ReactNode, forwardRef } from "react";
+import { classNames, eventHandler } from "../utils/index.js";
 import {
   type StepperContext,
   StepperProvider,
   useStepperContext,
-} from "./context";
+} from "./context.js";
 
 export const stepperClasses = cva(
   "flex data-[disabled=true]:opacity-70 data-[disabled=true]:cursor-not-allowed data-[disabled=true]:pointer-events-none",
@@ -232,6 +232,7 @@ function StepperItem(props: StepperItem) {
 
   return (
     <div
+      // biome-ignore lint/a11y/useSemanticElements: <explanation>
       role="button"
       tabIndex={0}
       className={stepperItemClasses({

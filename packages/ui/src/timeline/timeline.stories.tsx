@@ -1,6 +1,6 @@
 import { TvIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Timeline, TimelineItem } from "./Timeline";
+import { Timeline, TimelineItem } from "./Timeline.js";
 
 const meta: Meta<typeof Timeline> = {
   title: "Components / Timeline",

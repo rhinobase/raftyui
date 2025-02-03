@@ -2,12 +2,12 @@
 import { CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   contextMenuCheckboxItemIndicatorClasses,
   contextMenuContentClasses,
@@ -16,14 +16,14 @@ import {
   contextMenuRadioAndCheckboxItemClasses,
   contextMenuRadioItemIndicatorClasses,
   contextMenuSeperatorClasses,
-} from "../context-menu";
-import { menuTriggerClasses } from "../menu/Menu";
-import { classNames } from "../utils";
+} from "../context-menu/index.js";
+import { menuTriggerClasses } from "../menu/Menu.js";
+import { classNames } from "../utils/index.js";
 import {
   type MenuBarContext,
   MenuBarProvider,
   useMenuBarContext,
-} from "./context";
+} from "./context.js";
 
 export const menubarClasses = cva("flex w-max items-center", {
   variants: { size: { sm: "gap-1", md: "gap-2", lg: "gap-3" } },
@@ -65,7 +65,7 @@ export const Menubar = forwardRef<
   );
 });
 
-export const MenubarMenu = MenubarPrimitive.Menu;
+export const MenubarMenu: typeof MenubarPrimitive.Menu = MenubarPrimitive.Menu;
 
 export type MenubarTrigger = ComponentPropsWithoutRef<
   typeof MenubarPrimitive.Trigger

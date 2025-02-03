@@ -2,15 +2,19 @@
 import { CheckIcon, MinusIcon } from "@heroicons/react/24/outline";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import { Label } from "../label";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const checkboxClasses = cva(
   "peer/checkbox relative shrink-0 border outline-none focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950 transition-all ease-in-out",

@@ -4,5 +4,5 @@ export {
   StatLabel,
   StatValue,
   statHelpTextClasses,
-} from "./Stat";
-export { useStatContext } from "./context";
+} from "./Stat.js";
+export { useStatContext } from "./context.js";

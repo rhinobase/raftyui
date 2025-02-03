@@ -5,17 +5,14 @@ import { cva } from "class-variance-authority";
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
-  cloneElement,
   forwardRef,
 } from "react";
-import type { ValueOrFunction } from "../types";
-import { getValue } from "../utils";
-import { classNames } from "../utils";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type AccordionContext,
   AccordionProvider,
   useAccordionContext,
-} from "./context";
+} from "./context.js";
 
 export const accordionClasses = cva("w-full", {
   variants: {

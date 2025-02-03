@@ -6,8 +6,8 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { classNames } from "../utils";
-import { type TabContext, TabProvider, useTabContext } from "./context";
+import { classNames } from "../utils/index.js";
+import { type TabContext, TabProvider, useTabContext } from "./context.js";
 
 export type Tab = ComponentPropsWithoutRef<typeof TabsPrimitive.Root> &
   Partial<TabContext> & { isUnstyled?: boolean };

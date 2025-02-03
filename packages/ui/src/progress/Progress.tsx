@@ -6,7 +6,7 @@ import {
 } from "@ark-ui/react";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { type SizeType, classNames } from "../utils";
+import { type SizeType, classNames } from "../utils/index.js";
 
 export const progressClasses = cva("flex w-full items-center flex-col", {
   variants: {

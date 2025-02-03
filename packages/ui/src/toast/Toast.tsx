@@ -11,8 +11,12 @@ import {
   type PropsWithChildren,
   forwardRef,
 } from "react";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const toastClasses = cva(
   "w-full drop-shadow-lg flex items-center text-white dark:text-black",

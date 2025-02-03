@@ -1,5 +1,5 @@
 "use client";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   type HTMLAttributes,
@@ -12,7 +12,7 @@ import {
   type ScrollAreaContext,
   ScrollAreaProvider,
   useScrollAreaContext,
-} from "./context";
+} from "./context.js";
 
 type ScrollAreaOptionalProp = "layout";
 

@@ -1,8 +1,8 @@
 "use client";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { useInputGroupContext } from "./context";
-import { addonsCommonClasses } from "./utils";
+import { classNames } from "../utils/index.js";
+import { useInputGroupContext } from "./context.js";
+import { addonsCommonClasses } from "./utils.js";
 
 export type LeftAddon = HTMLAttributes<HTMLDivElement>;
 

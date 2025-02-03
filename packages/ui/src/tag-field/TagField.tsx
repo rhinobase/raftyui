@@ -8,10 +8,14 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export type TagField = TagsInputRootProps & {
   size?: SizeType;

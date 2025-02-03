@@ -6,14 +6,13 @@ import {
   type ElementRef,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type SliderContext,
   SliderProvider,
   useSliderContext,
-} from "./context";
+} from "./context.js";
 
 export type Slider = ComponentPropsWithoutRef<typeof SliderPrimitive.Root> &
   Partial<SliderContext> & {

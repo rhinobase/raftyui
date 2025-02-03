@@ -1,7 +1,7 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./Tooltip";
+import { Button } from "../button/index.js";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./Tooltip.js";
 
 const meta: Meta<Tooltip & TooltipContent> = {
   title: "Components / Tooltip",

@@ -1,5 +1,5 @@
 import { type OlHTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../utils/index.js";
 
 export type OrderedList = OlHTMLAttributes<HTMLOListElement> & {
   isUnstyled?: boolean;

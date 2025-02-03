@@ -1,9 +1,21 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": false,
+    "declarationMap": false,
+    "module": "Node16",
+    "moduleResolution": "nodenext",
     "types": ["node"]
   },
   "exclude": ["src/**/*.stories.tsx"],
-  "include": ["src/**/*.{js,jsx,ts,tsx}"]
+  "include": ["src/**/*.{js,jsx,ts,tsx}"],
+  "references": [
+    {
+      "path": "./tsconfig.build.json"
+    }
+  ]
 }

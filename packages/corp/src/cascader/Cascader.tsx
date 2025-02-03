@@ -84,7 +84,7 @@ export const Cascader = forwardRef<HTMLDivElement, Cascader>(function Cascader(
 
       const selectedItems = getSelectedItems(items, item.value);
 
-      onValueChange?.(selectedItems.slice(-1)[0].value, selectedItems);
+      onValueChange?.(selectedItems.slice(-1)[0]?.value, selectedItems);
       setSelected(item.value);
       toggleDropdownVisible(false);
     });

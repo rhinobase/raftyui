@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FieldControl } from "../field-control";
-import { Label } from "../label";
-import { Textarea } from "./Textarea";
+import { FieldControl } from "../field-control/index.js";
+import { Label } from "../label/index.js";
+import { Textarea } from "./Textarea.js";
 
 const meta: Meta<typeof Textarea> = {
   title: "Form / Textarea",

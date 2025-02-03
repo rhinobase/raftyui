@@ -3,4 +3,4 @@ export {
   ratingControlClasses,
   ratingItemClasses,
   ratingItemIconClasses,
-} from "./Rating";
+} from "./Rating.js";

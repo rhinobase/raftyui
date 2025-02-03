@@ -1,8 +1,8 @@
 "use client";
 import { type HTMLAttributes, forwardRef } from "react";
-import { classNames } from "../utils";
-import { useInputGroupContext } from "./context";
-import { prefixAndSuffixCommonClasses } from "./utils";
+import { classNames } from "../utils/index.js";
+import { useInputGroupContext } from "./context.js";
+import { prefixAndSuffixCommonClasses } from "./utils.js";
 
 export type Prefix = HTMLAttributes<HTMLDivElement>;
 

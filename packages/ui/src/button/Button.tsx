@@ -1,8 +1,16 @@
 import { cva } from "class-variance-authority";
-import { type ButtonHTMLAttributes, cloneElement, forwardRef } from "react";
-import { Spinner } from "../spinner";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import React, {
+  type ButtonHTMLAttributes,
+  cloneElement,
+  forwardRef,
+} from "react";
+import { Spinner } from "../spinner/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 type ButtonSize = SizeType<"icon" | "fab">;
 
@@ -578,7 +586,6 @@ export const Button = forwardRef<HTMLButtonElement, Button>(function Button(
   };
 
   return (
-    // biome-ignore lint/a11y/useButtonType: type is passes using buttonProps
     <button {...buttonProps}>
       <ChildrenRender
         size={size}

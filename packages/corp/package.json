@@ -3,6 +3,14 @@
   "description": "Rafty Corporation Components",
   "version": "1.0.6",
   "license": "MIT",
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "rollup -c=./rollup.config.js",
+    "publish": "pnpm publish --dry-run"
+  },
   "keywords": [
     "react",
     "rafty-ui",
@@ -27,69 +35,135 @@
     "url": "https://github.com/rhinobase/raftyui/issues"
   },
   "sideEffects": false,
-  "dependencies": {
+  "peerDependencies": {
     "@ark-ui/react": "^3.3.0",
     "@heroicons/react": "^2.1.3",
     "@rafty/ui": "^1.6.0-rc.3",
     "@swc/helpers": "~0.5.11",
     "@tanstack/react-table": "^8.17.3",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "class-variance-authority": "^0.7.0",
     "fuse.js": "^7.0.0",
     "qr.js": "^0.0.0",
+    "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-signature-canvas": "^1.0.6"
   },
   "devDependencies": {
-    "@types/country-list": "^2.1.4"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0"
+    "@types/country-list": "^2.1.4",
+    "@types/react-beautiful-dnd": "^13.1.8"
   },
   "exports": {
     ".": {
-      "types": "./index.esm.d.ts",
-      "import": "./index.esm.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./cascader": {
-      "types": "./cascader/cascader.esm.d.ts",
-      "import": "./cascader.esm.js"
+      "import": {
+        "types": "./dist/cascader/index.d.ts",
+        "default": "./dist/cascader.js"
+      },
+      "require": {
+        "types": "./dist/cascader/index.d.cts",
+        "default": "./dist/cascader.cjs"
+      }
     },
     "./combobox": {
-      "types": "./combobox/combobox.esm.d.ts",
-      "import": "./combobox.esm.js"
+      "import": {
+        "types": "./dist/combobox/index.d.ts",
+        "default": "./dist/combobox.js"
+      },
+      "require": {
+        "types": "./dist/combobox/index.d.cts",
+        "default": "./dist/combobox.cjs"
+      }
     },
     "./data-table": {
-      "types": "./data-table/data-table.esm.d.ts",
-      "import": "./data-table.esm.js"
+      "import": {
+        "types": "./dist/data-table/index.d.ts",
+        "default": "./dist/data-table.js"
+      },
+      "require": {
+        "types": "./dist/data-table/index.d.cts",
+        "default": "./dist/data-table.cjs"
+      }
     },
     "./json-explorer": {
-      "types": "./json-explorer/json-explorer.esm.d.ts",
-      "import": "./json-explorer.esm.js"
+      "import": {
+        "types": "./dist/json-explorer/index.d.ts",
+        "default": "./dist/json-explorer.js"
+      },
+      "require": {
+        "types": "./dist/json-explorer/index.d.cts",
+        "default": "./dist/json-explorer.cjs"
+      }
     },
     "./key-value": {
-      "types": "./key-value/key-value.esm.d.ts",
-      "import": "./key-value.esm.js"
+      "import": {
+        "types": "./dist/key-value/index.d.ts",
+        "default": "./dist/key-value.js"
+      },
+      "require": {
+        "types": "./dist/key-value/index.d.cts",
+        "default": "./dist/key-value.cjs"
+      }
     },
     "./list-box": {
-      "types": "./list-box/list-box.esm.d.ts",
-      "import": "./list-box.esm.js"
+      "import": {
+        "types": "./dist/list-box/index.d.ts",
+        "default": "./dist/list-box.js"
+      },
+      "require": {
+        "types": "./dist/list-box/index.d.cts",
+        "default": "./dist/list-box.cjs"
+      }
     },
     "./pagination": {
-      "types": "./pagination/pagination.esm.d.ts",
-      "import": "./pagination.esm.js"
+      "import": {
+        "types": "./dist/pagination/index.d.ts",
+        "default": "./dist/pagination.js"
+      },
+      "require": {
+        "types": "./dist/pagination/index.d.cts",
+        "default": "./dist/pagination.cjs"
+      }
     },
     "./qr-code": {
-      "types": "./qr-code/qr-code.esm.d.ts",
-      "import": "./qr-code.esm.js"
+      "import": {
+        "types": "./dist/qr-code/index.d.ts",
+        "default": "./dist/qr-code.js"
+      },
+      "require": {
+        "types": "./dist/qr-code/index.d.cts",
+        "default": "./dist/qr-code.cjs"
+      }
     },
     "./reorderable-list": {
-      "types": "./reorderable-list/reorderable-list.esm.d.ts",
-      "import": "./reorderable-list.esm.js"
+      "import": {
+        "types": "./dist/reorderable-list/index.d.ts",
+        "default": "./dist/reorderable-list.js"
+      },
+      "require": {
+        "types": "./dist/reorderable-list/index.d.cts",
+        "default": "./dist/reorderable-list.cjs"
+      }
     },
     "./signature": {
-      "types": "./signature/signature.esm.d.ts",
-      "import": "./signature.esm.js"
+      "import": {
+        "types": "./dist/signature/index.d.ts",
+        "default": "./dist/signature.js"
+      },
+      "require": {
+        "types": "./dist/signature/index.d.cts",
+        "default": "./dist/signature.cjs"
+      }
     }
-  },
-  "types": "./index.esm.d.ts"
+  }
 }

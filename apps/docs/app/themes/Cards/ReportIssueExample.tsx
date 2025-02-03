@@ -1,6 +1,5 @@
 "use client";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import RaftyIcon from "@rafty/icons";
 import {
   Button,
   CommandItem,
@@ -66,7 +65,7 @@ function RoleSelector() {
   const [selected, setSelected] = useState(ROLES[0]);
 
   return (
-    <Selector value={selected}>
+    <Selector value={selected ?? ""}>
       {ROLES.map((role) => (
         <CommandItem
           aria-label="Select Roles"
@@ -95,7 +94,7 @@ function SecurityLevel() {
   const [selected, setSelected] = useState(SEVERITYS[0]);
 
   return (
-    <Selector value={selected}>
+    <Selector value={selected ?? ""}>
       {SEVERITYS.map((severity) => (
         <CommandItem
           aria-label="Choose the Severity"

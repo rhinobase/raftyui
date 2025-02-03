@@ -5,17 +5,15 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.storybook.json"
-    }
+  "include": [
+    ".storybook/*.{ts,tsx}",
+    "./stories/*.{ts,tsx}",
+    "../../packages/{ui,corp}/src/**/*.stories.tsx"
   ],
   "extends": "../../tsconfig.base.json"
 }

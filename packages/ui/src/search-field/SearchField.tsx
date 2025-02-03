@@ -2,9 +2,9 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
-import { InputField } from "../input-field";
-import { InputGroup, Prefix } from "../input-group";
-import { classNames } from "../utils";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, Prefix } from "../input-group/index.js";
+import { classNames } from "../utils/index.js";
 
 export const searchFieldIconClasses = cva(
   "stroke-secondary-400 dark:stroke-secondary-500 stroke-2",

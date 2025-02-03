@@ -7,6 +7,7 @@ import {
   getValue,
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
+import React from "react";
 import { type ElementRef, forwardRef, useState } from "react";
 import {
   DragDropContext,
@@ -64,7 +65,7 @@ export const ReorderableList = forwardRef<
 
     const items = updatedData;
     const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+    items.splice(result.destination.index, 0, reorderedItem ?? "");
 
     setUpdatedData(items);
     onOrderChange?.(items);

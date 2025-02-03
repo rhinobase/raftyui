@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuListItem,
   NavigationMenuTrigger,
-} from "./NavigationMenu";
+} from "./NavigationMenu.js";
 
 const meta: Meta<typeof NavigationMenu> = {
   title: "Components / NavigationMenu",

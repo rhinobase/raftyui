@@ -1,19 +1,19 @@
 import { TreeView as ArkTreeView, type TreeViewRootProps } from "@ark-ui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   type ReactNode,
   cloneElement,
   forwardRef,
 } from "react";
-import { classNames, getValidChildren } from "../utils";
+import { classNames, getValidChildren } from "../utils/index.js";
 import {
   type TreeViewContext,
   TreeViewProvider,
   useTreeViewContext,
-} from "./context";
+} from "./context.js";
 
 export type TreeView = TreeViewRootProps & Partial<TreeViewContext>;
 

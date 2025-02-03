@@ -1,12 +1,12 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../button";
+import { Button } from "../button/index.js";
 import {
   Popover,
   PopoverClose,
   PopoverContent,
   PopoverTrigger,
-} from "./Popover";
+} from "./Popover.js";
 
 const meta: Meta<Popover & PopoverTrigger & PopoverContent> = {
   title: "Components / Popover",

@@ -14,5 +14,5 @@ export {
   MenubarSubTrigger,
   MenubarTrigger,
   menubarClasses,
-} from "./Menubar";
-export { useMenuBarContext } from "./context";
+} from "./Menubar.js";
+export { useMenuBarContext } from "./context.js";

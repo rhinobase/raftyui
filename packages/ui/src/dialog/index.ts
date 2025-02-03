@@ -8,5 +8,5 @@ export {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
-} from "./Dialog";
-export { useDialogContext } from "./context";
+} from "./Dialog.js";
+export { useDialogContext } from "./context.js";

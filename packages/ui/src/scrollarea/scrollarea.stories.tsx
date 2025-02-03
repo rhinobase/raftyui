@@ -8,7 +8,7 @@ import {
   ScrollArea,
   ScrollAreaInfinityList,
   ScrollAreaList,
-} from "./ScrollArea";
+} from "./ScrollArea.js";
 
 const meta: Meta<typeof ScrollArea> = {
   title: "Components / ScrollArea",

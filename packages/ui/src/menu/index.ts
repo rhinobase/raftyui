@@ -13,5 +13,5 @@ export {
   MenuSubTrigger,
   MenuTrigger,
   menuTriggerClasses,
-} from "./Menu";
-export { useMenuContext } from "./context";
+} from "./Menu.js";
+export { useMenuContext } from "./context.js";

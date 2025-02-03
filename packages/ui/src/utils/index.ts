@@ -1,7 +1,6 @@
-export { classNames } from "./class-names";
-export { mergeRefs } from "./merge-refs";
-export { createContext } from "./context";
-export { eventHandler } from "./event-handler";
-export { getValidChildren } from "./get-valid-children";
-export { getValue } from "./get-value";
-export * from "./types";
+export { classNames } from "./class-names.js";
+export { mergeRefs } from "./merge-refs.js";
+export { eventHandler } from "./event-handler.js";
+export { getValidChildren } from "./get-valid-children.js";
+export { getValue } from "./get-value.js";
+export type * from "./types.js";

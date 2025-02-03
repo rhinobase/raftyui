@@ -6,4 +6,4 @@ export {
   colorPickerLabelClasses,
   colorPickerSwatchClasses,
   colorPickerTriggerClasses,
-} from "./ColorPicker";
+} from "./ColorPicker.js";

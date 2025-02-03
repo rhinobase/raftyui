@@ -10,7 +10,7 @@ import {
   useFieldControlContext,
 } from "@rafty/ui";
 import { cva } from "class-variance-authority";
-import { forwardRef, useEffect, useReducer } from "react";
+import React, { forwardRef, useEffect, useReducer } from "react";
 
 const listboxItemClasses = cva(
   "dark:text-secondary-100 dark:border-secondary-700 border-secondary-300 select-none flex items-center justify-between border-b px-4 transition-all ease-in-out",
@@ -205,9 +205,9 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(function Listbox(
   const handleSelect = (index: number) => {
     if (readOnly || disabled || loading) return;
 
-    const value = items[index].value;
+    const value = items[index]?.value;
 
-    return eventHandler(() => setSelected(value));
+    return eventHandler(() => setSelected(value ?? ""));
   };
 
   return (
@@ -224,7 +224,7 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(function Listbox(
     >
       <ScrollAreaList>
         {({ index, style }) => {
-          const isSelected = selected.includes(items[index].value);
+          const isSelected = selected.includes(items[index]?.value ?? "");
 
           return (
             <div
@@ -240,7 +240,7 @@ export const Listbox = forwardRef<HTMLDivElement, Listbox>(function Listbox(
               })}
               style={style}
             >
-              {items[index].label ?? items[index].value}
+              {items[index]?.label ?? items[index]?.value}
               {isSelected && (
                 <CheckIcon
                   className={checkIconClasses({ size, disabled, loading })}

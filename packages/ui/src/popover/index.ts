@@ -4,5 +4,5 @@ export {
   PopoverContent,
   PopoverTrigger,
   popoverContentClasses,
-} from "./Popover";
-export { usePopoverContext } from "./context";
+} from "./Popover.js";
+export { usePopoverContext } from "./context.js";

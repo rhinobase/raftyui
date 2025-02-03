@@ -7,8 +7,8 @@ import {
   type HTMLAttributes,
   forwardRef,
 } from "react";
-import { Dialog, DialogContent } from "../dialog";
-import { classNames } from "../utils";
+import { Dialog, DialogContent } from "../dialog/index.js";
+import { classNames } from "../utils/index.js";
 
 export type Command = ComponentPropsWithoutRef<typeof CommandPrimitive>;
 

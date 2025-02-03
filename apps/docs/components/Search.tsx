@@ -365,7 +365,10 @@ export function SearchDialog({ open, setOpen }: SearchDialog) {
                 <SearchResults
                   autocomplete={autocomplete}
                   query={autocompleteState.query}
-                  collection={autocompleteState.collections[0]}
+                  collection={
+                    autocompleteState
+                      .collections[0] as AutocompleteCollection<Result>
+                  }
                 />
               )}
             </div>

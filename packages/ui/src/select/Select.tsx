@@ -7,14 +7,13 @@ import {
   type SelectHTMLAttributes,
   forwardRef,
 } from "react";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type SelectContext,
   SelectProvider,
   useSelectContext,
-} from "./context";
+} from "./context.js";
 
 export const selectClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-200 bg-white dark:bg-secondary-900 focus-visible:ring-2 ring-offset-2 ring-offset-white dark:ring-offset-secondary-950",

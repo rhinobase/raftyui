@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../button";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./HoverCard";
+import { Button } from "../button/index.js";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./HoverCard.js";
 
 const meta: Meta<HoverCardContent> = {
   title: "Components / HoverCard",

@@ -3,13 +3,16 @@ import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
-  stories: ["../../../packages/**/*.stories.tsx"],
+  stories: [
+    "../../../packages/{ui,corp}/src/**/*.stories.{ts,tsx}",
+    "../stories/**/*.{ts,tsx}",
+  ],
   addons: ["@storybook/addon-essentials"],
   framework: {
     name: "@storybook/react-vite",
     options: {
       builder: {
-        viteConfigPath: "apps/sandbox/vite.config.ts",
+        viteConfigPath: "./vite.config.ts",
       },
     },
   },
@@ -29,10 +32,6 @@ const config: StorybookConfig = {
             __dirname,
             "../../../packages/corp/src/index.ts",
           ),
-          "@rafty/icons": path.resolve(
-            __dirname,
-            "../../../packages/icons/src/index.ts",
-          ),
         },
       },
     });
@@ -42,7 +41,3 @@ const config: StorybookConfig = {
 };
 
 export default config;
-
-// To customize your Vite configuration you can use the viteFinal field.
-// Check https://storybook.js.org/docs/react/builders/vite#configuration
-// and https://nx.dev/recipes/storybook/custom-builder-configs

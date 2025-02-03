@@ -1,8 +1,7 @@
 "use client";
 import { type LabelHTMLAttributes, forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 
 export type Label = LabelHTMLAttributes<HTMLLabelElement> & {
   isRequired?: ValueOrFunction;

@@ -5,5 +5,5 @@ export {
   TabTrigger,
   tabContentClasses,
   tabTriggerClasses,
-} from "./Tab";
-export { useTabContext } from "./context";
+} from "./Tab.js";
+export { useTabContext } from "./context.js";

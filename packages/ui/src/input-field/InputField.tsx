@@ -1,10 +1,14 @@
 "use client";
 import { cva } from "class-variance-authority";
 import { type InputHTMLAttributes, forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import { useInputGroupContext } from "../input-group";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { useInputGroupContext } from "../input-group/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const inputFieldClasses = cva(
   "w-full border appearance-none outline-none dark:text-secondary-100 transition-all placeholder:text-secondary-400 dark:placeholder:text-secondary-500",

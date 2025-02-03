@@ -2,5 +2,5 @@ export {
   ScrollArea,
   ScrollAreaList,
   ScrollAreaInfinityList,
-} from "./ScrollArea";
-export { useScrollAreaContext } from "./context";
+} from "./ScrollArea.js";
+export { useScrollAreaContext } from "./context.js";

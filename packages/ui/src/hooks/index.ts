@@ -1,4 +1,4 @@
-export { useBoolean } from "./useBoolean";
-export { useBreakpointValue } from "./useBreakpointValue";
-export { useQueryParams } from "./useQueryParams";
-export { useLastElement, type useLastElementProps } from "./useLastElement";
+export { useBoolean } from "./useBoolean.js";
+export { useBreakpointValue } from "./useBreakpointValue.js";
+export { useQueryParams } from "./useQueryParams.js";
+export { useLastElement, type useLastElementProps } from "./useLastElement.js";

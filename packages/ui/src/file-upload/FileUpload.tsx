@@ -5,10 +5,9 @@ import {
 } from "@ark-ui/react";
 import { DocumentIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 
 export type FileUpload = FileUploadRootProps & {
   isDisabled?: ValueOrFunction;

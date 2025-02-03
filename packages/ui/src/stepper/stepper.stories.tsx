@@ -5,9 +5,9 @@ import {
 } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Button } from "../button";
-import { classNames } from "../utils";
-import { type StepType, Stepper } from "./Stepper";
+import { Button } from "../button/index.js";
+import { classNames } from "../utils/index.js";
+import { type StepType, Stepper } from "./Stepper.js";
 
 const meta: Meta<typeof Stepper> = {
   title: "Components / Stepper",

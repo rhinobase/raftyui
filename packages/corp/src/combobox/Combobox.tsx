@@ -17,7 +17,7 @@ import {
   eventHandler,
   mergeRefs,
 } from "@rafty/ui";
-import {
+import React, {
   type PropsWithChildren,
   type ReactNode,
   forwardRef,
@@ -155,63 +155,64 @@ export function Combobox({
 }
 
 // Combobox Trigger
-export const ComboboxTrigger = forwardRef<HTMLButtonElement, PopoverTrigger>(
-  function ComboboxTrigger(
-    {
-      isDisabled,
-      isLoading,
-      className,
-      variant = "outline",
-      role = "combobox",
-      rightIcon,
-      children = <InternalTriggerRender />,
-      ...props
-    },
-    forwardedRef,
-  ) {
-    const {
-      id,
-      isOpen,
-      isDisabled: isParentDisabled,
-      isLoading: isParentLoading,
-      isReadOnly: isParentReadonly,
-      triggerRef,
-    } = useComboboxContext();
-
-    const disabled = isDisabled || isParentDisabled || isParentReadonly;
-    const loading = isLoading || isParentLoading;
-
-    const right_icon = rightIcon ?? (
-      <ChevronUpDownIcon
-        className={classNames(
-          "size-3.5 shrink-0 stroke-2",
-          isOpen
-            ? "text-primary-500 dark:text-primary-400"
-            : "text-secondary-500 dark:text-secondary-400",
-        )}
-      />
-    );
-
-    return (
-      <PopoverTrigger
-        id={id}
-        {...props}
-        variant={variant}
-        role={role}
-        rightIcon={right_icon}
-        className={classNames(
-          "w-full justify-between text-start font-medium",
-          className,
-        )}
-        isDisabled={disabled}
-        isLoading={loading}
-        ref={mergeRefs(forwardedRef, triggerRef)}
-      >
-        <span className="flex-1">{children}</span>
-      </PopoverTrigger>
-    );
+export const ComboboxTrigger: typeof PopoverTrigger = forwardRef<
+  HTMLButtonElement,
+  PopoverTrigger
+>(function ComboboxTrigger(
+  {
+    isDisabled,
+    isLoading,
+    className,
+    variant = "outline",
+    role = "combobox",
+    rightIcon,
+    children = <InternalTriggerRender />,
+    ...props
   },
-);
+  forwardedRef,
+) {
+  const {
+    id,
+    isOpen,
+    isDisabled: isParentDisabled,
+    isLoading: isParentLoading,
+    isReadOnly: isParentReadonly,
+    triggerRef,
+  } = useComboboxContext();
+
+  const disabled = isDisabled || isParentDisabled || isParentReadonly;
+  const loading = isLoading || isParentLoading;
+
+  const right_icon = rightIcon ?? (
+    <ChevronUpDownIcon
+      className={classNames(
+        "size-3.5 shrink-0 stroke-2",
+        isOpen
+          ? "text-primary-500 dark:text-primary-400"
+          : "text-secondary-500 dark:text-secondary-400",
+      )}
+    />
+  );
+
+  return (
+    <PopoverTrigger
+      id={id}
+      {...props}
+      variant={variant}
+      role={role}
+      rightIcon={right_icon}
+      className={classNames(
+        "w-full justify-between text-start font-medium",
+        className,
+      )}
+      isDisabled={disabled}
+      isLoading={loading}
+      ref={mergeRefs(forwardedRef, triggerRef)}
+    >
+      <span className="flex-1">{children}</span>
+    </PopoverTrigger>
+  );
+});
 
 // Combobox Content
 export type ComboboxContent = Omit<PopoverContent, "children"> & {

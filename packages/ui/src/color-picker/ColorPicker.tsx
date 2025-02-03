@@ -8,13 +8,17 @@ import {
 } from "@ark-ui/react";
 import { EyeDropperIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import { InputGroup, Suffix } from "../input-group";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+import React, { type ElementRef, forwardRef } from "react";
+import { Button } from "../button/index.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, Suffix } from "../input-group/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 export const colorPickerContentClasses = cva(
   "dark:bg-secondary-900 border-secondary-200 dark:border-secondary-600 border bg-white drop-shadow-lg",
@@ -122,36 +126,11 @@ export const ColorPicker = forwardRef<
     <ArkColorPicker.Root
       {...colorPickerProps}
       onValueChange={({ value, valueAsString }) => {
-        if (format === "rgba") {
-          // @ts-ignore
-          onValueChange?.({ value, valueAsString });
-        } else if (format === "hsba") {
-          const _value = value.toJSON();
-
-          onValueChange?.({
-            // @ts-ignore
-            value: {
-              hue: _value.h,
-              saturation: _value.s,
-              brightness: _value.b,
-              alpha: _value.a,
-            },
-            valueAsString,
-          });
-        } else if (format === "hsla") {
-          const _value = value.toJSON();
-
-          onValueChange?.({
-            // @ts-ignore
-            value: {
-              hue: _value.h,
-              saturation: _value.s,
-              lightness: _value.l,
-              alpha: _value.a,
-            },
-            valueAsString,
-          });
-        }
+        onValueChange?.({
+          // @ts-expect-error
+          value: value.toFormat(format).toJSON(),
+          valueAsString,
+        });
       }}
       ref={forwaredRef}
     >

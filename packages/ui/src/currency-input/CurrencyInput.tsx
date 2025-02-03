@@ -1,9 +1,9 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import { InputGroup, LeftAddon, Suffix } from "../input-group";
-import { getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, LeftAddon, Suffix } from "../input-group/index.js";
+import { getValue } from "../utils/index.js";
 
 const ID = "currency-input";
 
@@ -132,7 +132,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInput>(
               event.preventDefault();
               event.stopPropagation();
 
-              const constant = KEY_FACTOR[event.key];
+              const constant = KEY_FACTOR[event.key] ?? 0;
               const formattedValue = formatter(valueAsNumber + constant);
 
               onChange?.(formattedValue);

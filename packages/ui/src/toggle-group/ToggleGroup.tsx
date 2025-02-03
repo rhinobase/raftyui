@@ -2,12 +2,12 @@
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import { cva } from "class-variance-authority";
 import { type ComponentProps, forwardRef } from "react";
-import { classNames } from "../utils";
+import { classNames } from "../utils/index.js";
 import {
   type ToggleGroupContext,
   ToggleGroupProvider,
   useToggleGroupContext,
-} from "./context";
+} from "./context.js";
 
 export const toggleGroupClasses = cva(
   "dark:divide-secondary-700 dark:border-secondary-700 border-secondary-300 divide-secondary-300 w-max flex data-[orientation='vertical']:flex-col data-[orientation='horizontal']:flex-row data-[orientation='vertical']:divide-y data-[orientation='horizontal']:divide-x overflow-hidden border",

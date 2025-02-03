@@ -1,10 +1,10 @@
 "use client";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
-import { useFieldControlContext } from "../field-control";
-import { InputField } from "../input-field";
-import { InputGroup, Suffix } from "../input-group";
-import { getValue } from "../utils";
+import { useFieldControlContext } from "../field-control/index.js";
+import { InputField } from "../input-field/index.js";
+import { InputGroup, Suffix } from "../input-group/index.js";
+import { getValue } from "../utils/index.js";
 
 const ID = "percentage-input";
 

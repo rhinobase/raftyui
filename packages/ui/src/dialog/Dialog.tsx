@@ -1,7 +1,7 @@
 "use client";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import {
+import React, {
   type ComponentPropsWithoutRef,
   type ElementRef,
   type HTMLAttributes,
@@ -13,15 +13,14 @@ import {
   alertDialogHeaderAndFooterClasses,
   alertDialogOverlayClasses,
   alertDialogTitleClasses,
-} from "../alert-dialog";
-import { Button } from "../button";
-import type { ValueOrFunction } from "../types";
-import { classNames, getValue } from "../utils";
+} from "../alert-dialog/index.js";
+import { Button } from "../button/index.js";
+import { type ValueOrFunction, classNames, getValue } from "../utils/index.js";
 import {
   type DialogContext,
   DialogProvider,
   useDialogContext,
-} from "./context";
+} from "./context.js";
 
 export type Dialog = ComponentPropsWithoutRef<typeof DialogPrimitive.Root> &
   Partial<DialogContext>;

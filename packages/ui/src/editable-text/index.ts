@@ -3,4 +3,4 @@ export {
   editTriggerClasses,
   editIconClasses,
   editableTextPreviewClasses,
-} from "./EditableText";
+} from "./EditableText.js";

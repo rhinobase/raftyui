@@ -11,8 +11,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import { type ElementRef, forwardRef } from "react";
-import { Button } from "../button";
+import React, { type ElementRef, forwardRef } from "react";
+import { Button } from "../button/index.js";
 import {
   DatePickerCalendarHeader,
   DatePickerMonthCalendar,
@@ -22,12 +22,16 @@ import {
   datePickerClearButtonClasses,
   datePickerContentClasses,
   datePickerDayCalendarButtonClasses,
-} from "../date-picker/DatePicker";
-import { useFieldControlContext } from "../field-control";
-import { inputFieldClasses } from "../input-field";
-import { InputGroup, Suffix } from "../input-group";
-import type { ValueOrFunction } from "../types";
-import { type SizeType, classNames, getValue } from "../utils";
+} from "../date-picker/DatePicker.js";
+import { useFieldControlContext } from "../field-control/index.js";
+import { inputFieldClasses } from "../input-field/index.js";
+import { InputGroup, Suffix } from "../input-group/index.js";
+import {
+  type SizeType,
+  type ValueOrFunction,
+  classNames,
+  getValue,
+} from "../utils/index.js";
 
 type ValueType = [string] | [string, string] | undefined;
 
@@ -92,7 +96,7 @@ export const RangePicker = forwardRef<
     readOnly: _readOnly,
     selectionMode: "range",
     onValueChange: ({ valueAsString }) =>
-      onValueChange?.([valueAsString[0], valueAsString[1]]),
+      onValueChange?.([valueAsString[0] ?? "", valueAsString[1] ?? ""]),
     className: classNames("w-full", className),
   };
 
